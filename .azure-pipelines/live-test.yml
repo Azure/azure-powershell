@@ -72,6 +72,14 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
+    name: 'ps_7_0_x_win'
+    vmImage: ${{ parameters.img_windows }}
+    osType: 'Windows'
+    psVersion: ${{ parameters.ps_7_0_x }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
+
+- template: util/live-test-steps.yml
+  parameters:
     name: 'ps_7_1_x_win'
     vmImage: ${{ parameters.img_windows }}
     osType: 'Windows'
@@ -96,6 +104,14 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
+    name: 'ps_7_0_x_linux'
+    vmImage: ${{ parameters.img_linux }}
+    osType: 'Linux'
+    psVersion: ${{ parameters.ps_7_0_x }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
+
+- template: util/live-test-steps.yml
+  parameters:
     name: 'ps_7_1_x_linux'
     vmImage: ${{ parameters.img_linux }}
     osType: 'Linux'
@@ -117,6 +133,14 @@ jobs:
     osType: 'Linux'
     psVersion: ${{ parameters.ps_7_3_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+
+- template: util/live-test-steps.yml
+  parameters:
+    name: 'ps_7_0_x_macOS'
+    vmImage: ${{ parameters.img_macos }}
+    osType: 'MacOS'
+    psVersion: ${{ parameters.ps_7_0_x }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:

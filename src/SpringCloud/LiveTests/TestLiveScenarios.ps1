@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Create Spring Cloud Instance" -Description "Test the process of create a new spring cloud instance." -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create Spring Cloud Instance" -Description "Test the process of create a new spring cloud instance." -Platform Linux -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 
@@ -11,7 +11,7 @@ Invoke-LiveTestScenario -Name "Create Spring Cloud Instance" -Description "Test 
     Assert-AreEqual $springCloudServiceName $springCloudInstance.Name
 }
 
-Invoke-LiveTestScenario -Name "Create Spring Cloud App Instance" -Description "Test the process of create a new spring cloud app instance." -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create Spring Cloud App Instance" -Description "Test the process of create a new spring cloud app instance." -Platform Linux -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 
@@ -26,7 +26,7 @@ Invoke-LiveTestScenario -Name "Create Spring Cloud App Instance" -Description "T
     Assert-AreEqual $appName $appInstance.Name
 }
 
-Invoke-LiveTestScenario -Name "Create Spring Cloud App Deployment Instance" -Description "Test the process of create a new spring cloud app deployment instance." -ScenarioScript `
+Invoke-LiveTestScenario -Name "Create Spring Cloud App Deployment Instance" -Description "Test the process of create a new spring cloud app deployment instance." -Platform Linux -PowerShellVersion Latest -ScenarioScript `
 {
     param ($rg)
 
