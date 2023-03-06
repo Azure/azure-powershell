@@ -24,6 +24,12 @@ These resources can be associated with a network security perimeter
 ### [Get-AzNetworkSecurityPerimeterAssociation](Get-AzNetworkSecurityPerimeterAssociation.md)
 Gets the specified NSP association by name.
 
+### [Get-AzNetworkSecurityPerimeterLink](Get-AzNetworkSecurityPerimeterLink.md)
+Gets the specified NSP link resource.
+
+### [Get-AzNetworkSecurityPerimeterLinkReference](Get-AzNetworkSecurityPerimeterLinkReference.md)
+Gets the specified NSP linkReference resource.
+
 ### [Get-AzNetworkSecurityPerimeterProfile](Get-AzNetworkSecurityPerimeterProfile.md)
 Gets the specified NSP profile.
 
@@ -36,6 +42,9 @@ Creates or updates a network access rule.
 ### [New-AzNetworkSecurityPerimeterAssociation](New-AzNetworkSecurityPerimeterAssociation.md)
 Creates or updates a NSP resource association.
 
+### [New-AzNetworkSecurityPerimeterLink](New-AzNetworkSecurityPerimeterLink.md)
+Creates or updates NSP link resource.
+
 ### [New-AzNetworkSecurityPerimeterProfile](New-AzNetworkSecurityPerimeterProfile.md)
 Creates or updates a network profile.
 
@@ -47,6 +56,12 @@ Deletes an NSP access rule.
 
 ### [Remove-AzNetworkSecurityPerimeterAssociation](Remove-AzNetworkSecurityPerimeterAssociation.md)
 Deletes an NSP association resource.
+
+### [Remove-AzNetworkSecurityPerimeterLink](Remove-AzNetworkSecurityPerimeterLink.md)
+Deletes an NSP Link resource.
+
+### [Remove-AzNetworkSecurityPerimeterLinkReference](Remove-AzNetworkSecurityPerimeterLinkReference.md)
+Deletes an NSP LinkReference resource.
 
 ### [Remove-AzNetworkSecurityPerimeterProfile](Remove-AzNetworkSecurityPerimeterProfile.md)
 Deletes an NSP profile.

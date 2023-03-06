@@ -1,53 +1,56 @@
 ---
 external help file:
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterassociation
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-aznetworksecurityperimeterlinkreference
 schema: 2.0.0
 ---
 
-# Remove-AzNetworkSecurityPerimeterAssociation
+# Remove-AzNetworkSecurityPerimeterLinkReference
 
 ## SYNOPSIS
-Deletes an NSP association resource.
+Deletes an NSP LinkReference resource.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <String>
+Remove-AzNetworkSecurityPerimeterLinkReference -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzNetworkSecurityPerimeterAssociation -InputObject <INetworkSecurityPerimeterIdentity>
+Remove-AzNetworkSecurityPerimeterLinkReference -InputObject <INetworkSecurityPerimeterIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes an NSP association resource.
+Deletes an NSP LinkReference resource.
 
 ## EXAMPLES
 
-### Example 1: Deletes a NetworkSecurityPerimeterAccessAssociation by Name
+### Example 1: {{ Add title here }}
 ```powershell
-
- Remove-AzNetworkSecurityPerimeterAssociation -Name association4 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
-
+{{ Add code here }}
 ```
 
-Deletes a NetworkSecurityPerimeterAccessAssociation by Name
-
-### Example 2: Deletes a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
-```powershell
-
- $associationObj = Get-AzNetworkSecurityPerimeterAssociation -Name association5 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
- Remove-AzNetworkSecurityPerimeterAssociation -InputObject $associationObj
-
+```output
+{{ Add output here }}
 ```
 
-Deletes a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -98,12 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the NSP association.
+The name of the NSP linkReference.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: AssociationName
+Aliases: LinkReferenceName
 
 Required: True
 Position: Named
