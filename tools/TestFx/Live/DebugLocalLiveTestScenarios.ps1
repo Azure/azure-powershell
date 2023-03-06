@@ -29,14 +29,12 @@ function InvokeLocalLiveTestScenarios {
     param (
         [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string[]] $TargetModules
-    )
+        [string[]] $TargetModules,
 
-    $dataLocation = (Get-AzConfig -TestCoverageLocation).Value
-    if ([string]::IsNullOrWhiteSpace($dataLocation) -or !(Test-Path -LiteralPath $dataLocation -PathType Container)) {
-        $dataLocation = Join-Path -Path $env:USERPROFILE -ChildPath ".Azure"
-    }
-    Write-Host "Data location is `"$dataLocation`"" -ForegroundColor Cyan
+        [Parameter()]
+        [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
+        [string] $Output = (Get-Location)
+    )
 
     $srcDir = Join-Path -Path $RepoLocation -ChildPath "src"
     $liveScenarios = Get-ChildItem -Path $srcDir -Recurse -Directory -Filter "LiveTests" | Get-ChildItem -Filter "TestLiveScenarios.ps1" -File | Select-Object -ExpandProperty FullName
@@ -45,7 +43,7 @@ function InvokeLocalLiveTestScenarios {
         if (!$PSBoundParameters.ContainsKey("TargetModules") -or $moduleName -in $TargetModules) {
             Write-Host "Executing live test scenarios for module $moduleName" -ForegroundColor Cyan
             Import-Module "./tools/TestFx/Assert.ps1" -Force
-            Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $dataLocation -Force
+            Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $Output -Force
             . $_
         }
     }
