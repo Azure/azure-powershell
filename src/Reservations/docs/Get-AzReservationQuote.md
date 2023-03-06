@@ -476,7 +476,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IPurchaseRequest>: The request for reservation purchase
+`BODY <IPurchaseRequest>`: The request for reservation purchase
   - `[AppliedScopePropertyDisplayName <String>]`: Display name
   - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
   - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.

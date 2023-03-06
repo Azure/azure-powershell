@@ -273,13 +273,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <ICalculateRefundRequest>: Request containing information needed for calculating refund.
+`BODY <ICalculateRefundRequest>`: Request containing information needed for calculating refund.
   - `[Id <String>]`: Fully qualified identifier of the reservation order being returned
   - `[ReservationToReturnQuantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
   - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the reservation being returned
   - `[Scope <String>]`: The scope of the refund, e.g. Reservation
 
-INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
