@@ -3,7 +3,7 @@
 
 ``` yaml
 require:
-    - $(this-folder)/../../tools/SwaggerCI/readme.azure.noprofile.md
+    - $(this-folder)/../../readme.azure.noprofile.md
     - $(this-folder)/../../$(readme.md)
 try-require:
     - $(this-folder)/../../$(readme.powershell.md)
