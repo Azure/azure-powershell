@@ -23,9 +23,9 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DB2ProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsDB2ProviderInstanceObject
+https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderDB2InstanceObject.
 #>
-function New-AzWorkloadsDB2ProviderInstanceObject {
+function New-AzWorkloadsProviderDB2InstanceObject. {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DB2ProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

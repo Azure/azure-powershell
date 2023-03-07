@@ -16,39 +16,27 @@
 
 <#
 .Synopsis
-Create an in-memory object for MsSqlServerProviderInstanceProperties.
+Create an in-memory object for PrometheusOSProviderInstanceProperties.
 .Description
-Create an in-memory object for MsSqlServerProviderInstanceProperties.
+Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsMsSqlServerProviderInstanceObject
+https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderPrometheusOSInstanceObject
 #>
-function New-AzWorkloadsMsSqlServerProviderInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties')]
+function New-AzWorkloadsProviderPrometheusOSInstanceObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Gets or sets the database password.")]
+        [Parameter(HelpMessage="URL of the Node Exporter endpoint.")]
         [string]
-        $Password,
-        [Parameter(HelpMessage="Gets or sets the key vault URI to secret with the database password.")]
-        [string]
-        $PasswordUri,
-        [Parameter(HelpMessage="Gets or sets the database sql port.")]
-        [string]
-        $Port,
-        [Parameter(HelpMessage="Gets or sets the database user name.")]
-        [string]
-        $Username,
-        [Parameter(HelpMessage="Gets or sets the SQL server host name.")]
-        [string]
-        $Hostname,
+        $PrometheusUrl,
         [Parameter(HelpMessage="Gets or sets the SAP System Identifier.")]
         [string]
         $SapSid,
-        [Parameter(HelpMessage="Gets or sets the blob URI to SSL certificate for the SQL Database.")]
+        [Parameter(HelpMessage="Gets or sets the blob URI to SSL certificate for the prometheus node exporter.")]
         [string]
         $SslCertificateUri,
         [Parameter(HelpMessage="Gets or sets certificate preference if secure communication is enabled.")]
@@ -58,22 +46,10 @@ function New-AzWorkloadsMsSqlServerProviderInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.PrometheusOSProviderInstanceProperties]::New()
 
-        if ($PSBoundParameters.ContainsKey('DbPassword')) {
-            $Object.DbPassword = $DbPassword
-        }
-        if ($PSBoundParameters.ContainsKey('DbPasswordUri')) {
-            $Object.DbPasswordUri = $DbPasswordUri
-        }
-        if ($PSBoundParameters.ContainsKey('DbPort')) {
-            $Object.DbPort = $DbPort
-        }
-        if ($PSBoundParameters.ContainsKey('DbUsername')) {
-            $Object.DbUsername = $DbUsername
-        }
-        if ($PSBoundParameters.ContainsKey('Hostname')) {
-            $Object.Hostname = $Hostname
+        if ($PSBoundParameters.ContainsKey('PrometheusUrl')) {
+            $Object.PrometheusUrl = $PrometheusUrl
         }
         if ($PSBoundParameters.ContainsKey('SapSid')) {
             $Object.SapSid = $SapSid
@@ -84,7 +60,7 @@ function New-AzWorkloadsMsSqlServerProviderInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslPreference')) {
             $Object.SslPreference = $SslPreference
         }
-        $Object.ProviderType = 'MsSqlServer'
+        $Object.ProviderType = 'PrometheusOS'
         return $Object
     }
 }

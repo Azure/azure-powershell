@@ -23,9 +23,9 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties
 .Link
-https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsSapNetWeaverProviderInstanceObject.
+https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderSapNetWeaverInstanceObject.
 #>
-function New-AzWorkloadsSapNetWeaverProviderInstanceObject. {
+function New-AzWorkloadsProviderSapNetWeaverInstanceObject. {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
