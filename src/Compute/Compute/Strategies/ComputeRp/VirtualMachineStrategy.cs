@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string imageReferenceId = null,
             Dictionary<string, List<string>> auxAuthHeader = null,
             string diskControllerType = null,
-            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null,
+            string sharedGalleryImageId = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -114,10 +115,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             //ImageReference = (imageReferenceId.Contains("CommunityGalleries")) ? new ImageReference { CommunityGalleryImageId = imageReferenceId}
                             ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
                             {
-                                CommunityGalleryImageId = imageReferenceId
+                                CommunityGalleryImageId = imageReferenceId,
+                                SharedGalleryImageId = sharedGalleryImageId
                             }: new ImageReference
                             {
-                                Id = imageReferenceId
+                                Id = imageReferenceId,
+                                SharedGalleryImageId = sharedGalleryImageId
                             }),
                             OsDisk = new OSDisk(
                                 createOption: DiskCreateOptionTypes.FromImage,

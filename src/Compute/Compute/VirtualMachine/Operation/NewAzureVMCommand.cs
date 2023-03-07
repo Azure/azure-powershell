@@ -413,6 +413,12 @@ namespace Microsoft.Azure.Commands.Compute
         [PSArgumentCompleter("SCSI", "NVMe")]
         public string DiskControllerType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -650,7 +656,8 @@ namespace Microsoft.Azure.Commands.Compute
                         imageReferenceId: _cmdlet.ImageReferenceId,
                         auxAuthHeader: auxAuthHeader,
                         diskControllerType: _cmdlet.DiskControllerType,
-                        extendedLocation: extLoc
+                        extendedLocation: extLoc,
+                        sharedGalleryImageId: _cmdlet.SharedGalleryImageId
                         );
                 }
                 else

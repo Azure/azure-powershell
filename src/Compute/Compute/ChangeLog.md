@@ -25,6 +25,7 @@
 * Added 'MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
 * Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
 * Added `CompletionPercent` property to PSDisk object.
+* Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
