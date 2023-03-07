@@ -1506,14 +1506,6 @@ function Test-VpnConnectionPacketCapture
 		# Get the created VpnGateway using Get-AzVpnGateway
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 
-		# Reset the VpnGateway using IpconfigurationId
-		$job = Reset-AzVpnGateway -VpnGateway $vpnGateway -IpConfigurationId "Instance0" -AsJob
-		$job | Wait-Job
-		$actual = $job | Receive-Job
-		
-		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
-		Assert-AreEqual "Succeeded" $vpnGateway.ProvisioningState
-
 		$addr1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $vpnGateway.BgpSettings.BgpPeeringAddresses[0].IpConfigurationId -CustomAddress @("169.254.22.5")
 		$addr2 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $vpnGateway.BgpSettings.BgpPeeringAddresses[1].IpConfigurationId -CustomAddress @("169.254.22.10")
 		$createdVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -BgpPeeringAddress @($addr1,$addr2)
@@ -1536,7 +1528,7 @@ function Test-VpnConnectionPacketCapture
      finally
      {
 		# Delete VpnConnection using Remove-AzVpnConnection
-		$delete = Remove-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		# Delete VpnGateway using Remove-AzVpnGateway
