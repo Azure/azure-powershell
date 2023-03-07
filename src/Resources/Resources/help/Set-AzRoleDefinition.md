@@ -44,9 +44,8 @@ Set-AzRoleDefinition -Role $roleDef
 ### Example 2: Create using JSON file
 ```powershell
 Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
-```
+<#
 Following is a sample updated role definition json for Set-AzRoleDefinition:
-```json
 {
         "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
         "Name": "Updated Role",
@@ -71,6 +70,7 @@ Following is a sample updated role definition json for Set-AzRoleDefinition:
         ],
         "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
 }
+#>
 ```
 
 
