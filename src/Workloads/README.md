@@ -30,12 +30,13 @@ For information on how to develop for `Az.Workloads`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ```yaml
+branch: c7c06e7e311df89b6851aa7e12142c8f0d129cd8 
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-  - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.md
+  - $(repo)/specification/workloads/resource-manager/readme.md
 
 try-require: 
-  - C:/Users/v-diya/repository/azure-rest-api-specs-pr/specification/workloads/resource-manager/readme.powershell.md
+  - $(repo)/specification/workloads/resource-manager/readme.powershell.md
 
 resourcegroup-append: true
 identity-correction-for-post: true
@@ -73,12 +74,6 @@ directive:
     verb: New
     subject: ^ProviderInstance$
     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
-  remove: true
-
-- where:
-    verb: Update
-    subject: ^ProviderInstance$
-    variant: ^Update$|^UpdateViaIdentity$
   remove: true
 
 # SapApplicationServerInstance
@@ -167,13 +162,6 @@ directive:
     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
   remove: true
 
-# - where:
-#     verb: New|Update
-#     subject: SapLandscapeMonitor
-#     parameter-name: MonitorName
-#   set:
-#     parameter-name: Name
-# The SapLandscape only default value
 - where:
     verb: Get
     subject: ^SapLandscapeMonitor$
@@ -191,6 +179,12 @@ directive:
     subject: ^SapVirtualInstance$
     variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
   remove: true
+
+- where:
+    verb: New
+    subject: ^SapVirtualInstance$
+    variant: ^CreateExpanded$
+  hide: true
 
 - where:
     verb: Stop
@@ -333,5 +327,18 @@ directive:
         - GroupingSapApplication
 
 - no-inline:  # choose ONE of these models to disable inlining
+  - ProviderSpecificProperties
+  - SAPConfiguration
   - ErrorInnerError
+# - model-cmdlet:
+  # - DiscoveryConfiguration
+  # - DeploymentConfiguration
+  # - DeploymentWithOSConfiguration
+## Need custom below cmdlets.
+#   - HanaDbProviderInstanceProperties
+#   - SapNetWeaverProviderInstanceProperties
+#   - PrometheusOSProviderInstanceProperties
+#   - DB2ProviderInstanceProperties
+#   - PrometheusHaClusterProviderInstanceProperties
+#   - MsSqlServerProviderInstanceProperties
 ```
