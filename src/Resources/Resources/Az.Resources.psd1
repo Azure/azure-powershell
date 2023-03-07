@@ -65,7 +65,6 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 
-               'Microsoft.Azure.PowerShell.AutoMapper.dll', 
                'MSGraph.Autorest\bin\Az.MSGraph.private.dll', 
                'Authorization.Autorest\bin\Az.Authorization.private.dll'
 
