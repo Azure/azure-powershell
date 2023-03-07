@@ -67,7 +67,7 @@ Deletes an NSP LinkReference resource.
 Deletes an NSP profile.
 
 ### [Update-AzNetworkSecurityPerimeterAccessRule](Update-AzNetworkSecurityPerimeterAccessRule.md)
-Updates a workspace.
+Updates an access rule.
 
 ### [Update-AzNetworkSecurityPerimeterAssociation](Update-AzNetworkSecurityPerimeterAssociation.md)
 Updates an association

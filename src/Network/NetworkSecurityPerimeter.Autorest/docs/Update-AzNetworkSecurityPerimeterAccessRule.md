@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkSecurityPerimeterAccessRule
 
 ## SYNOPSIS
-Updates a workspace.
+Updates an access rule.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerime
 ```
 
 ## DESCRIPTION
-Updates a workspace.
+Updates an access rule.
 
 ## EXAMPLES
 

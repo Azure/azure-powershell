@@ -97,6 +97,20 @@
         "description": "Name of the NSP access rule."
       }
     },
+    "accessRule3Name": {
+      "type": "string",
+      "defaultValue": "t-accessRule3",
+      "metadata": {
+        "description": "Name of the NSP access rule."
+      }
+    },
+    "accessRule4Name": {
+      "type": "string",
+      "defaultValue": "t-accessRule4",
+      "metadata": {
+        "description": "Name of the NSP access rule."
+      }
+    },
     "accessRuleDelete1Name": {
       "type": "string",
       "defaultValue": "t-arDel1",
@@ -170,6 +184,8 @@
     "profileDelete2ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('profileDelete2Name'))]",
     "accessRule1ResourceName": "[concat(variables('profile1ResourceName'), '/', parameters('accessRule1Name'))]",
     "accessRule2ResourceName": "[concat(variables('profile1ResourceName'), '/', parameters('accessRule2Name'))]",
+    "accessRule3ResourceName": "[concat(variables('profile1ResourceName'), '/', parameters('accessRule3Name'))]",
+    "accessRule4ResourceName": "[concat(variables('profile1ResourceName'), '/', parameters('accessRule4Name'))]",
     "accessRuleDelete1ResourceName": "[concat(variables('profileDelBase1ResourceName'), '/', parameters('accessRuleDelete1Name'))]",
     "accessRuleDelete2ResourceName": "[concat(variables('profileDelBase1ResourceName'), '/', parameters('accessRuleDelete2Name'))]",
     "paas1ResourceName": "[parameters('paas1Name')]",
@@ -334,6 +350,41 @@
         "direction": "Outbound",
         "fullyQualifiedDomainNames": [
           "*"
+        ]
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/profiles/accessRules",
+      "name": "[variables('accessRule3ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile1Name'))]"
+      ],
+      "properties": {
+        "displayName": "NSP Access Rule with email",
+        "description": "NSP Access Rule with email",
+        "direction": "Outbound",
+        "emailAddresses": [
+          "test1@microsoft.com",
+          "test2@microsoft.com"
+        ]
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/profiles/accessRules",
+      "name": "[variables('accessRule4ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile1Name'))]"
+      ],
+      "properties": {
+        "displayName": "NSP Access Rule with sms",
+        "description": "NSP Access Rule with sms",
+        "direction": "Outbound",
+        "phoneNumbers": [
+          "+917878787878", "+919898989898"
         ]
       }
     },
@@ -717,6 +768,14 @@
     "accessRule2ArmId": {
       "type": "string",
       "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles/accessRules', variables('nsp1ResourceName'), parameters('profile1Name'), parameters('accessRule2Name'))]"
+    },
+    "accessRule3ArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles/accessRules', variables('nsp1ResourceName'), parameters('profile1Name'), parameters('accessRule3Name'))]"
+    },
+    "accessRule4ArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles/accessRules', variables('nsp1ResourceName'), parameters('profile1Name'), parameters('accessRule4Name'))]"
     },
     "accessRuleDelete1ArmId": {
       "type": "string",

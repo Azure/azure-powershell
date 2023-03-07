@@ -55,6 +55,8 @@ function setupEnv() {
     $tmpProfileDelBase2 = 't-prDelB2'
     $tmpAccessRule1 = 't-ar1'
     $tmpAccessRule2 = 't-ar2'
+    $tmpAccessRule3 = 't-ar3'
+    $tmpAccessRule4 = 't-ar4'
     $tmpAccessRuleDelete1 = 't-arD1'
     $tmpAccessRuleDelete2 = 't-arD2'
     $tmpAssociation1 = 't-asn1'
@@ -65,8 +67,8 @@ function setupEnv() {
     $tmpPaas3Rp = $randomString + 't-paas3Rp'
     $tmpPaas4Rp = $randomString + 't-paas4Rp'
 
-    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
-    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
+    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRule3', 'tmpAccessRule4', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
+    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRule3, $tmpAccessRule4, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($env.Contains($tmpKeys[$i])) {
@@ -106,6 +108,8 @@ function setupEnv() {
         profileDelBase2Name = $env.tmpProfileDelBase2
         accessRule1Name = $env.tmpAccessRule1
         accessRule2Name = $env.tmpAccessRule2
+        accessRule3Name = $env.tmpAccessRule3
+        accessRule4Name = $env.tmpAccessRule4
         accessRuleDelete1Name = $env.tmpAccessRuleDelete1
         accessRuleDelete2Name = $env.tmpAccessRuleDelete2
         paas1Name = $env.tmpPaas1Rp
