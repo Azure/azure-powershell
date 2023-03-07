@@ -137,7 +137,7 @@ function New-LiveTestResourceGroup {
         [string] $Location = "westus"
     )
 
-    $rg = Invoke-LiveTestCommand -Command "New-AzResourceGroup -Name $Name -Location $Location -Force"
+    $rg = Invoke-LiveTestCommand -Command { New-AzResourceGroup -Name $Name -Location $Location -Force }
     $rg
 }
 
@@ -170,7 +170,7 @@ function Invoke-LiveTestCommand {
     param (
         [Parameter(Mandatory, ValueFromPipeline)]
         [ValidateNotNullOrEmpty()]
-        [string] $Command
+        [scriptblock] $Command
     )
 
     $cmdRetryCount = 0
@@ -180,7 +180,7 @@ function Invoke-LiveTestCommand {
             Write-Host "##[section]Start executing the command `"$Command`"." -ForegroundColor Green
             Write-Host "##[command]The command `"$Command`" is running." -ForegroundColor Cyan
 
-            $cmdResult = Invoke-Expression -Command $Command -ErrorAction Stop
+            $cmdResult = $Command.InvokeWithContext($null, [psvariable]::new("ErrorActionPreference", "Stop"))
 
             Write-Host "##[section]Finish executing the command `"$Command`"" -ForegroundColor Green
 
@@ -188,7 +188,7 @@ function Invoke-LiveTestCommand {
             break
         }
         catch {
-            $cmdErrorMessage = $_.Exception.Message
+            $cmdErrorMessage = $_.Exception.InnerException.Message
             if ($cmdRetryCount -lt $script:CommandMaxRetryCount) {
                 Write-Host "##[warning]Error occurred when executing the command `"$Command`" with error message `"$cmdErrorMessage`"." -ForegroundColor Yellow
                 Write-Host "##[warning]Live test will retry automatically in $script:CommandDelay seconds." -ForegroundColor Yellow
@@ -392,7 +392,7 @@ function Clear-LiveTestResources {
         [string] $Name
     )
 
-    Invoke-LiveTestCommand -Command "Remove-AzResourceGroup -Name $Name -Force -AsJob | Out-Null"
+    Invoke-LiveTestCommand -Command { Remove-AzResourceGroup -Name $Name -Force -AsJob | Out-Null }
 }
 
 function ConvertToLiveTestJsonErrors {
