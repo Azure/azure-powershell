@@ -13,7 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Newtonsoft.Json;
+using System;
 using System.Text;
+using System.Xml;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
@@ -21,6 +24,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
     public class PsScriptStatus : ScriptStatus
     {
         private const char Whitespace = ' ';
+        public new string ContainerInstanceId { get; private set; }
+        public new string StorageAccountId { get; private set; }
+        public new DateTime? StartTime { get; private set; }
+        public new DateTime? EndTime { get; private set; }
+        public new DateTime? ExpirationTime { get; private set; }
+        public new ErrorResponse Error { get; set; }
+
+        internal static PsScriptStatus ToPsScriptStatus(ScriptStatus status)
+        {
+            return new PsScriptStatus
+            {
+                ContainerInstanceId = status.ContainerInstanceId,
+                StorageAccountId = status.StorageAccountId,
+                StartTime = status.StartTime,
+                EndTime = status.EndTime,
+                ExpirationTime = status.ExpirationTime,
+                Error = status.Error
+            };
+        }
+
 
         public string GetFormattedErrorString()
         {
