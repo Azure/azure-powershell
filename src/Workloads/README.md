@@ -330,10 +330,9 @@ directive:
   - ProviderSpecificProperties
   - SAPConfiguration
   - ErrorInnerError
-# - model-cmdlet:
-  # - DiscoveryConfiguration
-  # - DeploymentConfiguration
-  # - DeploymentWithOSConfiguration
+- model-cmdlet:
+  - SapLandscapeMonitorSidMapping
+  - SapLandscapeMonitorMetricThresholds
 ## Need custom below cmdlets.
 #   - HanaDbProviderInstanceProperties
 #   - SapNetWeaverProviderInstanceProperties
