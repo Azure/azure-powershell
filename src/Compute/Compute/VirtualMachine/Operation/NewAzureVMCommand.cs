@@ -216,6 +216,7 @@ namespace Microsoft.Azure.Commands.Compute
             "Debian9",
             "OpenSuseLeap154",
             "RHEL",
+            "RHELRaw91Gen2",
             "SuseSles15SP4",
             "UbuntuLTS",
             "Ubuntu2204",
