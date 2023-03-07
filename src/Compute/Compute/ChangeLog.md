@@ -26,7 +26,8 @@
 * Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
 * Added `CompletionPercent` property to PSDisk object.
 * Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
-  Updated the `openSUSE-Leap` and `SLES` aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
+  Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
+* Added new descriptive and versioned alias names for the Linux image aliases. 
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
