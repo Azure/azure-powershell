@@ -16,17 +16,18 @@ Updates a workspace.
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>] [-Direction <String>]
- [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
- [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EmailAddress <ArrayList>] [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
+ [-Perimeter <IPerimeterBasedAccessRule[]>] [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AddressPrefix <ArrayList>] [-Direction <String>] [-FullyQualifiedDomainName <ArrayList>]
- [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <ArrayList>] [-Direction <String>] [-EmailAddress <ArrayList>]
+ [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
+ [-PhoneNumber <ArrayList>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +133,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EmailAddress
+Email Addresses
+
+```yaml
+Type: System.Collections.ArrayList
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FullyQualifiedDomainName
 Fully qualified domain name
 
@@ -214,6 +230,21 @@ To construct, see NOTES section for PERIMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PhoneNumber
+Phone Numbers
+
+```yaml
+Type: System.Collections.ArrayList
 Parameter Sets: (All)
 Aliases:
 
