@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.ResourceManager.Models;
-using Newtonsoft.Json;
 using System;
 using System.Text;
-using System.Xml;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
