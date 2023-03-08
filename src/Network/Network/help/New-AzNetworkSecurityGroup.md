@@ -14,7 +14,7 @@ Creates a network security group.
 ## SYNTAX
 
 ```
-New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzNetworkSecurityGroup -Name <String> -ResourceGroupName <String> -Location <String> [-FlushConnection]
  [-SecurityRules <PSSecurityRule[]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -48,6 +48,13 @@ $nsg = New-AzNetworkSecurityGroup -ResourceGroupName TestRG -Location westus -Na
 Step:1 Create a security rule allowing access from the Internet to port 3389.<br>
 Step:2 Create a security rule allowing access from the Internet to port 80.<br>
 Step:3 Add the rules created above to a new NSG named NSG-FrontEnd.<br>
+
+### Example 3: Create a new network security group with flush connection
+```powershell
+New-AzNetworkSecurityGroup -Name "nsg1" -ResourceGroupName "rg1"  -Location  "westus" -FlushConnection
+```
+
+This command creates a new Azure network security group named "nsg1" in resource group "rg1" in location "westus" and enables flushing of connection.
 
 ## PARAMETERS
 
@@ -136,6 +143,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FlushConnection
+When enabled, flows created from Network Security Group connections will be re-evaluated when rules are updated.
+Initial enablement will trigger re-evaluation
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
