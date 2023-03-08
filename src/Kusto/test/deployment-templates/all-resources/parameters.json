@@ -1,0 +1,57 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "kustoApiVersion": {
+      "value": "2022-12-29"
+    },
+    "kustoClusterName": {
+      "value": "kustopssdkq31ema"
+    },
+    "kustoFollowerClusterName": {
+      "value": "kustopssdkflowq31ema"
+    },
+    "kustoDatabaseName": {
+      "value": "TestDb"
+    },
+    "kustoDatabaseScriptName": {
+      "value": "CreateTableScript"
+    },
+    "kustoTableName": {
+      "value": "TestTable"
+    },
+    "principalAppId": {
+      "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
+    },
+    "eventHubNameSpaceName": {
+      "value": "EHNamespaceq31ema"
+    },
+    "eventHubName": {
+      "value": "ehq31ema"
+    },
+    "iotHubName": {
+      "value": "iotq31ema"
+    },
+    "cosmosDbAccountName": {
+      "value": "cosmosq31ema"
+    },
+    "cosmosDbDatabaseName": {
+      "value": "cosmostestdb"
+    },
+    "cosmosDbContainerName": {
+      "value": "cosmostestcontainer"
+    },
+    "storageAccountName": {
+      "value": "saq31ema"
+    },
+    "virtualNetworkName": {
+      "value": "vnetq31ema"
+    },
+    "subnetName": {
+      "value": "subnetq31ema"
+    },
+    "privateEndpointName": {
+      "value": "peq31ema"
+    }
+  }
+}
