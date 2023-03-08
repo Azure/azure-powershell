@@ -1,6 +1,6 @@
 ### Example 1: Returns the cluster customer credentials for the dedicated appliance.
 ```powershell
-Get-AzArcResourceBridgeCredentials -ResourceGroupName azps_test_group -Name azps-resource-bridge
+Get-AzArcResourceBridgeCredential -ResourceGroupName azps_test_group -Name azps-resource-bridge
 ```
 
 ```output

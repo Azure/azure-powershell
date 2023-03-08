@@ -24,7 +24,7 @@ Returns the cluster customer credentials for the dedicated appliance.
 
 ### Example 1: Returns the cluster customer credentials for the dedicated appliance.
 ```powershell
-Get-AzArcResourceBridgeCredentials -ResourceGroupName azps_test_group -Name azps-resource-bridge
+Get-AzArcResourceBridgeCredential -ResourceGroupName azps_test_group -Name azps-resource-bridge
 ```
 
 ```output
@@ -38,7 +38,8 @@ Returns the cluster customer credentials for the dedicated appliance.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
