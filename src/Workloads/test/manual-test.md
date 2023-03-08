@@ -44,14 +44,14 @@ $db2Instance = New-AzWorkloadsProviderDB2InstanceObject -Hostname "hostname" -Na
 New-AzWorkloadsProviderInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -MonitorName powershellmonitor07 -Name workloadsPI -ProviderSetting $db2Instance
 ```
 
-+ Get-AzWorkloadsProviderInstance
-+ Remove-AzWorkloadsProviderInstance
++ Get-AzWorkloadsProviderInstance : Get or list workloads provider instance
++ Remove-AzWorkloadsProviderInstance: Remove a workloads provider instance
 
-+ New-AzWorkloadsProviderHanaDbInstanceObject
-+ New-AzWorkloadsProviderPrometheusHaClusterInstanceObject
-+ New-AzWorkloadsProviderPrometheusOSInstanceObject
-+ New-AzWorkloadsProviderSapNetWeaverInstanceObject
-+ New-AzWorkloadsProviderSqlServerInstanceObject
++ Can use `New-AzWorkloadsProviderHanaDbInstanceObject` can HanaDb object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderPrometheusHaClusterInstanceObject` can PrometheusHa object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderPrometheusOSInstanceObject` can PrometheusOS object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderSapNetWeaverInstanceObject` can SapNetWeaver object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderSqlServerInstanceObject` can SqlServer object as value of the `ProviderSetting` parameter
 
 # Creates a SAP Landscape Monitor Dashboard
 ```powershell
