@@ -1,30 +1,31 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/stop-azsubscription
+online version: https://docs.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownershipstatus
 schema: 2.0.0
 ---
 
-# Stop-AzSubscription
+# Get-AzSubscriptionAcceptOwnershipStatus
 
 ## SYNOPSIS
-The operation to cancel a subscription
+Accept subscription ownership status.
 
 ## SYNTAX
 
-### Cancel (Default)
+### AcceptExpanded (Default)
 ```
-Stop-AzSubscription -Id <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzSubscriptionAcceptOwnershipStatus [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
-### CancelViaIdentity
+### AcceptViaIdentityExpanded
 ```
-Stop-AzSubscription -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Get-AzSubscriptionAcceptOwnershipStatus -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to cancel a subscription
+Accept subscription ownership status.
 
 ## EXAMPLES
 
@@ -53,7 +54,8 @@ The operation to cancel a subscription
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -67,28 +69,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Subscription Id.
-
-```yaml
-Type: System.String
-Parameter Sets: Cancel
-Aliases: SubscriptionId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
-Parameter Sets: CancelViaIdentity
+Parameter Sets: AcceptViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -98,33 +85,17 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -SubscriptionId
+Subscription Id.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: System.String[]
+Parameter Sets: AcceptExpanded
+Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -138,7 +109,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipStatusResponse
 
 ## NOTES
 

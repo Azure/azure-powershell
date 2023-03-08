@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/invoke-azsubscriptionacceptownership
+online version: https://docs.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownership
 schema: 2.0.0
 ---
 
-# Invoke-AzSubscriptionAcceptOwnership
+# Get-AzSubscriptionAcceptOwnership
 
 ## SYNOPSIS
 Accept subscription ownership.
@@ -14,14 +14,14 @@ Accept subscription ownership.
 
 ### AcceptExpanded (Default)
 ```
-Invoke-AzSubscriptionAcceptOwnership [-SubscriptionId <String>] [-DisplayName <String>]
+Get-AzSubscriptionAcceptOwnership [-SubscriptionId <String[]>] [-DisplayName <String>]
  [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### AcceptViaIdentityExpanded
 ```
-Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-DisplayName <String>]
+Get-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-DisplayName <String>]
  [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -71,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -150,7 +151,7 @@ Accept wildcard characters: False
 Subscription Id.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: AcceptExpanded
 Aliases:
 

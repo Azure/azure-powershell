@@ -60,13 +60,28 @@ directive:
       variant: AcceptViaIdentity
     set:
       variant: AcceptViaIdentityExpanded
+
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Rename$|^RenameViaIdentity$|^Add$|^Accept$|^AcceptViaIdentity$
     remove: true
+
+  - where:
+      verb: Stop
+    set:
+      verb: Disable
+  - where:
+      verb: Add
+    set:
+      verb: Update
+  - where:
+      verb: Invoke
+    set:
+      verb: Get
+
   - where:
       subject: SubscriptionPolicyUpdatePolicy
     set:
-      subject: SubscriptionUpdatePolicy
+      subject: SubscriptionPolicy
   - where:
       subject: AcceptSubscriptionOwnership
     set:
@@ -75,6 +90,7 @@ directive:
       subject: AcceptSubscriptionOwnershipStatus
     set:
       subject: AcceptOwnershipStatus
+
   - where:
       verb: New
       subject: Alias

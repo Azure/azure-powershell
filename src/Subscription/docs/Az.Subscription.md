@@ -11,11 +11,17 @@ Locale: en-US
 Microsoft Azure PowerShell: Subscription cmdlets
 
 ## Az.Subscription Cmdlets
-### [Add-AzSubscriptionUpdatePolicy](Add-AzSubscriptionUpdatePolicy.md)
-Create or Update Subscription tenant policy for user's tenant.
+### [Disable-AzSubscription](Disable-AzSubscription.md)
+The operation to cancel a subscription
 
 ### [Enable-AzSubscription](Enable-AzSubscription.md)
 The operation to enable a subscription
+
+### [Get-AzSubscriptionAcceptOwnership](Get-AzSubscriptionAcceptOwnership.md)
+Accept subscription ownership.
+
+### [Get-AzSubscriptionAcceptOwnershipStatus](Get-AzSubscriptionAcceptOwnershipStatus.md)
+Accept subscription ownership status.
 
 ### [Get-AzSubscriptionAlias](Get-AzSubscriptionAlias.md)
 Get Alias Subscription.
@@ -26,12 +32,6 @@ Get Billing Account Policy.
 ### [Get-AzSubscriptionPolicy](Get-AzSubscriptionPolicy.md)
 Get the subscription tenant policy for the user's tenant.
 
-### [Invoke-AzSubscriptionAcceptOwnership](Invoke-AzSubscriptionAcceptOwnership.md)
-Accept subscription ownership.
-
-### [Invoke-AzSubscriptionAcceptOwnershipStatus](Invoke-AzSubscriptionAcceptOwnershipStatus.md)
-Accept subscription ownership status.
-
 ### [New-AzSubscriptionAlias](New-AzSubscriptionAlias.md)
 Create Alias Subscription.
 
@@ -41,6 +41,6 @@ Delete Alias.
 ### [Rename-AzSubscription](Rename-AzSubscription.md)
 The operation to rename a subscription
 
-### [Stop-AzSubscription](Stop-AzSubscription.md)
-The operation to cancel a subscription
+### [Update-AzSubscriptionPolicy](Update-AzSubscriptionPolicy.md)
+Create or Update Subscription tenant policy for user's tenant.
 

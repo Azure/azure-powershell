@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/add-azsubscriptionupdatepolicy
+online version: https://docs.microsoft.com/powershell/module/az.subscription/update-azsubscriptionpolicy
 schema: 2.0.0
 ---
 
-# Add-AzSubscriptionUpdatePolicy
+# Update-AzSubscriptionPolicy
 
 ## SYNOPSIS
 Create or Update Subscription tenant policy for user's tenant.
@@ -13,7 +13,7 @@ Create or Update Subscription tenant policy for user's tenant.
 ## SYNTAX
 
 ```
-Add-AzSubscriptionUpdatePolicy [-BlockSubscriptionsIntoTenant] [-BlockSubscriptionsLeavingTenant]
+Update-AzSubscriptionPolicy [-BlockSubscriptionsIntoTenant] [-BlockSubscriptionsLeavingTenant]
  [-ExemptedPrincipal <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
