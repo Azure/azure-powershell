@@ -34,9 +34,9 @@ function ExecuteTestCases([object]$response) {
 
 Describe 'Invoke-AzReservationReturn' {
     It 'PostExpanded' {
-        $orderId = "3e8a292c-1e34-4e97-b418-f465caaed066"
-        $fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/3e8a292c-1e34-4e97-b418-f465caaed066/reservations/ce393c70-16c4-4bf4-80d9-cfdd1394f609"
-        $fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/3e8a292c-1e34-4e97-b418-f465caaed066"
+        $orderId = "73e63333-9b94-442c-8a5d-9403ba0e8b87"
+        $fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/89ab48ca-721b-4044-b9e1-389d6d5ead4d"
+        $fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87"
         $res = Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
         $res | Should -Not -Be $null
         $res.SessionId | Should -Not -Be $null
@@ -46,11 +46,11 @@ Describe 'Invoke-AzReservationReturn' {
     }
 
     It 'Post' {
-        $orderId = "b73c2c25-6c4e-4942-896f-594427543c2e"
+        $orderId = "0667f90e-a383-4c24-b3d4-1b624589f713"
         $body = @{
-            Id = "/providers/microsoft.capacity/reservationOrders/b73c2c25-6c4e-4942-896f-594427543c2e"
+            Id = "/providers/microsoft.capacity/reservationOrders/0667f90e-a383-4c24-b3d4-1b624589f713"
             ReservationToReturnQuantity = 1
-            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/b73c2c25-6c4e-4942-896f-594427543c2e/reservations/43ffe01b-196a-4053-a68f-330fe3ac1581"
+            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/0667f90e-a383-4c24-b3d4-1b624589f713/reservations/7b2ad768-936a-4c5d-973f-35788eb96934"
             Scope = "Reservation"
         }
         $res = Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -Body $body
@@ -59,7 +59,7 @@ Describe 'Invoke-AzReservationReturn' {
 
         $body2 = @{
             ReservationToReturnQuantity = 1
-            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/b73c2c25-6c4e-4942-896f-594427543c2e/reservations/43ffe01b-196a-4053-a68f-330fe3ac1581"
+            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/0667f90e-a383-4c24-b3d4-1b624589f713/reservations/7b2ad768-936a-4c5d-973f-35788eb96934"
             Scope = "Reservation"
             ReturnReason = "Sample reason"
             SessionId = $res.SessionId
@@ -85,20 +85,19 @@ Describe 'Invoke-AzReservationReturn' {
 
     It 'PostViaIdentity' {
         $param = @{
-                    ReservationOrderId = "73e63333-9b94-442c-8a5d-9403ba0e8b87"  
+                    ReservationOrderId = "62069b8a-8f84-49ab-9a4a-f69009390876"  
         }
         $body = @{
-            Id = "/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87"
+            Id = "/providers/microsoft.capacity/reservationOrders/62069b8a-8f84-49ab-9a4a-f69009390876"
             ReservationToReturnQuantity = 1
-            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/ab9761bb-324c-474a-b96c-3471bd643328"
+            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/62069b8a-8f84-49ab-9a4a-f69009390876/reservations/21eae555-c406-47d5-a178-98cf422be361"
             Scope = "Reservation"
         }
         $res = Invoke-AzReservationCalculateRefund -InputObject $param -Body $body
-        
 
         $body2 = @{
             ReservationToReturnQuantity = 1
-            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/ab9761bb-324c-474a-b96c-3471bd643328"
+            ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/62069b8a-8f84-49ab-9a4a-f69009390876/reservations/21eae555-c406-47d5-a178-98cf422be361"
             Scope = "Reservation"
             ReturnReason = "Sample reason"
             SessionId = $res.SessionId
