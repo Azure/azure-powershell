@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
-    <!-- version of SDK should reference https://learn.microsoft.com/en-us/powershell/azure/what-is-azure-powershell -->
+    <!-- version of SDK should reference https://docs.microsoft.com/en-us/powershell/azure/what-is-azure-powershell -->
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
