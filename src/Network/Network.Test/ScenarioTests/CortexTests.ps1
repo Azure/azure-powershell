@@ -234,7 +234,7 @@ function Test-CortexCRUD
 		Assert-NotNull $vpnGatewaysAll
 		
 		# Reset/Reboot the VpnGateway using Reset-AzVpnGateway
-		$job = Reset-AzVpnGateway -VpnGateway $vpnGateway -AsJob
+		$job = Reset-AzVpnGateway -VpnGateway $vpnGateway  -IpConfigurationId "Instance0" -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -1524,7 +1524,6 @@ function Test-VpnConnectionPacketCapture
 		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddress.Count
 		$vpnConnection = New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
 		Assert-AreEqual 1 $vpnConnection.VpnLinkConnections.Count
-
      }
      finally
      {
