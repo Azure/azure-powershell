@@ -1,25 +1,26 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderDB2InstanceObject.
+online version: https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderSapNetWeaverInstanceObject.
 schema: 2.0.0
 ---
 
-# New-AzWorkloadsProviderDB2InstanceObject.
+# New-AzWorkloadsProviderSapNetWeaverInstanceObject
 
 ## SYNOPSIS
-Create an in-memory object for DB2ProviderInstanceProperties.
+Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 
 ## SYNTAX
 
 ```
-New-AzWorkloadsProviderDB2InstanceObject. [-Hostname <String>] [-Name <String>] [-Password <String>]
- [-PasswordUri <String>] [-Port <String>] [-SapSid <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [-Username <String>] [<CommonParameters>]
+New-AzWorkloadsProviderSapNetWeaverInstanceObject [-SapClientId <String>] [-SapHostFileEntry <String[]>]
+ [-SapHostname <String>] [-SapInstanceNr <String>] [-SapPassword <String>] [-SapPasswordUri <String>]
+ [-SapPortNumber <String>] [-SapSid <String>] [-SapUsername <String>] [-SslCertificateUri <String>]
+ [-SslPreference <SslPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for DB2ProviderInstanceProperties.
+Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 
 ## EXAMPLES
 
@@ -47,8 +48,8 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 
 ## PARAMETERS
 
-### -Hostname
-Gets or sets the target virtual machine name.
+### -SapClientId
+Gets or sets the SAP Client ID.
 
 ```yaml
 Type: System.String
@@ -62,8 +63,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Gets or sets the db2 database name.
+### -SapHostFileEntry
+Gets or sets the list of HostFile Entries.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SapHostname
+Gets or sets the target virtual machine IP Address/FQDN.
 
 ```yaml
 Type: System.String
@@ -77,8 +93,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Password
-Gets or sets the db2 database password.
+### -SapInstanceNr
+Gets or sets the instance number of SAP NetWeaver.
 
 ```yaml
 Type: System.String
@@ -92,8 +108,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PasswordUri
-Gets or sets the key vault URI to secret with the database password.
+### -SapPassword
+Sets the SAP password.
 
 ```yaml
 Type: System.String
@@ -107,8 +123,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Port
-Gets or sets the db2 database sql port.
+### -SapPasswordUri
+Gets or sets the key vault URI to secret with the SAP password.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SapPortNumber
+Gets or sets the SAP HTTP port number.
 
 ```yaml
 Type: System.String
@@ -137,8 +168,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SapUsername
+Gets or sets the SAP user name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SslCertificateUri
-Gets or sets the blob URI to SSL certificate for the DB2 Database.
+Gets or sets the blob URI to SSL certificate for the SAP system.
 
 ```yaml
 Type: System.String
@@ -167,21 +213,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Username
-Gets or sets the db2 database user name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -189,7 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.Db2ProviderInstanceProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties
 
 ## NOTES
 

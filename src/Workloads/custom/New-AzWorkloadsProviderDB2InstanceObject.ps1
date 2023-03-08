@@ -25,7 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DB2ProviderInsta
 .Link
 https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderDB2InstanceObject.
 #>
-function New-AzWorkloadsProviderDB2InstanceObject. {
+function New-AzWorkloadsProviderDB2InstanceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DB2ProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -63,20 +63,20 @@ function New-AzWorkloadsProviderDB2InstanceObject. {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.DB2ProviderInstanceProperties]::New()
 
-        if ($PSBoundParameters.ContainsKey('DbName')) {
-            $Object.DbName = $DbName
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.DbName = $Name
         }
-        if ($PSBoundParameters.ContainsKey('DbPassword')) {
-            $Object.DbPassword = $DbPassword
+        if ($PSBoundParameters.ContainsKey('Password')) {
+            $Object.DbPassword = $Password
         }
-        if ($PSBoundParameters.ContainsKey('DbPasswordUri')) {
-            $Object.DbPasswordUri = $DbPasswordUri
+        if ($PSBoundParameters.ContainsKey('PasswordUri')) {
+            $Object.DbPasswordUri = $PasswordUri
         }
-        if ($PSBoundParameters.ContainsKey('DbPort')) {
-            $Object.DbPort = $DbPort
+        if ($PSBoundParameters.ContainsKey('Port')) {
+            $Object.DbPort = $Port
         }
-        if ($PSBoundParameters.ContainsKey('DbUsername')) {
-            $Object.DbUsername = $DbUsername
+        if ($PSBoundParameters.ContainsKey('Username')) {
+            $Object.DbUsername = $Username
         }
         if ($PSBoundParameters.ContainsKey('Hostname')) {
             $Object.Hostname = $Hostname

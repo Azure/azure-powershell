@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az./new-AzWorkload
 schema: 2.0.0
 ---
 
-# New-AzWorkloadsProviderHanaDbInstanceObject.
+# New-AzWorkloadsProviderHanaDbInstanceObject
 
 ## SYNOPSIS
 Create an in-memory object for HanaDbProviderInstanceProperties.
@@ -13,7 +13,7 @@ Create an in-memory object for HanaDbProviderInstanceProperties.
 ## SYNTAX
 
 ```
-New-AzWorkloadsProviderHanaDbInstanceObject. [-Hostname <String>] [-InstanceNumber <String>] [-Name <String>]
+New-AzWorkloadsProviderHanaDbInstanceObject [-Hostname <String>] [-InstanceNumber <String>] [-Name <String>]
  [-Password <String>] [-PasswordUri <String>] [-SapSid <String>] [-SqlPort <String>]
  [-SslCertificateUri <String>] [-SslHostNameInCertificate <String>] [-SslPreference <SslPreference>]
  [-Username <String>] [<CommonParameters>]

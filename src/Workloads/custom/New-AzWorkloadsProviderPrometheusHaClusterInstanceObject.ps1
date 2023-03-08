@@ -69,6 +69,11 @@ function New-AzWorkloadsProviderPrometheusHaClusterInstanceObject {
         if ($PSBoundParameters.ContainsKey('SslCertificateUri')) {
             $Object.SslCertificateUri = $SslCertificateUri
         }
+
+        if ($PSBoundParameters.ContainsKey('SslPreference')) {
+            $Object.SslPreference = $SslPreference
+        }
+
         $Object.ProviderType = 'PrometheusHaCluster'
         return $Object
     }

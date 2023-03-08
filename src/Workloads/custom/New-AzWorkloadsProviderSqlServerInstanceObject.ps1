@@ -60,17 +60,17 @@ function New-AzWorkloadsProviderSqlServerInstanceObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.MsSqlServerProviderInstanceProperties]::New()
 
-        if ($PSBoundParameters.ContainsKey('DbPassword')) {
-            $Object.DbPassword = $DbPassword
+        if ($PSBoundParameters.ContainsKey('Password')) {
+            $Object.DbPassword = $Password
         }
-        if ($PSBoundParameters.ContainsKey('DbPasswordUri')) {
-            $Object.DbPasswordUri = $DbPasswordUri
+        if ($PSBoundParameters.ContainsKey('PasswordUri')) {
+            $Object.DbPasswordUri = $PasswordUri
         }
-        if ($PSBoundParameters.ContainsKey('DbPort')) {
-            $Object.DbPort = $DbPort
+        if ($PSBoundParameters.ContainsKey('Port')) {
+            $Object.DbPort = $Port
         }
-        if ($PSBoundParameters.ContainsKey('DbUsername')) {
-            $Object.DbUsername = $DbUsername
+        if ($PSBoundParameters.ContainsKey('Username')) {
+            $Object.DbUsername = $Username
         }
         if ($PSBoundParameters.ContainsKey('Hostname')) {
             $Object.Hostname = $Hostname

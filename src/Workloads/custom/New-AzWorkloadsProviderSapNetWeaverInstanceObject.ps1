@@ -25,7 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProv
 .Link
 https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderSapNetWeaverInstanceObject.
 #>
-function New-AzWorkloadsProviderSapNetWeaverInstanceObject. {
+function New-AzWorkloadsProviderSapNetWeaverInstanceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapNetWeaverProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

@@ -47,10 +47,10 @@ Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 ### [New-AzWorkloadsMonitor](New-AzWorkloadsMonitor.md)
 Creates a SAP monitor for the specified subscription, resource group, and resource name.
 
-### [New-AzWorkloadsProviderDB2InstanceObject.](New-AzWorkloadsProviderDB2InstanceObject..md)
+### [New-AzWorkloadsProviderDB2InstanceObject](New-AzWorkloadsProviderDB2InstanceObject.md)
 Create an in-memory object for DB2ProviderInstanceProperties.
 
-### [New-AzWorkloadsProviderHanaDbInstanceObject.](New-AzWorkloadsProviderHanaDbInstanceObject..md)
+### [New-AzWorkloadsProviderHanaDbInstanceObject](New-AzWorkloadsProviderHanaDbInstanceObject.md)
 Create an in-memory object for HanaDbProviderInstanceProperties.
 
 ### [New-AzWorkloadsProviderInstance](New-AzWorkloadsProviderInstance.md)
@@ -62,7 +62,7 @@ Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 ### [New-AzWorkloadsProviderPrometheusOSInstanceObject](New-AzWorkloadsProviderPrometheusOSInstanceObject.md)
 Create an in-memory object for PrometheusOSProviderInstanceProperties.
 
-### [New-AzWorkloadsProviderSapNetWeaverInstanceObject.](New-AzWorkloadsProviderSapNetWeaverInstanceObject..md)
+### [New-AzWorkloadsProviderSapNetWeaverInstanceObject](New-AzWorkloadsProviderSapNetWeaverInstanceObject.md)
 Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 
 ### [New-AzWorkloadsProviderSqlServerInstanceObject](New-AzWorkloadsProviderSqlServerInstanceObject.md)

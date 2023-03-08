@@ -25,7 +25,7 @@ Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.HanaDbProviderIn
 .Link
 https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderHanaDbInstanceObject.
 #>
-function New-AzWorkloadsProviderHanaDbInstanceObject. {
+function New-AzWorkloadsProviderHanaDbInstanceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.HanaDbProviderInstanceProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
@@ -69,17 +69,17 @@ function New-AzWorkloadsProviderHanaDbInstanceObject. {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.HanaDbProviderInstanceProperties]::New()
 
-        if ($PSBoundParameters.ContainsKey('DbName')) {
-            $Object.DbName = $DbName
+        if ($PSBoundParameters.ContainsKey('Name')) {
+            $Object.DbName = $Name
         }
-        if ($PSBoundParameters.ContainsKey('DbPassword')) {
-            $Object.DbPassword = $DbPassword
+        if ($PSBoundParameters.ContainsKey('Password')) {
+            $Object.DbPassword = $Password
         }
-        if ($PSBoundParameters.ContainsKey('DbPasswordUri')) {
-            $Object.DbPasswordUri = $DbPasswordUri
+        if ($PSBoundParameters.ContainsKey('PasswordUri')) {
+            $Object.DbPasswordUri = $PasswordUri
         }
-        if ($PSBoundParameters.ContainsKey('DbUsername')) {
-            $Object.DbUsername = $DbUsername
+        if ($PSBoundParameters.ContainsKey('Username')) {
+            $Object.DbUsername = $Username
         }
         if ($PSBoundParameters.ContainsKey('Hostname')) {
             $Object.Hostname = $Hostname
