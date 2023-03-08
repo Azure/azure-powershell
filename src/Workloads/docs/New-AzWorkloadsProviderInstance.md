@@ -15,7 +15,7 @@ Creates a provider instance for the specified subscription, resource group, SAP 
 ```
 New-AzWorkloadsProviderInstance -MonitorName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ProviderSettingProviderType <String>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-ProviderSetting <IProviderSpecificProperties>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -153,12 +153,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProviderSettingProviderType
-The provider type.
-For example, the value can be SapHana.
+### -ProviderSetting
+Defines the provider specific properties.
+To construct, see NOTES section for PROVIDERSETTING properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IProviderSpecificProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -243,6 +243,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`PROVIDERSETTING <IProviderSpecificProperties>`: Defines the provider specific properties.
+  - `ProviderType <String>`: The provider type. For example, the value can be SapHana.
 
 ## RELATED LINKS
 

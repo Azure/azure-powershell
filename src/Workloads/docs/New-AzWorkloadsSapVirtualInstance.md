@@ -12,12 +12,27 @@ Creates a Virtual Instance for SAP solutions (VIS) resource
 
 ## SYNTAX
 
+### CreateWithDiscovery (Default)
 ```
-New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String>
- -ConfigurationType <SapConfigurationType> -Environment <SapEnvironmentType> -Location <String>
- -SapProduct <SapProductType> [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-ManagedResourceGroupName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -CentralServerVmId <String>
+ -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> [-SubscriptionId <String>]
+ [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>]
+ [-ManagedRgStorageAccountName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateWithJsonString
+```
+New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateWithJsonTemplatePath
+```
+New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -JsonTemplatePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,12 +79,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigurationType
-The configuration Type.
+### -CentralServerVmId
+The virtual machine ID of the Central Server
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapConfigurationType
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: True
@@ -99,7 +114,7 @@ Defines the environment type - Production/Non Production.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: True
@@ -114,10 +129,40 @@ Type of manage identity
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateWithJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonTemplatePath
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateWithJsonTemplatePath
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,7 +174,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: True
@@ -144,7 +189,26 @@ Managed resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedRgStorageAccountName
+The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.
+
+Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).
+
+If not provided, the service will create the storage account with a random name
+
+```yaml
+Type: System.String
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: False
@@ -205,7 +269,7 @@ Defines the SAP Product type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: True
@@ -235,7 +299,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: False
@@ -250,7 +314,7 @@ User assigned identities dictionary
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateWithDiscovery
 Aliases:
 
 Required: False

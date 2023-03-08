@@ -15,7 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsSapVirtualInst
 }
 
 Describe 'New-AzWorkloadsSapVirtualInstance' {
-    It 'CreateExpanded' -skip {
+    It 'CreateWithDiscovery' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateWithJsonTemplatePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateWithJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -47,8 +47,26 @@ Get a list of SAP supported SKUs for ASCS, Application and Database tier.
 ### [New-AzWorkloadsMonitor](New-AzWorkloadsMonitor.md)
 Creates a SAP monitor for the specified subscription, resource group, and resource name.
 
+### [New-AzWorkloadsProviderDB2InstanceObject.](New-AzWorkloadsProviderDB2InstanceObject..md)
+Create an in-memory object for DB2ProviderInstanceProperties.
+
+### [New-AzWorkloadsProviderHanaDbInstanceObject.](New-AzWorkloadsProviderHanaDbInstanceObject..md)
+Create an in-memory object for HanaDbProviderInstanceProperties.
+
 ### [New-AzWorkloadsProviderInstance](New-AzWorkloadsProviderInstance.md)
 Creates a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
+
+### [New-AzWorkloadsProviderPrometheusHaClusterInstanceObject](New-AzWorkloadsProviderPrometheusHaClusterInstanceObject.md)
+Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
+
+### [New-AzWorkloadsProviderPrometheusOSInstanceObject](New-AzWorkloadsProviderPrometheusOSInstanceObject.md)
+Create an in-memory object for PrometheusOSProviderInstanceProperties.
+
+### [New-AzWorkloadsProviderSapNetWeaverInstanceObject.](New-AzWorkloadsProviderSapNetWeaverInstanceObject..md)
+Create an in-memory object for SapNetWeaverProviderInstanceProperties.
+
+### [New-AzWorkloadsProviderSqlServerInstanceObject](New-AzWorkloadsProviderSqlServerInstanceObject.md)
+Create an in-memory object for MsSqlServerProviderInstanceProperties.
 
 ### [New-AzWorkloadsSapApplicationInstance](New-AzWorkloadsSapApplicationInstance.md)
 Puts the SAP Application Server Instance resource.
@@ -73,6 +91,12 @@ PUT by end user will return a Bad Request error.
 
 ### [New-AzWorkloadsSapLandscapeMonitor](New-AzWorkloadsSapLandscapeMonitor.md)
 Creates a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
+
+### [New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject](New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject.md)
+Create an in-memory object for SapLandscapeMonitorMetricThresholds.
+
+### [New-AzWorkloadsSapLandscapeMonitorSidMappingObject](New-AzWorkloadsSapLandscapeMonitorSidMappingObject.md)
+Create an in-memory object for SapLandscapeMonitorSidMapping.
 
 ### [New-AzWorkloadsSapVirtualInstance](New-AzWorkloadsSapVirtualInstance.md)
 Creates a Virtual Instance for SAP solutions (VIS) resource
