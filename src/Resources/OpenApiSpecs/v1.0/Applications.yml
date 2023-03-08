@@ -180,7 +180,7 @@ paths:
                   value:
                     type: array
                     items:
-                      $ref: '#/components/schemas/microsoft.graph.application'
+                      $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.application'
                   '@odata.nextLink':
                     type: string
                 additionalProperties:
@@ -201,7 +201,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/microsoft.graph.application'
+              $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.application'
         required: true
       responses:
         '201':
@@ -209,7 +209,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/microsoft.graph.application'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.application'
         default:
           $ref: '#/components/responses/error'
       x-ms-docs-operation-type: operation
@@ -311,7 +311,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/microsoft.graph.application'
+                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.application'
           links:
             createdOnBehalfOf:
               operationId: applications.GetCreatedOnBehalfOf
@@ -363,7 +363,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/microsoft.graph.application'
+              $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.application'
         required: true
       responses:
         '204':
@@ -1678,7 +1678,7 @@ paths:
                   value:
                     type: array
                     items:
-                      $ref: '#/components/schemas/microsoft.graph.application'
+                      $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.application'
                   '@odata.nextLink':
                     type: string
                 additionalProperties:
@@ -1691,161 +1691,6 @@ paths:
       x-ms-docs-operation-type: operation
 components:
   schemas:
-    microsoft.graph.application:
-      allOf:
-        - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
-        - title: application
-          type: object
-          properties:
-            addIns:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.addIn'
-              description: 'Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its ''FileHandler'' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.'
-            api:
-              $ref: '#/components/schemas/microsoft.graph.apiApplication'
-            appId:
-              type: string
-              readOnly: true
-              description: The unique identifier for the application that is assigned by Azure AD. Not nullable. Read-only.
-              nullable: true
-            applicationTemplateId:
-              type: string
-              description: Unique identifier of the applicationTemplate.
-              nullable: true
-            appRoles:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.appRole'
-              description: 'The collection of roles assigned to the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.'
-            createdDateTime:
-              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-              type: string
-              readOnly: true
-              description: 'The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, NOT, ge, le, in) and $orderBy.'
-              format: date-time
-              nullable: true
-            description:
-              type: string
-              description: 'An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.'
-              nullable: true
-            disabledByMicrosoftStatus:
-              type: string
-              description: 'Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).'
-              nullable: true
-            displayName:
-              type: string
-              description: 'The display name for the application. Supports $filter (eq, ne, NOT, ge, le, in, startsWith), $search, and $orderBy.'
-              nullable: true
-            groupMembershipClaims:
-              type: string
-              description: 'Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).'
-              nullable: true
-            identifierUris:
-              type: array
-              items:
-                type: string
-              description: 'The URIs that identify the application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant. For more information, see Application Objects and Service Principal Objects. The any operator is required for filter expressions on multi-valued properties. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).'
-            info:
-              $ref: '#/components/schemas/microsoft.graph.informationalUrl'
-            isDeviceOnlyAuthSupported:
-              type: boolean
-              description: Specifies whether this application supports device authentication without a user. The default is false.
-              nullable: true
-            isFallbackPublicClient:
-              type: boolean
-              description: 'Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where the application is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.'
-              nullable: true
-            keyCredentials:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.keyCredential'
-              description: 'The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, NOT, ge, le).'
-            logo:
-              type: string
-              description: The main logo for the application. Not nullable.
-              format: base64url
-            notes:
-              type: string
-              description: Notes relevant for the management of the application.
-              nullable: true
-            oauth2RequirePostResponse:
-              type: boolean
-            optionalClaims:
-              $ref: '#/components/schemas/microsoft.graph.optionalClaims'
-            parentalControlSettings:
-              $ref: '#/components/schemas/microsoft.graph.parentalControlSettings'
-            passwordCredentials:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.passwordCredential'
-              description: The collection of password credentials associated with the application. Not nullable.
-            publicClient:
-              $ref: '#/components/schemas/microsoft.graph.publicClientApplication'
-            publisherDomain:
-              type: string
-              readOnly: true
-              description: 'The verified publisher domain for the application. Read-only. Supports $filter (eq, ne, ge, le, startsWith).'
-              nullable: true
-            requiredResourceAccess:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.requiredResourceAccess'
-              description: 'Specifies the resources that the application needs to access. This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. Not nullable. Supports $filter (eq, NOT, ge, le).'
-            signInAudience:
-              type: string
-              description: 'Specifies the Microsoft accounts that are supported for the current application. Supported values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount, PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, NOT).'
-              nullable: true
-            spa:
-              $ref: '#/components/schemas/microsoft.graph.spaApplication'
-            tags:
-              type: array
-              items:
-                type: string
-              description: 'Custom strings that can be used to categorize and identify the application. Not nullable.Supports $filter (eq, NOT, ge, le, startsWith).'
-            tokenEncryptionKeyId:
-              pattern: '^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$'
-              type: string
-              description: 'Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.'
-              format: uuid
-              nullable: true
-            web:
-              $ref: '#/components/schemas/microsoft.graph.webApplication'
-            createdOnBehalfOf:
-              $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
-            extensionProperties:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.extensionProperty'
-              readOnly: true
-              description: Read-only. Nullable.
-            federatedIdentityCredentials:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.federatedIdentityCredential'
-              description: Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
-            homeRealmDiscoveryPolicies:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.homeRealmDiscoveryPolicy'
-            owners:
-              type: array
-              items:
-                $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
-              readOnly: true
-              description: Directory objects that are owners of the application. Read-only. Nullable. Supports $expand.
-            tokenIssuancePolicies:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.tokenIssuancePolicy'
-            tokenLifetimePolicies:
-              type: array
-              items:
-                $ref: '#/components/schemas/microsoft.graph.tokenLifetimePolicy'
-              description: The tokenLifetimePolicies assigned to this application. Supports $expand.
-          additionalProperties:
-            type: object
-          description: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
     microsoft.graph.extensionProperty:
       allOf:
         - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
