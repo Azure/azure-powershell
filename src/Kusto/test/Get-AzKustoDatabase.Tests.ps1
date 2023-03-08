@@ -22,7 +22,7 @@ Describe 'Get-AzKustoDatabase' {
 
         [array]$databaseGet = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName
         $databaseGetItem = $databaseGet[0]
-        Validate_Database $databaseGetItem $databaseFullName $env.location $env.databaseType $softDeletePeriodInDays $hotCachePeriodInDays
+        Validate_Database $databaseGetItem $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $softDeletePeriodInDays $hotCachePeriodInDays
     }
 
     It 'Get' {
@@ -31,6 +31,6 @@ Describe 'Get-AzKustoDatabase' {
         $databaseFullName = $env.clusterName + "/" + $env.databaseName
 
         $databaseGetItem = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName
-        Validate_Database $databaseGetItem $databaseFullName $env.location $env.databaseType $softDeletePeriodInDays $hotCachePeriodInDays
+        Validate_Database $databaseGetItem $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $softDeletePeriodInDays $hotCachePeriodInDays
     }
 }

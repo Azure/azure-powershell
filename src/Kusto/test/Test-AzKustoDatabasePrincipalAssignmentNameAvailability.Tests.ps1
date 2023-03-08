@@ -21,7 +21,7 @@ Describe 'Test-AzKustoDatabasePrincipalAssignmentNameAvailability' {
         $databaseName = $env.databaseName
         $principalAssignmentName = $env.principalAssignmentName1
         $principalId = $env.principalId1
-        $role = $env.databasePrincipalRole
+        $role = "Viewer"
         $principalType = "App"
 
         New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -DatabaseName $databaseName -PrincipalId $principalId -PrincipalType $principalType -Role $role

@@ -22,7 +22,7 @@ Describe 'Remove-AzKustoClusterPrincipalAssignment' {
         $clusterName = $env.clusterName
         $principalAssignmentName = $env.principalAssignmentName1
         $principalId = $env.principalId1
-        $role = $env.principalRole
+        $role = "AllDatabasesViewer"
         $principalType = "App"
 
         New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role

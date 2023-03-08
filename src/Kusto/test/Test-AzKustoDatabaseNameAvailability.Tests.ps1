@@ -17,7 +17,7 @@ Describe 'Test-AzKustoDatabaseNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $databaseResourceType = $env.databaseType
+        $databaseResourceType = "Microsoft.Kusto/Clusters/Databases"
 
         $availability = Test-AzKustoDatabaseNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Type $databaseResourceType
         $availability.NameAvailable | Should -Be $false
@@ -28,7 +28,7 @@ Describe 'Test-AzKustoDatabaseNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName + $env.rstr6
-        $databaseResourceType = $env.databaseType
+        $databaseResourceType = "Microsoft.Kusto/Clusters/Databases"
 
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $availability = Test-AzKustoDatabaseNameAvailability -InputObject $cluster -Name $databaseName -Type $databaseResourceType

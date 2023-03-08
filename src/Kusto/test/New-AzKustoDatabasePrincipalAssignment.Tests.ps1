@@ -23,7 +23,7 @@ Describe 'New-AzKustoDatabasePrincipalAssignment' {
         $databaseName = $env.databaseName
         $principalAssignmentName = $env.principalAssignmentName1
         $principalId = $env.principalId1
-        $role = $env.databasePrincipalRole
+        $role = "Viewer"
         $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
 

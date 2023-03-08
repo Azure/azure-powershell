@@ -17,7 +17,7 @@ Describe 'Remove-AzKustoCluster' {
     }
     It 'Delete' {
         $name = "testcluster" + $env.rstr4
-        New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+        New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name -Location $env.location -SkuName "Standard_D11_v2" -SkuTier "Standard"
         { Remove-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name } | Should -Not -Throw
     }
 }

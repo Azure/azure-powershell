@@ -75,15 +75,15 @@ function setupEnv() {
     $env["databaseName"] = $databaseName
     $env["databaseName1"] = $databaseName1
     $env["dataConnectionName"] = $dataConnectionName
-    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName "Standard_D11_v2" -SkuTier "Standard"
     Write-Host "Start to create a database" $databaseName
     $softDeletePeriodInDaysUpdated = New-TimeSpan -Days 4
     $hotCachePeriodInDaysUpdated = New-TimeSpan -Days 2
     New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated -Subscription $SubscriptionId
 
     # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
-    New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.principalRole
-    New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType $env.principalType -Role $env.databasePrincipalRole
+    New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType "App" -Role "AllDatabasesViewer"
+    New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType "App" -Role "Viewer"
 
     # Deploy follower cluster for test
     $followerClusterName = "testfcluster" + $rstr2
@@ -91,15 +91,15 @@ function setupEnv() {
     Write-Host "Start to create a follower cluster" $followerClusterName
     $env["followerClusterName"] = $followerClusterName
     $env["attachedDatabaseConfigurationName"] = $attachedDatabaseConfigurationName
-    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $followerClusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $followerClusterName -Location $env.location -SkuName "Standard_D11_v2" -SkuTier "Standard"
     $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
-    New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $env.location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $env.defaultPrincipalsModificationKind
+    New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $env.location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind "Union"
 
     # Deploy 2nd cluster for test
     $clusterName = "testcluster" + $rstr3
     Write-Host "Start to create 2nd cluster" $clusterName
     $env["PlainClusterName"] = $clusterName
-    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+    New-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName -Location $env.location -SkuName "Standard_D11_v2" -SkuTier "Standard"
 
     # Adding constans for data-connetction tests
     $env["locationfordc"] = "Australia Central"

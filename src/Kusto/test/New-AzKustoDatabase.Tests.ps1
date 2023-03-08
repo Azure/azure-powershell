@@ -22,7 +22,7 @@ Describe 'New-AzKustoDatabase' {
         $databaseFullName = $env.clusterName + "/" + $name
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Kind ReadWrite -Location $env.location
-        Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $null
+        Validate_Database $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $null $null
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
     }
 
@@ -32,7 +32,7 @@ Describe 'New-AzKustoDatabase' {
         $databaseFullName = $env.clusterName + "/" + $name
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name -Location $env.location -Kind ReadWrite -HotCachePeriod $hotCachePeriodInDays
-        Validate_Database $databaseCreated $databaseFullName $env.location $env.databaseType $null $hotCachePeriodInDays
+        Validate_Database $databaseCreated $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $null $hotCachePeriodInDays
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
     }
 }
