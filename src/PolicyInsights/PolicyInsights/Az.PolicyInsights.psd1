@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Azure Policy Insights cmdlets for Windows PowerShell and PowerShell Core. Allows querying policy evaluation events and compliance states.
 
-For more information on Policy Insights, please visit the following: https://docs.microsoft.com/azure/governance/policy/overview'
+For more information on Policy Insights, please visit the following: https://learn.microsoft.com/azure/governance/policy/overview'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -77,7 +77,9 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzPolicyEvent', 'Get-AzPolicyState', 'Get-AzPolicyStateSummary', 
                'Get-AzPolicyRemediation', 'Remove-AzPolicyRemediation', 
                'Start-AzPolicyRemediation', 'Stop-AzPolicyRemediation', 
-               'Get-AzPolicyMetadata', 'Start-AzPolicyComplianceScan'
+               'Get-AzPolicyMetadata', 'Start-AzPolicyComplianceScan',
+               'New-AzPolicyAttestation', 'Get-AzPolicyAttestation',
+               'Set-AzPolicyAttestation', 'Remove-AzPolicyAttestation'
 
 # Variables to export from this module
 # VariablesToExport = @()

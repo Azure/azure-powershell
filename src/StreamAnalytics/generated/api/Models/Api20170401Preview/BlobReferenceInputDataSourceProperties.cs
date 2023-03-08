@@ -29,8 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
 
         /// <summary>
         /// The blob path pattern. Not a regular expression. It represents a pattern against which blob names will be matched to determine
-        /// whether or not they should be included as input or output to the job. See https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
-        /// or https://docs.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a more detailed explanation and
+        /// whether or not they should be included as input or output to the job. See https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-input
+        /// or https://learn.microsoft.com/en-us/rest/api/streamanalytics/stream-analytics-output for a more detailed explanation and
         /// example.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Origin(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PropertyOrigin.Inherited)]

@@ -229,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Name of the virtual machine sku to use for nodes in this data center. See the [documentation](https://docs.microsoft.com/en-us/azure/managed-instance-apache-cassandra/create-cluster-cli) for supported skus.
+Name of the virtual machine sku to use for nodes in this data center. See the [documentation](https://learn.microsoft.com/en-us/azure/managed-instance-apache-cassandra/create-cluster-cli) for supported skus.
 
 ```yaml
 Type: System.String

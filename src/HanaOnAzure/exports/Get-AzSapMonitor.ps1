@@ -66,7 +66,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azsapmonitor
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azsapmonitor
 #>
 function Get-AzSapMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor])]

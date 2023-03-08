@@ -173,6 +173,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The name of the Edge Zone.")]
         public string EdgeZone { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
+        public string NodeHostGroupID { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -569,6 +572,9 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 defaultAgentPoolProfile.GpuInstanceProfile = GpuInstanceProfile;
             }
+            if (this.IsParameterBound(c => c.NodeHostGroupID)) {
+                defaultAgentPoolProfile.HostGroupID = NodeHostGroupID;
+            } 
 
             defaultAgentPoolProfile.Mode = NodePoolMode;
 

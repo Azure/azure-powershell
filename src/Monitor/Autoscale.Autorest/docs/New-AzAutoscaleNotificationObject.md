@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://learn.microsoft.com/powershell/module/az.Autoscale/new-AzAutoscaleNotificationObject
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azautoscalenotificationobject
 schema: 2.0.0
 ---
 

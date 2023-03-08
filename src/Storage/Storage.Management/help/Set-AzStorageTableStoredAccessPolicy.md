@@ -25,8 +25,8 @@ The **Set-AzStorageTableStoredAccessPolicy** cmdlet set the stored access policy
 ## EXAMPLES
 
 ### Example 1: Set a stored access policy in table with full permission
-```
-PS C:\>Set-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy08" -Permission raud
+```powershell
+Set-AzStorageTableStoredAccessPolicy -Table "MyTable" -Policy "Policy08" -Permission raud
 ```
 
 This command sets an access policy named Policy08 for storage table named MyTable.

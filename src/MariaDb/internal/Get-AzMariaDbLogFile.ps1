@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFile
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadblogfile
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadblogfile
 #>
 function Get-AzMariaDbLogFile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFile])]

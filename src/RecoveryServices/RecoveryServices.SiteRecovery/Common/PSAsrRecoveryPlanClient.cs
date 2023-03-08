@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginCreateWithHttpMessagesAsync(
                     recoveryPlanName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginPlannedFailoverWithHttpMessagesAsync(
                     recoveryPlanName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -177,7 +177,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginTestFailoverWithHttpMessagesAsync(
                     recoveryPlanName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginTestFailoverCleanupWithHttpMessagesAsync(
                     recoveryPlanName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginUnplannedFailoverWithHttpMessagesAsync(
                     recoveryPlanName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationRecoveryPlans.BeginUpdateWithHttpMessagesAsync(
                     recoveryPlanName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

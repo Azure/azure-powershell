@@ -48,7 +48,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {OperatingSystem.UbuntuServer1804, "18.04-LTS"},
             {OperatingSystem.UbuntuServer2004, "20_04-LTS"},
             {OperatingSystem.WindowsServer2016DatacenterwithContainers, "2016-Datacenter-with-Containers"},
-            {OperatingSystem.WindowsServer2016Datacenter, "2016-Datacenter"}
+            {OperatingSystem.WindowsServer2016Datacenter, "2016-Datacenter"},
+            {OperatingSystem.WindowsServer2022, "2022-datacenter-azure-edition"}
         };
 
         private string resourceLocation;
@@ -442,6 +443,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                     case OperatingSystem.WindowsServer2012R2Datacenter:
                     case OperatingSystem.WindowsServer2016Datacenter:
                     case OperatingSystem.WindowsServer2016DatacenterwithContainers:
+                    case OperatingSystem.WindowsServer2022:
                         osRelativePath = Constants.WindowsTemplateRelativePath;
                         break;
                     case OperatingSystem.UbuntuServer1604:

@@ -32,10 +32,10 @@ The **Get-AzStorageEncryptionScope** cmdlet gets or lists encryption scopes from
 ## EXAMPLES
 
 ### Example 1: Get a single encryption scope
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
 ```
-PS C:\> Get-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EncryptionScopeName $scopename
-
+```output
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 

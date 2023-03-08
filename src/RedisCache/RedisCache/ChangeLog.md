@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.7.1
 * Updated `Get-AzRedisCacheLink` and `New-AzRedisCacheLink` to print `PrimaryHostName`, `GeoReplicatedPrimaryHostName`, `ServerRole`, and `LinkedRedisCacheLocation`.
 
 ## Version 1.7.0

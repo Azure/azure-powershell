@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = SwitchIfgDefaultSet,
             Mandatory = true,
             Position = 0,
-            HelpMessage = "The name of the resource group.")]
+            HelpMessage = "The name of the resource group of the secondary instance in the Instance Failover Group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -62,11 +62,11 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         [Parameter(ParameterSetName = SwitchIfgByResourceIdSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
+            HelpMessage = "The name of the Local Region of the secondary instance in the Instance Failover Group.")]
         [Parameter(ParameterSetName = SwitchIfgDefaultSet,
             Mandatory = true,
             Position = 1,
-            HelpMessage = "The name of the Local Region from which to retrieve the Instance Failover Group.")]
+            HelpMessage = "The name of the Local Region of the secondary instance in the Instance Failover Group.")]
         [LocationCompleter("Microsoft.Sql/locations/instanceFailoverGroups")]
         [ValidateNotNullOrEmpty]
         public override string Location { get; set; }

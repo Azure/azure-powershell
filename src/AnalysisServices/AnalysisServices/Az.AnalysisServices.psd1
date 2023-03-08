@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Analysis Services cmdlets for Windows PowerShell and PowerShell Core.
 
-For more information on Analysis Services, please visit the following: https://docs.microsoft.com/azure/analysis-services/'
+For more information on Analysis Services, please visit the following: https://learn.microsoft.com/azure/analysis-services/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

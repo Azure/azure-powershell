@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/new-azeventhubencryptionconfig
 schema: 2.0.0
 ---
 

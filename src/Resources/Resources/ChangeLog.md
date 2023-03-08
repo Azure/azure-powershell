@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue when running the `New-AzManagementGroup` command where it tried to cast an async operation as a Management Group. [#21000]
+* Updated behavior of Get-AzPolicyDefinition which previously returned all definitions when -Id was provided with a nonexistent policy definition id. Fixed to correctly throw a 404 exception in this case.
+
+## Version 6.5.2
+* Fixed query issue when objectId in assignment is empty for `Get-DenyAssignment`
+* Fixed an issue where running deployment cmdlets with `-WhatIf` throws exception when formatting results with nested array changes
 
 ## Version 6.5.1
 * Fixed issue introduced in previous fix for `Set-AzPolicySetDefinition` InternalServerError when the initiative is too large [#20238], which will remove space in value.

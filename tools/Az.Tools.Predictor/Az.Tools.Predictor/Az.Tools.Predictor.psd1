@@ -11,7 +11,7 @@
 RootModule = 'Az.Tools.Predictor.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.3'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -67,7 +67,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated instrumental key'
+        ReleaseNotes = '* Data collection mechnanism updated'
 
         # Prerelease string of this module
         # Prerelease = ''

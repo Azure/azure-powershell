@@ -955,11 +955,27 @@ function Get-DefaultManagedInstanceParameters()
 	}
 }
 
+function Get-DefaultManagedInstanceParametersV2()
+{
+	return @{
+		rg = "CustomerExperienceTeam_RG";
+		location = "westcentralus";
+		subnet = "/subscriptions/8313371e-0879-428e-b1da-6353575a9192/resourceGroups/CustomerExperienceTeam_RG/providers/Microsoft.Network/virtualNetworks/vnet-managed-instance-v2/subnets/ManagedInstance";
+		subscriptionId = "8313371e-0879-428e-b1da-6353575a9192";
+		defaultMI = "autobot-managed-instance";
+		defaultMIDB = "autobot-managed-database";
+		sku = "GP_Gen5";
+		vCore = 4;
+		storageSizeInGb = 64;
+		timezone = "Central Europe Standard Time";
+	}
+}
+
 <#
 	.SYNOPSIS
 	Creates the test environment needed to perform the Sql managed instance CRUD tests
 #>
-function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId)
+function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId, $isV2)
 {
 	if($vCore -eq $null)
 	{
@@ -973,7 +989,12 @@ function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId)
 
 	$managedInstanceName = Get-ManagedInstanceName
 	$credentials = Get-ServerCredential
-	$params = Get-DefaultManagedInstanceParameters
+	if($isV2) {
+		$params = Get-DefaultManagedInstanceParametersV2
+	}
+	else {
+		$params = Get-DefaultManagedInstanceParameters
+	}
  	$skuName = "GP_Gen5"
 	 
 	if($resourceGroup -eq $null)

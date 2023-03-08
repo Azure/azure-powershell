@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Compute
         public static Dictionary<string, string> AEMExtensionDefaultNamev2 = new Dictionary<string, string>() { { OSTypeWindows, "MonitorX64Windows" }, { OSTypeLinux, "MonitorX64Linux" } };
         public static Dictionary<string, string> AEMExtensionPublisherv2 = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.AzureCAT.AzureEnhancedMonitoring" }, { OSTypeLinux, "Microsoft.AzureCAT.AzureEnhancedMonitoring" } };
         public static Dictionary<string, string> AEMExtensionPublisherv2_Test = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Edp" }, { OSTypeLinux, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Edp" } };
+        public static Dictionary<string, string> AEMExtensionPublisherv2_TestAfterMigration = new Dictionary<string, string>() { { OSTypeWindows, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Test" }, { OSTypeLinux, "Microsoft.AzureCAT.AzureEnhancedMonitoring.Test" } };
         public static Dictionary<string, string> AEMExtensionTypev2 = new Dictionary<string, string>() { { OSTypeWindows, "MonitorX64Windows" }, { OSTypeLinux, "MonitorX64Linux" } };
         public static Dictionary<string, Version> AEMExtensionVersionv2 = new Dictionary<string, Version>() { { OSTypeWindows, new Version(1, 0) }, { OSTypeLinux, new Version(1, 0) } };
 

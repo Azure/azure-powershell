@@ -34,7 +34,7 @@ Invoke-AzIotHubDeviceMethod [-ResourceId] <String> [-DeviceId] <String> -Name <S
 ```
 
 ## DESCRIPTION
-Invoke a direct method on a device. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods for more information.
+Invoke a direct method on a device. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-direct-methods for more information.
 
 ## EXAMPLES
 
