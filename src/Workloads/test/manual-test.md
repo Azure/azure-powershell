@@ -21,7 +21,7 @@ New-AzWorkloadsMonitor -ResourceGroupName PowerShell-CLI-TestRG -Name powershell
 + Update-AzWorkloadsMonitor: Update a workloads monitor
 + Remove-AzWorkloadsMonitor: Remove a workloads monitor
 
-# Create workloads sap virtual instance.
+# Create workloads sap virtual instance
 ```powershell
 # CreateWithDiscovery
 New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name L02 -Location eastus2 -Environment 'Prod' -SapProduct 'S4HANA' -CentralServerVmId '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/DHRUV-SVI-SCALE-TEST-AVSDISCOVERY8.2.202109120216FEB5738-INFRA/providers/Microsoft.Compute/virtualMachines/a12appvm0'
