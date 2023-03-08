@@ -92,11 +92,6 @@ directive:
     remove: true
 
   - where:
-      verb: New
-      subject: SimGroup
-    hide: true
-
-  - where:
       verb: Set
     remove: true
   - where:
@@ -147,6 +142,11 @@ directive:
       parameter-name: DefaultSlouseId
     set:
       parameter-name: DefaultSliceId
+
+  - where:
+      verb: New
+      subject: ^MobileNetwork$|^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^Sim$|^SimGroup$|^SimPolicy$|^Site$|^Slice$
+    hide: true
 
   # - where:
   #     verb: Invoke

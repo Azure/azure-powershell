@@ -16,26 +16,34 @@
 
 <#
 .Synopsis
-Creates or updates a SIM group.
+Creates or updates a data network.
+Must be created in the same location as its parent mobile network.
 .Description
-Creates or updates a SIM group.
+Creates or updates a data network.
+Must be created in the same location as its parent mobile network.
 .Example
-New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
+New-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -Name azps-mn-datanetwork -ResourceGroupName azps_test_group -Location eastus
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork
 .Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimgroup
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkdatanetwork
 #>
-function New-AzMobileNetworkSimGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup])]
+function New-AzMobileNetworkDataNetwork {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('SimGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
-    # The name of the SIM Group.
+    # The name of the mobile network.
+    ${MobileNetworkName},
+
+    [Parameter(Mandatory)]
+    [Alias('DataNetworkName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the data network.
     ${Name},
 
     [Parameter(Mandatory)]
@@ -61,31 +69,8 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
-    # The key URL, unversioned.
-    # For example: https://contosovault.vault.azure.net/keys/azureKey.
-    ${EncryptionKeyUrl},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Mobile network resource ID.
-    ${MobileNetworkId},
+    # An optional description for this data network.
+    ${Description},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -156,21 +141,18 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
-
+            $dataBase = Get-AzMobileNetworkDataNetwork -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            
             if($dataBase.Count -le 0){
-                return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+                return Az.MobileNetwork.internal\New-AzMobileNetworkDataNetwork @PSBoundParameters
             }
 
-            $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
-            $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
-            $PSBoundParameters.IdentityType = $dataBase.IdentityType
-            $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
-
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            $PSBoundParameters.Description = $dataBase.Description
+        
+            return Az.MobileNetwork.internal\New-AzMobileNetworkDataNetwork @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            return Az.MobileNetwork.internal\New-AzMobileNetworkDataNetwork @PSBoundParameters
         }
     }
 }

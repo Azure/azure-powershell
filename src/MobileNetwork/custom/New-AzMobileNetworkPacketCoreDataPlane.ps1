@@ -16,27 +16,35 @@
 
 <#
 .Synopsis
-Creates or updates a SIM group.
+Creates or updates a packet core data plane.
+Must be created in the same location as its parent packet core control plane.
 .Description
-Creates or updates a SIM group.
+Creates or updates a packet core data plane.
+Must be created in the same location as its parent packet core control plane.
 .Example
-New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
+New-AzMobileNetworkPacketCoreDataPlane -Name azps-mn-pcdp -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Location eastus -UserPlaneAccessInterfaceIpv4Address 10.0.1.10 -UserPlaneAccessInterfaceIpv4Gateway 10.0.1.1 -UserPlaneAccessInterfaceIpv4Subnet 10.0.1.0/24 -UserPlaneAccessInterfaceName N3
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane
 .Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimgroup
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkpacketcoredataplane
 #>
-function New-AzMobileNetworkSimGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup])]
+function New-AzMobileNetworkPacketCoreDataPlane {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('SimGroupName')]
+    [Alias('PacketCoreDataPlaneName')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
-    # The name of the SIM Group.
+    # The name of the packet core data plane.
     ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the packet core control plane.
+    ${PacketCoreControlPlaneName},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
@@ -60,39 +68,35 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The key URL, unversioned.
-    # For example: https://contosovault.vault.azure.net/keys/azureKey.
-    ${EncryptionKeyUrl},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # Mobile network resource ID.
-    ${MobileNetworkId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 address.
+    ${UserPlaneAccessInterfaceIpv4Address},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The default IPv4 gateway (router).
+    ${UserPlaneAccessInterfaceIpv4Gateway},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The IPv4 subnet.
+    ${UserPlaneAccessInterfaceIpv4Subnet},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The logical name for this interface.
+    # This should match one of the interfaces configured on your Azure Stack Edge device.
+    ${UserPlaneAccessInterfaceName},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -156,21 +160,21 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            $dataBase = Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
 
             if($dataBase.Count -le 0){
-                return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+                return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreDataPlane @PSBoundParameters
             }
 
-            $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
-            $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
-            $PSBoundParameters.IdentityType = $dataBase.IdentityType
-            $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+            $PSBoundParameters.UserPlaneAccessInterfaceIpv4Address = $dataBase.UserPlaneAccessInterfaceIpv4Address
+            $PSBoundParameters.UserPlaneAccessInterfaceIpv4Gateway = $dataBase.UserPlaneAccessInterfaceIpv4Gateway
+            $PSBoundParameters.UserPlaneAccessInterfaceIpv4Subnet = $dataBase.UserPlaneAccessInterfaceIpv4Subnet
+            $PSBoundParameters.UserPlaneAccessInterfaceName = $dataBase.UserPlaneAccessInterfaceName
 
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreDataPlane @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreDataPlane @PSBoundParameters
         }
     }
 }

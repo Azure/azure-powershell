@@ -16,19 +16,30 @@
 
 <#
 .Synopsis
-Creates or updates a SIM group.
+Creates or updates a SIM.
 .Description
-Creates or updates a SIM group.
+Creates or updates a SIM.
 .Example
-New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
+$staticIp = New-AzMobileNetworkSimStaticIPPropertiesObject -StaticIPIpv4Address 10.0.0.20
+
+New-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group  -InternationalMobileSubscriberIdentity 000000000000001 -AuthenticationKey 00112233445566778899AABBCCDDEEFF -DeviceType Mobile -IntegratedCircuitCardIdentifier 8900000000000000001 -OperatorKeyCode 00000000000000000000000000000001 -SimPolicyId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/simPolicies/azps-mn-simpolicy" -StaticIPConfiguration $staticIp
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+STATICIPCONFIGURATION <ISimStaticIPProperties[]>: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+  [AttachedDataNetworkId <String>]: Attached data network resource ID.
+  [SlouseId <String>]: Slice resource ID.
+  [StaticIPIpv4Address <String>]: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
 .Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimgroup
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksim
 #>
-function New-AzMobileNetworkSimGroup {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup])]
+function New-AzMobileNetworkSim {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -36,6 +47,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM Group.
+    ${GroupName},
+
+    [Parameter(Mandatory)]
+    [Alias('SimName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the SIM.
     ${Name},
 
     [Parameter(Mandatory)]
@@ -55,44 +73,48 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
-    # The geo-location where the resource lives
-    ${Location},
+    # The international mobile subscriber identity (IMSI) for the SIM.
+    ${InternationalMobileSubscriberIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
-    # The key URL, unversioned.
-    # For example: https://contosovault.vault.azure.net/keys/azureKey.
-    ${EncryptionKeyUrl},
+    # The Ki value for the SIM.
+    ${AuthenticationKey},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.ManagedServiceIdentityType]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
-    # Mobile network resource ID.
-    ${MobileNetworkId},
+    # An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'.
+    # The Azure portal allows SIMs to be grouped and filtered based on this value.
+    ${DeviceType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
+    [System.String]
+    # The integrated circuit card ID (ICCID) for the SIM.
+    ${IntegratedCircuitCardIdentifier},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # The Opc value for the SIM.
+    ${OperatorKeyCode},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # SIM policy resource ID.
+    ${SimPolicyId},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimStaticIPProperties[]]
+    # A list of static IP addresses assigned to this SIM.
+    # Each address is assigned at a defined network scope, made up of {attached data network, slice}.
+    # To construct, see NOTES section for STATICIPCONFIGURATION properties and create a hash table.
+    ${StaticIPConfiguration},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -156,21 +178,24 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            $dataBase = Get-AzMobileNetworkSim -GroupName $PSBoundParameters.GroupName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
 
             if($dataBase.Count -le 0){
-                return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+                return Az.MobileNetwork.internal\New-AzMobileNetworkSim @PSBoundParameters
             }
 
-            $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
-            $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
-            $PSBoundParameters.IdentityType = $dataBase.IdentityType
-            $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+            $PSBoundParameters.InternationalMobileSubscriberIdentity = $dataBase.InternationalMobileSubscriberIdentity
+            $PSBoundParameters.AuthenticationKey = $dataBase.AuthenticationKey
+            $PSBoundParameters.DeviceType = $dataBase.DeviceType
+            $PSBoundParameters.IntegratedCircuitCardIdentifier = $dataBase.IntegratedCircuitCardIdentifier
+            $PSBoundParameters.OperatorKeyCode = $dataBase.OperatorKeyCode
+            $PSBoundParameters.SimPolicyId = $dataBase.SimPolicyId
+            $PSBoundParameters.StaticIPConfiguration = $dataBase.StaticIPConfiguration
 
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            return Az.MobileNetwork.internal\New-AzMobileNetworkSim @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            return Az.MobileNetwork.internal\New-AzMobileNetworkSim @PSBoundParameters
         }
     }
 }
