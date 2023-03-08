@@ -47,8 +47,6 @@ parameters:
 variables:
   ArtifactsName: LiveTestArtifacts
   DataLocation: $(Pipeline.Workspace)/$(ArtifactsName)
-  EnableTestCoverage: true
-  TestCoverageLocation: $(DataLocation)
 
 schedules:
 - cron: "0 19 * * *"
