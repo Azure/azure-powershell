@@ -1,9 +1,16 @@
+# List all commands
+```powershell
 Get-Command -Module Az.Workloads
+```
+
+# Get help of the cmdlet.
+```powershell
 Get-Help Get-help New-AzWorkloadsMonitor -Full
+```
 
-Repo: 
+# Request Payload
 
-You can add `-Debug` parameter for every cmdlet that print request payload. 
+You can add `-Debug` parameter to each cmdlet to display the request payload. 
 
 # Create workloads monitor
 ```powershell
@@ -45,3 +52,15 @@ New-AzWorkloadsProviderInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Moni
 + New-AzWorkloadsProviderPrometheusOSInstanceObject
 + New-AzWorkloadsProviderSapNetWeaverInstanceObject
 + New-AzWorkloadsProviderSqlServerInstanceObject
+
+# Creates a SAP Landscape Monitor Dashboard
+```powershell
+$sidMapp = @()
+$sidMapp += New-AzWorkloadsSapLandscapeMonitorSidMappingObject -Name sidMapp01 -TopSid '01','02'
+$sidMapp += New-AzWorkloadsSapLandscapeMonitorSidMappingObject -Name sidMapp02 -TopSid '01','02'
+$metricThresholds = @()
+$metricThresholds += New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject -Name 't01' -Green 125  -Red 256 -Yellow 123
+$metricThresholds += New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject -Name 't02' -Green 125  -Red 256 -Yellow 123
+
+New-AzWorkloadsSapLandscapeMonitor -ResourceGroupName 'PowerShell-CLI-TestRG' -MonitorName powershellmonitor07 -GroupingLandscape $sidMapp -GroupingSapApplication $sidMapp -TopMetricsThreshold $metricThresholds
+```
