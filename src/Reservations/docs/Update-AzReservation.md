@@ -89,6 +89,7 @@ For Single scope, pass in applied scope id and for Single scope with resource gr
 ### -AppliedScope
 List of the subscriptions that the benefit will be applied.
 Do not specify if AppliedScopeType is Shared.
+This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
 
 ```yaml
 Type: System.String[]
@@ -443,7 +444,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
     - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the savings plan should apply benefit.
     - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-    - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+    - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     - `[BillingPlan <ReservationBillingPlan?>]`: Represent the billing plans.
     - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing reservation or savings plan
     - `[DisplayName <String>]`: Friendly name of the reservation
@@ -457,7 +458,7 @@ To create the parameters described below, construct a hash table containing the 
     - `[Term <ReservationTerm?>]`: Represent the term of reservation.
 
 `RESERVATION <IPatch>`: The request for reservation patch
-  - `[AppliedScope <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+  - `[AppliedScope <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
   - `[AppliedScopePropertyDisplayName <String>]`: Display name
   - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
   - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
@@ -475,7 +476,7 @@ To create the parameters described below, construct a hash table containing the 
       - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
       - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the savings plan should apply benefit.
       - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-      - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+      - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
       - `[BillingPlan <ReservationBillingPlan?>]`: Represent the billing plans.
       - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing reservation or savings plan
       - `[DisplayName <String>]`: Friendly name of the reservation
