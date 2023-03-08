@@ -3,13 +3,15 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-        if (-Not (Test-Path -Path $loadEnvPath)) {
+        if (-Not(Test-Path -Path $loadEnvPath))
+        {
             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
         $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzKustoClusterPrincipalAssignment.Recording.json'
         $currentPath = $PSScriptRoot
-        while (-not $mockingPath) {
+        while (-not$mockingPath)
+        {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
             $currentPath = Split-Path -Path $currentPath -Parent
         }
@@ -21,7 +23,7 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
         $principalAssignmentName = $env.principalAssignmentName
         $principalId = $env.principalId
         $role = $env.principalRole
-        $principalType = $env.principalType
+        $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         [array]$principalAssignmentGet = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName
@@ -35,7 +37,7 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
         $principalAssignmentName = $env.principalAssignmentName
         $principalId = $env.principalId
         $role = $env.principalRole
-        $principalType = $env.principalType
+        $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
         $principalAssignment = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName  $principalAssignmentName

@@ -3,13 +3,15 @@ Describe 'New-AzKustoAttachedDatabaseConfiguration' {
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-        if (-Not (Test-Path -Path $loadEnvPath)) {
+        if (-Not(Test-Path -Path $loadEnvPath))
+        {
             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
         $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzKustoAttachedDatabaseConfiguration.Recording.json'
         $currentPath = $PSScriptRoot
-        while (-not $mockingPath) {
+        while (-not$mockingPath)
+        {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
             $currentPath = Split-Path -Path $currentPath -Parent
         }
@@ -23,7 +25,7 @@ Describe 'New-AzKustoAttachedDatabaseConfiguration' {
         $databaseName = "testdatabase" + $env.rstr4
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.followerClusterName
-        $DefaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+        $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName

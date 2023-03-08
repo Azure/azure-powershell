@@ -3,13 +3,15 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-        if (-Not (Test-Path -Path $loadEnvPath)) {
+        if (-Not(Test-Path -Path $loadEnvPath))
+        {
             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
         $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzKustoDataConnectionValidation.Recording.json'
         $currentPath = $PSScriptRoot
-        while (-not $mockingPath) {
+        while (-not$mockingPath)
+        {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
             $currentPath = Split-Path -Path $currentPath -Parent
         }
@@ -56,7 +58,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $dataConnectionName = $env.dataConnectionName + $env.rstr6
         $iothubName = $env.iothubNamefordc
         $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
-        $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
+        $sharedAccessPolicyName = "registryRead"
         $kind = "IotHub"
 
         { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup 'Default' } | Should -Not -Throw
@@ -105,7 +107,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $dataConnectionName = $env.dataConnectionName + $env.rstr6
         $iothubName = $env.iothubNamefordc
         $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
-        $sharedAccessPolicyName = $env.iothubSharedAccessPolicyName
+        $sharedAccessPolicyName = "registryRead"
         $kind = "IotHub"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName

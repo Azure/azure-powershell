@@ -3,13 +3,15 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-        if (-Not (Test-Path -Path $loadEnvPath)) {
-             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
+        if (-Not(Test-Path -Path $loadEnvPath))
+        {
+            $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
         $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzKustoAttachedDatabaseConfiguration.Recording.json'
         $currentPath = $PSScriptRoot
-        while (-not $mockingPath) {
+        while (-not$mockingPath)
+        {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
             $currentPath = Split-Path -Path $currentPath -Parent
         }
@@ -23,7 +25,7 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $databaseName = $env.databaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
-        $DefaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+        $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 
@@ -40,7 +42,7 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $databaseName = $env.databaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
         $followerClusterName = $env.followerClusterName
-        $DefaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+        $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 

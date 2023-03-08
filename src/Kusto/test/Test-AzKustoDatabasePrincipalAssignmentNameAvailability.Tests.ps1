@@ -1,13 +1,15 @@
 Describe 'Test-AzKustoDatabasePrincipalAssignmentNameAvailability' {
     BeforeAll{
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-        if (-Not (Test-Path -Path $loadEnvPath)) {
+        if (-Not(Test-Path -Path $loadEnvPath))
+        {
             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
         $TestRecordingFile = Join-Path $PSScriptRoot 'Test-AzKustoDatabasePrincipalAssignmentNameAvailability.Recording.json'
         $currentPath = $PSScriptRoot
-        while (-not $mockingPath) {
+        while (-not$mockingPath)
+        {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
             $currentPath = Split-Path -Path $currentPath -Parent
         }
@@ -20,7 +22,7 @@ Describe 'Test-AzKustoDatabasePrincipalAssignmentNameAvailability' {
         $principalAssignmentName = $env.principalAssignmentName1
         $principalId = $env.principalId1
         $role = $env.databasePrincipalRole
-        $principalType = $env.principalType
+        $principalType = "App"
 
         New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -DatabaseName $databaseName -PrincipalId $principalId -PrincipalType $principalType -Role $role
         $availability = Test-AzKustoDatabasePrincipalAssignmentNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $principalAssignmentName
@@ -34,7 +36,7 @@ Describe 'Test-AzKustoDatabasePrincipalAssignmentNameAvailability' {
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
         $principalAssignmentName = $env.principalAssignmentName1
-        $principalAssignmentResourceType = $env.databasePrincipalAssignmentResourceType
+        $principalAssignmentResourceType = "Microsoft.Kusto/Clusters/Databases/principalAssignments"
 
         $cluster = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
         $availability = Test-AzKustoDatabasePrincipalAssignmentNameAvailability -InputObject $cluster -Name $principalAssignmentName
