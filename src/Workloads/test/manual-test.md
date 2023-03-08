@@ -47,11 +47,11 @@ New-AzWorkloadsProviderInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Moni
 + Get-AzWorkloadsProviderInstance : Get or list workloads provider instance
 + Remove-AzWorkloadsProviderInstance: Remove a workloads provider instance
 
-+ Can use `New-AzWorkloadsProviderHanaDbInstanceObject` can HanaDb object as value of the `ProviderSetting` parameter
-+ Can use `New-AzWorkloadsProviderPrometheusHaClusterInstanceObject` can PrometheusHa object as value of the `ProviderSetting` parameter
-+ Can use `New-AzWorkloadsProviderPrometheusOSInstanceObject` can PrometheusOS object as value of the `ProviderSetting` parameter
-+ Can use `New-AzWorkloadsProviderSapNetWeaverInstanceObject` can SapNetWeaver object as value of the `ProviderSetting` parameter
-+ Can use `New-AzWorkloadsProviderSqlServerInstanceObject` can SqlServer object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderHanaDbInstanceObject` create HanaDb object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderPrometheusHaClusterInstanceObject` create PrometheusHa object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderPrometheusOSInstanceObject` create PrometheusOS object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderSapNetWeaverInstanceObject` create SapNetWeaver object as value of the `ProviderSetting` parameter
++ Can use `New-AzWorkloadsProviderSqlServerInstanceObject` create SqlServer object as value of the `ProviderSetting` parameter
 
 # Creates a SAP Landscape Monitor Dashboard
 ```powershell
