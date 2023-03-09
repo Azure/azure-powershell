@@ -24,13 +24,13 @@ Describe 'New-AzKustoPrivateEndpointConnection' {
         $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId
         $privateEndpointConnectionName = $privateEndpointConnection.Name
 
-        $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus = $env.rejected
+        $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus = "Rejected"
         $privateEndpointConnection = New-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId -Parameter $privateEndpointConnection -Name $privateEndpointConnectionName
         
         Start-Sleep -Seconds 1.5
 
         $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId
-        $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus | Should -Be $env.rejected
+        $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus | Should -Be "Rejected"
 
         $clusterName = $env.clusterNetwork
         $ResourceGroupName = $env.resourceGroupNamefordc

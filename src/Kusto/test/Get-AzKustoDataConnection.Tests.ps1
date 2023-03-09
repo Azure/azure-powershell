@@ -35,7 +35,7 @@ Describe 'Get-AzKustoDataConnection' {
                 $dataConnectionCreated = $dataConnection
             }
         }
-        $databaseRouting = $env.databaseRouting
+        $databaseRouting = "Single"
         Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $kind $databaseRouting
     }
 
@@ -53,7 +53,7 @@ Describe 'Get-AzKustoDataConnection' {
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
         $dataConnectionCreated = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
-        $databaseRouting = $env.databaseRouting
+        $databaseRouting = "Single"
         Validate_EventHubDataConnection $dataConnectionCreated $dataConnectionFullName $location $eventHubResourceId $kind $databaseRouting
     }
 }

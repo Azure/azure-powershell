@@ -31,22 +31,16 @@ function setupEnv() {
 
     # Add network module
     Import-Module -Name Az.Network
-    $env["virtualNetworkName"] = "test-clients-vnet"
     $env["clusterNetwork"] = "testclusternetwork3"
     $env["resourceGroupNamefordc"] = "test-clients-rg"
     $env["subnetName"] = "default"
     $env["networkClustersTestsSubscriptionId"] = "e8257c73-24c5-4791-94dc-8b7901c90dbf"
     $env["privateEndpointConnectionName"] = "testprivateconnection"
-    $env["groupId"] = "cluster"
-    $env["locationNetworking"] = "australiacentral"    
     $clusterName = $env.clusterNetwork
     $ResourceGroupName = $env.resourceGroupNamefordc
-    $virtualNetwork = Get-AzVirtualNetwork -ResourceName $env.virtualNetworkName -ResourceGroupName $env.resourceGroupNamefordc
     $subnet = $virtualNetwork | Select-Object -ExpandProperty subnets | Where-Object Name -eq $env.subnetName
     $privateLinkServiceId = "/subscriptions/" +  $env.networkClustersTestsSubscriptionId + "/resourceGroups/" + $env.resourceGroupNamefordc + "/providers/Microsoft.Kusto/Clusters/" + $env.clusterNetwork
-    $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $env.privateEndpointConnectionName -PrivateLinkServiceId $privateLinkServiceId -GroupId $env.groupId
-    $env["privateLinkServiceConnection"] = $PrivateLinkServiceConnection
-    New-AzPrivateEndpoint -Name $env.privateEndpointConnectionName -ResourceGroupName $env.resourceGroupNamefordc -Location $env.locationNetworking -PrivateLinkServiceConnection $env.privateLinkServiceConnection -Subnet $subnet -Force
+    $PrivateLinkServiceConnection = New-AzPrivateLinkServiceConnection -Name $env.privateEndpointConnectionName -PrivateLinkServiceId $privateLinkServiceId -GroupId "cluster"
     
     # Create the test group
     $resourceGroupName = "testgroup" + $rstr1
