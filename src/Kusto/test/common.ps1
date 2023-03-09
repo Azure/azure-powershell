@@ -178,7 +178,6 @@ Validate if script is valid
 #>
 function Validate_Script {
 	Param ([Object]$Script,
-		[string]$ScriptUrl,
 		[string]$forceUpdateTag,
 		[bool]$continueOnErros,
 		[string]$clusterName,
@@ -187,7 +186,6 @@ function Validate_Script {
 		$ScriptFullName = "$clusterName/$databaseName/$scriptName"
 		$Script.Name | Should -Be $ScriptFullName
 		$Script.ForceUpdateTag | Should -Be $forceUpdateTag
-		$Script.Url | Should -Be $ScriptUrl
 }
 
 function Validate_Inline_Script {

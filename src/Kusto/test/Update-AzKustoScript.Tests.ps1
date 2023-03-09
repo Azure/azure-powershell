@@ -24,10 +24,10 @@ Describe 'Update-AzKustoScript' {
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
         
-        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag $env.forceUpdateTag -ScriptContent $scriptContent
-        $Script = Update-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag $env.forceUpdateTag2
+        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
+        $Script = Update-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag2"
         
-        Validate_Inline_Script $Script $env.forceUpdateTag2 $continueOnErrors $clusterName $databaseName $env.scriptName
+        Validate_Inline_Script $Script "tag2" $continueOnErrors $clusterName $databaseName "testScript"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }

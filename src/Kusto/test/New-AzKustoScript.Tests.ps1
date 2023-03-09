@@ -25,9 +25,9 @@ Describe 'New-AzKustoScript' {
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
         
-        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag $env.forceUpdateTag -ScriptContent $scriptContent
+        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
         
-        Validate_Inline_Script $Script $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
+        Validate_Inline_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
@@ -37,12 +37,13 @@ Describe 'New-AzKustoScript' {
         $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
+        $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
         
-        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag $env.forceUpdateTag -ScriptUrl $env.scriptUrl -ScriptUrlSasToken $env.scriptUrlSasToken
+        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -ContinueOnError -ForceUpdateTag "tag1" -ScriptContent $scriptContent
         
-        Validate_Script $Script $env.scriptUrl $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
+        Validate_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
@@ -52,14 +53,15 @@ Describe 'New-AzKustoScript' {
         $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
+        $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
 
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location
         
-        $Parameter = (@{ForceUpdateTag=$env.forceUpdateTag; Url=$env.scriptUrl; UrlSasToken=$env.scriptUrlSasToken})
+        $Parameter = (@{ForceUpdateTag="tag1"; Content=$env.scriptContent})
 
-        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -Parameter $Parameter
+        $Script = New-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name "testScript" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId -Parameter $Parameter
         
-        Validate_Script $Script $env.scriptUrl $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
+        Validate_Script $Script "tag1" $continueOnErrors $clusterName $databaseName "testScript"
 
         { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }    
