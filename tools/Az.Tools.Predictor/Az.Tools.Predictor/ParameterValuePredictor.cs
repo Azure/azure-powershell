@@ -143,14 +143,14 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 return null;
             }
 
-            var monikerIndex = commandName.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase);
-            int nounIndex = monikerIndex + AzPredictorConstants.AzCommandMoniker.Length;
+            var monikerIndex = commandName.IndexOf(AzPredictorConstants.AzComandSeparator, StringComparison.OrdinalIgnoreCase);
+            int nounIndex = monikerIndex + AzPredictorConstants.AzComandSeparator.Length;
 
             if (monikerIndex == -1)
             {
                 // Treat it as a regular cmdlet.
-                monikerIndex = commandName.IndexOf(AzPredictorConstants.CommandSeparator, StringComparison.OrdinalIgnoreCase);
-                nounIndex = monikerIndex + AzPredictorConstants.CommandSeparator.Length;
+                monikerIndex = commandName.IndexOf(AzPredictorConstants.PowerShellCommandSeparator, StringComparison.OrdinalIgnoreCase);
+                nounIndex = monikerIndex + AzPredictorConstants.PowerShellCommandSeparator.Length;
             }
 
             if (monikerIndex == -1)

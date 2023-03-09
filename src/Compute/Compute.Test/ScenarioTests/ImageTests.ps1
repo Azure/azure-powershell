@@ -312,3 +312,154 @@ function Test-ImageCapture
     }
 }
 
+function Test-DefaultImagesExistManual
+{
+    
+    # Setup
+    #$rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # assuming the below file path:
+        # C:\repos\ps3\azure-powershell\src\Compute\Compute\Strategies\ComputeRp\Images.json
+        #$imagesFile = Get-Content -Path "..\..\..\..\Compute\Compute\Strategies\ComputeRp\Images.json";
+        $imagesFile = Get-Content -Path "..\..\..\..\Compute\Strategies\ComputeRp\Images.json";
+        $images = $imagesFile | ConvertFrom-Json;
+        
+        # Linux
+        # UbuntuLTS test
+        $publisher = $images.Linux.UbuntuLTS.publisher;
+        $offer = $images.Linux.UbuntuLTS.offer;
+        $sku = $images.Linux.UbuntuLTS.sku;
+        $version = $images.Linux.UbuntuLTS.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Ubuntu2204 test
+        $publisher = $images.Linux.Ubuntu2204.publisher;
+        $offer = $images.Linux.Ubuntu2204.offer;
+        $sku = $images.Linux.Ubuntu2204.sku;
+        $version = $images.Linux.Ubuntu2204.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        
+        # CentOS test
+        $publisher = $images.Linux.CentOS.publisher;
+        $offer = $images.Linux.CentOS.offer;
+        $sku = $images.Linux.CentOS.sku;
+        $version = $images.Linux.CentOS.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # CentOS versioned test
+        $publisher = $images.Linux.CentOS85Gen2.publisher;
+        $offer = $images.Linux.CentOS85Gen2.offer;
+        $sku = $images.Linux.CentOS85Gen2.sku;
+        $version = $images.Linux.CentOS85Gen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        
+        # Debian test
+        $publisher = $images.Linux.Debian.publisher;
+        $offer = $images.Linux.Debian.offer;
+        $sku = $images.Linux.Debian.sku;
+        $version = $images.Linux.Debian.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Debian versioned test
+        $publisher = $images.Linux.Debian9.publisher;
+        $offer = $images.Linux.Debian9.offer;
+        $sku = $images.Linux.Debian9.sku;
+        $version = $images.Linux.Debian9.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # LinOpenSuseLeap154 versioned test
+        $publisher = $images.Linux.OpenSuseLeap154.publisher;
+        $offer = $images.Linux.OpenSuseLeap154.offer;
+        $sku = $images.Linux.OpenSuseLeap154.sku;
+        $version = $images.Linux.OpenSuseLeap154.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # RHEL test
+        $publisher = $images.Linux.RHEL.publisher;
+        $offer = $images.Linux.RHEL.offer;
+        $sku = $images.Linux.RHEL.sku;
+        $version = $images.Linux.RHEL.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # RHELRaw91Gen2 test
+        $publisher = $images.Linux.RHELRaw91Gen2.publisher;
+        $offer = $images.Linux.RHELRaw91Gen2.offer;
+        $sku = $images.Linux.RHELRaw91Gen2.sku;
+        $version = $images.Linux.RHELRaw91Gen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # LinSuseSles15SP4 versioned test
+        $publisher = $images.Linux.SuseSles15SP4.publisher;
+        $offer = $images.Linux.SuseSles15SP4.offer;
+        $sku = $images.Linux.SuseSles15SP4.sku;
+        $version = $images.Linux.SuseSles15SP4.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Windows
+        # Win2022AzureEditionCore test
+        $publisher = $images.Windows.Win2022AzureEditionCore.publisher;
+        $offer = $images.Windows.Win2022AzureEditionCore.offer;
+        $sku = $images.Windows.Win2022AzureEditionCore.sku;
+        $version = $images.Windows.Win2022AzureEditionCore.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Win2019Datacenter test
+        $publisher = $images.Windows.Win2019Datacenter.publisher;
+        $offer = $images.Windows.Win2019Datacenter.offer;
+        $sku = $images.Windows.Win2019Datacenter.sku;
+        $version = $images.Windows.Win2019Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Win2016Datacenter test
+        $publisher = $images.Windows.Win2016Datacenter.publisher;
+        $offer = $images.Windows.Win2016Datacenter.offer;
+        $sku = $images.Windows.Win2016Datacenter.sku;
+        $version = $images.Windows.Win2016Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Win2012R2Datacenter test
+        $publisher = $images.Windows.Win2012R2Datacenter.publisher;
+        $offer = $images.Windows.Win2012R2Datacenter.offer;
+        $sku = $images.Windows.Win2012R2Datacenter.sku;
+        $version = $images.Windows.Win2012R2Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Win2012Datacenter test
+        $publisher = $images.Windows.Win2012Datacenter.publisher;
+        $offer = $images.Windows.Win2012Datacenter.offer;
+        $sku = $images.Windows.Win2012Datacenter.sku;
+        $version = $images.Windows.Win2012Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+
+        # Win10 test
+        $publisher = $images.Windows.Win10.publisher;
+        $offer = $images.Windows.Win10.offer;
+        $sku = $images.Windows.Win10.sku;
+        $version = $images.Windows.Win10.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

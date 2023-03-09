@@ -250,7 +250,7 @@ $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -Virtua
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
 ```
 
-This example Creates a new VM as part of a VMSS with a PlatformFaultDomain value.
+This example creates a new VM as part of a VMSS with a PlatformFaultDomain value.
 
 ### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 ```
@@ -316,7 +316,29 @@ New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegri
 # This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
 ```
 
-This example Creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+This example creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+
+### Example 8: Create a VM using the -Image alias.
+```powershell
+$resourceGroupName= "<Resource Group Name>"
+$loc = "<Azure Region>"
+$domainNameLabel = "<Domain Name Label>"
+$vmname = "<Virtual Machine Name>"
+$securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
+$user = "<Username>"
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
+
+New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+# Create a VM using an Image alias.
+$vmname = 'v' + $rgname
+$domainNameLabel = "d" + $rgname
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image LinOpenSuseLeap154 -DomainNameLabel $domainNameLabel
+
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
+```
+
+This example creates a new VM using the -Image parameter, providing many default values to the VM. 
 
 ## PARAMETERS
 
@@ -665,7 +687,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built.  These include: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
+The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian9, OpenSuseLeap154, RHEL, RHELRaw91Gen2, SuseSles15SP4.
 
 ```yaml
 Type: System.String
