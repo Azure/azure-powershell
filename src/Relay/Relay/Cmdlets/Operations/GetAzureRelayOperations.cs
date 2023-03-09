@@ -17,12 +17,14 @@ using Microsoft.Azure.Commands;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
 {
     /// <summary>
     /// 'Get-AzRelayOperation' Cmdlet retrive the Operations List
     /// </summary>
+    [GenericBreakingChange("Get-AzRelayOperation will be removed in an upcoming breaking change release. Please use 'Get-AzProviderOperation Microsoft.Relay/*'", "2.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RelayOperation"), OutputType(typeof(PSOperationAttributes))]
     public class GetAzureRmRelayOperation : AzureRelayCmdletBase
     {

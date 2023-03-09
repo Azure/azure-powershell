@@ -146,14 +146,14 @@ Accept wildcard characters: False
 ```
 
 ### -Workload
-Type of Workload
+Type of Workload. Accepted values: DevTest, Production.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

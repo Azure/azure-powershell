@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CostManagement
 Module Guid: 4cd9af10-559e-4fb9-8dcd-d3e8eb9e03b7
-Download Help Link: https://docs.microsoft.com/powershell/module/az.costmanagement
+Download Help Link: https://learn.microsoft.com/powershell/module/az.costmanagement
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -26,7 +26,7 @@ Query the usage data for scope defined.
 ### [Invoke-AzCostManagementReservationDetailReport](Invoke-AzCostManagementReservationDetailReport.md)
 Generates the reservations details report for provided date range asynchronously based on enrollment id.
 The Reservation usage details can be viewed only by certain enterprise roles.
-For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
+For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
 
 ### [New-AzCostManagementDetailReport](New-AzCostManagementDetailReport.md)
 This API is the replacement for all previously release Usage Details APIs.

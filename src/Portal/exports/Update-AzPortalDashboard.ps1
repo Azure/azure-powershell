@@ -46,7 +46,7 @@ INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/update-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/update-azportaldashboard
 #>
 function Update-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]

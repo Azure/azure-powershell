@@ -43,7 +43,7 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/get-azattestationdefaultprovider
+https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationdefaultprovider
 #>
 function Get-AzAttestationDefaultProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider], [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult])]
@@ -228,7 +228,7 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/get-azattestationprovider
+https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationprovider
 #>
 function Get-AzAttestationProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider], [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult])]
@@ -421,7 +421,7 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/remove-azattestationprovider
+https://learn.microsoft.com/powershell/module/az.attestation/remove-azattestationprovider
 #>
 function Remove-AzAttestationProvider {
 [OutputType([System.Boolean])]
@@ -614,7 +614,7 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/update-azattestationprovider
+https://learn.microsoft.com/powershell/module/az.attestation/update-azattestationprovider
 #>
 function Update-AzAttestationProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
@@ -794,7 +794,7 @@ New-AzAttestationProvider -Name testprovider2 -ResourceGroupName test-rg -Locati
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
+https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
 #>
 function New-AzAttestationProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]

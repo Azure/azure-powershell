@@ -114,6 +114,15 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         public string AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
+        /// Gets or sets the failover policy for read only endpoint of the Sql Azure Instance Failover Group.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Intended usage of the secondary instance in the Failover Group. Standby indicates that the secondary instance will be used as a passive replica for disaster recovery only.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Geo", "Standby")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -163,6 +172,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
                 ReadWriteFailoverPolicy = FailoverPolicy.ToString(),
                 FailoverWithDataLossGracePeriodHours = gracePeriod,
                 ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : "Disabled",
+                SecondaryType = SecondaryType,
             });
             return newEntity;
         }

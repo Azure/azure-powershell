@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.dll-Help.xml
 Module Name: Az.EventGrid
-online version: https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic
+online version: https://learn.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic
 schema: 2.0.0
 ---
 
@@ -94,6 +94,7 @@ Different identity types. Could be either  of following 'SystemAssigned', 'UserA
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: SystemAssigned, UserAssigned, SystemAssigned, UserAssigned, None
 
 Required: False
 Position: Named

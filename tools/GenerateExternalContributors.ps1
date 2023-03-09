@@ -6,8 +6,8 @@ Get all extenal contibuting authors.
 .Outputs
 The name, login, commits message of the authors.
 .Link
-Invoke-WebRequest: https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7
-Invoke-RestMethod: https://docs.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod?view=powershell-7
+Invoke-WebRequest: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest?view=powershell-7
+Invoke-RestMethod: https://learn.microsoft.com/en-us/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod?view=powershell-7
 #>
 param(
     [Parameter(Mandatory)]

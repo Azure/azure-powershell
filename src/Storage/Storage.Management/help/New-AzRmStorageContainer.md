@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azrmstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azrmstoragecontainer
 schema: 2.0.0
 ---
 
@@ -48,16 +48,16 @@ The **New-AzRmStorageContainer** cmdlet creates a Storage blob container
 ## EXAMPLES
 
 ### Example 1: Create a Storage blob container with Storage account name and container name, with metadata
-```
-PS C:\>New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Metadata @{tag0="value0";tag1="value1";tag2="value2"}
+```powershell
+New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" -ContainerName "myContainer" -Metadata @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
 This command creates a Storage blob container with Storage account name and container name, with metadata.
 
 ### Example 2: Create a Storage blob container with Storage account object and container name, with public access as Blob
-```
-PS C:\>$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
-PS C:\>New-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" -PublicAccess Blob
+```powershell
+$accountObject = Get-AzStorageAccount -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
+New-AzRmStorageContainer -StorageAccount $accountObject -ContainerName "myContainer" -PublicAccess Blob
 ```
 
 This command creates a Storage blob container with Storage account object and container name, with public access as Blob.
@@ -100,11 +100,12 @@ False
 This command creates a storage container, with RootSquash property set as AllSquash.  RootSquash only works on a storage account that enabled NfsV3.
 
 ### Example 5: Create a storage container and enable immutable Storage with versioning
-<!-- Skip: Output cannot be splitted from code -->
-```
-PS C:\> $c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -EnableImmutableStorageWithVersioning
+```powershell
+$c = New-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -Name testcontainer -EnableImmutableStorageWithVersioning
 
-PS C:\> $c
+$c
+```
+```output
 
    ResourceGroupName: myResourceGroup, StorageAccountName: mystorageaccount
 

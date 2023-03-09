@@ -407,7 +407,11 @@ namespace Microsoft.Azure.Commands.Network
                     .ForMember(
                         dest => dest.ExtendedLocation,
                         opt => opt.MapFrom(src =>
-                            (src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                            src.ExtendedLocation == null ? null : new PSExtendedLocation(src.ExtendedLocation.Name)))
+                    .ForMember(
+                        dest => dest.DdosSettings,
+                        opt => opt.MapFrom(src =>
+                            (src.DdosSettings ?? new MNM.DdosSettings()))
                     );
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
@@ -1409,6 +1413,10 @@ namespace Microsoft.Azure.Commands.Network
                 // Azure Firewall Policies
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyExplicitProxy, MNM.ExplicitProxy>();
+                cfg.CreateMap<CNM.PSAzureFirewallPolicySNAT, MNM.FirewallPolicySNAT>().AfterMap((src, dst) =>
+                {
+                    dst.AutoLearnPrivateRanges = string.IsNullOrEmpty(src.AutoLearnPrivateRanges) ? "Disabled" : src.AutoLearnPrivateRanges;
+                });
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
@@ -1420,6 +1428,10 @@ namespace Microsoft.Azure.Commands.Network
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExplicitProxy, CNM.PSAzureFirewallPolicyExplicitProxy>();
+                cfg.CreateMap<MNM.FirewallPolicySNAT, CNM.PSAzureFirewallPolicySNAT>().AfterMap((src, dst) =>
+                {
+                    dst.AutoLearnPrivateRanges = string.IsNullOrEmpty(src.AutoLearnPrivateRanges) ? "Disabled" : src.AutoLearnPrivateRanges;
+                });
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
                 {

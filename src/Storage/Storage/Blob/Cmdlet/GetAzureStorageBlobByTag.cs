@@ -34,7 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     public class GetAzureStorageBlobByTagCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(HelpMessage = "Filters the result set to only include blobs whose tags match the specified expression." +
-            "See details in https://docs.microsoft.com/en-us/rest/api/storageservices/find-blobs-by-tags#remarks.",
+            "See details in https://learn.microsoft.com/en-us/rest/api/storageservices/find-blobs-by-tags#remarks.",
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string TagFilterSqlExpression { get; set; }

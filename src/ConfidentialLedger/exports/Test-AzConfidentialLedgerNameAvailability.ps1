@@ -45,7 +45,7 @@ Reason        : AlreadyExists
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.confidentialledger/test-azconfidentialledgernameavailability
+https://learn.microsoft.com/powershell/module/az.confidentialledger/test-azconfidentialledgernameavailability
 #>
 function Test-AzConfidentialLedgerNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20.ICheckNameAvailabilityResponse])]

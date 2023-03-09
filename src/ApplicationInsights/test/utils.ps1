@@ -57,7 +57,7 @@ function setupEnv() {
     $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location $env.geoLocation02
     New-AzApplicationInsightsWebTest -ResourceGroup $env.resourceGroup -Name $env.standardWebTest01 -Location $env.location `
     -Tag @{"hidden-link:$($env.appInsights01Id)" = "Resource"} `
-    -RequestUrl "https://docs.microsoft.com/" -RequestHttpVerb "GET" -TestName $env.standardWebTest01 `
+    -RequestUrl "https://learn.microsoft.com/" -RequestHttpVerb "GET" -TestName $env.standardWebTest01 `
     -RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
     Write-Host -ForegroundColor Green 'standard web test created successfully.'
 

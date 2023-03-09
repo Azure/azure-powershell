@@ -71,7 +71,7 @@ MASTER <IServer>: The source server object to restore from.
   [UserVisibleState <ServerState?>]: A state of a server that is visible to user.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbreplica
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbreplica
 #>
 function New-AzMariaDbReplica {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

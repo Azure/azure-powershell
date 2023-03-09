@@ -21,13 +21,6 @@ namespace Commands.Network.Test
         // Azure PowerShell Team
         public const string azdevxps = "azdevxps";
 
-        // Virtual Appliance dev team
-        // First part of ApplicationGateway tests
-        public const string nvadev = "nvadev";
-
-        // Second part of ApplicationGateway tests
-        public const string nvadev_subset1 = "nvadev_subset1";
-
         //Azure Firewall dev team
         public const string azurefirewall = "azurefirewall";
 
@@ -64,22 +57,33 @@ namespace Commands.Network.Test
         // Azure Network Analytics Dev Team
         public const string netanalyticsdev = "netanalyticsdev";
 
+        // Azure NSG/ASG/Route Table Dev Team
+        public const string nsgdev = "nsgdev";
+
         // Azure NSM Dev Team
         public const string nsmdev = "nsmdev";
+
+        // Virtual Appliance dev team
+        // First part of ApplicationGateway tests
+        public const string nvadev = "nvadev";
+
+        // Second part of ApplicationGateway tests
+        public const string nvadev_subset1 = "nvadev_subset1";
 
         // Azure Private Endpoint and Private Link Dev Team
         public const string plcpdev = "plcpdev";
 
-        // RNM Dev Team
-        public const string rnmdev = "rnmdev";
-
         // Windows Azure SLB Dev Team
         public const string slbdev = "slbdev";
 
-        // Windows Azure NRP dev team
-        public const string wanrpdev = "wanrpdev";
-
         // Virtual WAN team
         public const string virtualwan = "routeservicedev";
+
+        // Vnet Peering Dev Team
+        public const string vnetpeeringdev = "vnetpeeringdev";
+
+        // Windows Azure NRP dev team
+        public const string wanrpdev = "wanrpdev";
+        public const string wanrpdev_subset1 = "wanrpdev_subset1";
     }
 }

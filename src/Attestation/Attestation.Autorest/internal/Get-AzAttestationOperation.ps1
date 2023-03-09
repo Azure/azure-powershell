@@ -27,7 +27,7 @@ Lists all of the available Azure attestation operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IOperationList
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/get-azattestationoperation
+https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationoperation
 #>
 function Get-AzAttestationOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IOperationList])]

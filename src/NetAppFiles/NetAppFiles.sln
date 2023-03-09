@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30413.136
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetAppFiles", "NetAppFiles\NetAppFiles.csproj", "{42656543-77AD-4968-BA4B-BE0778705625}"
 EndProject
@@ -21,6 +21,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetAppFiles.Management.Sdk", "NetAppFiles.Management.Sdk\NetAppFiles.Management.Sdk.csproj", "{9F686275-3E5E-4A4D-88EA-2ABEF04FB4CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -64,6 +66,10 @@ Global
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98CFD96B-A6BC-4F15-AE2C-603FC2B58981}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F686275-3E5E-4A4D-88EA-2ABEF04FB4CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F686275-3E5E-4A4D-88EA-2ABEF04FB4CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F686275-3E5E-4A4D-88EA-2ABEF04FB4CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F686275-3E5E-4A4D-88EA-2ABEF04FB4CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -99,6 +99,11 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Services
                 managedInstanceName: managedInstanceName);
         }
 
+        internal void RevalidateManagedInstanceEncryptionProtector(string resourceGroupName, string managedInstanceName)
+        {
+            GetCurrentSqlClient().ManagedInstanceEncryptionProtectors.BeginRevalidate(resourceGroupName, managedInstanceName);
+        }
+
         internal ManagedInstanceEncryptionProtector CreateOrUpdateManagedInstanceEncryptionProtector(string resourceGroupName, string managedInstanceName, ManagedInstanceEncryptionProtector managedInstanceEncryptionProtector)
         {
             return GetCurrentSqlClient().ManagedInstanceEncryptionProtectors.CreateOrUpdate(

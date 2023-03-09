@@ -25,7 +25,7 @@ New-AzDataMigrationSqlService -ResourceGroupName "MyResourceGroup" -SqlMigration
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlservice
+https://learn.microsoft.com/powershell/module/az.datamigration/new-azdatamigrationsqlservice
 #>
 function New-AzDataMigrationSqlService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService])]

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.Certificates
         [ValidateNotNullOrEmpty]
         public string Slot { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = true, HelpMessage = "Custom hostnames associated with web app/slot.")]
+        [Parameter(ParameterSetName = ParameterSet1Name, Position = 3, Mandatory = true, HelpMessage = "Custom hostname associated with web app/slot.")]
         [ValidateNotNullOrEmpty]
         public string HostName { get; set; }
 

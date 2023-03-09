@@ -1,6 +1,6 @@
 ### Example 1: Test Linker
 ```powershell
-Test-AzServiceLinkerForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -Name postgresql_connection | fl
+Test-AzServiceLinkerForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -Name postgresql_connection | Format-List
 ```
 
 ```output

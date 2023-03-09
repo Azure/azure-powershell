@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Security.Cmdlets.AssessmentMetadata
         {
             if (ShouldProcess(Name, VerbsCommon.Set))
             {
-                var metadata = new SecurityAssessmentMetadata(displayName: DisplayName, severity: Severity, assessmentType: "CustomerManaged", description: Description, remediationDescription: RemediationDescription);
+                var metadata = new SecurityAssessmentMetadataResponse(displayName: DisplayName, severity: Severity, assessmentType: "CustomerManaged", description: Description, remediationDescription: RemediationDescription);
                 var result = SecurityCenterClient.AssessmentsMetadata.CreateInSubscriptionWithHttpMessagesAsync(Name, metadata).GetAwaiter().GetResult().Body;
 
                 WriteObject(result.ConvertToPSType(), enumerateCollection: true); 

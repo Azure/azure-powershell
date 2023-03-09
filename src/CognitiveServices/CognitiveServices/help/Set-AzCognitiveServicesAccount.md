@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
 ms.assetid: 11E2D82A-1DF1-4E19-8328-44674641D1BB
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/set-azcognitiveservicesaccount
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  [-IdentityType <IdentityType>] [-StorageAccountId <String[]>] [-CognitiveServicesEncryption]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
  [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MultiRegionSetting <MultiRegionSettings>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyVaultEncryption
@@ -32,8 +32,8 @@ Set-AzCognitiveServicesAccount [-ResourceGroupName] <String> [-Name] <String> [-
  -KeyVersion <String> -KeyVaultUri <String> [-KeyVaultIdentityClientId <String>]
  [-NetworkRuleSet <PSNetworkRuleSet>] [-PublicNetworkAccess <String>] [-DisableLocalAuth <Boolean>]
  [-RestrictOutboundNetworkAccess <Boolean>] [-AllowedFqdnList <String[]>]
- [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MultiRegionSetting <MultiRegionSettings>] [-ApiProperty <CognitiveServicesAccountApiProperties>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,6 +268,21 @@ Parameter Sets: KeyVaultEncryption
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MultiRegionSetting
+Multi-region settings for multi-region account.
+
+```yaml
+Type: Microsoft.Azure.Management.CognitiveServices.Models.MultiRegionSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

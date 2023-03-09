@@ -20,7 +20,7 @@ Get federatedIdentityCredentials by Id from applications.
 .Description
 Get federatedIdentityCredentials by Id from applications.
 .Link
-https://learn.microsoft.com/powershell/module/az.resources/get-azadappfederatedidentitycredentials
+https://learn.microsoft.com/powershell/module/az.resources/get-azadappfederatedcredential
 #>
 function Get-AzADAppFederatedCredential {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]

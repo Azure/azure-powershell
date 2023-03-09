@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationProject
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationProject
 schema: 2.0.0
 ---
 
 # Get-AzDataMigrationProject
 
 ## SYNOPSIS
-Retrieves the properties of an Azure Database Migration project.
+Retrieves the properties of an Azure Database Migration Service (classic) project.
 
 ## SYNTAX
 

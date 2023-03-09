@@ -40,7 +40,7 @@ AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
 #>
 function New-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]

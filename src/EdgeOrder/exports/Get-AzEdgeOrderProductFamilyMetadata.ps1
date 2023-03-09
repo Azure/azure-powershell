@@ -31,7 +31,7 @@ ConfigurationName ProductFamilyName ProductLineName ProductName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductFamiliesMetadataDetails
 .Link
-https://docs.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
+https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
 #>
 function Get-AzEdgeOrderProductFamilyMetadata {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductFamiliesMetadataDetails])]

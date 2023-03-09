@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         AzureSQL,
 
         /// <summary>
-        /// Represents Azure File Storage. https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
+        /// Represents Azure File Storage. https://learn.microsoft.com/en-in/azure/storage/files/storage-files-introduction
         /// </summary>
         AzureStorage,
 
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         AzureSQLDatabase,
 
         /// <summary>
-        /// Represents Azure File https://docs.microsoft.com/en-in/azure/storage/files/storage-files-introduction
+        /// Represents Azure File https://learn.microsoft.com/en-in/azure/storage/files/storage-files-introduction
         /// </summary>
         AzureFiles,
 
@@ -274,7 +274,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// <summary>
         /// Protection was disabled
         /// </summary>
-        ProtectionStopped
+        ProtectionStopped,
+
+        /// <summary>
+        /// Stop backup with retain data as per policy
+        /// </summary>
+        BackupsSuspended
     }
 
     #region policy

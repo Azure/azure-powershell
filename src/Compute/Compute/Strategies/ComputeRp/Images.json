@@ -6,10 +6,10 @@
                                  "sku":  "7.5",
                                  "version":  "latest"
                              },
-                  "CoreOS":  {
-                                 "publisher":  "CoreOS",
-                                 "offer":  "CoreOS",
-                                 "sku":  "Stable",
+                  "CentOS85Gen2":  {
+                                 "publisher":  "OpenLogic",
+                                 "offer":  "CentOS",
+                                 "sku":  "8_5-gen2",
                                  "version":  "latest"
                              },
                   "Debian":  {
@@ -18,10 +18,16 @@
                                  "sku":  "8",
                                  "version":  "latest"
                              },
-                  "openSUSE-Leap":  {
+                  "Debian9":  {
+                                 "publisher":  "credativ",
+                                 "offer":  "Debian",
+                                 "sku":  "9",
+                                 "version":  "latest"
+                             },
+                  "OpenSuseLeap154":  {
                                         "publisher":  "SUSE",
-                                        "offer":  "openSUSE-Leap",
-                                        "sku":  "42.3",
+                                        "offer":  "openSUSE-leap-15-4",
+                                        "sku":  "gen2",
                                         "version":  "latest"
                                     },
                   "RHEL":  {
@@ -30,19 +36,31 @@
                                "sku":  "7-RAW",
                                "version":  "latest"
                            },
-                  "SLES":  {
+                  "RHELRaw91Gen2":  {
+                               "publisher":  "RedHat",
+                               "offer":  "rhel-raw",
+                               "sku":  "91-gen2",
+                               "version":  "latest"
+                           },
+                  "SuseSles15SP4":  {
                                "publisher":  "SUSE",
-                               "offer":  "SLES",
-                               "sku":  "12-SP2",
+                               "offer":  "sles-15-sp4",
+                               "sku":  "gen2",
                                "version":  "latest"
                            },
                   "UbuntuLTS":  {
                                     "publisher":  "Canonical",
                                     "offer":  "UbuntuServer",
-                                    "sku":  "20.04-LTS",
+                                    "sku":  "16.04-LTS",
+                                    "version":  "latest"
+                                },
+                  "Ubuntu2204":  {
+                                    "publisher":  "Canonical",
+                                    "offer":  "0001-com-ubuntu-pro-advanced-sla-ca",
+                                    "sku":  "22_04",
                                     "version":  "latest"
                                 }
-              },
+    },
     "Windows":  {
                     "Win2022AzureEditionCore": {
                                               "publisher": "MicrosoftWindowsServer",
@@ -74,12 +92,6 @@
                                               "sku":  "2012-Datacenter",
                                               "version":  "latest"
                                           },
-                    "Win2008R2SP1":  {
-                                         "publisher":  "MicrosoftWindowsServer",
-                                         "offer":  "WindowsServer",
-                                         "sku":  "2008-R2-SP1",
-                                         "version":  "latest"
-                                     },
                     "Win10":  {
                                   "publisher":  "MicrosoftVisualStudio",
                                   "offer":  "Windows",

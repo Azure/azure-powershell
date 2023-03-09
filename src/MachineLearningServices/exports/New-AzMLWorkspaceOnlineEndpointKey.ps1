@@ -25,7 +25,7 @@ New-AzMLWorkspaceOnlineEndpointKey -ResourceGroupName ml-rg-test -WorkspaceName 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpointkey
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceonlineendpointkey
 #>
 function New-AzMLWorkspaceOnlineEndpointKey {
 [OutputType([System.Boolean])]

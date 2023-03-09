@@ -21,7 +21,7 @@ API to stop the assigned vm for the user.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
 .Link
-https://docs.microsoft.com/powershell/module/az.labservices/stop-azlabservicesuservm
+https://learn.microsoft.com/powershell/module/az.labservices/stop-azlabservicesuservm
 #>
 function Stop-AzLabServicesUserVM_Stop {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]

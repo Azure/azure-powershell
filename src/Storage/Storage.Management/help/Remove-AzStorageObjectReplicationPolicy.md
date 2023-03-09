@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.Management.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageobjectreplicationpolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstorageobjectreplicationpolicy
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The **Remove-AzStorageObjectReplicationPolicy** cmdlet removes the specified obj
 ## EXAMPLES
 
 ### Example 1: Remove an object replication policy with specific policyId from a storage account.
-```
+```powershell
 Remove-AzStorageObjectReplicationPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PolicyId $policyId
 ```
 

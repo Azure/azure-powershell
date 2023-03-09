@@ -18,6 +18,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType Java = @"java";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType KafkaSpringBoot = @"kafka-springBoot";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType Nodejs = @"nodejs";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType None = @"none";

@@ -34,6 +34,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         public const string PropertyNameFound = "Found";
 
         /// <summary>
+        /// The telemetry property name for "Prediction".
+        /// </summary>
+        public const string PropertyNamePrediction = "Prediction";
+
+        /// <summary>
         /// The telemetry property name for "SuggestionSessionId".
         /// </summary>
         public const string PropertyNameSuggestionSessionId = "SuggestionSessionId";
@@ -56,6 +61,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// Gets the user input.
         /// </summary>
         public Ast UserInput { get; }
+
+        /// <summary>
+        /// Gets whether the command in <see cref="UserInput" /> is supported or not.
+        /// </summary>
+        public bool IsSupported { get; }
 
         /// <summary>
         /// Gets the suggestions to return to the user.
@@ -86,14 +96,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <param name="client">The client that makes the call.</param>
         /// <param name="suggestionSessionId">The suggestion session id.</param>
         /// <param name="userInput">The user input that the <paramref name="suggestion"/> is for.</param>
+        /// <param name="isSupported">Indicates whether the command from <paramref name="userInput" /> is supported or not.</param>
         /// <param name="suggestion">The suggestions returned for the <paramref name="userInput"/>.</param>
         /// <param name="isCancellationRequested">Indicates if the cancellation has been requested.</param>
         /// <param name="exception">The exception that is thrown if there is an error.</param>
-        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, Ast userInput, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
+        public GetSuggestionTelemetryData(PredictionClient client, uint suggestionSessionId, Ast userInput, bool isSupported, CommandLineSuggestion suggestion, bool isCancellationRequested, Exception exception)
         {
             Client = client;
             SuggestionSessionId = suggestionSessionId;
             UserInput = userInput;
+            IsSupported = isSupported;
             Suggestion = suggestion;
             IsCancellationRequested = isCancellationRequested;
             Exception = exception;

@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     tokens[0],
                     tokens[1],
                     armName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
