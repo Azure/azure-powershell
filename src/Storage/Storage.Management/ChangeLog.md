@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Supported Blob Tier Cold
+* Supported new Blob Tier Cold
     - `Copy-AzStorageBlob`
     - `Set-AzStorageBlobContent` 
     - `Start-AzStorageBlobCopy`
