@@ -23,7 +23,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr4
+        $dataConnectionName = "event-hub-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
 
@@ -36,7 +36,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr5
+        $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $storageAccountName = $env.storageAccountResourceId
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
@@ -51,7 +51,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr6
+        $dataConnectionName = "iot-hub-dc"
         $iotHubResourceId = $env.iotHubResourceId
         $sharedAccessPolicyName = "registryRead"
         $kind = "IotHub"
@@ -65,7 +65,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr4
+        $dataConnectionName = "event-hub-dc"
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $kind = "EventHub"
 
@@ -79,7 +79,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr5
+        $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $storageAccountName = $env.storageAccountResourceId
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
@@ -95,7 +95,7 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr6
+        $dataConnectionName = "iot-hub-dc"
         $iotHubResourceId = $env.iotHubResourceId
         $sharedAccessPolicyName = "registryRead"
         $kind = "IotHub"

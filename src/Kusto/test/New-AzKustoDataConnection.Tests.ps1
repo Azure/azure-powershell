@@ -23,7 +23,7 @@ Describe 'New-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName
+        $dataConnectionName = "event-hub-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
@@ -39,7 +39,7 @@ Describe 'New-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + "g"
+        $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $storageAccountName = $env.storageAccountResourceId
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
@@ -57,7 +57,7 @@ Describe 'New-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + "h"
+        $dataConnectionName = "iot-hub-dc"
         $iotHubResourceId = $env.iotHubResourceId
         $sharedAccessPolicyName = "registryRead"
         $kind = "IotHub"

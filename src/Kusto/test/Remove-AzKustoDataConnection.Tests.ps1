@@ -20,7 +20,7 @@ Describe 'Remove-AzKustoDataConnection' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName
+        $dataConnectionName = "event-hub-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
 

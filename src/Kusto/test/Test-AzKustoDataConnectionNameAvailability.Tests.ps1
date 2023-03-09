@@ -17,7 +17,7 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName
+        $dataConnectionName = "test-name-avilability"
 
         $availability = Test-AzKustoDataConnectionNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
         $availability.NameAvailable | Should -Be $false
@@ -27,7 +27,7 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $dataConnectionName = $env.dataConnectionName + $env.rstr4
+        $dataConnectionName = "test-name-avilability"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
         $availability = Test-AzKustoDataConnectionNameAvailability -InputObject $database -Name $dataConnectionName
