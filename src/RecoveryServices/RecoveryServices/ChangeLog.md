@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.3.0
+* Supported using managed disks for replication for HyperV to Azure provider in Azure Site Recovery
+
 ## Version 6.2.0
 * Added support for enable/disable Public Network Access and PrivateEndpoints
 * Added support for Immutable Vaults

@@ -58,13 +58,13 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 ## DESCRIPTION
 The **New-AzVM** cmdlet creates a virtual machine in Azure.
 This cmdlet takes a virtual machine object as input. The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. <br> <br>
-Use the **[New-AzVMConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig)** cmdlet to create a virtual machine object. <br> 
+Use the **[New-AzVMConfig](https://learn.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig)** cmdlet to create a virtual machine object. <br> 
 Then use the following cmdlets to set different properties of the virtual machine object:
 - **[Add-AzVMNetworkInterface](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface)** to set the network profile.<br>
 - **[Set-AzVMOperatingSystem](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem)** to set the OS profile. <br>
 - **[Set-AzVMSourceImage](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmsourceimage)** to set the source image.<br>
 - **[Set-AzVMOSDisk](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmosdisk)** to set the OS disk(storage profile).<br>
-- **[Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br>
+- **[Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br>
 <br>
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.<br>
 <br>
@@ -249,7 +249,7 @@ $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -Virtua
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
 ```
 
-This example Creates a new VM as part of a VMSS with a PlatformFaultDomain value.
+This example creates a new VM as part of a VMSS with a PlatformFaultDomain value.
 
 ### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 ```
@@ -315,7 +315,29 @@ New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegri
 # This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
 ```
 
-This example Creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+This example creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
+
+### Example 8: Create a VM using the -Image alias.
+```powershell
+$resourceGroupName= "<Resource Group Name>"
+$loc = "<Azure Region>"
+$domainNameLabel = "<Domain Name Label>"
+$vmname = "<Virtual Machine Name>"
+$securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
+$user = "<Username>"
+$cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
+
+New-AzResourceGroup -Name $rgname -Location $loc -Force
+
+# Create a VM using an Image alias.
+$vmname = 'v' + $rgname
+$domainNameLabel = "d" + $rgname
+$vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -Image LinOpenSuseLeap154 -DomainNameLabel $domainNameLabel
+
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname
+```
+
+This example creates a new VM using the -Image parameter, providing many default values to the VM. 
 
 ## PARAMETERS
 
@@ -497,7 +519,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskControllerType
-Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://docs.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
+Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.
 
 ```yaml
 Type: System.String
@@ -664,7 +686,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built.  These include: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
+The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian9, OpenSuseLeap154, RHEL, RHELRaw91Gen2, SuseSles15SP4.
 
 ```yaml
 Type: System.String
@@ -954,7 +976,7 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-The Virtual Machine Size. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.<br>
+The Virtual Machine Size. [Get-AzComputeResourceSku](https://learn.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.<br>
 The Default Value is: Standard_D2s_v3.
 
 ```yaml
@@ -1077,7 +1099,7 @@ Accept wildcard characters: False
 ```
 
 ### -vCPUCountAvailable
-Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).
+Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list).
 
 ```yaml
 Type: System.Int32
@@ -1092,7 +1114,7 @@ Accept wildcard characters: False
 ```
 
 ### -vCPUCountPerCore
-Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.
+Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.
 
 ```yaml
 Type: System.Int32

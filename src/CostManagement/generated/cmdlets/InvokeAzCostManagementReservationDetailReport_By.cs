@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Cmdlets
 
     /// <summary>
     /// Generates the reservations details report for provided date range asynchronously based on enrollment id. The Reservation
-    /// usage details can be viewed only by certain enterprise roles. For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
+    /// usage details can be viewed only by certain enterprise roles. For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role
     /// </summary>
     /// <remarks>
     /// [OpenAPI] ByBillingAccountId=>POST:"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.CostManagement/generateReservationDetailsReport"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzCostManagementReservationDetailReport_By", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IOperationStatus))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Description(@"Generates the reservations details report for provided date range asynchronously based on enrollment id. The Reservation usage details can be viewed only by certain enterprise roles. For more details on the roles see, https://docs.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Description(@"Generates the reservations details report for provided date range asynchronously based on enrollment id. The Reservation usage details can be viewed only by certain enterprise roles. For more details on the roles see, https://learn.microsoft.com/en-us/azure/cost-management-billing/manage/understand-ea-roles#usage-and-costs-access-by-role")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Generated]
     public partial class InvokeAzCostManagementReservationDetailReport_By : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.IEventListener

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Upgraded the api version to 2022-09-04.
+* Upgraded the api version of referenced network to 2022-07-01.
+
 ## Version 1.1.0
 * Fixed the issue of `Get-AzCloudServiceNetworkInterface` and `Get-AzCloudServicePublicIPAddress`.
 

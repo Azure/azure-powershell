@@ -439,7 +439,7 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $serverFarm1.Id $webApp.ServerFarmId
 
 		# Create deployment slot
-		$slot = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName1
+		$slot = New-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName1 -CopyIdentity
 		$appWithSlotName = "$appname/$slotname"
 
 		# Assert

@@ -34,7 +34,7 @@ Update-AzIotHubModuleTwin [-ResourceId] <String> [-DeviceId] <String> -ModuleId 
 ```
 
 ## DESCRIPTION
-Updates or replaces a device twin. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins for more information.
+Updates or replaces a device twin. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-module-twins for more information.
 
 ## EXAMPLES
 

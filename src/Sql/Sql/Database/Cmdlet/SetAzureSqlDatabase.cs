@@ -24,6 +24,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Globalization;
+using Microsoft.Azure.Commands.Sql.Common;
+using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -257,6 +259,30 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
             HelpMessage = "The Maintenance configuration id for the SQL Database.")]
         public string MaintenanceConfigurationId { get; set; }
 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database.")]
+        public string EncryptionProtector { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database.")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database.")]
+        public string[] KeyList { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys to remove from the SQL Database.")]
+        public string[] KeysToRemove { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
+
         /// <summary>
         /// Gets or sets the preferred enclave type requested on the database.
         /// </summary>
@@ -290,8 +316,12 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <returns>The list of entities</returns>
         protected override IEnumerable<AzureSqlDatabaseModel> GetEntity()
         {
+            ODataQuery<Management.Sql.Models.Database> oDataQuery = new ODataQuery<Management.Sql.Models.Database>();
+
+            oDataQuery.Expand = "keys";
+
             return new List<AzureSqlDatabaseModel>() {
-                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName)
+                ModelAdapter.GetDatabase(this.ResourceGroupName, this.ServerName, this.DatabaseName, oDataQuery)
             };
         }
 
@@ -322,6 +352,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 PreferredEnclaveType = PreferredEnclaveType,
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
+                EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
+                FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
@@ -332,6 +365,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Family = database.Family,
                 Capacity = database.Capacity
             };
+
+            // DB level CMK keys
+            //
+            if (MyInvocation.BoundParameters.ContainsKey("KeyList") && this.KeyList.Length > 0)
+            {
+                newDbModel.Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList);
+            }
+
+            if (MyInvocation.BoundParameters.ContainsKey("KeysToRemove") && this.KeysToRemove.Length > 0)
+            {
+                DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionaryToRemove(this.KeysToRemove, ref newDbModel);
+            }
 
             // check if current db is serverless
             string databaseCurrentComputeModel = database.CurrentServiceObjectiveName.Contains("_S_") ? DatabaseComputeModel.Serverless : DatabaseComputeModel.Provisioned;

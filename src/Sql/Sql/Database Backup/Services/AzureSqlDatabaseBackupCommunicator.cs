@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using Microsoft.Rest.Azure.OData;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
@@ -134,6 +135,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
+        /// Gets recoverable database for the given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
+        /// <returns>Recoverable database</returns>
+        public Management.Sql.Models.RecoverableDatabase GetRecoverableDatabase(string resourceGroupName, string serverName, string databaseName, ODataQuery<Management.Sql.Models.RecoverableDatabase> oDataQuery = null)
+        {
+            return GetCurrentSqlClient().RecoverableDatabases.Get(resourceGroupName, serverName, databaseName, oDataQuery);
+        }
+
+        /// <summary>
         /// Get a restorable deleted database for a given Sql Azure Database
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
@@ -143,6 +157,19 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         public Management.Sql.LegacySdk.Models.DeletedDatabaseBackup GetDeletedDatabaseBackup(string resourceGroupName, string serverName, string databaseName)
         {
             return GetLegacySqlClient().DatabaseBackup.GetDeletedDatabaseBackup(resourceGroupName, serverName, databaseName).DeletedDatabaseBackup;
+        }
+
+        /// <summary>
+        /// Get a restorable dropped database for a given Sql Azure Database
+        /// </summary>
+        /// <param name="resourceGroupName">The name of the resource group</param>
+        /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="databaseId">The id of the Azure SQL database</param>
+        /// <param name="oDataQuery">Additional query filter parameters</param>
+        /// <returns>Restoreable dropped database</returns>
+        public Management.Sql.Models.RestorableDroppedDatabase GetRestorableDroppedDatabase(string resourceGroupName, string serverName, string databaseId, ODataQuery<Management.Sql.Models.RestorableDroppedDatabase> oDataQuery = null)
+        {
+            return GetCurrentSqlClient().RestorableDroppedDatabases.Get(resourceGroupName, serverName, databaseId, oDataQuery);
         }
 
         /// <summary>

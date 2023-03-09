@@ -33,7 +33,7 @@ Set-AzIotHubVerifiedCertificate [-ResourceId] <String> [-Etag] <String> [-Path] 
 
 ## DESCRIPTION
 Verifies a certificate by uploading a verification certificate containing the verification code obtained by cmdlet Get-AzIotHubCertificateVerificationCode. This is the last step in the proof of possession process.
-For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://learn.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 

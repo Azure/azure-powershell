@@ -154,11 +154,6 @@ namespace Microsoft.Azure.Management.Sql
         IFailoverGroupsOperations FailoverGroups { get; }
 
         /// <summary>
-        /// Gets the IInstanceFailoverGroupsOperations.
-        /// </summary>
-        IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; }
-
-        /// <summary>
         /// Gets the IInstancePoolsOperations.
         /// </summary>
         IInstancePoolsOperations InstancePools { get; }
@@ -487,6 +482,26 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IManagedDatabaseRestoreDetailsOperations.
         /// </summary>
         IManagedDatabaseRestoreDetailsOperations ManagedDatabaseRestoreDetails { get; }
+
+        /// <summary>
+        /// Gets the IDatabaseEncryptionProtectorsOperations.
+        /// </summary>
+        IDatabaseEncryptionProtectorsOperations DatabaseEncryptionProtectors { get; }
+
+        /// <summary>
+        /// Gets the IRecoverableDatabasesOperations.
+        /// </summary>
+        IRecoverableDatabasesOperations RecoverableDatabases { get; }
+
+        /// <summary>
+        /// Gets the IRestorableDroppedDatabasesOperations.
+        /// </summary>
+        IRestorableDroppedDatabasesOperations RestorableDroppedDatabases { get; }
+
+        /// <summary>
+        /// Gets the IInstanceFailoverGroupsOperations.
+        /// </summary>
+        IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; }
 
     }
 }

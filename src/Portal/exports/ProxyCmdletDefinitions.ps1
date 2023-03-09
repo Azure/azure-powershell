@@ -47,7 +47,7 @@ INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/get-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/get-azportaldashboard
 #>
 function Get-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
@@ -219,7 +219,7 @@ DASHBOARD <IDashboard>: The shared dashboard resource definition.
   [Tag <IDashboardTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/new-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/new-azportaldashboard
 #>
 function New-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
@@ -416,7 +416,7 @@ INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/remove-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/remove-azportaldashboard
 #>
 function Remove-AzPortalDashboard {
 [OutputType([System.Boolean])]
@@ -592,7 +592,7 @@ INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/update-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/update-azportaldashboard
 #>
 function Update-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]
@@ -765,7 +765,7 @@ eastasia dashbase03 Microsoft.Portal/dashboards
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/set-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/set-azportaldashboard
 #>
 function Set-AzPortalDashboard {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard])]

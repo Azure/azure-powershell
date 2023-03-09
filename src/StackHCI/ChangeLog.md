@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.4.3
+* Removed manual installation for Az.Accounts from Az.StackHCI.
+* Removed verbose while importing modules.
+
 ## Version 1.4.2
 * Added Remote Support terms and conditions for HCI device types.
 * Unified Resource Group support for both Azure Stack HCI and Arc for server resources.

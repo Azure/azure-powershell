@@ -36,7 +36,7 @@ Set-AzIotHubDeployment [-ResourceId] <String> -Name <String> [-Priority <Int32>]
 ## DESCRIPTION
 Update specified properties of an IoT Edge deployment.
 Note: Configuration content is immutable. Configuration properties that can be updated are 'labels', 'metrics', 'priority' and 'targetCondition'.
-See https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring  for more information.
+See https://learn.microsoft.com/azure/iot-edge/module-deployment-monitoring  for more information.
 
 ## EXAMPLES
 

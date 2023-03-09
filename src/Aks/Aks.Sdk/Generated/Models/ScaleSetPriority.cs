@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     {
         /// <summary>
         /// Spot priority VMs will be used. There is no SLA for spot nodes. See
-        /// [spot on AKS](https://docs.microsoft.com/azure/aks/spot-node-pool)
+        /// [spot on AKS](https://learn.microsoft.com/azure/aks/spot-node-pool)
         /// for more information.
         /// </summary>
         public const string Spot = "Spot";

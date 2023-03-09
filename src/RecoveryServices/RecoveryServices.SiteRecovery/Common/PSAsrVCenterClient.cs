@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .ReplicationvCenters.BeginCreateWithHttpMessagesAsync(
                     fabricName,
                     vCenterName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .ReplicationvCenters.BeginUpdateWithHttpMessagesAsync(
                     fabricName,
                     vCenterName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

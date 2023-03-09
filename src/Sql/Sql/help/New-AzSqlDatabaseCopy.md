@@ -17,18 +17,22 @@ Creates a copy of a SQL Database that uses the snapshot at the current time.
 ```
 New-AzSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
  [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>] -CopyDatabaseName <String>
- [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-AssignIdentity]
+ [-EncryptionProtector <String>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
 ```
 New-AzSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
  [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
- [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LicenseType <String>] [-BackupStorageRedundancy <String>] [-ZoneRedundant] [-AssignIdentity]
+ [-EncryptionProtector <String>] [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
+ [-KeyList <System.Collections.Generic.List`1[System.String]>] [-FederatedClientId <Guid>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +70,21 @@ New-AzSqlDatabaseCopy -CopyDatabaseName <String> -CopyResourceGroupName <String>
 
 ### -AsJob
 Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AssignIdentity
+Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -200,6 +219,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionProtector
+The encryption protector key for SQL Database copy.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FederatedClientId
+The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
+
+```yaml
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyList
+The list of AKV keys for the SQL Database copy.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -LicenseType
 The license type for the Azure Sql database.
 
@@ -268,6 +332,21 @@ Specifies the Key-value pairs in the form of a hash table to associate with the 
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+The list of user assigned identity for the SQL Database copy.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -354,4 +433,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzSqlDatabaseSecondary](./New-AzSqlDatabaseSecondary.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

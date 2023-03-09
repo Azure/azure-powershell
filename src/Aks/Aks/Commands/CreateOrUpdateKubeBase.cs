@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity for cluster.")]
         public string AssignIdentity { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The upgrade channel for auto upgrade. For more information see https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.")]
+        [Parameter(Mandatory = false, HelpMessage = "The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.")]
         [PSArgumentCompleter("rapid", "stable", "patch", "node-image", "none")]
         public string AutoUpgradeChannel { get; set; }
 

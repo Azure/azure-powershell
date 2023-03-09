@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.CognitiveServices.Models;
+using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.CognitiveServices
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// Generate Cognitive Services Object by Type.
     /// Some commands need complex objects, this command is used to generate these objects with default parameters.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesObject", SupportsShouldProcess = true), OutputType(typeof(DeploymentProperties), typeof(CommitmentPlanProperties))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CognitiveServicesObject", SupportsShouldProcess = true), OutputType(typeof(DeploymentProperties), typeof(CommitmentPlanProperties), typeof(MultiRegionSettings), typeof(RegionSetting))]
     public class NewAzureCognitiveServicesObjectCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
@@ -52,6 +53,19 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                         WriteObject(obj);
                     }
                     break;
+                case CognitiveServicesObjectType.MultiRegionSettings:
+                    {
+                        var obj = new MultiRegionSettings();
+                        obj.Regions = new List<RegionSetting>();
+                        WriteObject(obj);
+                    }
+                    break;
+                case CognitiveServicesObjectType.RegionSetting:
+                    {
+                        var obj = new RegionSetting();
+                        WriteObject(obj);
+                    }
+                    break;
             }
         }
     }
@@ -59,6 +73,8 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     public enum CognitiveServicesObjectType
     {
         DeploymentProperties,
-        CommitmentPlanProperties
+        CommitmentPlanProperties,
+        MultiRegionSettings,
+        RegionSetting
     }
 }

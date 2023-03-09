@@ -50,7 +50,7 @@ Create or update component version
 ## PARAMETERS
 
 ### -ComponentSpec
-Defines Component definition details.\<see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /\>
+Defines Component definition details.\<see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" /\>
 
 ```yaml
 Type: System.Collections.Hashtable

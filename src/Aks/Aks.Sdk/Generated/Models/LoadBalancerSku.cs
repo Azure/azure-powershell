@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Use a a standard Load Balancer. This is the recommended Load
         /// Balancer SKU. For more information about on working with the load
         /// balancer in the managed cluster, see the [standard Load
-        /// Balancer](https://docs.microsoft.com/azure/aks/load-balancer-standard)
+        /// Balancer](https://learn.microsoft.com/azure/aks/load-balancer-standard)
         /// article.
         /// </summary>
         public const string Standard = "standard";
