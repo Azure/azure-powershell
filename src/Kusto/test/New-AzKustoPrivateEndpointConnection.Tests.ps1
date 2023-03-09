@@ -16,25 +16,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzKustoPrivateEndpointCon
 
 Describe 'New-AzKustoPrivateEndpointConnection' {
     It 'CreateExpanded' {
-        $clusterName = $env.clusterNetwork
+        $clusterName = $env.kustoClusterName
         $ResourceGroupName = $env.resourceGroupName
 
         # Set-AzContext -SubscriptionId $env.networkClustersTestsSubscriptionId
 
-        $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId
+        $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.subscriptionId
         $privateEndpointConnectionName = $privateEndpointConnection.Name
 
         $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus = "Rejected"
-        $privateEndpointConnection = New-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId -Parameter $privateEndpointConnection -Name $privateEndpointConnectionName
+        $privateEndpointConnection = New-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.subscriptionId -Parameter $privateEndpointConnection -Name $privateEndpointConnectionName
         
         Start-Sleep -Seconds 1.5
 
-        $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId
+        $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.subscriptionId
         $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus | Should -Be "Rejected"
 
-        $clusterName = $env.clusterNetwork
+        $clusterName = $env.kustoClusterName
         $ResourceGroupName = $env.resourceGroupName
-        Remove-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId -Name $privateEndpointConnectionName
+        Remove-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.subscriptionId -Name $privateEndpointConnectionName
 
         # Set-AzContext -SubscriptionId $env.SubscriptionId
     }

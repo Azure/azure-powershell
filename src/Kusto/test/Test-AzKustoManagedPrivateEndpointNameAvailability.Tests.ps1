@@ -17,8 +17,8 @@ Describe 'Test-AzKustoManagedPrivateEndpointNameAvailability' {
     }
 
     It 'CheckExpanded' {
-        $managedPrivateEndpointName = $env.managedPrivateEndpointName
-        $testResult = Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName $env.clusterNetwork -ResourceGroupName $env.resourceGroupName -Name $managedPrivateEndpointName -SubscriptionId $env.networkClustersTestsSubscriptionId
+        $managedPrivateEndpointName = "testmanagedprivateendpoint"
+        $testResult = Test-AzKustoManagedPrivateEndpointNameAvailability -ClusterName $env.kustoClusterName -ResourceGroupName $env.resourceGroupName -Name $managedPrivateEndpointName -SubscriptionId $env.subscriptionId
         $testResult.NameAvailable | Should -Be $true
     }
 
