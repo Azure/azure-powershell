@@ -65,7 +65,6 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Authorization.dll',
                'Microsoft.Extensions.Options.dll', 
                'Microsoft.Extensions.Primitives.dll', 
                'System.Runtime.CompilerServices.Unsafe.dll', 
-               'Microsoft.Azure.PowerShell.AutoMapper.dll', 
                'MSGraph.Autorest\bin\Az.MSGraph.private.dll', 
                'Authorization.Autorest\bin\Az.Authorization.private.dll'
 
@@ -224,7 +223,9 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Provider','ResourceGroup','Deployment','ActiveDirectory','Authorization','Management','ManagementGroups','Tags'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'ResourceGroup', 
+               'Deployment', 'ActiveDirectory', 'Authorization', 'Management', 
+               'ManagementGroups', 'Tags'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -249,7 +250,7 @@ PrivateData = @{
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''
