@@ -21,12 +21,16 @@ Describe 'Get-AzKustoClusterFollowerDatabase' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
+        $attachedDatabaseConfigurationName = "testAttachedDatabaseConfiguration"
         $followerClusterName = $env.kustoFollowerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
 
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
+        
         [array]$clusterFollowerDatabaseGet = Get-AzKustoClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $clusterFollowerDatabase = $clusterFollowerDatabaseGet[0]
         Validate_ClusterFollowerDatabase $clusterFollowerDatabase $attachedDatabaseConfigurationName $clusterResourceId $databaseName
+
+        Remove-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName
     }
 }
