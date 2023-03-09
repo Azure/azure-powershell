@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ContainerRegistry",
-  "ModuleVersion": "3.0.1",
+  "ModuleVersion": "3.0.2",
   "Cmdlets": [
     {
       "VerbName": "Connect",
@@ -251,7 +251,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -645,7 +645,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Username": "System.String",
               "Password": "System.String",
@@ -721,7 +721,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -851,7 +851,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1001,7 +1001,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase",
               "ImageName": "System.String",
@@ -1072,7 +1072,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSAcrManifest",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSAcrManifest, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSAcrManifest, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ManifestsAttributes": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase]",
               "ImageName": "System.String",
@@ -1385,7 +1385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -1478,7 +1478,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1644,7 +1644,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1771,7 +1771,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -1931,7 +1931,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
               "ManifestCount": "System.Nullable`1[System.Int32]",
@@ -2255,7 +2255,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase",
               "ImageName": "System.String",
@@ -2329,7 +2329,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagList",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagList, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagList, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase]",
               "ImageName": "System.String",
@@ -2658,7 +2658,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRegistryUsage",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRegistryUsage, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRegistryUsage, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Limit": "System.Nullable`1[System.Int64]",
               "CurrentValue": "System.Nullable`1[System.Int64]",
@@ -2851,7 +2851,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -2945,7 +2945,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3135,7 +3135,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3292,7 +3292,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3487,7 +3487,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "EventRequestMessage": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage",
               "EventResponseMessage": "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage",
@@ -3570,7 +3570,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -3708,7 +3708,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -4750,7 +4750,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5063,7 +5063,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Action": "System.String",
               "NetworkRuleType": "System.String"
@@ -5362,7 +5362,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -5442,7 +5442,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5662,7 +5662,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -5977,7 +5977,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6100,7 +6100,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -6631,7 +6631,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7094,7 +7094,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7248,7 +7248,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -7773,7 +7773,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -7941,7 +7941,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "StatusTimestamp": "System.Nullable`1[System.DateTime]",
@@ -8130,7 +8130,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSDeletedRepository",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSDeletedRepository, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSDeletedRepository, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ManifestsDeleted": "System.Collections.Generic.IList`1[System.String]",
               "TagsDeleted": "System.Collections.Generic.IList`1[System.String]"
@@ -8503,7 +8503,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -8669,7 +8669,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -8859,7 +8859,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -8969,7 +8969,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "ElementType": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule"
           },
           "ValidateNotNullOrEmpty": false
@@ -8979,7 +8979,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -9038,7 +9038,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9104,7 +9104,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -9124,7 +9124,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9171,7 +9171,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule[], Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "ElementType": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule"
                 },
                 "ValidateNotNullOrEmpty": false
@@ -9225,7 +9225,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryNameStatus",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryNameStatus, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryNameStatus, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NameAvailable": "System.Nullable`1[System.Boolean]",
               "Reason": "System.String",
@@ -9387,7 +9387,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String"
             },
@@ -9472,7 +9472,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9614,7 +9614,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9759,7 +9759,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -9892,7 +9892,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
               "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10031,7 +10031,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10193,7 +10193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10355,7 +10355,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10500,7 +10500,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10645,7 +10645,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10754,7 +10754,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10881,7 +10881,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
                     "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -10964,7 +10964,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryCredential, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Username": "System.String",
               "Password": "System.String",
@@ -11040,7 +11040,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11066,7 +11066,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateSet": [
             "password",
@@ -11152,7 +11152,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateSet": [
                   "password",
@@ -11202,7 +11202,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "NetworkRuleSet": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -11234,7 +11234,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateSet": [
                   "password",
@@ -11284,7 +11284,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateSet": [
                   "password",
@@ -11352,7 +11352,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
                   "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+                  "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.PasswordName, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateSet": [
                   "password",
@@ -11409,7 +11409,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase",
               "ImageName": "System.String",
@@ -12014,7 +12014,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSRepositoryAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
               "ManifestCount": "System.Nullable`1[System.Int32]",
@@ -12336,7 +12336,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Attributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase",
               "ImageName": "System.String",
@@ -12669,7 +12669,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -12792,7 +12792,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
             "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
               "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13251,7 +13251,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
                   "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
                     "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -13770,7 +13770,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSNetworkRuleSet, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
         "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
@@ -13859,7 +13859,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule"
       ]
@@ -13867,7 +13867,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSIPRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Action": "System.String",
         "NetworkRuleType": "System.String",
@@ -13933,7 +13933,7 @@
     "Microsoft.Azure.Management.ContainerRegistry.Models.IPRule": {
       "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.IPRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.IPRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.IPRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Action": "System.String",
         "IPAddressOrRange": "System.String"
@@ -13993,7 +13993,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule"
       ]
@@ -14001,7 +14001,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSVirtualNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Action": "System.String",
         "NetworkRuleType": "System.String",
@@ -14067,7 +14067,7 @@
     "Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule": {
       "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Action": "System.String",
         "VirtualNetworkResourceId": "System.String"
@@ -14122,7 +14122,7 @@
     "Microsoft.Azure.Management.ContainerRegistry.Models.NetworkRuleSet": {
       "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.NetworkRuleSet",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.NetworkRuleSet, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.NetworkRuleSet, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "IpRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.IPRule]",
         "VirtualNetworkRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule]",
@@ -14182,7 +14182,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.IPRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.IPRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerRegistry.Models.IPRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerRegistry.Models.IPRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerRegistry.Models.IPRule"
       ]
@@ -14190,7 +14190,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerRegistry.Models.VirtualNetworkRule"
       ]
@@ -14198,7 +14198,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage"
       ]
@@ -14206,7 +14206,7 @@
     "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage": {
       "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Limit": "System.Nullable`1[System.Int64]",
         "CurrentValue": "System.Nullable`1[System.Int64]",
@@ -14296,7 +14296,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
         "Tags": "System.Collections.Generic.IList`1[System.String]",
@@ -14397,7 +14397,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DeleteEnabled": "System.Nullable`1[System.Boolean]",
         "WriteEnabled": "System.Nullable`1[System.Boolean]",
@@ -14676,7 +14676,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.ContainerRegistry.Models.PSManifestAttributeBase"
       ]
@@ -14692,7 +14692,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ChangeableAttributes": "Microsoft.Azure.Commands.ContainerRegistry.Models.PSChangeableAttribute",
         "Signed": "System.Nullable`1[System.Boolean]",
@@ -14903,7 +14903,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.ContainerRegistry.Models.PSTagAttributeBase"
       ]
@@ -14975,7 +14975,7 @@
     "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig": {
       "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CustomHeaders": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "ServiceUri": "System.String"
@@ -15030,7 +15030,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Content": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent",
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
@@ -15077,7 +15077,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSEventContent, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Request": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest",
         "Source": "Microsoft.Azure.Commands.ContainerRegistry.PSSource",
@@ -15126,7 +15126,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSRequest": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSRequest, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "Addr": "System.String",
@@ -15173,7 +15173,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSSource": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSSource",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSSource, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSSource, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Addr": "System.String",
         "InstanceID": "System.String"
@@ -15217,7 +15217,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.PSTarget": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSTarget",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSTarget, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSTarget, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Size": "System.Nullable`1[System.Int64]",
         "Length": "System.Nullable`1[System.Int64]",
@@ -15266,7 +15266,7 @@
     "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage": {
       "Namespace": "Microsoft.Azure.Management.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=1.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage, Microsoft.Azure.PowerShell.ContainerRegistry.Sdk, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Headers": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "Content": "System.String",
@@ -15332,7 +15332,7 @@
     "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry.Models",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.Models.IPSNetworkRule, Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Action": "System.String",
         "NetworkRuleType": "System.String"
