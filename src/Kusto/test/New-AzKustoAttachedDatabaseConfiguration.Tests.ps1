@@ -21,10 +21,10 @@ Describe 'New-AzKustoAttachedDatabaseConfiguration' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
-        $followerClusterName = $env.followerClusterName
+        $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"

@@ -16,8 +16,8 @@ Describe 'Update-AzKustoDatabase' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'UpdateExpandedReadWrite' {
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $resourceGroupName = $env.resourceGroupName
         $databaseFullName = $clusterName + "/" + $databaseName
 
@@ -30,9 +30,9 @@ Describe 'Update-AzKustoDatabase' {
     }
 
     It 'UpdateExpandedReadOnlyFollowing' {
-        $clusterName = $env.followerClusterName
+        $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
-        $databaseName = $env.databaseName
+        $databaseName = $env.kustoDatabaseName
         $databaseFullName = $clusterName + "/" + $databaseName
 
         $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
@@ -44,9 +44,9 @@ Describe 'Update-AzKustoDatabase' {
     }
 
     It 'UpdateViaIdentityExpandedReadWrite' {
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $resourceGroupName = $env.resourceGroupName
-        $databaseName = $env.databaseName
+        $databaseName = $env.kustoDatabaseName
         $databaseFullName = $clusterName + "/" + $databaseName
 
         $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
@@ -59,9 +59,9 @@ Describe 'Update-AzKustoDatabase' {
     }
 
     It 'UpdateViaIdentityExpandedReadOnlyFollowing' {
-        $clusterName = $env.followerClusterName
+        $clusterName = $env.kustoFollowerClusterName
         $resourceGroupName = $env.resourceGroupName
-        $databaseName = $env.databaseName
+        $databaseName = $env.kustoDatabaseName
         $databaseFullName = $clusterName + "/" + $databaseName
 
         $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName

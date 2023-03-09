@@ -17,11 +17,11 @@ Describe 'New-AzKustoManagedPrivateEndpoint' {
     }
 
     It 'CreateExpanded' {
-        { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupNamefordc -SubscriptionId $env.networkClustersTestsSubscriptionId }
-        $privateLinkResourceId = "/subscriptions/" + $env.networkClustersTestsSubscriptionId + "/resourceGroups/" + $env.resourceGroupNamefordc + "/providers/Microsoft.EventHub/namespaces/" + $env.eventhubNSNameForEventGridfordc
-        $ManagedPrivateEndpoint = New-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupNamefordc -GroupId "namespace" -RequestMessage $env.managedPrivateEndpointRequestMessage -PrivateLinkResourceRegion $env.locationfordc -PrivateLinkResourceId $privateLinkResourceId -SubscriptionId $env.networkClustersTestsSubscriptionId
+        { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId }
+        $privateLinkResourceId = $env.eventHubResourceId
+        $ManagedPrivateEndpoint = New-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupName -GroupId "namespace" -RequestMessage $env.managedPrivateEndpointRequestMessage -PrivateLinkResourceRegion $env.location -PrivateLinkResourceId $privateLinkResourceId -SubscriptionId $env.networkClustersTestsSubscriptionId
         Validate_ManagedPrivateEndpoint $ManagedPrivateEndpoint $env.managedPrivateEndpointName
-        { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupNamefordc -SubscriptionId $env.networkClustersTestsSubscriptionId }
+        { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.clusterNetwork -Name $env.managedPrivateEndpointName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId }
     }
 
     It 'Create' -skip {

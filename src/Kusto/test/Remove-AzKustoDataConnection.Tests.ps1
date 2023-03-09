@@ -16,15 +16,12 @@ Describe 'Remove-AzKustoDataConnection' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'Delete' {
-        $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName
-        $eventhubNS = $env.eventhubNSNamefordc
-        $eventhub = $env.eventhubNamefordc
-        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
+        $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
 
         New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup 'Default' -Compression "None" 

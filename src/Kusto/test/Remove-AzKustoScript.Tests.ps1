@@ -17,7 +17,7 @@ Describe 'Remove-AzKustoScript' {
     }
     It 'Delete' {
         $continueOnErrors = $false
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
 
@@ -29,7 +29,7 @@ Describe 'Remove-AzKustoScript' {
 
         { Get-AzKustoScript -ClusterName $clusterName -DatabaseName $databaseName -Name $env.scriptName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.SubscriptionId } | Should -Throw
         
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

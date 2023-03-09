@@ -19,10 +19,10 @@ Describe 'Get-AzKustoClusterFollowerDatabase' {
     It 'List' {
         $subscriptionId = $env.SubscriptionId
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
-        $followerClusterName = $env.followerClusterName
+        $followerClusterName = $env.kustoFollowerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
 
         [array]$clusterFollowerDatabaseGet = Get-AzKustoClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName

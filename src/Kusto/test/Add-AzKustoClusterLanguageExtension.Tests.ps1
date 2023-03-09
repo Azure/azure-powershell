@@ -19,14 +19,14 @@ Describe 'Add-AzKustoClusterLanguageExtension' {
     }
     It 'AddExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         { Add-AzKustoClusterLanguageExtension -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Value (@{ Name = "R" }) } | Should -Not -Throw
     }
 
     It 'AddViaIdentityExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 

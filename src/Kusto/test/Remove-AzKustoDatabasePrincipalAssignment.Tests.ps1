@@ -19,8 +19,8 @@ Describe 'Remove-AzKustoDatabasePrincipalAssignment' {
     }
     It 'Delete' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $principalAssignmentName = "testPrincipalAssignmentNameSecondary"
         $principalId = $env.principalAppIdSecondary
         $role = "Viewer"

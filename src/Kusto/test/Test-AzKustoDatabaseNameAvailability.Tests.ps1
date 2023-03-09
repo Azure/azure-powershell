@@ -15,8 +15,8 @@ Describe 'Test-AzKustoDatabaseNameAvailability' {
     }
     It 'CheckExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $databaseResourceType = "Microsoft.Kusto/Clusters/Databases"
 
         $availability = Test-AzKustoDatabaseNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Type $databaseResourceType
@@ -26,8 +26,8 @@ Describe 'Test-AzKustoDatabaseNameAvailability' {
 
     It 'CheckViaIdentityExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName + $env.rstr6
+        $clusterName = $env.kustoClusterName
+        $databaseName = "checkNameAvialbleDB"
         $databaseResourceType = "Microsoft.Kusto/Clusters/Databases"
 
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName

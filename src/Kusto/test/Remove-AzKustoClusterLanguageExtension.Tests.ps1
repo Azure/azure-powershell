@@ -17,14 +17,14 @@ Describe 'Remove-AzKustoClusterLanguageExtension' {
     }
     It 'RemoveExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         { Remove-AzKustoClusterLanguageExtension -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Value (@{ Name = "R" }) } | Should -Not -Throw
     }
 
     It 'RemoveViaIdentityExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 

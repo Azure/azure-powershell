@@ -20,7 +20,7 @@ Describe 'Get-AzKustoClusterSku' {
 
     It 'List1' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         [array]$clusterSku = Get-AzKustoClusterSku -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $clusterSku.Count | Should -Be 54

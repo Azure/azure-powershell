@@ -16,15 +16,12 @@ Describe 'Get-AzKustoDataConnection' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'List' {
-        $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName
-        $eventhubNS = $env.eventhubNSNamefordc
-        $eventhub = $env.eventhubNamefordc
-        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
+        $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
@@ -40,15 +37,12 @@ Describe 'Get-AzKustoDataConnection' {
     }
 
     It 'Get' {
-        $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName
-        $eventhubNS = $env.eventhubNSNamefordc
-        $eventhub = $env.eventhubNamefordc
-        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
+        $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 

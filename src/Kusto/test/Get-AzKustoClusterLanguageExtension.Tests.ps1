@@ -19,7 +19,7 @@ Describe 'Get-AzKustoClusterLanguageExtension' {
     }
     It 'List' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         [array]$clusterLanguageExtensionGet = Get-AzKustoClusterLanguageExtension -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $clusterLanguageExtension = $clusterLanguageExtensionGet[0]

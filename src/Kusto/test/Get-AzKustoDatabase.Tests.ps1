@@ -18,9 +18,9 @@ Describe 'Get-AzKustoDatabase' {
     It 'List' {
         $softDeletePeriodInDays = Get-Soft-Delete-Period-In-Days
         $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
-        $databaseFullName = $env.clusterName + "/" + $env.databaseName
+        $databaseFullName = $env.kustoClusterName + "/" + $env.kustoDatabaseName
 
-        [array]$databaseGet = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName
+        [array]$databaseGet = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $env.kustoDatabaseName
         $databaseGetItem = $databaseGet[0]
         Validate_Database $databaseGetItem $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $softDeletePeriodInDays $hotCachePeriodInDays
     }
@@ -28,9 +28,9 @@ Describe 'Get-AzKustoDatabase' {
     It 'Get' {
         $softDeletePeriodInDays = Get-Soft-Delete-Period-In-Days
         $hotCachePeriodInDays = Get-Hot-Cache-Period-In-Days
-        $databaseFullName = $env.clusterName + "/" + $env.databaseName
+        $databaseFullName = $env.kustoClusterName + "/" + $env.kustoDatabaseName
 
-        $databaseGetItem = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $env.databaseName
+        $databaseGetItem = Get-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $env.kustoDatabaseName
         Validate_Database $databaseGetItem $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $softDeletePeriodInDays $hotCachePeriodInDays
     }
 }

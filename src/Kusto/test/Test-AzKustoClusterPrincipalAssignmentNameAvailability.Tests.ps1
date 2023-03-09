@@ -15,7 +15,7 @@ Describe 'Test-AzKustoClusterPrincipalAssignmentNameAvailability' {
     }
     It 'CheckExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $principalAssignmentName = "testPrincipalAssignmentName"
        
         $availability = Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $principalAssignmentName 
@@ -25,7 +25,7 @@ Describe 'Test-AzKustoClusterPrincipalAssignmentNameAvailability' {
 
     It 'CheckViaIdentityExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $principalAssignmentName = "testPrincipalAssignmentNameSecondary"
         
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName

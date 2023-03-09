@@ -17,7 +17,7 @@ Describe 'Update-AzKustoScript' {
     }
     It 'UpdateExpanded' {
         $continueOnErrors = $false
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
         $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
@@ -29,7 +29,7 @@ Describe 'Update-AzKustoScript' {
         
         Validate_Inline_Script $Script $env.forceUpdateTag2 $continueOnErrors $clusterName $databaseName $env.scriptName
 
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
     It 'Update' -skip {

@@ -21,9 +21,9 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
-        $followerClusterName = $env.followerClusterName
+        $followerClusterName = $env.kustoFollowerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
         $databaseName = "testdatabase" + $env.rstr4
@@ -40,9 +40,9 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr5
-        $followerClusterName = $env.followerClusterName
+        $followerClusterName = $env.kustoFollowerClusterName
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
         $databaseName = "testdatabase" + $env.rstr5

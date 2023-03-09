@@ -20,7 +20,7 @@ Describe 'Get-AzKustoClusterOutboundNetworkDependencyEndpoint' {
         #Set-AzContext -SubscriptionId $env.networkClustersTestsSubscriptionId
 
         $clusterName = $env.clusterNetwork
-        $KustoClusterOutboundNetworkDependencyEndpointList = Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName $clusterName -ResourceGroupName $env.resourceGroupNamefordc -SubscriptionId $env.networkClustersTestsSubscriptionId
+        $KustoClusterOutboundNetworkDependencyEndpointList = Get-AzKustoClusterOutboundNetworkDependencyEndpoint -ClusterName $clusterName -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId
         $KustoClusterOutboundNetworkDependencyEndpointList.Count | Should -Be 5
 
         #Set-AzContext -SubscriptionId $env.SubscriptionId

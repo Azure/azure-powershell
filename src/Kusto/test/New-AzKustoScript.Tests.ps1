@@ -18,7 +18,7 @@ Describe 'New-AzKustoScript' {
 
     It 'CreateExpandedInline' {
         $continueOnErrors = $false
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
         $scriptContent = ".create table table3 (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)"
@@ -29,12 +29,12 @@ Describe 'New-AzKustoScript' {
         
         Validate_Inline_Script $Script $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
 
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
     
     It 'CreateExpanded' {
         $continueOnErrors = $false
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
 
@@ -44,12 +44,12 @@ Describe 'New-AzKustoScript' {
         
         Validate_Script $Script $env.scriptUrl $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
 
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
     It 'Create' {
         $continueOnErrors = $false
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
 
@@ -61,6 +61,6 @@ Describe 'New-AzKustoScript' {
         
         Validate_Script $Script $env.scriptUrl $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
 
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }    
 }

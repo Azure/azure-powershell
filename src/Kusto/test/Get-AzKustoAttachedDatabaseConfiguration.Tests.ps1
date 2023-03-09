@@ -21,10 +21,10 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
-        $followerClusterName = $env.followerClusterName
+        $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
@@ -38,10 +38,10 @@ Describe 'Get-AzKustoAttachedDatabaseConfiguration' {
         $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
-        $followerClusterName = $env.followerClusterName
+        $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName

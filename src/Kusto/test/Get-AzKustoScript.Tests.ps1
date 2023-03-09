@@ -18,11 +18,11 @@ Describe 'Get-AzKustoScript' {
 
     It 'List' {
         $continueOnErrors = $false
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
 
-        # { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        # { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
         
         $databaseCreated = New-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SubscriptionId $env.SubscriptionId
         
@@ -31,12 +31,12 @@ Describe 'Get-AzKustoScript' {
                
         Validate_Script $ScriptList $env.scriptUrl $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
 
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
     It 'Get' {
         $continueOnErrors = $false
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr4
         $databaseFullName = $clusterName + "/" + $databaseName
 
@@ -47,7 +47,7 @@ Describe 'Get-AzKustoScript' {
                
         Validate_Script $Script $env.scriptUrl $env.forceUpdateTag $continueOnErrors $clusterName $databaseName $env.scriptName
 
-        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.clusterName -Name $name } | Should -Not -Throw
+        { Remove-AzKustoDatabase -ResourceGroupName $env.resourceGroupName -ClusterName $env.kustoClusterName -Name $name } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

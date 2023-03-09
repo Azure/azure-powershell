@@ -17,18 +17,18 @@ Describe 'Update-AzKustoCluster' {
     }
     
     It 'UpdateExpandedPublicIpType' {
-        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName -SkuName "Standard_D12_v2" -SkuTier "Standard" -PublicIPType "DualStack"
+        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName -SkuName "Standard_D12_v2" -SkuTier "Standard" -PublicIPType "DualStack"
         $updatedCluster.PublicIPType | Should -Be "DualStack"        
     }
 
     It 'UpdateExpanded' {
-        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName -SkuName "Standard_D12_v2" -SkuTier "Standard"
-        Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" "Standard_D12_v2" "Standard" 2
+        $updatedCluster = Update-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName -SkuName "Standard_D12_v2" -SkuTier "Standard"
+        Validate_Cluster $updatedCluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" "Standard_D12_v2" "Standard" 2
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.clusterName
+        $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName
         $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName "Standard_D11_v2" -SkuTier "Standard"
-        Validate_Cluster $updatedCluster $env.clusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" "Standard_D11_v2" "Standard" 2
+        Validate_Cluster $updatedCluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" "Standard_D11_v2" "Standard" 2
     }
 }

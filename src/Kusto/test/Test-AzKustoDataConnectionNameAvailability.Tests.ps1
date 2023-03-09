@@ -14,9 +14,9 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'CheckExpanded' {
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName
 
         $availability = Test-AzKustoDataConnectionNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
@@ -24,9 +24,9 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
     }
 
     It 'CheckViaIdentityExpanded' {
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName + $env.rstr4
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName

@@ -19,14 +19,12 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
     }
     It 'DataExpandedEventHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName + $env.rstr4
-        $eventhubNS = $env.eventhubNSNamefordc
-        $eventhub = $env.eventhubNamefordc
-        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
+        $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
 
         { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup 'Default' -Compression "None" } | Should -Not -Throw
@@ -34,15 +32,13 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
 
     It 'DataExpandedEventGrid' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName + $env.rstr5
-        $eventhubNS = $env.eventhubNSNameForEventGridfordc
-        $eventhub = $env.eventhubNameForEventGridfordc
-        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $storageAccountName = $env.storageNamefordc
+        $eventHubResourceId = $env.eventHubResourceId
+        $storageAccountName = $env.storageAccountResourceId
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
         $kind = "EventGrid"
 
@@ -51,13 +47,12 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
 
     It 'DataExpandedIotHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName + $env.rstr6
-        $iothubName = $env.iothubNamefordc
-        $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
+        $iotHubResourceId = $env.iotHubResourceId
         $sharedAccessPolicyName = "registryRead"
         $kind = "IotHub"
 
@@ -66,13 +61,11 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
 
     It 'DataViaIdentityExpandedEventHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName + $env.rstr4
-        $eventhubNS = $env.eventhubNSNamefordc
-        $eventhub = $env.eventhubNamefordc
         $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
         $kind = "EventHub"
 
@@ -82,15 +75,13 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
 
     It 'DataViaIdentityExpandedEventGrid' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName + $env.rstr5
-        $eventhubNS = $env.eventhubNSNameForEventGridfordc
-        $eventhub = $env.eventhubNameForEventGridfordc
-        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
-        $storageAccountName = $env.storageNamefordc
+        $eventHubResourceId = $env.eventHubResourceId
+        $storageAccountName = $env.storageAccountResourceId
         $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
         $kind = "EventGrid"
 
@@ -100,13 +91,12 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
 
     It 'DataViaIdentityExpandedIotHub' {
         $subscriptionId = $env.SubscriptionId
-        $location = $env.locationfordc
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
         $dataConnectionName = $env.dataConnectionName + $env.rstr6
-        $iothubName = $env.iothubNamefordc
-        $iotHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Devices/IotHubs/$iothubName"
+        $iotHubResourceId = $env.iotHubResourceId
         $sharedAccessPolicyName = "registryRead"
         $kind = "IotHub"
 

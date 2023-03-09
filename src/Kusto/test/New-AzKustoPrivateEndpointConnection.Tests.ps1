@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzKustoPrivateEndpointCon
 Describe 'New-AzKustoPrivateEndpointConnection' {
     It 'CreateExpanded' {
         $clusterName = $env.clusterNetwork
-        $ResourceGroupName = $env.resourceGroupNamefordc
+        $ResourceGroupName = $env.resourceGroupName
 
         # Set-AzContext -SubscriptionId $env.networkClustersTestsSubscriptionId
 
@@ -33,7 +33,7 @@ Describe 'New-AzKustoPrivateEndpointConnection' {
         $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus | Should -Be "Rejected"
 
         $clusterName = $env.clusterNetwork
-        $ResourceGroupName = $env.resourceGroupNamefordc
+        $ResourceGroupName = $env.resourceGroupName
         Remove-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.networkClustersTestsSubscriptionId -Name $privateEndpointConnectionName
 
         # Set-AzContext -SubscriptionId $env.SubscriptionId
