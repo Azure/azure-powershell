@@ -35,8 +35,8 @@ The following cmdlets were affected this release:
     - The cmdlet no longer accepts individual parameters that compose the access token; instead, the cmdlet replaces explicit token parameters such as Service or Permissions with a generic 'TemplateUri' parameter, corresponding to a sample access token defined elsewhere (presumably using Storage PowerShell cmdlets, or composed manually according to the Storage documentation.) The cmdlet retains the 'ValidityPeriod' parameter.
 	
 	For more information on composing shared access tokens for Azure Storage, please refer to the documentation pages, respectively:
-	- [Constructing a Service SAS] (https://docs.microsoft.com/en-us/rest/api/storageservices/Constructing-a-Service-SAS)
-	- [Constructing an Account SAS] (https://docs.microsoft.com/en-us/rest/api/storageservices/constructing-an-account-sas)
+	- [Constructing a Service SAS] (https://learn.microsoft.com/en-us/rest/api/storageservices/Constructing-a-Service-SAS)
+	- [Constructing an Account SAS] (https://learn.microsoft.com/en-us/rest/api/storageservices/constructing-an-account-sas)
     
     ```powershell
     # Old

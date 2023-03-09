@@ -170,6 +170,12 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         public string[] AllowedFqdnList { get; set; }
 
         [Parameter(
+            HelpMessage = "Multi-region settings for multi-region account.",
+            Mandatory = false)]
+        [AllowEmptyCollection]
+        public MultiRegionSettings MultiRegionSetting { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "The ApiProperties of Cognitive Services Account. Required by specific account types.")]
         public CognitiveServicesAccountApiProperties ApiProperty { get; set; }
@@ -233,6 +239,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
             if (AllowedFqdnList != null)
             {
                 updateParameters.Properties.AllowedFqdnList = AllowedFqdnList;
+            }
+
+            if (MultiRegionSetting != null)
+            {
+                updateParameters.Properties.Locations = MultiRegionSetting;
             }
 
             if (AssignIdentity.IsPresent || this.UserAssignedIdentityId != null || this.IdentityType != null)

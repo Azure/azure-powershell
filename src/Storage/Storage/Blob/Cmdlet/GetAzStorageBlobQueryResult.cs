@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [ValidateNotNullOrEmpty]
         public string VersionId { get; set; }
 
-        [Parameter(HelpMessage = "Query string, see more details in: https://docs.microsoft.com/en-us/azure/storage/blobs/query-acceleration-sql-reference", Mandatory = true)]
+        [Parameter(HelpMessage = "Query string, see more details in: https://learn.microsoft.com/en-us/azure/storage/blobs/query-acceleration-sql-reference", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string QueryString { get; set; }
 

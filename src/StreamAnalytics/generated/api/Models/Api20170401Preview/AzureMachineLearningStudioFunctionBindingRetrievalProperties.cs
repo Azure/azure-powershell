@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         private string _executeEndpoint;
 
         /// <summary>
-        /// The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+        /// The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://learn.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Origin(Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.PropertyOrigin.Owned)]
         public string ExecuteEndpoint { get => this._executeEndpoint; set => this._executeEndpoint = value; }
@@ -39,12 +39,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
         Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+        /// The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://learn.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs",
+        Description = @"The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://learn.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs",
         SerializedName = @"executeEndpoint",
         PossibleTypes = new [] { typeof(string) })]
         string ExecuteEndpoint { get; set; }
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401P
 
     {
         /// <summary>
-        /// The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
+        /// The Request-Response execute endpoint of the Azure Machine Learning Studio. Find out more here: https://learn.microsoft.com/en-us/azure/machine-learning/machine-learning-consume-web-services#request-response-service-rrs
         /// </summary>
         string ExecuteEndpoint { get; set; }
         /// <summary>The function type.</summary>

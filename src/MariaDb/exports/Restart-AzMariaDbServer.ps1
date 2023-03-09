@@ -46,7 +46,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
 #>
 function Restart-AzMariaDbServer {
 [OutputType([System.Boolean])]

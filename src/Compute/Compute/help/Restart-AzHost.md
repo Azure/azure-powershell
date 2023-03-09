@@ -31,7 +31,7 @@ Restart-AzHost -InputObject <PSHost> [-DefaultProfile <IAzureContextContainer>] 
 ```
 
 ## DESCRIPTION
-Restart the dedicated host. The operation will complete successfully once the dedicated host has restarted and is running. To determine the health of VMs deployed on the dedicated host after the restart check the Resource Health Center in the Azure Portal. Please refer to https://docs.microsoft.com/en-us/azure/service-health/resource-health-overview for more details.
+Restart the dedicated host. The operation will complete successfully once the dedicated host has restarted and is running. To determine the health of VMs deployed on the dedicated host after the restart check the Resource Health Center in the Azure Portal. Please refer to https://learn.microsoft.com/en-us/azure/service-health/resource-health-overview for more details.
 
 ## EXAMPLES
 

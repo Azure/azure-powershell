@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsoperation
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsoperation
 #>
 function Get-AzTimeSeriesInsightsOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IOperation])]

@@ -284,7 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueryString
-Query string, see more details in: https://docs.microsoft.com/azure/storage/blobs/query-acceleration-sql-reference
+Query string, see more details in: https://learn.microsoft.com/azure/storage/blobs/query-acceleration-sql-reference
 
 ```yaml
 Type: System.String

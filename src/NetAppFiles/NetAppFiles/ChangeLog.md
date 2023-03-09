@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.11.1
+* Updated Azure.Core to 1.28.0.
+
 ## Version 0.11.0
 * Added cmdlet `Reset-AzNetAppFilesVolumeCifsPassword`
 * Added cmdlet `Get-AzNetAppFilesVolumeReplications` and `Restore-AzNetAppFilesVolume`

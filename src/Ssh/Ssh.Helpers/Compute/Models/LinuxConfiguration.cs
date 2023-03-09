@@ -17,7 +17,7 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.Models
     /// Specifies the Linux operating system settings on the virtual machine.
     /// &lt;br&gt;&lt;br&gt;For a list of supported Linux distributions, see
     /// [Linux on Azure-Endorsed
-    /// Distributions](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+    /// Distributions](https://learn.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
     /// </summary>
     public partial class LinuxConfiguration
     {

@@ -1,4 +1,4 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901
+namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Extensions;
 /// <summary>The GPU resource.</summary>

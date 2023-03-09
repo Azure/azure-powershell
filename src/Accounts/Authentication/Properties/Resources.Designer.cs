@@ -295,6 +295,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs..
+        /// </summary>
+        public static string HelpMessageOfDisplayRegionIdentified {
+            get {
+                return ResourceManager.GetString("HelpMessageOfDisplayRegionIdentified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience. For more information, see our privacy statement: https://aka.ms/privacy.
         /// </summary>
         public static string HelpMessageOfEnableDataCollection {
@@ -561,6 +570,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string PublishSettingsFileRealmFormat {
             get {
                 return ResourceManager.GetString("PublishSettingsFileRealmFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecting “{0}” may reduce your costs. The region you’ve selected may cost more for the same services. You can disable this message in the future with the command “Update-AzConfig -DisplayRegionIdentified $false”. Learn more at https://go.microsoft.com/fwlink/?linkid=2225665.
+        /// </summary>
+        public static string RecommendationMessageForLocation {
+            get {
+                return ResourceManager.GetString("RecommendationMessageForLocation", resourceCulture);
             }
         }
         

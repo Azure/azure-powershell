@@ -48,7 +48,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azuserassignedidentity
 #>
 function Remove-AzUserAssignedIdentity {
 [OutputType([System.Boolean])]

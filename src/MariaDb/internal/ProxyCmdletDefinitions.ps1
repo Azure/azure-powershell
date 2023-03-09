@@ -48,7 +48,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbdatabase
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbdatabase
 #>
 function Get-AzMariaDbDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IDatabase])]
@@ -211,7 +211,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IPerformanceTierProperties
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadblocationbasedperformancetier
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadblocationbasedperformancetier
 #>
 function Get-AzMariaDbLocationBasedPerformanceTier {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IPerformanceTierProperties])]
@@ -348,7 +348,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFile
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadblogfile
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadblogfile
 #>
 function Get-AzMariaDbLogFile {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ILogFile])]
@@ -492,7 +492,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadboperation
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadboperation
 #>
 function Get-AzMariaDbOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IOperation])]
@@ -631,7 +631,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbserversecurityalertpolicy
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/get-azmariadbserversecurityalertpolicy
 #>
 function Get-AzMariaDbServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy])]
@@ -813,7 +813,7 @@ NAMEAVAILABILITYREQUEST <INameAvailabilityRequest>: Request from client to check
   Name <String>: Resource name to verify.
   [Type <String>]: Resource type used for verification.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/invoke-azmariadbexecutechecknameavailability
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/invoke-azmariadbexecutechecknameavailability
 #>
 function Invoke-AzMariaDbExecuteCheckNameAvailability {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.INameAvailability])]
@@ -978,7 +978,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbconfiguration
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbconfiguration
 #>
 function New-AzMariaDbConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
@@ -1177,7 +1177,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbdatabase
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbdatabase
 #>
 function New-AzMariaDbDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IDatabase])]
@@ -1387,7 +1387,7 @@ AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbfirewallrule
 #>
 function New-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
@@ -1593,7 +1593,7 @@ PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserversecurityalertpolicy
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserversecurityalertpolicy
 #>
 function New-AzMariaDbServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy])]
@@ -1871,7 +1871,7 @@ PARAMETER <IServerForCreate>: Represents a server to be created.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/new-azmariadbserver
 #>
 function New-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
@@ -2176,7 +2176,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbdatabase
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/remove-azmariadbdatabase
 #>
 function Remove-AzMariaDbDatabase {
 [OutputType([System.Boolean])]
@@ -2369,7 +2369,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/restart-azmariadbserver
 #>
 function Restart-AzMariaDbServer {
 [OutputType([System.Boolean])]
@@ -2550,7 +2550,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbdatabase
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbdatabase
 #>
 function Set-AzMariaDbDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IDatabase])]
@@ -2748,7 +2748,7 @@ PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbserversecurityalertpolicy
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbserversecurityalertpolicy
 #>
 function Set-AzMariaDbServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy])]
@@ -2980,7 +2980,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbconfiguration
 #>
 function Update-AzMariaDbConfiguration {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
@@ -3193,7 +3193,7 @@ INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbfirewallrule
 #>
 function Update-AzMariaDbFirewallRule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
@@ -3421,7 +3421,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: The version of a server.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
 #>
 function Update-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

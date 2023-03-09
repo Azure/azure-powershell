@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzVirtualHubRouteTable
 
 ## SYNOPSIS
-Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a virtual hub.
+Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a virtual hub. The cmdlet [Get-AzVHubRouteTable](./Get-AzVHubRouteTable.md) is replacing this cmdlet.
 
 ## SYNTAX
 

@@ -28,9 +28,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.AzureClients
         {
         }
 
-        public HybridConnectivityClient(IHybridConnectivityManagementAPIClient hybridComputeManagementClient)
+        public HybridConnectivityClient(IHybridConnectivityManagementAPIClient hybridConnectivityManagementClient)
         {
-            this.HybridConectivityManagementClient = hybridComputeManagementClient;
+            this.HybridConectivityManagementClient = hybridConnectivityManagementClient;
         }
     }
 }
