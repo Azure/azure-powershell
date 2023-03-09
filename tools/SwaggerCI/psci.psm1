@@ -13,7 +13,7 @@ function Invoke-SwaggerCI {
     $packages = @()
 
     $swaggerSpecifcationPath = Join-Path (Get-Item $config.specFolder).FullName "specification"
-    $azurePowerShellSourcePath = Join-Path (Get-Item $PSScriptRoot).Parent.Parent.FullName "src"
+    $azurePowerShellSourcePath = Join-Path (Get-Location).Path "src"
 
     $affectModule = Get-AffectModule -changedFiles $config.changedFiles -relatedReadmeMdFiles $config.relatedReadmeMdFiles -swaggerSpecifcationPath $swaggerSpecifcationPath -azurePowerShellSourcePath $azurePowerShellSourcePath
 
@@ -43,11 +43,11 @@ function Build-Module {
         $psRdPath = Join-Path $rdFolder "readme.powershell.md"
 
         #create the a folder for this RP
-        $moduleFolder = Join-Path (Join-Path (pwd).Path swaggerci) $moduleName
+        $moduleFolder = Join-Path (Join-Path (Get-Location).Path swaggerci) $moduleName
         New-Item -Path $moduleFolder -ItemType Directory -Force
 
         #populate read.md.template
-        $rdContent = Get-Content readme.md.template
+        $rdContent = Get-Content ./tools/SwaggerCI/readme.md.template
         $rdContent = $rdContent.replace('$(readme.md)', $rdPath)
         $rdContent = $rdContent.replace('$(readme.powershell.md)', $psRdPath)
         $rdContent | Out-File -Path (Join-Path $moduleFolder "readme.md") 
@@ -61,7 +61,7 @@ function Build-Module {
             throw
         }
         #Override the generated .gitignore file
-        cp ./gitignoreconf (Join-Path $moduleFolder ".gitignore")
+        cp ./tools/SwaggerCI/gitignoreconf (Join-Path $moduleFolder ".gitignore")
         #Package
         . (Join-Path $moduleFolder "pack-module.ps1")
 
@@ -123,7 +123,9 @@ function Get-RequiredReadmeList {
 function Get-InputJsonInSwaggerReadmeTag {
     param(
         [string]
-        $readmePath
+        $readmePath,
+        [string]
+        $tag
     )
     $yamlConfig = Get-YamlConfig $readmePath
     $config = $yamlConfig | Where-Object { ($_.tag -eq "") -and ($_.code."openapi-type" -eq "arm") }
@@ -134,8 +136,10 @@ function Get-InputJsonInSwaggerReadmeTag {
         if ($config.data."openapi-type" -eq "data-plane") {
             return @()
         }
-        $defaultTag = $config.code.tag
-        $config = $yamlConfig | Where-Object { $_.tag -eq "`$(tag) == '$defaultTag'" }
+        if (($tag -eq $null) -or ($tag -eq "")) {
+            $tag = $config.code.tag
+        }
+        $config = $yamlConfig | Where-Object { $_.tag -eq "`$(tag) == '$tag'" }
         if ($config.Length -ne 1) {
             throw "There should be only one tag $defaultTag in $readmePath"
         }
@@ -151,7 +155,9 @@ function Get-InputJsonInSwaggerReadmeTag {
 function New-SwaggerInputFileMapping {
     param(
         [string]
-        $swaggerSpecifcationPath
+        $swaggerSpecifcationPath,
+        [System.Collections.Specialized.IOrderedDictionary]
+        $swaggerReadMeAzPowerShellModuleMapping
     )
     Write-Warning $swaggerSpecifcationPath
     $allReadMeInSwagger = Get-ChildItem -Recurse -Path $swaggerSpecifcationPath -Filter "readme.md" | ForEach-Object { $_.FullName }
@@ -160,7 +166,7 @@ function New-SwaggerInputFileMapping {
     
     foreach ($readmePath in $allReadMeInSwagger) {
         try {
-            [array]$jsonList = Get-InputJsonInSwaggerReadmeTag $readmePath
+            [array]$jsonList = Get-InputJsonInSwaggerReadmeTag -readmePath $readmePath -tag $swaggerReadMeAzPowerShellModuleMapping[$readmePath].tag
             if ($jsonList.Length -eq 0) {
                 continue
             }
@@ -175,7 +181,7 @@ function New-SwaggerInputFileMapping {
     return $mapping
 }
 
-# Create a mapping, the key is the path of readme.md in swagger, the value is the module name in azure-powershell
+# Create a mapping, the key is the path of readme.md in swagger, the value is the module name and tag in azure-powershell
 function New-SwaggerReadMeAzPowerShellModuleMapping {
     param(
         [string]
@@ -190,10 +196,16 @@ function New-SwaggerReadMeAzPowerShellModuleMapping {
         foreach ($requiredReadme in $requiredReadmeList) {
             $moduleName = Split-Path -Parent -Path $readme | Split-Path -Leaf
             if ($mapping.Contains($requiredReadme)) {
-                $mapping[$requiredReadme] += $moduleName
+                $mapping[$requiredReadme] += @{
+                    moduleName = $moduleName
+                    tag = $yamlConfig.code.tag
+                }
             }
             else {
-                $mapping[$requiredReadme] = $moduleName
+                $mapping[$requiredReadme] = @(@{
+                    moduleName = $moduleName
+                    tag = $yamlConfig.code.tag
+                })
             }
         }
     }
@@ -208,7 +220,7 @@ function Get-AffectedReadme {
         [string[]]
         $relatedReadmeMdFiles,
         [System.Collections.Specialized.IOrderedDictionary]
-        $SwaggerInputFileMapping
+        $swaggerInputFileMapping
     )
     $affectedReadme = New-Object System.Collections.Generic.HashSet[string]
 
@@ -217,12 +229,12 @@ function Get-AffectedReadme {
             $Null = $affectedReadme.Add($readmePath)
         }
         else {
-            if (-not $SwaggerInputFileMapping.Contains($readmePath)) {
+            if (-not $swaggerInputFileMapping.Contains($readmePath)) {
                 Write-Warning "Cannot find the input json file list in $readmePath"
                 continue
             }
 
-            $relatedJsonList = $SwaggerInputFileMapping[$readmePath]
+            $relatedJsonList = $swaggerInputFileMapping[$readmePath]
             foreach ($jsonPath in $relatedJsonList) {
                 if ($changedFiles -contains $jsonPath) {
                     $Null = $affectedReadme.Add($readmePath)
@@ -246,15 +258,15 @@ function Get-AffectModule {
         [string]
         $azurePowerShellSourcePath
     )
-    $SwaggerInputFileMapping = New-SwaggerInputFileMapping $swaggerSpecifcationPath
-    $SwaggerReadMeAzPowerShellModuleMapping = New-SwaggerReadMeAzPowerShellModuleMapping $azurePowerShellSourcePath
-    $affectedReadme = Get-AffectedReadme -changedFiles $changedFiles -relatedReadmeMdFiles $relatedReadmeMdFiles -SwaggerInputFileMapping $SwaggerInputFileMapping
+    $swaggerReadMeAzPowerShellModuleMapping = New-SwaggerReadMeAzPowerShellModuleMapping $azurePowerShellSourcePath
+    $swaggerInputFileMapping = New-SwaggerInputFileMapping -SwaggerSpecifcationPath $swaggerSpecifcationPath -SwaggerReadMeAzPowerShellModuleMapping $swaggerReadMeAzPowerShellModuleMapping
+    $affectedReadme = Get-AffectedReadme -changedFiles $changedFiles -relatedReadmeMdFiles $relatedReadmeMdFiles -SwaggerInputFileMapping $swaggerInputFileMapping
     $affectedModule = @{}
     foreach ($readme in $affectedReadme) {
-        if ($SwaggerReadMeAzPowerShellModuleMapping.Contains($readme)) {
-            $affectedModule[$SwaggerReadMeAzPowerShellModuleMapping[$readme]] = $readme.Replace("readme.md", "").Replace("readme.powershell.md", "")
+        if ($swaggerReadMeAzPowerShellModuleMapping.Contains($readme)) {
+            $affectedModule[$swaggerReadMeAzPowerShellModuleMapping[$readme].moduleName] = $readme.Replace("readme.md", "").Replace("readme.powershell.md", "")
         }
     }
-
+    
     return $affectedModule
 }
