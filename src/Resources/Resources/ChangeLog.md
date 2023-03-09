@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.5.3
 * Updated behavior of Get-AzPolicyDefinition which previously returned all definitions when -Id was provided with a nonexistent policy definition id. Fixed to correctly throw a 404 exception in this case.
 
 ## Version 6.5.2

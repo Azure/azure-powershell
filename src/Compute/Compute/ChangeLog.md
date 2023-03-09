@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.
 * Added `-PerformancePlus` parameter to `New-AzDiskConfig`
 * Added 'MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand

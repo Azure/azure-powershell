@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Upgraded API version to 2022-10-01-preview
 * Fixed a bug for `Set-AzServiceBusQueue`
 

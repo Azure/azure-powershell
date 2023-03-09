@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.4
 * Added breaking change message for cmdlets.
     * `Set-AzRelayNamespace`
     * `Get-AzRelayOperation`
