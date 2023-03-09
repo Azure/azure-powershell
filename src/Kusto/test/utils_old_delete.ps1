@@ -76,8 +76,8 @@ function setupEnv() {
     New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $env.location -SoftDeletePeriod $softDeletePeriodInDaysUpdated -HotCachePeriod $hotCachePeriodInDaysUpdated -Subscription $SubscriptionId
 
     # Note, for *Principal* tests, AzADApplication was created, see principalAssignmentName, principalId and principalAssignmentName1, principalId1 for details
-    New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -PrincipalId $env.principalId -PrincipalType "App" -Role "AllDatabasesViewer"
-    New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $env.principalAssignmentName -DatabaseName $databaseName -PrincipalId $env.principalId -PrincipalType "App" -Role "Viewer"
+    New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName "testPrincipalAssignmentName" -PrincipalId $env.principalAppId -PrincipalType "App" -Role "AllDatabasesViewer"
+    New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName "testPrincipalAssignmentName" -DatabaseName $databaseName -PrincipalId $env.principalAppId -PrincipalType "App" -Role "Viewer"
 
     # Deploy follower cluster for test
     $followerClusterName = "testfcluster" + $rstr2

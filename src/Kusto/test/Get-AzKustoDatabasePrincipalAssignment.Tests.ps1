@@ -21,8 +21,8 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $principalAssignmentName = $env.principalAssignmentName
-        $principalId = $env.principalId
+        $principalAssignmentName = "testPrincipalAssignmentName"
+        $principalId = $env.principalAppId
         $role = "Viewer"
         $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
@@ -42,8 +42,8 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.clusterName
         $databaseName = $env.databaseName
-        $principalAssignmentName = $env.principalAssignmentName
-        $principalId = $env.principalId
+        $principalAssignmentName = "testPrincipalAssignmentName"
+        $principalId = $env.principalAppId
         $role = "Viewer"
         $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
