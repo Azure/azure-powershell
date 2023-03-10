@@ -49,7 +49,7 @@ input-file:
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/slice.json
   - $(repo)/specification/mobilenetwork/resource-manager/Microsoft.MobileNetwork/stable/2022-11-01/ts29571.json
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: MobileNetwork
 subject-prefix: $(service-name)
 

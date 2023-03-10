@@ -1,7 +1,7 @@
 @{
   GUID = '11f61d2d-3318-4e19-8917-0f0bd2cc78c7'
   RootModule = './Az.MobileNetwork.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
