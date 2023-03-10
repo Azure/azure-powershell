@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Add `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
+* Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
 
 ## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.
