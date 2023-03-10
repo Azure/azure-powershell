@@ -125,7 +125,7 @@ function Test-AzureFirewallIpGroup
       $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
 
       # Create AzureFirewall (with no rules, ThreatIntel is in Alert mode by default)
-      $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetworkName $vnetName -PublicIpName $publicIpName
+      $azureFirewall = New-AzFirewall –Name $azureFirewallName -ResourceGroupName $rgname -Location $location -VirtualNetwork $vnet -PublicIpAddress $publicip
    
       #
       #  Application Rule Section
