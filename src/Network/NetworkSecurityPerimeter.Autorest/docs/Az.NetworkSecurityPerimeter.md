@@ -72,3 +72,6 @@ Updates an access rule.
 ### [Update-AzNetworkSecurityPerimeterAssociation](Update-AzNetworkSecurityPerimeterAssociation.md)
 Updates an association
 
+### [Update-AzNetworkSecurityPerimeterLink](Update-AzNetworkSecurityPerimeterLink.md)
+Updates a NSP Link
+

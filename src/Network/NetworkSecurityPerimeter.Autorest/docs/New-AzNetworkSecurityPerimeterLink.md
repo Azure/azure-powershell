@@ -16,8 +16,8 @@ Creates or updates NSP link resource.
 ```
 New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -SecurityPerimeterName <String>
  [-SubscriptionId <String>] [-AutoApprovedRemotePerimeterResourceId <String>] [-Description <String>]
- [-LocalInboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-LocalInboundProfile <String[]>] [-LocalOutboundProfile <String[]>] [-RemoteInboundProfile <String[]>]
+ [-RemoteOutboundProfile <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -31,7 +31,8 @@ New-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String> -S
 ```
 New-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
  [-AutoApprovedRemotePerimeterResourceId <String>] [-Description <String>] [-LocalInboundProfile <String[]>]
- [-RemoteInboundProfile <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LocalOutboundProfile <String[]>] [-RemoteInboundProfile <String[]>] [-RemoteOutboundProfile <String[]>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +145,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LocalOutboundProfile
+Local Outbound profile names from which Outbound is allowed.
+In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles.
+In later version, user will be able to modify it.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the NSP link.
 
@@ -180,6 +198,23 @@ Remote Inbound profile names to which Inbound is allowed.
 Use ['*'] to allow inbound to all profiles.
 This property can only be updated in auto-approval mode.
 It's default value is ['*'].
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RemoteOutboundProfile
+Remote Outbound profile names from which Outbound is allowed.
+In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles.
+In later version, user will be able to modify it.
 
 ```yaml
 Type: System.String[]
@@ -308,7 +343,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[AutoApprovedRemotePerimeterResourceId <String>]`: Perimeter ARM Id for the remote NSP with which the link gets created in Auto-approval mode. It should be used when the NSP admin have Microsoft.Network/networkSecurityPerimeters/linkPerimeter/action permission on the remote NSP resource.
   - `[Description <String>]`: A message passed to the owner of the remote NSP link resource with this connection request. In case of Auto-approved flow, it is default to 'Auto Approved'. Restricted to 140 chars.
   - `[LocalInboundProfile <String[]>]`: Local Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. It's default value is ['*'].
+  - `[LocalOutboundProfile <String[]>]`: Local Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
   - `[RemoteInboundProfile <String[]>]`: Remote Inbound profile names to which Inbound is allowed. Use ['*'] to allow inbound to all profiles. This property can only be updated in auto-approval mode. It's default value is ['*'].
+  - `[RemoteOutboundProfile <String[]>]`: Remote Outbound profile names from which Outbound is allowed. In current version, it is readonly property and it's value is set to ['*'] to allow outbound from all profiles. In later version, user will be able to modify it.
 
 ## RELATED LINKS
 
