@@ -1,8 +1,162 @@
+## 9.5.0 - March 2023
+#### Az.Accounts 2.12.0
+* Fixed the issue that errors related to WAM are thrown when it is not enabled. [#20871] [#20824]
+* Updated Azure.Core library to 1.28.0.
+* Fixed an issue that the helper message about missing modules shows up at the wrong time. [#19228]
+* Added a hint message for some resource creation cmdlets when there is another region which may reduce the costs.
+* Supported environment initialization and auto-discovery with ArmMetadata of API version 2022-09-01.
+
+#### Az.Aks 5.3.1
+* Fixed the issue that Invoke-AzAksRunCommand will fail when the directory for parameter CommandContextAttachment contains sub-directories. [#20734]
+
+#### Az.Automanage 1.0.0
+* General availability for module Az.Automanage
+
+#### Az.Automation 1.9.1
+* Fixed bug: Runbooks Name Pattern failures. 
+
+#### Az.CloudService 1.2.0
+* Upgraded the api version to 2022-09-04.
+* Upgraded the api version of referenced network to 2022-07-01.
+
+#### Az.CognitiveServices 1.13.0
+* Updated CognitiveServices PowerShell to use 2022-12-01 version.
+* Added new CognitiveServices CommitmentPlan and Association cmdlets.
+* Added MultiRegionSetting support for CognitiveServices Account cmdlets.
+
+#### Az.Compute 5.5.0
+* Added breaking change message for 'New-AzVmss'.
+* Added '-PerformancePlus' parameter to 'New-AzDiskConfig'
+* Added 'MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
+* Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
+* Added 'CompletionPercent' property to PSDisk object.
+
+#### Az.ContainerInstance 3.2.0
+* Added 'priority' property to Container Group properties
+* Added 'Confidential' sku type to Container Group Skus
+
+#### Az.ContainerRegistry 3.0.2
+* Updated Azure.Core to 1.28.0.
+
+#### Az.CosmosDB 1.9.1
+* Updated Azure.Core to 1.28.0.
+
+#### Az.Databricks 1.5.0
+* Upgraded API version to 2023-02-01
+
+#### Az.DataFactory 1.16.13
+* Updated ADF .Net SDK version to 9.2.0
+* Added AzureBlobFS sasUri and sasToken properties in ADF
+* Added AzureBlobStorage containerUri and authenticationType properties in ADF
+* Added support copyComputeScale And pipelineExternalComputeScale in IntegrationRuntime
+
+#### Az.EventHub 3.2.2
+* Added breaking change description for parameter 'MessageRetentionInDays', which would be deprecated and would be replaced by 'RetentionTimeInHours'
+
+#### Az.FrontDoor 1.10.0
+* Fixed New-AzFrontDoorWafPolicy cmdlet to support adding Tags for the Azure Frontdoor waf policy
+
+#### Az.IotHub 2.7.5
+* Updated IoT Hub Management SDK to version 4.2.0 (api-version 2021-07-02)
+* Fixed 'Get-AzIoTHub' to work with DigiCert hubs
+
+#### Az.KeyVault 4.9.2
+* Updated Azure.Core to 1.28.0.
+
+#### Az.ManagedServiceIdentity 1.1.1
+* Upgraded to API version 2023-01-31.
+* Federated identity credentials GA version is available now.
+
+#### Az.Network 5.5.0
+* Updated cmdlets to add new property of 'Snat' in Azure Firewall Policy.
+    - 'New-AzFirewallPolicySnat'
+    - 'New-AzFirewallPolicy'
+    - 'Set-AzFirewallPolicy'
+* Fixed a bug that reverts classic fw private ranges to default when doing get & set
+* Onboarded 'Microsoft.Monitor/accounts' to private link cmdlets
+
+#### Az.PolicyInsights 1.6.0
+* Added support for policy attestations.
+
+#### Az.RecoveryServices 6.3.0
+* Supported using managed disks for replication for HyperV to Azure provider in Azure Site Recovery
+
+#### Az.Relay 1.0.4
+* Added breaking change message for cmdlets.
+    * 'Set-AzRelayNamespace'
+    * 'Get-AzRelayOperation'
+
+#### Az.Resources 6.5.3
+* Updated behavior of Get-AzPolicyDefinition which previously returned all definitions when -Id was provided with a nonexistent policy definition id. Fixed to correctly throw a 404 exception in this case.
+
+#### Az.Security 1.4.0
+* Updated Alerts cmdlets:
+    'Get-AzSecurityAlert'
+    'Set-AzSecurityAlert'
+* Moving Security Contacts to be based on the latest API version '2020-01-01-preview' with backward compatibility support
+
+#### Az.ServiceBus 2.2.0
+* Upgraded API version to 2022-10-01-preview
+* Fixed a bug for 'Set-AzServiceBusQueue'
+
+#### Az.ServiceFabric 3.1.1
+* Added support for Windows 2022 server vm image. 
+    - This enables cluster operations with Windows 2022 server vm image 
+
+#### Az.Sql 4.4.0
+* Fixed identity assignment in 'Set-AzSqlDatabase' cmdlet
+* Added new parameters to 'New-AzSqlDatabase', 'Get-AzSqlDatabase', 'Set-AzSqlDatabase', 'New-AzSqlDatabaseCopy', 'New-AzSqlDatabaseSecondary' cmdlets
+   - AssignIdentity
+   - EncryptionProtector
+   - UserAssignedIdentityId
+   - KeyList
+   - KeysToRemove
+   - FederatedClientId
+* Added 'ExpandKeyList' and 'KeysFilter' parameters to 'Get-AzSqlDatabaseGeoBackup' and 'Get-SqlDeletedDatabaseBackup'
+* Added new cmdlets for Per DB CMK
+   - 'Revalidate-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revert-AzSqlDatabaseTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlServerTransparentDataEncryptionProtector'
+   - 'Revalidate-AzSqlInstanceTransparentDataEncryptionProtector'
+* Added an optional parameter 'SecondaryType' to:
+    'Set-AzSqlDatabaseInstanceFailoverGroup'
+    'New-AzSqlDatabaseInstanceFailoverGroup'
+
+#### Az.StackHCI 1.4.3
+* Removed manual installation for Az.Accounts from Az.StackHCI.
+* Removed verbose while importing modules.
+
+#### Az.Storage 5.4.1
+* Updated Azure.Core to 1.28.0.
+
+#### Az.StorageMover 1.0.0
+* General availability for module Az.StorageMover
+* Updated StorageMover API version to 2023-03-01
+
+#### Az.Synapse 2.3.0
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.17
+* Updated 'New-AzSynapseSparkPool' and 'Update-AzSynapseSparkPool' to support for setting spark pool isolated compute by '-EnableIsolatedCompute'
+* Updated 'New-AzSynapseSparkPool' and 'Update-AzSynapseSparkPool' to support for setting spark pool node size to 'XLarge', 'XXLarge', 'XXXLarge'
+
+#### Az.Websites 2.13.0
+* Added a new parameter '-CopyIdentity' for 'New-AzWebAppSlot' to copy the identity from the parent app to the slot.
+* Updated 'New-AzWebAppSSLBinding' to support -WhatIf parameter
+
+### Thanks to our community contributors
+* Brett Miller (@brettmillerb), Corrected syntax for ConfirmAction (#20902)
+* Dave Neeley (@daveneeley), Clarify behavior of AcountEnabled and Password (#21006)
+* Hiroshi Yoshioka (@hyoshioka0128), Typo "udpate"→"update" (#20810)
+* @meenalsri
+  * Update New-AzSynapseRoleAssignment.md (#20905)
+  * Update Remove-AzSynapseRoleAssignment.md (#20906)
+  * Added note for scenario when an SPN role assignment is listed (#20907)
+* @sushil490023, Update Reference to latest swagger for Runbook Cmdlets (#20803)
+
 ## 9.4.0 - February 2023
 #### Az.Accounts 2.11.2
 * Supported Web Account Manager on ARM64-based Windows systems. Fixed an issue where 'Connect-AzAccount' failed with error 'Unable to load DLL 'msalruntime_arm64''. [#20700]
-* Enabled credential to be found only by applicationId while tenant was not matched when accquire token. [#20484]
-* When Az.Accounts ran in parallel, the waiters were allowed to wait infinitely to avoid throw exception in automation enviroment. [#20455]
+* Enabled credential to be found only by applicationId while tenant was not matched when acquire token. [#20484]
+* When Az.Accounts ran in parallel, the waiters were allowed to wait infinitely to avoid throw exception in automation environment. [#20455]
 
 #### Az.Aks 5.3.0
 * Added parameter '-AadProfile' for 'New-AzAksCluster' and 'Set-AzAksCluster'

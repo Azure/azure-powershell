@@ -174,7 +174,7 @@ The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "S
 
 ### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication and set DefaultSharePermission.
 ```powershell
-$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareOwner
+$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareContributor
 
 $account.AzureFilesIdentityBasedAuth
 ```
@@ -182,7 +182,7 @@ $account.AzureFilesIdentityBasedAuth
 ```output
 DirectoryServiceOptions ActiveDirectoryProperties                                                      DefaultSharePermission      
 ----------------------- -------------------------                                                      ----------------------      
-AADDS                   Microsoft.Azure.Commands.Management.Storage.Models.PSActiveDirectoryProperties StorageFileDataSmbShareOwner
+AADDS                   Microsoft.Azure.Commands.Management.Storage.Models.PSActiveDirectoryProperties StorageFileDataSmbShareContributor
 ```
 
 The command update a Storage account by enable Azure Files AAD DS Authentication.
