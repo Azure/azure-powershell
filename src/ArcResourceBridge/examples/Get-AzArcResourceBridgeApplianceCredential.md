@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Returns the cluster user credentials for the dedicated appliance.
 ```powershell
-{{ Add code here }}
+Get-AzArcResourceBridgeApplianceCredential -ResourceGroupName azps_test_group -Name azps-resource-bridge
 ```
 
 ```output
-{{ Add output here }}
+HybridConnectionConfigExpirationTime       : 1678424933
+HybridConnectionConfigHybridConnectionName : microsoft.resourceconnector/appliances/bc2***a81fb98c/167***794176
+HybridConnectionConfigRelay                : azgnrelay-ph0-l1
+HybridConnectionConfigToken                : SharedAccessSignature***30308
+Kubeconfig                                 : {{
+                                               "name": "clusterUser",
+                                               "value": "YXBpV***zZQo="
+                                             }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Returns the cluster user credentials for the dedicated appliance.
