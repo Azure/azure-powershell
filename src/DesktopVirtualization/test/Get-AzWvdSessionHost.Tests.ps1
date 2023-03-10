@@ -16,7 +16,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzWvdSessionHost' {
     It 'Get' {
         $sessionHost = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
+                            -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `
                             -Name $env.SessionHostName
             $sessionHost.Name | Should -Be $sessionHostPath

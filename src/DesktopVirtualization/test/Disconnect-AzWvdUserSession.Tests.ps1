@@ -15,7 +15,7 @@ while(-not $mockingPath) {
 Describe 'Disconnect-AzWvdUserSession' {
     It 'Disconnect' {
         Disconnect-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
                                 -SessionHostName $env.SessionHostName `
                                 -Id 2

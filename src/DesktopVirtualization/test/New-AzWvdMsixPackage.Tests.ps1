@@ -19,8 +19,8 @@ Describe 'New-AzWvdMsixPackage' {
             $string1 = "some image"
             $data1 = $enc.GetBytes($string1) 
 
-            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
-            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
+            $apps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220909.IMsixPackageApplications]@{appId = 'MsixTest_Application_Id'; description = 'testing from ps'; appUserModelID = 'MsixTest_Application_ModelID'; friendlyName = 'some name'; iconImageName = 'Apptile'; rawIcon = $data1; rawPng = $data1 })
+            $deps = @( [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220909.IMsixPackageDependencies]@{dependencyName = 'MsixTest_Dependency_Name'; publisher = 'MsixTest_Dependency_Publisher'; minVersion = '0.0.0.42' })   
 
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
@@ -79,21 +79,21 @@ Describe 'New-AzWvdMsixPackage' {
         try{
             $removePackage_IfExists = Remove-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
                 -HostPoolName $env.HostPoolPersistent `
-                -ResourceGroupName $env.ResourceGroup `
+                -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId 
 
             #image exists on specified hostpool
             $package_created = New-AzWvdMsixPackage -PackageAlias 'msixpackage' `
                 -ImagePath 'C:\msix\singlemsix.vhd' `
                 -HostPoolName $env.HostPoolPersistent `
-                -ResourceGroupName $env.ResourceGroup `
+                -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId  `
                 -DisplayName 'package-Alias-test' `
                 -IsActive 
 
             $package_created = Get-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
                 -HostPoolName $env.HostPoolPersistent `
-                -ResourceGroupName $env.ResourceGroup `
+                -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId  
 
             $package_created.PackageFamilyName | Should -Be  'MsixPackage_zf7zaz2wb1ayy'

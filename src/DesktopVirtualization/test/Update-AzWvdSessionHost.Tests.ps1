@@ -15,26 +15,26 @@ while(-not $mockingPath) {
 Describe 'Update-AzWvdSessionHost' {
     It 'Update' {
         $sessionHost = Update-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
+                            -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `
                             -Name $env.SessionHostName `
                             -AllowNewSession:$false
 
         $sessionHost = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
+                            -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `
                             -Name $env.SessionHostName
             $sessionHost.Name | Should -Be $sessionHostPath
             $sessionHost.AllowNewSession | Should -Be $false
 
         $sessionHost = Update-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
+                            -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `
                             -Name $env.SessionHostName `
                             -AllowNewSession:$true
 
         $sessionHost = Get-AzWvdSessionHost -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
+                            -ResourceGroupName $env.ResourceGroupPersistent `
                             -HostPoolName $env.HostPoolPersistent `
                             -Name $env.SessionHostName
             $sessionHost.Name | Should -Be $sessionHostPath

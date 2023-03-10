@@ -16,7 +16,7 @@ function setupEnv() {
     #---------- Self Contained Resources ----------
     # The following resources are created and removed within each test.
     $envFile = 'env.json'
-    $null = $env.Add("ResourceGroup", "roshin-wus2")
+    $null = $env.Add("ResourceGroup", "alecbTesting-wus2")
     $null = $env.Add("Location", "westus2")
     $null = $env.Add("HostPool", "HostPoolPowershellContained1")
     $null = $env.Add("HostPool2", "HostPoolPowershellContained2")
@@ -32,7 +32,7 @@ function setupEnv() {
     
     #---------- Persistent Resources ----------
     # The following resources are manually created and removed by the operator.
-
+    $null = $env.Add("ResourceGroupPersistent", "alecbTestingPersistent")
     $null = $env.Add("HostPoolPersistent", "HostPoolPowershellPersistent1")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "PwshVM-0")

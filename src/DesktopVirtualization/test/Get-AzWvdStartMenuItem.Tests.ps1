@@ -15,7 +15,7 @@ Describe 'Get-AzWvdStartMenuItem' {
     It 'List' {
         try{
             $startMenuItems = Get-AzWvdStartMenuItem -SubscriptionId $env.SubscriptionId `
-                                        -ResourceGroupName $env.ResourceGroup `
+                                        -ResourceGroupName $env.ResourceGroupPersistent `
                                         -ApplicationGroupName $env.PersistentDesktopAppGroup
 
             $paint = $startMenuItems | Where-Object -Property Name -Match 'Paint'

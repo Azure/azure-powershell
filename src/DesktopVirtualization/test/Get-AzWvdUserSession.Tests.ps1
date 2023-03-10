@@ -17,7 +17,7 @@ while(-not $mockingPath) {
 Describe 'Get-AzWvdUserSession' {
     It 'Get' {
         $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
                                 -SessionHostName $env.SessionHostName `
                                 -Id 2
@@ -26,7 +26,7 @@ Describe 'Get-AzWvdUserSession' {
 
     It 'List' {
         $userSessions = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
                                 -SessionHostName $env.SessionHostName `
                                 | Sort-Object -Property Name
@@ -36,7 +36,7 @@ Describe 'Get-AzWvdUserSession' {
 
     It 'List host pool Level' {
         $userSessions = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
                                 | Sort-Object -Property Name
             $userSessions[0].Name | Should -Be $userName2
