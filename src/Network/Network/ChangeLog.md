@@ -867,7 +867,7 @@
         - Get-AzIpGroup
         - Set-AzIpGroup
 * Virtual Wan Point to site feature release.
-  - Introduce new command lets for managing point to site VpnServerConfiguraiton resource
+  - Introduce new command lets for managing point to site VpnServerConfiguration resource
     - Get-AzVpnServerConfiguration
     - New-AzVpnServerConfiguration
     - Remove-AzVpnServerConfiguration
