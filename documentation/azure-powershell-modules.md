@@ -9,155 +9,156 @@ Azure PowerShell with preview modules | `AzPreview`                             
 
 ## Service Modules
 
-Azure Service                         | Module Name                             | PowerShell Gallery Link
-------------------------------------- | --------------------------------------- | -----------------------
-Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]
-ADDomainServices                      | `Az.ADDomainServices`                   | [![ADDomainServices]][ADDomainServicesGallery]
-Advisor                               | `Az.Advisor`                            | [![Advisor]][AdvisorGallery]
-Kubernetes Service                    | `Az.Aks`                                | [![Aks]][AksGallery]
-Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery]
-Analysis Services                     | `Az.AnalysisServices`                   | [![AnalysisServices]][AnalysisServicesGallery]
-API Management                        | `Az.ApiManagement`                      | [![ApiManagement]][ApiManagementGallery]
-Container Apps                        | `Az.App`                                | [![App]][AppGallery]
-App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
-Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
-Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
-Automanage                            | `Az.Automanage`                         | [![Automanage]][AutomanageGallery]
-Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
-BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery]
-Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
-Billing                               | `Az.Billing`                            | [![Billing]][BillingGallery]
-Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery]
-BotService                            | `Az.BotService`                         | [![BotService]][BotServiceGallery]
-Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery]
-Change Analysis                       | `Az.ChangeAnalysis`                     | [![ChangeAnalysis]][ChangeAnalysisGallery]
-Cloud Service                         | `Az.CloudService`                       | [![CloudService]][CloudServiceGallery]
-Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery]
-Communication                         | `Az.Communication`                      | [![Communication]][CommunicationGallery]
-Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery]
-ConfidentialLedger                    | `Az.ConfidentialLedger`                 | [![ConfidentialLedger]][ConfidentialLedgerGallery]
-Confluent                             | `Az.Confluent`                          | [![Confluent]][ConfluentGallery]
-Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery]
-Connected Machine                     | `Az.ConnectedMachine`                   | [![ConnectedMachine]][ConnectedMachineGallery]
-ConnectedNetwork                      | `Az.ConnectedNetwork`                   | [![ConnectedNetwork]][ConnectedNetworkGallery]
-Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery]
-Container Registry                    | `Az.ContainerRegistry`                  | [![ContainerRegistry]][ContainerRegistryGallery]
-Cosmos DB                             | `Az.CosmosDB`                           | [![CosmosDB]][CosmosDBGallery]
-Cost Management                       | `Az.CostManagement`                     | [![CostManagement]][CostManagementGallery]
-Custom Location                       | `Az.CustomLocation`                     | [![CustomLocation]][CustomLocationGallery]
-Custom Resource Providers             | `Az.CustomProviders`                    | [![CustomProviders]][CustomProvidersGallery]
-Dashboard                             | `Az.Dashboard`                          | [![Dashboard]][DashboardGallery]
-Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery]
-Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery]
-Databricks                            | `Az.Databricks`                         | [![Databricks]][DatabricksGallery]
-Datadog                               | `Az.Datadog`                            | [![Datadog]][DatadogGallery]
-Data Factory                          | `Az.DataFactory`                        | [![DataFactory]][DataFactoryGallery]
-Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery]
-Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery]
-Data Migration                        | `Az.DataMigration`                      | [![DataMigration]][DataMigrationGallery]
-Data Protection                       | `Az.DataProtection`                     | [![DataProtection]][DataProtectionGallery]
-Data Share                            | `Az.DataShare`                          | [![DataShare]][DataShareGallery]
-Dedicated HSM                         | `Az.DedicatedHsm`                       | [![DedicatedHsm]][DedicatedHsmGallery]
-Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery]
-Windows Virtual Desktop               | `Az.DesktopVirtualization`              | [![DesktopVirtualization]][DesktopVirtualizationGallery]
-Device Provisioning Services          | `Az.DeviceProvisioningServices`         | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery]
-Device Update                         | `Az.DeviceUpdate`                       | [![DeviceUpdate]][DeviceUpdateGallery]
-Dev Spaces                            | `Az.DevSpaces`                          | [![DevSpaces]][DevSpacesGallery]
-DevTest Labs                          | `Az.DevTestLabs`                        | [![DevTestLabs]][DevTestLabsGallery]
-Digital Twins                         | `Az.DigitalTwins`                       | [![DigitalTwins]][DigitalTwinsGallery]
-Disk Pool                             | `Az.DiskPool`                           | [![DiskPool]][DiskPoolGallery]
-DNS                                   | `Az.Dns`                                | [![Dns]][DnsGallery]
-DnsResolver                           | `Az.DnsResolver`                        | [![DnsResolver]][DnsResolverGallery]
-DynatraceObservability                | `Az.DynatraceObservability`             | [![DynatraceObservability]][DynatraceObservabilityGallery]
-Stack Edge Order                      | `Az.EdgeOrder`                          | [![EdgeOrder]][EdgeOrderGallery]
-Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
-ElasticSan on Azure                   | `Az.ElasticSan`                         | [![ElasticSan]][ElasticSanGallery]
-Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
-Event Hubs                            | `Az.EventHub`                           | [![EventHub]][EventHubGallery]
-Fluid Relay                           | `Az.FluidRelay`                         | [![FluidRelay]][FluidRelayGallery]
-Front Door                            | `Az.FrontDoor`                          | [![FrontDoor]][FrontDoorGallery]
-Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery]
-Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery]
-SAP HANA on Azure                     | `Az.HanaOnAzure`                        | [![HanaOnAzure]][HanaOnAzureGallery]
-HDInsight                             | `Az.HDInsight`                          | [![HDInsight]][HDInsightGallery]
-HealthBot                             | `Az.HealthBot`                          | [![HealthBot]][HealthBotGallery]
-API for FHIR                          | `Az.HealthcareApis`                     | [![HealthcareApis]][HealthcareApisGallery]
-HPC Cache                             | `Az.HPCCache`                           | [![HPCCache]][HPCCacheGallery]
-Image Builder                         | `Az.ImageBuilder`                       | [![ImageBuilder]][ImageBuilderGallery]
-Import/Export                         | `Az.ImportExport`                       | [![ImportExport]][ImportExportGallery]
-IoT Central                           | `Az.IotCentral`                         | [![IotCentral]][IotCentralGallery]
-IoT Hub                               | `Az.IotHub`                             | [![IotHub]][IotHubGallery]
-Key Vault                             | `Az.KeyVault`                           | [![KeyVault]][KeyVaultGallery]
-Kubernetes Configuration              | `Az.KubernetesConfiguration`            | [![KubernetesConfiguration]][KubernetesConfigurationGallery]
-Kusto                                 | `Az.Kusto`                              | [![Kusto]][KustoGallery]
-Logic App                             | `Az.LogicApp`                           | [![LogicApp]][LogicAppGallery]
-Logz.io                               | `Az.Logz`                               | [![Logz]][LogzGallery]
-Machine Learning                      | `Az.MachineLearning`                    | [![MachineLearning]][MachineLearningGallery]
-Machine Learning Services             | `Az.MachineLearningServices`            | [![MachineLearningServices]][MachineLearningServicesGallery]
-Maintenance                           | `Az.Maintenance`                        | [![Maintenance]][MaintenanceGallery]
-Managed Service Identity              | `Az.ManagedServiceIdentity`             | [![ManagedServiceIdentity]][ManagedServiceIdentityGallery]
-Managed Services                      | `Az.ManagedServices`                    | [![ManagedServices]][ManagedServicesGallery]
-Management Partner                    | `Az.ManagementPartner`                  | [![ManagementPartner]][ManagementPartnerGallery]
-Maps                                  | `Az.Maps`                               | [![Maps]][MapsGallery]
-Database for MariaDB                  | `Az.MariaDb`                            | [![MariaDb]][MariaDbGallery]
-Marketplace                           | `Az.Marketplace`                        | [![Marketplace]][MarketplaceGallery]
-Marketplace Ordering                  | `Az.MarketplaceOrdering`                | [![MarketplaceOrdering]][MarketplaceOrderingGallery]
-Media                                 | `Az.Media`                              | [![Media]][MediaGallery]
-Migrate                               | `Az.Migrate`                            | [![Migrate]][MigrateGallery]
-Mixed Reality                         | `Az.MixedReality`                       | [![MixedReality]][MixedRealityGallery]
-Mobile Network                        | `Az.MobileNetwork`                      | [![MobileNetwork]][MobileNetworkGallery]
-Monitor                               | `Az.Monitor`                            | [![Monitor]][MonitorGallery]
-Monitoring Solutions                  | `Az.MonitoringSolutions`                | [![MonitoringSolutions]][MonitoringSolutionsGallery]
-Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery]
-NetApp Files                          | `Az.NetAppFiles`                        | [![NetAppFiles]][NetAppFilesGallery]
-Network                               | `Az.Network`                            | [![Network]][NetworkGallery]
-NetworkFunction                       | `Az.NetworkFunction`                    | [![NetworkFunction]][NetworkFunctionGallery]
-Nginx                                 | `Az.Nginx`                              | [![Nginx]][NginxGallery]
-Notification Hubs                     | `Az.NotificationHubs`                   | [![NotificationHubs]][NotificationHubsGallery]
-Operational Insights                  | `Az.OperationalInsights`                | [![OperationalInsights]][OperationalInsightsGallery]
-Orbital                               | `Az.Orbital`                            | [![Orbital]][OrbitalGallery]
-Virtual Network peering               | `Az.Peering`                            | [![Peering]][PeeringGallery]
-Policy Insights                       | `Az.PolicyInsights`                     | [![PolicyInsights]][PolicyInsightsGallery]
-Portal                                | `Az.Portal`                             | [![Portal]][PortalGallery]
-Database for PostgreSQL               | `Az.PostgreSql`                         | [![PostgreSql]][PostgreSqlGallery]
-Power BI Embedded                     | `Az.PowerBIEmbedded`                    | [![PowerBIEmbedded]][PowerBIEmbeddedGallery]
-Private Dns                           | `Az.PrivateDns`                         | [![PrivateDns]][PrivateDnsGallery]
-Provider Hub                          | `Az.ProviderHub`                        | [![ProviderHub]][ProviderHubGallery]
-Purview                               | `Az.Purview`                            | [![Purview]][PurviewGallery]
-Quota                                 | `Az.Quota`                              | [![Quota]][QuotaGallery]
-Recovery Services                     | `Az.RecoveryServices`                   | [![RecoveryServices]][RecoveryServicesGallery]
-Redis Cache                           | `Az.RedisCache`                         | [![RedisCache]][RedisCacheGallery]
-Redis Enterprise Cache                | `Az.RedisEnterpriseCache`               | [![RedisEnterpriseCache]][RedisEnterpriseCacheGallery]
-Relay                                 | `Az.Relay`                              | [![Relay]][RelayGallery]
-Reservations                          | `Az.Reservations`                       | [![Reservations]][ReservationsGallery]
-Resource Graph                        | `Az.ResourceGraph`                      | [![ResourceGraph]][ResourceGraphGallery]
-Resource Mover                        | `Az.ResourceMover`                      | [![ResourceMover]][ResourceMoverGallery]
-Resources                             | `Az.Resources`                          | [![Resources]][ResourcesGallery]
-Search                                | `Az.Search`                             | [![Search]][SearchGallery]
-Security                              | `Az.Security`                           | [![Security]][SecurityGallery]
-Sentinel (SecurityInsights)           | `Az.SecurityInsights`                   | [![SecurityInsights]][SecurityInsightsGallery]
-Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery]
-Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
-Service Linker                        | `Az.ServiceLinker`                      | [![ServiceLinker]][ServiceLinkerGallery]
-SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
-SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery]
-SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
-SQL Server on Virtual Machines        | `Az.SqlVirtualMachine`                  | [![SqlVirtualMachine]][SqlVirtualMachineGallery]
-SSH                                   | `Az.Ssh`                                | [![Ssh]][SshGallery]
-Stack HCI                             | `Az.StackHCI`                           | [![StackHCI]][StackHCIGallery]
-Storage                               | `Az.Storage`                            | [![Storage]][StorageGallery]
-Storage Mover                         | `Az.StorageMover`                       | [![StorageMover]][StorageMoverGallery]
-File Sync                             | `Az.StorageSync`                        | [![StorageSync]][StorageSyncGallery]
-Stream Analytics                      | `Az.StreamAnalytics`                    | [![StreamAnalytics]][StreamAnalyticsGallery]
-Subscription                          | `Az.Subscription`                       | [![Subscription]][SubscriptionGallery]
-Support                               | `Az.Support`                            | [![Support]][SupportGallery]
-Synapse Analytics                     | `Az.Synapse`                            | [![Synapse]][SynapseGallery]
-Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery]
-Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery]
-Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
-Voice Services                        | `Az.VoiceServices`                      | [![VoiceServices]][VMwareGallery]
-Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
-Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
+Azure Service                         | Module Name                             | PowerShell Gallery Link       | Changelog reference
+------------------------------------- | --------------------------------------- | -----------------------       | -----------------
+Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]  | [Changelog](../src/Accounts/Accounts/ChangeLog.md)
+ADDomainServices                      | `Az.ADDomainServices`                   | [![ADDomainServices]][ADDomainServicesGallery] | [Changelog](../src/ADDomainServices/ChangeLog.md)
+Advisor                               | `Az.Advisor`                            | [![Advisor]][AdvisorGallery] | [Changelog](../src/Advisor/ChangeLog.md)
+Kubernetes Service                    | `Az.Aks`                                | [![Aks]][AksGallery] | [Changelog](../src/Aks/Aks/ChangeLog.md)
+Alert Management                      | `Az.AlertsManagement`                   | [![AlertsManagement]][AlertsManagementGallery] | [Changelog](../src/AlertsManagement/AlertsManagement/ChangeLog.md)
+Analysis Services                     | `Az.AnalysisServices`                   | [![AnalysisServices]][AnalysisServicesGallery] | [Changelog](../src/AnalysisServices/AnalysisServices/ChangeLog.md)
+API Management                        | `Az.ApiManagement`                      | [![ApiManagement]][ApiManagementGallery] | [Changelog](../src/ApiManagement/ApiManagement/ChangeLog.md)
+Container Apps                        | `Az.App`                                | [![App]][AppGallery] | [Changelog](../src/App/ChangeLog.md)
+App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery] | [Changelog](../src/AppConfiguration/AppConfiguration/ChangeLog.md)
+Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery] | [Changelog](../src/ApplicationInsights/ChangeLog.md)
+Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery] | [Changelog](../src/Attestation/Attestation/ChangeLog.md)
+Automanage                            | `Az.Automanage`                         | [![Automanage]][AutomanageGallery] | [Changelog](../src/Automanage/ChangeLog.md)
+Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery] | [Changelog](../src/Automation/Automation/ChangeLog.md)
+BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery] | [Changelog](../src/BareMetal/ChangeLog.md)
+Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery] | [Changelog](../src/Batch/Batch/ChangeLog.md)
+Billing                               | `Az.Billing`                            | [![Billing]][BillingGallery] | [Changelog](../src/Billing/Billing/ChangeLog.md)
+Blueprints                            | `Az.Blueprint`                          | [![Blueprint]][BlueprintGallery] | [Changelog](../src/Blueprint/Blueprint/ChangeLog.md)
+BotService                            | `Az.BotService`                         | [![BotService]][BotServiceGallery] | [Changelog](../src/BotService/ChangeLog.md)
+Content Delivery Network              | `Az.Cdn`                                | [![Cdn]][CdnGallery] | [Changelog](../src/Cdn/ChangeLog.md)
+Change Analysis                       | `Az.ChangeAnalysis`                     | [![ChangeAnalysis]][ChangeAnalysisGallery] | [Changelog](../src/ChangeAnalysis/ChangeLog.md)
+Cloud Service                         | `Az.CloudService`                       | [![CloudService]][CloudServiceGallery] | [Changelog](../src/CloudService/ChangeLog.md)
+Cognitive Services                    | `Az.CognitiveServices`                  | [![CognitiveServices]][CognitiveServicesGallery] | [Changelog](../src/CognitiveServices/CognitiveServices/ChangeLog.md)
+Communication                         | `Az.Communication`                      | [![Communication]][CommunicationGallery] | [Changelog](../src/Communication/ChangeLog.md)
+Compute                               | `Az.Compute`                            | [![Compute]][ComputeGallery] | [Changelog](../src/Compute/Compute/ChangeLog.md)
+ConfidentialLedger                    | `Az.ConfidentialLedger`                 | [![ConfidentialLedger]][ConfidentialLedgerGallery] | [Changelog](../src/ConfidentialLedger/ChangeLog.md)
+Confluent                             | `Az.Confluent`                          | [![Confluent]][ConfluentGallery] | [Changelog](../src/Confluent/ChangeLog.md)
+Connected Kubernetes                  | `Az.ConnectedKubernetes`                | [![ConnectedKubernetes]][ConnectedKubernetesGallery] | [Changelog](../src/ConnectedKubernetes/ChangeLog.md)
+Connected Machine                     | `Az.ConnectedMachine`                   | [![ConnectedMachine]][ConnectedMachineGallery] | [Changelog](../src/ConnectedMachine/ChangeLog.md)
+ConnectedNetwork                      | `Az.ConnectedNetwork`                   | [![ConnectedNetwork]][ConnectedNetworkGallery] | [Changelog](../src/ConnectedNetwork/ChangeLog.md)
+Container Instance                    | `Az.ContainerInstance`                  | [![ContainerInstance]][ContainerInstanceGallery] | [Changelog](../src/ContainerInstance/ChangeLog.md)
+Container Registry                    | `Az.ContainerRegistry`                  | [![ContainerRegistry]][ContainerRegistryGallery] | [Changelog](../src/ContainerRegistry/ContainerRegistry/ChangeLog.md)
+Cosmos DB                             | `Az.CosmosDB`                           | [![CosmosDB]][CosmosDBGallery] | [Changelog](../src/CosmosDB/CosmosDB/ChangeLog.md)
+Cost Management                       | `Az.CostManagement`                     | [![CostManagement]][CostManagementGallery] | [Changelog](../src/CostManagement/ChangeLog.md)
+Custom Location                       | `Az.CustomLocation`                     | [![CustomLocation]][CustomLocationGallery] | [Changelog](../src/CustomLocation/ChangeLog.md)
+Custom Resource Providers             | `Az.CustomProviders`                    | [![CustomProviders]][CustomProvidersGallery] | [Changelog](../src/CustomProviders/ChangeLog.md)
+Dashboard                             | `Az.Dashboard`                          | [![Dashboard]][DashboardGallery] | [Changelog](../src/Dashboard/ChangeLog.md)
+Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery] | [Changelog](../src/DataBox/ChangeLog.md)
+Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery] | [Changelog](../src/DataBoxEdge/DataBoxEdge/ChangeLog.md)
+Databricks                            | `Az.Databricks`                         | [![Databricks]][DatabricksGallery] | [Changelog](../src/Databricks/ChangeLog.md)
+Datadog                               | `Az.Datadog`                            | [![Datadog]][DatadogGallery] | [Changelog](../src/Datadog/ChangeLog.md)
+Data Factory                          | `Az.DataFactory`                        | [![DataFactory]][DataFactoryGallery] | [Changelog](../src/DataFactory/DataFactory/ChangeLog.md)
+Data Lake Analytics                   | `Az.DataLakeAnalytics`                  | [![DataLakeAnalytics]][DataLakeAnalyticsGallery] | [Changelog](../src/DataLakeAnalytics/DataLakeAnalytics/ChangeLog.md)
+Data Lake Store                       | `Az.DataLakeStore`                      | [![DataLakeStore]][DataLakeStoreGallery] | [Changelog](../src/DataLakeStore/DataLakeStore/ChangeLog.md)
+Data Migration                        | `Az.DataMigration`                      | [![DataMigration]][DataMigrationGallery] | [Changelog](../src/DataMigration/DataMigration/ChangeLog.md)
+Data Protection                       | `Az.DataProtection`                     | [![DataProtection]][DataProtectionGallery] | [Changelog](../src/DataProtection/ChangeLog.md)
+Data Share                            | `Az.DataShare`                          | [![DataShare]][DataShareGallery] | [Changelog](../src/DataShare/DataShare/ChangeLog.md)
+Dedicated HSM                         | `Az.DedicatedHsm`                       | [![DedicatedHsm]][DedicatedHsmGallery] | [Changelog](../src/DedicatedHsm/ChangeLog.md)
+Deployment Manager                    | `Az.DeploymentManager`                  | [![DeploymentManager]][DeploymentManagerGallery] | [Changelog](../src/DeploymentManager/DeploymentManager/ChangeLog.md)
+Windows Virtual Desktop               | `Az.DesktopVirtualization`              | [![DesktopVirtualization]][DesktopVirtualizationGallery] | [Changelog](../src/DesktopVirtualization/ChangeLog.md)
+Device Provisioning Services          | `Az.DeviceProvisioningServices`         | [![DeviceProvisioningServices]][DeviceProvisioningServicesGallery] | [Changelog](../src/DeviceProvisioningServices/DeviceProvisioningServices/ChangeLog.md)
+Device Update                         | `Az.DeviceUpdate`                       | [![DeviceUpdate]][DeviceUpdateGallery] | [Changelog](../src/DeviceUpdate/ChangeLog.md)
+Dev Spaces                            | `Az.DevSpaces`                          | [![DevSpaces]][DevSpacesGallery] | [Changelog](../src/DevSpaces/DevSpaces/ChangeLog.md)
+DevTest Labs                          | `Az.DevTestLabs`                        | [![DevTestLabs]][DevTestLabsGallery] | [Changelog](../src/DevTestLabs/DevTestLabs/ChangeLog.md)
+Digital Twins                         | `Az.DigitalTwins`                       | [![DigitalTwins]][DigitalTwinsGallery] | [Changelog](../src/DigitalTwins/ChangeLog.md)
+Disk Pool                             | `Az.DiskPool`                           | [![DiskPool]][DiskPoolGallery] | [Changelog](../src/DiskPool/ChangeLog.md)
+DNS                                   | `Az.Dns`                                | [![Dns]][DnsGallery] | [Changelog](../src/Dns/Dns/ChangeLog.md)
+DnsResolver                           | `Az.DnsResolver`                        | [![DnsResolver]][DnsResolverGallery] | [Changelog](../src/DnsResolver/ChangeLog.md)
+DynatraceObservability                | `Az.DynatraceObservability`             | [![DynatraceObservability]][DynatraceObservabilityGallery] | [Changelog](../src/DynatraceObservability/ChangeLog.md)
+Stack Edge Order                      | `Az.EdgeOrder`                          | [![EdgeOrder]][EdgeOrderGallery] | [Changelog](../src/EdgeOrder/ChangeLog.md)
+Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery] | [Changelog](../src/Elastic/ChangeLog.md)
+ElasticSan on Azure                   | `Az.ElasticSan`                         | [![ElasticSan]][ElasticSanGallery] | [Changelog](../src/ElasticSan/ChangeLog.md)
+Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery] | [Changelog](../src/EventGrid/EventGrid/ChangeLog.md)
+Event Hubs                            | `Az.EventHub`                           | [![EventHub]][EventHubGallery] | [Changelog](../src/EventHub//EventHub/ChangeLog.md)
+Fluid Relay                           | `Az.FluidRelay`                         | [![FluidRelay]][FluidRelayGallery] | [Changelog](../src/FluidRelay/ChangeLog.md)
+Front Door                            | `Az.FrontDoor`                          | [![FrontDoor]][FrontDoorGallery] | [Changelog](../src/FrontDoor//FrontDoor/ChangeLog.md)
+Functions                             | `Az.Functions`                          | [![Functions]][FunctionsGallery] | [Changelog](../src/Functions/ChangeLog.md)
+Guest Configuration                   | `Az.GuestConfiguration`                 | [![GuestConfiguration]][GuestConfigurationGallery] | [Changelog](../src/GuestConfiguration/ChangeLog.md)
+SAP HANA on Azure                     | `Az.HanaOnAzure`                        | [![HanaOnAzure]][HanaOnAzureGallery] | [Changelog](../src/HanaOnAzure/ChangeLog.md)
+HDInsight                             | `Az.HDInsight`                          | [![HDInsight]][HDInsightGallery] | [Changelog](../src/HDInsight//HDInsight/ChangeLog.md)
+HealthBot                             | `Az.HealthBot`                          | [![HealthBot]][HealthBotGallery] | [Changelog](../src/HealthBot/ChangeLog.md)
+API for FHIR                          | `Az.HealthcareApis`                     | [![HealthcareApis]][HealthcareApisGallery] | [Changelog](../src/HealthcareApis/ChangeLog.md)
+HPC Cache                             | `Az.HPCCache`                           | [![HPCCache]][HPCCacheGallery] | [Changelog](../src/HPCCache//HPCCache/ChangeLog.md)
+Image Builder                         | `Az.ImageBuilder`                       | [![ImageBuilder]][ImageBuilderGallery] | [Changelog](../src/ImageBuilder/ChangeLog.md)
+Import/Export                         | `Az.ImportExport`                       | [![ImportExport]][ImportExportGallery] | [Changelog](../src/ImportExport/ChangeLog.md)
+IoT Central                           | `Az.IotCentral`                         | [![IotCentral]][IotCentralGallery] | [Changelog](../src/IotCentral//IotCentral/ChangeLog.md)
+IoT Hub                               | `Az.IotHub`                             | [![IotHub]][IotHubGallery] | [Changelog](../src/IotHub//IotHub/ChangeLog.md)
+Key Vault                             | `Az.KeyVault`                           | [![KeyVault]][KeyVaultGallery] | [Changelog](../src/KeyVault//KeyVault/ChangeLog.md)
+Kubernetes Configuration              | `Az.KubernetesConfiguration`            | [![KubernetesConfiguration]][KubernetesConfigurationGallery] | [Changelog](../src/KubernetesConfiguration/ChangeLog.md)
+Kusto                                 | `Az.Kusto`                              | [![Kusto]][KustoGallery] | [Changelog](../src/Kusto/ChangeLog.md)
+Logic App                             | `Az.LogicApp`                           | [![LogicApp]][LogicAppGallery] | [Changelog](../src/LogicApp//LogicApp/ChangeLog.md)
+Logz.io                               | `Az.Logz`                               | [![Logz]][LogzGallery] | [Changelog](../src/Logz/ChangeLog.md)
+Machine Learning                      | `Az.MachineLearning`                    | [![MachineLearning]][MachineLearningGallery] | [Changelog](../src/MachineLearning//MachineLearning/ChangeLog.md)
+Machine Learning Services             | `Az.MachineLearningServices`            | [![MachineLearningServices]][MachineLearningServicesGallery] | [Changelog](../src/MachineLearningServices/ChangeLog.md)
+Maintenance                           | `Az.Maintenance`                        | [![Maintenance]][MaintenanceGallery] | [Changelog](../src/Maintenance//Maintenance/ChangeLog.md)
+Managed Service Identity              | `Az.ManagedServiceIdentity`             | [![ManagedServiceIdentity]][ManagedServiceIdentityGallery] | [Changelog](../src/ManagedServiceIdentity/ChangeLog.md)
+Managed Services                      | `Az.ManagedServices`                    | [![ManagedServices]][ManagedServicesGallery] | [Changelog](../src/ManagedServices/ChangeLog.md)
+Management Partner                    | `Az.ManagementPartner`                  | [![ManagementPartner]][ManagementPartnerGallery] | [Changelog](../src/ManagementPartner//ManagementPartner/ChangeLog.md)
+Maps                                  | `Az.Maps`                               | [![Maps]][MapsGallery] | [Changelog](../src/Maps/ChangeLog.md)
+Database for MariaDB                  | `Az.MariaDb`                            | [![MariaDb]][MariaDbGallery] | [Changelog](../src/MariaDb/ChangeLog.md)
+Marketplace                           | `Az.Marketplace`                        | [![Marketplace]][MarketplaceGallery] | [Changelog](../src/Marketplace//Marketplace/ChangeLog.md)
+Marketplace Ordering                  | `Az.MarketplaceOrdering`                | [![MarketplaceOrdering]][MarketplaceOrderingGallery] | [Changelog](../src/MarketplaceOrdering/ChangeLog.md)
+Media                                 | `Az.Media`                              | [![Media]][MediaGallery] | [Changelog](../src/Media//Media/ChangeLog.md)
+Migrate                               | `Az.Migrate`                            | [![Migrate]][MigrateGallery] | [Changelog](../src/Migrate/ChangeLog.md)
+Mixed Reality                         | `Az.MixedReality`                       | [![MixedReality]][MixedRealityGallery] | [Changelog](../src/MixedReality/ChangeLog.md)
+Mobile Network                        | `Az.MobileNetwork`                      | [![MobileNetwork]][MobileNetworkGallery] | [Changelog](../src/MobileNetwork/ChangeLog.md)
+Monitor                               | `Az.Monitor`                            | [![Monitor]][MonitorGallery] | [Changelog](../src/Monitor//Monitor/ChangeLog.md)
+Monitoring Solutions                  | `Az.MonitoringSolutions`                | [![MonitoringSolutions]][MonitoringSolutionsGallery] | [Changelog](../src/MonitoringSolutions/ChangeLog.md)
+Database for MySQL                    | `Az.MySql`                              | [![MySql]][MySqlGallery] | [Changelog](../src/MySql/ChangeLog.md)
+NetApp Files                          | `Az.NetAppFiles`                        | [![NetAppFiles]][NetAppFilesGallery] | [Changelog](../src/NetAppFiles//NetAppFiles/ChangeLog.md)
+Network                               | `Az.Network`                            | [![Network]][NetworkGallery] | [Changelog](../src/Network//Network/ChangeLog.md)
+NetworkFunction                       | `Az.NetworkFunction`                    | [![NetworkFunction]][NetworkFunctionGallery] | [Changelog](../src/NetworkFunction/ChangeLog.md)
+Nginx                                 | `Az.Nginx`                              | [![Nginx]][NginxGallery] | [Changelog](../src/Nginx/ChangeLog.md)
+Notification Hubs                     | `Az.NotificationHubs`                   | [![NotificationHubs]][NotificationHubsGallery] | [Changelog](../src/NotificationHubs//NotificationHubs/ChangeLog.md)
+Operational Insights                  | `Az.OperationalInsights`                | [![OperationalInsights]][OperationalInsightsGallery] | [Changelog](../src/OperationalInsights//OperationalInsights/ChangeLog.md)
+Orbital                               | `Az.Orbital`                            | [![Orbital]][OrbitalGallery] | [Changelog](../src/Orbital/ChangeLog.md)
+Virtual Network peering               | `Az.Peering`                            | [![Peering]][PeeringGallery] | [Changelog](../src/Peering/ChangeLog.md)
+Policy Insights                       | `Az.PolicyInsights`                     | [![PolicyInsights]][PolicyInsightsGallery] | [Changelog](../src/PolicyInsights//PolicyInsights/ChangeLog.md)
+Portal                                | `Az.Portal`                             | [![Portal]][PortalGallery] | [Changelog](../src/Portal/ChangeLog.md)
+Database for PostgreSQL               | `Az.PostgreSql`                         | [![PostgreSql]][PostgreSqlGallery] | [Changelog](../src/PostgreSql/ChangeLog.md)
+Power BI Embedded                     | `Az.PowerBIEmbedded`                    | [![PowerBIEmbedded]][PowerBIEmbeddedGallery] | [Changelog](../src/PowerBIEmbedded//PowerBIEmbedded/ChangeLog.md)
+Private Dns                           | `Az.PrivateDns`                         | [![PrivateDns]][PrivateDnsGallery] | [Changelog](../src/PrivateDns//PrivateDns/ChangeLog.md)
+Provider Hub                          | `Az.ProviderHub`                        | [![ProviderHub]][ProviderHubGallery] | [Changelog](../src/ProviderHub/ChangeLog.md)
+Purview                               | `Az.Purview`                            | [![Purview]][PurviewGallery] | [Changelog](../src/Purview//Purview/ChangeLog.md)
+Quota                                 | `Az.Quota`                              | [![Quota]][QuotaGallery] | [Changelog](../src/Quota/ChangeLog.md)
+Recovery Services                     | `Az.RecoveryServices`                   | [![RecoveryServices]][RecoveryServicesGallery] | [Changelog](../src/RecoveryServices//RecoveryServices/ChangeLog.md)
+Redis Cache                           | `Az.RedisCache`                         | [![RedisCache]][RedisCacheGallery] | [Changelog](../src/RedisCache//RedisCache/ChangeLog.md)
+Redis Enterprise Cache                | `Az.RedisEnterpriseCache`               | [![RedisEnterpriseCache]][RedisEnterpriseCacheGallery] | [Changelog](../src/RedisEnterpriseCache/ChangeLog.md)
+Relay                                 | `Az.Relay`                              | [![Relay]][RelayGallery] | [Changelog](../src/Relay//Relay/ChangeLog.md)
+Reservations                          | `Az.Reservations`                       | [![Reservations]][ReservationsGallery] | [Changelog](../src/Reservations/ChangeLog.md)
+Resource Graph                        | `Az.ResourceGraph`                      | [![ResourceGraph]][ResourceGraphGallery] | [Changelog](../src/ResourceGraph//ResourceGraph/ChangeLog.md)
+Resource Mover                        | `Az.ResourceMover`                      | [![ResourceMover]][ResourceMoverGallery] | [Changelog](../src/ResourceMover/ChangeLog.md)
+Resources                             | `Az.Resources`                          | [![Resources]][ResourcesGallery] | [Changelog](../src/Resources//Resources/ChangeLog.md)
+Search                                | `Az.Search`                             | [![Search]][SearchGallery] | [Changelog](../src/Search//Search/ChangeLog.md)
+Security                              | `Az.Security`                           | [![Security]][SecurityGallery] | [Changelog](../src/Security//Security/ChangeLog.md)
+Sentinel (SecurityInsights)           | `Az.SecurityInsights`                   | [![SecurityInsights]][SecurityInsightsGallery] | [Changelog](../src/SecurityInsights/ChangeLog.md)
+Service Bus                           | `Az.ServiceBus`                         | [![ServiceBus]][ServiceBusGallery] | [Changelog](../src/ServiceBus//ServiceBus/ChangeLog.md)
+Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery] | [Changelog](../src/ServiceFabric//ServiceFabric/ChangeLog.md)
+Service Linker                        | `Az.ServiceLinker`                      | [![ServiceLinker]][ServiceLinkerGallery] | [Changelog](../src/ServiceLinker/ChangeLog.md)
+SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery] | [Changelog](../src/SignalR//SignalR/ChangeLog.md)
+SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery] | [Changelog](../src/SpringCloud/ChangeLog.md)
+SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery] | [Changelog](../src/Sql//Sql/ChangeLog.md)
+SQL Server on Virtual Machines        | `Az.SqlVirtualMachine`                  | [![SqlVirtualMachine]][SqlVirtualMachineGallery] | [Changelog](../src/SqlVirtualMachine//SqlVirtualMachine/ChangeLog.md)
+SSH                                   | `Az.Ssh`                                | [![Ssh]][SshGallery] | [Changelog](../src/Ssh//Ssh/ChangeLog.md)
+Stack HCI                             | `Az.StackHCI`                           | [![StackHCI]][StackHCIGallery] | [Changelog](../src/StackHCI/ChangeLog.md)
+Storage                               | `Az.Storage`                            | [![Storage]][StorageGallery] | [Changelog](../src/Storage//Storage/ChangeLog.md)
+Storage Mover                         | `Az.StorageMover`                       | [![StorageMover]][StorageMoverGallery] | [Changelog](../src/StorageMover/ChangeLog.md)
+File Sync                             | `Az.StorageSync`                        | [![StorageSync]][StorageSyncGallery] | [Changelog](../src/StorageSync//StorageSync/ChangeLog.md)
+Stream Analytics                      | `Az.StreamAnalytics`                    | [![StreamAnalytics]][StreamAnalyticsGallery] | [Changelog](../src/StreamAnalytics/ChangeLog.md)
+Subscription                          | `Az.Subscription`                       | [![Subscription]][SubscriptionGallery] | [Changelog](../src/Subscription//Subscription/ChangeLog.md)
+Support                               | `Az.Support`                            | [![Support]][SupportGallery] | [Changelog](../src/Support//Support/ChangeLog.md)
+Synapse Analytics                     | `Az.Synapse`                            | [![Synapse]][SynapseGallery] | [Changelog](../src/Synapse//Synapse/ChangeLog.md)
+Time Series Insights                  | `Az.TimeSeriesInsights`                 | [![TimeSeriesInsights]][TimeSeriesInsightsGallery] | [Changelog](../src/TimeSeriesInsights/ChangeLog.md)
+Traffic Manager                       | `Az.TrafficManager`                     | [![TrafficManager]][TrafficManagerGallery] | [Changelog](../src/TrafficManager//TrafficManager/ChangeLog.md)
+Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery] | [Changelog](../src/VMware/ChangeLog.md)
+Voice Services                        | `Az.VoiceServices`                      | [![VoiceServices]][VMwareGallery] | [Changelog](../src/VoiceServices/ChangeLog.md)
+Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery] | [Changelog](../src/Websites//Websites/ChangeLog.md)
+Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery] | [Changelog](../src/WindowsIotServices/ChangeLog.md)
+
 
 <!-- References -->
 
