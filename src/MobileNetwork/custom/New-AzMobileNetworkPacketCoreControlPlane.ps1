@@ -267,7 +267,7 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroup $PSBoundParameters.ResourceGroup -Name $PSBoundParameters.Name
+            $dataBase = Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName $PSBoundParameters.ResourceGroup -Name $PSBoundParameters.Name
 
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
