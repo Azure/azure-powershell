@@ -149,48 +149,21 @@ function Invoke-AzReservationReturn {
     
     process {
         try {
-            $returnParam = $null
-            # Use request body directly
-            if (($PSCmdlet.ParameterSetName -eq 'Post') -or ($PSCmdlet.ParameterSetName -eq 'PostViaIdentity')) { 
-                $returnParam = ${Body}
+            $PSBoundParameters['AsJob'] = $true
+            $response = Az.Reservations.internal\Invoke-AzReservationReturn @PSBoundParameters
 
-            } elseif(($PSCmdlet.ParameterSetName -eq 'PostExpanded') -or ($PSCmdlet.ParameterSetName -eq 'PostViaIdentityExpanded')) {
-                $returnParam = @{
-                    ReservationToReturnReservationId = ${ReservationToReturnReservationId}
-                    ReservationToReturnQuantity = ${ReservationToReturnQuantity}
-                    Scope = ${Scope}
-                    ReturnReason = ${ReturnReason}
-                    SessionId = ${SessionId}
-                }
-            } else {
-                Write-Error 'Cannot find expected input parameters, please try again'
-                return
-            }
+            # Remove extra parameters for Get-AzReservationOrder
+            $null = $PSBoundParameters.Remove('Body')
+            $null = $PSBoundParameters.Remove('ReservationToReturnReservationId')
+            $null = $PSBoundParameters.Remove('ReservationToReturnQuantity')
+            $null = $PSBoundParameters.Remove('SessionId')
+            $null = $PSBoundParameters.Remove('Scope')
+            $null = $PSBoundParameters.Remove('ReturnReason')
+            $null = $PSBoundParameters.Remove('AsJob')
 
-            $PSBoundReturnParam = @{
-                Body = $returnParam
-                AsJob = $True
-            }
-            
-            if (($PSCmdlet.ParameterSetName -eq 'PostViaIdentity') -or ($PSCmdlet.ParameterSetName -eq 'PostViaIdentityExpanded')) {
-                $PSBoundReturnParam['InputObject'] = $InputObject
-                $response = Az.Reservations.internal\Invoke-AzReservationReturn @PSBoundReturnParam
-
-                $PSBoundGetParam = @{ InputObject = $InputObject }
-                return Get-AzReservationOrder @PSBoundGetParam
-                
-            } elseif (($PSCmdlet.ParameterSetName -eq 'Post') -or ($PSCmdlet.ParameterSetName -eq 'PostExpanded')){
-                $PSBoundReturnParam['ReservationOrderId'] = $ReservationOrderId
-                $response = Az.Reservations.internal\Invoke-AzReservationReturn @PSBoundReturnParam
-
-                $PSBoundGetParam = @{ ReservationOrderId = $ReservationOrderId }
-                return Get-AzReservationOrder @PSBoundGetParam
-            } else {
-                Write-Error 'Cannot find expected input parameters, please try again'
-                return
-            }
-          } catch {
-              throw
-          }
+            return Get-AzReservationOrder @PSBoundParameters
+        } catch {
+            throw
+        }
     }
 }
