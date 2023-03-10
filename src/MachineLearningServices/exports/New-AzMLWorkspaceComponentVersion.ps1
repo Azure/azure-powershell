@@ -77,7 +77,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionComponentSpec]))]
     [System.Collections.Hashtable]
-    # Defines Component definition details.<see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    # Defines Component definition details.<see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     ${ComponentSpec},
 
     [Parameter()]

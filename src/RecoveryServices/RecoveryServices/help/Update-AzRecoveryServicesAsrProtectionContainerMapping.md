@@ -48,7 +48,7 @@ Start the operation to disable enable auto update for container.
 ## PARAMETERS
 
 ### -AutomationAccountId
-Specifies the automation accountId used for auto udpate.
+Specifies the automation accountId used for auto update.
 
 ```yaml
 Type: System.String

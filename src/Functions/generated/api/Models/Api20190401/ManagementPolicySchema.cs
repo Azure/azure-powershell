@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
 
     /// <summary>
-    /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
     /// </summary>
     public partial class ManagementPolicySchema :
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicySchema,
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
         private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyRule[] _rule;
 
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Origin(Microsoft.Azure.PowerShell.Cmdlets.Functions.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyRule[] Rule { get => this._rule; set => this._rule = value; }
@@ -30,28 +30,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401
 
         }
     }
-    /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
     public partial interface IManagementPolicySchema :
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IJsonSerializable
     {
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
+        Description = @"The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.",
         SerializedName = @"rules",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyRule) })]
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyRule[] Rule { get; set; }
 
     }
-    /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+    /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
     internal partial interface IManagementPolicySchemaInternal
 
     {
         /// <summary>
-        /// The Storage Account ManagementPolicies Rules. See more details in: https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
+        /// The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IManagementPolicyRule[] Rule { get; set; }
 

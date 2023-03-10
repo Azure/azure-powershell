@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDataFactoryObject
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatafactoryobject
 schema: 2.0.0
 ---
 

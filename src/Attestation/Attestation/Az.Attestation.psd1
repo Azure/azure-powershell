@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Attestation service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For more information on Attestation, please visit the following: https://docs.microsoft.com/azure/attestation/'
+For more information on Attestation, please visit the following: https://learn.microsoft.com/azure/attestation/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

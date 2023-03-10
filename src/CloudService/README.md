@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the CloudService service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,13 +47,12 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: b69b3fa5c26c94aa6efe6dadb76f599c204f297b
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/stable/2021-03-01/cloudService.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServiceNetworkInterface.json
-  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServicePublicIpAddress.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/afc91d411dc6f5b8f6c6e6d5abbc46da096729e0/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/0c90b40551dfbfe6efea2e15494cbf2ef52150b4/specification/network/resource-manager/Microsoft.Network/stable/2022-07-01/cloudServiceNetworkInterface.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/0c90b40551dfbfe6efea2e15494cbf2ef52150b4/specification/network/resource-manager/Microsoft.Network/stable/2022-07-01/cloudServicePublicIpAddress.json
 
 title: CloudService
 module-version: 0.1.0
@@ -209,7 +208,7 @@ directive:
 
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
+    transform: $ = $.replace('{_frontendIPConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIPConfigurations"), out var __jsonFrontendIPConfigurations) ? If( __jsonFrontendIPConfigurations as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ILoadBalancerFrontendIPConfiguration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration.FromJson(__u) )) ))() :' + ' null' + ' :' + ' FrontendIPConfiguration;}', 'var frontendIpConfigurationJsonArray = json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray>("frontendIpConfigurations") as Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json.JsonArray;\n\t\t\t_frontendIPConfiguration = global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(frontendIpConfigurationJsonArray, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ILoadBalancerFrontendIPConfiguration) (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration.FromJson(__u) )));');
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('if ((first == \'{\' && last == \'}\') || (first == \'<\' && last == \'>\') || (first == \'[\' && last == \']\') || (first == \'"\' && last == \'"\'))\n            {','')
@@ -307,5 +306,16 @@ directive:
         properties:
           - Statuses
           - RoleInstanceStatusesSummary
+
+  # CloudService change the type to object to fix some issues in C# SDK.
+  # But they are still passed as string in HTTP request. So we keep them string.
+  - from: swagger-document
+    where: $.definitions.CloudServiceExtensionProperties.properties.settings.type
+    transform: >-
+      return "string"
+  - from: swagger-document
+    where: $.definitions.CloudServiceExtensionProperties.properties.protectedSettings.type
+    transform: >-
+      return "string"
 
 ```

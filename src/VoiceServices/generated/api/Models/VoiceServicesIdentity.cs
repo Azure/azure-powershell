@@ -19,19 +19,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
         public string CommunicationsGatewayName { get => this._communicationsGatewayName; set => this._communicationsGatewayName = value; }
 
-        /// <summary>Backing field for <see cref="ContactName" /> property.</summary>
-        private string _contactName;
-
-        /// <summary>Unique identifier for this contact</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
-        public string ContactName { get => this._contactName; set => this._contactName = value; }
-
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>The location in which uniqueness will be verified.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -71,14 +71,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
         SerializedName = @"communicationsGatewayName",
         PossibleTypes = new [] { typeof(string) })]
         string CommunicationsGatewayName { get; set; }
-        /// <summary>Unique identifier for this contact</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Unique identifier for this contact",
-        SerializedName = @"contactName",
-        PossibleTypes = new [] { typeof(string) })]
-        string ContactName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
         Required = false,
@@ -87,6 +79,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The location in which uniqueness will be verified.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The location in which uniqueness will be verified.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
         Required = false,
@@ -118,10 +118,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models
     {
         /// <summary>Unique identifier for this deployment</summary>
         string CommunicationsGatewayName { get; set; }
-        /// <summary>Unique identifier for this contact</summary>
-        string ContactName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The location in which uniqueness will be verified.</summary>
+        string Location { get; set; }
         /// <summary>The name of the resource group. The name is case insensitive.</summary>
         string ResourceGroupName { get; set; }
         /// <summary>The ID of the target subscription.</summary>

@@ -24,8 +24,8 @@ The **New-AzStorageAccountKey** cmdlet regenerates a storage key for an Azure St
 ## EXAMPLES
 
 ### Example 1: Regenerate a storage key
-```
-PS C:\>New-AzStorageAccountKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
+```powershell
+New-AzStorageAccountKey -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyName "key1"
 ```
 
 This command regenerates a storage key for the specified Storage account.

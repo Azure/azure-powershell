@@ -120,9 +120,9 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// **WARNING**: This API will be deprecated. Instead use
-        /// [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
+        /// [ListClusterUserCredentials](https://learn.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
         /// or
-        /// [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
+        /// [ListClusterAdminCredentials](https://learn.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
         /// .
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// See [Certificate
-        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation)
+        /// rotation](https://learn.microsoft.com/azure/aks/certificate-rotation)
         /// for more details about rotating managed cluster certificates.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -457,7 +457,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// agent nodes entirely, while maintaining all object and cluster
         /// state. A cluster does not accrue charges while it is stopped. See
         /// [stopping a
-        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster)
+        /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster)
         /// for more details about stopping a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// See [starting a
-        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster)
+        /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster)
         /// for more details about starting a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -512,7 +512,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <remarks>
         /// AKS will create a pod to run the command. This is primarily useful
         /// for private clusters. For more information see [AKS Run
-        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// Command](https://learn.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -736,7 +736,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// See [Certificate
-        /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation)
+        /// rotation](https://learn.microsoft.com/azure/aks/certificate-rotation)
         /// for more details about rotating managed cluster certificates.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -789,7 +789,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// agent nodes entirely, while maintaining all object and cluster
         /// state. A cluster does not accrue charges while it is stopped. See
         /// [stopping a
-        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster)
+        /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster)
         /// for more details about stopping a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// See [starting a
-        /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster)
+        /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster)
         /// for more details about starting a cluster.
         /// </remarks>
         /// <param name='resourceGroupName'>
@@ -844,7 +844,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// <remarks>
         /// AKS will create a pod to run the command. This is primarily useful
         /// for private clusters. For more information see [AKS Run
-        /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+        /// Command](https://learn.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

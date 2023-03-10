@@ -37,7 +37,7 @@ The **New-AzStorageLocalUserSshPassword** cmdlet regenerates SSH password of a s
 
 ### Example 1: Regenerate SSH password of a specified local user
 ```powershell
-PS C:\> New-AzStorageLocalUserSshPassword -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
+New-AzStorageLocalUserSshPassword -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -UserName testuser1
 ```
 
 ```output

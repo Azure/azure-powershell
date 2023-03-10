@@ -35,11 +35,11 @@ New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
 New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Standard -Location southcentralus -Tag @{k1='v1'; k2='v2'} -DisableLocalAuth
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -79,6 +79,7 @@ PARAMETER <ISbNamespace>: Description of a namespace resource.
     [KeyVersion <String>]: Version of KeyVault
     [UserAssignedIdentity <String>]: ARM ID of user Identity selected for encryption
   [MinimumTlsVersion <TlsVersion?>]: The minimum TLS version for the cluster to support, e.g. '1.2'
+  [PremiumMessagingPartition <Int32?>]: The number of partitions of a Service Bus namespace. This property is only applicable to Premium SKU namespaces. The default value is 1 and possible values are 1, 2 and 4
   [PrivateEndpointConnection <IPrivateEndpointConnection[]>]: List of private endpoint connections.
     [ConnectionState <PrivateLinkConnectionStatus?>]: Status of the connection.
     [Description <String>]: Description of the connection state.
@@ -92,7 +93,7 @@ PARAMETER <ISbNamespace>: Description of a namespace resource.
     [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
   [PublicNetworkAccess <PublicNetworkAccess?>]: This determines if traffic is allowed over public network. By default it is enabled.
   [RequireInfrastructureEncryption <Boolean?>]: Enable Infrastructure Encryption (Double Encryption)
-  [SkuCapacity <Int32?>]: The specified messaging units for the tier. For Premium tier, capacity are 1,2 and 4.
+  [SkuCapacity <Int32?>]: Messaging units for your service bus premium namespace. Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting. For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16. If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
   [SkuName <SkuName?>]: Name of this SKU.
   [SkuTier <SkuTier?>]: The billing tier of this particular SKU.
   [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
@@ -120,7 +121,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoi
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusnamespacev2
 #>
 function New-AzServiceBusNamespaceV2 {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -186,7 +187,7 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IKeyVaultProperties[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IKeyVaultProperties[]]
     # Properties of KeyVault
     # To construct, see NOTES section for KEYVAULTPROPERTY properties and create a hash table.
     ${KeyVaultProperty},
@@ -200,9 +201,17 @@ param(
     ${MinimumTlsVersion},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [System.Int32]
+    # The number of partitions of a Service Bus namespace.
+    # This property is only applicable to Premium SKU namespaces.
+    # The default value is 1 and possible values are 1, 2 and 4
+    ${PremiumMessagingPartition},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection[]]
     # List of private endpoint connections.
     # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
     ${PrivateEndpointConnection},
@@ -224,8 +233,10 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Int32]
-    # The specified messaging units for the tier.
-    # For Premium tier, capacity are 1,2 and 4.
+    # Messaging units for your service bus premium namespace.
+    # Valid capacities are {1, 2, 4, 8, 16} multiples of your properties.premiumMessagingPartitions setting.
+    # For example, If properties.premiumMessagingPartitions is 1 then possible capacity values are 1, 2, 4, 8, and 16.
+    # If properties.premiumMessagingPartitions is 4 then possible capacity values are 4, 8, 16, 32 and 64
     ${SkuCapacity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -251,7 +262,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IIdentityUserAssignedIdentities]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IIdentityUserAssignedIdentities]))]
     [System.Collections.Hashtable]
     # Properties for User Assigned Identities
     ${UserAssignedIdentity},
@@ -264,7 +275,7 @@ param(
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbNamespace]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace]
     # Description of a namespace resource.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},

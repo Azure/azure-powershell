@@ -190,6 +190,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 AzurePSDataCollectionProfile.EnvironmentVariableName,
                 new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.DisplayRegionIdentified,
+                Resources.HelpMessageOfDisplayRegionIdentified,
+                true,
+                null,
+                new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.EnableTestCoverage,

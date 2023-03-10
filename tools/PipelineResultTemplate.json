@@ -35,6 +35,18 @@
         "Details": [
         ]
     },
+    "cmdlet-diff": {
+        "PhaseName": "Cmdlet Diff Check",
+        "Order": 7,
+        "Details": [
+        ]
+    },
+    "ux": {
+        "PhaseName": "UX Metadata Check",
+        "Order": 8,
+        "Details": [
+        ]
+    },
     "test": {
         "PhaseName": "Test",
         "Order": 100,

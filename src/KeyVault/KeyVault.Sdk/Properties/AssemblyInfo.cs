@@ -9,8 +9,8 @@ using System.Resources;
 [assembly: AssemblyTitle("Microsoft Azure Key Vault Resource Management Library")]
 [assembly: AssemblyDescription("Provides key vault management capabilities for Microsoft Azure.")]
 
-[assembly: AssemblyVersion("4.9.1")]
-[assembly: AssemblyFileVersion("4.9.1")]
+[assembly: AssemblyVersion("4.9.2")]
+[assembly: AssemblyFileVersion("4.9.2")]
 [assembly: AssemblyCompany("Microsoft")]
 [assembly: AssemblyProduct("Azure .NET SDK")]
 [assembly: AssemblyCopyright("Copyright (c) Microsoft Corporation")]

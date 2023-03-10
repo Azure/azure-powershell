@@ -2,7 +2,7 @@
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
-
+    
     ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
@@ -12,7 +12,7 @@
     * Overview of change #3
     * Overview of change #4
         - Additional information about change #4
-
+    
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
@@ -21,14 +21,25 @@
 ## Upcoming Release
 * Added property 'AuthorizationStatus' to ExpressRouteCircuit
 * Added property 'BillingType' to ExpressRoutePort
-* Fixed a bug that does not enable to set Perform SNAT to Always
-* Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 * Added support for connection flushing in network security group which when enabled, re-evaluates flows when rules are updated
     - `New-AzNetworkSecurityGroup`
 * Added support for state in WAF Custom Rule
 * Added `New-AzGatewayCustomBgpIpConfigurationObject` command
 * Updated `New-AzVirtualNetworkGatewayConnection`, `Set-AzVirtualNetworkGatewayConnection` and `New-AzVpnSiteLinkConnection` to support GatewayCustomBgpIpConfiguration.
 * Updated `Reset-AzVpnGateway` to support IpConfigurationId.
+
+## Version 5.5.0
+* Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
+    - `New-AzFirewallPolicySnat`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Fixed a bug that reverts classic fw private ranges to default when doing get & set
+* Onboarded `Microsoft.Monitor/accounts` to private link cmdlets
+* Onboarded `Microsoft.DBforMySQL/flexibleServers` to private link cmdlets
+
+## Version 5.4.0
+* Fixed a bug that does not enable to set Perform SNAT to Always
+* Fixed the incorrect type of `-TotalBytesPerSession` in `New-AzNetworkWatcherPacketCapture`
 
 ## Version 5.3.0
 * Added samples for retrieving Private Link IP Configuration using 'New-AzApplicationGatewayPrivateLinkIpConfiguration' with fix [#20440]

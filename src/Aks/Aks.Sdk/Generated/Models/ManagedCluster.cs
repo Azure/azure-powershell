@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// version number. For example, upgrades between 1.14.x -) 1.15.x or
         /// 1.15.x -) 1.16.x are allowed, however 1.14.x -) 1.16.x is not
         /// allowed. See [upgrading an AKS
-        /// cluster](https://docs.microsoft.com/azure/aks/upgrade-cluster) for
+        /// cluster](https://learn.microsoft.com/azure/aks/upgrade-cluster) for
         /// more details.
         /// </remarks>
         [JsonProperty(PropertyName = "properties.kubernetesVersion")]
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         /// <remarks>
         /// See [use AAD pod
-        /// identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+        /// identity](https://learn.microsoft.com/azure/aks/use-azure-ad-pod-identity)
         /// for more details on AAD pod identity integration.
         /// </remarks>
         [JsonProperty(PropertyName = "properties.podIdentityProfile")]
@@ -409,7 +409,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// If set to true, getting static credentials will be disabled for
         /// this cluster. This must only be used on Managed Clusters that are
         /// AAD enabled. For more details see [disable local
-        /// accounts](https://docs.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
+        /// accounts](https://learn.microsoft.com/azure/aks/managed-aad#disable-local-accounts-preview).
         /// </remarks>
         [JsonProperty(PropertyName = "properties.disableLocalAccounts")]
         public bool? DisableLocalAccounts { get; set; }

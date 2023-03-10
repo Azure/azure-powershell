@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101
             {_rollbackVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("rollbackVersion"), out var __jsonRollbackVersion) ? (string)__jsonRollbackVersion : (string)RollbackVersion;}
             {_sku = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonString>("sku"), out var __jsonSku) ? (string)__jsonSku : (string)Sku;}
             {_ueMtu = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonNumber>("ueMtu"), out var __jsonUeMtu) ? (int?)__jsonUeMtu : UeMtu;}
-            {_interopSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonObject>("interopSettings"), out var __jsonInteropSettings) ? Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Any.FromJson(__jsonInteropSettings) : InteropSetting;}
+            {_interopSetting = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Json.JsonObject>("interopSettings"), out var __jsonInteropSettings) ? Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PacketCoreControlPlanePropertiesFormatInteropSettings.FromJson(__jsonInteropSettings) : InteropSetting;}
             AfterFromJson(json);
         }
 

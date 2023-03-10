@@ -14,8 +14,9 @@ Gets a geo-redundant backup of a database.
 ## SYNTAX
 
 ```
-Get-AzSqlDatabaseGeoBackup [-ServerName] <String> [[-DatabaseName] <String>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzSqlDatabaseGeoBackup [-ExpandKeyList] [-KeysFilter <String>] [-ServerName] <String>
+ [[-DatabaseName] <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +48,13 @@ Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName
 
 This command gets all available geo-redundant backups on a specified server that start with "Contoso".
 
+### Example 4: Get a recoverable database with TDE AKV keys on a server using expand keys
+```powershell
+Get-AzSqlDatabaseGeoBackup -ResourceGroupName "ContosoResourceGroup" -ServerName "ContosoServer" -DatabaseName "Contoso" -ExpandKeyList
+```
+
+This command gets a recoverable database configured with CMK with expand keys on a specified server. This filter when used, shows all AKV keys on a database.
+
 ## PARAMETERS
 
 ### -DatabaseName
@@ -76,6 +84,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandKeyList
+Flag to be used to view all the AKV keys in a database.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeysFilter
+Timestamp filter to Get AKV keys
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -161,4 +199,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Restore-AzSqlDatabase](./Restore-AzSqlDatabase.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)

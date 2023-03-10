@@ -16,11 +16,11 @@ namespace Microsoft.Azure.Commands.RedisCache
 {
     using Microsoft.Azure.Commands.RedisCache.Models;
     using Microsoft.Azure.Commands.RedisCache.Properties;
-    using Microsoft.Azure.Management.Redis.Models;
     using ResourceManager.Common.ArgumentCompleters;
     using System;
     using System.Management.Automation;
     using Rest.Azure;
+    using Microsoft.Azure.Management.RedisCache.Models;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RedisCacheLink", SupportsShouldProcess = true), OutputType(typeof(PSRedisLinkedServer))]
     public class NewAzureRedisCacheLink : RedisCacheCmdletBase

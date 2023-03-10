@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Management.Sql
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
+    using Microsoft.Rest.Azure.OData;
     using Models;
     using System.Collections;
     using System.Collections.Generic;
@@ -187,9 +188,12 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='databaseName'>
             /// The name of the database.
             /// </param>
-            public static Database Get(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName)
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
+            public static Database Get(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ODataQuery<Database> odataQuery = default(ODataQuery<Database>))
             {
-                return operations.GetAsync(resourceGroupName, serverName, databaseName).GetAwaiter().GetResult();
+                return operations.GetAsync(resourceGroupName, serverName, databaseName, odataQuery).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -208,12 +212,15 @@ namespace Microsoft.Azure.Management.Sql
             /// <param name='databaseName'>
             /// The name of the database.
             /// </param>
+            /// <param name='odataQuery'>
+            /// OData parameters to apply to the operation.
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Database> GetAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<Database> GetAsync(this IDatabasesOperations operations, string resourceGroupName, string serverName, string databaseName, ODataQuery<Database> odataQuery = default(ODataQuery<Database>), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetWithHttpMessagesAsync(resourceGroupName, serverName, databaseName, odataQuery, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

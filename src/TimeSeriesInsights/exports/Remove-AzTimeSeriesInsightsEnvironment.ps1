@@ -44,7 +44,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsenvironment
 #>
 function Remove-AzTimeSeriesInsightsEnvironment {
 [OutputType([System.Boolean])]

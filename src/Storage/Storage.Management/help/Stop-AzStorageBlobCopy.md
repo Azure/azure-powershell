@@ -43,22 +43,22 @@ The **Stop-AzStorageBlobCopy** cmdlet stops a copy operation to the specified de
 ## EXAMPLES
 
 ### Example 1: Stop copy operation by name
-```
-PS C:\>Stop-AzStorageBlobCopy -Container "ContainerName" -Blob "BlobName" -CopyId "CopyID"
+```powershell
+Stop-AzStorageBlobCopy -Container "ContainerName" -Blob "BlobName" -CopyId "CopyID"
 ```
 
 This command stops the copy operation by name.
 
 ### Example 2: Stop copy operation by using the pipeline
-```
-PS C:\>Get-AzStorageContainer container* | Stop-AzStorageBlobCopy -Blob "BlobName"
+```powershell
+Get-AzStorageContainer container* | Stop-AzStorageBlobCopy -Blob "BlobName"
 ```
 
 This command stops the copy operation by passing the container on the pipeline from **Get-AzStorageContainer**.
 
 ### Example 3: Stop copy operation by using the pipeline and Get-AzStorageBlob
-```
-PS C:\>Get-AzStorageBlob -Container "ContainerName" | Stop-AzStorageBlobCopy -Force
+```powershell
+Get-AzStorageBlob -Container "ContainerName" | Stop-AzStorageBlobCopy -Force
 ```
 
 This example stops the copy operation by passing the container on the pipeline from the Get-AzStorageBlob cmdlet.
@@ -243,7 +243,7 @@ Accept wildcard characters: False
 ### -TagCondition
 Optional Tag expression statement to check match condition. 
 The blob request will fail when the blob tags does not match the given expression.
-See details in https://docs.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
+See details in https://learn.microsoft.com/en-us/rest/api/storageservices/specifying-conditional-headers-for-blob-service-operations#tags-conditional-operations.
 
 ```yaml
 Type: System.String

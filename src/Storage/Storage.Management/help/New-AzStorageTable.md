@@ -24,13 +24,14 @@ The **New-AzStorageTable** cmdlet creates a storage table associated with the st
 ## EXAMPLES
 
 ### Example 1: Create an azure storage table
-```
-PS C:\>New-AzStorageTable -Name "tableabc"
+```powershell
+New-AzStorageTable -Name "tableabc"
 ```
 
 This command creates a storage table with a name of tableabc.
 
 ### Example 2: Create multiple azure storage tables
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>"table1 table2 table3".split() | New-AzStorageTable
 ```

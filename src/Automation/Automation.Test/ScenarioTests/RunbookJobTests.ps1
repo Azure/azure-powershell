@@ -284,3 +284,67 @@ function Test-CreateJobAndGetOutputPowerShellScript
 
     Write-Output "Remove runbook - success."
 }
+
+
+<#
+.SYNOPSIS
+ Start Job of PowerShell Script runbook, get output
+   and get Output records (both success & failure records).
+#>
+function Test-RunBookNamePattern
+{
+   param(
+        [string] $RunbookPath
+    )
+
+	Assert-True {AutomationAccountExistsFn} "Automation Account does not exist."
+
+    $desc = 'PowerShell Script runbook'
+    $tags = @{'TagKey1'='TagValue1'}
+
+    $validRBNames = @('TestRunbook-PowerShellScript','testRunbook-PowerShell-Script','TestRunbook-PowerShell_Script','TestRunbook_PowerShell_Script','TestRunbook_3powerShell-1script')
+    $inValidRBNames = @('1TestRunbook-PowerShellScript','_testRunbook-PowerShell-Script','-TestRunbook-PowerShell_Script',';TestRunbook_PowerShell_Script' )
+
+    foreach($rbName in $validRBNames)
+    {
+        Write-Host "Creating Runbook : " $rbName
+        $runbook = Import-AzAutomationRunbook `
+                        -Path $RunbookPath `
+                        -Description $desc `
+                        -Name $rbName `
+                        -Type PowerShell `
+                        -ResourceGroup $resourceGroupName `
+                        -Tags $tags `
+                        -LogProgress $false `
+                        -LogVerbose $false `
+                        -AutomationAccountName $automationAccountName `
+                        -Published 
+        Assert-NotNull $runbook "Import-AzAutomationRunbook failed to import PowerShell Script runbook $Name."
+
+        # Remove the runbook
+        Remove-AzAutomationRunbook -Name $rbName -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -Force
+
+        Write-Output "Remove created runbook."
+
+    }
+
+    foreach($rbName in $inValidRBNames)
+    {
+        Write-Host "Creating Runbook : " $rbName
+
+        Assert-Throws {Import-AzAutomationRunbook `
+                        -Path $RunbookPath `
+                        -Description $desc `
+                        -Name $rbName `
+                        -Type PowerShell `
+                        -ResourceGroup $resourceGroupName `
+                        -Tags $tags `
+                        -LogProgress $false `
+                        -LogVerbose $false `
+                        -AutomationAccountName $automationAccountName `
+                        -Published 
+                  }
+
+    }
+
+}

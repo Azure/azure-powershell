@@ -35,7 +35,7 @@ Add-AzIotHubRoutingEndpoint [-ResourceId] <String> [-EndpointName] <String> -End
 ```
 
 ## DESCRIPTION
-Add a new endpoint in your IoT Hub. To learn about the endpoints that are supported, see https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints
+Add a new endpoint in your IoT Hub. To learn about the endpoints that are supported, see https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints
 
 ## EXAMPLES
 

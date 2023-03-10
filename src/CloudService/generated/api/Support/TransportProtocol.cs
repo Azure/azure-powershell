@@ -56,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
             return this._value;
         }
 
-        /// <summary>Creates an instance of the <see cref="TransportProtocol" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="TransportProtocol"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private TransportProtocol(string underlyingValue)
         {
@@ -80,8 +80,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
         }
 
         /// <summary>Overriding != operator for enum TransportProtocol</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.TransportProtocol e1, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.TransportProtocol e2)
         {
@@ -89,8 +89,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support
         }
 
         /// <summary>Overriding == operator for enum TransportProtocol</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.TransportProtocol e1, Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.TransportProtocol e2)
         {

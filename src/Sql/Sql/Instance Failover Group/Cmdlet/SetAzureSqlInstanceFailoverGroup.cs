@@ -21,6 +21,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
 {
@@ -136,6 +137,15 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
         public string AllowReadOnlyFailoverToPrimary { get; set; }
 
         /// <summary>
+        /// Gets or sets the failover policy for read only endpoint of the Sql Azure Instance Failover Group.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Intended usage of the secondary instance in the Failover Group. Standby indicates that the secondary instance will be used as a passive replica for disaster recovery only.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Geo", "Standby")]
+        public string SecondaryType { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -191,6 +201,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Cmdlet
             newModel.ReadWriteFailoverPolicy = effectivePolicy.ToString();
             newModel.FailoverWithDataLossGracePeriodHours = gracePeriod;
             newModel.ReadOnlyFailoverPolicy = MyInvocation.BoundParameters.ContainsKey("AllowReadOnlyFailoverToPrimary") ? AllowReadOnlyFailoverToPrimary : newModel.ReadOnlyFailoverPolicy;
+            newModel.SecondaryType = this.IsParameterBound(c => c.SecondaryType) ? SecondaryType : newModel.SecondaryType;
             newEntity.Add(newModel);
 
             return newEntity;

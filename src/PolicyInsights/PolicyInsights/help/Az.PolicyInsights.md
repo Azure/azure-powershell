@@ -11,6 +11,9 @@ Locale: en-US
 This topic displays help for the Azure Policy Insights cmdlets.
 
 ## Az.PolicyInsights Cmdlets
+### [Get-AzPolicyAttestation](Get-AzPolicyAttestation.md)
+Gets policy attestations.
+
 ### [Get-AzPolicyEvent](Get-AzPolicyEvent.md)
 Gets policy evaluation events generated as resources are created or updated.
 
@@ -26,8 +29,17 @@ Gets policy compliance states for resources.
 ### [Get-AzPolicyStateSummary](Get-AzPolicyStateSummary.md)
 Gets latest policy compliance states summary for resources.
 
+### [New-AzPolicyAttestation](New-AzPolicyAttestation.md)
+Creates a new policy attestation for a policy assignment.
+
+### [Remove-AzPolicyAttestation](Remove-AzPolicyAttestation.md)
+Deletes a policy attestation.
+
 ### [Remove-AzPolicyRemediation](Remove-AzPolicyRemediation.md)
 Deletes a policy remediation.
+
+### [Set-AzPolicyAttestation](Set-AzPolicyAttestation.md)
+Modifies a policy attestation.
 
 ### [Start-AzPolicyComplianceScan](Start-AzPolicyComplianceScan.md)
 Triggers a policy compliance evaluation for all resources in a subscription or resource group.

@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.1
+* Upgraded to API version 2023-01-31.
+* Federated identity credentials GA version is available now.
+
 ## Version 1.1.0
 * Supported Create/Get/Update/Remove Federated Identity Credentials on a User Assigned Managed Identity
   * `Get-AzFederatedIdentityCredentials`

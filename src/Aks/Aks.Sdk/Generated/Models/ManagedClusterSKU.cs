@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         /// <remarks>
         /// If not specified, the default is 'Free'. See [uptime
-        /// SLA](https://docs.microsoft.com/azure/aks/uptime-sla) for more
+        /// SLA](https://learn.microsoft.com/azure/aks/uptime-sla) for more
         /// details. Possible values include: 'Paid', 'Free'
         /// </remarks>
         [JsonProperty(PropertyName = "tier")]

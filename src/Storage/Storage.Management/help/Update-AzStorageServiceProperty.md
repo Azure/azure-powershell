@@ -24,8 +24,8 @@ The **Update-AzStorageServiceProperty** cmdlet modifies the properties for the A
 ## EXAMPLES
 
 ### Example 1: Set Blob Service DefaultServiceVersion to 2017-04-17
-```
-C:\PS>Update-AzStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
+```powershell
+Update-AzStorageServiceProperty -ServiceType Blob -DefaultServiceVersion 2017-04-17
 ```
 
 This command Set the DefaultServiceVersion of Blob Service to 2017-04-17
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 
 ### -DefaultServiceVersion
 DefaultServiceVersion indicates the default version to use for requests to the Blob service if an incoming request's version is not specified. Possible values include version 2008-10-27 and all more recent versions.
-See more details in https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services
+See more details in https://learn.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services
 
 ```yaml
 Type: System.String

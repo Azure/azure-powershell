@@ -38,7 +38,7 @@ INPUTOBJECT <IPortalIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group.
   [SubscriptionId <String>]: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.portal/remove-azportaldashboard
+https://learn.microsoft.com/en-us/powershell/module/az.portal/remove-azportaldashboard
 #>
 function Remove-AzPortalDashboard {
 [OutputType([System.Boolean])]

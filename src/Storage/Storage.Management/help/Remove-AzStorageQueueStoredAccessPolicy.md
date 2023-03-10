@@ -25,8 +25,8 @@ The **Remove-AzStorageQueueStoredAccessPolicy** cmdlet removes a stored access p
 ## EXAMPLES
 
 ### Example 1: Remove a stored access policy from a storage queue
-```
-PS C:\>Remove-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy04"
+```powershell
+Remove-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy04"
 ```
 
 This command removes an access policy named Policy04 from the storage queue named MyQueue.
