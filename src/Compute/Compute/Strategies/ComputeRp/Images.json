@@ -1,4 +1,4 @@
-{
+f{
     "Linux":  {
                   "CentOS":  {
                                  "publisher":  "OpenLogic",
@@ -56,8 +56,8 @@
                                 },
                   "Ubuntu2204":  {
                                     "publisher":  "Canonical",
-                                    "offer":  "0001-com-ubuntu-pro-advanced-sla-ca",
-                                    "sku":  "22_04",
+                                    "offer":  "0001-com-ubuntu-server-jammy",
+                                    "sku":  "22_04-lts-gen2",
                                     "version":  "latest"
                                 }
     },
