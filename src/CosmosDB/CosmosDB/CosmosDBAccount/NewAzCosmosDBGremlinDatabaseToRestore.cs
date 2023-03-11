@@ -26,11 +26,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
         public string DatabaseName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.RestoreGraphNamesHelpMessage)]
-        public string[] GraphNames { get; set; }
+        public string[] GraphName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PSGremlinDatabaseToRestore databaseToRestore = new PSGremlinDatabaseToRestore(DatabaseName, GraphNames);
+            PSGremlinDatabaseToRestore databaseToRestore = new PSGremlinDatabaseToRestore(DatabaseName, GraphName);
             WriteObject(databaseToRestore);
 
             return;
