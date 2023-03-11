@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkSecurityPerim
 }
 
 Describe 'Remove-AzNetworkSecurityPerimeterLink' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzNetworkSecurityPerimeterLink -Name $env.tmpLinkDelete3 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp8
+        
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        {
+            $Obj = Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLinkDelete4 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp10
+
+            Remove-AzNetworkSecurityPerimeterLink -InputObject $Obj
+
+        } | Should -Not -Throw
     }
 }

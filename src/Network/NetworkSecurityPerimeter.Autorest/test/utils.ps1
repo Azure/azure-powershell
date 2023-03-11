@@ -50,6 +50,10 @@ function setupEnv() {
     $tmpNsp5 =  $randomString + 't-nsp5'
     $tmpNsp6 =  $randomString + 't-nsp6'
     $tmpNsp7 =  $randomString + 't-nsp7'
+    $tmpNsp8 =  $randomString + 't-nsp8'
+    $tmpNsp9 =  $randomString + 't-nsp9'
+    $tmpNsp10 =  $randomString + 't-nsp10'
+    $tmpNsp11 =  $randomString + 't-nsp11'
     $tmpNspDelBase1 =  $randomString + 't-nspDelB1'
     $tmpNspDelete1 =  $randomString + 't-nspD1'
     $tmpNspDelete2 =  $randomString + 't-nspD2'
@@ -75,9 +79,11 @@ function setupEnv() {
     $tmpPaas4Rp = $randomString + 't-paas4Rp'
     $tmpLink1 = 't-link1'
     $tmpLink2 = 't-link2'
+    $tmpLinkDelete3 = 't-linkD3'
+    $tmpLinkDelete4 = 't-linkD4'
 
-    $tmpKeys = 'rgname', 'tmpNsp1', 'tmpNsp2', 'tmpNsp3', 'tmpNsp4', 'tmpNsp5', 'tmpNsp6', 'tmpNsp7', 'tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRule3', 'tmpAccessRule4', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2', 'tmpLink1', 'tmpLink2'
-    $tmpValues = $rgname, $tmpNsp1, $tmpNsp2, $tmpNsp3, $tmpNsp4, $tmpNsp5, $tmpNsp6, $tmpNsp7, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRule3, $tmpAccessRule4, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2, $tmpLink1, $tmpLink2
+    $tmpKeys = 'rgname', 'tmpNsp1', 'tmpNsp2', 'tmpNsp3', 'tmpNsp4', 'tmpNsp5', 'tmpNsp6', 'tmpNsp7', 'tmpNsp8', 'tmpNsp9', 'tmpNsp10', 'tmpNsp11', 'tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRule3', 'tmpAccessRule4', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2', 'tmpLink1', 'tmpLink2', 'tmpLinkDelete3', 'tmpLinkDelete4'
+    $tmpValues = $rgname, $tmpNsp1, $tmpNsp2, $tmpNsp3, $tmpNsp4, $tmpNsp5, $tmpNsp6, $tmpNsp7, $tmpNsp8, $tmpNsp9, $tmpNsp10, $tmpNsp11, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRule3, $tmpAccessRule4, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2, $tmpLink1, $tmpLink2, $tmpLinkDelete3, $tmpLinkDelete4
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($env.Contains($tmpKeys[$i])) {
@@ -111,6 +117,10 @@ function setupEnv() {
         nsp5Name = $env.tmpNsp5
         nsp6Name = $env.tmpNsp6
         nsp7Name = $env.tmpNsp7
+        nsp8Name = $env.tmpNsp8
+        nsp9Name = $env.tmpNsp9
+        nsp10Name = $env.tmpNsp10
+        nsp11Name = $env.tmpNsp11
         nspDelBase1Name = $env.tmpNspDelBase1
         nspDelete1Name = $env.tmpNspDelete1
         nspDelete2Name = $env.tmpNspDelete2
@@ -136,12 +146,16 @@ function setupEnv() {
         associationDelete2Name = $env.tmpAssociationDelete2
         link1Name = $env.tmpLink1
         link2Name = $env.tmpLink2
+        linkDelete3Name = $env.tmpLinkDelete3
+        linkDelete4Name = $env.tmpLinkDelete4
        }
     
     #deploy template
     $templateOutput = New-AzResourceGroupDeployment @templateInput
 
     Write-Host -ForegroundColor Magenta "Template deployed"
+
+    Write-Host "Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Debug"
 
 }
 function cleanupEnv() {
@@ -154,7 +168,7 @@ function cleanupEnv() {
     Write-Host -ForegroundColor Magenta "Removing RG"
 
     #Remove resourceGroup
-    Remove-AzResourceGroup -Name $env.rgname
+    # Remove-AzResourceGroup -Name $env.rgname
 
     Write-Host -ForegroundColor Magenta "Removed RG"
 }

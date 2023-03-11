@@ -15,15 +15,37 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimete
 }
 
 Describe 'Get-AzNetworkSecurityPerimeterLinkReference' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Debug
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $linkObj = Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLink1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Debug
+
+            $nspObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp3 -ResourceGroupName $env.rgname
+
+            $linkReferenceName =  'Ref-from-' + $env.tmpLink1 + '-' + $nspObj.perimeterGuid
+            
+            Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Name $linkReferenceName -Debug
+
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $linkObj = Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLink1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2
+
+            $linkReferenceName =  'Ref-from-' + $env.tmpLink1 + '-' + $linkObj.remotePerimeterGuid
+            
+            Write-Output "Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Name $linkReferenceName"
+
+            $GetObj = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Name $linkReferenceName
+
+            $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterLinkReference -InputObject $GETObj
+            $GETObj.Name | Should -Be $GETObjViaIdentity.Name
+        } | Should -Not -Throw
     }
 }
