@@ -15,25 +15,9 @@ Describe 'Expand-AzWvdMsixImage' {
     
     It 'Expand' {
         try{
-            $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $env.ResourceGroup `
-                -Name $env.HostPool `
-                -Location $env.Location `
-                -HostPoolType 'Shared' `
-                -LoadBalancerType 'DepthFirst' `
-                -RegistrationTokenOperation 'Update' `
-                -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
-                -Description 'des' `
-                -FriendlyName 'fri' `
-                -MaxSessionLimit 5 `
-                -VMTemplate $null `
-                -CustomRdpProperty $null `
-                -Ring $null `
-                -ValidationEnvironment:$false `
-                -PreferredAppGroupType 'Desktop'
-    
-            $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPool `
-                -ResourceGroupName $env.ResourceGroup `
+            
+            $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPoolPersistent `
+                -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId `
                 -Uri $env.MSIXImagePath
              
@@ -46,9 +30,6 @@ Describe 'Expand-AzWvdMsixImage' {
             $package.PackageRelativePath | Should -Be '\apps\MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy'
         }
         finally{
-            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $env.ResourceGroup `
-                -Name $env.HostPool
         }
 
     }

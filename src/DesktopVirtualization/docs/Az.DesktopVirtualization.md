@@ -41,6 +41,9 @@ Get the Windows virtual desktop registration info.
 ### [Get-AzWvdScalingPlan](Get-AzWvdScalingPlan.md)
 Get a scaling plan.
 
+### [Get-AzWvdScalingPlanPooledSchedule](Get-AzWvdScalingPlanPooledSchedule.md)
+Get a ScalingPlanPooledSchedule.
+
 ### [Get-AzWvdSessionHost](Get-AzWvdSessionHost.md)
 Get a session host.
 
@@ -71,6 +74,9 @@ Create Windows virtual desktop registration info.
 ### [New-AzWvdScalingPlan](New-AzWvdScalingPlan.md)
 Create or update a scaling plan.
 
+### [New-AzWvdScalingPlanPooledSchedule](New-AzWvdScalingPlanPooledSchedule.md)
+Create or update a ScalingPlanPooledSchedule.
+
 ### [New-AzWvdWorkspace](New-AzWvdWorkspace.md)
 Create or update a workspace.
 
@@ -94,6 +100,9 @@ Remove the Windows virtual desktop registration info.
 
 ### [Remove-AzWvdScalingPlan](Remove-AzWvdScalingPlan.md)
 Remove a scaling plan.
+
+### [Remove-AzWvdScalingPlanPooledSchedule](Remove-AzWvdScalingPlanPooledSchedule.md)
+Remove a ScalingPlanPooledSchedule.
 
 ### [Remove-AzWvdSessionHost](Remove-AzWvdSessionHost.md)
 Remove a SessionHost.
@@ -127,6 +136,9 @@ Update an  MSIX Package.
 
 ### [Update-AzWvdScalingPlan](Update-AzWvdScalingPlan.md)
 Update a scaling plan.
+
+### [Update-AzWvdScalingPlanPooledSchedule](Update-AzWvdScalingPlanPooledSchedule.md)
+Update a ScalingPlanPooledSchedule.
 
 ### [Update-AzWvdSessionHost](Update-AzWvdSessionHost.md)
 Update a session host.

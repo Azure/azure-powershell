@@ -23,20 +23,23 @@ Unregister the Windows virtual desktop application group.
 
 ## EXAMPLES
 
-### Example 1: Unregister a Windows Virtual Desktop Application Group
+### Example 1: {{ Add title here }}
 ```powershell
-Unregister-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
-                                    -WorkspaceName WorkspaceName `
-                                    -ApplicationGroupPath '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName'
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-Location   Name                 Type
---------   ----                 ----
-eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command unregisters a Windows Virtual Desktop Application Group to a Workspace.
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -153,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IWorkspace
 
 ## NOTES
 

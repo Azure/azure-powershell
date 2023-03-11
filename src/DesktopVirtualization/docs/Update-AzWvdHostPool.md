@@ -15,8 +15,10 @@ Update a host pool.
 ### UpdateExpanded (Default)
 ```
 Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-CustomRdpProperty <String>] [-Description <String>] [-FriendlyName <String>]
- [-LoadBalancerType <LoadBalancerType>] [-MaxSessionLimit <Int32>]
+ [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
+ [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
+ [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
+ [-FriendlyName <String>] [-LoadBalancerType <LoadBalancerType>] [-MaxSessionLimit <Int32>]
  [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
  [-PreferredAppGroupType <PreferredAppGroupType>] [-RegistrationInfoExpirationTime <DateTime>]
  [-RegistrationInfoRegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
@@ -27,9 +29,12 @@ Update-AzWvdHostPool -Name <String> -ResourceGroupName <String> [-SubscriptionId
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity> [-CustomRdpProperty <String>]
- [-Description <String>] [-FriendlyName <String>] [-LoadBalancerType <LoadBalancerType>]
- [-MaxSessionLimit <Int32>] [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
+Update-AzWvdHostPool -InputObject <IDesktopVirtualizationIdentity>
+ [-AgentUpdateMaintenanceWindow <IMaintenanceWindowPatchProperties[]>]
+ [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
+ [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
+ [-FriendlyName <String>] [-LoadBalancerType <LoadBalancerType>] [-MaxSessionLimit <Int32>]
+ [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
  [-PreferredAppGroupType <PreferredAppGroupType>] [-RegistrationInfoExpirationTime <DateTime>]
  [-RegistrationInfoRegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
  [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
@@ -64,6 +69,69 @@ eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 This command updates a Windows Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
+
+### -AgentUpdateMaintenanceWindow
+List of maintenance windows.
+Maintenance windows are 2 hours long.
+To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IMaintenanceWindowPatchProperties[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpdateMaintenanceWindowTimeZone
+Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
+Must be set if useLocalTime is true.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpdateType
+The type of maintenance for session host components.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostComponentUpdateType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpdateUseSessionHostLocalTime
+Whether to use localTime of the virtual machine.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomRdpProperty
 Custom rdp property of HostPool.
@@ -452,7 +520,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IHostPool
 
 ## NOTES
 
@@ -463,6 +531,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
+AGENTUPDATEMAINTENANCEWINDOW <IMaintenanceWindowPatchProperties[]>: List of maintenance windows. Maintenance windows are 2 hours long.
+  - `[DayOfWeek <DayOfWeek?>]`: Day of the week.
+  - `[Hour <Int32?>]`: The update start hour of the day. (0 - 23)
+
 INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
@@ -472,6 +544,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[MsixPackageFullName <String>]`: The version specific package full name of the MSIX package within specified hostpool
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ScalingPlanName <String>]`: The name of the scaling plan.
+  - `[ScalingPlanScheduleName <String>]`: The name of the ScalingPlanSchedule
   - `[SessionHostName <String>]`: The name of the session host within the specified host pool
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[UserSessionId <String>]`: The name of the user session within the specified session host

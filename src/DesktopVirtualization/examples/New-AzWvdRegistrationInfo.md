@@ -1,13 +1,18 @@
-### Example 1: Create a Windows Virtual Desktop Registration Token
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -ExpirationTime $((Get-Date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-```output
-ExpirationTime       RegistrationTokenOperation Token
---------------       -------------------------- -----
-4/1/2020 10:19:33 PM Update                       eyJhbGciOiJSUzI1NiIsImtpZCI6IkMyRjU1RUYxNzg0MEFCNzkzMDk2RUYzRjdEMkNBRDk0NThGNDhEOTQiLCJ0eXAiOiJKV1QifQ.eyJSZWdpc3RyYXRpb25JZCI6IjU5NGJjZWUwLTk5MjQtNDg3ZC1iOW...
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+PS C:\> {{ Add code here }}
+
+{{ Add output here }}
 ```
 
-This command creates a Windows Virtual Desktop Registration Token in a Host Pool.
+{{ Add description here }}
 

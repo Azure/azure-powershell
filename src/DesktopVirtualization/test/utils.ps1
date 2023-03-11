@@ -34,6 +34,7 @@ function setupEnv() {
     # The following resources are manually created and removed by the operator.
     $null = $env.Add("ResourceGroupPersistent", "alecbTestingPersistent")
     $null = $env.Add("HostPoolPersistent", "HostPoolPowershellPersistent1")
+    $null = $env.Add("HostPoolPersistent2", "HostPoolPowershellPersistent2")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroup + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "PwshVM-0")
     $null = $env.Add("SessionHostNameRemove", "PwshVM-1")

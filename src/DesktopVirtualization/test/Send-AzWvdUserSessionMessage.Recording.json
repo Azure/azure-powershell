@@ -1,12 +1,10 @@
 {
-  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2021-07-12+1": {
+  "Send-AzWvdUserSessionMessage+[NoContext]+Send+$POST+https://management.azure.com/subscriptions/151b29b3-6b72-4b77-ad86-d785ada500b6/resourceGroups/alecbTestingPersistent/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellPersistent1/sessionHosts/PwshVM-0/userSessions/4/sendMessage?api-version=2022-09-09+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourceGroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1/sessionHosts/PowershellVM-1.wvdarmtest1.net/userSessions/4/sendMessage?api-version=2021-07-12",
-      "Content": "{\r\n  \"messageBody\": \"apple\",\r\n  \"messageTitle\": \"title\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/151b29b3-6b72-4b77-ad86-d785ada500b6/resourceGroups/alecbTestingPersistent/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershellPersistent1/sessionHosts/PwshVM-0/userSessions/4/sendMessage?api-version=2022-09-09",
+      "Content": "{\r\n  \"messageTitle\": \"title\",\r\n  \"messageBody\": \"apple\"\r\n}",
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
@@ -14,28 +12,33 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 404,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-lamport-ts": [ "12028" ],
-        "x-ms-correlation-id": [ "dad5b78d-f30b-4457-b068-371556193161" ],
-        "Set-Cookie": [ "ARRAffinity=218fc26d5a5724cc6bc574acd210aa679c146900b859248acf92586a73677e6d;Path=/;HttpOnly;Domain=rdarmprovider.dev05.avdtest.net" ],
+        "X-Rate-Limit-Limit": [ "0" ],
+        "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
+        "X-Rate-Limit-Reset": [ "0" ],
+        "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvMTUxYjI5YjMtNmI3Mi00Yjc3LWFkODYtZDc4NWFkYTUwMGI2L3Jlc291cmNlR3JvdXBzL2FsZWNiVGVzdGluZ1BlcnNpc3RlbnQvcHJvdmlkZXJzL01pY3Jvc29mdC5EZXNrdG9wVmlydHVhbGl6YXRpb24vaG9zdFBvb2xzL0hvc3RQb29sUG93ZXJzaGVsbFBlcnNpc3RlbnQxL3Nlc3Npb25Ib3N0cy9Qd3NoVk0tMC91c2VyU2Vzc2lvbnMvNA==" ],
+        "x-ms-lamport-ts": [ "3697210232" ],
+        "x-ms-correlation-id": [ "16ccb20a-ccc6-4530-b5ed-a7d7d78f75da" ],
+        "x-ms-request-id": [ "90452d1e-7560-41f3-b9b0-959ea5570ab6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Set-Cookie": [ "ARRAffinity=1e3adbfa9a1d8a834f83f2cf75530d5493355d3aa5b5a68a9239081f4e3c0021;Path=/;HttpOnly;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com", "ARRAffinitySameSite=1e3adbfa9a1d8a834f83f2cf75530d5493355d3aa5b5a68a9239081f4e3c0021;Path=/;HttpOnly;SameSite=None;Secure;Domain=rdarmprovider-g-us-r0.wvd.microsoft.com" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "dad5b78d-f30b-4457-b068-371556193161" ],
-        "x-ms-correlation-request-id": [ "dad5b78d-f30b-4457-b068-371556193161" ],
-        "x-ms-routing-request-id": [ "WESTUS:20191105T234252Z:dad5b78d-f30b-4457-b068-371556193161" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "742d5e86-34cd-4b5f-bd0f-cbcc9dd08d90" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230310T224823Z:742d5e86-34cd-4b5f-bd0f-cbcc9dd08d90" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 05 Nov 2019 23:42:52 GMT" ]
+        "Date": [ "Fri, 10 Mar 2023 22:48:23 GMT" ]
       },
       "ContentHeaders": {
-        "Expires": [ "-1" ],
-        "Content-Length": [ "0" ]
+        "Content-Length": [ "118" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
       },
-      "Content": null
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 16ccb20a-ccc6-4530-b5ed-a7d7d78f75da Error: User session ID not found\"}}"
     }
   }
 }
