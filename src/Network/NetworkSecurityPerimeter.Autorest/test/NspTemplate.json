@@ -13,6 +13,48 @@
         "description": "Name of the NSP resource."
       }
     },
+    "nsp2Name": {
+      "type": "string",
+      "defaultValue": "t-nsp2",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
+    "nsp3Name": {
+      "type": "string",
+      "defaultValue": "t-nsp3",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
+    "nsp4Name": {
+      "type": "string",
+      "defaultValue": "t-nsp4",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
+    "nsp5Name": {
+      "type": "string",
+      "defaultValue": "t-nsp5",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
+    "nsp6Name": {
+      "type": "string",
+      "defaultValue": "t-nsp6",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
+    "nsp7Name": {
+      "type": "string",
+      "defaultValue": "t-nsp7",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
     "nspDelBase1Name": {
       "type": "string",
       "defaultValue": "t-nspDelBase1",
@@ -168,10 +210,30 @@
     "associationDelete2Name": {
       "type": "string",
       "defaultValue": "t-asnD2"
+    },
+    "link1Name": {
+      "type": "string",
+      "defaultValue": "t-link1",
+      "metadata": {
+        "description": "Name of the NSP link."
+      }
+    },
+    "link2Name": {
+      "type": "string",
+      "defaultValue": "t-link2",
+      "metadata": {
+        "description": "Name of the NSP link."
+      }
     }
   },
   "variables": {
     "nsp1ResourceName": "[parameters('nsp1Name')]",
+    "nsp2ResourceName": "[parameters('nsp2Name')]",
+    "nsp3ResourceName": "[parameters('nsp3Name')]",
+    "nsp4ResourceName": "[parameters('nsp4Name')]",
+    "nsp5ResourceName": "[parameters('nsp5Name')]",
+    "nsp6ResourceName": "[parameters('nsp6Name')]",
+    "nsp7ResourceName": "[parameters('nsp7Name')]",
     "nspDelBase1ResourceName": "[parameters('nspDelBase1Name')]",
     "nspDelete1ResourceName": "[parameters('nspDelete1Name')]",
     "nspDelete2ResourceName": "[parameters('nspDelete2Name')]",
@@ -194,7 +256,9 @@
     "paas4ResourceName": "[parameters('paas4Name')]",
     "association1ResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('association1Name'))]",
     "associationDelete1ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('associationDelete1Name'))]",
-    "associationDelete2ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('associationDelete2Name'))]"
+    "associationDelete2ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('associationDelete2Name'))]",
+    "link1ResourceName": "[concat(variables('nsp2ResourceName'), '/', parameters('link1Name'))]",
+    "link2ResourceName": "[concat(variables('nsp4ResourceName'), '/', parameters('link2Name'))]"
   },
   "resources": [
     {
@@ -206,6 +270,72 @@
       "properties": {
         "displayName": "NetworkSecurityPerimeter 3",
         "description": "The third network security perimeter."
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp2ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 2 for link",
+        "description": "NSP 2 for link"
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp3ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 3 for link",
+        "description": "NSP 3 for link"
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp4ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 4 for link",
+        "description": "NSP 4 for link"
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp5ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 5 for link",
+        "description": "NSP 5 for link"
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp6ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 6 for link",
+        "description": "NSP 6 for link"
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp7ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 7 for link",
+        "description": "NSP 7 for link"
       }
     },
     {
@@ -384,7 +514,8 @@
         "description": "NSP Access Rule with sms",
         "direction": "Outbound",
         "phoneNumbers": [
-          "+917878787878", "+919898989898"
+          "+917878787878",
+          "+919898989898"
         ]
       }
     },
@@ -758,6 +889,52 @@
         },
         "accessMode": "Enforced"
       }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/links",
+      "name": "[variables('link1ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp2ResourceName'))]",
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp3ResourceName'))]"
+      ],
+      "properties": {
+
+        "autoApprovedRemotePerimeterResourceId": "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp3ResourceName'))]",
+
+        "localInboundProfiles": [ "*" ],
+
+        "localOutboundProfiles": [ "*" ],
+
+        "remoteInboundProfiles": [ "*" ],
+
+        "remoteOutboundProfiles": [ "*" ]
+
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/links",
+      "name": "[variables('link2ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp4ResourceName'))]",
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp5ResourceName'))]"
+      ],
+      "properties": {
+
+        "autoApprovedRemotePerimeterResourceId": "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp5ResourceName'))]",
+
+        "localInboundProfiles": [ "*" ],
+
+        "localOutboundProfiles": [ "*" ],
+
+        "remoteInboundProfiles": [ "*" ],
+
+        "remoteOutboundProfiles": [ "*" ]
+
+      }
     }
   ],
   "outputs": {
@@ -824,6 +1001,30 @@
     "nsp1Name": {
       "type": "string",
       "value": "[variables('nsp1ResourceName')]"
+    },
+    "nsp2Name": {
+      "type": "string",
+      "value": "[variables('nsp2ResourceName')]"
+    },
+    "nsp3Name": {
+      "type": "string",
+      "value": "[variables('nsp3ResourceName')]"
+    },
+    "nsp4Name": {
+      "type": "string",
+      "value": "[variables('nsp4ResourceName')]"
+    },
+    "nsp5Name": {
+      "type": "string",
+      "value": "[variables('nsp5ResourceName')]"
+    },
+    "nsp6Name": {
+      "type": "string",
+      "value": "[variables('nsp6ResourceName')]"
+    },
+    "nsp7Name": {
+      "type": "string",
+      "value": "[variables('nsp7ResourceName')]"
     },
     "nspDelBase1ArmId": {
       "type": "string",
@@ -956,6 +1157,14 @@
     "resourceGroupId": {
       "type": "string",
       "value": "[resourceGroup().id]"
+    },
+    "link1Name": {
+      "type": "string",
+      "value": "[parameters('link1Name')]"
+    },
+    "link2Name": {
+      "type": "string",
+      "value": "[parameters('link2Name')]"
     }
   }
 }

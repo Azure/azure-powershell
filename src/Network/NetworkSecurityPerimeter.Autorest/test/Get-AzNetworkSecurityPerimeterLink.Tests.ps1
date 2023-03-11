@@ -15,15 +15,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimete
 }
 
 Describe 'Get-AzNetworkSecurityPerimeterLink' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {          
+            Get-AzNetworkSecurityPerimeterLink -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+                    Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLink1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        {
+            $GETObj = Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLink1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2
+            $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterLink -InputObject $GETObj
+            $GETObj.Name | Should -Be $GETObjViaIdentity.Name
+        } | Should -Not -Throw
     }
 }
