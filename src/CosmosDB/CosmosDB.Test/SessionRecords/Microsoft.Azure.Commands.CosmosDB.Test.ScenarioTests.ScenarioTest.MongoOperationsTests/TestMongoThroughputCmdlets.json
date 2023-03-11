@@ -6,7 +6,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d16bc603-5b2a-4047-bd8e-1487054bfe49"
+          "d7ade9e5-6727-4940-a3cc-a4217bf5dfa9"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,7 +15,7 @@
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.71"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -36,13 +36,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "d89f419d-413c-4503-8889-608ff11bcaba"
+          "6271c365-a171-48d3-95bb-01d54029b67f"
         ],
         "x-ms-correlation-request-id": [
-          "d89f419d-413c-4503-8889-608ff11bcaba"
+          "6271c365-a171-48d3-95bb-01d54029b67f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233013Z:d89f419d-413c-4503-8889-608ff11bcaba"
+          "WESTUS2:20230311T062034Z:6271c365-a171-48d3-95bb-01d54029b67f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:30:13 GMT"
+          "Sat, 11 Mar 2023 06:20:33 GMT"
         ],
         "Content-Length": [
           "199"
@@ -72,7 +72,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "82388643-13ae-4724-93d2-57526fae4d38"
+          "2cf49d54-e762-4c80-a975-fd5b6624d582"
         ],
         "x-ms-correlation-request-id": [
-          "82388643-13ae-4724-93d2-57526fae4d38"
+          "2cf49d54-e762-4c80-a975-fd5b6624d582"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233013Z:82388643-13ae-4724-93d2-57526fae4d38"
+          "WESTUS2:20230311T062034Z:2cf49d54-e762-4c80-a975-fd5b6624d582"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:30:13 GMT"
+          "Sat, 11 Mar 2023 06:20:34 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -132,7 +132,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -162,19 +162,19 @@
           "11992"
         ],
         "x-ms-request-id": [
-          "ca06d170-1f42-48e8-be5d-6db686272fa0"
+          "da2f1884-f278-4940-95d0-31d0c3dac301"
         ],
         "x-ms-correlation-request-id": [
-          "ca06d170-1f42-48e8-be5d-6db686272fa0"
+          "da2f1884-f278-4940-95d0-31d0c3dac301"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233319Z:ca06d170-1f42-48e8-be5d-6db686272fa0"
+          "WESTUS2:20230311T062339Z:da2f1884-f278-4940-95d0-31d0c3dac301"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:19 GMT"
+          "Sat, 11 Mar 2023 06:23:38 GMT"
         ],
         "Content-Length": [
           "2819"
@@ -183,7 +183,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045\",\r\n  \"name\": \"mongo-db0045\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-08T23:32:38.0606949Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"mongoEndpoint\": \"https://mongo-db0045.mongo.cosmos.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"FullFidelity\"\r\n    },\r\n    \"instanceId\": \"8780feb4-9ce1-415e-b4b4-765e41be1df8\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.6\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableMongo\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045\",\r\n  \"name\": \"mongo-db0045\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-11T06:23:04.5651028Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"mongoEndpoint\": \"https://mongo-db0045.mongo.cosmos.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"FullFidelity\"\r\n    },\r\n    \"instanceId\": \"762c07fc-652a-4da9-b5a0-4006f03f6b30\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.6\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableMongo\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -192,7 +192,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "82b53a6b-364a-469c-8762-fcdf04ffaa00"
+          "75ee69e3-ff7d-4e4b-a1cd-58b8bd9978bf"
         ],
         "Accept-Language": [
           "en-US"
@@ -225,19 +225,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "5cd972bd-0c64-4cae-92f8-cad5d929f2a5"
+          "22d954a4-222e-40c2-8aaa-e4e22c335556"
         ],
         "x-ms-correlation-request-id": [
-          "5cd972bd-0c64-4cae-92f8-cad5d929f2a5"
+          "22d954a4-222e-40c2-8aaa-e4e22c335556"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233423Z:5cd972bd-0c64-4cae-92f8-cad5d929f2a5"
+          "WESTUS:20230311T062444Z:22d954a4-222e-40c2-8aaa-e4e22c335556"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:34:22 GMT"
+          "Sat, 11 Mar 2023 06:24:43 GMT"
         ],
         "Content-Length": [
           "2819"
@@ -246,7 +246,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045\",\r\n  \"name\": \"mongo-db0045\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-08T23:32:38.0606949Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"mongoEndpoint\": \"https://mongo-db0045.mongo.cosmos.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"FullFidelity\"\r\n    },\r\n    \"instanceId\": \"8780feb4-9ce1-415e-b4b4-765e41be1df8\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.6\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableMongo\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:32:38.0606949Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045\",\r\n  \"name\": \"mongo-db0045\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-11T06:23:04.5651028Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://mongo-db0045.documents.azure.com:443/\",\r\n    \"mongoEndpoint\": \"https://mongo-db0045.mongo.cosmos.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"FullFidelity\"\r\n    },\r\n    \"instanceId\": \"762c07fc-652a-4da9-b5a0-4006f03f6b30\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.6\"\r\n    },\r\n    \"configurationOverrides\": {\r\n      \"EnableBsonSchema\": \"True\"\r\n    },\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://mongo-db0045-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableMongo\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Geo\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:23:04.5651028Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -255,7 +255,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "Accept-Language": [
           "en-US"
@@ -282,13 +282,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/operationResults/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/operationResults/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "543b1045-4623-4624-ac7d-0a97d232a369"
+          "81dbd2bb-1929-4d98-8a80-73f8a5c27f4b"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -303,16 +303,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "27d613dd-0317-44aa-a344-90e6a108c00f"
+          "5675ff6c-6690-4b25-a15b-7c611d0d103f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233017Z:27d613dd-0317-44aa-a344-90e6a108c00f"
+          "WESTUS2:20230311T062038Z:5675ff6c-6690-4b25-a15b-7c611d0d103f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:30:17 GMT"
+          "Sat, 11 Mar 2023 06:20:38 GMT"
         ],
         "Content-Length": [
           "2358"
@@ -321,16 +321,16 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045\",\r\n  \"name\": \"mongo-db0045\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-08T23:30:15.7696791Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"FullFidelity\"\r\n    },\r\n    \"instanceId\": \"8780feb4-9ce1-415e-b4b4-765e41be1df8\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.6\"\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableMongo\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Invalid\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:30:15.7696791Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:30:15.7696791Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:30:15.7696791Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-08T23:30:15.7696791Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045\",\r\n  \"name\": \"mongo-db0045\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"MongoDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-11T06:20:36.7184295Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"MongoDB\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"FullFidelity\"\r\n    },\r\n    \"instanceId\": \"762c07fc-652a-4da9-b5a0-4006f03f6b30\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"apiProperties\": {\r\n      \"serverVersion\": \"3.6\"\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"mongo-db0045-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableMongo\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Periodic\",\r\n      \"periodicModeProperties\": {\r\n        \"backupIntervalInMinutes\": 240,\r\n        \"backupRetentionIntervalInHours\": 8,\r\n        \"backupStorageRedundancy\": \"Invalid\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:20:36.7184295Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:20:36.7184295Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:20:36.7184295Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-11T06:20:36.7184295Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTQzYjEwNDUtNDYyMy00NjI0LWFjN2QtMGE5N2QyMzJhMzY5P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODFkYmQyYmItMTkyOS00ZDk4LThhODAtNzNmOGE1YzI3ZjRiP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -360,19 +360,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "fc056675-5599-43f4-8aaa-c7b6baa63590"
+          "a3b9af64-4e76-4541-865e-c44132719fa0"
         ],
         "x-ms-correlation-request-id": [
-          "fc056675-5599-43f4-8aaa-c7b6baa63590"
+          "a3b9af64-4e76-4541-865e-c44132719fa0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233047Z:fc056675-5599-43f4-8aaa-c7b6baa63590"
+          "WESTUS2:20230311T062108Z:a3b9af64-4e76-4541-865e-c44132719fa0"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:30:47 GMT"
+          "Sat, 11 Mar 2023 06:21:08 GMT"
         ],
         "Content-Length": [
           "21"
@@ -385,12 +385,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTQzYjEwNDUtNDYyMy00NjI0LWFjN2QtMGE5N2QyMzJhMzY5P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODFkYmQyYmItMTkyOS00ZDk4LThhODAtNzNmOGE1YzI3ZjRiP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -420,19 +420,19 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "9e282db6-76c0-44fd-9b86-871cb3aa993b"
+          "3530ba45-831a-40ba-b02c-26b9c706c942"
         ],
         "x-ms-correlation-request-id": [
-          "9e282db6-76c0-44fd-9b86-871cb3aa993b"
+          "3530ba45-831a-40ba-b02c-26b9c706c942"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233118Z:9e282db6-76c0-44fd-9b86-871cb3aa993b"
+          "WESTUS2:20230311T062138Z:3530ba45-831a-40ba-b02c-26b9c706c942"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:31:17 GMT"
+          "Sat, 11 Mar 2023 06:21:38 GMT"
         ],
         "Content-Length": [
           "21"
@@ -445,12 +445,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTQzYjEwNDUtNDYyMy00NjI0LWFjN2QtMGE5N2QyMzJhMzY5P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODFkYmQyYmItMTkyOS00ZDk4LThhODAtNzNmOGE1YzI3ZjRiP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -480,19 +480,19 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "2947dd69-bc2c-4ecb-ba39-6f319240a242"
+          "864397c5-ec10-46ac-a37e-2fceae0e8891"
         ],
         "x-ms-correlation-request-id": [
-          "2947dd69-bc2c-4ecb-ba39-6f319240a242"
+          "864397c5-ec10-46ac-a37e-2fceae0e8891"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233148Z:2947dd69-bc2c-4ecb-ba39-6f319240a242"
+          "WESTUS2:20230311T062209Z:864397c5-ec10-46ac-a37e-2fceae0e8891"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:31:47 GMT"
+          "Sat, 11 Mar 2023 06:22:08 GMT"
         ],
         "Content-Length": [
           "21"
@@ -505,12 +505,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTQzYjEwNDUtNDYyMy00NjI0LWFjN2QtMGE5N2QyMzJhMzY5P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODFkYmQyYmItMTkyOS00ZDk4LThhODAtNzNmOGE1YzI3ZjRiP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -540,19 +540,19 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "ddf019d6-9b33-4bac-ae57-c213a351ee56"
+          "5948c08b-9fdc-4948-b7e0-69f7c786576f"
         ],
         "x-ms-correlation-request-id": [
-          "ddf019d6-9b33-4bac-ae57-c213a351ee56"
+          "5948c08b-9fdc-4948-b7e0-69f7c786576f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233218Z:ddf019d6-9b33-4bac-ae57-c213a351ee56"
+          "WESTUS2:20230311T062239Z:5948c08b-9fdc-4948-b7e0-69f7c786576f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:32:18 GMT"
+          "Sat, 11 Mar 2023 06:22:38 GMT"
         ],
         "Content-Length": [
           "21"
@@ -565,12 +565,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTQzYjEwNDUtNDYyMy00NjI0LWFjN2QtMGE5N2QyMzJhMzY5P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODFkYmQyYmItMTkyOS00ZDk4LThhODAtNzNmOGE1YzI3ZjRiP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -600,19 +600,19 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "08fc03a5-6279-4786-8f93-a5873a0d2c96"
+          "33891a4f-ee9c-4124-87a4-3be90fcf90fa"
         ],
         "x-ms-correlation-request-id": [
-          "08fc03a5-6279-4786-8f93-a5873a0d2c96"
+          "33891a4f-ee9c-4124-87a4-3be90fcf90fa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233248Z:08fc03a5-6279-4786-8f93-a5873a0d2c96"
+          "WESTUS2:20230311T062309Z:33891a4f-ee9c-4124-87a4-3be90fcf90fa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:32:48 GMT"
+          "Sat, 11 Mar 2023 06:23:08 GMT"
         ],
         "Content-Length": [
           "21"
@@ -625,12 +625,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/543b1045-4623-4624-ac7d-0a97d232a369?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTQzYjEwNDUtNDYyMy00NjI0LWFjN2QtMGE5N2QyMzJhMzY5P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81dbd2bb-1929-4d98-8a80-73f8a5c27f4b?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODFkYmQyYmItMTkyOS00ZDk4LThhODAtNzNmOGE1YzI3ZjRiP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "1d3bc2ac-e9b9-4718-8701-0b8be586ef0e"
+          "0ce0978a-43db-4e60-a951-9892f7983ed4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -660,19 +660,19 @@
           "11993"
         ],
         "x-ms-request-id": [
-          "72a94831-9159-4e7f-aa69-ea0cab2857fe"
+          "eb8d4073-e5ba-4731-aec2-fc2bd54ca981"
         ],
         "x-ms-correlation-request-id": [
-          "72a94831-9159-4e7f-aa69-ea0cab2857fe"
+          "eb8d4073-e5ba-4731-aec2-fc2bd54ca981"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233319Z:72a94831-9159-4e7f-aa69-ea0cab2857fe"
+          "WESTUS2:20230311T062339Z:eb8d4073-e5ba-4731-aec2-fc2bd54ca981"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:19 GMT"
+          "Sat, 11 Mar 2023 06:23:38 GMT"
         ],
         "Content-Length": [
           "22"
@@ -690,7 +690,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "df848a44-83a0-4136-9dba-979f1c87eb8c"
+          "c8a4ee75-678a-4301-aeea-e690d2036ecf"
         ],
         "Accept-Language": [
           "en-US"
@@ -723,19 +723,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "5e8fe849-f28f-4af8-a5a7-28ed7e151693"
+          "8a89ded7-76ed-4b99-bc01-074588c12545"
         ],
         "x-ms-correlation-request-id": [
-          "5e8fe849-f28f-4af8-a5a7-28ed7e151693"
+          "8a89ded7-76ed-4b99-bc01-074588c12545"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233319Z:5e8fe849-f28f-4af8-a5a7-28ed7e151693"
+          "WESTUS2:20230311T062340Z:8a89ded7-76ed-4b99-bc01-074588c12545"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:19 GMT"
+          "Sat, 11 Mar 2023 06:23:40 GMT"
         ],
         "Content-Length": [
           "160"
@@ -744,7 +744,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"the database dbName3 doesn't exist.\\r\\nActivityId: df848a44-83a0-4136-9dba-979f1c87eb8c, Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"the database dbName3 doesn't exist.\\r\\nActivityId: c8a4ee75-678a-4301-aeea-e690d2036ecf, Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
       "StatusCode": 404
     },
     {
@@ -753,7 +753,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "df848a44-83a0-4136-9dba-979f1c87eb8c"
+          "c8a4ee75-678a-4301-aeea-e690d2036ecf"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -783,19 +783,19 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "12766f42-2ea7-4f94-8b97-786e51a1e6d0"
+          "c9887f51-2791-474c-a2f9-f31eb91e96e9"
         ],
         "x-ms-correlation-request-id": [
-          "12766f42-2ea7-4f94-8b97-786e51a1e6d0"
+          "c9887f51-2791-474c-a2f9-f31eb91e96e9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233351Z:12766f42-2ea7-4f94-8b97-786e51a1e6d0"
+          "WESTUS2:20230311T062411Z:c9887f51-2791-474c-a2f9-f31eb91e96e9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:50 GMT"
+          "Sat, 11 Mar 2023 06:24:10 GMT"
         ],
         "Content-Length": [
           "309"
@@ -813,7 +813,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "df848a44-83a0-4136-9dba-979f1c87eb8c"
+          "c8a4ee75-678a-4301-aeea-e690d2036ecf"
         ],
         "Accept-Language": [
           "en-US"
@@ -840,13 +840,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/aeeebe33-6075-4f73-a820-9803c10fb060?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/034f6f01-1dde-4a4b-890d-ec3a54cf2e71?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/aeeebe33-6075-4f73-a820-9803c10fb060?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/034f6f01-1dde-4a4b-890d-ec3a54cf2e71?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "aeeebe33-6075-4f73-a820-9803c10fb060"
+          "034f6f01-1dde-4a4b-890d-ec3a54cf2e71"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -861,16 +861,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "20e79176-83e1-4273-9db3-ea6ca3aed1cd"
+          "d0178a5f-5231-4aba-a354-c3c95bd2d345"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233320Z:20e79176-83e1-4273-9db3-ea6ca3aed1cd"
+          "WESTUS2:20230311T062341Z:d0178a5f-5231-4aba-a354-c3c95bd2d345"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:20 GMT"
+          "Sat, 11 Mar 2023 06:23:40 GMT"
         ],
         "Content-Length": [
           "21"
@@ -883,12 +883,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/aeeebe33-6075-4f73-a820-9803c10fb060?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYWVlZWJlMzMtNjA3NS00ZjczLWE4MjAtOTgwM2MxMGZiMDYwP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/034f6f01-1dde-4a4b-890d-ec3a54cf2e71?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDM0ZjZmMDEtMWRkZS00YTRiLTg5MGQtZWMzYTU0Y2YyZTcxP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "df848a44-83a0-4136-9dba-979f1c87eb8c"
+          "c8a4ee75-678a-4301-aeea-e690d2036ecf"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -918,19 +918,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "6b1b4a80-a823-41ba-8dce-0542ed7f5b0c"
+          "fa277bd7-a2e9-4cdc-8bbc-a73b1e57fba9"
         ],
         "x-ms-correlation-request-id": [
-          "6b1b4a80-a823-41ba-8dce-0542ed7f5b0c"
+          "fa277bd7-a2e9-4cdc-8bbc-a73b1e57fba9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233350Z:6b1b4a80-a823-41ba-8dce-0542ed7f5b0c"
+          "WESTUS2:20230311T062411Z:fa277bd7-a2e9-4cdc-8bbc-a73b1e57fba9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:50 GMT"
+          "Sat, 11 Mar 2023 06:24:10 GMT"
         ],
         "Content-Length": [
           "22"
@@ -948,7 +948,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7d9ab81-d8d3-4450-ab11-4fe58e9c7718"
+          "4b0f30f1-b137-40e2-9880-d6166efd40d6"
         ],
         "Accept-Language": [
           "en-US"
@@ -981,19 +981,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "54fc5c80-8cab-40de-a04f-76e954db0962"
+          "d0ebcdbf-ce24-4eea-ae60-18c8b7b2bb1f"
         ],
         "x-ms-correlation-request-id": [
-          "54fc5c80-8cab-40de-a04f-76e954db0962"
+          "d0ebcdbf-ce24-4eea-ae60-18c8b7b2bb1f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233351Z:54fc5c80-8cab-40de-a04f-76e954db0962"
+          "WESTUS2:20230311T062412Z:d0ebcdbf-ce24-4eea-ae60-18c8b7b2bb1f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:50 GMT"
+          "Sat, 11 Mar 2023 06:24:11 GMT"
         ],
         "Content-Length": [
           "381"
@@ -1002,7 +1002,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"bXFI\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 1200,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"R2rd\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 1200,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1011,67 +1011,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "04f6b884-772f-4631-80b0-acb9b7947745"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-store, no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-gatewayversion": [
-          "version=2.14.0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-request-id": [
-          "7edd5a26-1426-44b0-86e7-0dec4b23b22f"
-        ],
-        "x-ms-correlation-request-id": [
-          "7edd5a26-1426-44b0-86e7-0dec4b23b22f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233422Z:7edd5a26-1426-44b0-86e7-0dec4b23b22f"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 08 Mar 2023 23:34:22 GMT"
-        ],
-        "Content-Length": [
-          "381"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"bXFI\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 1100,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvdGhyb3VnaHB1dFNldHRpbmdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "760682e1-3be1-4400-ab9c-b675ed2275a9"
+          "3b214dc9-762c-40b2-9a36-2a97648ac55b"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1101,19 +1041,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "1d8d6f47-fa13-4447-9360-8023e76c7479"
+          "03493629-60d9-4c13-89e9-91ca82ceb42d"
         ],
         "x-ms-correlation-request-id": [
-          "1d8d6f47-fa13-4447-9360-8023e76c7479"
+          "03493629-60d9-4c13-89e9-91ca82ceb42d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233454Z:1d8d6f47-fa13-4447-9360-8023e76c7479"
+          "WESTUS2:20230311T062443Z:03493629-60d9-4c13-89e9-91ca82ceb42d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:34:53 GMT"
+          "Sat, 11 Mar 2023 06:24:42 GMT"
         ],
         "Content-Length": [
           "381"
@@ -1122,7 +1062,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"bXFI\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 1000,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"R2rd\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 1100,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1131,7 +1071,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "20ffe026-fd88-40ed-9593-b8d9edb70111"
+          "a2e0a0ed-9f06-4710-b6f7-b7d5ca60ff93"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1161,19 +1101,79 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "558294de-a92f-4819-a788-f35a12210e99"
+          "1660a22e-607a-4840-b42e-1e116bfdb7b2"
         ],
         "x-ms-correlation-request-id": [
-          "558294de-a92f-4819-a788-f35a12210e99"
+          "1660a22e-607a-4840-b42e-1e116bfdb7b2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233526Z:558294de-a92f-4819-a788-f35a12210e99"
+          "WESTUS:20230311T062515Z:1660a22e-607a-4840-b42e-1e116bfdb7b2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:35:25 GMT"
+          "Sat, 11 Mar 2023 06:25:14 GMT"
+        ],
+        "Content-Length": [
+          "381"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"R2rd\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 1000,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvdGhyb3VnaHB1dFNldHRpbmdzL2RlZmF1bHQ/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a7f5dcf6-54d9-4cbd-b50a-33ab4202572b"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "e40473c6-540b-4a29-be47-f52a705ec408"
+        ],
+        "x-ms-correlation-request-id": [
+          "e40473c6-540b-4a29-be47-f52a705ec408"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20230311T062547Z:e40473c6-540b-4a29-be47-f52a705ec408"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 11 Mar 2023 06:25:46 GMT"
         ],
         "Content-Length": [
           "380"
@@ -1182,7 +1182,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"bXFI\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 900,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings\",\r\n  \"name\": \"R2rd\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 900,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1191,7 +1191,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "04f6b884-772f-4631-80b0-acb9b7947745"
+          "3b214dc9-762c-40b2-9a36-2a97648ac55b"
         ],
         "Accept-Language": [
           "en-US"
@@ -1218,13 +1218,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default/operationResults/bf503ae0-be0f-451e-9961-aae89ee89d3b?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default/operationResults/69fd322d-3f2d-4e00-abfc-e84f7b2e66f7?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/bf503ae0-be0f-451e-9961-aae89ee89d3b?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/69fd322d-3f2d-4e00-abfc-e84f7b2e66f7?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "bf503ae0-be0f-451e-9961-aae89ee89d3b"
+          "69fd322d-3f2d-4e00-abfc-e84f7b2e66f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1236,19 +1236,19 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "bc8682bd-7f1a-4d96-9503-35ed4a287c5f"
+          "bd5ecc07-710b-4be9-84ce-6979ec0215cd"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233352Z:bc8682bd-7f1a-4d96-9503-35ed4a287c5f"
+          "WESTUS2:20230311T062413Z:bd5ecc07-710b-4be9-84ce-6979ec0215cd"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:33:52 GMT"
+          "Sat, 11 Mar 2023 06:24:12 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1266,7 +1266,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "760682e1-3be1-4400-ab9c-b675ed2275a9"
+          "a2e0a0ed-9f06-4710-b6f7-b7d5ca60ff93"
         ],
         "Accept-Language": [
           "en-US"
@@ -1293,13 +1293,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default/operationResults/072ee349-143e-4cba-b743-7baab3f54fc3?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default/operationResults/e5707e5c-353a-42f6-8720-dfb706bbc6da?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/072ee349-143e-4cba-b743-7baab3f54fc3?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e5707e5c-353a-42f6-8720-dfb706bbc6da?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "072ee349-143e-4cba-b743-7baab3f54fc3"
+          "e5707e5c-353a-42f6-8720-dfb706bbc6da"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1314,16 +1314,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "7f07b881-ba97-46bf-ad54-038452ccfc84"
+          "22e20f28-5819-42f3-99ff-33eb8afc44d7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233424Z:7f07b881-ba97-46bf-ad54-038452ccfc84"
+          "WESTUS:20230311T062445Z:22e20f28-5819-42f3-99ff-33eb8afc44d7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:34:23 GMT"
+          "Sat, 11 Mar 2023 06:24:44 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1341,7 +1341,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "20ffe026-fd88-40ed-9593-b8d9edb70111"
+          "a7f5dcf6-54d9-4cbd-b50a-33ab4202572b"
         ],
         "Accept-Language": [
           "en-US"
@@ -1368,13 +1368,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default/operationResults/5026c813-4958-4b02-904f-989fd8c84dec?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/throughputSettings/default/operationResults/73c7c867-f049-4077-8037-9b9759da9a9d?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/5026c813-4958-4b02-904f-989fd8c84dec?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/73c7c867-f049-4077-8037-9b9759da9a9d?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "5026c813-4958-4b02-904f-989fd8c84dec"
+          "73c7c867-f049-4077-8037-9b9759da9a9d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1389,16 +1389,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "a642bbf6-02fd-4b0b-94ea-c09b0c5248ee"
+          "5770270e-78ce-4d5a-bb38-cf6d9a4c6f98"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233455Z:a642bbf6-02fd-4b0b-94ea-c09b0c5248ee"
+          "WESTUS2:20230311T062516Z:5770270e-78ce-4d5a-bb38-cf6d9a4c6f98"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:34:55 GMT"
+          "Sat, 11 Mar 2023 06:25:16 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1411,72 +1411,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/bf503ae0-be0f-451e-9961-aae89ee89d3b?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYmY1MDNhZTAtYmUwZi00NTFlLTk5NjEtYWFlODllZTg5ZDNiP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/69fd322d-3f2d-4e00-abfc-e84f7b2e66f7?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNjlmZDMyMmQtM2YyZC00ZTAwLWFiZmMtZTg0ZjdiMmU2NmY3P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "04f6b884-772f-4631-80b0-acb9b7947745"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-store, no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-gatewayversion": [
-          "version=2.14.0"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-request-id": [
-          "c5e18d9d-fbd5-4e8c-ac40-7942664121b2"
-        ],
-        "x-ms-correlation-request-id": [
-          "c5e18d9d-fbd5-4e8c-ac40-7942664121b2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233422Z:c5e18d9d-fbd5-4e8c-ac40-7942664121b2"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Wed, 08 Mar 2023 23:34:22 GMT"
-        ],
-        "Content-Length": [
-          "22"
-        ],
-        "Content-Type": [
-          "application/json"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/072ee349-143e-4cba-b743-7baab3f54fc3?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDcyZWUzNDktMTQzZS00Y2JhLWI3NDMtN2JhYWIzZjU0ZmMzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "760682e1-3be1-4400-ab9c-b675ed2275a9"
+          "3b214dc9-762c-40b2-9a36-2a97648ac55b"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1506,19 +1446,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "4dfbd5bd-3fbd-49bc-9ed9-5c767f475e8d"
+          "34f63623-37d6-4cb8-bc41-677f4e698f88"
         ],
         "x-ms-correlation-request-id": [
-          "4dfbd5bd-3fbd-49bc-9ed9-5c767f475e8d"
+          "34f63623-37d6-4cb8-bc41-677f4e698f88"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233454Z:4dfbd5bd-3fbd-49bc-9ed9-5c767f475e8d"
+          "WESTUS2:20230311T062443Z:34f63623-37d6-4cb8-bc41-677f4e698f88"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:34:53 GMT"
+          "Sat, 11 Mar 2023 06:24:42 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1531,12 +1471,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/5026c813-4958-4b02-904f-989fd8c84dec?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTAyNmM4MTMtNDk1OC00YjAyLTkwNGYtOTg5ZmQ4Yzg0ZGVjP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/e5707e5c-353a-42f6-8720-dfb706bbc6da?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZTU3MDdlNWMtMzUzYS00MmY2LTg3MjAtZGZiNzA2YmJjNmRhP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "20ffe026-fd88-40ed-9593-b8d9edb70111"
+          "a2e0a0ed-9f06-4710-b6f7-b7d5ca60ff93"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1566,19 +1506,79 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "c60f256c-8ea4-4fcb-9948-832c348af66b"
+          "9e95c528-7aa7-4ae7-8855-3fded53548d4"
         ],
         "x-ms-correlation-request-id": [
-          "c60f256c-8ea4-4fcb-9948-832c348af66b"
+          "9e95c528-7aa7-4ae7-8855-3fded53548d4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233525Z:c60f256c-8ea4-4fcb-9948-832c348af66b"
+          "WESTUS:20230311T062515Z:9e95c528-7aa7-4ae7-8855-3fded53548d4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:35:25 GMT"
+          "Sat, 11 Mar 2023 06:25:14 GMT"
+        ],
+        "Content-Length": [
+          "22"
+        ],
+        "Content-Type": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/73c7c867-f049-4077-8037-9b9759da9a9d?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNzNjN2M4NjctZjA0OS00MDc3LTgwMzctOWI5NzU5ZGE5YTlkP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a7f5dcf6-54d9-4cbd-b50a-33ab4202572b"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-store, no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-gatewayversion": [
+          "version=2.14.0"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "e2d0fb18-76e9-4ac4-be96-18f600487118"
+        ],
+        "x-ms-correlation-request-id": [
+          "e2d0fb18-76e9-4ac4-be96-18f600487118"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20230311T062546Z:e2d0fb18-76e9-4ac4-be96-18f600487118"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Sat, 11 Mar 2023 06:25:46 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1596,7 +1596,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dee2371e-37a3-403c-9ca7-6f5ca9832379"
+          "d5f7454f-4ed9-404a-9696-6044683d40d6"
         ],
         "Accept-Language": [
           "en-US"
@@ -1629,19 +1629,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "3a1273fc-e9e5-457b-a027-fafb04cb90b3"
+          "c51dfaba-0007-4468-b311-51027dcc7958"
         ],
         "x-ms-correlation-request-id": [
-          "3a1273fc-e9e5-457b-a027-fafb04cb90b3"
+          "c51dfaba-0007-4468-b311-51027dcc7958"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233527Z:3a1273fc-e9e5-457b-a027-fafb04cb90b3"
+          "WESTUS2:20230311T062547Z:c51dfaba-0007-4468-b311-51027dcc7958"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:35:26 GMT"
+          "Sat, 11 Mar 2023 06:25:47 GMT"
         ],
         "Content-Length": [
           "181"
@@ -1650,7 +1650,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"The collection 'dbName3'.'collectionName' doesn't exist.\\r\\nActivityId: dee2371e-37a3-403c-9ca7-6f5ca9832379, Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"The collection 'dbName3'.'collectionName' doesn't exist.\\r\\nActivityId: d5f7454f-4ed9-404a-9696-6044683d40d6, Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
       "StatusCode": 404
     },
     {
@@ -1659,7 +1659,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dee2371e-37a3-403c-9ca7-6f5ca9832379"
+          "d5f7454f-4ed9-404a-9696-6044683d40d6"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1689,19 +1689,19 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "b0e6f190-3fed-4ec3-85fe-f3619bfd83ff"
+          "a3c14d06-b597-4473-9da3-c71c7c7e9462"
         ],
         "x-ms-correlation-request-id": [
-          "b0e6f190-3fed-4ec3-85fe-f3619bfd83ff"
+          "a3c14d06-b597-4473-9da3-c71c7c7e9462"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233558Z:b0e6f190-3fed-4ec3-85fe-f3619bfd83ff"
+          "WESTUS2:20230311T062618Z:a3c14d06-b597-4473-9da3-c71c7c7e9462"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:35:57 GMT"
+          "Sat, 11 Mar 2023 06:26:17 GMT"
         ],
         "Content-Length": [
           "434"
@@ -1719,7 +1719,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dee2371e-37a3-403c-9ca7-6f5ca9832379"
+          "d5f7454f-4ed9-404a-9696-6044683d40d6"
         ],
         "Accept-Language": [
           "en-US"
@@ -1746,13 +1746,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/81eb67e8-9370-4914-902f-126dd8fe9103?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/0d6f253f-1e55-4209-b62f-8b32fd0372d0?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81eb67e8-9370-4914-902f-126dd8fe9103?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0d6f253f-1e55-4209-b62f-8b32fd0372d0?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "81eb67e8-9370-4914-902f-126dd8fe9103"
+          "0d6f253f-1e55-4209-b62f-8b32fd0372d0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1767,16 +1767,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "1699391c-fcd5-4907-a985-2e28031f20c6"
+          "daac791c-7fbf-4770-a74e-e1977b776730"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233527Z:1699391c-fcd5-4907-a985-2e28031f20c6"
+          "WESTUS2:20230311T062548Z:daac791c-7fbf-4770-a74e-e1977b776730"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:35:26 GMT"
+          "Sat, 11 Mar 2023 06:25:47 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1789,12 +1789,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/81eb67e8-9370-4914-902f-126dd8fe9103?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODFlYjY3ZTgtOTM3MC00OTE0LTkwMmYtMTI2ZGQ4ZmU5MTAzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/0d6f253f-1e55-4209-b62f-8b32fd0372d0?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMGQ2ZjI1M2YtMWU1NS00MjA5LWI2MmYtOGIzMmZkMDM3MmQwP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "dee2371e-37a3-403c-9ca7-6f5ca9832379"
+          "d5f7454f-4ed9-404a-9696-6044683d40d6"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1824,19 +1824,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "547069bc-6fa9-4bd9-8b24-7caec74fefe2"
+          "fc272d81-a08d-4082-9923-42573a8d2834"
         ],
         "x-ms-correlation-request-id": [
-          "547069bc-6fa9-4bd9-8b24-7caec74fefe2"
+          "fc272d81-a08d-4082-9923-42573a8d2834"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233557Z:547069bc-6fa9-4bd9-8b24-7caec74fefe2"
+          "WESTUS2:20230311T062618Z:fc272d81-a08d-4082-9923-42573a8d2834"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:35:57 GMT"
+          "Sat, 11 Mar 2023 06:26:17 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1854,7 +1854,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "db006426-4217-4996-8acc-3975f8d8e1d3"
+          "ba7d5c65-c7c4-41fd-9e54-f8ba40b51ba6"
         ],
         "Accept-Language": [
           "en-US"
@@ -1887,19 +1887,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "3e8cc60b-5378-45aa-8e87-c528827520dd"
+          "eb2d00e9-9de0-437a-8a30-283967de0e79"
         ],
         "x-ms-correlation-request-id": [
-          "3e8cc60b-5378-45aa-8e87-c528827520dd"
+          "eb2d00e9-9de0-437a-8a30-283967de0e79"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233559Z:3e8cc60b-5378-45aa-8e87-c528827520dd"
+          "WESTUS2:20230311T062619Z:eb2d00e9-9de0-437a-8a30-283967de0e79"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:35:58 GMT"
+          "Sat, 11 Mar 2023 06:26:18 GMT"
         ],
         "Content-Length": [
           "419"
@@ -1908,7 +1908,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"60y9\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 800,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"1lN+\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 800,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1917,7 +1917,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3b389210-3c46-4d47-80dc-676cc53d387a"
+          "dd9e2288-0a3c-432e-9b69-f13a6941b4fb"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1947,19 +1947,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "36010bf8-89a9-45b7-86dc-ac26508939f1"
+          "256d5653-b034-45df-9d6d-c2ea351fdc8c"
         ],
         "x-ms-correlation-request-id": [
-          "36010bf8-89a9-45b7-86dc-ac26508939f1"
+          "256d5653-b034-45df-9d6d-c2ea351fdc8c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233630Z:36010bf8-89a9-45b7-86dc-ac26508939f1"
+          "WESTUS2:20230311T062650Z:256d5653-b034-45df-9d6d-c2ea351fdc8c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:36:30 GMT"
+          "Sat, 11 Mar 2023 06:26:50 GMT"
         ],
         "Content-Length": [
           "419"
@@ -1968,7 +1968,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"60y9\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 700,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"1lN+\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 700,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1977,7 +1977,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0ecf0b3c-ac2c-4ce7-9986-3a4ea5cc4b3e"
+          "26cd570e-1d1d-4aa5-8f5a-9758857875a5"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2007,19 +2007,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "7665f30f-69cb-4c71-8986-876b2820c8d6"
+          "8bc8ba7d-07d4-46ba-8432-93329c7a5f39"
         ],
         "x-ms-correlation-request-id": [
-          "7665f30f-69cb-4c71-8986-876b2820c8d6"
+          "8bc8ba7d-07d4-46ba-8432-93329c7a5f39"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233702Z:7665f30f-69cb-4c71-8986-876b2820c8d6"
+          "WESTUS2:20230311T062722Z:8bc8ba7d-07d4-46ba-8432-93329c7a5f39"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:37:01 GMT"
+          "Sat, 11 Mar 2023 06:27:22 GMT"
         ],
         "Content-Length": [
           "419"
@@ -2028,7 +2028,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"60y9\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 600,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"1lN+\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 600,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -2037,7 +2037,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6dab9d33-4422-4a11-9ee9-ff725b010d66"
+          "d9b3e020-760b-4242-9caf-a1dbd0b54576"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2064,22 +2064,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11998"
         ],
         "x-ms-request-id": [
-          "329935a1-65f8-46ed-ad73-d6c9bb63e079"
+          "593f64e7-dd55-4464-9c0a-ab405ccf3b89"
         ],
         "x-ms-correlation-request-id": [
-          "329935a1-65f8-46ed-ad73-d6c9bb63e079"
+          "593f64e7-dd55-4464-9c0a-ab405ccf3b89"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233733Z:329935a1-65f8-46ed-ad73-d6c9bb63e079"
+          "WESTUS2:20230311T062753Z:593f64e7-dd55-4464-9c0a-ab405ccf3b89"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:37:33 GMT"
+          "Sat, 11 Mar 2023 06:27:53 GMT"
         ],
         "Content-Length": [
           "419"
@@ -2088,7 +2088,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"60y9\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 500,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings\",\r\n  \"name\": \"1lN+\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 500,\r\n      \"minimumThroughput\": \"400\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -2097,7 +2097,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3b389210-3c46-4d47-80dc-676cc53d387a"
+          "dd9e2288-0a3c-432e-9b69-f13a6941b4fb"
         ],
         "Accept-Language": [
           "en-US"
@@ -2124,13 +2124,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default/operationResults/418ab6a7-e770-401e-9d05-9979673e6c76?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default/operationResults/d361b68a-8148-44ba-800c-9a40144c3690?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/418ab6a7-e770-401e-9d05-9979673e6c76?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/d361b68a-8148-44ba-800c-9a40144c3690?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "418ab6a7-e770-401e-9d05-9979673e6c76"
+          "d361b68a-8148-44ba-800c-9a40144c3690"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2145,16 +2145,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "0db6508b-a4a5-4104-b8a6-f3e74ef0bb72"
+          "94dcae81-b486-4d74-9883-05e224ff943a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233600Z:0db6508b-a4a5-4104-b8a6-f3e74ef0bb72"
+          "WESTUS2:20230311T062620Z:94dcae81-b486-4d74-9883-05e224ff943a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:36:00 GMT"
+          "Sat, 11 Mar 2023 06:26:19 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2172,7 +2172,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0ecf0b3c-ac2c-4ce7-9986-3a4ea5cc4b3e"
+          "26cd570e-1d1d-4aa5-8f5a-9758857875a5"
         ],
         "Accept-Language": [
           "en-US"
@@ -2199,13 +2199,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default/operationResults/a9870f28-23b1-4124-9fea-0b4cf5550ae5?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default/operationResults/898939c4-646f-4904-ba29-b2ed079090c6?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a9870f28-23b1-4124-9fea-0b4cf5550ae5?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/898939c4-646f-4904-ba29-b2ed079090c6?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "a9870f28-23b1-4124-9fea-0b4cf5550ae5"
+          "898939c4-646f-4904-ba29-b2ed079090c6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2220,16 +2220,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "9629d320-22db-455b-950d-f8e8b15e569a"
+          "b98f8d28-9709-4749-b39e-9d287d2838ee"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233631Z:9629d320-22db-455b-950d-f8e8b15e569a"
+          "WESTUS2:20230311T062651Z:b98f8d28-9709-4749-b39e-9d287d2838ee"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:36:31 GMT"
+          "Sat, 11 Mar 2023 06:26:51 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2247,7 +2247,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6dab9d33-4422-4a11-9ee9-ff725b010d66"
+          "d9b3e020-760b-4242-9caf-a1dbd0b54576"
         ],
         "Accept-Language": [
           "en-US"
@@ -2274,13 +2274,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default/operationResults/c41d5556-2c76-449e-be6e-2f9f7b6c3c7a?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/throughputSettings/default/operationResults/50a66e60-ccc8-43fb-b468-ee5dceb26e3c?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/c41d5556-2c76-449e-be6e-2f9f7b6c3c7a?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/50a66e60-ccc8-43fb-b468-ee5dceb26e3c?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "c41d5556-2c76-449e-be6e-2f9f7b6c3c7a"
+          "50a66e60-ccc8-43fb-b468-ee5dceb26e3c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2295,16 +2295,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "9cbd29fb-5d0e-4389-be45-d7ace7ac888e"
+          "c16c5b81-f5d6-44df-8a7e-36ecff990f9a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233703Z:9cbd29fb-5d0e-4389-be45-d7ace7ac888e"
+          "WESTUS2:20230311T062723Z:c16c5b81-f5d6-44df-8a7e-36ecff990f9a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:37:02 GMT"
+          "Sat, 11 Mar 2023 06:27:23 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2317,12 +2317,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/418ab6a7-e770-401e-9d05-9979673e6c76?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNDE4YWI2YTctZTc3MC00MDFlLTlkMDUtOTk3OTY3M2U2Yzc2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/d361b68a-8148-44ba-800c-9a40144c3690?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZDM2MWI2OGEtODE0OC00NGJhLTgwMGMtOWE0MDE0NGMzNjkwP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3b389210-3c46-4d47-80dc-676cc53d387a"
+          "dd9e2288-0a3c-432e-9b69-f13a6941b4fb"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2352,19 +2352,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "895c57d9-cce1-4bb1-8904-41302cc29e0f"
+          "46d8ef7e-392d-40b2-9fb1-52feef0b7412"
         ],
         "x-ms-correlation-request-id": [
-          "895c57d9-cce1-4bb1-8904-41302cc29e0f"
+          "46d8ef7e-392d-40b2-9fb1-52feef0b7412"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233630Z:895c57d9-cce1-4bb1-8904-41302cc29e0f"
+          "WESTUS2:20230311T062650Z:46d8ef7e-392d-40b2-9fb1-52feef0b7412"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:36:30 GMT"
+          "Sat, 11 Mar 2023 06:26:49 GMT"
         ],
         "Content-Length": [
           "22"
@@ -2377,12 +2377,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a9870f28-23b1-4124-9fea-0b4cf5550ae5?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTk4NzBmMjgtMjNiMS00MTI0LTlmZWEtMGI0Y2Y1NTUwYWU1P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/898939c4-646f-4904-ba29-b2ed079090c6?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODk4OTM5YzQtNjQ2Zi00OTA0LWJhMjktYjJlZDA3OTA5MGM2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0ecf0b3c-ac2c-4ce7-9986-3a4ea5cc4b3e"
+          "26cd570e-1d1d-4aa5-8f5a-9758857875a5"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2412,19 +2412,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "b7642eec-7679-4fa3-b89e-7c5f3f0c57a5"
+          "4b0a32fc-41c4-44d0-9285-c25399e438aa"
         ],
         "x-ms-correlation-request-id": [
-          "b7642eec-7679-4fa3-b89e-7c5f3f0c57a5"
+          "4b0a32fc-41c4-44d0-9285-c25399e438aa"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233701Z:b7642eec-7679-4fa3-b89e-7c5f3f0c57a5"
+          "WESTUS2:20230311T062721Z:4b0a32fc-41c4-44d0-9285-c25399e438aa"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:37:01 GMT"
+          "Sat, 11 Mar 2023 06:27:21 GMT"
         ],
         "Content-Length": [
           "22"
@@ -2437,12 +2437,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/c41d5556-2c76-449e-be6e-2f9f7b6c3c7a?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYzQxZDU1NTYtMmM3Ni00NDllLWJlNmUtMmY5ZjdiNmMzYzdhP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/50a66e60-ccc8-43fb-b468-ee5dceb26e3c?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTBhNjZlNjAtY2NjOC00M2ZiLWI0NjgtZWU1ZGNlYjI2ZTNjP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6dab9d33-4422-4a11-9ee9-ff725b010d66"
+          "d9b3e020-760b-4242-9caf-a1dbd0b54576"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2469,22 +2469,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-request-id": [
-          "8eac1fba-e3b1-4d5d-9d02-c80037f0a431"
+          "4e18158e-cf21-46b4-b153-300c5f4717c6"
         ],
         "x-ms-correlation-request-id": [
-          "8eac1fba-e3b1-4d5d-9d02-c80037f0a431"
+          "4e18158e-cf21-46b4-b153-300c5f4717c6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233733Z:8eac1fba-e3b1-4d5d-9d02-c80037f0a431"
+          "WESTUS2:20230311T062753Z:4e18158e-cf21-46b4-b153-300c5f4717c6"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:37:32 GMT"
+          "Sat, 11 Mar 2023 06:27:52 GMT"
         ],
         "Content-Length": [
           "22"
@@ -2502,7 +2502,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b366cca0-f4eb-4c21-93f9-4418416392ef"
+          "6edb6490-e773-4c69-9edc-a0c3126b9f02"
         ],
         "Accept-Language": [
           "en-US"
@@ -2523,13 +2523,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/6d56d53f-eedb-4403-8e54-d616f7eb458f?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/af793796-0e6d-4569-b54d-af8ea90e24a2?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/6d56d53f-eedb-4403-8e54-d616f7eb458f?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/af793796-0e6d-4569-b54d-af8ea90e24a2?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "6d56d53f-eedb-4403-8e54-d616f7eb458f"
+          "af793796-0e6d-4569-b54d-af8ea90e24a2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2544,16 +2544,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "ae870aaf-7df2-4532-93c9-84148e3c6726"
+          "1313bf9e-9816-4c15-9641-ae145a265a77"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233735Z:ae870aaf-7df2-4532-93c9-84148e3c6726"
+          "WESTUS:20230311T062754Z:1313bf9e-9816-4c15-9641-ae145a265a77"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:37:34 GMT"
+          "Sat, 11 Mar 2023 06:27:54 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2571,7 +2571,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5eeb4d72-4fd6-401f-ac49-c713a3c49a13"
+          "4cdc61f7-0a40-4908-82ba-725539cc1abe"
         ],
         "Accept-Language": [
           "en-US"
@@ -2592,13 +2592,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/04bce44b-5c38-4ac6-8f6f-a74a41b215a8?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/f9a47cf2-8431-4f27-9acf-7146ddb28922?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/04bce44b-5c38-4ac6-8f6f-a74a41b215a8?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/f9a47cf2-8431-4f27-9acf-7146ddb28922?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "04bce44b-5c38-4ac6-8f6f-a74a41b215a8"
+          "f9a47cf2-8431-4f27-9acf-7146ddb28922"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2613,16 +2613,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "b979a585-bef5-4470-ae3f-1b6a91761ebd"
+          "21685f40-f6c7-4344-99de-99c237ca8d9d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233837Z:b979a585-bef5-4470-ae3f-1b6a91761ebd"
+          "WESTUS:20230311T062857Z:21685f40-f6c7-4344-99de-99c237ca8d9d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:38:37 GMT"
+          "Sat, 11 Mar 2023 06:28:56 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2635,12 +2635,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/6d56d53f-eedb-4403-8e54-d616f7eb458f?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNmQ1NmQ1M2YtZWVkYi00NDAzLThlNTQtZDYxNmY3ZWI0NThmP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/af793796-0e6d-4569-b54d-af8ea90e24a2?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYWY3OTM3OTYtMGU2ZC00NTY5LWI1NGQtYWY4ZWE5MGUyNGEyP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b366cca0-f4eb-4c21-93f9-4418416392ef"
+          "6edb6490-e773-4c69-9edc-a0c3126b9f02"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2670,19 +2670,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "04ed1268-6c72-4745-86fc-bcbca15fc5b9"
+          "5efc0a6c-ee5a-4570-93b7-665233db5ebb"
         ],
         "x-ms-correlation-request-id": [
-          "04ed1268-6c72-4745-86fc-bcbca15fc5b9"
+          "5efc0a6c-ee5a-4570-93b7-665233db5ebb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233805Z:04ed1268-6c72-4745-86fc-bcbca15fc5b9"
+          "WESTUS:20230311T062824Z:5efc0a6c-ee5a-4570-93b7-665233db5ebb"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:38:04 GMT"
+          "Sat, 11 Mar 2023 06:28:24 GMT"
         ],
         "Content-Length": [
           "22"
@@ -2695,12 +2695,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/6d56d53f-eedb-4403-8e54-d616f7eb458f?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvY29sbGVjdGlvbnMvY29sbGVjdGlvbk5hbWUvb3BlcmF0aW9uUmVzdWx0cy82ZDU2ZDUzZi1lZWRiLTQ0MDMtOGU1NC1kNjE2ZjdlYjQ1OGY/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/af793796-0e6d-4569-b54d-af8ea90e24a2?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvY29sbGVjdGlvbnMvY29sbGVjdGlvbk5hbWUvb3BlcmF0aW9uUmVzdWx0cy9hZjc5Mzc5Ni0wZTZkLTQ1NjktYjU0ZC1hZjhlYTkwZTI0YTI/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b366cca0-f4eb-4c21-93f9-4418416392ef"
+          "6edb6490-e773-4c69-9edc-a0c3126b9f02"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2721,7 +2721,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-activity-id": [
-          "b366cca0-f4eb-4c21-93f9-4418416392ef"
+          "6edb6490-e773-4c69-9edc-a0c3126b9f02"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -2730,19 +2730,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "6db7ad04-5ecc-4bc7-b60d-9bc0d56e7673"
+          "efc3c901-b9dc-4b47-bb67-9415c08ef4bf"
         ],
         "x-ms-correlation-request-id": [
-          "6db7ad04-5ecc-4bc7-b60d-9bc0d56e7673"
+          "efc3c901-b9dc-4b47-bb67-9415c08ef4bf"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233805Z:6db7ad04-5ecc-4bc7-b60d-9bc0d56e7673"
+          "WESTUS:20230311T062825Z:efc3c901-b9dc-4b47-bb67-9415c08ef4bf"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:38:05 GMT"
+          "Sat, 11 Mar 2023 06:28:24 GMT"
         ]
       },
       "ResponseBody": "",
@@ -2754,7 +2754,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ae16331-285d-40da-93da-9266c63cef8e"
+          "b78df9d0-c0f6-4541-886c-547a5c51b8c3"
         ],
         "Accept-Language": [
           "en-US"
@@ -2775,13 +2775,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/35539b7e-cf1e-436e-bdab-219dfd619d53?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/32ce0be3-a97c-40f9-8b7f-ecf18493c9b7?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/35539b7e-cf1e-436e-bdab-219dfd619d53?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/32ce0be3-a97c-40f9-8b7f-ecf18493c9b7?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "35539b7e-cf1e-436e-bdab-219dfd619d53"
+          "32ce0be3-a97c-40f9-8b7f-ecf18493c9b7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2796,16 +2796,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "d8be4e71-12a5-49f6-b9b0-8f37327206d1"
+          "11f83d8d-2f12-4043-ac3a-b58f45660df9"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233806Z:d8be4e71-12a5-49f6-b9b0-8f37327206d1"
+          "WESTUS2:20230311T062826Z:11f83d8d-2f12-4043-ac3a-b58f45660df9"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:38:05 GMT"
+          "Sat, 11 Mar 2023 06:28:25 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2823,7 +2823,7 @@
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d69aa93a-4aef-4d59-a71c-b54351322ac3"
+          "fa943964-4edb-4bce-a7af-57267a1cf73e"
         ],
         "Accept-Language": [
           "en-US"
@@ -2844,13 +2844,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/b4b980a2-c87c-4b08-ae88-cdc66ad51ecc?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/109ace26-2615-44ef-b878-bf3e91b97d00?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/b4b980a2-c87c-4b08-ae88-cdc66ad51ecc?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/109ace26-2615-44ef-b878-bf3e91b97d00?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "b4b980a2-c87c-4b08-ae88-cdc66ad51ecc"
+          "109ace26-2615-44ef-b878-bf3e91b97d00"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2865,16 +2865,16 @@
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "a09f5c37-ef64-41c8-b12a-a6477a02bfb7"
+          "f95cb14b-9ade-45e4-ad4c-d6aca06a1529"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233908Z:a09f5c37-ef64-41c8-b12a-a6477a02bfb7"
+          "WESTUS2:20230311T062928Z:f95cb14b-9ade-45e4-ad4c-d6aca06a1529"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:39:07 GMT"
+          "Sat, 11 Mar 2023 06:29:27 GMT"
         ],
         "Content-Length": [
           "21"
@@ -2887,12 +2887,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/35539b7e-cf1e-436e-bdab-219dfd619d53?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMzU1MzliN2UtY2YxZS00MzZlLWJkYWItMjE5ZGZkNjE5ZDUzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/32ce0be3-a97c-40f9-8b7f-ecf18493c9b7?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMzJjZTBiZTMtYTk3Yy00MGY5LThiN2YtZWNmMTg0OTNjOWI3P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ae16331-285d-40da-93da-9266c63cef8e"
+          "b78df9d0-c0f6-4541-886c-547a5c51b8c3"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2919,22 +2919,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11998"
         ],
         "x-ms-request-id": [
-          "fdcd5dcc-4a2d-4eb9-9160-ff0a527ab0d0"
+          "42e57022-1b66-401a-a462-1a3f8f4de5b4"
         ],
         "x-ms-correlation-request-id": [
-          "fdcd5dcc-4a2d-4eb9-9160-ff0a527ab0d0"
+          "42e57022-1b66-401a-a462-1a3f8f4de5b4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233836Z:fdcd5dcc-4a2d-4eb9-9160-ff0a527ab0d0"
+          "WESTUS2:20230311T062856Z:42e57022-1b66-401a-a462-1a3f8f4de5b4"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:38:35 GMT"
+          "Sat, 11 Mar 2023 06:28:56 GMT"
         ],
         "Content-Length": [
           "22"
@@ -2947,12 +2947,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/35539b7e-cf1e-436e-bdab-219dfd619d53?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvb3BlcmF0aW9uUmVzdWx0cy8zNTUzOWI3ZS1jZjFlLTQzNmUtYmRhYi0yMTlkZmQ2MTlkNTM/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/32ce0be3-a97c-40f9-8b7f-ecf18493c9b7?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvb3BlcmF0aW9uUmVzdWx0cy8zMmNlMGJlMy1hOTdjLTQwZjktOGI3Zi1lY2YxODQ5M2M5Yjc/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4ae16331-285d-40da-93da-9266c63cef8e"
+          "b78df9d0-c0f6-4541-886c-547a5c51b8c3"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -2973,40 +2973,40 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-activity-id": [
-          "4ae16331-285d-40da-93da-9266c63cef8e"
+          "b78df9d0-c0f6-4541-886c-547a5c51b8c3"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11997"
         ],
         "x-ms-request-id": [
-          "363e7581-324d-419f-b0d4-7848fab55449"
+          "08c26a5a-49bb-481a-9478-0210a919e096"
         ],
         "x-ms-correlation-request-id": [
-          "363e7581-324d-419f-b0d4-7848fab55449"
+          "08c26a5a-49bb-481a-9478-0210a919e096"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233836Z:363e7581-324d-419f-b0d4-7848fab55449"
+          "WESTUS2:20230311T062856Z:08c26a5a-49bb-481a-9478-0210a919e096"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:38:35 GMT"
+          "Sat, 11 Mar 2023 06:28:56 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/04bce44b-5c38-4ac6-8f6f-a74a41b215a8?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMDRiY2U0NGItNWMzOC00YWM2LThmNmYtYTc0YTQxYjIxNWE4P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/f9a47cf2-8431-4f27-9acf-7146ddb28922?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZjlhNDdjZjItODQzMS00ZjI3LTlhY2YtNzE0NmRkYjI4OTIyP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5eeb4d72-4fd6-401f-ac49-c713a3c49a13"
+          "4cdc61f7-0a40-4908-82ba-725539cc1abe"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -3036,19 +3036,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "426a6584-49f2-46a2-946a-55eb4b9dfbb1"
+          "af648ba7-b420-4a52-892d-e7b50b1e71ea"
         ],
         "x-ms-correlation-request-id": [
-          "426a6584-49f2-46a2-946a-55eb4b9dfbb1"
+          "af648ba7-b420-4a52-892d-e7b50b1e71ea"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233907Z:426a6584-49f2-46a2-946a-55eb4b9dfbb1"
+          "WESTUS:20230311T062927Z:af648ba7-b420-4a52-892d-e7b50b1e71ea"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:39:07 GMT"
+          "Sat, 11 Mar 2023 06:29:27 GMT"
         ],
         "Content-Length": [
           "22"
@@ -3061,12 +3061,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/04bce44b-5c38-4ac6-8f6f-a74a41b215a8?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvY29sbGVjdGlvbnMvY29sbGVjdGlvbk5hbWUvb3BlcmF0aW9uUmVzdWx0cy8wNGJjZTQ0Yi01YzM4LTRhYzYtOGY2Zi1hNzRhNDFiMjE1YTg/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/collections/collectionName/operationResults/f9a47cf2-8431-4f27-9acf-7146ddb28922?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvY29sbGVjdGlvbnMvY29sbGVjdGlvbk5hbWUvb3BlcmF0aW9uUmVzdWx0cy9mOWE0N2NmMi04NDMxLTRmMjctOWFjZi03MTQ2ZGRiMjg5MjI/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5eeb4d72-4fd6-401f-ac49-c713a3c49a13"
+          "4cdc61f7-0a40-4908-82ba-725539cc1abe"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -3087,7 +3087,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-activity-id": [
-          "5eeb4d72-4fd6-401f-ac49-c713a3c49a13"
+          "4cdc61f7-0a40-4908-82ba-725539cc1abe"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -3096,31 +3096,31 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "fd5388b3-e01b-44a6-a27b-0466419c7517"
+          "f67d0c6d-7827-4c89-bfba-150fe8974b9c"
         ],
         "x-ms-correlation-request-id": [
-          "fd5388b3-e01b-44a6-a27b-0466419c7517"
+          "f67d0c6d-7827-4c89-bfba-150fe8974b9c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233907Z:fd5388b3-e01b-44a6-a27b-0466419c7517"
+          "WESTUS:20230311T062927Z:f67d0c6d-7827-4c89-bfba-150fe8974b9c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:39:07 GMT"
+          "Sat, 11 Mar 2023 06:29:27 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 204
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/b4b980a2-c87c-4b08-ae88-cdc66ad51ecc?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYjRiOTgwYTItYzg3Yy00YjA4LWFlODgtY2RjNjZhZDUxZWNjP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/109ace26-2615-44ef-b878-bf3e91b97d00?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvMTA5YWNlMjYtMjYxNS00NGVmLWI4NzgtYmYzZTkxYjk3ZDAwP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d69aa93a-4aef-4d59-a71c-b54351322ac3"
+          "fa943964-4edb-4bce-a7af-57267a1cf73e"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -3150,19 +3150,19 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "e6cbbeb0-a15a-43b1-be01-a40a0bba2aef"
+          "acb51f49-93c7-4f66-9f66-25bdeab3b18a"
         ],
         "x-ms-correlation-request-id": [
-          "e6cbbeb0-a15a-43b1-be01-a40a0bba2aef"
+          "acb51f49-93c7-4f66-9f66-25bdeab3b18a"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233938Z:e6cbbeb0-a15a-43b1-be01-a40a0bba2aef"
+          "WESTUS2:20230311T062958Z:acb51f49-93c7-4f66-9f66-25bdeab3b18a"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:39:37 GMT"
+          "Sat, 11 Mar 2023 06:29:58 GMT"
         ],
         "Content-Length": [
           "22"
@@ -3175,12 +3175,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/b4b980a2-c87c-4b08-ae88-cdc66ad51ecc?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvb3BlcmF0aW9uUmVzdWx0cy9iNGI5ODBhMi1jODdjLTRiMDgtYWU4OC1jZGM2NmFkNTFlY2M/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup45/providers/Microsoft.DocumentDB/databaseAccounts/mongo-db0045/mongodbDatabases/dbName3/operationResults/109ace26-2615-44ef-b878-bf3e91b97d00?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDQ1L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL21vbmdvLWRiMDA0NS9tb25nb2RiRGF0YWJhc2VzL2RiTmFtZTMvb3BlcmF0aW9uUmVzdWx0cy8xMDlhY2UyNi0yNjE1LTQ0ZWYtYjg3OC1iZjNlOTFiOTdkMDA/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d69aa93a-4aef-4d59-a71c-b54351322ac3"
+          "fa943964-4edb-4bce-a7af-57267a1cf73e"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -3201,7 +3201,7 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-activity-id": [
-          "d69aa93a-4aef-4d59-a71c-b54351322ac3"
+          "fa943964-4edb-4bce-a7af-57267a1cf73e"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -3210,19 +3210,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "1aab305c-5878-41a5-9802-8b35d746b3c4"
+          "4deeaf68-fb46-422b-b4c8-6b8bd47c13b1"
         ],
         "x-ms-correlation-request-id": [
-          "1aab305c-5878-41a5-9802-8b35d746b3c4"
+          "4deeaf68-fb46-422b-b4c8-6b8bd47c13b1"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230308T233938Z:1aab305c-5878-41a5-9802-8b35d746b3c4"
+          "WESTUS2:20230311T062958Z:4deeaf68-fb46-422b-b4c8-6b8bd47c13b1"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 08 Mar 2023 23:39:38 GMT"
+          "Sat, 11 Mar 2023 06:29:58 GMT"
         ]
       },
       "ResponseBody": "",

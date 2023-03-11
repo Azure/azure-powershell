@@ -6,7 +6,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f937a837-a181-4621-b92d-87d3c9f8a2f7"
+          "c6f3b69a-dd55-44fd-b2a4-9c0ddc6108dd"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,7 +15,7 @@
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.71"
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -36,13 +36,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "aea93909-9455-4b74-a8fe-266ff91b1b21"
+          "2c74a204-89d6-4416-ba65-3cf22cf1e1e6"
         ],
         "x-ms-correlation-request-id": [
-          "aea93909-9455-4b74-a8fe-266ff91b1b21"
+          "2c74a204-89d6-4416-ba65-3cf22cf1e1e6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175531Z:aea93909-9455-4b74-a8fe-266ff91b1b21"
+          "WESTUS2:20230310T200401Z:2c74a204-89d6-4416-ba65-3cf22cf1e1e6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:55:30 GMT"
+          "Fri, 10 Mar 2023 20:04:01 GMT"
         ],
         "Content-Length": [
           "199"
@@ -72,7 +72,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "Accept-Language": [
           "en-US"
@@ -96,13 +96,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "0e1948c0-8a43-446c-a814-54f8103b4e5b"
+          "4d8bfec3-e825-493b-bfae-d66fdb31fc2d"
         ],
         "x-ms-correlation-request-id": [
-          "0e1948c0-8a43-446c-a814-54f8103b4e5b"
+          "4d8bfec3-e825-493b-bfae-d66fdb31fc2d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175531Z:0e1948c0-8a43-446c-a814-54f8103b4e5b"
+          "WESTUS2:20230310T200401Z:4d8bfec3-e825-493b-bfae-d66fdb31fc2d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:55:31 GMT"
+          "Fri, 10 Mar 2023 20:04:01 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -132,7 +132,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -162,19 +162,19 @@
           "11991"
         ],
         "x-ms-request-id": [
-          "3b9ec36f-7b3a-4b09-8c37-84b206acccaa"
+          "0f9fe6b5-75af-4a0f-8800-62a53120dc75"
         ],
         "x-ms-correlation-request-id": [
-          "3b9ec36f-7b3a-4b09-8c37-84b206acccaa"
+          "0f9fe6b5-75af-4a0f-8800-62a53120dc75"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175907Z:3b9ec36f-7b3a-4b09-8c37-84b206acccaa"
+          "WESTUS2:20230310T200737Z:0f9fe6b5-75af-4a0f-8800-62a53120dc75"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:07 GMT"
+          "Fri, 10 Mar 2023 20:07:37 GMT"
         ],
         "Content-Length": [
           "2741"
@@ -183,7 +183,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216\",\r\n  \"name\": \"cosmosdb-1216\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-09T17:58:34.3181359Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"gremlinEndpoint\": \"https://cosmosdb-1216.gremlin.cosmos.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Gremlin, Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"9b76c6dc-5b30-43d0-805c-df47cac64f3e\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableGremlin\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Continuous\",\r\n      \"continuousModeProperties\": {\r\n        \"tier\": \"Continuous30Days\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216\",\r\n  \"name\": \"cosmosdb-1216\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-10T20:06:56.5289437Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"gremlinEndpoint\": \"https://cosmosdb-1216.gremlin.cosmos.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Gremlin, Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"21edcfb1-6d0a-4cc4-97bf-8e7e989b06b5\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableGremlin\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Continuous\",\r\n      \"continuousModeProperties\": {\r\n        \"tier\": \"Continuous30Days\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -192,7 +192,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7fa65cf-ceeb-4db2-afd1-60c405a07dc6"
+          "ac857001-ba14-4e90-bc2f-6f1b7814afa4"
         ],
         "Accept-Language": [
           "en-US"
@@ -222,22 +222,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
+          "11999"
         ],
         "x-ms-request-id": [
-          "5b135c7b-b59e-4fce-8a68-314029a1a0e6"
+          "70143358-2289-4088-8d08-096800d7074f"
         ],
         "x-ms-correlation-request-id": [
-          "5b135c7b-b59e-4fce-8a68-314029a1a0e6"
+          "70143358-2289-4088-8d08-096800d7074f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230309T180012Z:5b135c7b-b59e-4fce-8a68-314029a1a0e6"
+          "WESTUS2:20230310T200841Z:70143358-2289-4088-8d08-096800d7074f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:11 GMT"
+          "Fri, 10 Mar 2023 20:08:41 GMT"
         ],
         "Content-Length": [
           "2741"
@@ -246,7 +246,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216\",\r\n  \"name\": \"cosmosdb-1216\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-09T17:58:34.3181359Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"gremlinEndpoint\": \"https://cosmosdb-1216.gremlin.cosmos.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Gremlin, Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"9b76c6dc-5b30-43d0-805c-df47cac64f3e\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableGremlin\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Continuous\",\r\n      \"continuousModeProperties\": {\r\n        \"tier\": \"Continuous30Days\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:58:34.3181359Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216\",\r\n  \"name\": \"cosmosdb-1216\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-10T20:06:56.5289437Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"documentEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"gremlinEndpoint\": \"https://cosmosdb-1216.gremlin.cosmos.azure.com:443/\",\r\n    \"sqlEndpoint\": \"https://cosmosdb-1216.documents.azure.com:443/\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Gremlin, Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"21edcfb1-6d0a-4cc4-97bf-8e7e989b06b5\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"FirstPartyIdentity\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"documentEndpoint\": \"https://cosmosdb-1216-eastus.documents.azure.com:443/\",\r\n        \"provisioningState\": \"Succeeded\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableGremlin\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Continuous\",\r\n      \"continuousModeProperties\": {\r\n        \"tier\": \"Continuous30Days\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:06:56.5289437Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -255,7 +255,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "Accept-Language": [
           "en-US"
@@ -282,13 +282,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/operationResults/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/operationResults/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "54c7c622-72b1-487b-87c0-f5a7325977d6"
+          "863eceb1-3da1-4e0f-a1c7-30633a881b43"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -303,16 +303,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3826dce5-be0e-42b1-9b00-1957b789e41b"
+          "512f6e20-5d35-48c6-bace-83fcc2ffeb54"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175536Z:3826dce5-be0e-42b1-9b00-1957b789e41b"
+          "WESTUS2:20230310T200406Z:512f6e20-5d35-48c6-bace-83fcc2ffeb54"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:55:36 GMT"
+          "Fri, 10 Mar 2023 20:04:06 GMT"
         ],
         "Content-Length": [
           "2291"
@@ -321,16 +321,16 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216\",\r\n  \"name\": \"cosmosdb-1216\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-09T17:55:34.8743619Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Gremlin, Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"9b76c6dc-5b30-43d0-805c-df47cac64f3e\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableGremlin\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Continuous\",\r\n      \"continuousModeProperties\": {\r\n        \"tier\": \"Continuous30Days\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:55:34.8743619Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:55:34.8743619Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:55:34.8743619Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-09T17:55:34.8743619Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216\",\r\n  \"name\": \"cosmosdb-1216\",\r\n  \"location\": \"East US\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts\",\r\n  \"kind\": \"GlobalDocumentDB\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdAt\": \"2023-03-10T20:04:04.3499968Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Creating\",\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"enableAutomaticFailover\": false,\r\n    \"enableMultipleWriteLocations\": false,\r\n    \"enablePartitionKeyMonitor\": false,\r\n    \"isVirtualNetworkFilterEnabled\": false,\r\n    \"virtualNetworkRules\": [],\r\n    \"EnabledApiTypes\": \"Gremlin, Sql\",\r\n    \"disableKeyBasedMetadataWriteAccess\": false,\r\n    \"enableFreeTier\": false,\r\n    \"enableAnalyticalStorage\": false,\r\n    \"analyticalStorageConfiguration\": {\r\n      \"schemaType\": \"WellDefined\"\r\n    },\r\n    \"instanceId\": \"21edcfb1-6d0a-4cc4-97bf-8e7e989b06b5\",\r\n    \"createMode\": \"Default\",\r\n    \"databaseAccountOfferType\": \"Standard\",\r\n    \"enableMaterializedViews\": false,\r\n    \"defaultIdentity\": \"\",\r\n    \"networkAclBypass\": \"None\",\r\n    \"disableLocalAuth\": false,\r\n    \"enablePartitionMerge\": false,\r\n    \"consistencyPolicy\": {\r\n      \"defaultConsistencyLevel\": \"Session\",\r\n      \"maxIntervalInSeconds\": 5,\r\n      \"maxStalenessPrefix\": 100\r\n    },\r\n    \"configurationOverrides\": {},\r\n    \"writeLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"readLocations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"locations\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"provisioningState\": \"Creating\",\r\n        \"failoverPriority\": 0,\r\n        \"isZoneRedundant\": false\r\n      }\r\n    ],\r\n    \"failoverPolicies\": [\r\n      {\r\n        \"id\": \"cosmosdb-1216-eastus\",\r\n        \"locationName\": \"East US\",\r\n        \"failoverPriority\": 0\r\n      }\r\n    ],\r\n    \"cors\": [],\r\n    \"capabilities\": [\r\n      {\r\n        \"name\": \"EnableGremlin\"\r\n      }\r\n    ],\r\n    \"ipRules\": [],\r\n    \"backupPolicy\": {\r\n      \"type\": \"Continuous\",\r\n      \"continuousModeProperties\": {\r\n        \"tier\": \"Continuous30Days\"\r\n      }\r\n    },\r\n    \"networkAclBypassResourceIds\": [],\r\n    \"diagnosticLogSettings\": {\r\n      \"enableFullTextQuery\": \"None\"\r\n    },\r\n    \"keysMetadata\": {\r\n      \"primaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:04:04.3499968Z\"\r\n      },\r\n      \"secondaryMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:04:04.3499968Z\"\r\n      },\r\n      \"primaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:04:04.3499968Z\"\r\n      },\r\n      \"secondaryReadonlyMasterKey\": {\r\n        \"generationTime\": \"2023-03-10T20:04:04.3499968Z\"\r\n      }\r\n    }\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTRjN2M2MjItNzJiMS00ODdiLTg3YzAtZjVhNzMyNTk3N2Q2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODYzZWNlYjEtM2RhMS00ZTBmLWExYzctMzA2MzNhODgxYjQzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -360,19 +360,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "29849bd9-c0c6-432c-b185-f1099a913507"
+          "09941958-9a2d-4550-baeb-d2648f8223cb"
         ],
         "x-ms-correlation-request-id": [
-          "29849bd9-c0c6-432c-b185-f1099a913507"
+          "09941958-9a2d-4550-baeb-d2648f8223cb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175607Z:29849bd9-c0c6-432c-b185-f1099a913507"
+          "WESTUS2:20230310T200436Z:09941958-9a2d-4550-baeb-d2648f8223cb"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:56:06 GMT"
+          "Fri, 10 Mar 2023 20:04:36 GMT"
         ],
         "Content-Length": [
           "21"
@@ -385,12 +385,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTRjN2M2MjItNzJiMS00ODdiLTg3YzAtZjVhNzMyNTk3N2Q2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODYzZWNlYjEtM2RhMS00ZTBmLWExYzctMzA2MzNhODgxYjQzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -420,19 +420,19 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "9142c12b-96b2-4674-b934-b9ad9a94ff39"
+          "22c9ce54-b66a-4e74-ac0d-5f4c0708fdde"
         ],
         "x-ms-correlation-request-id": [
-          "9142c12b-96b2-4674-b934-b9ad9a94ff39"
+          "22c9ce54-b66a-4e74-ac0d-5f4c0708fdde"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175637Z:9142c12b-96b2-4674-b934-b9ad9a94ff39"
+          "WESTUS2:20230310T200506Z:22c9ce54-b66a-4e74-ac0d-5f4c0708fdde"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:56:36 GMT"
+          "Fri, 10 Mar 2023 20:05:06 GMT"
         ],
         "Content-Length": [
           "21"
@@ -445,12 +445,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTRjN2M2MjItNzJiMS00ODdiLTg3YzAtZjVhNzMyNTk3N2Q2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODYzZWNlYjEtM2RhMS00ZTBmLWExYzctMzA2MzNhODgxYjQzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -480,19 +480,19 @@
           "11996"
         ],
         "x-ms-request-id": [
-          "1f34f447-358b-4151-811b-4aae17bcb5de"
+          "4c496c91-7527-4ee0-a0b4-f2ce0c9c6222"
         ],
         "x-ms-correlation-request-id": [
-          "1f34f447-358b-4151-811b-4aae17bcb5de"
+          "4c496c91-7527-4ee0-a0b4-f2ce0c9c6222"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175707Z:1f34f447-358b-4151-811b-4aae17bcb5de"
+          "WESTUS2:20230310T200536Z:4c496c91-7527-4ee0-a0b4-f2ce0c9c6222"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:57:06 GMT"
+          "Fri, 10 Mar 2023 20:05:36 GMT"
         ],
         "Content-Length": [
           "21"
@@ -505,12 +505,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTRjN2M2MjItNzJiMS00ODdiLTg3YzAtZjVhNzMyNTk3N2Q2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODYzZWNlYjEtM2RhMS00ZTBmLWExYzctMzA2MzNhODgxYjQzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -540,19 +540,19 @@
           "11995"
         ],
         "x-ms-request-id": [
-          "3f877b4d-dc4b-41c6-8328-b598142fe46a"
+          "ed2d6276-47bf-47bc-b96c-6c8a444875eb"
         ],
         "x-ms-correlation-request-id": [
-          "3f877b4d-dc4b-41c6-8328-b598142fe46a"
+          "ed2d6276-47bf-47bc-b96c-6c8a444875eb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175737Z:3f877b4d-dc4b-41c6-8328-b598142fe46a"
+          "WESTUS2:20230310T200606Z:ed2d6276-47bf-47bc-b96c-6c8a444875eb"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:57:37 GMT"
+          "Fri, 10 Mar 2023 20:06:05 GMT"
         ],
         "Content-Length": [
           "21"
@@ -565,12 +565,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTRjN2M2MjItNzJiMS00ODdiLTg3YzAtZjVhNzMyNTk3N2Q2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODYzZWNlYjEtM2RhMS00ZTBmLWExYzctMzA2MzNhODgxYjQzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -600,19 +600,19 @@
           "11994"
         ],
         "x-ms-request-id": [
-          "d3fe2263-de6a-4b3e-b7c2-a4ef4a4f35f2"
+          "cc2e91c2-9b09-4a57-896e-daa365ac41b2"
         ],
         "x-ms-correlation-request-id": [
-          "d3fe2263-de6a-4b3e-b7c2-a4ef4a4f35f2"
+          "cc2e91c2-9b09-4a57-896e-daa365ac41b2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175807Z:d3fe2263-de6a-4b3e-b7c2-a4ef4a4f35f2"
+          "WESTUS2:20230310T200637Z:cc2e91c2-9b09-4a57-896e-daa365ac41b2"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:58:06 GMT"
+          "Fri, 10 Mar 2023 20:06:36 GMT"
         ],
         "Content-Length": [
           "21"
@@ -625,12 +625,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTRjN2M2MjItNzJiMS00ODdiLTg3YzAtZjVhNzMyNTk3N2Q2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODYzZWNlYjEtM2RhMS00ZTBmLWExYzctMzA2MzNhODgxYjQzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -660,19 +660,19 @@
           "11993"
         ],
         "x-ms-request-id": [
-          "bf31a403-ce56-4953-bf37-238e361fdc71"
+          "6df9900b-44b9-46c2-92a8-7973df3f9126"
         ],
         "x-ms-correlation-request-id": [
-          "bf31a403-ce56-4953-bf37-238e361fdc71"
+          "6df9900b-44b9-46c2-92a8-7973df3f9126"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175837Z:bf31a403-ce56-4953-bf37-238e361fdc71"
+          "WESTUS2:20230310T200707Z:6df9900b-44b9-46c2-92a8-7973df3f9126"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:58:36 GMT"
+          "Fri, 10 Mar 2023 20:07:06 GMT"
         ],
         "Content-Length": [
           "21"
@@ -685,12 +685,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/54c7c622-72b1-487b-87c0-f5a7325977d6?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNTRjN2M2MjItNzJiMS00ODdiLTg3YzAtZjVhNzMyNTk3N2Q2P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/863eceb1-3da1-4e0f-a1c7-30633a881b43?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvODYzZWNlYjEtM2RhMS00ZTBmLWExYzctMzA2MzNhODgxYjQzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e3a19044-2165-4f80-9bde-e56b9e40875f"
+          "039af1a2-7d79-4d95-8e1f-7c859ab879b4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -720,19 +720,19 @@
           "11992"
         ],
         "x-ms-request-id": [
-          "23e6bf2e-5fd6-4d03-bf8a-fc543f137cac"
+          "73f8cfbe-9052-452c-a95a-3db604518d2d"
         ],
         "x-ms-correlation-request-id": [
-          "23e6bf2e-5fd6-4d03-bf8a-fc543f137cac"
+          "73f8cfbe-9052-452c-a95a-3db604518d2d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175907Z:23e6bf2e-5fd6-4d03-bf8a-fc543f137cac"
+          "WESTUS2:20230310T200737Z:73f8cfbe-9052-452c-a95a-3db604518d2d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:07 GMT"
+          "Fri, 10 Mar 2023 20:07:36 GMT"
         ],
         "Content-Length": [
           "22"
@@ -750,7 +750,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "de31c390-1bef-4844-807f-f5150a4912f7"
+          "76f9e159-1424-4a8d-8541-77b400b8f15c"
         ],
         "Accept-Language": [
           "en-US"
@@ -783,28 +783,28 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "84bcbd95-c6de-4d9e-bbcd-db051f89c70d"
+          "9cba3ee7-7dcc-456b-84b9-36ac4b653213"
         ],
         "x-ms-correlation-request-id": [
-          "84bcbd95-c6de-4d9e-bbcd-db051f89c70d"
+          "9cba3ee7-7dcc-456b-84b9-36ac4b653213"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175908Z:84bcbd95-c6de-4d9e-bbcd-db051f89c70d"
+          "WESTUS2:20230310T200738Z:9cba3ee7-7dcc-456b-84b9-36ac4b653213"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:08 GMT"
+          "Fri, 10 Mar 2023 20:07:37 GMT"
         ],
         "Content-Length": [
-          "6520"
+          "6518"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Message: {\\\"code\\\":\\\"NotFound\\\",\\\"message\\\":\\\"Message: {\\\\\\\"Errors\\\\\\\":[\\\\\\\"Resource Not Found. Learn more: https:\\\\\\\\/\\\\\\\\/aka.ms\\\\\\\\/cosmosdb-tsg-not-found\\\\\\\"]}\\\\r\\\\nActivityId: de31c390-1bef-4844-807f-f5150a4912f7, Request URI: /apps/fbca2fc9-d702-4182-b791-1269083fc36e/services/bbd83271-b1c3-4259-af33-17917c117c97/partitions/23b7a194-13b7-4875-856d-d3a27637a4b2/replicas/133226115077466197s, RequestStats: \\\\r\\\\nRequestStartTime: 2023-03-09T17:59:08.7874890Z, RequestEndTime: 2023-03-09T17:59:08.7874890Z,  Number of regions attempted:1\\\\r\\\\n{\\\\\\\"systemHistory\\\\\\\":[{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:58:06.6473825Z\\\\\\\",\\\\\\\"cpu\\\\\\\":1.450,\\\\\\\"memory\\\\\\\":646531188.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0122,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":486},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:58:16.6573924Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.341,\\\\\\\"memory\\\\\\\":646530484.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0144,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":494},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:58:26.6674073Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.381,\\\\\\\"memory\\\\\\\":646536460.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0093,\\\\\\\"availableThreads\\\\\\\":32762,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":517},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:58:46.6774347Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.395,\\\\\\\"memory\\\\\\\":646510840.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0303,\\\\\\\"availableThreads\\\\\\\":32762,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":541},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:58:56.6874512Z\\\\\\\",\\\\\\\"cpu\\\\\\\":1.377,\\\\\\\"memory\\\\\\\":646525252.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0299,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":536},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:59:06.6974648Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.327,\\\\\\\"memory\\\\\\\":646521052.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0092,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":536}]}\\\\r\\\\nRequestStart: 2023-03-09T17:59:08.7874890Z; ResponseTime: 2023-03-09T17:59:08.7874890Z; StoreResult: StorePhysicalAddress: rntbd://10.0.1.11:11300/apps/fbca2fc9-d702-4182-b791-1269083fc36e/services/bbd83271-b1c3-4259-af33-17917c117c97/partitions/23b7a194-13b7-4875-856d-d3a27637a4b2/replicas/133226115077466197s, LSN: 9, GlobalCommittedLsn: 9, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#9, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.664, ActivityId: de31c390-1bef-4844-807f-f5150a4912f7, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7874890Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0104},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7874994Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0028},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7875022Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.1354},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7876376Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.8154},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7884530Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0662},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7885192Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-09T17:59:08.7074712Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-09T17:59:08.7074712Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-09T17:59:08.7374889Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":456,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":134,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Database, OperationType: Read\\\\r\\\\nRequestStart: 2023-03-09T17:59:08.7874890Z; ResponseTime: 2023-03-09T17:59:08.7874890Z; StoreResult: StorePhysicalAddress: rntbd://10.0.1.10:11300/apps/fbca2fc9-d702-4182-b791-1269083fc36e/services/bbd83271-b1c3-4259-af33-17917c117c97/partitions/23b7a194-13b7-4875-856d-d3a27637a4b2/replicas/133226115077466198s, LSN: 9, GlobalCommittedLsn: 9, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#9, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.791, ActivityId: de31c390-1bef-4844-807f-f5150a4912f7, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7874890Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0049},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7874939Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0012},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7874951Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0676},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7875627Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.1262},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7886889Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0315},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:08.7887204Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-09T17:59:08.6274679Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-09T17:59:08.6274679Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-09T17:59:08.6574684Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":456,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":134,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Database, OperationType: Read\\\\r\\\\n, SDK: Microsoft.Azure.Documents.Common/2.14.0\\\"}, Request URI: /dbs/TestDB1, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Message: {\\\"code\\\":\\\"NotFound\\\",\\\"message\\\":\\\"Message: {\\\\\\\"Errors\\\\\\\":[\\\\\\\"Resource Not Found. Learn more: https:\\\\\\\\/\\\\\\\\/aka.ms\\\\\\\\/cosmosdb-tsg-not-found\\\\\\\"]}\\\\r\\\\nActivityId: 76f9e159-1424-4a8d-8541-77b400b8f15c, Request URI: /apps/d2c00173-f149-46fc-8e0a-c0b5f152256c/services/c577f0cc-167a-4fc7-9628-27ac408c4eb7/partitions/d176c4be-ffdb-41ba-839d-253160df5329/replicas/133202466133096747s, RequestStats: \\\\r\\\\nRequestStartTime: 2023-03-10T20:07:38.3050112Z, RequestEndTime: 2023-03-10T20:07:38.3050112Z,  Number of regions attempted:1\\\\r\\\\n{\\\\\\\"systemHistory\\\\\\\":[{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:06:34.0860199Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.947,\\\\\\\"memory\\\\\\\":658357616.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0124,\\\\\\\"availableThreads\\\\\\\":32762,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":337},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:06:44.0958021Z\\\\\\\",\\\\\\\"cpu\\\\\\\":1.102,\\\\\\\"memory\\\\\\\":658336048.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0214,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":338},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:06:54.1056653Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.964,\\\\\\\"memory\\\\\\\":658332776.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.013,\\\\\\\"availableThreads\\\\\\\":32761,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":340},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:04.1155228Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.956,\\\\\\\"memory\\\\\\\":658305712.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0165,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":341},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:14.1254104Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.807,\\\\\\\"memory\\\\\\\":658149888.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0132,\\\\\\\"availableThreads\\\\\\\":32762,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":341},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:24.1352288Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.522,\\\\\\\"memory\\\\\\\":658136472.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0167,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":344}]}\\\\r\\\\nRequestStart: 2023-03-10T20:07:38.3050112Z; ResponseTime: 2023-03-10T20:07:38.3050112Z; StoreResult: StorePhysicalAddress: rntbd://10.0.0.19:11000/apps/d2c00173-f149-46fc-8e0a-c0b5f152256c/services/c577f0cc-167a-4fc7-9628-27ac408c4eb7/partitions/d176c4be-ffdb-41ba-839d-253160df5329/replicas/133202466133096747s, LSN: 9, GlobalCommittedLsn: 9, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#9, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.899, ActivityId: 76f9e159-1424-4a8d-8541-77b400b8f15c, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3050112Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0069},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3050181Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0021},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3050202Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0818},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3051020Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.153},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3062550Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0644},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3063194Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-10T20:07:38.2350120Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-10T20:07:38.2350120Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-10T20:07:38.2650108Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":458,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":134,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Database, OperationType: Read\\\\r\\\\nRequestStart: 2023-03-10T20:07:38.3050112Z; ResponseTime: 2023-03-10T20:07:38.3050112Z; StoreResult: StorePhysicalAddress: rntbd://10.0.0.27:11000/apps/d2c00173-f149-46fc-8e0a-c0b5f152256c/services/c577f0cc-167a-4fc7-9628-27ac408c4eb7/partitions/d176c4be-ffdb-41ba-839d-253160df5329/replicas/133191198319781057s, LSN: 9, GlobalCommittedLsn: 9, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#9, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.846, ActivityId: 76f9e159-1424-4a8d-8541-77b400b8f15c, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3050112Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0032},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3050144Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0012},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3050156Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0549},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3050705Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.0942},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3061647Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0646},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:07:38.3062293Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-10T20:07:38.1450136Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-10T20:07:38.1450136Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-10T20:07:38.1750197Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":458,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":134,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Database, OperationType: Read\\\\r\\\\n, SDK: Microsoft.Azure.Documents.Common/2.14.0\\\"}, Request URI: /dbs/TestDB1, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
       "StatusCode": 404
     },
     {
@@ -813,7 +813,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "de31c390-1bef-4844-807f-f5150a4912f7"
+          "76f9e159-1424-4a8d-8541-77b400b8f15c"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -843,19 +843,19 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "a66ad926-cc0c-4a25-82aa-6f8dbae29f5d"
+          "4f8ecbb7-deab-409a-957a-8b268622c80e"
         ],
         "x-ms-correlation-request-id": [
-          "a66ad926-cc0c-4a25-82aa-6f8dbae29f5d"
+          "4f8ecbb7-deab-409a-957a-8b268622c80e"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175939Z:a66ad926-cc0c-4a25-82aa-6f8dbae29f5d"
+          "WESTUS2:20230310T200809Z:4f8ecbb7-deab-409a-957a-8b268622c80e"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:38 GMT"
+          "Fri, 10 Mar 2023 20:08:08 GMT"
         ],
         "Content-Length": [
           "456"
@@ -864,7 +864,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases\",\r\n  \"name\": \"TestDB1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestDB1\",\r\n      \"_rid\": \"1wB0AA==\",\r\n      \"_self\": \"dbs/1wB0AA==/\",\r\n      \"_etag\": \"\\\"00009e1f-0000-0100-0000-640a1e710000\\\"\",\r\n      \"_colls\": \"colls/\",\r\n      \"_users\": \"users/\",\r\n      \"_ts\": 1678384753\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases\",\r\n  \"name\": \"TestDB1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestDB1\",\r\n      \"_rid\": \"tb8CAA==\",\r\n      \"_self\": \"dbs/tb8CAA==/\",\r\n      \"_etag\": \"\\\"00004b2e-0000-0100-0000-640b8e0f0000\\\"\",\r\n      \"_colls\": \"colls/\",\r\n      \"_users\": \"users/\",\r\n      \"_ts\": 1678478863\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -873,7 +873,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7fa65cf-ceeb-4db2-afd1-60c405a07dc6"
+          "ac857001-ba14-4e90-bc2f-6f1b7814afa4"
         ],
         "Accept-Language": [
           "en-US"
@@ -903,22 +903,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
+          "11998"
         ],
         "x-ms-request-id": [
-          "a89c943e-c731-4461-947c-13387d212b4c"
+          "eaf357db-e3e7-494b-b23f-269a8406ba67"
         ],
         "x-ms-correlation-request-id": [
-          "a89c943e-c731-4461-947c-13387d212b4c"
+          "eaf357db-e3e7-494b-b23f-269a8406ba67"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230309T180012Z:a89c943e-c731-4461-947c-13387d212b4c"
+          "WESTUS2:20230310T200842Z:eaf357db-e3e7-494b-b23f-269a8406ba67"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:11 GMT"
+          "Fri, 10 Mar 2023 20:08:42 GMT"
         ],
         "Content-Length": [
           "456"
@@ -927,7 +927,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases\",\r\n  \"name\": \"TestDB1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestDB1\",\r\n      \"_rid\": \"1wB0AA==\",\r\n      \"_self\": \"dbs/1wB0AA==/\",\r\n      \"_etag\": \"\\\"00009e1f-0000-0100-0000-640a1e710000\\\"\",\r\n      \"_colls\": \"colls/\",\r\n      \"_users\": \"users/\",\r\n      \"_ts\": 1678384753\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases\",\r\n  \"name\": \"TestDB1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestDB1\",\r\n      \"_rid\": \"tb8CAA==\",\r\n      \"_self\": \"dbs/tb8CAA==/\",\r\n      \"_etag\": \"\\\"00004b2e-0000-0100-0000-640b8e0f0000\\\"\",\r\n      \"_colls\": \"colls/\",\r\n      \"_users\": \"users/\",\r\n      \"_ts\": 1678478863\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -936,7 +936,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "de31c390-1bef-4844-807f-f5150a4912f7"
+          "76f9e159-1424-4a8d-8541-77b400b8f15c"
         ],
         "Accept-Language": [
           "en-US"
@@ -963,13 +963,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/operationResults/4a983948-0ef4-4077-b188-1ae675d607d3?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/operationResults/d5493010-b329-40f3-a8d7-766319b4e832?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/4a983948-0ef4-4077-b188-1ae675d607d3?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/d5493010-b329-40f3-a8d7-766319b4e832?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "4a983948-0ef4-4077-b188-1ae675d607d3"
+          "d5493010-b329-40f3-a8d7-766319b4e832"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -984,16 +984,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "c448d3d4-16de-4135-8f9b-7a7748fc4443"
+          "d979cca4-ddba-40dc-9baf-fbfbb1cd4923"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175909Z:c448d3d4-16de-4135-8f9b-7a7748fc4443"
+          "WESTUS2:20230310T200738Z:d979cca4-ddba-40dc-9baf-fbfbb1cd4923"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:08 GMT"
+          "Fri, 10 Mar 2023 20:07:38 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1006,12 +1006,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/4a983948-0ef4-4077-b188-1ae675d607d3?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvNGE5ODM5NDgtMGVmNC00MDc3LWIxODgtMWFlNjc1ZDYwN2QzP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/d5493010-b329-40f3-a8d7-766319b4e832?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvZDU0OTMwMTAtYjMyOS00MGYzLWE4ZDctNzY2MzE5YjRlODMyP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "de31c390-1bef-4844-807f-f5150a4912f7"
+          "76f9e159-1424-4a8d-8541-77b400b8f15c"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1041,19 +1041,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "4a19020a-9bad-4b6c-a416-efab17f25668"
+          "541b2fee-c4e0-416b-8673-268abad0fab8"
         ],
         "x-ms-correlation-request-id": [
-          "4a19020a-9bad-4b6c-a416-efab17f25668"
+          "541b2fee-c4e0-416b-8673-268abad0fab8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175939Z:4a19020a-9bad-4b6c-a416-efab17f25668"
+          "WESTUS2:20230310T200809Z:541b2fee-c4e0-416b-8673-268abad0fab8"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:38 GMT"
+          "Fri, 10 Mar 2023 20:08:08 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1071,7 +1071,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b4d73062-58e6-4690-b3bd-c6738eb770bb"
+          "6877c26e-5ee8-4fb1-837a-a3088d8db4c8"
         ],
         "Accept-Language": [
           "en-US"
@@ -1104,28 +1104,28 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "3e60d0f5-c36f-479a-a28d-bed8077063f4"
+          "e62b5c0f-5740-44cc-a75a-5280c3780fed"
         ],
         "x-ms-correlation-request-id": [
-          "3e60d0f5-c36f-479a-a28d-bed8077063f4"
+          "e62b5c0f-5740-44cc-a75a-5280c3780fed"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175940Z:3e60d0f5-c36f-479a-a28d-bed8077063f4"
+          "WESTUS2:20230310T200810Z:e62b5c0f-5740-44cc-a75a-5280c3780fed"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:40 GMT"
+          "Fri, 10 Mar 2023 20:08:09 GMT"
         ],
         "Content-Length": [
-          "6544"
+          "6547"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Message: {\\\"code\\\":\\\"NotFound\\\",\\\"message\\\":\\\"Message: {\\\\\\\"Errors\\\\\\\":[\\\\\\\"Resource Not Found. Learn more: https:\\\\\\\\/\\\\\\\\/aka.ms\\\\\\\\/cosmosdb-tsg-not-found\\\\\\\"]}\\\\r\\\\nActivityId: b4d73062-58e6-4690-b3bd-c6738eb770bb, Request URI: /apps/fbca2fc9-d702-4182-b791-1269083fc36e/services/bbd83271-b1c3-4259-af33-17917c117c97/partitions/23b7a194-13b7-4875-856d-d3a27637a4b2/replicas/133226115077466196s, RequestStats: \\\\r\\\\nRequestStartTime: 2023-03-09T17:59:40.5654211Z, RequestEndTime: 2023-03-09T17:59:40.5754208Z,  Number of regions attempted:1\\\\r\\\\n{\\\\\\\"systemHistory\\\\\\\":[{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:58:47.1756215Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.497,\\\\\\\"memory\\\\\\\":652254544.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0112,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":451},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:58:57.1855771Z\\\\\\\",\\\\\\\"cpu\\\\\\\":1.123,\\\\\\\"memory\\\\\\\":652422660.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0224,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":448},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:59:07.1955347Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.635,\\\\\\\"memory\\\\\\\":652421172.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0175,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":448},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:59:17.2054945Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.656,\\\\\\\"memory\\\\\\\":652415580.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0185,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":450},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:59:27.2154583Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.644,\\\\\\\"memory\\\\\\\":652418228.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0154,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":448},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-09T17:59:37.2254187Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.495,\\\\\\\"memory\\\\\\\":652410908.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0182,\\\\\\\"availableThreads\\\\\\\":32761,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":449}]}\\\\r\\\\nRequestStart: 2023-03-09T17:59:40.5654211Z; ResponseTime: 2023-03-09T17:59:40.5754208Z; StoreResult: StorePhysicalAddress: rntbd://10.0.1.9:11300/apps/fbca2fc9-d702-4182-b791-1269083fc36e/services/bbd83271-b1c3-4259-af33-17917c117c97/partitions/23b7a194-13b7-4875-856d-d3a27637a4b2/replicas/133226115077466196s, LSN: 10, GlobalCommittedLsn: 10, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#10, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.941, ActivityId: b4d73062-58e6-4690-b3bd-c6738eb770bb, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5654211Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0158},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5654369Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0029},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5654398Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.125},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5655648Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.2508},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5668156Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.048},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5668636Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-09T17:59:40.4954216Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-09T17:59:40.4954216Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-09T17:59:40.5254028Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":477,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":135,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Collection, OperationType: Read\\\\r\\\\nRequestStart: 2023-03-09T17:59:40.5654211Z; ResponseTime: 2023-03-09T17:59:40.5754208Z; StoreResult: StorePhysicalAddress: rntbd://10.0.1.10:11300/apps/fbca2fc9-d702-4182-b791-1269083fc36e/services/bbd83271-b1c3-4259-af33-17917c117c97/partitions/23b7a194-13b7-4875-856d-d3a27637a4b2/replicas/133226115077466198s, LSN: 10, GlobalCommittedLsn: 10, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#10, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.774, ActivityId: b4d73062-58e6-4690-b3bd-c6738eb770bb, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5654211Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0057},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5654268Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0014},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5654282Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0805},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5655087Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 1.0528},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5665615Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0761},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-09T17:59:40.5666376Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-09T17:59:40.4954216Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-09T17:59:40.4954216Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-09T17:59:40.5254028Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":477,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":135,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Collection, OperationType: Read\\\\r\\\\n, SDK: Microsoft.Azure.Documents.Common/2.14.0\\\"}, Request URI: /dbs/TestDB1/colls/TestGraph1, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
+      "ResponseBody": "{\r\n  \"code\": \"NotFound\",\r\n  \"message\": \"Message: {\\\"code\\\":\\\"NotFound\\\",\\\"message\\\":\\\"Message: {\\\\\\\"Errors\\\\\\\":[\\\\\\\"Resource Not Found. Learn more: https:\\\\\\\\/\\\\\\\\/aka.ms\\\\\\\\/cosmosdb-tsg-not-found\\\\\\\"]}\\\\r\\\\nActivityId: 6877c26e-5ee8-4fb1-837a-a3088d8db4c8, Request URI: /apps/d2c00173-f149-46fc-8e0a-c0b5f152256c/services/c577f0cc-167a-4fc7-9628-27ac408c4eb7/partitions/d176c4be-ffdb-41ba-839d-253160df5329/replicas/133191198279856447s, RequestStats: \\\\r\\\\nRequestStartTime: 2023-03-10T20:08:10.2328159Z, RequestEndTime: 2023-03-10T20:08:10.2328159Z,  Number of regions attempted:1\\\\r\\\\n{\\\\\\\"systemHistory\\\\\\\":[{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:18.4335195Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.627,\\\\\\\"memory\\\\\\\":662190172.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0213,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":390},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:28.4434051Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.388,\\\\\\\"memory\\\\\\\":662185120.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0093,\\\\\\\"availableThreads\\\\\\\":32762,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":390},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:38.4532828Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.632,\\\\\\\"memory\\\\\\\":662193968.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0166,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":390},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:48.4631470Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.556,\\\\\\\"memory\\\\\\\":662183328.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0171,\\\\\\\"availableThreads\\\\\\\":32764,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":388},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:07:58.4730029Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.556,\\\\\\\"memory\\\\\\\":662193764.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0303,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":388},{\\\\\\\"dateUtc\\\\\\\":\\\\\\\"2023-03-10T20:08:08.4928411Z\\\\\\\",\\\\\\\"cpu\\\\\\\":0.425,\\\\\\\"memory\\\\\\\":662180664.000,\\\\\\\"threadInfo\\\\\\\":{\\\\\\\"isThreadStarving\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"threadWaitIntervalInMs\\\\\\\":0.0286,\\\\\\\"availableThreads\\\\\\\":32763,\\\\\\\"minThreads\\\\\\\":64,\\\\\\\"maxThreads\\\\\\\":32767},\\\\\\\"numberOfOpenTcpConnection\\\\\\\":388}]}\\\\r\\\\nRequestStart: 2023-03-10T20:08:10.2328159Z; ResponseTime: 2023-03-10T20:08:10.2328159Z; StoreResult: StorePhysicalAddress: rntbd://10.0.0.26:11300/apps/d2c00173-f149-46fc-8e0a-c0b5f152256c/services/c577f0cc-167a-4fc7-9628-27ac408c4eb7/partitions/d176c4be-ffdb-41ba-839d-253160df5329/replicas/133191198279856447s, LSN: 10, GlobalCommittedLsn: 10, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#10, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.646, ActivityId: 6877c26e-5ee8-4fb1-837a-a3088d8db4c8, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2328159Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0076},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2328235Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0021},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2328256Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0911},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2329167Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.8841},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2338008Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0466},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2338474Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-10T20:08:10.1676074Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-10T20:08:10.1676074Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-10T20:08:10.1928253Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":485,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":135,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Collection, OperationType: Read\\\\r\\\\nRequestStart: 2023-03-10T20:08:10.2328159Z; ResponseTime: 2023-03-10T20:08:10.2328159Z; StoreResult: StorePhysicalAddress: rntbd://10.0.0.27:11000/apps/d2c00173-f149-46fc-8e0a-c0b5f152256c/services/c577f0cc-167a-4fc7-9628-27ac408c4eb7/partitions/d176c4be-ffdb-41ba-839d-253160df5329/replicas/133191198319781057s, LSN: 10, GlobalCommittedLsn: 10, PartitionKeyRangeId: , IsValid: True, StatusCode: 404, SubStatusCode: 0, RequestCharge: 1, ItemLSN: -1, SessionToken: -1#10, UsingLocalLSN: False, TransportException: null, BELatencyMs: 0.756, ActivityId: 6877c26e-5ee8-4fb1-837a-a3088d8db4c8, RetryAfterInMs: , TransportRequestTimeline: {\\\\\\\"requestTimeline\\\\\\\":[{\\\\\\\"event\\\\\\\": \\\\\\\"Created\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2328159Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0029},{\\\\\\\"event\\\\\\\": \\\\\\\"ChannelAcquisitionStarted\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2328188Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0011},{\\\\\\\"event\\\\\\\": \\\\\\\"Pipelined\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2328199Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0527},{\\\\\\\"event\\\\\\\": \\\\\\\"Transit Time\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2328726Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.9391},{\\\\\\\"event\\\\\\\": \\\\\\\"Received\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2338117Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0.0487},{\\\\\\\"event\\\\\\\": \\\\\\\"Completed\\\\\\\", \\\\\\\"startTimeUtc\\\\\\\": \\\\\\\"2023-03-10T20:08:10.2338604Z\\\\\\\", \\\\\\\"durationInMs\\\\\\\": 0}],\\\\\\\"serviceEndpointStats\\\\\\\":{\\\\\\\"inflightRequests\\\\\\\":1,\\\\\\\"openConnections\\\\\\\":1},\\\\\\\"connectionStats\\\\\\\":{\\\\\\\"waitforConnectionInit\\\\\\\":\\\\\\\"False\\\\\\\",\\\\\\\"callsPendingReceive\\\\\\\":0,\\\\\\\"lastSendAttempt\\\\\\\":\\\\\\\"2023-03-10T20:08:10.0828338Z\\\\\\\",\\\\\\\"lastSend\\\\\\\":\\\\\\\"2023-03-10T20:08:10.0828338Z\\\\\\\",\\\\\\\"lastReceive\\\\\\\":\\\\\\\"2023-03-10T20:08:10.1128172Z\\\\\\\"},\\\\\\\"requestSizeInBytes\\\\\\\":485,\\\\\\\"responseMetadataSizeInBytes\\\\\\\":135,\\\\\\\"responseBodySizeInBytes\\\\\\\":87};\\\\r\\\\n ResourceType: Collection, OperationType: Read\\\\r\\\\n, SDK: Microsoft.Azure.Documents.Common/2.14.0\\\"}, Request URI: /dbs/TestDB1/colls/TestGraph1, RequestStats: , SDK: Microsoft.Azure.Documents.Common/2.14.0\"\r\n}",
       "StatusCode": 404
     },
     {
@@ -1134,7 +1134,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b4d73062-58e6-4690-b3bd-c6738eb770bb"
+          "6877c26e-5ee8-4fb1-837a-a3088d8db4c8"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1164,19 +1164,19 @@
           "11997"
         ],
         "x-ms-request-id": [
-          "53b502cf-e141-434a-af8c-441272480f4d"
+          "9ae13e59-5210-4153-a04c-8b7b41006752"
         ],
         "x-ms-correlation-request-id": [
-          "53b502cf-e141-434a-af8c-441272480f4d"
+          "9ae13e59-5210-4153-a04c-8b7b41006752"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T180011Z:53b502cf-e141-434a-af8c-441272480f4d"
+          "WESTUS2:20230310T200841Z:9ae13e59-5210-4153-a04c-8b7b41006752"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:11 GMT"
+          "Fri, 10 Mar 2023 20:08:40 GMT"
         ],
         "Content-Length": [
           "1192"
@@ -1185,7 +1185,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs\",\r\n  \"name\": \"TestGraph1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestGraph1\",\r\n      \"indexingPolicy\": {\r\n        \"indexingMode\": \"consistent\",\r\n        \"automatic\": true,\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\"\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/\\\"_etag\\\"/?\"\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/pk\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": []\r\n      },\r\n      \"conflictResolutionPolicy\": {\r\n        \"mode\": \"LastWriterWins\",\r\n        \"conflictResolutionPath\": \"/_ts\",\r\n        \"conflictResolutionProcedure\": \"\"\r\n      },\r\n      \"backupPolicy\": {\r\n        \"type\": 1\r\n      },\r\n      \"geospatialConfig\": {\r\n        \"type\": \"Geography\"\r\n      },\r\n      \"_rid\": \"1wB0ANf8Nks=\",\r\n      \"_ts\": 1678384787,\r\n      \"_self\": \"dbs/1wB0AA==/colls/1wB0ANf8Nks=/\",\r\n      \"_etag\": \"\\\"0000a11f-0000-0100-0000-640a1e930000\\\"\",\r\n      \"_docs\": \"docs/\",\r\n      \"_sprocs\": \"sprocs/\",\r\n      \"_triggers\": \"triggers/\",\r\n      \"_udfs\": \"udfs/\",\r\n      \"_conflicts\": \"conflicts/\",\r\n      \"statistics\": [\r\n        {\r\n          \"id\": \"1\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        },\r\n        {\r\n          \"id\": \"0\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs\",\r\n  \"name\": \"TestGraph1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestGraph1\",\r\n      \"indexingPolicy\": {\r\n        \"indexingMode\": \"consistent\",\r\n        \"automatic\": true,\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\"\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/\\\"_etag\\\"/?\"\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/pk\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": []\r\n      },\r\n      \"conflictResolutionPolicy\": {\r\n        \"mode\": \"LastWriterWins\",\r\n        \"conflictResolutionPath\": \"/_ts\",\r\n        \"conflictResolutionProcedure\": \"\"\r\n      },\r\n      \"backupPolicy\": {\r\n        \"type\": 1\r\n      },\r\n      \"geospatialConfig\": {\r\n        \"type\": \"Geography\"\r\n      },\r\n      \"_rid\": \"tb8CANExPi4=\",\r\n      \"_ts\": 1678478898,\r\n      \"_self\": \"dbs/tb8CAA==/colls/tb8CANExPi4=/\",\r\n      \"_etag\": \"\\\"00004e2e-0000-0100-0000-640b8e320000\\\"\",\r\n      \"_docs\": \"docs/\",\r\n      \"_sprocs\": \"sprocs/\",\r\n      \"_triggers\": \"triggers/\",\r\n      \"_udfs\": \"udfs/\",\r\n      \"_conflicts\": \"conflicts/\",\r\n      \"statistics\": [\r\n        {\r\n          \"id\": \"0\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        },\r\n        {\r\n          \"id\": \"1\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1194,7 +1194,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7fa65cf-ceeb-4db2-afd1-60c405a07dc6"
+          "ac857001-ba14-4e90-bc2f-6f1b7814afa4"
         ],
         "Accept-Language": [
           "en-US"
@@ -1224,22 +1224,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
+          "11997"
         ],
         "x-ms-request-id": [
-          "76511507-e361-490f-aaf4-fb0b745c9929"
+          "e991c0ad-36d2-4b75-b1c7-89192c8be359"
         ],
         "x-ms-correlation-request-id": [
-          "76511507-e361-490f-aaf4-fb0b745c9929"
+          "e991c0ad-36d2-4b75-b1c7-89192c8be359"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230309T180012Z:76511507-e361-490f-aaf4-fb0b745c9929"
+          "WESTUS2:20230310T200842Z:e991c0ad-36d2-4b75-b1c7-89192c8be359"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:11 GMT"
+          "Fri, 10 Mar 2023 20:08:42 GMT"
         ],
         "Content-Length": [
           "1192"
@@ -1248,7 +1248,7 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs\",\r\n  \"name\": \"TestGraph1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestGraph1\",\r\n      \"indexingPolicy\": {\r\n        \"indexingMode\": \"consistent\",\r\n        \"automatic\": true,\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\"\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/\\\"_etag\\\"/?\"\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/pk\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": []\r\n      },\r\n      \"conflictResolutionPolicy\": {\r\n        \"mode\": \"LastWriterWins\",\r\n        \"conflictResolutionPath\": \"/_ts\",\r\n        \"conflictResolutionProcedure\": \"\"\r\n      },\r\n      \"backupPolicy\": {\r\n        \"type\": 1\r\n      },\r\n      \"geospatialConfig\": {\r\n        \"type\": \"Geography\"\r\n      },\r\n      \"_rid\": \"1wB0ANf8Nks=\",\r\n      \"_ts\": 1678384787,\r\n      \"_self\": \"dbs/1wB0AA==/colls/1wB0ANf8Nks=/\",\r\n      \"_etag\": \"\\\"0000a11f-0000-0100-0000-640a1e930000\\\"\",\r\n      \"_docs\": \"docs/\",\r\n      \"_sprocs\": \"sprocs/\",\r\n      \"_triggers\": \"triggers/\",\r\n      \"_udfs\": \"udfs/\",\r\n      \"_conflicts\": \"conflicts/\",\r\n      \"statistics\": [\r\n        {\r\n          \"id\": \"0\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        },\r\n        {\r\n          \"id\": \"1\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1\",\r\n  \"type\": \"Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs\",\r\n  \"name\": \"TestGraph1\",\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"TestGraph1\",\r\n      \"indexingPolicy\": {\r\n        \"indexingMode\": \"consistent\",\r\n        \"automatic\": true,\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\"\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/\\\"_etag\\\"/?\"\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/pk\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": []\r\n      },\r\n      \"conflictResolutionPolicy\": {\r\n        \"mode\": \"LastWriterWins\",\r\n        \"conflictResolutionPath\": \"/_ts\",\r\n        \"conflictResolutionProcedure\": \"\"\r\n      },\r\n      \"backupPolicy\": {\r\n        \"type\": 1\r\n      },\r\n      \"geospatialConfig\": {\r\n        \"type\": \"Geography\"\r\n      },\r\n      \"_rid\": \"tb8CANExPi4=\",\r\n      \"_ts\": 1678478898,\r\n      \"_self\": \"dbs/tb8CAA==/colls/tb8CANExPi4=/\",\r\n      \"_etag\": \"\\\"00004e2e-0000-0100-0000-640b8e320000\\\"\",\r\n      \"_docs\": \"docs/\",\r\n      \"_sprocs\": \"sprocs/\",\r\n      \"_triggers\": \"triggers/\",\r\n      \"_udfs\": \"udfs/\",\r\n      \"_conflicts\": \"conflicts/\",\r\n      \"statistics\": [\r\n        {\r\n          \"id\": \"0\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        },\r\n        {\r\n          \"id\": \"1\",\r\n          \"sizeInKB\": 0,\r\n          \"documentCount\": 0,\r\n          \"sampledDistinctPartitionKeyCount\": 0,\r\n          \"partitionKeys\": []\r\n        }\r\n      ]\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1257,7 +1257,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b4d73062-58e6-4690-b3bd-c6738eb770bb"
+          "6877c26e-5ee8-4fb1-837a-a3088d8db4c8"
         ],
         "Accept-Language": [
           "en-US"
@@ -1284,13 +1284,13 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/operationResults/a2774e3a-d855-4994-a3e7-984b1b011d69?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/operationResults/c6cfd8d6-ca9c-4d50-a3fe-382847dd55e8?api-version=2022-08-15-preview"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a2774e3a-d855-4994-a3e7-984b1b011d69?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/c6cfd8d6-ca9c-4d50-a3fe-382847dd55e8?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "a2774e3a-d855-4994-a3e7-984b1b011d69"
+          "c6cfd8d6-ca9c-4d50-a3fe-382847dd55e8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1305,16 +1305,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "3e7a1d39-eec1-421a-b497-2b385c3a10f4"
+          "5c74749a-387a-4dbe-aec5-8f38f8424045"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T175941Z:3e7a1d39-eec1-421a-b497-2b385c3a10f4"
+          "WESTUS2:20230310T200810Z:5c74749a-387a-4dbe-aec5-8f38f8424045"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 17:59:40 GMT"
+          "Fri, 10 Mar 2023 20:08:10 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1327,12 +1327,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/a2774e3a-d855-4994-a3e7-984b1b011d69?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYTI3NzRlM2EtZDg1NS00OTk0LWEzZTctOTg0YjFiMDExZDY5P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/eastus/operationsStatus/c6cfd8d6-ca9c-4d50-a3fe-382847dd55e8?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvZWFzdHVzL29wZXJhdGlvbnNTdGF0dXMvYzZjZmQ4ZDYtY2E5Yy00ZDUwLWEzZmUtMzgyODQ3ZGQ1NWU4P2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b4d73062-58e6-4690-b3bd-c6738eb770bb"
+          "6877c26e-5ee8-4fb1-837a-a3088d8db4c8"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1362,19 +1362,19 @@
           "11998"
         ],
         "x-ms-request-id": [
-          "86b4fc78-80be-4095-bef0-3930439bf810"
+          "69e378fa-53ed-4e92-8894-3b7494bffa19"
         ],
         "x-ms-correlation-request-id": [
-          "86b4fc78-80be-4095-bef0-3930439bf810"
+          "69e378fa-53ed-4e92-8894-3b7494bffa19"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20230309T180011Z:86b4fc78-80be-4095-bef0-3930439bf810"
+          "WESTUS2:20230310T200841Z:69e378fa-53ed-4e92-8894-3b7494bffa19"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:10 GMT"
+          "Fri, 10 Mar 2023 20:08:40 GMT"
         ],
         "Content-Length": [
           "22"
@@ -1392,7 +1392,7 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7fa65cf-ceeb-4db2-afd1-60c405a07dc6"
+          "ac857001-ba14-4e90-bc2f-6f1b7814afa4"
         ],
         "Accept-Language": [
           "en-US"
@@ -1419,10 +1419,10 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/retrieveContinuousBackupInformation/operationResults/e4bc8915-729b-4969-ba14-b6eced08f28c?api-version=2022-08-15-preview"
+          "https://management.azure.com/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/retrieveContinuousBackupInformation/operationResults/4b525385-d410-4da9-a585-61bcab8539b1?api-version=2022-08-15-preview"
         ],
         "x-ms-request-id": [
-          "e4bc8915-729b-4969-ba14-b6eced08f28c"
+          "4b525385-d410-4da9-a585-61bcab8539b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1437,16 +1437,16 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "729a24a6-a9cf-47b3-9a9c-e982f6e04109"
+          "ae6ede93-6142-4a98-a3ae-94e84218ff33"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230309T180013Z:729a24a6-a9cf-47b3-9a9c-e982f6e04109"
+          "WESTUS2:20230310T200843Z:ae6ede93-6142-4a98-a3ae-94e84218ff33"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:12 GMT"
+          "Fri, 10 Mar 2023 20:08:43 GMT"
         ],
         "Content-Length": [
           "21"
@@ -1459,12 +1459,12 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/retrieveContinuousBackupInformation/operationResults/e4bc8915-729b-4969-ba14-b6eced08f28c?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDE0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiLTEyMTYvZ3JlbWxpbkRhdGFiYXNlcy9UZXN0REIxL2dyYXBocy9UZXN0R3JhcGgxL3JldHJpZXZlQ29udGludW91c0JhY2t1cEluZm9ybWF0aW9uL29wZXJhdGlvblJlc3VsdHMvZTRiYzg5MTUtNzI5Yi00OTY5LWJhMTQtYjZlY2VkMDhmMjhjP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/retrieveContinuousBackupInformation/operationResults/4b525385-d410-4da9-a585-61bcab8539b1?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDE0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiLTEyMTYvZ3JlbWxpbkRhdGFiYXNlcy9UZXN0REIxL2dyYXBocy9UZXN0R3JhcGgxL3JldHJpZXZlQ29udGludW91c0JhY2t1cEluZm9ybWF0aW9uL29wZXJhdGlvblJlc3VsdHMvNGI1MjUzODUtZDQxMC00ZGE5LWE1ODUtNjFiY2FiODUzOWIxP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7fa65cf-ceeb-4db2-afd1-60c405a07dc6"
+          "ac857001-ba14-4e90-bc2f-6f1b7814afa4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1491,40 +1491,40 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
+          "11996"
         ],
         "x-ms-request-id": [
-          "19f59e96-9b91-4e83-97bd-2fbbe0bbb345"
+          "7f867080-a6b7-4b39-9b4f-c6e4d1ba8103"
         ],
         "x-ms-correlation-request-id": [
-          "19f59e96-9b91-4e83-97bd-2fbbe0bbb345"
+          "7f867080-a6b7-4b39-9b4f-c6e4d1ba8103"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230309T180043Z:19f59e96-9b91-4e83-97bd-2fbbe0bbb345"
+          "WESTUS2:20230310T200913Z:7f867080-a6b7-4b39-9b4f-c6e4d1ba8103"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:43 GMT"
+          "Fri, 10 Mar 2023 20:09:13 GMT"
         ],
         "Content-Length": [
-          "83"
+          "84"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"continuousBackupInformation\": {\r\n    \"latestRestorableTimestamp\": \"3/9/2023 6:00:18 PM\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"continuousBackupInformation\": {\r\n    \"latestRestorableTimestamp\": \"3/10/2023 8:08:48 PM\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/retrieveContinuousBackupInformation/operationResults/e4bc8915-729b-4969-ba14-b6eced08f28c?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDE0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiLTEyMTYvZ3JlbWxpbkRhdGFiYXNlcy9UZXN0REIxL2dyYXBocy9UZXN0R3JhcGgxL3JldHJpZXZlQ29udGludW91c0JhY2t1cEluZm9ybWF0aW9uL29wZXJhdGlvblJlc3VsdHMvZTRiYzg5MTUtNzI5Yi00OTY5LWJhMTQtYjZlY2VkMDhmMjhjP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup14/providers/Microsoft.DocumentDB/databaseAccounts/cosmosdb-1216/gremlinDatabases/TestDB1/graphs/TestGraph1/retrieveContinuousBackupInformation/operationResults/4b525385-d410-4da9-a585-61bcab8539b1?api-version=2022-08-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlR3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDE0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9kYXRhYmFzZUFjY291bnRzL2Nvc21vc2RiLTEyMTYvZ3JlbWxpbkRhdGFiYXNlcy9UZXN0REIxL2dyYXBocy9UZXN0R3JhcGgxL3JldHJpZXZlQ29udGludW91c0JhY2t1cEluZm9ybWF0aW9uL29wZXJhdGlvblJlc3VsdHMvNGI1MjUzODUtZDQxMC00ZGE5LWE1ODUtNjFiY2FiODUzOWIxP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b7fa65cf-ceeb-4db2-afd1-60c405a07dc6"
+          "ac857001-ba14-4e90-bc2f-6f1b7814afa4"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -1551,31 +1551,31 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11995"
         ],
         "x-ms-request-id": [
-          "04e5f42b-3439-4b1a-9de2-8afe17a3d781"
+          "9d7dc94a-43df-4f3b-9734-802c4a99b34f"
         ],
         "x-ms-correlation-request-id": [
-          "04e5f42b-3439-4b1a-9de2-8afe17a3d781"
+          "9d7dc94a-43df-4f3b-9734-802c4a99b34f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230309T180043Z:04e5f42b-3439-4b1a-9de2-8afe17a3d781"
+          "WESTUS2:20230310T200914Z:9d7dc94a-43df-4f3b-9734-802c4a99b34f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Thu, 09 Mar 2023 18:00:43 GMT"
+          "Fri, 10 Mar 2023 20:09:13 GMT"
         ],
         "Content-Length": [
-          "83"
+          "84"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"continuousBackupInformation\": {\r\n    \"latestRestorableTimestamp\": \"3/9/2023 6:00:18 PM\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"continuousBackupInformation\": {\r\n    \"latestRestorableTimestamp\": \"3/10/2023 8:08:48 PM\"\r\n  }\r\n}",
       "StatusCode": 200
     }
   ],
