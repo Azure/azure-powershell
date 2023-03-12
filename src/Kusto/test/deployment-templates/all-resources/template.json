@@ -323,6 +323,10 @@
             "type": "string",
             "value": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoFollowerClusterName'))]"
         },
+        "eventHubNameSpaceResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.EventHub/namespaces', parameters('eventHubNameSpaceName'))]"
+        },
         "eventHubResourceId": {
             "type": "string",
             "value": "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventHubNameSpaceName'), parameters('eventHubName'))]"
