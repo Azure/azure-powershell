@@ -20,7 +20,8 @@ New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Location <String>
  [-EngineType <EngineType>] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
- [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
+ [-LanguageExtensionValue <ILanguageExtension[]>] [-OptimizedAutoscaleIsEnabled]
+ [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
  [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
  [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
@@ -54,7 +55,7 @@ The cluster's accepted audiences.
 To construct, see NOTES section for ACCEPTEDAUDIENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAcceptedAudiences[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAcceptedAudiences[]
 Parameter Sets: (All)
 Aliases:
 
@@ -341,6 +342,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LanguageExtensionValue
+The list of language extensions.
+To construct, see NOTES section for LANGUAGEEXTENSIONVALUE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtension[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The geo-location where the resource lives
 
@@ -589,7 +606,7 @@ The cluster's external tenants.
 To construct, see NOTES section for TRUSTEDEXTERNALTENANT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ITrustedExternalTenant[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ITrustedExternalTenant[]
 Parameter Sets: (All)
 Aliases:
 
@@ -713,7 +730,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster
 
 ## NOTES
 
@@ -726,6 +743,10 @@ To create the parameters described below, construct a hash table containing the 
 
 `ACCEPTEDAUDIENCE <IAcceptedAudiences[]>`: The cluster's accepted audiences.
   - `[Value <String>]`: GUID or valid URL representing an accepted audience.
+
+`LANGUAGEEXTENSIONVALUE <ILanguageExtension[]>`: The list of language extensions.
+  - `[ImageName <LanguageExtensionImageName?>]`: The language extension image name.
+  - `[Name <LanguageExtensionName?>]`: The language extension name.
 
 `TRUSTEDEXTERNALTENANT <ITrustedExternalTenant[]>`: The cluster's external tenants.
   - `[Value <String>]`: GUID representing an external tenant.

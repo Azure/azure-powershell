@@ -166,7 +166,7 @@ The list of language extensions.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -245,6 +245,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 `VALUE <ILanguageExtension[]>`: The list of language extensions.
+  - `[ImageName <LanguageExtensionImageName?>]`: The language extension image name.
   - `[Name <LanguageExtensionName?>]`: The language extension name.
 
 ## RELATED LINKS

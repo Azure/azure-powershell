@@ -42,8 +42,8 @@ function setupEnv() {
     Write-Host "Preparing parameters for ARM template deploymet" -ForegroundColor Green
     $params = Get-Content .\test\deployment-templates\all-resources\parameters.json | ConvertFrom-Json
     $params.parameters.kustoApiVersion.value = "2022-12-29"
-    $params.parameters.kustoClusterName.value = "kustopssdk" + $rstr1
-    $params.parameters.kustoFollowerClusterName.value = "kustopssdkflow" + $rstr1
+    $params.parameters.kustoClusterName.value = "pssdk" + $rstr1
+    $params.parameters.kustoFollowerClusterName.value = "ssdkfollow" + $rstr1
     $params.parameters.kustoDatabaseName.value = "TestDb"
     $params.parameters.kustoDatabaseScriptName.value = "CreateTableScript"
     $params.parameters.kustoTableName.value = "TestTable"
@@ -60,7 +60,7 @@ function setupEnv() {
     $params.parameters.privateEndpointName.value = "pe" + $rstr1
 
     # Copy all parameters to env
-    $params.parameters.psobject.Properties| ForEach-Object { $env[$_.Name] = $_.Value }
+    $params.parameters.psobject.Properties| ForEach-Object { $env[$_.Name] = $_.Value.value }
 
     # Update the parameter file
     set-content -Path .\test\deployment-templates\all-resources\parameters.json -Value (ConvertTo-Json $params)
@@ -72,12 +72,12 @@ function setupEnv() {
     Write-Host "ARM template completed with state" $deploymetResult.ProvisioningState 
     
     # Collect outputs from dempolymet
-    $env.kustoClusterResourceId = $deploymetResult.Outputs.kustoClusterResourceId
-    $env.kustoFolowerClusterResourceId = $deploymetResult.Outputs.kustoFolowerClusterResourceId
-    $env.eventHubResourceId = $deploymetResult.Outputs.eventHubResourceId
-    $env.iotHubResourceId = $deploymetResult.Outputs.iotHubResourceId
-    $env.cosmosDbResourceId = $deploymetResult.Outputs.cosmosDbResourceId
-    $env.storageAccountResourceId = $deploymetResult.Outputs.storageAccountResourceId
+    $env.kustoClusterResourceId = $deploymetResult.Outputs.kustoClusterResourceId.value
+    $env.kustoFolowerClusterResourceId = $deploymetResult.Outputs.kustoFolowerClusterResourceId.value
+    $env.eventHubResourceId = $deploymetResult.Outputs.eventHubResourceId.value
+    $env.iotHubResourceId = $deploymetResult.Outputs.iotHubResourceId.value
+    $env.cosmosDbResourceId = $deploymetResult.Outputs.cosmosDbResourceId.value
+    $env.storageAccountResourceId = $deploymetResult.Outputs.storageAccountResourceId.value
     
     # copy $env to env.json file 
     $envFile = 'env.json'

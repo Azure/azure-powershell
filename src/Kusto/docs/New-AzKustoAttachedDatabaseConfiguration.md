@@ -15,9 +15,12 @@ Creates or updates an attached database configuration.
 ```
 New-AzKustoAttachedDatabaseConfiguration -ClusterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClusterResourceId <String>] [-DatabaseName <String>]
+ [-DatabaseNameOverride <String>] [-DatabaseNamePrefix <String>]
  [-DefaultPrincipalsModificationKind <DefaultPrincipalsModificationKind>] [-Location <String>]
  [-TableLevelSharingPropertyExternalTablesToExclude <String[]>]
  [-TableLevelSharingPropertyExternalTablesToInclude <String[]>]
+ [-TableLevelSharingPropertyFunctionsToExclude <String[]>]
+ [-TableLevelSharingPropertyFunctionsToInclude <String[]>]
  [-TableLevelSharingPropertyMaterializedViewsToExclude <String[]>]
  [-TableLevelSharingPropertyMaterializedViewsToInclude <String[]>]
  [-TableLevelSharingPropertyTablesToExclude <String[]>] [-TableLevelSharingPropertyTablesToInclude <String[]>]
@@ -92,6 +95,38 @@ Accept wildcard characters: False
 
 ### -DatabaseName
 The name of the database which you would like to attach, use * if you want to follow all current and future databases.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseNameOverride
+Overrides the original database name.
+Relevant only when attaching to a specific database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseNamePrefix
+Adds a prefix to the attached databases name.
+When following an entire cluster, that prefix would be added to all of the databases original names from leader cluster.
 
 ```yaml
 Type: System.String
@@ -212,7 +247,7 @@ Accept wildcard characters: False
 ```
 
 ### -TableLevelSharingPropertyExternalTablesToExclude
-List of external tables exclude from the follower database
+List of external tables to exclude from the follower database
 
 ```yaml
 Type: System.String[]
@@ -241,8 +276,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TableLevelSharingPropertyFunctionsToExclude
+List of functions to exclude from the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TableLevelSharingPropertyFunctionsToInclude
+List of functions to include in the follower database
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TableLevelSharingPropertyMaterializedViewsToExclude
-List of materialized views exclude from the follower database
+List of materialized views to exclude from the follower database
 
 ```yaml
 Type: System.String[]
@@ -339,7 +404,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAttachedDatabaseConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAttachedDatabaseConfiguration
 
 ## NOTES
 
