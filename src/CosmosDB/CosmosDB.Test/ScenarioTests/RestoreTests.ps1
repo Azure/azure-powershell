@@ -72,7 +72,7 @@ function Test-SqlRestoreFromNewAccountCmdlets {
 function Test-SqlRestoreAccountCmdlets {
   #use an existing account with the following information
   $rgName = "CosmosDBResourceGroup64"
-  $cosmosDBAccountName = "restored2-cosmosdb-12103-1"
+  $cosmosDBAccountName = "restored2-cosmosdb-12103-3"
   $sourceCosmosDBAccountName = "cosmosdb-12103"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
@@ -306,8 +306,8 @@ function Test-RestoreFailuresAccountCmdlets {
 function Test-GremlinRestoreAccountCmdlets {
   #use an existing account with the following information
   $rgName = "CosmosDBResourceGroup75"
-  $cosmosDBAccountName = "restored2-cosmosdb-1425-4"
-  $sourceCosmosDBAccountName = "cosmosdb-1425-4"
+  $cosmosDBAccountName = "restored2-cosmosdb-1425-5"
+  $sourceCosmosDBAccountName = "cosmosdb-1425-5"
   $databaseName = "TestDB1";
   $graphName1 = "Graph1";
   $graphName2 = "Graph2";
@@ -405,7 +405,7 @@ function Test-TableRestoreAccountCmdlets {
   #use an existing account with the following information
   $rgName = "CosmosDBResourceGroup44"
   $cosmosDBAccountName = "restored2-cosmosdb-1817"
-  $sourceCosmosDBAccountName = "cosmosdb-1817-2"
+  $sourceCosmosDBAccountName = "cosmosdb-1817-3"
   $tableName1 = "table1";
   $tableName2 = "table2";
   $location = "West US"
