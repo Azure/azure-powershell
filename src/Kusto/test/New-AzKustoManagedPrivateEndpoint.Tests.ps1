@@ -18,7 +18,7 @@ Describe 'New-AzKustoManagedPrivateEndpoint' {
 
     It 'CreateExpanded' {
         { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.kustoClusterName -Name "testmanagedprivateendpoint" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.subscriptionId }
-        $privateLinkResourceId = $env.eventHubResourceId
+        $privateLinkResourceId = $env.eventHubNameSpaceResourceId
         $ManagedPrivateEndpoint = New-AzKustoManagedPrivateEndpoint -ClusterName $env.kustoClusterName -Name "testmanagedprivateendpoint" -ResourceGroupName $env.resourceGroupName -GroupId "namespace" -RequestMessage "Please approve" -PrivateLinkResourceRegion $env.location -PrivateLinkResourceId $privateLinkResourceId -SubscriptionId $env.subscriptionId
         Validate_ManagedPrivateEndpoint $ManagedPrivateEndpoint "testmanagedprivateendpoint"
         { Remove-AzKustoManagedPrivateEndpoint -ClusterName $env.kustoClusterName -Name "testmanagedprivateendpoint" -ResourceGroupName $env.resourceGroupName -SubscriptionId $env.subscriptionId }

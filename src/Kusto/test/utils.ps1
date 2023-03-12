@@ -75,6 +75,7 @@ function setupEnv() {
     # Collect outputs from dempolymet
     $env.kustoClusterResourceId = $deploymetResult.Outputs.kustoClusterResourceId.value
     $env.kustoFolowerClusterResourceId = $deploymetResult.Outputs.kustoFolowerClusterResourceId.value
+    $env.eventHubNameSpaceResourceId = $deploymetResult.Outputs.eventHubNameSpaceResourceId.value
     $env.eventHubResourceId = $deploymetResult.Outputs.eventHubResourceId.value
     $env.iotHubResourceId = $deploymetResult.Outputs.iotHubResourceId.value
     $env.cosmosDbResourceId = $deploymetResult.Outputs.cosmosDbResourceId.value

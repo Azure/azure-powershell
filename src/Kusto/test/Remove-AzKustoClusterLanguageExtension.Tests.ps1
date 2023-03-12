@@ -1,4 +1,4 @@
-Describe 'Remove-AzKustoClusterLanguageExtension' {
+ Describe 'Remove-AzKustoClusterLanguageExtension' {
     BeforeAll{
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
         if (-Not(Test-Path -Path $loadEnvPath))

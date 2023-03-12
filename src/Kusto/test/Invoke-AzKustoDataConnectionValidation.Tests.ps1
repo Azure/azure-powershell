@@ -18,7 +18,6 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'DataExpandedEventHub' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
@@ -31,22 +30,19 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
     }
 
     It 'DataExpandedEventGrid' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
         $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
-        $storageAccountName = $env.storageAccountResourceId
-        $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+        $storageAccountResourceId = $env.storageAccountResourceId
         $kind = "EventGrid"
 
         { Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default' } | Should -Not -Throw
     }
 
     It 'DataExpandedIotHub' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
@@ -60,13 +56,12 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
     }
 
     It 'DataViaIdentityExpandedEventHub' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
         $dataConnectionName = "event-hub-dc"
-        $eventHubResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventhubNS/eventhubs/$eventhub"
+        $eventHubResourceId = $env.eventHubResourceId
         $kind = "EventHub"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
@@ -74,15 +69,13 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
     }
 
     It 'DataViaIdentityExpandedEventGrid' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
         $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
-        $storageAccountName = $env.storageAccountResourceId
-        $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+        $storageAccountResourceId = $env.storageAccountResourceId
         $kind = "EventGrid"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
@@ -90,7 +83,6 @@ Describe 'Invoke-AzKustoDataConnectionValidation' {
     }
 
     It 'DataViaIdentityExpandedIotHub' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName

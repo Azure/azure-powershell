@@ -21,8 +21,14 @@ Describe 'Get-AzKustoCluster' {
     }
 
     It 'List' {
-        [array]$clusterGet = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName
-        $clusterGetItem = $clusterGet[0]
-        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName "Standard" 2
+        [array]$clustersGet = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName
+        $clustersGet.Count | Should -BeGreaterOrEqual 2
+        foreach ($cluster in $clustersGet)
+        {
+            if ($cluster.Name -eq $env.kustoClusterName)
+            {
+                Validate_Cluster $cluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName "Standard" 2
+            }
+        }
     }
 }

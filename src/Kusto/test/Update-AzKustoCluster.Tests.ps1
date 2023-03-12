@@ -28,7 +28,7 @@ Describe 'Update-AzKustoCluster' {
 
     It 'UpdateViaIdentityExpanded' {
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName
-        $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName "Standard_D11_v2" -SkuTier "Standard"
-        Validate_Cluster $updatedCluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" "Standard_D11_v2" "Standard" 2
+        $updatedCluster = Update-AzKustoCluster -InputObject $clusterGetItem -SkuName $env.kustoSkuName -SkuTier "Standard"
+        Validate_Cluster $updatedCluster $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName "Standard" 2
     }
 }
