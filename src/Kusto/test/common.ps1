@@ -44,7 +44,7 @@ Gets a database soft delet perios in days parameter
 #>
 function Get-Soft-Delete-Period-In-Days
 {
-	return New-TimeSpan -Days 4
+	return New-TimeSpan -Days 365
 }
 
 <#
@@ -53,7 +53,7 @@ Gets a database hot cache period in days
 #>
 function Get-Hot-Cache-Period-In-Days
 {
-	return New-TimeSpan -Days 2
+	return New-TimeSpan -Days 31
 }
 
 <#

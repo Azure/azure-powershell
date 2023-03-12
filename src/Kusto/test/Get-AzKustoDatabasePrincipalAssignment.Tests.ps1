@@ -21,12 +21,14 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $principalAssignmentName = "testPrincipalAssignmentName"
+        $principalAssignmentName = "testViewerAssignmentName"
         $principalId = $env.principalAppId
         $role = "Viewer"
         $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
 
+        New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -DatabaseName $databaseName -PrincipalId $principalId -PrincipalType $principalType -Role $role
+        
         [array]$principalAssignmentGet = Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
         foreach ($principalAssignmentItem in $principalAssignmentGet)
         {
@@ -42,12 +44,14 @@ Describe 'Get-AzKustoDatabasePrincipalAssignment' {
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $principalAssignmentName = "testPrincipalAssignmentName"
+        $principalAssignmentName = "testViewerAssignmentName"
         $principalId = $env.principalAppId
         $role = "Viewer"
         $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$databaseName/$principalAssignmentName"
 
+        New-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -DatabaseName $databaseName -PrincipalId $principalId -PrincipalType $principalType -Role $role
+        
         $principalAssignment = Get-AzKustoDatabasePrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -PrincipalAssignmentName  $principalAssignmentName
         Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role $env.principalAadObjectId
     }

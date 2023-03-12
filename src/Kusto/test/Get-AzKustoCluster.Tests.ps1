@@ -17,12 +17,12 @@ Describe 'Get-AzKustoCluster' {
     }
     It 'Get' {
         $clusterGetItem = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $env.kustoClusterName
-        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" "Standard_D11_v2" "Standard" 2
+        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName "Standard" 2
     }
 
     It 'List' {
         [array]$clusterGet = Get-AzKustoCluster -ResourceGroupName $env.resourceGroupName
         $clusterGetItem = $clusterGet[0]
-        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" "Standard_D11_v2" "Standard" 2
+        Validate_Cluster $clusterGetItem $env.kustoClusterName $env.location "Running" "Succeeded" "Microsoft.Kusto/Clusters" $env.kustoSkuName "Standard" 2
     }
 }

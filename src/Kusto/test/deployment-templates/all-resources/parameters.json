@@ -5,11 +5,14 @@
     "kustoApiVersion": {
       "value": "2022-12-29"
     },
+    "kustoSkuName": {
+      "value": "Standard_E2a_v4"
+    },
     "kustoClusterName": {
-      "value": "kustopssdkq31ema"
+      "value": "kustopssdkb73swl"
     },
     "kustoFollowerClusterName": {
-      "value": "kustopssdkflowq31ema"
+      "value": "kustopssdkflowb73swl"
     },
     "kustoDatabaseName": {
       "value": "TestDb"
@@ -24,16 +27,16 @@
       "value": "713c3475-5021-4f3b-a650-eaa9a83f25a4"
     },
     "eventHubNameSpaceName": {
-      "value": "EHNamespaceq31ema"
+      "value": "EHNamespaceb73swl"
     },
     "eventHubName": {
-      "value": "ehq31ema"
+      "value": "ehb73swl"
     },
     "iotHubName": {
-      "value": "iotq31ema"
+      "value": "iotb73swl"
     },
     "cosmosDbAccountName": {
-      "value": "cosmosq31ema"
+      "value": "cosmosb73swl"
     },
     "cosmosDbDatabaseName": {
       "value": "cosmostestdb"
@@ -42,16 +45,16 @@
       "value": "cosmostestcontainer"
     },
     "storageAccountName": {
-      "value": "saq31ema"
+      "value": "sab73swl"
     },
     "virtualNetworkName": {
-      "value": "vnetq31ema"
+      "value": "vnetb73swl"
     },
     "subnetName": {
-      "value": "subnetq31ema"
+      "value": "subnetb73swl"
     },
     "privateEndpointName": {
-      "value": "peq31ema"
+      "value": "peb73swl"
     }
   }
 }

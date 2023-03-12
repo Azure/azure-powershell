@@ -8,6 +8,12 @@
                 "description": "<KUSTO API Version>"
             }
         },
+        "kustoSkuName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO SKU NAME>"
+            }
+        },
         "kustoClusterName": {
             "type": "string",
             "metadata": {
@@ -112,7 +118,7 @@
             "name": "[parameters('kustoClusterName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "Standard_E2a_v4",
+                "name": "[parameters('kustoSkuName')]",
                 "tier": "Standard",
                 "capacity": 2
             },
@@ -165,7 +171,7 @@
             "name": "[parameters('kustoFollowerClusterName')]",
             "location": "[resourceGroup().location]",
             "sku": {
-                "name": "Standard_E2a_v4",
+                "name": "[parameters('kustoSkuName')]",
                 "tier": "Standard",
                 "capacity": 2
             },

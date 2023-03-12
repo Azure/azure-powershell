@@ -26,6 +26,8 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
         $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
+        New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role
+        
         [array]$principalAssignmentGet = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $principalAssignment = $principalAssignmentGet[0]
         Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role $env.principalAadObjectId
@@ -40,6 +42,8 @@ Describe 'Get-AzKustoClusterPrincipalAssignment' {
         $principalType = "App"
         $principalAssignmentFullName = "$clusterName/$principalAssignmentName"
 
+        New-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName $principalAssignmentName -PrincipalId $principalId -PrincipalType $principalType -Role $role
+        
         $principalAssignment = Get-AzKustoClusterPrincipalAssignment -ResourceGroupName $resourceGroupName -ClusterName $clusterName -PrincipalAssignmentName  $principalAssignmentName
         Validate_PrincipalAssignment $principalAssignment $principalAssignmentFullName $principalId $principalType $role $env.principalAadObjectId
     }
