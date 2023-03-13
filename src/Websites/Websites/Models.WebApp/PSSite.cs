@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 object val = VnetPropInfo.GetValue(other, null);
                 VnetInfo = (IList<VnetInfo>)val;
+                VnetInfo = VnetInfo.Count <= 0 ? null : VnetInfo;
             }
         }
 
@@ -89,6 +90,6 @@ namespace Microsoft.Azure.Commands.WebApps.Models
         public SecureString GitRemotePassword { get; set; }
         public AzureStoragePropertyDictionaryResource AzureStorageAccounts { get; set; }
         public WebAppAzureStoragePath[] AzureStoragePath { get; set; }
-        public IList<VnetInfo> VnetInfo { get; set; }
+        public IList<VnetInfo> VnetInfo { get; set; } = null;
     }
 }
