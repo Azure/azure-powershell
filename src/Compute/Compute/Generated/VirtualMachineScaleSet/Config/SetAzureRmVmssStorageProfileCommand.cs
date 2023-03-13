@@ -175,6 +175,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "ResourceId of the disk encryption set to use for enabling encryption at rest.")]
         public string SecureVMDiskEncryptionSet { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "Set"))
@@ -283,6 +288,26 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+
+            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                // StorageProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+                // ImageReference
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
             }
 
             if (this.IsParameterBound(c => c.OsDiskName))
