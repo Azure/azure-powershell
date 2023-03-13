@@ -71,6 +71,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string RestorableDatabaseAccountObjectHelpMessage = "CosmosDB Restorable Database Account object";
         public const string RestorableSqlDatabaseObjectHelpMessage = "CosmosDB Restorable Sql Database object";
         public const string RestorableMongoDBDatabaseObjectHelpMessage = "CosmosDB Restorable MongoDB Database object";
+        public const string SourceBackupLocationHelpMessage = "CosmosDB location of source backup for cross region restore";
 
         //Backup specific help messages
         public const string BackupPolicyHelpMessage = "The backup policy to indicate how the backups of the account should be taken";

@@ -42,6 +42,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                     DatabasesToRestore[i] = new PSDatabaseToRestore(restoreParameters.DatabasesToRestore[i]);
                 }
             }
+
+            if (!string.IsNullOrEmpty(restoreParameters.SourceBackupLocation))
+            {
+                SourceBackupLocation = restoreParameters.SourceBackupLocation;
+            }
         }
 
         /// <summary>
@@ -61,6 +66,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         /// </summary>
         public PSDatabaseToRestore[] DatabasesToRestore { get; set; }
 
+        /// <summary>
+        /// Gets or sets CosmosDB location of source backup for cross region restore.
+        /// </summary>
+        public string SourceBackupLocation { get; set; }
+
         public RestoreParameters ToSDKModel()
         {
             RestoreParameters restoreParameters = new RestoreParameters()
@@ -79,6 +89,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
                 }
 
                 restoreParameters.DatabasesToRestore = databasesToRestore;
+            }
+
+            if (!string.IsNullOrEmpty(SourceBackupLocation))
+            {
+                restoreParameters.SourceBackupLocation = SourceBackupLocation;
             }
 
             return restoreParameters;

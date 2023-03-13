@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.SourceBackupLocationHelpMessage)]
+        public string SourceBackupLocation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DateTime utcRestoreDateTime;
@@ -153,7 +156,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 RestoreSource = sourceAccountToRestore.Id,
                 RestoreTimestampInUtc = utcRestoreDateTime,
-                DatabasesToRestore = DatabasesToRestore
+                DatabasesToRestore = DatabasesToRestore,
+                SourceBackupLocation = SourceBackupLocation
             };
 
             Collection<Location> LocationCollection = new Collection<Location>();
