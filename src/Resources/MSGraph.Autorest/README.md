@@ -211,7 +211,12 @@ directive:
   - where:
       subject: UserSigned$
     hide: true
-
+  - where:
+      parameter-name: AccountEnabled
+      verb: Update
+      subject: User
+    set:
+      parameter-description: "true for enabling the account; otherwise, false. Always true when combined with `-Password`. `-AccountEnabled $false` is ignored when changing the account's password."
   - where:
       verb: Get
       variant: ^List(.*)

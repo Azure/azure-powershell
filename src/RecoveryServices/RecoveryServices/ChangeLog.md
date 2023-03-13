@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.3.0
 * Supported using managed disks for replication for HyperV to Azure provider in Azure Site Recovery
 
 ## Version 6.2.0

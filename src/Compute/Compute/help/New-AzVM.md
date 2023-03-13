@@ -27,7 +27,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SharedGalleryImageId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -686,7 +687,7 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian9, OpenSuseLeap154, RHEL, SuseSles15SP4.
+The friendly image name upon which the VM will be built. The available aliases are: Win2022AzureEditionCore, Win2019Datacenter, Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, UbuntuLTS, Ubuntu2204, CentOS, CentOS85Gen2, Debian, Debian9, OpenSuseLeap154, RHEL, RHELRaw91Gen2, SuseSles15SP4.
 
 ```yaml
 Type: System.String
@@ -966,6 +967,21 @@ The name of a new (or existing) network security group (NSG) for the created VM 
 ```yaml
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedGalleryImageId
+Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False

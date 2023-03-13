@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 SecondaryType = SecondaryType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 PreferredEnclaveType = PreferredEnclaveType,
-                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, model.FirstOrDefault().Identity),
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 EncryptionProtector = this.EncryptionProtector ?? model.FirstOrDefault().EncryptionProtector,
                 FederatedClientId = this.FederatedClientId ?? model.FirstOrDefault().FederatedClientId,
             };

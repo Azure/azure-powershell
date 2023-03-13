@@ -25,7 +25,7 @@ Get-AzReservationOrderId -SubscriptionId '10000000-aaaa-bbbb-cccc-100000000005'
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAppliedReservations
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAppliedReservations
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,14 +33,14 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorderid
 #>
 function Get-AzReservationOrderId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAppliedReservations])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAppliedReservations])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get')]
@@ -62,7 +62,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -114,7 +115,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -13,7 +13,7 @@ Publishes a Bicep file to a registry.
 ## SYNTAX
 
 ```
-Publish-AzBicepModule -FilePath <String> -Target <String> [-PassThru]
+Publish-AzBicepModule -FilePath <String> -Target <String> -DocumentationUri <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,6 +85,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DocumentationUri
+The documentation uri of the Bicep module..
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

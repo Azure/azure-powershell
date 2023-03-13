@@ -31,6 +31,8 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSApplicationGatewayFirewallCondition> MatchConditions { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string Action { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string State { get; set; }
 
         [JsonIgnore]
         public string MatchConditionsText
