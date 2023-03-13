@@ -8,38 +8,38 @@ schema: 2.0.0
 # Invoke-AzReservationReturn
 
 ## SYNOPSIS
-Return a reservation.
+Return a Reservation.
 
 ## SYNTAX
 
 ### PostExpanded (Default)
 ```
-Invoke-AzReservationReturn -ReservationOrderId <String> [-ReservationToReturnQuantity <Int32>]
- [-ReservationToReturnReservationId <String>] [-ReturnReason <String>] [-Scope <String>] [-SessionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationReturn -ReservationOrderId <String> -ReservationToReturnQuantity <Int32>
+ -ReservationToReturnReservationId <String> -ReturnReason <String> -Scope <String> -SessionId <String>
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Post
 ```
-Invoke-AzReservationReturn -ReservationOrderId <String> -Body <IRefundRequest> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationReturn -Body <IRefundRequest> -ReservationOrderId <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
-Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -Body <IRefundRequest>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -Body <IRefundRequest> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
-rInvoke-AzReservationReturn -InputObject <IReservationsIdentity> -ReservationToReturnQuantity <Int32>
+Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -ReservationToReturnQuantity <Int32>
  -ReservationToReturnReservationId <String> -ReturnReason <String> -Scope <String> -SessionId <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Return a reservation using the session ID obtained from calculateRefund command.
+Return a Reservation.
 
 ## EXAMPLES
 
@@ -97,30 +97,15 @@ Proceed reservations return with session ID obtained from Invoke-AzReservationCa
 ## PARAMETERS
 
 ### -Body
-.
+The return request body.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest
 Parameter Sets: Post, PostViaIdentity
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,7 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationOrderId
-Order Id of the reservation
+Reservation Order Id.
 
 ```yaml
 Type: System.String
@@ -159,15 +144,14 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationToReturnQuantity
-Quantity to be returned.
-Must be greater than zero.
+Quantity to return.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,14 +159,14 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationToReturnReservationId
-Fully qualified identifier of the Reservation being returned
+Reservation Id to return.
 
 ```yaml
 Type: System.String
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -190,14 +174,14 @@ Accept wildcard characters: False
 ```
 
 ### -ReturnReason
-The reason of returning the reservation
+The reason for this reservation return.
 
 ```yaml
 Type: System.String
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -205,15 +189,15 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-The scope of the refund, e.g.
-Reservation
+The scope of this return, e.g.
+Reservation.
 
 ```yaml
 Type: System.String
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,14 +205,14 @@ Accept wildcard characters: False
 ```
 
 ### -SessionId
-SessionId that was returned by CalculateRefund API.
+The session id obtained from Invoke-AzReservationCalculateRefund..
 
 ```yaml
 Type: System.String
 Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -271,13 +255,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
 
 ## NOTES
 
@@ -288,16 +270,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <IRefundRequest>`: .
+`BODY <IRefundRequest>`: The return request body.
   - `[ReservationToReturnQuantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
-  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the Reservation being returned
+  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the reservation being returned
   - `[ReturnReason <String>]`: The reason of returning the reservation
   - `[Scope <String>]`: The scope of the refund, e.g. Reservation
   - `[SessionId <String>]`: SessionId that was returned by CalculateRefund API.
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 

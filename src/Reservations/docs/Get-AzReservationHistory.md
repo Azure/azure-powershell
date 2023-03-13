@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationId
-Id of the Reservation Item
+Id of the reservation item
 
 ```yaml
 Type: System.String
@@ -98,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 
 ## NOTES
 

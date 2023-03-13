@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 04efa7dde730c9eaa35bdab1681117d639522edb
+branch: 49b2b960e028825de1e3b95568c93ed235354e06
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json
+  - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/reservations.json
 module-version: 0.1.0
 title: Reservations
 subject-prefix: $(service-name)
@@ -198,6 +198,11 @@ directive:
       verb: Merge
       subject-prefix: ''
       subject: Reservation
+    hide: true
+  - where: 
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: Return
     hide: true
 
   ### Rename property name
