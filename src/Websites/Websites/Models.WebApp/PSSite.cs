@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.WebApps.Models
             {
                 object val = VnetPropInfo.GetValue(other, null);
                 VnetInfo = (IList<VnetInfo>)val;
-                VnetInfo = VnetInfo.Count <= 0 ? null : VnetInfo;
+                VnetInfo = VnetInfo?.Count <= 0 ? null : VnetInfo;
             }
         }
 
