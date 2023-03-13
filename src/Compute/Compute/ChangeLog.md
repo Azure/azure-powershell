@@ -20,8 +20,11 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.5.1
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
 * Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
+* Updated Image alias `Ubuntu2204` to point to a public image.
 
 ## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.

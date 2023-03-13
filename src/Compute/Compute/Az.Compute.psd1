@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.5.0'
+ModuleVersion = '5.5.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -232,11 +232,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added breaking change message for ''New-AzVmss''.
-* Added ''-PerformancePlus'' parameter to ''New-AzDiskConfig''
-* Added ''MaxSurge'' to Set-AzVmssRollingUpgradePolicyCommand
-* Added support for ''latest'' in ''Get-AzvmImage'' ''-Version'' parameter
-* Added ''CompletionPercent'' property to PSDisk object.'
+        ReleaseNotes = '* Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
+* Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
+* Update Image alias `Ubuntu2204` to point to a public image.'
 
         # Prerelease string of this module
         # Prerelease = ''
