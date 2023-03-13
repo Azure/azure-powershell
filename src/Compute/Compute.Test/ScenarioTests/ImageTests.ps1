@@ -318,9 +318,18 @@ function Test-DefaultImagesExistManual
     # Setup
     #$rgname = Get-ComputeTestResourceName;
     $loc = Get-ComputeVMLocation;
-
+    $rgname = Get-ComputeTestResourceName;
+    
     try
     {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $domainNameLabel = "d" + $rgname;
+        
         # assuming the below file path:
         # C:\repos\ps3\azure-powershell\src\Compute\Compute\Strategies\ComputeRp\Images.json
         #$imagesFile = Get-Content -Path "..\..\..\..\Compute\Compute\Strategies\ComputeRp\Images.json";
@@ -335,6 +344,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.UbuntuLTS.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image UbuntuLTS;
 
         # Ubuntu2204 test
         $publisher = $images.Linux.Ubuntu2204.publisher;
@@ -343,6 +353,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.Ubuntu2204.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Ubuntu2204;
         
         # CentOS test
         $publisher = $images.Linux.CentOS.publisher;
@@ -351,6 +362,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.CentOS.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image CentOS;
 
         # CentOS versioned test
         $publisher = $images.Linux.CentOS85Gen2.publisher;
@@ -359,6 +371,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.CentOS85Gen2.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image CentOS85Gen2;
         
         # Debian test
         $publisher = $images.Linux.Debian.publisher;
@@ -367,6 +380,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.Debian.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian;
 
         # Debian versioned test
         $publisher = $images.Linux.Debian9.publisher;
@@ -375,6 +389,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.Debian9.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian9;
 
         # LinOpenSuseLeap154 versioned test
         $publisher = $images.Linux.OpenSuseLeap154.publisher;
@@ -383,6 +398,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.OpenSuseLeap154.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image OpenSuseLeap154;
 
         # RHEL test
         $publisher = $images.Linux.RHEL.publisher;
@@ -391,6 +407,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.RHEL.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHEL;
 
         # RHELRaw91Gen2 test
         $publisher = $images.Linux.RHELRaw91Gen2.publisher;
@@ -399,6 +416,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.RHELRaw91Gen2.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHELRaw91Gen2;
 
         # LinSuseSles15SP4 versioned test
         $publisher = $images.Linux.SuseSles15SP4.publisher;
@@ -407,6 +425,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Linux.SuseSles15SP4.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image SuseSles15SP4;
 
         # Windows
         # Win2022AzureEditionCore test
@@ -416,6 +435,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Windows.Win2022AzureEditionCore.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2022AzureEditionCore;
 
         # Win2019Datacenter test
         $publisher = $images.Windows.Win2019Datacenter.publisher;
@@ -424,6 +444,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Windows.Win2019Datacenter.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2019Datacenter;
 
         # Win2016Datacenter test
         $publisher = $images.Windows.Win2016Datacenter.publisher;
@@ -432,6 +453,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Windows.Win2016Datacenter.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2016Datacenter;
 
         # Win2012R2Datacenter test
         $publisher = $images.Windows.Win2012R2Datacenter.publisher;
@@ -440,6 +462,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Windows.Win2012R2Datacenter.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2012R2Datacenter;
 
         # Win2012Datacenter test
         $publisher = $images.Windows.Win2012Datacenter.publisher;
@@ -448,6 +471,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Windows.Win2012Datacenter.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2012Datacenter;
 
         # Win10 test
         $publisher = $images.Windows.Win10.publisher;
@@ -456,6 +480,7 @@ function Test-DefaultImagesExistManual
         $version = $images.Windows.Win10.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win10;
     }
     finally 
     {
