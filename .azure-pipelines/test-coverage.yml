@@ -1,0 +1,84 @@
+parameters:
+- name: windowsImage
+  displayName: Windows Image
+  type: string
+  default: windows-2019
+- name: dotnet_sdk_3_1
+  displayName: .NET Core 3.1
+  default: 3.1.x
+- name: dotnet_sdk_6
+  displayName: .NET 6
+  type: string
+  default: 6.0.x
+- name: dotnet_sdk_7
+  displayName: .NET 7
+  type: string
+  default: 7.0.x
+- name: testFramework
+  displayName: Test Framework
+  type: string
+  default: netcoreapp3.1
+
+variables:
+  EnableTestCoverage: true
+  TestCoverageLocation: $(Pipeline.Workspace)/artifacts
+
+pr: none
+trigger: none
+
+jobs:
+- job: TestCoverage
+  timeoutInMinutes: 600
+  pool:
+    vmImage: ${{ parameters.windowsImage }}
+
+  steps:
+  - task: UseDotNet@2
+    displayName: 'Install .NET Core 3.1 SDK'
+    inputs:
+      packageType: sdk
+      version: ${{ parameters.dotnet_sdk_3_1 }}
+
+  - task: DotNetCoreCLI@2
+    displayName: Build Azure PowerShell Solution
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj -t:"Clean;Build" -p:"Configuration=Debug"'
+
+  - task: DotNetCoreCLI@2
+    displayName: Test SDK-Based Cmdlets
+    condition: succeeded()
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj -t:"Test" -p:"Configuration=Debug;TestFramework=${{ parameters.testFramework }}"'
+
+  - task: PowerShell@2
+    displayName: Test AutoRest-Based Cmdlets
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      workingDirectory: 'artifacts/Debug'
+      targetType: inline
+      script: |
+        Install-Module -Name Pester -RequiredVersion 4.10.1 -Force
+        Import-Module (Join-Path -Path . -ChildPath Az.Accounts | Join-Path -ChildPath Az.Accounts.psd1) -Force
+        Get-ChildItem -Path . -Filter test-module.ps1 -File -Recurse | ForEach-Object {
+          . $_ -Isolated
+        }
+
+  - task: PowerShell@2
+    displayName: Analyze Test Coverage
+    condition: succeeded()
+    inputs:
+      pwsh: true
+      targetType: filePath
+      filePath: ./tools/TestFx/Coverage/AnalyzeTestCoverage.ps1
+
+  - task: PublishPipelineArtifact@1
+    displayName: Publish Test Coverage Result
+    condition: always()
+    inputs:
+      artifact: testcoverage
+      targetPath: $(TestCoverageLocation)
