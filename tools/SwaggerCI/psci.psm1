@@ -12,6 +12,16 @@ function Invoke-SwaggerCI {
 
     $packages = @()
 
+    # region Phase 1
+    foreach ($rd in $config.relatedReadmeMdFiles) {
+        # Set moduleName to modulePath at first
+        $moduleName = $modulePath
+        $package = Build-Module $moduleName $affectModule[$moduleName]
+        $packages += $package
+    }
+    # endregion
+
+    # region Phase 2
     $swaggerSpecifcationPath = Join-Path (Get-Item $config.specFolder).FullName "specification"
     $azurePowerShellSourcePath = Join-Path (Get-Location).Path "src"
 
@@ -25,6 +35,7 @@ function Invoke-SwaggerCI {
     $result = @{
         packages = $packages
     }
+    #endregion
 
     $result | ConvertTo-Json -Depth 5 | Out-File -Path $ResultFilePath
 }
