@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsMonitor'))
 }
 
 Describe 'Get-AzWorkloadsMonitor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzWorkloadsMonitor} | Should -Not -Throw
     }
 
     It 'Get' -skip {

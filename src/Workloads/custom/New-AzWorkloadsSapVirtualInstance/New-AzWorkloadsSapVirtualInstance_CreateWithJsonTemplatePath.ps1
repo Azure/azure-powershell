@@ -40,102 +40,204 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
   [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance])]
   [CmdletBinding(DefaultParameterSetName='CreateWithDiscovery', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
   param(
-      [Parameter(Mandatory)]
-      [Alias('SapVirtualInstanceName')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
-      [System.String]
-      # The name of the Virtual Instances for SAP solutions resource
-      ${Name},
-  
-      [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
-      [System.String]
-      # The name of the resource group.
-      # The name is case insensitive.
-      ${ResourceGroupName},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-      [System.String]
-      # The ID of the target subscription.
-      ${SubscriptionId},
-  
-      [Parameter(Mandatory)]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
-      [System.String]
-      # The ID of the target subscription.
-      ${JsonTemplatePath},
-  
-      [Parameter()]
-      [Alias('AzureRMContext', 'AzureCredential')]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Azure')]
-      [System.Management.Automation.PSObject]
-      # The credentials, account, tenant, and subscription used for communication with Azure.
-      ${DefaultProfile},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command as a job
-      ${AsJob},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Wait for .NET debugger to attach
-      ${Break},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be appended to the front of the pipeline
-      ${HttpPipelineAppend},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.SendAsyncStep[]]
-      # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-      ${HttpPipelinePrepend},
-  
-      [Parameter()]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Run the command asynchronously
-      ${NoWait},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [System.Uri]
-      # The URI for the proxy server to use
-      ${Proxy},
-  
-      [Parameter(DontShow)]
-      [ValidateNotNull()]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [System.Management.Automation.PSCredential]
-      # Credentials for a proxy server to use for the remote call
-      ${ProxyCredential},
-  
-      [Parameter(DontShow)]
-      [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
-      [System.Management.Automation.SwitchParameter]
-      # Use the default credentials for the proxy
-      ${ProxyUseDefaultCredentials}
+    [Parameter(Mandatory)]
+    [Alias('SapVirtualInstanceName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
+    [System.String]
+    # The name of the Virtual Instances for SAP solutions resource
+    ${Name},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [System.String]
+    # Configuration json path.
+    ${Configuration},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType]
+    # Defines the environment type - Production/Non Production.
+    ${Environment},
+
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [System.String]
+    # The geo-location where the resource lives
+    ${Location},
+
+    [Parameter(Mandatory)]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType]
+    # Defines the SAP Product type.
+    ${SapProduct},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType]
+    # Type of manage identity
+    ${IdentityType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [System.String]
+    # Managed resource group name
+    ${ManagedResourceGroupName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.ITrackedResourceTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # User assigned identities dictionary
+    ${UserAssignedIdentity},
+
+    [Parameter()]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
   )
   process {
       try {
-            if (-not (Test-Path $JsonTemplatePath))
+            if (-not (Test-Path $Configuration))
             {
-                Write-Error "Cannot find file $JsonTemplatePath. Please make sure it exists!"
+                Write-Error "Cannot find file $Configuration . Please make sure it exists!"
                 exit 1
             }
-            $JsonString = Get-Content $JsonTemplatePath -Raw
+            $bodyHashTable = @{};
+            if($PSBoundParameters.ContainsKey('Tag')) {
+              $bodyHashTable.Tag = $Tag
+              $null = $PSBoundParameters.Remove('Tag');
+            }
+
+            if($PSBoundParameters.ContainsKey('Location')) {
+              $bodyHashTable.Location = $Location
+              $null = $PSBoundParameters.Remove('Location');
+            }
+
+            $bodyHashTable.Identity = @{}
+            if($PSBoundParameters.ContainsKey('IdentityType')) {
+              $bodyHashTable.Identity.Type = $IdentityType.ToString()
+              $null = $PSBoundParameters.Remove('IdentityType');
+            }
+            
+            if($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
+              $bodyHashTable.Identity.UserAssignedIdentities = $UserAssignedIdentity
+              $null = $PSBoundParameters.Remove('UserAssignedIdentity');
+            }
+
+            if ($bodyHashTable.Identity.Count -eq 0) {
+              $null = $bodyHashTable.Remove('Identity')
+            }
+
+            $bodyHashTable.Properties = @{}
+            if($PSBoundParameters.ContainsKey('Environment')) {
+              $bodyHashTable.Properties.Environment = $Environment.ToString()
+              $null = $PSBoundParameters.Remove('Environment');
+            }
+            
+            if($PSBoundParameters.ContainsKey('SapProduct')) {
+              $bodyHashTable.Properties.SapProduct = $SapProduct.ToString()
+              $null = $PSBoundParameters.Remove('SapProduct');
+            }
+
+            $bodyHashTable.Properties.ManagedResourceGroupConfiguration = @{}
+
+            if($PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
+              $bodyHashTable.Properties.ManagedResourceGroupConfiguration.Name = $ManagedResourceGroupName
+              $null = $PSBoundParameters.Remove('ManagedResourceGroupName');
+            }
+
+            if ($bodyHashTable.Properties.ManagedResourceGroupConfiguration.Count -eq 0) {
+              $null = $bodyHashTable.Properties.Remove('ManagedResourceGroupConfiguration')
+            }
+
+            $configurationHashTable = Get-Content $Configuration -Raw | ConvertFrom-Json 
+
+            $bodyHashTable.Properties.Configuration = $configurationHashTable
+
+            $null = $PSBoundParameters.Remove("Configuration")
+
+
+            $JsonString = $bodyHashTable | ConvertTo-Json -Depth 100
             $null = $PSBoundParameters.Add("JsonString", $JsonString)
-            $null = $PSBoundParameters.Remove("JsonTemplatePath")
+            
             
             Az.Workloads.private\New-AzWorkloadsSapVirtualInstance_CreateWithJsonString @PSBoundParameters
         } catch {

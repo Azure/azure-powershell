@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsMonitor'))
 }
 
 Describe 'New-AzWorkloadsMonitor' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $monitor = New-AzWorkloadsMonitor -ResourceGroupName PowerShell-CLI-TestRG -Name powershellmonitor09 -Location eastus2euap `
+        -AppLocation eastus -ManagedResourceGroupName powershellmonitor09-mrg `
+        -MonitorSubnet "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/PowerShell-CLI-TestRG/providers/Microsoft.Network/virtualNetworks/lucas-workloads-vnet/subnets/subnet03" `
+        -RoutingPreference 'RouteAll' -ZoneRedundancyPreference Disabled
+        $monitor.ProvisioningState | Should -Be "Succeeded"
     }
 }

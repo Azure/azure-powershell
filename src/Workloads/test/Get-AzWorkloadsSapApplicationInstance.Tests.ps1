@@ -14,13 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsSapApplication
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
+
 Describe 'Get-AzWorkloadsSapApplicationInstance' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            Get-AzWorkloadsSapApplicationInstance -SubscriptionId $env.subscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+            # $appResponseList.Count | Should -BeGreaterOrEqual 1 
+        }
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            Get-AzWorkloadsSapApplicationInstance -SubscriptionId $env.subscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Name $env.SapApplicationInstanceName
+            # $appResponse.Name | Should -Be $env.SapApplicationInstanceName
+        }
     }
 
     It 'GetViaIdentity' -skip {

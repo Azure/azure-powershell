@@ -27,7 +27,7 @@ New-AzWorkloadsMonitor -ResourceGroupName PowerShell-CLI-TestRG -Name powershell
 New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name L02 -Location eastus2 -Environment 'Prod' -SapProduct 'S4HANA' -CentralServerVmId '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/DHRUV-SVI-SCALE-TEST-AVSDISCOVERY8.2.202109120216FEB5738-INFRA/providers/Microsoft.Compute/virtualMachines/a12appvm0'
 
 # CreateWithJsonTemplatePath
-New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name L02 -JsonTemplatePath .\test\sapVirtualInstalceJsonTemplate.json
+New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Name L02 -Location eastuseuap -Environment 'Prod' -SapProduct 'S4HANA' -Configuration .\test\configuration.json -Tag @{'k1'='v1'} -IdentityType 'UserAssigned' -ManagedResourceGroupName "L02-rg" -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'='v1'}
 ```
 
 

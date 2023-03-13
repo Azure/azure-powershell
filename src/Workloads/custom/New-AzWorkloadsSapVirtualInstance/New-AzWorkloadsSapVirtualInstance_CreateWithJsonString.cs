@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzWorkloadsSapVirtualInstance_CreateWithJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Creates a Virtual Instance for SAP solutions (VIS) resource")]

@@ -21,17 +21,12 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -Ce
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateWithJsonString
-```
-New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### CreateWithJsonTemplatePath
 ```
-New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -JsonTemplatePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> -Configuration <String>
+ -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> [-SubscriptionId <String>]
+ [-IdentityType <ManagedServiceIdentityType>] [-ManagedResourceGroupName <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -94,6 +89,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Configuration
+Configuration json path.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateWithJsonTemplatePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -114,7 +124,7 @@ Defines the environment type - Production/Non Production.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapEnvironmentType
-Parameter Sets: CreateWithDiscovery
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -129,40 +139,10 @@ Type of manage identity
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedServiceIdentityType
-Parameter Sets: CreateWithDiscovery
+Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonTemplatePath
-The ID of the target subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateWithJsonTemplatePath
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -174,7 +154,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateWithDiscovery
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -189,7 +169,7 @@ Managed resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateWithDiscovery
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -269,7 +249,7 @@ Defines the SAP Product type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.SapProductType
-Parameter Sets: CreateWithDiscovery
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -299,7 +279,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateWithDiscovery
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -314,7 +294,7 @@ User assigned identities dictionary
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateWithDiscovery
+Parameter Sets: (All)
 Aliases:
 
 Required: False
