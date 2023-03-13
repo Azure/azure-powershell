@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
+* Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
 
 ## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.

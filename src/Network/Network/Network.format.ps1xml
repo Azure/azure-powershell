@@ -748,6 +748,10 @@
                 <Label>EgressNatRules</Label>
                 <PropertyName>EgressNatRulesText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>GatewayCustomBgpIpAddresses</Label>
+                <PropertyName>GatewayCustomBgpIpAddressesText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -2113,6 +2117,10 @@
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>FlushConnection</Label>
+                <PropertyName>FlushConnectionText</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>SecurityRules</Label>
                 <PropertyName>SecurityRulesText</PropertyName>
               </ListItem>
@@ -3428,6 +3436,10 @@
                 <Label>Circuits</Label>
                 <PropertyName>CircuitsText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>BillingType</Label>
+                <PropertyName>BillingType</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
@@ -3621,6 +3633,10 @@
               <ListItem>
                 <Label>AuthorizationKey</Label>
                 <PropertyName>AuthorizationKey</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AuthorizationStatus</Label>
+                <PropertyName>AuthorizationStatus</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

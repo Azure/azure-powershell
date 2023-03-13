@@ -19,7 +19,8 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtua
  [-EnableBgp <Boolean>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-Force] [-AsJob]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +30,8 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection <PSVirtua
  [-EnableBgp <Boolean>] [-DpdTimeoutInSeconds <Int32>] [-ConnectionMode <String>]
  [-UsePolicyBasedTrafficSelectors <Boolean>] [-UseLocalAzureIpAddress <Boolean>]
  [-IpsecPolicies <PSIpsecPolicy[]>] [-TrafficSelectorPolicy <PSTrafficSelectorPolicy[]>]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] -Tag <Hashtable> [-Force] [-AsJob]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-GatewayCustomBgpIpAddress <PSGatewayCustomBgpIpConfiguration[]>] -Tag <Hashtable> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -163,6 +165,87 @@ The first command gets a virtual network gateway connection named 1 that belongs
 The second command gets the virtual network gateway natRule named natRule1 and stores it to the variable named $egressNatrule.
 The third command sets virtual network gateway connection with removed all IngressNatRules and add egressNatrule into EgressNatRules.
 
+### Example 3: Add/Remove GatewayCustomBgpIpAddress to an existing VirtualNetworkGatewayConnection
+```powershell
+$address1 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/default" -CustomBgpIpAddress "169.254.21.1"
+$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/ActiveActive" -CustomBgpIpAddress "169.254.21.3"
+$conn = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName PS_testing -ResourceName Conn
+ 
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -GatewayCustomBgpIpAddress $address1,$address2
+```
+
+```output
+ Name                        : Conn
+ResourceGroupName           : PS_testing
+Location                    : eastus
+Id                          : /subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/connections/Conn
+Etag                        : W/"e867e7bb-fa2e-436e-8822-70c556ec0f03"
+ResourceGuid                : 9c33f4f7-b09c-4080-932e-a44405a8c252
+ProvisioningState           : Succeeded
+Tags                        :
+AuthorizationKey            :
+VirtualNetworkGateway1      : "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw"
+VirtualNetworkGateway2      :
+LocalNetworkGateway2        : "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/localNetworkGateways/testLng"
+Peer                        :
+RoutingWeight               : 3
+SharedKey                   : abc
+ExpressRouteGatewayBypass   : False
+EnablePrivateLinkFastPath   : False
+ConnectionStatus            : Unknown
+EgressBytesTransferred      : 0
+IngressBytesTransferred     : 0
+TunnelConnectionStatus      : []
+IngressNatRules             : []
+EgressNatRules              : []
+GatewayCustomBgpIpAddresses : [
+                                {
+                                  "IpconfigurationId":
+                              "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/default",
+                                  "CustomBgpIpAddress": "169.254.21.1"
+                                },
+                                {
+                                  "IpconfigurationId":
+                              "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/ActiveActive",
+                                  "CustomBgpIpAddress": "169.254.21.3"
+                                }
+                              ]
+```
+This will create new AzGatewayCustomBgpIpConfigurationObjects and update gateway connection with these GatewayCustomBgpIpAddress.
+
+### Example 4: Remove GatewayCustomBgpIpAddress to an existing VirtualNetworkGatewayConnection
+```powershell
+$conn = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName PS_testing -ResourceName Conn
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -GatewayCustomBgpIpAddress @()
+```
+```output
+Name                      : Conn
+ResourceGroupName         : PS_testing
+Location                  : eastus
+Id                        : /subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/connections/Conn
+Etag                      : W/"863d9b89-a030-42ba-9f71-58d5bc3336a9"
+ResourceGuid              : 9c33f4f7-b09c-4080-932e-a44405a8c252
+ProvisioningState         : Succeeded
+Tags                      :
+AuthorizationKey          :
+VirtualNetworkGateway1    : "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw"
+VirtualNetworkGateway2    :
+LocalNetworkGateway2      : "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/localNetworkGateways/testLng"
+Peer                      :
+RoutingWeight             : 3
+SharedKey                 : abc
+ExpressRouteGatewayBypass : False
+EnablePrivateLinkFastPath : False
+ConnectionStatus          : NotConnected
+EgressBytesTransferred    : 0
+IngressBytesTransferred   : 0
+TunnelConnectionStatus    : []
+IngressNatRules           : []
+EgressNatRules            : []
+GatewayCustomBgpIpAddresses : []
+```
+This will update gateway connection with removing these GatewayCustomBgpIpAddress.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -285,6 +368,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GatewayCustomBgpIpAddress
+The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -IngressNatRule
 The list of ingress NAT rules that are associated with this Connection.
 
@@ -331,7 +429,7 @@ Accept wildcard characters: False
 ```
 
 ### -TrafficSelectorPolicy
-A list of  Traffic Selector policies.
+A list of traffic selector policies.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
@@ -376,7 +474,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkGatewayConnection
-Specifies the PSVirtualNetworkGatewayConnection object that this cmdlet uses to modify the virtual network gateway connection.
+The VirtualNetworkGatewayConnection
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
@@ -421,6 +519,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.PSTrafficSelectorPolicy[]
 
+### Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
@@ -428,11 +528,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 [Get-AzVirtualNetworkGatewayConnection](./Get-AzVirtualNetworkGatewayConnection.md)
 
 [New-AzVirtualNetworkGatewayConnection](./New-AzVirtualNetworkGatewayConnection.md)
 
 [Remove-AzVirtualNetworkGatewayConnection](./Remove-AzVirtualNetworkGatewayConnection.md)
-
-
