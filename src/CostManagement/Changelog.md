@@ -19,17 +19,13 @@
 -->
 
 ## Upcoming Release
-
 - Fixed an error that values in row could be null when grouping by the value of TagKey in Invoke-AzCostManagementQuery cmdlet.
 
 ## Version 0.3.0
-
 - Upgraded Api version to 2021-10-01
 
 ## Version 0.2.0
-
 - Fixed an error that the CostmanagementExport could not be updated correctly
 
 ## Version 0.1.0
-
 - First preview release for module Az.CostManagement
