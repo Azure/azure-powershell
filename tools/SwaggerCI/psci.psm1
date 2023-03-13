@@ -14,9 +14,23 @@ function Invoke-SwaggerCI {
 
     # region Phase 1
     foreach ($rd in $config.relatedReadmeMdFiles) {
+        $moduleName = $rd.split("/")[1]
         # Set moduleName to modulePath at first
-        $moduleName = $modulePath
-        $package = Build-Module $moduleName $affectModule[$moduleName]
+        $rdFolder = Join-Path $config.specFolder (Split-Path $rd -Parent)
+        $rdPath = Join-Path $rdFolder "readme.md"
+        $psRdPath = Join-Path $rdFolder "readme.powershell.md"
+
+        #create the a folder for this RP
+        $moduleFolder = Join-Path (Join-Path (Get-Location).Path swaggerci) $moduleName
+        New-Item -Path $moduleFolder -ItemType Directory -Force
+
+        #populate read.md.template
+        $rdContent = Get-Content ./tools/SwaggerCI/readme.md.template
+        $rdContent = $rdContent.replace('$(readme.md)', $rdPath)
+        $rdContent = $rdContent.replace('$(readme.powershell.md)', $psRdPath)
+        $rdContent | Out-File -Path (Join-Path $moduleFolder "readme.md")
+
+        $package = Build-Module -moduleName $moduleName -moduleFolder $moduleFolder -rd $rd
         $packages += $package
     }
     # endregion
@@ -28,7 +42,17 @@ function Invoke-SwaggerCI {
     $affectModule = Get-AffectModule -changedFiles $config.changedFiles -relatedReadmeMdFiles $config.relatedReadmeMdFiles -swaggerSpecifcationPath $swaggerSpecifcationPath -azurePowerShellSourcePath $azurePowerShellSourcePath
 
     foreach ($moduleName in $affectModule.keys) {
-        $package = Build-Module $moduleName $affectModule[$moduleName]
+        $moduleFolder = (Get-ChildItem -Recurse -Path src -Directory -Filter $moduleName).FullName
+        $rd = Resolve-Path (Join-Path $moduleFolder "readme.md")
+        $noprofileMdPath = (Get-Item "tools/SwaggerCI/readme.azure.noprofile.md").FullName
+        Write-Host $noprofileMdPath
+        #populate read.md.template
+        $rdContent = Get-Content $rd -Raw
+        $rdContent = [regex]::Replace($rdContent, "\$.*readme\.azure\.noprofile\.md", $noprofileMdPath)
+        $rdContent = $rdContent.replace("`$`(repo`)", (Get-Item $config.specFolder).FullName)
+        $rdContent | Set-Content -Path $rd
+
+        $package = Build-Module -moduleName $moduleName -moduleFolder $moduleFolder -rd $rd
         $packages += $package
     }
 
@@ -45,24 +69,16 @@ function Build-Module {
         [string]
         $moduleName,
         [string]
+        $moduleFolder,
+        [string]
         $rd
     )
     try {
-        # Set moduleName to modulePath at first
-        $rdFolder = Join-Path $config.specFolder $rd
-        $rdPath = Join-Path $rdFolder "readme.md"
-        $psRdPath = Join-Path $rdFolder "readme.powershell.md"
-
-        #create the a folder for this RP
-        $moduleFolder = Join-Path (Join-Path (Get-Location).Path swaggerci) $moduleName
-        New-Item -Path $moduleFolder -ItemType Directory -Force
-
-        #populate read.md.template
-        $rdContent = Get-Content ./tools/SwaggerCI/readme.md.template
-        $rdContent = $rdContent.replace('$(readme.md)', $rdPath)
-        $rdContent = $rdContent.replace('$(readme.powershell.md)', $psRdPath)
-        $rdContent | Out-File -Path (Join-Path $moduleFolder "readme.md") 
-
+        Write-Host "================================="
+        Write-Host $moduleName
+        Write-Host $moduleFolder
+        Write-Host $rd
+        Write-Host "================================="
         #generate code
         autorest (Join-Path $moduleFolder "readme.md") --version:3.7.6
         #Build the module
