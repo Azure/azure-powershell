@@ -61,12 +61,12 @@ function ExecuteTestCases([object]$response) {
     $response.RefundsTotal | Should -Not -Be $null
     $response.PurchasesTotal | Should -Not -Be $null
     $response.NetPayable | Should -Not -Be $null
-    $response.RefundsTotal.CurrencyCode | Should -Be 'GBP'
-    $response.RefundsTotal.Amount | Should -Be 5598.46
-    $response.PurchasesTotal.CurrencyCode | Should -Be 'GBP'
-    $response.PurchasesTotal.Amount | Should -Be 9910.0
-    $response.NetPayable.CurrencyCode | Should -Be 'GBP'
-    $response.NetPayable.Amount | Should -Be 4311.54
+    $response.RefundsTotal.CurrencyCode | Should -Be 'USD'
+    $response.RefundsTotal.Amount | Should -Be 55.86
+    $response.PurchasesTotal.CurrencyCode | Should -Be 'USD'
+    $response.PurchasesTotal.Amount | Should -Be 13297
+    $response.NetPayable.CurrencyCode | Should -Be 'USD'
+    $response.NetPayable.Amount | Should -Be 13241.14
 }
 
 Describe 'Invoke-AzReservationCalculateExchange' {

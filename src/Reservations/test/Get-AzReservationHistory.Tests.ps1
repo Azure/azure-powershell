@@ -25,8 +25,8 @@ Describe 'Get-AzReservationHistory' {
             $version = $response.Count - $i
             $response[$i].Location | Should -Be "westeurope"
             $response[$i].Id | Should -Be "/providers/microsoft.capacity/reservationOrders/10000000-aaaa-bbbb-cccc-100000000001/reservations/50000000-aaaa-bbbb-cccc-100000000003/revisions/$version"
-            $response[$i].Name | Should -Be "10000000-aaaa-bbbb-cccc-100000000001/50000000-aaaa-bbbb-cccc-100000000003/$version"
-            $response[$i].Sku | Should -Be "Standard_B1ls"
+            $response[$i].Name | Should -Be "$version"
+            $response[$i].SkuName | Should -Be "Standard_B1ls"
             $response[$i].ProvisioningState | Should -Not -Be $null
             $response[$i].SkuDescription | Should -Be "Reserved VM Instance, Standard_B1ls, EU West, 3 Years"
             $response[$i].Quantity | Should -Be 1
@@ -34,9 +34,7 @@ Describe 'Get-AzReservationHistory' {
             $response[$i].ReservedResourceType | Should -Be "VirtualMachines"
             $response[$i].InstanceFlexibility | Should -Be "On"
             $response[$i].AppliedScopeType | Should -Be "Single"
-            $response[$i].AppliedScopes | Should -Not -Be $null
-            $response[$i].AppliedScopes.Count | Should -Be 1
-            $response[$i].AppliedScopes[0] | Should -Be "/subscriptions/10000000-aaaa-bbbb-cccc-100000000001/resourcegroups/3ppRG"
+            $response[$i].AppliedScopePropertySubscriptionId | Should -Be "/subscriptions/10000000-aaaa-bbbb-cccc-100000000001"
         }
     }
 }

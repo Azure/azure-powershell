@@ -8,13 +8,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Extensions;
     using System;
 
-    /// <summary>Return a reservation.</summary>
+    /// <summary>Return a reservation and get refund information.</summary>
     /// <remarks>
     /// [OpenAPI] Post=>POST:"/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/return"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Invoke, @"AzReservationReturn_PostViaIdentity", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Description(@"Return a reservation.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Description(@"Return a reservation and get refund information.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Generated]
     public partial class InvokeAzReservationReturn_PostViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener
@@ -33,17 +34,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest _body;
+        /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = ".", ValueFromPipeline = true)]
+        /// <summary>Backing field for <see cref="Body" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest _body;
+
+        /// <summary>Request containing information needed for returning reservation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Request containing information needed for returning reservation.", ValueFromPipeline = true)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"",
+        Description = @"Request containing information needed for returning reservation.",
         SerializedName = @"body",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest Body { get => this._body; set => this._body = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -54,9 +61,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Reservations Client => Microsoft.Azure.PowerShell.Cmdlets.Reservations.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Azure)]
@@ -94,6 +102,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
+        /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
+        /// asynchronously.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Runtime)]
+        public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
+
+        /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.HttpPipeline Pipeline { get; set; }
@@ -115,28 +131,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
         /// <summary>
-        /// <c>overrideOnAccepted</c> will be called before the regular onAccepted has been processed, allowing customization of what
-        /// happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse</see>
-        /// from the remote call</param>
-        /// <param name="returnNow">/// Determines if the rest of the onAccepted method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
-
-        /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+
+        /// <summary>
+        /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
+        /// on that response. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse</see>
+        /// from the remote call</param>
+        /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
+        /// immediately (set to true to skip further processing )</param>
+
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -154,6 +170,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.AttachDebugger.Break();
             }
             ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.CmdletBeginProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+        }
+
+        /// <summary>Creates a duplicate instance of this cmdlet (via JSON serialization).</summary>
+        /// <returns>a duplicate instance of InvokeAzReservationReturn_PostViaIdentity</returns>
+        public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets.InvokeAzReservationReturn_PostViaIdentity Clone()
+        {
+            var clone = new InvokeAzReservationReturn_PostViaIdentity();
+            clone.__correlationId = this.__correlationId;
+            clone.__processRecordId = this.__processRecordId;
+            clone.DefaultProfile = this.DefaultProfile;
+            clone.InvocationInformation = this.InvocationInformation;
+            clone.Proxy = this.Proxy;
+            clone.Pipeline = this.Pipeline;
+            clone.AsJob = this.AsJob;
+            clone.Break = this.Break;
+            clone.ProxyCredential = this.ProxyCredential;
+            clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
+            clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
+            clone.HttpPipelineAppend = this.HttpPipelineAppend;
+            clone.Body = this.Body;
+            return clone;
         }
 
         /// <summary>Performs clean-up after the command execution</summary>
@@ -200,8 +237,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.Information:
                     {
-                        var data = messageData();
-                        WriteInformation(data.Message, new string[]{});
+                        // When an operation supports asjob, Information messages must go thru verbose.
+                        WriteVerbose($"INFORMATION: {(messageData().Message ?? global::System.String.Empty)}");
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.Debug:
@@ -213,6 +250,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                     {
                         WriteError(new global::System.Management.Automation.ErrorRecord( new global::System.Exception(messageData().Message), string.Empty, global::System.Management.Automation.ErrorCategory.NotSpecified, null ) );
                         return ;
+                    }
+                    case Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.DelayBeforePolling:
+                    {
+                        if (true == MyInvocation?.BoundParameters?.ContainsKey("NoWait"))
+                        {
+                            var data = messageData();
+                            if (data.ResponseMessage is System.Net.Http.HttpResponseMessage response)
+                            {
+                                var asyncOperation = response.GetFirstHeader(@"Azure-AsyncOperation");
+                                var location = response.GetFirstHeader(@"Location");
+                                var uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? response.RequestMessage.RequestUri.AbsoluteUri : location : asyncOperation;
+                                WriteObject(new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PowerShell.AsyncOperationResponse { Target = uri });
+                                // do nothing more.
+                                data.Cancel();
+                                return;
+                            }
+                        }
+                        break;
                     }
                 }
                 await Microsoft.Azure.PowerShell.Cmdlets.Reservations.Module.Instance.Signal(id, token, messageData, (i,t,m) => ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Signal(i,t,()=> Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.EventDataConverter.ConvertFrom( m() ) as Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.EventData ), InvocationInformation, this.ParameterSetName, __correlationId, __processRecordId, null );
@@ -234,9 +289,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                 // work
                 if (ShouldProcess($"Call remote 'ReturnPost' operation"))
                 {
-                    using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token) )
+                    if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
-                        asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token);
+                        var instance = this.Clone();
+                        var job = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PowerShell.AsyncJob(instance, this.MyInvocation.Line, this.MyInvocation.MyCommand.Name, this._cancellationTokenSource.Token, this._cancellationTokenSource.Cancel);
+                        JobRepository.Add(job);
+                        var task = instance.ProcessRecordAsync();
+                        job.Monitor(task);
+                        WriteObject(job);
+                    }
+                    else
+                    {
+                        using( var asyncCommandRuntime = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.PowerShell.AsyncCommandRuntime(this, ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token) )
+                        {
+                            asyncCommandRuntime.Wait( ProcessRecordAsync(),((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token);
+                        }
                     }
                 }
             }
@@ -286,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ReturnPostViaIdentity(InputObject.Id, Body, onAccepted, onDefault, this, Pipeline);
+                        await this.Client.ReturnPostViaIdentity(InputObject.Id, Body, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -295,7 +362,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ReservationOrderId"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ReturnPost(InputObject.ReservationOrderId ?? null, Body, onAccepted, onDefault, this, Pipeline);
+                        await this.Client.ReturnPost(InputObject.ReservationOrderId ?? null, Body, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -320,40 +387,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
             base.StopProcessing();
         }
 
-        /// <summary>a delegate that is called when the remote service returns 202 (Accepted).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse</see>
-        /// from the remote call</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onAccepted(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse> response)
-        {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnAccepted(responseMessage, response, ref _returnNow);
-                // if overrideOnAccepted has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onAccepted - response for 202 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse
-                WriteObject((await response));
-            }
-        }
-
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -370,7 +413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=Body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -383,6 +426,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
                 }
+            }
+        }
+
+        /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
+        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse</see>
+        /// from the remote call</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
+        /// </returns>
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse> response)
+        {
+            using( NoSynchronizationContext )
+            {
+                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
+                overrideOnOk(responseMessage, response, ref _returnNow);
+                // if overrideOnOk has returned true, then return right away.
+                if ((null != _returnNow && await _returnNow))
+                {
+                    return ;
+                }
+                // onOk - response for 200 / application/json
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
+                WriteObject((await response));
             }
         }
     }
