@@ -95,7 +95,6 @@ $nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -ApplicationGatewayBackend
 
 $nic | Set-AzNetworkInterface
 ```
-
 ### The Set-AzNetworkInterfaceIpConfig sets the application gateway backend address pool of the IP configuration ipconfig1 to null and disassociate with the network interface. Finally, the last command updates the network interface ensuring the changes have been made successfully.
 
  
