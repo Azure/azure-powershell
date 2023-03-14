@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`
 
 ## Version 2.0.3
 * Introduced Restore-AzCosmosDBSqlDatabase, Restore-AzCosmosDBSqlContainer to restore deleted database and containers in the same account for SQL.
