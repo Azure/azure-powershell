@@ -153,7 +153,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string resourceGroup = "resourceGroup";
             string location = "location";
             string encryptionKeyVaultId = "subscriptions/0000/resourceGroups/resourceGroup/providers/Microsoft.KeyVault/vaults/encryptionVault";
-            EncryptionProperties encryptionProperties = new EncryptionProperties(KeySource.MicrosoftKeyVault, new KeyVaultProperties(encryptionKeyVaultId));
             AccountCreateParameters actualCreateParameters = null;
 
             // Setup the mock client to return a fake response and capture the account create parameters
@@ -168,7 +167,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Location = location;
-            cmdlet.Encryption = encryptionProperties;
+            cmdlet.IdentityType = ResourceIdentityType.SystemAssigned;
+            cmdlet.EncryptionKeySource = KeySource.MicrosoftKeyVault;
+            cmdlet.EncryptionKeyIdentifier = encryptionKeyVaultId;
             cmdlet.ExecuteCmdlet();
 
             // Verify the fake response was written to the pipeline and that the captured account create
