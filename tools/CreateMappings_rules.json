@@ -803,5 +803,9 @@
   {
     "alias": "MobileNetwork",
     "module": "MobileNetwork"
+  },
+  {
+    "module": "ArcResourceBridge",
+    "alias": "ArcResourceBridge"
   }
 ]

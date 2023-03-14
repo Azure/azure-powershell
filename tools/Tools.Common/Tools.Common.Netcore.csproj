@@ -23,8 +23,10 @@
     <PackageReference Include="System.Reflection.MetadataLoadContext" Version="5.0.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.0.0" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.6" />
+    <!--The following packages are build-time indirect dependencies of Azure PowerShell. We pinned fixed versions here to make sure the safety at build-time.-->
     <PackageReference Include="System.Security.Cryptography.Xml" Version="4.7.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+    <PackageReference Include="System.DirectoryServices.Protocols" Version="5.0.1" />
   </ItemGroup>
 
   <ItemGroup>
