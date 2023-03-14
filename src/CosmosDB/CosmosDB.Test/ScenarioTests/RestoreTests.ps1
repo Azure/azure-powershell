@@ -90,11 +90,12 @@ function Test-SqlRestoreAccountCmdlets {
   $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+  Start-Sleep -s 100
 
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
+  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(200)
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $sourceCosmosDBAccount.Location -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
 
   Assert-NotNull $sourceRestorableAccount
@@ -324,11 +325,12 @@ function Test-GremlinRestoreAccountCmdlets {
   $NewDatabase =  New-AzCosmosDBGremlinDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewGraph1 = New-AzCosmosDBGremlinGraph -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $graphName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   $NewGraph2 = New-AzCosmosDBGremlinGraph -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $graphName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+  Start-Sleep -s 100
 
   $datatabaseToRestore = New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName $databaseName -GraphName $graphName1, $graphName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
+  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(200)
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $sourceCosmosDBAccount.Location -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -GremlinDatabasesToRestore $datatabaseToRestore
 
   Assert-NotNull $sourceRestorableAccount
@@ -403,9 +405,9 @@ function Test-GremlinRestoreFromNewAccountCmdlets {
 
 function Test-TableRestoreAccountCmdlets {
   #use an existing account with the following information
-  $rgName = "CosmosDBResourceGroup44"
+  $rgName = "CosmosDBResourceGroup45"
   $cosmosDBAccountName = "restored2-cosmosdb-1817"
-  $sourceCosmosDBAccountName = "cosmosdb-1817-3"
+  $sourceCosmosDBAccountName = "cosmosdb-1817-4"
   $tableName1 = "table1";
   $tableName2 = "table2";
   $location = "West US"
@@ -418,11 +420,12 @@ function Test-TableRestoreAccountCmdlets {
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
   $NewTable1 = New-AzCosmosDBTable -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $tableName1 -Throughput 600
   $NewTable2 = New-AzCosmosDBTable -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $tableName2 -Throughput 600
-  $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+  Start-Sleep -s 100
 
   $tablesToRestore = New-AzCosmosDBTableToRestore -TableName $tableName1, $tableName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
+  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(200)
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -Location $sourceCosmosDBAccount.Location -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -TablesToRestore $tablesToRestore
 
   Assert-NotNull $sourceRestorableAccount
