@@ -1531,14 +1531,10 @@
               "Compute"
             ],
             "mentionees": [
-              "Drewm3",
-              "TravisCragg-MSFT",
-              "nikhilpatel909",
-              "sandeepraichura",
-              "hilaryw29",
-              "GabstaMSFT",
-              "ramankumarlive",
-              "ushnaarshadkhan"
+              "amjads1",
+              "avirishuv",
+              "vaibhav-agar",
+              "Drewm3"
             ]
           },
           {
@@ -1547,8 +1543,8 @@
               "Compute - Extensions"
             ],
             "mentionees": [
-              "TravisCragg-MSFT",
-              "GabstaMSFT"
+              "amjads1",
+              "Drewm3"
             ]
           },
           {
@@ -1557,8 +1553,8 @@
               "Compute - Images"
             ],
             "mentionees": [
-              "TravisCragg-MSFT",
-              "sandeepraichura"
+              "Drewm3",
+              "vaibhav-agar"
             ]
           },
           {
@@ -1567,9 +1563,8 @@
               "Compute - Managed Disks"
             ],
             "mentionees": [
-              "TravisCragg-MSFT",
-              "ramankumarlive",
-              "ushnaarshadkhan"
+              "Drewm3",
+              "vaibhav-agar"
             ]
           },
           {
@@ -1579,7 +1574,7 @@
             ],
             "mentionees": [
               "Drewm3",
-              "TravisCragg-MSFT"
+              "avirishuv"
             ]
           },
           {
@@ -1589,11 +1584,7 @@
             ],
             "mentionees": [
               "Drewm3",
-              "TravisCragg-MSFT",
-              "nikhilpatel909",
-              "sandeepraichura",
-              "hilaryw29",
-              "GabstaMSFT"
+              "avirishuv"
             ]
           },
           {
@@ -1602,8 +1593,8 @@
               "Compute - VMSS"
             ],
             "mentionees": [
-              "TravisCragg-MSFT",
-              "hilaryw29"
+              "Drewm3",
+              "avirishuv"
             ]
           },
           {
