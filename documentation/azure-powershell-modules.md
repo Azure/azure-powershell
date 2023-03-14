@@ -11,7 +11,7 @@ Azure PowerShell with preview modules | `AzPreview`                             
 
 Azure Service                         | Module Name                             | PowerShell Gallery Link       | Changelog reference
 ------------------------------------- | --------------------------------------- | -----------------------       | -----------------
-Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]  | [Changelog](../src/Accounts/Accounts/ChangeLog.md)
+Accounts                              | `Az.Accounts`                           | [![Accounts]][AccountsGallery]  | [Changelog][AccountsChangeLog]
 ADDomainServices                      | `Az.ADDomainServices`                   | [![ADDomainServices]][ADDomainServicesGallery] | [Changelog](../src/ADDomainServices/ChangeLog.md)
 Advisor                               | `Az.Advisor`                            | [![Advisor]][AdvisorGallery] | [Changelog](../src/Advisor/ChangeLog.md)
 Kubernetes Service                    | `Az.Aks`                                | [![Aks]][AksGallery] | [Changelog](../src/Aks/Aks/ChangeLog.md)
@@ -463,3 +463,6 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [VoiceServices]:                     https://www.powershellgallery.com/packages/Az.VoiceServices/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/
+
+<!-- ChangeLog -->
+[AccountsChangeLog]: ../src/Accounts/Accounts/ChangeLog.md
