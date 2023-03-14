@@ -15,12 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsSapVirtualInst
 }
 
 Describe 'New-AzWorkloadsSapVirtualInstance' {
-    It 'CreateWithDiscovery' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateWithDiscovery' {
+        $discoveryResponse = New-AzWorkloadsSapVirtualInstance -Name $env.DiscoverSVI -ResourceGroupName $env.DiscoverRG -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -CentralServerVmId $env.CentralServerVmId
+        $discoveryResponse.provisioningState | Should -Be $env.ProvisioningState
     }
 
-    It 'CreateWithJsonTemplatePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateWithConfiguration' {
+        $configPath = Join-Path $PSScriptRoot $env.ConfigPath
+        New-AzWorkloadsSapVirtualInstance -Name $env.CreateSVI -ResourceGroupName $env.ResourceGroupCreateSVI -Environment $env.EnviornmentNonProd -Location $env.Location -SapProduct $env.SapProduct -Configuration $configPath
     }
 
     It 'CreateWithJsonString' -skip {

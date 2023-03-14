@@ -15,19 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsSapVirtualInst
 }
 
 Describe 'Get-AzWorkloadsSapVirtualInstance' {
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $sviResponseList = Get-AzWorkloadsSapVirtualInstance -SubscriptionId  $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $sviResponseList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $sviResponse = Get-AzWorkloadsSapVirtualInstance -SubscriptionId  $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $sviResponse.sapProduct | Should -Be $env.SapProduct
+        $sviResponse.provisioningState | Should -Be $env.ProvisioningState
     }
 
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $sviResponseRg = Get-AzWorkloadsSapVirtualInstance -SubscriptionId  $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName
+        $sviResponseRg.Count | Should -BeGreaterOrEqual 1
+        $sviResponseRg[0].name | Should -Be $env.SapVirtualInstanceName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $sviResponse = Get-AzWorkloadsSapVirtualInstance -InputObject $env.SapIdSub2
+        $sviResponse.Count | Should -BeGreaterOrEqual 1
     }
 }

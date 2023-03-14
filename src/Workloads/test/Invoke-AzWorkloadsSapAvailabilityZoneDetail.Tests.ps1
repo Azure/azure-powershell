@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWorkloadsSapAvailabi
 }
 
 Describe 'Invoke-AzWorkloadsSapAvailabilityZoneDetail' {
-    It 'SapExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SapExpanded' {
+        $avZoneDetail = Invoke-AzWorkloadsSapAvailabilityZoneDetail -SubscriptionId $env.WaaSSubscriptionId -Location $env.Location -AppLocation $env.Location -DatabaseType $env.DatabaseType -SapProduct $env.SapProduct
+        $avZoneDetail.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'SapViaIdentityExpanded' -skip {

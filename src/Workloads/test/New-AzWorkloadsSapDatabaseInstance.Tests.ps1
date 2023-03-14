@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsSapDatabaseIns
 }
 
 Describe 'New-AzWorkloadsSapDatabaseInstance' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { New-AzWorkloadsSapDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId -Name $env.SapDatabseInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Location $env.Location } | Should -Throw
     }
 }

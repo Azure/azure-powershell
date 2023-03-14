@@ -13,11 +13,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsMonitor'))
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
-
 Describe 'Get-AzWorkloadsMonitor' {
-    It 'List' {
-        { Get-AzWorkloadsMonitor} | Should -Not -Throw
-    }
+    It 'ListA'{ 
+            Get-AzWorkloadsMonitor -SubscriptionId $env.WaaSSubscriptionId
+        }
 
     It 'Get' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

@@ -15,15 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsSapDatabaseIns
 }
 
 Describe 'Get-AzWorkloadsSapDatabaseInstance' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $dbResponseList = Get-AzWorkloadsSapDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $dbResponseList.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $dbResponse = Get-AzWorkloadsSapDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Name $env.SapDatabseInstanceName
+        $dbResponse.Name | Should -Be $env.SapDatabseInstanceName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $dbResponse = Get-AzWorkloadsSapDatabaseInstance -InputObject $env.DbServerIdSub2
+        $dbResponse.Count | Should -BeGreaterOrEqual 1
     }
 }
