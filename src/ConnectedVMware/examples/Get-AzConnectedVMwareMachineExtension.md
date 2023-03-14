@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Extensions of a VM
 ```powershell
-{{ Add code here }}
+Get-AzConnectedVMwareMachineExtension -VirtualMachineName "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output
-{{ Add output here }}
+Location Name                   ResourceGroupName
+-------- ----                   -----------------
+eastus   AzureMonitorLinuxAgent azcli-test-rg
 ```
 
-{{ Add description here }}
+This command lists Machine Extensions of a VM named `test-vm` in a resource group named `azcli-test-rg`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific Extension of a VM
 ```powershell
-{{ Add code here }}
+Get-AzConnectedVMwareMachineExtension -Name "AzureMonitorLinuxAgent" -VirtualMachineName "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output
-{{ Add output here }}
+Location Name                   ResourceGroupName
+-------- ----                   -----------------
+eastus   AzureMonitorLinuxAgent azcli-test-rg
 ```
 
-{{ Add description here }}
-
+This command gets a Extensions named `AzureMonitorLinuxAgent` of a VM named `test-vm` in a resource group named `azcli-test-rg`.

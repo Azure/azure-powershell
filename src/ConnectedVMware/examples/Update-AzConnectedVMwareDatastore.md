@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update Datastore
 ```powershell
-{{ Add code here }}
+Update-AzConnectedVMwareDatastore -Name "test-datastore" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+-Tag @{"datastore"="test"}
 ```
 
 ```output
-{{ Add output here }}
+Kind   Location Name         ResourceGroupName
+----   -------- ----         -----------------
+VMware eastus   test-datastore azcli-test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command update tag of a Datastore named `test-datastore` in a resource group named `azcli-test-rg`.

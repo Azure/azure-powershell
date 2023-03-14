@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update AzConnectedVMware Cluster Resource
 ```powershell
-{{ Add code here }}
+Update-AzConnectedVMwareCluster -Name "test-cluster" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+-Tag @{"cluster"="test"}
 ```
 
 ```output
-{{ Add output here }}
+Kind   Location Name         ResourceGroupName
+----   -------- ----         -----------------
+VMware eastus   test-cluster azcli-test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command update a Cluster named `test-cluster` in a resource group named `azcli-test-rg`.
