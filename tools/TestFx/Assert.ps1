@@ -394,8 +394,8 @@ function Assert-Match {
     $message = "Assertion failed because the actual string '$actual' does not match the regular expression '$regex'."
   }
 
-  if (!($actual -match $regex)) {
-    throw $message
+  if (!($actual -match $regex) > $null) {
+      throw $message
   }
 
   return $true
@@ -418,7 +418,7 @@ function Assert-NotMatch {
     $message = "Assertion failed because the actual string '$actual' does match the regular expression '$regex'."
   }
 
-  if ($actual -Match $regex) {
+  if ($actual -match $regex) {
     throw $message
   }
 
