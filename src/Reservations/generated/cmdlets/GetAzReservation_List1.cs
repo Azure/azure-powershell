@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
     /// <remarks>
     /// [OpenAPI] ListAll=>GET:"/providers/Microsoft.Capacity/reservations"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzReservation_List1")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzReservation_List1", SupportsPaging = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Description(@"List the reservations and the roll up counts of reservations group by provisioning states that the user has access to in the current tenant.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Generated]
@@ -150,6 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         Description = @"To indicate whether to refresh the roll up counts of the reservations group by provisioning states",
         SerializedName = @"refreshSummary",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
         public string RefreshSummary { get => this._refreshSummary; set => this._refreshSummary = value; }
 
@@ -178,6 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         Description = @"The number of reservations to skip from the list before returning results",
         SerializedName = @"$skiptoken",
         PossibleTypes = new [] { typeof(float) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
         public float Skiptoken { get => this._skiptoken; set => this._skiptoken = value; }
 
@@ -192,6 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         Description = @"To number of reservations to return",
         SerializedName = @"take",
         PossibleTypes = new [] { typeof(float) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
         public float Take { get => this._take; set => this._take = value; }
 
@@ -447,15 +450,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
+                // clientside pagination enabled
                 // response should be returning an array of some kind. +Pageable
                 // pageable / value / nextLink
                 var result = await response;
-                WriteObject(result.Value,true);
+                if ((ulong)result.Value.Length <= this.PagingParameters.Skip)
+                {
+                    this.PagingParameters.Skip = this.PagingParameters.Skip - (ulong)result.Value.Length;
+                }
+                else
+                {
+                    ulong toRead = Math.Min(this.PagingParameters.First, (ulong)result.Value.Length - this.PagingParameters.Skip);
+                    var requiredResult = result.Value.SubArray((int)this.PagingParameters.Skip, (int)toRead);
+                    WriteObject(requiredResult, true);
+                    this.PagingParameters.Skip = 0;
+                    this.PagingParameters.First = this.PagingParameters.First <= toRead ? 0 : this.PagingParameters.First - toRead;
+                }
                 _nextLink = result.NextLink;
                 if (_isFirst)
                 {
                     _isFirst = false;
-                    while (_nextLink != null)
+                    while (_nextLink != null && this.PagingParameters.First > 0)
                     {
                         if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
                         {
