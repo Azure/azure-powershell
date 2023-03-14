@@ -17,35 +17,34 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimete
 Describe 'Get-AzNetworkSecurityPerimeterLinkReference' {
     It 'List' {
         {
-            Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Debug
+            $listObj = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp3
+
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $linkObj = Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLink1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Debug
-
-            $nspObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp3 -ResourceGroupName $env.rgname
-
-            $linkReferenceName =  'Ref-from-' + $env.tmpLink1 + '-' + $nspObj.perimeterGuid
+            #/nsp2/linkReferences/Ref-from-link1-nsp1.pg
             
-            Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Name $linkReferenceName -Debug
+            $nsp2Get = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp2 -ResourceGroupName $env.rgname
+
+            $linkReferenceName =  'Ref-from-' + $env.tmpLink1 + '-' + $nsp2Get.perimeterGuid
+            
+            Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp3 -Name $linkReferenceName
 
         } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {
         {
-            $linkObj = Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLink1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2
+            $nsp2Get = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp2 -ResourceGroupName $env.rgname
 
-            $linkReferenceName =  'Ref-from-' + $env.tmpLink1 + '-' + $linkObj.remotePerimeterGuid
+            $linkReferenceName =  'Ref-from-' + $env.tmpLink1 + '-' + $nsp2Get.perimeterGuid
             
-            Write-Output "Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Name $linkReferenceName"
+            $linkRef1Get = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp3 -Name $linkReferenceName
 
-            $GetObj = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Name $linkReferenceName
-
-            $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterLinkReference -InputObject $GETObj
-            $GETObj.Name | Should -Be $GETObjViaIdentity.Name
+            $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRef1Get
+            $linkRef1Get.Name | Should -Be $GETObjViaIdentity.Name
         } | Should -Not -Throw
     }
 }

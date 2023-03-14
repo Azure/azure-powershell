@@ -166,12 +166,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the association.
+The name of the Link.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: WorkspaceName
+Aliases: LinkName
 
 Required: True
 Position: Named

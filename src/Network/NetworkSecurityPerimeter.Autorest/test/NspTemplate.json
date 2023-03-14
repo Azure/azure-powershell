@@ -83,6 +83,13 @@
         "description": "Name of the NSP resource."
       }
     },
+    "nsp12Name": {
+      "type": "string",
+      "defaultValue": "t-nsp12",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
     "nspDelBase1Name": {
       "type": "string",
       "defaultValue": "t-nspDelBase1",
@@ -280,6 +287,7 @@
     "nsp9ResourceName": "[parameters('nsp9Name')]",
     "nsp10ResourceName": "[parameters('nsp10Name')]",
     "nsp11ResourceName": "[parameters('nsp11Name')]",
+    "nsp12ResourceName": "[parameters('nsp12Name')]",
     "nspDelBase1ResourceName": "[parameters('nspDelBase1Name')]",
     "nspDelete1ResourceName": "[parameters('nspDelete1Name')]",
     "nspDelete2ResourceName": "[parameters('nspDelete2Name')]",
@@ -428,6 +436,17 @@
       "properties": {
         "displayName": "NSP 11 for link",
         "description": "NSP 11 for link"
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp12ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NSP 12 for link",
+        "description": "NSP 12 for link"
       }
     },
     {
@@ -1179,6 +1198,10 @@
     "nsp11Name": {
       "type": "string",
       "value": "[variables('nsp11ResourceName')]"
+    },
+    "nsp12Name": {
+      "type": "string",
+      "value": "[variables('nsp12ResourceName')]"
     },
     "nspDelBase1ArmId": {
       "type": "string",

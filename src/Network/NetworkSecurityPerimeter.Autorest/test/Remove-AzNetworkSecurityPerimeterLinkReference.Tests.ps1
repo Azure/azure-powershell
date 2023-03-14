@@ -15,11 +15,35 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkSecurityPerim
 }
 
 Describe 'Remove-AzNetworkSecurityPerimeterLinkReference' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            #/nsp2/linkReferences/Ref-from-link1-nsp1.pg
+            
+            $nsp8Get = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp8 -ResourceGroupName $env.rgname
+
+            $linkReferenceName =  'Ref-from-' + $env.tmpLinkDelete3 + '-' + $nsp8Get.perimeterGuid
+            
+            Remove-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp9 -Name $linkReferenceName
+
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        { 
+            $nsp10Get = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp10 -ResourceGroupName $env.rgname
+
+            $linkReferenceName =  'Ref-from-' + $env.tmpLinkDelete4 + '-' + $nsp10Get.perimeterGuid
+            
+            $linkRefObj = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp11 -Name $linkReferenceName
+    
+            Remove-AzNetworkSecurityPerimeterLinkReference -InputObject $linkRefObj
+
+        } | Should -Not -Throw
     }
 }
+
+"""
+linkDelete3Name nsp8->9
+linkDelete4Name nsp10-11
+#/nsp2/linkReferences/Ref-from-link1-nsp1.pg
+"""

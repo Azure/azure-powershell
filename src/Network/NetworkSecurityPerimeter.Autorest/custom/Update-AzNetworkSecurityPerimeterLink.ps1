@@ -113,11 +113,11 @@ function Update-AzNetworkSecurityPerimeterLink {
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the association.")]
-        [Alias('WorkspaceName')]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the Link.")]
+        [Alias('LinkName')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
         [System.String]
-        # The name of the association.
+        # The name of the Link.
         ${Name},
 
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the network security perimeter")]
@@ -193,7 +193,7 @@ function Update-AzNetworkSecurityPerimeterLink {
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $GETObject = Get-AzNetworkSecurityPerimeterAssociation @PSBoundParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterLink @PSBoundParameters
 
             
             # 2. PUT
@@ -217,7 +217,7 @@ function Update-AzNetworkSecurityPerimeterLink {
 
             
             # Call PUT method
-            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
+            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterLink_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
         }
         catch {

@@ -150,7 +150,7 @@ The name of the association.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: WorkspaceName
+Aliases: AssociationName
 
 Required: True
 Position: Named

@@ -162,13 +162,16 @@ function cleanupEnv() {
 
     # Clean resources you create for testing
     
-    Write-Host -ForegroundColor Magenta "Removing associations"
+    Write-Host -ForegroundColor Magenta "Removing links and link refs"
+
+
+
 
 
     Write-Host -ForegroundColor Magenta "Removing RG"
 
     #Remove resourceGroup
-    # Remove-AzResourceGroup -Name $env.rgname
+    Remove-AzResourceGroup -Name $env.rgname
 
     Write-Host -ForegroundColor Magenta "Removed RG"
 }
