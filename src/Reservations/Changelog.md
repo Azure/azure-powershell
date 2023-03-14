@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * Added cmdlet `Invoke-AzReservationReturn`
+* Removed parameters `RefreshSummary`, `Skiptoken`, `Take` from cmdlet `Get-AzReservation`
+* Added parameters `First`, `Skip` for cmdlet `Get-AzReservation`
 
 ## Version 0.11.0
 * Added new commands to CalculateRefund and Return reservation
