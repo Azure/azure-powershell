@@ -182,55 +182,55 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
             }
             $bodyHashTable = @{};
             if($PSBoundParameters.ContainsKey('Tag')) {
-              $bodyHashTable.Tag = $Tag
+              $bodyHashTable.tags = $Tag
               $null = $PSBoundParameters.Remove('Tag');
             }
 
             if($PSBoundParameters.ContainsKey('Location')) {
-              $bodyHashTable.Location = $Location
+              $bodyHashTable.location = $Location
               $null = $PSBoundParameters.Remove('Location');
             }
 
-            $bodyHashTable.Identity = @{}
+            $bodyHashTable.identity = @{}
             if($PSBoundParameters.ContainsKey('IdentityType')) {
-              $bodyHashTable.Identity.Type = $IdentityType.ToString()
+              $bodyHashTable.identity.type = $IdentityType.ToString()
               $null = $PSBoundParameters.Remove('IdentityType');
             }
             
             if($PSBoundParameters.ContainsKey('UserAssignedIdentity')) {
-              $bodyHashTable.Identity.UserAssignedIdentities = $UserAssignedIdentity
+              $bodyHashTable.identity.userAssignedIdentities = $UserAssignedIdentity
               $null = $PSBoundParameters.Remove('UserAssignedIdentity');
             }
 
-            if ($bodyHashTable.Identity.Count -eq 0) {
+            if ($bodyHashTable.identity.Count -eq 0) {
               $null = $bodyHashTable.Remove('Identity')
             }
 
-            $bodyHashTable.Properties = @{}
+            $bodyHashTable.properties = @{}
             if($PSBoundParameters.ContainsKey('Environment')) {
-              $bodyHashTable.Properties.Environment = $Environment.ToString()
+              $bodyHashTable.properties.environment = $Environment.ToString()
               $null = $PSBoundParameters.Remove('Environment');
             }
             
             if($PSBoundParameters.ContainsKey('SapProduct')) {
-              $bodyHashTable.Properties.SapProduct = $SapProduct.ToString()
+              $bodyHashTable.properties.sapProduct = $SapProduct.ToString()
               $null = $PSBoundParameters.Remove('SapProduct');
             }
 
-            $bodyHashTable.Properties.ManagedResourceGroupConfiguration = @{}
+            $bodyHashTable.properties.managedResourceGroupConfiguration = @{}
 
             if($PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
-              $bodyHashTable.Properties.ManagedResourceGroupConfiguration.Name = $ManagedResourceGroupName
+              $bodyHashTable.properties.managedResourceGroupConfiguration.name = $ManagedResourceGroupName
               $null = $PSBoundParameters.Remove('ManagedResourceGroupName');
             }
 
-            if ($bodyHashTable.Properties.ManagedResourceGroupConfiguration.Count -eq 0) {
-              $null = $bodyHashTable.Properties.Remove('ManagedResourceGroupConfiguration')
+            if ($bodyHashTable.properties.managedResourceGroupConfiguration.Count -eq 0) {
+              $null = $bodyHashTable.properties.Remove('ManagedResourceGroupConfiguration')
             }
 
             $configurationHashTable = Get-Content $Configuration -Raw | ConvertFrom-Json 
 
-            $bodyHashTable.Properties.Configuration = $configurationHashTable
+            $bodyHashTable.properties.configuration = $configurationHashTable
 
             $null = $PSBoundParameters.Remove("Configuration")
 
