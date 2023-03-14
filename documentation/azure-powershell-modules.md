@@ -9,7 +9,7 @@
 
 ## Service Modules
 
-| Azure Service                  | Module Name                     | PowerShell Gallery Link                                            | Changelog                                         |
+| Azure Service                  | Module Name                     | PowerShell Gallery Link                                            | Changelog                                          |
 | ------------------------------ | ------------------------------- | ------------------------------------------------------------------ | -------------------------------------------------- |
 | Accounts                       | `Az.Accounts`                   | [![Accounts]][AccountsGallery]                                     | [Changelog]([AccountsChangeLog])                   |
 | ADDomainServices               | `Az.ADDomainServices`           | [![ADDomainServices]][ADDomainServicesGallery]                     | [Changelog]([ADDomainServicesChangeLog])           |
