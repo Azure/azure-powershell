@@ -2,3 +2,6 @@
 /src/Network/    @MikhailTryakhov
 /src/Compute/    @bilaakpan-ms @sandido @dkulkarni-ms @haagha @madewithsmiles @MS-syh2qs @grizzlytheodore
 /src/PolicyInsights/  @pilor
+
+# Make sure changes to .github folder go through our team's double check
+/.github/        @isra-fel
