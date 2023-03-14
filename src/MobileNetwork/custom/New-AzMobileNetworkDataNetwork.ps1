@@ -141,18 +141,25 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkDataNetwork -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
-            
+            try{
+                $dataBase = Get-AzMobileNetworkDataNetwork -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkDataNetwork @PSBoundParameters
+            }
+
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkDataNetwork @PSBoundParameters
             }
 
-            $PSBoundParameters.Description = $dataBase.Description
-        
+            if (!$PSBoundParameters.ContainsKey('Description')) {
+                $PSBoundParameters.Description = $dataBase.Description
+            }
+
             return Az.MobileNetwork.internal\New-AzMobileNetworkDataNetwork @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkDataNetwork @PSBoundParameters
+            throw
         }
     }
 }

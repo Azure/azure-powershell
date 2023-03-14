@@ -178,24 +178,43 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSim -GroupName $PSBoundParameters.GroupName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            try{
+                $dataBase = Get-AzMobileNetworkSim -GroupName $PSBoundParameters.GroupName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkSim @PSBoundParameters
+            }
 
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkSim @PSBoundParameters
             }
 
-            $PSBoundParameters.InternationalMobileSubscriberIdentity = $dataBase.InternationalMobileSubscriberIdentity
-            $PSBoundParameters.AuthenticationKey = $dataBase.AuthenticationKey
-            $PSBoundParameters.DeviceType = $dataBase.DeviceType
-            $PSBoundParameters.IntegratedCircuitCardIdentifier = $dataBase.IntegratedCircuitCardIdentifier
-            $PSBoundParameters.OperatorKeyCode = $dataBase.OperatorKeyCode
-            $PSBoundParameters.SimPolicyId = $dataBase.SimPolicyId
-            $PSBoundParameters.StaticIPConfiguration = $dataBase.StaticIPConfiguration
+            if (!$PSBoundParameters.ContainsKey('InternationalMobileSubscriberIdentity')) {
+                $PSBoundParameters.InternationalMobileSubscriberIdentity = $dataBase.InternationalMobileSubscriberIdentity
+            }
+            if (!$PSBoundParameters.ContainsKey('AuthenticationKey')) {
+                $PSBoundParameters.AuthenticationKey = $dataBase.AuthenticationKey
+            }
+            if (!$PSBoundParameters.ContainsKey('DeviceType')) {
+                $PSBoundParameters.DeviceType = $dataBase.DeviceType
+            }
+            if (!$PSBoundParameters.ContainsKey('IntegratedCircuitCardIdentifier')) {
+                $PSBoundParameters.IntegratedCircuitCardIdentifier = $dataBase.IntegratedCircuitCardIdentifier
+            }
+            if (!$PSBoundParameters.ContainsKey('OperatorKeyCode')) {
+                $PSBoundParameters.OperatorKeyCode = $dataBase.OperatorKeyCode
+            }
+            if (!$PSBoundParameters.ContainsKey('SimPolicyId')) {
+                $PSBoundParameters.SimPolicyId = $dataBase.SimPolicyId
+            }
+            if (!$PSBoundParameters.ContainsKey('StaticIPConfiguration')) {
+                $PSBoundParameters.StaticIPConfiguration = $dataBase.StaticIPConfiguration
+            }
 
             return Az.MobileNetwork.internal\New-AzMobileNetworkSim @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSim @PSBoundParameters
+            throw
         }
     }
 }

@@ -256,33 +256,70 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -PacketCoreDataPlaneName $PSBoundParameters.PacketCoreDataPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name 
+            try{
+                $dataBase = Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -PacketCoreDataPlaneName $PSBoundParameters.PacketCoreDataPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name 
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkAttachedDataNetwork @PSBoundParameters
+            }
             
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkAttachedDataNetwork @PSBoundParameters
             }
             
-            $PSBoundParameters.DnsAddress = $dataBase.DnsAddress
-            $PSBoundParameters.NaptConfigurationEnabled = $dataBase.NaptConfigurationEnabled
-            $PSBoundParameters.NaptConfigurationPinholeLimit = $dataBase.NaptConfigurationPinholeLimit
-            $PSBoundParameters.PinholeTimeoutIcmp = $dataBase.PinholeTimeoutIcmp
-            $PSBoundParameters.PinholeTimeoutTcp = $dataBase.PinholeTimeoutTcp
-            $PSBoundParameters.PinholeTimeoutUdp = $dataBase.PinholeTimeoutUdp
-            $PSBoundParameters.PortRangeMaxPort = $dataBase.PortRangeMaxPort
-            $PSBoundParameters.PortRangeMinPort = $dataBase.PortRangeMinPort
-            $PSBoundParameters.PortReuseHoldTimeTcp = $dataBase.PortReuseHoldTimeTcp
-            $PSBoundParameters.PortReuseHoldTimeUdp = $dataBase.PortReuseHoldTimeUdp
-            $PSBoundParameters.UserEquipmentAddressPoolPrefix = $dataBase.UserEquipmentAddressPoolPrefix
-            $PSBoundParameters.UserEquipmentStaticAddressPoolPrefix = $dataBase.UserEquipmentStaticAddressPoolPrefix
-            $PSBoundParameters.UserPlaneDataInterfaceIpv4Address = $dataBase.UserPlaneDataInterfaceIpv4Address
-            $PSBoundParameters.UserPlaneDataInterfaceIpv4Gateway = $dataBase.UserPlaneDataInterfaceIpv4Gateway
-            $PSBoundParameters.UserPlaneDataInterfaceIpv4Subnet = $dataBase.UserPlaneDataInterfaceIpv4Subnet
-            $PSBoundParameters.UserPlaneDataInterfaceName = $dataBase.UserPlaneDataInterfaceName
+            if (!$PSBoundParameters.ContainsKey('DnsAddress')) {
+                $PSBoundParameters.DnsAddress = $dataBase.DnsAddress
+            }
+            if (!$PSBoundParameters.ContainsKey('NaptConfigurationEnabled')) {
+                $PSBoundParameters.NaptConfigurationEnabled = $dataBase.NaptConfigurationEnabled
+            }
+            if (!$PSBoundParameters.ContainsKey('NaptConfigurationPinholeLimit')) {
+                $PSBoundParameters.NaptConfigurationPinholeLimit = $dataBase.NaptConfigurationPinholeLimit
+            }
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutIcmp')) {
+                $PSBoundParameters.PinholeTimeoutIcmp = $dataBase.PinholeTimeoutIcmp
+            }
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutTcp')) {
+                $PSBoundParameters.PinholeTimeoutTcp = $dataBase.PinholeTimeoutTcp
+            }
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutUdp')) {
+                $PSBoundParameters.PinholeTimeoutUdp = $dataBase.PinholeTimeoutUdp
+            }
+            if (!$PSBoundParameters.ContainsKey('PortRangeMaxPort')) {
+                $PSBoundParameters.PortRangeMaxPort = $dataBase.PortRangeMaxPort
+            }
+            if (!$PSBoundParameters.ContainsKey('PortRangeMinPort')) {
+                $PSBoundParameters.PortRangeMinPort = $dataBase.PortRangeMinPort
+            }
+            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeTcp')) {
+                $PSBoundParameters.PortReuseHoldTimeTcp = $dataBase.PortReuseHoldTimeTcp
+            }
+            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeUdp')) {
+                $PSBoundParameters.PortReuseHoldTimeUdp = $dataBase.PortReuseHoldTimeUdp
+            }
+            if (!$PSBoundParameters.ContainsKey('UserEquipmentAddressPoolPrefix')) {
+                $PSBoundParameters.UserEquipmentAddressPoolPrefix = $dataBase.UserEquipmentAddressPoolPrefix
+            }
+            if (!$PSBoundParameters.ContainsKey('UserEquipmentStaticAddressPoolPrefix')) {
+                $PSBoundParameters.UserEquipmentStaticAddressPoolPrefix = $dataBase.UserEquipmentStaticAddressPoolPrefix
+            }
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Address')) {
+                $PSBoundParameters.UserPlaneDataInterfaceIpv4Address = $dataBase.UserPlaneDataInterfaceIpv4Address
+            }
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Gateway')) {
+                $PSBoundParameters.UserPlaneDataInterfaceIpv4Gateway = $dataBase.UserPlaneDataInterfaceIpv4Gateway
+            }
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Subnet')) {
+                $PSBoundParameters.UserPlaneDataInterfaceIpv4Subnet = $dataBase.UserPlaneDataInterfaceIpv4Subnet
+            }
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceName')) {
+                $PSBoundParameters.UserPlaneDataInterfaceName = $dataBase.UserPlaneDataInterfaceName
+            }
 
             return Az.MobileNetwork.internal\New-AzMobileNetworkAttachedDataNetwork @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkAttachedDataNetwork @PSBoundParameters
+            throw
         }
     }
 }

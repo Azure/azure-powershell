@@ -267,36 +267,73 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            try{
+                $dataBase = Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
+            }
 
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
             }
 
-            $PSBoundParameters.LocalDiagnosticAccessAuthenticationType = $dataBase.LocalDiagnosticAccessAuthenticationType
-            $PSBoundParameters.PlatformType = $dataBase.PlatformType
-            $PSBoundParameters.Site = $dataBase.Site
-            $PSBoundParameters.Sku = $dataBase.Sku
-            $PSBoundParameters.AzureStackEdgeDeviceId = $dataBase.AzureStackEdgeDeviceId
-            $PSBoundParameters.AzureStackHciClusterId = $dataBase.AzureStackHciClusterId
-            $PSBoundParameters.ConnectedClusterId = $dataBase.ConnectedClusterId
-            $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Address = $dataBase.ControlPlaneAccessInterfaceIpv4Address
-            $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Gateway = $dataBase.ControlPlaneAccessInterfaceIpv4Gateway
-            $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Subnet = $dataBase.ControlPlaneAccessInterfaceIpv4Subnet
-            $PSBoundParameters.ControlPlaneAccessInterfaceName = $dataBase.ControlPlaneAccessInterfaceName
-            $PSBoundParameters.CoreNetworkTechnology = $dataBase.CoreNetworkTechnology
-            $PSBoundParameters.CustomLocationId = $dataBase.CustomLocationId
-            $PSBoundParameters.HttpsServerCertificateUrl = $dataBase.HttpsServerCertificateUrl
-            $PSBoundParameters.IdentityType = $dataBase.IdentityType
-            $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
-            $PSBoundParameters.InteropSetting = $dataBase.InteropSetting
-            $PSBoundParameters.UeMtu = $dataBase.UeMtu
-            $PSBoundParameters.Version = $dataBase.Version
+            if (!$PSBoundParameters.ContainsKey('LocalDiagnosticAccessAuthenticationType')) {
+                $PSBoundParameters.LocalDiagnosticAccessAuthenticationType = $dataBase.LocalDiagnosticAccessAuthenticationType
+            }
+            if (!$PSBoundParameters.ContainsKey('PlatformType')) {
+                $PSBoundParameters.PlatformType = $dataBase.PlatformType
+            }
+            if (!$PSBoundParameters.ContainsKey('Site')) {
+                $PSBoundParameters.Site = $dataBase.Site
+            }
+            if (!$PSBoundParameters.ContainsKey('Sku')) {
+                $PSBoundParameters.Sku = $dataBase.Sku
+            }
+            if (!$PSBoundParameters.ContainsKey('AzureStackEdgeDeviceId')) {
+                $PSBoundParameters.AzureStackEdgeDeviceId = $dataBase.AzureStackEdgeDeviceId
+            }
+            if (!$PSBoundParameters.ContainsKey('AzureStackHciClusterId')) {
+                $PSBoundParameters.AzureStackHciClusterId = $dataBase.AzureStackHciClusterId
+            }
+            if (!$PSBoundParameters.ContainsKey('ConnectedClusterId')) {
+                $PSBoundParameters.ConnectedClusterId = $dataBase.ConnectedClusterId
+            }
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Address')) {
+                $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Address = $dataBase.ControlPlaneAccessInterfaceIpv4Address
+            }
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Gateway')) {
+                $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Gateway = $dataBase.ControlPlaneAccessInterfaceIpv4Gateway
+            }
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Subnet')) {
+                $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Subnet = $dataBase.ControlPlaneAccessInterfaceIpv4Subnet
+            }
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceName')) {
+                $PSBoundParameters.ControlPlaneAccessInterfaceName = $dataBase.ControlPlaneAccessInterfaceName
+            }
+            if (!$PSBoundParameters.ContainsKey('CoreNetworkTechnology')) {
+                $PSBoundParameters.CoreNetworkTechnology = $dataBase.CoreNetworkTechnology
+            }
+            if (!$PSBoundParameters.ContainsKey('CustomLocationId')) {
+                $PSBoundParameters.CustomLocationId = $dataBase.CustomLocationId
+            }
+            if (!$PSBoundParameters.ContainsKey('HttpsServerCertificateUrl')) {
+                $PSBoundParameters.HttpsServerCertificateUrl = $dataBase.HttpsServerCertificateUrl
+            }
+            if (!$PSBoundParameters.ContainsKey('IdentityType')) {
+                $PSBoundParameters.IdentityType = $dataBase.IdentityType
+            }
+            if (!$PSBoundParameters.ContainsKey('UeMtu')) {
+                $PSBoundParameters.UeMtu = $dataBase.UeMtu
+            }
+            if (!$PSBoundParameters.ContainsKey('Version')) {
+                $PSBoundParameters.Version = $dataBase.Version
+            }
 
             return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
+            throw
         }
     }
 }

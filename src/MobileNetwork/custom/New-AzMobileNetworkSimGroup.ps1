@@ -156,21 +156,31 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            try{
+                $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            }
 
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
             }
 
-            $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
-            $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
-            $PSBoundParameters.IdentityType = $dataBase.IdentityType
-            $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+            if (!$PSBoundParameters.ContainsKey('MobileNetworkId')) {
+                $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
+            }
+            if (!$PSBoundParameters.ContainsKey('EncryptionKeyUrl')) {
+                $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
+            }
+            if (!$PSBoundParameters.ContainsKey('IdentityType')) {
+                $PSBoundParameters.IdentityType = $dataBase.IdentityType
+            }
 
             return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            throw
         }
     }
 }

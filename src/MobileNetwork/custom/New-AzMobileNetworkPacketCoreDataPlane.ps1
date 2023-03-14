@@ -160,21 +160,34 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            try{
+                $dataBase = Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreDataPlane @PSBoundParameters
+            }
 
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreDataPlane @PSBoundParameters
             }
 
-            $PSBoundParameters.UserPlaneAccessInterfaceIpv4Address = $dataBase.UserPlaneAccessInterfaceIpv4Address
-            $PSBoundParameters.UserPlaneAccessInterfaceIpv4Gateway = $dataBase.UserPlaneAccessInterfaceIpv4Gateway
-            $PSBoundParameters.UserPlaneAccessInterfaceIpv4Subnet = $dataBase.UserPlaneAccessInterfaceIpv4Subnet
-            $PSBoundParameters.UserPlaneAccessInterfaceName = $dataBase.UserPlaneAccessInterfaceName
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Address')) {
+                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Address = $dataBase.UserPlaneAccessInterfaceIpv4Address
+            }
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Gateway')) {
+                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Gateway = $dataBase.UserPlaneAccessInterfaceIpv4Gateway
+            }
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Subnet')) {
+                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Subnet = $dataBase.UserPlaneAccessInterfaceIpv4Subnet
+            }
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceName')) {
+                $PSBoundParameters.UserPlaneAccessInterfaceName = $dataBase.UserPlaneAccessInterfaceName
+            }
 
             return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreDataPlane @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreDataPlane @PSBoundParameters
+            throw
         }
     }
 }

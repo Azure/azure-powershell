@@ -135,8 +135,13 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSite -ResourceGroupName $PSBoundParameters.ResourceGroupName -MobileNetworkName $PSBoundParameters.MobileNetworkName -Name $PSBoundParameters.Name
-            
+            try{
+                $dataBase = Get-AzMobileNetworkSite -ResourceGroupName $PSBoundParameters.ResourceGroupName -MobileNetworkName $PSBoundParameters.MobileNetworkName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkSite @PSBoundParameters
+            }
+
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkSite @PSBoundParameters
             }
@@ -144,7 +149,7 @@ param(
             return Az.MobileNetwork.internal\New-AzMobileNetworkSite @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSite @PSBoundParameters
+            throw
         }
     }
 }

@@ -229,25 +229,46 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkService -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            try{
+                $dataBase = Get-AzMobileNetworkService -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkService @PSBoundParameters
+            }
 
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkService @PSBoundParameters
             }
 
-            $PSBoundParameters.PccRule = $dataBase.PccRule
-            $PSBoundParameters.ServicePrecedence = $dataBase.ServicePrecedence
-            $PSBoundParameters.MaximumBitRateDownlink = $dataBase.MaximumBitRateDownlink
-            $PSBoundParameters.MaximumBitRateUplink = $dataBase.MaximumBitRateUplink
-            $PSBoundParameters.ServiceQoPolicyAllocationAndRetentionPriorityLevel = $dataBase.ServiceQoPolicyAllocationAndRetentionPriorityLevel
-            $PSBoundParameters.ServiceQoPolicyFiveQi = $dataBase.ServiceQoPolicyFiveQi
-            $PSBoundParameters.ServiceQoPolicyPreemptionCapability = $dataBase.ServiceQoPolicyPreemptionCapability
-            $PSBoundParameters.ServiceQoPolicyPreemptionVulnerability = $dataBase.ServiceQoPolicyPreemptionVulnerability
+            if (!$PSBoundParameters.ContainsKey('PccRule')) {
+                $PSBoundParameters.PccRule = $dataBase.PccRule
+            }
+            if (!$PSBoundParameters.ContainsKey('ServicePrecedence')) {
+                $PSBoundParameters.ServicePrecedence = $dataBase.ServicePrecedence
+            }
+            if (!$PSBoundParameters.ContainsKey('MaximumBitRateDownlink')) {
+                $PSBoundParameters.MaximumBitRateDownlink = $dataBase.MaximumBitRateDownlink
+            }
+            if (!$PSBoundParameters.ContainsKey('MaximumBitRateUplink')) {
+                $PSBoundParameters.MaximumBitRateUplink = $dataBase.MaximumBitRateUplink
+            }
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyAllocationAndRetentionPriorityLevel')) {
+                $PSBoundParameters.ServiceQoPolicyAllocationAndRetentionPriorityLevel = $dataBase.ServiceQoPolicyAllocationAndRetentionPriorityLevel
+            }
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyFiveQi')) {
+                $PSBoundParameters.ServiceQoPolicyFiveQi = $dataBase.ServiceQoPolicyFiveQi
+            }
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyPreemptionCapability')) {
+                $PSBoundParameters.ServiceQoPolicyPreemptionCapability = $dataBase.ServiceQoPolicyPreemptionCapability
+            }
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyPreemptionVulnerability')) {
+               $PSBoundParameters.ServiceQoPolicyPreemptionVulnerability = $dataBase.ServiceQoPolicyPreemptionVulnerability
+            }
 
             return Az.MobileNetwork.internal\New-AzMobileNetworkService @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkService @PSBoundParameters
+            throw
         }
     }
 }

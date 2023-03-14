@@ -198,21 +198,34 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSimPolicy -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            try{
+                $dataBase = Get-AzMobileNetworkSimPolicy -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
+            }
+            catch{
+                return Az.MobileNetwork.internal\New-AzMobileNetworkSimPolicy @PSBoundParameters
+            }
 
             if($dataBase.Count -le 0){
                 return Az.MobileNetwork.internal\New-AzMobileNetworkSimPolicy @PSBoundParameters
             }
 
-            $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
-            $PSBoundParameters.IdentityType = $dataBase.IdentityType
-            $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
-            $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
+            if (!$PSBoundParameters.ContainsKey('EncryptionKeyUrl')) {
+                $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
+            }
+            if (!$PSBoundParameters.ContainsKey('IdentityType')) {
+                $PSBoundParameters.IdentityType = $dataBase.IdentityType
+            }
+            if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
+                $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+            }
+            if (!$PSBoundParame8ters.ContainsKey('MobileNetworkId')) {
+                $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
+            }
 
             return Az.MobileNetwork.internal\New-AzMobileNetworkSimPolicy @PSBoundParameters
         }
         catch {
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimPolicy @PSBoundParameters
+            throw
         }
     }
 }
