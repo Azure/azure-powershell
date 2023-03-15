@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzWorkloadsSapCentralIns
 }
 
 Describe 'Stop-AzWorkloadsSapCentralInstance' {
-    It 'StopExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StopExpanded' {
+        $stopResponse = Stop-AzWorkloadsSapCentralInstance -Name $env.SapCentralInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $stopResponse.Status | Should -Be $env.ProvisioningState
     }
 
-    It 'StopViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StopViaIdentityExpanded' {
+        $stopResponseId = Stop-AzWorkloadsSapCentralInstance -InputObject $env.CsServerIdSub2
+        $stopResponseId.Status | Should -Be $env.ProvisioningState
     }
 }

@@ -1,0 +1,38 @@
+{
+  "Invoke-AzWorkloadsSapAvailabilityZoneDetail+[NoContext]+SapExpanded+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/eastus/sapVirtualInstanceMetadata/default/getAvailabilityZoneDetails?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/eastus/sapVirtualInstanceMetadata/default/getAvailabilityZoneDetails?api-version=2023-04-01",
+      "Content": "{\r\n  \"appLocation\": \"eastus\",\r\n  \"sapProduct\": \"S4HANA\",\r\n  \"databaseType\": \"HANA\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "85" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "70cc56c7-f8cf-4d23-9ec5-2fb048539026" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01" ],
+        "x-ms-request-id": [ "610d17b9-09f9-4fec-9972-d9cfa4b37c1a" ],
+        "x-ms-correlation-request-id": [ "4a17d756-f125-4e17-b752-938afc56fdaf" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230313T062546Z:4a17d756-f125-4e17-b752-938afc56fdaf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 13 Mar 2023 06:25:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "49" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"availabilityZonePairs\":[{\"zoneA\":1,\"zoneB\":2}]}"
+    }
+  }
+}

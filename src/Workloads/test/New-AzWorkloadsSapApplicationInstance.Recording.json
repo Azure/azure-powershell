@@ -1,0 +1,35 @@
+{
+  "New-AzWorkloadsSapApplicationInstance+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0/applicationInstances/app0?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/db0-vis-rg/providers/Microsoft.Workloads/sapVirtualInstances/DB0/applicationInstances/app0?api-version=2023-04-01",
+      "Content": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 409,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "4baf68c4-f5e7-4bb4-8353-7476af97a920" ],
+        "x-ms-correlation-request-id": [ "4baf68c4-f5e7-4bb4-8353-7476af97a920" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230313T062553Z:4baf68c4-f5e7-4bb4-8353-7476af97a920" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 13 Mar 2023 06:25:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "260" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidResourceLocation\",\"message\":\"The resource \u0027DB0/app0\u0027 already exists in location \u0027centraluseuap\u0027 in resource group \u0027db0-vis-rg\u0027. A resource with the same name cannot be created in location \u0027eastus\u0027. Please select a new resource name.\"}}"
+    }
+  }
+}

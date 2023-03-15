@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWorkloadsSapSupporte
 }
 
 Describe 'Invoke-AzWorkloadsSapSupportedSku' {
-    It 'SapExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SapExpanded' {
+        $sapSupportedSku = Invoke-AzWorkloadsSapSupportedSku -SubscriptionId $env.WaaSSubscriptionId -Location $env.Location -AppLocation $env.Location -DatabaseType $env.DatabaseType -DeploymentType $env.DeploymentTypeThreeTier -Environment $env.EnviornmentProd -SapProduct $env.SapProduct
+        $sapSupportedSku.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'SapViaIdentityExpanded' -skip {

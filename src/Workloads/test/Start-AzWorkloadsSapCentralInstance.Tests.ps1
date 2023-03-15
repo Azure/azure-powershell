@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzWorkloadsSapCentralIn
 }
 
 Describe 'Start-AzWorkloadsSapCentralInstance' {
-    It 'Start' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Start' {
+        $startResponse = Start-AzWorkloadsSapCentralInstance -Name $env.SapCentralInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName
+        $startResponse.Status | Should -Be $env.ProvisioningState
     }
 
-    It 'StartViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'StartViaIdentity' {
+        $startResponseId = Start-AzWorkloadsSapCentralInstance -InputObject $env.CsServerIdSub2
+        $startResponseId.Status | Should -Be $env.ProvisioningState
     }
 }

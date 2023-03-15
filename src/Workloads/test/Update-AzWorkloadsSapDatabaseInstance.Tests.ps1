@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWorkloadsSapDatabase
 }
 
 Describe 'Update-AzWorkloadsSapDatabaseInstance' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $tags = @{ $env.TestType = $env.TestTypeValue}
+        $dbInstance = Update-AzWorkloadsSapDatabaseInstance -SubscriptionId $env.WaaSSubscriptionId  -Name $env.SapDatabseInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -Tag $tags
+        $dbInstance.Tag.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $tags = @{ $env.TestType = $env.TestTypeValue}
+        $dbInstance = Update-AzWorkloadsSapDatabaseInstance -InputObject $env.DbServerIdSub2 -Tag $tags
+        $dbInstance.Tag.Count | Should -BeGreaterOrEqual 1
     }
 }

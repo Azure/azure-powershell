@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWorkloadsSapDiskConf
 }
 
 Describe 'Invoke-AzWorkloadsSapDiskConfiguration' {
-    It 'SapExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SapExpanded' {
+        $diskConfigDetail = Invoke-AzWorkloadsSapDiskConfiguration -SubscriptionId $env.WaaSSubscriptionId -Location $env.Location -AppLocation $env.Location -DatabaseType $env.DatabaseType -DbVMSku $env.DbVMSku -DeploymentType $env.DeploymentType -Environment $env.EnviornmentNonProd -SapProduct $env.SapProduct
+        $diskConfigDetail.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'SapViaIdentityExpanded' -skip {

@@ -15,8 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzWorkloadsSapSizingRe
 }
 
 Describe 'Invoke-AzWorkloadsSapSizingRecommendation' {
-    It 'SapExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SapExpanded' {
+        $sapSizingDetail = Invoke-AzWorkloadsSapSizingRecommendation -SubscriptionId $env.WaaSSubscriptionId -Location $env.Location -AppLocation $env.Location -DatabaseType $env.DatabaseType -DbMemory $env.DbMemory -DeploymentType $env.DeploymentType -Environment $env.EnviornmentNonProd -SapProduct $env.SapProduct -Sap $env.Saps -DbScaleMethod $env.DbScaleMethod
+        $sapSizingDetail.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'SapViaIdentityExpanded' -skip {
