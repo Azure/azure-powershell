@@ -1,4 +1,4 @@
-### Example 1: Restart AzConnectedVMware Virtual Machine
+### Example 1: Restart Virtual Machine
 ```powershell
 Restart-AzConnectedVMwareVM -Name "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```

@@ -64,9 +64,6 @@ directive:
   - where:
       verb: Set
     remove: true
-  - where:
-      subject: HybridIdentityMetadata
-    remove: true
   # Rename Invoke-AzConnectedVMwareAssessVirtualMachinePatch to Invoke-AzConnectedVMwareVirtualMachineAssessPatch
   - where:
       verb: Invoke

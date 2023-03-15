@@ -29,27 +29,19 @@ API to update certain properties of the virtual machine template resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update VM Template Resource
 ```powershell
-{{ Add code here }}
+Update-AzConnectedVMwareVMTemplate -Name "test-vmtmpl" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" 
+-Tag @{"vmtmpl"="test"}
 ```
 
 ```output
-{{ Add output here }}
+Kind   Location Name         ResourceGroupName
+----   -------- ----         -----------------
+VMware eastus   test-vmtmpl azcli-test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command update tag of a VM Template named `test-tmpl` in a resource group named `azcli-test-rg`.
 
 ## PARAMETERS
 

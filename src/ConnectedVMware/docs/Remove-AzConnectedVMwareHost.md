@@ -30,27 +30,12 @@ Implements host DELETE method.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete Host
 ```powershell
-{{ Add code here }}
+Remove-AzConnectedVMwareHost -Name "test-host" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command delete a Host named `test-host` from a resource group named `azcli-test-rg`.
 
 ## PARAMETERS
 

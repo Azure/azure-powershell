@@ -1,4 +1,4 @@
-### Example 1: Update AzConnectedVMware VM Template Resource
+### Example 1: Update VM Template Resource
 ```powershell
 Update-AzConnectedVMwareVMTemplate -Name "test-vmtmpl" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" 
 -Tag @{"vmtmpl"="test"}

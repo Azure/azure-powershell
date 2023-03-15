@@ -42,27 +42,12 @@ Stop virtual machine.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop Virtual Machine
 ```powershell
-{{ Add code here }}
+Stop-AzConnectedVMwareVM -Name "test-vm" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command stop of a VM named `test-vm` in a resource group named `azcli-test-rg`.
 
 ## PARAMETERS
 

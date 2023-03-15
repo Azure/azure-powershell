@@ -1,9 +1,9 @@
-### Example 1: Delete Cluster
+### Example 1: Delete Virtual Network
 ```powershell
-Remove-AzConnectedVMwareCluster -Name "test-cluster" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
+Remove-AzConnectedVMwareVNet -Name "test-vnet" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
 ```output
 ```
 
-This command delete a Cluster named `test-cluster` from a resource group named `azcli-test-rg`.
+This command delete a Virtual Network named `test-vnet` from a resource group named `azcli-test-rg`.
