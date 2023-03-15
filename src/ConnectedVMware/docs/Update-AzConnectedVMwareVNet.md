@@ -29,27 +29,19 @@ API to update certain properties of the virtual network resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update Virtual Network Resource
 ```powershell
-{{ Add code here }}
+Update-AzConnectedVMwareVNet -Name "test-vnet" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" 
+-Tag @{"vnet"="test"}
 ```
 
 ```output
-{{ Add output here }}
+Kind   Location Name         ResourceGroupName
+----   -------- ----         -----------------
+VMware eastus   test-vnet azcli-test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command update tag of a Virtual Network named `test-vnet` in a resource group named `azcli-test-rg`.
 
 ## PARAMETERS
 

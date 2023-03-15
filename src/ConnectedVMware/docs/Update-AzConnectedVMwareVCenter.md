@@ -29,27 +29,19 @@ API to update certain properties of the vCenter resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update VCenter
 ```powershell
-{{ Add code here }}
+Update-AzConnectedVMwareVCenter -Name "azcli-test-vc" -ResourceGroupName "azcli-test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" 
+-Tag @{"vc"="test"}
 ```
 
 ```output
-{{ Add output here }}
+Kind   Location Name         ResourceGroupName
+----   -------- ----         -----------------
+VMware eastus   azcli-test-vc azcli-test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command update tag of a VCenter named `azcli-test-vc` in a resource group named `azcli-test-rg`.
 
 ## PARAMETERS
 
