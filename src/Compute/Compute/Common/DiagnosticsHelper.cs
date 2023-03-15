@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Compute.Common
         private static string WadCfg = "WadCfg";
         private static string WadCfgBlob = "WadCfgBlob";
         private static string StorageType = "StorageType";
-        private static string StorageAccount = "storageAccount";
+        private static string StorageAccount = "StorageAccount";
         private static string Path = "path";
         private static string ExpandResourceDirectory = "expandResourceDirectory";
         private static string LocalResourceDirectory = "localResourceDirectory";
