@@ -18,7 +18,6 @@ Describe 'New-AzKustoAttachedDatabaseConfiguration' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'CreateExpanded' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
@@ -26,8 +25,8 @@ Describe 'New-AzKustoAttachedDatabaseConfiguration' {
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.kustoFollowerClusterName
         $DefaultPrincipalsModificationKind = "Union"
-        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
-        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
+        $clusterResourceId = $env.kustoClusterResourceId
+        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
         $attachedDatabaseConfigurationFullName = $followerClusterName + "/" + $attachedDatabaseConfigurationName
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location

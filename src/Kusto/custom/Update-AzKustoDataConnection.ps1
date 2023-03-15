@@ -92,7 +92,7 @@ function Update-AzKustoDataConnection {
         ${InputObject},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IoTHub', 'CosmosDb') })]
+        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IotHub', 'CosmosDb') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
         # Kind of the endpoint for the data connection
@@ -414,7 +414,7 @@ function Update-AzKustoDataConnection {
                     $null = $PSBoundParameters.Remove('DatabaseRouting')
                 }
             }
-            elseif ($PSBoundParameters['Kind'] -eq 'IoTHub') {
+            elseif ($PSBoundParameters['Kind'] -eq 'IotHub') {
                 $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IotHubDataConnection]::new()
 
                 $Parameter.IotHubResourceId = $PSBoundParameters['IotHubResourceId']

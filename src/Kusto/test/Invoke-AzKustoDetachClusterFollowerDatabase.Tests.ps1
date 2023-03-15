@@ -18,33 +18,30 @@ Describe 'Invoke-AzKustoDetachClusterFollowerDatabase' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'DetachExpanded' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
         $followerClusterName = $env.kustoFollowerClusterName
-        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
-        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
+        $clusterResourceId = $env.kustoClusterResourceId
+        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
         $databaseName = "testdatabase" + $env.rstr4
         $DefaultPrincipalsModificationKind = "Union"
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
         New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
-        Start-Sleep -Seconds 180
         { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
         Remove-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
     }
 
     It 'DetachViaIdentityExpanded' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr5
         $followerClusterName = $env.kustoFollowerClusterName
-        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
-        $followerClusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
+        $clusterResourceId = $env.kustoClusterResourceId
+        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
         $databaseName = "testdatabase" + $env.rstr5
         $DefaultPrincipalsModificationKind = "Union"
 

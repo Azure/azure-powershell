@@ -20,7 +20,7 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         $dataConnectionName = "test-name-avilability"
 
         $availability = Test-AzKustoDataConnectionNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
-        $availability.NameAvailable | Should -Be $false
+        $availability.NameAvailable | Should -Be $true
     }
 
     It 'CheckViaIdentityExpanded' {

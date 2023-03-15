@@ -18,7 +18,6 @@ Describe 'New-AzKustoDataConnection' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'CreateExpandedEventHub' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
@@ -43,8 +42,7 @@ Describe 'New-AzKustoDataConnection' {
         $databaseName = $env.kustoDatabaseName
         $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
-        $storageAccountName = $env.storageAccountResourceId
-        $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+        $storageAccountResourceId = $env.storageAccountResourceId
         $kind = "EventGrid"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
@@ -56,7 +54,6 @@ Describe 'New-AzKustoDataConnection' {
     }
 
     It 'CreateExpandedIotHub' {
-        $subscriptionId = $env.SubscriptionId
         $location = $env.location
         $resourceGroupName = $env.resourceGroupName
         $clusterName = $env.kustoClusterName
