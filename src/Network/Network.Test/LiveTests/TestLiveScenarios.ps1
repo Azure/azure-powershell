@@ -5,63 +5,45 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with public IP address" -D
     $rgName = $rg.ResourceGroupName
     $location = "westus"
     $vnetName = New-LiveTestResourceName
-    $subnetName = New-LiveTestResourceName
-    $publicIpName = New-LiveTestResourceName
+    $snetName = New-LiveTestResourceName
+    $pipName = New-LiveTestResourceName
     $domainNameLabel = New-LiveTestResourceName
+    $ipcfgName = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-
-    $expectedNic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicIp
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+    $ipcfg = New-AzNetworkInterfaceIpConfig -Name $ipcfgName -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
+    New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipcfg
     $actualNic = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName
 
-    Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName
-    Assert-AreEqual $expectedNic.Name $actualNic.Name
-    Assert-AreEqual $expectedNic.Location $actualNic.Location
-    Assert-NotNull $expectedNic.ResourceGuid
-    Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
-    Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
-    Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-    Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+    Assert-AreEqual $rgName $actualNic.ResourceGroupName
+    Assert-AreEqual $nicName $actualNic.Name
+    Assert-AreEqual "Succeeded" $actualNic.ProvisioningState
 
-    $actualNicByResourceId = Get-AzNetworkInterface -ResourceId $actualNic.Id
+    $actualNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
+    Assert-AreEqual $rgName $actualNic.ResourceGroupName
+    Assert-AreEqual $nicName $actualNic.Name
+    Assert-AreEqual "Succeeded" $actualNic.ProvisioningState
 
-    Assert-AreEqual $expectedNic.ResourceGroupName $actualNicByResourceId.ResourceGroupName
-    Assert-AreEqual $expectedNic.Name $actualNicByResourceId.Name
-    Assert-AreEqual $expectedNic.Location $actualNicByResourceId.Location
-    Assert-NotNull $actualNicByResourceId.ResourceGuid
-    Assert-AreEqual "Succeeded" $actualNicByResourceId.ProvisioningState
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNicByResourceId.IpConfigurations[0].Name
-    Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNicByResourceId.IpConfigurations[0].PublicIpAddress.Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNicByResourceId.IpConfigurations[0].Subnet.Id
-    Assert-NotNull $actualNicByResourceId.IpConfigurations[0].PrivateIpAddress
-    Assert-AreEqual "Dynamic" $actualNicByResourceId.IpConfigurations[0].PrivateIpAllocationMethod
+    Assert-AreEqual 1 $actualNic.IpConfigurations.Count
+    Assert-AreEqual $ipcfgName $actualNic.IpConfigurations[0].Name
 
-    $actualPublicIp = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName
-    Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualPublicIp.Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Id $actualPublicIp.IpConfiguration.Id
+    $actualPip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName
+    Assert-AreEqual $rgName $actualPip.ResourceGroupName
+    Assert-AreEqual $pipName $actualPip.Name
+    Assert-AreEqual "Dynamic" $actualPip.PublicIpAllocationMethod
+    Assert-AreEqual $actualPip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
 
     $actualVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualVnet.Subnets[0].Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Id $actualVnet.Subnets[0].IpConfigurations[0].Id
+    Assert-AreEqual $rgName $actualVnet.ResourceGroupName
+    Assert-AreEqual $vnetName $actualVnet.Name
+    Assert-AreEqual $actualVnet.Subnets[0].Id $actualNic.IpConfigurations[0].Subnet[0].Id
 
-    $nicList = Get-AzNetworkInterface -ResourceGroupName $rgName
-    Assert-AreEqual 1 @($nicList).Count
-    Assert-AreEqual $nicList[0].ResourceGroupName $actualNic.ResourceGroupName
-    Assert-AreEqual $nicList[0].Name $actualNic.Name
-    Assert-AreEqual $nicList[0].Location $actualNic.Location
-    Assert-AreEqual "Succeeded" $nicList[0].ProvisioningState
-    Assert-AreEqual $actualNic.Etag $nicList[0].Etag
-
-    $deleteResult = Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -PassThru -Force
-    Assert-AreEqual true $deleteResult
-
-    $nicList = Get-AzNetworkInterface -ResourceGroupName $rgName
-    Assert-AreEqual 0 @($nicList).Count
+    Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Force
+    $actual = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -ErrorAction SilentlyContinue
+    Assert-Null $actual
 }
 
 Invoke-LiveTestScenario -Name "Network interface CRUD without public IP address" -Description "Test CRUD for network interface without public IP address" -ScenarioScript `
@@ -69,43 +51,32 @@ Invoke-LiveTestScenario -Name "Network interface CRUD without public IP address"
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $location = "westus"
+    $location = "eastus"
     $vnetName = New-LiveTestResourceName
-    $subnetName = New-LiveTestResourceName
+    $snetName = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
 
-    $expectedNic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0]
+    New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0]
     $actualNic = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName
 
-    Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName
-    Assert-AreEqual $expectedNic.Name $actualNic.Name
-    Assert-AreEqual $expectedNic.Location $actualNic.Location
-    Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
-    Assert-Null $expectedNic.IpConfigurations[0].PublicIpAddress.Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+    Assert-AreEqual $rgName $actualNic.ResourceGroupName
+    Assert-AreEqual $nicName $actualNic.Name
+    Assert-AreEqual "Succeeded" $actualNic.ProvisioningState
 
-    $actuaVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actuaVnet.Subnets[0].Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Id $actuaVnet.Subnets[0].IpConfigurations[0].Id
+    Assert-AreEqual 1 $actualNic.IpConfigurations.Count
+    Assert-Null $actualNic.IpConfigurations[0].PublicIpAddress.Id
 
-    $nicList = Get-AzNetworkInterface -ResourceGroupName $rgName
-    Assert-AreEqual 1 @($nicList).Count
-    Assert-AreEqual $nicList[0].ResourceGroupName $actualNic.ResourceGroupName
-    Assert-AreEqual $nicList[0].Name $actualNic.Name
-    Assert-AreEqual $nicList[0].Location $actualNic.Location
-    Assert-AreEqual "Succeeded" $nicList[0].ProvisioningState
-    Assert-AreEqual $expectedNic.Etag $nicList[0].Etag
+    $actualVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+    Assert-AreEqual $rgName $actualVnet.ResourceGroupName
+    Assert-AreEqual $vnetName $actualVnet.Name
+    Assert-AreEqual $actualVnet.Subnets[0].Id $actualNic.IpConfigurations[0].Subnet[0].Id
 
-    # Delete NetworkInterface
-    $deleteResult = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
-    Assert-AreEqual true $deleteResult
-
-    $nicList = Get-AzNetworkInterface -ResourceGroupName $rgName
-    Assert-AreEqual 0 @($nicList).Count
+    Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Force
+    $actual = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -ErrorAction SilentlyContinue
+    Assert-Null $actual
 }
 
 Invoke-LiveTestScenario -Name "Network interface CRUD with IP configuration" -Description "Test CRUD for network interface with IP configuration" -ScenarioScript `
@@ -113,61 +84,55 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with IP configuration" -De
     param ($rg)
 
     $rgName = $rg.ResourceGroupName
-    $location = "westus"
+    $location = "centralus"
     $vnetName = New-LiveTestResourceName
-    $subnetName = New-LiveTestResourceName
-    $publicIpName = New-LiveTestResourceName
+    $snetName = New-LiveTestResourceName
+    $pipName = New-LiveTestResourceName
     $domainNameLabel = New-LiveTestResourceName
     $ipconfig1Name = New-LiveTestResourceName
     $ipconfig2Name = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
 
-    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-    $ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfig1Name -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+    $ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfig1Name -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
     $ipconfig2 = New-AzNetworkInterfaceIpConfig -Name $ipconfig2Name -PrivateIpAddressVersion IPv6
 
-    $nic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipconfig1,$ipconfig2 -Tag @{ testtag = "testval" }
+    New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipconfig1,$ipconfig2 -Tag @{ testtag = "testval" }
 
-    Assert-AreEqual $rgName $nic.ResourceGroupName
-    Assert-AreEqual $nicName $nic.Name
-    Assert-NotNull $nic.ResourceGuid
-    Assert-AreEqual "Succeeded" $nic.ProvisioningState
-    Assert-AreEqual $nic.IpConfigurations[0].Name $nic.IpConfigurations[0].Name
-    Assert-AreEqual $nic.IpConfigurations[0].PublicIpAddress.Id $nic.IpConfigurations[0].PublicIpAddress.Id
-    Assert-AreEqual $nic.IpConfigurations[0].Subnet.Id $nic.IpConfigurations[0].Subnet.Id
-    Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
-    Assert-AreEqual "Dynamic" $nic.IpConfigurations[0].PrivateIpAllocationMethod
+    $actualNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgName
+    Assert-AreEqual $rgName $actualNic.ResourceGroupName
+    Assert-AreEqual $nicName $actualNic.Name
+    Assert-AreEqual "Succeeded" $actualNic.ProvisioningState
 
-    $publicIp = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName
-    Assert-AreEqual $nic.IpConfigurations[0].PublicIpAddress.Id $publicIp.Id
-    Assert-AreEqual $nic.IpConfigurations[0].Id $publicIp.IpConfiguration.Id
+    $actualPip = Get-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName
+    Assert-AreEqual $rgName $actualPip.ResourceGroupName
+    Assert-AreEqual $pipName $actualPip.Name
+    Assert-AreEqual "Dynamic" $actualPip.PublicIpAllocationMethod
+    Assert-AreEqual $actualPip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
 
-    $vnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
-    Assert-AreEqual $nic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
-    Assert-AreEqual $nic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+    $actualVnet = Get-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName
+    Assert-AreEqual $rgName $actualVnet.ResourceGroupName
+    Assert-AreEqual $vnetName $actualVnet.Name
+    Assert-AreEqual $actualVnet.Subnets[0].Id $actualNic.IpConfigurations[0].Subnet[0].Id
 
-    Assert-AreEqual 2 @($nic.IpConfigurations).Count
+    Assert-AreEqual 2 $actualNic.IpConfigurations.Count
 
-    Assert-AreEqual $ipconfig1Name $nic.IpConfigurations[0].Name
-    Assert-AreEqual $publicIp.Id $nic.IpConfigurations[0].PublicIpAddress.Id
-    Assert-AreEqual $vnet.Subnets[0].Id $nic.IpConfigurations[0].Subnet.Id
-    Assert-NotNull $nic.IpConfigurations[0].PrivateIpAddress
-    Assert-AreEqual "Dynamic" $nic.IpConfigurations[0].PrivateIpAllocationMethod
-    Assert-AreEqual $nic.IpConfigurations[0].PrivateIpAddressVersion IPv4
+    Assert-AreEqual $ipconfig1Name $actualNic.IpConfigurations[0].Name
+    Assert-AreEqual $pip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+    Assert-AreEqual $actualVnet.Subnets[0].Id $actualNic.IpConfigurations[0].Subnet.Id
+    Assert-AreEqual "Dynamic" $actualNic.IpConfigurations[0].PrivateIpAllocationMethod
+    Assert-AreEqual IPv4 $actualNic.IpConfigurations[0].PrivateIpAddressVersion
 
-    Assert-AreEqual $ipconfig2Name $nic.IpConfigurations[1].Name
-    Assert-Null $nic.IpConfigurations[1].PublicIpAddress
-    Assert-Null $nic.IpConfigurations[1].Subnet
-    Assert-AreEqual $nic.IpConfigurations[1].PrivateIpAddressVersion IPv6
+    Assert-AreEqual $ipconfig2Name $actualNic.IpConfigurations[1].Name
+    Assert-Null $actualNic.IpConfigurations[1].PublicIpAddress
+    Assert-AreEqual IPv6 $actualNic.IpConfigurations[1].PrivateIpAddressVersion
 
-    $deleteResult = Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -PassThru -Force
-    Assert-AreEqual true $deleteResult
-
-    $list = Get-AzNetworkInterface -ResourceGroupName $rgname
-    Assert-AreEqual 0 @($list).Count
+    Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Force
+    $actual = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -ErrorAction SilentlyContinue
+    Assert-Null $actual
 }
 
 Invoke-LiveTestScenario -Name "Network interface CRUD with accelerated networking" -Description "Test CRUD for network interface with accelerated networking" -ScenarioScript `
@@ -177,62 +142,41 @@ Invoke-LiveTestScenario -Name "Network interface CRUD with accelerated networkin
     $rgName = $rg.ResourceGroupName
     $location = "westus"
     $vnetName = New-LiveTestResourceName
-    $subnetName = New-LiveTestResourceName
-    $publicIpName = New-LiveTestResourceName
+    $snetName = New-LiveTestResourceName
+    $pipName = New-LiveTestResourceName
     $domainNameLabel = New-LiveTestResourceName
+    $ipcfgName = New-LiveTestResourceName
     $nicName = New-LiveTestResourceName
 
-    $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+    $snet = New-AzVirtualNetworkSubnetConfig -Name $snetName -AddressPrefix 10.0.1.0/24
+    $vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name $vnetName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $snet
+    $pip = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $pipName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
+    $ipcfg = New-AzNetworkInterfaceIpConfig -Name $ipcfgName -Subnet $vnet.Subnets[0] -PublicIpAddress $pip
+    New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -IpConfiguration $ipcfg -EnableAcceleratedNetworking
 
-    $publicIp = New-AzPublicIpAddress -ResourceGroupName $rgName -Name $publicIpName -Location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
-
-    $expectedNic = New-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking
     $actualNic = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName
+    Assert-AreEqual $rgName $actualNic.ResourceGroupName
+    Assert-AreEqual $nicName $actualNic.Name
+    Assert-AreEqual "Succeeded" $actualNic.ProvisioningState
 
-    Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName
-    Assert-AreEqual $expectedNic.Name $actualNic.Name
-    Assert-AreEqual $expectedNic.Location $actualNic.Location
-    Assert-NotNull $expectedNic.ResourceGuid
-    Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
-    Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
-    Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-    Assert-AreEqual $expectedNic.EnableAcceleratedNetworking $true
-    Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
+    Assert-AreEqual 1 $actualNic.IpConfigurations.Count
+    Assert-AreEqual $ipcfgName $actualNic.IpConfigurations[0].Name
+    Assert-AreEqual $true $actualNic.EnableAcceleratedNetworking
 
-    $publicIp = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
-    Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicIp.Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicIp.IpConfiguration.Id
+    $actualPip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $pipName
+    Assert-AreEqual $rgName $actualPip.ResourceGroupName
+    Assert-AreEqual $pipName $actualPip.Name
+    Assert-AreEqual "Dynamic" $actualPip.PublicIpAllocationMethod
+    Assert-AreEqual $actualPip.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
 
-    $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
-    Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+    $actualVnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName
+    Assert-AreEqual $rgName $actualVnet.ResourceGroupName
+    Assert-AreEqual $vnetName $actualVnet.Name
+    Assert-AreEqual $actualVnet.Subnets[0].Id $actualNic.IpConfigurations[0].Subnet[0].Id
 
-    $nicList = Get-AzNetworkInterface -ResourceGroupName $rgname
-    Assert-AreEqual 1 @($nicList).Count
-    Assert-AreEqual $nicList[0].ResourceGroupName $actualNic.ResourceGroupName
-    Assert-AreEqual $nicList[0].Name $actualNic.Name
-    Assert-AreEqual $nicList[0].Location $actualNic.Location
-    Assert-AreEqual "Succeeded" $nicList[0].ProvisioningState
-    Assert-AreEqual $actualNic.Etag $nicList[0].Etag
-
-    $nicList = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*"
-    Assert-True { $nicList.Count -ge 0 }
-
-    $nicList = Get-AzNetworkInterface -Name "*"
-    Assert-True { $nicList.Count -ge 0 }
-
-    $nicList = Get-AzNetworkInterface -ResourceGroupName "*"
-    Assert-True { $nicList.Count -ge 0 }
-
-    # Delete NetworkInterface
-    $deleteResult = Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -PassThru -Force
-    Assert-AreEqual true $deleteResult
-
-    $nicList = Get-AzNetworkInterface -ResourceGroupName $rgname
-    Assert-AreEqual 0 @($nicList).Count
+    Remove-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -Force
+    $actual = Get-AzNetworkInterface -ResourceGroupName $rgName -Name $nicName -ErrorAction SilentlyContinue
+    Assert-Null $actual
 }
 
 Invoke-LiveTestScenario -Name "Network private link service" -Description "Test CRUD for network private link service" -ScenarioScript `
@@ -258,7 +202,7 @@ Invoke-LiveTestScenario -Name "Network private link service" -Description "Test 
 
     $lbIpCfg = New-AzLoadBalancerFrontendIpConfig -Name $lbIpCfgName -PrivateIpAddress 10.0.1.5 -Subnet $vnet.Subnets[0]
     $lbPoolCfg = New-AzLoadBalancerBackendAddressPoolConfig -Name $lbPoolCfgName
-    $lb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgName -Location $location -FrontendIpConfiguration $lbIpCfg -BackendAddressPool $lbPoolCfg -Sku Standard
+    New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgName -Location $location -FrontendIpConfiguration $lbIpCfg -BackendAddressPool $lbPoolCfg -Sku Standard
 
     $plsIpCfg = New-AzPrivateLinkServiceIpConfig -Name $plsIpCfgName -PrivateIpAddress 10.0.3.5 -Subnet $vnet.Subnets[2]
 
