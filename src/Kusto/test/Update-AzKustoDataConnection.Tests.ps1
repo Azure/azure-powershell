@@ -25,13 +25,16 @@ Describe 'Update-AzKustoDataConnection' {
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
-        $dataConnectionUpdated = Update-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
+        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
+        $dataConnectionUpdated = Update-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None" -DatabaseRouting "Multi"
 
         # Validate
         $dataConnectionUpdated.Name | Should -Be $dataConnectionFullName
         $dataConnectionUpdated.Location | Should -Be $location
         $dataConnectionUpdated.EventHubResourceId | Should -Be $eventHubResourceId
         $dataConnectionUpdated.Kind | Should -Be $kind
+
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }
 
     It 'UpdateExpandedEventGrid' {
@@ -43,10 +46,11 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $storageAccountName = $env.storageAccountResourceId
-        $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+        $storageAccountResourceId = $env.storageAccountResourceId
         $kind = "EventGrid"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
+        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
         $dataConnectionUpdated = Update-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
 
         # Validate
@@ -55,6 +59,8 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionUpdated.EventHubResourceId | Should -Be $eventHubResourceId
         $dataConnectionUpdated.StorageAccountResourceId | Should -Be $storageAccountResourceId
         $dataConnectionUpdated.Kind | Should -Be $kind
+
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }
 
     It 'UpdateExpandedIotHub' {
@@ -69,6 +75,7 @@ Describe 'Update-AzKustoDataConnection' {
         $kind = "IotHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
+        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default'
         $dataConnectionUpdated = Update-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default'
 
         # Validate
@@ -77,6 +84,8 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionUpdated.IotHubResourceId | Should -Be $iotHubResourceId
         $dataConnectionUpdated.SharedAccessPolicyName | Should -Be $sharedAccessPolicyName
         $dataConnectionUpdated.Kind | Should -Be $kind
+
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }
 
     It 'UpdateViaIdentityExpandedEventHub' {
@@ -89,6 +98,7 @@ Describe 'Update-AzKustoDataConnection' {
         $kind = "EventHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
+        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
         $dataConnection = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
         $dataConnectionUpdated = Update-AzKustoDataConnection -InputObject $dataConnection -Location $location -Kind $kind -EventHubResourceId $eventHubResourceId -ConsumerGroup '$Default' -Compression "None"
 
@@ -97,6 +107,8 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionUpdated.Location | Should -Be $location
         $dataConnectionUpdated.EventHubResourceId | Should -Be $eventHubResourceId
         $dataConnectionUpdated.Kind | Should -Be $kind
+
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }
 
     It 'UpdateViaIdentityExpandedEventGrid' {
@@ -108,10 +120,11 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionName = "event-grid-dc"
         $eventHubResourceId = $env.eventHubResourceId
         $storageAccountName = $env.storageAccountResourceId
-        $storageAccountResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
+        $storageAccountResourceId = $env.storageAccountResourceId
         $kind = "EventGrid"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
+        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
         $dataConnection = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
         $dataConnectionUpdated = Update-AzKustoDataConnection -InputObject $dataConnection -location $location -Kind $kind -EventHubResourceId $eventHubResourceId -StorageAccountResourceId $storageAccountResourceId -ConsumerGroup '$Default'
 
@@ -121,6 +134,8 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionUpdated.EventHubResourceId | Should -Be $eventHubResourceId
         $dataConnectionUpdated.StorageAccountResourceId | Should -Be $storageAccountResourceId
         $dataConnectionUpdated.Kind | Should -Be $kind
+
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }
 
     It 'UpdateViaIdentityExpandedIotHub' {
@@ -135,6 +150,7 @@ Describe 'Update-AzKustoDataConnection' {
         $kind = "IotHub"
         $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
 
+        New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName -location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default'
         $dataConnection = Get-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
         $dataConnectionUpdated = Update-AzKustoDataConnection -InputObject $dataConnection -location $location -Kind $kind -IotHubResourceId $iotHubResourceId -SharedAccessPolicyName $sharedAccessPolicyName -ConsumerGroup '$Default'
 
@@ -144,5 +160,7 @@ Describe 'Update-AzKustoDataConnection' {
         $dataConnectionUpdated.IotHubResourceId | Should -Be $iotHubResourceId
         $dataConnectionUpdated.SharedAccessPolicyName | Should -Be $sharedAccessPolicyName
         $dataConnectionUpdated.Kind | Should -Be $kind
+
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }
 }

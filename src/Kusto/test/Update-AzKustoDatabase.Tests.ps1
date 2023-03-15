@@ -3,13 +3,15 @@ Describe 'Update-AzKustoDatabase' {
         $kustoCommonPath = Join-Path $PSScriptRoot 'common.ps1'
         . ($kustoCommonPath)
         $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
-        if (-Not (Test-Path -Path $loadEnvPath)) {
+        if (-Not(Test-Path -Path $loadEnvPath))
+        {
             $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
         }
         . ($loadEnvPath)
         $TestRecordingFile = Join-Path $PSScriptRoot 'Update-AzKustoDatabase.Recording.json'
         $currentPath = $PSScriptRoot
-        while (-not $mockingPath) {
+        while (-not$mockingPath)
+        {
             $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
             $currentPath = Split-Path -Path $currentPath -Parent
         }
@@ -30,17 +32,27 @@ Describe 'Update-AzKustoDatabase' {
     }
 
     It 'UpdateExpandedReadOnlyFollowing' {
-        $clusterName = $env.kustoFollowerClusterName
+        $location = $env.location
         $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $databaseFullName = $clusterName + "/" + $databaseName
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
+        $followerClusterName = $env.kustoFollowerClusterName
+        $DefaultPrincipalsModificationKind = "Union"
+        $clusterResourceId = $env.kustoClusterResourceId
+        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $databaseFullName = $followerClusterName + "/" + $databaseName
 
-        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
+        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $databaseName
+
         $softDeletePeriodInDaysUpdated = $databaseItem.SoftDeletePeriod
         $hotCachePeriodInDaysUpdated = $databaseItem.HotCachePeriod.Add((New-TimeSpan -Days 1))
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $databaseName -Location $env.location -Kind "ReadOnlyFollowing" -HotCachePeriod $hotCachePeriodInDaysUpdated
 
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Location $env.location -Kind "ReadOnlyFollowing" -HotCachePeriod $hotCachePeriodInDaysUpdated
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
+
+        { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpandedReadWrite' {
@@ -59,17 +71,26 @@ Describe 'Update-AzKustoDatabase' {
     }
 
     It 'UpdateViaIdentityExpandedReadOnlyFollowing' {
-        $clusterName = $env.kustoFollowerClusterName
+        $location = $env.location
         $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
         $databaseName = $env.kustoDatabaseName
-        $databaseFullName = $clusterName + "/" + $databaseName
+        $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr4
+        $followerClusterName = $env.kustoFollowerClusterName
+        $DefaultPrincipalsModificationKind = "Union"
+        $clusterResourceId = $env.kustoClusterResourceId
+        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
+        $databaseFullName = $followerClusterName + "/" + $databaseName
 
-        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
+        $databaseItem = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $databaseName
+
         $softDeletePeriodInDaysUpdated = $databaseItem.SoftDeletePeriod
         $hotCachePeriodInDaysUpdated = $databaseItem.HotCachePeriod.Add((New-TimeSpan -Days -1))
+        $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $databaseItem -Location $env.location -Kind "ReadOnlyFollowing" -HotCachePeriod $hotCachePeriodInDaysUpdated
 
-        $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
-        $databaseUpdatedWithParameters = Update-AzKustoDatabase -InputObject $database -Location $env.location -Kind "ReadOnlyFollowing" -HotCachePeriod $hotCachePeriodInDaysUpdated
         Validate_Database $databaseUpdatedWithParameters $databaseFullName $env.location "Microsoft.Kusto/Clusters/Databases" $softDeletePeriodInDaysUpdated $hotCachePeriodInDaysUpdated
+
+        { Invoke-AzKustoDetachClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -AttachedDatabaseConfigurationName $attachedDatabaseConfigurationName -ClusterResourceId $followerClusterResourceId } | Should -Not -Throw
     }
 }

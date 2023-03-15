@@ -26,9 +26,6 @@ Describe 'New-AzKustoPrivateEndpointConnection' {
 
         $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus = "Rejected"
         $privateEndpointConnection = New-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.subscriptionId -Parameter $privateEndpointConnection -Name $privateEndpointConnectionName
-        
-        Start-Sleep -Seconds 1.5
-
         $privateEndpointConnection = Get-AzKustoPrivateEndpointConnection -ClusterName $clusterName -ResourceGroupName $ResourceGroupName -SubscriptionId $env.subscriptionId
         $privateEndpointConnection.PrivateLinkServiceConnectionStateStatus | Should -Be "Rejected"
 
