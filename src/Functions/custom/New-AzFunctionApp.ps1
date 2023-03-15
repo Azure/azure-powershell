@@ -240,7 +240,7 @@ function New-AzFunctionApp {
 
         $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
 
-        $appSettings = New-Object -TypeName System.Collections.Generic.List[System.Object]
+        $appSettings = New-Object -TypeName System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair]
         $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
         $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
 
