@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Upgraded to API version 2023-01-31.
 * Federated identity credentials GA version is available now.
 

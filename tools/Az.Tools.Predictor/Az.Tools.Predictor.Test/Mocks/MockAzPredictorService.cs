@@ -72,9 +72,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
             }
         }
 
-        // <inheritdoc/>
-        // public override bool IsSupportedCommand(string cmd) => IsRecognizedCommand(cmd) || cmd.IndexOf(AzPredictorConstants.AzCommandMoniker, StringComparison.OrdinalIgnoreCase) > 0;
-
         /// <inheritdoc/>
         public override Task<bool?> RequestPredictionsAsync(IEnumerable<string> commands, string requestId, CancellationToken cancellationToken)
         {

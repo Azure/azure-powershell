@@ -27,32 +27,32 @@ $fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/500000
 Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <ICalculateRefundRequest>: .
+BODY <ICalculateRefundRequest>: Request containing information needed for calculating refund.
   [Id <String>]: Fully qualified identifier of the reservation order being returned
   [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the Reservation being returned
+  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the reservation being returned
   [Scope <String>]: The scope of the refund, e.g. Reservation
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund
 #>
 function Invoke-AzReservationCalculateRefund {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory)]
@@ -73,8 +73,8 @@ param(
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest]
+    # Request containing information needed for calculating refund.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -98,7 +98,7 @@ param(
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Fully qualified identifier of the Reservation being returned
+    # Fully qualified identifier of the reservation being returned
     ${ReservationToReturnReservationId},
 
     [Parameter(ParameterSetName='PostExpanded')]
@@ -114,7 +114,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -166,7 +167,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

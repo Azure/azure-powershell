@@ -117,7 +117,7 @@
 ### `New-AzVmss`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - Starting in May 2023 the "New-AzVmss" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+  - Starting May 2023, the "New-AzVmss" cmdlet will use new defaults: Flexible orchestration mode, use of Trusted Launch, and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://learn.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes. For Trusted Launch, visit https://learn.microsoft.com/azure/virtual-machines/trusted-launch.
 
 ## Az.DataLakeStore
 
@@ -338,6 +338,13 @@
   - The following properties in the output type are being deprecated : 'ResourceGroup'
   - The following properties are being added to the output type : 'ResourceGroupName' 'Tags'
 
+### `New-AzEventHub`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-MessageRetentionInDays`
+    - The parameter : 'MessageRetentionInDays' is changing.
+    - The change is expected to take effect from the version : '4.0.0'
+
 ### `New-AzEventHubNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
@@ -359,6 +366,14 @@
 
 - Cmdlet breaking-change will happen to all parameter set
   - This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.
+
+### `Set-AzEventHub`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-MessageRetentionInDays`
+    - The parameter : 'MessageRetentionInDays' is changing.
+    - Change description : -MessageRetentionInDays would be deprecated and would be replaced by -RetentionTimeInHours 
+    - The change is expected to take effect from the version : '4.0.0'
 
 ### `Set-AzEventHubNamespace`
 
@@ -923,6 +938,18 @@
 
 - Cmdlet breaking-change will happen to all parameter set
   - Set-AzRedisCacheDiagnostics alias will be removed in an upcoming breaking change release
+
+## Az.Relay
+
+### `Get-AzRelayOperation`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzRelayOperation will be removed in an upcoming breaking change release. Please use 'Get-AzProviderOperation Microsoft.Relay/*'
+
+### `Set-AzRelayNamespace`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Set-AzRelayNamespace will be removed in an upcoming breaking change release, you can use Update-AzRelayNamespace in a future release
 
 ## Az.Resources
 

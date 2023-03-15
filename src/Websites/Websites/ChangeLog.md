@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.13.0
 * Added a new parameter `-CopyIdentity` for `New-AzWebAppSlot` to copy the identity from the parent app to the slot.
 * Updated `New-AzWebAppSSLBinding` to support -WhatIf parameter
 

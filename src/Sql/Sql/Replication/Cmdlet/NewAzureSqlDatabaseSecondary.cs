@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 SecondaryType = SecondaryType,
                 HighAvailabilityReplicaCount = this.IsParameterBound(p => p.HighAvailabilityReplicaCount) ? HighAvailabilityReplicaCount : (int?)null,
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
-                Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
+                Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId
