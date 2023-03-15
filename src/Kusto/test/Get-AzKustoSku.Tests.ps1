@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzKustoSku'))
 }
 
 Describe 'Get-AzKustoSku' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List'  {
+        $subscriptionId = $env.subscriptionId
+        $location = $env.location
+
+        $skus = Get-AzKustoSku -SubscriptionId $env.subscriptionId -Location $env.location
+        $skus.Count | Should -BeGreaterOrEqual 0
     }
 }

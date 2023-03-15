@@ -70,4 +70,22 @@ Describe 'New-AzKustoDataConnection' {
 
         Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
     }
+
+    It 'CreateExpandedCosmosDb' {
+        $location = $env.location
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
+        $tableName = $env.kustoTableName
+        $dataConnectionName = "cosmos-db-dc"
+        $cosmosDbAccountResourceId = $env.cosmosDbResourceId
+        $cosmosDbDatabaseName = $env.cosmosDbDatabaseName
+        $cosmosDbContainerName = $env.cosmosDbContainerName
+        $managedIdentityResourceId =  $env.kustoClusterResourceId
+        $kind = "CosmosDb"
+        $dataConnectionFullName = "$clusterName/$databaseName/$dataConnectionName"
+
+        $dataConnectionCreated = New-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -TableName $tableName -DataConnectionName $dataConnectionName -Location $location -Kind $kind -CosmosDbAccountResourceId $cosmosDbAccountResourceId -CosmosDbDatabase $cosmosDbDatabaseName -CosmosDbContainer $cosmosDbContainerName -ManagedIdentityResourceId $managedIdentityResourceId
+        Remove-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -DataConnectionName $dataConnectionName
+    }
 }
