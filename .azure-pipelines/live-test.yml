@@ -1,8 +1,12 @@
 parameters:
-- name: img_windows
-  displayName: Windows Image Version
+- name: img_windows_2019
+  displayName: Windows 2019 Image Version
   type: string
   default: windows-2019
+- name: img_windows_2022
+  displayName: Windows 2022 Image Version
+  type: string
+  default: windows-2022
 - name: img_linux
   displayName: Linux Image Version
   type: string
@@ -62,40 +66,80 @@ trigger: none
 jobs:
 - template: util/live-test-steps.yml
   parameters:
-    name: 'win_ps_5_1'
-    vmImage: ${{ parameters.img_windows }}
+    name: 'win_ps_5_1_win_2019'
+    vmImage: ${{ parameters.img_windows_2019 }}
     osType: 'Windows'
     psVersion: ${{ parameters.win_ps_5_1 }}
     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_0_x_win'
-    vmImage: ${{ parameters.img_windows }}
+    name: 'win_ps_5_1_win_2022'
+    vmImage: ${{ parameters.img_windows_2022 }}
+    osType: 'Windows'
+    psVersion: ${{ parameters.win_ps_5_1 }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
+
+- template: util/live-test-steps.yml
+  parameters:
+    name: 'ps_7_0_x_win_2019'
+    vmImage: ${{ parameters.img_windows_2019 }}
     osType: 'Windows'
     psVersion: ${{ parameters.ps_7_0_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_1_x_win'
-    vmImage: ${{ parameters.img_windows }}
+    name: 'ps_7_1_x_win_2019'
+    vmImage: ${{ parameters.img_windows_2019 }}
     osType: 'Windows'
     psVersion: ${{ parameters.ps_7_1_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_2_x_win'
-    vmImage: ${{ parameters.img_windows }}
+    name: 'ps_7_2_x_win_2019'
+    vmImage: ${{ parameters.img_windows_2019 }}
     osType: 'Windows'
     psVersion: ${{ parameters.ps_7_2_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_3_x_win'
-    vmImage: ${{ parameters.img_windows }}
+    name: 'ps_7_3_x_win_2019'
+    vmImage: ${{ parameters.img_windows_2019 }}
+    osType: 'Windows'
+    psVersion: ${{ parameters.ps_7_3_x }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
+
+- template: util/live-test-steps.yml
+  parameters:
+    name: 'ps_7_0_x_win_2022'
+    vmImage: ${{ parameters.img_windows_2022 }}
+    osType: 'Windows'
+    psVersion: ${{ parameters.ps_7_0_x }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
+
+- template: util/live-test-steps.yml
+  parameters:
+    name: 'ps_7_1_x_win_2022'
+    vmImage: ${{ parameters.img_windows_2022 }}
+    osType: 'Windows'
+    psVersion: ${{ parameters.ps_7_1_x }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
+
+- template: util/live-test-steps.yml
+  parameters:
+    name: 'ps_7_2_x_win_2022'
+    vmImage: ${{ parameters.img_windows_2022 }}
+    osType: 'Windows'
+    psVersion: ${{ parameters.ps_7_2_x }}
+    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
+
+- template: util/live-test-steps.yml
+  parameters:
+    name: 'ps_7_3_x_win_2022'
+    vmImage: ${{ parameters.img_windows_2022 }}
     osType: 'Windows'
     psVersion: ${{ parameters.ps_7_3_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_7 }}
