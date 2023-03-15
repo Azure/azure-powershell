@@ -8,6 +8,9 @@
     "kustoSkuName": {
       "value": "Standard_E2a_v4"
     },
+    "kustoClusterTier": {
+      "value": "Basic"
+    },
     "kustoClusterName": {
       "value": "pssdkzgp6lk"
     },

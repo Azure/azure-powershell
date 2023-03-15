@@ -14,6 +14,12 @@
                 "description": "<KUSTO SKU NAME>"
             }
         },
+        "kustoClusterTier": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO CLUSTER TIER>"
+            }
+        },
         "kustoClusterName": {
             "type": "string",
             "metadata": {
@@ -119,7 +125,7 @@
             "location": "[resourceGroup().location]",
             "sku": {
                 "name": "[parameters('kustoSkuName')]",
-                "tier": "Standard",
+                "tier": "[parameters('kustoClusterTier')]",
                 "capacity": 2
             },
             "identity": {
@@ -172,7 +178,7 @@
             "location": "[resourceGroup().location]",
             "sku": {
                 "name": "[parameters('kustoSkuName')]",
-                "tier": "Standard",
+                "tier": "[parameters('kustoClusterTier')]",
                 "capacity": 2
             },
             "identity": {
