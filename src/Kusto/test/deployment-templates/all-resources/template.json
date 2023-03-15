@@ -126,7 +126,7 @@
             "sku": {
                 "name": "[parameters('kustoSkuName')]",
                 "tier": "[parameters('kustoClusterTier')]",
-                "capacity": 2
+                "capacity": 1
             },
             "identity": {
                 "type": "SystemAssigned"
@@ -179,7 +179,7 @@
             "sku": {
                 "name": "[parameters('kustoSkuName')]",
                 "tier": "[parameters('kustoClusterTier')]",
-                "capacity": 2
+                "capacity": 1
             },
             "identity": {
                 "type": "SystemAssigned"
