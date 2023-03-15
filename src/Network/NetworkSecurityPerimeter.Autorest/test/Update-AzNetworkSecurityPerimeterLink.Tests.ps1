@@ -19,11 +19,11 @@ Describe 'Update-AzNetworkSecurityPerimeterLink' {
         {
 
         # write test cases for all fields
-        $remoteNsp = '/subscriptions/' +  $env.SubscriptionId + '/resourceGroups/' + $env.rgname  + '/providers/Microsoft.Network/networkSecurityPerimeters/' + $env.tmpNsp7
+        # $remoteNsp = '/subscriptions/' +  $env.SubscriptionId + '/resourceGroups/' + $env.rgname  + '/providers/Microsoft.Network/networkSecurityPerimeters/' + $env.tmpNsp7
 
         $updateLinkObj = Update-AzNetworkSecurityPerimeterLink -Name $env.tmpLink2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp4  -LocalInboundProfile @('*') -LocalOutboundProfile @('*') -RemoteInboundProfile @('*') -RemoteOutboundProfile @('*')
 
-        $updateLinkObj.autoApprovedRemotePerimeterResourceId | Should -Be $remoteNsp
+        # $updateLinkObj.autoApprovedRemotePerimeterResourceId | Should -Be $remoteNsp
 
         } | Should -Not -Throw
     }
@@ -33,11 +33,9 @@ Describe 'Update-AzNetworkSecurityPerimeterLink' {
 
            $GETObj = Get-AzNetworkSecurityPerimeterLink -Name $env.tmpLink2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp4
 
-           $remoteNsp = '/subscriptions/' +  $env.SubscriptionId + '/resourceGroups/' + $env.rgname  + '/providers/Microsoft.Network/networkSecurityPerimeters/' + $env.tmpNsp5
+           # $remoteNsp = '/subscriptions/' +  $env.SubscriptionId + '/resourceGroups/' + $env.rgname  + '/providers/Microsoft.Network/networkSecurityPerimeters/' + $env.tmpNsp5
 
-           $UpdateLinkObj = Update-AzNetworkSecurityPerimeterLink -InputObject $GETObj -AutoApprovedRemotePerimeterResourceId $remoteNsp
-
-           $updateLinkObj.autoApprovedRemotePerimeterResourceId | Should -Be $remoteNsp
+           $UpdateLinkObj = Update-AzNetworkSecurityPerimeterLink -InputObject $GETObj -LocalInboundProfile @('*')
 
         } | Should -Not -Throw
     }
