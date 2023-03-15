@@ -25,6 +25,7 @@
 * Added new descriptive and versioned alias names for the Linux image aliases.
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
 * Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
+* Updated `Set-AzVMDiagnosticsExtension` to correct capitalization by passing "StorageAccount" as configuration property instead of "storageAccount".
 
 ## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.
