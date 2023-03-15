@@ -12,9 +12,9 @@ This module allows you to create an interactive shell connection to Azure Resour
 
 ## Az.Ssh Cmdlets
 ### [Enter-AzVM](Enter-AzVM.md)
-This cmdlet starts interactive SSH session to an Azure Resource.
+Starts an interactive SSH session to an Azure Resource (such as Azure VMs or Arc Servers).
+Users can login using AAD accounts, or local user accounts via standard SSH authentication. Use AAD account login for the best security and convenience.
 
 ### [Export-AzSshConfig](Export-AzSshConfig.md)
-This cmdlet exports an SSH configuration file that can be used to connect to Azure Resources through clients that support OpenSSH config and certificates.
-
+This cmdlet exports an SSH configuration file that can be used to connect to Azure Resources through client applications that support OpenSSH config and certificates. SSH config files can be created that use AAD issued certificates or local user credentials.
 

@@ -32,7 +32,7 @@ Remove-AzIotHubCertificate [-ResourceId] <String> [-Etag] <String> [-PassThru]
 ```
 
 ## DESCRIPTION
-For a detailed explanation of CA certificates in Azure IoT Hub, see https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
+For a detailed explanation of CA certificates in Azure IoT Hub, see https://learn.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview
 
 ## EXAMPLES
 

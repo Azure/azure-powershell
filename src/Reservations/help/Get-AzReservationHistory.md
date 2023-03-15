@@ -47,7 +47,8 @@ Some data might be trucated due to the width of powershell view, appending this 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationId
-Id of the Reservation Item
+Id of the reservation item
 
 ```yaml
 Type: System.String
@@ -98,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 
 ## NOTES
 

@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
         /// <summary>
         /// Defines Component definition details.
-        /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+        /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionComponentSpec ComponentSpec { get => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionPropertiesInternal)Property).ComponentSpec; set => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionPropertiesInternal)Property).ComponentSpec = value ?? null /* model class */; }
@@ -143,13 +143,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
     {
         /// <summary>
         /// Defines Component definition details.
-        /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+        /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"Defines Component definition details.
-        <see href=""https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command"" />",
+        <see href=""https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command"" />",
         SerializedName = @"componentSpec",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionComponentSpec) })]
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionComponentSpec ComponentSpec { get; set; }
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
     {
         /// <summary>
         /// Defines Component definition details.
-        /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+        /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentVersionComponentSpec ComponentSpec { get; set; }
         /// <summary>The asset description text.</summary>

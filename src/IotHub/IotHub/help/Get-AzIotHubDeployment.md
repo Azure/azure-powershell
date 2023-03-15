@@ -32,7 +32,7 @@ Get-AzIotHubDeployment [-ResourceId] <String> [-Name <String>] [-DefaultProfile 
 
 ## DESCRIPTION
 Get the details of an IoT Edge deployment or List IoT Edge deployments in an IoT Hub.
-See https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
+See https://learn.microsoft.com/azure/iot-edge/module-deployment-monitoring for more information.
 
 ## EXAMPLES
 

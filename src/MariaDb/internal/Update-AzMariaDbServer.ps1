@@ -73,7 +73,7 @@ PARAMETER <IServerUpdateParameters>: Parameters allowed to update for a server.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: The version of a server.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/update-azmariadbserver
 #>
 function Update-AzMariaDbServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]

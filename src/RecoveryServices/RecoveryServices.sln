@@ -54,6 +54,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup.Man
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup.CrossRegionRestore.Management.Sdk", "RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj", "{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.SiteRecovery.Management.Sdk", "RecoveryServices.SiteRecovery.Management.Sdk\RecoveryServices.SiteRecovery.Management.Sdk.csproj", "{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -160,6 +162,10 @@ Global
 		{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

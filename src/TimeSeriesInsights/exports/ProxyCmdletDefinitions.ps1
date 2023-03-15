@@ -57,7 +57,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsaccesspolicy
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsaccesspolicy
 #>
 function Get-AzTimeSeriesInsightsAccessPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource])]
@@ -320,7 +320,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsenvironment
 #>
 function Get-AzTimeSeriesInsightsEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
@@ -552,7 +552,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightseventsource
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightseventsource
 #>
 function Get-AzTimeSeriesInsightsEventSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
@@ -741,7 +741,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsreferencedataset
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsreferencedataset
 #>
 function Get-AzTimeSeriesInsightsReferenceDataSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]
@@ -901,7 +901,7 @@ policy001 Microsoft.TimeSeriesInsights/Environments/AccessPolicies
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsaccesspolicy
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsaccesspolicy
 #>
 function New-AzTimeSeriesInsightsAccessPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource])]
@@ -1077,7 +1077,7 @@ KEYPROPERTY <IReferenceDataSetKeyProperty[]>: The list of key properties for the
   [Name <String>]: The name of the key property.
   [Type <ReferenceDataKeyPropertyType?>]: The type of the key property.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsreferencedataset
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsreferencedataset
 #>
 function New-AzTimeSeriesInsightsReferenceDataSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]
@@ -1270,7 +1270,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsaccesspolicy
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsaccesspolicy
 #>
 function Remove-AzTimeSeriesInsightsAccessPolicy {
 [OutputType([System.Boolean])]
@@ -1448,7 +1448,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsenvironment
 #>
 function Remove-AzTimeSeriesInsightsEnvironment {
 [OutputType([System.Boolean])]
@@ -1620,7 +1620,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightseventsource
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightseventsource
 #>
 function Remove-AzTimeSeriesInsightsEventSource {
 [OutputType([System.Boolean])]
@@ -1798,7 +1798,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsreferencedataset
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/remove-aztimeseriesinsightsreferencedataset
 #>
 function Remove-AzTimeSeriesInsightsReferenceDataSet {
 [OutputType([System.Boolean])]
@@ -1982,7 +1982,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsaccesspolicy
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsaccesspolicy
 #>
 function Update-AzTimeSeriesInsightsAccessPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IAccessPolicyResource])]
@@ -2209,7 +2209,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsenvironment
 #>
 function Update-AzTimeSeriesInsightsEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
@@ -2416,7 +2416,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightseventsource
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightseventsource
 #>
 function Update-AzTimeSeriesInsightsEventSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]
@@ -2601,7 +2601,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsreferencedataset
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/update-aztimeseriesinsightsreferencedataset
 #>
 function Update-AzTimeSeriesInsightsReferenceDataSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]
@@ -2785,7 +2785,7 @@ TIMESERIESIDPROPERTY <ITimeSeriesIdProperty[]>: The list of event properties whi
   [Name <String>]: The name of the property.
   [Type <PropertyType?>]: The type of the property.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
@@ -3031,7 +3031,7 @@ eastus   iots001 Microsoft.TimeSeriesInsights/Environments/EventSources Microsof
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightseventsource
 #>
 function New-AzTimeSeriesInsightsEventSource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource])]

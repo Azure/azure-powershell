@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.9.0
 * Fixed `New-AzSubscriptionAlias` cmdlet to make the Workload parameter mandatory.
 
 ## Version 0.8.1

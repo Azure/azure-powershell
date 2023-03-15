@@ -1,5 +1,5 @@
 # Common Assemblies
-It is common scenario that 2 different modules take dependency on different versions of one assembly. It won't be big issue for Windows PowerShell as .NET Framework allows to load different versions of one assembly into one process. However, .NET Core and .NET 5+ do not allow to load 2 different versions of one assembly into the same [AssemblyLoadContext](https://docs.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext).
+It is common scenario that 2 different modules take dependency on different versions of one assembly. It won't be big issue for Windows PowerShell as .NET Framework allows to load different versions of one assembly into one process. However, .NET Core and .NET 5+ do not allow to load 2 different versions of one assembly into the same [AssemblyLoadContext](https://learn.microsoft.com/en-us/dotnet/api/system.runtime.loader.assemblyloadcontext).
 
 As a platform, PowerShell allows user to import modules on demand. Modules may probably share the same dependency but with different versions. Assembly conflict is a common problem in PowerShell. Although Azure PowerShell cannot resolve it completely, we introduce techniques across modules of Azure PowerShell to mitigate this problem. The idea come from [Resolving PowerShell Module Assembly Dependency Conflicts](https://devblogs.microsoft.com/powershell/resolving-powershell-module-assembly-dependency-conflicts/)
 
@@ -13,7 +13,7 @@ Service modules of Azure PowerShell also can create their own assembly load cont
 ## Windows PowerShell with .NET Framework
 The major problem on Windows PowerShell is required assembly may not be offered by Windows PowerShell or .NET Framework. `Az.Accounts` registers a handler in `CustomAssemblyResolver` to handle event that required assembly could not be resolved. It means target assembly cannot be found from the probing path of .NET Framework or Windows PowerShell. Then, resolver compares expected version and loads target from directory `/lib` in `Az.Accounts` (`src/lib/` in source code) if major version is the same. Here, we assume there is no breaking change across minor or patch versions, but it cannot be guaranteed.
 
-For further reading, please visit https://docs.microsoft.com/en-us/dotnet/standard/assembly/resolve-loads#how-the-assemblyresolve-event-works
+For further reading, please visit https://learn.microsoft.com/en-us/dotnet/standard/assembly/resolve-loads#how-the-assemblyresolve-event-works
 
 ## Example: How to upgrade `Azure.Core`
 `Azure.Core` is a common library used by management plane and data plane track 2 SDKs. Below are the steps to upgrade its version.
@@ -61,4 +61,4 @@ We recommend [ILSpy](https://github.com/icsharpcode/ILSpy).
 ### How to get detailed information for assembly binds?
 PowerShell normally shows brief information when required assembly cannot be found or loaded. Assembly Binding Log Viewer can help to display details. This tool is installed with Visual Studio together. You need to run `Visual Studio Developer PowerShell` with administrator privileges and execute `fuslogvw` to invoke this tool.
 
-For more information, please reference https://docs.microsoft.com/en-us/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer
+For more information, please reference https://learn.microsoft.com/en-us/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer

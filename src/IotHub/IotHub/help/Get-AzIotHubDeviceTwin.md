@@ -31,7 +31,7 @@ Get-AzIotHubDeviceTwin [-ResourceId] <String> [-DeviceId] <String> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Gets a device twin. See https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins for more information.
+Gets a device twin. See https://learn.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins for more information.
 
 ## EXAMPLES
 

@@ -31,5 +31,6 @@ namespace Microsoft.Azure.Commands.Shared.Config
         public const string EnableTestCoverage = "EnableTestCoverage";
         public const string EnableLoginByWam = "EnableLoginByWam";
         public const string TestCoverageLocation = "TestCoverageLocation";
+        public const string DisplayRegionIdentified = "DisplayRegionIdentified";
     }
 }

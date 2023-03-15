@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azuserassignedidentity
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/set-azuserassignedidentity
 #>
 function Set-AzUserAssignedIdentity {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20181130.IIdentity])]

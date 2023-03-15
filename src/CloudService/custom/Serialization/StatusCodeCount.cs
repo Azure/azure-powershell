@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Json;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301
+namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904
 {
     public partial class StatusCodeCount
     {

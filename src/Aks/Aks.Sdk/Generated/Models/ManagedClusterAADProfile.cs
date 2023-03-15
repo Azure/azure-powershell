@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     /// <remarks>
     /// For more details see [managed AAD on
-    /// AKS](https://docs.microsoft.com/azure/aks/managed-aad).
+    /// AKS](https://learn.microsoft.com/azure/aks/managed-aad).
     /// </remarks>
     public partial class ManagedClusterAADProfile
     {

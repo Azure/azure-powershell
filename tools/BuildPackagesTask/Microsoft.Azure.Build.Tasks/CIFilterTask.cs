@@ -70,7 +70,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private const string BUILD_PHASE = "build";
         private const string TEST_PHASE = "test";
-        private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "breaking-change", "help-example", "help", "dependency", "signature", "file-change", "ux", "cmdlet-diff" };
+        private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "breaking-change", "help-example", "help", "dependency", "signature", "file-change", "ux" };
+        private readonly List<string> ONLY_AFFECT_MODULE_PHASE_LIST = new List<string>() { "cmdlet-diff" }; // These phases will be triggered only when the module is modified, not when its dependent module is updated.
         private const string ACCOUNT_MODULE_NAME = "Accounts";
 
         private const string MODULE_NAME_PLACEHOLDER = "ModuleName";
@@ -172,8 +173,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
-            return GetRelatedCsprojList(moduleName, csprojMap)
+            List<string> csprojList = GetRelatedCsprojList(moduleName, csprojMap)
                 .Where(x => x.Contains("Test")).ToList();
+            if (csprojList.Count == 0)
+            {
+                csprojList.Add(moduleName);
+            }
+            return csprojList;
         }
 
         private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
@@ -247,7 +253,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     string phaseName = phase.Split(':')[0];
                     string scope = phase.Split(':')[1];
                     HashSet<string> scopes = influencedModuleInfo.ContainsKey(phaseName) ? influencedModuleInfo[phaseName] : new HashSet<string>();
-                    if (scope.Equals(AllModule))
+                    if (scope.Equals(AllModule) && !ONLY_AFFECT_MODULE_PHASE_LIST.Contains(phaseName))
                     {
                         scopes.UnionWith(GetSelectedModuleList());
                     }
@@ -405,12 +411,17 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
             }
             File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
+            influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
             return true;
         }
 
         private string GetModuleNameFromPath(string path)
         {
+            if (path.IndexOf(".csproj") == -1)
+            {
+                return path;
+            }
             if (path.IndexOf("src") == -1)
             {
                 return null;

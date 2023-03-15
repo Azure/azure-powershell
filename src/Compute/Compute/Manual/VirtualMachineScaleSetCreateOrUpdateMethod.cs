@@ -217,9 +217,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
-            HelpMessage = "Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://docs.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://docs.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.")]
+            HelpMessage = "Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.")]
         [PSArgumentCompleter("SCSI", "NVMe")]
         public string DiskControllerType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -414,7 +420,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
                     imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
                     auxAuthHeader: auxAuthHeader,
-                    diskControllerType: _cmdlet.DiskControllerType
+                    diskControllerType: _cmdlet.DiskControllerType,
+                    sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null
                     );
             }
 

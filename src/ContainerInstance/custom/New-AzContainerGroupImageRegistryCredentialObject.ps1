@@ -22,7 +22,7 @@ Create a in-memory object for ImageRegistryCredential
 https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 #>
 function New-AzContainerGroupImageRegistryCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ImageRegistryCredential')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,7 +41,7 @@ function New-AzContainerGroupImageRegistryCredentialObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.ImageRegistryCredential]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.ImageRegistryCredential]::New()
         if ($PSBoundParameters.ContainsKey('Password')) {
             $psTxt = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
         }

@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Sql.Database.Services;
+using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -25,6 +26,7 @@ using System.Management.Automation;
 using System.Collections;
 using System.Globalization;
 using System;
+using DatabaseKey = Microsoft.Azure.Management.Sql.Models.DatabaseKey;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
@@ -249,6 +251,41 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         public string PreferredEnclaveType { get; set; }
 
         /// <summary>
+        /// Switch parameter to control if database identity is to be assigned.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "Generate and assign an Azure Active Directory Identity for this database for use with key management services like Azure KeyVault.")]
+        public SwitchParameter AssignIdentity { get; set; }
+
+        /// <summary>
+        /// Database encryption protector
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The encryption protector key for SQL Database.")]
+        public string EncryptionProtector { get; set; }
+
+        /// <summary>
+        /// List of user assigned managed identities
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of user assigned identity for the SQL Database.")]
+        public string[] UserAssignedIdentityId { get; set; }
+
+        /// <summary>
+        /// List of Azure Key vault keys
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The list of AKV keys for the SQL Database.")]
+        public string[] KeyList { get; set; }
+
+        /// <summary>
+        /// Federated client id
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The federated client id for the SQL Database. It is used for cross tenant CMK scenario.")]
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -334,6 +371,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
                 PreferredEnclaveType = this.PreferredEnclaveType,
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
+                Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
+                EncryptionProtector = this.EncryptionProtector,
+                FederatedClientId = this.FederatedClientId
             };
 
             if (ParameterSetName == DtuDatabaseParameterSet)

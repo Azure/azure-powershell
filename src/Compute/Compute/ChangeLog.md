@@ -20,8 +20,19 @@
 
 -->
 ## Upcoming Release
+* Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
+* Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
+* Added new descriptive and versioned alias names for the Linux image aliases.
+* Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
+* Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
+* Updated `Set-AzVMDiagnosticsExtension` to correct capitalization by passing "StorageAccount" as configuration property instead of "storageAccount".
+
+## Version 5.5.0
 * Added breaking change message for `New-AzVmss`.
 * Added `-PerformancePlus` parameter to `New-AzDiskConfig`
+* Added 'MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
+* Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
+* Added `CompletionPercent` property to PSDisk object. 
 
 ## Version 5.4.0
 * Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 

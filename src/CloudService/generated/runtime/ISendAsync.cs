@@ -238,6 +238,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
         /// Clones an HttpRequestMessage (without the content)
         /// </summary>
         /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="requestUri"></param>
+        /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
         internal static HttpRequestMessage Clone(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {
@@ -252,9 +254,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
             {
                 clone.Properties.Add(prop);
             }
-            
+
             foreach (KeyValuePair<string, IEnumerable<string>> header in original.Headers)
-            {   
+            {
                 /*
                 **temporarily skip cloning telemetry related headers**
                 clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
@@ -264,7 +266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
                     clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
                 }
             }
-            
+
             return clone;
         }
 
@@ -272,6 +274,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
         /// Clones an HttpRequestMessage (including the content stream and content headers) 
         /// </summary>
         /// <param name="original">Original HttpRequestMessage (Will be diposed before returning)</param>
+        /// <param name="requestUri"></param>
+        /// <param name="method"></param>
         /// <returns>A clone of the HttpRequestMessage</returns>
         internal static async Task<HttpRequestMessage> CloneWithContent(this HttpRequestMessage original, System.Uri requestUri = null, System.Net.Http.HttpMethod method = null)
         {

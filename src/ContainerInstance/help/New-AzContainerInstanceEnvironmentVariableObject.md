@@ -102,7 +102,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.EnvironmentVariable
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.EnvironmentVariable
 
 ## NOTES
 

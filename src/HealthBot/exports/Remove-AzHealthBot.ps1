@@ -41,7 +41,7 @@ INPUTOBJECT <IHealthBotIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the Bot resource group in the user subscription.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.healthbot/remove-azhealthbot
+https://learn.microsoft.com/en-us/powershell/module/az.healthbot/remove-azhealthbot
 #>
 function Remove-AzHealthBot {
 [OutputType([System.Boolean])]
