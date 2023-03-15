@@ -1,15 +1,15 @@
 {
-  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2022-02-01+1": {
+  "[NoDescription]+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East US/checkNameAvailability?api-version=2022-12-29+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2022-02-01",
-      "Content": "{\r\n  \"name\": \"testclusterl3rxfo\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/providers/Microsoft.Kusto/locations/East%20US/checkNameAvailability?api-version=2022-12-29",
+      "Content": "{\r\n  \"name\": \"pssdks52kui\",\r\n  \"type\": \"Microsoft.Kusto/clusters\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "74" ]
+        "Content-Length": [ "68" ]
       }
     },
     "Response": {
@@ -17,21 +17,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "0526b073-5ad8-4372-8983-61f2e20cfe7b" ],
+        "x-ms-request-id": [ "a4f55347-fc8d-4d85-b713-7da7bdfdacd1" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-correlation-request-id": [ "503f104a-4302-495f-887d-3f6a39bb7142" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T164351Z:503f104a-4302-495f-887d-3f6a39bb7142" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-correlation-request-id": [ "ba39b54c-728e-4338-a948-9a9f434fd7a0" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20230312T220212Z:ba39b54c-728e-4338-a948-9a9f434fd7a0" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 20 Mar 2022 16:43:50 GMT" ]
+        "Date": [ "Sun, 12 Mar 2023 22:02:11 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "154" ],
+        "Content-Length": [ "142" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"testclusterl3rxfo\",\"nameAvailable\":false,\"message\":\"Name \u0027testclusterl3rxfo\u0027 with type Engine is already taken. Please specify a different name\"}",
+      "Content": "{\"name\":\"pssdks52kui\",\"nameAvailable\":false,\"message\":\"Name \u0027pssdks52kui\u0027 with type Engine is already taken. Please specify a different name\"}",
       "isContentBase64": false
     }
   }

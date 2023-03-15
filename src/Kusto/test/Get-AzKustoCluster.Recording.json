@@ -1,17 +1,17 @@
 {
-  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/Clusters/testclusterl3rxfo?api-version=2022-02-01+1": {
+  "[NoDescription]+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/Clusters/pssdks52kui?api-version=2022-12-29+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/Clusters/testclusterl3rxfo?api-version=2022-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/Clusters/pssdks52kui?api-version=2022-12-29",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "206" ],
-        "x-ms-client-request-id": [ "d6df9ada-ee72-4333-be67-499348966b54" ],
+        "x-ms-unique-id": [ "80" ],
+        "x-ms-client-request-id": [ "d9e1f631-8ec3-41f6-928d-42053e26a971" ],
         "CommandName": [ "Get-AzKustoCluster" ],
         "FullCommandName": [ "Get-AzKustoCluster_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.Kusto/0.1.4" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,38 +22,38 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"2022-03-20T15:24:01.2553658Z\"" ],
-        "x-ms-request-id": [ "a5c87c0a-c63d-486e-aee6-3482bdb61bc9" ],
+        "ETag": [ "\"2023-03-12T19:03:04.7771395Z\"" ],
+        "x-ms-request-id": [ "13d3b82d-dbfd-4fe2-bac5-9227b0f6735c" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "08515069-535d-43fa-9bfa-b16dc4940bab" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152411Z:08515069-535d-43fa-9bfa-b16dc4940bab" ],
+        "x-ms-correlation-request-id": [ "eaeadca0-391a-4b55-87ee-e8a951d23fe2" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20230312T190319Z:eaeadca0-391a-4b55-87ee-e8a951d23fe2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 20 Mar 2022 15:24:11 GMT" ]
+        "Date": [ "Sun, 12 Mar 2023 19:03:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1165" ],
+        "Content-Length": [ "2009" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/Clusters/testclusterl3rxfo\",\"name\":\"testclusterl3rxfo\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2022-03-20T15:24:01.2553658Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testclusterl3rxfo.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testclusterl3rxfo.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[{\"languageExtensionName\":\"PYTHON\"},{\"languageExtensionName\":\"R\"}]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[],\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/Clusters/pssdks52kui\",\"name\":\"pssdks52kui\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2023-03-12T19:03:04.7771395Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_E2a_v4\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://pssdks52kui.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-pssdks52kui.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[{\"languageExtensionName\":\"R\",\"languageExtensionImageName\":\"R\"},{\"languageExtensionName\":\"PYTHON\",\"languageExtensionImageName\":\"Python3_6_5\"}]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[{\"name\":\"pes52kui-4e1cf918-c2f6-4e77-9eb4-48b3e55a99dd\",\"type\":\"Microsoft.Kusto/Clusters/privateEndpointConnections\",\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/Clusters/pssdks52kui/privateEndpointConnections/pes52kui-4e1cf918-c2f6-4e77-9eb4-48b3e55a99dd\",\"properties\":{\"provisioningState\":\"Succeeded\",\"groupId\":\"cluster\",\"privateEndpoint\":{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Network/privateEndpoints/pes52kui\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"\",\"actionsRequired\":\"None\"}}}],\"provisioningState\":\"Succeeded\"},\"identity\":{\"principalId\":\"56ac19ad-3024-4afd-97c9-506bcc725e21\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"}}",
       "isContentBase64": false
     }
   },
-  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/clusters?api-version=2022-02-01+1": {
+  "[NoDescription]+[NoContext]+List+$GET+https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/clusters?api-version=2022-12-29+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/clusters?api-version=2022-02-01",
+      "RequestUri": "https://management.azure.com/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/clusters?api-version=2022-12-29",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "207" ],
-        "x-ms-client-request-id": [ "1e5f5db3-bc30-4f1c-b3e7-0ea45b90f555" ],
+        "x-ms-unique-id": [ "81" ],
+        "x-ms-client-request-id": [ "b73b3f15-4734-4d4d-b910-48c8a7d6893b" ],
         "CommandName": [ "Get-AzKustoCluster" ],
         "FullCommandName": [ "Get-AzKustoCluster_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.1", "Az.Kusto/0.1.4" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.Kusto/0.1.4" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -64,21 +64,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "c7dde725-3ec9-4272-9c2b-15d47a4015ca" ],
+        "x-ms-request-id": [ "e160e587-8667-4dce-ad74-757484c5c73e" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "298" ],
-        "x-ms-correlation-request-id": [ "da84d445-3ed4-46f8-bfd8-a107dc330f52" ],
-        "x-ms-routing-request-id": [ "UAECENTRAL:20220320T152412Z:da84d445-3ed4-46f8-bfd8-a107dc330f52" ],
+        "x-ms-correlation-request-id": [ "290ee788-4357-4c92-8224-65088a483224" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20230312T190319Z:290ee788-4357-4c92-8224-65088a483224" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 20 Mar 2022 15:24:12 GMT" ]
+        "Date": [ "Sun, 12 Mar 2023 19:03:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "3385" ],
+        "Content-Length": [ "3257" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/Clusters/testclusterl3rxfo\",\"name\":\"testclusterl3rxfo\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2022-03-20T15:24:01.2553658Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testclusterl3rxfo.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testclusterl3rxfo.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[{\"languageExtensionName\":\"PYTHON\"},{\"languageExtensionName\":\"R\"}]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/Clusters/testfcluster6yb8x9\",\"name\":\"testfcluster6yb8x9\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2022-03-20T14:20:02.6224428Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testfcluster6yb8x9.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testfcluster6yb8x9.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[],\"provisioningState\":\"Succeeded\"}},{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/testgroupl3rxfo/providers/Microsoft.Kusto/Clusters/testclustertzpwcd\",\"name\":\"testclustertzpwcd\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2022-03-20T14:34:31.0794321Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_D11_v2\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://testclustertzpwcd.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-testclustertzpwcd.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[],\"provisioningState\":\"Succeeded\"}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/Clusters/pssdks52kui\",\"name\":\"pssdks52kui\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2023-03-12T19:03:04.7771395Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_E2a_v4\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://pssdks52kui.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-pssdks52kui.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[{\"languageExtensionName\":\"R\",\"languageExtensionImageName\":\"R\"},{\"languageExtensionName\":\"PYTHON\",\"languageExtensionImageName\":\"Python3_6_5\"}]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[{\"name\":\"pes52kui-4e1cf918-c2f6-4e77-9eb4-48b3e55a99dd\",\"type\":\"Microsoft.Kusto/Clusters/privateEndpointConnections\",\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/Clusters/pssdks52kui/privateEndpointConnections/pes52kui-4e1cf918-c2f6-4e77-9eb4-48b3e55a99dd\",\"properties\":{\"provisioningState\":\"Succeeded\",\"groupId\":\"cluster\",\"privateEndpoint\":{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Network/privateEndpoints/pes52kui\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"\",\"actionsRequired\":\"None\"}}}],\"provisioningState\":\"Succeeded\"},\"identity\":{\"principalId\":\"56ac19ad-3024-4afd-97c9-506bcc725e21\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"}},{\"id\":\"/subscriptions/e8257c73-24c5-4791-94dc-8b7901c90dbf/resourceGroups/PS-SDK-s52kui/providers/Microsoft.Kusto/Clusters/ssdkfollows52kui\",\"name\":\"ssdkfollows52kui\",\"type\":\"Microsoft.Kusto/Clusters\",\"etag\":\"\\\"2023-03-12T19:03:04.7771395Z\\\"\",\"location\":\"East US\",\"sku\":{\"name\":\"Standard_E2a_v4\",\"tier\":\"Standard\",\"capacity\":2},\"tags\":{},\"properties\":{\"state\":\"Running\",\"stateReason\":null,\"uri\":\"https://ssdkfollows52kui.eastus.kusto.windows.net\",\"dataIngestionUri\":\"https://ingest-ssdkfollows52kui.eastus.kusto.windows.net\",\"trustedExternalTenants\":[],\"virtualNetworkConfiguration\":null,\"optimizedAutoscale\":null,\"enableDiskEncryption\":false,\"enableStreamingIngest\":false,\"keyVaultProperties\":null,\"languageExtensions\":{\"value\":[]},\"enablePurge\":null,\"enableDoubleEncryption\":false,\"engineType\":\"V3\",\"acceptedAudiences\":[],\"restrictOutboundNetworkAccess\":\"Disabled\",\"allowedFqdnList\":[],\"publicNetworkAccess\":\"Enabled\",\"allowedIpRangeList\":[],\"enableAutoStop\":true,\"publicIPType\":\"IPv4\",\"virtualClusterGraduationProperties\":null,\"privateEndpointConnections\":[],\"provisioningState\":\"Succeeded\"},\"identity\":{\"principalId\":\"72b65fa4-b545-49d2-bf7f-105b9dbe61ca\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"type\":\"SystemAssigned\"}}]}",
       "isContentBase64": false
     }
   }
