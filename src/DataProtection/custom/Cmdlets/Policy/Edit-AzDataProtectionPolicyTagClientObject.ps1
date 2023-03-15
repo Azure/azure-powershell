@@ -47,7 +47,7 @@
 
         $parameterSetName = $PsCmdlet.ParameterSetName
         $backupRuleIndex = -1
-        foreach($index in (0..$Policy.PolicyRule.Length))
+        foreach($index in (0..$Policy.PolicyRule.Count))
         {
             if($Policy.PolicyRule[$index].ObjectType -eq "AzureBackupRule")
             {
