@@ -25,8 +25,10 @@ Retrieves the latest restorable timestamp for a gremlin graph. This is the lates
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBGremlinGraphBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-gremlin-stage-source -DatabaseName TestDB1 -Name TestGraphInDB1 -Location "EAST US 2"
+Get-AzCosmosDBGremlinGraphBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-gremlin-stage-source -DatabaseName TestDB1 -Name TestGraphInDB1 -Location "EAST US 2"
+```
 
+```output
 LatestRestorableTimestamp
 -------------------------
 1623042210

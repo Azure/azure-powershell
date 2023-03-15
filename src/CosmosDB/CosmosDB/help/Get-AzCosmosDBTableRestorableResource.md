@@ -36,8 +36,10 @@ The user can also use this list and provide a subset of restorable resources if 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBTableRestorableResource -Location {location} -DatabaseAccountInstanceId {DatabaseInstanceId} -RestoreLocation {RestoreLocation} -RestoreTimestampInUtc {RestoreTimestamp}
+Get-AzCosmosDBTableRestorableResource -Location "location" -DatabaseAccountInstanceId "DatabaseInstanceId" -RestoreLocation "RestoreLocation" -RestoreTimestampInUtc "RestoreTimestamp"
+```
 
+```output
 TableNames
 ----------
 {table1, table2}

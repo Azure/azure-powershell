@@ -24,8 +24,10 @@ Creates a new CosmosDB GremlinDatabaseToRestore object(PSGremlinDatabaseToRestor
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName database1 -GraphName graph1,graph2,graph3
+New-AzCosmosDBGremlinDatabaseToRestore -DatabaseName database1 -GraphName graph1,graph2,graph3
+```
 
+```output
 DatabaseName GraphNames
 ------------ ---------------
 database1    {graph1, graph2, graph3}

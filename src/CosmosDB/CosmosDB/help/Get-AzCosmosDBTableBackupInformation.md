@@ -24,8 +24,10 @@ Retrieves the latest restorable timestamp for a table. This is the latest timest
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDBTableBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-table-stage-source -Name TestTable1 -Location "EAST US 2"
+Get-AzCosmosDBTableBackupInformation -ResourceGroupName CosmosDBResourceGroup3668 -AccountName pitr-table-stage-source -Name TestTable1 -Location "EAST US 2"
+```
 
+```output
 LatestRestorableTimestamp
 -------------------------
 1623032210

@@ -24,8 +24,10 @@ Creates a new CosmosDB TableToRestore object(PSTableToRestore). This returned ob
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBTableToRestore -TableName table1,table2,table3
+New-AzCosmosDBTableToRestore -TableName table1,table2,table3
+```
 
+```output
 TableNames
 ---------------
 {table1, table2, table3}
