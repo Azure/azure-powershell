@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Lists Network security perimeter links
+
 ```powershell
-{{ Add code here }}
+ Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     t-link1
 ```
 
-{{ Add description here }}
+Lists Network security perimeter links
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a Network security perimeter link
+
 ```powershell
-{{ Add code here }}
+ Get-AzNetworkSecurityPerimeterLink -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp2 -Name t-link1
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     t-link1
 ```
 
-{{ Add description here }}
-
+Get a Network security perimeter link

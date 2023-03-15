@@ -1,22 +1,23 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove network security perimeter link
 ```powershell
-{{ Add code here }}
+Remove-AzNetworkSecurityPerimeterLink -Name t-linkD3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp8
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
+Remove network security perimeter link
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove network security perimeter link via identity
+
 ```powershell
-{{ Add code here }}
+$linkObj = Get-AzNetworkSecurityPerimeterLink -Name t-linkD4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp10
+Remove-AzNetworkSecurityPerimeterLink -InputObject $linkObj
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
+Remove network security perimeter link via identity

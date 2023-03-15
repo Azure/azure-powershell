@@ -1,22 +1,30 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update network security perimeter link
+
 ```powershell
-{{ Add code here }}
+Update-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4  -LocalInboundProfile @('*') -LocalOutboundProfile @('*') -RemoteInboundProfile @('*') -RemoteOutboundProfile @('*')
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     t-link2
 ```
 
-{{ Add description here }}
+Update network security perimeter link
 
-### Example 2: {{ Add title here }}
+### Example 2: Update network security perimeter link via identity
+
 ```powershell
-{{ Add code here }}
+$getLinkObj = Get-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4
+
+Update-AzNetworkSecurityPerimeterLink -InputObject $getLinkObj -LocalInboundProfile @('*')
+
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     t-link2
 ```
 
-{{ Add description here }}
-
+Update network security perimeter link via identity
