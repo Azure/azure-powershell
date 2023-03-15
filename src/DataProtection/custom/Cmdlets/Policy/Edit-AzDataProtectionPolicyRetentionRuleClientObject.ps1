@@ -44,7 +44,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
 
         if($parameterSetName -eq "AddRetention"){
             $retentionPolicyIndex = -1
-            Foreach($index in (1..$Policy.PolicyRule.Length)){
+            Foreach($index in (1..$Policy.PolicyRule.Count)){
                 if($Policy.PolicyRule[$index].Name -eq $Name){
                     $retentionPolicyIndex = $index
                 }

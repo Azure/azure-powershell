@@ -65,7 +65,7 @@ Describe 'Unregister-AzWvdApplicationGroup' {
         $workspace = Get-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                         -ResourceGroupName $env.ResourceGroup `
                                         -Name 'WorkspacePowershell1'
-            $workspace.ApplicationGroupReference.length | Should -Be 0
+            $workspace.ApplicationGroupReference.Count | Should -Be 0
 
         $applicationGroup = Remove-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
