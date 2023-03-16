@@ -36,8 +36,8 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-#  - https://github.com/kaushal087/azure-rest-api-specs/blob/1512948c408e94d3d2ab17e701a73d24c128b4a6/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
-  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
+  - https://github.com/kaushal087/azure-rest-api-specs/blob/f302a4c493c630ccd8e790fa078fbe6bbf41caad/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
+#  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
