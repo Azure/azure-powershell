@@ -50,6 +50,12 @@ function setupEnv() {
     $env.DiscoverSVI = "Y00"
     $env.DiscoverRG = "yb-bugBash"
     $env.CentralServerVmId = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/yb-bugBash/providers/Microsoft.Compute/virtualMachines/y00vm"
+    $env.DeletionRG = "AH9-vis-hana"
+    $env.DeletionVIS = "A26"
+    $env.DeletionVISID = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A27"
+    $env.DeletionVISAppID = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A27/applicationInstances/app0"
+    $env.DeletionVISCsID = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A27/centralInstances/cs0"
+    $env.DeletionVISDbID = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A27/databaseInstances/db0"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
