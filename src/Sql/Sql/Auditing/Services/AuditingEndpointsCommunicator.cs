@@ -118,8 +118,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             string serverName)
         {
             IServerDevOpsAuditSettingsOperations serverDevOpsAuditPolicies = GetCurrentSqlClient().ServerDevOpsAuditSettings;
-
-            return serverDevOpsAuditPolicies.Get(resourceGroupName, serverName);
+            return serverDevOpsAuditPolicies.Get(resourceGroupName, serverName, "");
         }
 
         public bool SetDevOpsAuditingPolicy(string resourceGroupName, string serverName,
@@ -129,10 +128,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             {
                 SqlManagementClient client = GetCurrentSqlClient();
                 IServerDevOpsAuditSettingsOperations serverDevOpsAuditSettings = client.ServerDevOpsAuditSettings;
+                ServerDevOpsAuditingSettings serverDevopsAuditingParameters = new ServerDevOpsAuditingSettings();
 
                 AzureOperationResponse<ServerDevOpsAuditingSettings> response =
                     serverDevOpsAuditSettings.BeginCreateOrUpdateWithHttpMessagesAsync(
-                        resourceGroupName, serverName, policy).Result;
+                        resourceGroupName, serverName, serverName, serverDevopsAuditingParameters).Result;
                 return client.GetLongRunningOperationResultAsync(response, null, CancellationToken.None).Result.Response.IsSuccessStatusCode;
             });
         }
