@@ -9,7 +9,7 @@ schema: 2.0.0
 # Restart-AzWebAppSlot
 
 ## SYNOPSIS
-
+Restarts an Azure Web App Slot.
 ## SYNTAX
 
 ### S1
