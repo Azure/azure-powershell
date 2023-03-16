@@ -974,7 +974,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             ModelizeAuditPolicy(model,
                 policy.State, policy.StorageEndpoint, null, policy.StorageAccountSubscriptionId,
-                policy.IsAzureMonitorTargetEnabled, null, null);
+                policy.IsAzureMonitorTargetEnabled, null, policy.IsManagedIdentityInUse);
         }
 
         protected override StorageKeyKind GetStorageKeyKind(ServerDevOpsAuditModel model)
