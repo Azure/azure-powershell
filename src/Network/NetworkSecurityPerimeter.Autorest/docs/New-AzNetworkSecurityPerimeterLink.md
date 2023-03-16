@@ -40,27 +40,37 @@ Creates or updates NSP link resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create network security perimeter link
+
 ```powershell
-{{ Add code here }}
+
+$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
+New-AzNetworkSecurityPerimeterLink -Name exlink3 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -LocalOutboundProfile @('*') -RemoteInboundProfile @('*') -RemoteOutboundProfile @('*')
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     exlink3
 ```
 
-{{ Add description here }}
+Create network security perimeter link
 
-### Example 2: {{ Add title here }}
+### Example 2: Create network security perimeter link
+
 ```powershell
-{{ Add code here }}
+$remoteNsp = "/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/psrg_ex/providers/Microsoft.Network/networkSecurityPerimeters/nsp7"
+New-AzNetworkSecurityPerimeterLink -Name exlink4 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -LocalOutboundProfile @('*') -RemoteInboundProfile @('*') -RemoteOutboundProfile @('*')
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     exlink4
 ```
 
-{{ Add description here }}
+Create network security perimeter link
+
 
 ## PARAMETERS
 

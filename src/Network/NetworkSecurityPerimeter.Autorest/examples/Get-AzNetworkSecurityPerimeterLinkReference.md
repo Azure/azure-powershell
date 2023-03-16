@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Lists network security link references
+
 ```powershell
-{{ Add code here }}
+Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
 ```
 
-{{ Add description here }}
+Lists network security link references
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets a network security link reference by name
+
 ```powershell
-{{ Add code here }}
+ Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp3 -Name Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
 ```
 
 ```output
-{{ Add output here }}
+Etag Name
+---- ----
+     Ref-from-t-link1-1738a5f3-78f8-4f1b-8f30-ffe0eaa74495
 ```
 
-{{ Add description here }}
-
+Gets a network security link reference by name

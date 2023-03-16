@@ -41,9 +41,3 @@ Describe 'Remove-AzNetworkSecurityPerimeterLinkReference' {
         } | Should -Not -Throw
     }
 }
-
-"""
-linkDelete3Name nsp8->9
-linkDelete4Name nsp10-11
-#/nsp2/linkReferences/Ref-from-link1-nsp1.pg
-"""
