@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using SDKModel = Microsoft.Azure.Management.CosmosDB.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -51,6 +52,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.PublicNetworkAccessHelpMessage)]
+        [PSArgumentCompleter(SDKModel.PublicNetworkAccess.Disabled, SDKModel.PublicNetworkAccess.Enabled)]
+        public string PublicNetworkAccess { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -171,7 +176,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 Kind = apiKind,
                 CreateMode = CreateMode.Restore,
-                RestoreParameters = restoreParameters.ToSDKModel()
+                RestoreParameters = restoreParameters.ToSDKModel(),
+                PublicNetworkAccess = PublicNetworkAccess
             };
 
             if (ShouldProcess(TargetDatabaseAccountName,
