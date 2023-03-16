@@ -9,6 +9,7 @@ schema: 2.0.0
 # Edit-AzWebAppBackupConfiguration
 
 ## SYNOPSIS
+Edits the current configuration backup for an Azure Web App
 
 ## SYNTAX
 
