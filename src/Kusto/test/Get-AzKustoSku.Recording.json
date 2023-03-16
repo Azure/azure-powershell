@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "035c5991-fcd8-428e-93d9-7930ee5a4b00" ],
+        "x-ms-unique-id": [ "152" ],
+        "x-ms-client-request-id": [ "49c57290-22ea-4cb2-97c8-184bac99f8e4" ],
         "CommandName": [ "Get-AzKustoSku" ],
         "FullCommandName": [ "Get-AzKustoSku_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,14 +22,14 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "4a1007fc-48fa-440a-a26a-ef0d03f12802" ],
+        "x-ms-request-id": [ "0837c181-fc69-4121-8424-02f538bb7aa9" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "299" ],
-        "x-ms-correlation-request-id": [ "76a8a988-f234-4baa-a76b-9f3c5e296fb7" ],
-        "x-ms-routing-request-id": [ "QATARCENTRAL:20230315T132842Z:76a8a988-f234-4baa-a76b-9f3c5e296fb7" ],
+        "x-ms-correlation-request-id": [ "d44f3d97-4455-48d1-ae81-222f635f2631" ],
+        "x-ms-routing-request-id": [ "FRANCESOUTH:20230315T181943Z:d44f3d97-4455-48d1-ae81-222f635f2631" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 15 Mar 2023 13:28:42 GMT" ]
+        "Date": [ "Wed, 15 Mar 2023 18:19:42 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "6644" ],

@@ -7,6 +7,12 @@ function RandomString([bool]$allChars, [int32]$len) {
 }
 $env = @{}
 function setupEnv() {
+    # If you want to record a single test do the following for exmple pwsh test-module.ps1 --Record --TestName Update-AzKustoDataConnection
+    # 1. comment cleanupEnv- you don't want clean up of the resource group
+    # 2. run playback and create the resources
+    # 3. comment all content of setupEnv, you want to reuse the resources.
+    # 4. leave only $env = Get-Content .\test\env.json | ConvertFrom-Json, to load the $env 
+    
     $env.subscriptionId = "e8257c73-24c5-4791-94dc-8b7901c90dbf" # Kusto_Dev_Kusto_Ilay_04_Test
     $env.location = 'East US'
     Write-Host "Setting up and connection to subcription " $env.SubscriptionId -ForegroundColor Green
@@ -42,9 +48,10 @@ function setupEnv() {
     Write-Host "Preparing parameters for ARM template deploymet" -ForegroundColor Green
     $params = Get-Content .\test\deployment-templates\all-resources\parameters.json | ConvertFrom-Json
     $params.parameters.kustoApiVersion.value = "2022-12-29"
-    $params.parameters.kustoSkuName.value = "Standard_E2a_v4"
+    $params.parameters.kustoSkuName.value = "Dev(No SLA)_Standard_E2a_v4"
+    $params.parameters.kustoClusterTier.value = "Basic"
     $params.parameters.kustoClusterName.value = "pssdk" + $rstr1
-    $params.parameters.kustoFollowerClusterName.value = "ssdkfollow" + $rstr1
+    $params.parameters.kustoFollowerClusterName.value = "pssdkfollow" + $rstr1
     $params.parameters.kustoDatabaseName.value = "TestDb"
     $params.parameters.kustoDatabaseScriptName.value = "CreateTableScript"
     $params.parameters.kustoTableName.value = "TestTable"
@@ -90,5 +97,6 @@ function setupEnv() {
 }
 
 function cleanupEnv() {
-   Remove-AzResourceGroup -Name $env.resourceGroupName
+    # If you want to keep the resources after recording - disable remove of RG
+    Remove-AzResourceGroup -Name $env.resourceGroupName
 }
