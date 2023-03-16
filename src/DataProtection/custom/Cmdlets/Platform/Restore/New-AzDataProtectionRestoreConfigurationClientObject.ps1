@@ -7,7 +7,7 @@ function New-AzDataProtectionRestoreConfigurationClientObject{
     param(
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
-        [ValidateSet('KubernetesService')]
+        [ValidateSet('AzureKubernetesService')]
         ${DatasourceType},
         
         [Parameter(Mandatory=$false, HelpMessage='List of resource types to be excluded for restore')]

@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a BackupConfiguration for configuring protection with AzureKubernetesService
 ```powershell
-{{ Add code here }}
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "key=val","foo=bar" -ExcludedNamespace "excludeNS1","excludeNS2"
 ```
 
 ```output
-{{ Add output here }}
+ObjectType                                  ExcludedNamespace        ExcludedResourceType IncludeClusterScopeResource IncludedNamespace IncludedResourceType LabelSelector      SnapshotVolume
+----------                                  -----------------        -------------------- --------------------------- ----------------- -------------------- -------------      --------------
+KubernetesClusterBackupDatasourceParameters {excludeNS1, excludeNS2}                      True                                                               {key=val, foo=bar} True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command can be used to create a backup configuration client object used for configuring backup for a Kubernetes cluster
 

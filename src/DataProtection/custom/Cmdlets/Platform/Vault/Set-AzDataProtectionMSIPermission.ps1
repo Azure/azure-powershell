@@ -1,7 +1,7 @@
 ﻿function Set-AzDataProtectionMSIPermission {
     [OutputType('System.Object')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact = 'High')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Grants required permissions to the backup vault and other resources for configure backup')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Grants required permissions to the backup vault and other resources for configure backup and restore scenarios')]
 
     param(
         [Parameter(ParameterSetName="SetPermissionsForBackup", Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
@@ -25,12 +25,6 @@
         [System.String]
         [ValidateSet("Resource","ResourceGroup","Subscription")]
         ${PermissionsScope},
-
-        # [Parameter(ParameterSetName="SetPermissionsForBackup", Mandatory=$false, HelpMessage='Type of operation for which the required permissions need to be set. Allowed values: Backup,  Restore.# Default value is Backup')]
-        # [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory=$false, HelpMessage='Type of operation for which the required permissions need to be set. Allowed values: Backup,  #Restore. Default value is Backup')]
-        # [System.String]
-        # [ValidateSet("Backup","Restore")]
-        # ${Operation},
 
         [Parameter(ParameterSetName="SetPermissionsForRestore", Mandatory, HelpMessage='Restore request object which will be used for restore')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest]
@@ -63,66 +57,19 @@
 
               $vault = Az.DataProtection\Get-AzDataProtectionBackupVault -VaultName $VaultName -ResourceGroupName $VaultResourceGroup -SubscriptionId $ResourceArray[2]
 
-              if($DatasourceType -ne "KubernetesService"){
+              if($DatasourceType -ne "AzureKubernetesService"){
                   $err = "Set permissions for restore is currently not supported for given DataSourceType"
                   throw $err
               }
-
-              foreach($Permission in $manifest.datasourcePermissions)
-              {
-                  # set context to the subscription where ObjectId is present
-                  $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
-
-                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
-
-                  if($CheckPermission -ne $null)
-                  {
-                      Write-Host "Required $($DatasourceType) permissions already assigned"
-                  }
-
-                  else
-                  {
-                      $MissingRolesInitially = $true
-                      Write-Host "Assigning $($Permission) permission to the backup vault"
-
-                      AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
-
-                      Write-Host "Assigned $($Permission) permission to the backup vault"
-                  }
-              }
-              
+                            
               if($SnapshotResourceGroupId -eq ""){
-                  $warning = "SnapshotResourceGroupId paramater is required to assign snapshot permissions, skipping"
+                  $warning = "SnapshotResourceGroupId parameter is required to assign permissions over snapshot resource group, skipping"
                   Write-Warning $warning
               }
               else{
-                  foreach($Permission in $manifest.snapshotRGPermissions)
-                  {
-                      $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
-
-                      # CSR: $SubscriptionName might be different when we add cross subscription restore
-                      $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $SnapshotResourceGroupId -or $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
-
-                      if($CheckPermission -ne $null)
-                      {
-                          Write-Host "Required snapshotRG permissions already assigned to the backup vault"
-                      }
-
-                      else
-                      {
-                          $MissingRolesInitially = $true
-
-                          Write-Host "Assigning $($Permission) permission to the backup vault"
-
-                          AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $SnapshotResourceGroupId -ResourceGroup $SnapshotResourceGroupId -Subscription $SubscriptionName
-  
-                          Write-Host "Assigned $($Permission) permission to the backup vault"
-                      }
-                  }
-                        
                   foreach($Permission in $manifest.dataSourceOverSnapshotRGPermissions)
                   {
-                      if($DatasourceType -eq "KubernetesService"){                  
+                      if($DatasourceType -eq "AzureKubernetesService"){                  
                           CheckAksModuleDependency
                                     
                           $aksCluster = Get-AzAksCluster -Id $RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId -SubscriptionId $subscriptionId
@@ -135,21 +82,64 @@
 
                       if($CheckPermission -ne $null)
                       {
-                          Write-Host "Required snapshot resource group permissions already assigned to target resource with Id $($RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId)"
+                          Write-Host "Required permission $($Permission) is already assigned to target resource with Id $($RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId) over snapshot resource group with Id $($SnapshotResourceGroupId)"
                       }
                       else
                       {
-                          # can add snapshotRG name in allow statement
+                          # can add snapshot resource group name in allow statement
                           if ($PSCmdlet.ShouldProcess("$($RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId)","Allow $($Permission) permission over snapshot resource group"))
                           {
                               $MissingRolesInitially = $true
-                              Write-Host "Assigning $($Permission) permission over snapshot resource group to target resource with Id $($RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId)"
-
+                              
                               AssignMissingRoles -ObjectId $dataSourceMSI -Permission $Permission -PermissionsScope $PermissionsScope -Resource $SnapshotResourceGroupId -ResourceGroup $SnapshotResourceGroupId -Subscription $SubscriptionName
   
-                              Write-Host "Assigned $($Permission) permission to target resource over snapshot resource group"
+                              Write-Host "Assigned $($Permission) permission to target resource with Id $($RestoreRequest.RestoreTargetInfo.DataSourceInfo.ResourceId) over snapshot resource group with Id $($SnapshotResourceGroupId)"
                           }
                       }
+                  }
+
+                  foreach($Permission in $manifest.snapshotRGPermissions)
+                  {
+                      $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
+
+                      # CSR: $SubscriptionName might be different when we add cross subscription restore
+                      $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $SnapshotResourceGroupId -or $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
+
+                      if($CheckPermission -ne $null)
+                      {
+                          Write-Host "Required permission $($Permission) is already assigned to backup vault over snapshot resource group with Id $($SnapshotResourceGroupId)"
+                      }
+
+                      else
+                      {
+                          $MissingRolesInitially = $true
+
+                          AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $SnapshotResourceGroupId -ResourceGroup $SnapshotResourceGroupId -Subscription $SubscriptionName
+  
+                          Write-Host "Assigned $($Permission) permission to the backup vault over snapshot resource group with Id $($SnapshotResourceGroupId)"
+                      }
+                  }
+              }
+
+              foreach($Permission in $manifest.datasourcePermissions)
+              {
+                  # set context to the subscription where ObjectId is present
+                  $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
+
+                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
+
+                  if($CheckPermission -ne $null)
+                  {   
+                      Write-Host "Required permission $($Permission) is already assigned to backup vault over DataSource with Id $($DataSourceId)"
+                  }
+
+                  else
+                  {
+                      $MissingRolesInitially = $true
+                   
+                      AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
+
+                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DataSourceId)"
                   }
               }
           }
@@ -264,7 +254,7 @@
                           [String[]]$FinalKeyvaultAccessPolicyPermissions = $KeyvaultAccessPolicyPermissions
                           $FinalKeyvaultAccessPolicyPermissions = $FinalKeyvaultAccessPolicyPermissions | select -uniq                      
                       
-                          Set-AzKeyVaultAccessPolicy -VaultName $KeyvaultName -ObjectId $vault.Identity.PrincipalId -PermissionsToSecrets $FinalKeyvaultAccessPolicyPermissions -Confirm:$False                 
+                          Set-AzKeyVaultAccessPolicy -VaultName $KeyvaultName -ObjectId $vault.Identity.PrincipalId -PermissionsToSecrets $FinalKeyvaultAccessPolicyPermissions -Confirm:$False 
                      }
                      catch{
                          $err = $_
@@ -275,45 +265,56 @@
                   else
                   {
                       $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $KeyVaultId -or $_.Scope -eq $KeyvaultRG -or  $_.Scope -eq $KeyvaultSubscription) -and $_.RoleDefinitionName -eq $Permission}
-              
+
                       if($CheckPermission -ne $null)
                       {
-                          Write-Host "Required keyvault permissions already assigned to the backup vault"
+                          Write-Host "Required permission $($Permission) is already assigned to backup vault over KeyVault with Id $($KeyVaultId)"
                       }
 
                       else
                       {
                           $MissingRolesInitially = $true
-
-                          Write-Host "Assigning $($Permission) permission to the backup vault"
-
+                                                    
                           AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $KeyVaultId -ResourceGroup $KeyvaultRG -Subscription $KeyvaultSubscriptionName
 
-                          Write-Host "Assigned $($Permission) permission to the backup vault"                      
+                          Write-Host "Assigned $($Permission) permission to the backup vault over key vault with Id $($KeyVaultId)"
                       }
                   }
               }
-               
-              foreach($Permission in $manifest.datasourcePermissions)
-              {
-                  $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
-                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
               
+              foreach($Permission in $manifest.dataSourceOverSnapshotRGPermissions)
+              {
+                  $SnapshotResourceGroupId = $BackupInstance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId              
+              
+                  if($DatasourceType -eq "AzureKubernetesService"){                  
+                      CheckAksModuleDependency
+                                    
+                      $aksCluster = Get-AzAksCluster -Id $BackupInstance.Property.DataSourceInfo.ResourceId -SubscriptionId $subscriptionId
+                      $dataSourceMSI = $aksCluster.Identity.PrincipalId
+                      $dataSourceMSIRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $dataSourceMSI
+                  }
+
+                  # CSR: $SubscriptionName might be different when we add cross subscription restore
+                  $CheckPermission = $dataSourceMSIRoles | Where-Object { ($_.Scope -eq $SnapshotResourceGroupId -or $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
+
                   if($CheckPermission -ne $null)
                   {
-                      Write-Host "Required $($DatasourceType) permissions already assigned"
+                      Write-Host "Required permission $($Permission) is already assigned to DataSource with Id $($BackupInstance.Property.DataSourceInfo.ResourceId) over snapshot resource group with Id $($SnapshotResourceGroupId)"
                   }
 
                   else
-                  {
-                      $MissingRolesInitially = $true
-                      Write-Host "Assigning $($Permission) permission to the backup vault"
-
-                      AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
-
-                      Write-Host "Assigned $($Permission) permission to the backup vault"
+                  {   
+                      # can add snapshot resource group name in allow statement
+                      if ($PSCmdlet.ShouldProcess("$($BackupInstance.Property.DataSourceInfo.ResourceId)","Allow $($Permission) permission over snapshot resource group"))
+                      {
+                          $MissingRolesInitially = $true
+                          
+                          AssignMissingRoles -ObjectId $dataSourceMSI -Permission $Permission -PermissionsScope $PermissionsScope -Resource $SnapshotResourceGroupId -ResourceGroup $SnapshotResourceGroupId -Subscription $SubscriptionName
+  
+                          Write-Host "Assigned $($Permission) permission to DataSource with Id $($BackupInstance.Property.DataSourceInfo.ResourceId) over snapshot resource group with Id $($SnapshotResourceGroupId)"
+                      }                  
                   }
-              }              
+              }
 
               foreach($Permission in $manifest.snapshotRGPermissions)
               {
@@ -325,53 +326,36 @@
 
                   if($CheckPermission -ne $null)
                   {
-                      Write-Host "Required snapshotRG permissions already assigned to the backup vault"
+                      Write-Host "Required permission $($Permission) is already assigned to backup vault over snapshot resource group with Id $($SnapshotResourceGroupId)"
                   }
 
                   else
                   {
                       $MissingRolesInitially = $true
 
-                      Write-Host "Assigning $($Permission) permission to the backup vault"
-
                       AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $SnapshotResourceGroupId -ResourceGroup $SnapshotResourceGroupId -Subscription $SubscriptionName
   
-                      Write-Host "Assigned $($Permission) permission to the backup vault"
+                      Write-Host "Assigned $($Permission) permission to the backup vault over snapshot resource group with Id $($SnapshotResourceGroupId)"
                   }
               }
-          
-              foreach($Permission in $manifest.dataSourceOverSnapshotRGPermissions)
+
+              foreach($Permission in $manifest.datasourcePermissions)
               {
-                  $SnapshotResourceGroupId = $BackupInstance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId              
+                  $AllRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
+                  $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $DataSourceId -or $_.Scope -eq $ResourceRG -or  $_.Scope -eq $SubscriptionName) -and $_.RoleDefinitionName -eq $Permission}
               
-                  if($DatasourceType -eq "KubernetesService"){                  
-                      CheckAksModuleDependency
-                                    
-                      $aksCluster = Get-AzAksCluster -Id $BackupInstance.Property.DataSourceInfo.ResourceId -SubscriptionId $subscriptionId
-                      $dataSourceMSI = $aksCluster.Identity.PrincipalId
-                      $dataSourceMSIRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $dataSourceMSI
-                  }
-
-                  # CSR: $SubscriptionName might be different when we add cross subscription restore
-                  $CheckPermission = $dataSourceMSIRoles | Where-Object { ($_.Scope -eq $SnapshotResourceGroupId -or $_.Scope -eq $SubscriptionName)  -and $_.RoleDefinitionName -eq $Permission}
-
                   if($CheckPermission -ne $null)
                   {
-                      Write-Host "Required snapshot resource group permissions already assigned to DataSource with Id $($BackupInstance.Property.DataSourceInfo.ResourceId)"
+                      Write-Host "Required permission $($Permission) is already assigned to backup vault over DataSource with Id $($DataSourceId)"
                   }
 
                   else
-                  {   
-                      # can add snapshotRG name in allow statement
-                      if ($PSCmdlet.ShouldProcess("$($BackupInstance.Property.DataSourceInfo.ResourceId)","Allow $($Permission) permission over snapshot resource group"))
-                      {
-                          $MissingRolesInitially = $true
-                          Write-Host "Assigning $($Permission) permission over snapshot resource group to DataSource with Id $($BackupInstance.Property.DataSourceInfo.ResourceId)"
+                  {
+                      $MissingRolesInitially = $true
+                                            
+                      AssignMissingRoles -ObjectId $vault.Identity.PrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
 
-                          AssignMissingRoles -ObjectId $dataSourceMSI -Permission $Permission -PermissionsScope $PermissionsScope -Resource $SnapshotResourceGroupId -ResourceGroup $SnapshotResourceGroupId -Subscription $SubscriptionName
-  
-                          Write-Host "Assigned $($Permission) permission to DataSource over snapshot resource group"
-                      }                  
+                      Write-Host "Assigned $($Permission) permission to the backup vault over DataSource with Id $($DataSourceId)"
                   }
               }
           }

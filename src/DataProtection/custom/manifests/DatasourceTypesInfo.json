@@ -14,7 +14,7 @@
     },
     {
       "serviceDatasourceType": "Microsoft.ContainerService/managedClusters",
-      "clientDatasourceType": "KubernetesService"
+      "clientDatasourceType": "AzureKubernetesService"
     }
   ]
 }

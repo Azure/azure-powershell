@@ -107,8 +107,10 @@
         [System.String[]]
         ${ToPrefixPattern},
 
-        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with KubernetesService.')]
-        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with KubernetesService.')]
+        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
+        [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
+        [Parameter(ParameterSetName="AlternateLocationFullRecovery", Mandatory=$false, HelpMessage='Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteria]
         ${RestoreConfiguration},
 
@@ -195,11 +197,28 @@
         }
         elseif(!($ItemLevelRecovery))
         {   
-            # DppRef : need to throw error if ILR isn't given for AKS ?
-
             # RestoreTargetInfo for OLR ALR Full recovery
-            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.RestoreTargetInfo]::new()
-            $restoreRequest.RestoreTargetInfo.ObjectType = "restoreTargetInfo"
+            if($DatasourceType -ne "AzureKubernetesService"){
+                $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.RestoreTargetInfo]::new()
+                $restoreRequest.RestoreTargetInfo.ObjectType = "restoreTargetInfo"
+            }
+            else{
+                $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ItemLevelRestoreTargetInfo]::new()
+                $restoreRequest.RestoreTargetInfo.ObjectType = "itemLevelRestoreTargetInfo"
+                $restoreCriteriaList = @()
+
+                # ItemLevelRecovery for AzureKubernetesService
+                if($RestoreConfiguration -ne $null){
+                    $restoreCriteria = $RestoreConfiguration
+                }
+                else{
+                    $errormsg = "Please input parameter RestoreConfiguration for AKS cluster restore. Use command New-AzDataProtectionRestoreConfigurationClientObject for creating the RestoreConfiguration"
+    		        throw $errormsg
+                }                
+                
+                $restoreCriteriaList += ($restoreCriteria)
+                $restoreRequest.RestoreTargetInfo.RestoreCriterion = $restoreCriteriaList
+            }
         }        
         else 
         {
@@ -210,7 +229,7 @@
             $restoreCriteriaList = @()            
             
             # can generalise this condition to manifest level if needed
-            if($DatasourceType -ne "KubernetesService"){
+            if($DatasourceType -ne "AzureKubernetesService"){
                 if($ContainersList.length -gt 0){
                     for($i = 0; $i -lt $ContainersList.length; $i++){
                                 
@@ -249,7 +268,7 @@
                 }
             }
             else{
-                # ItemLevelRecovery for KubernetesService
+                # ItemLevelRecovery for AzureKubernetesService
                 if($RestoreConfiguration -ne $null){
                     $restoreCriteria = $RestoreConfiguration
                 }

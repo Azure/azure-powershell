@@ -17,8 +17,8 @@ Initializes Restore Request object for triggering restore on a protected backup 
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetResourceId <String>
  [-PointInTime <DateTime>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [<CommonParameters>]
+ [-RehydrationPriority <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
+ [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>] [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
@@ -34,7 +34,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Ite
 Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResource>
  -DatasourceType <DatasourceTypes> -RestoreLocation <String> -RestoreType <RestoreTargetType>
  -SourceDataStore <DataStoreType> [-PointInTime <DateTime>] [-RecoveryPoint <String>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreType <SecretStoreTypes>]
  [-SecretStoreURI <String>] [<CommonParameters>]
 ```
 
@@ -297,12 +298,12 @@ Accept wildcard characters: False
 
 ### -RestoreConfiguration
 Restore configuration for restore.
-Use this parameter to restore with KubernetesService.
+Use this parameter to restore with AzureKubernetesService.
 To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteria
-Parameter Sets: AlternateLocationILR, OriginalLocationILR
+Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
 Required: False
@@ -486,7 +487,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-`RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>`: Restore configuration for restore. Use this parameter to restore with KubernetesService.
+`RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>`: Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.
   - `IncludeClusterScopeResource <Boolean>`: Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
   - `ObjectType <String>`: Type of the specific object - used for deserializing
   - `[ConflictPolicy <ExistingResourcePolicy?>]`: Gets or sets the Conflict Policy property. This property sets policy during conflict of resources during restore.

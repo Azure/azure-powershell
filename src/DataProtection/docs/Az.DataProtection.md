@@ -108,7 +108,7 @@ Searches for Backup instances in Azure Resource Graph and retrieves the expected
 Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entries
 
 ### [Set-AzDataProtectionMSIPermission](Set-AzDataProtectionMSIPermission.md)
-Grants required permissions to the backup vault and other resources for configure backup
+Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 
 ### [Start-AzDataProtectionBackupInstanceRestore](Start-AzDataProtectionBackupInstanceRestore.md)
 Triggers restore for a BackupInstance

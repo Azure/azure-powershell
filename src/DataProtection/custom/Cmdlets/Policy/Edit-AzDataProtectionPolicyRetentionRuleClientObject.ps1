@@ -55,13 +55,13 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
                 $manifest = LoadManifest -DatasourceType $DatasourceType
                 if($manifest.policySettings.disableAddRetentionRule -eq $true)
                 {
-                    $message = "Adding New Retention Rule is not supported for " + $DatasourceType + " datasource Type."
+                    $message = "Adding New Retention Rule is not supported for " + $DatasourceType + " datasource type."
                     throw $message
                 }
 
                 if($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false)
                 {
-                    throw "Selected Retention Rule " + $Name  + " is not applicable for Datasource Type " + $clientDatasourceType
+                    throw "Selected Retention Rule " + $Name  + " is not applicable for datasource type " + $DatasourceType
                 }
 
                 $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.AzureRetentionRule]::new()

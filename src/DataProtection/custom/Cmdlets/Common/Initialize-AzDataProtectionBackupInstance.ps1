@@ -43,7 +43,7 @@ function Initialize-AzDataProtectionBackupInstance {
         [System.String]
         ${FriendlyName},
                 
-        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for KubernetesService.')]
+        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterBackupDatasourceParameters]
         ${BackupConfiguration}
     )
@@ -68,6 +68,11 @@ function Initialize-AzDataProtectionBackupInstance {
             if($manifest.isProxyResource -eq $true)
             {
                 $backupInstance.DataSourceSetInfo = GetDatasourceSetInfo -DatasourceInfo $backupInstance.DataSourceInfo -DatasourceType $DatasourceType
+            }
+
+            if(-not($manifest.friendlyNameRequired) -and $FriendlyName -ne ""){
+                $errormsg = "FriendlyName parameter is not expected for the given DatasourceType"
+                throw $errormsg
             }
             
             if($backupInstance.DataSourceSetInfo.ResourceId -eq $null){

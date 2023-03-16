@@ -189,7 +189,9 @@ function AssignMissingRolesHelper {
         Write-Debug $Permission
         Write-Debug $ResourceGroup        
 
-        try { New-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionName $Permission -Scope $ResourceScope | Out-Null }
+        try { 
+            New-AzRoleAssignment -ObjectId $ObjectId -RoleDefinitionName $Permission -Scope $ResourceScope | Out-Null 
+        }
          
         catch {
             $err = $_
