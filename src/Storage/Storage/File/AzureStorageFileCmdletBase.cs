@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using System.Linq;
     using Microsoft.Azure.Cosmos.Table;
     using Microsoft.Azure.Storage.Blob;
+    using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
@@ -95,15 +96,34 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             }
         }
 
+        protected bool ShouldSetContext(IStorageContext context, CloudFileClient cloudFileClient)
+        {
+            if (context == null)
+            {
+                return true;
+            }
+            try
+            {
+                if (context.GetCloudStorageAccount().FileEndpoint.Host.Equals(cloudFileClient.BaseUri.Host, StringComparison.OrdinalIgnoreCase))
+                {
+                    return false;
+                }
+            } catch (Exception)
+            {
+                return true;
+            }
+            return true;
+        }
+
         /// <summary>
         /// Write CloudFile to output using specified service channel
         /// </summary>
         /// <param name="taskId">Task id</param>
-        /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="context">AzureStorageContext object</param>
         /// <param name="file">The output CloudFile object</param>
-        internal void WriteCloudFileObject(long taskId, IStorageFileManagement channel, CloudFile file)
+        internal void WriteCloudFileObject(long taskId, AzureStorageContext context, CloudFile file)
         {
-            AzureStorageFile azureFile = new AzureStorageFile(file, channel.StorageContext);
+            AzureStorageFile azureFile = new AzureStorageFile(file, context);
             OutputStream.WriteObject(taskId, azureFile);
         }
 
@@ -112,11 +132,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// Write CloudFileDirectory to output using specified service channel
         /// </summary>
         /// <param name="taskId">Task id</param>
-        /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="context">AzureStorageContext object</param>
         /// <param name="fileDir">The output CloudFileDirectory object</param>
-        internal void WriteCloudFileDirectoryeObject(long taskId, IStorageFileManagement channel, CloudFileDirectory fileDir)
+        internal void WriteCloudFileDirectoryeObject(long taskId, AzureStorageContext context, CloudFileDirectory fileDir)
         {
-            AzureStorageFileDirectory azureFileDir = new AzureStorageFileDirectory(fileDir, channel.StorageContext);
+            AzureStorageFileDirectory azureFileDir = new AzureStorageFileDirectory(fileDir, context);
             OutputStream.WriteObject(taskId, azureFileDir);
         }
 
@@ -136,17 +156,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
         /// Write IListFileItem to output using specified service channel
         /// </summary>
         /// <param name="taskId">Task id</param>
-        /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="context">AzureStorageContext object</param>
         /// <param name="item">The output IListFileItem object</param>
-        internal void WriteListFileItemObject(long taskId, IStorageFileManagement channel, IListFileItem item)
+        internal void WriteListFileItemObject(long taskId, AzureStorageContext context, IListFileItem item)
         {
             if ((item as CloudFile) != null) // CloudFile
             {
-                WriteCloudFileObject(taskId, channel, item as CloudFile);
+                WriteCloudFileObject(taskId, context, item as CloudFile);
             }
             else
             {
-                WriteCloudFileDirectoryeObject(taskId, channel, item as CloudFileDirectory);
+                WriteCloudFileDirectoryeObject(taskId, context, item as CloudFileDirectory);
             }
         }
 
