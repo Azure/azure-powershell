@@ -1,7 +1,7 @@
 @{
   GUID = '9560a0c7-e4ed-40d0-a8c4-9b28b241edca'
   RootModule = './Az.NetworkSecurityPerimeter.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.1.2'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

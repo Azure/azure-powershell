@@ -20,7 +20,7 @@ Describe 'New-AzNetworkSecurityPerimeterLink' {
 
         $remoteNsp = '/subscriptions/' +  $env.SubscriptionId + '/resourceGroups/' + $env.rgname  + '/providers/Microsoft.Network/networkSecurityPerimeters/' + $env.tmpNsp7
 
-        New-AzNetworkSecurityPerimeterLink -Name $env.link1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -LocalOutboundProfile @('*') -RemoteInboundProfile @('*') -RemoteOutboundProfile @('*')
+        New-AzNetworkSecurityPerimeterLink -Name $env.link1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp6 -AutoApprovedRemotePerimeterResourceId $remoteNsp  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 
         } | Should -Not -Throw
     }

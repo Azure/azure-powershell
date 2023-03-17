@@ -155,23 +155,11 @@ function Update-AzNetworkSecurityPerimeterLink {
         # local inbound profiles
         ${LocalInboundProfile},
 
-        [Parameter(HelpMessage = "Local outbound profiles")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
-        # local outbound profiles
-        ${LocalOutboundProfile},
-
         [Parameter(HelpMessage = "Remote inbound profiles")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.Collections.ArrayList]
         # remote inbound profiles
-        ${RemoteInboundProfile},
-
-        [Parameter(HelpMessage = "Remote outbound profiles")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
-        # remote outbound profiles
-        ${RemoteOutboundProfile}
+        ${RemoteInboundProfile}
 
         # Add only those paramters which can be updated
     )
@@ -182,7 +170,7 @@ function Update-AzNetworkSecurityPerimeterLink {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AutoApprovedRemotePerimeterResourceId', 'LocalInboundProfile', 'LocalOutboundProfile', 'RemoteInboundProfile', 'RemoteOutboundProfile', 'AsJob'
+            $bodyParams = 'Tag', 'Location', 'AutoApprovedRemotePerimeterResourceId', 'LocalInboundProfile', 'RemoteInboundProfile', 'AsJob'
 
             $bodyParamsMap = @{}
 

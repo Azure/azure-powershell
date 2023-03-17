@@ -1,7 +1,7 @@
 ### Example 1: Update network security perimeter link
 
 ```powershell
-Update-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4  -LocalInboundProfile @('*') -LocalOutboundProfile @('*') -RemoteInboundProfile @('*') -RemoteOutboundProfile @('*')
+Update-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 ```
 
 ```output

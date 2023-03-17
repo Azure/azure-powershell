@@ -16,17 +16,15 @@ Updates a NSP Link
 ```
 Update-AzNetworkSecurityPerimeterLink -Name <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AutoApprovedRemotePerimeterResourceId <String>]
- [-LocalInboundProfile <ArrayList>] [-LocalOutboundProfile <ArrayList>] [-Location <String>]
- [-RemoteInboundProfile <ArrayList>] [-RemoteOutboundProfile <ArrayList>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LocalInboundProfile <ArrayList>] [-Location <String>] [-RemoteInboundProfile <ArrayList>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterLink -InputObject <INetworkSecurityPerimeterIdentity>
- [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <ArrayList>]
- [-LocalOutboundProfile <ArrayList>] [-Location <String>] [-RemoteInboundProfile <ArrayList>]
- [-RemoteOutboundProfile <ArrayList>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-AutoApprovedRemotePerimeterResourceId <String>] [-LocalInboundProfile <ArrayList>] [-Location <String>]
+ [-RemoteInboundProfile <ArrayList>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,9 +34,8 @@ Updates a NSP Link
 ## EXAMPLES
 
 ### Example 1: Update network security perimeter link
-
 ```powershell
-Update-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4  -LocalInboundProfile @('*') -LocalOutboundProfile @('*') -RemoteInboundProfile @('*') -RemoteOutboundProfile @('*')
+Update-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4  -LocalInboundProfile @('*') -RemoteInboundProfile @('*')
 ```
 
 ```output
@@ -50,7 +47,6 @@ Etag Name
 Update network security perimeter link
 
 ### Example 2: Update network security perimeter link via identity
-
 ```powershell
 $getLinkObj = Get-AzNetworkSecurityPerimeterLink -Name t-link2 -ResourceGroupName psrg_ex -SecurityPerimeterName ext-nsp4
 
@@ -65,7 +61,6 @@ Etag Name
 ```
 
 Update network security perimeter link via identity
-
 
 ## PARAMETERS
 
@@ -145,21 +140,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LocalOutboundProfile
-Local outbound profiles
-
-```yaml
-Type: System.Collections.ArrayList
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Location
 Location of the resource
 
@@ -207,21 +187,6 @@ Accept wildcard characters: False
 
 ### -RemoteInboundProfile
 Remote inbound profiles
-
-```yaml
-Type: System.Collections.ArrayList
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RemoteOutboundProfile
-Remote outbound profiles
 
 ```yaml
 Type: System.Collections.ArrayList
