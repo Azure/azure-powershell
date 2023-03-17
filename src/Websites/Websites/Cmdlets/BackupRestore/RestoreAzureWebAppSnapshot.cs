@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
             var sourceApp = ResourcesClient.GetAppResource(InputObject.Name, InputObject.Slot);
             SnapshotRecoverySource source = new SnapshotRecoverySource()
             {
-                Location = sourceApp.Location,
-                Id = sourceApp.Id
+                Location = sourceApp?.Location,
+                Id = sourceApp?.Id
             };
             SnapshotRestoreRequest recoveryReq = new SnapshotRestoreRequest()
             {

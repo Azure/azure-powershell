@@ -221,6 +221,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("SCSI", "NVMe")]
         public string DiskControllerType { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -414,7 +420,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
                     imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
                     auxAuthHeader: auxAuthHeader,
-                    diskControllerType: _cmdlet.DiskControllerType
+                    diskControllerType: _cmdlet.DiskControllerType,
+                    sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null
                     );
             }
 

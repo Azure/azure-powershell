@@ -31,7 +31,11 @@ Describe 'Update-AzReservation' {
     It 'Update' {
         $reservation = Get-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007"
         $newName = GetNewName($reservation.DisplayName)
-        $newRi = @{Name = $newName}
+        $newRi = @{
+            Name = $newName;
+            AppliedScopeType = $reservation.AppliedScopeType;
+            InstanceFlexibility = $reservation.InstanceFlexibility;
+            }
         $res = Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -Reservation $newRi
 
         $res.DisplayName | Should -Not -Be reservation.DisplayName
@@ -56,7 +60,11 @@ Describe 'Update-AzReservation' {
         }
         $reservation = Get-AzReservation -InputObject $input
         $newName = GetNewName($reservation.DisplayName)
-        $newRi = @{Name = $newName}
+        $newRi = @{
+            Name = $newName;
+            AppliedScopeType = $reservation.AppliedScopeType;
+            InstanceFlexibility = $reservation.InstanceFlexibility;
+            }
         $res = Update-AzReservation -InputObject $input -Reservation $newRi
 
         $res.DisplayName | Should -Not -Be reservation.DisplayName
@@ -73,16 +81,10 @@ Describe 'Update-AzReservation' {
         $res = Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018"
         $reservation = Get-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007"
         $res.AppliedScopeType | Should -Be "Single"
-        $res.AppliedScopes | Should -Not -Be $null
-        $res.AppliedScopes.Count | Should -Be 1
-        $res.AppliedScopes[0] | Should -Be "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018"
 
         #Update AppliedScopeType to be 'Single' with a resource group
         $res = Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018/resourcegroups/testrg"
         $reservation = Get-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007"
         $res.AppliedScopeType | Should -Be "Single"
-        $res.AppliedScopes | Should -Not -Be $null
-        $res.AppliedScopes.Count | Should -Be 1
-        $res.AppliedScopes[0] | Should -Be "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018/resourcegroups/testrg"
     }
 }

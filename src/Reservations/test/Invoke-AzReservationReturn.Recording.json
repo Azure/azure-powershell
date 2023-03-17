@@ -1,9 +1,9 @@
 {
-  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/calculateRefund?api-version=2022-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/reservations/318290ae-fb70-4661-ac30-043f3b0cd117\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -19,68 +19,72 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:d1420311-17d2-47f6-b160-ac96d03bd41f" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"6/6/2023 11:00:09 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:47a8a443-4406-4513-bcb4-e56a7f909b3a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "b838ad6d-d518-498d-822b-ab38334a42da" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214706Z:b838ad6d-d518-498d-822b-ab38334a42da" ],
+        "x-ms-correlation-request-id": [ "3c7453a2-543e-401a-9d11-81e572dcf053" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230310T031407Z:3c7453a2-543e-401a-9d11-81e572dcf053" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:05 GMT" ]
+        "Date": [ "Fri, 10 Mar 2023 03:14:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "825" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/reservations/318290ae-fb70-4661-ac30-043f3b0cd117\",\"properties\":{\"sessionId\":\"72ca8677-4eab-48de-93d9-04020365ffee\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"GBP\",\"amount\":2.41},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":2.87},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":549.83},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":1,\"totalTransactions\":36,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"GBP\",\"amount\":4.82},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"GBP\",\"amount\":2.41},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"GBP\",\"amount\":84.35}}}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6?api-version=2022-11-01+3": {
     "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6?api-version=2022-11-01",
+      "Content": null,
       "isContentBase64": false,
       "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "fe4c517b-d6d9-4f68-b6cb-ddc066512276" ],
+        "CommandName": [ "Get-AzReservationOrder" ],
+        "FullCommandName": [ "Get-AzReservationOrder_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Reservations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "380" ]
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:250898b3-d301-431f-a015-2df1ecb4c9a4" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214715Z:4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "fe4c517b-d6d9-4f68-b6cb-ddc066512276" ],
+        "x-ms-version": [ "1.0.2251.115" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "0eba43dc-0207-49e2-b13a-56567865f35f" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230310T031408Z:0eba43dc-0207-49e2-b13a-56567865f35f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:15 GMT" ]
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 10 Mar 2023 03:14:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "798" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/microsoft.capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6\",\"name\":\"4c74b273-a5e4-4dff-822d-fb586cbfb4a6\",\"type\":\"microsoft.capacity/reservationOrders\",\"etag\":9,\"properties\":{\"originalQuantity\":2,\"requestDateTime\":\"2023-03-08T23:00:15.0717795Z\",\"billingPlan\":\"Monthly\",\"reservations\":[{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/reservations/318290ae-fb70-4661-ac30-043f3b0cd117\"}],\"term\":\"P3Y\",\"displayName\":\"VM_RI_03-08-2023_14-59\",\"createdDateTime\":\"2023-03-08T23:09:23.9310307Z\",\"benefitStartTime\":\"2023-03-08T23:09:22.8685127Z\",\"provisioningState\":\"Succeeded\",\"billingAccountId\":\"/providers/Microsoft.Billing/billingAccounts/61e667a1-0558-45a2-b21a-57fa7893951d\",\"expiryDateTime\":\"2026-03-08T23:09:22.8685127Z\"}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a/calculateRefund?api-version=2022-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a/reservations/e188ea59-e105-493f-86be-64b4af4907a7\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -96,30 +100,72 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:d1420311-17d2-47f6-b160-ac96d03bd41f" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"6/6/2023 11:00:09 PM\"}" ],
+        "x-ms-request-id": [ "westus:a034042b-ba97-438a-bd21-8ffb96d54d60" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "b838ad6d-d518-498d-822b-ab38334a42da" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214706Z:b838ad6d-d518-498d-822b-ab38334a42da" ],
+        "x-ms-correlation-request-id": [ "60b2eede-4196-4c40-867f-487c8d4235a4" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230310T030705Z:60b2eede-4196-4c40-867f-487c8d4235a4" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:05 GMT" ]
+        "Date": [ "Fri, 10 Mar 2023 03:07:04 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "826" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a/reservations/e188ea59-e105-493f-86be-64b4af4907a7\",\"properties\":{\"sessionId\":\"5b8c6a43-3dea-4255-bee8-24a7eb89aec9\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"GBP\",\"amount\":4.83},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":5.76},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":542.61},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":1,\"totalTransactions\":36,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"GBP\",\"amount\":9.66},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"GBP\",\"amount\":4.83},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"GBP\",\"amount\":169.05}}}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+Post+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+Post+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a?api-version=2022-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a?api-version=2022-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "15017edc-65e3-4596-b2d3-e136b70c4416" ],
+        "CommandName": [ "Get-AzReservationOrder" ],
+        "FullCommandName": [ "Get-AzReservationOrder_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Reservations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "15017edc-65e3-4596-b2d3-e136b70c4416" ],
+        "x-ms-version": [ "1.0.2251.115" ],
+        "x-ms-correlation-request-id": [ "0ea378e3-85f7-40d1-b2a1-cd5bbaf50078" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230310T030706Z:0ea378e3-85f7-40d1-b2a1-cd5bbaf50078" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 10 Mar 2023 03:07:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "798" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/microsoft.capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a\",\"name\":\"984f6907-4d2c-4411-a5d9-0e2e72d0e06a\",\"type\":\"microsoft.capacity/reservationOrders\",\"etag\":9,\"properties\":{\"originalQuantity\":2,\"requestDateTime\":\"2023-03-08T23:00:11.9705366Z\",\"billingPlan\":\"Monthly\",\"reservations\":[{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/984f6907-4d2c-4411-a5d9-0e2e72d0e06a/reservations/e188ea59-e105-493f-86be-64b4af4907a7\"}],\"term\":\"P3Y\",\"displayName\":\"VM_RI_03-08-2023_14-59\",\"createdDateTime\":\"2023-03-08T23:22:42.1871012Z\",\"benefitStartTime\":\"2023-03-08T23:22:38.3929273Z\",\"provisioningState\":\"Succeeded\",\"billingAccountId\":\"/providers/Microsoft.Billing/billingAccounts/61e667a1-0558-45a2-b21a-57fa7893951d\",\"expiryDateTime\":\"2026-03-08T23:22:38.3929273Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Invoke-AzReservationReturn+[NoContext]+PostExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/e77c28cf-e0d8-4322-8b41-b3fa26ec21eb/return?api-version=2022-11-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/e77c28cf-e0d8-4322-8b41-b3fa26ec21eb/return?api-version=2022-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/e77c28cf-e0d8-4322-8b41-b3fa26ec21eb/reservations/89ab48ca-721b-4044-b9e1-389d6d5ead4d\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"4d70172e-bc39-4257-af24-fa5df4ca8394\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -133,31 +179,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:250898b3-d301-431f-a015-2df1ecb4c9a4" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/e77c28cf-e0d8-4322-8b41-b3fa26ec21eb?api-version=2022-11-01" ],
+        "Retry-After": [ "120" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"6/2/2023 3:29:09 AM\"}" ],
+        "x-ms-request-id": [ "westus:b77f81c6-ba2f-4e73-b939-54833e41279e" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214715Z:4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
+        "x-ms-correlation-request-id": [ "05bc2ede-3a6a-4b66-9443-60fb2bf21e94" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230310T030707Z:05bc2ede-3a6a-4b66-9443-60fb2bf21e94" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:15 GMT" ]
+        "Date": [ "Fri, 10 Mar 2023 03:07:06 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "825" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/e77c28cf-e0d8-4322-8b41-b3fa26ec21eb/reservations/89ab48ca-721b-4044-b9e1-389d6d5ead4d\",\"properties\":{\"sessionId\":\"4d70172e-bc39-4257-af24-fa5df4ca8394\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"GBP\",\"amount\":6.05},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":7.22},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":542.61},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":1,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"GBP\",\"amount\":22.5},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"GBP\",\"amount\":16.45},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"GBP\",\"amount\":82.5}}}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/calculateRefund?api-version=2022-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/reservations/318290ae-fb70-4661-ac30-043f3b0cd117\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -173,68 +221,72 @@
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:d1420311-17d2-47f6-b160-ac96d03bd41f" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"6/6/2023 11:00:09 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:e835387b-92f1-46bf-8e71-8541f872fb9b" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "b838ad6d-d518-498d-822b-ab38334a42da" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214706Z:b838ad6d-d518-498d-822b-ab38334a42da" ],
+        "x-ms-correlation-request-id": [ "325a7433-6e4f-4a1d-9297-b82d4af1d4e1" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230310T030900Z:325a7433-6e4f-4a1d-9297-b82d4af1d4e1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:05 GMT" ]
+        "Date": [ "Fri, 10 Mar 2023 03:09:00 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "825" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/reservations/318290ae-fb70-4661-ac30-043f3b0cd117\",\"properties\":{\"sessionId\":\"6eb4f32d-2db8-4325-8aac-0f843c389356\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"GBP\",\"amount\":2.41},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":2.87},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":542.61},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":1,\"totalTransactions\":36,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"GBP\",\"amount\":4.82},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"GBP\",\"amount\":2.41},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"GBP\",\"amount\":84.35}}}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentityExpanded+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6?api-version=2022-11-01+2": {
     "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6?api-version=2022-11-01",
+      "Content": null,
       "isContentBase64": false,
       "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "d9fc5dad-609c-4932-98cf-134052dfc9fc" ],
+        "CommandName": [ "Get-AzReservationOrder" ],
+        "FullCommandName": [ "Get-AzReservationOrder_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Reservations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "380" ]
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:250898b3-d301-431f-a015-2df1ecb4c9a4" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214715Z:4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "d9fc5dad-609c-4932-98cf-134052dfc9fc" ],
+        "x-ms-version": [ "1.0.2251.115" ],
+        "x-ms-correlation-request-id": [ "0e27f375-422a-4cd7-974d-7c2b50e8db6a" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20230310T030901Z:0e27f375-422a-4cd7-974d-7c2b50e8db6a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:15 GMT" ]
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 10 Mar 2023 03:09:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "798" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/microsoft.capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6\",\"name\":\"4c74b273-a5e4-4dff-822d-fb586cbfb4a6\",\"type\":\"microsoft.capacity/reservationOrders\",\"etag\":9,\"properties\":{\"originalQuantity\":2,\"requestDateTime\":\"2023-03-08T23:00:15.0717795Z\",\"billingPlan\":\"Monthly\",\"reservations\":[{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/4c74b273-a5e4-4dff-822d-fb586cbfb4a6/reservations/318290ae-fb70-4661-ac30-043f3b0cd117\"}],\"term\":\"P3Y\",\"displayName\":\"VM_RI_03-08-2023_14-59\",\"createdDateTime\":\"2023-03-08T23:09:23.9310307Z\",\"benefitStartTime\":\"2023-03-08T23:09:22.8685127Z\",\"provisioningState\":\"Succeeded\",\"billingAccountId\":\"/providers/Microsoft.Billing/billingAccounts/61e667a1-0558-45a2-b21a-57fa7893951d\",\"expiryDateTime\":\"2026-03-08T23:09:22.8685127Z\"}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01+1": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/calculateRefund?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/calculateRefund?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003\"\r\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/calculateRefund?api-version=2022-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/6414bc34-8753-45df-8499-ba5b5af1c62b\",\r\n      \"quantity\": 1\r\n    },\r\n    \"scope\": \"Reservation\"\r\n  },\r\n  \"id\": \"/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -249,61 +301,65 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:d1420311-17d2-47f6-b160-ac96d03bd41f" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1196" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"6/2/2023 4:17:21 AM\"}" ],
+        "x-ms-request-id": [ "westus:d86f2b8d-239b-4d40-bac5-de3e49d55dd1" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "b838ad6d-d518-498d-822b-ab38334a42da" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214706Z:b838ad6d-d518-498d-822b-ab38334a42da" ],
+        "x-ms-correlation-request-id": [ "85758992-a528-42bc-8969-84b0cb174dfc" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230310T030713Z:85758992-a528-42bc-8969-84b0cb174dfc" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:05 GMT" ]
+        "Date": [ "Fri, 10 Mar 2023 03:07:12 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "825" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/6414bc34-8753-45df-8499-ba5b5af1c62b\",\"properties\":{\"sessionId\":\"14a95bde-dff4-4912-adb6-aab34d1679a2\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"GBP\",\"amount\":1.48},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":1.76},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":542.61},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":1,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"GBP\",\"amount\":5.49},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"GBP\",\"amount\":4.01},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"GBP\",\"amount\":20.13}}}}",
       "isContentBase64": false
     }
   },
-  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01+2": {
+  "Invoke-AzReservationReturn+[NoContext]+PostViaIdentity+$GET+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87?api-version=2022-11-01+2": {
     "Request": {
-      "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/return?api-version=2022-03-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"reservationToReturn\": {\r\n      \"reservationId\": \"/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\r\n      \"quantity\": 1\r\n    },\r\n    \"sessionId\": \"2142ab71-031b-4900-ae33-687a3e994e44\",\r\n    \"scope\": \"Reservation\",\r\n    \"returnReason\": \"Sample return reason\"\r\n  }\r\n}",
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87?api-version=2022-11-01",
+      "Content": null,
       "isContentBase64": false,
       "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "9d5f9328-fe37-4d13-93e4-28e30e3ec34f" ],
+        "CommandName": [ "Get-AzReservationOrder" ],
+        "FullCommandName": [ "Get-AzReservationOrder_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Reservations/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "380" ]
       }
     },
     "Response": {
-      "StatusCode": 202,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-test": [ "{\"contact\":\"v-heachang@microsoft.com\",\"scenarios\":\"TestInProdcution,CSZ,Inv-v7,crs-vnext,GtmRiPurchase\",\"retention\":\"12/31/2024 00:00:00\"}" ],
-        "x-ms-request-id": [ "westus:250898b3-d301-431f-a015-2df1ecb4c9a4" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220920T214715Z:4168c6bb-d834-4ec5-9cf4-fc585259924e" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "9d5f9328-fe37-4d13-93e4-28e30e3ec34f" ],
+        "x-ms-version": [ "1.0.2251.115" ],
+        "x-ms-correlation-request-id": [ "d0eff935-24f5-4213-a1d9-c1dde87fa4d6" ],
+        "x-ms-routing-request-id": [ "WESTUS:20230310T030714Z:d0eff935-24f5-4213-a1d9-c1dde87fa4d6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 21:47:15 GMT" ]
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 10 Mar 2023 03:07:13 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "827" ],
+        "Content-Length": [ "1375" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003\",\"properties\":{\"sessionId\":\"2142ab71-031b-4900-ae33-687a3e994e44\",\"quantity\":1,\"billingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"pricingRefundAmount\":{\"currencyCode\":\"USD\",\"amount\":0.42},\"policyResult\":{\"properties\":{\"consumedRefundsTotal\":{\"currencyCode\":\"USD\",\"amount\":367.81},\"maxRefundLimit\":{\"currencyCode\":\"USD\",\"amount\":50000.0},\"policyErrors\":[]}},\"billingInformation\":{\"billingPlan\":\"Monthly\",\"completedTransactions\":5,\"totalTransactions\":12,\"billingCurrencyTotalPaidAmount\":{\"currencyCode\":\"USD\",\"amount\":15.48},\"billingCurrencyProratedAmount\":{\"currencyCode\":\"USD\",\"amount\":15.06},\"billingCurrencyRemainingCommitmentAmount\":{\"currencyCode\":\"USD\",\"amount\":18.06}}}}",
+      "Content": "{\"id\":\"/providers/microsoft.capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87\",\"name\":\"73e63333-9b94-442c-8a5d-9403ba0e8b87\",\"type\":\"microsoft.capacity/reservationOrders\",\"etag\":16,\"properties\":{\"originalQuantity\":3,\"requestDateTime\":\"2023-03-04T04:17:25.7707892Z\",\"billingPlan\":\"Monthly\",\"reservations\":[{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/ab9761bb-324c-474a-b96c-3471bd643328\"},{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/52aa07c3-9e98-4e24-88bb-225ddcaec4ad\"},{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/7a4d27af-813d-4464-9ac0-773b789782bd\"},{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/dfa719b7-4c59-468c-ba45-e689ccfb8465\"},{\"id\":\"/providers/Microsoft.Capacity/reservationOrders/73e63333-9b94-442c-8a5d-9403ba0e8b87/reservations/6414bc34-8753-45df-8499-ba5b5af1c62b\"}],\"term\":\"P1Y\",\"displayName\":\"VM_RI_03-03-2023_20-16\",\"createdDateTime\":\"2023-03-04T04:23:13.2717004Z\",\"benefitStartTime\":\"2023-03-04T04:23:12.3497675Z\",\"provisioningState\":\"Succeeded\",\"billingAccountId\":\"/providers/Microsoft.Billing/billingAccounts/61e667a1-0558-45a2-b21a-57fa7893951d\",\"expiryDateTime\":\"2024-03-04T04:23:12.3497675Z\"}}",
       "isContentBase64": false
     }
   }

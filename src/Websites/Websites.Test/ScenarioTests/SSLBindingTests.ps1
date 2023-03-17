@@ -20,9 +20,9 @@ assign a custom domain to it and update global variable values.
 $rgname = "RG-PS-UnitTesting"
 $appname = "AppService-PS-UnitTesting"
 $slot = "testslot"
-$prodHostname = "www.psunittesting.com"
+$prodHostname = "psunittesting.com"
 $slotHostname = "testslot.psunittesting.com"
-$thumbprint = "210C5A1BBF7BC63F8733C3CB5E612FCFF3643E41"
+$thumbprint = "D1E31552350B24D89EEE38265BF1E19EEF698E6D"
 
 <#
 .SYNOPSIS
