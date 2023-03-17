@@ -24,7 +24,7 @@ Describe 'Get-AzWorkloadsMonitor' {
     }
 
     It 'ListByRg' {
-        $monListByRgResponse = Get-AzWorkloadsMonitor -Name $env.MonitorName -ResourceGroupName $env.MonitorRg
+        $monListByRgResponse = Get-AzWorkloadsMonitor -ResourceGroupName $env.MonitorRg
         $monListByRgResponse.Count | Should -BeGreaterOrEqual 1 
     }
 
