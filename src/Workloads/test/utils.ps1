@@ -50,6 +50,9 @@ function setupEnv() {
     $env.DiscoverSVI = "Y00"
     $env.DiscoverRG = "yb-bugBash"
     $env.CentralServerVmId = "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/yb-bugBash/providers/Microsoft.Compute/virtualMachines/y00vm"
+    $env.MonitorRg = "suha-0802-rg1"
+    $env.MonitorName = "suha-160323-ams7"
+    $env.HaMonitorName = "suha-160323-ams9"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

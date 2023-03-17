@@ -14,19 +14,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsMonitor'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 Describe 'Get-AzWorkloadsMonitor' {
-    It 'ListA'{ 
+    It 'ListBySubscription'{ 
             Get-AzWorkloadsMonitor -SubscriptionId $env.WaaSSubscriptionId
         }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $monGetResponse = Get-AzWorkloadsMonitor -Name $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
+        $monGetResponse.Name | Should -Be $env.MonitorName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListByRg' {
+        $monListByRgResponse = Get-AzWorkloadsMonitor -Name $env.MonitorName -ResourceGroupName $env.MonitorRg
+        $monListByRgResponse.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ListByArmId' {
+        $monGetbyIdResponse = Get-AzWorkloadsMonitor -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.MonitorName)"
+        $monGetbyIdResponse.Name | Should -Be $env.MonitorName
     }
 }
