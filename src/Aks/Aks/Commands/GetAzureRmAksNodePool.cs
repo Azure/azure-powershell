@@ -84,14 +84,12 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     {
                         var pools = ListPaged(() => Client.AgentPools.List(ResourceGroupName, ClusterName),
                             nextPageLink => Client.AgentPools.ListNext(nextPageLink));
-                        // WriteObject(pools.Select(PSMapper.Instance.Map<PSNodePool>), true);
                         WriteObject(pools.Select(AdapterHelper<AgentPool, PSNodePool>.Adapt), true);
                     }
                     else
                     {
                         var pool = Client.AgentPools.Get(ResourceGroupName, ClusterName, Name);
                         WriteObject(AdapterHelper<AgentPool, PSNodePool>.Adapt(pool));
-                        // WriteObject(PSMapper.Instance.Map<PSNodePool>(pool));
                     }
                 }
                 catch (ValidationException e)
