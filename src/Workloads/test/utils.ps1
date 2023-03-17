@@ -60,6 +60,12 @@ function setupEnv() {
     $env.CreateMonitorName = "suha-170323-ams3"
     $env.MonitorSubnet = "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorSubnetRg)/providers/Microsoft.Network/virtualNetworks/vnetpeeringtest/subnets/snet-1703-2"
     $env.HaMonitorSubnet = "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.HaMonitorSubnetRg)/providers/Microsoft.Network/virtualNetworks/vnetpeeringtest/subnets/snet-1603-3"
+    $env.haProviderName = "suha-ha-1"
+    $env.sqlProviderName = "suha-sql-1"
+    $env.nwProviderName = "suha-nw-1"
+    $env.hanaProviderName = "suha-hana-1"
+    $env.db2ProviderName = "suha-db2-1"
+    $env.osProviderName = "suha-os-1"
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
