@@ -84,13 +84,12 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         case NameParameterSet:
                             var kubeCluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
-                            //WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster), true);
                             WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster),true);
                             break;
                         case IdParameterSet:
                             var resource = new ResourceIdentifier(Id);
                             var idCluster = Client.ManagedClusters.Get(resource.ResourceGroupName, resource.ResourceName);
-                            WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(idCluster), true);
+                            WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(idCluster), true);
                             break;
                         case ResourceGroupParameterSet:
                             var kubeClusterList = string.IsNullOrEmpty(ResourceGroupName)
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.Aks
                                         : ListPaged(() => Client.ManagedClusters.ListByResourceGroup(ResourceGroupName),
                                             nextPageLink => Client.ManagedClusters.ListNext(nextPageLink));
 
-                            WriteObject(kubeClusterList.Select(PSMapper.Instance.Map<PSKubernetesCluster>), true);
+                            WriteObject(kubeClusterList.Select(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt), true);
                             break;
                         default:
                             throw new AzPSArgumentException(Resources.ParameterSetError, "InvalidParameterSet", null, Resources.ParameterSetError);
