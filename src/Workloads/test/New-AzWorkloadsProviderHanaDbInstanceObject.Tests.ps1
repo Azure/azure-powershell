@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderHanaDb
 }
 
 Describe 'New-AzWorkloadsProviderHanaDbInstanceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $providerSetting = New-AzWorkloadsProviderHanaDbInstanceObject -Name SYSTEMDB -Password mX5Ext661bQN  -Username SYSTEM -Hostname 10.0.81.4 -InstanceNumber 00 -SapSid X00 -SqlPort 1433 -SslPreference Disabled
+        $providerSetting.ProviderType | Should -Be "SapHana"
+
+        $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.hanaProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting $providerSetting
+        $response.ProvisioningState | Should -Be "Succeeded"
     }
 }
