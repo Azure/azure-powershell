@@ -6,7 +6,7 @@
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "358bda71-3e9e-42d1-a8ce-6ddb1683e12a"
+          "5965ded5-3b51-4556-b52e-f90c5fe711f9"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusOperationResults/c97ce71f-d50f-4f05-8458-f70b3db28162?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusOperationResults/9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57?api-version=2022-08-01-preview"
         ],
         "Retry-After": [
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusAzureAsyncOperation/c97ce71f-d50f-4f05-8458-f70b3db28162?api-version=2022-08-01-preview"
+          "https://management.azure.com/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusAzureAsyncOperation/9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57?api-version=2022-08-01-preview"
         ],
         "x-ms-request-id": [
-          "c97ce71f-d50f-4f05-8458-f70b3db28162"
+          "9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -45,10 +45,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "515d9fde-c008-49ef-a859-49d61dfb716d"
+          "f29d0a85-1c5e-476d-ae05-d7be06d559f7"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20230316T052411Z:515d9fde-c008-49ef-a859-49d61dfb716d"
+          "WESTCENTRALUS:20230320T183959Z:f29d0a85-1c5e-476d-ae05-d7be06d559f7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,10 +57,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 16 Mar 2023 05:24:11 GMT"
+          "Mon, 20 Mar 2023 18:39:58 GMT"
         ],
         "Content-Length": [
-          "75"
+          "76"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,16 +69,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"UpdatePurviewMetadata\",\r\n  \"startTime\": \"2023-03-16T05:24:11.59Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"UpdatePurviewMetadata\",\r\n  \"startTime\": \"2023-03-20T18:39:59.017Z\"\r\n}",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusAzureAsyncOperation/c97ce71f-d50f-4f05-8458-f70b3db28162?api-version=2022-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTY0ZjNlOGUtYWI5MS00YTY1LThjZGQtNWNkMmY0N2QwMGI0L3Jlc291cmNlR3JvdXBzL2V4dGdvdi1wc3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL3JlZnJlc2hFeHRlcm5hbEdvdmVybmFuY2VTdGF0dXNBenVyZUFzeW5jT3BlcmF0aW9uL2M5N2NlNzFmLWQ1MGYtNGYwNS04NDU4LWY3MGIzZGIyODE2Mj9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusAzureAsyncOperation/9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTY0ZjNlOGUtYWI5MS00YTY1LThjZGQtNWNkMmY0N2QwMGI0L3Jlc291cmNlR3JvdXBzL2V4dGdvdi1wc3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL3JlZnJlc2hFeHRlcm5hbEdvdmVybmFuY2VTdGF0dXNBenVyZUFzeW5jT3BlcmF0aW9uLzliYTdmM2ZmLTY5MGYtNGZjNy1hZDljLWQ3Y2JiMDBmZGQ1Nz9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "358bda71-3e9e-42d1-a8ce-6ddb1683e12a"
+          "5965ded5-3b51-4556-b52e-f90c5fe711f9"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -99,7 +99,7 @@
           "15"
         ],
         "x-ms-request-id": [
-          "fe03ba6f-2696-466f-b53f-375ff1ea94a4"
+          "6998f3e4-d5b0-49d0-95ed-feed7335e855"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -108,10 +108,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "3fd1c18c-efd7-4adb-bf42-57bb88f8e6ce"
+          "5faf87ba-0b6e-4915-aa5a-1ee32feab861"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20230316T052428Z:3fd1c18c-efd7-4adb-bf42-57bb88f8e6ce"
+          "WESTCENTRALUS:20230320T184014Z:5faf87ba-0b6e-4915-aa5a-1ee32feab861"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,10 +120,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 16 Mar 2023 05:24:27 GMT"
+          "Mon, 20 Mar 2023 18:40:13 GMT"
         ],
         "Content-Length": [
-          "106"
+          "107"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -132,16 +132,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"c97ce71f-d50f-4f05-8458-f70b3db28162\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-03-16T05:24:11.59Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2023-03-20T18:39:59.017Z\"\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusOperationResults/c97ce71f-d50f-4f05-8458-f70b3db28162?api-version=2022-08-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTY0ZjNlOGUtYWI5MS00YTY1LThjZGQtNWNkMmY0N2QwMGI0L3Jlc291cmNlR3JvdXBzL2V4dGdvdi1wc3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL3JlZnJlc2hFeHRlcm5hbEdvdmVybmFuY2VTdGF0dXNPcGVyYXRpb25SZXN1bHRzL2M5N2NlNzFmLWQ1MGYtNGYwNS04NDU4LWY3MGIzZGIyODE2Mj9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/e64f3e8e-ab91-4a65-8cdd-5cd2f47d00b4/resourceGroups/extgov-pstest/providers/Microsoft.Sql/locations/eastus2euap/refreshExternalGovernanceStatusOperationResults/9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57?api-version=2022-08-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZTY0ZjNlOGUtYWI5MS00YTY1LThjZGQtNWNkMmY0N2QwMGI0L3Jlc291cmNlR3JvdXBzL2V4dGdvdi1wc3Rlc3QvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL2Vhc3R1czJldWFwL3JlZnJlc2hFeHRlcm5hbEdvdmVybmFuY2VTdGF0dXNPcGVyYXRpb25SZXN1bHRzLzliYTdmM2ZmLTY5MGYtNGZjNy1hZDljLWQ3Y2JiMDBmZGQ1Nz9hcGktdmVyc2lvbj0yMDIyLTA4LTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "358bda71-3e9e-42d1-a8ce-6ddb1683e12a"
+          "5965ded5-3b51-4556-b52e-f90c5fe711f9"
         ],
         "User-Agent": [
           "FxVersion/4.700.22.55902",
@@ -159,7 +159,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6db89e2a-9b62-42de-9ad1-e846ee72f851"
+          "e1d6e4f0-9429-4d94-820f-67e65844d6eb"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -168,10 +168,10 @@
           "11998"
         ],
         "x-ms-correlation-request-id": [
-          "c4311ee4-9c36-4da4-b90c-3e4699ed2d60"
+          "0d255fe2-c872-4b59-a295-fb170a6ab152"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20230316T052428Z:c4311ee4-9c36-4da4-b90c-3e4699ed2d60"
+          "WESTCENTRALUS:20230320T184014Z:0d255fe2-c872-4b59-a295-fb170a6ab152"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,7 +180,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 16 Mar 2023 05:24:27 GMT"
+          "Mon, 20 Mar 2023 18:40:13 GMT"
         ],
         "Content-Length": [
           "366"
@@ -192,8 +192,8 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"requestId\": \"c97ce71f-d50f-4f05-8458-f70b3db28162\",\r\n    \"requestType\": \"UpdatePurviewMetadata\",\r\n    \"queuedTime\": \"3/16/2023 5:24:11 AM\",\r\n    \"serverName\": \"extgov-pstest-svr\",\r\n    \"status\": \"Succeeded\"\r\n  },\r\n  \"id\": \"c97ce71f-d50f-4f05-8458-f70b3db28162\",\r\n  \"name\": \"c97ce71f-d50f-4f05-8458-f70b3db28162\",\r\n  \"type\": \"Microsoft.Sql/locations/refreshExternalGovernanceStatusOperationResults\"\r\n}",
-      "StatusCode": 201
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"requestId\": \"9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57\",\r\n    \"requestType\": \"UpdatePurviewMetadata\",\r\n    \"queuedTime\": \"3/20/2023 6:39:59 PM\",\r\n    \"serverName\": \"extgov-pstest-svr\",\r\n    \"status\": \"Succeeded\"\r\n  },\r\n  \"id\": \"9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57\",\r\n  \"name\": \"9ba7f3ff-690f-4fc7-ad9c-d7cbb00fdd57\",\r\n  \"type\": \"Microsoft.Sql/locations/refreshExternalGovernanceStatusOperationResults\"\r\n}",
+      "StatusCode": 200
     }
   ],
   "Names": {},
