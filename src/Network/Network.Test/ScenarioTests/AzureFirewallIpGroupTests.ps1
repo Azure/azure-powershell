@@ -34,9 +34,9 @@ function Test-AzureFirewallIpGroup
 {
       # Setup
       $rgname = Get-ResourceGroupName
-      $rglocation = Get-ProviderLocation ResourceManagement "eastus2euap"
-      $location = Get-ProviderLocation ResourceManagement "eastus2euap"
-      $ipGroupLocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+      $rglocation = Get-ProviderLocation ResourceManagement "eastus"
+      $location = Get-ProviderLocation ResourceManagement "eastus"
+      $ipGroupLocation = Get-ProviderLocation ResourceManagement "eastus"
       $ipGroupName1 = Get-ResourceName
       $ipGroupName2 = Get-ResourceName
     

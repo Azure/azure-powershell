@@ -1236,8 +1236,8 @@ function Test-AzureFirewallVirtualHubCRUDWithZones {
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $policyLocation = Get-ProviderLocation $resourceTypeParent "eastus2euap"
-    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+    $policyLocation = Get-ProviderLocation $resourceTypeParent "eastus"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus"
     $azureFirewallPolicyName = Get-ResourceName
     $skuName = "AZFW_Hub"
     $skuTier = "Standard"
