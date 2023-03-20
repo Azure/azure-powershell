@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsSapLandscapeMo
 }
 
 Describe 'Get-AzWorkloadsSapLandscapeMonitor' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $response = Get-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
+        $response.GroupingLandscape.Name | Should -Be "NonProd"
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $response = Get-AzWorkloadsSapLandscapeMonitor -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.MonitorName)/sapLandscapeMonitor/default"
+        $response.GroupingLandscape.Name | Should -Be "NonProd"
     }
 }
