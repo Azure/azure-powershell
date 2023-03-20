@@ -24,7 +24,7 @@ Refreshes the value of external governance on the server. If successful, the val
 
 ### Example 1
 ```powershell
-PS C:\> Refresh-AzSqlServerExternalGovernanceStatus -ServerName MyServer -ResourceGroupName MyResourceGroup 
+PS C:\> Invoke-AzSqlServerExternalGovernanceStatusRefresh -ServerName MyServer -ResourceGroupName MyResourceGroup 
 
 ResourceGroupName : MyResourceGroup
 ServerName        : MyServer
