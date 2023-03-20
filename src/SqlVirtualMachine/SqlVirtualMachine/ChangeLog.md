@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change notification for SqlManagementType
 
 ## Version 1.1.0
 * Added cmdlets for Availability Group Listener
