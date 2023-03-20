@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.Aks
                 }
                 var agentPool = GetAgentPool();
                 var pool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
-                var psPool = PSMapper.Instance.Map<PSNodePool>(pool);
+                var psPool = AdapterHelper<AgentPool, PSNodePool>.Adapt(pool);
                 WriteObject(psPool);
             };
 
