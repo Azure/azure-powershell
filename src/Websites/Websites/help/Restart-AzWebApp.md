@@ -15,13 +15,13 @@ Restarts an Azure Web App.
 
 ### S1
 ```
-Restart-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Restart-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-SoftRestart] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### S2
 ```
-Restart-AzWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Restart-AzWebApp [-WebApp] <PSSite> [-SoftRestart] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,6 +81,22 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SoftRestart
+Specify true to apply the configuration settings and restarts the app only if necessary.
+By default, the API always restarts and reprovisions the app.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
