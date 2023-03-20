@@ -19,13 +19,13 @@ Describe 'Get-AzWvdStartMenuItem' {
                                         -ApplicationGroupName $env.PersistentDesktopAppGroup
 
             $paint = $startMenuItems | Where-Object -Property Name -Match 'Paint'
-                $paint[0].Name | Should -Be 'HostPoolPowershellPersistent1-DAG/Paint'
+                $paint[0].Name | Should -Be 'alecbUserSessionHP-DAG/Paint'
                 $paint[0].FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $paint[0].IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $paint[0].IconIndex | Should -Be 0
 
             $paint = $startMenuItems | Where-Object -Property Name -Match 'Snip'
-                $paint[0].Name | Should -Be 'HostPoolPowershellPersistent1-DAG/Snipping Tool'
+                $paint[0].Name | Should -Be 'alecbUserSessionHP-DAG/Snipping Tool'
                 $paint[0].FilePath | Should -Be 'C:\windows\system32\SnippingTool.exe'
                 $paint[0].IconPath | Should -Be 'C:\windows\system32\SnippingTool.exe'
                 $paint[0].IconIndex | Should -Be 0

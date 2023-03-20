@@ -44,19 +44,19 @@ Describe 'New-AzWvdApplication' {
                                 -ResourceGroupName $env.ResourceGroup `
                                 -GroupName $env.RemoteApplicationGroup `
                                 -Name 'Paint' `
-                                -FilePath 'C:\windows\system32\mspaint.exe' `
+                                -FilePath 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
                                 -FriendlyName 'fri' `
                                 -Description 'des' `
                                 -IconIndex 0 `
-                                -IconPath 'C:\windows\system32\mspaint.exe' `
+                                -IconPath 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe' `
                                 -CommandLineSetting 'Allow' `
                                 -ShowInPortal:$true
                 $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
-                $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
+                $application.FilePath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
                 $application.FriendlyName | Should -Be 'fri'
                 $application.Description | Should -Be 'des'
                 $application.IconIndex | Should -Be 0
-                $application.IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
+                $application.IconPath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
                 $application.CommandLineSetting | Should -Be 'Allow'
                 $application.ShowInPortal | Should -Be $true
 
@@ -65,11 +65,11 @@ Describe 'New-AzWvdApplication' {
                                 -GroupName $env.RemoteApplicationGroup `
                                 -Name 'Paint'
                 $application.Name | Should -Be 'ApplicationGroupPowershell2/Paint'
-                $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
+                $application.FilePath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
                 $application.FriendlyName | Should -Be 'fri'
                 $application.Description | Should -Be 'des'
                 $application.IconIndex | Should -Be 0
-                $application.IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
+                $application.IconPath | Should -Be 'C:\Users\alecbaird\AppData\Local\Microsoft\WindowsApps\mspaint.exe'
                 $application.CommandLineSetting | Should -Be 'Allow'
                 $application.ShowInPortal | Should -Be $true
         }
@@ -85,17 +85,17 @@ Describe 'New-AzWvdApplication' {
         try{     
 
             New-AzWvdApplication -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroupPersistent2 `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -GroupName $env.PersistentRemoteAppGroup `
                                 -Name 'Paint1' `
                                 -AppAlias 'paint' `
                                 -CommandLineSetting 'Allow'
 
             $application = Get-AzWvdApplication -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -GroupName $env.PersistentRemoteAppGroup `
                                 -Name 'Paint1'
-                $application.Name | Should -Be 'HostPoolPowershellPersistent1-RAG/Paint1'
+                $application.Name | Should -Be 'alecbRemoteAppHP-RAG/Paint1'
                 $application.FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
                 $application.IconIndex | Should -Be 0
                 $application.IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
@@ -104,7 +104,7 @@ Describe 'New-AzWvdApplication' {
         }
         finally{
             $application = Remove-AzWvdApplication -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -GroupName $env.PersistentRemoteAppGroup `
                                 -Name 'Paint1'
         }
@@ -123,7 +123,7 @@ Describe 'New-AzWvdApplication' {
                 -HostPoolName $env.HostPool `
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId `
-                -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\SingleMsix.vhd' `
+                -DisplayName 'UnitTest-MSIXPackage' -ImagePath 'C:\msix\putty.vhdx' `
                 -IsActive `
                 -IsRegularRegistration `
                 -LastUpdated '0001-01-01T00:00:00' `

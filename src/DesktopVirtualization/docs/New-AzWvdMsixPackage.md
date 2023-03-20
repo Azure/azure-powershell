@@ -76,7 +76,8 @@ This command adds MSIX Package in the specified HostPool
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -385,7 +386,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
+`PACKAGEAPPLICATION <IMsixPackageApplications[]>`: List of package applications. 
   - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
   - `[AppUserModelId <String>]`: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
   - `[Description <String>]`: Description of Package Application.
@@ -394,7 +395,7 @@ PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications.
   - `[RawIcon <Byte[]>]`: the icon a 64 bit string as a byte array.
   - `[RawPng <Byte[]>]`: the icon a 64 bit string as a byte array.
 
-PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
+`PACKAGEDEPENDENCY <IMsixPackageDependencies[]>`: List of package dependencies. 
   - `[DependencyName <String>]`: Name of package dependency.
   - `[MinVersion <String>]`: Dependency version required.
   - `[Publisher <String>]`: Name of dependency publisher.

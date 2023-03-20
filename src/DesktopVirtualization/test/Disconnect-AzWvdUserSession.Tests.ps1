@@ -5,7 +5,7 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Disconnect-AzWvdUserSession.Recording.json'
 $currentPath = $PSScriptRoot
-$userName = $env.HostPoolPersistent + '/' + $env.SessionHostName + '/2'
+$userName = $env.HostPoolPersistent + '/' + $env.SessionHostName + '/3'
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
@@ -18,13 +18,13 @@ Describe 'Disconnect-AzWvdUserSession' {
                                 -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
                                 -SessionHostName $env.SessionHostName `
-                                -Id 2
+                                -Id 3
         
         $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
                                 -HostPoolName $env.HostPoolPersistent `
                                 -SessionHostName $env.SessionHostName `
-                                -Id 2
+                                -Id 3
             $userSession.Name | Should -Be $userName
             $userSession.SessionState | Should -Be 'Disconnected'
     }

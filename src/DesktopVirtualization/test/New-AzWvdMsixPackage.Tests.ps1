@@ -44,7 +44,7 @@ Describe 'New-AzWvdMsixPackage' {
                 -ResourceGroupName $env.ResourceGroup `
                 -SubscriptionId $env.SubscriptionId  `
                 -DisplayName 'UnitTest-MSIXPackage' `
-                -ImagePath 'C:\msix\singlemsix.vhd' `
+                -ImagePath 'C:\msix\putty.vhdx' `
                 -IsActive `
                 -IsRegularRegistration `
                 -LastUpdated '0001-01-01T00:00:00' `
@@ -57,7 +57,7 @@ Describe 'New-AzWvdMsixPackage' {
 
             $package_created.PackageFamilyName | Should -Be  'MsixUnitTest_FamilyName'
             $package_created.DisplayName | Should -Be 'UnitTest-MSIXPackage'
-            $package_created.ImagePath | Should -Be 'C:\msix\SingleMsix.vhd'
+            $package_created.ImagePath | Should -Be 'C:\msix\putty.vhdx'
             ($package_created.PackageApplication | ConvertTo-Json) | Should -Be ($apps | ConvertTo-Json)
             ($package_created.PackageDependency | ConvertTo-Json) | Should -Be ($deps | ConvertTo-Json)
             $package_created.PackageName | Should -Be 'MsixUnitTest_Name'
@@ -77,36 +77,36 @@ Describe 'New-AzWvdMsixPackage' {
 
     It 'PackageAlias' {
         try{
-            $removePackage_IfExists = Remove-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-                -HostPoolName $env.HostPoolPersistent `
+            $removePackage_IfExists = Remove-AzWvdMsixPackage -FullName 'Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608' `
+                -HostPoolName $env.HostPoolPersistent2 `
                 -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId 
 
             #image exists on specified hostpool
-            $package_created = New-AzWvdMsixPackage -PackageAlias 'msixpackage' `
-                -ImagePath 'C:\msix\singlemsix.vhd' `
-                -HostPoolName $env.HostPoolPersistent `
+            $package_created = New-AzWvdMsixPackage -PackageAlias 'mozillamozillafirefox' `
+                -ImagePath 'C:\AppAttach\Firefox20110.0.1.vhdx' `
+                -HostPoolName $env.HostPoolPersistent2 `
                 -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId  `
                 -DisplayName 'package-Alias-test' `
                 -IsActive 
 
-            $package_created = Get-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-                -HostPoolName $env.HostPoolPersistent `
+            $package_created = Get-AzWvdMsixPackage -FullName 'Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608' `
+                -HostPoolName $env.HostPoolPersistent2 `
                 -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId  
 
-            $package_created.PackageFamilyName | Should -Be  'MsixPackage_zf7zaz2wb1ayy'
+            $package_created.PackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
             $package_created.DisplayName | Should -Be 'package-Alias-test'
-            $package_created.ImagePath | Should -Be 'C:\msix\singlemsix.vhd'
-            $package_created.PackageName | Should -Be 'MsixPackage'
-            $package_created.PackageRelativePath | Should -Be '\apps\MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy'
+            $package_created.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
+            $package_created.PackageName | Should -Be 'Mozilla.MozillaFirefox'
+            $package_created.PackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
             $package_created.IsActive | Should -Be $True
         }
         finally{
-            $package_created = Remove-AzWvdMsixPackage -FullName 'MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy' `
-                -HostPoolName $env.HostPoolPersistent `
-                -ResourceGroupName $env.ResourceGroup `
+            $package_created = Remove-AzWvdMsixPackage -FullName 'Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608' `
+                -HostPoolName $env.HostPoolPersistent2 `
+                -ResourceGroupName $env.ResourceGroupPersistent `
                 -SubscriptionId $env.SubscriptionId 
         }
     }
