@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsSapLandscapeMo
 }
 
 Describe 'New-AzWorkloadsSapLandscapeMonitorSidMappingObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $response = New-AzWorkloadsSapLandscapeMonitorSidMappingObject -Name Prod -TopSid "{SID2,SID1}"
+        $response.Name | Should -Be "Prod"
     }
 }
