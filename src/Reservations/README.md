@@ -204,6 +204,13 @@ directive:
       subject-prefix: Reservation
       subject: Return
     hide: true
+  
+  ### Hide command parameter
+  - where:
+      verb: Get
+      subject: Reservation
+      parameter-name: Skiptoken|Take|RefreshSummary
+    hide: true
 
   ### Rename property name
   - where:
@@ -434,6 +441,12 @@ directive:
       model-name: RefundResponse
     set:
       suppress-format: true
+  
+  - where: 
+      verb: Get 
+      variant: ^List1(.*) 
+    set: 
+      clientside-pagination: true
           
   - no-inline:
     - Price

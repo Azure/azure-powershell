@@ -41,6 +41,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_EventSubscription_CustomTopics_Delivery_Attributes()
+        {
+            TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_Delivery_Attributes");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_EventSubscription_CustomTopics_WebhookBatching()
         {
             TestRunner.RunTestScript("EventSubscriptionTests_CustomTopic_Webhook_Batching");

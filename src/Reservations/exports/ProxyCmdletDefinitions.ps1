@@ -1318,26 +1318,20 @@ param(
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
     [System.String]
-    # To indicate whether to refresh the roll up counts of the reservations group by provisioning states
-    ${RefreshSummary},
-
-    [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
-    [System.String]
     # The selected provisioning state
     ${SelectedState},
 
     [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
-    [System.Single]
-    # The number of reservations to skip from the list before returning results
-    ${Skiptoken},
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.UInt64]
+    # Gets only the first 'n' objects.
+    ${First},
 
     [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
-    [System.Single]
-    # To number of reservations to return
-    ${Take},
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.UInt64]
+    # Ignores the first 'n' objects and then gets the remaining objects.
+    ${Skip},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
