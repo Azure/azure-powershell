@@ -114,7 +114,7 @@ function New-AzKustoDataConnection {
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String[]]
         # System properties of the event/iot hub.
-        ${EventSystemProperties},
+        ${EventSystemProperty},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -287,9 +287,9 @@ function New-AzKustoDataConnection {
                     $null = $PSBoundParameters.Remove('ConsumerGroup')
                 }
 
-                if ($PSBoundParameters.ContainsKey('EventSystemProperties')) {
-                    $Parameter.EventSystemProperties = $PSBoundParameters['EventSystemProperties']
-                    $null = $PSBoundParameters.Remove('EventSystemProperties')
+                if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
+                    $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
+                    $null = $PSBoundParameters.Remove('EventSystemProperty')
                 }
 
                 if ($PSBoundParameters.ContainsKey('Compression')) {
@@ -375,9 +375,9 @@ function New-AzKustoDataConnection {
                     $null = $PSBoundParameters.Remove('ConsumerGroup')
                 }
 
-                if ($PSBoundParameters.ContainsKey('EventSystemProperties')) {
-                    $Parameter.EventSystemProperties = $PSBoundParameters['EventSystemProperties']
-                    $null = $PSBoundParameters.Remove('EventSystemProperties')
+                if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
+                    $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
+                    $null = $PSBoundParameters.Remove('EventSystemProperty')
                 }
 
                 if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {

@@ -17,7 +17,7 @@ Checks that the data connection parameters are valid.
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -EventHubResourceId <String>
  -Kind <Kind> -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperties <String[]>]
+ [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -37,7 +37,7 @@ Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <Stri
 Invoke-AzKustoDataConnectionValidation -ClusterName <String> -DatabaseName <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -DataConnectionName <String> -IotHubResourceId <String>
  -Kind <Kind> -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperties <String[]>]
+ [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>] [-TableName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -56,7 +56,7 @@ Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGr
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -DataConnectionName <String> -EventHubResourceId <String> -Kind <Kind> -Location <String>
  [-Compression <Compression>] [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>]
- [-EventSystemProperties <String[]>] [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>]
+ [-EventSystemProperty <String[]>] [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>]
  [-RetrievalStartDate <DateTime>] [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -66,7 +66,7 @@ Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGr
 Invoke-AzKustoDataConnectionValidation -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -DataConnectionName <String> -IotHubResourceId <String> -Kind <Kind> -Location <String>
  -SharedAccessPolicyName <String> [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>]
- [-EventSystemProperties <String[]>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
+ [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -340,7 +340,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventSystemProperties
+### -EventSystemProperty
 System properties of the event/iot hub.
 
 ```yaml

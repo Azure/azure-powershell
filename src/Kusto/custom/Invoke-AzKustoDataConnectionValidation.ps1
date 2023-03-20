@@ -133,7 +133,7 @@ function Invoke-AzKustoDataConnectionValidation {
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String[]]
         # System properties of the event/iot hub.
-        ${EventSystemProperties},
+        ${EventSystemProperty},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -278,9 +278,9 @@ function Invoke-AzKustoDataConnectionValidation {
                 $Parameter.Property.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
 
-                if ($PSBoundParameters.ContainsKey('EventSystemProperties')) {
-                    $Parameter.Property.EventSystemProperties = $PSBoundParameters['EventSystemProperties']
-                    $null = $PSBoundParameters.Remove('EventSystemProperties')
+                if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
+                    $Parameter.Property.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
+                    $null = $PSBoundParameters.Remove('EventSystemProperty')
                 }
 
                 if ($PSBoundParameters.ContainsKey('Compression')) {
@@ -346,9 +346,9 @@ function Invoke-AzKustoDataConnectionValidation {
                 $Parameter.Property.SharedAccessPolicyName = $PSBoundParameters['SharedAccessPolicyName']
                 $null = $PSBoundParameters.Remove('SharedAccessPolicyName')
 
-                if ($PSBoundParameters.ContainsKey('EventSystemProperties')) {
-                    $Parameter.Property.EventSystemProperties = $PSBoundParameters['EventSystemProperties']
-                    $null = $PSBoundParameters.Remove('EventSystemProperties')
+                if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
+                    $Parameter.Property.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
+                    $null = $PSBoundParameters.Remove('EventSystemProperty')
                 }
 
                 if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {

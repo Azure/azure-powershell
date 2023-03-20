@@ -17,7 +17,7 @@ Updates a data connection.
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
  -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperties <String[]>]
+ [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -48,7 +48,7 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
 Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -IotHubResourceId <String> -Kind <Kind>
  -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperties <String[]>]
+ [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>] [-TableName <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -76,7 +76,7 @@ Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <Strin
 ```
 Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <String>
  -EventHubResourceId <String> -Kind <Kind> -Location <String> [-Compression <Compression>]
- [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperties <String[]>]
+ [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -86,7 +86,7 @@ Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <Strin
 ```
 Update-AzKustoDataConnection -InputObject <IKustoIdentity> -ConsumerGroup <String> -IotHubResourceId <String>
  -Kind <Kind> -Location <String> -SharedAccessPolicyName <String> [-DatabaseRouting <DatabaseRouting>]
- [-DataFormat <String>] [-EventSystemProperties <String[]>] [-MappingRuleName <String>]
+ [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
  [-RetrievalStartDate <DateTime>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -390,7 +390,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EventSystemProperties
+### -EventSystemProperty
 System properties of the event/iot hub.
 
 ```yaml
