@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWorkloadsSapLandscap
 }
 
 Describe 'Remove-AzWorkloadsSapLandscapeMonitor' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzWorkloadsSapLandscapeMonitor -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        Remove-AzWorkloadsSapLandscapeMonitor -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.CreateMonitorName)/sapLandscapeMonitor/default"
     }
 }
