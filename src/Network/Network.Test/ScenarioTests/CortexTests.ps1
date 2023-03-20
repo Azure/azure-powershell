@@ -234,7 +234,7 @@ function Test-CortexCRUD
 		Assert-NotNull $vpnGatewaysAll
 		
 		# Reset/Reboot the VpnGateway using Reset-AzVpnGateway
-		$job = Reset-AzVpnGateway -VpnGateway $vpnGateway -AsJob
+		$job = Reset-AzVpnGateway -VpnGateway $vpnGateway  -IpConfigurationId "Instance0" -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
@@ -1479,6 +1479,10 @@ function Test-VpnConnectionPacketCapture
     $virtualWanName = Get-ResourceName
     $virtualHubName = Get-ResourceName
     $VpnGatewayName = Get-ResourceName
+    $vpnSiteName = Get-ResourceName
+    $vpnSiteLinkName = Get-ResourceName
+    $vpnSiteLinkConnection = Get-ResourceName
+    $vpnConnectionName = Get-ResourceName
     
     try
 	{
@@ -1508,11 +1512,31 @@ function Test-VpnConnectionPacketCapture
 		$updatedvpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[0]).Count
 		Assert-AreEqual 1 @($updatedvpnGateway.BgpSettings.BGPPeeringAddresses[1]).Count
+
+		#VpnSiteLinkConnection with VpnGatewayCustomBgpAddress
+		$link = New-AzVpnSiteLink -Name $vpnSiteLinkName -IpAddress "5.5.5.5" -LinkProviderName "SomeTelecomProvider1" -LinkSpeedInMbps "10" -BGPPeeringAddress "10.21.1.1" -BGPAsn 6500
+		$vpnSite = New-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Location $rglocation -VirtualWan $virtualWan -DeviceModel "SomeDevice" -DeviceVendor "SomeDeviceVendor" -VpnSiteLink @($link)
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[0].IpconfigurationId -CustomBgpIpAddress "169.254.22.5"
+		$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId $vpngateway.BgpSettings.BgpPeeringAddresses[1].IpconfigurationId -CustomBgpIpAddress "169.254.22.10"
+
+		$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name $vpnSiteLinkConnection -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
+		Assert-AreEqual 2 $vpnSiteLinkConnection.VpnGatewayCustomBgpAddress.Count
+		$vpnConnection = New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name $vpnConnectionName -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
+		Assert-AreEqual 1 $vpnConnection.VpnLinkConnections.Count
      }
      finally
      {
+		# Delete VpnConnection using Remove-AzVpnConnection
+		$delete = Remove-AzVpnConnection -ResourceGroupName $rgName -ParentResourceName $vpnGatewayName -Name $vpnConnectionName -Force -PassThru
+		Assert-AreEqual $True $delete
+
 		# Delete VpnGateway using Remove-AzVpnGateway
 		$delete = Remove-AzVpnGateway -Name $VpnGatewayName -ResourceGroupName $rgName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete VpnSite using Remove-AzVpnSite
+		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSiteName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		# Delete Virtual hub

@@ -1,4 +1,4 @@
-pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.2.12.0.nupkg;sourceType=sa]Az.Accounts,2.12.0
+pac0,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Accounts.2.12.1.nupkg;sourceType=sa]Az.Accounts,2.12.1
 pac1,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ADDomainServices.0.2.0.nupkg;sourceType=sa]Az.ADDomainServices,0.2.0
 pac2,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Advisor.2.0.0.nupkg;sourceType=sa]Az.Advisor,2.0.0
 pac3,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Aks.5.3.1.nupkg;sourceType=sa]Az.Aks,5.3.1
