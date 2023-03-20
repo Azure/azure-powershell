@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.TestFx
 {
     public class TestEnvironment
     {
+        private const string DummyTenantId = "395544B0-BF41-429D-921F-E1CA2252FCF4";
+
         /// <summary>
         /// Base Uri used by the Test Environment
         /// </summary>
@@ -108,7 +110,6 @@ namespace Microsoft.Azure.Commands.TestFx
 
             InitTokenDictionary();
             SetupHttpRecorderMode();
-            RecorderModeSettings();
         }
 
         private void InitTestEndPoints()
@@ -122,7 +123,6 @@ namespace Microsoft.Azure.Commands.TestFx
 
             Enum.TryParse(envNameString, true, out TestEnvironmentName envName);
             Endpoints = new TestEndpoints(EnvEndpoints[envName], ConnectionString);
-
         }
 
         private void LoadDefaultEnvironmentEndpoints()
@@ -182,43 +182,6 @@ namespace Microsoft.Azure.Commands.TestFx
                 // Log incompatible recorder mode
                 // Currently we set Playback as default recorder mode
                 HttpMockServer.Mode = HttpRecorderMode.Playback;
-            }
-        }
-
-        private void RecorderModeSettings()
-        {
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                //Get Subscription Id from MockServer
-                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
-                {
-                    SubscriptionId = HttpMockServer.Variables.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey);
-                }
-                else if (string.IsNullOrEmpty(SubscriptionId))
-                {
-                    throw new Exception($"Subscription Id is not present in the recorded mock or in connection string (e.g. {ConnectionStringKeys.SubscriptionIdKey}=<subscriptionId>)");
-                }
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Record)
-            {
-                //Restore/Add Subscription Id in MockServer from supplied connection string
-                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
-                {
-                    HttpMockServer.Variables.UpdateDictionary(ConnectionStringKeys.SubscriptionIdKey, SubscriptionId);
-                }
-                else
-                {
-                    HttpMockServer.Variables.Add(ConnectionStringKeys.SubscriptionIdKey, SubscriptionId);
-                }
-
-                // If User has provided Access Token in RawToken/GraphToken Key-Value, we don't need to authenticate
-                // We currently only check for RawToken and do not check if GraphToken is provided
-                if (string.IsNullOrEmpty(ConnectionString.GetValue(ConnectionStringKeys.RawTokenKey)))
-                {
-                    Login();
-                }
-
-                VerifyAuthTokens();
             }
         }
 
@@ -420,6 +383,53 @@ namespace Microsoft.Azure.Commands.TestFx
                 {
                     string graphFailMessage = $@"Unable to make request to graph endpoint '{GraphUri}' using credentials provided within the connectionstring";
                     Debug.WriteLine(graphFailMessage, ex.ToString());
+                }
+            }
+        }
+
+        internal void SetEnvironmentVariables()
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                //Restore/Add Subscription Id in MockServer from supplied connection string
+                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
+                {
+                    HttpMockServer.Variables.UpdateDictionary(ConnectionStringKeys.SubscriptionIdKey, SubscriptionId);
+                }
+                else
+                {
+                    HttpMockServer.Variables.Add(ConnectionStringKeys.SubscriptionIdKey, SubscriptionId);
+                }
+
+                // If User has provided Access Token in RawToken/GraphToken Key-Value, we don't need to authenticate
+                // We currently only check for RawToken and do not check if GraphToken is provided
+                if (string.IsNullOrEmpty(ConnectionString.GetValue(ConnectionStringKeys.RawTokenKey)))
+                {
+                    Login();
+                }
+
+                VerifyAuthTokens();
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                //Get Subscription Id from MockServer. Otherwise, assign zero guid
+                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
+                {
+                    SubscriptionId = HttpMockServer.Variables.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey);
+                }
+                else
+                {
+                    SubscriptionId = Guid.Empty.ToString();
+                }
+
+                // Get Tenant Id from MockServer. Otherwise, assign dummy guid
+                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.TenantIdKey))
+                {
+                    TenantId = HttpMockServer.Variables.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.TenantIdKey);
+                }
+                else
+                {
+                    TenantId = DummyTenantId;
                 }
             }
         }

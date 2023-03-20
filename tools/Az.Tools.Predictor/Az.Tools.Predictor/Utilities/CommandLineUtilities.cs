@@ -28,7 +28,8 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         /// </summary>
         /// <param name="commandLine">The command line to get the CommandAst.</param>
         /// <returns>The CommandAst.</returns>
-        /// <remarks>This parses the command line and returns the first one it encounters. It doesn't work well in a complex command line, for example: <c>Get-AzContext | Set-AzContext</c> will return <c>Get-AzContext</c>.</remarks>
+        /// <remarks>This parses the command line and returns the last one it encounters. The reason to choose the last one is because <see cref="AzPredictorService.GetSuggestion" /> returns suggestions to the last one too.
+        /// It doesn't work well in a complex command line, for example: <c>Get-AzContext | Set-AzContext</c> will return <c>Set-AzContext</c>.</remarks>
         public static CommandAst GetCommandAst(string commandLine)
         {
             if (string.IsNullOrWhiteSpace(commandLine))
@@ -37,7 +38,22 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
             }
 
             Ast ast = Parser.ParseInput(commandLine, out _, out _);
-            var commandAst = ast.Find((ast) => ast is CommandAst, searchNestedScriptBlocks: false) as CommandAst;
+            return CommandLineUtilities.GetCommandAst(ast);
+        }
+
+        /// <summary>
+        /// Gets the CommandAst for the ast for the raw command line.
+        /// </summary>
+        /// <param name="ast">The original ast to get the CommandAst.</param>
+        /// <returns>The CommandAst.</returns>
+        public static CommandAst GetCommandAst(Ast ast)
+        {
+            if (ast is null)
+            {
+                return null;
+            }
+
+            var commandAst = ast.FindAll((ast) => ast is CommandAst, searchNestedScriptBlocks: false).LastOrDefault() as CommandAst;
             return commandAst;
         }
 

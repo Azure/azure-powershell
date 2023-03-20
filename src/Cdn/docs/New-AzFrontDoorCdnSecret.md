@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
+online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecret
 schema: 2.0.0
 ---
 
@@ -210,7 +210,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <ISecretParameters>: object which contains secret parameters
+`PARAMETER <ISecretParameters>`: object which contains secret parameters
   - `Type <SecretType>`: The type of the secret resource.
 
 ## RELATED LINKS

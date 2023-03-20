@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
+online version: https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
 schema: 2.0.0
 ---
 
@@ -25,7 +25,11 @@ Create an in-memory object for Container.
 
 ### Example 1: Create an image object for Container.
 ```powershell
-New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
+$containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
+$probeArray = @()
+$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health01" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health02" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probeArray -ResourceCpu 2.0 -ResourceMemory 4.0Gi
 ```
 
 ```output
@@ -196,12 +200,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ENV <IEnvironmentVar[]>: Container environment variables.
+`ENV <IEnvironmentVar[]>`: Container environment variables.
   - `[Name <String>]`: Environment variable name.
   - `[SecretRef <String>]`: Name of the Container App secret from which to pull the environment variable value.
   - `[Value <String>]`: Non-secret environment variable value.
 
-PROBE <IContainerAppProbe[]>: List of probes for the container.
+`PROBE <IContainerAppProbe[]>`: List of probes for the container.
   - `[FailureThreshold <Int32?>]`: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
   - `[HttpGetHost <String>]`: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
   - `[HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>]`: Custom headers to set in the request. HTTP allows repeated headers.
@@ -219,7 +223,7 @@ PROBE <IContainerAppProbe[]>: List of probes for the container.
   - `[TimeoutSecond <Int32?>]`: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
   - `[Type <Type?>]`: The type of probe.
 
-VOLUMEMOUNT <IVolumeMount[]>: Container volume mounts.
+`VOLUMEMOUNT <IVolumeMount[]>`: Container volume mounts.
   - `[MountPath <String>]`: Path within the container at which the volume should be mounted.Must not contain ':'.
   - `[VolumeName <String>]`: This must match the Name of a Volume.
 

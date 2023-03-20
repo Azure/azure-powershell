@@ -1,7 +1,7 @@
 ---
 Module Name: Az.StackHCI
 Module Guid: 18e6b2a3-7e2d-4f6e-a8d2-09edaf462fd8
-Download Help Link: https://docs.microsoft.com/powershell/module/az.stackhci
+Download Help Link: https://learn.microsoft.com/powershell/module/az.stackhci
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -79,6 +79,10 @@ Set-AzStackHCI modifies resource properties of the Microsoft.AzureStackHCI cloud
 
 ### [Test-AzStackHCIConnection](Test-AzStackHCIConnection.md)
 Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI.
+
+Note: Test-AzStackhHCIConnection is deprecated.
+Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
 
 ### [Unregister-AzStackHCI](Unregister-AzStackHCI.md)
 Unregister-AzStackHCI deletes the Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and unregisters the on-premises cluster with Azure.

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
 schema: 2.0.0
 ---
 
@@ -209,7 +209,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DATASTORE <IDatastoreProperties>: [Required] Additional attributes of the entity.
+`DATASTORE <IDatastoreProperties>`: [Required] Additional attributes of the entity.
   - `Credentials <IDatastoreCredentials>`: [Required] Account credentials.
     - `CredentialsType <CredentialsType>`: [Required] Credential type used to authentication with storage.
   - `DatastoreType <DatastoreType>`: [Required] Storage type backing the datastore.

@@ -55,7 +55,7 @@ New-TestCredential -ServicePrincipalDisplayName "ScenarioTestCredentials" -Subsc
 
 This command will create a new service principal, set the correct role assignment for this service principal based upon the subscription provided, and place the service principal id and automatically generated secret into the credentials file.
 
-Alternatively, to create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
+Alternatively, to create a service principal, follow the [Azure AD guide to create a Application Service Principal](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-active-directory-application). The application type should be `Web app / API` and the sign-on URL value is irrelevant (you can set any value).
 
 #### Use Existing Service Principal
 
@@ -100,7 +100,7 @@ AZURE_TEST_MODE=Playback
 
 #### Record Test with service principal
 
-After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
+After the service principal is created, you will need to give it access to Azure resources. This can be done with the following PowerShell command, with the [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) (this is a guid, not the display name of the service principal) substituted in for `{clientId}`.
 
 ```powershell
 New-AzRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contributor
@@ -109,13 +109,13 @@ New-AzRoleAssignment -ServicePrincipalName {clientId} -RoleDefinitionName Contri
 To use this option, set the following environment variable before starting Visual Studio. The following values are substituted into the below connection string:
 
 `clientId`
-* The [Service Principal Application ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+* The [Service Principal Application ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
 
 `clientSecret`
-* A [Service Principal Authentication Key](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
+* A [Service Principal Authentication Key](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key)
 
 `tenantId`
-* The [AAD Tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+* The [AAD Tenant ID](https://learn.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
 
 ```
 TEST_CSM_ORGID_AUTHENTICATION=SubscriptionId={SubId};ServicePrincipal={clientId};ServicePrincipalSecret={clientSecret};AADTenant={tenantId};Environment={env};HttpRecorderMode=Record;

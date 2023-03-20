@@ -47,11 +47,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 01f2d2fc146e00485ecd150fc42bb2ee2abc400b
+branch: 49b2b960e028825de1e3b95568c93ed235354e06
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-03-01/reservations.json
+  - $(repo)/specification/reservations/resource-manager/Microsoft.Capacity/stable/2022-11-01/reservations.json
 module-version: 0.1.0
 title: Reservations
 subject-prefix: $(service-name)
@@ -119,6 +119,34 @@ directive:
       subject: Exchange
   - where:
       verb: Invoke
+      subject: CalculateRefund
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: CalculateRefund
+  - where:
+      verb: Invoke
+      subject: Return
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: Return
+  - where:
+      verb: Invoke
+      subject: ArchiveReservation
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: ArchiveReservation
+  - where:
+      verb: Invoke
+      subject: UnarchiveReservation
+    set:
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: UnarchiveReservation
+  - where:
+      verb: Invoke
       subject: PurchaseReservationOrder
     set:
       verb: New
@@ -170,6 +198,18 @@ directive:
       verb: Merge
       subject-prefix: ''
       subject: Reservation
+    hide: true
+  - where: 
+      verb: Invoke
+      subject-prefix: Reservation
+      subject: Return
+    hide: true
+  
+  ### Hide command parameter
+  - where:
+      verb: Get
+      subject: Reservation
+      parameter-name: Skiptoken|Take|RefreshSummary
     hide: true
 
   ### Rename property name
@@ -393,6 +433,20 @@ directive:
           - Type
           - Values
           - ReasonCode
+  - where:
+      model-name: CalculateRefundResponse
+    set:
+      suppress-format: true
+  - where:
+      model-name: RefundResponse
+    set:
+      suppress-format: true
+  
+  - where: 
+      verb: Get 
+      variant: ^List1(.*) 
+    set: 
+      clientside-pagination: true
           
   - no-inline:
     - Price

@@ -1231,6 +1231,8 @@ components:
               type: string
               description: 'The employee identifier assigned to the user by the organization. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
               nullable: true
+            employeeOrgData:
+              $ref: '#/components/schemas/microsoft.graph.employeeOrgData'
             employeeType:
               type: string
               description: 'Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT , ge, le, in, startsWith).'
@@ -1285,6 +1287,8 @@ components:
               readOnly: true
               description: 'Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, minorWithOutParentalConsent, minorWithParentalConsent, minorNoParentalConsentRequired, notAdult and adult. Refer to the legal age group property definitions for further information. Returned only on $select.'
               nullable: true
+            manager:
+              $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
             mail:
               type: string
               description: 'The SMTP address for the user, for example, admin@contoso.com. Changes to this property will also update the user''s proxyAddresses collection to include the value as an SMTP address. While this property can contain accent characters, using them can cause access issues with other Microsoft applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).'
@@ -1396,6 +1400,20 @@ components:
           additionalProperties:
             type: object
           description: Represents an Azure Active Directory user object.
+    microsoft.graph.employeeOrgData:
+      title: employeeOrgData
+      type: object
+      properties:
+        costCenter:
+          type: string
+          description: The cost center associated with the user. Returned only on $select. Supports $filter.
+          nullable: true
+        division:
+          type: string
+          description: The name of the division in which the user works. Returned only on $select. Supports $filter.
+          nullable: true
+      additionalProperties:
+        type: object
     microsoft.graph.objectIdentity:
       title: objectIdentity
       type: object

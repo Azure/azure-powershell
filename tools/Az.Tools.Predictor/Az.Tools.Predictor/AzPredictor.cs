@@ -77,7 +77,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
         private List<IDisposable> _externalDisposableObjects = new List<IDisposable>();
 
-        private ISurveyHelper _surveyHelper;
         private PowerShellRuntime _powerShellRuntime;
 
         private bool _isInitialized;
@@ -88,17 +87,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
         public AzPredictor()
         {
             _powerShellRuntime = new PowerShellRuntime();
-            _surveyHelper = new AzPredictorSurveyHelper(_powerShellRuntime);
 
             // To make import-module fast, we'll do all the initialization in a task.
             // Slow initialization may make opening a PowerShell window slow if "Import-Module" is added to the user's profile.
             Task.Run(() =>
                     {
                         _settings = Settings.GetSettings();
-                        _azContext = new AzContext(_powerShellRuntime)
-                        {
-                            IsInternal = (_settings.SetAsInternal == true) ? true : false,
-                        };
+                        _azContext = new AzContext(_powerShellRuntime);
 
                         _azContext.UpdateContext();
                         // This will run the script in the right context.
@@ -132,12 +127,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
             {
                 _predictionRequestCancellationSource.Dispose();
                 _predictionRequestCancellationSource = null;
-            }
-
-            if (_surveyHelper is IDisposable disposableSurveyHelper)
-            {
-                disposableSurveyHelper.Dispose();
-                _surveyHelper = null;
             }
 
             if (_powerShellRuntime != null)
@@ -287,12 +276,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                     parsedResult = GetAstAndMaskedCommandLine(commandLine);
                 }
 
-                if (parsedResult.IsSupported && _surveyHelper?.ShouldPromptSurvey() == true)
-                {
-                    _surveyHelper.PromptSurvey();
-                }
+                // We only collect the masked command line when the command is supported.
+                // This is to avoid the case when the user copies and pasted some sensitive data into the command line.
 
-                _telemetryClient.OnHistory(new HistoryTelemetryData(client, parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder, success));
+                var collectedCommandLine = parsedResult.IsSupported ?
+                    parsedResult.MaskedCommandLine ?? AzPredictorConstants.CommandPlaceholder :
+                    AzPredictorConstants.CommandPlaceholder;
+                _telemetryClient.OnHistory(new HistoryTelemetryData(client, collectedCommandLine, success));
                 _commandLineExecutedCompletion?.SetResult();
             });
 
@@ -328,7 +318,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
                 finally
                 {
-                    _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client, localSuggestionSessionId, context.InputAst,
+                    // The user input may be partial command line. So we mark it as supported when
+                    // 1. We find some suggestions (e.g. if the input is "get" and we find "Get-AzVM")
+                    // 2. or command name from the input contains "-Az", which indicates that the command is Az command and we don't have it in our suggestion list.
+                    var isSupported = (suggestions is not null)
+                        && (suggestions.PredictiveSuggestions.Any()
+                            || _service.IsSupportedCommand(suggestions.CommandAst?.GetCommandName()));
+                    _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client,
+                            localSuggestionSessionId,
+                            suggestions?.CommandAst,
+                            isSupported,
                             suggestions,
                             cancellationToken.IsCancellationRequested,
                             exception));

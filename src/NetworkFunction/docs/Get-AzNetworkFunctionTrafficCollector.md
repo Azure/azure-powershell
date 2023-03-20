@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollector
+online version: https://learn.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollector
 schema: 2.0.0
 ---
 
@@ -14,19 +14,26 @@ Gets the specified Azure Traffic Collector in a specified resource group
 
 ### List (Default)
 ```
-Get-AzNetworkFunctionTrafficCollector [-ResourceGroupName <String>] [-SubscriptionId <String>]
+Get-AzNetworkFunctionTrafficCollector [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Get-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNetworkFunctionTrafficCollector -InputObject <ITrafficCollectorIdentity> [<CommonParameters>]
+Get-AzNetworkFunctionTrafficCollector -InputObject <INetworkFunctionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkFunctionTrafficCollector -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,27 +41,68 @@ Gets the specified Azure Traffic Collector in a specified resource group
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get list of traffic collectors in selected subscription
 ```powershell
-{{ Add code here }}
+Get-AzNetworkFunctionTrafficCollector | Format-List
 ```
 
 ```output
-{{ Add output here }}
+CollectorPolicies : {}
+Etag              : cf0336a2-7454-4aa4-add9-1de3e2291143
+Id                : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/atcTest/providers/Microsoft.NetworkFunction/azureTrafficCollectors/pstestjuly18
+Location          : eastus
+Name              : pstestjuly18
+ProvisioningState : Failed
+Tags              : Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ResourceTags
+Type              : Microsoft.NetworkFunction/AzureTrafficCollectors
+
+CollectorPolicies : {}
+Etag              : cedea0e9-e9e4-4b2e-816f-dad184d6b424
+Id                : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/atcTest/providers/Microsoft.NetworkFunction/azureTrafficCollectors/newpsatc
+Location          : eastus
+Name              : newpsatc
+ProvisioningState : Succeeded
+Tags              : Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ResourceTags
+Type              : Microsoft.NetworkFunction/AzureTrafficCollectors
 ```
 
-{{ Add description here }}
+This cmdlet gets list of traffic collectors in selected subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get list of traffic collectors by resource group
 ```powershell
-{{ Add code here }}
+Get-AzNetworkFunctionTrafficCollector -ResourceGroupName test | Format-List
 ```
 
 ```output
-{{ Add output here }}
+CollectorPolicies : {}
+Etag              : cedea0e9-e9e4-4b2e-816f-dad184d6b424
+Id                : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/test/providers/Microsoft.NetworkFunction/azureTrafficCollectors/newpsatc
+Location          : eastus
+Name              : newpsatc
+ProvisioningState : Succeeded
+Tags              : Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ResourceTags
+Type              : Microsoft.NetworkFunction/AzureTrafficCollectors
 ```
 
-{{ Add description here }}
+This cmdlet gets list of traffic collectors by resource group.
+
+### Example 3: Get list of traffic collectors by name
+```powershell
+Get-AzNetworkFunctionTrafficCollector -ResourceGroupName test -name test | Format-List
+```
+
+```output
+CollectorPolicies : {}
+Etag              : cedea0e9-e9e4-4b2e-816f-dad184d6b424
+Id                : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/test/providers/Microsoft.NetworkFunction/azureTrafficCollectors/test
+Location          : eastus
+Name              : newpsatc
+ProvisioningState : Succeeded
+Tags              : Microsoft.Azure.PowerShell.Cmdlets.AzureTrafficCollector.Models.ResourceTags
+Type              : Microsoft.NetworkFunction/AzureTrafficCollectors
+```
+
+This cmdlet gets list of traffic collectors by name.
 
 ## PARAMETERS
 
@@ -63,7 +111,7 @@ The credentials, account, tenant, and subscription used for communication with A
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
@@ -78,7 +126,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -95,7 +143,7 @@ Azure Traffic Collector name
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: AzureTrafficCollectorName
 
 Required: True
 Position: Named
@@ -109,7 +157,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -123,8 +171,8 @@ Accept wildcard characters: False
 Azure Subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.String[]
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -139,11 +187,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.IAzureTrafficCollector
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector
 
 ## NOTES
 
@@ -154,9 +202,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
+INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   - `[AzureTrafficCollectorName <String>]`: Azure Traffic Collector name
   - `[CollectorPolicyName <String>]`: Collector Policy Name
+  - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 

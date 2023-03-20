@@ -1,7 +1,7 @@
 @{
   GUID = '938cd822-353e-462c-a393-a2871ae2f354'
   RootModule = './Az.DigitalTwins.psm1'
-  ModuleVersion = '0.2.0'
+  ModuleVersion = '0.3.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DigitalTwins.private.dll'
   FormatsToProcess = './Az.DigitalTwins.format.ps1xml'
-  FunctionsToExport = 'Get-AzDigitalTwinsEndpoint', 'Get-AzDigitalTwinsInstance', 'New-AzDigitalTwinsCheckNameRequestObject', 'New-AzDigitalTwinsDigitalTwinsIdentityObject', 'New-AzDigitalTwinsEndpoint', 'New-AzDigitalTwinsInstance', 'Remove-AzDigitalTwinsEndpoint', 'Remove-AzDigitalTwinsInstance', 'Test-AzDigitalTwinsInstanceNameAvailability', 'Update-AzDigitalTwinsInstance', '*'
+  FunctionsToExport = 'Get-AzDigitalTwinsEndpoint', 'Get-AzDigitalTwinsInstance', 'Get-AzDigitalTwinsPrivateEndpointConnection', 'Get-AzDigitalTwinsPrivateLinkResource', 'Get-AzDigitalTwinsTimeSeriesDatabaseConnection', 'New-AzDigitalTwinsEndpoint', 'New-AzDigitalTwinsInstance', 'New-AzDigitalTwinsPrivateEndpointConnection', 'New-AzDigitalTwinsTimeSeriesDatabaseConnection', 'Remove-AzDigitalTwinsEndpoint', 'Remove-AzDigitalTwinsInstance', 'Remove-AzDigitalTwinsPrivateEndpointConnection', 'Remove-AzDigitalTwinsTimeSeriesDatabaseConnection', 'Test-AzDigitalTwinsInstanceNameAvailability', 'Update-AzDigitalTwinsInstance', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

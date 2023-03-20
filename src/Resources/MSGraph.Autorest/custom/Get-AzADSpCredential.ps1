@@ -19,7 +19,7 @@ Lists key credentials and password credentials for an service principal.
 .Description
 Lists key credentials and password credentials for an service principal.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadspcredential
+https://learn.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 
 function Get-AzADSpCredential {

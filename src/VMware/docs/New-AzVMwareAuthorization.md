@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
+online version: https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareauthorization
 schema: 2.0.0
 ---
 
@@ -27,6 +27,7 @@ Create or update an ExpressRoute Circuit Authorization in a private cloud
 ```powershell
 New-AzVMwareAuthorization -Name azps_test_authorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
+
 ```output
 Name                    Type                                       ResourceGroupName
 ----                    ----                                       -----------------

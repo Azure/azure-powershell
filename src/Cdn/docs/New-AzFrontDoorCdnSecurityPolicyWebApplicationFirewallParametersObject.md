@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnFrontDoorSecurityPolicyWebApplicationFirewallParametersObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnFrontDoorSecurityPolicyWebApplicationFirewallParametersObject
 schema: 2.0.0
 ---
 
@@ -90,7 +90,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associations.
+`ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>`: Waf associations.
   - `[Domain <IActivatedResourceReference[]>]`: List of domains.
     - `[Id <String>]`: Resource ID.
   - `[PatternsToMatch <String[]>]`: List of paths

@@ -81,29 +81,6 @@ directive:
             }
           }
       }
-  # - from: swagger-document 
-  #   where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/managedEnvironments/{environmentName}"].patch.responses
-  #   transform: >-
-  #     return {
-  #         "200": {
-  #           "description": "Container App updated successfully.",
-  #           "schema": {
-  #             "$ref": "#/definitions/ManagedEnvironment"
-  #           }
-  #         },
-  #         "202": {
-  #           "description": "Patch operation is in progress.",
-  #           "schema": {
-  #             "$ref": "#/definitions/ManagedEnvironment"
-  #           }
-  #         },
-  #         "default": {
-  #           "description": "Common error response.",
-  #           "schema": {
-  #             "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/eb2b882ef0a4aa5956ca38cfa566fc4d7cfb3fb0/specification/app/resource-manager/Microsoft.App/stable/2022-03-01/CommonDefinitions.json#/definitions/DefaultErrorResponse"
-  #           }
-  #         }
-  #     }
   - from: swagger-document 
     where: $.definitions.Certificate.properties.properties.properties.password
     transform: >-
@@ -194,7 +171,7 @@ directive:
       subject: Volume
     set:
       subject: ContainerAppVolumeObject
-  # Re-name and custom it
+  # The following are commented out and their generated cmdlets may be renamed and custom logic
   # - model-cmdlet:
   #     - EnvironmentVar
   #     - ContainerAppProbe

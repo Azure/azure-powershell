@@ -1,0 +1,46 @@
+{
+  "Get-AzDynatraceMonitoredResource+[NoContext]+List+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/listMonitoredResources?api-version=2021-09-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/listMonitoredResources?api-version=2021-09-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "da5813eb-d552-4928-a506-607688aedc41" ],
+        "CommandName": [ "Get-AzDynatraceMonitoredResource" ],
+        "FullCommandName": [ "Get-AzDynatraceMonitoredResource_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.DynatraceObservability/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
+        "mise-correlation-id": [ "62104c4f-7b54-4260-9438-431072ea89a7" ],
+        "x-ms-correlation-request-id": [ "a11e24ee-4667-4181-9e6d-fad16a74c7d6" ],
+        "x-ms-client-request-id": [ "da5813eb-d552-4928-a506-607688aedc41" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "df924aca-e7b0-420f-aeef-6b9add050e88" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220824T054613Z:a11e24ee-4667-4181-9e6d-fad16a74c7d6" ],
+        "Date": [ "Wed, 24 Aug 2022 05:46:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "28" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[],\"nextLink\":null}",
+      "isContentBase64": false
+    }
+  }
+}

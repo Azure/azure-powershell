@@ -1,0 +1,46 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sourceControlId": {
+            "defaultValue": "sourceControlId",
+            "type": "string"
+        },
+        "sourceControlName": {
+            "defaultValue": "sourceControlName",
+            "type": "string"
+        },
+        "url": {
+            "defaultValue": "url",
+            "type": "string"
+        },
+        "workspaceName": {
+            "defaultValue": "workspaceName",
+            "type": "string"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/sourcecontrols",
+            "apiVersion": "2021-03-01-preview",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/', parameters('sourceControlId'))]",
+            "properties": {
+                "contentTypes": [
+                    "Parser",
+                    "AnalyticsRule",
+                    "AutomationRule",
+                    "HuntingQuery",
+                    "Playbook",
+                    "Workbook"
+                ],
+                "displayName": "[parameters('sourceControlName')]",
+                "repository": {
+                    "branch": "master",
+                    "url": "[parameters('url')]"
+                },
+                "repoType": "GitHub"
+            }
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdusersession
+online version: https://learn.microsoft.com/powershell/module/az.desktopvirtualization/remove-azwvdusersession
 schema: 2.0.0
 ---
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Force flag to login off userSession.
+Specify to force userSession deletion.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -40,8 +40,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             {
                 if (_testFxEnvironment == null)
                 {
-                    string envStr = Environment.GetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey);
-                    _testFxEnvironment = new TestEnvironment(envStr);
+                    _testFxEnvironment = TestEnvironmentFactory.BuildTestFxEnvironment();
                     OptimizeTestRecordingFile = _testFxEnvironment.OptimizeRecordedFile;
                 }
 
@@ -100,8 +99,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <returns></returns>
         public T GetServiceClient<T>(TestEnvironment currentEnvironment, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
         {
-            return GetServiceClientWithCredentials<T>(currentEnvironment,
-                currentEnvironment.TokenInfo[TokenAudience.Management], internalBaseUri, handlers);
+            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.TokenInfo[TokenAudience.Management], internalBaseUri, handlers);
         }
 
         /// <summary>
@@ -114,7 +112,6 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             bool internalBaseUri = false,
             params DelegatingHandler[] handlers) where T : class
         {
-            //TestFxEnvironment = TestEnvironmentFactory.GetTestEnvironment();
             return GetGraphServiceClient<T>(TestFxEnvironment, internalBaseUri, handlers);
         }
 

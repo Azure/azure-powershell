@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://docs.microsoft.com/powershell/module/az.managedserviceidentity/update-azuserassignedidentity
+online version: https://learn.microsoft.com/powershell/module/az.managedserviceidentity/update-azuserassignedidentity
 schema: 2.0.0
 ---
 
@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20181130.IIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IIdentity
 
 ## NOTES
 
@@ -215,7 +215,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
+`INPUTOBJECT <IManagedServiceIdentity>`: Identity Parameter
+  - `[FederatedIdentityCredentialResourceName <String>]`: The name of the federated identity credential resource.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the Resource Group to which the identity belongs.
   - `[ResourceName <String>]`: The name of the identity resource.

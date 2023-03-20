@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent
+online version: https://learn.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent
 schema: 2.0.0
 ---
 
@@ -273,10 +273,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTENTFILEPATH <IPurgeParameters>: Parameters required for content purge.
+`CONTENTFILEPATH <IPurgeParameters>`: Parameters required for content purge.
   - `ContentPath <String[]>`: The path to the content to be purged. Can describe a file path or a wild card directory.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.MachineLearningServices
 Module Guid: 56293047-9014-4c88-96b7-98b69c3b687d
-Download Help Link: https://docs.microsoft.com/powershell/module/az.machinelearningservices
+Download Help Link: https://learn.microsoft.com/powershell/module/az.machinelearningservices
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -49,7 +49,7 @@ Gets secrets related to Machine Learning compute (storage keys, service credenti
 Get the details (e.g IP address, port etc) of all the compute nodes in the compute.
 
 ### [Get-AzMLWorkspaceConnection](Get-AzMLWorkspaceConnection.md)
-
+Get a new workspace connection
 
 ### [Get-AzMLWorkspaceDataContainer](Get-AzMLWorkspaceDataContainer.md)
 Get container.
@@ -161,7 +161,7 @@ Create an in-memory object for ComputeInstance.
 Create an in-memory object for ComputeStartStopSchedule.
 
 ### [New-AzMLWorkspaceConnection](New-AzMLWorkspaceConnection.md)
-
+Creating or updating a new workspace connection
 
 ### [New-AzMLWorkspaceCustomModelJobInputObject](New-AzMLWorkspaceCustomModelJobInputObject.md)
 Create an in-memory object for CustomModelJobInput.
@@ -317,7 +317,7 @@ Delete version.
 Deletes specified Machine Learning compute.
 
 ### [Remove-AzMLWorkspaceConnection](Remove-AzMLWorkspaceConnection.md)
-
+Remove a new workspace connection
 
 ### [Remove-AzMLWorkspaceDataContainer](Remove-AzMLWorkspaceDataContainer.md)
 Delete container.

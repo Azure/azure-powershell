@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.App
-online version: https://docs.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
+online version: https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
 schema: 2.0.0
 ---
 
@@ -299,7 +299,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>: Custom headers to set in the request. HTTP allows repeated headers.
+`HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>`: Custom headers to set in the request. HTTP allows repeated headers.
   - `Name <String>`: The header field name
   - `Value <String>`: The header field value
 

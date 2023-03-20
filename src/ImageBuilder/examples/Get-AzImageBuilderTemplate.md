@@ -4,59 +4,41 @@ Get-AzImageBuilderTemplate
 ```
 
 ```output
-Location Name                      Type
--------- ----                      ----
-eastus   HelloImageTemplateLinux01 Microsoft.VirtualMachineImages/imageTemplates
-eastus   lucas-imagetemplate       Microsoft.VirtualMachineImages/imageTemplates
-eastus   test-imagebuilder         Microsoft.VirtualMachineImages/imageTemplates
+Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+-------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+eastus   bez-test-img-temp
+eastus   bez-test-img-temp12
+eastus   bez-test-img-temp13
+eastus   test-img-temp
 ```
 
 This command lists all template under a subscription.
 
 ### Example 2: List all template under a resource group
 ```powershell
-Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder
+Get-AzImageBuilderTemplate -ResourceGroupName bez-rg
 ```
 
 ```output
-Location Name                       Type
--------- ----                       ----
-eastus   HelloImageTemplateLinux01  Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-ax01b7       Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-ep5z7v       Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-klcuav       Microsoft.VirtualMachineImages/imageTemplates
-eastus   template-name-u7gjqx       Microsoft.VirtualMachineImages/imageTemplates
-eastus   test-imagebuilder          Microsoft.VirtualMachineImages/imageTemplates
-eastus   tmpl-managedimg-managedimg Microsoft.VirtualMachineImages/imageTemplates
-eastus   tmpl-platform-managed      Microsoft.VirtualMachineImages/imageTemplates
-eastus   tmpl-shareimg-managedimg   Microsoft.VirtualMachineImages/imageTemplates
+Location Name                SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+-------- ----                ------------------- ------------------- ----------------------- ------------------------ ------------------------ ----------------------------
+eastus   bez-test-img-temp
+eastus   bez-test-img-temp12
+eastus   bez-test-img-temp13
+eastus   test-img-temp
 ```
 
 This command lists all template under a resource group.
 
 ### Example 3: Get a template under a resource group
 ```powershell
-Get-AzImageBuilderTemplate -ImageTemplateName lucas-imagetemplate -ResourceGroupName wyunchi-imagebuilder
+Get-AzImageBuilderTemplate -Name test-img-temp -ResourceGroupName bez-rg
 ```
 
 ```output
-Location Name                Type
--------- ----                ----
-eastus   lucas-imagetemplate Microsoft.VirtualMachineImages/imageTemplates
-```
-
-This command gets a template under a resource group.
-
-### Example 4: Get a template under a resource group
-```powershell
-$template = Get-AzImageBuilderTemplate -ResourceGroupName wyunchi-imagebuilder -ImageTemplateName template-name-ep5z7v
-Get-AzImageBuilderTemplate -InputObject $template
-```
-
-```output
-Location Name                 Type
--------- ----                 ----
-eastus   template-name-ep5z7v Microsoft.VirtualMachineImages/imageTemplates
+Location Name          SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+-------- ----          ------------------- ------------------- ----------------------- ------------------------ ------------------ 
+eastus   test-img-temp
 ```
 
 This command gets a template under a resource group.

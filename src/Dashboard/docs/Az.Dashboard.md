@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Dashboard
 Module Guid: 8475f339-2250-485a-a9cc-aba350de72d2
-Download Help Link: https://docs.microsoft.com/powershell/module/az.dashboard
+Download Help Link: https://learn.microsoft.com/powershell/module/az.dashboard
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -17,6 +17,9 @@ Get the properties of a specific workspace for Grafana resource.
 ### [New-AzGrafana](New-AzGrafana.md)
 Create or update a workspace for Grafana resource.
 This API is idempotent, so user can either create a new grafana or update an existing grafana.
+
+### [New-AzGrafanaMonitorWorkspaceIntegrationObject](New-AzGrafanaMonitorWorkspaceIntegrationObject.md)
+Create an in-memory object for AzureMonitorWorkspaceIntegration.
 
 ### [Remove-AzGrafana](Remove-AzGrafana.md)
 Delete a workspace for Grafana resource.

@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.ServiceManagement.Common.Models;
@@ -42,10 +43,6 @@ namespace Microsoft.Azure.Commands.TestFx
         private const string TestEnvironmentName = "__test-environment";
 
         private const string TestSubscriptionName = "__test-subscriptions";
-
-        private AzureSubscription testSubscription;
-
-        private AzureAccount testAccount;
 
         private static string PackageDirectoryFromCommon { get; } = GetConfigDirectory();
 
@@ -140,7 +137,7 @@ namespace Microsoft.Azure.Commands.TestFx
             // Set RunningMocked
             TestMockSupport.RunningMocked = HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback;
 
-            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json")))
+            if (File.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName, "testcredentials.json")))
             {
                 SetEnvironmentVariableFromCredentialFile();
             }
@@ -298,7 +295,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
         public void SetEnvironmentVariableFromCredentialFile()
         {
-            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".azure", "testcredentials.json");
+            var filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), Resources.AzureDirectoryName, "testcredentials.json");
             Dictionary<string, object> testSettings;
             using (StreamReader r = new StreamReader(filePath))
             {
@@ -306,84 +303,77 @@ namespace Microsoft.Azure.Commands.TestFx
                 testSettings = JsonUtilities.DeserializeJson(json);
             }
 
-            if (Environment.GetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey) == null)
+            StringBuilder formattedConnectionString = new StringBuilder();
+            formattedConnectionString.Append($"Environment={testSettings["Environment"]};SubscriptionId={testSettings["SubscriptionId"]};TenantId={testSettings["TenantId"]};HttpRecorderMode={testSettings["HttpRecorderMode"]};");
+
+            if (testSettings.ContainsKey("UserId"))
             {
-                StringBuilder formattedConnectionString = new StringBuilder();
-                formattedConnectionString.Append($"Environment={testSettings["Environment"]};SubscriptionId={testSettings["SubscriptionId"]};TenantId={testSettings["TenantId"]};HttpRecorderMode={testSettings["HttpRecorderMode"]};");
-
-                if (testSettings.ContainsKey("UserId"))
-                {
-                    formattedConnectionString.Append($"UserId={testSettings["UserId"]};");
-                }
-
-                if (testSettings.ContainsKey("ServicePrincipal"))
-                {
-                    formattedConnectionString.Append($"ServicePrincipal={testSettings["ServicePrincipal"]};");
-                    formattedConnectionString.Append($"ServicePrincipalSecret={testSettings["ServicePrincipalSecret"]};");
-                }
-
-                if (testSettings.ContainsKey("ResourceManagementUri"))
-                {
-                    formattedConnectionString.Append($"ResourceManagementUri={testSettings["ResourceManagementUri"]};");
-                }
-
-                if (testSettings.ContainsKey("ServiceManagementUri"))
-                {
-                    formattedConnectionString.Append($"ServiceManagementUri={testSettings["ServiceManagementUri"]};");
-                }
-
-                if (testSettings.ContainsKey("AADAuthUri"))
-                {
-                    formattedConnectionString.Append($"AADAuthUri={testSettings["AADAuthUri"]};");
-                }
-
-                if (testSettings.ContainsKey("GraphUri"))
-                {
-                    formattedConnectionString.Append($"GraphUri={testSettings["GraphUri"]};");
-                }
-
-                if (testSettings.ContainsKey("AADTokenAudienceUri"))
-                {
-                    formattedConnectionString.Append($"AADTokenAudienceUri={testSettings["AADTokenAudienceUri"]};");
-                }
-
-                if (testSettings.ContainsKey($"GraphTokenAudienceUri"))
-                {
-                    formattedConnectionString.Append($"GraphTokenAudienceUri={testSettings["GraphTokenAudienceUri"]};");
-                }
-
-                if (testSettings.ContainsKey("IbizaPortalUri"))
-                {
-                    formattedConnectionString.Append($"IbizaPortalUri={testSettings["IbizaPortalUri"]};");
-                }
-
-                if (testSettings.ContainsKey("RdfePortalUri"))
-                {
-                    formattedConnectionString.Append($"RdfePortalUri={testSettings["RdfePortalUri"]};");
-                }
-
-                if (testSettings.ContainsKey("GalleryUri"))
-                {
-                    formattedConnectionString.Append($"GalleryUri={testSettings["GalleryUri"]};");
-                }
-
-                if (testSettings.ContainsKey("DataLakeStoreServiceUri"))
-                {
-                    formattedConnectionString.Append($"DataLakeStoreServiceUri={testSettings["DataLakeStoreServiceUri"]};");
-                }
-
-                if (testSettings.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
-                {
-                    formattedConnectionString.Append($"DataLakeAnalyticsJobAndCatalogServiceUri={testSettings["DataLakeAnalyticsJobAndCatalogServiceUri"]};");
-                }
-
-                Environment.SetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey, formattedConnectionString.ToString());
+                formattedConnectionString.Append($"UserId={testSettings["UserId"]};");
             }
 
-            if (Environment.GetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY) == null)
+            if (testSettings.ContainsKey("ServicePrincipal"))
             {
-                Environment.SetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY, testSettings["HttpRecorderMode"].ToString());
+                formattedConnectionString.Append($"ServicePrincipal={testSettings["ServicePrincipal"]};");
+                formattedConnectionString.Append($"ServicePrincipalSecret={testSettings["ServicePrincipalSecret"]};");
             }
+
+            if (testSettings.ContainsKey("ResourceManagementUri"))
+            {
+                formattedConnectionString.Append($"ResourceManagementUri={testSettings["ResourceManagementUri"]};");
+            }
+
+            if (testSettings.ContainsKey("ServiceManagementUri"))
+            {
+                formattedConnectionString.Append($"ServiceManagementUri={testSettings["ServiceManagementUri"]};");
+            }
+
+            if (testSettings.ContainsKey("AADAuthUri"))
+            {
+                formattedConnectionString.Append($"AADAuthUri={testSettings["AADAuthUri"]};");
+            }
+
+            if (testSettings.ContainsKey("GraphUri"))
+            {
+                formattedConnectionString.Append($"GraphUri={testSettings["GraphUri"]};");
+            }
+
+            if (testSettings.ContainsKey("AADTokenAudienceUri"))
+            {
+                formattedConnectionString.Append($"AADTokenAudienceUri={testSettings["AADTokenAudienceUri"]};");
+            }
+
+            if (testSettings.ContainsKey($"GraphTokenAudienceUri"))
+            {
+                formattedConnectionString.Append($"GraphTokenAudienceUri={testSettings["GraphTokenAudienceUri"]};");
+            }
+
+            if (testSettings.ContainsKey("IbizaPortalUri"))
+            {
+                formattedConnectionString.Append($"IbizaPortalUri={testSettings["IbizaPortalUri"]};");
+            }
+
+            if (testSettings.ContainsKey("RdfePortalUri"))
+            {
+                formattedConnectionString.Append($"RdfePortalUri={testSettings["RdfePortalUri"]};");
+            }
+
+            if (testSettings.ContainsKey("GalleryUri"))
+            {
+                formattedConnectionString.Append($"GalleryUri={testSettings["GalleryUri"]};");
+            }
+
+            if (testSettings.ContainsKey("DataLakeStoreServiceUri"))
+            {
+                formattedConnectionString.Append($"DataLakeStoreServiceUri={testSettings["DataLakeStoreServiceUri"]};");
+            }
+
+            if (testSettings.ContainsKey("DataLakeAnalyticsJobAndCatalogServiceUri"))
+            {
+                formattedConnectionString.Append($"DataLakeAnalyticsJobAndCatalogServiceUri={testSettings["DataLakeAnalyticsJobAndCatalogServiceUri"]};");
+            }
+
+            Environment.SetEnvironmentVariable(ConnectionStringKeys.TestCSMOrgIdConnectionStringKey, formattedConnectionString.ToString());
+            Environment.SetEnvironmentVariable(ConnectionStringKeys.AZURE_TEST_MODE_ENVKEY, testSettings["HttpRecorderMode"].ToString());
         }
 
         public void SetupAzureEnvironmentFromEnvironmentVariables(AzureModule mode)
@@ -391,7 +381,7 @@ namespace Microsoft.Azure.Commands.TestFx
             TestEnvironment currentEnvironment;
             if (mode == AzureModule.AzureResourceManager)
             {
-                currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                currentEnvironment = TestEnvironmentFactory.BuildTestFxEnvironment();
             }
             else
             {
@@ -425,7 +415,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
             if (currentEnvironment.SubscriptionId != null)
             {
-                testSubscription = new AzureSubscription
+                var testSubscription = new AzureSubscription
                 {
                     Id = currentEnvironment.SubscriptionId,
                     Name = TestSubscriptionName,
@@ -436,7 +426,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 testSubscription.SetDefault();
                 testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
 
-                testAccount = new AzureAccount()
+                var testAccount = new AzureAccount()
                 {
                     Id = currentEnvironment.UserName,
                     Type = AzureAccount.AccountType.User,
@@ -584,14 +574,13 @@ namespace Microsoft.Azure.Commands.TestFx
                 }
             }
 
-            powershell.AddScript("Disable-AzureRmDataCollection -ErrorAction Ignore");
+            powershell.AddScript("Disable-AzDataCollection -ErrorAction Ignore");
             powershell.AddScript($"Set-Location \"{AppDomain.CurrentDomain.BaseDirectory}\"");
             powershell.AddScript($"$TestOutputRoot='{AppDomain.CurrentDomain.BaseDirectory}'");
             powershell.AddScript("$VerbosePreference='Continue'");
             powershell.AddScript("$DebugPreference='Continue'");
             powershell.AddScript("$ErrorActionPreference='Stop'");
-            powershell.AddScript("Write-Debug \"AZURE_TEST_MODE = $($env:AZURE_TEST_MODE)\"");
-            powershell.AddScript("Write-Debug \"TEST_HTTPMOCK_OUTPUT =  $($env:TEST_HTTPMOCK_OUTPUT)\"");
+            powershell.AddScript("Write-Debug \"AZURE_TEST_MODE = $env:AZURE_TEST_MODE\"");
         }
     }
 }
