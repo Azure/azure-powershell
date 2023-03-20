@@ -71,22 +71,20 @@ namespace Microsoft.Azure.Commands.Aks.Models
                         }
                         else
                         {
-                            int layer = 5;
-                            bool flag = true;
                             Type TargetType = targetItem.GetType();
-                            while (layer-- >= 0 && flag)
+
+                            do
                             {
-                                try
+                                if (TargetType.GetProperty(targetProp.Name, BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Public).GetSetMethod(true) != null)
                                 {
-                                    flag = false;
                                     TargetType.InvokeMember(targetProp.Name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.SetProperty | BindingFlags.Instance, null, targetItem, new object[] { result });
+                                    break;
                                 }
-                                catch (Exception)
+                                else
                                 {
                                     TargetType = TargetType.BaseType;
-                                    flag = true;
                                 }
-                            }
+                            } while (!(TargetType.BaseType is null));
                         }
                     }
                 }
@@ -101,9 +99,9 @@ namespace Microsoft.Azure.Commands.Aks.Models
             {
                 return default(Target);
             }
-            Type nestedSourceType = typeof(Source).GetProperties()[0].PropertyType;
+            Type nestedSourceType = typeof(Source).GetProperty("Item").PropertyType;
 
-            Type nestedTargetType = typeof(Target).GetProperties()[0].PropertyType;
+            Type nestedTargetType = typeof(Target).GetProperty("Item").PropertyType;
             Type nestedTargetTypeList = typeof(List<>).MakeGenericType(nestedTargetType);
             var targetListInstance = Activator.CreateInstance(nestedTargetTypeList);
             MethodInfo madd = nestedTargetTypeList.GetMethod("Add");
