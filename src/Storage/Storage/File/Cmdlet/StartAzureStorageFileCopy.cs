@@ -253,7 +253,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 // Build and set storage context for the output object when
                 // 1. input track1 object and storage context is missing 2. the current context doesn't match the context of the input object 
-                if (ShouldSetContext(this.Context, this.DestFile.ServiceClient))
+                if (ShouldSetContext(this.DestContext, this.DestFile.ServiceClient))
                 {
                     this.DestContext = GetStorageContextFromTrack1FileServiceClient(this.DestFile.ServiceClient, DefaultContext);
                 }
