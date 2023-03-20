@@ -27,7 +27,7 @@ function Test-RefreshExternalGovernanceCmdlet ($location = "eastus2euap")
 	#Test scenario
 	try
 	{
-		Refresh-AzSqlServerExternalGovernanceStatus -ResourceGroupName $rg -ServerName $server
+		Invoke-AzSqlServerExternalGovernanceStatusRefresh -ResourceGroupName $rg -ServerName $server
 	}
 	finally
 	{

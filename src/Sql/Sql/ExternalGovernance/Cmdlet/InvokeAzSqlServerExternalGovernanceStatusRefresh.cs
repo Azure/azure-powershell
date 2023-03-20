@@ -5,8 +5,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ExternalGovernance.Cmdlet
 {
-    [Cmdlet("Refresh", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerExternalGovernanceStatus", SupportsShouldProcess = true), OutputType(typeof(RefreshExternalGovernanceModel))]
-    public class RefreshAzSqlServerExternalGovernanceStatus : AzureSqlServerRefreshExternalGovernanceCmdletBase
+    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerExternalGovernanceStatusRefresh", SupportsShouldProcess = true), OutputType(typeof(RefreshExternalGovernanceModel))]
+    public class InvokeAzSqlServerExternalGovernanceStatusRefresh : AzureSqlServerRefreshExternalGovernanceCmdletBase
     {
         /// <summary>
         /// Get the refresh external governance status.
