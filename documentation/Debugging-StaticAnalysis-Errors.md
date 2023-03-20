@@ -2,18 +2,18 @@
 
 Our StaticAnalysis tools help us ensure our modules follow PowerShell guidelines and prevent breaking changes from occurring outside of breaking change releases.
 
-  - [How to know if you have a StaticAnalysis Error](#how-to-know-if-you-have-a-staticanalysis-error)
-  - [How to locate the StaticAnalysis Error](#how-to-locate-the-staticanalysis-error)
-  - [Where to find StaticAnalysis reports](#where-to-find-staticanalysis-reports)
-  - [Types of StaticAnalysis Errors](#types-of-staticanalysis-errors)
-    - [Assembly Version Conflict](#assembly-version-conflict)
-    - [Breaking Changes](#breaking-changes)
-    - [Example Issues](#example-issues)
-    - [Extra Assemblies](#example-issues)
-    - [Help Issues](#help-issues)
-    - [Missing Assemblies](#missing-assemblies)
-    - [Signature Issues](#signature-issues)
-  - [Troubleshotting Example Issues](#troubleshotting-example-issues)
+- [How to know if you have a StaticAnalysis Error](#how-to-know-if-you-have-a-staticanalysis-error)
+- [How to locate the StaticAnalysis Error](#how-to-locate-the-staticanalysis-error)
+- [Where to find StaticAnalysis reports](#where-to-find-staticanalysis-reports)
+- [Types of StaticAnalysis Errors](#types-of-staticanalysis-errors)
+  - [Assembly Version Conflict](#assembly-version-conflict)
+  - [Breaking Changes](#breaking-changes)
+  - [Example Issues](#example-issues)
+  - [Extra Assemblies](#example-issues)
+  - [Help Issues](#help-issues)
+  - [Missing Assemblies](#missing-assemblies)
+  - [Signature Issues](#signature-issues)
+- [Troubleshotting Example Issues](#troubleshotting-example-issues)
 
 ## How to know if you have a StaticAnalysis Error
 If your build is failing, see the ADO pipeline checks. If check `azure-powershell - powershell-core (Analyze)` failed, then you have a StaticAnalysis Error.
