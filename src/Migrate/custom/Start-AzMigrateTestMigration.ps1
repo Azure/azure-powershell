@@ -22,7 +22,7 @@ The Start-AzMigrateTestMigration cmdlet initiates the test migration for the rep
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,7 +33,7 @@ function Start-AzMigrateTestMigration {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
         # Specifies the replicating server for which the test migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${InputObject},
 
@@ -45,7 +45,13 @@ function Start-AzMigrateTestMigration {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]
+        [System.String]
+        # Specifies the target version to which the Os has to be upgraded to. The valid values can be selected from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet.
+        ${OsUpgradeVersion},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]]
         # Updates the NIC for the Azure VM to be created.
         ${NicToUpdate},
 
@@ -107,6 +113,7 @@ function Start-AzMigrateTestMigration {
     process {
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('TestNetworkID')
+        $null = $PSBoundParameters.Remove('OsUpgradeVersion')
         $null = $PSBoundParameters.Remove('NicToUpdate')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
@@ -133,8 +140,8 @@ function Start-AzMigrateTestMigration {
 
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
         $AvSetId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetAvailabilitySetId
-        if ($AvSetId)
-        {
+        $SupportedOsVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOsVersions
+        if ($AvSetId) {
             Import-module -Name Az.Compute
             Import-module -Name Az.Network
             $AvSetName = $AvSetId.Split("/")[-1];
@@ -143,30 +150,24 @@ function Start-AzMigrateTestMigration {
             $SourceSubscriptionId = (Get-AzContext -ErrorVariable notPresent -ErrorAction SilentlyContinue).Subscription.Id
             Set-AzContext -SubscriptionId $TargetSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
             $AvSet = Get-AzAvailabilitySet -ResourceGroupName $AvSetRg -Name $AvSetName -ErrorVariable notPresent -ErrorAction SilentlyContinue
-            if (!$AvSet)
-            {
+            if (!$AvSet) {
                 Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                 throw "Availability Set '$($AvSetId)' does not exist."
             }
-            if ($AvSet.VirtualMachinesReferences -And ($AvSet.VirtualMachinesReferences.Count -gt 0))
-            {
+            if ($AvSet.VirtualMachinesReferences -And ($AvSet.VirtualMachinesReferences.Count -gt 0)) {
                 $VminAvSet = $AvSet.VirtualMachinesReferences[0].Id
-                if ($VminAvSet)
-                {
+                if ($VminAvSet) {
                     $VmNameinAvSet = $VminAvSet.Split("/")[-1]
                     $VM = Get-AzVM -ResourceGroupName $AvSetRg -Name $VmNameinAvSet -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                    if ($VM)
-                    {
+                    if ($VM) {
                         $NicId = $VM.NetworkProfile.NetworkInterfaces[0].Id
                         $Nic = Get-AzNetworkInterface -resourceid $NicId -ErrorVariable notPresent -ErrorAction SilentlyContinue
-                        if($Nic -And ($Nic.IpConfigurations) -And ($Nic.IpConfigurations[0].Subnet) -And ($Nic.IpConfigurations[0].Subnet.Id))
-                        {
+                        if ($Nic -And ($Nic.IpConfigurations) -And ($Nic.IpConfigurations[0].Subnet) -And ($Nic.IpConfigurations[0].Subnet.Id)) {
                             $Subnet = $Nic.IpConfigurations[0].Subnet.Id.Split("/")
                             $VnetID = "/$($Subnet[1])/$($Subnet[2])/$($Subnet[3])/$($Subnet[4])/$($Subnet[5])/$($Subnet[6])/$($Subnet[7])/$($Subnet[8])"
                         }
 
-                        if ($TestNetworkID -ne $VnetID)
-                        {
+                        if ($TestNetworkID -ne $VnetID) {
                             Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                             throw "Virtual Machines in the availability set '$AvSetName' can only be connected to virtual network '$VnetID'. Change the virtual network selected for the test or update the availability set for the machines, and retry the operation."
                         }
@@ -177,9 +178,20 @@ function Start-AzMigrateTestMigration {
         }
 
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )) {
-            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtTestMigrateInput]::new()
+            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtTestMigrateInput]::new()
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
+            if ($OsUpgradeVersion) {
+                if (null -eq $SupportedOsVersions) {
+                    throw "There is no supported target OS available. Please check or remove the OsUpgradeVersion input." 
+                }
+                elseif ($SupportedOsVersions -contains $OsUpgradeVersion) {
+                    $ProviderSpecificDetailInput.OsUpgradeVersion = $OsUpgradeVersion
+                }
+                else {
+                    throw "Please choose the appropriate option from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet"
+                }
+            }
             $ProviderSpecificDetailInput.VMNic = $NicToUpdate
             $ProviderSpecificDetailInput.RecoveryPointId = $ReplicationMigrationItem.ProviderSpecificDetail.LastRecoveryPointId
 
