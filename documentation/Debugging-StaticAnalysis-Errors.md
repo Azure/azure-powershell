@@ -2,7 +2,6 @@
 
 Our StaticAnalysis tools help us ensure our modules follow PowerShell guidelines and prevent breaking changes from occurring outside of breaking change releases.
 
-- [Debugging StaticAnalysis Errors](#debugging-staticanalysis-errors)
   - [How to know if you have a StaticAnalysis Error](#how-to-know-if-you-have-a-staticanalysis-error)
   - [How to locate the StaticAnalysis Error](#how-to-locate-the-staticanalysis-error)
   - [Where to find StaticAnalysis reports](#where-to-find-staticanalysis-reports)
@@ -15,10 +14,6 @@ Our StaticAnalysis tools help us ensure our modules follow PowerShell guidelines
     - [Missing Assemblies](#missing-assemblies)
     - [Signature Issues](#signature-issues)
   - [Troubleshotting Example Issues](#troubleshotting-example-issues)
-    - [Scenario 1: Unexpected errors caused by the mixture of outputs and codes](#scenario-1-unexpected-errors-caused-by-the-mixture-of-outputs-and-codes)
-    - [Example: Codes and outputs are split correctly](#example-codes-and-outputs-are-split-correctly)
-    - [Example: Add skip tag to the example whose outputs cannot be separated from codes](#example-add-skip-tag-to-the-example-whose-outputs-cannot-be-separated-from-codes)
-    - [Scenario 2: Unexpected errors caused by unpaired quotes or brackets](#scenario-2-unexpected-errors-caused-by-unpaired-quotes-or-brackets)
 
 ## How to know if you have a StaticAnalysis Error
 If your build is failing, see the ADO pipeline checks. If check `azure-powershell - powershell-core (Analyze)` failed, then you have a StaticAnalysis Error.
