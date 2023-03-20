@@ -43,7 +43,7 @@ function Invoke-SwaggerCI {
 
     foreach ($moduleName in $affectModule.keys) {
         $moduleFolder = (Get-ChildItem -Recurse -Path src -Directory -Filter $moduleName).FullName
-        $rd = Resolve-Path (Join-Path $moduleFolder "readme.md")
+        $rd = (Get-ChildItem -path $moduleFolder -Filter readme.md).FullName
         $noprofileMdPath = (Get-Item "tools/SwaggerCI/readme.azure.noprofile.md").FullName
         Write-Host $noprofileMdPath
         #populate read.md.template
