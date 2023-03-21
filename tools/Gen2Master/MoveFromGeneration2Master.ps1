@@ -172,7 +172,7 @@ Function Move-Generation2Master {
         else {
             Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj" -ModuleName $ModuleName
         }
-        Copy-Template -SourceName Changelog.md -DestPath $DestPath -DestName Changelog.md -ModuleName $ModuleName
+        Copy-Template -SourceName ChangeLog.md -DestPath $DestPath -DestName ChangeLog.md -ModuleName $ModuleName
         #Region create a solution file for module and add the related csproj files to this solution.
         dotnet new sln -n $ModuleName -o $DestPath --force
         $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
@@ -225,7 +225,7 @@ Function Move-Generation2MasterHybrid {
             if (-not (Test-Path -path $SolutionPath)) {
                 # It means there is no handcraft module for this module, so we need to create the solution file and other related files
                 Copy-Template -SourceName ModuleName.sln -DestPath $DestPath -DestName "$ModuleName.sln" -ModuleName $ModuleName
-                Copy-Template -SourceName Changelog.md -DestPath $DestPath\$ModuleName -DestName Changelog.md -ModuleName $ModuleName
+                Copy-Template -SourceName ChangeLog.md -DestPath $DestPath\$ModuleName -DestName ChangeLog.md -ModuleName $ModuleName
                 Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
                 Copy-Template -SourceName HandcraftedModule.csproj -DestPath $DestPath\$ModuleName -DestName "$ModuleName.csproj" -ModuleName $ModuleName
                 Copy-Template -SourceName ModulePage.md -DestPath $DestPath\$ModuleName\help -DestName "Az.$ModuleName.md" -ModuleName $ModuleName
