@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.EnableSftp = storageAccount.IsSftpEnabled;
             this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
             this.AllowedCopyScope = storageAccount.AllowedCopyScope;
+            this.DnsEndpointType= storageAccount.DnsEndpointType;
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -166,6 +167,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public PSImmutableStorageAccount ImmutableStorageWithVersioning { get; set; }
         public PSStorageAccountSkuConversionStatus StorageAccountSkuConversionStatus { get; set; }
+        public string DnsEndpointType { get; set; }
 
 
         public static PSStorageAccount Create(StorageModels.StorageAccount storageAccount, IStorageManagementClient client)
