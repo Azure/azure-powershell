@@ -252,6 +252,7 @@ namespace Microsoft.Azure.Commands.Batch
             this.PoolAllocationMode = resource.PoolAllocationMode;
             this.PublicNetworkAccess = resource.PublicNetworkAccess;
             this.Identity = resource.Identity;
+            this.Encryption = resource.Encryption;
 
             if (resource.AutoStorage != null)
             {

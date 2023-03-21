@@ -91,9 +91,9 @@ namespace Microsoft.Azure.Commands.Batch
             EncryptionProperties encryption = null;
             if (EncryptionKeySource == KeySource.MicrosoftKeyVault)
             {
-                if (IdentityType != ResourceIdentityType.SystemAssigned)
+                if (IdentityType != ResourceIdentityType.UserAssigned)
                 {
-                    throw new PSArgumentException("If EncryptionKeySource is set to 'MicrosoftKeyVault', the Batch Account identity must be set to `SystemAssigned`.");
+                    throw new PSArgumentException("If EncryptionKeySource is set to 'MicrosoftKeyVault', the Batch Account identity must be set to `UserAssigned`.");
                 }
 
                 if (EncryptionKeyIdentifier == null)

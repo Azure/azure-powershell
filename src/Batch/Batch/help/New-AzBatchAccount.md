@@ -17,8 +17,8 @@ Creates a Batch account.
 New-AzBatchAccount [-AccountName] <String> [-Location] <String> [-ResourceGroupName] <String>
  [[-AutoStorageAccountId] <String>] [-PoolAllocationMode <PoolAllocationMode>] [-KeyVaultId <String>]
  [-KeyVaultUrl <String>] [-Tag <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccessType>]
- [-IdentityType <ResourceIdentityType>] [-IdentityId <String[]>] [-Encryption <EncryptionProperties>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IdentityType <ResourceIdentityType>] [-IdentityId <String[]>] [-EncryptionKeySource <KeySource>]
+ [-EncryptionKeyIdentifier <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,15 +104,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Encryption
-"Configures how customer data is encrypted inside the Batch account.
-By default, accounts are encrypted using a Microsoft managed key.
-For additional control, a customer-managed key can be used instead."
+### -EncryptionKeyIdentifier
+The Key Identifier for customer-based encyrption.
 
 ```yaml
-Type: Microsoft.Azure.Management.Batch.Models.EncryptionProperties
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeySource
+Configures how customer data is encrypted inside the Batch account.
+By default, accounts are encrypted using a Microsoft managed key.
+For additional control, a customer-managed key can be used instead.
+
+```yaml
+Type: Microsoft.Azure.Management.Batch.Models.KeySource
+Parameter Sets: (All)
+Aliases:
+Accepted values: MicrosoftBatch, MicrosoftKeyVault
 
 Required: False
 Position: Named

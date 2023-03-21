@@ -152,6 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             string accountName = "account01";
             string resourceGroup = "resourceGroup";
             string location = "location";
+            string identityId = "subscriptions/0000/resourceGroups/resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/encryptionIdentity";
             string encryptionKeyVaultId = "subscriptions/0000/resourceGroups/resourceGroup/providers/Microsoft.KeyVault/vaults/encryptionVault";
             AccountCreateParameters actualCreateParameters = null;
 
@@ -167,7 +168,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             cmdlet.AccountName = accountName;
             cmdlet.ResourceGroupName = resourceGroup;
             cmdlet.Location = location;
-            cmdlet.IdentityType = ResourceIdentityType.SystemAssigned;
+            cmdlet.IdentityType = ResourceIdentityType.UserAssigned;
+            cmdlet.IdentityId = new string[] { identityId };
             cmdlet.EncryptionKeySource = KeySource.MicrosoftKeyVault;
             cmdlet.EncryptionKeyIdentifier = encryptionKeyVaultId;
             cmdlet.ExecuteCmdlet();
