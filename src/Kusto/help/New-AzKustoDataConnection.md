@@ -17,9 +17,19 @@ Creates or updates a data connection.
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
  -Location <String> [-SubscriptionId <String>] [-Compression <Compression>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
+ [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ [-ManagedIdentityResourceId <String>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
  [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### CreateExpandedCosmosDb
+```
+New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
+ -ResourceGroupName <String> -CosmosDbAccountResourceId <String> -CosmosDbContainer <String>
+ -CosmosDbDatabase <String> -Kind <Kind> -Location <String> -ManagedIdentityResourceId <String>
+ -TableName <String> [-SubscriptionId <String>] [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedEventGrid
@@ -27,8 +37,10 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -EventHubResourceId <String> -Kind <Kind>
  -Location <String> -StorageAccountResourceId <String> [-SubscriptionId <String>]
- [-DataFormat <EventGridDataFormat>] [-MappingRuleName <String>] [-TableName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-BlobStorageEventType <BlobStorageEventType>] [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>]
+ [-EventGridResourceId <String>] [-IgnoreFirstRecord] [-ManagedIdentityResourceId <String>]
+ [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpandedIotHub
@@ -36,27 +48,9 @@ New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <St
 New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
  -ResourceGroupName <String> -ConsumerGroup <String> -IotHubResourceId <String> -Kind <Kind>
  -Location <String> -SharedAccessPolicyName <String> [-SubscriptionId <String>]
- [-DataFormat <EventGridDataFormat>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
- [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateExpandedEventGrid
-```
-New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>]
- [-IgnoreFirstRecord] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpandedEventGrid
-```
-New-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name <String>
- -ResourceGroupName <String> -ConsumerGroup <String> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-BlobStorageEventType <BlobStorageEventType>] [-DataFormat <EventGridDataFormat>]
- [-IgnoreFirstRecord] [-MappingRuleName <String>] [-TableName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DatabaseRouting <DatabaseRouting>] [-DataFormat <String>] [-EventSystemProperty <String[]>]
+ [-MappingRuleName <String>] [-RetrievalStartDate <DateTime>] [-TableName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +119,7 @@ The name of blob storage event type to process.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType
-Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
+Parameter Sets: CreateExpandedEventGrid
 Aliases:
 
 Required: False
@@ -170,7 +164,52 @@ The event/iot hub consumer group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpandedEventGrid, CreateExpandedEventHub, CreateExpandedIotHub
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CosmosDbAccountResourceId
+The resource ID of the Cosmos DB account used to create the data connection.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedCosmosDb
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CosmosDbContainer
+The name of an existing container in the Cosmos DB database.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedCosmosDb
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CosmosDbDatabase
+The name of an existing database in the Cosmos DB account.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedCosmosDb
 Aliases:
 
 Required: True
@@ -195,13 +234,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseRouting
+Indication for database routing information from the data connection, by default only database routing information is allowed.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting
+Parameter Sets: CreateExpandedEventGrid, CreateExpandedEventHub, CreateExpandedIotHub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DataFormat
 The data format of the message.
 Optionally the data format can be added to each message.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpandedEventGrid, CreateExpandedEventHub, CreateExpandedIotHub
 Aliases:
 
 Required: False
@@ -218,6 +272,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventGridResourceId
+The resource ID of the event grid that is subscribed to the storage account events.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedEventGrid
+Aliases:
 
 Required: False
 Position: Named
@@ -261,7 +330,7 @@ If set to true, indicates that ingestion should ignore the first record of every
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedEventGrid, UpdateViaIdentityExpandedEventGrid
+Parameter Sets: CreateExpandedEventGrid
 Aliases:
 
 Required: False
@@ -307,6 +376,21 @@ Resource location.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedIdentityResourceId
+The resource ID of a managed identity (system or user assigned) to be used to authenticate with external resources.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpandedCosmosDb, CreateExpandedEventGrid, CreateExpandedEventHub
 Aliases:
 
 Required: True
@@ -377,6 +461,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RetrievalStartDate
+When defined, the data connection retrieves existing Event hub events created since the Retrieval start date.
+It can only retrieve events retained by the Event hub, based on its retention period.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CreateExpandedCosmosDb, CreateExpandedEventHub, CreateExpandedIotHub
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SharedAccessPolicyName
 The name of the share access policy.
 
@@ -432,7 +532,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -477,7 +577,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection
 
 ## NOTES
 
