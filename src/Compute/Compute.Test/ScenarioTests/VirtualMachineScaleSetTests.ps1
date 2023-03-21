@@ -4280,3 +4280,68 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
         Clean-ResourceGroup $rgname;
     }
 }
+
+
+<#
+.SYNOPSIS
+Vmss Os Image Scheduled Events tests
+#>
+function Test-VirtualMachineScaleSetOSImageScheduledEvents
+{
+
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Setup variables
+        $publisher = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $imgSku = "2019-Datacenter";
+        $version = "latest";
+        $vmssName = 'vmss' + $rgname;
+        $vmssSku = "Standard_D2s_v3";
+        $vmssname = "vmss" + $rgname;
+        $domainNameLabel = "d" + $rgname;
+        $username = "admin01"
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+
+        $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
+
+        # SRP
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_GRS';
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
+        $stoaccount = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname;
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # Create VMSS with managed disk
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -OSImageScheduledEvent -OSImageScheduledEventNotBeforeTimeoutInMinutes "PT15M" `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $offer -ImageReferenceSku $imgSku -ImageReferenceVersion $version `
+            -ImageReferencePublisher $publisher;
+
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-AreEqual True $vmss.;
+        Assert-AreEqual 'PT15M' $vmss.;
+
+    } 
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
