@@ -21,17 +21,17 @@ Describe 'Get-AzKustoPrivateLinkResource' {
     }
 
     It 'List' {
-        $PrivateLinkList = Get-AzKustoPrivateLinkResource -ClusterName $env.clusterName -ResourceGroupName $env.resourceGroupName
-        $fullPrivateLinkResourceName = $env.clusterName + "/cluster"
-        $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.clusterName + "/PrivateLinkResources/cluster"
+        $PrivateLinkList = Get-AzKustoPrivateLinkResource -ClusterName $env.kustoClusterName -ResourceGroupName $env.resourceGroupName
+        $fullPrivateLinkResourceName = $env.kustoClusterName + "/cluster"
+        $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.kustoClusterName + "/PrivateLinkResources/cluster"
         Validate_PrivateLinkList $PrivateLinkList $resourceId $fullPrivateLinkResourceName
     }
 
     It 'Get' {        
         $privateLinkResourceName = "cluster"
-        $PrivateLink = Get-AzKustoPrivateLinkResource -ClusterName $env.clusterName -Name $privateLinkResourceName -ResourceGroupName $env.resourceGroupName
-        $fullPrivateLinkResourceName = $env.clusterName + "/cluster"
-        $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.clusterName + "/PrivateLinkResources/cluster"
+        $PrivateLink = Get-AzKustoPrivateLinkResource -ClusterName $env.kustoClusterName -Name $privateLinkResourceName -ResourceGroupName $env.resourceGroupName
+        $fullPrivateLinkResourceName = $env.kustoClusterName + "/cluster"
+        $resourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $env.resourceGroupName + "/providers/Microsoft.Kusto/Clusters/" + $env.kustoClusterName + "/PrivateLinkResources/cluster"
         Validate_PrivateLink $PrivateLink $resourceId $fullPrivateLinkResourceName
     }
 }
