@@ -51,10 +51,11 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         [Alias("SqlVMName")]
         [ResourceNameCompleter("Microsoft.SqlVirtualMachine/SqlVirtualMachines", "ResourceGroupName")]
         public virtual string Name { get; set; }
-        
+
         /// <summary>
         /// Sql virtual machine resource to be removed
         /// </summary>
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "InputObject parameter alias 'SqlVM' will be removed.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ParameterSet.InputObject,
             ValueFromPipeline = true,

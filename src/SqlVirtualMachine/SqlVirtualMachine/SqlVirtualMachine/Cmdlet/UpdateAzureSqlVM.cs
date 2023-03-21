@@ -22,8 +22,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
-using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using static Microsoft.Azure.Commands.SqlVirtualMachine.Common.ParameterSet;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
@@ -129,6 +129,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// Sql virtual machine to be updated
         /// </summary>
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "InputObject parameter alias 'SqlVM' will be removed.")]
         [Parameter(Mandatory = true,
             ParameterSetName = NameInputObject,
             ValueFromPipeline = true,
