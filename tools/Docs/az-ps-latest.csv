@@ -22,7 +22,7 @@ pac20,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac21,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CloudService.1.2.0.nupkg;sourceType=sa]Az.CloudService,1.2.0
 pac22,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.CognitiveServices.1.13.0.nupkg;sourceType=sa]Az.CognitiveServices,1.13.0
 pac23,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Communication.0.2.0.nupkg;sourceType=sa]Az.Communication,0.2.0
-pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.5.5.0.nupkg;sourceType=sa]Az.Compute,5.5.0
+pac24,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Compute.5.6.0.nupkg;sourceType=sa]Az.Compute,5.6.0
 pac25,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConfidentialLedger.1.0.0.nupkg;sourceType=sa]Az.ConfidentialLedger,1.0.0
 pac26,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Confluent.0.2.0.nupkg;sourceType=sa]Az.Confluent,0.2.0
 pac27,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.ConnectedKubernetes.0.9.0.nupkg;sourceType=sa]Az.ConnectedKubernetes,0.9.0
