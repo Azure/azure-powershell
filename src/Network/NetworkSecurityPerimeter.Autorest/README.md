@@ -42,7 +42,7 @@ input-file:
 # - (this-folder)/relative-path-to-your-swagger 
 
 # For new RP, the version is 0.1.0
-module-version: 0.1.2
+module-version: 0.1.0
 # Normally, title is the service name
 root-module-name: $(prefix).Network
 title: NetworkSecurityPerimeter
