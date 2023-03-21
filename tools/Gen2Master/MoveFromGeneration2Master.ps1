@@ -252,7 +252,7 @@ Function Move-Generation2MasterHybrid {
                 Remove-Item -Path $LocalModulesPath -Recurse -Force
             }
             #EndRegion
-            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
+            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml', '*.psd1')
             Foreach ($File in $File2Copy) {
                 $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $File
                 $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $File
