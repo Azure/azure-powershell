@@ -77,7 +77,7 @@ Container environment variables.
 To construct, see NOTES section for ENV properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IEnvironmentVar[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ List of probes for the container.
 To construct, see NOTES section for PROBE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppProbe[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +171,7 @@ Container volume mounts.
 To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IVolumeMount[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container
 
 ## NOTES
 

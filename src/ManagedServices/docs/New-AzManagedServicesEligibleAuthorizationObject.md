@@ -65,7 +65,7 @@ The list of managedByTenant approvers for the eligible authorization.
 To construct, see NOTES section for JUSTINTIMEACCESSPOLICYMANAGEDBYTENANTAPPROVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IEligibleApprover[]
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +158,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleAuthorization
 
 ## NOTES
 

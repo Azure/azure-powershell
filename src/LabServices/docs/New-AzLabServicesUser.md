@@ -109,7 +109,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for LAB properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 Parameter Sets: Lab
 Aliases:
 
@@ -234,11 +234,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IUser
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IUser
 
 ## NOTES
 

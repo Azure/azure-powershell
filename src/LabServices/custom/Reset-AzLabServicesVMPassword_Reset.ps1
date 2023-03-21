@@ -21,12 +21,12 @@ Resets a lab virtual machine password.
 Resets a lab virtual machine password.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/reset-azlabservicesvmpassword
 #>
 function Reset-AzLabServicesVMPassword_Reset {
-    [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine])]
+    [OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]

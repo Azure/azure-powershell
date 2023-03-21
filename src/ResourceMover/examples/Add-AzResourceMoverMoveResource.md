@@ -20,9 +20,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -32,7 +32,7 @@ SystemDataLastModifiedByType      :
 TargetId                          : 
 Type                              : 
 
-$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+$targetResourceSettingsObj = New-Object Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 $targetResourceSettingsObj.ResourceType = "Microsoft.Compute/virtualMachines"
 $targetResourceSettingsObj.TargetResourceName = "PSDemoVM"
 
@@ -64,9 +64,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : CommitPending
 Name                              : psdemorm
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/psdemorm
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.ResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.ResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :
@@ -104,9 +104,9 @@ MoveStatusErrorsPropertiesTarget  :
 MoveStatusMoveState               : PreparePending
 Name                              : PSDemoVM
 ProvisioningState                 : Succeeded
-ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+ResourceSetting                   : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SourceId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/PSDemoRM/providers/Microsoft.Compute/virtualMachines/PSDemoVM
-SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.VirtualMachineResourceSettings
+SourceResourceSetting             : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.VirtualMachineResourceSettings
 SystemDataCreatedAt               :
 SystemDataCreatedBy               :
 SystemDataCreatedByType           :

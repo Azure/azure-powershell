@@ -138,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IApiKey
+### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IApiKey
 
 ## NOTES
 

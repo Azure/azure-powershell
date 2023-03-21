@@ -163,7 +163,7 @@ The Job Definition resource.
 To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinitionUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -286,13 +286,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinitionUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinitionUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IJobDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IJobDefinition
 
 ## NOTES
 

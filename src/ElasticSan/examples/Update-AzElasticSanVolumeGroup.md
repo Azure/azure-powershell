@@ -19,7 +19,7 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 
@@ -48,7 +48,7 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 

@@ -241,7 +241,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.ICluster
 
 ## NOTES
 

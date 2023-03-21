@@ -22,7 +22,7 @@ Updates a configuration of a server.
 Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 #>
 function Update-AzMySqlConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IConfiguration])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

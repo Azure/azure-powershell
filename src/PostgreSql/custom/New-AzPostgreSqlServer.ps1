@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 function New-AzPostgreSqlServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Description('Creates a new server.')]
     param(
@@ -94,7 +94,7 @@ function New-AzPostgreSqlServer {
 
         [Parameter(HelpMessage = 'Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerForCreateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServerForCreateTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
@@ -162,8 +162,8 @@ function New-AzPostgreSqlServer {
 
     process {
         try {
-          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerForCreate]::new()
-          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.ServerPropertiesForDefaultCreate]::new()
+          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerForCreate]::new()
+          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerPropertiesForDefaultCreate]::new()
 
           if ($PSBoundParameters.ContainsKey('Location')) {
               $Parameter.Location = $PSBoundParameters['Location']

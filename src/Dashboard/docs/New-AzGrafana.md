@@ -172,7 +172,7 @@ The MonitorWorkspaceIntegration of Azure Managed Grafana.
 To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IAzureMonitorWorkspaceIntegration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -342,7 +342,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana
+### Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.IManagedGrafana
 
 ## NOTES
 

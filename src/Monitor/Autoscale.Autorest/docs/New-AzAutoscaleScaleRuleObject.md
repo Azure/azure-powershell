@@ -44,7 +44,7 @@ For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},
 To construct, see NOTES section for METRICTRIGGERDIMENSION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IScaleRuleMetricDimension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IScaleRuleMetricDimension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +298,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRule
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRule
 
 ## NOTES
 

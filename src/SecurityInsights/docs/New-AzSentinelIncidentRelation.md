@@ -98,7 +98,7 @@ Represents a relation between two resources
 To construct, see NOTES section for RELATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IRelation
 Parameter Sets: Create
 Aliases:
 
@@ -191,11 +191,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IRelation
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IRelation
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IRelation
 
 ## NOTES
 

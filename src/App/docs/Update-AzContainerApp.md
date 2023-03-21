@@ -102,7 +102,7 @@ Collection of private container registry credentials for containers used by the 
 To construct, see NOTES section for CONFIGURATIONREGISTRY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IRegistryCredentials[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IRegistryCredentials[]
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Collection of secrets used by a Container app
 To construct, see NOTES section for CONFIGURATIONSECRET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +259,7 @@ custom domain bindings for Container Apps' hostnames.
 To construct, see NOTES section for INGRESSCUSTOMDOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomDomain[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomDomain[]
 Parameter Sets: (All)
 Aliases:
 
@@ -305,7 +305,7 @@ Traffic weights for app's revisions
 To construct, see NOTES section for INGRESSTRAFFIC properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ITrafficWeight[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrafficWeight[]
 Parameter Sets: (All)
 Aliases:
 
@@ -461,7 +461,7 @@ Scaling rules.
 To construct, see NOTES section for SCALERULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -507,7 +507,7 @@ List of container definitions for the Container App.
 To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -538,7 +538,7 @@ List of volume definitions for the Container App.
 To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IVolume[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]
 Parameter Sets: (All)
 Aliases:
 
@@ -589,7 +589,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp
 
 ## NOTES
 

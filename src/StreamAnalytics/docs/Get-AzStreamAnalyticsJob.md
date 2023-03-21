@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
+### Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 
 ## NOTES
 

@@ -144,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.IMonitoredResource
 
 ## NOTES
 

@@ -28,8 +28,8 @@ DimensionWeight                              : 50
 DimensionWeightUnit                          : LBS
 DimensionWidth                               : 5
 DisplayName                                  : Azure Stack Edge Pro - 2 GPU
-FilterableProperty                           : {Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty}
-HierarchyInformation                         : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation
+FilterableProperty                           : {Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty}
+HierarchyInformation                         : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.HierarchyInformation
 ImageInformation                             : {}
 Specification                                : {Usable compute, Usable memory, Usable storage}
 ```

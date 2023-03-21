@@ -175,7 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotChannel
+### Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotChannel
 
 ## NOTES
 

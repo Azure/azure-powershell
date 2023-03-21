@@ -111,7 +111,7 @@ Describes RF links, modem processing, and IP endpoints.
 To construct, see NOTES section for LINK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLink[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLink[]
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +299,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfile
 
 ## NOTES
 

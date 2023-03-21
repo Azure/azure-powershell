@@ -63,7 +63,7 @@ The set of connections that constitute a direct peering.
 To construct, see NOTES section for DIRECTCONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IDirectConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IDirectConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ The set of connections that constitute an exchange peering.
 To construct, see NOTES section for EXCHANGECONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IExchangeConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IExchangeConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -293,7 +293,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
 
 ## NOTES
 

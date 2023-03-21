@@ -96,7 +96,7 @@ The environment variables to set in the container instance.
 To construct, see NOTES section for ENVIRONMENTVARIABLE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IEnvironmentVariable[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IEnvironmentVariable[]
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +217,7 @@ The HTTP headers for liveness probe.
 To construct, see NOTES section for LIVENESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -353,7 +353,7 @@ The exposed ports on the container instance.
 To construct, see NOTES section for PORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -399,7 +399,7 @@ The HTTP headers for readiness probe.
 To construct, see NOTES section for READINESSPROBEHTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IHttpHeader[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IHttpHeader[]
 Parameter Sets: (All)
 Aliases:
 
@@ -580,7 +580,7 @@ The volume mounts available to the container instance.
 To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolumeMount[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolumeMount[]
 Parameter Sets: (All)
 Aliases:
 
@@ -598,7 +598,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.Container
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Container
 
 ## NOTES
 

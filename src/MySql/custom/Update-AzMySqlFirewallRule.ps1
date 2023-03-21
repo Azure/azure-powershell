@@ -20,7 +20,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 Creates a new firewall rule or updates an existing firewall rule.
 #>
 function Update-AzMySqlFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

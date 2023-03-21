@@ -23,7 +23,7 @@ Updates the data connector.
 https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentineldataconnector
 #>
 function Update-AzSentinelDataConnector {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateAADAATP', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesCloudTrail')]
@@ -463,25 +463,25 @@ function Update-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.GraphQueries[]]
         ${UiConfigGraphQuery},
 
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.SampleQueries[]]
         ${UiConfigSampleQuery},
 
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.LastDataReceivedDataType[]]
         ${UiConfigDataType},
 
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ConnectivityCriteria[]]
         ${UiConfigConnectivityCriterion},
 
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
@@ -500,19 +500,19 @@ function Update-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]] 
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsResourceProviderItem[]] 
         ${PermissionResourceProvider},
 
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsCustomsItem[]]
         ${PermissionCustom},
 
         [Parameter(ParameterSetName = 'UpdateGenericUI')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.InstructionSteps[]]
         ${UiConfigInstructionStep},
 
         [Parameter()]

@@ -151,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication
 
 ## NOTES
 

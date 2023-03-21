@@ -75,7 +75,7 @@ Move reservation order from one tenant to another
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IChangeDirectoryRequest
 Parameter Sets: Change, ChangeViaIdentity
 Aliases:
 
@@ -183,13 +183,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IChangeDirectoryRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IChangeDirectoryResponse
 
 ## NOTES
 

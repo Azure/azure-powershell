@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.Api20201208.IHealthBot
+### Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Models.IHealthBot
 
 ## NOTES
 

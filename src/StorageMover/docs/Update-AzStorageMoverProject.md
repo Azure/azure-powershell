@@ -134,7 +134,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProjectUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProjectUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -227,13 +227,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProjectUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProjectUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IProject
 
 ## NOTES
 

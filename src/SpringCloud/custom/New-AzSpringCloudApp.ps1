@@ -23,7 +23,7 @@ Create a new App or update an exiting App.
 New-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ LOADEDCERTIFICATE <ILoadedCertificate[]>: Collection of loaded certificates
 https://learn.microsoft.com/powershell/module/az.springcloud/new-azspringcloudapp
 #>
 function New-AzSpringCloudApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -69,7 +69,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResourcePropertiesAddonConfigs]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResourcePropertiesAddonConfigs]))]
     [System.Collections.Hashtable]
     # Collection of addons
     ${AddonConfig},
@@ -114,7 +114,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[]]
     # Collection of loaded certificates
     # To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
     ${LoadedCertificate},

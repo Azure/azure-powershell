@@ -166,9 +166,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ISupportedStackResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISupportedStackResource
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ISupportedStacksCollection
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISupportedStacksCollection
 
 ## NOTES
 

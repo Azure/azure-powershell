@@ -21,12 +21,12 @@ Create an in-memory object for AdlsGen2ScanRuleset.
 Create an in-memory object for AdlsGen2ScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2ScanRulesetObject
 #>
 function New-AzPurviewAdlsGen2ScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzPurviewAdlsGen2ScanRulesetObject {
         [string[]]
         $IncludedCustomClassificationRuleName,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
         $ScanningRuleCustomFileExtension,
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
@@ -57,7 +57,7 @@ function New-AzPurviewAdlsGen2ScanRulesetObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen2ScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

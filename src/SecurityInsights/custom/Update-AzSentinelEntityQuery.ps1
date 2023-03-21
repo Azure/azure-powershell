@@ -23,7 +23,7 @@ Updates the entity query.
 https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelentityquery
 #>
 function Update-AzSentinelEntityQuery {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.CustomEntityQuery])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateActivity', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateActivity')]
@@ -100,7 +100,7 @@ function Update-AzSentinelEntityQuery {
         [Parameter(ParameterSetName = 'UpdateActivity')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityActivity')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')] 
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ActivityEntityQueriesPropertiesEntitiesFilter]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ActivityEntityQueriesPropertiesEntitiesFilter]
         ${EntitiesFilter},
 
         [Parameter(ParameterSetName = 'UpdateActivity')]

@@ -21,7 +21,7 @@ Updates an existing server. The request body can contain one to many of the prop
 #>
 function Update-AzMariaDbServer
 {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='ServerName', Mandatory, HelpMessage='MariaDB server name')]
@@ -106,7 +106,7 @@ function Update-AzMariaDbServer
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Application-specific metadata in the form of key-value pairs.
         ${Tag},

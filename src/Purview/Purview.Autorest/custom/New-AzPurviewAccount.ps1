@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
+Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 .Link
 https://learn.microsoft.com/powershell/module/az.purview/new-azpurviewaccount
 #>
 function New-AzPurviewAccount {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -98,7 +98,7 @@ function New-AzPurviewAccount {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purview.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Tags on the azure resource.
         ${Tag},

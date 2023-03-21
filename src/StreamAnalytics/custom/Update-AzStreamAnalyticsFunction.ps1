@@ -32,11 +32,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -78,7 +78,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.streamanalytics/update-azstreamanalyticsfunction
 #>
 function Update-AzStreamAnalyticsFunction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction])]
 [CmdletBinding(DefaultParameterSetName='Update', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -183,9 +183,9 @@ begin {
     try {
         $functionParameters = Get-Content -Path $File | Out-String
           
-        if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.FunctionTypeConverter]::CanConvertFrom($functionParameters))
+        if ([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.FunctionTypeConverter]::CanConvertFrom($functionParameters))
         {
-          $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.FunctionTypeConverter]::ConvertFrom($functionParameters)
+          $function = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.FunctionTypeConverter]::ConvertFrom($functionParameters)
         } else {
           throw "The json format is invalid"
         }

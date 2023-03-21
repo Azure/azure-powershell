@@ -72,9 +72,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorAdditionalInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ErrorAdditionalInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorAdditionalInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ErrorAdditionalInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -94,9 +94,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorDetail</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ErrorDetail</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ErrorDetail</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ErrorDetail</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -128,9 +128,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.Operation</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.Operation</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Operation</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -168,9 +168,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.OperationDisplay</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.OperationDisplay</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -208,9 +208,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.OperationListResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.OperationListResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -230,9 +230,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.ProxyResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ProxyResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -258,9 +258,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.Resource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Resource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -286,9 +286,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.Sku</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Sku</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.Sku</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Sku</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -332,9 +332,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.SystemData</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SystemData</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -384,9 +384,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.TrackedResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.TrackedResource</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.TrackedResource</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.TrackedResource</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -418,9 +418,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.TrackedResourceTags</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.TrackedResourceTags</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.TrackedResourceTags</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.TrackedResourceTags</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -440,9 +440,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -474,9 +474,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Lab</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Lab</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -508,9 +508,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -536,9 +536,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -564,9 +564,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -592,9 +592,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Image</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Image</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Image</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Image</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -620,9 +620,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.AutoShutdownProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.AutoShutdownProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.AutoShutdownProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.AutoShutdownProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -654,9 +654,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ConnectionProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ConnectionProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ConnectionProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ConnectionProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -694,9 +694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Credentials</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Credentials</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Credentials</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Credentials</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -722,9 +722,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ImageProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ImageProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ImageProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ImageProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -834,9 +834,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ImageReference</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ImageReference</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ImageReference</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ImageReference</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -880,9 +880,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ImageUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ImageUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ImageUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ImageUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -902,9 +902,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.InviteBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.InviteBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.InviteBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.InviteBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -924,9 +924,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabNetworkProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabNetworkProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabNetworkProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabNetworkProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -958,9 +958,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanNetworkProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanNetworkProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanNetworkProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanNetworkProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -980,9 +980,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1092,9 +1092,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1114,9 +1114,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlanUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlanUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1148,9 +1148,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1392,9 +1392,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1414,9 +1414,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1448,9 +1448,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.OperationResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.OperationResult</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.OperationResult</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.OperationResult</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1494,9 +1494,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedImages</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedImages</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedImages</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedImages</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1516,9 +1516,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedLabPlans</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedLabPlans</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedLabPlans</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedLabPlans</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1538,9 +1538,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedLabs</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedLabs</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedLabs</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedLabs</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1560,9 +1560,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedSchedules</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedSchedules</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedSchedules</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedSchedules</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1582,9 +1582,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedUsers</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedUsers</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedUsers</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedUsers</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1604,9 +1604,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedVirtualMachines</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedVirtualMachines</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.PagedVirtualMachines</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.PagedVirtualMachines</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1626,9 +1626,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.RecurrencePattern</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.RecurrencePattern</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.RecurrencePattern</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.RecurrencePattern</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1666,9 +1666,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ResetPasswordBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ResetPasswordBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ResetPasswordBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ResetPasswordBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1694,9 +1694,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.RosterProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.RosterProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.RosterProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.RosterProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1740,9 +1740,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.SaveImageBody</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SaveImageBody</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.SaveImageBody</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SaveImageBody</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1768,9 +1768,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ScheduleProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ScheduleProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ScheduleProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ScheduleProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1838,9 +1838,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ScheduleUpdateProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ScheduleUpdateProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ScheduleUpdateProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ScheduleUpdateProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1878,9 +1878,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.SecurityProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SecurityProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.SecurityProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SecurityProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1906,9 +1906,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.SupportInfo</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SupportInfo</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.SupportInfo</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.SupportInfo</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1946,9 +1946,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.TrackedResourceUpdate</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.TrackedResourceUpdate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.TrackedResourceUpdate</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.TrackedResourceUpdate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -1968,9 +1968,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.UserProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.UserProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.UserProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.UserProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2020,9 +2020,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineAdditionalCapabilities</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineAdditionalCapabilities</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineAdditionalCapabilities</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineAdditionalCapabilities</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2042,9 +2042,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineConnectionProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineConnectionProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineConnectionProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineConnectionProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2100,9 +2100,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineProfile</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineProfile</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineProfile</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineProfile</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -2134,9 +2134,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachineProperties</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachineProperties</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

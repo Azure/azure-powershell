@@ -21,12 +21,12 @@ Create an in-memory object for ShippingAddress.
 Create an in-memory object for ShippingAddress.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
 .Link
 https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
 #>
 function New-AzEdgeOrderShippingAddressObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -64,7 +64,7 @@ function New-AzEdgeOrderShippingAddressObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress]::New()
 
         if ($PSBoundParameters.ContainsKey('AddressType')) {
             $Object.AddressType = $AddressType

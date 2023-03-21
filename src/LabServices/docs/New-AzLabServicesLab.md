@@ -849,7 +849,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 
 ## NOTES
 

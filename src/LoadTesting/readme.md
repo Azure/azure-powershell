@@ -141,7 +141,7 @@ directive:
   # Hiding redundant SystemData property 
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api30.ISystemData SystemData');
+    transform: $ = $.replace('public Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ISystemData SystemData', 'private Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ISystemData SystemData');
 
   - from: source-file-csharp
     where: $

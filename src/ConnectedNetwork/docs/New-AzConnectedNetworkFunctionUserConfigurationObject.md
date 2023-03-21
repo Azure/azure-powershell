@@ -43,7 +43,7 @@ The network interface configuration.
 To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionUserConfiguration
 
 ## NOTES
 

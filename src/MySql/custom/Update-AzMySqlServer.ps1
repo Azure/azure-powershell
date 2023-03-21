@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 function Update-AzMySqlServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Updates an existing server. The request body can contain one to many of the properties present in the normal server definition. Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.')]
     param(
@@ -103,7 +103,7 @@ function Update-AzMySqlServer {
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 

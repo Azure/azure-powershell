@@ -28,12 +28,12 @@ Location Name                                          ResourceGroupName
 eastus2  azpshcws/azpsiotconnector/azpsfhirdestination azps_test_group
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination
+Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotFhirDestination
 .Link
 https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnectorfhirdestination
 #>
 function New-AzHealthcareIotConnectorFhirDestination {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotFhirDestination])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotFhirDestination])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -88,7 +88,7 @@ function New-AzHealthcareIotConnectorFhirDestination {
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IIotMappingPropertiesContent]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IIotMappingPropertiesContent]))]
         [System.Collections.Hashtable]
         # The mapping.
         ${FhirMappingContent},

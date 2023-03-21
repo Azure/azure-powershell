@@ -21,12 +21,12 @@ Create an in-memory object for ScaleRuleAuth.
 Create an in-memory object for ScaleRuleAuth.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleauthobject
 #>
 function New-AzContainerAppScaleRuleAuthObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzContainerAppScaleRuleAuthObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRuleAuth]::New()
 
         if ($PSBoundParameters.ContainsKey('SecretRef')) {
             $Object.SecretRef = $SecretRef

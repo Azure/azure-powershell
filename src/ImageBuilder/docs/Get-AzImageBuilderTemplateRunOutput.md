@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IRunOutput
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IRunOutput
 
 ## NOTES
 

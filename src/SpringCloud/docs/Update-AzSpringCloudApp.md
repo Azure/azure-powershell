@@ -63,10 +63,10 @@ TemporaryDiskMountPath  : /tmp
 TemporaryDiskSizeInGb   : 5
 Type                    : Microsoft.AppPlatform/Spring/apps
 Url                     :
-Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ManagedIdentityProperties
-PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.PersistentDisk
-Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties
-TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
+Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ManagedIdentityProperties
+PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.PersistentDisk
+Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.AppResourceProperties
+TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TemporaryDisk
 ```
 
 Update Spring Cloud App by name.
@@ -96,10 +96,10 @@ TemporaryDiskMountPath  : /tmp
 TemporaryDiskSizeInGb   : 5
 Type                    : Microsoft.AppPlatform/Spring/apps
 Url                     :
-Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ManagedIdentityProperties
-PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.PersistentDisk
-Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties
-TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
+Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ManagedIdentityProperties
+PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.PersistentDisk
+Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.AppResourceProperties
+TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TemporaryDisk
 ```
 
 Update Spring Cloud App by pipeline.
@@ -262,7 +262,7 @@ Collection of loaded certificates
 To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -480,7 +480,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 
 ## NOTES
 

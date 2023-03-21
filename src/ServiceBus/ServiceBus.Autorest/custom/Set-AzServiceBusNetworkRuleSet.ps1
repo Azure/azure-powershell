@@ -20,7 +20,7 @@ Updates the NetworkRuleSet of a ServiceBus namespace
 #>
 
 function Set-AzServiceBusNetworkRuleSet{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INetworkRuleSet])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INetworkRuleSet])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of ServiceBus namespace")]
@@ -70,13 +70,13 @@ function Set-AzServiceBusNetworkRuleSet{
 
         [Parameter(HelpMessage = "List of IpRules")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules[]]
         # List of IpRules
         ${IPRule},
 
         [Parameter(HelpMessage = "List of VirtualNetwork Rules")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetVirtualNetworkRules[]]
         # List of VirtualNetwork Rules
         ${VirtualNetworkRule},
 

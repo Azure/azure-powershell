@@ -21,12 +21,12 @@ Create an in-memory object for DataNetworkConfiguration.
 Create an in-memory object for DataNetworkConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkDataNetworkConfigurationObject
 #>
 function New-AzMobileNetworkDataNetworkConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,7 +38,7 @@ function New-AzMobileNetworkDataNetworkConfigurationObject {
         [int]
         $AllocationAndRetentionPriorityLevel,
         [Parameter(Mandatory, HelpMessage="List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceResourceId[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceResourceId[]]
         $AllowedService,
         [Parameter(Mandatory, HelpMessage="Data network resource ID.")]
         [string]
@@ -70,7 +70,7 @@ function New-AzMobileNetworkDataNetworkConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('AdditionalAllowedSessionType')) {
             $Object.AdditionalAllowedSessionType = $AdditionalAllowedSessionType

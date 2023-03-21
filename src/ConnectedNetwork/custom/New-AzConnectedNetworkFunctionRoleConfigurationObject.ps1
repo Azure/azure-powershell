@@ -21,12 +21,12 @@ Create a in-memory object for NetworkFunctionRoleConfiguration
 Create a in-memory object for NetworkFunctionRoleConfiguration
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionRoleConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionRoleConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -49,7 +49,7 @@ function New-AzConnectedNetworkFunctionRoleConfigurationObject {
         [string]
         $ImageReferenceVersion,
         [Parameter(HelpMessage="The network interface configurations.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]]
         $NetworkInterface,
         [Parameter(HelpMessage="The VHD name.")]
         [string]
@@ -76,10 +76,10 @@ function New-AzConnectedNetworkFunctionRoleConfigurationObject {
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.NetworkFunctionRoleConfigurationType]
         $RoleType,
         [Parameter(HelpMessage="The list of SSH public keys used to authenticate with linux based VMs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISshPublicKey[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshPublicKey[]]
         $SshPublicKey,
         [Parameter(HelpMessage="Specifies the parameters that are used to add a data disk to a virtual machine.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDataDisk[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDataDisk[]]
         $StorageProfileDataDisk,
         [Parameter(HelpMessage="The user parameters for customers. The format of user data parameters has to be matched with the provided user data template.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IAny]
@@ -96,7 +96,7 @@ function New-AzConnectedNetworkFunctionRoleConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration]::New()
 
         $Object.CustomProfileMetadataConfigurationPath = $CustomProfileMetadataConfigurationPath
         $Object.ImageReferenceExactVersion = $ImageReferenceExactVersion

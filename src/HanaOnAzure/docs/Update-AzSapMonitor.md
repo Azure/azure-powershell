@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor
+### Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.ISapMonitor
 
 ## NOTES
 

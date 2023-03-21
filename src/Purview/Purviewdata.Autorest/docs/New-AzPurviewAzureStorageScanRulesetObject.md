@@ -113,7 +113,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SCANNINGRULECUSTOMFILEEXTENSION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureStorageScanRuleset
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureStorageScanRuleset
 
 ## NOTES
 

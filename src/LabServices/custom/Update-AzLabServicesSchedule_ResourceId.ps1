@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 function Update-AzLabServicesSchedule_ResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ISchedule])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

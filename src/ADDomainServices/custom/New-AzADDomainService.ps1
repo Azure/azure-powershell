@@ -26,7 +26,7 @@ $replicaSet = New-AzADDomainServiceReplicaSetObject -Location westus -SubnetId /
 New-AzADDomainService -name youriADdomain -ResourceGroupName youriAddomain -DomainName youriAddomain.com -ReplicaSet $replicaSet
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
+Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,7 +46,7 @@ REPLICASET <IReplicaSet[]>: List of ReplicaSets
 https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainservice
 #>
 function New-AzADDomainService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -135,7 +135,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IForestTrust[]]
     # List of settings for Resource Forest
     # To construct, see NOTES section for FORESTTRUST properties and create a hash table.
     ${ForestTrust},
@@ -198,7 +198,7 @@ param(
     [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IReplicaSet[]]
     # List of ReplicaSets
     # To construct, see NOTES section for REPLICASET properties and create a hash table.
     ${ReplicaSet},
@@ -218,7 +218,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},

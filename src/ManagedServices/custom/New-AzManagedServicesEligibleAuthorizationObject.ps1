@@ -20,17 +20,17 @@
     Create a in-memory object for EligibleAuthorization
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization
+    Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleAuthorization
     .Link
     https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleAuthorizationObject
     #>
     function New-AzManagedServicesEligibleAuthorizationObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleAuthorization')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
             [Parameter(HelpMessage="The list of managedByTenant approvers for the eligible authorization.")]
-            [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleApprover[]]
+            [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IEligibleApprover[]]
             $JustInTimeAccessPolicyManagedByTenantApprover,
             [Parameter(HelpMessage="The maximum access duration in ISO 8601 format for just-in-time access requests.")]
             [System.TimeSpan]
@@ -51,7 +51,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleAuthorization]::New()
     
             $Object.JustInTimeAccessPolicyManagedByTenantApprover = $JustInTimeAccessPolicyManagedByTenantApprover
 

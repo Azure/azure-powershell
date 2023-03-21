@@ -189,7 +189,7 @@ The list of event properties which will be used to partition data in the environ
 To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesIdProperty[]
 Parameter Sets: Gen1
 Aliases:
 
@@ -310,7 +310,7 @@ The list of event properties which will be used to define the environment's time
 To construct, see NOTES section for TIMESERIESIDPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesIdProperty[]
 Parameter Sets: Gen2
 Aliases:
 
@@ -374,7 +374,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEnvironmentResource
 
 ## NOTES
 

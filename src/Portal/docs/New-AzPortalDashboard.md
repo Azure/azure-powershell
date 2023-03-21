@@ -56,7 +56,7 @@ The shared dashboard resource definition.
 To construct, see NOTES section for DASHBOARD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+Type: Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 Parameter Sets: Create
 Aliases:
 
@@ -241,11 +241,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.Api201901Preview.IDashboard
+### Microsoft.Azure.PowerShell.Cmdlets.Portal.Models.IDashboard
 
 ## NOTES
 

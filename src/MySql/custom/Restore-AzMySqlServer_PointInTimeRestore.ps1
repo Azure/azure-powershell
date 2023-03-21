@@ -14,7 +14,7 @@
 # ----------------------------------------------------------------------------------
 
 function Restore-AzMySqlServer_PointInTimeRestore {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServer])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Description('Restore a server from an existing backup')]
     param(
@@ -42,7 +42,7 @@ function Restore-AzMySqlServer_PointInTimeRestore {
 
         [Parameter(Mandatory, ValueFromPipeline, HelpMessage = 'The source server object to restore from.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServer]
         ${InputObject},
 
         [Parameter(HelpMessage = 'The location the resource resides in.')]
@@ -57,7 +57,7 @@ function Restore-AzMySqlServer_PointInTimeRestore {
 
         [Parameter(HelpMessage = 'Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerForCreateTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerForCreateTags]))]
         [System.Collections.Hashtable]
         ${Tag},
 
@@ -124,9 +124,9 @@ function Restore-AzMySqlServer_PointInTimeRestore {
 
     process {
         try {
-          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerForCreate]::new()
+          $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.ServerForCreate]::new()
 
-          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.ServerPropertiesForRestore]::new()
+          $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.ServerPropertiesForRestore]::new()
           $Parameter.Property.RestorePointInTime = $PSBoundParameters['RestorePointInTime']
           $null = $PSBoundParameters.Remove('RestorePointInTime')
           $null = $PSBoundParameters.Remove('UsePointInTimeRestore')

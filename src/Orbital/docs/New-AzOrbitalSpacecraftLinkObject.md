@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.SpacecraftLink
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.SpacecraftLink
 
 ## NOTES
 

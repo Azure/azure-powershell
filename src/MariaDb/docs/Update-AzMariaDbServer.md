@@ -350,7 +350,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer
 
 ## NOTES
 

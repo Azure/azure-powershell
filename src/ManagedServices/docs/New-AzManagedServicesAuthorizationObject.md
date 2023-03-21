@@ -118,7 +118,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.Authorization
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Authorization
 
 ## NOTES
 

@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
 
 ## NOTES
 

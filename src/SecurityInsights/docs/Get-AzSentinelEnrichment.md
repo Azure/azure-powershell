@@ -187,9 +187,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentDomainWhois
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEnrichmentDomainWhois
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentIPGeodata
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEnrichmentIPGeodata
 
 ## NOTES
 

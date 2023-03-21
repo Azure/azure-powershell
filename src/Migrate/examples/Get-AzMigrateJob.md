@@ -6,7 +6,7 @@ Get-AzMigrateJob -JobID "/Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwsh
 ```output
 ActivityId                       : 68af14b4-46ae-48d1-b3e9-cdcffb9e8a93 ActivityId: 74d1a396-1d37-4264-8a5b-b727aaef0171
 AllowedAction                    : {}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          : 9/16/20 11:57:33 AM
 Error                            : {}
@@ -36,7 +36,7 @@ Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 
 ```output
 ActivityId                       :
 AllowedAction                    : {}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         :
 EndTime                          : 9/21/20 4:13:40 PM
 Error                            : {}
@@ -66,7 +66,7 @@ Get-AzMigrateJob -ResourceGroupName 'azmigratepwshtestasr13072020' -ProjectName 
 ```output
 ActivityId                       : 6986b7e5-0f1f-49d8-8b4b-77e6f66bcb92 ActivityId: eb73c6a1-7c66-469f-a853-d896aa38cc0f
 AllowedAction                    : {}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          : 8/21/20 6:41:48 AM
 Error                            : {}

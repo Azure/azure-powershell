@@ -105,7 +105,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for AUTHORIZATIONACTIONMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IAuthorizationActionMapping[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IAuthorizationActionMapping[]
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for ENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeEndpoint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeEndpoint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -242,7 +242,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for EXTENDEDLOCATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IExtendedLocationOptions[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IExtendedLocationOptions[]
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +318,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for LINKEDACCESSCHECK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILinkedAccessCheck[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILinkedAccessCheck[]
 Parameter Sets: (All)
 Aliases:
 
@@ -334,7 +334,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for LOGGINGRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILoggingRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILoggingRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -575,7 +575,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SERVICETREEINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo[]
 Parameter Sets: (All)
 Aliases:
 
@@ -621,7 +621,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -637,7 +637,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SUBSCRIPTIONSTATERULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -653,7 +653,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SWAGGERSPECIFICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISwaggerSpecification[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISwaggerSpecification[]
 Parameter Sets: (All)
 Aliases:
 
@@ -699,7 +699,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for THROTTLINGRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IThrottlingRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IThrottlingRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -748,7 +748,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration
 
 ## NOTES
 

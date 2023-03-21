@@ -89,7 +89,7 @@ Array of all AAD based Security Principals.
 To construct, see NOTES section for AADBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IAadBasedSecurityPrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IAadBasedSecurityPrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ Array of all cert based Security Principals.
 To construct, see NOTES section for CERTBASEDSECURITYPRINCIPAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.ICertBasedSecurityPrincipal[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ICertBasedSecurityPrincipal[]
 Parameter Sets: (All)
 Aliases:
 
@@ -291,7 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.IConfidentialLedger
+### Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.IConfidentialLedger
 
 ## NOTES
 

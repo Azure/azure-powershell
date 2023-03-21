@@ -195,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEntity
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IEntity
 
 ## NOTES
 

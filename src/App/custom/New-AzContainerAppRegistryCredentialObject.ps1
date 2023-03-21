@@ -21,12 +21,12 @@ Create an in-memory object for RegistryCredentials.
 Create an in-memory object for RegistryCredentials.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappregistrycredentialobject
 #>
 function New-AzContainerAppRegistryCredentialObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +45,7 @@ function New-AzContainerAppRegistryCredentialObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.RegistryCredentials]::New()
 
         if ($PSBoundParameters.ContainsKey('Identity')) {
             $Object.Identity = $Identity

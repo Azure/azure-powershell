@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1DataSource
 
 ## NOTES
 

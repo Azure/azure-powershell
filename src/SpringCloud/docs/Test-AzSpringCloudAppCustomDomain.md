@@ -206,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICustomDomainValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICustomDomainValidateResult
 
 ## NOTES
 

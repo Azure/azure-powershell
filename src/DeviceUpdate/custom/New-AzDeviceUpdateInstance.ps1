@@ -24,7 +24,7 @@ $iotHubSetting = New-AzDeviceUpdateIotHubSettingsObject -ResourceId "/subscripti
 New-AzDeviceUpdateInstance -AccountName azpstest-account -Name azpstest-instance -ResourceGroupName azpstest_gp -Location eastus -IotHub $iotHubSetting -EnableDiagnostic:$false
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance
+Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -36,7 +36,7 @@ IOTHUB <IIotHubSettings[]>: List of IoT Hubs associated with the account.
 https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
 #>
 function New-AzDeviceUpdateInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IInstance])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -99,7 +99,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -169,7 +169,7 @@ param(
             if ($PSBoundParameters.ContainsKey("IotHubId")){
                 $iothubObject = @()
                 for ($i = 0; $i -lt $IotHubId.Count; $i++) {
-                    $IotHubSettings = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IotHubSettings
+                    $IotHubSettings = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IotHubSettings
                     $IotHubSettings.ResourceId = $IotHubId[$i]
                     $iothubObject += $IotHubSettings
                 }

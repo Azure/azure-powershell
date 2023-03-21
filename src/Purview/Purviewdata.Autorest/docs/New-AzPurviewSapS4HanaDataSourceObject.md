@@ -127,7 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaDataSource
 
 ## NOTES
 

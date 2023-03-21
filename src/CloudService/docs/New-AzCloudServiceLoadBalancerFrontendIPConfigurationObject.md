@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerFrontendIPConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerFrontendIPConfiguration
 
 ## NOTES
 

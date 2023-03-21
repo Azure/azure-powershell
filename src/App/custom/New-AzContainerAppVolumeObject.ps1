@@ -21,12 +21,12 @@ Create an in-memory object for Volume.
 Create an in-memory object for Volume.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
 #>
 function New-AzContainerAppVolumeObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzContainerAppVolumeObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Volume]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

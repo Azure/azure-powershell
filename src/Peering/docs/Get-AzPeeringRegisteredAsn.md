@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeeringRegisteredAsn
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringRegisteredAsn
 
 ## NOTES
 

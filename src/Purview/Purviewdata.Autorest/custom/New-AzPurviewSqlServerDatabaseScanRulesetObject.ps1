@@ -21,12 +21,12 @@ Create an in-memory object for SqlServerDatabaseScanRuleset.
 Create an in-memory object for SqlServerDatabaseScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseScanRulesetObject
 #>
 function New-AzPurviewSqlServerDatabaseScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseScanRuleset')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,7 +50,7 @@ function New-AzPurviewSqlServerDatabaseScanRulesetObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SqlServerDatabaseScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

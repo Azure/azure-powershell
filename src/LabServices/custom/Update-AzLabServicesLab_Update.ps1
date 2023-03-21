@@ -21,12 +21,12 @@ Operation to update a lab resource.
 Operation to update a lab resource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/update-azlabserviceslab
 #>
 function Update-AzLabServicesLab_Update {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILab])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILab])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

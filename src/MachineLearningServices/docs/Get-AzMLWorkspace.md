@@ -187,7 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspace
 
 ## NOTES
 

@@ -253,7 +253,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for RENEWPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatchPropertiesRenewProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatchPropertiesRenewProperties
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for RESERVATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatch
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatch
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -316,13 +316,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatch
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPatch
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationResponse
 
 ## NOTES
 

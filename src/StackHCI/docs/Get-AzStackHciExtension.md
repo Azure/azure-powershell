@@ -166,7 +166,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.Api20220501.IExtension
+### Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IExtension
 
 ## NOTES
 

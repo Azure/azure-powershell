@@ -20,7 +20,7 @@ Checks availability of a namespace name or disaster recovery alias.
 #>
 
 function Test-AzServiceBusName {
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ICheckNameAvailabilityResult])]
     [CmdletBinding(DefaultParameterSetName = 'NamespaceAvailability', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, ParameterSetName = 'AliasAvailability', HelpMessage = "The name of ServiceBus namespace")]

@@ -16,7 +16,7 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 8/18/2022 8:43:35 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 
 Encryption                    : EncryptionAtRestWithPlatformKey
@@ -32,7 +32,7 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/20/2022 2:37:33 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 
@@ -56,7 +56,7 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 

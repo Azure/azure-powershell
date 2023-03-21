@@ -105,7 +105,7 @@ Calculate exchange request
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateExchangeRequest
 Parameter Sets: Post
 Aliases:
 
@@ -151,7 +151,7 @@ List of reservations that are being returned in this exchange.
 To construct, see NOTES section for RESERVATIONSTOEXCHANGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationToReturn[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationToReturn[]
 Parameter Sets: PostExpanded
 Aliases:
 
@@ -167,7 +167,7 @@ List of reservations that are being purchased in this exchange.
 To construct, see NOTES section for RESERVATIONSTOPURCHASE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequest[]
 Parameter Sets: PostExpanded
 Aliases:
 
@@ -214,11 +214,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateExchangeRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateExchangeOperationResultResponse
 
 ## NOTES
 

@@ -122,7 +122,7 @@ directive:
   # Correct some generated code
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDataConnection Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDataConnection Property');
   # set alias for some name
   - where:
       verb: Get|Remove

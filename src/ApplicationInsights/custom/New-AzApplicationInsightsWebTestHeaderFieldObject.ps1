@@ -21,12 +21,12 @@ Create a in-memory object for HeaderField
 Create a in-memory object for HeaderField
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField
+Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField
 .Link
 https://learn.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestHeaderFieldObject
 #>
 function New-AzApplicationInsightsWebTestHeaderFieldObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzApplicationInsightsWebTestHeaderFieldObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.HeaderField]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.HeaderField]::New()
 
         $Object.Name = $Name
         $Object.Value = $Value

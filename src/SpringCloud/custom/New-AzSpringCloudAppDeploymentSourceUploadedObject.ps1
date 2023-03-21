@@ -21,12 +21,12 @@ Create an in-memory object for SourceUploadedUserSourceInfo.
 Create an in-memory object for SourceUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.SourceUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SourceUploadedUserSourceInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentSourceUploadedObject
 #>
 function New-AzSpringCloudAppDeploymentSourceUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.SourceUploadedUserSourceInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SourceUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzSpringCloudAppDeploymentSourceUploadedObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.SourceUploadedUserSourceInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SourceUploadedUserSourceInfo]::New()
         $Object.Type = 'Source'
         $Object.RelativePath = '<default>'
 

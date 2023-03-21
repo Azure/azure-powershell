@@ -159,7 +159,7 @@ An array of network function vendor configurations.
 To construct, see NOTES section for VENDORCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionVendorConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionVendorConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -238,7 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction
 
 ## NOTES
 

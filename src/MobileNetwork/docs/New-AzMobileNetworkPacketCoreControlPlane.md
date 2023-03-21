@@ -374,7 +374,7 @@ The sites must be in the same location as the packet core control plane.
 To construct, see NOTES section for SITE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISiteResourceId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISiteResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -500,7 +500,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPacketCoreControlPlane
 
 ## NOTES
 

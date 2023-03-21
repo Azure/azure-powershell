@@ -88,7 +88,7 @@ Notification preference for a job stage.
 To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.INotificationPreference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ContactDetails
 
 ## NOTES
 

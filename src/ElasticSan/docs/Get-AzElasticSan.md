@@ -61,7 +61,7 @@ SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 9/19/2022 9:50:25 AM
 SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 TotalIops                    : 5000
 TotalMBps                    : 80
 TotalSizeTiB                 : 7
@@ -85,7 +85,7 @@ SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 8/18/2022 8:42:21 AM
 SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 TotalIops                    : 5000
 TotalMBps                    : 80
 TotalSizeTiB                 : 7
@@ -118,7 +118,7 @@ SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 9/19/2022 9:50:25 AM
 SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 TotalIops                    : 5000
 TotalMBps                    : 80
 TotalSizeTiB                 : 7
@@ -142,7 +142,7 @@ SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 8/18/2022 8:42:21 AM
 SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 TotalIops                    : 5000
 TotalMBps                    : 80
 TotalSizeTiB                 : 7
@@ -175,7 +175,7 @@ SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 8/18/2022 8:42:21 AM
 SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 TotalIops                    : 5000
 TotalMBps                    : 80
 TotalSizeTiB                 : 7
@@ -274,7 +274,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
 
 ## NOTES
 

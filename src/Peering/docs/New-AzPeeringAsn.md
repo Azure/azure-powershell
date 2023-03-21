@@ -90,7 +90,7 @@ The contact details of the peer.
 To construct, see NOTES section for PEERCONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IContactDetail[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IContactDetail[]
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeerAsn
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeerAsn
 
 ## NOTES
 

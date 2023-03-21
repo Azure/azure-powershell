@@ -94,7 +94,7 @@ The subscriptions list to get the related collections
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingPayload
 Parameter Sets: Collections, CollectionsViaIdentity
 Aliases:
 
@@ -171,13 +171,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingPayload
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsToSubscriptionsMappingResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingResponseProperties
 
 ## NOTES
 

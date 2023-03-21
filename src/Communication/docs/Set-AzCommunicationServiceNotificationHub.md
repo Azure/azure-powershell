@@ -90,7 +90,7 @@ Description of an Azure Notification Hub to link to the communication service
 To construct, see NOTES section for LINKNOTIFICATIONHUBPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkNotificationHubParameters
 Parameter Sets: Link
 Aliases:
 
@@ -183,7 +183,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.ILinkNotificationHubParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.ILinkNotificationHubParameters
 
 ## OUTPUTS
 

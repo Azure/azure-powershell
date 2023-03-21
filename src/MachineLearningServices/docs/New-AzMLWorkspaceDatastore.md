@@ -58,7 +58,7 @@ Create or update datastore
 To construct, see NOTES section for DATASTORE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastoreProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDatastoreProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IDatastore
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IDatastore
 
 ## NOTES
 

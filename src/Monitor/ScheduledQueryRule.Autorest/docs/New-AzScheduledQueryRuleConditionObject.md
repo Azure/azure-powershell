@@ -39,7 +39,7 @@ List of Dimensions conditions.
 To construct, see NOTES section for DIMENSION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.IDimension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IDimension[]
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Condition
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Condition
 
 ## NOTES
 

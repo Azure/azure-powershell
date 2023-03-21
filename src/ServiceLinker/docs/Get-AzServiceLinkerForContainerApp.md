@@ -58,7 +58,7 @@ Get-AzServiceLinkerForContainerApp -ContainerApp servicelinker-app -ResourceGrou
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20221101Preview.SecretAuthInfo
+                               s.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -75,7 +75,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20221101Preview.AzureResource
+                               s.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 
@@ -94,7 +94,7 @@ $identity | Get-AzServiceLinkerForContainerApp  | Format-List
 
 ```output
 AuthInfo                     : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model
-                               s.Api20221101Preview.SecretAuthInfo
+                               s.SecretAuthInfo
 ClientType                   : dotnet
 Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/re 
                                sourceGroups/servicelinker-test-group/providers/ 
@@ -111,7 +111,7 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetService                : Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Model 
-                               s.Api20221101Preview.AzureResource
+                               s.AzureResource
 Type                         : microsoft.servicelinker/linkers
 VNetSolutionType             : serviceEndpoint
 
@@ -237,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource
 
 ## NOTES
 

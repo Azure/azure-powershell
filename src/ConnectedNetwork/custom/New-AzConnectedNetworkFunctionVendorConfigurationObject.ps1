@@ -21,17 +21,17 @@ Create a in-memory object for NetworkFunctionVendorConfiguration
 Create a in-memory object for NetworkFunctionVendorConfiguration
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionVendorConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionVendorConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="The network interface configurations.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]]
         $NetworkInterface,
         [Parameter(HelpMessage="Specifies the name of the administrator account. <br><br> **Windows-only restriction:** Cannot end in `".`" <br><br> **Disallowed values:** `"administrator`", `"admin`", `"user`", `"user1`", `"test`", `"user2`", `"test1`", `"user3`", `"admin1`", `"1`", `"123`", `"a`", `"actuser`", `"adm`", `"admin2`", `"aspnet`", `"backup`", `"console`", `"david`", `"guest`", `"john`", `"owner`", `"root`", `"server`", `"sql`", `"support`", `"support_388945a0`", `"sys`", `"test2`", `"test3`", `"user4`", `"user5`". <br><br> **Minimum-length (Linux):** 1  character <br><br> **Max-length (Linux):** 64 characters <br><br> **Max-length (Windows):** 20 characters  <br><br><li> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)<br><li> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).")]
         [string]
@@ -46,12 +46,12 @@ function New-AzConnectedNetworkFunctionVendorConfigurationObject {
         [string]
         $RoleName,
         [Parameter(HelpMessage="The list of SSH public keys used to authenticate with linux based VMs.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISshPublicKey[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshPublicKey[]]
         $SshPublicKey
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionVendorConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionVendorConfiguration]::New()
 
         $Object.NetworkInterface = $NetworkInterface
         $Object.OSProfileAdminUsername = $OSProfileAdminUsername

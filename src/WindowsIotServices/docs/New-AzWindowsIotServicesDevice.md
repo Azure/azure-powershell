@@ -261,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService
+### Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.IDeviceService
 
 ## NOTES
 

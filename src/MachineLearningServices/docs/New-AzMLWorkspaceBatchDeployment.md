@@ -654,7 +654,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IBatchDeployment
 
 ## NOTES
 

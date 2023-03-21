@@ -244,7 +244,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpackBindingResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildpackBindingResource
 
 ## NOTES
 

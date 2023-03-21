@@ -19,7 +19,7 @@ Creates a replica of a MariaDB server.
 Creates a replica of a MariaDB server.
 #>
 function New-AzMariaDbReplica {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='ServerName', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='Replica name.')]
@@ -32,7 +32,7 @@ function New-AzMariaDbReplica {
         [Parameter(ParameterSetName='ServerObject', Mandatory, ValueFromPipeline, HelpMessage='The source server object to restore from.')]
         [Alias('InputObject')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer]
         # The source server object to restore from.
         ${Master},
     
@@ -73,7 +73,7 @@ function New-AzMariaDbReplica {
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Application-specific metadata in the form of key-value pairs.
         ${Tag},
@@ -143,8 +143,8 @@ function New-AzMariaDbReplica {
     
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate]::new()
-            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForReplica]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerForCreate]::new()
+            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerPropertiesForReplica]::new()
 
             if($PSBoundParameters.ContainsKey('ReplicaName')) {
                 $PSBoundParameters['Name'] = $PSBoundParameters['ReplicaName']

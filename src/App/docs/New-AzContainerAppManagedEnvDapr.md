@@ -138,7 +138,7 @@ Component metadata
 To construct, see NOTES section for METADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprMetadata[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprMetadata[]
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ Collection of secrets used by a Dapr component
 To construct, see NOTES section for SECRET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ISecret[]
 Parameter Sets: (All)
 Aliases:
 
@@ -264,7 +264,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprComponent
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDaprComponent
 
 ## NOTES
 

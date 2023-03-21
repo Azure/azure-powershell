@@ -192,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetwork
 
 ## NOTES
 

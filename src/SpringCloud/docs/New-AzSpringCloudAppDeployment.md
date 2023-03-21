@@ -35,7 +35,7 @@ Active                               : False
 AppName                              : gateway
 CreatedTime                          :
 DeploymentSettingCpu                 : 1
-DeploymentSettingEnvironmentVariable : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettingsEnvironmentVariables
+DeploymentSettingEnvironmentVariable : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.DeploymentSettingsEnvironmentVariables
 DeploymentSettingInstanceCount       : 1
 DeploymentSettingJvmOption           :
 DeploymentSettingMemoryInGb          : 1
@@ -50,9 +50,9 @@ SourceType                           : Jar
 SourceVersion                        :
 Status                               : Running
 Type                                 : Microsoft.AppPlatform/Spring/apps/deployments
-DeploymentSetting                    : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentSettings
-Property                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.DeploymentResourceProperties
-Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.UserSourceInfo
+DeploymentSetting                    : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.DeploymentSettings
+Property                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.DeploymentResourceProperties
+Source                               : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.UserSourceInfo
 ```
 
 Create a spring cloud deployment.
@@ -294,7 +294,7 @@ Uploaded source information of the deployment.
 To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IUserSourceInfo
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IUserSourceInfo
 Parameter Sets: (All)
 Aliases:
 
@@ -359,7 +359,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IDeploymentResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IDeploymentResource
 
 ## NOTES
 

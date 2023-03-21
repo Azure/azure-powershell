@@ -23,7 +23,7 @@ Create an environment in the specified subscription and resource group.
 https://learn.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 #>
 function New-AzTimeSeriesInsightsEnvironment {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEnvironmentResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEnvironmentResource])]
     [CmdletBinding(DefaultParameterSetName='Gen1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -74,7 +74,7 @@ function New-AzTimeSeriesInsightsEnvironment {
 
         [Parameter(ParameterSetName='Gen1')]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesIdProperty[]]
         # The list of event properties which will be used to partition data in the environment.
         ${PartitionKeyProperty},
 
@@ -93,7 +93,7 @@ function New-AzTimeSeriesInsightsEnvironment {
     
         [Parameter(ParameterSetName='Gen2', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ITimeSeriesIdProperty[]]
         # The list of event properties which will be used to define the environment's time series id.
         ${TimeSeriesIdProperty},
 
@@ -117,7 +117,7 @@ function New-AzTimeSeriesInsightsEnvironment {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ICreateOrUpdateTrackedResourcePropertiesTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.ICreateOrUpdateTrackedResourcePropertiesTags]))]
         [System.Collections.Hashtable]
         # Key-value pairs of additional properties for the resource.
         ${Tag},
@@ -187,8 +187,8 @@ function New-AzTimeSeriesInsightsEnvironment {
     process {
         try {
             if ($PSBoundParameters['Kind'] -eq 'Gen1') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen1EnvironmentCreateOrUpdateParameters]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen1EnvironmentCreationProperties]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Gen1EnvironmentCreateOrUpdateParameters]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Gen1EnvironmentCreationProperties]::new()
                 
                 $Parameter.SkuCapacity = $PSBoundParameters['Capacity']
                 $null = $PSBoundParameters.Remove('Capacity')
@@ -206,8 +206,8 @@ function New-AzTimeSeriesInsightsEnvironment {
                     $null = $PSBoundParameters.Remove('StorageLimitExceededBehavior')
                 }
             } else {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen2EnvironmentCreateOrUpdateParameters]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.Gen2EnvironmentCreationProperties]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Gen2EnvironmentCreateOrUpdateParameters]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Gen2EnvironmentCreationProperties]::new()
                 
                 $Parameter.Property.StorageConfigurationAccountName = $PSBoundParameters['StorageAccountName']
                 $null = $PSBoundParameters.Remove('StorageAccountName')

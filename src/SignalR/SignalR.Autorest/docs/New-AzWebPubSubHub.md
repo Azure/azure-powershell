@@ -118,7 +118,7 @@ Event handler of a hub.
 To construct, see NOTES section for EVENTHANDLER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventHandler[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventHandler[]
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ The order of the array elements doesn't matter.Maximum count of event listeners 
 To construct, see NOTES section for EVENTLISTENER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IEventListener[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IEventListener[]
 Parameter Sets: (All)
 Aliases:
 
@@ -261,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubHub
 
 ## NOTES
 

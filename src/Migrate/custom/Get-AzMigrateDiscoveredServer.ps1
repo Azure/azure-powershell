@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.migrate/get-azmigratediscovered
 #>
 
 function Get-AzMigrateDiscoveredServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param (
         [Parameter(Mandatory)]

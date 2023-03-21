@@ -110,7 +110,7 @@ Represents URI referring to MSIX Image
 To construct, see NOTES section for MSIXIMAGEURI properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixImageUri
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixImageUri
 Parameter Sets: Expand, ExpandViaIdentity
 Aliases:
 
@@ -203,13 +203,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixImageUri
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IMsixImageUri
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IExpandMsixImage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IExpandMsixImage
 
 ## NOTES
 

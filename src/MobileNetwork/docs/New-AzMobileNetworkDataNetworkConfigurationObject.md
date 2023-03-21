@@ -85,7 +85,7 @@ The services must be in the same location as the SIM policy.
 To construct, see NOTES section for ALLOWEDSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceResourceId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceResourceId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +233,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.DataNetworkConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.DataNetworkConfiguration
 
 ## NOTES
 

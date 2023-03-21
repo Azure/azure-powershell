@@ -82,7 +82,7 @@ Compute properties
 To construct, see NOTES section for COMPUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICompute
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ICompute
 Parameter Sets: (All)
 Aliases:
 
@@ -363,7 +363,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResource
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeResource
 
 ## NOTES
 

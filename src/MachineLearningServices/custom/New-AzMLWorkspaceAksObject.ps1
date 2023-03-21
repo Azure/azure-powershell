@@ -21,12 +21,12 @@ Create an in-memory object for Aks.
 Create an in-memory object for Aks.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks
 .Link
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceAksObject
 #>
 function New-AzMLWorkspaceAksObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -93,7 +93,7 @@ function New-AzMLWorkspaceAksObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.Aks]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Aks]::New()
         $Object.Type = 'AKS'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

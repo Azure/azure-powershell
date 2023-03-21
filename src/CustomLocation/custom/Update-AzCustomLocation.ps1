@@ -28,7 +28,7 @@ eastus   azps_test_cluster_1 arc
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
+Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +43,7 @@ INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.customlocation/update-azcustomlocation
 #>
 function Update-AzCustomLocation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -119,7 +119,7 @@ function Update-AzCustomLocation {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IPatchableCustomLocationsTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IPatchableCustomLocationsTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

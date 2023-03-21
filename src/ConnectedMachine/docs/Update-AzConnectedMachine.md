@@ -237,7 +237,7 @@ Describes a hybrid machine Update.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -390,13 +390,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachine
 
 ## NOTES
 

@@ -22,7 +22,7 @@ Create an API Key of an Application Insights component.
 https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 #>
 function New-AzApplicationInsightsApiKey {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IApplicationInsightsComponentApiKey])]
     [CmdletBinding(DefaultParameterSetName='ComponentNameParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName="ComponentNameParameterSet")]

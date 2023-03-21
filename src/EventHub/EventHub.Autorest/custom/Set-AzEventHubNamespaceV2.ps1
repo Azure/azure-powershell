@@ -20,7 +20,7 @@ Updates an EventHub Namespace
 #>
 
 function Set-AzEventHubNamespaceV2{
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace])]    
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespace])]    
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -63,7 +63,7 @@ function Set-AzEventHubNamespaceV2{
 
         [Parameter(HelpMessage = "Properties to configure Encryption")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IKeyVaultProperties[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IKeyVaultProperties[]]
         ${KeyVaultProperty},
 
         [Parameter(HelpMessage = "Enable Infrastructure Encryption (Double Encryption)")]
@@ -219,7 +219,7 @@ function Set-AzEventHubNamespaceV2{
                 $identityHashTable = @{}
 
                 foreach ($resourceID in $UserAssignedIdentityId){
-                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.UserAssignedIdentity]::new())
+                    $identityHashTable.Add($resourceID, [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.UserAssignedIdentity]::new())
                 }
 
                 $eventHubNamespace.UserAssignedIdentity = $identityHashTable

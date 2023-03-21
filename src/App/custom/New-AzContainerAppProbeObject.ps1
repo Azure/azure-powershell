@@ -21,12 +21,12 @@ Create an in-memory object for ContainerAppProbe.
 Create an in-memory object for ContainerAppProbe.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
 #>
 function New-AzContainerAppProbeObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,7 +37,7 @@ function New-AzContainerAppProbeObject {
         [string]
         $HttpGetHost,
         [Parameter(HelpMessage="Custom headers to set in the request. HTTP allows repeated headers.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppProbeHttpGetHttpHeadersItem[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]]
         $HttpGetHttpHeader,
         [Parameter(HelpMessage="Path to access on the HTTP server.")]
         [string]
@@ -77,7 +77,7 @@ function New-AzContainerAppProbeObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe]::New()
 
         if ($PSBoundParameters.ContainsKey('FailureThreshold')) {
             $Object.FailureThreshold = $FailureThreshold

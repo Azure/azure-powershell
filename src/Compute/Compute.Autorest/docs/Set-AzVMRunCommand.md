@@ -240,7 +240,7 @@ The parameters used by the script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +256,7 @@ The parameters used by the script.
 To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IRunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -486,7 +486,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IVirtualMachineRunCommand
 
 ## NOTES
 

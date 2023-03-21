@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.ISolution
 
 ## NOTES
 

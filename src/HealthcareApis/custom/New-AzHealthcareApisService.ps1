@@ -27,7 +27,7 @@ Location Name           Kind ResourceGroupName
 eastus2  azpsapiservice fhir azps_test_group
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription
+Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesDescription
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +49,7 @@ PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private en
 https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
 #>
 function New-AzHealthcareApisService {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesDescription])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -87,7 +87,7 @@ function New-AzHealthcareApisService {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceAccessPolicyEntry[]]
         # The access policies of the service instance.
         # To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
         ${AccessPolicyObjectId},
@@ -102,7 +102,7 @@ function New-AzHealthcareApisService {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceOciArtifactEntry[]]
         # The list of Open Container Initiative (OCI) artifacts.
         # To construct, see NOTES section for ACRCONFIGURATIONOCIARTIFACT properties and create a hash table.
         ${AcrConfigurationOciArtifact},
@@ -192,7 +192,7 @@ function New-AzHealthcareApisService {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.IPrivateEndpointConnection[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection[]]
         # The list of private endpoint connections that are set up for this resource.
         # To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
         ${PrivateEndpointConnection},
@@ -206,7 +206,7 @@ function New-AzHealthcareApisService {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesResourceTags]))]
         [System.Collections.Hashtable]
         # The resource tags.
         ${Tag},

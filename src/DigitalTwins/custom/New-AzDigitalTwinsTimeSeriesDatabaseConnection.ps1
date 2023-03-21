@@ -25,11 +25,11 @@ Create or update a time series database connection.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,7 +57,7 @@ TIMESERIESDATABASECONNECTIONDESCRIPTION <ITimeSeriesDatabaseConnection>: Describ
 https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinstimeseriesdatabaseconnection
 #>
 function New-AzDigitalTwinsTimeSeriesDatabaseConnection {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection])]
     [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='Create', Mandatory)]
@@ -138,7 +138,7 @@ function New-AzDigitalTwinsTimeSeriesDatabaseConnection {
         [Parameter(ParameterSetName='Create', ValueFromPipeline)]
         [Parameter(ParameterSetName='CreateViaIdentity', ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ITimeSeriesDatabaseConnection]
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ITimeSeriesDatabaseConnection]
         # Describes a time series database connection resource.
         # To construct, see NOTES section for TIMESERIESDATABASECONNECTIONDESCRIPTION properties and create a hash table.
         ${TimeSeriesDatabaseConnectionDescription},
@@ -205,8 +205,8 @@ function New-AzDigitalTwinsTimeSeriesDatabaseConnection {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.TimeSeriesDatabaseConnection]::new()
-            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.AzureDataExplorerConnectionProperties]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.TimeSeriesDatabaseConnection]::new()
+            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.AzureDataExplorerConnectionProperties]::new()
 
             $Parameter.Property.AdxDatabaseName = $PSBoundParameters['AdxDatabaseName']
             $Parameter.Property.AdxEndpointUri = $PSBoundParameters['AdxEndpointUri']

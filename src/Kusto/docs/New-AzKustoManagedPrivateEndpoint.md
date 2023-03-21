@@ -142,7 +142,7 @@ Class representing a managed private endpoint.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IManagedPrivateEndpoint
 Parameter Sets: Create
 Aliases:
 
@@ -265,11 +265,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IManagedPrivateEndpoint
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IManagedPrivateEndpoint
 
 ## NOTES
 

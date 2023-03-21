@@ -28,12 +28,12 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 .Link
 https://learn.microsoft.com/powershell/module/az.SpringCloud/deploy-azSpringCloudapp
 #>
 function Deploy-AzSpringCloudApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource])]
 [CmdletBinding(DefaultParameterSetName='DeployAppForStandard', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -240,19 +240,19 @@ function DeployStandardSpringCloudApp {
     $deployment = Get-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName @DeployPSBoundParameters
     if ($deployment.Source.Type -eq 'Jar')
     {
-        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo]::New()
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo]::New()
         $source.RelativePath = $RelativePath
         $source.Type = $deployment.Source.Type
     }
     if ($deployment.Source.Type -eq 'NetCoreZip')
     {
-        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo]::New()
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetCoreZipUploadedUserSourceInfo]::New()
         $source.RelativePath = $RelativePath
         $source.Type = $deployment.Source.Type
     }
     if ($deployment.Source.Type -eq 'Source')
     {
-        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.SourceUploadedUserSourceInfo]::New()
+        $source = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SourceUploadedUserSourceInfo]::New()
         $source.RelativePath = $RelativePath
         $source.Type = $deployment.Source.Type
     }
@@ -297,7 +297,7 @@ function DeployEnterpriseSpringCloudApp {
             throw "Service build failed, Log file url: $resultFailedLog"
         }
     } until ($result.ProvisioningState -eq 'Succeeded')
-    $buildResult = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo]::New()
+    $buildResult = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildResultUserSourceInfo]::New()
     $buildResult.Type = "BuildResult"
     $buildResult.BuildResultId = $result.Id
     $null  = Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName -Source $buildResult @DeployPSBoundParameters

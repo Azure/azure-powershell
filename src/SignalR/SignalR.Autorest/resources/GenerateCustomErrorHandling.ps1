@@ -10,7 +10,7 @@ foreach ($cmdletFile in $cmdletFiles)
 
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20;
+using Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Cmdlets
 {

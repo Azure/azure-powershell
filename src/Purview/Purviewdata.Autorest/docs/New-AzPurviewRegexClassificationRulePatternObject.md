@@ -58,7 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.RegexClassificationRulePattern
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.RegexClassificationRulePattern
 
 ## NOTES
 

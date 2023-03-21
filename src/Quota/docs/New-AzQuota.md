@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Resource quota limit properties.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ILimitJsonObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ILimitJsonObject
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase
 
 ## NOTES
 

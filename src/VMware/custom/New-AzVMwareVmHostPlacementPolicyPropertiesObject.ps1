@@ -21,12 +21,12 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 Create an in-memory object for VmHostPlacementPolicyProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VmHostPlacementPolicyProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareVmHostPlacementPolicyPropertiesObject
 #>
 function New-AzVMwareVmHostPlacementPolicyPropertiesObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VmHostPlacementPolicyProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -54,7 +54,7 @@ function New-AzVMwareVmHostPlacementPolicyPropertiesObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VmHostPlacementPolicyProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VmHostPlacementPolicyProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('AffinityType')) {
             $Object.AffinityType = $AffinityType

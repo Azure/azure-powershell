@@ -1,4 +1,4 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20210601
+namespace Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Runtime.Extensions;
     using System.Security;

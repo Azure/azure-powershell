@@ -23,10 +23,10 @@ TemporaryDiskMountPath  : /tmp
 TemporaryDiskSizeInGb   : 5
 Type                    : Microsoft.AppPlatform/Spring/apps
 Url                     :
-Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ManagedIdentityProperties
-PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.PersistentDisk
-Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties
-TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
+Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ManagedIdentityProperties
+PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.PersistentDisk
+Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.AppResourceProperties
+TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TemporaryDisk
 ```
 
 Update Spring Cloud App by name.
@@ -56,10 +56,10 @@ TemporaryDiskMountPath  : /tmp
 TemporaryDiskSizeInGb   : 5
 Type                    : Microsoft.AppPlatform/Spring/apps
 Url                     :
-Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ManagedIdentityProperties
-PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.PersistentDisk
-Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.AppResourceProperties
-TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TemporaryDisk
+Identity                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ManagedIdentityProperties
+PersistentDisk          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.PersistentDisk
+Property                : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.AppResourceProperties
+TemporaryDisk           : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TemporaryDisk
 ```
 
 Update Spring Cloud App by pipeline.

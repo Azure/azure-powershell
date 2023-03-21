@@ -290,7 +290,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareMachine
 
 ## NOTES
 

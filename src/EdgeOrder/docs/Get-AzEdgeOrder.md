@@ -49,7 +49,7 @@ Id                           : /subscriptions/SubscriptionId/resourceGroups/reso
 Name                         : pwOrderItem11
 OrderItemId                  : {/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/orderItems/examplePowershell}
 OrderStageHistory            : {, }
-SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
+SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData
 Type                         : Microsoft.EdgeOrder/orders
 ```
 
@@ -140,7 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderResource
 
 ## NOTES
 

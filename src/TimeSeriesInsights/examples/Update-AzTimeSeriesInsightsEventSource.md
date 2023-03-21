@@ -11,7 +11,7 @@ KeyName               : RootManageSharedAccessKey
 Kind                  : Microsoft.IoTHub
 Location              : eastus
 Name                  : iots001
-Tag                   : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.TrackedResourceTags
+Tag                   : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.TrackedResourceTags
 TimestampPropertyName :
 Type                  : Microsoft.TimeSeriesInsights/Environments/EventSources
 ```
@@ -32,7 +32,7 @@ KeyName               : RootManageSharedAccessKey
 Kind                  : Microsoft.IoTHub
 Location              : eastus
 Name                  : iots001
-Tag                   : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.TrackedResourceTags
+Tag                   : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.TrackedResourceTags
 TimestampPropertyName :
 Type                  : Microsoft.TimeSeriesInsights/Environments/EventSources
 ```

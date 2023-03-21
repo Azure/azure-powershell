@@ -106,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareSite
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareSite
 
 ## NOTES
 

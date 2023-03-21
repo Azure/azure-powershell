@@ -126,7 +126,7 @@ The list for update quota.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IQuotaBaseProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IQuotaBaseProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -177,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IUpdateWorkspaceQuotasResult
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IUpdateWorkspaceQuotasResult
 
 ## NOTES
 

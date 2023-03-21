@@ -29,8 +29,8 @@ IPAddressDnsNameLabel          :
 IPAddressFqdn                  :
 IPAddressIP                    : 000.000.000.000
 IPAddressPort                  : {Microsoft.Azure.PowerShell.Cmdlets.ContainerInsta 
-                                 nce.Models.Api20210301.Port, Microsoft.Azure.Power 
-                                 Shell.Cmdlets.ContainerInstance.Models.Api20210301 
+                                 nce.Models.Port, Microsoft.Azure.Power 
+                                 Shell.Cmdlets.ContainerInstance.Models 
                                  .Port}
 IPAddressType                  : Public
 Id                             : /subscriptions/00000000-0000-0000-0000-000000000000 
@@ -40,7 +40,7 @@ IdentityPrincipalId            :
 IdentityTenantId               :
 IdentityType                   :
 IdentityUserAssignedIdentity   : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.ContainerGroupIdentityUserAs 
+                                 ce.Models.ContainerGroupIdentityUserAs 
                                  signedIdentities
 ImageRegistryCredentials       :
 InitContainer                  : {}
@@ -49,11 +49,11 @@ InstanceViewState              :
 Location                       : eastus
 LogAnalyticLogType             : 
 LogAnalyticMetadata            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.LogAnalyticsMetadata
+                                 ce.Models.LogAnalyticsMetadata
 LogAnalyticWorkspaceId         :
 LogAnalyticWorkspaceKey        :
 LogAnalyticWorkspaceResourceId : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.LogAnalyticsWorkspaceResourc 
+                                 ce.Models.LogAnalyticsWorkspaceResourc 
                                  eId
 Name                           : test-cg1
 NetworkProfileId               :
@@ -63,7 +63,7 @@ ResourceGroupName              : test-rg
 RestartPolicy                  : Never
 Sku                            : Standard
 Tag                            : Microsoft.Azure.PowerShell.Cmdlets.ContainerInstan 
-                                 ce.Models.Api20210301.ResourceTags
+                                 ce.Models.ResourceTags
 Type                           : Microsoft.ContainerInstance/containerGroups        
 Volume                         :
 ```

@@ -100,7 +100,7 @@ Contact details for the address
 To construct, see NOTES section for FORWARDADDRESSCONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Shipping details for the address
 To construct, see NOTES section for FORWARDADDRESSSHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +193,7 @@ Customer preference.
 To construct, see NOTES section for PREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -291,7 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IOrderItemResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IOrderItemResource
 
 ## NOTES
 

@@ -135,7 +135,7 @@ Request of a list vm host update operation.
 To construct, see NOTES section for VMRESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.IVMResources[]
 Parameter Sets: (All)
 Aliases:
 
@@ -184,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.IVMResources
 
 ## NOTES
 

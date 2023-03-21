@@ -1,6 +1,6 @@
 
 function New-AzFunctionApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ISite])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.ISite])]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Description('Creates a function app.')]
     [CmdletBinding(SupportsShouldProcess=$true, DefaultParametersetname="Consumption")]
     param(
@@ -131,7 +131,7 @@ function New-AzFunctionApp {
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         [ValidateNotNull()]
         ${Tag},
@@ -240,9 +240,9 @@ function New-AzFunctionApp {
 
         $functionAppIsCustomDockerImage = $PsCmdlet.ParameterSetName -eq "CustomDockerImage"
 
-        $appSettings = New-Object -TypeName System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.INameValuePair]
-        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.SiteConfig
-        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.Site
+        $appSettings = New-Object -TypeName System.Collections.Generic.List[Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.INameValuePair]
+        $siteCofig = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.SiteConfig
+        $functionAppDef = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Site
 
         $params = GetParameterKeyValues -PSBoundParametersDictionary $PSBoundParameters `
                                         -ParameterList @("SubscriptionId", "HttpPipelineAppend", "HttpPipelinePrepend")

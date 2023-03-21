@@ -162,7 +162,7 @@ vCenter Single Sign On Identity Sources
 To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IIdentitySource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -412,7 +412,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 
 ## NOTES
 

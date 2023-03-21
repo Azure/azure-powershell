@@ -66,7 +66,7 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 
@@ -95,7 +95,7 @@ SystemDataCreatedByType       : Application
 SystemDataLastModifiedAt      : 9/19/2022 7:05:47 AM
 SystemDataLastModifiedBy      : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType  : Application
-Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                           : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 Type                          : Microsoft.ElasticSan/ElasticSans
 ```
 
@@ -200,7 +200,7 @@ The list of virtual network rules.
 To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVirtualNetworkRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -231,7 +231,7 @@ Volume Group request.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdate
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -339,13 +339,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroupUpdate
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroupUpdate
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IVolumeGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVolumeGroup
 
 ## NOTES
 

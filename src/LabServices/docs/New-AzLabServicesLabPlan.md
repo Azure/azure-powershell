@@ -496,7 +496,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 
 ## NOTES
 

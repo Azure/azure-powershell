@@ -95,7 +95,7 @@ Workbook galleries supported by the template.
 To construct, see NOTES section for GALLERY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplateGallery[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplateGallery[]
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +270,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.IWorkbookTemplate
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbookTemplate
 
 ## NOTES
 

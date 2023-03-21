@@ -258,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaSapS4HanaCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.SapS4HanaSapS4HanaCredentialScan
 
 ## NOTES
 

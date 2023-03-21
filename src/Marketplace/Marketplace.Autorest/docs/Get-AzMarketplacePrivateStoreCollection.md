@@ -122,9 +122,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollection
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ICollectionsList
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsList
 
 ## NOTES
 

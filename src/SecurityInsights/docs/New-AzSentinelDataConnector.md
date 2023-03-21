@@ -523,7 +523,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for PERMISSIONCUSTOM properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsCustomsItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsCustomsItem[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -539,7 +539,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for PERMISSIONRESOURCEPROVIDER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.PermissionsResourceProviderItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.PermissionsResourceProviderItem[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -676,7 +676,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for UICONFIGCONNECTIVITYCRITERION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ConnectivityCriteria[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ConnectivityCriteria[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -707,7 +707,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for UICONFIGDATATYPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.LastDataReceivedDataType[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.LastDataReceivedDataType[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -753,7 +753,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for UICONFIGGRAPHQUERY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.GraphQueries[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.GraphQueries[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -769,7 +769,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for UICONFIGINSTRUCTIONSTEP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.InstructionSteps[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.InstructionSteps[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -800,7 +800,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for UICONFIGSAMPLEQUERY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.SampleQueries[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.SampleQueries[]
 Parameter Sets: GenericUI
 Aliases:
 
@@ -909,7 +909,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.DataConnector
 
 ## NOTES
 

@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IOperationStatusResult
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IOperationStatusResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesConfigFluxOperationStatus {
     [Alias('Get-AzK8sConfigFluxOperationStatus')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IOperationStatusResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IOperationStatusResult])]
     [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

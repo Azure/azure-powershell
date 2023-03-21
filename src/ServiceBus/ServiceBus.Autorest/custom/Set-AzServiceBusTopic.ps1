@@ -20,7 +20,7 @@ Updates a ServiceBus Topic
 #>
 
 function Set-AzServiceBusTopic{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Topic.")]

@@ -93,7 +93,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 Parameter Sets: ByObjectInput
 Aliases:
 
@@ -261,11 +261,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan
+### Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IAppServicePlan
 
 ## NOTES
 

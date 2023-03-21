@@ -134,7 +134,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IListClusterUserCredentialProperties
 Parameter Sets: List
 Aliases:
 
@@ -212,11 +212,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IListClusterUserCredentialProperties
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IListClusterUserCredentialProperties
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.ICredentialResults
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.ICredentialResults
 
 ## NOTES
 

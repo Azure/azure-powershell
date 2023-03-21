@@ -37,7 +37,7 @@ Restart-AzMigrateServerReplication -TargetObjectID "/Subscriptions/xxx-xxx-xxx/r
 ```output
 ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
 AllowedAction                    : {Cancel}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          :
 Error                            : {}
@@ -68,7 +68,7 @@ $output = Restart-AzMigrateServerReplication -InputObject $obj
 ```output
 ActivityId                       : da958651-96b3-4e65-a41e-897d4b06f7dd ActivityId: 3a4c8d4d-920a-47cd-82c3-f3dcce90a588
 AllowedAction                    : {Cancel}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          :
 Error                            : {}
@@ -112,7 +112,7 @@ Specifies the machine object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -161,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IJob
 
 ## NOTES
 

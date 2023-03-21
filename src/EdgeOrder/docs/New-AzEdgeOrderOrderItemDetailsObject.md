@@ -67,7 +67,7 @@ Customer notification Preferences.
 To construct, see NOTES section for PREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IPreferences
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPreferences
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Unique identifier for configuration.
 To construct, see NOTES section for PRODUCTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IProductDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IProductDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails
 
 ## NOTES
 

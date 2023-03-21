@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ReplicaSet
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ReplicaSet
 
 ## NOTES
 

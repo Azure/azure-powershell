@@ -27,7 +27,7 @@ Location      Name            Type                        ResourceGroupName
 australiaeast azps_test_cloud Microsoft.AVS/privateClouds azps_test_group
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ IDENTITYSOURCE <IIdentitySource[]>: vCenter Single Sign On Identity Sources
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareprivatecloud
 #>
 function New-AzVMwarePrivateCloud {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -112,7 +112,7 @@ function New-AzVMwarePrivateCloud {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

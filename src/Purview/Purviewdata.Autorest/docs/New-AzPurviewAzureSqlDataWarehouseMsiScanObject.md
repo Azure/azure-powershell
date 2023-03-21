@@ -193,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseMsiScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDataWarehouseMsiScan
 
 ## NOTES
 

@@ -121,7 +121,7 @@ An array of network function role definitions.
 To construct, see NOTES section for NETWORKFUNCTIONROLECONFIGURATIONTYPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionRoleConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionRoleConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -275,7 +275,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorSku
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorSku
 
 ## NOTES
 

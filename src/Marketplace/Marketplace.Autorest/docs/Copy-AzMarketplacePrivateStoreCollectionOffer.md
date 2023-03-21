@@ -140,7 +140,7 @@ Transfer offers properties
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersProperties
 Parameter Sets: Transfer, TransferViaIdentity
 Aliases:
 
@@ -217,13 +217,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersProperties
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersResponse
 
 ## NOTES
 

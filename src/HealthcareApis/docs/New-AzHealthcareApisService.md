@@ -49,7 +49,7 @@ The access policies of the service instance.
 To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceAccessPolicyEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceAccessPolicyEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +80,7 @@ The list of Open Container Initiative (OCI) artifacts.
 To construct, see NOTES section for ACRCONFIGURATIONOCIARTIFACT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceOciArtifactEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -381,7 +381,7 @@ The list of private endpoint connections that are set up for this resource.
 To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.IPrivateEndpointConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IPrivateEndpointConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -490,7 +490,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServicesDescription
 
 ## NOTES
 

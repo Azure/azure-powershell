@@ -178,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuilderResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuilderResource
 
 ## NOTES
 

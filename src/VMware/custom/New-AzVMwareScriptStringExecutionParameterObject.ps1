@@ -20,12 +20,12 @@
     Create a in-memory object for ScriptStringExecutionParameter
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter
+    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter
     .Link
     https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareScriptStringExecutionParameterObject
     #>
     function New-AzVMwareScriptStringExecutionParameterObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -38,7 +38,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptStringExecutionParameter]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptStringExecutionParameter]::New()
     
             $Object.Value = $Value
             $Object.Name = $Name

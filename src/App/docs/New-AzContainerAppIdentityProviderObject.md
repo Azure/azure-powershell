@@ -265,7 +265,7 @@ The map of the name of the alias of each custom Open ID Connect provider to the
 To construct, see NOTES section for CUSTOMOPENIDCONNECTPROVIDER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IIdentityProvidersCustomOpenIdConnectProviders
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersCustomOpenIdConnectProviders
 Parameter Sets: (All)
 Aliases:
 
@@ -691,7 +691,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders
 
 ## NOTES
 

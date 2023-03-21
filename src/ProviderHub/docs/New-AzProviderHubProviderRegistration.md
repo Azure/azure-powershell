@@ -86,7 +86,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for CAPABILITY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderCapabilities[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderCapabilities[]
 Parameter Sets: (All)
 Aliases:
 
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for MANAGEMENTSERVICETREEINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IServiceTreeInfo[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IServiceTreeInfo[]
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +313,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for PROVIDERAUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -344,7 +344,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for PROVIDERHUBMETADATAPROVIDERAUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceProviderAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceProviderAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -480,7 +480,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ISubscriptionStateOverrideAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ISubscriptionStateOverrideAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -526,7 +526,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ILightHouseAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ILightHouseAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -590,7 +590,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration
 
 ## NOTES
 

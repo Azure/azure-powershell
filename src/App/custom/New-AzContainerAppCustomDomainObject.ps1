@@ -21,12 +21,12 @@ Create an in-memory object for CustomDomain.
 Create an in-memory object for CustomDomain.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
 #>
 function New-AzContainerAppCustomDomainObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzContainerAppCustomDomainObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.CustomDomain]::New()
 
         if ($PSBoundParameters.ContainsKey('BindingType')) {
             $Object.BindingType = $BindingType

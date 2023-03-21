@@ -107,7 +107,7 @@ Sentinel onboarding state
 To construct, see NOTES section for SENTINELONBOARDINGSTATEPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISentinelOnboardingState
 Parameter Sets: Create
 Aliases:
 
@@ -184,11 +184,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISentinelOnboardingState
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ISentinelOnboardingState
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISentinelOnboardingState
 
 ## NOTES
 

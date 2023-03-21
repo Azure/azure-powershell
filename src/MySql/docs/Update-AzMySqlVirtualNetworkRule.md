@@ -269,7 +269,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IVirtualNetworkRule
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IVirtualNetworkRule
 
 ## NOTES
 

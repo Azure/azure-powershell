@@ -28,11 +28,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunctionRetrieveDefaultDefinitionParameters
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunctionRetrieveDefaultDefinitionParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <IStreamAnalyticsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsdefaultfunctiondefinition
 #>
 function Get-AzStreamAnalyticsDefaultFunctionDefinition {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IFunction])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IFunction])]
 [CmdletBinding(DefaultParameterSetName='RetrieveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='RetrieveExpanded', Mandatory)]
@@ -159,13 +159,13 @@ param(
       try {
         if ($BindingType -eq "Microsoft.MachineLearning/WebService")
         {
-          $functionRetrieveDefaultDefinition = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.AzureMachineLearningStudioFunctionRetrieveDefaultDefinitionParameters]::New()
+          $functionRetrieveDefaultDefinition = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.AzureMachineLearningStudioFunctionRetrieveDefaultDefinitionParameters]::New()
           $functionRetrieveDefaultDefinition.BindingType = $BindingType
           $functionRetrieveDefaultDefinition.BindingRetrievalPropertyEndpoint = $Endpoint
           $functionRetrieveDefaultDefinition.BindingRetrievalPropertyUdfType = $UdfType
 
         } elseif ($BindingType -eq "Microsoft.MachineLearningServices") {
-          $functionRetrieveDefaultDefinition = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.AzureMachineLearningServiceFunctionRetrieveDefaultDefinitionParameters]::New()
+          $functionRetrieveDefaultDefinition = [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.AzureMachineLearningServiceFunctionRetrieveDefaultDefinitionParameters]::New()
           $functionRetrieveDefaultDefinition.BindingType = $BindingType
           $functionRetrieveDefaultDefinition.BindingRetrievalPropertyEndpoint = $Endpoint
           $functionRetrieveDefaultDefinition.BindingRetrievalPropertyUdfType = $UdfType

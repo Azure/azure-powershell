@@ -20,7 +20,7 @@ Denies a ServiceBus PrivateEndpointConnection
 #>
 
 function Deny-AzServiceBusPrivateEndpointConnection{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IPrivateEndpointConnection])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The name of the Private Endpoint Connection")]

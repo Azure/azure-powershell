@@ -354,7 +354,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWorkbook
 
 ## NOTES
 

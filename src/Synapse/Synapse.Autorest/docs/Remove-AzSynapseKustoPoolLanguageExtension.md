@@ -166,7 +166,7 @@ The list of language extensions.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ILanguageExtension[]
 Parameter Sets: (All)
 Aliases:
 

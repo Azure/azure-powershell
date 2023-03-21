@@ -165,7 +165,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxNetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxNetworkProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -320,7 +320,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxDeployment
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxDeployment
 
 ## NOTES
 

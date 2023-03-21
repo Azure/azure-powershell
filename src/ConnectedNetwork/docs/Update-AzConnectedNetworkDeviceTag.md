@@ -50,7 +50,7 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 11/25/2021 5:22:57 AM
 SystemDataLastModifiedBy     : user@microsoft.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
 ```
 
@@ -79,7 +79,7 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 11/25/2021 5:53:12 AM
 SystemDataLastModifiedBy     : user@microsoft.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
 
 ```
@@ -222,7 +222,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice
 
 ## NOTES
 

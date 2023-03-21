@@ -68,7 +68,7 @@ The authentication type.
 To construct, see NOTES section for AUTHINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase
 Parameter Sets: (All)
 Aliases:
 
@@ -367,7 +367,7 @@ The target service properties
 To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase
 Parameter Sets: (All)
 Aliases:
 
@@ -431,7 +431,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource
 
 ## NOTES
 

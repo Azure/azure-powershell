@@ -135,7 +135,7 @@ List of private endpoint connections associated with the account.
 To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IPrivateEndpointConnection[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IPrivateEndpointConnection[]
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IAccount
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IAccount
 
 ## NOTES
 

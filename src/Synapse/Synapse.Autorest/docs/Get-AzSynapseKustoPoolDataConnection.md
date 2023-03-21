@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
+### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDataConnection
 
 ## NOTES
 

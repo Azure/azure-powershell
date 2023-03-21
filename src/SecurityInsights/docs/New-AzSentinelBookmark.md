@@ -56,7 +56,7 @@ Represents a bookmark in Azure Security Insights.
 To construct, see NOTES section for BOOKMARK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IBookmark
 Parameter Sets: Create
 Aliases:
 
@@ -344,11 +344,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IBookmark
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IBookmark
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IBookmark
 
 ## NOTES
 

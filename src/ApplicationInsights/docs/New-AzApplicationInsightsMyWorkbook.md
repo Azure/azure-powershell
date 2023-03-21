@@ -353,7 +353,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IMyWorkbook
 
 ## NOTES
 

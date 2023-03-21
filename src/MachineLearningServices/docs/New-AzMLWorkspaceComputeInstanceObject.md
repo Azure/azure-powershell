@@ -290,7 +290,7 @@ The list of compute start stop schedules to be applied.
 To construct, see NOTES section for SCHEDULECOMPUTESTARTSTOP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeStartStopSchedule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeStartStopSchedule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -446,7 +446,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeInstance
 
 ## NOTES
 

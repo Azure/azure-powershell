@@ -72,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IVMwareCbtNicInput
 
 ## NOTES
 

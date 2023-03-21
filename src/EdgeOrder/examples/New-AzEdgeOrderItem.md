@@ -24,20 +24,20 @@ $orderItem | Format-List
 ```
 
 ```output
-ForwardAddressContactDetail    : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
-ForwardAddressShippingAddress  : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
+ForwardAddressContactDetail    : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails
+ForwardAddressShippingAddress  : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
 ForwardAddressValidationStatus : Valid
 Id                             : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/orderItems/examplePowershell
 Location                       : eastus
 Name                           : examplePowershell
 OrderId                        : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwOrderItem11
-OrderItemDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.OrderItemDetails
-ReturnAddressContactDetail     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
-ReturnAddressShippingAddress   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
+OrderItemDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.OrderItemDetails
+ReturnAddressContactDetail     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails
+ReturnAddressShippingAddress   : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
 ReturnAddressValidationStatus  :
 StartTime                      : 11/16/2021 10:34:51 AM
-SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
-Tag                            : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
+SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData
+Tag                            : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TrackedResourceTags
 Type                           : Microsoft.EdgeOrder/orderItems
 
 ```

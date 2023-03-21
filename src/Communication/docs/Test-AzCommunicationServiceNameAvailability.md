@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.Api20200820.INameAvailability
+### Microsoft.Azure.PowerShell.Cmdlets.Communication.Models.INameAvailability
 
 ## NOTES
 

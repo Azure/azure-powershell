@@ -27,7 +27,7 @@ Get-AzGuestConfigurationAssignment -ResourceGroupName test-rg -VMName test-vm -N
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
+Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
 .Outputs
 System.Boolean
 .Notes
@@ -49,7 +49,7 @@ INPUTOBJECT <IGuestConfigurationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
 #>
 function Remove-AzGuestConfigurationAssignment {
-[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment])]
+[OutputType([System.Boolean], [Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment])]
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]

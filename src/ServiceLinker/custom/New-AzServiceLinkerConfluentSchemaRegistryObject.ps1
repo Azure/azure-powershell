@@ -21,12 +21,12 @@ Create an in-memory object for ConfluentSchemaRegistry.
 Create an in-memory object for ConfluentSchemaRegistry.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentSchemaRegistry
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentschemaregistryobject
 #>
 function New-AzServiceLinkerConfluentSchemaRegistryObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentSchemaRegistry')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -41,7 +41,7 @@ function New-AzServiceLinkerConfluentSchemaRegistryObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ConfluentSchemaRegistry]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ConfluentSchemaRegistry]::New()
 
         if ($PSBoundParameters.ContainsKey('Endpoint')) {
             if($Endpoint -notmatch "https://.*\.confluent\.cloud"){

@@ -35,7 +35,7 @@ Creates or updates the automation rule.
 ### Example 1: Create an Automation Rule using Run Playbook
 ```powershell
  $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
+ $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleRunPlaybookAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "RunPlaybook"
  $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)
@@ -47,7 +47,7 @@ This command creates an Automation Rule that has an Action of Run Playbook.
 
 ### Example 2: Creates an Automation Rule that has an Action of changing the severity
 ```powershell
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleModifyPropertiesAction]::new()
+ $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleModifyPropertiesAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "ModifyProperties"
  $automationRuleAction.ActionConfigurationSeverity = "Low"
@@ -63,7 +63,7 @@ The actions to execute when the automation rule is triggered
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleAction[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -79,7 +79,7 @@ Represents an automation rule.
 To construct, see NOTES section for AUTOMATIONRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRule
 Parameter Sets: Create
 Aliases:
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 The conditions to evaluate to determine if the automation rule should be triggered on a given object
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRuleCondition[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -262,11 +262,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRule
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IAutomationRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IAutomationRule
 
 ## NOTES
 

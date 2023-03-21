@@ -14,7 +14,7 @@ Create or update a gallery Application Definition.
 #>
 
 function New-AzGalleryApplication {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplication])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -75,7 +75,7 @@ function New-AzGalleryApplication {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

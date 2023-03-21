@@ -122,7 +122,7 @@ The check availability request body.
 To construct, see NOTES section for REQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityRequest
 Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
@@ -199,13 +199,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api30.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.ICheckNameAvailabilityResponse
 
 ## NOTES
 

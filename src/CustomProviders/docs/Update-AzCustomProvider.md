@@ -43,7 +43,7 @@ Location          : West US 2
 Name              : Namespace.Type
 ProvisioningState : Succeeded
 ResourceType      : {CustomRoute1, associations}
-Tag               : Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ResourceTags
+Tag               : Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ResourceTags
 Type              : Microsoft.CustomProviders/resourceproviders
 Validation        :
 ```
@@ -198,7 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest
+### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifest
 
 ## NOTES
 

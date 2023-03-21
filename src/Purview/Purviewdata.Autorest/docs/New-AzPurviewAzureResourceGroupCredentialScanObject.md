@@ -148,7 +148,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IExpandingResourceScanPropertiesResourceTypes
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IExpandingResourceScanPropertiesResourceTypes
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureResourceGroupCredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureResourceGroupCredentialScan
 
 ## NOTES
 

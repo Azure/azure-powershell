@@ -77,7 +77,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRulePattern[]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IClassificationRulePattern[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRulePattern[]
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.CustomClassificationRule
 
 ## NOTES
 

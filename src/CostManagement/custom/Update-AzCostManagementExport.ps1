@@ -36,7 +36,7 @@ PS C:\> {{ Add code here }}
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.ICostManagementIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport
+Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,7 +54,7 @@ INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.costmanagement/update-azcostmanagementexport
 #>
 function Update-AzCostManagementExport {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.Api20211001.IExport])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models.IExport])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

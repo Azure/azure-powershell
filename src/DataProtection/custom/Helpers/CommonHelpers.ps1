@@ -5,13 +5,13 @@ function GetDatasourceSetInfo
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
-		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IDatasource]
+		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDatasource]
 		$DatasourceInfo
 	)
 
 	process 
 	{
-		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.DatasourceSet]::new()
+		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.DatasourceSet]::new()
 		$DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
         $DataSourceSetInfo.ObjectType = "DatasourceSet"
         $splitResourceId = $DatasourceInfo.ResourceId.Split("/")
@@ -50,7 +50,7 @@ function GetDatasourceInfo
 	{
 
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.Datasource]::new()
+		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Datasource]::new()
 		$DataSourceInfo.ObjectType = "Datasource"
         $DataSourceInfo.ResourceId = $ResourceId
         $DataSourceInfo.ResourceLocation = $ResourceLocation

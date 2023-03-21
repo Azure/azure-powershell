@@ -21,12 +21,12 @@ Create an in-memory object for ServiceDataFlowTemplate.
 Create an in-memory object for ServiceDataFlowTemplate.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceDataFlowTemplateObject
 #>
 function New-AzMobileNetworkServiceDataFlowTemplateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -49,7 +49,7 @@ function New-AzMobileNetworkServiceDataFlowTemplateObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceDataFlowTemplate]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceDataFlowTemplate]::New()
 
         if ($PSBoundParameters.ContainsKey('Direction')) {
             $Object.Direction = $Direction

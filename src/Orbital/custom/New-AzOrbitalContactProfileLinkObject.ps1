@@ -21,17 +21,17 @@ Create an in-memory object for ContactProfileLink.
 Create an in-memory object for ContactProfileLink.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink
 .Link
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
 #>
 function New-AzOrbitalContactProfileLinkObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(Mandatory, HelpMessage="Contact Profile Link Channel.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLinkChannel[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLinkChannel[]]
         $Channel,
         [Parameter(Mandatory, HelpMessage="Direction (uplink or downlink).")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction])]
@@ -53,7 +53,7 @@ function New-AzOrbitalContactProfileLinkObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink]::New()
 
         if ($PSBoundParameters.ContainsKey('Channel')) {
             $Object.Channel = $Channel

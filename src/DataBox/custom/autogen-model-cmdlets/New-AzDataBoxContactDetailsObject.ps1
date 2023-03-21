@@ -20,12 +20,12 @@
     Create a in-memory object for ContactDetails
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
+    Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ContactDetails
     .Link
     https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxContactDetailsObject
     #>
     function New-AzDataBoxContactDetailsObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ContactDetails')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -39,7 +39,7 @@
             [string]
             $Mobile,
             [Parameter(HelpMessage="Notification preference for a job stage.")]
-            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.INotificationPreference[]]
+            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.INotificationPreference[]]
             $NotificationPreference,
             [Parameter(Mandatory, HelpMessage="Phone number of the contact person.")]
             [string]
@@ -50,7 +50,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ContactDetails]::New()
     
             $Object.ContactName = $ContactName
             $Object.EmailList = $EmailList

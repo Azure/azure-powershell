@@ -23,7 +23,7 @@ Updates the alert rule.
 https://learn.microsoft.com/powershell/module/az.securityinsights/Update-azsentinelalertrule
 #>
 function Update-AzSentinelAlertRule {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateScheduled', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
@@ -302,7 +302,7 @@ function Update-AzSentinelAlertRule {
         [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
         #'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping]
         ${EntityMapping},
 
         [Parameter(ParameterSetName = 'UpdateNRT')]

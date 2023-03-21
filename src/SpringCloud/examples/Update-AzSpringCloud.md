@@ -30,7 +30,7 @@ ServiceId                                        : e5e964885b4146b1a91e9bfc17971
 SkuCapacity                                      :
 SkuName                                          : S0
 SkuTier                                          : Standard
-Tag                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TrackedResourceTags
+Tag                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TrackedResourceTags
 TraceAppInsightInstrumentationKey                :
 TraceEnabled                                     : False
 TraceErrorCode                                   :
@@ -38,15 +38,15 @@ TraceErrorMessage                                :
 TraceState                                       : Succeeded
 Type                                             : Microsoft.AppPlatform/Spring
 Version                                          : 2
-ConfigServerGitProperty                          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerGitProperty
-ConfigServerProperty                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerProperties
-ConfigServerPropertyConfigServer                 : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerSettings
-ConfigServerPropertyError                        : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
-NetworkProfile                                   : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NetworkProfile
-Property                                         : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ClusterResourceProperties
-Sku                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Sku
-Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TraceProperties
-TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
+ConfigServerGitProperty                          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigServerGitProperty
+ConfigServerProperty                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigServerProperties
+ConfigServerPropertyConfigServer                 : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigServerSettings
+ConfigServerPropertyError                        : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Error
+NetworkProfile                                   : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetworkProfile
+Property                                         : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ClusterResourceProperties
+Sku                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Sku
+Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TraceProperties
+TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Error
 ```
 
 Update Spring Cloud Service by name.
@@ -83,7 +83,7 @@ ServiceId                                        : e5e964885b4146b1a91e9bfc17971
 SkuCapacity                                      :
 SkuName                                          : S0
 SkuTier                                          : Standard
-Tag                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TrackedResourceTags
+Tag                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TrackedResourceTags
 TraceAppInsightInstrumentationKey                :
 TraceEnabled                                     : False
 TraceErrorCode                                   :
@@ -91,15 +91,15 @@ TraceErrorMessage                                :
 TraceState                                       : Succeeded
 Type                                             : Microsoft.AppPlatform/Spring
 Version                                          : 2
-ConfigServerGitProperty                          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerGitProperty
-ConfigServerProperty                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerProperties
-ConfigServerPropertyConfigServer                 : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ConfigServerSettings
-ConfigServerPropertyError                        : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
-NetworkProfile                                   : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.NetworkProfile
-Property                                         : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.ClusterResourceProperties
-Sku                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Sku
-Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.TraceProperties
-TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
+ConfigServerGitProperty                          : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigServerGitProperty
+ConfigServerProperty                             : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigServerProperties
+ConfigServerPropertyConfigServer                 : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ConfigServerSettings
+ConfigServerPropertyError                        : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Error
+NetworkProfile                                   : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.NetworkProfile
+Property                                         : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ClusterResourceProperties
+Sku                                              : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Sku
+Trace                                            : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.TraceProperties
+TraceError                                       : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Error
 ```
 
 Update Spring Cloud Service by pipeline.

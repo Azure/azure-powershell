@@ -150,7 +150,7 @@ Represents an incident in Azure Security Insights.
 To construct, see NOTES section for INCIDENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident
 Parameter Sets: Create
 Aliases:
 
@@ -166,7 +166,7 @@ List of labels relevant to this incident
 To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentLabel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentLabel[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -409,11 +409,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncident
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncident
 
 ## NOTES
 

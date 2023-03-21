@@ -230,7 +230,7 @@ Each address is assigned at a defined network scope, made up of {attached data n
 To construct, see NOTES section for STATICIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimStaticIPProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimStaticIPProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -294,7 +294,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISim
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISim
 
 ## NOTES
 

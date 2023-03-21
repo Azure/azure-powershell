@@ -81,7 +81,7 @@ Repositories of Application Configuration Service git property.
 To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceGitRepository[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceGitRepository[]
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceGitPropertyValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigurationServiceGitPropertyValidateResult
 
 ## NOTES
 

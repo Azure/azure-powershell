@@ -21,12 +21,12 @@ Create an in-memory object for AzureSqlDatabaseManagedInstanceScanRuleset.
 Create an in-memory object for AzureSqlDatabaseManagedInstanceScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject
 #>
 function New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceScanRuleset')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,7 +50,7 @@ function New-AzPurviewAzureSqlDatabaseManagedInstanceScanRulesetObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDatabaseManagedInstanceScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureSqlDatabaseManagedInstanceScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

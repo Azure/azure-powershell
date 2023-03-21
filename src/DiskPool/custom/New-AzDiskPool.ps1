@@ -30,7 +30,7 @@ Name             Location    Status    ProvisioningState AvailabilityZone
 disk-pool-1      eastus2euap Running   Succeeded         {3}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool
+Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,7 +42,7 @@ DISKID <string[]>: List of Azure Managed Disks to attach to a Disk Pool.
 https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPool])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -128,7 +128,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPoolCreateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IDiskPoolCreateTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -197,7 +197,7 @@ param(
             if ($PSBoundParameters.ContainsKey("DiskId")){
                 $disk = @()
                 for ($i = 0; $i -lt $DiskId.Count; $i++) {
-                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Disk
+                    $diskObject = New-Object -TypeName Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Disk
                     $diskObject.Id = $DiskId[$i]
                     $disk += $diskObject
                 }

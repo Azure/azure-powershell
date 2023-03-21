@@ -21,12 +21,12 @@ Create an in-memory object for AzureFileServiceScanRuleset.
 Create an in-memory object for AzureFileServiceScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceScanRulesetObject
 #>
 function New-AzPurviewAzureFileServiceScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzPurviewAzureFileServiceScanRulesetObject {
         [string[]]
         $IncludedCustomClassificationRuleName,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ICustomFileExtension[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
         $ScanningRuleCustomFileExtension,
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
@@ -57,7 +57,7 @@ function New-AzPurviewAzureFileServiceScanRulesetObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureFileServiceScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

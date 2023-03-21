@@ -66,7 +66,7 @@ SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 9/19/2022 9:47:26 AM
 SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 TotalIops                    : 5000
 TotalMBps                    : 80
 TotalSizeTiB                 : 7
@@ -220,7 +220,7 @@ Response for ElasticSan request.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -343,13 +343,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.IElasticSan
+### Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSan
 
 ## NOTES
 

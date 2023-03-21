@@ -246,7 +246,7 @@ The regions in which to deploy the resources needed for Teams Calling
 To construct, see NOTES section for SERVICELOCATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.IServiceRegionProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.IServiceRegionProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -340,7 +340,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway
 
 ## NOTES
 

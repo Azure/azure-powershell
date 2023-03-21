@@ -403,7 +403,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.Api20210301Preview.IObjectAnchorsAccount
+### Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Models.IObjectAnchorsAccount
 
 ## NOTES
 

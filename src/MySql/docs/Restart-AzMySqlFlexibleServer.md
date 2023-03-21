@@ -164,7 +164,7 @@ Server restart parameters.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
 Parameter Sets: Restart, RestartViaIdentity
 Aliases:
 
@@ -272,7 +272,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerRestartParameter
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
 

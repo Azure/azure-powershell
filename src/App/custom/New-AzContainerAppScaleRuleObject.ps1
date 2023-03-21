@@ -21,17 +21,17 @@ Create an in-memory object for ScaleRule.
 Create an in-memory object for ScaleRule.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
 #>
 function New-AzContainerAppScaleRuleObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Authentication secrets for the queue scale rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
         $AzureQueueAuth,
         [Parameter(HelpMessage="Queue length.")]
         [int]
@@ -40,20 +40,20 @@ function New-AzContainerAppScaleRuleObject {
         [string]
         $AzureQueueName,
         [Parameter(HelpMessage="Authentication secrets for the custom scale rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
         $CustomAuth,
         [Parameter(HelpMessage="Metadata properties to describe custom scale rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomScaleRuleMetadata]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomScaleRuleMetadata]
         $CustomMetadata,
         [Parameter(HelpMessage="Type of the custom scale rule
         eg: azure-servicebus, redis etc.")]
         [string]
         $CustomType,
         [Parameter(HelpMessage="Authentication secrets for the custom scale rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]]
         $HttpAuth,
         [Parameter(HelpMessage="Metadata properties to describe http scale rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IHttpScaleRuleMetadata]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpScaleRuleMetadata]
         $HttpMetadata,
         [Parameter(HelpMessage="Scale Rule Name.")]
         [string]
@@ -61,7 +61,7 @@ function New-AzContainerAppScaleRuleObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule]::New()
 
         if ($PSBoundParameters.ContainsKey('AzureQueueAuth')) {
             $Object.AzureQueueAuth = $AzureQueueAuth

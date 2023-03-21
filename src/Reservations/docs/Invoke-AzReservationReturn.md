@@ -101,7 +101,7 @@ Proceed reservations return with session ID obtained from Invoke-AzReservationCa
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequest
 Parameter Sets: Post, PostViaIdentity
 Aliases:
 
@@ -271,13 +271,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IRefundResponse
 
 ## NOTES
 

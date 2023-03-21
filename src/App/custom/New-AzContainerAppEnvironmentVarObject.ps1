@@ -21,12 +21,12 @@ Create an in-memory object for EnvironmentVar.
 Create an in-memory object for EnvironmentVar.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappenvironmentvarobject
 #>
 function New-AzContainerAppEnvironmentVarObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +42,7 @@ function New-AzContainerAppEnvironmentVarObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.EnvironmentVar]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

@@ -19,14 +19,14 @@ Creates a log analytics solution.
 .Description
 Creates a log analytics solution.
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution
+Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolution
 .Link
 https://learn.microsoft.com/powershell/module/az.monitoringsolutions/new-azmonitorloganalyticssolution
 .LINK
 [Get-AzOperationalInsightsWorkspace](https://learn.microsoft.com/powershell/module/az.operationalinsights/get-azoperationalinsightsworkspace)
 #>
 function New-AzMonitorLogAnalyticsSolution {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolution])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
@@ -58,7 +58,7 @@ function New-AzMonitorLogAnalyticsSolution {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolutionTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.ISolutionTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

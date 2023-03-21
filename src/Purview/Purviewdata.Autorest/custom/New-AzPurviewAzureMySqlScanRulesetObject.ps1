@@ -21,12 +21,12 @@ Create an in-memory object for AzureMySqlScanRuleset.
 Create an in-memory object for AzureMySqlScanRuleset.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlScanRuleset
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlScanRuleset
 .Link
 https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlScanRulesetObject
 #>
 function New-AzPurviewAzureMySqlScanRulesetObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlScanRuleset')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlScanRuleset')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,7 +50,7 @@ function New-AzPurviewAzureMySqlScanRulesetObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlScanRuleset]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AzureMySqlScanRuleset]::New()
 
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Object.Description = $Description

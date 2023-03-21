@@ -217,7 +217,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for VM properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 Parameter Sets: VM
 Aliases:
 
@@ -264,11 +264,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.VirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.VirtualMachine
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ### System.Boolean
 

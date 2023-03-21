@@ -45,7 +45,7 @@ Create the scope filters of the scan named 'Scan1ForDemo' for datasource 'DataSc
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 Parameter Sets: (All)
 Aliases:
 
@@ -153,11 +153,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IFilter
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IFilter
 
 ## NOTES
 

@@ -47,7 +47,7 @@ The list must not contain duplicate items and must contain at least one item.
 To construct, see NOTES section for DATANETWORKCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IDataNetworkConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IDataNetworkConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SliceConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SliceConfiguration
 
 ## NOTES
 

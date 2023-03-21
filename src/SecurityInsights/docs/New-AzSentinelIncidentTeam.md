@@ -176,7 +176,7 @@ Describes team properties
 To construct, see NOTES section for TEAMPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ITeamProperties
 Parameter Sets: Create
 Aliases:
 
@@ -238,11 +238,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamProperties
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ITeamProperties
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ITeamInformation
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ITeamInformation
 
 ## NOTES
 

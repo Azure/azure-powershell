@@ -142,7 +142,7 @@ function Update-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IFluxConfigurationPatchPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Key-value pairs of protected configuration settings for the configuration
         ${ConfigurationProtectedSetting},
@@ -191,7 +191,7 @@ function Update-AzKubernetesConfigurationFlux {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IFluxConfigurationPatchPropertiesKustomizations]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IFluxConfigurationPatchPropertiesKustomizations]))]
         [System.Collections.Hashtable]
         # Array of kustomizations used to reconcile the artifact pulled by the source type on the cluster.
         ${Kustomization},

@@ -83,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Api20210801.Dimension
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.Dimension
 
 ## NOTES
 

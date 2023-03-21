@@ -144,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource
+### Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 
 ## NOTES
 

@@ -38,9 +38,9 @@ Kind   Location  Name
 IotHub East US 2 testws/testkustopool/testdatabase/iothubdc
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDataConnection
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDataConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -59,7 +59,7 @@ PARAMETER <IDataConnection>: Class representing a data connection.
 https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldataconnection
 #>
 function New-AzSynapseKustoPoolDataConnection {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDataConnection])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDataConnection])]
     [CmdletBinding(DefaultParameterSetName='CreateExpandedEventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -253,7 +253,7 @@ function New-AzSynapseKustoPoolDataConnection {
     process {
         try {
             if ($PSBoundParameters['Kind'] -eq 'EventHub') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.EventHubDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.EventHubDataConnection]::new()
                 
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -269,7 +269,7 @@ function New-AzSynapseKustoPoolDataConnection {
                 }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.EventGridDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.EventGridDataConnection]::new()
             
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -288,7 +288,7 @@ function New-AzSynapseKustoPoolDataConnection {
                 }
             }
             else {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IotHubDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IotHubDataConnection]::new()
 
                 $Parameter.IotHubResourceId = $PSBoundParameters['IotHubResourceId']
                 $null = $PSBoundParameters.Remove('IotHubResourceId')

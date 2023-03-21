@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.INginxConfiguration
 
 ## NOTES
 

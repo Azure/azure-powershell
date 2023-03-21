@@ -47,13 +47,13 @@ $address | Format-List
 
 ```output
 AddressValidationStatus      : Valid
-ContactDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
+ContactDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails
 Id                           : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/addresses/TestPwAddress
 Location                     : eastus
 Name                         : TestPwAddress
-ShippingAddress              : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
-SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
+ShippingAddress              : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
+SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TrackedResourceTags
 Type                         : Microsoft.EdgeOrder/addresses
 ```
 
@@ -81,7 +81,7 @@ Contact details for the address
 To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ Shipping details for the address
 To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -253,7 +253,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IAddressResource
 
 ## NOTES
 

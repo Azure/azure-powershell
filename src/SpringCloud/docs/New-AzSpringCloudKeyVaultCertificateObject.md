@@ -105,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.KeyVaultCertificateProperties
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificateProperties
 
 ## NOTES
 

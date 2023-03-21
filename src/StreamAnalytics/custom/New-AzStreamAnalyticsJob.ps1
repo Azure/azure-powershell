@@ -28,11 +28,11 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamAnalyticsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob
+Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -141,7 +141,7 @@ STREAMINGJOB <IStreamingJob>: A streaming job object, containing all information
 https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob
 #>
 function New-AzStreamAnalyticsJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.Api20170401Preview.IStreamingJob])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Models.IStreamingJob])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

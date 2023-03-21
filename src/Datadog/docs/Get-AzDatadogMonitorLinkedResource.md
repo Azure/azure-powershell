@@ -144,7 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.Api20210301.ILinkedResource
+### Microsoft.Azure.PowerShell.Cmdlets.Datadog.Models.ILinkedResource
 
 ## NOTES
 

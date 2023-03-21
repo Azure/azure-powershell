@@ -126,7 +126,7 @@ directive:
           
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobSecrets');  
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobSecrets');  
     
   - model-cmdlet:
     - DataBoxDiskJobDetails

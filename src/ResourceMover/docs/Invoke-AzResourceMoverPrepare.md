@@ -31,7 +31,7 @@ To aid the user to prerequisite the operation the client can call operation with
 ```powershell
 $resp = Invoke-AzResourceMoverPrepare -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS"  -MoveResource $('psdemovm') -ValidateOnly
 
-AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20191001Preview.OperationErrorAdditionalInfo}
+AdditionalInfo : {Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.OperationErrorAdditionalInfo}
 Code           : MoveCollectionMissingRequiredDependentResources
 Detail         : {}
 EndTime        : 2/9/2021 9:04:15 AM
@@ -280,7 +280,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IOperationStatus
 
 ## NOTES
 

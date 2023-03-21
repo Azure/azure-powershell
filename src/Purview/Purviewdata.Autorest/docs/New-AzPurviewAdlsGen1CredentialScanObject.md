@@ -193,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.AdlsGen1CredentialScan
 
 ## NOTES
 

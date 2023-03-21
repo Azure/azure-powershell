@@ -135,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterfaceIPConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterfaceIPConfiguration
 
 ## NOTES
 

@@ -322,7 +322,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SPECIFICATIONPROVIDERREGISTRATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration
 Parameter Sets: (All)
 Aliases:
 
@@ -338,7 +338,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SPECIFICATIONRESOURCETYPEREGISTRATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IResourceTypeRegistration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IResourceTypeRegistration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -477,7 +477,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IDefaultRollout
 
 ## NOTES
 

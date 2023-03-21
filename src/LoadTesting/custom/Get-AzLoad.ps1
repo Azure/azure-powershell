@@ -25,12 +25,12 @@ Get the details of an Azure Load Testing resource.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource
+Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 .Link
 https://learn.microsoft.com/powershell/module/az.loadtesting/get-azload
 #>
 function Get-AzLoad {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

@@ -186,7 +186,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for USER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 Parameter Sets: Users
 Aliases:
 
@@ -249,11 +249,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IVirtualMachine
 
 ### System.Boolean
 

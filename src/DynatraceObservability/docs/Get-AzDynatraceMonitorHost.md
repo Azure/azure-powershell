@@ -99,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IVMInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.IVMInfo
 
 ## NOTES
 

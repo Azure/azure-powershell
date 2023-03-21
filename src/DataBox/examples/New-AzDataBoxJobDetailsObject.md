@@ -9,21 +9,21 @@ New-AzDataBoxJobDetailsObject -Type "DataBox"  -DataImportDetail  @(@{AccountDet
 ```output
 Action                     :
 ChainOfCustodySasKey       :
-ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ContactDetails
+ContactDetail              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ContactDetails
 CopyLogDetail              :
 CopyProgress               :
 DataExportDetail           :
-DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataImportDetails}
-DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
+DataImportDetail           : {Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataImportDetails}
+DeliveryPackage            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.PackageShippingDetails
 DevicePassword             :
 ExpectedDataSizeInTeraByte : 0
 JobStage                   :
-KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.KeyEncryptionKey
-LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.LastMitigationActionOnJob
-Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.Preferences
-ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.PackageShippingDetails
+KeyEncryptionKey           : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.KeyEncryptionKey
+LastMitigationActionOnJob  : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.LastMitigationActionOnJob
+Preference                 : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Preferences
+ReturnPackage              : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.PackageShippingDetails
 ReverseShipmentLabelSasKey :
-ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
+ShippingAddress            : Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ShippingAddress
 Type                       : DataBox
 ```
 

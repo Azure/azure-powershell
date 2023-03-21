@@ -211,7 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.GitPatternRepository
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.GitPatternRepository
 
 ## NOTES
 

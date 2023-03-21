@@ -180,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IClusterPrincipalAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IClusterPrincipalAssignment
 
 ## NOTES
 
