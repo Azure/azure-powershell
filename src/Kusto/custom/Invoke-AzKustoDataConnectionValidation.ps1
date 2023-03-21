@@ -19,8 +19,8 @@ Checks that the data connection parameters are valid.
 .Description
 Checks that the data connection parameters are valid.
 .Example
- $dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.EventHubDataConnection -Property @{Location=$location; Kind=$kind; EventHubResourceId=$eventHubResourceId; DataFormat=$dataFormat; ConsumerGroup='Default'; Compression= "None"; TableName = $tableName; MappingRuleName = $tableMappingName}
- $dataConnectionValidation = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.DataConnectionValidation -Property @{DataConnectionName=$dataConnectionName; Property=$dataConnectionProperties}
+ $dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.EventHubDataConnection -Property @{Location=$location; Kind=$kind; EventHubResourceId=$eventHubResourceId; DataFormat=$dataFormat; ConsumerGroup='Default'; Compression= "None"; TableName = $tableName; MappingRuleName = $tableMappingName}
+ $dataConnectionValidation = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DataConnectionValidation -Property @{DataConnectionName=$dataConnectionName; Property=$dataConnectionProperties}
 Invoke-AzKustoDataConnectionValidation -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Parameter $dataConnectionValidation
 
 ErrorMessage
@@ -31,7 +31,7 @@ event hub resource id and consumer group tuple provided are already used
 https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnectionValidationResult])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidationResult])]
     [CmdletBinding(DefaultParameterSetName = 'DataExpandedEventHub', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'DataExpandedEventHub', Mandatory)]
@@ -78,7 +78,7 @@ function Invoke-AzKustoDataConnectionValidation {
         ${InputObject},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IoTHub') })]
+        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IotHub') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
         # Kind of the endpoint for the data connection
@@ -121,7 +121,8 @@ function Invoke-AzKustoDataConnectionValidation {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
+        [System.String]
+        [ValidateSet( "MULTIJSON", "JSON", "CSV", "TSV", "SCSV", "SOHSV", "PSV", "TXT", "RAW", "SINGLEJSON", "AVRO", "TSVE", "PARQUET", "ORC", "APACHEAVRO", "W3CLOGFILE")]
         # The data format of the message. Optionally the data format can be added to each message.
         ${DataFormat},
 
@@ -173,6 +174,42 @@ function Invoke-AzKustoDataConnectionValidation {
         [System.String]
         # The name of the share access policy.
         ${SharedAccessPolicyName},
+
+        [Parameter(ParameterSetName = 'DataExpandedEventHub')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'DataExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The resource ID of a managed identity (system or user assigned) to be used to authenticate with external resources.
+        ${ManagedIdentityResourceId},
+
+        [Parameter(ParameterSetName = 'DataExpandedEventHub')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'DataExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataExpandedIotHub')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting]
+        # Indication for database routing information from the data connection, by default only database routing information is allowed.
+        ${DatabaseRouting},
+
+        [Parameter(ParameterSetName = 'DataExpandedEventHub')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'DataExpandedIotHub')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedIotHub')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.DateTime]
+        # When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+        ${RetrievalStartDate},
+
+        [Parameter(ParameterSetName = 'DataExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventGrid')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The resource ID of the event grid that is subscribed to the storage account events.
+        ${EventGridResourceId},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -230,13 +267,13 @@ function Invoke-AzKustoDataConnectionValidation {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.DataConnectionValidation]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.DataConnectionValidation]::new()
 
             $Parameter.DataConnectionName = $PSBoundParameters['DataConnectionName']            
             $null = $PSBoundParameters.Remove('DataConnectionName')
 
             if ($PSBoundParameters['Kind'] -eq 'EventHub') {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.EventHubDataConnection]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.EventHubDataConnection]::new()
                 
                 $Parameter.Property.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -250,9 +287,24 @@ function Invoke-AzKustoDataConnectionValidation {
                     $Parameter.Property.Compression = $PSBoundParameters['Compression']
                     $null = $PSBoundParameters.Remove('Compression')
                 }
+                
+                if ($PSBoundParameters.ContainsKey('ManagedIdentityResourceId')) {
+                    $Parameter.ManagedIdentityResourceId = $PSBoundParameters['ManagedIdentityResourceId']
+                    $null = $PSBoundParameters.Remove('ManagedIdentityResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
+
+                if ($PSBoundParameters.ContainsKey('RetrievalStartDate')) {
+                    $Parameter.RetrievalStartDate = $PSBoundParameters['RetrievalStartDate']
+                    $null = $PSBoundParameters.Remove('RetrievalStartDate')
+                }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.EventGridDataConnection]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.EventGridDataConnection]::new()
             
                 $Parameter.Property.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -269,9 +321,24 @@ function Invoke-AzKustoDataConnectionValidation {
                     $Parameter.IgnoreFirstRecord = $PSBoundParameters['IgnoreFirstRecord']
                     $null = $PSBoundParameters.Remove('IgnoreFirstRecord')
                 }
+
+                if ($PSBoundParameters.ContainsKey('EventGridResourceId')) {
+                    $Parameter.EventGridResourceId = $PSBoundParameters['EventGridResourceId']
+                    $null = $PSBoundParameters.Remove('EventGridResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('ManagedIdentityResourceId')) {
+                    $Parameter.ManagedIdentityResourceId = $PSBoundParameters['ManagedIdentityResourceId']
+                    $null = $PSBoundParameters.Remove('ManagedIdentityResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
             }
             else {
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IotHubDataConnection]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IotHubDataConnection]::new()
 
                 $Parameter.Property.IotHubResourceId = $PSBoundParameters['IotHubResourceId']
                 $null = $PSBoundParameters.Remove('IotHubResourceId')
@@ -282,6 +349,16 @@ function Invoke-AzKustoDataConnectionValidation {
                 if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
                     $Parameter.Property.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
                     $null = $PSBoundParameters.Remove('EventSystemProperty')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
+
+                if ($PSBoundParameters.ContainsKey('RetrievalStartDate')) {
+                    $Parameter.RetrievalStartDate = $PSBoundParameters['RetrievalStartDate']
+                    $null = $PSBoundParameters.Remove('RetrievalStartDate')
                 }
             }
 

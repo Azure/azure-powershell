@@ -38,6 +38,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'IotHub'", "IotHub", global::System.Management.Automation.CompletionResultType.ParameterValue, "IotHub");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "CosmosDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'CosmosDb'", "CosmosDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "CosmosDb");
+            }
         }
     }
 }
