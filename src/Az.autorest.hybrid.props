@@ -72,7 +72,7 @@
   <ItemGroup>
     <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.*"/>
     <ModuleHelpFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\help\**\*.*"/>
-+   <ModuleGeneratedFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\generated\**\*.*"/>
+    <ModuleGeneratedFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\generated\**\*.*"/>
     <ModuleTestFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\test\**\*.*"/>
     <UtilsFiles Include="$(MSBuildThisFileDirectory)$(PsRootModuleName)\$(PsModuleFolder)\utils\**\*.*"/>
    </ItemGroup>
