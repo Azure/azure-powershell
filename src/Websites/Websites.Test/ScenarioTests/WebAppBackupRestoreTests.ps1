@@ -223,7 +223,7 @@ function Test-EditAndGetWebAppBackupConfiguration
             -ResourceGroupName $rgName -Name $wName -StorageAccountUrl $sasUri `
             -FrequencyInterval $frequencyInterval -FrequencyUnit $frequencyUnit `
             -RetentionPeriodInDays $retentionPeriod -StartTime $startTime `
-            -KeepAtLeastOneBackup 
+            -KeepAtLeastOneBackup -Enabled
 
         # Assert
         Assert-True { $config.Enabled }

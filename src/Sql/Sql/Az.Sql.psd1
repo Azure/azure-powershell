@@ -75,7 +75,8 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Sql.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption', 
+CmdletsToExport = 'Invoke-AzSqlServerExternalGovernanceStatusRefresh',
+               'Get-AzSqlDatabaseTransparentDataEncryption', 
                'Get-AzSqlDatabaseTransparentDataEncryptionActivity', 
                'Set-AzSqlDatabaseTransparentDataEncryption', 
                'Get-AzSqlDatabaseUpgradeHint', 'Get-AzSqlServerUpgradeHint', 
