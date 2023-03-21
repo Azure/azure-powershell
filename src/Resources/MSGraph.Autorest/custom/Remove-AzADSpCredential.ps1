@@ -45,7 +45,7 @@ function Remove-AzADSpCredential {
 
         [Parameter(ParameterSetName='ServicePrincipalObjectParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The service principal object, could be used as pipeline input.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphServicePrincipal]
         ${ServicePrincipalObject},
 
         [Parameter(HelpMessage = "The key Id of credentials to be removed.")]

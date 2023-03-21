@@ -43,7 +43,7 @@ function Remove-AzADGroupMember {
         [Parameter(ParameterSetName='MemberObjectIdWithGroupObject', Mandatory, ValueFromPipeline, HelpMessage = "The target group object, could be used as pipeline input.")]
         [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The target group object, could be used as pipeline input.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphGroup]
         ${GroupObject},
     
         [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectId', Mandatory, HelpMessage = "The object Id of member to be removed from target group.")]

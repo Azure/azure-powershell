@@ -61,7 +61,7 @@ Describe 'AzContainerApp' {
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName2 -Location $env.location -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-2" -DaprAppPort 8080
+            $config = Update-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName2 -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-2" -DaprAppPort 8080
             $config.Name | Should -Be $env.containerAppName2
         } | Should -Not -Throw
     }
@@ -69,7 +69,7 @@ Describe 'AzContainerApp' {
     It 'UpdateViaIdentityExpanded' {
         {
             $config = Get-AzContainerApp -ResourceGroupName $env.resourceGroup -Name $env.containerAppName3
-            $config = Update-AzContainerApp -InputObject $config -Location $env.location -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-3" -DaprAppPort 8080
+            $config = Update-AzContainerApp -InputObject $config -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-3" -DaprAppPort 8080
             $config.Name | Should -Be $env.containerAppName3
         } | Should -Not -Throw
     }

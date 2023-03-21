@@ -54,13 +54,13 @@ param(
 
     [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphServicePrincipal]
     # key: service principal object
     ${InputObject},
 
     [Parameter(ParameterSetName='ApplicationObjectParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphApplication]
     # key: application object
     ${ApplicationObject},
 

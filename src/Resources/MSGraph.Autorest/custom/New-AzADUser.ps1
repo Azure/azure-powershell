@@ -24,7 +24,7 @@ Adds new entity to users
 https://learn.microsoft.com/powershell/module/az.resources/new-azaduser
 #>
 function New-AzADUser {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphUser])]
 [CmdletBinding(DefaultParameterSetName='WithPassword', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter()]
@@ -275,7 +275,7 @@ param(
 
     [Parameter(ParameterSetName="WithPasswordProfile", Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphPasswordProfile]
     # passwordProfile
     # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
     ${PasswordProfile},
@@ -456,7 +456,7 @@ param(
     }
 
     if ($PSBoundParameters.ContainsKey('Password')) {
-      $passwordProfile = [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordProfile]::New()
+      $passwordProfile = [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphPasswordProfile]::New()
       $passwordProfile.ForceChangePasswordNextSignIn = $ForceChangePasswordNextLogin
       $passwordProfile.Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
       $null = $PSBoundParameters.Remove('Password')

@@ -129,7 +129,7 @@ function Add-AzADAppPermission {
             }
         }
 
-        $newRequiredResourceAccessItem = New-Object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphRequiredResourceAccess
+        $newRequiredResourceAccessItem = New-Object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphRequiredResourceAccess
         $newRequiredResourceAccessItem.resourceAppId = $ApiId
         $newRequiredResourceAccessItem.resourceAccess = @()
 
@@ -141,7 +141,7 @@ function Add-AzADAppPermission {
             $newRequiredResourceAccessItem.resourceAccess += $item
         }
 
-        $newResourceAccess = New-Object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphResourceAccess
+        $newResourceAccess = New-Object Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphResourceAccess
         $newResourceAccess.Id = $PermissionId
         $newResourceAccess.Type = $Type
         

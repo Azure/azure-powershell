@@ -22,7 +22,7 @@ Lists entities from applications or get entity from applications by key
 https://learn.microsoft.com/powershell/module/az.resources/get-azadapplication
 #>
 function Get-AzADApplication {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphApplication])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdParameterSet', Mandatory)]

@@ -128,12 +128,6 @@ param(
     # Type of Confidential Ledger
     ${LedgerType},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [System.String]
-    # The Azure location where the Confidential Ledger is running.
-    ${Location},
-
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.ITags]))]

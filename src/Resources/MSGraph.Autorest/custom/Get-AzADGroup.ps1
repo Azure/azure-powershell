@@ -22,7 +22,7 @@ Lists entities from groups or get entity from groups by key
 https://learn.microsoft.com/powershell/module/az.resources/get-azadgroup
 #>
 function Get-AzADGroup {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphGroup])]
     [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='ObjectIdParameterSet', Mandatory)]

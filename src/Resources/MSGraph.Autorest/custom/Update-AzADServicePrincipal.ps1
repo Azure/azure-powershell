@@ -168,7 +168,7 @@ function Update-AzADServicePrincipal {
 
     [Parameter(ParameterSetName = 'InputObjectWithDisplayNameParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphServicePrincipal]
     # service principal object
     ${InputObject},
 
@@ -188,7 +188,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphKeyCredential[]]
     # The collection of key credentials associated with the application.
     # Not nullable.
     # Supports $filter (eq, NOT, ge, le).
@@ -198,7 +198,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphPasswordCredential[]]
     # The collection of password credentials associated with the application.
     # Not nullable.
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
@@ -231,7 +231,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphAddIn[]]
     # Defines custom behavior that a consuming service can use to call an app in specific contexts.
     # For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
     # This will let services like Microsoft 365 call the application in the context of a document the user is working on.
@@ -262,7 +262,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphAppRole[]]
     # The roles exposed by the application which this service principal represents.
     # For more information see the appRoles property definition on the application entity.
     # Not nullable.
@@ -272,7 +272,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignments for this app or service, granted to users, groups, and other service principals.Supports $expand.
     # To construct, see NOTES section for APPROLEASSIGNEDTO properties and create a hash table.
     ${AppRoleAssignedTo},
@@ -280,7 +280,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphAppRoleAssignment[]]
     # App role assignment for another app or service, granted to this service principal.
     # Supports $expand.
     # To construct, see NOTES section for APPROLEASSIGNMENT properties and create a hash table.
@@ -298,7 +298,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphClaimsMappingPolicy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphClaimsMappingPolicy[]]
     # The claimsMappingPolicies assigned to this service principal.
     # Supports $expand.
     # To construct, see NOTES section for CLAIMSMAPPINGPOLICY properties and create a hash table.
@@ -307,7 +307,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphDelegatedPermissionClassification[]]
     # The permission classifications for delegated permissions exposed by the app that this service principal represents.
     # Supports $expand.
     # To construct, see NOTES section for DELEGATEDPERMISSIONCLASSIFICATION properties and create a hash table.
@@ -346,7 +346,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphEndpoint[]]
     # Endpoints available for discovery.
     # Services like Sharepoint populate this property with a tenant specific SharePoint endpoints that other applications can discover and use in their experiences.
     # To construct, see NOTES section for ENDPOINT properties and create a hash table.
@@ -355,7 +355,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # The homeRealmDiscoveryPolicies assigned to this service principal.
     # Supports $expand.
     # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
@@ -363,7 +363,7 @@ function Update-AzADServicePrincipal {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphInformationalUrl]
     # informationalUrl
     # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
@@ -401,7 +401,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPermissionScope[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphPermissionScope[]]
     # The delegated permissions exposed by the application.
     # For more information see the oauth2PermissionScopes property on the application entity's api property.
     # Not nullable.
@@ -434,7 +434,7 @@ function Update-AzADServicePrincipal {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSamlSingleSignOnSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphSamlSingleSignOnSettings]
     # samlSingleSignOnSettings
     # To construct, see NOTES section for SAMLSINGLESIGNONSETTING properties and create a hash table.
     ${SamlSingleSignOnSetting},
@@ -468,7 +468,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphTokenIssuancePolicy[]]
     # The tokenIssuancePolicies assigned to this service principal.
     # Supports $expand.
     # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
@@ -477,7 +477,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphTokenLifetimePolicy[]]
     # The tokenLifetimePolicies assigned to this service principal.
     # Supports $expand.
     # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
@@ -486,7 +486,7 @@ function Update-AzADServicePrincipal {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphDirectoryObject[]]
     # .
     # To construct, see NOTES section for TRANSITIVEMEMBEROF properties and create a hash table.
     ${TransitiveMemberOf},

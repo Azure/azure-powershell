@@ -23,7 +23,7 @@ Create federatedIdentityCredential for applications.
 https://learn.microsoft.com/powershell/module/az.resources/new-azadappfederatedidentitycredential
 #>
 function New-AzADAppFederatedCredential {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphFederatedIdentityCredential])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]

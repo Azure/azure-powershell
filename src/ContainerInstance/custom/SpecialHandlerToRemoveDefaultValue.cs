@@ -106,11 +106,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
     {
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject container, ref bool returnNow)
         {
-            if(this._readinessProbe?.ExecCommand?.Count == 0 && this._readinessProbe?.HttpGetPort == null)
+            if(this._readinessProbe?.ExecCommand?.Length == 0 && this._readinessProbe?.HttpGetPort == null)
             {
                 this._readinessProbe = null;
             }
-            if(this._livenessProbe?.ExecCommand?.Count == 0 && this._livenessProbe?.HttpGetPort == null)
+            if(this._livenessProbe?.ExecCommand?.Length == 0 && this._livenessProbe?.HttpGetPort == null)
             {
                 this._livenessProbe = null;
             }
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models
     {
          partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject container, ref bool returnNow)
         {
-            if(this._property?.Image ==null &&　this.VolumeMount?.Count == 0 && this.EnvironmentVariable?.Count == 0 && this.Command?.Count == 0)
+            if(this._property?.Image ==null &&　this.VolumeMount?.Length == 0 && this.EnvironmentVariable?.Length == 0 && this.Command?.Length == 0)
             {
                 this._property = null;
             }

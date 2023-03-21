@@ -35,7 +35,7 @@ function Add-AzADGroupMember {
         [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The target group object, could be used as pipeline input.")]
         [Parameter(ParameterSetName='MemberUPNWithGroupObjectParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The target group object, could be used as pipeline input.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphGroup]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphGroup]
         ${TargetGroupObject},
     
         [Parameter(ParameterSetName='MemberObjectIdWithGroupObjectIdParameterSet', Mandatory, HelpMessage = "The object Id of member to add to target group.")]

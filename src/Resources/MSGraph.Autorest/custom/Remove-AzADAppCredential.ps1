@@ -44,7 +44,7 @@ function Remove-AzADAppCredential {
 
         [Parameter(ParameterSetName='ApplicationObjectWithKeyIdParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The application object, could be used as pipeline input.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphApplication]
         ${ApplicationObject},
 
         [Parameter(HelpMessage = "The key Id of credentials to be removed.")]

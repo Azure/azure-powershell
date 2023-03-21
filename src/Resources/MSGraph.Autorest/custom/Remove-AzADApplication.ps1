@@ -46,7 +46,7 @@ function Remove-AzADApplication {
     
         [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline, HelpMessage = "The application object, could be used as pipeline input.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphApplication]
         # key: display name of application
         ${InputObject},
     
