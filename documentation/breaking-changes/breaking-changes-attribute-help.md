@@ -1,5 +1,5 @@
 > **WARNING:**<br>
-> **This page is moved to [Breaking Changes Attribute Help](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-attribute-help). Do NOT UPDATE IT HERE!**<br>
+> **This page is moved to [Breaking Changes Attribute Help](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-attribute-help). DO NOT UPDATE IT HERE!**<br>
 
 # Breaking Changes Attribute Help
 
