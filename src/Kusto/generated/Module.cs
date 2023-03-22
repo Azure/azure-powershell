@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Kusto();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));

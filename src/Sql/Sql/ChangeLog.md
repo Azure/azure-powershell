@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a new cmdlet to refresh external governance status
+    - 'Invoke-AzSqlServerExternalGovernanceStatusRefresh'
 
 ## Version 4.4.0
 * Fixed identity assignment in `Set-AzSqlDatabase` cmdlet
