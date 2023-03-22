@@ -1211,7 +1211,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RemoveRoutingIntentWarning", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Removing this Route Map resource and may affect the routing in your VirtualHub.
+        /// </summary>
+        internal static string RemoveRouteMapWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("RemoveRouteMapWarning", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub..
         /// </summary>
@@ -1355,7 +1366,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RoutingIntentNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to The route map resource could not be found.
+        /// </summary>
+        internal static string RouteMapNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("RouteMapNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>

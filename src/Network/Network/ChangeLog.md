@@ -28,6 +28,24 @@
 * Updated `New-AzVirtualNetworkGatewayConnection`, `Set-AzVirtualNetworkGatewayConnection` and `New-AzVpnSiteLinkConnection` to support GatewayCustomBgpIpConfiguration.
 * Updated `Reset-AzVpnGateway` to support IpConfigurationId.
 
+* Added new cmdlets for RouteMap child resource of VirtualHub.
+    -`Get-AzRouteMapRule`
+    -`Get-AzRouteMap`
+    -`Add-AzRouteMapRule`
+    -`New-AzRouteMapMatchCriteria`
+    -`New-AzRouteMapActionParameter`
+    -`New-AzRouteMapAction`
+    -`New-AzRouteMapRule`
+    -`New-AzRouteMap`
+    -`Set-AzRouteMapRule`
+    -`Set-AzRouteMap`
+	-`Remove-AzRouteMapRule`
+    -`Remove-AzRouteMap`
+* Added new cmdlets to get routes via Post
+    -`Get-EffectiveRoutes`
+    -`Get-InboundRoutes`
+    -`Get-OutboundRoutes`
+
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
     - `New-AzFirewallPolicySnat`
