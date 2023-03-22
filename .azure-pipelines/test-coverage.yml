@@ -100,7 +100,7 @@ jobs:
     inputs:
       pwsh: true
       targetType: filePath
-      filePath: ./tools/TestFx/Coverage/SaveTestCoverageResults.ps1
+      filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
       arguments: CITest $(Build.BuildId) $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(TestCoverageDatabaseName) $(TestCoverageTableName) $(TestCoverageLocation)
 
   - task: PowerShell@2
@@ -113,13 +113,14 @@ jobs:
         if (Test-Path $baselineJson) {
           Remove-Item -Path $baselineJson -Force
         }
-        Copy-Item -Path ./artifacts/Debug/TestCoverageAnalysis/Results/Baseline.json -Destination $baselineJson
+
         git checkout main
         git checkout -b testcoverage-baseline
+        Copy-Item -Path ./artifacts/Debug/TestCoverageAnalysis/Results/Baseline.json -Destination $baselineJson
         git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
         git config user.name "azure-powershell-bot"
         git add $baselineJson
-        git commit -m "Added latest test coverage"
+        git commit -m "Update with the latest test coverage data"
         git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git
         git push origin testcoverage-baseline --force
 
@@ -133,7 +134,7 @@ jobs:
         $title = "Update test coverage baseline"
         $headBranch = "testcoverage-baseline"
         $targetBranch = "main"
-        $description = "Update test coverage baseline data for the next sprint"
+        $description = "Update with the latest test coverage baseline data"
         ./tools/Github/CreatePR.ps1 -Title $title -HeadBranch $headBranch -BaseBranch $targetBranch -BotAccessToken $(BotAccessToken) -Description $description
 
   - task: PublishPipelineArtifact@1
