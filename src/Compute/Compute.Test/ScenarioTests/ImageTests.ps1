@@ -381,24 +381,24 @@ function Test-DefaultImagesExistManual
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
         New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian;
-
+        
         # Debian versioned test
-        $publisher = $images.Linux.Debian9.publisher;
-        $offer = $images.Linux.Debian9.offer;
-        $sku = $images.Linux.Debian9.sku;
-        $version = $images.Linux.Debian9.version;
+        $publisher = $images.Linux.Debian11.publisher;
+        $offer = $images.Linux.Debian11.offer;
+        $sku = $images.Linux.Debian11.sku;
+        $version = $images.Linux.Debian11.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian9;
-
-        # LinOpenSuseLeap154 versioned test
-        $publisher = $images.Linux.OpenSuseLeap154.publisher;
-        $offer = $images.Linux.OpenSuseLeap154.offer;
-        $sku = $images.Linux.OpenSuseLeap154.sku;
-        $version = $images.Linux.OpenSuseLeap154.version;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian11;
+        
+        # OpenSuseLeap154Gen2 versioned test
+        $publisher = $images.Linux.OpenSuseLeap154Gen2.publisher;
+        $offer = $images.Linux.OpenSuseLeap154Gen2.offer;
+        $sku = $images.Linux.OpenSuseLeap154Gen2.sku;
+        $version = $images.Linux.OpenSuseLeap154Gen2.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image OpenSuseLeap154;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image OpenSuseLeap154Gen2;
 
         # RHEL test
         $publisher = $images.Linux.RHEL.publisher;
@@ -409,24 +409,34 @@ function Test-DefaultImagesExistManual
         Assert-NotNull $img;
         New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHEL;
 
-        # RHELRaw91Gen2 test
-        $publisher = $images.Linux.RHELRaw91Gen2.publisher;
-        $offer = $images.Linux.RHELRaw91Gen2.offer;
-        $sku = $images.Linux.RHELRaw91Gen2.sku;
-        $version = $images.Linux.RHELRaw91Gen2.version;
+        # RHELRaw8LVMGen2 test
+        $publisher = $images.Linux.RHELRaw8LVMGen2.publisher;
+        $offer = $images.Linux.RHELRaw8LVMGen2.offer;
+        $sku = $images.Linux.RHELRaw8LVMGen2.sku;
+        $version = $images.Linux.RHELRaw8LVMGen2.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHELRaw91Gen2;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHELRaw8LVMGen2;
 
-        # LinSuseSles15SP4 versioned test
-        $publisher = $images.Linux.SuseSles15SP4.publisher;
-        $offer = $images.Linux.SuseSles15SP4.offer;
-        $sku = $images.Linux.SuseSles15SP4.sku;
-        $version = $images.Linux.SuseSles15SP4.version;
+        # SuseSles15SP3 versioned test
+        $publisher = $images.Linux.SuseSles15SP3.publisher;
+        $offer = $images.Linux.SuseSles15SP3.offer;
+        $sku = $images.Linux.SuseSles15SP3.sku;
+        $version = $images.Linux.SuseSles15SP3.version;
         $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
         Assert-NotNull $img;
-        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image SuseSles15SP4;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image SuseSles15SP3;
 
+        # FlatcarLinuxFreeGen2 versioned test
+        $publisher = $images.Linux.FlatcarLinuxFreeGen2.publisher;
+        $offer = $images.Linux.FlatcarLinuxFreeGen2.offer;
+        $sku = $images.Linux.FlatcarLinuxFreeGen2.sku;
+        $version = $images.Linux.FlatcarLinuxFreeGen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image FlatcarLinuxFreeGen2;
+        
+        
         # Windows
         # Win2022AzureEditionCore test
         $publisher = $images.Windows.Win2022AzureEditionCore.publisher;
