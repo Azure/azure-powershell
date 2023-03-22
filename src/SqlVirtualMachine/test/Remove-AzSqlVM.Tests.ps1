@@ -20,13 +20,8 @@ Describe 'Remove-AzSqlVM' {
     }
 
     It 'DeleteViaIdentity' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
-        $sqlVM | Remove-AzSqlVM
-        
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
+        Remove-AzSqlVM -InputObject $sqlVM
     }
     
 }

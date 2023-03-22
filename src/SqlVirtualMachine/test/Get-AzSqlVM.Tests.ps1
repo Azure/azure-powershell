@@ -82,11 +82,8 @@ Describe 'Get-AzSqlVM' {
     }
 
     It 'GetViaIdentity' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
         $sqlVM1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachine]@{Id = $env.SqlVMName_HA1Id }
-        $sqlVMs = $sqlVM1 | Get-AzSqlVM
+        $sqlVMs = Get-AzSqlVM -InputObject $sqlVM1 
 
         $sqlVMs.Count | Should -Be 1
         $sqlVMs.Name | Should -Be $env.SqlVMName_HA1
@@ -95,7 +92,5 @@ Describe 'Get-AzSqlVM' {
         $sqlVMs.SqlManagement | Should -Be 'Full'
         $sqlVMs.SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVMs.GroupResourceId.Split("/")[-1] | Should -Be $env.SqlVMGroupName
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
     }
 }

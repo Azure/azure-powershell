@@ -30,9 +30,6 @@ Describe 'Remove-AzSqlVMGroup' {
     }
 
     It 'DeleteViaIdentity' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
         $Offer = "SQL2022-WS2022"
         $Sku = "Developer"
         $DomainFqdn = 'azpstestsqlvm.com'
@@ -41,10 +38,8 @@ Describe 'Remove-AzSqlVMGroup' {
         $SqlVMGroupName = "removeGroup2"
 
         $group = New-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName -Location $env.Location -Offer $Offer -Sku $Sku -DomainFqdn  $DomainFqdn -ClusterSubnetType $ClusterSubnetType
-        $group | Remove-AzSqlVMGroup
+        Remove-AzSqlVMGroup -InputObject $group
 
         { Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName } | Should -Throw -ExpectedMessage "The requested resource of type 'Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups' with name 'removeGroup2' was not found."
-        
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
     }
 }

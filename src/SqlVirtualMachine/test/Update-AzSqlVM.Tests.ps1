@@ -46,12 +46,7 @@ Describe 'Update-AzSqlVM' {
         $sqlVM.SqlServerLicenseType | Should -Be 'PAYG'
         $sqlVM.tag.Count | Should -Be 0
 
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
-        $sqlVM = $sqlVM | Update-AzSqlVM -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'IT' = '8888' }
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
+        $sqlVM = Update-AzSqlVM -InputObject $sqlVM -SqlManagementType 'Full' -Sku 'Standard' -LicenseType 'AHUB' -Tag @{'IT' = '8888' }
 
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2019-WS2019'

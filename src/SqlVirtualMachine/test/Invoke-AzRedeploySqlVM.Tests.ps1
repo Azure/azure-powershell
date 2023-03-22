@@ -19,12 +19,7 @@ Describe 'Invoke-AzRedeploySqlVM' {
     }
 
     It 'RedeployViaIdentity' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
         $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-        $sqlvm | Invoke-AzRedeploySqlVM
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
+        Invoke-AzRedeploySqlVM -InputObject $sqlvm 
     }
 }
