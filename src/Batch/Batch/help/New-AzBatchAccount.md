@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionKeyIdentifier
-The Key Identifier for customer-based encyrption.
+The Key Identifier for customer-based encryption.
 
 ```yaml
 Type: System.String

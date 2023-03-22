@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Batch
         [Parameter(Mandatory = false, HelpMessage = "Configures how customer data is encrypted inside the Batch account.\r\nBy default, accounts are encrypted using a Microsoft managed key.\r\nFor additional control, a customer-managed key can be used instead.")]
         public KeySource EncryptionKeySource { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The Key Identifier for customer-based encyrption.")]
+        [Parameter(Mandatory = false, HelpMessage = "The Key Identifier for customer-based encryption.")]
         public string EncryptionKeyIdentifier { get; set; }
 
         protected override void ExecuteCmdletImpl()
