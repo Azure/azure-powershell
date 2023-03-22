@@ -24,7 +24,7 @@ $schedule = New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays 
 Edit-AzDataProtectionPolicyTriggerClientObject -Policy $pol -Schedule $schedule
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -54,12 +54,12 @@ POLICY <IBackupPolicy>: Backup Policy object.
 https://learn.microsoft.com/powershell/module/az.dataprotection/edit-azdataprotectionpolicytriggerclientobject
 #>
 function Edit-AzDataProtectionPolicyTriggerClientObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy]
     # Backup Policy object.
     # To construct, see NOTES section for POLICY properties and create a hash table.
     ${Policy},
@@ -80,7 +80,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
