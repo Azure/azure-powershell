@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
 * Added property 'AuthorizationStatus' to ExpressRouteCircuit
 * Added property 'BillingType' to ExpressRoutePort
 * Added support for connection flushing in network security group which when enabled, re-evaluates flows when rules are updated
