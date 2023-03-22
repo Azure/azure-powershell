@@ -22,8 +22,6 @@ Create an in-memory object for EventNameFilter.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter
-.Link
-https://learn.microsoft.com/powershell/module/az./new-AzWebPubSubEventNameFilterObject
 #>
 function New-AzWebPubSubEventNameFilterObject
 {
