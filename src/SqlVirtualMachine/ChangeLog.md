@@ -18,7 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Converted Az.SqlVirtualMachine to autorest-based module
+* Added breaking change notification for SqlManagementType
+
+## Version 1.1.0
+* Added cmdlets for Availability Group Listener
+
+## Version 1.0.2
+* Add DR as a new valid License type
+
+## Version 1.0.1
+* Update references in .psd1 to use relative path
+
+## Version 1.0.0
+* Added to the Az roll-up module
 
 ## Version 0.1.0
-* First preview release for module Az.SqlVirtualMachine
-
+* General availability of Az.SqlVirtualMachine module
