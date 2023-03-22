@@ -20,11 +20,11 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.Network.Models;
 
     [Cmdlet(
-        VerbsCommon.Set,
+        "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteMapRule",
         SupportsShouldProcess = true),
         OutputType(typeof(PSRouteMap))]
-    public class SetAzureRmRouteMapRuleCommand : NetworkBaseCmdlet
+    public class UpdateAzureRmRouteMapRuleCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,

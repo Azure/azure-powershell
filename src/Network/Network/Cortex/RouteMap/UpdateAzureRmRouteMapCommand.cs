@@ -21,12 +21,12 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
-    [Cmdlet("Set",
+    [Cmdlet("Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RouteMap",
         DefaultParameterSetName = CortexParameterSetNames.ByRouteMapName,
         SupportsShouldProcess = true),
         OutputType(typeof(PSRouteMap))]
-    public class SetAzureRmRouteMapCommand : RouteMapBaseCmdlet
+    public class UpdateAzureRmRouteMapCommand : RouteMapBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByRouteMapName,
             HelpMessage = "The resource group name.")]
-        public string ParentResourceName { get; set; }
+        public string VirtualHubName { get; set; }
 
         [Alias("ResourceName", "RouteMapName")]
         [Parameter(
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent virtual hub object.")]
-        public PSVirtualHub ParentObject { get; set; }
+        public PSVirtualHub VirtualHubObject { get; set; }
 
         [Alias("RouteMap")]
         [Parameter(
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "The list of route map rules for this route map resource.")]
-        public PSRouteMapRule[] RouteMapRules { get; set; }
+        public PSRouteMapRule[] RouteMapRule { get; set; }
 
         [Parameter(
             Mandatory = false,

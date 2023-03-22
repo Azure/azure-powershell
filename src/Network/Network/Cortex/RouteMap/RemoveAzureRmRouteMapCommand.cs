@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByRouteMapName,
             HelpMessage = "The resource group name.")]
-        public string ParentResourceName { get; set; }
+        public string VirtualHubName { get; set; }
 
         [Alias("ResourceName", "RouteMapName")]
         [Parameter(
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent virtual hub object.")]
-        public PSVirtualHub ParentObject { get; set; }
+        public PSVirtualHub VirtualHubObject { get; set; }
 
         [Alias("RouteMap")]
         [Parameter(
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                this.VirtualHubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = parsedResourceId.ResourceName;
             }
             else
@@ -118,20 +118,20 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                    this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                    this.VirtualHubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                     this.Name = parsedResourceId.ResourceName;
                 }
                 else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
                 {
-                    var parentResourceId = this.ParentObject.Id;
+                    var parentResourceId = this.VirtualHubObject.Id;
                     var parsedParentResourceId = new ResourceIdentifier(parentResourceId);
                     this.ResourceGroupName = parsedParentResourceId.ResourceGroupName;
-                    this.ParentResourceName = parsedParentResourceId.ResourceName;
+                    this.VirtualHubName = parsedParentResourceId.ResourceName;
                 }
             }
 
             // this will thorw if hub does not exist.
-            IsParentVirtualHubPresent(this.ResourceGroupName, this.ParentResourceName);
+            IsParentVirtualHubPresent(this.ResourceGroupName, this.VirtualHubName);
 
             ConfirmAction(
                 Force.IsPresent,
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.Name,
                 () =>
                 {
-                    RouteMapClient.Delete(this.ResourceGroupName, this.ParentResourceName, this.Name);
+                    RouteMapClient.Delete(this.ResourceGroupName, this.VirtualHubName, this.Name);
                     if (PassThru)
                     {
                         WriteObject(true);
