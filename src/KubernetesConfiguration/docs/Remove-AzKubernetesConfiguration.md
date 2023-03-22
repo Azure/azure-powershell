@@ -32,14 +32,14 @@ This will delete the YAML file used to set up the Source control configuration, 
 
 ### Example 1: Remove a configuation of Kubernetes Cluster by name
 ```powershell
-Remove-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -Name  azpstestk8s -ClusterType ConnectedClusters
+Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -Name  azpstestk8s -ClusterType ConnectedClusters
 ```
 
 This command removes a configuation of Kubernetes Cluster by name.
 
 ### Example 2: Remove a configuation of Kubernetes Cluster by object
 ```powershell
-$kubConf = Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp -Name azpstestk8s-operator
+$kubConf = Get-AzKubernetesConfiguration -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s-operator
 Remove-AzKubernetesConfiguration -InputObject $kubConf
 ```
 
@@ -94,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -253,7 +254,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
+`INPUTOBJECT <IKubernetesConfigurationIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
   - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
   - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.

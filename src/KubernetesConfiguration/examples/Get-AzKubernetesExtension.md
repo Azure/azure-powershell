@@ -1,6 +1,6 @@
 ### Example 1: Gets Kubernetes Cluster Extension.
 ```powershell
-Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azpstest_gp
+Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstest-extension -ResourceGroupName azps_test_group
 ```
 
 ```output
@@ -13,7 +13,7 @@ Gets Kubernetes Cluster Extension.
 
 ### Example 2: List Kubernetes Cluster Extension.
 ```powershell
-Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azpstest_gp
+Get-AzKubernetesExtension -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
 ```
 
 ```output

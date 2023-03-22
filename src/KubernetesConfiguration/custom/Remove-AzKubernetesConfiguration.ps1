@@ -20,12 +20,9 @@ This will delete the YAML file used to set up the Source control configuration, 
 .Description
 This will delete the YAML file used to set up the Source control configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\> Remove-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azps_test_cluster -Name  azpstestk8s01 -ClusterType ConnectedClusters
-
+{{ Add code here }}
 .Example
-PS C:\> $kubConf = Get-AzKubernetesConfiguration -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group -Name azpstestk8s02
-PS C:\> Remove-AzKubernetesConfiguration -InputObject $kubConf
-
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -101,7 +98,8 @@ function Remove-AzKubernetesConfiguration {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]

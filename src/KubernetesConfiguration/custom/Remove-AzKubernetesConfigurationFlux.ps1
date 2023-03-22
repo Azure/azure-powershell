@@ -20,13 +20,9 @@ This will delete the YAML file used to set up the Flux Configuration, thus stopp
 .Description
 This will delete the YAML file used to set up the Flux Configuration, thus stopping future sync from the source repo.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -109,7 +105,8 @@ function Remove-AzKubernetesConfigurationFlux {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]
@@ -168,7 +165,7 @@ function Remove-AzKubernetesConfigurationFlux {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-)
+    )
 
     process {
         if ($ClusterType -eq 'ManagedClusters') {

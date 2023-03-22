@@ -20,22 +20,14 @@ Gets Kubernetes Cluster Extension.
 .Description
 Gets Kubernetes Cluster Extension.
 .Example
-PS C:\> Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
-
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add code here }}
 .Example
-PS C:\> Get-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -ResourceGroupName azps_test_group
-
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -57,7 +49,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/get-azk
 #>
 function Get-AzKubernetesExtension {
     [Alias('Get-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]
@@ -111,7 +103,8 @@ function Get-AzKubernetesExtension {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter(DontShow)]

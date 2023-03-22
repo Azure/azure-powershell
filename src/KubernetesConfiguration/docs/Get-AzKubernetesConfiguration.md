@@ -37,27 +37,27 @@ Gets details of the Source Control Configuration.
 
 ### Example 1: List details of the Source Control Configuration.
 ```powershell
-Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters
 ```
 
 ```output
 Name                 RepositoryUrl          ResourceGroupName
 ----                 -------------          -----------------
-azpstestk8s          http://github.com/xxxx azpstest_gp
-azpstestk8s-operator http://github.com/xxxx azpstest_gp
+azpstestk8s          http://github.com/xxxx azps_test_group
+azpstestk8s-operator http://github.com/xxxx azps_test_group
 ```
 
 List details of the Source Control Configuration.
 
 ### Example 2: Gets details of the Source Control Configuration.
 ```powershell
-Get-AzKubernetesConfiguration -ResourceGroupName azpstest_gp -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
+Get-AzKubernetesConfiguration -ResourceGroupName azps_test_group -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -Name azpstestk8s
 ```
 
 ```output
 Name        RepositoryUrl          ResourceGroupName
 ----        -------------          -----------------
-azpstestk8s http://github.com/xxxx azpstest_gp
+azpstestk8s http://github.com/xxxx azps_test_group
 ```
 
 Gets details of the Source Control Configuration.
@@ -96,7 +96,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -181,7 +182,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.ISourceControlConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.ISourceControlConfiguration
 
 ## NOTES
 
@@ -194,7 +195,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
+`INPUTOBJECT <IKubernetesConfigurationIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
   - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
   - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.

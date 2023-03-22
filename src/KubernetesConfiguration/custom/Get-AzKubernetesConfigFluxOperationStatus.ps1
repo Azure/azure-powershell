@@ -20,13 +20,9 @@ Get Async Operation status
 .Description
 Get Async Operation status
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -108,7 +104,8 @@ function Get-AzKubernetesConfigFluxOperationStatus {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter(DontShow)]
@@ -149,7 +146,7 @@ function Get-AzKubernetesConfigFluxOperationStatus {
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
-)
+    )
 
     process {
         if ($ClusterType -eq 'ManagedClusters') {

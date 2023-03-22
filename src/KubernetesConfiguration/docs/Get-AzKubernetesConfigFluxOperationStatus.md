@@ -32,13 +32,13 @@ Get Async Operation status
 
 ### Example 1: Get Async Operation status
 ```powershell
-Get-AzKubernetesConfigFluxOperationStatus -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -FluxConfigurationName azpstestflux-k8s -ResourceGroupName azpstest_gp -OperationId e9871335-7ba8-4100-8cb4-73b3464eb863
+Get-AzKubernetesConfigFluxOperationStatus -ClusterName azpstest_cluster_arc -ClusterType ConnectedClusters -FluxConfigurationName azpstestflux-k8s -ResourceGroupName azps_test_group -OperationId e9871335-7ba8-4100-8cb4-73b3464eb863
 ```
 
 ```output
 Name                                 ResourceGroupName Status
 ----                                 ----------------- ------
-e9871335-7ba8-4100-8cb4-73b3464eb863 azpstest_gp       Succeeded
+e9871335-7ba8-4100-8cb4-73b3464eb863 azps_test_group   Succeeded
 ```
 
 Get Async Operation status
@@ -77,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -190,7 +191,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKubernetesConfigurationIdentity>: Identity Parameter
+`INPUTOBJECT <IKubernetesConfigurationIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: The name of the kubernetes cluster.
   - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
   - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.

@@ -20,16 +20,14 @@ Patch an existing Kubernetes Cluster Extension.
 .Description
 Patch an existing Kubernetes Cluster Extension.
 .Example
-PS C:\>  Update-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group -ConfigurationProtectedSetting @{"aa"="bb"}
-
-Name                ExtensionType             Version      ProvisioningState AutoUpgradeMinorVersion ReleaseTrain ResourceGroupName
-----                -------------             -------      ----------------- ----------------------- ------------ -----------------
-azps_test_extension microsoft.arcdataservices 1.0.16701001 Succeeded         True                    Stable       azps_test_group
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension
+Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +49,7 @@ https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-
 #>
 function Update-AzKubernetesExtension {
     [Alias('Update-AzK8sExtension')]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IExtension])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IExtension])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -104,14 +102,14 @@ function Update-AzKubernetesExtension {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IPatchExtensionPropertiesConfigurationProtectedSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings that are sensitive, as name-value pairs for configuring this extension.
         ${ConfigurationProtectedSetting},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20220301.IPatchExtensionPropertiesConfigurationSettings]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.Api20221101.IPatchExtensionPropertiesConfigurationSettings]))]
         [System.Collections.Hashtable]
         # Configuration settings, as name-value pairs for configuring this extension.
         ${ConfigurationSetting},
@@ -135,7 +133,8 @@ function Update-AzKubernetesExtension {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]

@@ -22,8 +22,9 @@ This will cause the Agent to Uninstall the extension from the cluster.
 Delete a Kubernetes Cluster Extension.
 This will cause the Agent to Uninstall the extension from the cluster.
 .Example
-PS C:\> Remove-AzKubernetesExtension -ClusterName azps_test_cluster -ClusterType ConnectedClusters -Name azps_test_extension -ResourceGroupName azps_test_group
-
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Models.IKubernetesConfigurationIdentity
@@ -106,7 +107,8 @@ function Remove-AzKubernetesExtension {
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Azure')]
         [System.Management.Automation.PSObject]
-        # The credentials, account, tenant, and subscription used for communication with Azure.
+        # The DefaultProfile parameter is not functional.
+        # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
 
         [Parameter()]
