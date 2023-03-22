@@ -53,11 +53,13 @@ else {
     Get-ChildItem -Path $cvgResultsDir | Remove-Item -Force
 }
 
-$cvgReportCsv = Join-Path -Path $cvgResultsDir -ChildPath "TestCoverageReport.csv"
+$cvgReportCsv = Join-Path -Path $cvgResultsDir -ChildPath "OverallReport.csv"
 ({} | Select-Object "Module", "TotalCommands", "TestedCommands", "CommandCoverage", "TotalParameterSets", "TestedParameterSets", "ParameterSetCoverage", "TotalParameters", "TestedParameters", "ParameterCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgReportCsv -Encoding utf8 -Force
 
 $overallCmdletsCount = 0
 $overallExecCmdletsCount = 0
+
+$baselineJson = @()
 
 $allModules = Get-ChildItem -Path $debugDir -Filter "Az.*" -Directory -Name
 foreach ($moduleName in $allModules) {
@@ -172,6 +174,11 @@ foreach ($moduleName in $allModules) {
     }
     $moduleCsvReport | Export-Csv -Path $cvgReportCsv -Encoding utf8 -NoTypeInformation -Append -Force
 
+    $baselineJson += [PSCustomObject]@{
+        Module   = $moduleName
+        Coverage = $cvgCmdlet
+    }
+
     Write-Host "Finished analyzing module `"$moduleName`"." -ForegroundColor Cyan
 
     Write-Host "##[endgroup]"
@@ -182,6 +189,8 @@ foreach ($moduleName in $allModules) {
 
     Write-Host
 }
+
+ConvertTo-Json $baselineJson | Out-File -FilePath ([System.IO.Path]::Combine($cvgResultsDir, "Baseline.json")) -Encoding utf8 -NoNewline -Force
 
 Write-Host "##[section]Overall cmdlets count: $overallCmdletsCount" -ForegroundColor Magenta
 Write-Host "##[section]Overall tested cmdlets count: $overallExecCmdletsCount" -ForegroundColor Magenta
