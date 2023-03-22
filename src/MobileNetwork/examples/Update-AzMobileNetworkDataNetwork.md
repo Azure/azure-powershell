@@ -1,4 +1,4 @@
-### Example 1: Updates data network tags.
+### Example 1: Updates data network.
 ```powershell
 Update-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -DataNetworkName azps-mn-datanetwork -ResourceGroupName azps_test_group -Tag @{"abc"="`12"}
 ```
@@ -9,4 +9,4 @@ Location Name                ResourceGroupName ProvisioningState
 eastus   azps-mn-datanetwork azps_test_group   Succeeded
 ```
 
-Updates data network tags.
+Updates data network.

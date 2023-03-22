@@ -144,8 +144,13 @@ directive:
       parameter-name: DefaultSliceId
 
   - where:
-      verb: New
-      subject: ^MobileNetwork$|^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^Sim$|^SimGroup$|^SimPolicy$|^Site$|^Slice$
+      verb: Update
+      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
+      variant: ^UpdateViaIdentityExpanded$
+    remove: true
+  - where:
+      verb: Update
+      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
     hide: true
 
   # - where:

@@ -16,47 +16,56 @@
 
 <#
 .Synopsis
-Creates or updates a SIM group.
+Updates SIM group.
 .Description
-Creates or updates a SIM group.
+Updates SIM group.
 .Example
-New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
+Update-AzMobileNetworkSimGroup -SimGroupName azps-mn-simgroup -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimgroup
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksimgroup
 #>
-function New-AzMobileNetworkSimGroup {
+function Update-AzMobileNetworkSimGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimGroup])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('SimGroupName')]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the SIM Group.
-    ${Name},
+    ${SimGroupName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -81,15 +90,22 @@ param(
     # The dictionary values can be empty objects ({}) in requests.
     ${IdentityUserAssignedIdentity},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String]
     # Mobile network resource ID.
     ${MobileNetworkId},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -99,14 +115,9 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -127,12 +138,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -156,28 +161,27 @@ param(
 
     process {
         try {
-            try{
-                $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
-            }
-            catch{
-                return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
-            }
+            $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SimGroupName
+            $PSBoundParameters.Add('Location', $dataBase.Location)
 
-            if($dataBase.Count -le 0){
-                return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
-            }
-
-            if (!$PSBoundParameters.ContainsKey('MobileNetworkId')) {
+            if (!$PSBoundParameters.ContainsKey('MobileNetworkId') -and $dataBase.MobileNetworkId) {
                 $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
             }
-            if (!$PSBoundParameters.ContainsKey('EncryptionKeyUrl')) {
+            if (!$PSBoundParameters.ContainsKey('EncryptionKeyUrl') -and $dataBase.EncryptionKeyUrl) {
                 $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
             }
-            if (!$PSBoundParameters.ContainsKey('IdentityType')) {
+            if (!$PSBoundParameters.ContainsKey('IdentityType') -and $dataBase.IdentityType) {
                 $PSBoundParameters.IdentityType = $dataBase.IdentityType
             }
 
-            return Az.MobileNetwork.internal\New-AzMobileNetworkSimGroup @PSBoundParameters
+            if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
+                $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+            }
+            if (!$PSBoundParameters.ContainsKey('Tag')) {
+                $PSBoundParameters.Tag = $dataBase.Tag
+            }
+
+            Az.MobileNetwork.private\New-AzMobileNetworkSimGroup_CreateExpanded @PSBoundParameters
         }
         catch {
             throw

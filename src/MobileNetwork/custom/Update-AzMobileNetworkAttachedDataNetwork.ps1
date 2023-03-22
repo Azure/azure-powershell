@@ -16,45 +16,63 @@
 
 <#
 .Synopsis
-Creates or updates an attached data network.
-Must be created in the same location as its parent packet core data plane.
+Updates an attached data network.
 .Description
-Creates or updates an attached data network.
-Must be created in the same location as its parent packet core data plane.
+Updates an attached data network.
 .Example
-$dns=@("1.1.1.1", "1.1.1.2")
+Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps_test_group -ResourceGroupName -Tag @{"abc"="123"}
 
-New-AzMobileNetworkAttachedDataNetwork -Name azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -DnsAddress $dns -Location eastus -UserPlaneDataInterfaceIpv4Address 10.0.0.10 -UserPlaneDataInterfaceIpv4Gateway 10.0.0.1 -UserPlaneDataInterfaceIpv4Subnet 10.0.0.0/24 -UserPlaneDataInterfaceName N6
-
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkattacheddatanetwork
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkattacheddatanetwork
 #>
-function New-AzMobileNetworkAttachedDataNetwork {
+function Update-AzMobileNetworkAttachedDataNetwork {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IAttachedDataNetwork])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('AttachedDataNetworkName')]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the attached data network.
-    ${Name},
+    ${AttachedDataNetworkName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
     ${PacketCoreControlPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core data plane.
     ${PacketCoreDataPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -62,25 +80,12 @@ param(
     ${ResourceGroupName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String[]]
     # The DNS servers to signal to UEs to use for this attached data network.
     # This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
     ${DnsAddress},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled])]
@@ -145,13 +150,6 @@ param(
     ${PortReuseHoldTimeUdp},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.String[]]
@@ -194,19 +192,28 @@ param(
     # This should match one of the interfaces configured on your Azure Stack Edge device.
     ${UserPlaneDataInterfaceName},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -227,12 +234,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -256,67 +257,63 @@ param(
 
     process {
         try {
-            try{
-                $dataBase = Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -PacketCoreDataPlaneName $PSBoundParameters.PacketCoreDataPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name 
-            }
-            catch{
-                return Az.MobileNetwork.internal\New-AzMobileNetworkAttachedDataNetwork @PSBoundParameters
-            }
-            
-            if($dataBase.Count -le 0){
-                return Az.MobileNetwork.internal\New-AzMobileNetworkAttachedDataNetwork @PSBoundParameters
-            }
-            
-            if (!$PSBoundParameters.ContainsKey('DnsAddress')) {
+            $dataBase = Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -PacketCoreDataPlaneName $PSBoundParameters.PacketCoreDataPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.AttachedDataNetworkName 
+            $PSBoundParameters.Add('Location', $dataBase.Location)
+
+            if (!$PSBoundParameters.ContainsKey('DnsAddress') -and $dataBase.DnsAddress) {
                 $PSBoundParameters.DnsAddress = $dataBase.DnsAddress
             }
-            if (!$PSBoundParameters.ContainsKey('NaptConfigurationEnabled')) {
+            if (!$PSBoundParameters.ContainsKey('NaptConfigurationEnabled') -and $dataBase.NaptConfigurationEnabled) {
                 $PSBoundParameters.NaptConfigurationEnabled = $dataBase.NaptConfigurationEnabled
             }
-            if (!$PSBoundParameters.ContainsKey('NaptConfigurationPinholeLimit')) {
+            if (!$PSBoundParameters.ContainsKey('NaptConfigurationPinholeLimit') -and $dataBase.NaptConfigurationPinholeLimit) {
                 $PSBoundParameters.NaptConfigurationPinholeLimit = $dataBase.NaptConfigurationPinholeLimit
             }
-            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutIcmp')) {
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutIcmp') -and $dataBase.PinholeTimeoutIcmp) {
                 $PSBoundParameters.PinholeTimeoutIcmp = $dataBase.PinholeTimeoutIcmp
             }
-            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutTcp')) {
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutTcp') -and $dataBase.PinholeTimeoutTcp) {
                 $PSBoundParameters.PinholeTimeoutTcp = $dataBase.PinholeTimeoutTcp
             }
-            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutUdp')) {
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutUdp') -and $dataBase.PinholeTimeoutUdp) {
                 $PSBoundParameters.PinholeTimeoutUdp = $dataBase.PinholeTimeoutUdp
             }
-            if (!$PSBoundParameters.ContainsKey('PortRangeMaxPort')) {
+            if (!$PSBoundParameters.ContainsKey('PortRangeMaxPort') -and $dataBase.PortRangeMaxPort) {
                 $PSBoundParameters.PortRangeMaxPort = $dataBase.PortRangeMaxPort
             }
-            if (!$PSBoundParameters.ContainsKey('PortRangeMinPort')) {
+            if (!$PSBoundParameters.ContainsKey('PortRangeMinPort') -and $dataBase.PortRangeMinPort) {
                 $PSBoundParameters.PortRangeMinPort = $dataBase.PortRangeMinPort
             }
-            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeTcp')) {
+            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeTcp') -and $dataBase.PortReuseHoldTimeTcp) {
                 $PSBoundParameters.PortReuseHoldTimeTcp = $dataBase.PortReuseHoldTimeTcp
             }
-            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeUdp')) {
+            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeUdp') -and $dataBase.PortReuseHoldTimeUdp) {
                 $PSBoundParameters.PortReuseHoldTimeUdp = $dataBase.PortReuseHoldTimeUdp
             }
-            if (!$PSBoundParameters.ContainsKey('UserEquipmentAddressPoolPrefix')) {
+            if (!$PSBoundParameters.ContainsKey('UserEquipmentAddressPoolPrefix') -and $dataBase.UserEquipmentAddressPoolPrefix) {
                 $PSBoundParameters.UserEquipmentAddressPoolPrefix = $dataBase.UserEquipmentAddressPoolPrefix
             }
-            if (!$PSBoundParameters.ContainsKey('UserEquipmentStaticAddressPoolPrefix')) {
+            if (!$PSBoundParameters.ContainsKey('UserEquipmentStaticAddressPoolPrefix') -and $dataBase.UserEquipmentStaticAddressPoolPrefix) {
                 $PSBoundParameters.UserEquipmentStaticAddressPoolPrefix = $dataBase.UserEquipmentStaticAddressPoolPrefix
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Address')) {
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Address') -and $dataBase.UserPlaneDataInterfaceIpv4Address) {
                 $PSBoundParameters.UserPlaneDataInterfaceIpv4Address = $dataBase.UserPlaneDataInterfaceIpv4Address
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Gateway')) {
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Gateway') -and $dataBase.UserPlaneDataInterfaceIpv4Gateway) {
                 $PSBoundParameters.UserPlaneDataInterfaceIpv4Gateway = $dataBase.UserPlaneDataInterfaceIpv4Gateway
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Subnet')) {
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Subnet') -and $dataBase.UserPlaneDataInterfaceIpv4Subnet) {
                 $PSBoundParameters.UserPlaneDataInterfaceIpv4Subnet = $dataBase.UserPlaneDataInterfaceIpv4Subnet
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceName')) {
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceName') -and $dataBase.UserPlaneDataInterfaceName) {
                 $PSBoundParameters.UserPlaneDataInterfaceName = $dataBase.UserPlaneDataInterfaceName
             }
 
-            return Az.MobileNetwork.internal\New-AzMobileNetworkAttachedDataNetwork @PSBoundParameters
+            if (!$PSBoundParameters.ContainsKey('Tag')) {
+                $PSBoundParameters.Tag = $dataBase.Tag
+            }
+
+            Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateExpanded @PSBoundParameters
         }
         catch {
             throw

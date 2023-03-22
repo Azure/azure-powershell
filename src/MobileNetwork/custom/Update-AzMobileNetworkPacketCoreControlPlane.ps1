@@ -16,14 +16,14 @@
 
 <#
 .Synopsis
-Creates or updates a packet core control plane.
+Updates packet core control planes.
 .Description
-Creates or updates a packet core control plane.
+Updates packet core control planes.
 .Example
-$siteResourceId = New-AzMobileNetworkSiteResourceIdObject -Id /subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn/sites/azps-mn-site
+Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
-New-AzMobileNetworkPacketCoreControlPlane -Name azps-mn-pccp -ResourceGroupName azps_test_group -LocalDiagnosticAccessAuthenticationType Password -Location eastus -PlatformType AKS-HCI -Site $siteResourceId -Sku G0 -ControlPlaneAccessInterfaceIpv4Address 192.168.1.10 -ControlPlaneAccessInterfaceIpv4Gateway 192.168.1.1 -ControlPlaneAccessInterfaceIpv4Subnet 192.168.1.0/24 -ControlPlaneAccessInterfaceName N2 -CoreNetworkTechnology 5GC
-
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane
 .Notes
@@ -31,23 +31,36 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-SITE <ISiteResourceId[]>: Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
-  Id <String>: Site resource ID.
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+  [AttachedDataNetworkName <String>]: The name of the attached data network.
+  [DataNetworkName <String>]: The name of the data network.
+  [Id <String>]: Resource identity path
+  [MobileNetworkName <String>]: The name of the mobile network.
+  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
+  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
+  [SimGroupName <String>]: The name of the SIM Group.
+  [SimName <String>]: The name of the SIM.
+  [SimPolicyName <String>]: The name of the SIM policy.
+  [SiteName <String>]: The name of the mobile network site.
+  [SliceName <String>]: The name of the network slice.
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VersionName <String>]: The name of the packet core control plane version.
 .Link
-https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkpacketcorecontrolplane
+https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkpacketcorecontrolplane
 #>
-function New-AzMobileNetworkPacketCoreControlPlane {
+function Update-AzMobileNetworkPacketCoreControlPlane {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane])]
-[CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Alias('PacketCoreControlPlaneName')]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the packet core control plane.
-    ${Name},
+    ${PacketCoreControlPlaneName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -55,33 +68,20 @@ param(
     ${ResourceGroupName},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType])]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.AuthenticationType]
     # How to authenticate users who access local diagnostics APIs.
     ${LocalDiagnosticAccessAuthenticationType},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(Mandatory)]
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType])]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PlatformType]
     # The platform type where packet core is deployed.
     ${PlatformType},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISiteResourceId[]]
@@ -90,7 +90,7 @@ param(
     # To construct, see NOTES section for SITE properties and create a hash table.
     ${Site},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku])]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku]
@@ -186,13 +186,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api30.ITrackedResourceTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags.
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
     [System.Int32]
     # The MTU (in bytes) signaled to the UE.
     # The same MTU is set on the user plane data links for all data networks.
@@ -205,19 +198,28 @@ param(
     # The version of the packet core software that is deployed.
     ${Version},
 
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+    [System.String]
+    # The ID of the target subscription.
+    ${SubscriptionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ITagsObjectTags]))]
+    [System.Collections.Hashtable]
+    # Resource tags.
+    ${Tag},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command as a job
-    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -238,12 +240,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Run the command asynchronously
-    ${NoWait},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Runtime')]
@@ -267,70 +263,72 @@ param(
 
     process {
         try {
-            try{
-                $dataBase = Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name
-            }
-            catch{
-                return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
-            }
+            $dataBase = Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.PacketCoreControlPlaneName
+            $PSBoundParameters.Add('Location', $dataBase.Location)
 
-            if($dataBase.Count -le 0){
-                return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
-            }
-
-            if (!$PSBoundParameters.ContainsKey('LocalDiagnosticAccessAuthenticationType')) {
+            if (!$PSBoundParameters.ContainsKey('LocalDiagnosticAccessAuthenticationType') -and $dataBase.LocalDiagnosticAccessAuthenticationType) {
                 $PSBoundParameters.LocalDiagnosticAccessAuthenticationType = $dataBase.LocalDiagnosticAccessAuthenticationType
             }
-            if (!$PSBoundParameters.ContainsKey('PlatformType')) {
+            if (!$PSBoundParameters.ContainsKey('PlatformType') -and $dataBase.PlatformType) {
                 $PSBoundParameters.PlatformType = $dataBase.PlatformType
             }
-            if (!$PSBoundParameters.ContainsKey('Site')) {
+            if (!$PSBoundParameters.ContainsKey('Site') -and $dataBase.Site) {
                 $PSBoundParameters.Site = $dataBase.Site
             }
-            if (!$PSBoundParameters.ContainsKey('Sku')) {
+            if (!$PSBoundParameters.ContainsKey('Sku') -and $dataBase.Sku) {
                 $PSBoundParameters.Sku = $dataBase.Sku
             }
-            if (!$PSBoundParameters.ContainsKey('AzureStackEdgeDeviceId')) {
+            if (!$PSBoundParameters.ContainsKey('AzureStackEdgeDeviceId') -and $dataBase.AzureStackEdgeDeviceId) {
                 $PSBoundParameters.AzureStackEdgeDeviceId = $dataBase.AzureStackEdgeDeviceId
             }
-            if (!$PSBoundParameters.ContainsKey('AzureStackHciClusterId')) {
+            if (!$PSBoundParameters.ContainsKey('AzureStackHciClusterId') -and $dataBase.AzureStackHciClusterId) {
                 $PSBoundParameters.AzureStackHciClusterId = $dataBase.AzureStackHciClusterId
             }
-            if (!$PSBoundParameters.ContainsKey('ConnectedClusterId')) {
+            if (!$PSBoundParameters.ContainsKey('ConnectedClusterId') -and $dataBase.ConnectedClusterId) {
                 $PSBoundParameters.ConnectedClusterId = $dataBase.ConnectedClusterId
             }
-            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Address')) {
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Address') -and $dataBase.ControlPlaneAccessInterfaceIpv4Address) {
                 $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Address = $dataBase.ControlPlaneAccessInterfaceIpv4Address
             }
-            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Gateway')) {
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Gateway') -and $dataBase.ControlPlaneAccessInterfaceIpv4Gateway) {
                 $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Gateway = $dataBase.ControlPlaneAccessInterfaceIpv4Gateway
             }
-            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Subnet')) {
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceIpv4Subnet') -and $dataBase.ControlPlaneAccessInterfaceIpv4Subnet) {
                 $PSBoundParameters.ControlPlaneAccessInterfaceIpv4Subnet = $dataBase.ControlPlaneAccessInterfaceIpv4Subnet
             }
-            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceName')) {
+            if (!$PSBoundParameters.ContainsKey('ControlPlaneAccessInterfaceName') -and $dataBase.ControlPlaneAccessInterfaceName) {
                 $PSBoundParameters.ControlPlaneAccessInterfaceName = $dataBase.ControlPlaneAccessInterfaceName
             }
-            if (!$PSBoundParameters.ContainsKey('CoreNetworkTechnology')) {
+            if (!$PSBoundParameters.ContainsKey('CoreNetworkTechnology') -and $dataBase.CoreNetworkTechnology) {
                 $PSBoundParameters.CoreNetworkTechnology = $dataBase.CoreNetworkTechnology
             }
-            if (!$PSBoundParameters.ContainsKey('CustomLocationId')) {
+            if (!$PSBoundParameters.ContainsKey('CustomLocationId') -and $dataBase.CustomLocationId) {
                 $PSBoundParameters.CustomLocationId = $dataBase.CustomLocationId
             }
-            if (!$PSBoundParameters.ContainsKey('HttpsServerCertificateUrl')) {
+            if (!$PSBoundParameters.ContainsKey('HttpsServerCertificateUrl') -and $dataBase.HttpsServerCertificateUrl) {
                 $PSBoundParameters.HttpsServerCertificateUrl = $dataBase.HttpsServerCertificateUrl
             }
-            if (!$PSBoundParameters.ContainsKey('IdentityType')) {
+            if (!$PSBoundParameters.ContainsKey('IdentityType') -and $dataBase.IdentityType) {
                 $PSBoundParameters.IdentityType = $dataBase.IdentityType
             }
-            if (!$PSBoundParameters.ContainsKey('UeMtu')) {
+            if (!$PSBoundParameters.ContainsKey('UeMtu') -and $dataBase.UeMtu) {
                 $PSBoundParameters.UeMtu = $dataBase.UeMtu
             }
-            if (!$PSBoundParameters.ContainsKey('Version')) {
+            if (!$PSBoundParameters.ContainsKey('Version') -and $dataBase.Version) {
                 $PSBoundParameters.Version = $dataBase.Version
             }
 
-            return Az.MobileNetwork.internal\New-AzMobileNetworkPacketCoreControlPlane @PSBoundParameters
+            if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
+                $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+            }
+            if (!$PSBoundParameters.ContainsKey('InteropSetting')) {
+                $PSBoundParameters.InteropSetting = $dataBase.InteropSetting
+            }
+            if (!$PSBoundParameters.ContainsKey('Tag')) {
+                $PSBoundParameters.Tag = $dataBase.Tag
+            }
+
+            Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateExpanded @PSBoundParameters
         }
         catch {
             throw
