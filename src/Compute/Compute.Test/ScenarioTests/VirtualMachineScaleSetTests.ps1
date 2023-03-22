@@ -4281,7 +4281,6 @@ function Test-VirtualMachineScaleSetConfidentialVMDiskWithVMGuestStateCMK
     }
 }
 
-
 <#
 .SYNOPSIS
 Vmss Os Image Scheduled Events tests
@@ -4306,8 +4305,9 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
         $vmssSku = "Standard_D2s_v3";
         $vmssname = "vmss" + $rgname;
         $domainNameLabel = "d" + $rgname;
-        $username = "admin01"
-        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $username = "admin01";
+        $password = Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 
         $credential = New-Object System.Management.Automation.PSCredential ($username, $securePassword);
 
@@ -4325,9 +4325,9 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
 
         # Create VMSS with managed disk
         $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -OSImageScheduledEvent -OSImageScheduledEventNotBeforeTimeoutInMinutes "PT15M" `
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -OSImageScheduledEvent -OSImageScheduledEventNotBeforeTimeoutInMinutes "PT15M" -UpgradePolicy "Automatic" `
             | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $username -AdminPassword $password `
             | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
             -ImageReferenceOffer $offer -ImageReferenceSku $imgSku -ImageReferenceVersion $version `
             -ImageReferencePublisher $publisher;
@@ -4335,8 +4335,8 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
         $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
 
         $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
-        Assert-AreEqual True $vmss.;
-        Assert-AreEqual 'PT15M' $vmss.;
+        Assert-True {$vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable};
+        Assert-AreEqual 'PT15M' $vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout;
 
     } 
     finally
