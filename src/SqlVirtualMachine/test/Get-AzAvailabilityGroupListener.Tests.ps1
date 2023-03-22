@@ -61,11 +61,8 @@ Describe 'Get-AzAvailabilityGroupListener' {
     }
 
     It 'GetViaIdentity' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
         $msListner = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.AvailabilityGroupListener]@{Id = $env.SqlVMGroupMultiSubnetIPListnerId }
-        $msListner = $msListner | Get-AzAvailabilityGroupListener
+        $msListner = Get-AzAvailabilityGroupListener -InputObject $msListner
 
         $msListner.AvailabilityGroupName | Should -Be $env.SqlVMGroupName2
         $msListner.Port | Should -Be 1433
@@ -76,7 +73,5 @@ Describe 'Get-AzAvailabilityGroupListener' {
         $MultiSubnetIPConfiguration2 = $msListner.MultiSubnetIPConfiguration | Where PrivateIPAddressIpaddress -eq $env.IPAddress3
         $MultiSubnetIPConfiguration2.PrivateIPAddressSubnetResourceId | Should -Be $env.SubnetId2
         $MultiSubnetIPConfiguration2.SqlVirtualMachineInstance.ToLower() | Should -Be $env.SqlVMName_HA2Id
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
     }
 }

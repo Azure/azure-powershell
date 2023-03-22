@@ -19,12 +19,7 @@ Describe 'Start-AzSqlVMAssessment' {
     }
 
     It 'StartViaIdentity' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-        
         $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-        $sqlvm | Start-AzSqlVMAssessment
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
+        Start-AzSqlVMAssessment -InputObject $sqlvm
     }
 }

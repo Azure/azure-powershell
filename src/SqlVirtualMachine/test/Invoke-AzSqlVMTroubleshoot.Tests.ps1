@@ -20,14 +20,9 @@ Describe 'Invoke-AzSqlVMTroubleshoot' {
     }
 
     It 'TroubleshootViaIdentityExpanded' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
         $sqlvm = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
-        $SqlVMTroubleshootingResult = $sqlvm | Invoke-AzSqlVMTroubleshoot -StartTimeUtc '2023-03-15T17:10:00Z' -EndTimeUtc '2023-03-16T08:30:10Z' -TroubleshootingScenario 'UnhealthyReplica'
+        $SqlVMTroubleshootingResult = Invoke-AzSqlVMTroubleshoot -InputObject $sqlvm -StartTimeUtc '2023-03-15T17:10:00Z' -EndTimeUtc '2023-03-16T08:30:10Z' -TroubleshootingScenario 'UnhealthyReplica'
         $SqlVMTroubleshootingResult.TroubleshootingScenario | Should -BeNullOrEmpty
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
     }
 
 }

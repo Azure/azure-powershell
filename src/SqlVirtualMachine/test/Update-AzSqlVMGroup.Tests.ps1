@@ -97,12 +97,7 @@ Describe 'Update-AzSqlVMGroup' {
         $storageAccountPrimaryKey = ConvertTo-SecureString -String "akeyvalue" -AsPlainText -Force
         $Tag = @{'IT' = '8888' }
 
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
-        $group | Update-AzSqlVMGroup -ClusterBootstrapAccount $ClusterBootstrapAccount -ClusterOperatorAccount $ClusterOperatorAccount -ClusterSubnetType $ClusterSubnetType -DomainFqdn $DomainFqdn -OuPath $OuPath -SqlServiceAccount $SqlServiceAccount -StorageAccountUrl $StorageAccountUrl -storageAccountPrimaryKey $storageAccountPrimaryKey -Tag $Tag
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
+        Update-AzSqlVMGroup -InputObject $group -ClusterBootstrapAccount $ClusterBootstrapAccount -ClusterOperatorAccount $ClusterOperatorAccount -ClusterSubnetType $ClusterSubnetType -DomainFqdn $DomainFqdn -OuPath $OuPath -SqlServiceAccount $SqlServiceAccount -StorageAccountUrl $StorageAccountUrl -storageAccountPrimaryKey $storageAccountPrimaryKey -Tag $Tag
 
         $group = Get-AzSqlVMGroup -ResourceGroupName $env.ResourceGroupName -Name $SqlVMGroupName
 

@@ -61,11 +61,8 @@ Describe 'Get-AzSqlVMGroup' {
     }
 
     It 'GetViaIdentity' {
-        $SubscriptionId = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-
         $group1 = [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.SqlVirtualMachineGroup]@{Id = $env.SqlVMGroupId }
-        $groups = $group1 | Get-AzSqlVMGroup
+        $groups = Get-AzSqlVMGroup  -InputObject $group1
 
         $groups.Count | Should -Be 1
         $groups.Name | Should -Be 'azpssqlcluster'
@@ -77,7 +74,5 @@ Describe 'Get-AzSqlVMGroup' {
         $groups.WsfcDomainProfileDomainFqdn | Should -Be 'azpstestsql.com'
         $groups.WsfcDomainProfileSqlServiceAccount | Should -Be 'azureadmin@azpstestsql.com'
         $groups.WsfcDomainProfileStorageAccountUrl | Should -Be 'https://azpstestsqlstorage.blob.core.windows.net/'
-
-        $PSDefaultParameterValues["*:SubscriptionId"] = $SubscriptionId
     }
 }
