@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounts", "..\Accounts\Accounts\Accounts.csproj", "{B0A88ADC-09A7-4BC4-B486-9C638B1DB4EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{7D39A853-867A-498C-83EA-DCED75B91725}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication", "..\Accounts\Authentication\Authentication.csproj", "{B6E533DA-1CD6-4BC7-9340-40F43C439F99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.ResourceManager", "..\Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj", "{BACFB24A-5ECD-4415-B387-FAEF40B964E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationAssemblyLoadContext", "..\Accounts\AuthenticationAssemblyLoadContext\AuthenticationAssemblyLoadContext.csproj", "{A153CA32-BCC6-456B-A71F-27909277424F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authenticators", "..\Accounts\Authenticators\Authenticators.csproj", "{9237CC7D-433F-414B-8317-6D226530E850}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.SqlVirtualMachine", "Az.SqlVirtualMachine.csproj", "{034DCA28-7566-4D4C-AE45-F3F3909D256F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0A88ADC-09A7-4BC4-B486-9C638B1DB4EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0A88ADC-09A7-4BC4-B486-9C638B1DB4EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0A88ADC-09A7-4BC4-B486-9C638B1DB4EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0A88ADC-09A7-4BC4-B486-9C638B1DB4EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D39A853-867A-498C-83EA-DCED75B91725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D39A853-867A-498C-83EA-DCED75B91725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D39A853-867A-498C-83EA-DCED75B91725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D39A853-867A-498C-83EA-DCED75B91725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E533DA-1CD6-4BC7-9340-40F43C439F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E533DA-1CD6-4BC7-9340-40F43C439F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E533DA-1CD6-4BC7-9340-40F43C439F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E533DA-1CD6-4BC7-9340-40F43C439F99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BACFB24A-5ECD-4415-B387-FAEF40B964E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BACFB24A-5ECD-4415-B387-FAEF40B964E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BACFB24A-5ECD-4415-B387-FAEF40B964E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BACFB24A-5ECD-4415-B387-FAEF40B964E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A153CA32-BCC6-456B-A71F-27909277424F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A153CA32-BCC6-456B-A71F-27909277424F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A153CA32-BCC6-456B-A71F-27909277424F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A153CA32-BCC6-456B-A71F-27909277424F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9237CC7D-433F-414B-8317-6D226530E850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9237CC7D-433F-414B-8317-6D226530E850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9237CC7D-433F-414B-8317-6D226530E850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9237CC7D-433F-414B-8317-6D226530E850}.Release|Any CPU.Build.0 = Release|Any CPU
+		{034DCA28-7566-4D4C-AE45-F3F3909D256F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{034DCA28-7566-4D4C-AE45-F3F3909D256F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{034DCA28-7566-4D4C-AE45-F3F3909D256F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{034DCA28-7566-4D4C-AE45-F3F3909D256F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
