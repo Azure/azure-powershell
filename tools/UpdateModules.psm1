@@ -58,7 +58,7 @@ function New-ModulePsm1 {
     PROCESS {
         $manifestDir = Get-Item -Path $ModulePath
         $moduleName = $manifestDir.Name + ".psd1"
-        $manifestPath = Get-ChildItem -Path $manifestDir -Filter $moduleName -Recurse
+        $manifestPath = Get-Item -Path $manifestDir -Filter $moduleName
         $file = Get-Item $manifestPath
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
 
