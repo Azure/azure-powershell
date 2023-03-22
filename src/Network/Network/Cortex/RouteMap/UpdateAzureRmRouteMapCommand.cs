@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                 this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                this.VirtualHubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                 this.Name = parsedResourceId.ResourceName;
             }
             else
@@ -112,20 +112,20 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     var parsedResourceId = new ResourceIdentifier(this.ResourceId);
                     this.ResourceGroupName = parsedResourceId.ResourceGroupName;
-                    this.ParentResourceName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
+                    this.VirtualHubName = parsedResourceId.ParentResource.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries).Last();
                     this.Name = parsedResourceId.ResourceName;
                 }
                 else if (ParameterSetName.Equals(CortexParameterSetNames.ByVirtualHubObject, StringComparison.OrdinalIgnoreCase))
                 {
-                    var parentResourceId = this.ParentObject.Id;
+                    var parentResourceId = this.VirtualHubObject.Id;
                     var parsedParentResourceId = new ResourceIdentifier(parentResourceId);
                     this.ResourceGroupName = parsedParentResourceId.ResourceGroupName;
-                    this.ParentResourceName = parsedParentResourceId.ResourceName;
+                    this.VirtualHubName = parsedParentResourceId.ResourceName;
                 }
 
                 try
                 {
-                    routeMapToUpdate = this.GetRouteMap(this.ResourceGroupName, this.ParentResourceName, this.Name);
+                    routeMapToUpdate = this.GetRouteMap(this.ResourceGroupName, this.VirtualHubName, this.Name);
                 }
                 catch (Exception ex)
                 {
@@ -138,11 +138,11 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             // this will thorw if hub does not exist.
-            IsParentVirtualHubPresent(this.ResourceGroupName, this.ParentResourceName);
+            IsParentVirtualHubPresent(this.ResourceGroupName, this.VirtualHubName);
 
-            if (this.RouteMapRules != null)
+            if (this.RouteMapRule != null)
             {
-                routeMapToUpdate.Rules = this.RouteMapRules.ToList();
+                routeMapToUpdate.Rules = this.RouteMapRule.ToList();
             }
 
             ConfirmAction(
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Network
                 () =>
                 {
                     WriteVerbose(String.Format(Properties.Resources.CreatingLongRunningOperationMessage, this.ResourceGroupName, this.Name));
-                    WriteObject(this.CreateOrUpdateRouteMap(this.ResourceGroupName, this.ParentResourceName, this.Name, routeMapToUpdate));
+                    WriteObject(this.CreateOrUpdateRouteMap(this.ResourceGroupName, this.VirtualHubName, this.Name, routeMapToUpdate));
                 });
         }
     }

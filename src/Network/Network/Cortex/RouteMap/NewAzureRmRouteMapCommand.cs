@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
             PSRouteMap routeMap = new PSRouteMap
             {
                 Name = this.Name,
-                Rules = this.RouteMapRules.ToList()
+                Rules = this.RouteMapRule.ToList()
             };
 
             ConfirmAction(
