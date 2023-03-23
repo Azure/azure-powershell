@@ -61,6 +61,9 @@ identity-correction-for-post: true
 
 directive:
   - where:
+      variant: ^CreateViaIdentity(?!.*?Expanded)
+    remove: true
+  - where:
       verb: Set
       subject: BuildServiceAgentPoolPut
     set:
