@@ -1,6 +1,6 @@
 ### Example 1: Create a replication policy
 ```powershell
-$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
+$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtPolicyCreationInput]::new()
 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
 $providerSpecificPolicy.InstanceType = "VMwareCbt"
 $providerSpecificPolicy.RecoveryPointHistoryInMinute = 4320

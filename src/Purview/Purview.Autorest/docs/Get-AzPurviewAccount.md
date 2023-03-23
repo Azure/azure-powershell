@@ -197,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.Api20210701.IAccount
+### Microsoft.Azure.PowerShell.Cmdlets.Purview.Models.IAccount
 
 ## NOTES
 

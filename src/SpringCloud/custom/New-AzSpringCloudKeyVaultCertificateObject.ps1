@@ -21,12 +21,12 @@ Create an in-memory object for KeyVaultCertificateProperties.
 Create an in-memory object for KeyVaultCertificateProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.KeyVaultCertificateProperties
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificateProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudKeyVaultCertificateObject
 #>
 function New-AzSpringCloudKeyVaultCertificateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.KeyVaultCertificateProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificateProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -45,7 +45,7 @@ function New-AzSpringCloudKeyVaultCertificateObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.KeyVaultCertificateProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.KeyVaultCertificateProperties]::New()
         $Object.Type = "KeyVaultCertificate"
 
         if ($PSBoundParameters.ContainsKey('Version')) {

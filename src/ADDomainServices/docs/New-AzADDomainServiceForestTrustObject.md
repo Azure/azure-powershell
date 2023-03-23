@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.ForestTrust
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.ForestTrust
 
 ## NOTES
 

@@ -45,7 +45,7 @@ Contact Profile Link Channel.
 To construct, see NOTES section for CHANNEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfileLinkChannel[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLinkChannel[]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLink
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ContactProfileLink
 
 ## NOTES
 

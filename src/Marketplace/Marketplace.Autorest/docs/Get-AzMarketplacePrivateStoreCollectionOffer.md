@@ -137,7 +137,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 
 ## NOTES
 

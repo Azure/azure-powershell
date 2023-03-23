@@ -186,7 +186,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequest
 Parameter Sets: Calculate
 Aliases:
 
@@ -369,11 +369,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IPurchaseRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculatePriceResponseProperties
 
 ## NOTES
 

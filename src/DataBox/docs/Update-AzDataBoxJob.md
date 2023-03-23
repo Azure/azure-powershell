@@ -49,7 +49,7 @@ Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" 
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
-Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxJobDetails
 ```
 
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.
@@ -117,7 +117,7 @@ Contact details for notification and shipping.
 To construct, see NOTES section for CONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +179,7 @@ Key encryption key for the job.
 To construct, see NOTES section for KEYENCRYPTIONKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IKeyEncryptionKey
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IKeyEncryptionKey
 Parameter Sets: (All)
 Aliases:
 
@@ -241,7 +241,7 @@ Shipping address of the customer.
 To construct, see NOTES section for SHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -336,7 +336,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.IJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobResource
 
 ## NOTES
 

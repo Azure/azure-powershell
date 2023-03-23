@@ -1,7 +1,7 @@
 ### Example 1: Updates an automation rule
 ```powershell
  $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
+ $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AutomationRuleRunPlaybookAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "RunPlaybook"
  $automationRuleAction.ActionConfigurationLogicAppResourceId = ($LogicAppResourceId.Id)

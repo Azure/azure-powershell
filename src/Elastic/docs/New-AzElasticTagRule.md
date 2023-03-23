@@ -62,7 +62,7 @@ If Include actions are specified, the rules will only include resources with the
 To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IFilteringTag[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IFilteringTag[]
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules
 
 ## NOTES
 

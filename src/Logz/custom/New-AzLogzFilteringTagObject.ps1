@@ -20,12 +20,12 @@
     Create a in-memory object for FilteringTag
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag
+    Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.FilteringTag
     .Link
     https://learn.microsoft.com/powershell/module/az.Logz/new-AzLogzFilteringTagObject
     #>
     function New-AzLogzFilteringTagObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.FilteringTag')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -42,7 +42,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.FilteringTag]::New()
     
             $Object.Action = $Action
             $Object.Name = $Name

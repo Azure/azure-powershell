@@ -210,7 +210,7 @@ Reservation order alias
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IReservationOrderAliasRequest
 Parameter Sets: Create, CreateViaIdentity
 Aliases:
 
@@ -453,13 +453,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasRequest
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IReservationOrderAliasRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IReservationOrderAliasResponse
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IReservationOrderAliasResponse
 
 ## NOTES
 

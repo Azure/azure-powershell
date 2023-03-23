@@ -23,7 +23,7 @@ Update-AzDataBoxJob -Name "powershell10" -ResourceGroupName "resourceGroupName" 
 
 Name         Location Status        TransferType  SkuName IdentityType DeliveryType Detail
 ----         -------- ------        ------------  ------- ------------ ------------ ------
-Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.DataBoxJobDetails
+Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox UserAssigned NonScheduled Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.DataBoxJobDetails
 ```
 
 Update databox job encryption from microsoft managed to customer managed with user assigned identities.

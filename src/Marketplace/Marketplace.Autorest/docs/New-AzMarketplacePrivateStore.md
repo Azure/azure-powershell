@@ -128,7 +128,7 @@ Gets or sets list of notified recipients for new requests
 To construct, see NOTES section for NOTIFICATIONSETTINGRECIPIENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IRecipient[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRecipient[]
 Parameter Sets: (All)
 Aliases:
 

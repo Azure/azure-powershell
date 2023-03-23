@@ -213,7 +213,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteCustomDomainOverviewArmResource
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.IStaticSiteCustomDomainOverviewArmResource
 
 ## NOTES
 

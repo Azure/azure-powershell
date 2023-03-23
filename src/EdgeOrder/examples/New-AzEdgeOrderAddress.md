@@ -20,13 +20,13 @@ $address | Format-List
 
 ```output
 AddressValidationStatus      : Valid
-ContactDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
+ContactDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails
 Id                           : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/addresses/TestPwAddress
 Location                     : eastus
 Name                         : TestPwAddress
-ShippingAddress              : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ShippingAddress
-SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
+ShippingAddress              : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ShippingAddress
+SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.SystemData
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.TrackedResourceTags
 Type                         : Microsoft.EdgeOrder/addresses
 ```
 Creates a new address.

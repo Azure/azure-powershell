@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.LoadedCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.LoadedCertificate
 
 ## NOTES
 

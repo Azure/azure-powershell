@@ -220,7 +220,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
+### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsm
 
 ## NOTES
 

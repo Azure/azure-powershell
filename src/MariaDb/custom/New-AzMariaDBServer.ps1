@@ -19,7 +19,7 @@ Create a new MariaDB.
 Create a new MariaDB.
 #>
 function New-AzMariaDbServer {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory, HelpMessage='MariaDB server name.')]
@@ -91,7 +91,7 @@ function New-AzMariaDbServer {
 
         [Parameter(HelpMessage='Application-specific metadata in the form of key-value pairs.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Application-specific metadata in the form of key-value pairs.
         ${Tag},
@@ -181,8 +181,8 @@ function New-AzMariaDbServer {
     
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate]::new()
-            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForDefaultCreate]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerForCreate]::new()
+            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerPropertiesForDefaultCreate]::new()
 
             #region ServerForCreate
             if ($PSBoundParameters.ContainsKey('Location')) {

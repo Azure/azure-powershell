@@ -172,7 +172,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SCHEDULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule
 Parameter Sets: Schedule
 Aliases:
 
@@ -234,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Schedule
 
 ## OUTPUTS
 

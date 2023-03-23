@@ -205,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IConfigurationProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IConfigurationProfile
 
 ## NOTES
 

@@ -21,17 +21,17 @@ Create an in-memory object for BuildpacksGroupProperties.
 Create an in-memory object for BuildpacksGroupProperties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpacksGroupProperties
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpacksGroupProperties
 .Link
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpacksGroupObject
 #>
 function New-AzSpringCloudBuildpacksGroupObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpacksGroupProperties')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpacksGroupProperties')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Buildpacks in the buildpack group.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpackProperties[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildpackProperties[]]
         $Buildpack,
         [Parameter(HelpMessage="Buildpack group name.")]
         [string]
@@ -39,7 +39,7 @@ function New-AzSpringCloudBuildpacksGroupObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpacksGroupProperties]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.BuildpacksGroupProperties]::New()
 
         if ($PSBoundParameters.ContainsKey('Buildpack')) {
             $Object.Buildpack = $Buildpack

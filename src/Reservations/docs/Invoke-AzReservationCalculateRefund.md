@@ -100,7 +100,7 @@ The SessionId in the response is a required input parameter for cmdlet Invoke-Az
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequest
 Parameter Sets: Post, PostViaIdentity
 Aliases:
 
@@ -255,13 +255,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ICalculateRefundResponse
 
 ## NOTES
 

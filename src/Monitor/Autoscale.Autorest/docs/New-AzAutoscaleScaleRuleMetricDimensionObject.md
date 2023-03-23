@@ -87,7 +87,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.ScaleRuleMetricDimension
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.ScaleRuleMetricDimension
 
 ## NOTES
 

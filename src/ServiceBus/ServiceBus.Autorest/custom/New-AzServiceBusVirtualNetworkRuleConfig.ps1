@@ -19,7 +19,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
 #>
 function New-AzServiceBusVirtualNetworkRuleConfig{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetVirtualNetworkRules])]
 	[CmdletBinding(PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(Mandatory, HelpMessage = "Resource ID of Virtual Network Subnet")]
@@ -35,7 +35,7 @@ function New-AzServiceBusVirtualNetworkRuleConfig{
 
 	process{
 		try{
-			$virtualNetworkRule = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetVirtualNetworkRules]@{
+			$virtualNetworkRule = [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetVirtualNetworkRules]@{
 				SubnetId = $SubnetId
 			}
 

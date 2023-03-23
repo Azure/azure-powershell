@@ -95,7 +95,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.StorageAccountDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.StorageAccountDetails
 
 ## NOTES
 

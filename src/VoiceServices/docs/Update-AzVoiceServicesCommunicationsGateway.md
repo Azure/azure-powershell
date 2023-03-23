@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ICommunicationsGateway
+### Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.ICommunicationsGateway
 
 ## NOTES
 

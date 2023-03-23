@@ -25,7 +25,7 @@ Create a new Activity Log Alert rule or update an existing one.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,7 +48,7 @@ CONDITIONALLOF <IAlertRuleAnyOfOrLeafCondition[]>: The list of Activity Log Aler
 https://learn.microsoft.com/powershell/module/az.monitor/new-azactivitylogalert
 #>
 function New-AzActivityLogAlert {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertResource])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -75,7 +75,7 @@ function New-AzActivityLogAlert {
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroup[]]
         # The list of the Action Groups.
         # To construct, see NOTES section for ACTIONGROUP properties and create a hash table.
         ${Action},
@@ -83,7 +83,7 @@ function New-AzActivityLogAlert {
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAlertRuleAnyOfOrLeafCondition[]]
         # The list of Activity Log Alert rule conditions.
         # To construct, see NOTES section for CONDITIONALLOF properties and create a hash table.
         ${Condition},
@@ -119,7 +119,7 @@ function New-AzActivityLogAlert {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAzureResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IAzureResourceTags]))]
         [System.Collections.Hashtable]
         # The tags of the resource.
         ${Tag},

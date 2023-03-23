@@ -21,12 +21,12 @@ Create an in-memory object for FilterableProperty.
 Create an in-memory object for FilterableProperty.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty
 .Link
 https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
 #>
 function New-AzEdgeOrderFilterablePropertyObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzEdgeOrderFilterablePropertyObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty]::New()
 
         if ($PSBoundParameters.ContainsKey('SupportedValue')) {
             $Object.SupportedValue = $SupportedValue

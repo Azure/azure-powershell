@@ -44,7 +44,7 @@ SystemDataCreatedByType      : myVendor
 SystemDataLastModifiedAt     : 11/25/2021 4:47:47 AM
 SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
 
 ```
@@ -72,7 +72,7 @@ SystemDataCreatedByType      : myVendor
 SystemDataLastModifiedAt     : 11/25/2021 4:57:47 AM
 SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
 
 ```
@@ -161,7 +161,7 @@ Device properties.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevicePropertiesFormat
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevicePropertiesFormat
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +256,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDevice
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDevice
 
 ## NOTES
 

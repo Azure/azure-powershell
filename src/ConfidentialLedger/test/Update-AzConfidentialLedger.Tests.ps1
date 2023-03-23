@@ -32,7 +32,6 @@ Describe 'Update-AzConfidentialLedger' {
                     LedgerRoleName=$env.CertPrincipalRole
                 } `
             -LedgerType $env.LedgerType `
-            -Location $env.Location `
             -Tag @{Tag0=$env.Tag0; Tag1=$env.Tag1}
 
         $ledger.Tag["Tag0"] | Should -Be $env.Tag0
@@ -55,7 +54,6 @@ Describe 'Update-AzConfidentialLedger' {
                     LedgerRoleName=$env.CertPrincipalRole
                 } `
             -LedgerType $env.LedgerType `
-            -Location $env.Location `
             -Tag @{Tag0=$env.Tag0; Tag1=$env.Tag1; Tag2=$env.Tag2}
 
         $ledger.Tag["Tag0"] | Should -Be $env.Tag0

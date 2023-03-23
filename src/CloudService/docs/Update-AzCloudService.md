@@ -151,7 +151,7 @@ Describes the cloud service.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 Parameter Sets: (All)
 Aliases:
 
@@ -198,13 +198,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 
 ## NOTES
 

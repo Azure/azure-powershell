@@ -108,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IConfigData
+### Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IConfigData
 
 ## NOTES
 

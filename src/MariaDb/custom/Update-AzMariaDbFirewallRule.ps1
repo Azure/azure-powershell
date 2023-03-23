@@ -20,7 +20,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 Creates a new firewall rule or updates an existing firewall rule.
 #>
 function Update-AzMariaDbFirewallRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IFirewallRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IFirewallRule])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

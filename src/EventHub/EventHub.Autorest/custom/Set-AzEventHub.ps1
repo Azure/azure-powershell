@@ -21,7 +21,7 @@ Updates an EventHub Entity
 
 function Set-AzEventHub{
 
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHub])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub Entity.")]

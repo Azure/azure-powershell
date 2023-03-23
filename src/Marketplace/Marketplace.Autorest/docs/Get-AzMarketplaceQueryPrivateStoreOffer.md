@@ -135,7 +135,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IQueryOffers
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IQueryOffers
 
 ## NOTES
 

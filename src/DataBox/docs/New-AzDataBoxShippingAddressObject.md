@@ -195,7 +195,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ShippingAddress
 
 ## NOTES
 

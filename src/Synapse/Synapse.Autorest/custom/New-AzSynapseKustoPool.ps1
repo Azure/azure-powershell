@@ -26,12 +26,12 @@ Location  Name                    Type                                    Etag
 East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool
+Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IKustoPool
 .Link
 https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
 #>
 function New-AzSynapseKustoPool {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPool])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IKustoPool])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -140,7 +140,7 @@ function New-AzSynapseKustoPool {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api10.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
@@ -207,7 +207,7 @@ function New-AzSynapseKustoPool {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.KustoPool]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.KustoPool]::new()
 
             $Parameter.Location = $PSBoundParameters['Location']
             $null = $PSBoundParameters.Remove('Location')

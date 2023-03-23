@@ -156,7 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IHuntingBookmark
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IHuntingBookmark
 
 ## NOTES
 

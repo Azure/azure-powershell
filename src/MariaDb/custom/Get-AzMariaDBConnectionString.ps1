@@ -47,7 +47,7 @@ function Get-AzMariaDbConnectionString {
     
         [Parameter(ParameterSetName='ServerObject', ValueFromPipeline, Mandatory, HelpMessage='Identity Parameter')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer]
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},

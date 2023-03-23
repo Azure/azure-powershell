@@ -207,7 +207,7 @@ The list must not contain duplicate items and must contain at least one item.
 To construct, see NOTES section for SLICECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISliceConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISliceConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -316,7 +316,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISimPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ISimPolicy
 
 ## NOTES
 

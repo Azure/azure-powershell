@@ -244,7 +244,7 @@ A list of where to physically run the tests from to give global coverage for acc
 To construct, see NOTES section for GEOLOCATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTestGeolocation[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTestGeolocation[]
 Parameter Sets: (All)
 Aliases:
 
@@ -335,7 +335,7 @@ List of headers and their values to add to the WebTest call.
 To construct, see NOTES section for REQUESTHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IHeaderField[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IHeaderField[]
 Parameter Sets: CreateStandard
 Aliases:
 
@@ -582,7 +582,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest
 
 ## NOTES
 

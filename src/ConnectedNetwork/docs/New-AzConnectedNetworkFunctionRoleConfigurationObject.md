@@ -152,7 +152,7 @@ The network interface configurations.
 To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterface[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterface[]
 Parameter Sets: (All)
 Aliases:
 
@@ -318,7 +318,7 @@ The list of SSH public keys used to authenticate with linux based VMs.
 To construct, see NOTES section for SSHPUBLICKEY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.ISshPublicKey[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshPublicKey[]
 Parameter Sets: (All)
 Aliases:
 
@@ -334,7 +334,7 @@ Specifies the parameters that are used to add a data disk to a virtual machine.
 To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IDataDisk[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IDataDisk[]
 Parameter Sets: (All)
 Aliases:
 
@@ -414,7 +414,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionRoleConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionRoleConfiguration
 
 ## NOTES
 

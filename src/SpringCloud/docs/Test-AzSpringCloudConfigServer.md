@@ -173,7 +173,7 @@ Repositories of git.
 To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IGitPatternRepository[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IGitPatternRepository[]
 Parameter Sets: (All)
 Aliases:
 
@@ -362,7 +362,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigServerSettingsValidateResult
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IConfigServerSettingsValidateResult
 
 ## NOTES
 

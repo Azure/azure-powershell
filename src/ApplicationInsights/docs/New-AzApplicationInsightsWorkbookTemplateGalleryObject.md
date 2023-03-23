@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20201120.WorkbookTemplateGallery
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WorkbookTemplateGallery
 
 ## NOTES
 

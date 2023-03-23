@@ -143,7 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitoringTagRules
+### Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.IMonitoringTagRules
 
 ## NOTES
 

@@ -17,7 +17,7 @@ function Remove-AzLabServicesUser_User {
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.User]
+    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.User]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Path')]
     ${User},
 

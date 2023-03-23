@@ -44,7 +44,7 @@ Create a key vault connection named 'KeyVaultConnection2' in Purview.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 Parameter Sets: (All)
 Aliases:
 
@@ -137,11 +137,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IAzureKeyVault
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IAzureKeyVault
 
 ## NOTES
 

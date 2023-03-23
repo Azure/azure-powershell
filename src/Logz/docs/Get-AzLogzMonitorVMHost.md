@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IVMResources
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.IVMResources
 
 ## NOTES
 

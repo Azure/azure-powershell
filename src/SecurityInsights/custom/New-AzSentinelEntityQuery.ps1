@@ -23,7 +23,7 @@ Creates or updates the entity query.
 https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
 #>
 function New-AzSentinelEntityQuery {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.CustomEntityQuery])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.CustomEntityQuery])]
     [CmdletBinding(DefaultParameterSetName = 'Activity', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter()]
@@ -93,7 +93,7 @@ function New-AzSentinelEntityQuery {
 
         [Parameter(ParameterSetName = 'Activity')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')] 
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ActivityEntityQueriesPropertiesEntitiesFilter]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ActivityEntityQueriesPropertiesEntitiesFilter]
         ${EntitiesFilter},
 
         [Parameter(ParameterSetName = 'Activity')]
@@ -165,7 +165,7 @@ function New-AzSentinelEntityQuery {
         try {
 
             if ($PSBoundParameters['Kind'] -eq 'Activity'){
-                $EntityQuery = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.ActivityCustomEntityQuery]::new()
+                $EntityQuery = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ActivityCustomEntityQuery]::new()
                 
                 $EntityQuery.Title = $PSBoundParameters['Title']
                 $null = $PSBoundParameters.Remove('Title')

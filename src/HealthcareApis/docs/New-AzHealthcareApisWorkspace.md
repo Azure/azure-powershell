@@ -226,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IWorkspace
 
 ## NOTES
 

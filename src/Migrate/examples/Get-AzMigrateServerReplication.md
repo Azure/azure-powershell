@@ -26,7 +26,7 @@ Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9
 PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
 PolicyId                    : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
+ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtMigrationDetails
 TestMigrateState            : None
 TestMigrateStateDescription : None
 Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
@@ -62,7 +62,7 @@ Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9
 PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
 PolicyId                    : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
+ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtMigrationDetails
 TestMigrateState            : None
 TestMigrateStateDescription : None
 Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
@@ -89,7 +89,7 @@ Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9
 PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
 PolicyId                    : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
+ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtMigrationDetails
 TestMigrateState            : None
 TestMigrateStateDescription : None
 Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
@@ -125,7 +125,7 @@ Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9
 PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
 PolicyId                    : /Subscriptions/7xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
+ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtMigrationDetails
 TestMigrateState            : None
 TestMigrateStateDescription : None
 Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems
@@ -152,7 +152,7 @@ Name                        : bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9
 PolicyFriendlyName          : migrateAzMigratePWSHTc8d1sitepolicy
 PolicyId                    : /Subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.RecoveryServ
                               ices/vaults/AzMigrateTestProjectPWSH02aarsvault/replicationPolicies/migrateAzMigratePWSHTc8d1sitepolicy
-ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtMigrationDetails
+ProviderSpecificDetail      : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtMigrationDetails
 TestMigrateState            : None
 TestMigrateStateDescription : None
 Type                        : Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems

@@ -328,7 +328,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for ENTITYMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.EntityMapping
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.EntityMapping
 Parameter Sets: UpdateNRT, UpdateScheduled, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
 Aliases:
 
@@ -817,7 +817,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AlertRule
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.AlertRule
 
 ## NOTES
 

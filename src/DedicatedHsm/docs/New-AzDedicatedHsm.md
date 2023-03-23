@@ -93,7 +93,7 @@ Specifies the list of resource Ids for the network interfaces associated with th
 To construct, see NOTES section for MANAGEMENTNETWORKINTERFACE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkInterface[]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +139,7 @@ Specifies the list of resource Ids for the network interfaces associated with th
 To construct, see NOTES section for NETWORKINTERFACE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.INetworkInterface[]
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +309,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
+### Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.IDedicatedHsm
 
 ## NOTES
 

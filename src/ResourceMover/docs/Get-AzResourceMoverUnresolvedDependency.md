@@ -155,7 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Api20210801.IUnresolvedDependency
+### Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.IUnresolvedDependency
 
 ## NOTES
 

@@ -294,7 +294,7 @@ This property is updatable.
 To construct, see NOTES section for TARGETREGION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -345,7 +345,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion
 
 ## NOTES
 

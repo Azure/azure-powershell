@@ -219,7 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfile
 
 ## NOTES
 

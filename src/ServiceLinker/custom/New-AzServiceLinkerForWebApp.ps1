@@ -23,7 +23,7 @@ Create or update linker resource in webapp.
 https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforwebapp
 #>
 function New-AzServiceLinkerForWebApp {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
@@ -64,7 +64,7 @@ function New-AzServiceLinkerForWebApp {
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IAuthInfoBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IAuthInfoBase]
         # The authentication type.
         # To construct, see NOTES section for AUTHINFO properties and create a hash table.
         ${AuthInfo},
@@ -89,7 +89,7 @@ function New-AzServiceLinkerForWebApp {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoAdditionalConfigurations]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoAdditionalConfigurations]))]
         [System.Collections.Hashtable]
         # A dictionary of additional configurations to be added.
         # Service will auto generate a set of basic configurations and this property is to full fill more customized configurations
@@ -97,7 +97,7 @@ function New-AzServiceLinkerForWebApp {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.IConfigurationInfoCustomizedKeys]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IConfigurationInfoCustomizedKeys]))]
         [System.Collections.Hashtable]
         # Optional.
         # A dictionary of default key name and customized key name mapping.
@@ -157,7 +157,7 @@ function New-AzServiceLinkerForWebApp {
     
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ITargetServiceBase]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ITargetServiceBase]
         # The target service properties
         # To construct, see NOTES section for TARGETSERVICE properties and create a hash table.
         ${TargetService},

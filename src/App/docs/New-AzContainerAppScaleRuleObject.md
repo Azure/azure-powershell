@@ -47,7 +47,7 @@ Authentication secrets for the queue scale rule.
 To construct, see NOTES section for AZUREQUEUEAUTH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +93,7 @@ Authentication secrets for the custom scale rule.
 To construct, see NOTES section for CUSTOMAUTH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Metadata properties to describe custom scale rule.
 To construct, see NOTES section for CUSTOMMETADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICustomScaleRuleMetadata
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.ICustomScaleRuleMetadata
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +141,7 @@ Authentication secrets for the custom scale rule.
 To construct, see NOTES section for HTTPAUTH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IScaleRuleAuth[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRuleAuth[]
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Metadata properties to describe http scale rule.
 To construct, see NOTES section for HTTPMETADATA properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IHttpScaleRuleMetadata
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IHttpScaleRuleMetadata
 Parameter Sets: (All)
 Aliases:
 
@@ -190,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ScaleRule
 
 ## NOTES
 

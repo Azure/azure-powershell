@@ -76,7 +76,7 @@ Immutable list of Spacecraft links.
 To construct, see NOTES section for LINK properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraftLink[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraftLink[]
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ISpacecraft
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.ISpacecraft
 
 ## NOTES
 

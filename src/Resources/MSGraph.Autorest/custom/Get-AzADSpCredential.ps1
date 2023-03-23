@@ -23,7 +23,7 @@ https://learn.microsoft.com/powershell/module/az.resources/get-azadspcredential
 #>
 
 function Get-AzADSpCredential {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphKeyCredential], [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphPasswordCredential])]
     [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Alias("Get-AzADServicePrincipalCredential")]
     param(
@@ -45,7 +45,7 @@ function Get-AzADSpCredential {
 
         [Parameter(ParameterSetName='SPNObjectParameterSet', Mandatory, ValueFromPipeline,HelpMessage = "The service principal object, could be used as pipeline input.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphServicePrincipal]
         ${ServicePrincipalObject},
 
         [Parameter()]

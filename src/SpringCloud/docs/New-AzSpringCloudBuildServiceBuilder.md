@@ -59,7 +59,7 @@ Builder buildpack groups.
 To construct, see NOTES section for BUILDPACKGROUP properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildpacksGroupProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuildpacksGroupProperties[]
 Parameter Sets: (All)
 Aliases:
 
@@ -230,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuilderResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IBuilderResource
 
 ## NOTES
 

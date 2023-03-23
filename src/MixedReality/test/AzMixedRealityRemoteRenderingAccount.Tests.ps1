@@ -70,7 +70,7 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
 
     It 'UpdateExpanded' {
         {
-            $config = Update-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Location eastus -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityRemoteRenderingAccount -Name $env.remoteRenderingAccount1 -ResourceGroupName $env.resourceGroup -Tag @{"a"="1"}
             $config.Name | Should -Be $env.remoteRenderingAccount1
         } | Should -Not -Throw
     }
@@ -78,7 +78,7 @@ Describe 'AzMixedRealityRemoteRenderingAccount' {
     It 'UpdateViaIdentityExpanded' {
         {
             $config = Get-AzMixedRealityRemoteRenderingAccount -ResourceGroupName $env.resourceGroup -Name $env.remoteRenderingAccount2
-            $config = Update-AzMixedRealityRemoteRenderingAccount -InputObject $config -Location eastus -Tag @{"a"="1"}
+            $config = Update-AzMixedRealityRemoteRenderingAccount -InputObject $config -Tag @{"a"="1"}
             $config.Name | Should -Be $env.remoteRenderingAccount2
         } | Should -Not -Throw
     }

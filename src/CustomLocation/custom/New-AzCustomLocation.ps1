@@ -26,12 +26,12 @@ Location Name              Namespace
 eastus   azps_test_cluster arc
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
+Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation
 .Link
 https://learn.microsoft.com/powershell/module/az.customlocation/new-azcustomlocation
 #>
 function New-AzCustomLocation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -106,7 +106,7 @@ function New-AzCustomLocation {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20.ITrackedResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ITrackedResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},

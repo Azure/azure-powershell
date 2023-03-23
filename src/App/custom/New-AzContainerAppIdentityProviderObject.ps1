@@ -21,12 +21,12 @@ Create an in-memory object for IdentityProviders.
 Create an in-memory object for IdentityProviders.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappidentityproviderobject
 #>
 function New-AzContainerAppIdentityProviderObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -76,7 +76,7 @@ function New-AzContainerAppIdentityProviderObject {
         $AzureStaticWebAppsRegistrationClientId,
         [Parameter(HelpMessage="The map of the name of the alias of each custom Open ID Connect provider to the
         configuration settings of the custom Open ID Connect provider.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IIdentityProvidersCustomOpenIdConnectProviders]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProvidersCustomOpenIdConnectProviders]
         $CustomOpenIdConnectProvider,
         [Parameter(HelpMessage="The configuration settings of the Azure Active Directory allowed applications.")]
         [string[]]
@@ -169,7 +169,7 @@ function New-AzContainerAppIdentityProviderObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IdentityProviders]::New()
 
         if ($PSBoundParameters.ContainsKey('AllowedPrincipalGroup')) {
             $Object.AllowedPrincipalGroup = $AllowedPrincipalGroup

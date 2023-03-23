@@ -119,7 +119,7 @@ Offer plans
 To construct, see NOTES section for PLAN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPlan[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IOffer
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer
 
 ## NOTES
 

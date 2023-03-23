@@ -62,7 +62,7 @@ Class for CheckServiceProviderAvailabilityInput
 To construct, see NOTES section for CHECKSERVICEPROVIDERAVAILABILITYINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ICheckServiceProviderAvailabilityInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ICheckServiceProviderAvailabilityInput
 Parameter Sets: Check, CheckViaIdentity
 Aliases:
 
@@ -185,7 +185,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ICheckServiceProviderAvailabilityInput
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ICheckServiceProviderAvailabilityInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeeringIdentity
 

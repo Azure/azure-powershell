@@ -1,6 +1,6 @@
 ### Example 1: Create a mapping
 ```powershell
-$providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtContainerMappingInput]::new()
+$providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtContainerMappingInput]::new()
 $providerSpecificInput.InstanceType = "VMwareCbt"
 $providerSpecificInput.KeyVaultId = "/subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.KeyVault/vaults/migratekv846827101"
 $providerSpecificInput.KeyVaultUri = "https://migratekv846827101.vault.azure.net"

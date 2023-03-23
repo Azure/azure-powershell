@@ -46,13 +46,13 @@ Get-AzConnectedNetworkFunction -Name myVnf -ResourceGroupName myResources
 ```
 
 ```output
-ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
+ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec
 Etag                         : "0000a530-0000-3400-0000-615c10fa0000"
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/networkFunctions/myVnf
 Location                     : centraluseuap
 ManagedApplicationId         :
-ManagedApplicationParameter  : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatManagedApplicationParameters
+ManagedApplicationParameter  : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionPropertiesFormatManagedApplicationParameters
 Name                         : myVnf
 ProvisioningState            : Failed
 ResourceGroupName            : myResources
@@ -65,7 +65,7 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 10/5/2021 8:46:49 AM
 SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/networkfunctions
 UserConfiguration            : {hpehss}
 VendorName                   : AffirmedVendor
@@ -82,13 +82,13 @@ Get-AzConnectedNetworkFunction -InputObject $vnf
 ```
 
 ```output
-ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
+ContainerConfiguration       : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionPropertiesFormatNetworkFunctionContainerConfigurations
 DeviceId                     : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMec1
 Etag                         : "sampleEtagValue"
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/networkFunctions/myVnf1
 Location                     : eastus
 ManagedApplicationId         :
-ManagedApplicationParameter  : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionPropertiesFormatManagedApplicationParameters
+ManagedApplicationParameter  : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkFunctionPropertiesFormatManagedApplicationParameters
 Name                         : myVnf1
 ProvisioningState            : Succeeded
 ResourceGroupName            : myResources
@@ -101,7 +101,7 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 11/15/2021 4:53:08 AM
 SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/networkfunctions
 UserConfiguration            : {hpehss}
 VendorName                   : AffirmedVendor
@@ -200,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction
 
 ## NOTES
 

@@ -34,7 +34,7 @@ INPUTOBJECT <IServiceLinkerIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerforcontainerapp
 #>
 function Get-AzServiceLinkerForContainerApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ILinkerResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.ILinkerResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -39,7 +39,7 @@ FrontendIPConfiguration.
 To construct, see NOTES section for FRONTENDIPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ILoadBalancerFrontendIPConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ILoadBalancerFrontendIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.LoadBalancerConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.LoadBalancerConfiguration
 
 ## NOTES
 

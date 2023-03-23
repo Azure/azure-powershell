@@ -16,7 +16,7 @@ https://learn.microsoft.com/powershell/module/az.resources/get-azadgroupmember
 
 function Get-AzADGroupMember {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphDirectoryObject])]
     [CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName="ObjectIdParameterSet", Mandatory, HelpMessage = "The object Id of target group.")]
@@ -31,7 +31,7 @@ function Get-AzADGroupMember {
         ${GroupDisplayName},
 
         [Parameter(ParameterSetName="GroupObjectParameterSet", Mandatory, ValueFromPipeline, HelpMessage = "The target group object, could be used as pipeline input.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphGroup]
         # The group object that you are listing members from.
         ${GroupObject},
     

@@ -19,7 +19,7 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 11/25/2021 5:22:57 AM
 SystemDataLastModifiedBy     : user@microsoft.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
 ```
 
@@ -47,7 +47,7 @@ SystemDataCreatedByType      : User
 SystemDataLastModifiedAt     : 11/25/2021 5:53:12 AM
 SystemDataLastModifiedBy     : user@microsoft.com
 SystemDataLastModifiedByType : User
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
 
 ```

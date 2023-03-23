@@ -128,7 +128,7 @@ List of LUNs to be exposed through iSCSI Target.
 To construct, see NOTES section for LUN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IIscsiLun[]
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +221,7 @@ Access Control List (ACL) for an iSCSI Target; defines LUN masking policy
 To construct, see NOTES section for STATICACL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IAcl[]
 Parameter Sets: (All)
 Aliases:
 
@@ -287,7 +287,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.IIscsiTarget
 
 ## NOTES
 

@@ -239,7 +239,7 @@ List of settings for Resource Forest
 To construct, see NOTES section for FORESTTRUST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IForestTrust[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IForestTrust[]
 Parameter Sets: (All)
 Aliases:
 
@@ -406,7 +406,7 @@ List of ReplicaSets
 To construct, see NOTES section for REPLICASET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IReplicaSet[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IReplicaSet[]
 Parameter Sets: (All)
 Aliases:
 
@@ -532,7 +532,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService
 
 ## NOTES
 

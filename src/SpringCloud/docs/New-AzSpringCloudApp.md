@@ -182,7 +182,7 @@ Collection of loaded certificates
 To construct, see NOTES section for LOADEDCERTIFICATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ILoadedCertificate[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ILoadedCertificate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -398,7 +398,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IAppResource
 
 ## NOTES
 

@@ -47,7 +47,7 @@ Get-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-portal02
 ```output
 Location Name            SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 -------- ----            -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-eastus   spring-portal02 7/21/2022 3:02:40 AM v-diya@microsoft.com User                    7/21/2022 3:02:40 AM     v-diya@microsoft.com     User                         springcloudrg                                  : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20190501Preview.Error
+eastus   spring-portal02 7/21/2022 3:02:40 AM v-diya@microsoft.com User                    7/21/2022 3:02:40 AM     v-diya@microsoft.com     User                         springcloudrg                                  : Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Error
 ```
 
 Get Spring Cloud Service by name.
@@ -180,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.IServiceResource
 
 ## NOTES
 

@@ -27,7 +27,7 @@ Create or update DigitalTwinsInstance endpoint.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource
+Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,7 +47,7 @@ INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsendpoint
 #>
 function New-AzDigitalTwinsEndpoint {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource])]
     [CmdletBinding(DefaultParameterSetName='EventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='EventHub', Mandatory)]
@@ -87,7 +87,7 @@ function New-AzDigitalTwinsEndpoint {
         [Parameter(ParameterSetName='EventGrid', ValueFromPipeline)]
         [Parameter(ParameterSetName='ServiceBus', ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IDigitalTwinsEndpointResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.IDigitalTwinsEndpointResource]
         # DigitalTwinsInstance endpoint resource.
         # To construct, see NOTES section for ENDPOINTDESCRIPTION properties and create a hash table.
         ${EndpointDescription},
@@ -217,8 +217,8 @@ function New-AzDigitalTwinsEndpoint {
         try {
             if($PSBoundParameters['EndpointType'] -eq 'EventHub')
             {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.EventHub]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResource]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.EventHub]::new()
                 $Parameter.Property.connectionStringPrimaryKey = $PSBoundParameters['connectionStringPrimaryKey']
                 $Parameter.Property.connectionStringSecondaryKey = $PSBoundParameters['connectionStringSecondaryKey']
                 $null = $PSBoundParameters.Remove('connectionStringPrimaryKey')
@@ -226,8 +226,8 @@ function New-AzDigitalTwinsEndpoint {
             }
             if($PSBoundParameters['EndpointType'] -eq 'EventGrid')
             {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.EventGrid]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResource]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.EventGrid]::new()
                 $Parameter.Property.TopicEndpoint = $PSBoundParameters['TopicEndpoint']
                 $Parameter.Property.accessKey1 = $PSBoundParameters['accessKey1']
                 $null = $PSBoundParameters.Remove('TopicEndpoint')
@@ -235,8 +235,8 @@ function New-AzDigitalTwinsEndpoint {
             }
             if($PSBoundParameters['EndpointType'] -eq 'ServiceBus')
             {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.DigitalTwinsEndpointResource]::new()
-                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.ServiceBus]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.DigitalTwinsEndpointResource]::new()
+                $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.ServiceBus]::new()
                 $Parameter.Property.primaryConnectionString = $PSBoundParameters['primaryConnectionString']
                 $null = $PSBoundParameters.Remove('primaryConnectionString')
             }

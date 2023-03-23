@@ -90,7 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.FilteringTag
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.FilteringTag
 
 ## NOTES
 

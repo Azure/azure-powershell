@@ -19,7 +19,7 @@ SystemDataCreatedByType      : Application
 SystemDataLastModifiedAt     : 8/16/2022 4:59:54 AM
 SystemDataLastModifiedBy     : yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
 SystemDataLastModifiedByType : Application
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.ResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ResourceTags
 TotalIops                    : 320000
 TotalMBps                    : 5120
 TotalSizeTiB                 : 192

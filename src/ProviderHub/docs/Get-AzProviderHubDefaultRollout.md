@@ -149,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IDefaultRollout
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IDefaultRollout
 
 ## NOTES
 

@@ -172,7 +172,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IAzureBackupJobResource
 
 ## NOTES
 

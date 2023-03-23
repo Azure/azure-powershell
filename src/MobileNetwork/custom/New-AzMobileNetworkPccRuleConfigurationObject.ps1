@@ -21,12 +21,12 @@ Create an in-memory object for PccRuleConfiguration.
 Create an in-memory object for PccRuleConfiguration.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkPccRuleConfigurationObject
 #>
 function New-AzMobileNetworkPccRuleConfigurationObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -63,7 +63,7 @@ function New-AzMobileNetworkPccRuleConfigurationObject {
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
         $RuleQoPolicyPreemptionVulnerability,
         [Parameter(Mandatory, HelpMessage="The set of data flow templates to use for this data flow policy rule.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceDataFlowTemplate[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceDataFlowTemplate[]]
         $ServiceDataFlowTemplate,
         [Parameter(HelpMessage="Determines whether flows that match this data flow policy rule are permitted.")]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission])]
@@ -72,7 +72,7 @@ function New-AzMobileNetworkPccRuleConfigurationObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration]::New()
 
         if ($PSBoundParameters.ContainsKey('GuaranteedBitRateDownlink')) {
             $Object.GuaranteedBitRateDownlink = $GuaranteedBitRateDownlink

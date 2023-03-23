@@ -192,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ILookingGlassOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.ILookingGlassOutput
 
 ## NOTES
 

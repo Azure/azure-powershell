@@ -69,7 +69,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for JOB properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBaseProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBaseProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IJobBase
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IJobBase
 
 ## NOTES
 

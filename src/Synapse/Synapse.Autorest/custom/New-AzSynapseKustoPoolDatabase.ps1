@@ -26,12 +26,12 @@ Kind      Location  Name
 ReadWrite East US 2 testws/testkustopool/mykustodatabase
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDatabase
 .Link
 https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabase
 #>
 function New-AzSynapseKustoPoolDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDatabase])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -154,7 +154,7 @@ function New-AzSynapseKustoPoolDatabase {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ReadWriteDatabase]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ReadWriteDatabase]::new()
 
             $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')

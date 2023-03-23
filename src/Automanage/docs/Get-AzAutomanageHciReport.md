@@ -170,7 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.Api20220504.IReport
+### Microsoft.Azure.PowerShell.Cmdlets.Automanage.Models.IReport
 
 ## NOTES
 

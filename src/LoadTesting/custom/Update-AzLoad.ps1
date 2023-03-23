@@ -25,12 +25,12 @@ Updates an Azure Load Testing resource in a given resource group.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource
+Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource
 .Link
 https://learn.microsoft.com/powershell/module/az.loadtesting/update-azload
 #>
 function Update-AzLoad {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResource])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -76,7 +76,7 @@ function Update-AzLoad {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api50.IUserAssignedIdentities]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The list of user assigned identities associated with the resource. The user identity will be ARM resource ids.
         # The User Assigned Identity is a hashtable with keys in the form of an ARM resource id '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
@@ -85,7 +85,7 @@ function Update-AzLoad {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.Api20221201.ILoadTestResourcePatchRequestBodyTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Models.ILoadTestResourcePatchRequestBodyTags]))]
         [System.Collections.Hashtable]
         # Key-value pairs in the form of a hash table set as tags on the server. For example: @{key0="value0";key1=$null;key2="value2"}. 
         ${Tag},

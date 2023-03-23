@@ -21,12 +21,12 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 Create an in-memory object for JarUploadedUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentJarUploadedObject
 #>
 function New-AzSpringCloudAppDeploymentJarUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +42,7 @@ function New-AzSpringCloudAppDeploymentJarUploadedObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.JarUploadedUserSourceInfo]::New()
         $Object.Type = 'Jar'
         $Object.RelativePath = '<default>'
 

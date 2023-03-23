@@ -44,7 +44,7 @@ Get-AzConnectedNetworkVendorFunction -LocationName centraluseuap -ServiceKey 123
 Id                                 : /subscriptions/xxxx-3333-xxxx-3333/providers/Microsoft.HybridNetwork/locations/centraluseuap/vendors/myVendor/networkfunctions/1b69005b-9168-4d74-a371-d4c4f6a521d
                                      0
 Name                               : 1234-abcd-4321-dcba
-NetworkFunctionVendorConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.SshPublicKey}
+NetworkFunctionVendorConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SshPublicKey}
 ProvisioningState                  : Succeeded
 ResourceGroupName                  :
 SkuName                            : mySku
@@ -73,7 +73,7 @@ Get-AzConnectedNetworkVendorFunction -InputObject $vendorNF
 Id                                 : /subscriptions/xxxx-3333-xxxx-3333/providers/Microsoft.HybridNetwork/locations/centraluseuap/vendors/myVendor/networkfunctions/1b69005b-9168-4d74-a371-d4c4f6a521d
                                      0
 Name                               : 1234-abcd-4321-dcba
-NetworkFunctionVendorConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.SshPublicKey}
+NetworkFunctionVendorConfiguration : {Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.SshPublicKey}
 ProvisioningState                  : Succeeded
 ResourceGroupName                  :
 SkuName                            : mySku
@@ -210,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.IVendorNetworkFunction
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.IVendorNetworkFunction
 
 ## NOTES
 

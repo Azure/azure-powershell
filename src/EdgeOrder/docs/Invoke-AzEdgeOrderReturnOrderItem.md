@@ -154,7 +154,7 @@ Contact details for the address
 To construct, see NOTES section for RETURNADDRESSCONTACTDETAIL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IContactDetails
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +170,7 @@ Shipping details for the address
 To construct, see NOTES section for RETURNADDRESSSHIPPINGADDRESS properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IShippingAddress
 Parameter Sets: (All)
 Aliases:
 

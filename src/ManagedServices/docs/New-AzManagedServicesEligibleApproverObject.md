@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.EligibleApprover
 
 ## NOTES
 

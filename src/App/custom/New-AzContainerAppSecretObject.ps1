@@ -21,12 +21,12 @@ Create an in-memory object for Secret.
 Create an in-memory object for Secret.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappsecretobject
 #>
 function New-AzContainerAppSecretObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -39,7 +39,7 @@ function New-AzContainerAppSecretObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Secret]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

@@ -25,7 +25,7 @@ The operation to create a replication policy.
 
 ### Example 1: Create a replication policy
 ```powershell
-$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
+$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.VMwareCbtPolicyCreationInput]::new()
 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
 $providerSpecificPolicy.InstanceType = "VMwareCbt"
 $providerSpecificPolicy.RecoveryPointHistoryInMinute = 4320
@@ -109,7 +109,7 @@ The ReplicationProviderSettings.
 To construct, see NOTES section for PROVIDERSPECIFICINPUT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicyProviderSpecificInput
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPolicyProviderSpecificInput
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +203,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IPolicy
 
 ## NOTES
 

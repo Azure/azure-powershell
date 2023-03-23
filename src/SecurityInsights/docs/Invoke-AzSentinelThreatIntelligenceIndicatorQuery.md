@@ -227,7 +227,7 @@ Columns to sort by and sorting order
 To construct, see NOTES section for SORTBY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceSortingCriteria[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceSortingCriteria[]
 Parameter Sets: (All)
 Aliases:
 
@@ -336,7 +336,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IThreatIntelligenceInformation
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IThreatIntelligenceInformation
 
 ## NOTES
 

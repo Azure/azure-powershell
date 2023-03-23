@@ -25,7 +25,7 @@ Creates a new Attestation Provider.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider
+Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -53,7 +53,7 @@ POLICYSIGNINGCERTIFICATEKEY <IJsonWebKey[]>: The value of the "keys" parameter i
 https://learn.microsoft.com/powershell/module/az.attestation/new-azattestationprovider
 #>
 function New-AzAttestationProvider {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -95,7 +95,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationServiceCreationParamsTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationServiceCreationParamsTags]))]
     [System.Collections.Hashtable]
     # The tags that will be assigned to the attestation provider.
     ${Tag},
@@ -151,7 +151,7 @@ param(
 process {
     if($PSBoundParameters.ContainsKey("PolicySigningCertificateKeyPath")){
         $PolicySigningCertificateKeyPath = (Resolve-Path -Path $PolicySigningCertificateKeyPath).Path 
-        $PolicySigningCertificateKey = [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10.JsonWebKeyHelper]::GetJsonWebKeys($PolicySigningCertificateKeyPath)
+        $PolicySigningCertificateKey = [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.JsonWebKeyHelper]::GetJsonWebKeys($PolicySigningCertificateKeyPath)
         $null = $PSBoundParameters.Add("PolicySigningCertificateKey", $PolicySigningCertificateKey)
         $null = $PSBoundParameters.Remove("PolicySigningCertificateKeyPath")
     }

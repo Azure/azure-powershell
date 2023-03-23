@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzVMRunCommand'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Set-AzVMRunCommand' {
+Describe 'Set-AzVMRunCommand' -Tag 'LiveOnly' {
 
     BeforeAll { 
         $vmname = "testpwshellvm"

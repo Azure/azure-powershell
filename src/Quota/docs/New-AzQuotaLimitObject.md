@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject
 
 ## NOTES
 

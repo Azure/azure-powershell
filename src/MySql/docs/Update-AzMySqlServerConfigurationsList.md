@@ -158,7 +158,7 @@ The list of server configurations.
 To construct, see NOTES section for VALUE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -209,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IConfiguration
 
 ## NOTES
 

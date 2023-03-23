@@ -164,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.ICheckinManifestInfo
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.ICheckinManifestInfo
 
 ## NOTES
 

@@ -79,7 +79,7 @@ The collection of authorization objects describing the access Azure Active Direc
 To construct, see NOTES section for AUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +125,7 @@ The collection of eligible authorization objects describing the just-in-time acc
 To construct, see NOTES section for ELIGIBLEAUTHORIZATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IEligibleAuthorization[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IEligibleAuthorization[]
 Parameter Sets: (All)
 Aliases:
 
@@ -309,7 +309,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.IRegistrationDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.IRegistrationDefinition
 
 ## NOTES
 

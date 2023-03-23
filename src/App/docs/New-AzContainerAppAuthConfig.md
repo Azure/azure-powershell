@@ -232,7 +232,7 @@ The configuration settings of each of the identity providers used to configure C
 To construct, see NOTES section for IDENTITYPROVIDER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IIdentityProviders
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProviders
 Parameter Sets: (All)
 Aliases:
 
@@ -433,7 +433,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAuthConfig
 
 ## NOTES
 

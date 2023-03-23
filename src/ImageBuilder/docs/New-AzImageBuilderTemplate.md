@@ -207,7 +207,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for CUSTOMIZE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateCustomizer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateCustomizer[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -237,7 +237,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributor[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributor[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -342,7 +342,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for SOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateSource
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateSource
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -448,7 +448,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for VALIDATOR properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateInVMValidator[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateInVMValidator[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -572,7 +572,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplate
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplate
 
 ## NOTES
 

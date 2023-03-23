@@ -22,7 +22,7 @@ Returns a BotService specified by the parameters.
 https://learn.microsoft.com/powershell/module/az.botservice/initialize-azbotservicepreparedeploy
 #>
 function Initialize-AzBotServicePrepareDeploy {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBot])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
         [Parameter()]

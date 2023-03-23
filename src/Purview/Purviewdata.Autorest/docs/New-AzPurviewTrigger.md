@@ -61,7 +61,7 @@ Create trigger for a full scan starting 02/17/22 1:31 PM UTC and ending 7/20/202
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 Parameter Sets: (All)
 Aliases:
 
@@ -169,11 +169,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ITrigger
 
 ## NOTES
 

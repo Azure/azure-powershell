@@ -21,12 +21,12 @@ Create an in-memory object for ContactDetails.
 Create an in-memory object for ContactDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
+Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails
 .Link
 https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderContactDetailsObject
 #>
 function New-AzEdgeOrderContactDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -48,7 +48,7 @@ function New-AzEdgeOrderContactDetailsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.ContactDetails]::New()
 
         if ($PSBoundParameters.ContainsKey('ContactName')) {
             $Object.ContactName = $ContactName

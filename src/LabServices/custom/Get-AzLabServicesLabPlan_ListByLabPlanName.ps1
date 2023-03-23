@@ -19,12 +19,12 @@ API to get lab plans.
 API to get lab plans.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan
+Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan
 .Link
 https://learn.microsoft.com/powershell/module/az.labservices/get-azlabserviceslabplan
 #>
 function Get-AzLabServicesLabPlan_ListByLabPlanName {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ILabPlan])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.ILabPlan])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]

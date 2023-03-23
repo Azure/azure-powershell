@@ -439,15 +439,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateFileCustomizer
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateFileCustomizer
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellCustomizer
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplatePowerShellCustomizer
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateRestartCustomizer
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateRestartCustomizer
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateShellCustomizer
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateShellCustomizer
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateWindowsUpdateCustomizer
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.ImageTemplateWindowsUpdateCustomizer
 
 ## NOTES
 

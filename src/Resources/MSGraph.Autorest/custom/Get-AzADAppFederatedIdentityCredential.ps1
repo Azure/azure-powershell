@@ -23,7 +23,7 @@ Get federatedIdentityCredentials by Id from applications.
 https://learn.microsoft.com/powershell/module/az.resources/get-azadappfederatedidentitycredentials
 #>
 function Get-AzADAppFederatedCredential {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphFederatedIdentityCredential])]
     [CmdletBinding(DefaultParameterSetName='ListByApplicationObjectId', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName = 'ListByApplicationObjectId', Mandatory)]
@@ -36,7 +36,7 @@ function Get-AzADAppFederatedCredential {
         [Parameter(ParameterSetName = 'ListByApplicationObject', Mandatory)]
         [Parameter(ParameterSetName='GetByApplicationObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphApplication]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphApplication]
         # application object
         ${ApplicationObject},
     

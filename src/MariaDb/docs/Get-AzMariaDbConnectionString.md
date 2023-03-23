@@ -89,7 +89,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+Type: Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer
 Parameter Sets: ServerObject
 Aliases:
 
@@ -150,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer
 
 ## OUTPUTS
 

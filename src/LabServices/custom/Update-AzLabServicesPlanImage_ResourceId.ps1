@@ -13,7 +13,7 @@
 # ----------------------------------------------------------------------------------
 
 function Update-AzLabServicesPlanImage_ResourceId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

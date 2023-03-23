@@ -21,12 +21,12 @@ Create an in-memory object for Container.
 Create an in-memory object for Container.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -37,7 +37,7 @@ function New-AzContainerAppTemplateObject {
         [string[]]
         $Command,
         [Parameter(HelpMessage="Container environment variables.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IEnvironmentVar[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]]
         $Env,
         [Parameter(HelpMessage="Container image tag.")]
         [string]
@@ -46,7 +46,7 @@ function New-AzContainerAppTemplateObject {
         [string]
         $Name,
         [Parameter(HelpMessage="List of probes for the container.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppProbe[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]]
         $Probe,
         [Parameter(HelpMessage="Required CPU in cores, e.g. 0.5.")]
         [double]
@@ -55,12 +55,12 @@ function New-AzContainerAppTemplateObject {
         [string]
         $ResourceMemory,
         [Parameter(HelpMessage="Container volume mounts.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IVolumeMount[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]]
         $VolumeMount
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Container]::New()
 
         if ($PSBoundParameters.ContainsKey('Arg')) {
             $Object.Arg = $Arg

@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.IPeering
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.IPeering
 
 ## NOTES
 

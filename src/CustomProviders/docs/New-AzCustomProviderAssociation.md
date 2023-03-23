@@ -168,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation
+### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.IAssociation
 
 ## NOTES
 

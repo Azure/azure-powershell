@@ -21,12 +21,12 @@ Create an in-memory object for AzureFileDatastore.
 Create an in-memory object for AzureFileDatastore.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureFileDatastore
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureFileDatastore
 .Link
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreFileObject
 #>
 function New-AzMLWorkspaceDatastoreFileObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureFileDatastore')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureFileDatastore')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -50,15 +50,15 @@ function New-AzMLWorkspaceDatastoreFileObject {
         [string]
         $Description,
         [Parameter(HelpMessage="The asset property dictionary.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseProperties]
         $Property,
         [Parameter(HelpMessage="Tag dictionary. Tags can be added, removed, and updated.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IResourceBaseTags]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceBaseTags]
         $Tag
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureFileDatastore]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.AzureFileDatastore]::New()
         $Object.DatastoreType = "AzureFile"
 
         if ($PSBoundParameters.ContainsKey('AccountName')) {

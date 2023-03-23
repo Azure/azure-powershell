@@ -105,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IEnabledResourceType
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IEnabledResourceType
 
 ## NOTES
 

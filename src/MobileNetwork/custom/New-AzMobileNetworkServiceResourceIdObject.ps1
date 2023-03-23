@@ -21,12 +21,12 @@ Create an in-memory object for ServiceResourceId.
 Create an in-memory object for ServiceResourceId.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceResourceId
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceResourceIdObject
 #>
 function New-AzMobileNetworkServiceResourceIdObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceResourceId')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +36,7 @@ function New-AzMobileNetworkServiceResourceIdObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ServiceResourceId]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.ServiceResourceId]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

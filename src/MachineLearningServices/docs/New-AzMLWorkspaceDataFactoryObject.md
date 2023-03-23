@@ -83,7 +83,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.DataFactory
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.DataFactory
 
 ## NOTES
 

@@ -273,7 +273,7 @@ The network function configurations from the user.
 To construct, see NOTES section for USERCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunctionUserConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunctionUserConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -338,7 +338,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkFunction
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkFunction
 
 ## NOTES
 

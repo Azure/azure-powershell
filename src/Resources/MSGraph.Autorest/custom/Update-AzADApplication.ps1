@@ -172,7 +172,7 @@ function Update-AzADApplication {
 
     [Parameter(ParameterSetName = 'InputObjectWithUpdateParamsParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphApplication]
     # key: application object
     ${InputObject},
 
@@ -198,7 +198,7 @@ function Update-AzADApplication {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAddIn[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphAddIn[]]
     # Defines custom behavior that a consuming service can use to call an app in specific contexts.
     # For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality.
     # This will let services like Office 365 call the application in the context of a document the user is working on.
@@ -207,7 +207,7 @@ function Update-AzADApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApiApplication]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphApiApplication]
     # apiApplication
     # To construct, see NOTES section for API properties and create a hash table.
     ${Api},
@@ -215,7 +215,7 @@ function Update-AzADApplication {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRole[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphAppRole[]]
     # The collection of roles assigned to the application.
     # With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications.
     # Not nullable.
@@ -273,7 +273,7 @@ function Update-AzADApplication {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphHomeRealmDiscoveryPolicy[]]
     # .
     # To construct, see NOTES section for HOMEREALMDISCOVERYPOLICY properties and create a hash table.
     ${HomeRealmDiscoveryPolicy},
@@ -292,7 +292,7 @@ function Update-AzADApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphInformationalUrl]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphInformationalUrl]
     # informationalUrl
     # To construct, see NOTES section for INFO properties and create a hash table.
     ${Info},
@@ -335,14 +335,14 @@ function Update-AzADApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOptionalClaims]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphOptionalClaims]
     # optionalClaims
     # To construct, see NOTES section for OPTIONALCLAIM properties and create a hash table.
     ${OptionalClaim},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettings]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphParentalControlSettings]
     # parentalControlSettings
     # To construct, see NOTES section for PARENTALCONTROLSETTING properties and create a hash table.
     ${ParentalControlSetting},
@@ -355,7 +355,7 @@ function Update-AzADApplication {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphRequiredResourceAccess[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphRequiredResourceAccess[]]
     # Specifies the resources that the application needs to access.
     # This property also specifies the set of OAuth permission scopes and application roles that it needs for each of those resources.
     # This configuration of access to the required resources drives the consent experience.
@@ -397,7 +397,7 @@ function Update-AzADApplication {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenIssuancePolicy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphTokenIssuancePolicy[]]
     # .
     # To construct, see NOTES section for TOKENISSUANCEPOLICY properties and create a hash table.
     ${TokenIssuancePolicy},
@@ -405,7 +405,7 @@ function Update-AzADApplication {
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphTokenLifetimePolicy[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphTokenLifetimePolicy[]]
     # The tokenLifetimePolicies assigned to this application.
     # Supports $expand.
     # To construct, see NOTES section for TOKENLIFETIMEPOLICY properties and create a hash table.
@@ -413,7 +413,7 @@ function Update-AzADApplication {
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplication]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphWebApplication]
     # webApplication
     # To construct, see NOTES section for WEB properties and create a hash table.
     ${Web},
@@ -531,14 +531,14 @@ function Update-AzADApplication {
         $props['RedirectUri'] = $PSBoundParameters['ReplyUrl']
         $null = $PSBoundParameters.Remove('ReplyUrl')
       }
-      $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphWebApplication" -Property $props
+      $PSBoundParameters['Web'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphWebApplication" -Property $props
     }
     elseif ($PSBoundParameters['SPARedirectUri']) {
-      $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri' = $PSBoundParameters['SPARedirectUri'] }
+      $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphSPAApplication" -Property @{'RedirectUri' = $PSBoundParameters['SPARedirectUri'] }
       $null = $PSBoundParameters.Remove('SPARedirectUri')
     }
     elseif ($PSBoundParameters['PublicClientRedirectUri']) {
-      $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri' = $PSBoundParameters['PublicClientRedirectUri'] }
+      $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri' = $PSBoundParameters['PublicClientRedirectUri'] }
       $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
     }
     

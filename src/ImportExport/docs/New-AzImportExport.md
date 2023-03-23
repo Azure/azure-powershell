@@ -243,7 +243,7 @@ The drive list is a required element for an import job; it is not specified for 
 To construct, see NOTES section for DRIVELIST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IDriveStatus[]
 Parameter Sets: (All)
 Aliases:
 
@@ -880,7 +880,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.IJobResponse
 
 ## NOTES
 

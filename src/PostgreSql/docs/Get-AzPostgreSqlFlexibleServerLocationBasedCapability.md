@@ -104,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20200214Preview.ICapabilityProperties
+### Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ICapabilityProperties
 
 ## NOTES
 

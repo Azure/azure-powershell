@@ -215,7 +215,7 @@ The set of data flow templates to use for this data flow policy rule.
 To construct, see NOTES section for SERVICEDATAFLOWTEMPLATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IServiceDataFlowTemplate[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceDataFlowTemplate[]
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.PccRuleConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.PccRuleConfiguration
 
 ## NOTES
 

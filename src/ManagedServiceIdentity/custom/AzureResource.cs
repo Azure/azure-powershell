@@ -1,4 +1,4 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview
+namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models
 {
     /// <summary>Customizations of AzureResource</summary>
     public partial class AzureResource

@@ -16,9 +16,9 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
-using Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10;
+using Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api10
+namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models
 {
     public class JsonWebKeyHelper
     {

@@ -161,7 +161,7 @@ The containers within the container group.
 To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -315,7 +315,7 @@ The image registry credentials by which the container group is created from.
 To construct, see NOTES section for IMAGEREGISTRYCREDENTIAL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IImageRegistryCredential[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IImageRegistryCredential[]
 Parameter Sets: (All)
 Aliases:
 
@@ -331,7 +331,7 @@ The init containers for a container group.
 To construct, see NOTES section for INITCONTAINER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IInitContainerDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IInitContainerDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -377,7 +377,7 @@ The list of ports exposed on the container group.
 To construct, see NOTES section for IPADDRESSPORT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IPort[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IPort[]
 Parameter Sets: (All)
 Aliases:
 
@@ -604,7 +604,7 @@ The subnet resource IDs for a container group.
 To construct, see NOTES section for SUBNETID properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroupSubnetId[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroupSubnetId[]
 Parameter Sets: (All)
 Aliases:
 
@@ -651,7 +651,7 @@ The list of volumes that can be mounted by containers in this container group.
 To construct, see NOTES section for VOLUME properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IVolume[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IVolume[]
 Parameter Sets: (All)
 Aliases:
 
@@ -715,7 +715,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.IContainerGroup
+### Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IContainerGroup
 
 ## NOTES
 

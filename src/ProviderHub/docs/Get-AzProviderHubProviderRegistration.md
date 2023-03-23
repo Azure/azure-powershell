@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.IProviderRegistration
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.IProviderRegistration
 
 ## NOTES
 

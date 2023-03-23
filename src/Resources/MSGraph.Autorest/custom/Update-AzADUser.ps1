@@ -56,7 +56,7 @@ function Update-AzADUser {
         ${ObjectId},
         
         [Parameter(ParameterSetName = 'InputObjectParameterSet', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphUser]
         # user input object
         ${InputObject},
 
@@ -202,7 +202,7 @@ function Update-AzADUser {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphObjectIdentity[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphObjectIdentity[]]
         # Represents the identities that can be used to sign in to this user account.
         # An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account.
         # May contain multiple items with the same signInType value.
@@ -277,7 +277,7 @@ function Update-AzADUser {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.IMicrosoftGraphPasswordProfile]
         # passwordProfile
         # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
         ${PasswordProfile},
@@ -441,7 +441,7 @@ function Update-AzADUser {
           }
       }
       if ($PSBoundParameters.ContainsKey('Password')) {
-        $passwordProfile = [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordProfile]::New()
+        $passwordProfile = [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.MicrosoftGraphPasswordProfile]::New()
         $passwordProfile.ForceChangePasswordNextSignIn = $ForceChangePasswordNextLogin
         $passwordProfile.Password = . "$PSScriptRoot/../utils/Unprotect-SecureString.ps1" $PSBoundParameters['Password']
         $null = $PSBoundParameters.Remove('Password')

@@ -51,8 +51,8 @@ DimensionWeight                              : 50
 DimensionWeightUnit                          : LBS
 DimensionWidth                               : 5
 DisplayName                                  : Azure Stack Edge Pro - 2 GPU
-FilterableProperty                           : {Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty}
-HierarchyInformation                         : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation
+FilterableProperty                           : {Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.FilterableProperty}
+HierarchyInformation                         : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.HierarchyInformation
 ImageInformation                             : {}
 Specification                                : {Usable compute, Usable memory, Usable storage}
 ```
@@ -67,7 +67,7 @@ Holds details about product hierarchy information and filterable property.
 To construct, see NOTES section for CONFIGURATIONFILTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfigurationFilters[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IConfigurationFilters[]
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IConfiguration
 
 ## NOTES
 

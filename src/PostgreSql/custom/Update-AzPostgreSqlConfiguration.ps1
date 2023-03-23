@@ -22,7 +22,7 @@ Updates a configuration of a server.
 Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 #>
 function Update-AzPostgreSqlConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IConfiguration])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

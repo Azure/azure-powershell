@@ -416,7 +416,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResource
+### Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.ILogzMonitorResource
 
 ## NOTES
 

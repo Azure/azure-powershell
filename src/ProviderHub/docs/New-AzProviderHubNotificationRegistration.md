@@ -118,7 +118,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for NOTIFICATIONENDPOINT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationEndpoint[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationEndpoint[]
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.Api20201120.INotificationRegistration
+### Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Models.INotificationRegistration
 
 ## NOTES
 

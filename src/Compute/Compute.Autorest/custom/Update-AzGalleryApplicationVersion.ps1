@@ -14,7 +14,7 @@ Update a gallery Application Version.
 #>
 
 function Update-AzGalleryApplicationVersion {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IGalleryApplicationVersion])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -98,7 +98,7 @@ function Update-AzGalleryApplicationVersion {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IUpdateResourceDefinitionTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IUpdateResourceDefinitionTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},
@@ -106,7 +106,7 @@ function Update-AzGalleryApplicationVersion {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.ITargetRegion[]]
         # The target regions where the Image Version is going to be replicated to.
         # This property is updatable.
         # To construct, see NOTES section for TARGETREGION properties and create a hash table.

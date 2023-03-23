@@ -175,7 +175,7 @@ The set of data flow policy rules that make up this service.
 To construct, see NOTES section for PCCRULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPccRuleConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IPccRuleConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -359,7 +359,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService
+### Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IService
 
 ## NOTES
 

@@ -21,17 +21,17 @@ Create a in-memory object for NetworkInterface
 Create a in-memory object for NetworkInterface
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface
 .Link
 https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkInterfaceObject
 #>
 function New-AzConnectedNetworkInterfaceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="A list of IP configurations of the network interface.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.INetworkInterfaceIPConfiguration[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.INetworkInterfaceIPConfiguration[]]
         $IPConfiguration,
         [Parameter(HelpMessage="The MAC address of the network interface.")]
         [string]
@@ -45,7 +45,7 @@ function New-AzConnectedNetworkInterfaceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkInterface]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.NetworkInterface]::New()
 
         $Object.IPConfiguration = $IPConfiguration
         $Object.MacAddress = $MacAddress

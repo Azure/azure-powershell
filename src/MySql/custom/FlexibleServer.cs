@@ -1,4 +1,4 @@
-namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501
+namespace Microsoft.Azure.PowerShell.Cmdlets.MySql.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MySql.Runtime.Extensions;
     using System.Security;

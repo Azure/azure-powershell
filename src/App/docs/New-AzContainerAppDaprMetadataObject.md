@@ -89,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata
 
 ## NOTES
 

@@ -209,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20210201.ITriggeredWebJob
+### Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.ITriggeredWebJob
 
 ## NOTES
 

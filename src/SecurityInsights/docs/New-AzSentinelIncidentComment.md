@@ -60,7 +60,7 @@ Represents an incident comment
 To construct, see NOTES section for INCIDENTCOMMENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentComment
 Parameter Sets: Create
 Aliases:
 
@@ -183,11 +183,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentComment
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IIncidentComment
+### Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.IIncidentComment
 
 ## NOTES
 

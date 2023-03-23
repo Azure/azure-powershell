@@ -54,7 +54,7 @@ Create a data source named 'NewDataSource'
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 Parameter Sets: (All)
 Aliases:
 
@@ -147,11 +147,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
+### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
 
 ## NOTES
 

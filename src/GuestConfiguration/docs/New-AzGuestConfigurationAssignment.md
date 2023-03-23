@@ -195,7 +195,7 @@ The configuration parameters for the guest configuration.
 To construct, see NOTES section for GUESTCONFIGURATIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -211,7 +211,7 @@ The protected configuration parameters for the guest configuration.
 To construct, see NOTES section for GUESTCONFIGURATIONPROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IConfigurationParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IConfigurationParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -366,7 +366,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.Api20220125.IGuestConfigurationAssignment
+### Microsoft.Azure.PowerShell.Cmdlets.GuestConfiguration.Models.IGuestConfigurationAssignment
 
 ## NOTES
 

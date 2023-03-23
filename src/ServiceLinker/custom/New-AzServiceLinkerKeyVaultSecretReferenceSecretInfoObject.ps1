@@ -21,13 +21,13 @@ Create an in-memory object for KeyVaultSecretReferenceSecretInfo.
 Create an in-memory object for KeyVaultSecretReferenceSecretInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.KeyVaultSecretReferenceSecretInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.KeyVaultSecretReferenceSecretInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerkeyvaultsecretreferencesecretinfoobject
 #>
 function New-AzServiceLinkerKeyVaultSecretReferenceSecretInfoObject {
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.DoNotExportAttribute()]
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.KeyVaultSecretReferenceSecretInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.KeyVaultSecretReferenceSecretInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -44,7 +44,7 @@ function New-AzServiceLinkerKeyVaultSecretReferenceSecretInfoObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.KeyVaultSecretReferenceSecretInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.KeyVaultSecretReferenceSecretInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

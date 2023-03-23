@@ -58,7 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonSrmProperties
 
 ## NOTES
 

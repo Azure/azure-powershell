@@ -58,7 +58,7 @@ A list of actions that the custom resource provider implements.
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpActionRouteDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpActionRouteDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -164,7 +164,7 @@ A list of resource types that the custom resource provider implements.
 To construct, see NOTES section for RESOURCETYPE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpResourceTypeRouteDefinition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpResourceTypeRouteDefinition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +212,7 @@ A list of validations to run on the custom resource provider's requests.
 To construct, see NOTES section for VALIDATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpValidations[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpValidations[]
 Parameter Sets: (All)
 Aliases:
 
@@ -261,7 +261,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.ICustomRpManifest
+### Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomRpManifest
 
 ## NOTES
 

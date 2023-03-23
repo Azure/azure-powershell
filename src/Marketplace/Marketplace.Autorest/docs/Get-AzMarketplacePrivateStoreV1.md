@@ -119,7 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IPrivateStore
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPrivateStore
 
 ## NOTES
 

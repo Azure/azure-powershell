@@ -345,7 +345,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IEventSourceResource
+### Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.IEventSourceResource
 
 ## NOTES
 

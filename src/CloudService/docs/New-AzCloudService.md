@@ -372,7 +372,7 @@ Describes a cloud service extension profile.
 To construct, see NOTES section for EXTENSIONPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceExtensionProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -433,7 +433,7 @@ Network Profile for the cloud service.
 To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceNetworkProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceNetworkProfile
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -464,7 +464,7 @@ Describes the OS profile for the cloud service.
 To construct, see NOTES section for OSPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceOSProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceOSProfile
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -527,7 +527,7 @@ Describes the role profile for the cloud service.
 To construct, see NOTES section for ROLEPROFILE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleProfile
+Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudServiceRoleProfile
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -676,7 +676,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.ICloudService
 
 ## NOTES
 

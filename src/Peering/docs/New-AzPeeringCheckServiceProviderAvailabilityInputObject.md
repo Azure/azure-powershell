@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.CheckServiceProviderAvailabilityInput
+### Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.CheckServiceProviderAvailabilityInput
 
 ## NOTES
 

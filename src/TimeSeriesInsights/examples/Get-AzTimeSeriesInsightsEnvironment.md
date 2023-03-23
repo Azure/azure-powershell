@@ -14,7 +14,7 @@ Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
 PropertyUsageState           :
-Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.Sku
+Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Sku
 SkuCapacity                  : 2
 SkuName                      : S1
 StateDetailCode              :
@@ -22,7 +22,7 @@ StateDetailCurrentCount      :
 StateDetailMaxCount          :
 StateDetailMessage           :
 StorageLimitExceededBehavior : PurgeOldData
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.TrackedResourceTags
 Type                         : Microsoft.TimeSeriesInsights/Environments
 ```
 
@@ -42,7 +42,7 @@ Kind                                : Gen2
 Location                            : EastUs
 Name                                : tsill
 PropertyUsageState                  :
-Sku                                 : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.Sku
+Sku                                 : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Sku
 SkuCapacity                         : 1
 SkuName                             : L1
 StateDetailCode                     :
@@ -50,7 +50,7 @@ StateDetailCurrentCount             :
 StateDetailMaxCount                 :
 StateDetailMessage                  :
 StorageConfigurationAccountName     : cdolauli
-Tag                                 : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.TrackedResourceTags
+Tag                                 : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.TrackedResourceTags
 TimeSeriesIdProperty                : {ccc}
 Type                                : Microsoft.TimeSeriesInsights/Environments
 WarmStoreConfigurationDataRetention : 00:00:00
@@ -66,7 +66,7 @@ Location                     : eastus
 Name                         : tsitest001
 PartitionKeyProperty         :
 PropertyUsageState           :
-Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.Sku
+Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Sku
 SkuCapacity                  : 2
 SkuName                      : S1
 StateDetailCode              :
@@ -74,7 +74,7 @@ StateDetailCurrentCount      :
 StateDetailMaxCount          :
 StateDetailMessage           :
 StorageLimitExceededBehavior : PurgeOldData
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.TrackedResourceTags
 Type                         : Microsoft.TimeSeriesInsights/Environments
 ```
 
@@ -96,7 +96,7 @@ Location                     : eastus2
 Name                         : tsi-envv8u56x
 PartitionKeyProperty         :
 PropertyUsageState           :
-Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.Sku
+Sku                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Sku
 SkuCapacity                  : 1
 SkuName                      : S1
 StateDetailCode              :
@@ -104,7 +104,7 @@ StateDetailCurrentCount      :
 StateDetailMaxCount          :
 StateDetailMessage           :
 StorageLimitExceededBehavior : PurgeOldData
-Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20180815Preview.TrackedResourceTags
+Tag                          : Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.TrackedResourceTags
 Type                         : Microsoft.TimeSeriesInsights/Environments
 ```
 

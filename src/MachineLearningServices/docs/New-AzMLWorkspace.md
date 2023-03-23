@@ -431,7 +431,7 @@ The list of shared private link resources in this workspace.
 To construct, see NOTES section for SHAREDPRIVATELINKRESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ISharedPrivateLinkResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISharedPrivateLinkResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -620,7 +620,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IWorkspace
 
 ## NOTES
 

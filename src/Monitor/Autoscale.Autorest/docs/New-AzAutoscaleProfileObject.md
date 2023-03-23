@@ -177,7 +177,7 @@ A maximum of 10 rules can be specified.
 To construct, see NOTES section for RULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IScaleRule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IScaleRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -267,7 +267,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.AutoscaleProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.AutoscaleProfile
 
 ## NOTES
 

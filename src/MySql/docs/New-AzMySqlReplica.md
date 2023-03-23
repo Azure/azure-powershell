@@ -102,7 +102,7 @@ The source server object to create replica from.
 To construct, see NOTES section for MASTER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServer
 Parameter Sets: (All)
 Aliases: InputObject
 
@@ -225,11 +225,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServer
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServer
 
 ## NOTES
 

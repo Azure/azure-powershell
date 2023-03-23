@@ -182,7 +182,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.Api202001.IDomainService
+### Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Models.IDomainService
 
 ## NOTES
 

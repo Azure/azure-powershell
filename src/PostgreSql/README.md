@@ -233,7 +233,7 @@ directive:
     transform: $ = $.replace(/OperationOrigin System/, 'OperationOrigin System1');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerPropertiesForCreate Property', 'public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.Api20171201.IServerPropertiesForCreate Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServerPropertiesForCreate Property', 'public Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IServerPropertiesForCreate Property');
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public int StorageProfileBackupRetentionDay', '[System.Management.Automation.ValidateRangeAttribute(7,35)]\n        public int StorageProfileBackupRetentionDay');

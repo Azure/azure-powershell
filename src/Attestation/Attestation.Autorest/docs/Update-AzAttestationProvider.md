@@ -221,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider
+### Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.IAttestationProvider
 
 ## NOTES
 

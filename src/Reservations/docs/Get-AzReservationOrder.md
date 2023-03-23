@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationOrderResponse
 
 ## NOTES
 

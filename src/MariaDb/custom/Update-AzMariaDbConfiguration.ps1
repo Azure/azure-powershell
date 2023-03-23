@@ -22,7 +22,7 @@ Updates a configuration of a server.
 Use Update-AzMariaDberver instead if you want update AdministratorLoginPassword, sku, etc.
 #>
 function Update-AzMariaDbConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IConfiguration])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

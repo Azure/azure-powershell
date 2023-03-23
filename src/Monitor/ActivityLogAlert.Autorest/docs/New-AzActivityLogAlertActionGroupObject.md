@@ -53,7 +53,7 @@ These data are appended to the webhook payload.
 To construct, see NOTES section for WEBHOOKPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroupWebhookProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActionGroupWebhookProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.ActionGroup
 
 ## NOTES
 

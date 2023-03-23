@@ -80,7 +80,7 @@ HTTP allows repeated headers.
 To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppProbeHttpGetHttpHeadersItem[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -288,7 +288,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppProbe
 
 ## NOTES
 

@@ -21,12 +21,12 @@ Create an in-memory object for SystemAssignedIdentityAuthInfo.
 Create an in-memory object for SystemAssignedIdentityAuthInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SystemAssignedIdentityAuthInfo
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAuthInfo
 .Link
 https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersystemassignedidentityauthinfoobject
 #>
 function New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SystemAssignedIdentityAuthInfo')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAuthInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -38,7 +38,7 @@ function New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.SystemAssignedIdentityAuthInfo]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.SystemAssignedIdentityAuthInfo]::New()
 
         if ($PSBoundParameters.ContainsKey('AuthType')) {
             $Object.AuthType = $AuthType

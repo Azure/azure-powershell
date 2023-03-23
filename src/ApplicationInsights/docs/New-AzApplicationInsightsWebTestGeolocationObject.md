@@ -59,7 +59,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.WebTestGeolocation
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.WebTestGeolocation
 
 ## NOTES
 

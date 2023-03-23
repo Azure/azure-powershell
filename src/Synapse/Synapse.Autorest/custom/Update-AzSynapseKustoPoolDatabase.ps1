@@ -30,7 +30,7 @@ ReadWrite East US  testws/testkustopool/mykustodatabase
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,7 +51,7 @@ INPUTOBJECT <ISynapseIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.synapse/update-azsynapsekustopooldatabase
 #>
 function Update-AzSynapseKustoPoolDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.IDatabase])]
     [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -182,7 +182,7 @@ function Update-AzSynapseKustoPoolDatabase {
 
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ReadWriteDatabase]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ReadWriteDatabase]::new()
 
             $Parameter.Kind = $PSBoundParameters['Kind']
             $null = $PSBoundParameters.Remove('Kind')

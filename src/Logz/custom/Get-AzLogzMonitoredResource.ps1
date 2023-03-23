@@ -19,12 +19,12 @@ List the resources currently being monitored by the Logz monitor resource.
 .Description
 List the resources currently being monitored by the Logz monitor resource.
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource
+Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.IMonitoredResource
 .Link
 https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoredresource
 #>
 function Get-AzLogzMonitoredResource {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitoredResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.IMonitoredResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='List',Mandatory)]

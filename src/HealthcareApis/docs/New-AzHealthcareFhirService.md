@@ -51,7 +51,7 @@ Fhir Service access policies.
 To construct, see NOTES section for ACCESSPOLICYOBJECTID properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirServiceAccessPolicyEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IFhirServiceAccessPolicyEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +82,7 @@ The list of Open Container Initiative (OCI) artifacts.
 To construct, see NOTES section for ACRCONFIGURATIONOCIARTIFACT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServiceOciArtifactEntry[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IServiceOciArtifactEntry[]
 Parameter Sets: (All)
 Aliases:
 
@@ -508,7 +508,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IFhirService
+### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.IFhirService
 
 ## NOTES
 

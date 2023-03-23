@@ -165,7 +165,7 @@ Parameters that define the contact resource.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactParameters
 Parameter Sets: List
 Aliases:
 
@@ -258,11 +258,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IContactParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.IAvailableContacts
+### Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IAvailableContacts
 
 ## NOTES
 

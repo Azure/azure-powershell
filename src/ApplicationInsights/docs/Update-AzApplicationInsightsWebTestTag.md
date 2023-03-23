@@ -189,7 +189,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
+### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.IWebTest
 
 ## NOTES
 

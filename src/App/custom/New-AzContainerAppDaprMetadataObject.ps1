@@ -21,12 +21,12 @@ Create an in-memory object for DaprMetadata.
 Create an in-memory object for DaprMetadata.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata
+Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata
 .Link
 https://learn.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
 #>
 function New-AzContainerAppDaprMetadataObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -42,7 +42,7 @@ function New-AzContainerAppDaprMetadataObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.App.Models.DaprMetadata]::New()
 
         if ($PSBoundParameters.ContainsKey('Name')) {
             $Object.Name = $Name

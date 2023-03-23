@@ -15,8 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002;
-using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501;
+using Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models
 {

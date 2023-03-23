@@ -77,7 +77,7 @@ Available scope
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAvailableScopeRequest
 Parameter Sets: Available, AvailableViaIdentity
 Aliases:
 
@@ -215,13 +215,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IAvailableScopeRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.ISubscriptionScopeProperties
 
 ## NOTES
 

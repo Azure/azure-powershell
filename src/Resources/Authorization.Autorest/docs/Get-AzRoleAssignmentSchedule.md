@@ -207,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentSchedule
+### Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IRoleAssignmentSchedule
 
 ## NOTES
 

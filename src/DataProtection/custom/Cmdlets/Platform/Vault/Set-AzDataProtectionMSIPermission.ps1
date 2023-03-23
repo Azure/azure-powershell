@@ -5,7 +5,7 @@
 
     param(
         [Parameter(Mandatory, HelpMessage='Backup instance request object which will be used to configure backup')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IBackupInstanceResource]
         ${BackupInstance},
         
         [Parameter(Mandatory=$false, HelpMessage='ID of the keyvault')]

@@ -21,12 +21,12 @@ Create an in-memory object for SiteResourceId.
 Create an in-memory object for SiteResourceId.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteResourceId
+Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteResourceId
 .Link
 https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkSiteResourceIdObject
 #>
 function New-AzMobileNetworkSiteResourceIdObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteResourceId')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteResourceId')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +36,7 @@ function New-AzMobileNetworkSiteResourceIdObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.SiteResourceId]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.SiteResourceId]::New()
 
         if ($PSBoundParameters.ContainsKey('Id')) {
             $Object.Id = $Id

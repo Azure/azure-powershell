@@ -20,7 +20,7 @@ Restore a MariaDB from a existing MariaDB.
 #>
 function Restore-AzMariaDbServer
 {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer])]
     [CmdletBinding(DefaultParameterSetName='PointInTimeRestore', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -37,7 +37,7 @@ function Restore-AzMariaDbServer
 
         [Parameter(ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServer]
         # The source server object to restore from.
         ${InputObject},
     
@@ -65,7 +65,7 @@ function Restore-AzMariaDbServer
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IServerUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # Application-specific metadata in the form of key-value pairs.
         ${Tag},
@@ -156,20 +156,20 @@ function Restore-AzMariaDbServer
     
     process {
         try {
-            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerForCreate]::new()
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerForCreate]::new()
             
-            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForRestore]::new()
+            $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerPropertiesForRestore]::new()
             $Parameter.Property.RestorePointInTime = $RestorePointInTime
             $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::PointInTimeRestore
             $Null = $PSBoundParameters.Remove('RestorePointInTime')
             # if ($PSBoundParameters.ContainsKey('UsePointInTimeRestore')) {
-            #     $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForRestore]::new()
+            #     $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerPropertiesForRestore]::new()
             #     $Parameter.Property.RestorePointInTime = $RestorePointInTime
             #     $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::PointInTimeRestore
             #     $Null = $PSBoundParameters.Remove('RestorePointInTime')
             #     $Null = $PSBoundParameters.Remove('UsePointInTimeRestore')
             # } elseif ($PSBoundParameters.ContainsKey('UseGeoRestore')) {
-            #     $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.ServerPropertiesForGeoRestore]::new()
+            #     $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.ServerPropertiesForGeoRestore]::new()
             #     $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::GeoRestore
             #     $Null = $PSBoundParameters.Remove('UseGeoRestore')
             # }

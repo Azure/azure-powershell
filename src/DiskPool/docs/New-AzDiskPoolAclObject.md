@@ -73,7 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.Acl
+### Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Acl
 
 ## NOTES
 

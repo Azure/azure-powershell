@@ -21,12 +21,12 @@ Create an in-memory object for Trigger.
 Create an in-memory object for Trigger.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger
+Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger
 .Link
 https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTriggerObject
 #>
 function New-AzPurviewTriggerObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -57,7 +57,7 @@ function New-AzPurviewTriggerObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType]
         $ScanLevel,
         [Parameter(HelpMessage="Dictionary of <any>.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleAdditionalProperties]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleAdditionalProperties]
         $ScheduleAdditionalProperty,
         [Parameter()]
         [int[]]
@@ -69,7 +69,7 @@ function New-AzPurviewTriggerObject {
         [int[]]
         $ScheduleMonthDay,
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IRecurrenceScheduleOccurrence[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleOccurrence[]]
         $ScheduleMonthlyOccurrence,
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek])]
@@ -78,7 +78,7 @@ function New-AzPurviewTriggerObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Trigger]::New()
 
         if ($PSBoundParameters.ContainsKey('IncrementalScanStartTime')) {
             $Object.IncrementalScanStartTime = $IncrementalScanStartTime

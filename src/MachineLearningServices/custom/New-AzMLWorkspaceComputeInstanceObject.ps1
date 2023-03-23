@@ -21,12 +21,12 @@ Create an in-memory object for ComputeInstance.
 Create an in-memory object for ComputeInstance.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance
+Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeInstance
 .Link
 https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
 #>
 function New-AzMLWorkspaceComputeInstanceObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeInstance')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -84,7 +84,7 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger]
         $LastOperationTrigger,
         [Parameter(HelpMessage="The list of compute start stop schedules to be applied.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeStartStopSchedule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeStartStopSchedule[]]
         $ScheduleComputeStartStop,
         [Parameter(HelpMessage="Specifies the SSH rsa public key file as a string. Use `"ssh-keygen -t rsa -b 2048`" to generate your SSH key pairs.")]
         [string]
@@ -117,7 +117,7 @@ function New-AzMLWorkspaceComputeInstanceObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeInstance]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ComputeInstance]::New()
         $Object.Type = 'ComputeInstance'
 
         if ($PSBoundParameters.ContainsKey('Description')) {

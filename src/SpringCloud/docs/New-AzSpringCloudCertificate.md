@@ -104,7 +104,7 @@ Properties of the certificate resource payload.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICertificateProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificateProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICertificateResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ICertificateResource
 
 ## NOTES
 

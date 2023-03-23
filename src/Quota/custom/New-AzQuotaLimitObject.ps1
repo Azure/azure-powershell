@@ -21,12 +21,12 @@ Create an in-memory object for LimitObject.
 Create an in-memory object for LimitObject.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject
+Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject
 .Link
 https://learn.microsoft.com/powershell/module/az.Quota/New-AzQuotaLimitObject
 #>
 function New-AzQuotaLimitObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -40,7 +40,7 @@ function New-AzQuotaLimitObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.LimitObject]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.LimitObject]::New()
 
         if ($PSBoundParameters.ContainsKey('LimitType')) {
             $Object.LimitType = $LimitType

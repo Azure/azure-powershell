@@ -184,7 +184,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.IRoleInstance
+### Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.IRoleInstance
 
 ## NOTES
 

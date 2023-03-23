@@ -104,7 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight
+### Microsoft.Azure.PowerShell.Cmdlets.App.Models.TrafficWeight
 
 ## NOTES
 

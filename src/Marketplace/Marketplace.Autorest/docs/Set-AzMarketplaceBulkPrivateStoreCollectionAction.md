@@ -94,7 +94,7 @@ Bulk collections action properties
 To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IBulkCollectionsPayload
 Parameter Sets: Bulk
 Aliases:
 
@@ -156,11 +156,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsPayload
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IBulkCollectionsPayload
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IBulkCollectionsResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IBulkCollectionsResponse
 
 ## NOTES
 

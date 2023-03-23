@@ -154,7 +154,7 @@ Gets or sets the list of category configurations.
 To construct, see NOTES section for LIVETRACECATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ILiveTraceCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.ILiveTraceCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +247,7 @@ ACLs for requests from private endpoints
 To construct, see NOTES section for PRIVATEENDPOINTACL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IPrivateEndpointAcl[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IPrivateEndpointAcl[]
 Parameter Sets: (All)
 Aliases:
 
@@ -327,7 +327,7 @@ Gets or sets the list of category configurations.
 To construct, see NOTES section for RESOURCELOGCATEGORY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IResourceLogCategory[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IResourceLogCategory[]
 Parameter Sets: (All)
 Aliases:
 
@@ -472,7 +472,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
+### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.IWebPubSubResource
 
 ## NOTES
 

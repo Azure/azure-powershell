@@ -173,7 +173,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IQuotaRequestDetails
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaRequestDetails
 
 ## NOTES
 

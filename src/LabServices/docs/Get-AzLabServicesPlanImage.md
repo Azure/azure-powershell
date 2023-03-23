@@ -139,7 +139,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for LABPLAN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+Type: Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 Parameter Sets: LabPlan
 Aliases:
 
@@ -232,13 +232,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.LabPlan
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.LabPlan
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.IImage
+### Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.IImage
 
 ## NOTES
 
