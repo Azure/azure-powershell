@@ -184,12 +184,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 {
                     case DirectoryCloseAllParameterSetName:
                         baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-
-                        // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                        if (this.Context == null)
-                        {
-                            this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
-                        }
                         break;
 
                     case ShareNameCloseSingleParameterSetName:
@@ -202,22 +196,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     case ShareCloseSingleParameterSetName:
                     case ShareCloseAllParameterSetName:
                         baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-
-                        // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                        if (this.Context == null)
-                        {
-                            this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
-                        }
                         break;
 
                     case FileCloseAllParameterSetName:
                         targetFile = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
-
-                        // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                        if (this.Context == null)
-                        {
-                            this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
-                        }
                         break;
 
                     default:

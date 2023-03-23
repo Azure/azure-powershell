@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string aadAppIdOrUri,
             string aadTenantId,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string deliverySchema,
@@ -545,7 +545,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName,
             string partnerTopicName,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string[] labels,
@@ -728,7 +728,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string aadAppIdOrUri,
             string aadTenantId,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string deliverySchema,
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string domainName,
             string domainTopicName,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string[] labels,
@@ -1044,7 +1044,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string aadAppIdOrUri,
             string aadTenantId,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string deliverySchema,
@@ -1177,7 +1177,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName,
             string domainName,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string[] labels,
@@ -1358,7 +1358,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string aadAppIdOrUri,
             string aadTenantId,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string deliverySchema,
@@ -1491,7 +1491,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName,
             string topicName,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string[] labels,
@@ -1714,7 +1714,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string aadAppIdOrUri,
             string aadTenantId,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping ,
+            Hashtable[] deliveryAttributeMapping ,
             string endpoint,
             string endpointType,
             string deliverySchema,
@@ -1847,7 +1847,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName,
             string systemTopicName,
             string deadLetterEndpoint,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             string endpoint,
             string endpointType,
             string[] labels,
@@ -2990,7 +2990,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             string aadTenantId,
             string aadAppIdOrUri,
             bool enableAdvancedFilteringOnArrays,
-            string[] deliveryAttributeMapping,
+            Hashtable[] deliveryAttributeMapping,
             long storageQueueMessageTtl)
         {
             EventSubscription eventSubscription = new EventSubscription();
@@ -3122,6 +3122,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             int? maxEventsPerBatch,
             int? preferredBatchSizeInKiloByte,
             string aadAppIdOrUri,
+            Hashtable[] deliveryAttributeMapping,
             string aadTenantId)
         {
             EventSubscriptionUpdateParameters eventSubscriptionUpdateParameters = new EventSubscriptionUpdateParameters();
@@ -3139,14 +3140,16 @@ namespace Microsoft.Azure.Commands.EventGrid
                         MaxEventsPerBatch = maxEventsPerBatch,
                         PreferredBatchSizeInKilobytes = preferredBatchSizeInKiloByte,
                         AzureActiveDirectoryApplicationIdOrUri = aadAppIdOrUri,
-                        AzureActiveDirectoryTenantId = aadTenantId
+                        AzureActiveDirectoryTenantId = aadTenantId,
+                        DeliveryAttributeMappings = GetDeliveryAttributeMapping(deliveryAttributeMapping)
                     };
                 }
                 else if (string.Equals(endpointType, EventGridConstants.EventHub, StringComparison.OrdinalIgnoreCase))
                 {
                     eventSubscriptionUpdateParameters.Destination = new EventHubEventSubscriptionDestination()
                     {
-                        ResourceId = endpoint
+                        ResourceId = endpoint,
+                        DeliveryAttributeMappings = GetDeliveryAttributeMapping(deliveryAttributeMapping)
                     };
                 }
                 else if (string.Equals(endpointType, EventGridConstants.StorageQueue, StringComparison.OrdinalIgnoreCase))
@@ -3157,28 +3160,32 @@ namespace Microsoft.Azure.Commands.EventGrid
                 {
                     eventSubscriptionUpdateParameters.Destination = new HybridConnectionEventSubscriptionDestination()
                     {
-                        ResourceId = endpoint
+                        ResourceId = endpoint,
+                        DeliveryAttributeMappings = GetDeliveryAttributeMapping(deliveryAttributeMapping)
                     };
                 }
                 else if (string.Equals(endpointType, EventGridConstants.ServiceBusQueue, StringComparison.OrdinalIgnoreCase))
                 {
                     eventSubscriptionUpdateParameters.Destination = new ServiceBusQueueEventSubscriptionDestination()
                     {
-                        ResourceId = endpoint
+                        ResourceId = endpoint,
+                        DeliveryAttributeMappings = GetDeliveryAttributeMapping(deliveryAttributeMapping)
                     };
                 }
                 else if (string.Equals(endpointType, EventGridConstants.ServiceBusTopic, StringComparison.OrdinalIgnoreCase))
                 {
                     eventSubscriptionUpdateParameters.Destination = new ServiceBusTopicEventSubscriptionDestination()
                     {
-                        ResourceId = endpoint
+                        ResourceId = endpoint,
+                        DeliveryAttributeMappings = GetDeliveryAttributeMapping(deliveryAttributeMapping)
                     };
                 }
                 else if (string.Equals(endpointType, EventGridConstants.AzureFunction, StringComparison.OrdinalIgnoreCase))
                 {
                     eventSubscriptionUpdateParameters.Destination = new AzureFunctionEventSubscriptionDestination()
                     {
-                        ResourceId = endpoint
+                        ResourceId = endpoint,
+                        DeliveryAttributeMappings = GetDeliveryAttributeMapping(deliveryAttributeMapping)
                     };
                 }
                 else
@@ -3749,7 +3756,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
         }
 
-        IList<DeliveryAttributeMapping> GetDeliveryAttributeMapping(string[] deliveryAttributes)
+        IList<DeliveryAttributeMapping> GetDeliveryAttributeMapping(Hashtable[] deliveryAttributes)
         {
             if(deliveryAttributes == null || deliveryAttributes.Length==0)
             {
@@ -3757,9 +3764,63 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
 
             IList<DeliveryAttributeMapping> deliveryAttributeMapping = new List<DeliveryAttributeMapping>();
-            foreach (string deliveryAttribute in deliveryAttributes)
+            for (int i = 0; i < deliveryAttributes.Count(); i++)
             {
-                deliveryAttributeMapping.Add(new DeliveryAttributeMapping(deliveryAttribute));
+                DeliveryAttributeMapping deliveryAttribute = null;
+                // Validate entries.
+                if (deliveryAttributes[i].Count < 3 || deliveryAttributes[i].Count > 4)
+                {
+                    throw new Exception($"Invalid Delivery Attribute parameter:. Unexpected number of entries for delivery attribute #{i + 1} as we expect 3-4 key-value pair while we received {deliveryAttributes[i].Count}");
+                }
+
+                if (!deliveryAttributes[i].ContainsKey("Type"))
+                {
+                    throw new Exception($"Invalid Delivery Attribute parameter:. The mandatory parameter 'Type' is missing for delivery attribute #{i + 1}.");
+                }
+                if (!deliveryAttributes[i].ContainsKey("Name"))
+                {
+                    throw new Exception($"Invalid Delivery Attribute parameter:. The mandatory parameter 'Name' is missing for delivery attribute #{i + 1}.");
+                }
+
+                string type = (string)deliveryAttributes[i]["Type"];
+
+                if(type.Equals("Static"))
+                {
+                    if (!deliveryAttributes[i].ContainsKey("Value"))
+                    {
+                        throw new Exception($"Invalid Delivery Attribute parameter:. The parameter 'Value' is mandatory for attribute type 'Static' and is missing for delivery attribute #{i + 1}.");
+                    }
+                    if (!deliveryAttributes[i].ContainsKey("IsSecret"))
+                    {
+                        throw new Exception($"Invalid Delivery Attribute parameter:. The parameter 'IsSecret' is mandatory for attribute type 'Static' and is missing for delivery attribute #{i + 1}.");
+                    }
+                    string IsSecretString = ((string)deliveryAttributes[i]["IsSecret"]).ToLower();
+                    if (!IsSecretString.Equals("true") && !IsSecretString.Equals("false"))
+                    {
+                        throw new Exception($"Invalid Delivery Attribute parameter:. The parameter 'IsSecret' can only be 'true' or 'false'.");
+                    }
+
+                    string value = (string)deliveryAttributes[i]["Value"];
+                    string name = (string)deliveryAttributes[i]["Name"];
+                    bool isSecret = bool.Parse(IsSecretString);
+                    deliveryAttribute = new StaticDeliveryAttributeMapping(name, value, isSecret);
+                }
+                else if(type.Equals("Dynamic"))
+                {
+                    if (!deliveryAttributes[i].ContainsKey("SourceField"))
+                    {
+                        throw new Exception($"Invalid Delivery Attribute parameter:. The parameter 'SourceField' is mandatory for attribute type 'Dynamic' and is missing for delivery attribute #{i + 1}.");
+                    }
+                    string name = (string)deliveryAttributes[i]["Name"];
+                    string sourceField = (string)deliveryAttributes[i]["SourceField"];
+                    deliveryAttribute = new DynamicDeliveryAttributeMapping(name, sourceField);
+                }
+                else
+                {
+                    throw new Exception($"IInvalid Delivery Attribute parameter:. The mandatory parameter 'Type' is incorrect for delivery attribute #{i + 1}. It can be only 'Static' or 'Dynamic'");
+                }
+
+                deliveryAttributeMapping.Add(deliveryAttribute);
             }
             return deliveryAttributeMapping;
         }
@@ -3768,6 +3829,12 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             int strIndex = endpoint.IndexOf("/queueServices/default/queues/", StringComparison.OrdinalIgnoreCase);
             string[] tokens = endpoint.Split('/');
+
+            if(queueMessageTimeToLiveInSeconds.HasValue && queueMessageTimeToLiveInSeconds < -1)
+            {
+                throw new Exception(
+                    "Invalid value: The value for StorageQueueMessageTtl is invalid. It's value cannot be less than -1");
+            }
 
             if (!this.IsValidStorageAccountResourceId(strIndex, tokens))
             {

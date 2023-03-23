@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Text.RegularExpressions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// <summary>
         /// SqlVmGroup Object of the AG Listener
         /// </summary>
+        [CmdletParameterBreakingChange("SqlVMGroupObject", ChangeDescription = "SqlVMGroupObject parameter is being deprecated without being replaced.")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = ParameterSet.SqlVMGroupObject,

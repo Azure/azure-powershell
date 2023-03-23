@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.PowerShell.CosmosDB.Sdk.dll', 
+RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll',
                'Azure.Security.KeyVault.Keys.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -187,7 +187,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDbClientEncryptionKey', 
                'New-AzCosmosDBMongoDBRoleDefinition', 
                'New-AzCosmosDBMongoDBPrivilegeResource', 
-               'New-AzCosmosDBMongoDBPrivilege', 'New-AzCosmosDBMongoDBRole', 
+               'New-AzCosmosDBMongoDBPrivilege', 
+               'New-AzCosmosDBMongoDBRole', 
                'Remove-AzCosmosDBMongoDBRoleDefinition', 
                'Update-AzCosmosDBMongoDBRoleDefinition', 
                'Get-AzCosmosDBMongoDBRoleDefinition', 
@@ -195,7 +196,16 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzCosmosDBMongoDBUserDefinition', 
                'Get-AzCosmosDBMongoDBUserDefinition', 
                'Remove-AzCosmosDBMongoDBUserDefinition', 'Get-AzCosmosDBService', 
-               'New-AzCosmosDBService', 'Remove-AzCosmosDBService'
+               'New-AzCosmosDBService', 'Remove-AzCosmosDBService', 
+               'Get-AzCosmosDBGremlinGraphBackupInformation', 
+               'Get-AzCosmosDBGremlinRestorableDatabase', 
+               'Get-AzCosmosDBGremlinRestorableGraph', 
+               'Get-AzCosmosDBGremlinRestorableResource', 
+               'Get-AzCosmosDBTableRestorableTable', 
+               'Get-AzCosmosDBTableRestorableResource', 
+               'Get-AzCosmosDBTableBackupInformation', 
+               'New-AzCosmosDBGremlinDatabaseToRestore', 
+               'New-AzCosmosDBTableToRestore' 
 
 # Variables to export from this module
 # VariablesToExport = @()
