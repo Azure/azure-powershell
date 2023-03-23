@@ -36,6 +36,11 @@ function Get-PreloadAssemblies{
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
 $DependencyMapPath = "$PSScriptRoot\..\artifacts\StaticAnalysisResults\DependencyMap.csv"
 
+if(-not (Test-Path $DependencyMapPath)){
+    Write-Host "$DependencyMapPath does not exist. Skip it."
+    return
+}
+
 $DependencyMap = Import-Csv -Path $DependencyMapPath
 
 

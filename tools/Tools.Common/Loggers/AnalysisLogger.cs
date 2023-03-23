@@ -18,6 +18,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
 using Tools.Common.Issues;
 
 namespace Tools.Common.Loggers
@@ -94,6 +95,7 @@ namespace Tools.Common.Loggers
         /// <param name="contents">The contents of the report</param>
         public virtual void WriteReport(string name, string contents)
         {
+            this.WriteMessage("debug info: write logger file name {0}", name);
             File.WriteAllText(name, contents);
         }
 
@@ -137,6 +139,17 @@ namespace Tools.Common.Loggers
         /// </summary>
         public void WriteReports()
         {
+            this.WriteMessage("debug info: Loggers.Count = {0}", Loggers.Count);
+            foreach (var logger in Loggers) {
+                if (logger.Records.Any())
+                {
+                    this.WriteMessage("debug info: logger {0} have records count {1}", logger.FileName, logger.Records.Count);
+                }
+                else {
+                    this.WriteMessage("debug info: logger {0} does not have records ", logger.FileName);
+                }
+            }
+
             foreach (var logger in Loggers.Where(l => l.Records.Any()))
             {
                 var reportText = new StringBuilder();
