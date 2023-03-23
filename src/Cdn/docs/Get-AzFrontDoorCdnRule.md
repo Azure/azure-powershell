@@ -47,7 +47,7 @@ testrule2 testps-rg-da16jm
 rule1     testps-rg-da16jm
 ```
 
-list AzureFrontDoor delivery rules within the specified rule set
+list AzureFrontDoor delivery rules within the specified rule set.
 
 ### Example 2: Get an AzureFrontDoor delivery rule within the specified rule set
 ```powershell
@@ -60,7 +60,7 @@ Name  ResourceGroupName
 rule1 testps-rg-da16jm
 ```
 
-Get an AzureFrontDoor delivery rule within the specified rule set
+Get an AzureFrontDoor delivery rule within the specified rule set.
 
 ## PARAMETERS
 

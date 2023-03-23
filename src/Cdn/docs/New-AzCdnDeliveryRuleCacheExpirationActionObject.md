@@ -33,7 +33,7 @@ Name
 CacheExpiration
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleCacheExpirationAction
+Create an in-memory object for AzureCDN DeliveryRuleCacheExpirationAction.
 
 ## PARAMETERS
 

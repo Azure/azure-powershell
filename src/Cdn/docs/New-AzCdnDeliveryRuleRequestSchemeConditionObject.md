@@ -33,7 +33,7 @@ Name
 RequestScheme
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleRequestSchemeCondition
+Create an in-memory object for AzureCDN DeliveryRuleRequestSchemeCondition.
 
 ## PARAMETERS
 

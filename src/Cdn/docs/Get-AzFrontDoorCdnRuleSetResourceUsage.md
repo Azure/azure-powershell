@@ -33,7 +33,7 @@ CurrentValue Limit Unit
 0            100   count
 ```
 
-Get resouce usages of an AzureFrontDoor rule set
+Get resouce usages of an AzureFrontDoor rule set.
 
 ## PARAMETERS
 

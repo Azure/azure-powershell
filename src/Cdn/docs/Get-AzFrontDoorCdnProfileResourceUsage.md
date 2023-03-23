@@ -38,7 +38,7 @@ CurrentValue Limit Unit
 0            100   count
 ```
 
-Get resource usages of an AzureFrontDoor profile
+Get resource usages of an AzureFrontDoor profile.
 
 ## PARAMETERS
 

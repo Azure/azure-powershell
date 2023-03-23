@@ -63,7 +63,7 @@ Location Name        ResourceGroupName
 WestUs   endptest001 testps-rg-da16jm
 ```
 
-Update an AzureCDN Endpoint under the AzureCDN profile
+Update an AzureCDN Endpoint under the AzureCDN profile.
 
 ## PARAMETERS
 

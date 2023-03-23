@@ -33,7 +33,7 @@ Name
 HttpVersion
 ```
 
-
+Create an in-memory object for DeliveryRuleHttpVersionCondition.
 
 ## PARAMETERS
 

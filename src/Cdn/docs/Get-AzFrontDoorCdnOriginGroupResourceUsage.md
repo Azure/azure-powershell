@@ -34,7 +34,7 @@ CurrentValue Limit Unit
 1            50    count
 ```
 
-List resource useages of an AzureFrontDoor origin group under the profile
+List resource useages of an AzureFrontDoor origin group under the profile.
 
 ## PARAMETERS
 

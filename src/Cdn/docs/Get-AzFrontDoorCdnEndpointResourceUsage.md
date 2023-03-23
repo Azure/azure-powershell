@@ -34,7 +34,7 @@ CurrentValue Limit Unit
 1            100   count
 ```
 
-List resource useages of an AzureFrontDoor endpoint under the profile
+List resource useages of an AzureFrontDoor endpoint under the profile.
 
 ## PARAMETERS
 

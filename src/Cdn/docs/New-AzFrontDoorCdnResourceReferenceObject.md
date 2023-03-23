@@ -33,7 +33,7 @@ Id
 /subscriptions/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/resourcegroups/testps-rg-da16jm/providers/Microsoft.Cdn/profiles/fdp-v542q6/secrets/secret001
 ```
 
-Create an in-memory object for AzureCDN ResourceReference
+Create an in-memory object for AzureCDN ResourceReference.
 
 ## PARAMETERS
 

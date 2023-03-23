@@ -36,7 +36,7 @@ Name    ResourceGroupName
 origin1 testps-rg-da16jm
 ```
 
-Create an AzureCDN origin under the AzureCDN endpoint
+Create an AzureCDN origin under the AzureCDN endpoint.
 
 ## PARAMETERS
 

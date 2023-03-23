@@ -33,7 +33,7 @@ CurrentValue Limit ResourceType Unit
 0            25    endpoint     count
 ```
 
-Get resource usages of an AzureCDN profile
+Get resource usages of an AzureCDN profile.
 
 ## PARAMETERS
 

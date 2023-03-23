@@ -35,7 +35,7 @@ Name
 UrlRedirect
 ```
 
-
+Create an in-memory object for UrlRedirectAction.
 
 ## PARAMETERS
 

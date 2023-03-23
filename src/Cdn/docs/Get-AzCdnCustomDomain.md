@@ -46,7 +46,7 @@ customdomain001 testps-rg-da16jm
 customdomain002 testps-rg-da16jm
 ```
 
-List AzureCDN custom domains under the AzureCDN endpoint
+List AzureCDN custom domains under the AzureCDN endpoint.
 
 ### Example 2: Get an AzureCDN custom domain under the AzureCDN endpoint
 ```powershell
@@ -59,7 +59,7 @@ Name            ResourceGroupName
 customdomain001 testps-rg-da16jm
 ```
 
-Get an AzureCDN custom domain under the AzureCDN endpoint
+Get an AzureCDN custom domain under the AzureCDN endpoint.
 
 ## PARAMETERS
 

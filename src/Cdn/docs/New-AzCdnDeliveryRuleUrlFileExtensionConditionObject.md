@@ -34,7 +34,7 @@ Name
 UrlFileExtension
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleUrlFileExtensionCondition
+Create an in-memory object for AzureCDN DeliveryRuleUrlFileExtensionCondition.
 
 ## PARAMETERS
 

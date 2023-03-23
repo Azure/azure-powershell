@@ -37,7 +37,7 @@ ErrorCode IsValid Message
 None      True
 ```
 
-Check if the probe path is a valid path and the file can be accessed
+Check if the probe path is a valid path and the file can be accessed.
 
 ## PARAMETERS
 

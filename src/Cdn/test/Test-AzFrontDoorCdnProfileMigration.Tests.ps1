@@ -14,32 +14,40 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnProfileMig
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzFrontDoorCdnProfileMigration' -Tag 'LiveOnly' {
-    It 'CanExpanded' {
+Describe 'Test-AzFrontDoorCdnProfileMigration'{
+
+    BeforeAll {
+        $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
+        New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+
+        $Name = 'fdp-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorName : $($Name)"
+
+        $tags = @{"tag1" = "value1"; "tag2" = "value2"}
+        $hostName = "$Name.azurefd.net"
+        $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
+        $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" 
+        $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1" -HealthProbeMethod "Head" -EnabledState "Disabled"
+        $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
+        $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName
+        $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
+        $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
+        
+        New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+        $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/Frontdoors/$Name"
+    }
+
+    It 'CanExpanded' {
+        try
         {
-            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
-
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-
-                $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/profiles/$frontDoorCdnProfileName"
-
-                $canMigrate = Test-AzFrontDoorCdnProfileMigration -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId
-                $canMigrate.CanMigrate | Should -BeTrue
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
+            Write-Host -ForegroundColor Green "resource id: $($classicResourceReferenceId)"
+            $canMigrate = Test-AzFrontDoorCdnProfileMigration -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId
+            $canMigrate.CanMigrate | Should -BeTrue
+        } Finally
+        {
+            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
         }
     }
 }

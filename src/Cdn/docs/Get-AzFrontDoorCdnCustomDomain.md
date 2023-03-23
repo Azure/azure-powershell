@@ -46,7 +46,7 @@ domain001 testps-rg-da16jm
 domain002 testps-rg-da16jm
 ```
 
-List AzureFrontDoor customdomains under the profile
+List AzureFrontDoor customdomains under the profile.
 
 ### Example 2: Get an AzureFrontDoor customdomain under the profile
 ```powershell

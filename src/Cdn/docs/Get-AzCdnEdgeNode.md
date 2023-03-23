@@ -34,7 +34,7 @@ Premium_Verizon
 Custom_Verizon
 ```
 
-
+List AzureCDN Edge Noes
 
 ## PARAMETERS
 

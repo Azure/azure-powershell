@@ -39,6 +39,7 @@ Name   ResourceGroupName
 ori001 testps-rg-da16jm
 ```
 
+Create an AzureFrontDoor origin under the AzureFrontDoor origin group.
 
 
 ## PARAMETERS

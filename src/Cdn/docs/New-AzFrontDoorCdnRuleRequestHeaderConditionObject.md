@@ -35,7 +35,7 @@ Name
 RequestHeader
 ```
 
-
+Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 
 ## PARAMETERS
 

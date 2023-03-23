@@ -48,7 +48,7 @@ Name      ResourceGroupName
 policy001 testps-rg-da16jm
 ```
 
-Update an AzureFrontDoor security policy within the specified AzureFrontDoor profile
+Update an AzureFrontDoor security policy within the specified AzureFrontDoor profile.
 
 ## PARAMETERS
 

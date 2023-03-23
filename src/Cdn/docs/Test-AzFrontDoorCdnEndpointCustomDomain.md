@@ -41,7 +41,7 @@ CustomDomainValidated Message Reason
 True
 ```
 
-Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint
+Test an AzureFrontDoor domain within the specified AzureFrontDoor endpoint.
 
 ## PARAMETERS
 

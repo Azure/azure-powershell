@@ -48,7 +48,7 @@ Name   ResourceGroupName
 org001 testps-rg-da16jm
 ```
 
-Update an AzureCDN origin group under the AzureCDN endpoint
+Update an AzureCDN origin group under the AzureCDN endpoint.
 
 ## PARAMETERS
 

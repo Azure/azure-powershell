@@ -43,7 +43,7 @@ Location Name        ResourceGroupName
 WestUs   endptest001 testps-rg-da16jm
 ```
 
-Create an AzureCDN Endpoint under the AzureCDN profile
+Create an AzureCDN Endpoint under the AzureCDN profile.
 
 ## PARAMETERS
 

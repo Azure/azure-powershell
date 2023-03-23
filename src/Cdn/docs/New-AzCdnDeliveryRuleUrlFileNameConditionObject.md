@@ -34,7 +34,7 @@ Name
 UrlFileName
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleUrlFileNameCondition
+Create an in-memory object for AzureCDN DeliveryRuleUrlFileNameCondition.
 
 ## PARAMETERS
 

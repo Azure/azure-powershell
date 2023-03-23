@@ -48,7 +48,7 @@ Removes a content from AzureFrontDoor.
 Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -ContentPath /a
 ```
 
-
+Clear the content of an AzureFrontDoor endpoint.
 
 ## PARAMETERS
 

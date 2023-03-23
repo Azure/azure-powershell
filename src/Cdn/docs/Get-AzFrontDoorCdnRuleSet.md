@@ -46,7 +46,7 @@ ruleset001 testps-rg-da16jm
 ruleset002 testps-rg-da16jm
 ```
 
-List AzureFrontDoor rule sets under the profile
+List AzureFrontDoor rule sets under the profile.
 
 ### Example 2: Get an AzureFrontDoor rule set under the profile
 ```powershell
@@ -59,7 +59,7 @@ Name       ResourceGroupName
 ruleset001 testps-rg-da16jm
 ```
 
-Get an AzureFrontDoor rule set under the profile
+Get an AzureFrontDoor rule set under the profile.
 
 ## PARAMETERS
 
