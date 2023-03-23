@@ -29,6 +29,8 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
+.Link
+https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
 
 MIGRATIONPARAMETER <IMigrationParameters>: Request body for Migrate operation.
   ProfileName <String>: Name of the new profile that need to be created.
@@ -169,11 +171,15 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
     process {
         if (!(Get-Module -ListAvailable -Name Az.FrontDoor)) {
-            throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor".'
+            Write-Host("Starting the install Az.FrontDoor module.")
+            Install-Module -Name Az.FrontDoor
+            # throw 'Please install Az.FrontDoor module by entering "Install-Module -Name Az.FrontDoor".'
         }
         Import-Module -Name Az.FrontDoor
         if (!(Get-Module -ListAvailable -Name Az.KeyVault)) {
-            throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault".'
+            Write-Host("Starting the install Az.KeyVault module.")
+            Install-Module -Name Az.KeyVault
+            # throw 'Please install Az.KeyVault module by entering "Install-Module -Name Az.KeyVault".'
         }
         Import-Module -Name Az.KeyVault
 
@@ -210,7 +216,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             }
         }
         if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
-            throw "MigrationWebApplicationFirewallMapping parameter length should be equal to the number of waf policy in the profile."
+            throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of waf policy instance in the profile."
         }
 
         if (($PSBoundParameters.ContainsKey('IdentityType')) -ne ($allPoliciesWithVault.count -gt 0)) {
@@ -376,6 +382,9 @@ function ValidateWafPolicies{
         # Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
         $validateWafIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
         foreach ($policy in $wafPolicies) {
+
+            # add validation to check the migrateFrom and migrateTo cannot be null.
+            
             if ($policy.MigratedFromId.ToLower() -notmatch $validateWafIdReg) {
                 throw "The format of waf migrate from id: '$migrateFromId', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
             }

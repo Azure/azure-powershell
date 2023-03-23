@@ -169,14 +169,14 @@ directive:
   - where:
       subject: LogAnalytic(.*)
     hide: true
-  # Hide classicAfd migrate command  (customize)
+  # Hide classicAfd migrate command and customize
   - where:
       subject: CanProfileMigrate
     hide: true
   - where:
       subject: CommitProfileMigration
     hide: true
-  # Hide UpgradeSku command (customize)
+  # Hide UpgradeSku command and customize
   - where:
       subject: AFDProfileSku
       verb: Update|Upgrade
@@ -186,6 +186,11 @@ directive:
       subject: (.*)ProfileSecret
       verb: Test
     hide: true
+  # Hide validate the secret
+  # - where:
+  #     subject: MigrationWebApplicationFirewallMapping
+  #     verb: New
+  #   hide: true
 
   # Rename
   - where:

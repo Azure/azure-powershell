@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
+online version: https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
 schema: 2.0.0
 ---
 
@@ -324,4 +324,20 @@ To create the parameters described below, construct a hash table containing the 
   - `[MigratedToId <String>]`: Resource ID.
 
 ## RELATED LINKS
+
+https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
+
+MIGRATIONPARAMETER <IMigrationParameters>: Request body for Migrate operation.
+  ProfileName <String>: Name of the new profile that need to be created.
+  [ClassicResourceReferenceId <String>]: Resource ID of the classic front door instance.
+  [MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]: Waf mapping for the migrated profile
+    [MigratedFromId <String>]: Resource ID.
+    [MigratedToId <String>]: Resource ID.
+  [SkuName <SkuName?>]: Name of the pricing tier.
+
+MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[]>: Waf mapping for the migrated profile
+  [MigratedFromId <String>]: Resource ID.
+  [MigratedToId <String>]: Resource ID.
+
+
 
