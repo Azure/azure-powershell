@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed notice and attestation from `New-AzCognitiveServicesAccount`.
 
 ## Version 1.13.0
 * Updated CognitiveServices PowerShell to use 2022-12-01 version.

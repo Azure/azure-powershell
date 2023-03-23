@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzKustoAttachedDatabaseC
 Describe 'Test-AzKustoAttachedDatabaseConfigurationNameAvailability' {
     It 'CheckExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $databaseName = "testdatabase" + $env.rstr5
         
         $AttachedDatabaseConfigurationNameAvailability = Test-AzKustoAttachedDatabaseConfigurationNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName

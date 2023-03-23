@@ -192,9 +192,13 @@ namespace Microsoft.Azure.Commands.Network
                 },
                 IntrusionDetection = this.IntrusionDetection,
                 PrivateRange = this.PrivateRange,
-                ExplicitProxy = this.ExplicitProxy,
-                Snat = this.Snat
+                ExplicitProxy = this.ExplicitProxy
             };
+
+            if (this.Snat != null)
+            {
+                firewallPolicy.Snat = this.Snat;
+            }
 
             if (this.UserAssignedIdentityId != null)
             {

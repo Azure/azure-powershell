@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "ServerTrustCertificates", "2021-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ServerTrustGroups", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ServerVulnerabilityAssessments", "2020-11-01-preview"),
-                new Tuple<string, string, string>("Sql", "Servers", "2021-02-01-preview"),
+                new Tuple<string, string, string>("Sql", "Servers", "2022-08-01-preview"),
                 new Tuple<string, string, string>("Sql", "SyncGroups", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "SyncMembers", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "TdeCertificates", "2020-11-01-preview"),

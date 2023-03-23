@@ -38,7 +38,7 @@ Invoke-AzKustoDataConnectionValidation -InputObject $database -DataConnectionNam
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnectionValidationResult
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidationResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -63,7 +63,7 @@ INPUTOBJECT <IKustoIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.kusto/invoke-azkustodataconnectionvalidation
 #>
 function Invoke-AzKustoDataConnectionValidation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnectionValidationResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnectionValidationResult])]
 [CmdletBinding(DefaultParameterSetName='DataExpandedEventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='DataExpandedEventHub', Mandatory)]
@@ -110,7 +110,7 @@ param(
     ${InputObject},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IoTHub') })]
+    [ArgumentCompleter({ param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IotHub') })]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
     # Kind of the endpoint for the data connection
@@ -145,7 +145,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
+    [System.String]
     # The data format of the message.
     # Optionally the data format can be added to each message.
     ${DataFormat},
@@ -180,6 +180,36 @@ param(
     # The event hub messages compression type.
     ${Compression},
 
+    [Parameter(ParameterSetName='DataExpandedEventHub')]
+    [Parameter(ParameterSetName='DataExpandedEventGrid')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedEventGrid')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedEventHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The resource ID of a managed identity (system or user assigned) to be used to authenticate with external resources.
+    ${ManagedIdentityResourceId},
+
+    [Parameter(ParameterSetName='DataExpandedEventHub')]
+    [Parameter(ParameterSetName='DataExpandedIotHub')]
+    [Parameter(ParameterSetName='DataExpandedEventGrid')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedIotHub')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedEventGrid')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedEventHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting]
+    # Indication for database routing information from the data connection, by default only database routing information is allowed.
+    ${DatabaseRouting},
+
+    [Parameter(ParameterSetName='DataExpandedEventHub')]
+    [Parameter(ParameterSetName='DataExpandedIotHub')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedIotHub')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedEventHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.DateTime]
+    # When defined, the data connection retrieves existing Event hub events created since the Retrieval start date.
+    # It can only retrieve events retained by the Event hub, based on its retention period.
+    ${RetrievalStartDate},
+
     [Parameter(ParameterSetName='DataExpandedIotHub', Mandatory)]
     [Parameter(ParameterSetName='DataViaIdentityExpandedIotHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -200,6 +230,13 @@ param(
     [System.String]
     # The resource ID of the storage account where the data resides.
     ${StorageAccountResourceId},
+
+    [Parameter(ParameterSetName='DataExpandedEventGrid')]
+    [Parameter(ParameterSetName='DataViaIdentityExpandedEventGrid')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The resource ID of the event grid that is subscribed to the storage account events.
+    ${EventGridResourceId},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpandedEventGrid')]
     [Parameter(ParameterSetName='UpdateExpandedEventGrid')]
@@ -272,7 +309,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

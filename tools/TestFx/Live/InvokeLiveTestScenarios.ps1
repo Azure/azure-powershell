@@ -1,78 +1,47 @@
 param (
-    [Parameter(Mandatory, Position = 0)]
+    [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
-    [string] $BuildId,
+    [string] $RunPlatform,
 
-    [Parameter(Mandatory, Position = 1)]
-    [ValidateNotNullOrEmpty()]
-    [string] $OSVersion,
-
-    [Parameter(Mandatory, Position = 2)]
-    [ValidateNotNullOrEmpty()]
-    [string] $PSVersion,
-
-    [Parameter(Mandatory, Position = 3)]
+    [Parameter(Mandatory)]
     [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
     [string] $RepoLocation,
 
-    [Parameter(Mandatory, Position = 4)]
+    [Parameter(Mandatory)]
     [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
     [string] $DataLocation
 )
 
-function FillLiveTestCoverageAdditionalInfo {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory)]
-        [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
-        [string] $TestCoverageDataLocation,
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string] $BuildId,
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string] $OSVersion,
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string] $PSVersion,
-
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string] $ModuleName
-    )
-
-    $testCoverageUtility = $PSScriptRoot | Split-Path | Join-Path -ChildPath "Coverage" | Join-Path -ChildPath "TestCoverageUtility.psd1"
-    Import-Module $testCoverageUtility
-    $module = Get-Module -Name "Az.$ModuleName" -ListAvailable
-    $moduleDetails = Get-TestCoverageModuleDetails -Module $module
-
-    $testCoverageRawCsv = Join-Path -Path $TestCoverageDataLocation -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw" | Join-Path -ChildPath "Az.$ModuleName.csv"
-    (Import-Csv -LiteralPath $testCoverageRawCsv) |
-    Select-Object @{ Name = "BuildId"; Expression = { "$BuildId" } }, `
-        @{ Name = "OSVersion"; Expression = { "$OSVersion" } }, `
-        @{ Name = "PSVersion"; Expression = { "$PSVersion" } }, `
-        @{ Name = "Module"; Expression = { "$ModuleName" } }, `
-        "CommandName", @{ Name = "TotalCommands"; Expression = { "$($moduleDetails['TotalCommands'])" } }, `
-        "ParameterSetName", @{ Name = "TotalParameterSets"; Expression = { "$($moduleDetails['TotalParameterSets'])" } }, `
-        "Parameters", @{ Name = "TotalParameters"; Expression = { "$($moduleDetails['TotalParameters'])" } }, `
-        "SourceScript", "LineNumber", "StartDateTime", "EndDateTime", "IsSuccess" |
-    Export-Csv -LiteralPath $testCoverageRawCsv -Encoding utf8 -NoTypeInformation -Force
-}
-
 $srcDir = Join-Path -Path $RepoLocation -ChildPath "src"
-$liveScenarios = Get-ChildItem -LiteralPath $srcDir -Recurse -Directory -Filter "LiveTests" | ForEach-Object {
-    Get-ChildItem -Path (Join-Path -Path $_.FullName -ChildPath "TestLiveScenarios.ps1") -File
-}
+$liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
 $liveScenarios | ForEach-Object {
-    $moduleName = [regex]::match($_.FullName, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
-    if ($PSVersion -eq "latest") {
-        $PSVersion = (Get-Variable -Name PSVersionTable).Value.PSVersion.ToString()
-    }
+    $moduleName = [regex]::match($_, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
     Import-Module "./tools/TestFx/Assert.ps1" -Force
-    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $BuildId, $OSVersion, $PSVersion, $DataLocation -Force
+    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $DataLocation -Force
     . $_
-    FillLiveTestCoverageAdditionalInfo -TestCoverageDataLocation $DataLocation -BuildId $BuildId -OSVersion $OSVersion -PSVersion $PSVersion -ModuleName $moduleName
 }
+
+$accountsDir = Join-Path -Path $srcDir -ChildPath "Accounts"
+$accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
+if ($null -ne $accountsLiveScenario) {
+    Import-Module "./tools/TestFx/Assert.ps1" -Force
+    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, $DataLocation -Force
+    . $accountsLiveScenario
+}
+
+Write-Host "##[section]Waiting for all cleanup jobs to be completed." -ForegroundColor Green
+while (Get-Job -State Running) {
+    Start-Sleep -Seconds 30
+}
+Write-Host "##[section]All cleanup jobs are completed." -ForegroundColor Green
+
+Write-Host "##[group]Cleanup jobs information." -ForegroundColor Magenta
+
+Write-Host
+$cleanupJobs = Get-Job
+$cleanupJobs | Select-Object Name, Command, State, PSBeginTime, PSEndTime, Output
+Write-Host
+
+Write-Host "##[endgroup]" -ForegroundColor Magenta
+
+$cleanupJobs | Remove-Job
