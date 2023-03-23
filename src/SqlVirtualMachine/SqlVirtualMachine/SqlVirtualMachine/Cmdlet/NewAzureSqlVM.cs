@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
         /// Sql virtual machine to be updated
         /// </summary>
         [CmdletParameterBreakingChange("SqlManagementType", ChangeDescription = "SqlManagementType parameter is being deprecated")]
+        [CmdletParameterBreakingChange("SqlVM", ChangeDescription = "SqlVM parameter is being deprecated without being replaced.")]
         [Parameter(Mandatory = true,
             ParameterSetName = NameInputObject,
             ValueFromPipeline = true,
