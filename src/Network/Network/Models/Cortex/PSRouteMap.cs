@@ -33,6 +33,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSRouteMapRule> Rules { get; set; }
 
         [JsonIgnore]
+        public string AssociatedInboundConnectionsText
+        {
+            get { return JsonConvert.SerializeObject(AssociatedInboundConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string AssociatedOutboundConnectionsText
+        {
+            get { return JsonConvert.SerializeObject(AssociatedOutboundConnections, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
         public string RouteMapRulesText
         {
             get { return JsonConvert.SerializeObject(Rules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }

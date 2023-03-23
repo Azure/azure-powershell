@@ -1710,7 +1710,18 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VHubRouteTableReferenceNotFound", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to A valid RouteMap reference is required..
+        /// </summary>
+        internal static string VHubRouteMapReferenceNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("VHubRouteMapReferenceNotFound", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualNetworkGateway is required to create Virtual Router.
         /// </summary>
