@@ -44,7 +44,7 @@ Name            ResourceGroupName
 customdomain001 testps-rg-da16jm
 ```
 
-Enable an AzureCDN custom domain under the AzureCDN endpoint.
+Enable an AzureCDN custom domain under the AzureCDN endpoint
 
 ## PARAMETERS
 

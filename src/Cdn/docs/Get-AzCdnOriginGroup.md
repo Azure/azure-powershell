@@ -46,7 +46,7 @@ org001 testps-rg-da16jm
 org002 testps-rg-da16jm
 ```
 
-List AzureCDN origin groups under the AzureCDN endpoint.
+List AzureCDN origin groups under the AzureCDN endpoint
 
 ### Example 2: Get an AzureCDN origin group under the AzureCDN endpoint
 ```powershell
@@ -60,7 +60,7 @@ org001 testps-rg-da16jm
 
 ```
 
-Get an AzureCDN origin group under the AzureCDN endpoint.
+Get an AzureCDN origin group under the AzureCDN endpoint
 
 ## PARAMETERS
 

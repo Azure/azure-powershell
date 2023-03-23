@@ -35,7 +35,7 @@ Deletes an existing delivery rule within a rule set.
 Remove-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
 ```
 
-Delete an AzureFrontDoor delivery rule within the specified rule set.
+
 
 ## PARAMETERS
 

@@ -52,7 +52,7 @@ Global   cdn001           cdn  testps-rg-da16jm
 Global   cdn002           cdn  testps-rg-da16jm
 ```
 
-List AzureCDN profiles under the subscription.
+List AzureCDN profiles under the subscription
 
 ### Example 2: List AzureCDN profiles under the resource group
 ```powershell
@@ -66,7 +66,7 @@ Global   cdn001 cdn  testps-rg-da16jm
 Global   cdn002 cdn  testps-rg-da16jm
 ```
 
-List AzureCDN profiles under the resource group.
+List AzureCDN profiles under the resource group
 
 ### Example 3: Get an AzureCDN profile under the resource group
 ```powershell
@@ -79,7 +79,7 @@ Location Name   Kind ResourceGroupName
 Global   cdn001 cdn  testps-rg-da16jm
 ```
 
-Get an AzureCDN profile under the resource group.
+Get an AzureCDN profile under the resource group
 
 ## PARAMETERS
 

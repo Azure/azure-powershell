@@ -41,7 +41,7 @@ CustomDomainValidated Message Reason
 True
 ```
 
-Test an AzureCDN custom domain under the AzureCDN endpoint.
+Test an AzureCDN custom domain under the AzureCDN endpoint
 
 ## PARAMETERS
 

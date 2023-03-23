@@ -33,7 +33,7 @@ Name
 OriginGroupOverride
 ```
 
-Create an in-memory object for AzureCDN OriginGroupOverrideAction.
+Create an in-memory object for AzureCDN OriginGroupOverrideAction
 
 ## PARAMETERS
 

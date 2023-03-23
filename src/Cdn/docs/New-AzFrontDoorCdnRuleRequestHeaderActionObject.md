@@ -34,7 +34,7 @@ Name
 ModifyRequestHeader
 ```
 
-Create an in-memory object for DeliveryRuleRequestHeaderAction.
+
 
 ## PARAMETERS
 

@@ -45,7 +45,7 @@ Location Name   Kind ResourceGroupName
 Global   cdn001 cdn  testps-rg-da16jm
 ```
 
-Update an AzureCDN profile under the resource group.
+Update an AzureCDN profile under the resource group
 
 ### Example 2: Update an AzureCDN profile under the resource group via identity
 ```powershell
@@ -62,7 +62,7 @@ Location Name   Kind ResourceGroupName
 Global   cdn001 cdn  testps-rg-da16jm
 ```
 
-Update an AzureCDN profile under the resource group via identity.
+Update an AzureCDN profile under the resource group via identity
 
 ## PARAMETERS
 

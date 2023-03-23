@@ -33,7 +33,7 @@ Name
 IsDevice
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleIsDeviceCondition.
+Create an in-memory object for AzureCDN DeliveryRuleIsDeviceCondition
 
 ## PARAMETERS
 

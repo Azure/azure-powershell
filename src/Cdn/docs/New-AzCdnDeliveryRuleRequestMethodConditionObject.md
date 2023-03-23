@@ -33,7 +33,7 @@ Name
 RequestMethod
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleRequestMethodCondition.
+Create an in-memory object for AzureCDN DeliveryRuleRequestMethodCondition
 
 ## PARAMETERS
 

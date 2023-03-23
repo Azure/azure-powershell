@@ -34,7 +34,7 @@ CurrentValue Limit ResourceType Unit
 29           500   afdprofile   count
 ```
 
-Get the quota and actual usage of the CDN profiles under the given subscription.
+Get the quota and actual usage of the CDN profiles under the given subscription
 
 ## PARAMETERS
 

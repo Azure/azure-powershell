@@ -46,7 +46,7 @@ ori001 testps-rg-da16jm
 ori002 testps-rg-da16jm
 ```
 
-List AzureFrontDoor origins under the origin group.
+List AzureFrontDoor origins under the origin group
 
 ### Example 2: Get an AzureFrontDoor origin under the origin group
 ```powershell
@@ -59,7 +59,7 @@ Name   ResourceGroupName
 ori001 testps-rg-da16jm
 ```
 
-Get an AzureFrontDoor origin under the origin group.
+Get an AzureFrontDoor origin under the origin group
 
 ## PARAMETERS
 

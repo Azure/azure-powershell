@@ -33,7 +33,7 @@ Name
 RequestScheme
 ```
 
-Create an in-memory object for DeliveryRuleRequestSchemeCondition.
+
 
 ## PARAMETERS
 

@@ -34,7 +34,7 @@ Name
 QueryString
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleQueryStringCondition.
+Create an in-memory object for AzureCDN DeliveryRuleQueryStringCondition
 
 ## PARAMETERS
 

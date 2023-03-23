@@ -46,7 +46,7 @@ Name      ResourceGroupName
 domain001 testps-rg-da16jm
 ```
 
-Update an AzureFrontDoor customdomain under the profile.
+Update an AzureFrontDoor customdomain under the profile
 
 ## PARAMETERS
 

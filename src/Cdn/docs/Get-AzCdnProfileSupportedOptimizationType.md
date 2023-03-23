@@ -33,7 +33,7 @@ Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -P
 GeneralWebDelivery
 ```
 
-Gets the supported optimization types for the AzureCDN profile.
+Gets the supported optimization types for the AzureCDN profile
 
 ## PARAMETERS
 

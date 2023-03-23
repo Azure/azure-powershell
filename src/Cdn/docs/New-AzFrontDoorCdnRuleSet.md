@@ -33,7 +33,7 @@ Name       ResourceGroupName
 ruleset001 testps-rg-da16jm
 ```
 
-Creates a new rule set within the specified profile.
+
 
 ## PARAMETERS
 

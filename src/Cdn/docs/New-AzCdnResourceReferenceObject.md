@@ -21,19 +21,27 @@ Create an in-memory object for ResourceReference.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ResourceReference
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnResourceReferenceObject -Id Idtest
+{{ Add code here }}
 ```
 
 ```output
-Id
---
-Idtest
+{{ Add output here }}
 ```
 
-Create an in-memory object for ResourceReference.
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

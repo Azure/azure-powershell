@@ -35,7 +35,7 @@ Deletes an existing route with the specified route name under the specified subs
 Remove-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001
 ```
 
-Delete an AzureFrontDoor route under the AzureFrontDoor profile.
+Delete an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
 

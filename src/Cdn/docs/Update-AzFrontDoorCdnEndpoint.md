@@ -49,7 +49,7 @@ Location Name   ResourceGroupName
 Global   end001 testps-rg-da16jm
 ```
 
-Update an AzureFrontDoor endpoint under the profile.
+Update an AzureFrontDoor endpoint under the profile
 
 ## PARAMETERS
 

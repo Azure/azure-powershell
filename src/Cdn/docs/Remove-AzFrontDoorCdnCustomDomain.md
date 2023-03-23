@@ -35,7 +35,7 @@ Deletes an existing AzureFrontDoor domain with the specified domain name under t
 Remove-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001
 ```
 
-Delete an AzureFrontDoor customdomain under the profile.
+Delete an AzureFrontDoor customdomain under the profile
 
 ## PARAMETERS
 

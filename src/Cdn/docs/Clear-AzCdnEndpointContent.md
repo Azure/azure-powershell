@@ -48,7 +48,7 @@ Removes a content from CDN.
 Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
 ```
 
-Get content of an AzureCDN Endpoint under the AzureCDN profile.
+Get content of an AzureCDN Endpoint under the AzureCDN profile
 
 ## PARAMETERS
 

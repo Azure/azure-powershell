@@ -34,7 +34,7 @@ Name
 UrlPath
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleUrlPathCondition.
+Create an in-memory object for AzureCDN DeliveryRuleUrlPathCondition
 
 ## PARAMETERS
 

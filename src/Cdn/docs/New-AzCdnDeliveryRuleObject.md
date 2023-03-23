@@ -40,7 +40,7 @@ Name  Order
 Rule1 1
 ```
 
-Create an in-memory object for AzureCDN DeliveryRule.
+Create an in-memory object for AzureCDN DeliveryRule
 
 ## PARAMETERS
 

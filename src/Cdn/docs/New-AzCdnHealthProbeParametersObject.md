@@ -33,7 +33,7 @@ ProbeIntervalInSecond ProbePath          ProbeProtocol ProbeRequestType
 120                   /check-health.aspx Http          HEAD
 ```
 
-Create an in-memory object for AzureCDN HealthProbeParameters.
+Create an in-memory object for AzureCDN HealthProbeParameters
 
 ## PARAMETERS
 

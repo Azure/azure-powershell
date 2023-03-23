@@ -46,7 +46,7 @@ secret001 testps-rg-da16jm
 secret002 testps-rg-da16jm
 ```
 
-List AzureFrontDoor secret under the profile.
+List AzureFrontDoor secret under the profile
 
 ### Example 2: Get an AzureFrontDoor secret under the profile
 ```powershell
@@ -59,7 +59,7 @@ Name      ResourceGroupName
 secret001 testps-rg-da16jm
 ```
 
-Get an AzureFrontDoor secret under the profile.
+Get an AzureFrontDoor secret under the profile
 
 ## PARAMETERS
 

@@ -34,7 +34,7 @@ Name
 PostArgs
 ```
 
-Create an in-memory object for AzureCDN DeliveryRulePostArgsCondition.
+Create an in-memory object for AzureCDN DeliveryRulePostArgsCondition
 
 ## PARAMETERS
 

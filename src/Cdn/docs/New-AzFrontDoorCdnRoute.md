@@ -48,7 +48,7 @@ Name     ResourceGroupName
 route001 testps-rg-da16jm
 ```
 
-Create an AzureFrontDoor route under the AzureFrontDoor profile.
+Create an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
 

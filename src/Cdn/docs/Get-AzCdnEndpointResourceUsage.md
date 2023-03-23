@@ -40,7 +40,7 @@ CurrentValue Limit ResourceType          Unit
 1            10    originsPerOriginGroup count
 ```
 
-List resource useages of an AzureCDN Endpoint under the AzureCDN profile.
+List resource useages of an AzureCDN Endpoint under the AzureCDN profile
 
 ## PARAMETERS
 

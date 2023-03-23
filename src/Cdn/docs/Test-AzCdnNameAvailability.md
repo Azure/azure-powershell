@@ -42,7 +42,7 @@ Message            NameAvailable Reason
 Name not available False         Name is already in use
 ```
 
-Check AzureCDN endpint name availability.
+Check AzureCDN endpint name availability
 
 ## PARAMETERS
 

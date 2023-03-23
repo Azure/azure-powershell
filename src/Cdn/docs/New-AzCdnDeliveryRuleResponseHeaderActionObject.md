@@ -34,7 +34,7 @@ Name
 ModifyResponseHeader
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleResponseHeaderAction.
+Create an in-memory object for AzureCDN DeliveryRuleResponseHeaderAction
 
 ## PARAMETERS
 

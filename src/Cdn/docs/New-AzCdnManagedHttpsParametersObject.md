@@ -34,7 +34,7 @@ CertificateSource MinimumTlsVersion ProtocolType
 Cdn                                 TLS12
 ```
 
-Create an in-memory object for AzureCDN CdnManagedHttpsParameters.
+Create an in-memory object for AzureCDN CdnManagedHttpsParameters
 
 ## PARAMETERS
 

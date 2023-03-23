@@ -34,7 +34,7 @@ Name
 Cookies
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleCookiesCondition.
+Create an in-memory object for AzureCDN DeliveryRuleCookiesCondition
 
 ## PARAMETERS
 

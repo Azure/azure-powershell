@@ -46,7 +46,7 @@ origin1 testps-rg-da16jm
 origin2 testps-rg-da16jm
 ```
 
-List AzureCDN origins under the AzureCDN endpoint.
+List AzureCDN origins under the AzureCDN endpoint
 
 ### Example 2: Get an AzureCDN origin under the AzureCDN endpoint
 ```powershell
@@ -59,7 +59,7 @@ Name    ResourceGroupName
 origin1 testps-rg-da16jm
 ```
 
-Get an AzureCDN origin under the AzureCDN endpoint.
+Get an AzureCDN origin under the AzureCDN endpoint
 
 ## PARAMETERS
 

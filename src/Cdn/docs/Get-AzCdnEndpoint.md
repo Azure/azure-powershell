@@ -46,7 +46,7 @@ WestUs   endptest001 testps-rg-da16jm
 WestUs   endptest002 testps-rg-da16jm
 ```
 
-List AzureCDN Endpoints under the AzureCDN profile.
+List AzureCDN Endpoints under the AzureCDN profile
 
 ### Example 2: Get an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
@@ -59,7 +59,7 @@ Location Name        ResourceGroupName
 WestUs   endptest001 testps-rg-da16jm
 ```
 
-Get an AzureCDN Endpoint under the AzureCDN profile.
+Get an AzureCDN Endpoint under the AzureCDN profile
 
 ## PARAMETERS
 

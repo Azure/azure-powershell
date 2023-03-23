@@ -45,7 +45,7 @@ Name      ResourceGroupName
 policy001 testps-rg-da16jm
 ```
 
-List AzureFrontDoor security policies within the specified AzureFrontDoor profile.
+List AzureFrontDoor security policies within the specified AzureFrontDoor profile
 
 ### Example 2: Get an AzureFrontDoor security policy within the specified AzureFrontDoor profile
 ```powershell
@@ -58,7 +58,7 @@ Name      ResourceGroupName
 policy001 testps-rg-da16jm
 ```
 
-Get an AzureFrontDoor security policy within the specified AzureFrontDoor profile.
+Get an AzureFrontDoor security policy within the specified AzureFrontDoor profile
 
 ## PARAMETERS
 

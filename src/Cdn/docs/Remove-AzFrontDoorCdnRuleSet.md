@@ -35,7 +35,7 @@ Deletes an existing AzureFrontDoor rule set with the specified rule set name und
 Remove-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
 
-Delete an AzureFrontDoor rule set under the profile.
+
 
 ## PARAMETERS
 

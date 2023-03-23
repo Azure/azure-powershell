@@ -40,7 +40,7 @@ Location Name        ResourceGroupName
 WestUs   endptest001 testps-rg-da16jm
 ```
 
-Stop an AzureCDN Endpoint under the AzureCDN profile.
+Stop an AzureCDN Endpoint under the AzureCDN profile
 
 ## PARAMETERS
 

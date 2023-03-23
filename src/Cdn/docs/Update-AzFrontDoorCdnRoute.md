@@ -53,7 +53,7 @@ Name     ResourceGroupName
 route001 testps-rg-da16jm
 ```
 
-Update an AzureFrontDoor route under the AzureFrontDoor profile.
+Update an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
 

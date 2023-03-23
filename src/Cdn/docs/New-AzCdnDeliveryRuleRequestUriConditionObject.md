@@ -34,7 +34,7 @@ Name
 RequestUri
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleRequestUriCondition.
+Create an in-memory object for AzureCDN DeliveryRuleRequestUriCondition
 
 ## PARAMETERS
 

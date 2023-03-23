@@ -35,7 +35,7 @@ CertificateAuthority ExpirationDate SecretVersion Subject SubjectAlternativeName
                                                           {}                                True
 ```
 
-Create an in-memory object for AzureFrontDoor CustomerCertificateParameters.
+
 
 ## PARAMETERS
 

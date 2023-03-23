@@ -46,7 +46,7 @@ Name   ResourceGroupName
 org001 testps-rg-da16jm
 ```
 
-Update an AzureFrontDoor origin group under the profile.
+
 
 ## PARAMETERS
 

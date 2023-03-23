@@ -22,18 +22,27 @@ Create an in-memory object for UrlSigningAction.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for UrlSigningAction
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnUrlSigningActionObject -Name action01
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-action01
+{{ Add output here }}
 ```
 
-Create an in-memory object for UrlSigningAction.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

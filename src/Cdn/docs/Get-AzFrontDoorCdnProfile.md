@@ -52,7 +52,7 @@ Global   fdp-a345e9 frontdoor testps-rg-da16jm
 Global   fdp-t0jfb9 frontdoor testps-rg-zvt8sy
 ```
 
-List AzureFrontDoor profiles under the subscription.
+List AzureFrontDoor profiles under the subscription
 
 ### Example 2: List AzureFrontDoor profiles under the resource group
 ```powershell
@@ -66,7 +66,7 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 Global   fdp-a345e9 frontdoor testps-rg-da16jm
 ```
 
-List AzureFrontDoor profiles under the resource group.
+List AzureFrontDoor profiles under the resource group
 
 ### Example 3: Get an AzureFrontDoor profile under the resource group
 ```powershell
@@ -79,7 +79,7 @@ Location Name       Kind      ResourceGroupName
 Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
-Get an AzureFrontDoor profile under the resource group.
+Get an AzureFrontDoor profile under the resource group
 
 ## PARAMETERS
 

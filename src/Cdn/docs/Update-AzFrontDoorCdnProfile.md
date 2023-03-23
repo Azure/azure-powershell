@@ -47,7 +47,7 @@ Location Name       Kind      ResourceGroupName
 Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
-Update an AzureFrontDoor profile under the resource group.
+Update an AzureFrontDoor profile under the resource group
 
 ### Example 2: Update an AzureFrontDoor profile under the resource group via identity
 ```powershell
@@ -64,7 +64,7 @@ Location Name       Kind      ResourceGroupName
 Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
-Update an AzureFrontDoor profile under the resource group via identity.
+Update an AzureFrontDoor profile under the resource group via identity
 
 ## PARAMETERS
 

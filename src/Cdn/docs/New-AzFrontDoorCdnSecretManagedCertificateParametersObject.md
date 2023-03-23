@@ -21,17 +21,16 @@ Create an in-memory object for ManagedCertificateParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for ManagedCertificateParameters
+### Example 1: Add title here
 ```powershell
-New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type ManagedCert
+Add code here
 ```
 
 ```output
-ExpirationDate Subject
--------------- -------
+Add output here
 ```
 
-Create an in-memory object for ManagedCertificateParameters.
+
 
 ## PARAMETERS
 

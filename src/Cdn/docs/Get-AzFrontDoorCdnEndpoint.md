@@ -59,7 +59,7 @@ Location Name   ResourceGroupName
 Global   end001 testps-rg-da16jm
 ```
 
-Get an AzureFrontDoor endpoint under the profile.
+Get an AzureFrontDoor endpoint under the profile
 
 ## PARAMETERS
 

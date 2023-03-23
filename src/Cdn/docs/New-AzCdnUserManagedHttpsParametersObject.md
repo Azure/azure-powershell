@@ -25,18 +25,27 @@ Create an in-memory object for UserManagedHttpsParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for UserManagedHttpsParameters
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnUserManagedHttpsParametersObject -CertificateSource certSource -CertificateSourceParameterResourceGroupName rgName -CertificateSourceParameterSecretName secretName -CertificateSourceParameterSubscriptionId subId -CertificateSourceParameterVaultName kvName -ProtocolType typeTest
+{{ Add code here }}
 ```
 
 ```output
-CertificateSource MinimumTlsVersion ProtocolType
------------------ ----------------- ------------
-certSource                          typeTest
+{{ Add output here }}
 ```
 
-Create an in-memory object for UserManagedHttpsParameters.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

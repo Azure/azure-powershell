@@ -33,7 +33,7 @@ Name
 HttpVersion
 ```
 
-Create an in-memory object for AzureCDN DeliveryRuleHttpVersionCondition.
+Create an in-memory object for AzureCDN DeliveryRuleHttpVersionCondition
 
 ## PARAMETERS
 
