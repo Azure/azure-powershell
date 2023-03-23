@@ -172,12 +172,6 @@ Create an in-memory object for HealthProbeParameters.
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
 
-### [New-AzCdnMigrationParametersObject](New-AzCdnMigrationParametersObject.md)
-Create an in-memory object for MigrationParameters.
-
-### [New-AzCdnMigrationWebApplicationFirewallMappingObject](New-AzCdnMigrationWebApplicationFirewallMappingObject.md)
-Create an in-memory object for MigrationWebApplicationFirewallMapping.
-
 ### [New-AzCdnOrigin](New-AzCdnOrigin.md)
 Creates a new origin within the specified endpoint.
 
@@ -189,12 +183,6 @@ Create an in-memory object for OriginGroupOverrideAction.
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
-
-### [New-AzCdnProfileChangeSkuWafMappingObject](New-AzCdnProfileChangeSkuWafMappingObject.md)
-Create an in-memory object for ProfileChangeSkuWafMapping.
-
-### [New-AzCdnProfileUpgradeParametersObject](New-AzCdnProfileUpgradeParametersObject.md)
-Create an in-memory object for ProfileUpgradeParameters.
 
 ### [New-AzCdnResourceReferenceObject](New-AzCdnResourceReferenceObject.md)
 Create an in-memory object for ResourceReference.
@@ -223,6 +211,12 @@ Create an in-memory object for AFDDomainHttpsParameters.
 ### [New-AzFrontDoorCdnEndpoint](New-AzFrontDoorCdnEndpoint.md)
 Creates a new AzureFrontDoor endpoint with the specified endpoint name under the specified subscription, resource group and profile.
 
+### [New-AzFrontDoorCdnMigrationParametersObject](New-AzFrontDoorCdnMigrationParametersObject.md)
+Create an in-memory object for MigrationParameters.
+
+### [New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject](New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject.md)
+Create an in-memory object for MigrationWebApplicationFirewallMapping.
+
 ### [New-AzFrontDoorCdnOrigin](New-AzFrontDoorCdnOrigin.md)
 Creates a new origin within the specified origin group.
 
@@ -237,6 +231,12 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 
 ### [New-AzFrontDoorCdnProfile](New-AzFrontDoorCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+
+### [New-AzFrontDoorCdnProfileChangeSkuWafMappingObject](New-AzFrontDoorCdnProfileChangeSkuWafMappingObject.md)
+Create an in-memory object for ProfileChangeSkuWafMapping.
+
+### [New-AzFrontDoorCdnProfileUpgradeParametersObject](New-AzFrontDoorCdnProfileUpgradeParametersObject.md)
+Create an in-memory object for ProfileUpgradeParameters.
 
 ### [New-AzFrontDoorCdnResourceReferenceObject](New-AzFrontDoorCdnResourceReferenceObject.md)
 Create an in-memory object for ResourceReference.

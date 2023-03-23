@@ -256,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The subscription ID that identifies an Azure subscription.
+Azure Subscription ID.
 
 ```yaml
 Type: System.String

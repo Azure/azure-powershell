@@ -23,9 +23,9 @@ Create an in-memory object for ProfileUpgradeParameters.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileUpgradeParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnProfileUpgradeParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileUpgradeParametersObject
 #>
-function New-AzCdnProfileUpgradeParametersObject {
+function New-AzFrontDoorCdnProfileUpgradeParametersObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileUpgradeParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

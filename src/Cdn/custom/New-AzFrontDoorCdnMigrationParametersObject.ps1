@@ -23,9 +23,9 @@ Create an in-memory object for MigrationParameters.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationParameters
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnMigrationParametersObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationParametersObject
 #>
-function New-AzCdnMigrationParametersObject {
+function New-AzFrontDoorCdnMigrationParametersObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(

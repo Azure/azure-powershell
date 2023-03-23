@@ -16,36 +16,36 @@
 
 <#
 .Synopsis
-Create an in-memory object for MigrationWebApplicationFirewallMapping.
+Create an in-memory object for ProfileChangeSkuWafMapping.
 .Description
-Create an in-memory object for MigrationWebApplicationFirewallMapping.
+Create an in-memory object for ProfileChangeSkuWafMapping.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationWebApplicationFirewallMapping
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping
 .Link
-https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnMigrationWebApplicationFirewallMappingObject
+https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileChangeSkuWafMappingObject
 #>
-function New-AzCdnMigrationWebApplicationFirewallMappingObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationWebApplicationFirewallMapping')]
+function New-AzFrontDoorCdnProfileChangeSkuWafMappingObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
         [Parameter(HelpMessage="Resource ID.")]
         [string]
-        $MigratedFromId,
-        [Parameter(HelpMessage="Resource ID.")]
+        $ChangeToWafPolicyId,
+        [Parameter(Mandatory, HelpMessage="The security policy name.")]
         [string]
-        $MigratedToId
+        $SecurityPolicyName
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.MigrationWebApplicationFirewallMapping]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ProfileChangeSkuWafMapping]::New()
 
-        if ($PSBoundParameters.ContainsKey('MigratedFromId')) {
-            $Object.MigratedFromId = $MigratedFromId
+        if ($PSBoundParameters.ContainsKey('ChangeToWafPolicyId')) {
+            $Object.ChangeToWafPolicyId = $ChangeToWafPolicyId
         }
-        if ($PSBoundParameters.ContainsKey('MigratedToId')) {
-            $Object.MigratedToId = $MigratedToId
+        if ($PSBoundParameters.ContainsKey('SecurityPolicyName')) {
+            $Object.SecurityPolicyName = $SecurityPolicyName
         }
         return $Object
     }

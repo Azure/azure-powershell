@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnProfileChangeSkuWafMappingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileChangeSkuWafMappingObject
 schema: 2.0.0
 ---
 
-# New-AzCdnProfileChangeSkuWafMappingObject
+# New-AzFrontDoorCdnProfileChangeSkuWafMappingObject
 
 ## SYNOPSIS
 Create an in-memory object for ProfileChangeSkuWafMapping.
@@ -13,8 +13,8 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 ## SYNTAX
 
 ```
-New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName <String> [-ChangeToWafPolicyId <String>]
- [<CommonParameters>]
+New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName <String>
+ [-ChangeToWafPolicyId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 
 ### Example 1: Create an in-memory object for ProfileChangeSkuWafMapping.
 ```powershell
-New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
+New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
 ```
 
 ```output
@@ -33,7 +33,7 @@ SecurityPolicyName
 policyName
 ```
 
-Create an in-memory object for ProfileChangeSkuWafMapping.
+Create an in-memory object for ProfileChangeSkuWafMapping
 
 ## PARAMETERS
 

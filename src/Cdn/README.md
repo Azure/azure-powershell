@@ -104,11 +104,11 @@ directive:
     - DeliveryRuleRequestHeaderAction
     - DeliveryRuleResponseHeaderAction
     # Migration to AFDx
-    - MigrationParameters
-    - MigrationWebApplicationFirewallMapping
+    # - MigrationParameters
+    # - MigrationWebApplicationFirewallMapping
     # Upgrade sku
-    - ProfileUpgradeParameters
-    - ProfileChangeSkuWafMapping
+    # - ProfileUpgradeParameters
+    # - ProfileChangeSkuWafMapping
 
   - where:
       model-name: .*

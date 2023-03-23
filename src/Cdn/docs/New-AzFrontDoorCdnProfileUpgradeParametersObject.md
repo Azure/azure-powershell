@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnProfileUpgradeParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileUpgradeParametersObject
 schema: 2.0.0
 ---
 
-# New-AzCdnProfileUpgradeParametersObject
+# New-AzFrontDoorCdnProfileUpgradeParametersObject
 
 ## SYNOPSIS
 Create an in-memory object for ProfileUpgradeParameters.
@@ -13,7 +13,8 @@ Create an in-memory object for ProfileUpgradeParameters.
 ## SYNTAX
 
 ```
-New-AzCdnProfileUpgradeParametersObject -WafMappingList <IProfileChangeSkuWafMapping[]> [<CommonParameters>]
+New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList <IProfileChangeSkuWafMapping[]>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ Create an in-memory object for ProfileUpgradeParameters.
 ### Example 1: Create an in-memory object for ProfileUpgradeParameters.
 ```powershell
 $waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
 ```
 
 ```output
@@ -35,10 +36,10 @@ WafMappingList
 
 Create an in-memory object for ProfileUpgradeParameters.
 
-### Example 2: Create an in-memory object for ProfileUpgradeParameters.
+### Example 2: Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
 ```powershell
 $waf1 = New-AzCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-$upgrade = New-AzCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+$upgrade = New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
 $upgrade.ToString()
 ```
 
@@ -55,7 +56,7 @@ $upgrade.ToString()
 }
 ```
 
-Create an in-memory object for ProfileUpgradeParameters.
+Create an in-memory object for ProfileUpgradeParameters, show the details of the object.
 
 ## PARAMETERS
 

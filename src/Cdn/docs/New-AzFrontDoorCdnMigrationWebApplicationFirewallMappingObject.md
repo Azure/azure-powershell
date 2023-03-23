@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnMigrationWebApplicationFirewallMappingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject
 schema: 2.0.0
 ---
 
-# New-AzCdnMigrationWebApplicationFirewallMappingObject
+# New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject
 
 ## SYNOPSIS
 Create an in-memory object for MigrationWebApplicationFirewallMapping.
@@ -13,8 +13,8 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 ## SYNTAX
 
 ```
-New-AzCdnMigrationWebApplicationFirewallMappingObject [-MigratedFromId <String>] [-MigratedToId <String>]
- [<CommonParameters>]
+New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject [-MigratedFromId <String>]
+ [-MigratedToId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create an in-memory object for MigrationWebApplicationFirewallMapping.
 
 ### Example 1: Create an in-memory object for MigrationWebApplicationFirewallMapping.
 ```powershell
-New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
+New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
 ```
 
 ```output

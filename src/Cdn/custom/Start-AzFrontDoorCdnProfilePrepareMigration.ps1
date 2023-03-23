@@ -86,7 +86,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # To construct, see NOTES section for MIGRATIONWEBAPPLICATIONFIREWALLMAPPING properties and create a hash table.
         ${MigrationWebApplicationFirewallMapping},
 
-        [Parameter(HelpMessage='The subscription ID that identifies an Azure subscription.')]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -224,9 +224,10 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         }
         Write-Host("The parameters have been successfully validated.")
 
-        Write-Host("Starting to configure WAF policy upgrades.")
         # Deal with Waf policy
         if ($PSBoundParameters.ContainsKey('MigrationWebApplicationFirewallMapping')) {
+            Write-Host("Starting to configure WAF policy upgrades.")
+
             $hasManagedRule = $false
             $wafPolicies = $PSBoundParameters.MigrationWebApplicationFirewallMapping
             foreach ($policy in $wafPolicies) {
@@ -248,9 +249,6 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             foreach ($policy in $wafPolicies) {
                 $migrateToWafId = $policy.MigratedToId
                 $migrateToWafArray = $policy.MigratedToId.split("/")
-                if ($migrateToWafArray[8] -notmatch '(^[a-zA-Z]+)\w+$') {
-                    throw "The WAF name must begin with a letter, and may only contain numbers and letters."
-                }
                 try {
                     $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafArray[4] -Name $migrateToWafArray[8] -ErrorAction Stop
                 }
@@ -264,8 +262,8 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                     }
                 }
             }
+            Write-Host("WAF policy upgrades have been configured successfully.")
         }
-        Write-Host("WAF policy upgrades have been configured successfully.")
 
         # Create AFDx Profile
         # If create AfdX profile firstly, then an error ("Invalid migrated to waf reference.") will be thrown if the migrated-To-WAF is supposed to created. (not exists in current subscription)
@@ -276,12 +274,13 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         $PSBoundParameters.Add('ErrorAction', 'Stop')
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
 
-        Write-Host("Your Front Door profile with the configuration has been successfully created.")
+        Write-Host("Your new Front Door profile with the configuration has been successfully created.")
         
         # Deal with MSI parameter
-        Write-Host("Starting to enable managed identity.")
         # if ($PSBoundParameters.ContainsKey('IdentityType')) {
         if ($allPoliciesWithVault.count -gt 0) {
+            Write-Host("Starting to enable managed identity.")
+
             # Waiting for results of profile created return
             Start-Sleep(10)
 
@@ -316,25 +315,39 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                     RetryCommand -Command 'Set-AzKeyVaultAccessPolicy' -CommandArgs $commandInfo -RetryTimes 6 -SecondsDelay 20 -SuccessMessage $grantAccessSuccessMessage -RetryMessage $grantAccessRetryMessage -ErrorMessage $grantAccessErrorMessage
                 }
             }
-        }
 
-        Write-Host("Your have successfully grant managed identity to key vault. ")
+            Write-Host("Your have successfully granted managed identity to key vault.")
+        }
     }
 }
 
 function ValidateInputType {
+    # if (-not (${SubscriptionId} -is [guid])) {
+    #     throw "The SubscriptionId must be of type [guid]"
+    # }
     $validateResourceIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoors/(?<frontDoorName>[^/]+)$"
     if (${ClassicResourceReferenceId} -notmatch $validateResourceIdReg) {
-        throw "The format of ClassicResourceReferenceId: '${ClassicResourceReferenceId}', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoors/******' "
+        throw "The format of ClassicResourceReferenceId: '${ClassicResourceReferenceId}', supposed to be like $validateResourceIdReg"
     }
 
+    # $subscriptionId = $classicResourceId[2]
+    # if (${SubscriptionId} -ne $subscriptionId)
+    # {
+    #     throw "Subscription parameter:${SubscriptionId}, should be in the same subscriptionId in ClassicResourceReferenceId..."
+    # }
     $resourceGroup = $classicResourceId[4]
-    if ($resourceGroup -ne ${ResourceGroupName}) {
-        throw "ResourceGroupName parameter should be be the same as the resourceGroupName in ClassicResourceReferenceId..."
+    if (${ResourceGroupName} -ne $resourceGroup) {
+        throw "ResourceGroupName parameter: ${ResourceGroupName},  should be in the same resourceGroup in ClassicResourceReferenceId..."
     }
 
     if (${ProfileName} -notmatch '^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$') {
         throw "The value must begin with a letter or number, and may contain only letters, numbers or hyphens. It must end with a letter or number..."
+    }
+
+    if (${ProfileName}.Length -gt 260)
+    {
+        throw "Maximum 
+         ProfileName property is: 260."
     }
     
     # Check if the profile already exists in the resourceGroup
@@ -346,12 +359,12 @@ function ValidateInputType {
     }
 
     if ($existedProfile) {
-        throw "The profile name: '${ProfileName}' is already in use. Please use an unsued profile name."
+        throw "The profile name: '${ProfileName}' is already in use. Please use a new profile name."
     }
 
     if (($sku -ne "standard_azurefrontdoor") -and ($sku -ne "premium_azurefrontdoor"))
     {
-        throw "'$sku' + is not a valid SKU. Please use a valid AzureFrontDoor SkuName."
+        throw "'$sku' + is not a valid Sku. Only Standard_AzureFrontDoor and Premium_AzureFrontDoor Skus are allowed."
     }
 }
 
@@ -379,20 +392,39 @@ function ValidateWafPolicies{
     if (${MigrationWebApplicationFirewallMapping}.count -gt 0) {
         $wafPolicies = ${MigrationWebApplicationFirewallMapping}
         $theSubId = $wafPolicies[0].MigratedFromId.split("/")[2] 
+        
+        $validateWafIdReg = '/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourceGroups/(?<resourceGroupName>[^/]+/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/*'
+        $migrationFromError = "The format of the waf MigrateFromId should be like '$validateWafIdReg'."
+        $migrationToError = "The format of the waf MigrateToId should be like '$validateWafIdReg'."
+
         # Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
         $validateWafIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
         foreach ($policy in $wafPolicies) {
-
             # add validation to check the migrateFrom and migrateTo cannot be null.
+            if (-not $policy.MigratedFromId -or -not $policy.MigratedToId) {
+                throw 'MigratedFrom and MigratedTo properties cannot be empty'
+            }
             
             if ($policy.MigratedFromId.ToLower() -notmatch $validateWafIdReg) {
-                throw "The format of waf migrate from id: '$migrateFromId', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
+                throw $migrationFromError
             }
             if ($policy.MigratedToId.ToLower() -notmatch $validateWafIdReg) {
-                throw "The format of waf migrate to id: '${policy.MigratedToId.ToLower()}', supposed to be like '/subscriptions/*******/resourceGroups/****/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/******' "
+                throw $migrationToError
             }
-            if ($policy.MigratedToId.split("/")[2] -ne $theSubId) {
+
+            $migrateToSub = $policy.MigratedToId.split("/")[2]
+            $migrateToName = $policy.MigratedToId.split("/")[8]
+            if ($migrateToSub -ne $theSubId) {
                 throw "The selected or created waf policy should be in the same subscription as the classic Afd waf policy."
+            }
+            if ($migrateToName -notmatch '(^[a-zA-Z]+)\w+$') {
+                throw "The WAF policy name must begin with a letter, and may only contain numbers and letters."
+            }
+
+            if ($migrateToName.Length -gt 260)
+            {
+                throw "Maximum 
+                 WAF policy name property is: 260."
             }
         }
     }

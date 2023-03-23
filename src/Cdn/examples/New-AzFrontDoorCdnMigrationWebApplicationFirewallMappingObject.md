@@ -1,6 +1,6 @@
 ### Example 1: Create an in-memory object for MigrationWebApplicationFirewallMapping.
 ```powershell
-New-AzCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
+New-AzFrontDoorCdnMigrationWebApplicationFirewallMappingObject -MigratedFromId migrateFromId -MigratedToId migrateToId
 ```
 
 ```output

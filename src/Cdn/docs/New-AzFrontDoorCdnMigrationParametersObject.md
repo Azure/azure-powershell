@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnMigrationParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnMigrationParametersObject
 schema: 2.0.0
 ---
 
-# New-AzCdnMigrationParametersObject
+# New-AzFrontDoorCdnMigrationParametersObject
 
 ## SYNOPSIS
 Create an in-memory object for MigrationParameters.
@@ -13,7 +13,7 @@ Create an in-memory object for MigrationParameters.
 ## SYNTAX
 
 ```
-New-AzCdnMigrationParametersObject -ProfileName <String> [-ClassicResourceReferenceId <String>]
+New-AzFrontDoorCdnMigrationParametersObject -ProfileName <String> [-ClassicResourceReferenceId <String>]
  [-MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>] [-SkuName <SkuName>]
  [<CommonParameters>]
 ```
@@ -23,9 +23,9 @@ Create an in-memory object for MigrationParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for MigrationParameters.
+### Example 1: Create an in-memory object for MigrationParameters
 ```powershell
-New-AzCdnMigrationParametersObject -ProfileName test
+New-AzFrontDoorCdnMigrationParametersObject -ProfileName test
 ```
 
 ```output
