@@ -49,6 +49,7 @@ $cvgDir = Join-Path -Path $DataLocation -ChildPath "TestCoverageAnalysis" | Join
 if (Test-Path -LiteralPath $cvgDir -PathType Container) {
     Import-Module (Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities" | Join-Path -ChildPath "KustoUtility.psd1") -Force
 
+    $cvgRawCsv = Get-ChildItem -Path $cvgDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
     $cvgRawCsv | ForEach-Object {
         $moduleName = (Get-Item -Path $_).BaseName
         $simpleModuleName = $moduleName.Substring(3)
@@ -93,7 +94,6 @@ if (Test-Path -LiteralPath $cvgDir -PathType Container) {
         Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
     }
 
-    $cvgRawCsv = Get-ChildItem -Path $cvgDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
     Import-KustoDataFromCsv `
         -ServicePrincipalTenantId $KustoServicePrincipalTenantId `
         -ServicePrincipalId $KustoServicePrincipalId `
