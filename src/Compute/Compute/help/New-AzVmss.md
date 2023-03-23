@@ -529,7 +529,7 @@ The alias of the image for VMs in this Scale Set. If no value is provided, the "
 ```yaml
 Type: System.String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: Image
 
 Required: False
 Position: Named
