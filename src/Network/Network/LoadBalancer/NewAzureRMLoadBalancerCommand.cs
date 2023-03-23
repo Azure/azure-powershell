@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Commands.Network
                 vSku.Tier = this.Tier;
             }
 
-            if (vSku.Tier == "Global")
+            if ((vSku?.Tier ?? string.Empty) == "Global")
             {
                 if ((this.InboundNatRule?.Count() ?? 0) > 0 || (this.OutboundRule?.Count() ?? 0) > 0)
                 {

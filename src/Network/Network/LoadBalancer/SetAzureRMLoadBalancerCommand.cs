@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
                 }
 
-                if (this.LoadBalancer.Sku.Tier == "Global")
+                if ((this.LoadBalancer.Sku?.Tier ?? string.Empty) == "Global")
                 {
                     if ((this.LoadBalancer.InboundNatRules?.Count() ?? 0) > 0 || (this.LoadBalancer.OutboundRules?.Count() ?? 0) > 0)
                     {
