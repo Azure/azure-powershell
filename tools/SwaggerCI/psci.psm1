@@ -14,7 +14,7 @@ function Invoke-SwaggerCI {
 
     # region Phase 1
     foreach ($rd in $config.relatedReadmeMdFiles) {
-        $moduleName = $rd.split("/")[1]
+        $moduleName = $rd.split("/")[1] + ".DefaultTag"
         # Set moduleName to modulePath at first
         $rdFolder = Join-Path $config.specFolder (Split-Path $rd -Parent)
         $rdPath = Join-Path $rdFolder "readme.md"
@@ -92,16 +92,19 @@ function Build-Module {
         #Package
         $Null = . (Join-Path $moduleFolder "pack-module.ps1")
 
-        $moduleName = (Get-ChildItem -Path $moduleFolder -Recurse -Filter "*.nupkg").Name.Split('.')[1]
+        $package = Get-ChildItem -Path $moduleFolder -Recurse -Filter "*.nupkg"
+        $packageName = $package.Name
+        $packagePath = Split-Path $package.FullName -Parent
+        $packageFolder = [System.IO.Path]::GetRelativePath((Get-Location), $packagePath)
 
         #Generate result
-        $downloadUrl = $config.installInstructionInput.downloadUrlPrefix + "Az.$moduleName/Az.$moduleName.0.1.0.nupkg"
-        $downloadCmd = "curl -L $downloadUrl -o Az.$moduleName.0.1.0.nupkg"
+        $downloadUrl = $config.installInstructionInput.downloadUrlPrefix + "Az.$moduleName/$packageName"
+        $downloadCmd = "curl -L $downloadUrl -o $packageName"
         $package = @{
             packageName = "Az.$moduleName"
-            path = @("swaggerci/$moduleName")
+            path = @([System.IO.Path]::GetRelativePath((Get-Location), $moduleFolder))
             readmeMd = @($rd)
-            artifacts = @("swaggerci/$moduleName/bin/Az.$moduleName.0.1.0.nupkg")
+            artifacts = @("$packageFolder/$packageName")
             installInstructions = @{full = "Please download the package through the curl command '$downloadCmd', and then you could have a try locally."}
             result = "succeeded"
         }
