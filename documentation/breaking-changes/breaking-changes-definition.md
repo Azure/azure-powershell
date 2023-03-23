@@ -1,3 +1,6 @@
+> **WARNING:**<br>
+> **This page is moved to [Breaking Change Definition](https://eng.ms/docs/cloud-ai-platform/azure-core/azure-management-and-platforms/control-plane-bburns/azure-cli-tools-azure-cli-powershell-and-terraform/azure-cli-tools/devguide/azps/breaking-change/breaking-changes-definition). DO NOT UPDATE IT HERE!**<br>
+
 # Breaking Change Definition
 
 This document lists the various types of breaking changes and how to call them out in your code using the [breaking change attributes](./breaking-changes-attribute-help.md).

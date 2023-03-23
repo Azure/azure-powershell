@@ -12,17 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.SqlVirtualMachine.Common;
 using Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Cmdlet
 {
     /// <summary>
     /// This class implements the Get-AzSqlVM cmdlet. It will retrieve the information relative to one or more Sql Virtual Machine on Azure.
     /// </summary>
+    [CmdletOutputBreakingChange(typeof(AzureSqlVMModel), DeprecatedOutputProperties = new String[] { "SqlManagementType" })]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlVM", DefaultParameterSetName = ParameterSet.ResourceGroupOnly)]
     [OutputType(typeof(AzureSqlVMModel))]
     public class GetAzureSqlVM : AzureSqlVMCmdletBase

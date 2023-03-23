@@ -15,8 +15,8 @@ Describe 'Remove-AzKustoDatabasePrincipal' {
     }
     It 'RemoveExpanded' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
 
         [array]$databasePrincipals = Get-AzKustoDatabasePrincipal -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName
         $databasePrincipal = $databasePrincipals[0]

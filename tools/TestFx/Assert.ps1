@@ -395,7 +395,7 @@ function Assert-Match {
   }
 
   if (!($actual -match $regex) > $null) {
-      throw $message
+    throw $message
   }
 
   return $true

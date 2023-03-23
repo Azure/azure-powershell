@@ -1,14 +1,14 @@
 ﻿
 
 function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Adds or removes Retention Rule to existing Policy')]
 
     param(
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Backup Policy Object')]
         [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Backup Policy Object')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupPolicy]
         ${Policy},
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name')]
@@ -25,7 +25,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
         ${RemoveRule},
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Life cycles associated with the retention rule.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ISourceLifeCycle[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ISourceLifeCycle[]]
         ${LifeCycles}
     )
 
@@ -55,16 +55,16 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
                 $manifest = LoadManifest -DatasourceType $DatasourceType
                 if($manifest.policySettings.disableAddRetentionRule -eq $true)
                 {
-                    $message = "Adding New Retention Rule is not supported for " + $DatasourceType + " datasource Type."
+                    $message = "Adding New Retention Rule is not supported for " + $DatasourceType + " datasource type."
                     throw $message
                 }
 
                 if($manifest.policySettings.supportedRetentionTags.Contains($Name.ToString()) -eq $false)
                 {
-                    throw "Selected Retention Rule " + $Name  + " is not applicable for Datasource Type " + $clientDatasourceType
+                    throw "Selected Retention Rule " + $Name  + " is not applicable for datasource type " + $DatasourceType
                 }
 
-                $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.AzureRetentionRule]::new()
+                $newRetentionRule = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.AzureRetentionRule]::new()
                 $newRetentionRule.ObjectType = "AzureRetentionRule"
                 $newRetentionRule.IsDefault = $IsDefault
                 $newRetentionRule.Name = $Name
