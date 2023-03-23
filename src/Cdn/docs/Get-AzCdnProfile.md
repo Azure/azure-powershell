@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCdnProfile
 
 ## SYNOPSIS
-
+Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Defa
 ```
 
 ## DESCRIPTION
-
+Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## EXAMPLES
 
@@ -84,7 +84,7 @@ Get an AzureCDN profile under the resource group
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -99,6 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -114,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -129,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -144,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
@@ -178,7 +179,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <ICdnIdentity>`: 
+`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

@@ -45,7 +45,7 @@ Gets an existing origin within an endpoint.
 Gets an existing origin group within an endpoint.
 
 ### [Get-AzCdnProfile](Get-AzCdnProfile.md)
-
+Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [Get-AzCdnProfileResourceUsage](Get-AzCdnProfileResourceUsage.md)
 Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile.
@@ -76,7 +76,7 @@ Gets an existing origin group within a profile.
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile..
 
 ### [Get-AzFrontDoorCdnProfile](Get-AzFrontDoorCdnProfile.md)
-
+Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [Get-AzFrontDoorCdnProfileResourceUsage](Get-AzFrontDoorCdnProfileResourceUsage.md)
 Checks the quota and actual usage of endpoints under the given Azure Front Door profile.
