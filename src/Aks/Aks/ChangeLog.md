@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that system variable `$IsWindows` is undefined in `Windows PowerShell`.
 * Decoupled AutoMapper dependency, replaced with AdapterHelper.
 
 ## Version 5.3.1
