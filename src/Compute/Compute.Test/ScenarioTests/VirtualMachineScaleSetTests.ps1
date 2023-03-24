@@ -4338,6 +4338,24 @@ function Test-VirtualMachineScaleSetOSImageScheduledEvents
         Assert-True {$vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable};
         Assert-AreEqual 'PT15M' $vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout;
 
+
+        # Update-AzVmss test
+        $vmssName2 = 'vs2' + $rgname;
+        $vmss2 = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -UpgradePolicy "Automatic" `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test2' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test2' -AdminUsername $username -AdminPassword $password `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
+            -ImageReferenceOffer $offer -ImageReferenceSku $imgSku -ImageReferenceVersion $version `
+            -ImageReferencePublisher $publisher;
+        $result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName2 -VirtualMachineScaleSet $vmss2;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+        Assert-False {$vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable};
+        Assert-Null $vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout;
+
+        Update-AzVmss -VMScaleSetName $vmssName2 -ResourceGroupName $rgname -OSImageScheduledEvent -OSImageScheduledEventNotBeforeTimeoutInMinutes "PT15M";
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
+        Assert-True {$vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable};
+        Assert-AreEqual 'PT15M' $vmss.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout;
     } 
     finally
     {
