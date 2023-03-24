@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added CRR support for new region Malaysia South.
 
 ## Version 6.4.0
 * Added support for updating CrossSubscriptionRestoreState of the vault
