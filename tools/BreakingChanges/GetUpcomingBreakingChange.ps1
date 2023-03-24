@@ -12,7 +12,7 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-# To get upcoming breaking chan ge info, you need to build az first
+# To get upcoming breaking change info, you need to build az first
 # ```powershell
 # dotnet msbuild build.proj /t:build /p:configuration=debug
 # Import-Module ./tools/BreakingChanges/GetUpcomingBreakingChange.ps1
@@ -503,7 +503,8 @@ Function Compare-BreakingChangeVersion {
         if ($localPart -lt $galleryPart) {
             # Local version is older than the gallery version
             return $false
-        } elseif ($localPart -gt $galleryPart) {
+        }
+        elseif ($localPart -gt $galleryPart) {
             return $true
         }
     }
@@ -533,16 +534,13 @@ Function Get-BreakingChangeVersion {
     $galleryAz = Find-Module -Name Az -Repository "PSGallery"
 
     $Result = @{}
-    foreach ($localDependency in $localAz.RequiredModules)
-    {
+    foreach ($localDependency in $localAz.RequiredModules) {
         $galleryDependency = $galleryAz.Dependencies | Where-Object { $_.Name -eq $localDependency.ModuleName }
         $galleryVersion = $galleryDependency.RequiredVersion
-        if ([string]::IsNullOrEmpty($galleryVersion))
-        {
+        if ([string]::IsNullOrEmpty($galleryVersion)) {
             $galleryVersion = $galleryDependency.MinimumVersion
         }
-        if ([string]::IsNullOrEmpty($localDependency.RequiredVersion))
-        {
+        if ([string]::IsNullOrEmpty($localDependency.RequiredVersion)) {
             # Az.Accounts
             $versionSplit = $localDependency.ModuleVersion.Split('.')
             $versionSplit[1] = 1 + $versionSplit[1]
