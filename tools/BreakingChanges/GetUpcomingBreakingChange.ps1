@@ -483,6 +483,93 @@ Function Export-BreakingChangeMessageOfCmdlet {
     Return $Result
 }
 
+Function Compare-BreakingChangeVersion {
+    [CmdletBinding()]
+    Param (
+        [Parameter()]
+        [String]
+        $LocalVersion,
+        [Parameter()]
+        [String]
+        $GalleryVersion
+    )
+    $localVersionSplit = $LocalVersion.Split('.')
+    $galleryVersionSplit = $GalleryVersion.Split('.')
+
+    for ($i = 0; $i -lt $localVersionSplit.Length; $i++) {
+        $localPart = [int]$localVersionSplit[$i]
+        $galleryPart = [int]$galleryVersionSplit[$i]
+
+        if ($localPart -lt $galleryPart) {
+            # Local version is older than the gallery version
+            return $false
+        } elseif ($localPart -gt $galleryPart) {
+            return $true
+        }
+    }
+    return $false
+}
+
+Function Get-NextLocalVersion {
+    [CmdletBinding()]
+    Param (
+        [Parameter()]
+        [String]
+        $GalleryVersion
+    )
+    $versionSplit = $GalleryVersion.Split('.')
+    $versionSplit[2] = 1 + $versionSplit[2]
+    return $versionSplit -join "."
+}
+
+Function Get-BreakingChangeVersion {
+    [CmdletBinding()]
+    Param (
+        [Parameter()]
+        [String]
+        $ModuleName
+    )
+    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\..\Az\Az.psd1"
+    $galleryAz = Find-Module -Name Az -Repository "PSGallery"
+
+    $Result = @{}
+    foreach ($localDependency in $localAz.RequiredModules)
+    {
+        $galleryDependency = $galleryAz.Dependencies | Where-Object { $_.Name -eq $localDependency.ModuleName }
+        $galleryVersion = $galleryDependency.RequiredVersion
+        if ([string]::IsNullOrEmpty($galleryVersion))
+        {
+            $galleryVersion = $galleryDependency.MinimumVersion
+        }
+        if ([string]::IsNullOrEmpty($localDependency.RequiredVersion))
+        {
+            # Az.Accounts
+            $versionSplit = $localDependency.ModuleVersion.Split('.')
+            $versionSplit[1] = 1 + $versionSplit[1]
+            $versionSplit[2] = "0"
+            $nextLocalVerion = $versionSplit -join "."
+            if (!(Compare-BreakingChangeVersion -LocalVersion $nextLocalVerion -GalleryVersion $galleryVersion)) {
+                $nextLocalVerion = Get-NextLocalVersion($galleryVersion)
+            }
+            $Result[$localDependency.ModuleName] = $nextLocalVerion
+        }
+        else {
+            # other modules
+            $localVersion = $localDependency.RequiredVersion
+            $versionSplit = $localDependency.RequiredVersion.Split('.')
+            $versionSplit[0] = 1 + $versionSplit[0]
+            $versionSplit[1] = "0"
+            $versionSplit[2] = "0"
+            $nextLocalVerion = $versionSplit -join "."
+            if (!(Compare-BreakingChangeVersion -LocalVersion $nextLocalVerion -GalleryVersion $galleryVersion)) {
+                $nextLocalVerion = Get-NextLocalVersion($galleryVersion)
+            }
+            $Result[$localDependency.ModuleName] = $nextLocalVerion
+        }
+    }
+    Return $Result
+}
+
 Function Export-BreakingChangeMessageOfModule {
     [CmdletBinding()]
     Param (
@@ -491,14 +578,17 @@ Function Export-BreakingChangeMessageOfModule {
         $ArtifactsPath,
         [Parameter()]
         [String]
-        $ModuleName
+        $ModuleName,
+        [Parameter()]
+        [String]
+        $NextBreakingChangeVersion
     )
     $ModuleBreakingChangeInfo = Get-BreakingChangeInfoOfModule -ModuleName $ModuleName -ArtifactsPath $ArtifactsPath
     $ModuleBreakingChangeInfo = Merge-BreakingChangeInfoOfModule -ModuleBreakingChangeInfo $ModuleBreakingChangeInfo
     If ($ModuleBreakingChangeInfo.Count -eq 0) {
         Return ""
     }
-    $Result = "`n## $ModuleName`n"
+    $Result = "`n## $ModuleName $NextBreakingChangeVersion`n"
 
     ForEach ($CmdletName In ($ModuleBreakingChangeInfo.Keys | Sort-Object)) {
         $Result += "`n### ``$CmdletName```n"
@@ -520,8 +610,9 @@ Function Export-AllBreakingChangeMessageUnderArtifacts {
     )
     $Result = "# Upcoming breaking changes in Azure PowerShell`n"
     $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
+    $module2version = Get-BreakingChangeVersion($ModuleName)
     ForEach ($ModuleName In $AllModuleList) {
-        $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $ModuleName
+        $Result += Export-BreakingChangeMessageOfModule -ArtifactsPath $ArtifactsPath -ModuleName $ModuleName -NextBreakingChangeVersion $module2version[$ModuleName]
     }
     $Result | Out-File -FilePath $MarkdownPath -Force
 }
