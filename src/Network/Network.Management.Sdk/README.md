@@ -12,6 +12,7 @@ autorest.cmd README.md --version=v2
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+title: NetworkManagementClient
 csharp: true
 clear-output-folder: true
 reflect-api-versions: true
