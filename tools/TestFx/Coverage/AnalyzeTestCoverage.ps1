@@ -47,22 +47,24 @@ $cvgRawDir = Join-Path -Path $cvgRootDir -ChildPath "Raw"
 $cvgResultsDir = Join-Path -Path $cvgRootDir -ChildPath "Results"
 
 if (!(Test-Path -LiteralPath $cvgResultsDir -PathType Container)) {
-    New-Item -Path $cvgRootDir -Name "Results" -ItemType Directory -Force
+    New-Item -Path $cvgRootDir -Name "Results" -ItemType Directory -Force | Out-Null
 }
 else {
     Get-ChildItem -Path $cvgResultsDir | Remove-Item -Force
 }
 
 $cvgBaselineCsv = Join-Path -Path $cvgResultsDir -ChildPath "Baseline.csv"
-({} | Select-Object "Module", "TotalCommands", "TestedCommands", "CommandCoverage", "TotalParameterSets", "TestedParameterSets", "ParameterSetCoverage", "TotalParameters", "TestedParameters", "ParameterCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgBaselineCsv -Encoding utf8 -Force
+({} | Select-Object "Module", "CommandCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgBaselineCsv -Encoding utf8 -Force
+
+$cvgReportCsv = Join-Path -Path $cvgResultsDir -ChildPath "Report.csv"
+({} | Select-Object "Module", "TotalCommands", "TestedCommands", "CommandCoverage", "TotalParameterSets", "TestedParameterSets", "ParameterSetCoverage", "TotalParameters", "TestedParameters", "ParameterCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgReportCsv -Encoding utf8 -Force
 
 $overallCommandsCount = 0
 $overallTestedCommandsCount = 0
 
 $allModules = Get-ChildItem -Path $debugDir -Filter "Az.*" -Directory -Name
 foreach ($moduleName in $allModules) {
-    Write-Host "##[group]Start analyzing test coverage for module `"$moduleName`"" -ForegroundColor Cyan
-
+    $simpleModuleName = $moduleName.Substring(3)
     $hasRawData = $true
 
     $cvgRawCsv = Join-Path -Path $cvgRawDir -ChildPath "$moduleName.csv"
@@ -102,6 +104,22 @@ foreach ($moduleName in $allModules) {
     }
 
     if ($hasRawData) {
+        (Import-Csv -Path $cvgRawCsv) |
+        Select-Object `
+        @{ Name = "Module"; Expression = { $simpleModuleName } }, `
+        @{ Name = "CommandName"; Expression = { $_.CommandName } }, `
+        @{ Name = "TotalCommands"; Expression = { $totalCommandsCount } }, `
+        @{ Name = "ParameterSetName"; Expression = { $_.ParameterSetName } }, `
+        @{ Name = "TotalParameterSets"; Expression = { $totalParameterSetsCount } }, `
+        @{ Name = "Parameters"; Expression = { $_.Parameters } }, `
+        @{ Name = "TotalParameters"; Expression = { $totalParametersCount } }, `
+        @{ Name = "SourceScript"; Expression = { $_.SourceScript } }, `
+        @{ Name = "LineNumber"; Expression = { $_.LineNumber } }, `
+        @{ Name = "StartDateTime"; Expression = { $_.StartDateTime } }, `
+        @{ Name = "EndDateTime"; Expression = { $_.EndDateTime } }, `
+        @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } } |
+        Export-Csv -Path $cvgRawCsv -Encoding utf8 -NoTypeInformation -Force
+
         $rawCsv = Import-Csv -LiteralPath $cvgRawCsv | Where-Object IsSuccess -eq $true | Select-Object CommandName, ParameterSetName, Parameters -Unique
 
         $csvGroupByCommand = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName | Select-Object -ExpandProperty CommandName -Unique
@@ -148,6 +166,12 @@ foreach ($moduleName in $allModules) {
 
     $cvgBaseline = [PSCustomObject]@{
         Module               = $moduleName
+        CommandCoverage      = $cvgCommand
+    }
+    $cvgBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
+
+    $cvgReport = [PSCustomObject]@{
+        Module               = $moduleName
         TotalCommands        = $totalCommandsCount
         TestedCommands       = $totalTestedCommandsCount
         CommandCoverage      = $cvgCommand
@@ -158,7 +182,7 @@ foreach ($moduleName in $allModules) {
         TestedParameters     = $totalTestedParametersCount
         ParameterCoverage    = $cvgParameter
     }
-    $cvgBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
+    $cvgReport | Export-Csv -Path $cvgReportCsv -Encoding utf8 -NoTypeInformation -Append -Force
 
     Write-Host "##[section]`"$moduleName`" total commands # : $totalCommandsCount" -ForegroundColor Green
     Write-Host "##[section]`"$moduleName`" tested commands # : $totalTestedCommandsCount" -ForegroundColor Green
@@ -168,14 +192,13 @@ foreach ($moduleName in $allModules) {
 }
 
 $cvgOverall = ($overallTestedCommandsCount / $overallCommandsCount).ToString("P2")
-
-$cvgOverallBaseline = [PSCustomObject]@{
+$cvgReportOverall = [PSCustomObject]@{
     Module          = "Total"
     TotalCommands   = $overallCommandsCount
     TestedCommands  = $overallTestedCommandsCount
     CommandCoverage = $cvgOverall
 }
-$cvgOverallBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
+$cvgReportOverall | Export-Csv -Path $cvgReportCsv -Encoding utf8 -NoTypeInformation -Append -Force
 
 Write-Host "##[section]Overall commands # : $overallCommandsCount" -ForegroundColor Magenta
 Write-Host "##[section]Overall tested commands # : $overallTestedCommandsCount" -ForegroundColor Magenta

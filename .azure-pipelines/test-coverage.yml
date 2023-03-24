@@ -109,17 +109,17 @@ jobs:
     inputs:
       targetType: inline
       script: |
-        $baselineJson = Get-Item -Path ./tools/TestFx/Coverage/Baseline.json
-        if (Test-Path $baselineJson) {
-          Remove-Item -Path $baselineJson -Force
+        $blDir = "./tools/TestFx/Coverage"
+        $blCsv = Join-Path -Path $blDir -ChildPath "Baseline.csv"
+        if (Test-Path -Path $blCsv) {
+          Remove-Item -Path $blCsv -Force
         }
 
-        git checkout main
         git checkout -b testcoverage-baseline
-        Copy-Item -Path ./artifacts/Debug/TestCoverageAnalysis/Results/Baseline.json -Destination $baselineJson
+        Copy-Item -Path "$(Pipeline.Workspace)/artifacts/TestCoverageAnalysis/Results/Baseline.csv" -Destination $blDir
         git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
         git config user.name "azure-powershell-bot"
-        git add $baselineJson
+        git add $blCsv
         git commit -m "Update with the latest test coverage data"
         git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git
         git push origin testcoverage-baseline --force
