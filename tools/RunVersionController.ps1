@@ -103,11 +103,11 @@ function Update-AzurecmdFile
     )
 
     $AzurecmdFile = Get-Item -Path "$RootPath\setup\generate.ps1"
-    (Get-Content $AzurecmdFile.FullName) | % {
+    (Get-Content $AzurecmdFile.FullName) | ForEach-Object {
         $_ -replace "Microsoft Azure PowerShell - (\w*)(\s)(\d*)", "Microsoft Azure PowerShell - $Release"
     } | Set-Content -Path $AzurecmdFile.FullName -Encoding UTF8
 
-    (Get-Content $AzurecmdFile.FullName) | % {
+    (Get-Content $AzurecmdFile.FullName) | ForEach-Object {
         $_ -replace "$OldVersion", "$NewVersion"
     } | Set-Content -Path $AzurecmdFile.FullName -Encoding UTF8
 }
@@ -124,7 +124,7 @@ function Update-AzurePowerShellFile
     )
 
     $AzurePowerShellFile = Get-Item -Path "$RootPath\src\Common\Commands.Common\AzurePowerShell.cs"
-    (Get-Content $AzurePowerShellFile.FullName) | % {
+    (Get-Content $AzurePowerShellFile.FullName) | ForEach-Object {
         $_ -replace "$OldVersion", "$NewVersion"
     } | Set-Content -Path $AzurePowerShellFile.FullName -Encoding UTF8
 }
@@ -141,7 +141,7 @@ function Get-ModuleMetadata
     $ProjectPaths = @( "$RootPath\src" )
 
     .($PSScriptRoot + "\PreloadToolDll.ps1")
-    $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
+    $ModuleManifestFile = $ProjectPaths | ForEach-Object { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | Where-Object { $_.Name.Replace(".psd1", "") -eq $Module -and `
     # Skip psd1 of generated modules in HYBRID modules because they are not really used
     # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
                                                                                                           $_.FullName -inotlike "*autorest*" -and `
@@ -187,7 +187,7 @@ function Update-Image-Releases
 
 function Get-ExistSerializedCmdletJsonFile
 {
-    return $(ls "$PSScriptRoot\Tools.Common\SerializedCmdlets").Name
+    return $(Get-ChildItem "$PSScriptRoot\Tools.Common\SerializedCmdlets").Name
 }
 
 function Bump-AzVersion
@@ -202,7 +202,7 @@ function Bump-AzVersion
     $updatedModules = @()
     foreach ($localDependency in $localAz.RequiredModules)
     {
-        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.ModuleName }
+        $galleryDependency = $galleryAz.Dependencies | Where-Object { $_.Name -eq $localDependency.ModuleName }
         if ($null -eq $galleryDependency)
         {
             $updatedModules += $localDependency.ModuleName
@@ -324,9 +324,9 @@ function Update-AzPreview
 
     $AzPrviewTemplate = Get-Item -Path "$PSScriptRoot\AzPreview.psd1.template"
     $AzPrviewTemplateContent = Get-Content -Path $AzPrviewTemplate.FullName
-    $AzPreviewPsd1Content = $AzPrviewTemplateContent | % {
+    $AzPreviewPsd1Content = $AzPrviewTemplateContent | ForEach-Object {
         $_ -replace "ModuleVersion = 'x.x.x'", "ModuleVersion = '$AzPrviewVersion'"
-    } | % {
+    } | ForEach-Object {
         $_ -replace "$rawRequiredModulesString", "$requiredModulesString"
     }
 

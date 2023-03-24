@@ -89,23 +89,8 @@ Function Find-CmdletBreakingChange {
         $CmdletInfo
     )
     $Result = @{}
-    #Region get breaking change info of cmdlet
-    # Result["DeprecationVersion"] = xxx.xx
     $customAttributes = $CmdletInfo.ImplementingType.GetTypeInfo().GetCustomAttributes([System.object], $true)
-    ForEach ($customAttribute In $customAttributes) {
-        If ($customAttribute.AttributeType.Name -eq 'CmdletDeprecationAttribute') {
-            $DeprecationVersion = $customAttribute.ConstructorArguments[0].Value
-            $Result["DeprecationVersion"] = $DeprecationVersion
-            Write-Host "this Cmdlet is deprecated since version $DeprecationVersion"
-        }
-    }
-    # $DeprecationAttributes = $customAttributes | Where-Object { $_.AttributeType.Name -eq 'CmdletDeprecationAttribute' }
-    # if ($DeprecationAttributes) {
-    #     $DeprecationVersion = $DeprecationAttributes.ConstructorArguments[0].Value
-    #     $Result["DeprecationVersion"] = $DeprecationVersion
-    #     Write-Host "this Cmdlet is deprecated since version $DeprecationVersion"
-    # }
-    # $DeprecationVersion = $DeprecationAttributes.ConstructorArguments[0].Value
+    
     ForEach ($customAttribute In $customAttributes) {
         If (Test-TypeIsGenericBreakingChangeAttribute $customAttribute.TypeId) {
             $tmp = Get-AttributeSpecificMessage($customAttribute)
@@ -253,9 +238,6 @@ Function Get-BreakingChangeOfGeneratedModule {
                 $AllBreakingChangeMessages[$CmdletName][$ParameterSetName].Add($BreakingChangeMessage)
             }
         }
-        $DeprecationAttributes = $BreakingChangeCmdlet.CustomAttributes | Where-Object { $_.AttributeType.Name -eq 'CmdletDeprecationAttribute' }
-        $DeprecationVersion = $DeprecationAttributes.ConstructorArguments[0].Value
-        Write-Host "Cmdlet $CmdletName is deprecated since version $DeprecationVersion"
     }
 
     ForEach ($Cmdlet in $Cmdlets) {
@@ -312,9 +294,6 @@ Function Get-BreakingChangeOfGeneratedModule {
                 $AllBreakingChangeMessages[$CmdletName][$AllParameterSetsName].Add($BreakingChangeMessage)
             }
         }
-        $DeprecationAttributes = $BreakingChangeCmdlet.CustomAttributes | Where-Object { $_.AttributeType.Name -eq 'CmdletDeprecationAttribute' }
-        $DeprecationVersion = $DeprecationAttributes.ConstructorArguments[0].Value
-        Write-Host "Cmdlet $CmdletName is deprecated since version $DeprecateVersion"
     }
 
     $Cmdlets = $ModuleInfo.ExportedCommands.Values
