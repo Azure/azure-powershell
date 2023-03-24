@@ -26,6 +26,7 @@ Description for Gets the list of users of a static site.
 ```powershell
 Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal04 -Authprovider all
 ```
+
 ```output
 Kind Name                             Type
 ---- ----                             ----
@@ -52,7 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

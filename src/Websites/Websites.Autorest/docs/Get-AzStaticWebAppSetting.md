@@ -26,6 +26,7 @@ Description for Gets the application settings of a static site.
 ```powershell
 Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb00
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----
@@ -37,7 +38,8 @@ This command gets the application settings of a static site.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

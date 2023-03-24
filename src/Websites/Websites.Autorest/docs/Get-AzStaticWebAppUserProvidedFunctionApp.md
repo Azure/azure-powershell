@@ -51,6 +51,7 @@ Description for Gets the details of the user provided function app registered wi
 ```powershell
 Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -61,8 +62,9 @@ This command lists the details of the user provided function apps registered wit
 
 ### Example 2: List the details of the user provided function apps registered with a static site build
 ```powershell
-Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
+ Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default'
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -75,6 +77,7 @@ This command lists the details of the user provided function apps registered wit
 ```powershell
 Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -FunctionAppName $env.functionAppName01
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -87,6 +90,7 @@ This command lists the details of the user provided function apps registered.
 ```powershell
 Get-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName resourceGroup -Name staticweb00 -EnvironmentName 'default' -FunctionAppName $env.functionAppName01
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -99,6 +103,7 @@ This command gets the details of the user provided function app registered with 
 ```powershell
 Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName lucas-rg-test -Name staticweb-pwsh02 -FunctionAppName functionapp-portal02 -FunctionAppResourceId '/subscriptions/xxxxxx-xx-xxx-xxxx-xxxxx/resourcegroups/xxx-xx-xxxx/providers/Microsoft.Web/sites/functionapp-portal02' -FunctionAppRegion 'Central US' -EnvironmentName 5 | Get-AzStaticWebAppUserProvidedFunctionApp 
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -110,7 +115,8 @@ This command gets the details of the user provided function app registered with 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -237,7 +243,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

@@ -43,6 +43,7 @@ Description for Gets the details of a static site.
 ```powershell
 Get-AzStaticWebApp
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----
@@ -56,6 +57,7 @@ This commands list all static web applications under a subscription.
 ```powershell
 Get-AzStaticWebApp -ResourceGroupName azure-rg-test
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----
@@ -69,6 +71,7 @@ This commands list all static web applications under a resource group.
 ```powershell
 Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----
@@ -81,6 +84,7 @@ This commands gets a satic web application by name.
 ```powershell
 New-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' | Get-AzStaticWebApp
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----
@@ -92,7 +96,8 @@ This commands gets a satic web application by pipline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -189,7 +194,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

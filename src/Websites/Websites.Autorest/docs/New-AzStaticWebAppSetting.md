@@ -34,6 +34,7 @@ Description for Creates or updates the app settings of a static site.
 ```powershell
 New-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb01 -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----
@@ -46,6 +47,7 @@ This command creates or updates the app settings of a static site.
 ```powershell
 Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb01 | New-AzStaticWebAppSetting -AppSetting @{'function01' = 'value01'; 'function02' = 'value02' }
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----
@@ -72,7 +74,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -215,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

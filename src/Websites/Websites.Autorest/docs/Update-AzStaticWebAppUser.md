@@ -34,6 +34,7 @@ Description for Updates a user entry with the listed roles
 ```powershell
 Update-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'github' -Userid 'fa4eba85fa9f4a42b5300dc4c7bb45aa' -Role 'contributor'
 ```
+
 ```output
 Kind Name                             Type
 ---- ----                             ----
@@ -46,6 +47,7 @@ This command updates a user entry with the listed roles.
 ```powershell
 Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal01 -Authprovider 'all'  | Update-AzStaticWebAppUser -Role 'contributor'
 ```
+
 ```output
 Kind Name                             Type
 ---- ----                             ----
@@ -73,7 +75,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -246,7 +249,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.
