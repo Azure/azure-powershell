@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
     public class PsAadOrApiKeyAuthOption
     {
         [Ps1Xml(Label = "AadAuthFailureMode", Target = ViewControl.List, Position = 0)]
-        public PSAadAuthFailureMode AadAuthFailureMode { get; set; }
+        public PSAadAuthFailureMode? AadAuthFailureMode { get; set; }
 
         public static explicit operator PsAadOrApiKeyAuthOption(DataPlaneAadOrApiKeyAuthOption v)
         {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             {
                 return new PsAadOrApiKeyAuthOption
                 {
-                    AadAuthFailureMode = (PSAadAuthFailureMode)v.AadAuthFailureMode
+                    AadAuthFailureMode = (PSAadAuthFailureMode)aadAuthFailureMode.Value
                 };
             }
             else

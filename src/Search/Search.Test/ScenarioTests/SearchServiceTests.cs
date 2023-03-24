@@ -40,6 +40,20 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceDisableLocalAuth()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceDisableLocalAuth");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSearchServiceApiKeyOnlyAuth()
+        {
+            TestRunner.RunTestScript("Test-NewAzSearchServiceApiKeyOnlyAuth");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewSearchServiceL1()
         {
             TestRunner.RunTestScript("Test-NewAzSearchServiceL1");
@@ -85,6 +99,13 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         public void TestSetSearchService()
         {
             TestRunner.RunTestScript("Test-SetAzSearchService");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetSearchServiceAuthOptions()
+        {
+            TestRunner.RunTestScript("Test-SetAzSearchServiceAuthOptions");
         }
 
         [Fact]

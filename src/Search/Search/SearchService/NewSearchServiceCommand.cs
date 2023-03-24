@@ -93,7 +93,12 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Mandatory = false,
             HelpMessage = AuthOptionsMessage)]
-        public PSAuthOptions AuthOptions { get; set; }
+        public PSAuthOptionName? AuthOption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AadAuthFailureModeMessage)]
+        public PSAadAuthFailureMode? AadAuthFailureMode { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -107,6 +112,20 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 Type = IdentityType.Value
             } : null;
 
+            PSAuthOptions authOptions = null;
+            if (AuthOption == PSAuthOptionName.ApiKeyOnly)
+            {
+                authOptions = new PSAuthOptions { ApiKeyOnly = new PSObject() };
+            }
+            else if (AuthOption == PSAuthOptionName.AadOrApiKey)
+            {
+                authOptions = new PSAuthOptions { AadOrApiKey = new PsAadOrApiKeyAuthOption() };
+                if (AadAuthFailureMode.HasValue)
+                {
+                    authOptions.AadOrApiKey.AadAuthFailureMode = AadAuthFailureMode;
+                }
+            }
+
             Azure.Management.Search.Models.SearchService searchService =
                 new Azure.Management.Search.Models.SearchService(
                     name: Name,
@@ -119,7 +138,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     identity: (Identity)identity,
                     networkRuleSet: (NetworkRuleSet)networkRuleSet,
                     disableLocalAuth: DisableLocalAuth,
-                    authOptions: (DataPlaneAuthOptions)AuthOptions);
+                    authOptions: (DataPlaneAuthOptions)authOptions);
 
             if (ShouldProcess(Name, Resources.CreateSearchService))
             {

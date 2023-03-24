@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         public PSObject ApiKeyOnly { get; set; }
 
         [Ps1Xml(Label = "AadOrApiKey", Target = ViewControl.List, Position = 0)]
-        public PsAadOrApiKeyAuthOption AadOrApiKey { get; private set; }
+        public PsAadOrApiKeyAuthOption AadOrApiKey { get; set; }
 
         public static explicit operator PSAuthOptions(DataPlaneAuthOptions v)
         {

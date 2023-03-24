@@ -94,7 +94,12 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Mandatory = false,
             HelpMessage = AuthOptionsMessage)]
-        public PSAuthOptions AuthOptions { get; set; }
+        public PSAuthOptionName? AuthOption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AadAuthFailureModeMessage)]
+        public PSAadAuthFailureMode? AadAuthFailureMode { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -127,6 +132,20 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                         Type = IdentityType.Value
                     } : null;
 
+                    PSAuthOptions authOptions = null;
+                    if (AuthOption == PSAuthOptionName.ApiKeyOnly)
+                    {
+                        authOptions = new PSAuthOptions { ApiKeyOnly = new PSObject() };
+                    }
+                    else if (AuthOption == PSAuthOptionName.AadOrApiKey)
+                    {
+                        authOptions = new PSAuthOptions { AadOrApiKey = new PsAadOrApiKeyAuthOption() };
+                        if (AadAuthFailureMode.HasValue)
+                        {
+                            authOptions.AadOrApiKey.AadAuthFailureMode = AadAuthFailureMode;
+                        }
+                    }
+
                     // UPDATE
                     var update = new SearchServiceUpdate
                     {
@@ -146,7 +165,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                         ReplicaCount = ReplicaCount,
 
                         DisableLocalAuth = DisableLocalAuth,
-                        AuthOptions = (DataPlaneAuthOptions)AuthOptions
+                        AuthOptions = (DataPlaneAuthOptions)authOptions
                     };
 
                     service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, update).Result.Body;

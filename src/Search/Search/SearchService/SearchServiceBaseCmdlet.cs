@@ -55,7 +55,8 @@ namespace Microsoft.Azure.Commands.Management.Search
         protected const string IdentityMessage = "(Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)";
         protected const string IPRulesMessage = "(Optional) Azure Cognitive Search Service IP rules";
         protected const string DisableLocalAuthMessage = "(Optional) Disable API key authentication for the Azure Cognitive Search service (true/false/null)";
-        protected const string AuthOptionsMessage = "(Optional) Whether to use API key authentication only, RBAC authentication only, or allow both for the Azure Cognitive Search service";
+        protected const string AuthOptionsMessage = "(Optional) Whether to only allow API key authentication or both API key authentication and AAD authentication for the Azure Cognitive Search service";
+        protected const string AadAuthFailureModeMessage = "(Optional) What status code to return when failing AAD authentication, if both api key and AAD authenticaiton are allowed for the Azure Cognitive Search service";
 
         protected const string AsJobMessage = "Run cmdlet in the background";
 
