@@ -24,6 +24,7 @@
 * Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
 * Added new descriptive and versioned alias names for the Linux image aliases.
 * Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
+* Added `-CustomData`, `-AdminPassword`, and `-ExactVersion` parameters to `Invoke-AzVMReimage`.
 
 ## Version 5.6.0
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
