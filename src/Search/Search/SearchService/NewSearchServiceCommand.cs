@@ -85,6 +85,16 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = IPRulesMessage)]
         public PSIpRule[] IPRuleList { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DisableLocalAuthMessage)]
+        public bool? DisableLocalAuth { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AuthOptionsMessage)]
+        public PSAuthOptions AuthOptions { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
@@ -97,7 +107,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 Type = IdentityType.Value
             } : null;
 
-            Azure.Management.Search.Models.SearchService searchService = 
+            Azure.Management.Search.Models.SearchService searchService =
                 new Azure.Management.Search.Models.SearchService(
                     name: Name,
                     location: Location,
@@ -107,7 +117,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     hostingMode: (HostingMode?)HostingMode,
                     publicNetworkAccess: (PublicNetworkAccess?)PublicNetworkAccess,
                     identity: (Identity)identity,
-                    networkRuleSet: (NetworkRuleSet)networkRuleSet);
+                    networkRuleSet: (NetworkRuleSet)networkRuleSet,
+                    disableLocalAuth: DisableLocalAuth,
+                    authOptions: (DataPlaneAuthOptions)AuthOptions);
 
             if (ShouldProcess(Name, Resources.CreateSearchService))
             {

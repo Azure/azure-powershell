@@ -86,6 +86,16 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = IPRulesMessage)]
         public PSIpRule[] IPRuleList { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DisableLocalAuthMessage)]
+        public bool? DisableLocalAuth { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AuthOptionsMessage)]
+        public PSAuthOptions AuthOptions { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
@@ -134,6 +144,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
                         PartitionCount = PartitionCount,
                         ReplicaCount = ReplicaCount,
+
+                        DisableLocalAuth = DisableLocalAuth,
+                        AuthOptions = (DataPlaneAuthOptions)AuthOptions
                     };
 
                     service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, update).Result.Body;
