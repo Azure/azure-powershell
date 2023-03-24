@@ -44,48 +44,23 @@ param (
 $script:AzPSCommonParameters = @("-Break", "-Confirm", "-Debug", "-DefaultProfile", "-ErrorAction", "-ErrorVariable", "-HttpPipelineAppend", "-HttpPipelinePrepend", "-InformationAction", "-InformationVariable",
     "-OutBuffer", "-OutVariable", "-PassThru", "-PipelineVariable", "-Proxy", "-ProxyCredential", "-ProxyUseDefaultCredentials", "-Verbose", "-WarningAction", "-WarningVariable", "-WhatIf")
 
-
 $cvgDir = Join-Path -Path $DataLocation -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
 if (Test-Path -LiteralPath $cvgDir -PathType Container) {
     Import-Module (Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities" | Join-Path -ChildPath "KustoUtility.psd1") -Force
 
     $cvgRawCsv = Get-ChildItem -Path $cvgDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
     $cvgRawCsv | ForEach-Object {
-        $moduleName = (Get-Item -Path $_).BaseName
-        $simpleModuleName = $moduleName.Substring(3)
-        $module = Get-Module -Name $moduleName
-        if ($null -eq $module) {
-            $module = Get-Module -Name $moduleName -ListAvailable
-        }
-
-        $moduleCommands = $module.ExportedCmdlets.Keys + $module.ExportedFunctions.Keys
-        $totalCommands = $moduleCommands.Count
-
-        $totalParameterSets = 0
-        $totalParameters = 0
-        $moduleCommands | ForEach-Object {
-            $command = Get-Command -Name $_
-            $totalParameterSets += $command.ParameterSets.Count
-
-            $commandParams = $command.Parameters
-            $commandParams.Keys | ForEach-Object {
-                if ($_ -notin $script:AzPSCommonParameters) {
-                    $totalParameters += $commandParams[$_].ParameterSets.Count
-                }
-            }
-        }
-
         (Import-Csv -Path $_) |
         Select-Object `
         @{ Name = "Source"; Expression = { $Source } }, `
         @{ Name = "BuildId"; Expression = { $BuildId } }, `
-        @{ Name = "Module"; Expression = { $simpleModuleName } }, `
+        @{ Name = "Module"; Expression = { $_.Module } }, `
         @{ Name = "CommandName"; Expression = { $_.CommandName } }, `
-        @{ Name = "TotalCommands"; Expression = { $totalCommands } }, `
+        @{ Name = "TotalCommands"; Expression = { $_.TotalCommands } }, `
         @{ Name = "ParameterSetName"; Expression = { $_.ParameterSetName } }, `
-        @{ Name = "TotalParameterSets"; Expression = { $totalParameterSets } }, `
+        @{ Name = "TotalParameterSets"; Expression = { $_.TotalParameterSets } }, `
         @{ Name = "Parameters"; Expression = { $_.Parameters } }, `
-        @{ Name = "TotalParameters"; Expression = { $totalParameters } }, `
+        @{ Name = "TotalParameters"; Expression = { $_.TotalParameters } }, `
         @{ Name = "SourceScript"; Expression = { $_.SourceScript } }, `
         @{ Name = "LineNumber"; Expression = { $_.LineNumber } }, `
         @{ Name = "StartDateTime"; Expression = { $_.StartDateTime } }, `
