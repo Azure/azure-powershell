@@ -413,7 +413,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Family = pool.Sku.Family,
                 LicenseType = pool.LicenseType,
                 MaintenanceConfigurationId = pool.MaintenanceConfigurationId,
-                HighAvailabilityReplicaCount = pool.HighAvailabilityReplicaCount
+                HighAvailabilityReplicaCount = pool.HighAvailabilityReplicaCount,
+                PreferredEnclaveType = pool.PreferredEnclaveType
             };
 
             return model;
