@@ -1,0 +1,146 @@
+{
+    "name": "AppPageViews",
+    "time": "2023-03-26T17:22:02.6621845Z",
+    "iKey": "7df6ff70-8353-4672-80d6-568517fed090",
+    "tags": {
+        "ai.device.osVersion": "Microsoft Windows NT 10.0.23403.0",
+        "ai.cloud.roleInstance": "yeminglaptop",
+        "ai.session.id": "e3725cbe-a23b-40ea-a4ca-9e6e3de38d71",
+        "ai.user.id": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+        "ai.user.accountId": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+        "ai.location.ip": "0.0.0.0",
+        "ai.internal.sdkVersion": "dotnetc:2.21.0-429"
+    },
+    "data": {
+        "baseType": "PageViewData",
+        "baseData": {
+            "ver": 2,
+            "name": "cmdletInvocation",
+            "duration": "00:00:00.4524106",
+            "properties": {
+                "HashMacAddress": "216fdee55b82491c7bf4b827d2da6b9635ed0cb6f197800b9d8a6ba975045352",
+                "subscription-id": "9e223dbe-3399-4e19-88eb-0975f02ac87f",
+                "CommandParameterSetName": "__AllParameterSets",
+                "end-time": "2023-03-26T17:22:03.1149051+00:00",
+                "UserAgent": "AzurePowershell/Az9.5.0",
+                "ModuleName": "Az.Accounts",
+                "InstallationId": "dc5e1c39-0dc2-4863-9e2b-ded67ac0ce64",
+                "IsSuccess": "True",
+                "OS": "Microsoft Windows NT 10.0.23403.0",
+                "CommandInvocationName": "update-azconfig",
+                "x-ms-client-request-id": "8f522774-f4ed-40c2-9e39-11cc969d14fd",
+                "telemetry-version": "2",
+                "Version": "9.5.0",
+                "ModuleVersion": "2.12.1",
+                "HostName": "ConsoleHost",
+                "tenant-id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+                "CommandParameters": "-EnableLoginByWam False",
+                "HostVersion": "7.3.2",
+                "PowerShellVersion": "7.3.2",
+                "start-time": "2023-03-26T17:22:02.6621845+00:00",
+                "Command": "Update-AzConfig",
+                "AccountsVersion": "2.12.1",
+                "UserId": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+                "duration": "00:00:00.4524106"
+            }
+        }
+    }
+}
+{
+    "name": "AppPageViews",
+    "time": "2023-03-26T17:22:30.3149410Z",
+    "iKey": "7df6ff70-8353-4672-80d6-568517fed090",
+    "tags": {
+        "ai.device.osVersion": "Microsoft Windows NT 10.0.23403.0",
+        "ai.cloud.roleInstance": "yeminglaptop",
+        "ai.session.id": "e3725cbe-a23b-40ea-a4ca-9e6e3de38d71",
+        "ai.user.id": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+        "ai.user.accountId": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+        "ai.location.ip": "0.0.0.0",
+        "ai.internal.sdkVersion": "dotnetc:2.21.0-429"
+    },
+    "data": {
+        "baseType": "PageViewData",
+        "baseData": {
+            "ver": 2,
+            "name": "cmdletInvocation",
+            "duration": "00:00:00.0291382",
+            "properties": {
+                "HashMacAddress": "216fdee55b82491c7bf4b827d2da6b9635ed0cb6f197800b9d8a6ba975045352",
+                "subscription-id": "9e223dbe-3399-4e19-88eb-0975f02ac87f",
+                "CommandParameterSetName": "__AllParameterSets",
+                "end-time": "2023-03-26T17:22:30.3441084+00:00",
+                "UserAgent": "AzurePowershell/Az9.5.0",
+                "ModuleName": "Az.Accounts",
+                "InstallationId": "dc5e1c39-0dc2-4863-9e2b-ded67ac0ce64",
+                "IsSuccess": "True",
+                "OS": "Microsoft Windows NT 10.0.23403.0",
+                "CommandInvocationName": "update-azconfig",
+                "x-ms-client-request-id": "5a0d78b8-73c1-4b68-9aeb-3f58e656b535",
+                "telemetry-version": "2",
+                "Version": "9.5.0",
+                "interval": "00:00:26.9903969",
+                "ModuleVersion": "2.12.1",
+                "HostName": "ConsoleHost",
+                "tenant-id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+                "CommandParameters": "-DefaultSubscriptionForLogin ***",
+                "HostVersion": "7.3.2",
+                "PowerShellVersion": "7.3.2",
+                "start-time": "2023-03-26T17:22:30.3149410+00:00",
+                "Command": "Update-AzConfig",
+                "AccountsVersion": "2.12.1",
+                "UserId": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+                "duration": "00:00:00.0291382"
+            }
+        }
+    }
+}
+{
+    "name": "AppPageViews",
+    "time": "2023-03-26T17:26:04.8218425Z",
+    "iKey": "7df6ff70-8353-4672-80d6-568517fed090",
+    "tags": {
+        "ai.device.osVersion": "Microsoft Windows NT 10.0.23403.0",
+        "ai.cloud.roleInstance": "yeminglaptop",
+        "ai.session.id": "e3725cbe-a23b-40ea-a4ca-9e6e3de38d71",
+        "ai.user.id": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+        "ai.user.accountId": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+        "ai.location.ip": "0.0.0.0",
+        "ai.internal.sdkVersion": "dotnetc:2.21.0-429"
+    },
+    "data": {
+        "baseType": "PageViewData",
+        "baseData": {
+            "ver": 2,
+            "name": "cmdletInvocation",
+            "duration": "00:00:00.0433725",
+            "properties": {
+                "HashMacAddress": "216fdee55b82491c7bf4b827d2da6b9635ed0cb6f197800b9d8a6ba975045352",
+                "subscription-id": "9e223dbe-3399-4e19-88eb-0975f02ac87f",
+                "CommandParameterSetName": "__AllParameterSets",
+                "end-time": "2023-03-26T17:26:04.8652516+00:00",
+                "UserAgent": "AzurePowershell/Az9.5.0",
+                "ModuleName": "Az.Accounts",
+                "InstallationId": "dc5e1c39-0dc2-4863-9e2b-ded67ac0ce64",
+                "IsSuccess": "True",
+                "OS": "Microsoft Windows NT 10.0.23403.0",
+                "CommandInvocationName": "update-azconfig",
+                "x-ms-client-request-id": "a35e1cd8-5c13-4aef-8f84-13f4dd1ccd28",
+                "telemetry-version": "2",
+                "Version": "9.5.0",
+                "interval": "00:03:16.0979753",
+                "ModuleVersion": "2.12.1",
+                "HostName": "ConsoleHost",
+                "tenant-id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+                "CommandParameters": "-EnableLoginByWam True -DefaultSubscriptionForLogin ***",
+                "HostVersion": "7.3.2",
+                "PowerShellVersion": "7.3.2",
+                "start-time": "2023-03-26T17:26:04.8218425+00:00",
+                "Command": "Update-AzConfig",
+                "AccountsVersion": "2.12.1",
+                "UserId": "C5-3A-6E-32-D1-4B-12-02-2B-66-67-37-9E-6A-2B-A2-31-D9-24-59-13-E6-FC-A6-DA-FF-15-F6-D5-39-65-A2",
+                "duration": "00:00:00.0433725"
+            }
+        }
+    }
+}

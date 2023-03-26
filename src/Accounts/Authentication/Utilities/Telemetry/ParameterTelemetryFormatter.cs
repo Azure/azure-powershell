@@ -14,7 +14,6 @@
 
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
@@ -23,6 +22,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
     /// <inheritdoc/>
     internal class ParameterTelemetryFormatter : IParameterTelemetryFormatter
     {
+        private readonly Func<string, string, object, bool>[] _parameterChooser;
+
+        public ParameterTelemetryFormatter()
+        {
+            _parameterChooser = new Func<string, string, object, bool>[] {
+                (commandName, name, _) => string.Equals("New-AzVM", commandName, StringComparison.InvariantCultureIgnoreCase)
+                    && string.Equals("location", name, StringComparison.InvariantCultureIgnoreCase),
+                (commandName, _, value) => string.Equals("Update-AzConfig", commandName, StringComparison.InvariantCultureIgnoreCase)
+                    && value is bool
+            };
+        }
+
         /// <inheritdoc/>
         public string FormatParameters(InvocationInfo invocation)
         {
@@ -30,15 +41,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Utilities
 
             return string.Join(" ",
                 invocation.BoundParameters.Select(pair =>
-                    ShouldKeepValue(invocation, pair.Key)
+                    ShouldKeepValue(invocation, pair.Key, pair.Value)
                     ? FormatParameterWithValue(pair.Key, pair.Value)
                     : FormatParameterWithMaskedValue(pair.Key, pair.Value)));
         }
 
-        private bool ShouldKeepValue(InvocationInfo invocation, string name)
+        private bool ShouldKeepValue(InvocationInfo invocation, string name, object value)
         {
-            return string.Equals("New-AzVM", invocation.MyCommand?.Name, StringComparison.InvariantCultureIgnoreCase)
-                && string.Equals("location", name, StringComparison.InvariantCultureIgnoreCase);
+            return _parameterChooser.Any(chooser => chooser(invocation.MyCommand?.Name, name, value));
         }
 
         private string FormatParameterWithValue(string name, object value)
