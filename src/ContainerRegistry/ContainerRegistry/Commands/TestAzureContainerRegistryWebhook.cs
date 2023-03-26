@@ -18,6 +18,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
+    [CmdletOutputBreakingChange(typeof(PSContainerRegistryEventInfo), ReplacementCmdletOutputTypeName = "String")]
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryWebhook", DefaultParameterSetName = ResourceIdParameterSet)]
     [OutputType(typeof(PSContainerRegistryEventInfo))]
     public class TestAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
