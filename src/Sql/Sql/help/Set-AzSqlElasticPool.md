@@ -97,6 +97,31 @@ Modifies properties of an elastic database pool in Azure SQL Database. (autogene
 Set-AzSqlElasticPool -Dtu 1000 -Edition 'GeneralPurpose' -ElasticPoolName 'ElasticPool01' -ResourceGroupName 'ResourceGroup01' -ServerName 'Server01'
 ```
 
+### Example 4: Modify the preferred enclave type of an elastic pool to VBS
+
+```powershell
+Set-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" -PreferredEnclaveType VBS
+```
+
+```output
+ResourceId            : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/Server01/elasticPools/ElasticPool01
+ResourceGroupName     : ResourceGroup01
+ServerName            : Server01
+ElasticPoolName       : ElasticPool01
+Location              : Central US
+CreationDate          : 8/26/2015 10:00:17 PM
+State                 : Ready
+Edition               : Premium
+Dtu                   : 200
+DatabaseDtuMax        : 100
+DatabaseDtuMin        : 20
+StorageMB             : 2097152
+PreferredEnclaveType  : VBS
+Tags                  :
+```
+
+This command updates an elastic pool to configure VBS enclave on it
+
 ## PARAMETERS
 
 ### -AsJob
