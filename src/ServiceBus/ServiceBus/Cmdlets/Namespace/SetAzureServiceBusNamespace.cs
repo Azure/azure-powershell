@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
         public string[] IdentityId { get; set; }
 
-        [CmdletParameterBreakingChange("EncryptionConfig", OldParamaterType = typeof(PSEncryptionConfigAttributes[]), ReplaceMentCmdletParameterName = "KeyVaultProperty", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202210Preview.IKeyVaultProperties[]")]
+        [CmdletParameterBreakingChange("EncryptionConfig", OldParamaterType = typeof(PSEncryptionConfigAttributes[]), ReplaceMentCmdletParameterName = "KeyVaultProperty", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202210Preview.IKeyVaultProperties[]")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 
