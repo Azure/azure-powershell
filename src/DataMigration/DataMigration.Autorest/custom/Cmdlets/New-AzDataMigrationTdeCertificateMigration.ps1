@@ -23,7 +23,7 @@ Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
 function New-AzDataMigrationTdeCertificateMigration
 {
     [OutputType([System.Boolean])]
-    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(PositionalBinding=$false, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Migrate TDE certificate from source SQL Server to the target Azure SQL Server.')]
 
     param(
