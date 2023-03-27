@@ -1,0 +1,91 @@
+---
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
+Module Name: Az.Network
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azroutemapruleaction
+schema: 2.0.0
+---
+
+# New-AzRouteMapRuleAction
+
+## SYNOPSIS
+Create a route map rule action.
+
+## SYNTAX
+
+```powershell
+New-AzRouteMapRuleAction -Type <String> -Parameter <PSRouteMapRuleActionParameter[]>
+```
+
+## DESCRIPTION
+Create a route map rule action.
+
+## EXAMPLES
+
+### Example 1
+
+```powershell
+# creating new route map rule action
+$routeMapActionParameter1 = New-AzRouteMapActionParameter -AsPath @("12345")
+$routeMapAction1 = New-AzRouteMapAction -Type "Add" -Parameters @(routeMapActionParameter1)
+$routeMapAction1
+
+```
+
+```output
+Type            : rule1
+Parameter       :
+
+```
+
+## PARAMETERS
+
+### -Parameter
+The route map rule action parameter.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleActionParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+The route map rule action type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleActionParameter
+
+### System.String
+
+## OUTPUTS
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleAction
+
+## NOTES
+
+## RELATED LINKS
+
+[New-AzRouteMapRule](./New-AzRouteMapRule.md)
+
+[New-AzRouteMapRuleActionParameter](./New-AzRouteMapRuleActionParameter.md)

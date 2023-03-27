@@ -29,41 +29,40 @@ namespace Microsoft.Azure.Commands.Network
     public class UpdateAzureRmRouteMapCommand : RouteMapBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByRouteMapName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("VirtualHubName", "ParentVirtualHubName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByRouteMapName,
             HelpMessage = "The resource group name.")]
         public string VirtualHubName { get; set; }
 
         [Alias("ResourceName", "RouteMapName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByRouteMapName,
             HelpMessage = "Name of the route table.")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "Name of the route table.")]
         public string Name { get; set; }
 
         [Alias("VirtualHub", "ParentVirtualHub")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent virtual hub object.")]
         public PSVirtualHub VirtualHubObject { get; set; }
 
         [Alias("RouteMap")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByRouteMapObject,
             HelpMessage = "The route map resource to modify.")]
@@ -71,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("RouteMapId")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByRouteMapResourceId,
             HelpMessage = "The resource id of the route map to modify.")]
