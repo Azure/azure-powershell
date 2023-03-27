@@ -288,7 +288,7 @@ param(
     process {
         try {
             if(!$PSBoundParameters.ContainsKey('RepositoryUrl')) {
-                $PSBoundParameters.RepositoryUrl = $null
+                $PSBoundParameters.RepositoryUrl = ''
             }
 
             Az.Websites.internal\New-AzStaticWebApp @PSBoundParameters
