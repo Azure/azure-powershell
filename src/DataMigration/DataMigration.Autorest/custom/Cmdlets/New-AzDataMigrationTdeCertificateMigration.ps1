@@ -60,7 +60,7 @@ function New-AzDataMigrationTdeCertificateMigration
         ${NetworkSharePassword},
 
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Source database name.')]
-        [System.String]
+        [System.String[]]
         ${DatabaseName},
 
         [Parameter()]
@@ -113,8 +113,13 @@ function New-AzDataMigrationTdeCertificateMigration
                 "--networkShareDomain", $NetworkShareDomain
                 "--networkShareUserName", $NetworkShareUserName
                 "--networkSharePassword", $NetworkSharePassword
-                "--databaseName", $DatabaseName
+                "--databaseName"
             )
+
+            foreach($name in $DatabaseName) {
+                $parameterArray.Add($name) | Out-Null;
+            }
+
             & $ExePath $parameterArray
 
             if($PSBoundParameters.ContainsKey("PassThru"))
