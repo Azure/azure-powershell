@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDataMigrationTdeCertifi
 }
 
 Describe 'New-AzDataMigrationTdeCertificateMigration' {
-    It 'CommandLine' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Throws with incomplete arguments' {
+        { New-AzDataMigrationTdeCertificateMigration } | Should -Throw
+        { New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString "" -TargetSubscriptionId "" -TargetResourceGroupName "" -TargetManagedInstanceName "" -NetworkSharePath "" -NetworkShareDomain "" -NetworkShareUserName "" -NetworkSharePassword "" -DatabaseName "" } | Should -Throw
     }
 }
