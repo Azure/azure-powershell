@@ -19,7 +19,7 @@ Updates a data connection.
 .Description
 Updates a data connection.
 .Example
-$dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.EventHubDataConnection -Property @{Location="East US"; Kind="EventHub"; EventHubResourceId="/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub"; DataFormat="JSON"; ConsumerGroup='Default'; Compression= "None"; TableName = "Events"; MappingRuleName = "EventsMapping1"}
+$dataConnectionProperties = New-Object -Type Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.EventHubDataConnection -Property @{Location="East US"; Kind="EventHub"; EventHubResourceId="/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub"; DataFormat="JSON"; ConsumerGroup='Default'; Compression= "None"; TableName = "Events"; MappingRuleName = "EventsMapping1"}
 Update-AzKustoDataConnection -ResourceGroupName $resourceGroupName -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "mykustodataconnection" -Parameter $dataConnectionProperties
 
 Kind     Location Name                                               Type
@@ -30,12 +30,13 @@ EventHub East US  testnewkustocluster/mykustodatabase/mykustodataconnection Micr
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodataconnection
 #>
 function Update-AzKustoDataConnection {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpandedEventHub', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'UpdateExpandedEventHub', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedIotHub', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [System.String]
         # The name of the Kusto cluster.
@@ -44,6 +45,7 @@ function Update-AzKustoDataConnection {
         [Parameter(ParameterSetName = 'UpdateExpandedEventHub', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedIotHub', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [System.String]
         # The name of the database in the Kusto cluster.
@@ -52,6 +54,7 @@ function Update-AzKustoDataConnection {
         [Parameter(ParameterSetName = 'UpdateExpandedEventHub', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedIotHub', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
         [Alias('DataConnectionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [System.String]
@@ -61,6 +64,7 @@ function Update-AzKustoDataConnection {
         [Parameter(ParameterSetName = 'UpdateExpandedEventHub', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedIotHub', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [System.String]
         # The name of the resource group containing the Kusto cluster.
@@ -69,6 +73,7 @@ function Update-AzKustoDataConnection {
         [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
         [Parameter(ParameterSetName = 'UpdateExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -79,6 +84,7 @@ function Update-AzKustoDataConnection {
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedCosmosDb', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity]
         # Identity Parameter
@@ -86,7 +92,7 @@ function Update-AzKustoDataConnection {
         ${InputObject},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IoTHub') })]
+        [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IotHub', 'CosmosDb') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
         # Kind of the endpoint for the data connection
@@ -101,7 +107,12 @@ function Update-AzKustoDataConnection {
         # The resource ID of the event hub to be used to create a data connection / event grid is configured to send events.
         ${EventHubResourceId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventHub', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateExpandedIotHub', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # The event/iot hub consumer group.
@@ -121,9 +132,15 @@ function Update-AzKustoDataConnection {
         # If set to true, indicates that ingestion should ignore the first record of every file.
         ${IgnoreFirstRecord},
 
-        [Parameter()]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
+        [System.String]
+        [ValidateSet( "MULTIJSON", "JSON", "CSV", "TSV", "SCSV", "SOHSV", "PSV", "TXT", "RAW", "SINGLEJSON", "AVRO", "TSVE", "PARQUET", "ORC", "APACHEAVRO", "W3CLOGFILE")]
         # The data format of the message. Optionally the data format can be added to each message.
         ${DataFormat},
 
@@ -142,7 +159,14 @@ function Update-AzKustoDataConnection {
         # The mapping rule to be used to ingest the data. Optionally the mapping information can be added to each message.
         ${MappingRuleName},
 
-        [Parameter()]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedCosmosDb', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # The table where the data should be ingested. Optionally the table information can be added to each message.
@@ -175,6 +199,67 @@ function Update-AzKustoDataConnection {
         [System.String]
         # The name of the share access policy.
         ${SharedAccessPolicyName},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedCosmosDb', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The resource ID of a managed identity (system or user assigned) to be used to authenticate with external resources.
+        ${ManagedIdentityResourceId},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting]
+        # Indication for database routing information from the data connection, by default only database routing information is allowed.
+        ${DatabaseRouting},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedIotHub')]
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedCosmosDb')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.DateTime]
+        # When defined, the data connection retrieves existing Event hub events created since the Retrieval start date. It can only retrieve events retained by the Event hub, based on its retention period.
+        ${RetrievalStartDate},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The resource ID of the event grid that is subscribed to the storage account events.
+        ${EventGridResourceId},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedCosmosDb', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The resource ID of the Cosmos DB account used to create the data connection.
+        ${CosmosDbAccountResourceId},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedCosmosDb', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The name of an existing database in the Cosmos DB account.
+        ${CosmosDbDatabase},
+
+        [Parameter(ParameterSetName = 'UpdateExpandedCosmosDb', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedCosmosDb', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+        [System.String]
+        # The name of an existing container in the Cosmos DB database.
+        ${CosmosDbContainer},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -245,11 +330,21 @@ function Update-AzKustoDataConnection {
     process {
         try {
             if ($PSBoundParameters['Kind'] -eq 'EventHub') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.EventHubDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.EventHubDataConnection]::new()
                 
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']            
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
 
+                if ($PSBoundParameters.ContainsKey('DataFormat')) {
+                    $Parameter.DataFormat = $PSBoundParameters['DataFormat']
+                    $null = $PSBoundParameters.Remove('DataFormat')
+                }
+
+                if ($PSBoundParameters.ContainsKey('ConsumerGroup')) {
+                    $Parameter.ConsumerGroup = $PSBoundParameters['ConsumerGroup']
+                    $null = $PSBoundParameters.Remove('ConsumerGroup')
+                }
+                
                 if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
                     $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
                     $null = $PSBoundParameters.Remove('EventSystemProperty')
@@ -259,9 +354,24 @@ function Update-AzKustoDataConnection {
                     $Parameter.Compression = $PSBoundParameters['Compression']
                     $null = $PSBoundParameters.Remove('Compression')
                 }
+
+                if ($PSBoundParameters.ContainsKey('ManagedIdentityResourceId')) {
+                    $Parameter.ManagedIdentityResourceId = $PSBoundParameters['ManagedIdentityResourceId']
+                    $null = $PSBoundParameters.Remove('ManagedIdentityResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
+
+                if ($PSBoundParameters.ContainsKey('RetrievalStartDate')) {
+                    $Parameter.RetrievalStartDate = $PSBoundParameters['RetrievalStartDate']
+                    $null = $PSBoundParameters.Remove('RetrievalStartDate')
+                }
             }
             elseif ($PSBoundParameters['Kind'] -eq 'EventGrid') {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.EventGridDataConnection]::new()
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.EventGridDataConnection]::new()
             
                 $Parameter.EventHubResourceId = $PSBoundParameters['EventHubResourceId']
                 $null = $PSBoundParameters.Remove('EventHubResourceId')
@@ -269,6 +379,16 @@ function Update-AzKustoDataConnection {
                 $Parameter.StorageAccountResourceId = $PSBoundParameters['StorageAccountResourceId']
                 $null = $PSBoundParameters.Remove('StorageAccountResourceId')
 
+                if ($PSBoundParameters.ContainsKey('DataFormat')) {
+                    $Parameter.DataFormat = $PSBoundParameters['DataFormat']
+                    $null = $PSBoundParameters.Remove('DataFormat')
+                }
+
+                if ($PSBoundParameters.ContainsKey('ConsumerGroup')) {
+                    $Parameter.ConsumerGroup = $PSBoundParameters['ConsumerGroup']
+                    $null = $PSBoundParameters.Remove('ConsumerGroup')
+                }
+                
                 if ($PSBoundParameters.ContainsKey('BlobStorageEventType')) {
                     $Parameter.BlobStorageEventType = $PSBoundParameters['BlobStorageEventType']
                     $null = $PSBoundParameters.Remove('BlobStorageEventType')
@@ -278,9 +398,24 @@ function Update-AzKustoDataConnection {
                     $Parameter.IgnoreFirstRecord = $PSBoundParameters['IgnoreFirstRecord']
                     $null = $PSBoundParameters.Remove('IgnoreFirstRecord')
                 }
+
+                if ($PSBoundParameters.ContainsKey('EventGridResourceId')) {
+                    $Parameter.EventGridResourceId = $PSBoundParameters['EventGridResourceId']
+                    $null = $PSBoundParameters.Remove('EventGridResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('ManagedIdentityResourceId')) {
+                    $Parameter.ManagedIdentityResourceId = $PSBoundParameters['ManagedIdentityResourceId']
+                    $null = $PSBoundParameters.Remove('ManagedIdentityResourceId')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
             }
-            else {
-                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IotHubDataConnection]::new()
+            elseif ($PSBoundParameters['Kind'] -eq 'IotHub') {
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IotHubDataConnection]::new()
 
                 $Parameter.IotHubResourceId = $PSBoundParameters['IotHubResourceId']
                 $null = $PSBoundParameters.Remove('IotHubResourceId')
@@ -288,9 +423,52 @@ function Update-AzKustoDataConnection {
                 $Parameter.SharedAccessPolicyName = $PSBoundParameters['SharedAccessPolicyName']
                 $null = $PSBoundParameters.Remove('SharedAccessPolicyName')
 
+                if ($PSBoundParameters.ContainsKey('DataFormat')) {
+                    $Parameter.DataFormat = $PSBoundParameters['DataFormat']
+                    $null = $PSBoundParameters.Remove('DataFormat')
+                }
+
+                if ($PSBoundParameters.ContainsKey('ConsumerGroup')) {
+                    $Parameter.ConsumerGroup = $PSBoundParameters['ConsumerGroup']
+                    $null = $PSBoundParameters.Remove('ConsumerGroup')
+                }
+                
                 if ($PSBoundParameters.ContainsKey('EventSystemProperty')) {
                     $Parameter.EventSystemProperty = $PSBoundParameters['EventSystemProperty']
                     $null = $PSBoundParameters.Remove('EventSystemProperty')
+                }
+
+                if ($PSBoundParameters.ContainsKey('DatabaseRouting')) {
+                    $Parameter.DatabaseRouting = $PSBoundParameters['DatabaseRouting']
+                    $null = $PSBoundParameters.Remove('DatabaseRouting')
+                }
+
+                if ($PSBoundParameters.ContainsKey('RetrievalStartDate')) {
+                    $Parameter.RetrievalStartDate = $PSBoundParameters['RetrievalStartDate']
+                    $null = $PSBoundParameters.Remove('RetrievalStartDate')
+                }
+            }
+            elseif ($PSBoundParameters['Kind'] -eq 'CosmosDb') {
+                $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.CosmosDbDataConnection]::new()
+
+                $Parameter.TableName = $PSBoundParameters['TableName']
+                $null = $PSBoundParameters.Remove('TableName')
+
+                $Parameter.ManagedIdentityResourceId = $PSBoundParameters['ManagedIdentityResourceId']
+                $null = $PSBoundParameters.Remove('ManagedIdentityResourceId')
+
+                $Parameter.CosmosDbAccountResourceId = $PSBoundParameters['CosmosDbAccountResourceId']
+                $null = $PSBoundParameters.Remove('CosmosDbAccountResourceId')
+
+                $Parameter.CosmosDbDatabase = $PSBoundParameters['CosmosDbDatabase']
+                $null = $PSBoundParameters.Remove('CosmosDbDatabase')
+
+                $Parameter.CosmosDbContainer = $PSBoundParameters['CosmosDbContainer']
+                $null = $PSBoundParameters.Remove('CosmosDbContainer')
+
+                if ($PSBoundParameters.ContainsKey('RetrievalStartDate')) {
+                    $Parameter.RetrievalStartDate = $PSBoundParameters['RetrievalStartDate']
+                    $null = $PSBoundParameters.Remove('RetrievalStartDate')
                 }
             }
 
@@ -299,15 +477,7 @@ function Update-AzKustoDataConnection {
 
             $Parameter.Location = $PSBoundParameters['Location']
             $null = $PSBoundParameters.Remove('Location')
-
-            $Parameter.ConsumerGroup = $PSBoundParameters['ConsumerGroup']            
-            $null = $PSBoundParameters.Remove('ConsumerGroup')
-
-            if ($PSBoundParameters.ContainsKey('DataFormat')) {
-                $Parameter.DataFormat = $PSBoundParameters['DataFormat']
-                $null = $PSBoundParameters.Remove('DataFormat')
-            }
-
+            
             if ($PSBoundParameters.ContainsKey('MappingRuleName')) {
                 $Parameter.MappingRuleName = $PSBoundParameters['MappingRuleName']
                 $null = $PSBoundParameters.Remove('MappingRuleName')
