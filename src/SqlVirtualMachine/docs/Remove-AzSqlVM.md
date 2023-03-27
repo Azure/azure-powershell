@@ -31,14 +31,14 @@ Deletes a SQL virtual machine.
 
 ### Example 1
 ```powershell
-Remove-AzSqlVM -ResourceGroupName 'ResourceGroup01' -GroupName 'sqlvmgroup01'
+Remove-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
 ```
 
 
 
 ### Example 2
 ```powershell
-$sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -GroupName 'sqlvmgroup01'
+$sqlVM = Get-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1'
 $sqlVM | Remove-AzSqlVM
 ```
 
