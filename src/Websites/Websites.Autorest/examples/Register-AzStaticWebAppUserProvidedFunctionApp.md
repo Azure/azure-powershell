@@ -21,4 +21,3 @@ Kind Name                 Type
 ```
 
 This command registers a user provided function app with a static site build. The -FunctionAppRegion is region of the function app.
-
