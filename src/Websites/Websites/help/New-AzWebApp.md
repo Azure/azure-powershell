@@ -17,8 +17,8 @@ Creates an Azure Web App.
 ```
 New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
  [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PrivateRegistry
@@ -383,7 +383,7 @@ Tags are name/value pairs that enable you to categorize resources
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: S1
+Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: False

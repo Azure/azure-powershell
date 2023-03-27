@@ -24,8 +24,9 @@ List webjobs for an app.
 
 ### Example 1: List webjobs for an app
 ```powershell
-Get-AzWebAppWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 
+Get-AzWebAppWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01
 ```
+
 ```output
 Name                               Kind WebJobType
 ----                               ---- ----------
@@ -55,7 +56,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

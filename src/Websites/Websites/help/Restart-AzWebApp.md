@@ -15,13 +15,14 @@ Restarts an Azure Web App.
 
 ### S1
 ```
-Restart-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-SoftRestart] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Restart-AzWebApp [-SoftRestart] [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Restart-AzWebApp [-WebApp] <PSSite> [-SoftRestart] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Restart-AzWebApp [-SoftRestart] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +97,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

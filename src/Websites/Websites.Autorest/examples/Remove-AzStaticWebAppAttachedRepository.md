@@ -13,4 +13,3 @@ Get-AzStaticWebAppAttachedRepository -ResourceGroupName azure-rg-test -Name stat
 ```
 
 This command removes repository of static site by pipeline.
-
