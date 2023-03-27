@@ -18,8 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixed `Creating a new static webapp still fails` [#21202]
-* Added 'UX' related folders to the module to support the UX experience in Azure Portal.
+* Set default value for `-RepositoryUrl` of `New-AzStaticWebApp` [#21202]
 
 ## Version 2.13.0
 * Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
