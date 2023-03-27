@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderPromet
 }
 
 Describe 'New-AzWorkloadsProviderPrometheusOSInstanceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $providerSetting = New-AzWorkloadsProviderPrometheusOSInstanceObject -PrometheusUrl "http://10.1.0.4:9100/metrics" -SapSid X00 -SslPreference Disabled
+        $providerSetting.ProviderType | Should -Be "PrometheusOS"
+
+        $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.osProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting $providerSetting
+        $response.ProvisioningState | Should -Be "Succeeded"
     }
 }

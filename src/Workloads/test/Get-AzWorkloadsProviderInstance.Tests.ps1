@@ -15,15 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzWorkloadsProviderInstan
 }
 
 Describe 'Get-AzWorkloadsProviderInstance' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $providerResponseList = Get-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
+        $providerResponseList.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $providerResponse = Get-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.nwProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
+        $providerResponse.Name | Should -Be $env.nwProviderName
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaId' {
+        $providerResponse = Get-AzWorkloadsProviderInstance -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.MonitorName)/providerInstances/$($env.nwProviderName)"
+        $providerResponse.Name | Should -Be $env.nwProviderName
     }
 }

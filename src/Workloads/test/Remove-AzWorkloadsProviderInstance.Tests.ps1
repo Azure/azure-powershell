@@ -15,11 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWorkloadsProviderIns
 }
 
 Describe 'Remove-AzWorkloadsProviderInstance' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $response = Remove-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.sqlProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId
+        $response.Status | Should -Be $env.ProvisioningState
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $response = Remove-AzWorkloadsProviderInstance -InputObject "/subscriptions/$($env.WaaSSubscriptionId)/resourceGroups/$($env.MonitorRg)/providers/Microsoft.Workloads/monitors/$($env.MonitorName)/providerInstances/$($env.hanaProviderName)"
+        $response.Status | Should -Be $env.ProvisioningState
     }
 }
