@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Run TDE certificate migration from a source SQL Server to a target Azure SQL Server.
 ```powershell
-{{ Add code here }}
+[System.Security.SecureString] $securePassword = ConvertTo-SecureString "" -AsPlainText;
+New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword $securePassword -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
 ```
 
 ```output
-{{ Add output here }}
+Beginning TDE certificate migration
+TdeDb_0: TDE certificate migrated successfully.
+TdeDb_1: TDE certificate migrated successfully.
+TdeDb_2: TDE certificate migrated successfully.
+Certificate migration completed
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command runs TDE certificate migration from a source SQL Server to a target Azure SQL Server.
