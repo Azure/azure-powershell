@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderPromet
 }
 
 Describe 'New-AzWorkloadsProviderPrometheusHaClusterInstanceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $providerSetting = New-AzWorkloadsProviderPrometheusHaClusterInstanceObject -ClusterName hacluster -Hostname h20dbvm0 -PrometheusUrl "http://10.0.92.5:964/metrics" -Sid X00 -SslPreference Disabled
+        $providerSetting.ProviderType | Should -Be "PrometheusHaCluster"
     }
 }

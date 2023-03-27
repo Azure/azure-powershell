@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzWorkloadsProviderSqlSer
 }
 
 Describe 'New-AzWorkloadsProviderSqlServerInstanceObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        $providerSetting = New-AzWorkloadsProviderSqlServerInstanceObject -Password 'Password@123' -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
+        $providerSetting.ProviderType | Should -Be "MsSqlServer"
+        
+        $response = New-AzWorkloadsProviderInstance -MonitorName $env.MonitorName -Name $env.sqlProviderName -ResourceGroupName $env.MonitorRg -SubscriptionId $env.WaaSSubscriptionId -ProviderSetting $providerSetting
+        $response.ProvisioningState | Should -Be "Succeeded"
     }
 }
