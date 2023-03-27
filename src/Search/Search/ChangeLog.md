@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 
-## Version 0.9.0
 * Added support for RBAC authentication
 
 ## Version 0.8.0
