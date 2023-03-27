@@ -19,7 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Adding upcoming breaking change notifications for Az.ServiceBus module.
+* Added upcoming breaking change notifications for Az.ServiceBus module.
 
 ## Version 2.2.0
 * Upgraded API version to 2022-10-01-preview
