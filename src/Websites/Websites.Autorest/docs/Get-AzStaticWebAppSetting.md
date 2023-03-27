@@ -26,6 +26,7 @@ Description for Gets the application settings of a static site.
 ```powershell
 Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb00
 ```
+
 ```output
 Kind Name        Type
 ---- ----        ----

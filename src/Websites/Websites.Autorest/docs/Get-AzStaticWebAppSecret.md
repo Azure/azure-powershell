@@ -26,6 +26,7 @@ Description for Lists the secrets for an existing static site.
 ```powershell
 Get-AzStaticWebAppSecret -ResourceGroupName resourceGroup -Name staticweb-portal04
 ```
+
 ```output
 Kind Name    Type
 ---- ----    ----
