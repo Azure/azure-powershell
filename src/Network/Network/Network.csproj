@@ -40,6 +40,10 @@
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
     <Folder Include="RouteServerPeer\" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
+  </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
