@@ -13,7 +13,7 @@ Create a route map rule.
 ## SYNTAX
 
 ```powershell
-New-AzRouteMapRule -MatchCriteria <PSRouteMapRuleCriterion[]> -RouteMapRuleActions <PSRouteMapRuleAction[]> -NextStepIfMatched <String> -Name <String>
+New-AzRouteMapRule -MatchCriteria <PSRouteMapRuleCriterion[]> -RouteMapRuleAction <PSRouteMapRuleAction[]> -NextStepIfMatched <String> -Name <String>
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Create a route map rule.
 $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
 $routeMapRuleActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
 $routeMapRuleAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameters @($routeMapRuleActionParameter1)
-New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleActions @($routeMapRuleAction1) -NextStepIfMatched "Continue"
+New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapRuleAction1) -NextStepIfMatched "Continue"
 
 ```
 
@@ -87,7 +87,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RouteMapRuleActions
+### -RouteMapRuleAction
 The route map rule actions.
 
 ```yaml

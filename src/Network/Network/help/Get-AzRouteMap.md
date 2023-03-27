@@ -44,12 +44,12 @@ $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 # creating new route map rules and a new route map resource and new routing configuration
 $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
 $routeMapActionParameter1 = New-AzRouteMapActionParameter -AsPath @("12345")
-$routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameters @($routeMapActionParameter1)
-$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -Actions @($routeMapAction1) -NextStepIfMatched "Continue"
+$routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
+$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
 
 $routeMapMatchCriterion2 = New-AzRouteMapRuleCriterion -MatchCondition "Equals" -AsPath @("12345")
 $routeMapAction2 = New-AzRouteMapRuleAction -Type "Drop"
-$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -Actions @($routeMapAction2) -NextStepIfMatched "Terminate"
+$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -RouteMapRuleAction @($routeMapAction2) -NextStepIfMatched "Terminate"
 
 New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule1, $routeMapRule2)
 Get-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap"

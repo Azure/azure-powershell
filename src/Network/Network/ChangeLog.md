@@ -29,17 +29,13 @@
 * Updated `Reset-AzVpnGateway` to support IpConfigurationId.
 * Added new cmdlets for RouteMap child resource of VirtualHub.
     -`Get-AzRouteMap`
-    -`New-AzRouteMapMatchCriteria`
-    -`New-AzRouteMapActionParameter`
-    -`New-AzRouteMapAction`
+    -`New-AzRouteMapRuleCriterion`
+    -`New-AzRouteMapRuleActionParameter`
+    -`New-AzRouteMapRuleAction`
     -`New-AzRouteMapRule`
     -`New-AzRouteMap`
     -`Set-AzRouteMap`
     -`Remove-AzRouteMap`
-* Added new cmdlets to get routes via Post
-    -`Get-EffectiveRoutes`
-    -`Get-InboundRoutes`
-    -`Get-OutboundRoutes`
 * Update cmdlets to add inbound/outbound route maps in routingConfiguration
     -`New-AzRoutingConfiguration`
 

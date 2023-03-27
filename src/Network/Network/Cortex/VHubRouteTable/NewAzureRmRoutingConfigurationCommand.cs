@@ -57,14 +57,14 @@ namespace Microsoft.Azure.Commands.Network
         public string VnetLocalRouteOverrideCriteria { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "The hub inbound route map in this routing configuration.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs/routeMaps")]
         public string InboundRouteMap { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            HelpMessage = "The hub outbound in this routing configuration.")]
+            Mandatory = false,
+            HelpMessage = "The hub outbound route map in this routing configuration.")]
         [ResourceIdCompleter("Microsoft.Network/virtualHubs/routeMaps")]
         public string OutboundRouteMap { get; set; }
 

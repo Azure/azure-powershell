@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
-        [Ps1Xml(Label = "RouteMap Rules", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Associated Inbound Connections", Target = ViewControl.Table)]
         public List<string> AssociatedInboundConnections { get; set; }
 
-        [Ps1Xml(Label = "RouteMap Rules", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "Associated Outbound Connections", Target = ViewControl.Table)]
         public List<string> AssociatedOutboundConnections { get; set; }
 
         [Ps1Xml(Label = "RouteMap Rules", Target = ViewControl.Table)]
