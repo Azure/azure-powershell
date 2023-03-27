@@ -13,10 +13,10 @@ Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
 ## SYNTAX
 
 ```
-New-AzDataMigrationTdeCertificateMigration -DatabaseName <String> -NetworkShareDomain <String>
+New-AzDataMigrationTdeCertificateMigration -DatabaseName <String[]> -NetworkShareDomain <String>
  -NetworkSharePath <String> -SourceSqlConnectionString <String> -TargetManagedInstanceName <String>
  -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-NetworkSharePassword <SecureString>]
- [-NetworkShareUserName <String>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NetworkShareUserName <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,24 +35,13 @@ Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
 
 {{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -DatabaseName
 Source database name.
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -193,37 +182,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
