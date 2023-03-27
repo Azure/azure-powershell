@@ -24,6 +24,10 @@
 * Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists and updated the alias names to be descriptive and versioned.
 * Added new descriptive and versioned alias names for the Linux image aliases.
 * Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
+* Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
+  Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists.
+* Added a breaking change warning to `New-AzVM` and `New-AzVmss` for future planned image alias removals due to the images reaching their End of Support date. 
+* Added new descriptive and versioned alias names for the Linux image aliases, including a new alias for  the `Kinvolk` publisher. 
 
 ## Version 5.6.0
 * Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
