@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added a new cmdlet to refresh external governance status
     - 'Invoke-AzSqlServerExternalGovernanceStatusRefresh'
+* Added `PreferredEnclaveType` parameter to `NewAzureSqlElasticPool`, `Get-AzSqlElasticPool` and `SetAzureSqlElasticPool` cmdlet
 
 ## Version 4.4.0
 * Fixed identity assignment in `Set-AzSqlDatabase` cmdlet
