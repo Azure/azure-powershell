@@ -12,13 +12,13 @@
 RootModule = './Az.SqlVirtualMachine.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '1.1.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = 'b0fb9454-c75f-4eb7-ab6a-aaae12f8bde3'
+GUID = '91832aaa-dc11-4583-8239-bce5fd531604'
 
 # Author of this module
 Author = 'Microsoft Corporation'
