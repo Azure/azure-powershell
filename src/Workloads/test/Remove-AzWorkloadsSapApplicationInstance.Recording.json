@@ -1,0 +1,82 @@
+{
+  "Remove-AzWorkloadsSapApplicationInstance+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A26/applicationInstances/app0?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A26/applicationInstances/app0?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "81453936-6bf8-454f-ae3d-c062b4b62e22" ],
+        "CommandName": [ "Remove-AzWorkloadsSapApplicationInstance" ],
+        "FullCommandName": [ "Remove-AzWorkloadsSapApplicationInstance_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Workloads/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "dece93b7-8aa6-4426-9625-ff691de8fc94" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230315T151415Z:dece93b7-8aa6-4426-9625-ff691de8fc94" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 15:14:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzWorkloadsSapApplicationInstance+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A27/applicationInstances/app0?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/AH9-vis-hana/providers/Microsoft.Workloads/sapVirtualInstances/A27/applicationInstances/app0?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "8e2eafe5-a88f-47a0-beea-df1a3dd1dce0" ],
+        "CommandName": [ "Remove-AzWorkloadsSapApplicationInstance" ],
+        "FullCommandName": [ "Remove-AzWorkloadsSapApplicationInstance_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Workloads/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "00000000-0000-0000-0000-000000000000" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "12c91a0b-6754-4796-a68a-bf692bd9ae8a" ],
+        "x-ms-routing-request-id": [ "JIOINDIAWEST:20230315T151855Z:12c91a0b-6754-4796-a68a-bf692bd9ae8a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 15 Mar 2023 15:18:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
