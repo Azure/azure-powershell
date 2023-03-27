@@ -1,6 +1,6 @@
 ---
 external help file: Az.Websites-help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 online version: https://learn.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjobhistory
 schema: 2.0.0
 ---
@@ -39,6 +39,7 @@ Get or list triggered web job's history for an app.
 ```powershell
 Get-AzWebAppTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
 ```
+
 ```output
 Kind Name                                                 ResourceGroupName
 ---- ----                                                 -----------------
@@ -52,6 +53,7 @@ This command lists triggered web job's history for an app.
 ```powershell
 Get-AzWebAppTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01 -Id 202201040236300466
 ```
+
 ```output
 Kind Name                                                 ResourceGroupName
 ---- ----                                                 -----------------
@@ -65,6 +67,7 @@ This command get triggered web job's history for an app.
 $logs =  Get-AzWebAppTriggeredWebJobHistory -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name triggeredjob-01
 $logs[0].Id | Get-AzWebAppTriggeredWebJobHistory
 ```
+
 ```output
 Kind Name                                                 ResourceGroupName
 ---- ----                                                 -----------------
@@ -91,7 +94,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -218,7 +222,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IWebsitesIdentity>`: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

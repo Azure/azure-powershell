@@ -13,4 +13,3 @@ Get-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb0
 ```
 
 This commnad validates a particular custom domain can be added to a static site by pipeline.
-

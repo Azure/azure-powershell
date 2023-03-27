@@ -33,4 +33,3 @@ Kind Name               Type
 ```
 
 This command gets an existing custom domain for a particular static site by pipeline.
-
