@@ -1492,7 +1492,7 @@ Virtual network gateway P2S multiauth test
 #>
 function Test-VirtualNetworkGatewayMultiAuth
 {
-	# Setup
+    # Setup
     $rgname = Get-ResourceGroupName
     $rname = Get-ResourceName
     $domainNameLabel = Get-ResourceName
@@ -1523,13 +1523,13 @@ function Test-VirtualNetworkGatewayMultiAuth
 		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 		$vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
         
-        # Creating a P2S VPN gateway with AAD without OpenVPN protocol should throw error
-        Assert-ThrowsContains { New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol IkeV2 -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -AadTenantUri $aadTenant -AadIssuerUri $aadIssuer -AadAudienceId $aadAudience } "Virtual Network Gateway VpnClientProtocol should contain";
+        	# Creating a P2S VPN gateway with AAD without OpenVPN protocol should throw error
+        	Assert-ThrowsContains { New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol IkeV2 -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -AadTenantUri $aadTenant -AadIssuerUri $aadIssuer -AadAudienceId $aadAudience } "Virtual Network Gateway VpnClientProtocol should contain";
 
-        # Creating a P2S VPN gateway with OpenVPN & IkeV2 with AAD auth only should throw error message
-        Assert-ThrowsContains { New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol "OpenVPN", "IkeV2" -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -AadTenantUri $aadTenant -AadIssuerUri $aadIssuer -AadAudienceId $aadAudience } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
+        	# Creating a P2S VPN gateway with OpenVPN & IkeV2 with AAD auth only should throw error message
+        	Assert-ThrowsContains { New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol "OpenVPN", "IkeV2" -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -AadTenantUri $aadTenant -AadIssuerUri $aadIssuer -AadAudienceId $aadAudience } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
 
-        # Create a P2S VPN gateway with OpenVPN & AAD to be used to test Set-AzVirtualNetworkGateway
+        	# Create a P2S VPN gateway with OpenVPN & AAD to be used to test Set-AzVirtualNetworkGateway
 		New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -VpnClientProtocol OpenVPN -EnableBgp $false -GatewaySku VpnGw1 -VpnClientAddressPool 201.169.0.0/16 -AadTenantUri $aadTenant -AadIssuerUri $aadIssuer -AadAudienceId $aadAudience
 		$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
@@ -1542,8 +1542,8 @@ function Test-VirtualNetworkGatewayMultiAuth
 
 		# Set an existing P2S VPN gateway to use AAD without OpenVPN should throw error
 		Assert-ThrowsContains { Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol IkeV2 -AadAudience $aadAudience -AadTenant $aadTenant -AadIssuer $aadIssuer } "Virtual Network Gateway VpnClientProtocol should contain";
-        # Check gateway protocol was not updated
-        $actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        	# Check gateway protocol was not updated
+        	$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
 		Assert-AreEqual 1 @($protocols).Count
 		Assert-AreEqual "OpenVPN" $protocols[0]
@@ -1554,8 +1554,8 @@ function Test-VirtualNetworkGatewayMultiAuth
 
 		# Set an existing P2S VPN gateway to use OpenVPN & IkeV2 with AAD auth only should throw error message
 		Assert-ThrowsContains { Set-AzVirtualNetworkGateway -VirtualNetworkGateway $actual -VpnClientProtocol "OpenVPN", "IkeV2" } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
-        # Check gateway protocol was not updated
-        $actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
+        	# Check gateway protocol was not updated
+        	$actual = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
 		$protocols = $actual.VpnClientConfiguration.VpnClientProtocols
 		Assert-AreEqual 1 @($protocols).Count
 		Assert-AreEqual "OpenVPN" $protocols[0]

@@ -832,7 +832,7 @@ function Test-CortexExpressRouteCRUD
     $VpnServerConfiguration1Name = Get-ResourceName
     $VpnServerConfiguration2Name = Get-ResourceName
     $VpnServerConfigurationMultiAuthName = Get-ResourceName
-	$VpnServerConfiguration2MultiAuthName = Get-ResourceName
+    $VpnServerConfiguration2MultiAuthName = Get-ResourceName
     $P2SVpnGatewayName = Get-ResourceName
     $vpnclientAuthMethod = "EAPTLS"
     
