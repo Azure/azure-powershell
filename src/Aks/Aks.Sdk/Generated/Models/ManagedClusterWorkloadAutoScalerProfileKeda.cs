@@ -14,31 +14,28 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     using System.Linq;
 
     /// <summary>
-    /// Profile for diagnostics on the container service VMs.
+    /// KEDA (Kubernetes Event-driven Autoscaling) settings for the workload
+    /// auto-scaler profile.
     /// </summary>
-    public partial class ContainerServiceVMDiagnostics
+    public partial class ManagedClusterWorkloadAutoScalerProfileKeda
     {
         /// <summary>
-        /// Initializes a new instance of the ContainerServiceVMDiagnostics
-        /// class.
+        /// Initializes a new instance of the
+        /// ManagedClusterWorkloadAutoScalerProfileKeda class.
         /// </summary>
-        public ContainerServiceVMDiagnostics()
+        public ManagedClusterWorkloadAutoScalerProfileKeda()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ContainerServiceVMDiagnostics
-        /// class.
+        /// Initializes a new instance of the
+        /// ManagedClusterWorkloadAutoScalerProfileKeda class.
         /// </summary>
-        /// <param name="enabled">Whether the VM diagnostic agent is
-        /// provisioned on the VM.</param>
-        /// <param name="storageUri">The URI of the storage account where
-        /// diagnostics are stored.</param>
-        public ContainerServiceVMDiagnostics(bool enabled, string storageUri = default(string))
+        /// <param name="enabled">Whether to enable KEDA.</param>
+        public ManagedClusterWorkloadAutoScalerProfileKeda(bool enabled)
         {
             Enabled = enabled;
-            StorageUri = storageUri;
             CustomInit();
         }
 
@@ -48,17 +45,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets whether the VM diagnostic agent is provisioned on the
-        /// VM.
+        /// Gets or sets whether to enable KEDA.
         /// </summary>
         [JsonProperty(PropertyName = "enabled")]
         public bool Enabled { get; set; }
-
-        /// <summary>
-        /// Gets the URI of the storage account where diagnostics are stored.
-        /// </summary>
-        [JsonProperty(PropertyName = "storageUri")]
-        public string StorageUri { get; private set; }
 
         /// <summary>
         /// Validate the object.

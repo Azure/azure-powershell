@@ -12,20 +12,19 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for NetworkMode.
+    /// Defines values for NetworkDataplane.
     /// </summary>
-    public static class NetworkMode
+    public static class NetworkDataplane
     {
         /// <summary>
-        /// No bridge is created. Intra-VM Pod to Pod communication is through
-        /// IP routes created by Azure CNI. See [Transparent
-        /// Mode](https://docs.microsoft.com/azure/aks/faq#transparent-mode)
+        /// Use Azure network dataplane.
+        /// </summary>
+        public const string Azure = "azure";
+        /// <summary>
+        /// Use Cilium network dataplane. See [Azure CNI Powered by
+        /// Cilium](https://learn.microsoft.com/azure/aks/azure-cni-powered-by-cilium)
         /// for more information.
         /// </summary>
-        public const string Transparent = "transparent";
-        /// <summary>
-        /// This is no longer supported
-        /// </summary>
-        public const string Bridge = "bridge";
+        public const string Cilium = "cilium";
     }
 }
