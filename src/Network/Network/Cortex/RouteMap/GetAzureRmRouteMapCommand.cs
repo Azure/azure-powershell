@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     public class GetAzureRmRouteMapCommand : RouteMapBaseCmdlet
     {
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VirtualHubName", "ParentVirtualHubName", "ParentResourceName")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The parent resource name.")]
         [ResourceNameCompleter("Microsoft.Network/virtualHubs", "ResourceGroupName")]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("ParentObject", "ParentVirtualHub")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipeline = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubObject,
             HelpMessage = "The parent resource.")]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Alias("VirtualHubId", "ParentVirtualHubId")]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubResourceId,
             HelpMessage = "The parent resource id.")]

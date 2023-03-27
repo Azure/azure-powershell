@@ -46,18 +46,17 @@ New-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub" -Location "westcent
 $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 
 # creating new route map rules and a new route map resource and new routing configuration
-$routeMapMatchCriteria1 = New-AzRouteMapMatchCriteria -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+$routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
 $routeMapActionParameter1 = New-AzRouteMapActionParameter -AsPath @("12345")
-$routeMapAction1 = New-AzRouteMapAction -Type "Add" -Parameters @(routeMapActionParameter1)
-$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @(routeMapMatchCriteria1) -Actions @(routeMapAction1) -NextStepIfMatched "Continue"
+$routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameters @($routeMapActionParameter1)
+$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -Actions @($routeMapAction1) -NextStepIfMatched "Continue"
 
-$routeMapMatchCriteria2 = New-AzRouteMapMatchCriteria -MatchCondition "Equals" -AsPath @("12345")
-$routeMapAction2 = New-AzRouteMapAction -Type "Drop"
-$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @(routeMapMatchCriteria2) -Actions @(routeMapAction2) -NextStepIfMatched "Terminate"
+$routeMapMatchCriterion2 = New-AzRouteMapRuleCriterion -MatchCondition "Equals" -AsPath @("12345")
+$routeMapAction2 = New-AzRouteMapRuleAction -Type "Drop"
+$routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatchCriterion2) -Actions @($routeMapAction2) -NextStepIfMatched "Terminate"
 
-New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @(routeMapRule1, routeMapRule2)
-
-Update-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @(routeMapRule2)
+New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule1, $routeMapRule2)
+Update-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule2)
 
 ```
 

@@ -13,7 +13,7 @@ Create a route map rule.
 ## SYNTAX
 
 ```powershell
-New-AzRouteMapRule -MatchCriteria <PSRouteMapRuleCriterion[]> -Actions <PSRouteMapRuleAction[]> -NextStepIfMatched <String> -Name <String>
+New-AzRouteMapRule -MatchCriteria <PSRouteMapRuleCriterion[]> -RouteMapRuleActions <PSRouteMapRuleAction[]> -NextStepIfMatched <String> -Name <String>
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,10 @@ Create a route map rule.
 
 ```powershell
 # creating new route map rules and a new route map resource
-$routeMapMatchCriteria1 = New-AzRouteMapMatchCriteria -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
-$routeMapActionParameter1 = New-AzRouteMapActionParameter -AsPath @("12345")
-$routeMapAction1 = New-AzRouteMapAction -Type "Add" -Parameters @(routeMapActionParameter1)
-$routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @(routeMapMatchCriteria1) -Actions @(routeMapAction1) -NextStepIfMatched "Continue"
+$routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
+$routeMapRuleActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+$routeMapRuleAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameters @($routeMapRuleActionParameter1)
+New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleActions @($routeMapRuleAction1) -NextStepIfMatched "Continue"
 
 ```
 
@@ -41,21 +41,6 @@ NextStepIfMatched   : Continue
 ```
 
 ## PARAMETERS
-
-### -Actions
-The route map rule actions.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -MatchCriteria
 The route map rule Match Criteria. If not providing, will match all
@@ -92,6 +77,21 @@ Next step if the route map rule matched.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RouteMapRuleActions
+The route map rule actions.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleAction
 Parameter Sets: (All)
 Aliases:
 

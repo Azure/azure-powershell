@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "List of Route Map Rules Actions.")]
         [ValidateNotNullOrEmpty]
-        public PSRouteMapRuleAction[] Actions { get; set; }
+        public PSRouteMapRuleAction[] RouteMapRuleActions { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 MatchCriteria = this.MatchCriteria?.ToList(),
-                Actions = this.Actions?.ToList(),
+                Actions = this.RouteMapRuleActions?.ToList(),
                 NextStepIfMatched = this.NextStepIfMatched
             };
             WriteObject(routeMapRule);

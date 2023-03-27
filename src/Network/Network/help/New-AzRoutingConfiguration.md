@@ -14,6 +14,7 @@ Creates a RoutingConfiguration object.
 
 ```
 New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
+ -InboundRouteMap <String> -OutboundRouteMap <String>
  [-StaticRoute <PSStaticRoute[]>] [-VnetLocalRouteOverrideCriteria <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -43,7 +44,8 @@ PropagatedRouteTables : {
                             {
                               "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/hubRouteTables/noneRouteTable"
                             }
-                          ]
+                          ],
+                          "InboundRouteMap": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/testHub/routeMaps/testRouteMap"
                         }
 VnetRoutes            : {
                           "StaticRoutes": [
@@ -108,6 +110,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InboundRouteMap
+The inbound route maps of this routing configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Label
 The list of labels for the PropagatedRouteTables property.
 
@@ -117,6 +134,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutboundRouteMap
+The outbound route maps of this routing configuration.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

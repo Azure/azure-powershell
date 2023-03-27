@@ -25,8 +25,7 @@ Create a route map rule criterion.
 
 ```powershell
 # creating new route map rule action
-$routeMapMatchCriterion = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
-$routeMapMatchCriterion
+New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
 
 ```
 

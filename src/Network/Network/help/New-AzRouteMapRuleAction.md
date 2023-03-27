@@ -25,9 +25,8 @@ Create a route map rule action.
 
 ```powershell
 # creating new route map rule action
-$routeMapActionParameter1 = New-AzRouteMapActionParameter -AsPath @("12345")
-$routeMapAction1 = New-AzRouteMapAction -Type "Add" -Parameters @(routeMapActionParameter1)
-$routeMapAction1
+$routeMapRuleActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
+New-AzRouteMapRuleAction -Type "Add" -Parameters @($routeMapRuleActionParameter1)
 
 ```
 
