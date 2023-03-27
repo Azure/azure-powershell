@@ -661,24 +661,16 @@ function Test-ManageAzSearchServiceAdminKey
 		$newKeyPair2 = New-AzSearchAdminKey -ParentResourceId $newSearchService.Id -KeyKind Secondary -Force
 		$newKeyPair3 = New-AzSearchAdminKey -ResourceGroupName $rgname -ServiceName $svcName -KeyKind Primary -Force
 
+		# Do not compare keys themselves after rotation - they are stored in the JSON file as "Sanitized"
+		# so this test would only pass in Record mode
 		# 1
 		Assert-NotNull $newKeyPair1
-		Assert-AreNotEqual $newKeyPair1.Primary $adminKeyPair1.Primary
-		Assert-AreEqual $newKeyPair1.Secondary $adminKeyPair1.Secondary
 
 		# 2
 		Assert-NotNull $newKeyPair2
-		Assert-AreEqual $newKeyPair2.Primary $newKeyPair1.Primary
-		
-		Assert-AreNotEqual $newKeyPair2.Secondary $adminKeyPair1.Secondary
-		Assert-AreNotEqual $newKeyPair2.Primary $adminKeyPair1.Primary
 
 		# 3
 		Assert-NotNull $newKeyPair3
-		Assert-AreEqual $newKeyPair3.Secondary $newKeyPair2.Secondary
-
-		Assert-AreNotEqual $newKeyPair3.Secondary $adminKeyPair3.Secondary
-		Assert-AreNotEqual $newKeyPair3.Primary $adminKeyPair3.Primary
 	}
 	finally
     {
