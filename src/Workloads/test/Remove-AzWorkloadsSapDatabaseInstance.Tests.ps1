@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzWorkloadsSapDatabase
 }
 
 Describe 'Remove-AzWorkloadsSapDatabaseInstance' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzWorkloadsSapDatabaseInstance -Name $env.SapDatabseInstanceName -ResourceGroupName $env.DeletionRG -SapVirtualInstanceName $env.DeletionVIS
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        Remove-AzWorkloadsSapDatabaseInstance -InputObject $env.DeletionVISDbID
     }
 }
