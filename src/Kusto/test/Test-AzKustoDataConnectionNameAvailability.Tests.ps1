@@ -14,20 +14,20 @@ Describe 'Test-AzKustoDataConnectionNameAvailability' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'CheckExpanded' {
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
-        $dataConnectionName = $env.dataConnectionName
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
+        $dataConnectionName = "test-name-avilability"
 
         $availability = Test-AzKustoDataConnectionNameAvailability -ResourceGroupName $resourceGroupName -ClusterName $clusterName -DatabaseName $databaseName -Name $dataConnectionName
-        $availability.NameAvailable | Should -Be $false
+        $availability.NameAvailable | Should -Be $true
     }
 
     It 'CheckViaIdentityExpanded' {
-        $resourceGroupName = $env.resourceGroupNamefordc
-        $clusterName = $env.clusterNamefordc
-        $databaseName = $env.databaseNamefordc
-        $dataConnectionName = $env.dataConnectionName + $env.rstr4
+        $resourceGroupName = $env.resourceGroupName
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
+        $dataConnectionName = "test-name-avilability"
 
         $database = Get-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
         $availability = Test-AzKustoDataConnectionNameAvailability -InputObject $database -Name $dataConnectionName

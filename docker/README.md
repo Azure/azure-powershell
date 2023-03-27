@@ -19,7 +19,7 @@ The release containers derive from the [Powershell image][powershell image], and
 
 [powershell image]: https://hub.docker.com/_/microsoft-powershell
 
-Azure PowerShell [release notes](https://docs.microsoft.com/en-us/powershell/azure/release-notes-azureps)
+Azure PowerShell [release notes](https://learn.microsoft.com/en-us/powershell/azure/release-notes-azureps)
 
 ## Examples
 

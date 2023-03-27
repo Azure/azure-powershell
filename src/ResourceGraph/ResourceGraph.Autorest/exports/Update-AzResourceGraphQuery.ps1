@@ -47,7 +47,7 @@ INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
   [ResourceName <String>]: The name of the Graph Query resource.
   [SubscriptionId <String>]: The Azure subscription Id.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.resourcegraph/update-azresourcegraphquery
+https://learn.microsoft.com/en-us/powershell/module/az.resourcegraph/update-azresourcegraphquery
 #>
 function Update-AzResourceGraphQuery {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource])]

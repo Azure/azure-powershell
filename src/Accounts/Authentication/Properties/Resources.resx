@@ -383,4 +383,11 @@
   <data name="HelpMessageOfEnableWamLogin" xml:space="preserve">
     <value>[Preview] When enabled, Web Account Manager (WAM) will be the default interactive login experience. It will fall back to using the browser if the platform does not support WAM. Note that this feature is under preview. Microsoft Account (MSA) is currently not supported. Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue</value>
   </data>
+  <data name="RecommendationMessageForLocation" xml:space="preserve">
+    <value>Selecting “{0}” may reduce your costs. The region you’ve selected may cost more for the same services. You can disable this message in the future with the command “Update-AzConfig -DisplayRegionIdentified $false”. Learn more at https://go.microsoft.com/fwlink/?linkid=2225665</value>
+    <comment>0 = recommended location</comment>
+  </data>
+  <data name="HelpMessageOfDisplayRegionIdentified" xml:space="preserve">
+    <value>When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.</value>
+  </data>
 </root>

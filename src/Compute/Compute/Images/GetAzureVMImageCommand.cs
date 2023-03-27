@@ -79,7 +79,8 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the version of the image. Use 'latest' to get the latest image")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Version { get; set; }
@@ -189,6 +190,32 @@ namespace Microsoft.Azure.Commands.Compute
                                  };
 
                     WriteObject(SubResourceWildcardFilter(Version, images), true);
+                }
+                else if (this.ParameterSetName.Equals(GetVMImageDetailParamSetName) && this.Version.ToLower() == "latest")
+                {
+                    var result = this.VirtualMachineImageClient.ListWithHttpMessagesAsync(
+                        this.Location.Canonicalize(),
+                        this.PublisherName,
+                        this.Offer,
+                        this.Skus,
+                        top: 1,
+                        orderby: "name desc"
+                        ).GetAwaiter().GetResult();
+
+                    var images = from r in result.Body
+                                 select new PSVirtualMachineImage
+                                 {
+                                     RequestId = result.RequestId,
+                                     StatusCode = result.Response.StatusCode,
+                                     Id = r.Id,
+                                     Location = r.Location,
+                                     Version = r.Name,
+                                     PublisherName = this.PublisherName,
+                                     Offer = this.Offer,
+                                     Skus = this.Skus
+                                 };
+
+                    WriteObject(images);
                 }
                 else
                 {

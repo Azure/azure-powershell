@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Aks
                 {
 
                     var cluster = this.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
-                    var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
+                    var psObj = AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(cluster);
 
                     if (this.IsParameterBound(c => c.AcrNameToAttach))
                     {

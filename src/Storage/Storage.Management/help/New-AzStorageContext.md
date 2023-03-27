@@ -98,7 +98,7 @@ New-AzStorageContext [-UseConnectedAccount] [-BlobEndpoint <String>] [-FileEndpo
 ## DESCRIPTION
 The **New-AzStorageContext** cmdlet creates an Azure Storage context.
 The default Authentication of a Storage Context is OAuth (Azure AD), if only input Storage account name.
-See details of authentication of the Storage Service in https://docs.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services.
+See details of authentication of the Storage Service in https://learn.microsoft.com/rest/api/storageservices/authorization-for-the-azure-storage-services.
 
 ## EXAMPLES
 

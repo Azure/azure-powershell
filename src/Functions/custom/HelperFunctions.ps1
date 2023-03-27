@@ -766,7 +766,7 @@ function GetSkuName
         return "Isolated"
     }
 
-    $guidanceUrl = 'https://docs.microsoft.com/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
+    $guidanceUrl = 'https://learn.microsoft.com/azure/azure-functions/functions-premium-plan#plan-and-sku-settings'
 
     $errorMessage = "Invalid sku (pricing tier), please refer to '$guidanceUrl' for valid values."
     $exception = [System.InvalidOperationException]::New($errorMessage)
@@ -1070,7 +1070,7 @@ function ThrowRuntimeNotSupportedException
     )
 
     $Message += [System.Environment]::NewLine
-    $Message += "For supported languages, please visit 'https://docs.microsoft.com/azure/azure-functions/functions-versions#languages'."
+    $Message += "For supported languages, please visit 'https://learn.microsoft.com/azure/azure-functions/functions-versions#languages'."
 
     $exception = [System.InvalidOperationException]::New($Message)
     ThrowTerminatingError -ErrorId $ErrorId `
@@ -1658,7 +1658,7 @@ function GetShareName
         - All letters in a share name must be lowercase.
         - Share names must be from 3 through 63 characters long.
 
-    Docs: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names
+    Docs: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names
     #>
 
     # Share name will be function app name + 8 random char suffix with a max length of 60

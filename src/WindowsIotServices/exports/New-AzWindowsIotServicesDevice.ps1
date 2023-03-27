@@ -30,7 +30,7 @@ eastus   wsi-t03 Microsoft.WindowsIoT/DeviceServices "6a00eee9-0000-0700-0000-5f
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/new-azwindowsiotservicesdevice
+https://learn.microsoft.com/en-us/powershell/module/az.windowsiotservices/new-azwindowsiotservicesdevice
 #>
 function New-AzWindowsIotServicesDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService])]

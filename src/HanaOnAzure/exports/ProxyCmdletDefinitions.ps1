@@ -66,7 +66,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azsapmonitorproviderinstance
 #>
 function Get-AzSapMonitorProviderInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance])]
@@ -265,7 +265,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azsapmonitor
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/get-azsapmonitor
 #>
 function Get-AzSapMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor])]
@@ -420,7 +420,7 @@ westus2  ps-sapmonitor-t01 Microsoft.HanaOnAzure/sapMonitors
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitor
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitor
 #>
 function New-AzSapMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor])]
@@ -638,7 +638,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azsapmonitorproviderinstance
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azsapmonitorproviderinstance
 #>
 function Remove-AzSapMonitorProviderInstance {
 [OutputType([System.Boolean])]
@@ -832,7 +832,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azsapmonitor
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/remove-azsapmonitor
 #>
 function Remove-AzSapMonitor {
 [OutputType([System.Boolean])]
@@ -1026,7 +1026,7 @@ INPUTOBJECT <IHanaOnAzureIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   [VaultName <String>]: Name of the vault
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/update-azsapmonitor
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/update-azsapmonitor
 #>
 function Update-AzSapMonitor {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.ISapMonitor])]
@@ -1215,7 +1215,7 @@ dolauli-instance-hana Microsoft.HanaOnAzure/sapMonitors/providerInstances
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitorproviderinstance
+https://learn.microsoft.com/en-us/powershell/module/az.hanaonazure/new-azsapmonitorproviderinstance
 #>
 function New-AzSapMonitorProviderInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Models.Api20200207Preview.IProviderInstance])]

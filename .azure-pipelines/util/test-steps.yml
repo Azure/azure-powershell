@@ -67,6 +67,8 @@ steps:
   displayName: 'Test for AutoGen Modules With PowerShell Core'
   condition: and(succeeded(), eq('${{ parameters.testTarget }}', 'Test'))
   continueOnError: true
+  env:
+    PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
 - pwsh: |
     $PipelineResult = Get-Content PipelineResult.json | ConvertFrom-Json

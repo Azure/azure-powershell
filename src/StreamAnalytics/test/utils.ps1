@@ -8,13 +8,13 @@ function RandomString([bool]$allChars, [int32]$len) {
 $env = @{}
 
 <# Pre-Step:
-  1. Create azure machine learing workspace and deploy model in azure portal. Doc links:https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
+  1. Create azure machine learing workspace and deploy model in azure portal. Doc links:https://learn.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
   2. Get endpoint of the deployment model that type into the .\test\template-json\MachineLearningServices.json
 #>
 function setupEnv() {
     Write-Warning "
     Pre-step:
-    1. Create azure machine learing workspace and deploy model in azure portal. Doc links:https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
+    1. Create azure machine learing workspace and deploy model in azure portal. Doc links:https://learn.microsoft.com/en-us/azure/machine-learning/tutorial-first-experiment-automated-ml
     2. Get endpoint of the deployment model that type into the .\test\template-json\MachineLearningServices.json
     "
     # Import modules for test.

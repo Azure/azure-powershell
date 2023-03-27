@@ -492,6 +492,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string UseManagedDisk { get; set; }
 
         /// <summary>
+        ///     Gets or sets a value indicating whether managed disks should be used during replication.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.True,
+            Constants.False)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
+        public string UseManagedDisksForReplication { get; set; }
+
+        /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
@@ -813,6 +824,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             providerSettings.TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
             providerSettings.TargetAvailabilityZone = this.RecoveryAvailabilityZone;
             providerSettings.UseManagedDisks = this.UseManagedDisk;
+            providerSettings.UseManagedDisksForReplication = this.UseManagedDisksForReplication;
             providerSettings.TargetAvailabilitySetId = this.RecoveryAvailabilitySetId;
             providerSettings.TargetVmSize = this.Size;
             providerSettings.SqlServerLicenseType = this.SqlServerLicenseType;

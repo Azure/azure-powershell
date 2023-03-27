@@ -4028,7 +4028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
         /// in operator to specify multiple identities. You should run the query prior to using for a purge request to verify that
         /// the results are expected.
         /// Note: this operation is intended for Classic resources, for workspace-based Application Insights resource please run purge
-        /// operation (directly on the workspace)(https://docs.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) ,
+        /// operation (directly on the workspace)(https://learn.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) ,
         /// scoped to specific resource id.
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -4086,7 +4086,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
         /// in operator to specify multiple identities. You should run the query prior to using for a purge request to verify that
         /// the results are expected.
         /// Note: this operation is intended for Classic resources, for workspace-based Application Insights resource please run purge
-        /// operation (directly on the workspace)(https://docs.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) ,
+        /// operation (directly on the workspace)(https://learn.microsoft.com/en-us/rest/api/loganalytics/workspace-purge/purge) ,
         /// scoped to specific resource id.
         /// </summary>
         /// <param name="viaIdentity"></param>
