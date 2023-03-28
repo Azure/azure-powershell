@@ -409,11 +409,11 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         if (EnableUptimeSLA.ToBool())
                         {
-                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                            cluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Standard");
                         }
                         else
                         {
-                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                            cluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Free");
                         }
                     }
                     if (this.IsParameterBound(c => c.AadProfile))
