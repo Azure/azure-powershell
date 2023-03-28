@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourcegroups/CosmosDBResourceGroup60?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjU5ZmJiMjQtOWJjZC00Y2ZjLTg2NWMtZmMzM2IyMmZlMzhhL3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDYwP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourcegroups/CosmosDBResourceGroup60?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Jlc291cmNlZ3JvdXBzL0Nvc21vc0RCUmVzb3VyY2VHcm91cDYwP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup60\",\r\n  \"name\": \"CosmosDBResourceGroup60\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/CosmosDBResourceGroup60\",\r\n  \"name\": \"CosmosDBResourceGroup60\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
@@ -1476,10 +1476,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "2078"
+          "96"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"container1\",\r\n      \"indexingPolicy\": {\r\n        \"automatic\": true,\r\n        \"indexingMode\": \"Consistent\",\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\",\r\n            \"indexes\": [\r\n              {\r\n                \"dataType\": \"String\",\r\n                \"precision\": -1,\r\n                \"kind\": \"Hash\"\r\n              },\r\n              {\r\n                \"dataType\": \"String\",\r\n                \"precision\": -1,\r\n                \"kind\": \"Hash\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/myPathToNotIndex/*\"\r\n          }\r\n        ],\r\n        \"compositeIndexes\": [\r\n          [\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"Ascending\"\r\n            },\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"Descending\"\r\n            }\r\n          ],\r\n          [\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"Descending\"\r\n            },\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"Ascending\"\r\n            }\r\n          ]\r\n        ],\r\n        \"spatialIndexes\": [\r\n          {\r\n            \"path\": \"/mySpatialPath/*\",\r\n            \"types\": [\r\n              \"Point\",\r\n              \"LineString\",\r\n              \"Polygon\",\r\n              \"MultiPolygon\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/foo/bar\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": [\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey3\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey4\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey2\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey1\"\r\n            ]\r\n          }\r\n        ]\r\n      }\r\n    },\r\n    \"options\": {\r\n      \"throughput\": 600\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName\"\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -1551,10 +1551,10 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "1957"
+          "96"
         ]
       },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"container1\",\r\n      \"indexingPolicy\": {\r\n        \"automatic\": true,\r\n        \"indexingMode\": \"consistent\",\r\n        \"includedPaths\": [\r\n          {\r\n            \"path\": \"/*\"\r\n          }\r\n        ],\r\n        \"excludedPaths\": [\r\n          {\r\n            \"path\": \"/myPathToNotIndex/*\"\r\n          },\r\n          {\r\n            \"path\": \"/\\\"_etag\\\"/?\"\r\n          }\r\n        ],\r\n        \"compositeIndexes\": [\r\n          [\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"ascending\"\r\n            },\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"descending\"\r\n            }\r\n          ],\r\n          [\r\n            {\r\n              \"path\": \"/aberc\",\r\n              \"order\": \"descending\"\r\n            },\r\n            {\r\n              \"path\": \"/abc\",\r\n              \"order\": \"ascending\"\r\n            }\r\n          ]\r\n        ],\r\n        \"spatialIndexes\": [\r\n          {\r\n            \"path\": \"/mySpatialPath/*\",\r\n            \"types\": [\r\n              \"Point\",\r\n              \"LineString\",\r\n              \"Polygon\",\r\n              \"MultiPolygon\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"partitionKey\": {\r\n        \"paths\": [\r\n          \"/foo/bar\"\r\n        ],\r\n        \"kind\": \"Hash\"\r\n      },\r\n      \"uniqueKeyPolicy\": {\r\n        \"uniqueKeys\": [\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey3\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey4\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey2\"\r\n            ]\r\n          },\r\n          {\r\n            \"paths\": [\r\n              \"/myUniqueKey1\"\r\n            ]\r\n          }\r\n        ]\r\n      },\r\n      \"conflictResolutionPolicy\": {\r\n        \"mode\": \"LastWriterWins\",\r\n        \"conflictResolutionPath\": \"/_ts\",\r\n        \"conflictResolutionProcedure\": \"\"\r\n      }\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"id\": \"dbName\"\r\n    },\r\n    \"options\": {}\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -1662,8 +1662,8 @@
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"status\": \"Enqueued\"\r\n}",
+      "StatusCode": 202
     },
     {
       "RequestUri": "/subscriptions/259fbb24-9bcd-4cfc-865c-fc33b22fe38a/resourceGroups/CosmosDBResourceGroup60/providers/Microsoft.DocumentDB/databaseAccounts/dbaccount60-1/sqlDatabases/dbName/containers/container1/storedProcedures/storedProcedure?api-version=2023-11-15",
@@ -1701,7 +1701,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
           "a4686b9b-7540-4859-8b02-608eb4fa16bf"
@@ -2028,7 +2028,7 @@
           "Sat, 16 Dec 2023 13:09:46 GMT"
         ],
         "Content-Length": [
-          "613"
+          "700"
         ],
         "Content-Type": [
           "application/json"
@@ -2745,7 +2745,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "24a053f4-c7fe-4848-a7d4-7124232c5ccc"
@@ -2988,7 +2988,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
           "6bbb5d5e-0453-444e-b8a3-386aba9e5e53"
@@ -3327,7 +3327,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
           "fc968074-921e-425d-a66c-1c8a524e0695"
@@ -3447,7 +3447,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
           "0e09149a-019e-45c8-999d-a186123df84e"
@@ -3636,7 +3636,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11996"
         ],
         "x-ms-request-id": [
           "3ccda943-1c28-47de-9c2a-c370d88049ad"
@@ -3699,7 +3699,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11989"
         ],
         "x-ms-request-id": [
           "4bcdb0c9-611a-45c4-8572-6712f6d9ac13"
@@ -4188,7 +4188,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11992"
         ],
         "x-ms-request-id": [
           "db863722-9379-4e91-9996-92bdb5d4e656"
@@ -4251,7 +4251,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11993"
         ],
         "x-ms-request-id": [
           "2c3eb061-04a3-44a7-bc8b-f5c1b2b64150"
@@ -4443,7 +4443,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11991"
         ],
         "x-ms-request-id": [
           "89b5dada-75f6-4aae-8ba5-34a91f5b51c8"
@@ -4503,7 +4503,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11990"
         ],
         "x-ms-request-id": [
           "af44aff2-90d4-4d74-90a3-9ad0760ade83"
@@ -4569,7 +4569,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
           "2057bc7f-6fdf-42dd-8f6a-edd7f15f07a2"
@@ -4626,7 +4626,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11987"
         ],
         "x-ms-request-id": [
           "d272bb10-f5eb-449d-a034-3aa901bdabdd"
@@ -4686,7 +4686,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11986"
         ],
         "x-ms-request-id": [
           "dbcd4ef2-589e-402a-bfdd-5f63e2d3cc53"
@@ -4809,7 +4809,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11995"
         ],
         "x-ms-request-id": [
           "c12f7cb0-05d9-460c-a7b8-d3dcb8766d66"
@@ -4869,7 +4869,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11994"
         ],
         "x-ms-request-id": [
           "bd93a092-eb53-4cd4-9f74-4150ae443266"
@@ -5427,7 +5427,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11992"
         ],
         "x-ms-request-id": [
           "84526c8f-ac5b-4095-a49f-d9a18da0375d"
@@ -5487,7 +5487,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11991"
         ],
         "x-ms-request-id": [
           "7e654b6a-7ac2-4dd3-939a-8eec2504123e"
@@ -5625,6 +5625,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "259fbb24-9bcd-4cfc-865c-fc33b22fe38a"
+    "SubscriptionId": "23587e98-b6ac-4328-a753-03bcd3c8e744"
   }
 }

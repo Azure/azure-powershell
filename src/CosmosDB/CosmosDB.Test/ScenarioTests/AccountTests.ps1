@@ -21,7 +21,7 @@ function Test-AccountRelatedCmdlets
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
 
-  $cosmosDBAccountName = "cosmosdb678903"
+  $cosmosDBAccountName = "cosmosdb678902"
 
   #use an existing account with the following information for Account Update Operations
   $cosmosDBExistingAccountName = "dbaccount30" 

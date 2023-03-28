@@ -289,7 +289,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
-  $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 1 -IsZoneRedundant 0
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
@@ -431,7 +431,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       #add region
       $locationObject3 = @()
       $locationObject3 += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
-      $locationObject3 += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+      $locationObject3 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 1 -IsZoneRedundant 0
       Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $AccountName -LocationObject $locationObject3
 
       # restore deleted database

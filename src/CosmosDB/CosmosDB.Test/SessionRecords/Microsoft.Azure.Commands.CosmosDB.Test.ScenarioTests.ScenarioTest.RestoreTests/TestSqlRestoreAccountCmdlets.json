@@ -2969,13 +2969,13 @@
           "Thu, 14 Dec 2023 14:39:13 GMT"
         ],
         "Content-Length": [
-          "21"
+          "414"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/West%20US/restorableDatabaseAccounts/21208b8f-536f-479e-a767-12a71c96054f/restorableSqlResources/TestDB1\",\r\n      \"type\": \"Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlResources\",\r\n      \"name\": \"TestDB1\",\r\n      \"databaseName\": \"TestDB1\",\r\n      \"collectionNames\": [\r\n        \"TestCollectionInDB2\",\r\n        \"TestCollectionInDB1\"\r\n      ]\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
@@ -3629,13 +3629,13 @@
           "Thu, 14 Dec 2023 14:44:14 GMT"
         ],
         "Content-Length": [
-          "22"
+          "21"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"status\": \"Succeeded\"\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
       "StatusCode": 200
     },
     {

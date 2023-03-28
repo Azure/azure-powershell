@@ -32,8 +32,11 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1193"
         ],
         "x-ms-request-id": [
           "032c347a-4a51-4491-9d61-2463796b45b7"
@@ -60,7 +63,7 @@
           "Thu, 14 Dec 2023 12:04:53 GMT"
         ],
         "Content-Length": [
-          "199"
+          "160"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"

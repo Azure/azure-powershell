@@ -54,6 +54,13 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoRBACCmdlets()
+        {
+            TestRunner.RunTestScript("Test-MongoRBACCmdlets");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMongoInAccountRestoreOperationsCmdlets()
         {
             TestRunner.RunTestScript("Test-MongoInAccountRestoreOperationsCmdlets");
