@@ -92,11 +92,34 @@ function New-ModulePsm1 {
             }
         }
 
+        # Scripts to preload dependency assemblies on Windows PowerShell
+        $preloadAssemblies = ""
+        $isAzAccounts = $file.BaseName -ieq 'Az.Accounts'
+        if ($isAzAccounts) { # todo: no need to use function?
+            $preloadAssemblies += 'function Preload-ConditionalAssembly {
+    if ($PSEdition -eq "Desktop") {
+        [Microsoft.Azure.PowerShell.AssemblyLoading.ConditionalAssemblyProvider]::GetAssemblies().Values | ForEach-Object {
+            $path = $_.Item1
+            try {
+                Add-Type -Path $path -ErrorAction Ignore | Out-Null
+            }
+            catch {
+                Write-Verbose "Could not preload $path"
+            }
+        }
+    }
+}
+
+'
+            $preloadAssemblies += "Preload-ConditionalAssembly"
+        }
+
         # Grab the template and replace with information.
         $template = Get-Content -Path $TemplatePath
         $template = $template -replace "%MODULE-NAME%", $file.BaseName
         $template = $template -replace "%DATE%", [string](Get-Date)
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
+        $template = $template -replace "%PRELOAD-ASSEMBLY%", $preloadAssemblies
 
         #Az.Storage is using Azure.Core, so need to check PS version
         if ($IsNetcore)
