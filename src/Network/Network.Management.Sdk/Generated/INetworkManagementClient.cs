@@ -75,6 +75,36 @@ namespace Microsoft.Azure.Management.Network
 
 
         /// <summary>
+        /// Gets the IApplicationGatewaysOperations.
+        /// </summary>
+        IApplicationGatewaysOperations ApplicationGateways { get; }
+
+        /// <summary>
+        /// Gets the IApplicationGatewayPrivateLinkResourcesOperations.
+        /// </summary>
+        IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; }
+
+        /// <summary>
+        /// Gets the IApplicationGatewayPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IApplicationGatewayPrivateEndpointConnectionsOperations ApplicationGatewayPrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IApplicationGatewayWafDynamicManifestsDefaultOperations.
+        /// </summary>
+        IApplicationGatewayWafDynamicManifestsDefaultOperations ApplicationGatewayWafDynamicManifestsDefault { get; }
+
+        /// <summary>
+        /// Gets the IApplicationGatewayWafDynamicManifestsOperations.
+        /// </summary>
+        IApplicationGatewayWafDynamicManifestsOperations ApplicationGatewayWafDynamicManifests { get; }
+
+        /// <summary>
+        /// Gets the IApplicationSecurityGroupsOperations.
+        /// </summary>
+        IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; }
+
+        /// <summary>
         /// Gets the IAvailableDelegationsOperations.
         /// </summary>
         IAvailableDelegationsOperations AvailableDelegations { get; }
@@ -90,9 +120,24 @@ namespace Microsoft.Azure.Management.Network
         IAvailableServiceAliasesOperations AvailableServiceAliases { get; }
 
         /// <summary>
+        /// Gets the IAzureFirewallsOperations.
+        /// </summary>
+        IAzureFirewallsOperations AzureFirewalls { get; }
+
+        /// <summary>
+        /// Gets the IAzureFirewallFqdnTagsOperations.
+        /// </summary>
+        IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTags { get; }
+
+        /// <summary>
         /// Gets the IWebCategoriesOperations.
         /// </summary>
         IWebCategoriesOperations WebCategories { get; }
+
+        /// <summary>
+        /// Gets the IBastionHostsOperations.
+        /// </summary>
+        IBastionHostsOperations BastionHosts { get; }
 
         /// <summary>
         /// Gets the INetworkInterfacesOperations.
@@ -133,251 +178,6 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IAvailableEndpointServicesOperations.
         /// </summary>
         IAvailableEndpointServicesOperations AvailableEndpointServices { get; }
-
-        /// <summary>
-        /// Gets the IIpAllocationsOperations.
-        /// </summary>
-        IIpAllocationsOperations IpAllocations { get; }
-
-        /// <summary>
-        /// Gets the ILoadBalancersOperations.
-        /// </summary>
-        ILoadBalancersOperations LoadBalancers { get; }
-
-        /// <summary>
-        /// Gets the ILoadBalancerBackendAddressPoolsOperations.
-        /// </summary>
-        ILoadBalancerBackendAddressPoolsOperations LoadBalancerBackendAddressPools { get; }
-
-        /// <summary>
-        /// Gets the ILoadBalancerFrontendIPConfigurationsOperations.
-        /// </summary>
-        ILoadBalancerFrontendIPConfigurationsOperations LoadBalancerFrontendIPConfigurations { get; }
-
-        /// <summary>
-        /// Gets the IInboundNatRulesOperations.
-        /// </summary>
-        IInboundNatRulesOperations InboundNatRules { get; }
-
-        /// <summary>
-        /// Gets the ILoadBalancerLoadBalancingRulesOperations.
-        /// </summary>
-        ILoadBalancerLoadBalancingRulesOperations LoadBalancerLoadBalancingRules { get; }
-
-        /// <summary>
-        /// Gets the ILoadBalancerOutboundRulesOperations.
-        /// </summary>
-        ILoadBalancerOutboundRulesOperations LoadBalancerOutboundRules { get; }
-
-        /// <summary>
-        /// Gets the ILoadBalancerNetworkInterfacesOperations.
-        /// </summary>
-        ILoadBalancerNetworkInterfacesOperations LoadBalancerNetworkInterfaces { get; }
-
-        /// <summary>
-        /// Gets the ILoadBalancerProbesOperations.
-        /// </summary>
-        ILoadBalancerProbesOperations LoadBalancerProbes { get; }
-
-        /// <summary>
-        /// Gets the INetworkInterfaceIPConfigurationsOperations.
-        /// </summary>
-        INetworkInterfaceIPConfigurationsOperations NetworkInterfaceIPConfigurations { get; }
-
-        /// <summary>
-        /// Gets the INetworkInterfaceLoadBalancersOperations.
-        /// </summary>
-        INetworkInterfaceLoadBalancersOperations NetworkInterfaceLoadBalancers { get; }
-
-        /// <summary>
-        /// Gets the INetworkInterfaceTapConfigurationsOperations.
-        /// </summary>
-        INetworkInterfaceTapConfigurationsOperations NetworkInterfaceTapConfigurations { get; }
-
-        /// <summary>
-        /// Gets the INetworkProfilesOperations.
-        /// </summary>
-        INetworkProfilesOperations NetworkProfiles { get; }
-
-        /// <summary>
-        /// Gets the INetworkSecurityGroupsOperations.
-        /// </summary>
-        INetworkSecurityGroupsOperations NetworkSecurityGroups { get; }
-
-        /// <summary>
-        /// Gets the ISecurityRulesOperations.
-        /// </summary>
-        ISecurityRulesOperations SecurityRules { get; }
-
-        /// <summary>
-        /// Gets the IDefaultSecurityRulesOperations.
-        /// </summary>
-        IDefaultSecurityRulesOperations DefaultSecurityRules { get; }
-
-        /// <summary>
-        /// Gets the INetworkWatchersOperations.
-        /// </summary>
-        INetworkWatchersOperations NetworkWatchers { get; }
-
-        /// <summary>
-        /// Gets the IPacketCapturesOperations.
-        /// </summary>
-        IPacketCapturesOperations PacketCaptures { get; }
-
-        /// <summary>
-        /// Gets the IConnectionMonitorsOperations.
-        /// </summary>
-        IConnectionMonitorsOperations ConnectionMonitors { get; }
-
-        /// <summary>
-        /// Gets the IFlowLogsOperations.
-        /// </summary>
-        IFlowLogsOperations FlowLogs { get; }
-
-        /// <summary>
-        /// Gets the IOperations.
-        /// </summary>
-        IOperations Operations { get; }
-
-        /// <summary>
-        /// Gets the IPrivateEndpointsOperations.
-        /// </summary>
-        IPrivateEndpointsOperations PrivateEndpoints { get; }
-
-        /// <summary>
-        /// Gets the IAvailablePrivateEndpointTypesOperations.
-        /// </summary>
-        IAvailablePrivateEndpointTypesOperations AvailablePrivateEndpointTypes { get; }
-
-        /// <summary>
-        /// Gets the IPrivateDnsZoneGroupsOperations.
-        /// </summary>
-        IPrivateDnsZoneGroupsOperations PrivateDnsZoneGroups { get; }
-
-        /// <summary>
-        /// Gets the IPrivateLinkServicesOperations.
-        /// </summary>
-        IPrivateLinkServicesOperations PrivateLinkServices { get; }
-
-        /// <summary>
-        /// Gets the IPublicIPPrefixesOperations.
-        /// </summary>
-        IPublicIPPrefixesOperations PublicIPPrefixes { get; }
-
-        /// <summary>
-        /// Gets the IRouteTablesOperations.
-        /// </summary>
-        IRouteTablesOperations RouteTables { get; }
-
-        /// <summary>
-        /// Gets the IRoutesOperations.
-        /// </summary>
-        IRoutesOperations Routes { get; }
-
-        /// <summary>
-        /// Gets the ISecurityPartnerProvidersOperations.
-        /// </summary>
-        ISecurityPartnerProvidersOperations SecurityPartnerProviders { get; }
-
-        /// <summary>
-        /// Gets the IServiceEndpointPoliciesOperations.
-        /// </summary>
-        IServiceEndpointPoliciesOperations ServiceEndpointPolicies { get; }
-
-        /// <summary>
-        /// Gets the IServiceEndpointPolicyDefinitionsOperations.
-        /// </summary>
-        IServiceEndpointPolicyDefinitionsOperations ServiceEndpointPolicyDefinitions { get; }
-
-        /// <summary>
-        /// Gets the IServiceTagsOperations.
-        /// </summary>
-        IServiceTagsOperations ServiceTags { get; }
-
-        /// <summary>
-        /// Gets the IServiceTagInformationOperations.
-        /// </summary>
-        IServiceTagInformationOperations ServiceTagInformation { get; }
-
-        /// <summary>
-        /// Gets the IUsagesOperations.
-        /// </summary>
-        IUsagesOperations Usages { get; }
-
-        /// <summary>
-        /// Gets the IVirtualNetworksOperations.
-        /// </summary>
-        IVirtualNetworksOperations VirtualNetworks { get; }
-
-        /// <summary>
-        /// Gets the ISubnetsOperations.
-        /// </summary>
-        ISubnetsOperations Subnets { get; }
-
-        /// <summary>
-        /// Gets the IResourceNavigationLinksOperations.
-        /// </summary>
-        IResourceNavigationLinksOperations ResourceNavigationLinks { get; }
-
-        /// <summary>
-        /// Gets the IServiceAssociationLinksOperations.
-        /// </summary>
-        IServiceAssociationLinksOperations ServiceAssociationLinks { get; }
-
-        /// <summary>
-        /// Gets the IVirtualNetworkPeeringsOperations.
-        /// </summary>
-        IVirtualNetworkPeeringsOperations VirtualNetworkPeerings { get; }
-
-        /// <summary>
-        /// Gets the IVirtualNetworkTapsOperations.
-        /// </summary>
-        IVirtualNetworkTapsOperations VirtualNetworkTaps { get; }
-
-        /// <summary>
-        /// Gets the IApplicationGatewaysOperations.
-        /// </summary>
-        IApplicationGatewaysOperations ApplicationGateways { get; }
-
-        /// <summary>
-        /// Gets the IApplicationGatewayPrivateLinkResourcesOperations.
-        /// </summary>
-        IApplicationGatewayPrivateLinkResourcesOperations ApplicationGatewayPrivateLinkResources { get; }
-
-        /// <summary>
-        /// Gets the IApplicationGatewayPrivateEndpointConnectionsOperations.
-        /// </summary>
-        IApplicationGatewayPrivateEndpointConnectionsOperations ApplicationGatewayPrivateEndpointConnections { get; }
-
-        /// <summary>
-        /// Gets the IApplicationGatewayWafDynamicManifestsDefaultOperations.
-        /// </summary>
-        IApplicationGatewayWafDynamicManifestsDefaultOperations ApplicationGatewayWafDynamicManifestsDefault { get; }
-
-        /// <summary>
-        /// Gets the IApplicationGatewayWafDynamicManifestsOperations.
-        /// </summary>
-        IApplicationGatewayWafDynamicManifestsOperations ApplicationGatewayWafDynamicManifests { get; }
-
-        /// <summary>
-        /// Gets the IApplicationSecurityGroupsOperations.
-        /// </summary>
-        IApplicationSecurityGroupsOperations ApplicationSecurityGroups { get; }
-
-        /// <summary>
-        /// Gets the IAzureFirewallsOperations.
-        /// </summary>
-        IAzureFirewallsOperations AzureFirewalls { get; }
-
-        /// <summary>
-        /// Gets the IAzureFirewallFqdnTagsOperations.
-        /// </summary>
-        IAzureFirewallFqdnTagsOperations AzureFirewallFqdnTags { get; }
-
-        /// <summary>
-        /// Gets the IBastionHostsOperations.
-        /// </summary>
-        IBastionHostsOperations BastionHosts { get; }
 
         /// <summary>
         /// Gets the IExpressRouteCircuitAuthorizationsOperations.
@@ -470,14 +270,74 @@ namespace Microsoft.Azure.Management.Network
         IFirewallPolicyIdpsSignaturesFilterValuesOperations FirewallPolicyIdpsSignaturesFilterValues { get; }
 
         /// <summary>
+        /// Gets the IIpAllocationsOperations.
+        /// </summary>
+        IIpAllocationsOperations IpAllocations { get; }
+
+        /// <summary>
         /// Gets the IIpGroupsOperations.
         /// </summary>
         IIpGroupsOperations IpGroups { get; }
 
         /// <summary>
+        /// Gets the ILoadBalancersOperations.
+        /// </summary>
+        ILoadBalancersOperations LoadBalancers { get; }
+
+        /// <summary>
+        /// Gets the ILoadBalancerBackendAddressPoolsOperations.
+        /// </summary>
+        ILoadBalancerBackendAddressPoolsOperations LoadBalancerBackendAddressPools { get; }
+
+        /// <summary>
+        /// Gets the ILoadBalancerFrontendIPConfigurationsOperations.
+        /// </summary>
+        ILoadBalancerFrontendIPConfigurationsOperations LoadBalancerFrontendIPConfigurations { get; }
+
+        /// <summary>
+        /// Gets the IInboundNatRulesOperations.
+        /// </summary>
+        IInboundNatRulesOperations InboundNatRules { get; }
+
+        /// <summary>
+        /// Gets the ILoadBalancerLoadBalancingRulesOperations.
+        /// </summary>
+        ILoadBalancerLoadBalancingRulesOperations LoadBalancerLoadBalancingRules { get; }
+
+        /// <summary>
+        /// Gets the ILoadBalancerOutboundRulesOperations.
+        /// </summary>
+        ILoadBalancerOutboundRulesOperations LoadBalancerOutboundRules { get; }
+
+        /// <summary>
+        /// Gets the ILoadBalancerNetworkInterfacesOperations.
+        /// </summary>
+        ILoadBalancerNetworkInterfacesOperations LoadBalancerNetworkInterfaces { get; }
+
+        /// <summary>
+        /// Gets the ILoadBalancerProbesOperations.
+        /// </summary>
+        ILoadBalancerProbesOperations LoadBalancerProbes { get; }
+
+        /// <summary>
         /// Gets the INatGatewaysOperations.
         /// </summary>
         INatGatewaysOperations NatGateways { get; }
+
+        /// <summary>
+        /// Gets the INetworkInterfaceIPConfigurationsOperations.
+        /// </summary>
+        INetworkInterfaceIPConfigurationsOperations NetworkInterfaceIPConfigurations { get; }
+
+        /// <summary>
+        /// Gets the INetworkInterfaceLoadBalancersOperations.
+        /// </summary>
+        INetworkInterfaceLoadBalancersOperations NetworkInterfaceLoadBalancers { get; }
+
+        /// <summary>
+        /// Gets the INetworkInterfaceTapConfigurationsOperations.
+        /// </summary>
+        INetworkInterfaceTapConfigurationsOperations NetworkInterfaceTapConfigurations { get; }
 
         /// <summary>
         /// Gets the INetworkManagersOperations.
@@ -540,6 +400,26 @@ namespace Microsoft.Azure.Management.Network
         IAdminRulesOperations AdminRules { get; }
 
         /// <summary>
+        /// Gets the INetworkProfilesOperations.
+        /// </summary>
+        INetworkProfilesOperations NetworkProfiles { get; }
+
+        /// <summary>
+        /// Gets the INetworkSecurityGroupsOperations.
+        /// </summary>
+        INetworkSecurityGroupsOperations NetworkSecurityGroups { get; }
+
+        /// <summary>
+        /// Gets the ISecurityRulesOperations.
+        /// </summary>
+        ISecurityRulesOperations SecurityRules { get; }
+
+        /// <summary>
+        /// Gets the IDefaultSecurityRulesOperations.
+        /// </summary>
+        IDefaultSecurityRulesOperations DefaultSecurityRules { get; }
+
+        /// <summary>
         /// Gets the INetworkVirtualAppliancesOperations.
         /// </summary>
         INetworkVirtualAppliancesOperations NetworkVirtualAppliances { get; }
@@ -560,6 +440,56 @@ namespace Microsoft.Azure.Management.Network
         IInboundSecurityRuleOperations InboundSecurityRule { get; }
 
         /// <summary>
+        /// Gets the INetworkWatchersOperations.
+        /// </summary>
+        INetworkWatchersOperations NetworkWatchers { get; }
+
+        /// <summary>
+        /// Gets the IPacketCapturesOperations.
+        /// </summary>
+        IPacketCapturesOperations PacketCaptures { get; }
+
+        /// <summary>
+        /// Gets the IConnectionMonitorsOperations.
+        /// </summary>
+        IConnectionMonitorsOperations ConnectionMonitors { get; }
+
+        /// <summary>
+        /// Gets the IFlowLogsOperations.
+        /// </summary>
+        IFlowLogsOperations FlowLogs { get; }
+
+        /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointsOperations.
+        /// </summary>
+        IPrivateEndpointsOperations PrivateEndpoints { get; }
+
+        /// <summary>
+        /// Gets the IAvailablePrivateEndpointTypesOperations.
+        /// </summary>
+        IAvailablePrivateEndpointTypesOperations AvailablePrivateEndpointTypes { get; }
+
+        /// <summary>
+        /// Gets the IPrivateDnsZoneGroupsOperations.
+        /// </summary>
+        IPrivateDnsZoneGroupsOperations PrivateDnsZoneGroups { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkServicesOperations.
+        /// </summary>
+        IPrivateLinkServicesOperations PrivateLinkServices { get; }
+
+        /// <summary>
+        /// Gets the IPublicIPPrefixesOperations.
+        /// </summary>
+        IPublicIPPrefixesOperations PublicIPPrefixes { get; }
+
+        /// <summary>
         /// Gets the IRouteFiltersOperations.
         /// </summary>
         IRouteFiltersOperations RouteFilters { get; }
@@ -570,9 +500,74 @@ namespace Microsoft.Azure.Management.Network
         IRouteFilterRulesOperations RouteFilterRules { get; }
 
         /// <summary>
+        /// Gets the IRouteTablesOperations.
+        /// </summary>
+        IRouteTablesOperations RouteTables { get; }
+
+        /// <summary>
+        /// Gets the IRoutesOperations.
+        /// </summary>
+        IRoutesOperations Routes { get; }
+
+        /// <summary>
+        /// Gets the ISecurityPartnerProvidersOperations.
+        /// </summary>
+        ISecurityPartnerProvidersOperations SecurityPartnerProviders { get; }
+
+        /// <summary>
         /// Gets the IBgpServiceCommunitiesOperations.
         /// </summary>
         IBgpServiceCommunitiesOperations BgpServiceCommunities { get; }
+
+        /// <summary>
+        /// Gets the IServiceEndpointPoliciesOperations.
+        /// </summary>
+        IServiceEndpointPoliciesOperations ServiceEndpointPolicies { get; }
+
+        /// <summary>
+        /// Gets the IServiceEndpointPolicyDefinitionsOperations.
+        /// </summary>
+        IServiceEndpointPolicyDefinitionsOperations ServiceEndpointPolicyDefinitions { get; }
+
+        /// <summary>
+        /// Gets the IServiceTagsOperations.
+        /// </summary>
+        IServiceTagsOperations ServiceTags { get; }
+
+        /// <summary>
+        /// Gets the IServiceTagInformationOperations.
+        /// </summary>
+        IServiceTagInformationOperations ServiceTagInformation { get; }
+
+        /// <summary>
+        /// Gets the IUsagesOperations.
+        /// </summary>
+        IUsagesOperations Usages { get; }
+
+        /// <summary>
+        /// Gets the IVirtualNetworksOperations.
+        /// </summary>
+        IVirtualNetworksOperations VirtualNetworks { get; }
+
+        /// <summary>
+        /// Gets the ISubnetsOperations.
+        /// </summary>
+        ISubnetsOperations Subnets { get; }
+
+        /// <summary>
+        /// Gets the IResourceNavigationLinksOperations.
+        /// </summary>
+        IResourceNavigationLinksOperations ResourceNavigationLinks { get; }
+
+        /// <summary>
+        /// Gets the IServiceAssociationLinksOperations.
+        /// </summary>
+        IServiceAssociationLinksOperations ServiceAssociationLinks { get; }
+
+        /// <summary>
+        /// Gets the IVirtualNetworkPeeringsOperations.
+        /// </summary>
+        IVirtualNetworkPeeringsOperations VirtualNetworkPeerings { get; }
 
         /// <summary>
         /// Gets the IVirtualNetworkGatewaysOperations.
@@ -593,6 +588,11 @@ namespace Microsoft.Azure.Management.Network
         /// Gets the IVirtualNetworkGatewayNatRulesOperations.
         /// </summary>
         IVirtualNetworkGatewayNatRulesOperations VirtualNetworkGatewayNatRules { get; }
+
+        /// <summary>
+        /// Gets the IVirtualNetworkTapsOperations.
+        /// </summary>
+        IVirtualNetworkTapsOperations VirtualNetworkTaps { get; }
 
         /// <summary>
         /// Gets the IVirtualRoutersOperations.
@@ -730,25 +730,6 @@ namespace Microsoft.Azure.Management.Network
         IWebApplicationFirewallPoliciesOperations WebApplicationFirewallPolicies { get; }
 
         /// <summary>
-        /// Checks whether a domain name in the cloudapp.azure.com zone is
-        /// available for use.
-        /// </summary>
-        /// <param name='location'>
-        /// The location of the domain name.
-        /// </param>
-        /// <param name='domainNameLabel'>
-        /// The domain name to be verified. It must conform to the following
-        /// regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        Task<AzureOperationResponse<DnsNameAvailabilityResult>> CheckDnsNameAvailabilityWithHttpMessagesAsync(string location, string domainNameLabel, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
-
-        /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the
         /// request.
         /// </summary>
@@ -847,6 +828,25 @@ namespace Microsoft.Azure.Management.Network
         /// The cancellation token.
         /// </param>
         Task<AzureOperationResponse<IPage<BastionSessionState>>> DisconnectActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<string> sessionIdsProperty = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+
+        /// <summary>
+        /// Checks whether a domain name in the cloudapp.azure.com zone is
+        /// available for use.
+        /// </summary>
+        /// <param name='location'>
+        /// The location of the domain name.
+        /// </param>
+        /// <param name='domainNameLabel'>
+        /// The domain name to be verified. It must conform to the following
+        /// regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        Task<AzureOperationResponse<DnsNameAvailabilityResult>> CheckDnsNameAvailabilityWithHttpMessagesAsync(string location, string domainNameLabel, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Retrieves detail of a provider port.

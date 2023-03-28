@@ -24,50 +24,6 @@ namespace Microsoft.Azure.Management.Network
     public static partial class NetworkManagementClientExtensions
     {
             /// <summary>
-            /// Checks whether a domain name in the cloudapp.azure.com zone is available
-            /// for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The location of the domain name.
-            /// </param>
-            /// <param name='domainNameLabel'>
-            /// The domain name to be verified. It must conform to the following regular
-            /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-            /// </param>
-            public static DnsNameAvailabilityResult CheckDnsNameAvailability(this INetworkManagementClient operations, string location, string domainNameLabel)
-            {
-                return operations.CheckDnsNameAvailabilityAsync(location, domainNameLabel).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Checks whether a domain name in the cloudapp.azure.com zone is available
-            /// for use.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='location'>
-            /// The location of the domain name.
-            /// </param>
-            /// <param name='domainNameLabel'>
-            /// The domain name to be verified. It must conform to the following regular
-            /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<DnsNameAvailabilityResult> CheckDnsNameAvailabilityAsync(this INetworkManagementClient operations, string location, string domainNameLabel, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.CheckDnsNameAvailabilityWithHttpMessagesAsync(location, domainNameLabel, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Creates a Bastion Shareable Links for all the VMs specified in the request.
             /// </summary>
             /// <param name='operations'>
@@ -287,6 +243,50 @@ namespace Microsoft.Azure.Management.Network
             public static async Task<IPage<BastionSessionState>> DisconnectActiveSessionsAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<string> sessionIdsProperty = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.DisconnectActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, sessionIdsProperty, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Checks whether a domain name in the cloudapp.azure.com zone is available
+            /// for use.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The location of the domain name.
+            /// </param>
+            /// <param name='domainNameLabel'>
+            /// The domain name to be verified. It must conform to the following regular
+            /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
+            /// </param>
+            public static DnsNameAvailabilityResult CheckDnsNameAvailability(this INetworkManagementClient operations, string location, string domainNameLabel)
+            {
+                return operations.CheckDnsNameAvailabilityAsync(location, domainNameLabel).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Checks whether a domain name in the cloudapp.azure.com zone is available
+            /// for use.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='location'>
+            /// The location of the domain name.
+            /// </param>
+            /// <param name='domainNameLabel'>
+            /// The domain name to be verified. It must conform to the following regular
+            /// expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<DnsNameAvailabilityResult> CheckDnsNameAvailabilityAsync(this INetworkManagementClient operations, string location, string domainNameLabel, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckDnsNameAvailabilityWithHttpMessagesAsync(location, domainNameLabel, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
