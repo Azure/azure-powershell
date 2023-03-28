@@ -27,6 +27,9 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 
+using CertificatePolicy = Azure.Security.KeyVault.Certificates.CertificatePolicy;
+using Newtonsoft.Json;
+
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
@@ -52,6 +55,8 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         /// <summary>
         /// VaultName
+        /// 
+        /// 
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
@@ -109,6 +114,14 @@ namespace Microsoft.Azure.Commands.KeyVault
         public SecureString Password { get; set; }
 
         /// <summary>
+        /// File Path
+        /// </summary>
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ImportCertificateFromFileParameterSet,
+                   HelpMessage = "Specifies the path to the file that contains the certificate policy to import to key vault.")]
+        public string PolicyPath { get; set; }
+
+        /// <summary>
         /// Certificate Collection
         /// </summary>
         [Parameter(Mandatory = true,
@@ -137,7 +150,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private void ValidateParameters()
         {
             // Verify the FileNotFound whether exists
-            if (this.IsParameterBound(c => c.FilePath))
+            if (this.IsParameterBound(c => c.FilePath) )
             {
                 if (!File.Exists(FilePath))
                 {
@@ -157,12 +170,24 @@ namespace Microsoft.Azure.Commands.KeyVault
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
+                        CertificatePolicy policy = null;
+                        if (!String.IsNullOrEmpty(PolicyPath))
+                        {
+                            policy = (CertificatePolicy)GetPolicyFromFile(PolicyPath);
+                        }
                         // Pem file can't be handled by X509Certificate2Collection in dotnet standard
                         // Just read it as raw data and pass it to service side
                         if (IsPemFile(FilePath))
                         {
                             byte[] pemBytes = File.ReadAllBytes(FilePath);
-                            certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType);
+                            if (policy != null)
+                            {
+                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType, PolicyPath);
+                            }
+                            else
+                            {
+                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType);
+                            }
                         }
                         else
                         {
@@ -179,6 +204,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                             if (doImport)
                             {
+                                
                                 byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
                                 certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary());
                             }
@@ -226,6 +252,30 @@ namespace Microsoft.Azure.Commands.KeyVault
             certificateCollection.Import(certFile.FullName, this.Password?.ConvertToString(), X509KeyStorageFlags.Exportable);
 
             return certificateCollection;
+        }
+
+        private CertificatePolicy GetPolicyFromFile(string filePath)
+        {
+            CertificatePolicy policy;
+            /* new CertificatePolicy()
+                {
+                    ContentType = contentType
+                }
+            */
+            if (".json".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase))
+            {
+                using (StreamReader r = new StreamReader(filePath))
+                {
+                    string jsonContent = r.ReadToEnd();
+                    // dynamic array = JsonConvert.DeserializeObject(jsonContent);
+                    policy = (CertificatePolicy)JsonConvert.DeserializeObject(jsonContent);
+                }
+            }
+            else
+            {
+                throw new AzPSArgumentException(string.Format(Resources.UnsupportedFileFormat, this.PolicyPath), nameof(PolicyPath));
+            }
+            return policy;
         }
     }
 }

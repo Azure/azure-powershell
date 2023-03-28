@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, string certPolicyPath = null)
         {
             return ImportCertificate(vaultName, certName, Convert.ToBase64String(certificate), certPassword, tags, contentType);
         }

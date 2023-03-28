@@ -10,6 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using CertificatePolicy = Azure.Security.KeyVault.Certificates.CertificatePolicy;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
@@ -244,7 +245,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return VaultClient.ImportCertificate(vaultName, certName, Convert.FromBase64String(certificate), certPassword, tags, contentType);
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, string certPolicyPath = null)
         {
             return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags, contentType);
         }
