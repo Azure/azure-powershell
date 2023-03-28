@@ -17,189 +17,196 @@
 
     .DESCRIPTION
         The script will calculate the test coverage for each module based on the raw data generated during test run.
-        The test coverage will be calculated and displayed at cmdlet, parameterset and parameter levels.
+        The test coverage will be calculated and displayed at command, parameterset and parameter levels.
 #>
 
-$repoRootDirectory = $PSScriptRoot | Split-Path | Split-Path
-$artifactsDirectory = Join-Path -Path $repoRootDirectory -ChildPath "artifacts"
-$debugDirectory = Join-Path -Path $artifactsDirectory -ChildPath "Debug"
-$testCoverageRootDirectory = Join-Path -Path $artifactsDirectory -ChildPath "TestCoverageAnalysis"
-$testCoverageRawDirectory = Join-Path -Path $testCoverageRootDirectory -ChildPath "Raw"
-$testCoverageResultsDirectory = Join-Path -Path $testCoverageRootDirectory -ChildPath "Results"
+param (
+    [Parameter()]
+    [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
+    [string] $DataLocation,
+
+    [Parameter()]
+    [switch] $CalcBaseline
+)
 
 $psCommonParameters = @("-Break", "-Confirm", "-Debug", "-DefaultProfile", "-ErrorAction", "-ErrorVariable", "-HttpPipelineAppend", "-HttpPipelinePrepend", "-InformationAction", "-InformationVariable",
     "-OutBuffer", "-OutVariable", "-PassThru", "-PipelineVariable", "-Proxy", "-ProxyCredential", "-ProxyUseDefaultCredentials", "-Verbose", "-WarningAction", "-WarningVariable", "-WhatIf")
 
-$excludedModules = @(
-    "Az.BareMetal",
-    "Az.ChangeAnalysis",
-    "Az.CloudService",
-    "Az.Communication",
-    "Az.Confluent",
-    "Az.ConnectedNetwork",
-    "Az.CustomLocation",
-    "Az.CustomProviders",
-    "Az.DataBox",
-    "Az.Datadog",
-    "Az.DigitalTwins",
-    "Az.DiskPool",
-    "Az.EdgeOrder",
-    "Az.Elastic",
-    "Az.HanaOnAzure",
-    "Az.HealthBot",
-    "Az.LabServices",
-    "Az.Logz",
-    "Az.ManagedServices",
-    "Az.Maps",
-    "Az.MariaDb",
-    "Az.Marketplace",
-    "Az.MonitoringSolutions",
-    "Az.Portal",
-    "Az.PostgreSql",
-    "Az.ProviderHub",
-    "Az.Purview",
-    "Az.Quota",
-    "Az.ResourceGraph",
-    "Az.ResourceMover",
-    "Az.StreamAnalytics",
-    "Az.Synapse",
-    "Az.TimeSeriesInsights",
-    "Az.Websites",
-    "Az.WindowsIotServices"
-)
+$repoDir = $PSScriptRoot | Split-Path | Split-Path | Split-Path
+$debugDir = Join-Path -Path $repoDir -ChildPath "artifacts" | Join-Path -ChildPath "Debug"
 
-if (!(Test-Path -LiteralPath $testCoverageResultsDirectory -PathType Container)) {
-    New-Item -Path $testCoverageRootDirectory -Name "Results" -ItemType Directory
+$accountsModuleName = "Az.Accounts"
+$accountsModulePsd1 = Join-Path -Path $debugDir -ChildPath $accountsModuleName | Join-Path -ChildPath "$accountsModuleName.psd1"
+Import-Module $accountsModulePsd1 -Force
+
+if ($PSBoundParameters.ContainsKey("DataLocation")) {
+    $cvgDir = $DataLocation
 }
 else {
-    Get-ChildItem -LiteralPath $testCoverageResultsDirectory -Filter "*.txt" | Remove-Item -Force
+    $cvgDir = (Get-AzConfig -TestCoverageLocation).Value
+}
+$cvgRootDir = Join-Path -Path $cvgDir -ChildPath "TestCoverageAnalysis"
+$cvgRawDir = Join-Path -Path $cvgRootDir -ChildPath "Raw"
+$cvgResultsDir = Join-Path -Path $cvgRootDir -ChildPath "Results"
+
+if (!(Test-Path -LiteralPath $cvgResultsDir -PathType Container)) {
+    New-Item -Path $cvgRootDir -Name "Results" -ItemType Directory -Force | Out-Null
+}
+else {
+    Get-ChildItem -Path $cvgResultsDir | Remove-Item -Force
 }
 
-$accountModuleName = "Az.Accounts"
-$accountModuleFullPath = Join-Path -Path $debugDirectory -ChildPath $accountModuleName | Join-Path -ChildPath "$accountModuleName.psd1"
-Import-Module $accountModuleFullPath
+$cvgReportCsv = Join-Path -Path $cvgResultsDir -ChildPath "Report.csv"
+({} | Select-Object "Module", "TotalCommands", "TestedCommands", "CommandCoverage", "TotalParameterSets", "TestedParameterSets", "ParameterSetCoverage", "TotalParameters", "TestedParameters", "ParameterCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgReportCsv -Encoding utf8 -Force
 
-$overallCmdletsCount = 0
-$overallExecutedCmdletsCount = 0
+if ($CalcBaseline.IsPresent) {
+    $cvgBaselineCsv = Join-Path -Path $cvgResultsDir -ChildPath "Baseline.csv"
+    ({} | Select-Object "Module", "CommandCoverage" | ConvertTo-Csv -NoTypeInformation)[0] | Out-File -LiteralPath $cvgBaselineCsv -Encoding utf8 -Force
+}
 
-$AzPSReportContent = [System.Text.StringBuilder]::new()
-[void]$AzPSReportContent.AppendLine("Test coverage report for all modules :")
-[void]$AzPSReportContent.AppendLine()
+$overallCommandsCount = 0
+$overallTestedCommandsCount = 0
 
-$allModules = Get-ChildItem -LiteralPath $debugDirectory -Filter "Az.*" -Directory -Name
+$allModules = Get-ChildItem -Path $debugDir -Filter "Az.*" -Directory -Name
 foreach ($moduleName in $allModules) {
-    Write-Host "##[group]Start to analyze test coverage for the module '$moduleName'" -ForegroundColor Cyan
-
-    if ($moduleName -in $excludedModules) {
-        Write-Warning "The module '$moduleName' has been excluded."
-        Write-Host "##[endgroup]" -ForegroundColor Cyan
-        continue
-    }
-
+    $simpleModuleName = $moduleName.Substring(3)
     $hasRawData = $true
 
-    $moduleCsvFullPath = Join-Path -Path $testCoverageRawDirectory -ChildPath "$moduleName.csv"
-    if (!(Test-Path $moduleCsvFullPath)) {
-        Write-Warning "The module '$moduleName' has no test raw data generated."
-        [void]$AzPSReportContent.AppendLine("  The module '$moduleName' has no test raw data file found!")
-        [void]$AzPSReportContent.AppendLine()
+    $cvgRawCsv = Join-Path -Path $cvgRawDir -ChildPath "$moduleName.csv"
+    if (!(Test-Path $cvgRawCsv)) {
+        Write-Warning "The module `"$moduleName`" has no test coverage data found."
         $hasRawData = $false
     }
 
-    [void]$AzPSReportContent.AppendLine("  Module name: $moduleName")
-
-    $AzPSModuleReportContent = [System.Text.StringBuilder]::new()
-    [void]$AzPSModuleReportContent.AppendLine("Test coverage report for module $moduleName :")
-    [void]$AzPSModuleReportContent.AppendLine()
-
-    if ($moduleName -ne $accountModuleName) {
-        $moduleFullPath = Join-Path -Path $debugDirectory -ChildPath $moduleName | Join-Path -ChildPath "$moduleName.psd1"
-        Import-Module $moduleFullPath
+    if ($moduleName -ne $accountsModuleName) {
+        $modulePsd1 = Join-Path -Path $debugDir -ChildPath $moduleName | Join-Path -ChildPath "$moduleName.psd1"
+        Import-Module $modulePsd1 -Force
     }
 
     $module = Get-Module -Name $moduleName
-    $moduleCmdlets = $module.ExportedCmdlets.Keys + $module.ExportedFunctions.Keys
+    $moduleCommands = $module.ExportedCmdlets.Keys + $module.ExportedFunctions.Keys
 
-    $totalCmdletsCount = $moduleCmdlets.Count
-    $overallCmdletsCount += $totalCmdletsCount
+    $totalCommandsCount = $moduleCommands.Count
+    $overallCommandsCount += $totalCommandsCount
 
     $totalParameterSetsCount = 0
     $totalParametersCount = 0
-    $moduleCmdlets | ForEach-Object {
-        $cmdlet = Get-Command -Name $_
-        $totalParameterSetsCount += $cmdlet.ParameterSets.Count
+    $moduleCommands | ForEach-Object {
+        $cmd = Get-Command -Name $_
+        $totalParameterSetsCount += $cmd.ParameterSets.Count
 
-        $cmdletParams = $cmdlet.Parameters
-        $cmdletParams.Keys | ForEach-Object {
+        $cmdParams = $cmd.Parameters
+        $cmdParams.Keys | ForEach-Object {
             if ($_ -notin $psCommonParameters) {
-                $totalParametersCount += $cmdletParams[$_].ParameterSets.Count
+                $totalParametersCount += $cmdParams[$_].ParameterSets.Count
             }
         }
+    }
+
+    $commandExec = [PSCustomObject]@{
+        TestedCommands   = @()
+        UntestedCommands = @()
     }
 
     if ($hasRawData) {
-        $rawCsv = Import-Csv -LiteralPath $moduleCsvFullPath | Select-Object * -Unique
+        (Import-Csv -Path $cvgRawCsv) |
+        Select-Object `
+        @{ Name = "Module"; Expression = { $simpleModuleName } }, `
+        @{ Name = "CommandName"; Expression = { $_.CommandName } }, `
+        @{ Name = "TotalCommands"; Expression = { $totalCommandsCount } }, `
+        @{ Name = "ParameterSetName"; Expression = { $_.ParameterSetName } }, `
+        @{ Name = "TotalParameterSets"; Expression = { $totalParameterSetsCount } }, `
+        @{ Name = "Parameters"; Expression = { $_.Parameters } }, `
+        @{ Name = "TotalParameters"; Expression = { $totalParametersCount } }, `
+        @{ Name = "SourceScript"; Expression = { $_.SourceScript } }, `
+        @{ Name = "LineNumber"; Expression = { $_.LineNumber } }, `
+        @{ Name = "StartDateTime"; Expression = { $_.StartDateTime } }, `
+        @{ Name = "EndDateTime"; Expression = { $_.EndDateTime } }, `
+        @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } } |
+        Export-Csv -Path $cvgRawCsv -Encoding utf8 -NoTypeInformation -Force
 
-        Write-Host "##[section]Start to calculate cmdlets." -ForegroundColor Green
+        $rawCsv = Import-Csv -LiteralPath $cvgRawCsv | Where-Object IsSuccess -eq $true | Select-Object CommandName, ParameterSetName, Parameters -Unique
 
-        $csvGroupByCmdlet = $rawCsv | Select-Object -ExpandProperty CommandName -Unique | Sort-Object CommandName
-        $totalExecutedCmdletsCount = $csvGroupByCmdlet.Count
-        $overallExecutedCmdletsCount += $totalExecutedCmdletsCount
+        $csvGroupByCommand = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName | Select-Object -ExpandProperty CommandName -Unique
+        $totalTestedCommandsCount = $csvGroupByCommand.Count
+        $overallTestedCommandsCount += $totalTestedCommandsCount
 
-        Write-Host "##[section]Finished calculating cmdlets." -ForegroundColor Green
+        $csvGroupByParameterSet = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName, ParameterSetName | Select-Object CommandName, ParameterSetName -Unique | Group-Object CommandName
+        $totalTestedParameterSetsCount = ($csvGroupByParameterSet | Measure-Object -Property Count -Sum).Sum
 
-        Write-Host "##[section]Start to calculate parameter sets." -ForegroundColor Green
-
-        $csvGroupByParameterSet = $rawCsv | Select-Object CommandName, ParameterSetName -Unique | Sort-Object CommandName, ParameterSetName | Group-Object CommandName
-        $totalExecutedParameterSetsCount = ($csvGroupByParameterSet | Measure-Object -Property Count -Sum).Sum
-
-        [void]$AzPSModuleReportContent.AppendLine("Following cmdlets were executed :")
         $csvGroupByParameterSet | ForEach-Object {
             $_.Group | ForEach-Object {
-                [void]$AzPSModuleReportContent.AppendLine("  -->  Cmdlet $($_.CommandName) with parameter set $($_.ParameterSetName) was tested")
+                $commandExec.TestedCommands += [PSCustomObject]@{
+                    Command      = $_.CommandName
+                    ParameterSet = $_.ParameterSetName
+                }
             }
         }
 
-        [void]$AzPSModuleReportContent.AppendLine()
-
-        [void]$AzPSModuleReportContent.AppendLine("Following cmdlets were not executed :")
-        $moduleCmdlets | Where-Object { $_ -notin $csvGroupByCmdlet } | ForEach-Object {
-            [void]$AzPSModuleReportContent.AppendLine("  -->  $_")
+        $moduleCommands | Where-Object { $_ -notin $csvGroupByCommand } | ForEach-Object {
+            $commandExec.UntestedCommands += $_
         }
 
-        Write-Host "##[section]Finished calculating parameter sets." -ForegroundColor Green
-
-        Write-Host "##[section]Start to calculate parameters." -ForegroundColor Green
-
-        $csvGroupByParameter = $rawCsv | Select-Object CommandName, ParameterSetName, Parameters -Unique | Sort-Object CommandName, ParameterSetName, Parameters | Group-Object CommandName, ParameterSetName
-        $totalExecutedParametersCount = 0
+        $csvGroupByParameter = $rawCsv | Where-Object CommandName -in $moduleCommands | Sort-Object CommandName, ParameterSetName, Parameters | Select-Object CommandName, ParameterSetName, Parameters -Unique | Group-Object CommandName, ParameterSetName
+        $totalTestedParametersCount = 0
         $csvGroupByParameter | ForEach-Object {
-            $executedParams = @()
+            $testedParams = @()
             $_.Group | ForEach-Object {
-                $executedParams += $_.Parameters -split "\*\*\*\s*"
+                $testedParams += $_.Parameters -split "\*\*\*\s*"
             }
-            $totalExecutedParametersCount += ($executedParams | Where-Object { $_ -and $_ -notin $psCommonParameters } | Select-Object -Unique).Count
+            $totalTestedParametersCount += ($testedParams | Where-Object { ![string]::IsNullOrWhiteSpace($_) -and $_ -notin $psCommonParameters } | Select-Object -Unique).Count
         }
 
-        Write-Host "##[section]Finished calculating parameters." -ForegroundColor Green
-
-        $AzPSModuleReportContent.ToString() | Out-File -LiteralPath ([System.IO.Path]::Combine($testCoverageResultsDirectory, "$moduleName.txt")) -NoNewline
-
-        [void]$AzPSReportContent.AppendLine("  -->  By cmdlet: $(($totalExecutedCmdletsCount / $totalCmdletsCount).ToString("P0"))")
-        [void]$AzPSReportContent.AppendLine("  -->  By parameter set: $(($totalExecutedParameterSetsCount / $totalParameterSetsCount).ToString("P0"))")
-        [void]$AzPSReportContent.AppendLine("  -->  By parameter: $(($totalExecutedParametersCount / $totalParametersCount).ToString("P0"))")
-        [void]$AzPSReportContent.AppendLine()
+        ConvertTo-Json $commandExec -Depth 3 | Out-File -FilePath ([System.IO.Path]::Combine($cvgResultsDir, "$moduleName.json")) -Encoding utf8 -NoNewline -Force
+    }
+    else {
+        $totalTestedCommandsCount = 0
+        $totalTestedParameterSetsCount = 0
+        $totalTestedParametersCount = 0
     }
 
-    Write-Host "##[section]Successfully analyzed module '$moduleName'." -ForegroundColor Green
-    Write-Host "##[endgroup]" -ForegroundColor Cyan
+    $cvgCommand = ($totalTestedCommandsCount / $totalCommandsCount).ToString("P2")
+    $cvgParameterSet = ($totalTestedParameterSetsCount / $totalParameterSetsCount).ToString("P2")
+    $cvgParameter = ($totalTestedParametersCount / $totalParametersCount).ToString("P2")
+
+    $cvgReport = [PSCustomObject]@{
+        Module               = $moduleName
+        TotalCommands        = $totalCommandsCount
+        TestedCommands       = $totalTestedCommandsCount
+        CommandCoverage      = $cvgCommand
+        TotalParameterSets   = $totalParameterSetsCount
+        TestedParameterSets  = $totalTestedParameterSetsCount
+        ParameterSetCoverage = $cvgParameterSet
+        TotalParameters      = $totalParametersCount
+        TestedParameters     = $totalTestedParametersCount
+        ParameterCoverage    = $cvgParameter
+    }
+    $cvgReport | Export-Csv -Path $cvgReportCsv -Encoding utf8 -NoTypeInformation -Append -Force
+
+    if ($CalcBaseline.IsPresent) {
+        $cvgBaseline = [PSCustomObject]@{
+            Module               = $moduleName
+            CommandCoverage      = $cvgCommand
+        }
+        $cvgBaseline | Export-Csv -Path $cvgBaselineCsv -Encoding utf8 -NoTypeInformation -Append -Force
+    }
+
+    Write-Host "##[section]`"$moduleName`" total commands # : $totalCommandsCount" -ForegroundColor Green
+    Write-Host "##[section]`"$moduleName`" tested commands # : $totalTestedCommandsCount" -ForegroundColor Green
+    Write-Host "##[section]`"$moduleName`" test coverage % : $cvgCommand" -ForegroundColor Green
+
     Write-Host
 }
 
-Write-Host "Total tested cmdlets count: $overallExecutedCmdletsCount" -ForegroundColor Cyan
-Write-Host "Total cmdlets count: $overallCmdletsCount" -ForegroundColor Cyan
+$cvgOverall = ($overallTestedCommandsCount / $overallCommandsCount).ToString("P2")
+$cvgReportOverall = [PSCustomObject]@{
+    Module          = "Total"
+    TotalCommands   = $overallCommandsCount
+    TestedCommands  = $overallTestedCommandsCount
+    CommandCoverage = $cvgOverall
+}
+$cvgReportOverall | Export-Csv -Path $cvgReportCsv -Encoding utf8 -NoTypeInformation -Append -Force
 
-[void]$AzPSReportContent.AppendLine("Total tested cmdlets count: $overallExecutedCmdletsCount")
-[void]$AzPSReportContent.AppendLine("Total cmdlets count: $overallCmdletsCount")
-[void]$AzPSReportContent.AppendLine("Total Azure PowerShell cmdlets coverage: $(($overallExecutedCmdletsCount / $overallCmdletsCount).ToString("P0"))")
-$AzPSReportContent.ToString() | Out-File -LiteralPath ([System.IO.Path]::Combine($testCoverageResultsDirectory, "Azure PowerShell Test Coverage Report.txt")) -NoNewline
+Write-Host "##[section]Overall commands # : $overallCommandsCount" -ForegroundColor Magenta
+Write-Host "##[section]Overall tested commands # : $overallTestedCommandsCount" -ForegroundColor Magenta
+Write-Host "##[section]Overall test coverage % : $cvgOverall" -ForegroundColor Magenta
