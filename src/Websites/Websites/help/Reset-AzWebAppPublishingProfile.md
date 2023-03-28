@@ -9,6 +9,7 @@ schema: 2.0.0
 # Reset-AzWebAppPublishingProfile
 
 ## SYNOPSIS
+Resets the publishing profile for the specified Web App.
 
 ## SYNTAX
 

@@ -9,6 +9,7 @@ schema: 2.0.0
 # Restore-AzWebAppBackup
 
 ## SYNOPSIS
+Restores an Azure Web App Backup.
 
 ## SYNTAX
 

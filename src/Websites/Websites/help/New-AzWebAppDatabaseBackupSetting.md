@@ -9,6 +9,7 @@ schema: 2.0.0
 # New-AzWebAppDatabaseBackupSetting
 
 ## SYNOPSIS
+Creates a new Azure Web App Backup setting.
 
 ## SYNTAX
 

@@ -9,6 +9,7 @@ schema: 2.0.0
 # New-AzWebAppBackup
 
 ## SYNOPSIS
+Creates an Azure Web App Backup.
 
 ## SYNTAX
 
