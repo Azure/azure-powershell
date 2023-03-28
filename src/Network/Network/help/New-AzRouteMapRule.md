@@ -27,7 +27,7 @@ Create a route map rule.
 # creating new route map rules and a new route map resource
 $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
 $routeMapRuleActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
-$routeMapRuleAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameters @($routeMapRuleActionParameter1)
+$routeMapRuleAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapRuleActionParameter1)
 New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapRuleAction1) -NextStepIfMatched "Continue"
 
 ```

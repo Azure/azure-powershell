@@ -47,7 +47,7 @@ $virtualHub = Get-AzVirtualHub -ResourceGroupName "testRg" -Name "testHub"
 
 # creating new route map rules and a new route map resource and new routing configuration
 $routeMapMatchCriterion1 = New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/16")
-$routeMapActionParameter1 = New-AzRouteMapActionParameter -AsPath @("12345")
+$routeMapActionParameter1 = New-AzRouteMapRuleActionParameter -AsPath @("12345")
 $routeMapAction1 = New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapActionParameter1)
 $routeMapRule1 = New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -RouteMapRuleAction @($routeMapAction1) -NextStepIfMatched "Continue"
 
