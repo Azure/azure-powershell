@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue that `Add-AzVhd` throws `FileNotFoundException` in Windows PowerShell. [#21321]
 
 ## Version 2.12.1
 * Fixed an issue that broke some cmdlets in Az.Synapse module.
