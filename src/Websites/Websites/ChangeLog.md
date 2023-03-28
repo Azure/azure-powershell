@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Set default value for `-RepositoryUrl` of `New-AzStaticWebApp` [#21202]
+
+## Version 2.13.0
 * Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
 * Added a new parametre `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
 * Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]
