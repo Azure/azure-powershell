@@ -30,6 +30,7 @@
 * Updated `Reset-AzVpnGateway` to support IpConfigurationId.
 * Blocked some regions when creating/updating Basic Sku firewall
 * Fixed bugs related to auto learn IP prefixes and Snat
+* Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
