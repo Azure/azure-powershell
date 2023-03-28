@@ -16,7 +16,8 @@ Update an Azure Cognitive Search service.
 ```
 Set-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCount <Int32>]
  [-ReplicaCount <Int32>] [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>]
- [-IPRuleList <PSIpRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-IPRuleList <PSIpRule[]>] [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>]
+ [-AadAuthFailureMode <PSAadAuthFailureMode>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,6 +25,7 @@ Set-AzSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCo
 ```
 Set-AzSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
+ [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,6 +33,7 @@ Set-AzSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [
 ```
 Set-AzSearchService [-ResourceId] <String> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
  [-PublicNetworkAccess <PSPublicNetworkAccess>] [-IdentityType <PSIdentityType>] [-IPRuleList <PSIpRule[]>]
+ [-DisableLocalAuth <Boolean>] [-AuthOption <PSAuthOptionName>] [-AadAuthFailureMode <PSAadAuthFailureMode>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,8 +46,8 @@ The **Set-AzSearchService** cmdlet modifies an Azure Cognitive Search service.
 ```powershell
 Set-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
 ```
-```output
 
+```output
 ResourceGroupName : TestAzureSearchPsGroup
 Name              : pstestazuresearch01
 Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/TestAzureSearchPsGroup/providers/Microsoft.Search/searchServices/pstestazuresearch01
@@ -59,6 +62,38 @@ Tags              :
 The example changes partition count and replica count of the Azure Cognitive Search service to 2.
 
 ## PARAMETERS
+
+### -AadAuthFailureMode
+(Optional) What status code to return when failing AAD authentication, if both api key and AAD authenticaiton are allowed for the Azure Cognitive Search service
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAadAuthFailureMode]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Http403, Http401WithBearerChallenge
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AuthOption
+(Optional) Whether to only allow API key authentication or both API key authentication and AAD authentication for the Azure Cognitive Search service
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSAuthOptionName]
+Parameter Sets: (All)
+Aliases:
+Accepted values: ApiKeyOnly, AadOrApiKey
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -75,6 +110,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableLocalAuth
+(Optional) Disable API key authentication for the Azure Cognitive Search service (true/false/null)
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 (Optional) Azure Cognitive Search Service Identity (None/SystemAssigned)
 
@@ -82,6 +132,7 @@ Accept wildcard characters: False
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSIdentityType]
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, SystemAssigned
 
 Required: False
 Position: Named
@@ -157,6 +208,7 @@ Accept wildcard characters: False
 Type: System.Nullable`1[Microsoft.Azure.Commands.Management.Search.Models.PSPublicNetworkAccess]
 Parameter Sets: (All)
 Aliases:
+Accepted values: Enabled, Disabled
 
 Required: False
 Position: Named
