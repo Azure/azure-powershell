@@ -36,7 +36,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11940"
         ],
         "x-ms-request-id": [
           "d8e0eb39-41e1-4115-9054-ae46f1c3e778"

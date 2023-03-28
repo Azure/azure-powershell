@@ -34,6 +34,7 @@ Location                  : West US
 DatabaseAccountName       : deleted-account-1
 CreationTime              : 8/2/2020 10:23:00 PM
 DeletionTime              : 8/2/2020 10:26:13 PM
+OldestRestorableTime      : 8/2/2020 10:23:00 PM
 ApiType                   : Sql
 RestorableLocations       : {West US, East US}
 
@@ -43,6 +44,7 @@ Location                  : East US
 DatabaseAccountName       : deleted-account-2
 CreationTime              : 8/2/2020 6:32:32 PM
 DeletionTime              : 8/2/2020 6:34:48 PM
+OldestRestorableTime      : 8/2/2020 6:32:32 PM
 ApiType                   : Sql
 RestorableLocations       : {Australia Southeast, East US, West US}
 
@@ -52,6 +54,7 @@ Location                  : West US
 DatabaseAccountName       : live-account-1
 CreationTime              : 8/2/2020 6:34:35 PM
 DeletionTime              :
+OldestRestorableTime      : 8/2/2020 6:34:35 PM
 ApiType                   : MongoDB
 RestorableLocations       : {West US}
 ```

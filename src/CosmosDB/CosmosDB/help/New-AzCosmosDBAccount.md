@@ -22,7 +22,7 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
  [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
- [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-AnalyticalStorageSchemaType <String>]
+ [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>] [-AnalyticalStorageSchemaType <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -260,6 +260,21 @@ Add a location to the Cosmos DB database account. Array of strings, ordered by f
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContinuousTier
+The tier of continuous backups mode on the Cosmos DB account. Accepted values: Continuous7Days, Continuous30Days
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -578,6 +593,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RestoreTimestampInUtc
+The timestamp to which the source account has to be restored to.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServerVersion
 ServerVersion, valid only in case of MongoDB Accounts.
 
@@ -592,6 +622,37 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -SourceDatabaseAccountName
+The name of the source database account of the restore
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceRestorableDatabaseAccountId
+The restorable database account Id of the source account of the restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 
 ### -Tag
 Hashtable of tags as key-value pairs.

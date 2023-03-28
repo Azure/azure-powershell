@@ -720,7 +720,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11971"
         ],
         "x-ms-request-id": [
           "b0547b13-8059-4bd4-a431-9efb257bcfe7"
@@ -738,7 +738,7 @@
           "Sun, 12 Mar 2023 11:48:34 GMT"
         ],
         "Content-Length": [
-          "160"
+          "22"
         ],
         "Content-Type": [
           "application/json"
@@ -1235,8 +1235,8 @@
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
         ],
         "x-ms-correlation-request-id": [
           "33a8d91c-679a-43f8-af21-6d7422817f40"
