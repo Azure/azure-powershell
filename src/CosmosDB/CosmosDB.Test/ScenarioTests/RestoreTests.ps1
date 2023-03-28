@@ -649,7 +649,7 @@ function Test-TableBackupInformationCmdLets {
 
 function Test-UpdateCosmosDBAccountBackupPolicyCmdLet {
   $rgName = "CosmosDBResourceGroup20"
-  $location = "Central US"
+  $location = "West US"
   $cosmosDBAccountName = "ps-cosmosdb-1220"
   $apiKind = "Sql"
   $consistencyLevel = "Session"
@@ -700,7 +700,7 @@ function Test-UpdateCosmosDBAccountBackupPolicyCmdLet {
 
 function Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets {
   $rgName = "PSCosmosDBResourceGroup50"
-  $location = "Central US"
+  $location = "West US"
   $cosmosDBAccountName = "ps-cosmosdb-1250"
   $apiKind = "Sql"
   $consistencyLevel = "Session"

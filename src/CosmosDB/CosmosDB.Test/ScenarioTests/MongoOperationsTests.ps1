@@ -241,7 +241,7 @@ Try {
           $RestoredCollection = Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
       }
       Catch {
-          Assert-AreEqual $_.Exception.Message.Contains("Partial restore of shared throughput data is not allowed. Please perform restore operation on a shared throughput database or a provisioned collection") true
+          Assert-AreEqual $_.Exception.Message.Contains("InAccount restore of individual shared database collections is not supported. Please restore shared database to restore its collections that shared the throughput") true
       }
 
       #delete a database
