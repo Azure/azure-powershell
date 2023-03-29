@@ -31,8 +31,9 @@ New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapRuleActionParameter1)
 ```
 
 ```output
-Type            : rule1
-Parameter       :
+Type Parameters
+---- ----------
+Add  {Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleActionParameter}
 
 ```
 
@@ -46,7 +47,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleActionParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

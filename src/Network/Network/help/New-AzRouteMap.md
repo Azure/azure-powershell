@@ -56,10 +56,67 @@ New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "test
 ```
 
 ```output
-Name                            : testRouteMap
-AssociatedInboundConnections    :
-AssociatedOutboundConnections   :
-Rules                           : [routeMapRule1, routeMapRule2]
+Name                          : testRouteMap
+Id                            : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/routemap0419/providers/Microsoft.Network/virtualHubs/westcentralus_hub1/routeMaps/testRouteMap
+ProvisioningState             : Succeeded
+RouteMapRules                 : [
+                                  {
+                                    "Name": "rule1",
+                                    "MatchCriteria": [
+                                      {
+                                        "MatchCondition": "Contains",
+                                        "RoutePrefix": [
+                                          "10.0.0.0/16"
+                                        ],
+                                        "Community": [],
+                                        "AsPath": []
+                                      }
+                                    ],
+                                    "Actions": [
+                                      {
+                                        "Type": "Add",
+                                        "Parameters": [
+                                          {
+                                            "RoutePrefix": [],
+                                            "Community": [],
+                                            "AsPath": [
+                                              "12345"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "NextStepIfMatched": "Continue"
+                                  },
+                                  {
+                                    "Name": "rule2",
+                                    "MatchCriteria": [
+                                      {
+                                        "MatchCondition": "Equals",
+                                        "RoutePrefix": [],
+                                        "Community": [],
+                                        "AsPath": [
+                                          "12345"
+                                        ]
+                                      }
+                                    ],
+                                    "Actions": [
+                                      {
+                                        "Type": "Drop",
+                                        "Parameters": [
+                                          {
+                                            "RoutePrefix": [],
+                                            "Community": [],
+                                            "AsPath": []
+                                          }
+                                        ]
+                                      }
+                                    ],
+                                    "NextStepIfMatched": "Terminate"
+                                  }
+                                ]
+AssociatedInboundConnections  : {}
+AssociatedOutboundConnections : {}
 
 ```
 
@@ -100,7 +157,10 @@ RoutingConfiguration : {
                             },
                             "VnetRoutes": {
                                 "StaticRoutes": []
-                            }
+                            },
+                           "InboundRouteMap": {
+                             "Id": "/subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/westushub/routeMaps/testRouteMap"
+                           }
                         }
 ```
 
@@ -187,7 +247,7 @@ The Virtual Hub name.
 ```yaml
 Type: System.String
 Parameter Sets: ByVirtualHubName
-Aliases: VirtualHubName, ParentVirtualHubName, ParentResourceName
+Aliases: ParentVirtualHubName, ParentResourceName
 
 Required: False
 Position: Named

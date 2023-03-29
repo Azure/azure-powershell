@@ -32,9 +32,8 @@ namespace Microsoft.Azure.Commands.Network
         public string Type { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             HelpMessage = "Action type, E.g. Drop, Replace, Add, Remove.")]
-        [ValidateNotNullOrEmpty]
         public PSRouteMapRuleActionParameter[] Parameter { get; set; }
 
         public override void Execute()

@@ -34,10 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             ParameterSetName = CortexParameterSetNames.ByRouteMapName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("VirtualHubName", "ParentVirtualHubName")]
+        [Alias("ParentVirtualHubName", "ParentResourceName")]
         [Parameter(
             Mandatory = false,
             ParameterSetName = CortexParameterSetNames.ByRouteMapName,

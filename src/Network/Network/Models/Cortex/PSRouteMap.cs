@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Network.Models
 {
     using System.Collections.Generic;
+    using System.Data;
     using Microsoft.WindowsAzure.Commands.Common.Attributes;
     using Newtonsoft.Json;
 
@@ -23,10 +24,10 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Provisioning State", Target = ViewControl.Table)]
         public string ProvisioningState { get; set; }
 
-        [Ps1Xml(Label = "Associated Inbound Connections", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "AssociatedInboundConnections", Target = ViewControl.Table)]
         public List<string> AssociatedInboundConnections { get; set; }
 
-        [Ps1Xml(Label = "Associated Outbound Connections", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "AssociatedOutboundConnections", Target = ViewControl.Table)]
         public List<string> AssociatedOutboundConnections { get; set; }
 
         [Ps1Xml(Label = "RouteMap Rules", Target = ViewControl.Table)]
@@ -51,54 +52,39 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
     }
 
-    public class PSRouteMapRule
+    public class PSRouteMapRule : PSChildResource
     {
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table)]
-        public string Name { get; set; }
-
-        [Ps1Xml(Label = "MatchCriteria", Target = ViewControl.Table)]
         public List<PSRouteMapRuleCriterion> MatchCriteria { get; set; }
 
-        [Ps1Xml(Label = "Actions", Target = ViewControl.Table)]
         public List<PSRouteMapRuleAction> Actions { get; set; }
 
-        [Ps1Xml(Label = "NextStepIfMatched ", Target = ViewControl.Table)]
         public string NextStepIfMatched { get; set; }
     }
 
-    public class PSRouteMapRuleCriterion
+    public class PSRouteMapRuleCriterion : PSChildResource
     {
-        [Ps1Xml(Label = "MatchCondition", Target = ViewControl.Table)]
         public string MatchCondition { get; set; }
 
-        [Ps1Xml(Label = "RoutePrefix", Target = ViewControl.Table)]
         public List<string> RoutePrefix { get; set; }
 
-        [Ps1Xml(Label = "Community", Target = ViewControl.Table)]
         public List<string> Community { get; set; }
 
-        [Ps1Xml(Label = "AsPath", Target = ViewControl.Table)]
         public List<string> AsPath { get; set; }
     }
 
-    public class PSRouteMapRuleAction
+    public class PSRouteMapRuleAction : PSChildResource
     {
-        [Ps1Xml(Label = "Type", Target = ViewControl.Table)]
         public string Type { get; set; }
 
-        [Ps1Xml(Label = "Parameter", Target = ViewControl.Table)]
         public List<PSRouteMapRuleActionParameter> Parameters { get; set; }
     }
 
-    public class PSRouteMapRuleActionParameter
+    public class PSRouteMapRuleActionParameter : PSChildResource
     {
-        [Ps1Xml(Label = "RoutePrefix", Target = ViewControl.Table)]
         public List<string> RoutePrefix { get; set; }
 
-        [Ps1Xml(Label = "Community", Target = ViewControl.Table)]
         public List<string> Community { get; set; }
 
-        [Ps1Xml(Label = "AsPath", Target = ViewControl.Table)]
         public List<string> AsPath { get; set; }
     }
 }

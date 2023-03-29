@@ -177,7 +177,7 @@ The Virtual Hub name.
 ```yaml
 Type: System.String
 Parameter Sets: ByRouteMapName
-Aliases: VirtualHubName, ParentVirtualHubName, ParentResourceName
+Aliases: ParentVirtualHubName, ParentResourceName
 
 Required: False
 Position: Named
