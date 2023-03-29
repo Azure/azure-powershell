@@ -259,7 +259,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`SERVICEDATAFLOWTEMPLATE <IServiceDataFlowTemplate[]>`: The set of data flow templates to use for this data flow policy rule.
+SERVICEDATAFLOWTEMPLATE <IServiceDataFlowTemplate[]>: The set of data flow templates to use for this data flow policy rule.
   - `Direction <SdfDirection>`: The direction of this flow.
   - `Protocol <String[]>`: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
   - `RemoteIPList <String[]>`: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).

@@ -308,9 +308,6 @@ param(
             if (!$PSBoundParameters.ContainsKey('HttpsServerCertificateUrl') -and $dataBase.HttpsServerCertificateUrl) {
                 $PSBoundParameters.HttpsServerCertificateUrl = $dataBase.HttpsServerCertificateUrl
             }
-            if (!$PSBoundParameters.ContainsKey('IdentityType') -and $dataBase.IdentityType) {
-                $PSBoundParameters.IdentityType = $dataBase.IdentityType
-            }
             if (!$PSBoundParameters.ContainsKey('UeMtu') -and $dataBase.UeMtu) {
                 $PSBoundParameters.UeMtu = $dataBase.UeMtu
             }
@@ -318,9 +315,18 @@ param(
                 $PSBoundParameters.Version = $dataBase.Version
             }
 
-            if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
-                $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+            if ($IdentityType -ieq 'none') {
+                $PSBoundParameters.IdentityType = 'None'
+                $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+            } else {
+                if (!$PSBoundParameters.ContainsKey('IdentityType') -and $dataBase.IdentityType) {
+                    $PSBoundParameters.IdentityType = $dataBase.IdentityType
+                }
+                if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
+                    $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+                }
             }
+
             if (!$PSBoundParameters.ContainsKey('InteropSetting')) {
                 $PSBoundParameters.InteropSetting = $dataBase.InteropSetting
             }

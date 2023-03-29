@@ -170,13 +170,19 @@ param(
             if (!$PSBoundParameters.ContainsKey('EncryptionKeyUrl') -and $dataBase.EncryptionKeyUrl) {
                 $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
             }
-            if (!$PSBoundParameters.ContainsKey('IdentityType') -and $dataBase.IdentityType) {
-                $PSBoundParameters.IdentityType = $dataBase.IdentityType
+
+            if ($IdentityType -ieq 'none') {
+                $PSBoundParameters.IdentityType = 'None'
+                $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
+            } else {
+                if (!$PSBoundParameters.ContainsKey('IdentityType') -and $dataBase.IdentityType) {
+                    $PSBoundParameters.IdentityType = $dataBase.IdentityType
+                }
+                if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
+                    $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+                }
             }
 
-            if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
-                $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
-            }
             if (!$PSBoundParameters.ContainsKey('Tag')) {
                 $PSBoundParameters.Tag = $dataBase.Tag
             }
