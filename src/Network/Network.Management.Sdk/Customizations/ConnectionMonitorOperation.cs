@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Management.Network
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using AzureOperationResponse = Microsoft.Rest.Azure.AzureOperationResponse;
 
     public static partial class ConnectionMonitorsOperationsExtensions
     {
