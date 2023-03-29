@@ -13,7 +13,7 @@ Creates a new custom rule for the application gateway firewall policy.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> -RuleType <String>
+New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration<String>] [-RateLimitThreshold<Int32>] -RuleType <String>
  -MatchCondition <PSApplicationGatewayFirewallCondition[]> -Action <String> [-State <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
