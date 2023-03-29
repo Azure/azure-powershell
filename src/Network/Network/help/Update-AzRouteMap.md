@@ -17,10 +17,6 @@ Update a route map of a VirtualHub.
 Update-AzRouteMap -Name <String> -ResourceGroupName <String> -VirtualHubName <String> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-```powershell
-Update-AzRouteMap -Name <String> -VirtualHubObject <PSVirtualHub> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### ByRouteMapObject
 ```powershell
 Update-AzRouteMap -InputObject <PSRouteMap> -RouteMapRule <PSRouteMapRule[]> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
