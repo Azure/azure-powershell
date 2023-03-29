@@ -1101,3 +1101,64 @@ function Test-HostGroupID {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-PodSubnetID {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        # prepare subnets
+        #$resourceGroupName='AKS_TEST_RG'
+        #$location='eastus'
+        #
+        #New-AzResourceGroup -Name $resourceGroupName -Location $location
+        #
+        #$subnet1 = New-AzVirtualNetworkSubnetConfig -Name "subnet1" -AddressPrefix "10.0.1.0/24"
+        #$subnet2  = New-AzVirtualNetworkSubnetConfig -Name "subnet2" -AddressPrefix "10.0.2.0/24"
+        #$subnet3  = New-AzVirtualNetworkSubnetConfig -Name "subnet3" -AddressPrefix "10.0.3.0/24"
+        #$virtualNetwork = New-AzVirtualNetwork -Name "test_vn" -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet1,$subnet2,$subnet3
+        #
+        #$subnetID1 = $virtualNetwork.Subnets[0].Id
+        #$subnetID2 = $virtualNetwork.Subnets[1].Id
+        #$subnetID3 = $virtualNetwork.Subnets[2].Id
+
+        $subnetID1 = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/AKS_TEST_RG/providers/Microsoft.Network/virtualNetworks/test_vn/subnets/subnet1'
+        $subnetID2 = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/AKS_TEST_RG/providers/Microsoft.Network/virtualNetworks/test_vn/subnets/subnet2'
+        $subnetID3 = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/AKS_TEST_RG/providers/Microsoft.Network/virtualNetworks/test_vn/subnets/subnet3'
+
+        # create aks cluster with default nodepool
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -NodePodSubnetID $subnetID1 -NodeVnetSubnetID $subnetID2 -ServiceCidr "10.20.30.0/24" -DnsServiceIP "10.20.30.10"
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 1 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual $subnetID1 $cluster.AgentPoolProfiles[0].PodSubnetID
+        Assert-AreEqual $subnetID2 $cluster.AgentPoolProfiles[0].VnetSubnetID
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 1 $pools.Count
+
+        Assert-AreEqual $subnetID1 $pools[0].PodSubnetID
+        Assert-AreEqual $subnetID2 $pools[0].VnetSubnetID
+
+        # create a 2nd nodepool
+        New-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName -Name pool2 -VmSize $nodeVmSize -Count 1 -PodSubnetID $subnetID3
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 2 $cluster.AgentPoolProfiles.Count
+        Assert-AreEqual $subnetID1 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).PodSubnetID
+        Assert-AreEqual $subnetID2 ($cluster.AgentPoolProfiles | where {$_.Name -eq "default"}).VnetSubnetID
+        Assert-AreEqual $subnetID3 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).PodSubnetID
+        Assert-AreEqual $subnetID2 ($cluster.AgentPoolProfiles | where {$_.Name -eq "pool2"}).VnetSubnetID
+        $pools = Get-AzAksNodePool -ResourceGroupName $resourceGroupName -ClusterName $kubeClusterName
+        Assert-AreEqual 2 $pools.Count
+        Assert-AreEqual $subnetID1 ($pools | where {$_.Name -eq "default"}).PodSubnetID
+        Assert-AreEqual $subnetID2 ($pools | where {$_.Name -eq "default"}).VnetSubnetID
+        Assert-AreEqual $subnetID3 ($pools | where {$_.Name -eq "pool2"}).PodSubnetID
+        Assert-AreEqual $subnetID2 ($pools | where {$_.Name -eq "pool2"}).VnetSubnetID
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
