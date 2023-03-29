@@ -1,47 +1,60 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/az.aks/start-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/invoke-azaksabortmanagedclusterlatestoperation
 schema: 2.0.0
 ---
 
-# Start-AzAksCluster
+# Invoke-AzAksAbortManagedClusterLatestOperation
 
 ## SYNOPSIS
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+Aborts the currently running operation on the managed cluster.
+The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes.
+If the operation completes before cancellation can take place, a 409 error code is returned.
 
 ## SYNTAX
 
-### Start (Default)
+### Abort (Default)
 ```
-Start-AzAksCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzAksAbortManagedClusterLatestOperation -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### AbortViaIdentity
 ```
-Start-AzAksCluster -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzAksAbortManagedClusterLatestOperation -InputObject <IAksIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+Aborts the currently running operation on the managed cluster.
+The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes.
+If the operation completes before cancellation can take place, a 409 error code is returned.
 
 ## EXAMPLES
 
-### Example 1: Start Aks cluster with resource group name and cluster name
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzAksCluster -ResourceGroupName group -Name myCluster
+{{ Add code here }}
 ```
 
-Start Aks cluster with resource group name and cluster name.
-
-### Example 2: Start Aks cluster with pipeline
-```powershell
-Get-AzAksCluster -ResourceGroupName group -Name myCluster | Start-AzAksCluster
+```output
+{{ Add output here }}
 ```
 
-Start Aks cluster with pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -82,28 +95,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: AbortViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the managed cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
-Aliases: ClusterName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,7 +141,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Abort
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceName
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Abort
 Aliases:
 
 Required: True
@@ -158,7 +171,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Abort
 Aliases:
 
 Required: False

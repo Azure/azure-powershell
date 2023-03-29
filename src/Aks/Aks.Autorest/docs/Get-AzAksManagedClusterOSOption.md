@@ -1,64 +1,57 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/az.aks/start-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/get-azaksmanagedclusterosoption
 schema: 2.0.0
 ---
 
-# Start-AzAksCluster
+# Get-AzAksManagedClusterOSOption
 
 ## SYNOPSIS
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+Gets supported OS options in the specified subscription.
 
 ## SYNTAX
 
-### Start (Default)
+### Get (Default)
 ```
-Start-AzAksCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAksManagedClusterOSOption -Location <String> [-SubscriptionId <String[]>] [-ResourceType <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### GetViaIdentity
 ```
-Start-AzAksCluster -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzAksManagedClusterOSOption -InputObject <IAksIdentity> [-ResourceType <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+Gets supported OS options in the specified subscription.
 
 ## EXAMPLES
 
-### Example 1: Start Aks cluster with resource group name and cluster name
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzAksCluster -ResourceGroupName group -Name myCluster
+{{ Add code here }}
 ```
 
-Start Aks cluster with resource group name and cluster name.
-
-### Example 2: Start Aks cluster with pipeline
-```powershell
-Get-AzAksCluster -ResourceGroupName group -Name myCluster | Start-AzAksCluster
+```output
+{{ Add output here }}
 ```
 
-Start Aks cluster with pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -82,7 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -92,13 +85,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the managed cluster resource.
+### -Location
+The name of Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
-Aliases: ClusterName
+Parameter Sets: Get
+Aliases:
 
 Required: True
 Position: Named
@@ -107,46 +100,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ResourceType
+The resource type for which the OS options needs to be returned
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -157,44 +119,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Start
+Type: System.String[]
+Parameter Sets: Get
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -208,7 +139,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IOSOptionProfile
 
 ## NOTES
 

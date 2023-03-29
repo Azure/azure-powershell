@@ -1,47 +1,56 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/az.aks/start-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/invoke-azaksrotatemanagedclusterserviceaccountsigningkey
 schema: 2.0.0
 ---
 
-# Start-AzAksCluster
+# Invoke-AzAksRotateManagedClusterServiceAccountSigningKey
 
 ## SYNOPSIS
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+Rotates the service account signing keys of a managed cluster.
 
 ## SYNTAX
 
-### Start (Default)
+### Rotate (Default)
 ```
-Start-AzAksCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Invoke-AzAksRotateManagedClusterServiceAccountSigningKey -ResourceGroupName <String> -ResourceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RotateViaIdentity
+```
+Invoke-AzAksRotateManagedClusterServiceAccountSigningKey -InputObject <IAksIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentity
-```
-Start-AzAksCluster -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+Rotates the service account signing keys of a managed cluster.
 
 ## EXAMPLES
 
-### Example 1: Start Aks cluster with resource group name and cluster name
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzAksCluster -ResourceGroupName group -Name myCluster
+{{ Add code here }}
 ```
 
-Start Aks cluster with resource group name and cluster name.
-
-### Example 2: Start Aks cluster with pipeline
-```powershell
-Get-AzAksCluster -ResourceGroupName group -Name myCluster | Start-AzAksCluster
+```output
+{{ Add output here }}
 ```
 
-Start Aks cluster with pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -82,28 +91,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: RotateViaIdentity
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the managed cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
-Aliases: ClusterName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -143,7 +137,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Rotate
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceName
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Rotate
 Aliases:
 
 Required: True
@@ -158,7 +167,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Rotate
 Aliases:
 
 Required: False

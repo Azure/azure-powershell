@@ -1,47 +1,73 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://learn.microsoft.com/powershell/module/az.aks/start-azakscluster
+online version: https://learn.microsoft.com/powershell/module/az.aks/start-azaksmanagedclustercommand
 schema: 2.0.0
 ---
 
-# Start-AzAksCluster
+# Start-AzAksManagedClusterCommand
 
 ## SYNOPSIS
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+AKS will create a pod to run the command.
+This is primarily useful for private clusters.
+For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 
 ## SYNTAX
 
-### Start (Default)
+### RunExpanded (Default)
 ```
-Start-AzAksCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String> -Command <String>
+ [-SubscriptionId <String>] [-ClusterToken <String>] [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### Run
 ```
-Start-AzAksCluster -InputObject <IAksIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String>
+ -RequestPayload <IRunCommandRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RunViaIdentity
+```
+Start-AzAksManagedClusterCommand -InputObject <IAksIdentity> -RequestPayload <IRunCommandRequest>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### RunViaIdentityExpanded
+```
+Start-AzAksManagedClusterCommand -InputObject <IAksIdentity> -Command <String> [-ClusterToken <String>]
+ [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
+AKS will create a pod to run the command.
+This is primarily useful for private clusters.
+For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
 
 ## EXAMPLES
 
-### Example 1: Start Aks cluster with resource group name and cluster name
+### Example 1: {{ Add title here }}
 ```powershell
-Start-AzAksCluster -ResourceGroupName group -Name myCluster
+{{ Add code here }}
 ```
 
-Start Aks cluster with resource group name and cluster name.
-
-### Example 2: Start Aks cluster with pipeline
-```powershell
-Get-AzAksCluster -ResourceGroupName group -Name myCluster | Start-AzAksCluster
+```output
+{{ Add output here }}
 ```
 
-Start Aks cluster with pipeline.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -51,6 +77,51 @@ Run the command as a job
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterToken
+AuthToken issued for AKS AAD Server App.
+
+```yaml
+Type: System.String
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Command
+The command to run.
+
+```yaml
+Type: System.String
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Context
+A base64 encoded zip file containing the files required by the command.
+
+```yaml
+Type: System.String
+Parameter Sets: RunExpanded, RunViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -82,28 +153,13 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the managed cluster resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Start
-Aliases: ClusterName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -122,18 +178,19 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -RequestPayload
+A run command request
+To construct, see NOTES section for REQUESTPAYLOAD properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandRequest
+Parameter Sets: Run, RunViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -143,7 +200,22 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Run, RunExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceName
+The name of the managed cluster resource.
+
+```yaml
+Type: System.String
+Parameter Sets: Run, RunExpanded
 Aliases:
 
 Required: True
@@ -158,7 +230,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Run, RunExpanded
 Aliases:
 
 Required: False
@@ -204,11 +276,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandRequest
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandResult
 
 ## NOTES
 
@@ -230,6 +304,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+
+`REQUESTPAYLOAD <IRunCommandRequest>`: A run command request
+  - `Command <String>`: The command to run.
+  - `[ClusterToken <String>]`: AuthToken issued for AKS AAD Server App.
+  - `[Context <String>]`: A base64 encoded zip file containing the files required by the command.
 
 ## RELATED LINKS
 
