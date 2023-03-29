@@ -759,16 +759,13 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkGroupName");
             }
-            if (top != null)
+            if (top > 20)
             {
-                if (top > 20)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMaximum, "top", 20);
-                }
-                if (top < 1)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "top", 1);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "top", 20);
+            }
+            if (top < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "top", 1);
             }
             string apiVersion = "2022-09-01";
             // Tracing

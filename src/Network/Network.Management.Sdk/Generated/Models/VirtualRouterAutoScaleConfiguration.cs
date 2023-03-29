@@ -60,12 +60,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MinCapacity != null)
+            if (MinCapacity < 0)
             {
-                if (MinCapacity < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "MinCapacity", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "MinCapacity", 0);
             }
         }
     }

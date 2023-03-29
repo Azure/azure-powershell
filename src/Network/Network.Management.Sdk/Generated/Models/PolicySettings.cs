@@ -116,26 +116,17 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (MaxRequestBodySizeInKb != null)
+            if (MaxRequestBodySizeInKb < 8)
             {
-                if (MaxRequestBodySizeInKb < 8)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "MaxRequestBodySizeInKb", 8);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "MaxRequestBodySizeInKb", 8);
             }
-            if (FileUploadLimitInMb != null)
+            if (FileUploadLimitInMb < 0)
             {
-                if (FileUploadLimitInMb < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "FileUploadLimitInMb", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "FileUploadLimitInMb", 0);
             }
-            if (CustomBlockResponseStatusCode != null)
+            if (CustomBlockResponseStatusCode < 0)
             {
-                if (CustomBlockResponseStatusCode < 0)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "CustomBlockResponseStatusCode", 0);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "CustomBlockResponseStatusCode", 0);
             }
             if (CustomBlockResponseBody != null)
             {

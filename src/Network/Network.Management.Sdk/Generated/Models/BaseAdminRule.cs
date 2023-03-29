@@ -16,7 +16,6 @@ namespace Microsoft.Azure.Management.Network.Models
     /// <summary>
     /// Network base admin rule.
     /// </summary>
-    [Newtonsoft.Json.JsonObject("BaseAdminRule")]
     public partial class BaseAdminRule : ChildResource
     {
         /// <summary>

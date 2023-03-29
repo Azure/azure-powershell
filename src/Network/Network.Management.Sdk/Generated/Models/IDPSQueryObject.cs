@@ -92,16 +92,13 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ResultsPerPage != null)
+            if (ResultsPerPage > 1000)
             {
-                if (ResultsPerPage > 1000)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMaximum, "ResultsPerPage", 1000);
-                }
-                if (ResultsPerPage < 1)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "ResultsPerPage", 1);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "ResultsPerPage", 1000);
+            }
+            if (ResultsPerPage < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "ResultsPerPage", 1);
             }
         }
     }
