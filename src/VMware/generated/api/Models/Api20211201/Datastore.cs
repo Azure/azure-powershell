@@ -21,24 +21,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201
 
         /// <summary>Name of the LUN to be used for datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public string DiskPoolVolumeLunName { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).DiskPoolVolumeLunName; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).DiskPoolVolumeLunName = value ?? null; }
 
         /// <summary>
         /// Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.MountOptionEnum? DiskPoolVolumeMountOption { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).DiskPoolVolumeMountOption; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).DiskPoolVolumeMountOption = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.MountOptionEnum)""); }
 
         /// <summary>Device path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public string DiskPoolVolumePath { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).DiskPoolVolumePath; }
 
         /// <summary>Azure resource ID of the iSCSI target</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public string DiskPoolVolumeTargetId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).DiskPoolVolumeTargetId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).DiskPoolVolumeTargetId = value ?? null; }
 
         /// <summary>Resource ID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceInternal)__resource).Id; }
 
         /// <summary>Internal Acessors for DiskPoolVolume</summary>
@@ -70,10 +75,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201
 
         /// <summary>Resource name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 0)]
         public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceInternal)__resource).Name; }
 
         /// <summary>Azure resource ID of the NetApp volume</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public string NetAppVolumeId { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).NetAppVolumeId; set => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).NetAppVolumeId = value ?? null; }
 
         /// <summary>Backing field for <see cref="Property" /> property.</summary>
@@ -81,22 +88,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201
 
         /// <summary>The properties of a datastore resource</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         internal Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastoreProperties Property { get => (this._property = this._property ?? new Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.DatastoreProperties()); set => this._property = value; }
 
         /// <summary>The state of the datastore provisioning</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 2)]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DatastoreProvisioningState? ProvisioningState { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).ProvisioningState; }
 
         /// <summary>Gets the resource group name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 3)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
         /// <summary>The operational status of the datastore</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inlined)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.FormatTable(Index = 1)]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DatastoreStatus? Status { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastorePropertiesInternal)Property).Status; }
 
         /// <summary>Resource type.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Origin(Microsoft.Azure.PowerShell.Cmdlets.VMware.PropertyOrigin.Inherited)]
+        [Microsoft.Azure.PowerShell.Cmdlets.VMware.DoNotFormat]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IResourceInternal)__resource).Type; }
 
         /// <summary>Creates an new <see cref="Datastore" /> instance.</summary>
@@ -109,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener eventListener)
         {

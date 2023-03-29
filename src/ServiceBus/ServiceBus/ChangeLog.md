@@ -19,6 +19,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added upcoming breaking change notifications for Az.ServiceBus module.
+
+## Version 2.2.0
+* Upgraded API version to 2022-10-01-preview
+* Fixed a bug for `Set-AzServiceBusQueue`
+
+## Version 2.1.0
+* Added NamespaceV2 cmdlets for ServiceBus.
+
+## Version 2.0.0
+* Most cmdlets in Az.ServiceBus module have been migrated to a new format and would witness breaking changes. Please refer our migration guide https://go.microsoft.com/fwlink/?linkid=2204584 to know breaking changes in detail.
 
 ## Version 1.11.0
 * In the upcoming major breaking change release in October 2022, Az.ServiceBus would be migrating most cmdlets to a new format

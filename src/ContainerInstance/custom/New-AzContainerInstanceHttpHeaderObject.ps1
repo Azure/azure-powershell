@@ -19,10 +19,10 @@ Create a in-memory object for HttpHeader
 .Description
 Create a in-memory object for HttpHeader
 .Link
-https://docs.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceHttpHeaderObject
+https://learn.microsoft.com/powershell/module/az.ContainerInstance/New-AzContainerInstanceHttpHeaderObject
 #>
 function New-AzContainerInstanceHttpHeaderObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.HttpHeader')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -35,7 +35,7 @@ function New-AzContainerInstanceHttpHeaderObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.HttpHeader]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20221001Preview.HttpHeader]::New()
 
         $Object.Name = $Name
         $Object.Value = $Value

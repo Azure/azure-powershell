@@ -43,7 +43,7 @@ INPUTOBJECT <IAttestationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.attestation/get-azattestationdefaultprovider
+https://learn.microsoft.com/powershell/module/az.attestation/get-azattestationdefaultprovider
 #>
 function Get-AzAttestationDefaultProvider {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProvider], [Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models.Api20201001.IAttestationProviderListResult])]

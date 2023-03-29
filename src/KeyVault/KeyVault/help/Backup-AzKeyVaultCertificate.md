@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultcertificate
 schema: 2.0.0
 ---
 
@@ -51,7 +51,7 @@ This command retrieves the certificate named MyCert from the key vault named MyK
 
 ### Example 2: Back up a certificate to a specified file name
 ```powershell
-Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+Backup-AzKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
 ```
 
 ```output

@@ -41,7 +41,7 @@ INPUTOBJECT <IMarketplaceOrderingIdentity>: Identity Parameter
   [PublisherId <String>]: Publisher identifier string of image being deployed.
   [SubscriptionId <String>]: The subscription ID that identifies an Azure subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
+https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 #>
 function Get-AzMarketplaceTerms {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]

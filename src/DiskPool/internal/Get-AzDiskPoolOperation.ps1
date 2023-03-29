@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IStoragePoolRpOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloperation
+https://learn.microsoft.com/powershell/module/az.diskpool/get-azdiskpooloperation
 #>
 function Get-AzDiskPoolOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IStoragePoolRpOperation])]

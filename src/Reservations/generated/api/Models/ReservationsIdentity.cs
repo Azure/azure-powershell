@@ -22,7 +22,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         /// <summary>Backing field for <see cref="ReservationId" /> property.</summary>
         private string _reservationId;
 
-        /// <summary>Id of the Reservation Item</summary>
+        /// <summary>Id of the reservation item</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Origin(Microsoft.Azure.PowerShell.Cmdlets.Reservations.PropertyOrigin.Owned)]
         public string ReservationId { get => this._reservationId; set => this._reservationId = value; }
 
@@ -57,11 +57,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
-        /// <summary>Id of the Reservation Item</summary>
+        /// <summary>Id of the reservation item</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Id of the Reservation Item",
+        Description = @"Id of the reservation item",
         SerializedName = @"reservationId",
         PossibleTypes = new [] { typeof(string) })]
         string ReservationId { get; set; }
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models
     {
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
-        /// <summary>Id of the Reservation Item</summary>
+        /// <summary>Id of the reservation item</summary>
         string ReservationId { get; set; }
         /// <summary>Order Id of the reservation</summary>
         string ReservationOrderId { get; set; }

@@ -131,7 +131,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
 
         private static void OnCommandNotFound(object sender, CommandLookupEventArgs args)
         {
-            if (IsAzOrAzureRMCmdlet(args.CommandName))
+            // The command was dispatched by the msh engine as a result of a dispatch request from an already running command.
+            // We are not interested in such cases.
+            if (args.CommandOrigin == CommandOrigin.Runspace && IsAzOrAzureRMCmdlet(args.CommandName))
             {
                 bool isHelpful = true;
                 if (IsAzureRMCommand(args.CommandName))

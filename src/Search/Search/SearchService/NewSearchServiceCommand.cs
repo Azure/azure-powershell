@@ -85,6 +85,21 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = IPRulesMessage)]
         public PSIpRule[] IPRuleList { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = DisableLocalAuthMessage)]
+        public bool? DisableLocalAuth { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AuthOptionsMessage)]
+        public PSAuthOptionName? AuthOption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = AadAuthFailureModeMessage)]
+        public PSAadAuthFailureMode? AadAuthFailureMode { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var networkRuleSet = IPRuleList?.Any() == true ? new PSNetworkRuleSet
@@ -97,7 +112,21 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 Type = IdentityType.Value
             } : null;
 
-            Azure.Management.Search.Models.SearchService searchService = 
+            PSAuthOptions authOptions = null;
+            if (AuthOption == PSAuthOptionName.ApiKeyOnly)
+            {
+                authOptions = new PSAuthOptions { ApiKeyOnly = new PSObject() };
+            }
+            else if (AuthOption == PSAuthOptionName.AadOrApiKey)
+            {
+                authOptions = new PSAuthOptions { AadOrApiKey = new PsAadOrApiKeyAuthOption() };
+                if (AadAuthFailureMode.HasValue)
+                {
+                    authOptions.AadOrApiKey.AadAuthFailureMode = AadAuthFailureMode;
+                }
+            }
+
+            Azure.Management.Search.Models.SearchService searchService =
                 new Azure.Management.Search.Models.SearchService(
                     name: Name,
                     location: Location,
@@ -107,7 +136,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     hostingMode: (HostingMode?)HostingMode,
                     publicNetworkAccess: (PublicNetworkAccess?)PublicNetworkAccess,
                     identity: (Identity)identity,
-                    networkRuleSet: (NetworkRuleSet)networkRuleSet);
+                    networkRuleSet: (NetworkRuleSet)networkRuleSet,
+                    disableLocalAuth: DisableLocalAuth,
+                    authOptions: (DataPlaneAuthOptions)authOptions);
 
             if (ShouldProcess(Name, Resources.CreateSearchService))
             {

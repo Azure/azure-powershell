@@ -212,6 +212,20 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
         public bool? BgpRouteTranslationForNat { get; set; }
 
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S policy group added to this gateway")]
+        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroup { get; set; }
+
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
+        public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
+
         [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
@@ -250,6 +264,11 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.Value;
             }
 
+            if (this.VirtualNetworkGatewayPolicyGroup != null && this.VirtualNetworkGatewayPolicyGroup.Length > 0)
+            {
+                this.VirtualNetworkGateway.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroup.ToList();
+            }
+
             if (!string.IsNullOrEmpty(GatewaySku))
             {
                 this.VirtualNetworkGateway.Sku = new PSVirtualNetworkGatewaySku();
@@ -276,7 +295,8 @@ namespace Microsoft.Azure.Commands.Network
                  this.RadiusServerSecret != null ||
                  this.RadiusServerList != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
-                 this.AadTenantUri != null) &&
+                 this.AadTenantUri != null || 
+                 this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Count() > 0) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
@@ -340,8 +360,8 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("AadTenantUri, AadIssuerUri and AadAudienceId must be specified if AAD authentication is being configured for P2S.");
                 }
 
-                if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 1 && 
-                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.First().Equals(MNM.VpnClientProtocol.OpenVPN))
+                if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Count() >= 1 &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.OpenVPN))
                 {
                     this.VirtualNetworkGateway.VpnClientConfiguration.AadTenant = this.AadTenantUri;
                     this.VirtualNetworkGateway.VpnClientConfiguration.AadIssuer = this.AadIssuerUri;
@@ -349,8 +369,19 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 else
                 {
-                    throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
+                    throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should contain :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
                 }
+            }
+            if (this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Count() > 0)
+            {
+                foreach (var config in this.ClientConnectionConfiguration)
+                {
+                    foreach (var policyGroup in config.VirtualNetworkGatewayPolicyGroups)
+                    {
+                        policyGroup.Id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/virtualNetworkGatewayPolicyGroups/{3}", this.NetworkClient.NetworkManagementClient.SubscriptionId, this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, policyGroup.Id);
+                    }
+                }
+                this.VirtualNetworkGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfiguration.ToList();
             }
 
             if (this.RemoveAadAuthentication.IsPresent)
@@ -382,7 +413,25 @@ namespace Microsoft.Azure.Commands.Network
                     this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = new List<PSVpnClientRevokedCertificate>();
                     this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRootCertificates = new List<PSVpnClientRootCertificate>();
                 }
-                
+
+                if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.IkeV2) &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.OpenVPN) &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 2 &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
+                {
+                    // In the case of multi-auth with OpenVPN and IkeV2, block user from configuring with just AAD since AAD is not supported for IkeV2
+                    if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Count() == 1)
+                    {
+                        throw new ArgumentException(Properties.Resources.VpnMultiAuthIkev2OpenvpnOnlyAad);
+                    }
+                    else
+                    {
+                        if (!ShouldContinue(Properties.Resources.VpnMultiAuthIkev2OpenvpnAadWarning, Properties.Resources.ConfirmMessage))
+                        {
+                            return;
+                        }
+                    }
+                }
             }
 
             if ((this.Asn > 0 || this.PeerWeight > 0) && this.VirtualNetworkGateway.BgpSettings == null)

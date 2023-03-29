@@ -15,9 +15,12 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Storage.File;
     using Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -45,35 +48,41 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         internal async Task GetAzureShareStoredAccessPolicyAsync(long taskId, IStorageFileManagement localChannel, string shareName, string policyName)
         {
-            SharedAccessFilePolicies shareAccessPolicies = await GetPoliciesAsync(localChannel, shareName, policyName).ConfigureAwait(false);
+            //Get share instance
+            ShareClient share = Util.GetTrack2ShareReference(shareName,
+                 (AzureStorageContext)this.Context,
+                 null,
+                 ClientOptions);
+
+            IEnumerable<ShareSignedIdentifier> signedIdentifiers = (await share.GetAccessPolicyAsync(cancellationToken: CmdletCancellationToken).ConfigureAwait(false)).Value;
 
             if (!String.IsNullOrEmpty(policyName))
             {
-                if (shareAccessPolicies.Keys.Contains(policyName))
+                ShareSignedIdentifier signedIdentifier = null;
+                foreach (ShareSignedIdentifier identifier in signedIdentifiers)
                 {
-                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessFilePolicy>(shareAccessPolicies, policyName));
+                    if (identifier.Id == policyName)
+                    {
+                        signedIdentifier = identifier;
+                    }
+                }
+                if (signedIdentifier == null)
+                {
+                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
                 }
                 else
                 {
-                    throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<ShareSignedIdentifier>(signedIdentifier));
                 }
             }
             else
             {
-                foreach (string key in shareAccessPolicies.Keys)
+                foreach (ShareSignedIdentifier identifier in signedIdentifiers)
                 {
-                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<SharedAccessFilePolicy>(shareAccessPolicies, key));
+                    OutputStream.WriteObject(taskId, AccessPolicyHelper.ConstructPolicyOutputPSObject<ShareSignedIdentifier>(identifier));
                 }
             }
         }
-
-        internal async Task<SharedAccessFilePolicies> GetPoliciesAsync(IStorageFileManagement localChannel, string shareName, string policyName)
-        {
-            CloudFileShare share = localChannel.GetShareReference(shareName);
-            FileSharePermissions permissions = await localChannel.GetSharePermissionsAsync(share, null, null, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-            return permissions.SharedAccessPolicies;
-        }
-
 
         /// <summary>
         /// execute command
@@ -81,6 +90,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            NamingUtil.ValidateShareName(this.ShareName, false);
             Func<long, Task> taskGenerator = (taskId) => GetAzureShareStoredAccessPolicyAsync(taskId, Channel, ShareName, Policy);
             RunTask(taskGenerator);
         }

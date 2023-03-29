@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 585371E3-D4CE-452E-B0B0-92B3ABD127E7
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken
 schema: 2.0.0
 ---
 
@@ -51,27 +51,27 @@ The **New-AzStorageBlobSASToken** cmdlet generates a Shared Access Signature (SA
 ## EXAMPLES
 
 ### Example 1: Generate a blob SAS token with full blob permission
-```
-PS C:\>New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd
+```powershell
+New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd
 ```
 
 This example generates a blob SAS token with full blob permission.
 
 ### Example 2: Generate a blob SAS token with life time
-```
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $startTime.AddHours(2.0)
-PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime
+```powershell
+$StartTime = Get-Date
+$EndTime = $startTime.AddHours(2.0)
+New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime
 ```
 
 This example generates a blob SAS token with life time.
 
 ### Example 3: Generate a User Identity SAS token with storage context based on OAuth authentication
-```
-PS C:\> $ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $startTime.AddDays(6)
-PS C:\> New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -context $ctx
+```powershell
+$ctx = New-AzStorageContext -StorageAccountName $accountName -UseConnectedAccount
+$StartTime = Get-Date
+$EndTime = $startTime.AddDays(6)
+New-AzStorageBlobSASToken -Container "ContainerName" -Blob "BlobName" -Permission rwd -StartTime $StartTime -ExpiryTime $EndTime -Context $ctx
 ```
 
 This example generates a User Identity blob SAS token with storage context based on OAuth authentication

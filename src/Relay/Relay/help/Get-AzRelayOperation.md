@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
-online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelayoperation
+online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelayoperation
 schema: 2.0.0
 ---
 

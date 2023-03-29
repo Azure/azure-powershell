@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         /// </summary>
         public PSADObject GetObjectByObjectId(string objectId)
         {
-            return GraphClient.DirectoryObjects.GetDirectoryObject(objectId)?.ToPSADObject();
+            return string.IsNullOrEmpty(objectId) ? null : GraphClient.DirectoryObjects.GetDirectoryObject(objectId)?.ToPSADObject();
         }
 
         /// <summary>

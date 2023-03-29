@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Reservations
 Module Guid: 59d3f19f-af05-4d96-a9a8-ff647983b57f
-Download Help Link: https://docs.microsoft.com/powershell/module/az.reservations
+Download Help Link: https://learn.microsoft.com/powershell/module/az.reservations
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -15,7 +15,7 @@ Microsoft Azure PowerShell: Reservations cmdlets
 Get specific `Reservation` details.
 
 ### [Get-AzReservationAvailableScope](Get-AzReservationAvailableScope.md)
-Get Available Scopes for `Reservation`.\n
+Check whether the scopes from request is valid for `Reservation`.\n
 
 ### [Get-AzReservationCatalog](Get-AzReservationCatalog.md)
 Get the regions and skus that are available for RI purchase for the specified Azure subscription.
@@ -32,11 +32,23 @@ Get applicable `Reservation`s that are applied to this subscription or a resourc
 ### [Get-AzReservationQuote](Get-AzReservationQuote.md)
 Calculate price for placing a `ReservationOrder`.
 
+### [Invoke-AzReservationArchiveReservation](Invoke-AzReservationArchiveReservation.md)
+Archiving a `Reservation` moves it to `Archived` state.
+
 ### [Invoke-AzReservationCalculateExchange](Invoke-AzReservationCalculateExchange.md)
 Calculates price for exchanging `Reservations` if there are no policy errors.\n
 
+### [Invoke-AzReservationCalculateRefund](Invoke-AzReservationCalculateRefund.md)
+Calculate price for returning `Reservations` if there are no policy errors.\n
+
 ### [Invoke-AzReservationExchange](Invoke-AzReservationExchange.md)
 Returns one or more `Reservations` in exchange for one or more `Reservation` purchases.\n
+
+### [Invoke-AzReservationReturn](Invoke-AzReservationReturn.md)
+Return a Reservation.
+
+### [Invoke-AzReservationUnarchiveReservation](Invoke-AzReservationUnarchiveReservation.md)
+Restores a `Reservation` to the state it was before archiving.\n
 
 ### [Merge-AzReservation](Merge-AzReservation.md)
 Merge two reservations into one reservation within the same reservation order.

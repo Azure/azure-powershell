@@ -898,3 +898,39 @@ function Test-UpdateRPIWithAvailabilityZone
     $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $pc -FriendlyName $VMName
     Assert-NotNull($rpi.ProviderSpecificDetails.RecoveryAvailabilityZone)
 }
+
+<#
+.SYNOPSIS
+Site Recovery Create RPI with list of disks required for protection
+#>
+function Test-CreateRPIWithListOfDisks
+{
+    param([string] $vaultSettingsFilePath)
+
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $VMName="HyperVVm5960"
+    $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMName
+    $diskIds=@("de7c495c-3d3e-47dc-8f95-d728b2bcc7f6","21dd0aaa-c942-4ff2-af7b-3a6e5a75a93b","752e467b-5534-4b15-9b0c-97ff9e97bada")
+    $OSDiskName = "HyperVVm5960_078F16BE-769B-4535-9177-454EFDFC4595"
+    $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -RecoveryResourceGroupId $RecoveryResourceGroupId -IncludeDiskId $diskIds -OS Windows -OSDiskName $OSDiskName
+}
+
+<#
+.SYNOPSIS
+Site Recovery Create RPI with managed disks for replication
+#>
+function Test-CreateRPIWithMangedDisksForReplication
+{
+    param([string] $vaultSettingsFilePath)
+
+    Import-AzRecoveryServicesAsrVaultSettingsFile -Path $vaultSettingsFilePath
+    $fabric =  Get-AsrFabric -FriendlyName $PrimaryFabricName
+    $pc =  Get-ASRProtectionContainer -Fabric $fabric
+    $ProtectionContainerMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $pc
+    $policy = Get-AzRecoveryServicesAsrPolicy -Name $PolicyName
+    $VM= Get-AsrProtectableItem -ProtectionContainer $pc -FriendlyName $VMName
+    $EnableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping[0] -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $VMName -OS Windows -RecoveryResourceGroupId $RecoveryResourceGroupId -UseManagedDisksForReplication True
+}

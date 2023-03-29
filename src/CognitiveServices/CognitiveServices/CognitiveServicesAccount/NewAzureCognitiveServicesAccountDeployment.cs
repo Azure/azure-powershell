@@ -70,16 +70,11 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
 
             RunCmdLet(() =>
             {
-                var deployment = new Deployment()
-                {
-                    Properties = Properties
-                };
-
                 var createAccountResponse = CognitiveServicesClient.Deployments.BeginCreateOrUpdate(
                                     ResourceGroupName,
                                     AccountName,
                                     Name,
-                                    deployment);
+                                    Properties);
 
                     WriteObject(createAccountResponse);
             });

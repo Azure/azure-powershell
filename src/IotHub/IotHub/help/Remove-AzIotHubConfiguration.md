@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
-online version: https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothubconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.iothub/remove-aziothubconfiguration
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ Remove-AzIotHubConfiguration [-ResourceId] <String> [-Name <String>] [-PassThru]
 ```
 
 ## DESCRIPTION
-See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
+See https://learn.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management for more information.
 
 ## EXAMPLES
 

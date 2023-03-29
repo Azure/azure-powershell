@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverproject
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverproject
 schema: 2.0.0
 ---
 
@@ -105,7 +105,7 @@ The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
 Parameter Sets: Create
 Aliases:
 
@@ -198,11 +198,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
 
 ## NOTES
 

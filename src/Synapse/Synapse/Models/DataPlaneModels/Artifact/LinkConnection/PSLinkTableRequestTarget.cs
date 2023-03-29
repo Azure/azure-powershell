@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.TableName = linkTableRequestTarget?.TableName;
             this.SchemaName = linkTableRequestTarget?.SchemaName;
-            this.DistributionOptions = new PSLinkTableRequestTargetDistributionOptions(linkTableRequestTarget?.DistributionOptions);
+            this.DistributionOptions = linkTableRequestTarget?.DistributionOptions != null ? new PSLinkTableRequestTargetDistributionOptions(linkTableRequestTarget?.DistributionOptions) : null;
+            this.StructureOptions = linkTableRequestTarget.StructureOptions != null ? new PSLinkTableRequestTargetStructureOptions(linkTableRequestTarget?.StructureOptions) : null;
         }
 
         public string TableName { get; set; }
@@ -30,5 +31,7 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string SchemaName { get; set; }
 
         public PSLinkTableRequestTargetDistributionOptions DistributionOptions { get; set; }
+
+        public PSLinkTableRequestTargetStructureOptions StructureOptions { get; set; }
     }
 }

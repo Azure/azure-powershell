@@ -408,8 +408,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 return null;
             }
 
-            policyModel.Name = serviceClientResponse.Name;
-            policyModel.Id = serviceClientResponse.Id;
+            if (policyModel != null)
+            {
+                policyModel.Name = serviceClientResponse.Name;
+                policyModel.Id = serviceClientResponse.Id;
+            }
+            else
+            {
+                Logger.Instance.WriteWarning("couldn't fetch policy model for one of the listed policies, skipping");
+            }
 
             return policyModel;
         }
@@ -856,6 +863,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
                 }
                 else if (string.Compare(subProtectionPolicy.PolicyType, "Log") == 0)
                 {
+                    // timeZone paased as input but not used in below method calls
                     azureVmWorkloadPolicyModel.LogBackupSchedulePolicy = PolicyHelpers.GetPSLogSchedulePolicy((ServiceClientModel.LogSchedulePolicy)
                     subProtectionPolicy.SchedulePolicy,
                     ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)serviceClientResponse.Properties).Settings.TimeZone);

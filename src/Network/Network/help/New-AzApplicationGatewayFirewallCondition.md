@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallcondition
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallcondition
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates a match condition for custom rule
 
 ```
 New-AzApplicationGatewayFirewallCondition -MatchVariable <PSApplicationGatewayFirewallMatchVariable[]>
- -Operator <String> [-NegationCondition <Boolean>] -MatchValue <String[]> [-Transform <String[]>]
+ -Operator <String> [-NegationCondition <Boolean>] [-MatchValue <String[]>] [-Transform <String[]>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -115,7 +115,7 @@ List of transforms.
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Lowercase, Trim, UrlDecode, UrlEncode, RemoveNulls, HtmlEntityDecode
+Accepted values: Uppercase, Lowercase, Trim, UrlDecode, UrlEncode, RemoveNulls, HtmlEntityDecode
 
 Required: False
 Position: Named

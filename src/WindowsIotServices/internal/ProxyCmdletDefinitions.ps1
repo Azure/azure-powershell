@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IOperationEntity
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/get-azwindowsiotservicesoperation
+https://learn.microsoft.com/en-us/powershell/module/az.windowsiotservices/get-azwindowsiotservicesoperation
 #>
 function Get-AzWindowsIotServicesOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IOperationEntity])]

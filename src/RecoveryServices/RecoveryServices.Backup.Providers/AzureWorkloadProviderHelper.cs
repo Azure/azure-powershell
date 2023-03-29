@@ -26,6 +26,7 @@ using ScheduleRunType = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 using SystemNet = System.Net;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -340,28 +341,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)providerData[CmdletModel.VaultParams.VaultName];
             string vaultResourceGroupName = (string)providerData[CmdletModel.VaultParams.ResourceGroupName];
-            string friendlyName = (string)providerData[CmdletModel.ContainerParams.FriendlyName];
-            CmdletModel.ContainerRegistrationStatus status =
-                (CmdletModel.ContainerRegistrationStatus)providerData[CmdletModel.ContainerParams.Status];
+            string friendlyName = (string)providerData[CmdletModel.ContainerParams.FriendlyName];            
 
             string nameQueryFilter = friendlyName;
-
-            ODataQuery<ServiceClientModel.BMSContainerQueryObject> queryParams = null;
-            if (status == 0)
-            {
-                queryParams = new ODataQuery<ServiceClientModel.BMSContainerQueryObject>(
+            ODataQuery<ServiceClientModel.BMSContainerQueryObject> queryParams = new ODataQuery<ServiceClientModel.BMSContainerQueryObject>(
                 q => q.FriendlyName == nameQueryFilter &&
                 q.BackupManagementType == backupManagementType);
-            }
-            else
-            {
-                var statusString = status.ToString();
-                queryParams = new ODataQuery<ServiceClientModel.BMSContainerQueryObject>(
-                q => q.FriendlyName == nameQueryFilter &&
-                q.BackupManagementType == backupManagementType &&
-                q.Status == statusString);
-            }
-
+            
             var listResponse = ServiceClientAdapter.ListContainers(
                 queryParams,
                 vaultName: vaultName,
@@ -791,7 +777,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 ODataQuery<BMSRPQueryObject> queryFilter = new ODataQuery<BMSRPQueryObject>();
                 queryFilter.Filter = queryFilterString;
-
+                                
                 List<RecoveryPointResource> rpListResponse;
                 rpListResponse = ServiceClientAdapter.GetRecoveryPoints(
                 containerUri,

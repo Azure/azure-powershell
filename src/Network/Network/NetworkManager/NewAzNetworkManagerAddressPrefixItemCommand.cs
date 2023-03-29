@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerAddressPrefixItem"), OutputType(typeof(PSNetworkManagerAddressPrefixItem))]
     public class NewAzNetworkManagerAddressPrefixItemCommand: NetworkManagerBaseCmdlet
     {
-
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
@@ -40,6 +40,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "AddressPrefix Type. Valid values include 'IPPrefix' and 'ServiceTag'.")]
+        [ValidateSet("IPPrefix", "ServiceTag", IgnoreCase = true)]
         public string AddressPrefixType { get; set; }
 
         public override void Execute()

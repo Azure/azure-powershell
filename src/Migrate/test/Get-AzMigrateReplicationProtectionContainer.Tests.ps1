@@ -12,12 +12,12 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzMigrateReplicationProtectionContainer' {
-    It 'List'  {
+    It 'List' {
        $output = Get-AzMigrateReplicationProtectionContainer -ResourceName $env.srsVaultName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
        $output.Count | Should -BeGreaterOrEqual 1 
     }
 
-    It 'List1'  {
+    It 'List1' {
        $output = Get-AzMigrateReplicationProtectionContainer -FabricName $env.srsFabricName -ResourceName $env.srsVaultName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.srsSubscriptionId
        $output.Count | Should -BeGreaterOrEqual 1 
     }

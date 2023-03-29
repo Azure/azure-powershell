@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
     public partial struct AppliedScopeType :
         System.IEquatable<AppliedScopeType>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType ManagementGroup = @"ManagementGroup";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType Shared = @"Shared";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType Single = @"Single";

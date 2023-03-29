@@ -86,7 +86,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         [ValidateNotNullOrEmpty]
         public string VersionId { get; set; }
 
-        [Parameter(HelpMessage = "Query string, see more details in: https://docs.microsoft.com/en-us/azure/storage/blobs/query-acceleration-sql-reference", Mandatory = true)]
+        [Parameter(HelpMessage = "Query string, see more details in: https://learn.microsoft.com/en-us/azure/storage/blobs/query-acceleration-sql-reference", Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string QueryString { get; set; }
 
@@ -158,7 +158,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         this.Blob, Channel.StorageContext,
                         this.VersionId,
                         null,
-                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"),
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"),
                         this.ClientOptions, Track2Models.BlobType.Block);
                     break;
                 case NameParameterSet:
@@ -169,7 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
                         this.Blob, Channel.StorageContext,
                         this.VersionId,
                         null,
-                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"),
+                        this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"),
                         this.ClientOptions, Track2Models.BlobType.Block);
                     break;
             }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-AzContainerNicconfigipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/new-AzContainerNicconfigipconfig
 schema: 2.0.0
 ---
 
@@ -30,7 +30,7 @@ $vnet = New-AzVirtualNetwork -Name vnet -ResourceGroupName rg1 -Location "West U
 
 $containerNicConfigIpConfig = New-AzContainerNicConfigIpConfig -Name ipconfigprofile1 -Subnet $vnet.Subnets[0]
 
-$containerNicConfig = New-AzContainerNicConfig -Name cnic -IpConfiguration containerNicConfigIpConfig
+$containerNicConfig = New-AzContainerNicConfig -Name cnic -IpConfiguration $containerNicConfigIpConfig
 
 $networkProfile = New-AzNetworkProfile -Name np1 -Location "West US" -ResourceGroupName rg1 -ContainerNetworkInterfaceConfiguration $containerNicConfig
 ```

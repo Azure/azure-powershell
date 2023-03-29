@@ -1,2 +1,2 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
 "Microsoft.Azure.PowerShell.Cmdlets.ManagementPartner.dll","Microsoft.Azure.Commands.ManagementPartner.RemoveManagementPartner","Remove-AzManagementPartner","1","8600","Cmdlet 'Remove-AzManagementPartner' has no defined output type.","Add an OutputType attribute that declares the type of the object(s) returned by this cmdlet. If this cmdlet returns no output, please set the output type to 'bool' and make sure to implement the 'PassThru' parameter."

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagersecurityadminconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkmanagersecurityadminconfiguration
 schema: 2.0.0
 ---
 
@@ -90,12 +90,13 @@ Creates a security admin configuration that will apply on NIP based services.
 ## PARAMETERS
 
 ### -ApplyOnNetworkIntentPolicyBasedService
-ApplyOnNetworkIntentPolicyBasedServices. Valid values include 'None' and 'All'.
+ApplyOnNetworkIntentPolicyBasedServices.
 
 ```yaml
 Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, All, and AllowRulesOnly
 
 Required: False
 Position: Named

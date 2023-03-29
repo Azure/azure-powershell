@@ -15,7 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCloudService_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Description(@"Create or update a cloud service. Please note some properties can be set only during cloud service creation.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Generated]
     public partial class NewAzCloudService_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -35,6 +35,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Describes the cloud service.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService();
+
         /// <summary>
         /// (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override
         /// the role instance count and vm size specified in the .cscfg and .csdef respectively.The default value is `false`.
@@ -47,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         Description = @"(Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.The default value is `false`.",
         SerializedName = @"allowModelOverride",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AllowModelOverride { get => ParametersBody.AllowModelOverride ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.AllowModelOverride = value; }
+        public global::System.Management.Automation.SwitchParameter AllowModelOverride { get => _parametersBody.AllowModelOverride ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.AllowModelOverride = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         Description = @"Specifies the XML service configuration (.cscfg) for the cloud service.",
         SerializedName = @"configuration",
         PossibleTypes = new [] { typeof(string) })]
-        public string Configuration { get => ParametersBody.Configuration ?? null; set => ParametersBody.Configuration = value; }
+        public string Configuration { get => _parametersBody.Configuration ?? null; set => _parametersBody.Configuration = value; }
 
         /// <summary>
         /// Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL
@@ -86,7 +89,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         Description = @"Specifies a URL that refers to the location of the service configuration in the Blob service. The service package URL can be Shared Access Signature (SAS) URI from any storage account.This is a write-only property and is not returned in GET calls.",
         SerializedName = @"configurationUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string ConfigurationUrl { get => ParametersBody.ConfigurationUrl ?? null; set => ParametersBody.ConfigurationUrl = value; }
+        public string ConfigurationUrl { get => _parametersBody.ConfigurationUrl ?? null; set => _parametersBody.ConfigurationUrl = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -105,8 +108,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         ReadOnly = false,
         Description = @"Describes a cloud service extension profile.",
         SerializedName = @"extensionProfile",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceExtensionProfile ExtensionProfile { get => ParametersBody.ExtensionProfile ?? null /* object */; set => ParametersBody.ExtensionProfile = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceExtensionProfile ExtensionProfile { get => _parametersBody.ExtensionProfile ?? null /* object */; set => _parametersBody.ExtensionProfile = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -132,14 +135,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         Description = @"Resource location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
+        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -165,8 +168,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         ReadOnly = false,
         Description = @"Network Profile for the cloud service.",
         SerializedName = @"networkProfile",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceNetworkProfile NetworkProfile { get => ParametersBody.NetworkProfile ?? null /* object */; set => ParametersBody.NetworkProfile = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceNetworkProfile) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceNetworkProfile NetworkProfile { get => _parametersBody.NetworkProfile ?? null /* object */; set => _parametersBody.NetworkProfile = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -184,8 +187,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         ReadOnly = false,
         Description = @"Describes the OS profile for the cloud service.",
         SerializedName = @"osProfile",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceOSProfile OSProfile { get => ParametersBody.OSProfile ?? null /* object */; set => ParametersBody.OSProfile = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceOSProfile) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceOSProfile OSProfile { get => _parametersBody.OSProfile ?? null /* object */; set => _parametersBody.OSProfile = value; }
 
         /// <summary>
         /// Specifies a URL that refers to the location of the service package in the Blob service. The service package URL can be
@@ -199,13 +202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         Description = @"Specifies a URL that refers to the location of the service package in the Blob service. The service package URL can be Shared Access Signature (SAS) URI from any storage account.This is a write-only property and is not returned in GET calls.",
         SerializedName = @"packageUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string PackageUrl { get => ParametersBody.PackageUrl ?? null; set => ParametersBody.PackageUrl = value; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService();
-
-        /// <summary>Describes the cloud service.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        public string PackageUrl { get => _parametersBody.PackageUrl ?? null; set => _parametersBody.PackageUrl = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.HttpPipeline" /> that the remote call will use.
@@ -250,8 +247,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         ReadOnly = false,
         Description = @"Describes the role profile for the cloud service.",
         SerializedName = @"roleProfile",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceRoleProfile RoleProfile { get => ParametersBody.RoleProfile ?? null /* object */; set => ParametersBody.RoleProfile = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleProfile) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceRoleProfile RoleProfile { get => _parametersBody.RoleProfile ?? null /* object */; set => _parametersBody.RoleProfile = value; }
 
         /// <summary>
         /// (Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.If
@@ -266,7 +263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         Description = @"(Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.If false, the service model is still deployed, but the code is not run immediately. Instead, the service is PoweredOff until you call Start, at which time the service will be started. A deployed service still incurs charges, even if it is poweredoff.",
         SerializedName = @"startCloudService",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter StartCloudService { get => ParametersBody.StartCloudService ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.StartCloudService = value; }
+        public global::System.Management.Automation.SwitchParameter StartCloudService { get => _parametersBody.StartCloudService ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.StartCloudService = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -298,8 +295,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudServiceTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudServiceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates
@@ -317,37 +314,57 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         SerializedName = @"upgradeMode",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode))]
-        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode UpgradeMode { get => ParametersBody.UpgradeMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode)""); set => ParametersBody.UpgradeMode = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode UpgradeMode { get => _parametersBody.UpgradeMode ?? ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.CloudServiceUpgradeMode)""); set => _parametersBody.UpgradeMode = value; }
+
+        /// <summary>
+        /// List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned.
+        /// This field is optional.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CloudService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"List of logical availability zone of the resource. List should contain only 1 zone where cloud service should be provisioned. This field is optional.",
+        SerializedName = @"zones",
+        PossibleTypes = new [] { typeof(string) })]
+        public string[] Zone { get => _parametersBody.Zone ?? null /* arrayOf */; set => _parametersBody.Zone = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService">Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.CloudService.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -373,7 +390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
+            clone._parametersBody = this._parametersBody;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
             clone.SubscriptionId = this.SubscriptionId;
@@ -383,7 +400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -524,7 +541,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.CloudService.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -539,12 +555,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.CloudServicesCreateOrUpdate(ResourceGroupName, Name, SubscriptionId, ParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.CloudServicesCreateOrUpdate(ResourceGroupName, Name, SubscriptionId, _parametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -567,12 +583,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -589,15 +605,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api10.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -607,12 +623,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService">Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService> response)
         {
             using( NoSynchronizationContext )
             {
@@ -624,7 +640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.ICloudService
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.ICloudService
                 WriteObject((await response));
             }
         }

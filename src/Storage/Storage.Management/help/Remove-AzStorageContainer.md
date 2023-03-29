@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 6A46DA60-2ACF-4842-B5B3-58944264854A
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragecontainer
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragecontainer
 schema: 2.0.0
 ---
 
@@ -26,8 +26,8 @@ The **Remove-AzStorageContainer** cmdlet removes the specified storage container
 ## EXAMPLES
 
 ### Example 1: Remove a container
-```
-PS C:\>Remove-AzStorageContainer -Name "MyTestContainer"
+```powershell
+Remove-AzStorageContainer -Name "MyTestContainer"
 ```
 
 This example removes a container named MyTestContainer.

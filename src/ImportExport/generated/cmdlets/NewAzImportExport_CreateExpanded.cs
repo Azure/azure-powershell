@@ -6,13 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Extensions;
+    using System;
 
     /// <summary>Creates a new job or updates an existing job in the specified subscription.</summary>
     /// <remarks>
-    /// [OpenAPI] Jobs_Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}"
+    /// [OpenAPI] Create=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ImportExport/jobs/{jobName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzImportExport_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Description(@"Creates a new job or updates an existing job in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Generated]
     public partial class NewAzImportExport_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -26,6 +27,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
 
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
+
+        /// <summary>Put Job parameters</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IPutJobParameters _body = new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.PutJobParameters();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -57,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Default value is false. Indicates whether the manifest files on the drives should be copied to block blobs.",
         SerializedName = @"backupDriveManifest",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter BackupDriveManifest { get => Body.BackupDriveManifest ?? default(global::System.Management.Automation.SwitchParameter); set => Body.BackupDriveManifest = value; }
+        public global::System.Management.Automation.SwitchParameter BackupDriveManifest { get => _body.BackupDriveManifest ?? default(global::System.Management.Automation.SwitchParameter); set => _body.BackupDriveManifest = value; }
 
         /// <summary>A collection of blob-path strings.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"A collection of blob-path strings.",
         SerializedName = @"blobPath",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] BlobListBlobPath { get => Body.BlobListBlobPath ?? null /* arrayOf */; set => Body.BlobListBlobPath = value; }
+        public string[] BlobListBlobPath { get => _body.BlobPath ?? null /* arrayOf */; set => _body.BlobPath = value; }
 
         /// <summary>A collection of blob-prefix strings.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -81,13 +85,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"A collection of blob-prefix strings.",
         SerializedName = @"blobPathPrefix",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] BlobListBlobPathPrefix { get => Body.BlobListBlobPathPrefix ?? null /* arrayOf */; set => Body.BlobListBlobPathPrefix = value; }
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParameters _body= new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.PutJobParameters();
-
-        /// <summary>Put Job parameters</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParameters Body { get => this._body; set => this._body = value; }
+        public string[] BlobListBlobPathPrefix { get => _body.BlobListBlobPathPrefix ?? null /* arrayOf */; set => _body.BlobListBlobPathPrefix = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -103,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Indicates whether a request has been submitted to cancel the job.",
         SerializedName = @"cancelRequested",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter CancelRequested { get => Body.CancelRequested ?? default(global::System.Management.Automation.SwitchParameter); set => Body.CancelRequested = value; }
+        public global::System.Management.Automation.SwitchParameter CancelRequested { get => _body.CancelRequested ?? default(global::System.Management.Automation.SwitchParameter); set => _body.CancelRequested = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ImportExport Client => Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Module.Instance.ClientAPI;
@@ -140,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The name of the carrier that is used to ship the import or export drives.",
         SerializedName = @"carrierName",
         PossibleTypes = new [] { typeof(string) })]
-        public string DeliveryPackageCarrierName { get => Body.DeliveryPackageCarrierName ?? null; set => Body.DeliveryPackageCarrierName = value; }
+        public string DeliveryPackageCarrierName { get => _body.DeliveryPackageCarrierName ?? null; set => _body.DeliveryPackageCarrierName = value; }
 
         /// <summary>The number of drives included in the package.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of drives included in the package.")]
@@ -150,8 +148,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         ReadOnly = false,
         Description = @"The number of drives included in the package.",
         SerializedName = @"driveCount",
-        PossibleTypes = new [] { typeof(int) })]
-        public int DeliveryPackageDriveCount { get => Body.DeliveryPackageDriveCount; set => Body.DeliveryPackageDriveCount = value; }
+        PossibleTypes = new [] { typeof(long) })]
+        public long DeliveryPackageDriveCount { get => _body.DeliveryPackageDriveCount ?? default(long); set => _body.DeliveryPackageDriveCount = value; }
 
         /// <summary>The date when the package is shipped.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The date when the package is shipped.")]
@@ -162,7 +160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The date when the package is shipped.",
         SerializedName = @"shipDate",
         PossibleTypes = new [] { typeof(string) })]
-        public string DeliveryPackageShipDate { get => Body.DeliveryPackageShipDate ?? null; set => Body.DeliveryPackageShipDate = value; }
+        public string DeliveryPackageShipDate { get => _body.DeliveryPackageShipDate ?? null; set => _body.DeliveryPackageShipDate = value; }
 
         /// <summary>The tracking number of the package.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tracking number of the package.")]
@@ -173,7 +171,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The tracking number of the package.",
         SerializedName = @"trackingNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string DeliveryPackageTrackingNumber { get => Body.DeliveryPackageTrackingNumber ?? null; set => Body.DeliveryPackageTrackingNumber = value; }
+        public string DeliveryPackageTrackingNumber { get => _body.DeliveryPackageTrackingNumber ?? null; set => _body.DeliveryPackageTrackingNumber = value; }
 
         /// <summary>
         /// The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.
@@ -186,7 +184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The virtual blob directory to which the copy logs and backups of drive manifest files (if enabled) will be stored.",
         SerializedName = @"diagnosticsPath",
         PossibleTypes = new [] { typeof(string) })]
-        public string DiagnosticsPath { get => Body.DiagnosticsPath ?? null; set => Body.DiagnosticsPath = value; }
+        public string DiagnosticsPath { get => _body.DiagnosticsPath ?? null; set => _body.DiagnosticsPath = value; }
 
         /// <summary>
         /// List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified
@@ -200,8 +198,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         ReadOnly = false,
         Description = @"List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.",
         SerializedName = @"driveList",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus[] DriveList { get => Body.DriveList ?? null /* arrayOf */; set => Body.DriveList = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus[] DriveList { get => _body.DriveList ?? null /* arrayOf */; set => _body.DriveList = value; }
+
+        /// <summary>The type of kek encryption key</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of kek encryption key")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The type of kek encryption key",
+        SerializedName = @"kekType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType EncryptionKeyKekType { get => _body.EncryptionKeyKekType ?? ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.EncryptionKekType)""); set => _body.EncryptionKeyKekType = value; }
+
+        /// <summary>Specifies the url for kek encryption key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the url for kek encryption key. ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the url for kek encryption key. ",
+        SerializedName = @"kekUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyKekUrl { get => _body.EncryptionKeyKekUrl ?? null; set => _body.EncryptionKeyKekUrl = value; }
+
+        /// <summary>Specifies the keyvault resource id for kek encryption key.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the keyvault resource id for kek encryption key. ")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the keyvault resource id for kek encryption key. ",
+        SerializedName = @"kekVaultResourceID",
+        PossibleTypes = new [] { typeof(string) })]
+        public string EncryptionKeyKekVaultId { get => _body.EncryptionKeyKekVaultResourceId ?? null; set => _body.EncryptionKeyKekVaultResourceId = value; }
 
         /// <summary>
         /// The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning
@@ -213,9 +245,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Required = false,
         ReadOnly = false,
         Description = @"The relative URI to the block blob that contains the list of blob paths or blob path prefixes as defined above, beginning with the container name. If the blob is in root container, the URI must begin with $root. ",
-        SerializedName = @"blobListblobPath",
+        SerializedName = @"blobListBlobPath",
         PossibleTypes = new [] { typeof(string) })]
-        public string ExportBlobListblobPath { get => Body.ExportBlobListblobPath ?? null; set => Body.ExportBlobListblobPath = value; }
+        public string ExportBlobListBlobPath { get => _body.ExportBlobListBlobPath ?? null; set => _body.ExportBlobListBlobPath = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -241,7 +273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"A blob path that points to a block blob containing a list of blob names that were not exported due to insufficient drive space. If all blobs were exported successfully, then this element is not included in the response.",
         SerializedName = @"incompleteBlobListUri",
         PossibleTypes = new [] { typeof(string) })]
-        public string IncompleteBlobListUri { get => Body.IncompleteBlobListUri ?? null; set => Body.IncompleteBlobListUri = value; }
+        public string IncompleteBlobListUri { get => _body.IncompleteBlobListUri ?? null; set => _body.IncompleteBlobListUri = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -255,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The type of job",
         SerializedName = @"jobType",
         PossibleTypes = new [] { typeof(string) })]
-        public string JobType { get => Body.JobType ?? null; set => Body.JobType = value; }
+        public string JobType { get => _body.JobType ?? null; set => _body.JobType = value; }
 
         /// <summary>Specifies the supported Azure location where the job should be created</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the supported Azure location where the job should be created")]
@@ -266,7 +298,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Specifies the supported Azure location where the job should be created",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => Body.Location ?? null; set => Body.Location = value; }
+        public string Location { get => _body.Location ?? null; set => _body.Location = value; }
 
         /// <summary>
         /// Default value is Error. Indicates whether error logging or verbose logging will be enabled.
@@ -279,14 +311,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Default value is Error. Indicates whether error logging or verbose logging will be enabled.",
         SerializedName = @"logLevel",
         PossibleTypes = new [] { typeof(string) })]
-        public string LogLevel { get => Body.LogLevel ?? null; set => Body.LogLevel = value; }
+        public string LogLevel { get => _body.LogLevel ?? null; set => _body.LogLevel = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -312,8 +344,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         ReadOnly = false,
         Description = @"Overall percentage completed for the job.",
         SerializedName = @"percentComplete",
-        PossibleTypes = new [] { typeof(int) })]
-        public int PercentComplete { get => Body.PercentComplete ?? default(int); set => Body.PercentComplete = value; }
+        PossibleTypes = new [] { typeof(long) })]
+        public long PercentComplete { get => _body.PercentComplete ?? default(long); set => _body.PercentComplete = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.HttpPipeline" /> that the remote call will use.
@@ -329,7 +361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Specifies the provisioning state of the job.",
         SerializedName = @"provisioningState",
         PossibleTypes = new [] { typeof(string) })]
-        public string ProvisioningState { get => Body.ProvisioningState ?? null; set => Body.ProvisioningState = value; }
+        public string ProvisioningState { get => _body.ProvisioningState ?? null; set => _body.ProvisioningState = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -372,7 +404,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The city name to use when returning the drives.",
         SerializedName = @"city",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressCity { get => Body.ReturnAddressCity ?? null; set => Body.ReturnAddressCity = value; }
+        public string ReturnAddressCity { get => _body.ReturnAddressCity ?? null; set => _body.ReturnAddressCity = value; }
 
         /// <summary>The country or region to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The country or region to use when returning the drives. ")]
@@ -383,7 +415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The country or region to use when returning the drives. ",
         SerializedName = @"countryOrRegion",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressCountryOrRegion { get => Body.ReturnAddressCountryOrRegion ?? null; set => Body.ReturnAddressCountryOrRegion = value; }
+        public string ReturnAddressCountryOrRegion { get => _body.ReturnAddressCountryOrRegion ?? null; set => _body.ReturnAddressCountryOrRegion = value; }
 
         /// <summary>Email address of the recipient of the returned drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Email address of the recipient of the returned drives.")]
@@ -394,7 +426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Email address of the recipient of the returned drives.",
         SerializedName = @"email",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressEmail { get => Body.ReturnAddressEmail ?? null; set => Body.ReturnAddressEmail = value; }
+        public string ReturnAddressEmail { get => _body.ReturnAddressEmail ?? null; set => _body.ReturnAddressEmail = value; }
 
         /// <summary>Phone number of the recipient of the returned drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Phone number of the recipient of the returned drives.")]
@@ -405,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Phone number of the recipient of the returned drives.",
         SerializedName = @"phone",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressPhone { get => Body.ReturnAddressPhone ?? null; set => Body.ReturnAddressPhone = value; }
+        public string ReturnAddressPhone { get => _body.ReturnAddressPhone ?? null; set => _body.ReturnAddressPhone = value; }
 
         /// <summary>The postal code to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The postal code to use when returning the drives.")]
@@ -416,7 +448,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The postal code to use when returning the drives.",
         SerializedName = @"postalCode",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressPostalCode { get => Body.ReturnAddressPostalCode ?? null; set => Body.ReturnAddressPostalCode = value; }
+        public string ReturnAddressPostalCode { get => _body.ReturnAddressPostalCode ?? null; set => _body.ReturnAddressPostalCode = value; }
 
         /// <summary>
         /// The name of the recipient who will receive the hard drives when they are returned.
@@ -429,7 +461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The name of the recipient who will receive the hard drives when they are returned. ",
         SerializedName = @"recipientName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressRecipientName { get => Body.ReturnAddressRecipientName ?? null; set => Body.ReturnAddressRecipientName = value; }
+        public string ReturnAddressRecipientName { get => _body.ReturnAddressRecipientName ?? null; set => _body.ReturnAddressRecipientName = value; }
 
         /// <summary>The state or province to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The state or province to use when returning the drives.")]
@@ -440,7 +472,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The state or province to use when returning the drives.",
         SerializedName = @"stateOrProvince",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressStateOrProvince { get => Body.ReturnAddressStateOrProvince ?? null; set => Body.ReturnAddressStateOrProvince = value; }
+        public string ReturnAddressStateOrProvince { get => _body.ReturnAddressStateOrProvince ?? null; set => _body.ReturnAddressStateOrProvince = value; }
 
         /// <summary>The first line of the street address to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The first line of the street address to use when returning the drives. ")]
@@ -451,7 +483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The first line of the street address to use when returning the drives. ",
         SerializedName = @"streetAddress1",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressStreetAddress1 { get => Body.ReturnAddressStreetAddress1 ?? null; set => Body.ReturnAddressStreetAddress1 = value; }
+        public string ReturnAddressStreetAddress1 { get => _body.ReturnAddressStreetAddress1 ?? null; set => _body.ReturnAddressStreetAddress1 = value; }
 
         /// <summary>The second line of the street address to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The second line of the street address to use when returning the drives. ")]
@@ -462,7 +494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The second line of the street address to use when returning the drives. ",
         SerializedName = @"streetAddress2",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnAddressStreetAddress2 { get => Body.ReturnAddressStreetAddress2 ?? null; set => Body.ReturnAddressStreetAddress2 = value; }
+        public string ReturnAddressStreetAddress2 { get => _body.ReturnAddressStreetAddress2 ?? null; set => _body.ReturnAddressStreetAddress2 = value; }
 
         /// <summary>The name of the carrier that is used to ship the import or export drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the carrier that is used to ship the import or export drives.")]
@@ -473,7 +505,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The name of the carrier that is used to ship the import or export drives.",
         SerializedName = @"carrierName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnPackageCarrierName { get => Body.ReturnPackageCarrierName ?? null; set => Body.ReturnPackageCarrierName = value; }
+        public string ReturnPackageCarrierName { get => _body.ReturnPackageCarrierName ?? null; set => _body.ReturnPackageCarrierName = value; }
 
         /// <summary>The number of drives included in the package.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of drives included in the package.")]
@@ -483,8 +515,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         ReadOnly = false,
         Description = @"The number of drives included in the package.",
         SerializedName = @"driveCount",
-        PossibleTypes = new [] { typeof(int) })]
-        public int ReturnPackageDriveCount { get => Body.ReturnPackageDriveCount; set => Body.ReturnPackageDriveCount = value; }
+        PossibleTypes = new [] { typeof(long) })]
+        public long ReturnPackageDriveCount { get => _body.ReturnPackageDriveCount ?? default(long); set => _body.ReturnPackageDriveCount = value; }
 
         /// <summary>The date when the package is shipped.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The date when the package is shipped.")]
@@ -495,7 +527,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The date when the package is shipped.",
         SerializedName = @"shipDate",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnPackageShipDate { get => Body.ReturnPackageShipDate ?? null; set => Body.ReturnPackageShipDate = value; }
+        public string ReturnPackageShipDate { get => _body.ReturnPackageShipDate ?? null; set => _body.ReturnPackageShipDate = value; }
 
         /// <summary>The tracking number of the package.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The tracking number of the package.")]
@@ -506,7 +538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The tracking number of the package.",
         SerializedName = @"trackingNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnPackageTrackingNumber { get => Body.ReturnPackageTrackingNumber ?? null; set => Body.ReturnPackageTrackingNumber = value; }
+        public string ReturnPackageTrackingNumber { get => _body.ReturnPackageTrackingNumber ?? null; set => _body.ReturnPackageTrackingNumber = value; }
 
         /// <summary>The customer's account number with the carrier.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The customer's account number with the carrier.")]
@@ -517,7 +549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The customer's account number with the carrier.",
         SerializedName = @"carrierAccountNumber",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnShippingCarrierAccountNumber { get => Body.ReturnShippingCarrierAccountNumber ?? null; set => Body.ReturnShippingCarrierAccountNumber = value; }
+        public string ReturnShippingCarrierAccountNumber { get => _body.ReturnShippingCarrierAccountNumber ?? null; set => _body.ReturnShippingCarrierAccountNumber = value; }
 
         /// <summary>The carrier's name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The carrier's name.")]
@@ -528,7 +560,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The carrier's name.",
         SerializedName = @"carrierName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ReturnShippingCarrierName { get => Body.ReturnShippingCarrierName ?? null; set => Body.ReturnShippingCarrierName = value; }
+        public string ReturnShippingCarrierName { get => _body.ReturnShippingCarrierName ?? null; set => _body.ReturnShippingCarrierName = value; }
 
         /// <summary>The city name to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The city name to use when returning the drives.")]
@@ -539,7 +571,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The city name to use when returning the drives.",
         SerializedName = @"city",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationCity { get => Body.ShippingInformationCity ?? null; set => Body.ShippingInformationCity = value; }
+        public string ShippingInformationCity { get => _body.ShippingInformationCity ?? null; set => _body.ShippingInformationCity = value; }
 
         /// <summary>The country or region to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The country or region to use when returning the drives. ")]
@@ -550,7 +582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The country or region to use when returning the drives. ",
         SerializedName = @"countryOrRegion",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationCountryOrRegion { get => Body.ShippingInformationCountryOrRegion ?? null; set => Body.ShippingInformationCountryOrRegion = value; }
+        public string ShippingInformationCountryOrRegion { get => _body.ShippingInformationCountryOrRegion ?? null; set => _body.ShippingInformationCountryOrRegion = value; }
 
         /// <summary>Phone number of the recipient of the returned drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Phone number of the recipient of the returned drives.")]
@@ -561,7 +593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Phone number of the recipient of the returned drives.",
         SerializedName = @"phone",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationPhone { get => Body.ShippingInformationPhone ?? null; set => Body.ShippingInformationPhone = value; }
+        public string ShippingInformationPhone { get => _body.ShippingInformationPhone ?? null; set => _body.ShippingInformationPhone = value; }
 
         /// <summary>The postal code to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The postal code to use when returning the drives.")]
@@ -572,7 +604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The postal code to use when returning the drives.",
         SerializedName = @"postalCode",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationPostalCode { get => Body.ShippingInformationPostalCode ?? null; set => Body.ShippingInformationPostalCode = value; }
+        public string ShippingInformationPostalCode { get => _body.ShippingInformationPostalCode ?? null; set => _body.ShippingInformationPostalCode = value; }
 
         /// <summary>
         /// The name of the recipient who will receive the hard drives when they are returned.
@@ -585,7 +617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The name of the recipient who will receive the hard drives when they are returned. ",
         SerializedName = @"recipientName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationRecipientName { get => Body.ShippingInformationRecipientName ?? null; set => Body.ShippingInformationRecipientName = value; }
+        public string ShippingInformationRecipientName { get => _body.ShippingInformationRecipientName ?? null; set => _body.ShippingInformationRecipientName = value; }
 
         /// <summary>The state or province to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The state or province to use when returning the drives.")]
@@ -596,7 +628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The state or province to use when returning the drives.",
         SerializedName = @"stateOrProvince",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationStateOrProvince { get => Body.ShippingInformationStateOrProvince ?? null; set => Body.ShippingInformationStateOrProvince = value; }
+        public string ShippingInformationStateOrProvince { get => _body.ShippingInformationStateOrProvince ?? null; set => _body.ShippingInformationStateOrProvince = value; }
 
         /// <summary>The first line of the street address to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The first line of the street address to use when returning the drives. ")]
@@ -607,7 +639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The first line of the street address to use when returning the drives. ",
         SerializedName = @"streetAddress1",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationStreetAddress1 { get => Body.ShippingInformationStreetAddress1 ?? null; set => Body.ShippingInformationStreetAddress1 = value; }
+        public string ShippingInformationStreetAddress1 { get => _body.ShippingInformationStreetAddress1 ?? null; set => _body.ShippingInformationStreetAddress1 = value; }
 
         /// <summary>The second line of the street address to use when returning the drives.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The second line of the street address to use when returning the drives. ")]
@@ -618,7 +650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The second line of the street address to use when returning the drives. ",
         SerializedName = @"streetAddress2",
         PossibleTypes = new [] { typeof(string) })]
-        public string ShippingInformationStreetAddress2 { get => Body.ShippingInformationStreetAddress2 ?? null; set => Body.ShippingInformationStreetAddress2 = value; }
+        public string ShippingInformationStreetAddress2 { get => _body.ShippingInformationStreetAddress2 ?? null; set => _body.ShippingInformationStreetAddress2 = value; }
 
         /// <summary>Current state of the job.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Current state of the job.")]
@@ -629,7 +661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"Current state of the job.",
         SerializedName = @"state",
         PossibleTypes = new [] { typeof(string) })]
-        public string State { get => Body.State ?? null; set => Body.State = value; }
+        public string State { get => _body.State ?? null; set => _body.State = value; }
 
         /// <summary>
         /// The resource identifier of the storage account where data will be imported to or exported from.
@@ -642,7 +674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         Description = @"The resource identifier of the storage account where data will be imported to or exported from.",
         SerializedName = @"storageAccountId",
         PossibleTypes = new [] { typeof(string) })]
-        public string StorageAccountId { get => Body.StorageAccountId ?? null; set => Body.StorageAccountId = value; }
+        public string StorageAccountId { get => _body.StorageAccountId ?? null; set => _body.StorageAccountId = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -663,6 +695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>Specifies the tags that will be assigned to the job.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the tags that will be assigned to the job.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ImportExport.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Info(
@@ -670,50 +703,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         ReadOnly = false,
         Description = @"Specifies the tags that will be assigned to the job.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IPutJobParametersTags Tag { get => Body.Tag ?? null /* object */; set => Body.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IPutJobParametersTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IPutJobParametersTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse">Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse">Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -725,7 +763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -759,7 +797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Events.Debug:
@@ -836,7 +874,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -851,12 +888,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.JobsCreate(Name, SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null, this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null, Body, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.JobsCreate(Name, SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null, this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null, _body, onOk, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Name=Name,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,AcceptLanguage=this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null,ClientTenantId=this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Name=Name,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,AcceptLanguage=this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null,ClientTenantId=this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -877,12 +914,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse">Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -894,7 +931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
                 WriteObject((await response));
             }
         }
@@ -903,12 +940,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -925,15 +962,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AcceptLanguage=this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null, ClientTenantId=this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null, body=Body })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IErrorResponse>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AcceptLanguage=this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null, ClientTenantId=this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AcceptLanguage=this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null, ClientTenantId=this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, AcceptLanguage=this.InvocationInformation.BoundParameters.ContainsKey("AcceptLanguage") ? AcceptLanguage : null, ClientTenantId=this.InvocationInformation.BoundParameters.ContainsKey("ClientTenantId") ? ClientTenantId : null, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -943,12 +980,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse">Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -960,7 +997,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IJobResponse
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IJobResponse
                 WriteObject((await response));
             }
         }

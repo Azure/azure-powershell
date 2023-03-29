@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanager
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkmanager
 schema: 2.0.0
 ---
 
@@ -217,12 +217,13 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkManagerScopeAccess
-Network Manager Scope Access, valid values include 'SecurityAdmin' and 'Connectivity'.
+Network Manager Scope Access.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+Accepted values: SecurityAdmin, Connectivity
 
 Required: True
 Position: Named

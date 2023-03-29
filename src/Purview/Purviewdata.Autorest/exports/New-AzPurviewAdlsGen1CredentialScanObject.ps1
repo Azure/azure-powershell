@@ -41,7 +41,7 @@ Worker                    :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1CredentialScanObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1CredentialScanObject
 #>
 function New-AzPurviewAdlsGen1CredentialScanObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1CredentialScan])]

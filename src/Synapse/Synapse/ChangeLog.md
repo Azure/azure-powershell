@@ -19,6 +19,21 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.3.0
+* Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.17
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool isolated compute by `-EnableIsolatedCompute`
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool node size to 'XLarge', 'XXLarge', 'XXXLarge'
+
+## Version 2.2.0
+* Added breaking change message for  `-SparkConfigFilePath`. It will be deprecated around the middle of December.
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool configuration artifact by `-SparkCongifuration`. `-SparkCongifuration` is an alternative of parameter `-SparkConfigFilePath`.
+
+## Version 2.1.0
+* Updated `Update-AzSynaspeWorkSpace` and `New-AzSynpaseWorkspace` to support for Workspace Encrytion Managed Identity setting
+
+## Version 2.0.0
+* [Breaking Change] Updated models of Synapse Link for Azure Sql Database
 * Updated `New-AzSynapseWorkspace` and `Update-AzSynapseWorkspace` to support for user assigned managed identity (UAMI) by `-UserAssignedIdentityAction` and `-UserAssignedIdentityId`
 * Added EnablePublicNetworkAccess parameter to `New-AzureSynapseWorkspace` and `Update-AzSynapseWorkspace`
 

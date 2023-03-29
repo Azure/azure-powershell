@@ -24,7 +24,7 @@ $env:PSModulePath += "$pathDelimiter$outputDir/"
 Write-Warning "PSModulePath: $env:PSModulePath"
 
 $success = $true
-foreach($psd1FilePath in Get-ChildItem -Path $outputDir -Recurse -Filter *.psd1) {
+foreach($psd1FilePath in Get-Item "$outputDir/Az.*/Az.*.psd1") {
     $manifestError = $null
     Test-ModuleManifest -Path $psd1FilePath.FullName -ErrorVariable manifestError
     if($manifestError){

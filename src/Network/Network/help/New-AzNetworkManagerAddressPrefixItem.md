@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanageraddressprefixitem
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkmanageraddressprefixitem
 schema: 2.0.0
 ---
 
@@ -62,12 +62,13 @@ Accept wildcard characters: False
 ```
 
 ### -AddressPrefixType
-AddressPrefix Type. Valid values include 'IPPrefix' and 'ServiceTag'.
+AddressPrefix Type.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: IPPrefix, ServiceTag
 
 Required: True
 Position: Named

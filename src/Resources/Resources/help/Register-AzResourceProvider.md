@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ResourceManager.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: D5067FD8-2FB1-413C-9F59-84E83A74343E
-online version: https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider
+online version: https://learn.microsoft.com/powershell/module/az.resources/register-azresourceprovider
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Registers a resource provider.
 ## SYNTAX
 
 ```
-Register-AzResourceProvider -ProviderNamespace <String> [-ConsentToPermissions <Boolean>]
+Register-AzResourceProvider -ProviderNamespace <String> [-ConsentToPermissions <Boolean>] [-AsJob]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -39,6 +39,21 @@ You can specify a different version than the default version.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

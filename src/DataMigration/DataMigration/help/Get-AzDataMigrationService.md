@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataMigration.dll-Help.xml
 Module Name: Az.DataMigration
-online version: https://docs.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationService
+online version: https://learn.microsoft.com/powershell/module/az.datamigration/Get-AzDataMigrationService
 schema: 2.0.0
 ---
 
 # Get-AzDataMigrationService
 
 ## SYNOPSIS
-Retrieves the properties associated with an instance of the Azure Database Migration Service. 
+Retrieves the properties associated with an instance of the Azure Database Migration Service (classic). 
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzDataMigrationService [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The Get-AzDataMigrationService cmdlet retrieves the properties associated with an instance of the Azure Database Migration Service based on Service name and Azure Resource Group name as input parameters. 
+The Get-AzDataMigrationService cmdlet retrieves the properties associated with an instance of the Azure Database Migration Service (classic) based on Service name and Azure Resource Group name as input parameters. 
 
 ## EXAMPLES
 
@@ -40,14 +40,14 @@ The Get-AzDataMigrationService cmdlet retrieves the properties associated with a
 Get-AzDataMigrationService -ResourceGroupName testResourceGroup -Name testService
 ```
 
-The above example retrieves the properties of the Azure Database Migration Service instance called testService. 
+The above example retrieves the properties of the Azure Database Migration Service (classic) instance called testService. 
 
 ### Example 2
 ```powershell
 Get-AzDataMigrationService -ResourceGroupName testResourceGroup
 ```
 
-The above example retrieves Azure Database Migration Services in the resource group called testResourceGroup. 
+The above example retrieves Azure Database Migration Services (classic) in the resource group called testResourceGroup. 
 
 ## PARAMETERS
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of Database Migration Service.
+Name of Azure Database Migration Service (classic).
 
 ```yaml
 Type: System.String

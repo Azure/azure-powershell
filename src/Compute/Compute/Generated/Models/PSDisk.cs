@@ -77,5 +77,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string PublicNetworkAccess { get; set; }
         public SupportedCapabilities SupportedCapabilities { get; set; }
         public string DataAccessAuthMode { get; set; }
+        public double? CompletionPercent { get; set; }
     }
 }

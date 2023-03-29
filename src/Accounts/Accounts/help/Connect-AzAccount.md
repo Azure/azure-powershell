@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Accounts.dll-Help.xml
 Module Name: Az.Accounts
-online version: https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount
+online version: https://learn.microsoft.com/powershell/module/az.accounts/connect-azaccount
 schema: 2.0.0
 ---
 
@@ -243,6 +243,21 @@ $securePassword = $plainPassword | ConvertTo-SecureString -AsPlainText -Force
 $TenantId = 'yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy'
 $ApplicationId = 'zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzz'
 Connect-AzAccount -ServicePrincipal -ApplicationId $ApplicationId -TenantId $TenantId -CertificatePath './certificatefortest.pfx' -CertificatePassword $securePassword
+```
+
+```Output
+Account                     SubscriptionName TenantId                        Environment
+-------                     ---------------- --------                        -----------
+xxxxxxxx-xxxx-xxxx-xxxxxxxx Subscription1    yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyy AzureCloud
+```
+
+### Example 10: Connect interactively using WAM
+
+This example demonstrates how to enable the config for WAM (Web Account Manager) and use it to connect to Azure.
+
+```powershell
+Update-AzConfig -EnableLoginByWam $true
+Connect-AzAccount
 ```
 
 ```Output

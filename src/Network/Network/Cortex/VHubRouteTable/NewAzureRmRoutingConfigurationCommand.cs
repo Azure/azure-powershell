@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "List of routes that control routing from VirtualHub into a virtual network connection.")]
         public PSStaticRoute[] StaticRoute { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Should we bypass NVA for destinations in spoke vnet? 'Contains' for no, 'Equal' for yes. Default is 'Contains'.")]
+        public string VnetLocalRouteOverrideCriteria { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -86,13 +91,25 @@ namespace Microsoft.Azure.Commands.Network
 
             propagatedRouteTable.Ids = resolvedIds;
 
+            if (!string.IsNullOrEmpty(VnetLocalRouteOverrideCriteria) && VnetLocalRouteOverrideCriteria != "Equal"
+                && VnetLocalRouteOverrideCriteria != "Contains")
+            {
+                throw new PSArgumentException(Properties.Resources.InvalidVnetLocalRouteOverrideCriteriaValue);
+            }
+
+            var staticRoutesConfig = new PSStaticRoutesConfig
+            {
+                VnetLocalRouteOverrideCriteria = string.IsNullOrEmpty(VnetLocalRouteOverrideCriteria) ? "Contains" : VnetLocalRouteOverrideCriteria
+            };
+
             var routingConfig = new PSRoutingConfiguration
             {
                 PropagatedRouteTables = propagatedRouteTable,
                 AssociatedRouteTable = new PSResourceId() { Id = associatedRouteTable.Id },
                 VnetRoutes = new PSVnetRoute
                 {
-                    StaticRoutes = StaticRoute?.ToList()
+                    StaticRoutes = StaticRoute?.ToList(),
+                    StaticRoutesConfig = staticRoutesConfig
                 }
             };
 

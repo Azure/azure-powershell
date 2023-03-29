@@ -25,7 +25,7 @@ Get-AzContainerAppManagedEnvDaprSecret -EnvName azps-env -ResourceGroupName azps
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdaprsecret
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdaprsecret
 #>
 function Get-AzContainerAppManagedEnvDaprSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret])]

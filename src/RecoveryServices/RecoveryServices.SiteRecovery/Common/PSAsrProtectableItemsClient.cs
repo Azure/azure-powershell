@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 .ReplicationProtectionContainers.BeginDiscoverProtectableItemWithHttpMessagesAsync(
                     fabricName,
                     protectionContainerName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

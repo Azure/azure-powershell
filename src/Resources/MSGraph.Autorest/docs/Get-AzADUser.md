@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azaduser
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azaduser
 schema: 2.0.0
 ---
 
@@ -80,6 +80,13 @@ Get-AzADUser -DisplayName $name
 ```
 
 Get user by display name
+
+### Example 4: Get user with filter
+```powershell
+Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
+```
+
+Get user with filter
 
 ## PARAMETERS
 
@@ -175,7 +182,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter items by property values
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
 
 ```yaml
 Type: System.String

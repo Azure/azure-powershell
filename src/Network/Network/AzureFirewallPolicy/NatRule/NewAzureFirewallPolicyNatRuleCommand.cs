@@ -125,7 +125,8 @@ namespace Microsoft.Azure.Commands.Network
                 TranslatedAddress = this.TranslatedAddress,
                 TranslatedFqdn = this.TranslatedFqdn,
                 TranslatedPort = this.TranslatedPort,
-                RuleType = "NatRule"
+                RuleType = "NatRule",
+                Description = this.Description
             };
             WriteObject(natRule);
         }

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D29C82CC-2080-48DA-880A-1AA83007E552
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterfaceipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkinterfaceipconfig
 schema: 2.0.0
 ---
 
@@ -40,7 +40,7 @@ The **New-AzNetworkInterfaceIpConfig** cmdlet creates an Azure network interface
 ```powershell
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $Subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
-$PIP1 = Get-AzPublicIPAddress -Name "PIP1" -ResourceGroupName "RG1"
+$PIP1 = Get-AzPublicIpAddress -Name "PIP1" -ResourceGroupName "RG1"
 
 $IPConfig1 = New-AzNetworkInterfaceIpConfig -Name "IPConfig-1" -Subnet $Subnet -PublicIpAddress $PIP1 -Primary
 

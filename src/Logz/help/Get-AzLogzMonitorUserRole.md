@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Logz
-online version: https://docs.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
+online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitoruserrole
 schema: 2.0.0
 ---
 

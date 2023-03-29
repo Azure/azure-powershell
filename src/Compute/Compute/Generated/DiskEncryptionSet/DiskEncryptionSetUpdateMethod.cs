@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Gets or sets set this flag to true to enable auto-updating of this disk encryption")]
+            HelpMessage = "Set this flag to true to enable auto-updating of this disk encryption set to the latest key version")]
         public bool? RotationToLatestKeyVersionEnabled { get; set; }
 
         [Parameter(

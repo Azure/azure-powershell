@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/get-azdatasharedatasetmapping
+online version: https://learn.microsoft.com/powershell/module/az.datashare/get-azdatasharedatasetmapping
 schema: 2.0.0
 ---
 
@@ -52,7 +52,7 @@ Type                 : Microsoft.DataShare/DataSetMappings
 ## PARAMETERS
 
 ### -AccountName
-Azure data share account name.
+The name of the Azure storage account that is the source of the data being shared.
 
 ```yaml
 Type: System.String

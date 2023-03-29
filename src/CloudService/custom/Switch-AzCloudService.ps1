@@ -20,7 +20,7 @@ Swaps VIPs between two cloud service (extended support) load balancers.
 Swaps VIPs between two cloud service (extended support) load balancers.
 
 .Link
-https://docs.microsoft.com/powershell/module/az.cloudservice/Switch-AzCloudService
+https://learn.microsoft.com/powershell/module/az.cloudservice/Switch-AzCloudService
 
 #>
 function Switch-AzCloudService {
@@ -39,7 +39,7 @@ function Switch-AzCloudService {
     
         [Parameter(Mandatory=$true, ParameterSetName="CloudService")]
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20210301.CloudService]
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models.Api20220904.CloudService]
         ${CloudService},
     
         [Parameter(Mandatory=$true, ParameterSetName="CloudServiceName")]

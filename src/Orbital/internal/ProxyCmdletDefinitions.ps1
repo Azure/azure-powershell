@@ -27,7 +27,7 @@ Lists all of the available Orbital Rest API operations.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.orbital/get-azorbitaloperation
+https://learn.microsoft.com/powershell/module/az.orbital/get-azorbitaloperation
 #>
 function Get-AzOrbitalOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api30.IOperation])]

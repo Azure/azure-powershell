@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Azure.Analytics.Synapse.Artifacts.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -25,6 +26,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.ErrorMessage = linkTableStatus?.ErrorMessage;
             this.StartTime = linkTableStatus?.StartTime;
             this.StopTime = linkTableStatus?.StopTime;
+            this.LinkTableId = linkTableStatus?.LinkTableId;
+            this.ErrorCode = linkTableStatus?.ErrorCode;
+            this.LastProcessedData = linkTableStatus?.LastProcessedData;
+            this.LastTransactionCommitTime = linkTableStatus?.LastTransactionCommitTime;
         }
 
         public string Id { get; }
@@ -36,5 +41,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public object StartTime { get; }
 
         public object StopTime { get; }
+
+        public string LinkTableId { get; }
+
+        public string ErrorCode { get; }
+
+        public DateTimeOffset? LastProcessedData { get; }
+
+        public DateTimeOffset? LastTransactionCommitTime { get; }
     }
 }

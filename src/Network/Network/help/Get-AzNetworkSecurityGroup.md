@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 5AECCBD7-1FDE-4217-9F59-36328062E669
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworksecuritygroup
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecuritygroup
 schema: 2.0.0
 ---
 
@@ -45,6 +45,7 @@ Etag                        : W/"00000000-0000-0000-0000-000000000000"
 ResourceGuid                : 00000000-0000-0000-0000-000000000000
 ProvisioningState           : Succeeded
 Tags                        :
+FlushConnection             : False
 SecurityRules               : []
 DefaultSecurityRules        : [
                                 {
@@ -226,6 +227,7 @@ Etag                        : W/"00000000-0000-0000-0000-000000000000"
 ResourceGuid                : 00000000-0000-0000-0000-000000000000
 ProvisioningState           : Succeeded
 Tags                        :
+FlushConnection             : False
 SecurityRules               : []
 DefaultSecurityRules        : [
                                 {

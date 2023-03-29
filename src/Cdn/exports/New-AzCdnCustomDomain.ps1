@@ -25,7 +25,7 @@ New-AzCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azcdncustomdomain
+https://learn.microsoft.com/powershell/module/az.cdn/new-azcdncustomdomain
 #>
 function New-AzCdnCustomDomain {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain])]

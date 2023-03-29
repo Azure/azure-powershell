@@ -23,11 +23,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
+
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancer", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerCommand : NetworkBaseCmdlet
     {
@@ -85,67 +85,96 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            base.Execute();
+            if (ShouldProcess(this.LoadBalancer.Name, "Updating the Load balancer"))
+            {
+                base.Execute();
 
-            var present = true;
-            try
-            {
-                this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name);
-            }
-            catch (Microsoft.Rest.Azure.CloudException exception)
-            {
-                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                var present = true;
+                try
                 {
-                    // Resource is not present
-                    present = false;
+                    this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name);
                 }
-                else
+                catch (Microsoft.Rest.Azure.CloudException exception)
                 {
-                    throw;
+                    if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        // Resource is not present
+                        present = false;
+                    }
+                    else
+                    {
+                        throw;
+                    }
                 }
-            }
 
-            if(!present)
-            {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-            }
-
-            NormalizeChildIds(this.LoadBalancer);
-
-            // Map to the sdk object
-            var vLoadBalancerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
-            vLoadBalancerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
-
-            List<string> resourceIds = new List<string>();
-            Dictionary<string, List<string>> auxAuthHeader = null;
-
-            // Get aux token for each gateway lb references
-            foreach (FrontendIPConfiguration frontend in vLoadBalancerModel.FrontendIPConfigurations)
-            {
-                if (frontend.GatewayLoadBalancer != null)
+                if (!present)
                 {
-                    //Get the aux header for the remote vnet
-                    resourceIds.Add(frontend.GatewayLoadBalancer.Id);
+                    throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
                 }
-            }
 
-            if (resourceIds.Count > 0)
-            {
-                var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
-                if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                if ((this.LoadBalancer.Sku?.Tier ?? string.Empty) == "Global")
                 {
-                    auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                    if ((this.LoadBalancer.InboundNatRules?.Count() ?? 0) > 0 || (this.LoadBalancer.OutboundRules?.Count() ?? 0) > 0)
+                    {
+                        throw new ArgumentException("Only load balancing rules are supported on global load balancers.");
+                    }
+
+                    if ((this.LoadBalancer.Probes?.Count() ?? 0) > 0)
+                    {
+                        throw new ArgumentException("User defined probes are not supported on global load balancers.");
+                    }
+
+                    foreach (PSLoadBalancingRule lbRule in this.LoadBalancer.LoadBalancingRules?.ToList() ?? new List<PSLoadBalancingRule>())
+                    {
+                        if (lbRule.EnableTcpReset == true)
+                        {
+                            throw new ArgumentException("TCP reset is not supported on global load balancers.");
+                        }
+
+                        if (lbRule.IdleTimeoutInMinutes != Constants.LoadBalancingIdleTimeoutDefault)
+                        {
+                            throw new ArgumentException("Idle timeout is not supported on global load balancers.");
+                        }
+                    }
                 }
+
+                NormalizeChildIds(this.LoadBalancer);
+
+                // Map to the sdk object
+                var vLoadBalancerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.LoadBalancer>(this.LoadBalancer);
+                vLoadBalancerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.LoadBalancer.Tag, validate: true);
+
+                List<string> resourceIds = new List<string>();
+                Dictionary<string, List<string>> auxAuthHeader = null;
+
+                // Get aux token for each gateway lb references
+                foreach (FrontendIPConfiguration frontend in vLoadBalancerModel.FrontendIPConfigurations)
+                {
+                    if (frontend.GatewayLoadBalancer != null)
+                    {
+                        //Get the aux header for the remote vnet
+                        resourceIds.Add(frontend.GatewayLoadBalancer.Id);
+                    }
+                }
+
+                if (resourceIds.Count > 0)
+                {
+                    var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                    if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                    {
+                        auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                    }
+                }
+
+                // Execute the PUT LoadBalancer call
+                this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, vLoadBalancerModel, auxAuthHeader).GetAwaiter().GetResult();
+
+                var getLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name);
+                var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(getLoadBalancer);
+                psLoadBalancer.ResourceGroupName = this.LoadBalancer.ResourceGroupName;
+                psLoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(getLoadBalancer.Tags);
+                WriteObject(psLoadBalancer, true);
             }
-
-            // Execute the PUT LoadBalancer call
-            this.NetworkClient.NetworkManagementClient.LoadBalancers.CreateOrUpdateWithHttpMessagesAsync(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name, vLoadBalancerModel, auxAuthHeader).GetAwaiter().GetResult();
-
-            var getLoadBalancer = this.NetworkClient.NetworkManagementClient.LoadBalancers.Get(this.LoadBalancer.ResourceGroupName, this.LoadBalancer.Name);
-            var psLoadBalancer = NetworkResourceManagerProfile.Mapper.Map<PSLoadBalancer>(getLoadBalancer);
-            psLoadBalancer.ResourceGroupName = this.LoadBalancer.ResourceGroupName;
-            psLoadBalancer.Tag = TagsConversionHelper.CreateTagHashtable(getLoadBalancer.Tags);
-            WriteObject(psLoadBalancer, true);
         }
     }
 }

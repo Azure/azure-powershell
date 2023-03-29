@@ -19,12 +19,12 @@ Create a DriverList Object for ImportExport.
 Create a DriverList Object for ImportExport.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.DriveStatus
+Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveStatus
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.importexport/new-AzImportExportDriveListObject
+https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 #>
 function New-AzImportExportDriveListObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.IDriveStatus')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.IDriveStatus')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
         [Parameter(HelpMessage="The BitLocker key used to encrypt the drive.")]
@@ -78,7 +78,7 @@ function New-AzImportExportDriveListObject {
     )
 
     process {
-        $DriveStatus = [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.DriveStatus]::New()
+        $DriveStatus = [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.DriveStatus]::New()
         $DriveStatus.BitLockerKey = $BitLockerKey
         $DriveStatus.BytesSucceeded = $BytesSucceeded
         $DriveStatus.CopyStatus = $CopyStatus

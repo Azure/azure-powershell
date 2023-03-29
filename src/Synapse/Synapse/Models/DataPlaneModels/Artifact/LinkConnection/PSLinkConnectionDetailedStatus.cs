@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------using Azure.Analytics.Synapse.Artifacts.Models;
 
 using Azure.Analytics.Synapse.Artifacts.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
@@ -30,6 +31,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             this.Status = detailedStatus?.Status;
             this.ContinuousRunId = detailedStatus?.ContinuousRunId;
             this.Error = detailedStatus?.Error;
+            this.RefreshStatus = detailedStatus?.RefreshStatus != null? new PSLinkConnectionRefreshStatus(detailedStatus?.RefreshStatus) : null;
+            this.LandingZoneCredentialExpireTime = detailedStatus?.LandingZoneCredentialExpireTime;
         }
 
         public string WorkspaceName { get; set; }
@@ -51,5 +54,9 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public string ContinuousRunId { get; }
 
         public object Error { get; }
+
+        public PSLinkConnectionRefreshStatus RefreshStatus { get; }
+
+        public DateTimeOffset? LandingZoneCredentialExpireTime { get; }
     }
 }

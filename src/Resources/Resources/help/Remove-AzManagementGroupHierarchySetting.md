@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azmanagementgroup/
+online version: https://learn.microsoft.com/powershell/module/az.resources/remove-azmanagementgrouphierarchysetting
 schema: 2.0.0
 ---
 
@@ -32,10 +32,6 @@ The Remove-AzManagementGroupHierarchySetting cmdlet Removes all hierarchy settin
 ### Example 1: Remove Hierarchy Settings
 ```powershell
 Remove-AzManagementGroupHierarchySetting -GroupName c7a87cda-9a66-4920-b0f8-869baa04efe0
-```
-
-```output
-
 ```
 
 ## PARAMETERS

@@ -20,9 +20,7 @@ Delete the incident relation.
 .Description
 Delete the incident relation.
 .Example
-
-.Example
-Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7cc984fe-61a2-43c2-a1a4-3583c8a89da2" -RelatedResourceId "7cc984fe-61a2-43c2-a1a4-3583c8a89db4"
+Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7cc984fe-61a2-43c2-a1a4-3583c8a89da2" -RelationName "7cc984fe-61a2-43c2-a1a4-3583c8a89db4"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -57,7 +55,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincidentrelation
+https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelincidentrelation
 #>
 function Remove-AzSentinelIncidentRelation {
 [OutputType([System.Boolean])]

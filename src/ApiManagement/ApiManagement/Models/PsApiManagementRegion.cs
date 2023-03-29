@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public int Capacity { get; set; }
 
         [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
-        public PsApiManagementSku Sku { get; set; }
+        public string Sku { get; set; }
 
         public string Location { get; set; }
 

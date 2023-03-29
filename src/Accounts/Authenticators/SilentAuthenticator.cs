@@ -17,11 +17,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Azure.Core;
-using Azure.Identity;
+using Azure.Identity.BrokeredAuthentication;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-
+using Azure.Identity;
+using Microsoft.Azure.PowerShell.Common.Config;
+using Microsoft.Azure.Commands.Shared.Config;
 
 namespace Microsoft.Azure.PowerShell.Authenticators
 {
@@ -37,16 +39,9 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var scopes = AuthenticationHelpers.GetScope(onPremise, resource);
             var authority = silentParameters.Environment.ActiveDirectoryAuthority;
             var tokenCacheProvider = silentParameters.TokenCacheProvider;
-            
+
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
-            var options = new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
-            {
-                EnableGuestTenantAuthentication = true,
-                ClientId = AuthenticationHelpers.PowerShellClientId,
-                Username = silentParameters.UserId,
-                AuthorityHost = new Uri(authority),
-                TenantId = tenantId,
-            };
+            SharedTokenCacheCredentialOptions options = GetTokenCredentialOptions(silentParameters, tenantId, authority, tokenCacheProvider);
             var cacheCredential = azureCredentialFactory.CreateSharedTokenCacheCredentials(options);
             var requestContext = new TokenRequestContext(scopes);
             var parametersLog = $"- TenantId:'{options.TenantId}', Scopes:'{string.Join(",", scopes)}', AuthorityHost:'{options.AuthorityHost}', UserId:'{silentParameters.UserId}'";
@@ -59,6 +54,21 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 silentParameters.TenantId,
                 silentParameters.UserId,
                 silentParameters.HomeAccountId);
+        }
+
+        private static SharedTokenCacheCredentialOptions GetTokenCredentialOptions(SilentParameters silentParameters, string tenantId, string authority, PowerShellTokenCacheProvider tokenCacheProvider)
+        {
+            bool isWamEnabled = AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
+                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
+            SharedTokenCacheCredentialOptions options = isWamEnabled
+                ? new SharedTokenCacheCredentialBrokerOptions(tokenCacheProvider.GetTokenCachePersistenceOptions())
+                : new SharedTokenCacheCredentialOptions(tokenCacheProvider.GetTokenCachePersistenceOptions());
+            options.EnableGuestTenantAuthentication = true;
+            options.ClientId = Constants.PowerShellClientId;
+            options.Username = silentParameters.UserId;
+            options.AuthorityHost = new Uri(authority);
+            options.TenantId = tenantId;
+            return options;
         }
 
         public override bool CanAuthenticate(AuthenticationParameters parameters)

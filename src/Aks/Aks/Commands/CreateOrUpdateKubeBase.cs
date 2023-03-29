@@ -24,7 +24,6 @@ using Microsoft.Azure.Management.ContainerService;
 using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -35,12 +34,12 @@ using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
 using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
 using ResourceIdentityType = Microsoft.Azure.Management.ContainerService.Models.ResourceIdentityType;
+using Microsoft.Azure.Commands.Aks.Commands;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -111,6 +110,12 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The size of the Virtual Machine. Default value is Standard_D2_v2")]
         public string NodeVmSize { get; set; } = "Standard_D2_v2";
 
+        [Parameter(Mandatory = false, HelpMessage = "Node pool labels used for building Kubernetes network.")]
+        public Hashtable NodePoolLabel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The tags to be persisted on the agent pool virtual machine scale set.")]
+        public Hashtable NodePoolTag { get; set; }
+
         [Parameter(
             Mandatory = false,
             HelpMessage = "SSH key file value or key file path. Defaults to {HOME}/.ssh/id_rsa.pub.")]
@@ -164,7 +169,7 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity for cluster.")]
         public string AssignIdentity { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The upgrade channel for auto upgrade. For more information see https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.")]
+        [Parameter(Mandatory = false, HelpMessage = "The upgrade channel for auto upgrade. For more information see https://learn.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.")]
         [PSArgumentCompleter("rapid", "stable", "patch", "node-image", "none")]
         public string AutoUpgradeChannel { get; set; }
 
@@ -185,6 +190,12 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Alternative CA cert to use for connecting to proxy servers.")]
         public string HttpProxyConfigTrustedCa { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Aks custom headers used for building Kubernetes network.")]
+        public Hashtable AksCustomHeader { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The Azure Active Directory configuration.")]
+        public ManagedClusterAADProfile AadProfile { get; set; }
 
         protected void BeforeBuildNewCluster()
         {
@@ -265,7 +276,7 @@ namespace Microsoft.Azure.Commands.Aks
         protected AcsServicePrincipal EnsureServicePrincipal(string spId = null, string clientSecret = null)
         {
             //If user specifies service principal, just use it directly and no need to save to disk
-            if(!string.IsNullOrEmpty(spId) && !string.IsNullOrEmpty(clientSecret))
+            if (!string.IsNullOrEmpty(spId) && !string.IsNullOrEmpty(clientSecret))
             {
                 return new AcsServicePrincipal()
                 {
@@ -285,7 +296,7 @@ namespace Microsoft.Azure.Commands.Aks
                 if (clientSecret == null)
                 {
                     clientSecret = RandomBase64String(16);
-                }              
+                }
 
                 acsServicePrincipal = BuildServicePrincipal(Name, clientSecret);
                 WriteVerbose(Resources.CreatedANewServicePrincipalAndAssignedTheContributorRole);
@@ -361,7 +372,7 @@ namespace Microsoft.Azure.Commands.Aks
                 var acrObjects = RmClient.Resources.List(acrQuery);
                 acrResourceId = acrObjects.First().Id;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 throw new AzPSArgumentException(
                     string.Format(Resources.CouldNotFindSpecifiedAcr, acrName),
@@ -385,12 +396,12 @@ namespace Microsoft.Azure.Commands.Aks
                     var servicePrincipal = GraphClient.FilterServicePrincipals(oDataQuery).First();
                     spObjectId = servicePrincipal.Id;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     throw new AzPSInvalidOperationException(
                         string.Format(Resources.CouldNotFindObjectIdForServicePrincipal, acsServicePrincipal.SpId),
                         ex,
-                        string.Format(Resources.CouldNotFindObjectIdForServicePrincipal,"*"));
+                        string.Format(Resources.CouldNotFindObjectIdForServicePrincipal, "*"));
                 }
             }
             var success = RetryAction(() =>
@@ -468,7 +479,7 @@ namespace Microsoft.Azure.Commands.Aks
         protected AcsServicePrincipal LoadServicePrincipal()
         {
             var config = LoadServicePrincipals();
-            if(config?.ContainsKey(DefaultContext.Subscription.Id) == true)
+            if (config?.ContainsKey(DefaultContext.Subscription.Id) == true)
             {
                 return config[DefaultContext.Subscription.Id];
             }
@@ -514,7 +525,7 @@ namespace Microsoft.Azure.Commands.Aks
             var subPart = string.Join("", DefaultContext.Subscription.Id.Take(4));
             return $"{namePart}{subPart}";
         }
-    
+
         protected ManagedClusterLoadBalancerProfile CreateOrUpdateLoadBalancerProfile(ManagedClusterLoadBalancerProfile loadBalancerProfile)
         {
             if ((this.IsParameterBound(c => c.LoadBalancerManagedOutboundIpCount) ||
@@ -661,6 +672,19 @@ namespace Microsoft.Azure.Commands.Aks
             }
 
             return cluster;
+        }
+
+        private protected ManagedCluster CreateOrUpdate(string resourceGroupName, string resourceName, ManagedCluster parameters)
+        {
+            if (this.IsParameterBound(c => c.AksCustomHeader))
+            {
+                Dictionary<string, List<string>> customHeaders = Utilities.HashtableToDictionary(AksCustomHeader);
+                return Client.ManagedClusters.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, customHeaders).GetAwaiter().GetResult().Body;
+            }
+            else
+            {
+                return Client.ManagedClusters.CreateOrUpdate(resourceGroupName, resourceName, parameters);
+            }
         }
     }
 }
