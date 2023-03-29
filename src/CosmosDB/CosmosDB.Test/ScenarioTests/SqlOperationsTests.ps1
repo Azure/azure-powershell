@@ -1522,6 +1522,76 @@ function Test-SqlContainerAdaptiveRUCmdlets
   }
 }
 
+<#
+.SYNOPSIS
+Test SQL Database Throughput redistribution cmdlets
+#>
+function Test-SqlDatabaseAdaptiveRUCmdlets
+{
+  $AccountName = "sqlsharedadrutest"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+
+  $PartitionKeyPathValue = "/foo/bar"
+  $PartitionKeyKindValue = "Hash"
+
+  $DatabaseThroughputValue = 34000
+  $UpdatedDatabaseThroughputValue = 2000
+
+  Try{
+      New-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $DatabaseThroughputValue
+      Update-AzCosmosDBSqlDatabaseThroughput -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $UpdatedDatabaseThroughputValue
+      $partitions = Get-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      $oldPartitions = @()
+      for($i = 0; $i -lt $partitions.Count; $i++)
+      {
+          Assert-AreEqual $partitions[$i].Throughput 500
+          if($i -lt 2)
+          {
+            $throughput = $partitions[$i].Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partitions[$i].Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          $oldPartitions += $partitions[$i]
+      }
+      
+      $newPartitions = Update-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      for($i = 0; $i -lt $newPartitions.Count; $i++)
+      {
+          if($newPartitions[$i].Id -eq $oldPartitions[0].Id -or $newPartitions[$i].Id -eq $oldPartitions[1].Id)
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $newPartitions[$i].Throughput 600              
+          }
+      }   
+
+      $resetPartitions = Update-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIds ($oldPartitions[0].Id, $oldPartitions[1].Id)
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
 
 <#
 .SYNOPSIS

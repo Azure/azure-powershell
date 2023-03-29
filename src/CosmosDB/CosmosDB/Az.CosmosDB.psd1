@@ -193,7 +193,11 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBSqlContainerPerPartitionThroughput', 
                'Update-AzCosmosDBSqlContainerPerPartitionThroughput', 
                'Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput', 
-               'Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput', 
+               'Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput',
+               'Get-AzCosmosDBSqlDatabasePerPartitionThroughput', 
+               'Update-AzCosmosDBSqlDatabasePerPartitionThroughput', 
+               'Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput', 
+               'Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput',
                'New-AzCosmosDBPhysicalPartitionThroughputObject'
 
 # Variables to export from this module
