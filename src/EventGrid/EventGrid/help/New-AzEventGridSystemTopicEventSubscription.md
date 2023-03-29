@@ -38,7 +38,7 @@ Create a new event subscription to an Azure Event Grid System topic.
 
 ### Example 1
 ```powershell
-New-AzEventGridSystemTopicEventSubscription -ResourceGroup MyResourceGroup -SystemTopicName Topic1 -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
+New-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroup -SystemTopicName Topic1 -Endpoint https://requestb.in/19qlscd1 -EventSubscriptionName EventSubscription1
 ```
 
 Creates a new event subscription \`EventSubscription1\` to an Azure Event Grid System topic \`Topic1\` in resource group \`MyResourceGroupName\` with the webhook destination endpoint `https://requestb.in/19qlscd1`. This event subscription uses default filters.
@@ -47,14 +47,14 @@ Creates a new event subscription \`EventSubscription1\` to an Azure Event Grid S
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
 $labels = "Finance", "HR"
-New-AzEventGridSystemTopicEventSubscription -ResourceGroup MyResourceGroup -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1 -Endpoint https://requestb.in/19qlscd1  -SubjectBeginsWith "TestPrefix" -SubjectEndsWith "TestSuffix" -IncludedEventType $includedEventTypes -Label $labels
+New-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroup -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1 -Endpoint https://requestb.in/19qlscd1  -SubjectBeginsWith "TestPrefix" -SubjectEndsWith "TestSuffix" -IncludedEventType $includedEventTypes -Label $labels
 ```
 
 Creates a new event subscription \`EventSubscription1\` to Sytem Topic \`Topic1\` in  resource group \`MyResourceGroup\` with the webhook destination endpoint `https://requestb.in/19qlscd1`. This event subscription specifies the additional filters for event types and subject, and only events matching those filters will be delivered to the destination endpoint.
 
 ### Example 3
 ```powershell
-New-AzEventGridSystemTopicEventSubscription -ResourceGroup MyResourceGroup -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1 -EndpointType "eventhub" -Endpoint "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
+New-AzEventGridSystemTopicEventSubscription -ResourceGroupName MyResourceGroup -SystemTopicName Topic1 -EventSubscriptionName EventSubscription1 -EndpointType "eventhub" -Endpoint "/subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/TestRG/providers/Microsoft.EventHub/namespaces/ContosoNamespace/eventhubs/EH1"
 ```
 
 Creates a new event subscription \`EventSubscription1\` to Sytem Topic \`Topic1\` in  resource group \`MyResourceGroup\` with the specified event hub as the destination for events. This event subscription uses default filters.
