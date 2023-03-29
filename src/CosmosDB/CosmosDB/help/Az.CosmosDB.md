@@ -76,7 +76,7 @@ Gets the CosmosDB throughput properties of MongoDB Collection.
 Gets the CosmosDB MongoDB Database
 
 ### [Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Gets the Partition throughput distribution for a MongoDB Database.
 
 ### [Get-AzCosmosDBMongoDBDatabaseThroughput](Get-AzCosmosDBMongoDBDatabaseThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Database.
@@ -115,7 +115,7 @@ Gets the throughput settings corresponding to a CosmosDB Sql Container.
 Gets the CosmosDB Sql Database.
 
 ### [Get-AzCosmosDBSqlDatabasePerPartitionThroughput](Get-AzCosmosDBSqlDatabasePerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Gets the CosmosDB Sql Database Partition throughput.
 
 ### [Get-AzCosmosDBSqlDatabaseThroughput](Get-AzCosmosDBSqlDatabaseThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Database.
@@ -481,7 +481,7 @@ Updates the throughput value of a CosmosDB MongoDB Collection.
 Updates the CosmosDB MongoDB Database. Performs a client side patch operation by reading the existing Database.
 
 ### [Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Updates the Partition Throughput for a MongoDB Database.
 
 ### [Update-AzCosmosDBMongoDBDatabaseThroughput](Update-AzCosmosDBMongoDBDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Database.
@@ -505,7 +505,7 @@ Updates the throughput value of a CosmosDB Sql Container.
 Updates the CosmosDB Sql Database. Performs a client side patch operation by reading the existing Database.
 
 ### [Update-AzCosmosDBSqlDatabasePerPartitionThroughput](Update-AzCosmosDBSqlDatabasePerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Updates the throughput of selected partitions in a CosmosDB Sql database.
 
 ### [Update-AzCosmosDBSqlDatabaseThroughput](Update-AzCosmosDBSqlDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB Sql Database.

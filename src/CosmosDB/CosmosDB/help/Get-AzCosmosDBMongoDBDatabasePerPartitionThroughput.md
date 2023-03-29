@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the Partition throughput distribution for a MongoDB database.
 
 ## SYNTAX
 
@@ -27,16 +27,37 @@ Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -InputObject <PSSqlDatabaseG
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+This cmdlet can be used to retrieve the throughput distribution on the partitions of a MongoDB database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+$partitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -AllPartitions
+      $sources = @()
+      $targets = @()
+      $oldPartitions = @()
+      for($i = 0; $i -lt $partitions.Count; $i++)
+      {
+          if($i -lt 2)
+          {
+            $throughput = $partitions[$i].Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partitions[$i].Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
+          }
+          $oldPartitions += $partitions[$i]
+      }
+      
+      $newPartitions = Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets    
+      
+      $resetPartitions = Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EqualDistributionPolicy
 
-{{ Add example description here }}
+      $somePartitions = Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIds ($oldPartitions[0].Id, $oldPartitions[1].Id)
+```
 
 ## PARAMETERS
 
