@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue that system variable `$IsWindows` is undefined in `Windows PowerShell`.
+* Decoupled AutoMapper dependency, replaced with AdapterHelper.
+
+## Version 5.3.1
 * Fixed the issue that Invoke-AzAksRunCommand will fail when the directory for parameter CommandContextAttachment contains sub-directories. [#20734]
 
 ## Version 5.3.0

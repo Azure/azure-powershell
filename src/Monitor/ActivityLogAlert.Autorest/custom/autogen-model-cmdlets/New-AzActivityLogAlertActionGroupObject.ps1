@@ -23,7 +23,7 @@ Create an in-memory object for ActionGroup.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup
 .Link
-https://learn.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertActionGroupObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzActivityLogAlertActionGroupObject
 #>
 function New-AzActivityLogAlertActionGroupObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.ActionGroup')]

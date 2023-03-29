@@ -21,9 +21,12 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
 
 namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 {
+    [CmdletDeprecation("4.0.0.0", "05/23/2023", ReplacementCmdletName = "New-AzContainerRegistryIPRuleObject")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryNetworkRule", DefaultParameterSetName = ByVirtualNetworkRule)]
     [OutputType(typeof(IPSNetworkRule))]
     public class NewAzureContainerRegistryNetworkRule : ContainerRegistryCmdletBase

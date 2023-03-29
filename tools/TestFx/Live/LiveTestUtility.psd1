@@ -74,7 +74,7 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport      = 'New-LiveTestRandomName', 'New-LiveTestResourceGroupName', 'New-LiveTestResourceName', 'New-LiveTestStorageAccountName', 'New-LiveTestResourceGroup', 'Clear-LiveTestResources', 'Invoke-LiveTestScenario'
+    FunctionsToExport      = 'New-LiveTestRandomName', 'New-LiveTestResourceGroupName', 'New-LiveTestResourceName', 'New-LiveTestStorageAccountName', 'New-LiveTestResourceGroup', 'Clear-LiveTestResources', 'Invoke-LiveTestCommand', 'Invoke-LiveTestScenario'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport        = @()

@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage ="Specifies the version of the image. Use 'latest' to get the latest image")]
+            HelpMessage = "Specifies the version of the image. Use 'latest' to get the latest image")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Version { get; set; }

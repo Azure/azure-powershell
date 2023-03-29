@@ -18,6 +18,24 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported create storage account with DnsEndpointType
+    - `New-AzStorageAccount`
+* Fixed file cmdlets potential context issue when the current context doesn't match with the credential of input Azure File object
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileHandle`
+    - `New-AzStorageDirectory`
+    - `New-AzStorageFileSASToken`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Remove-AzStorageShare`
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageShareQuota`
+    - `Start-AzStorageFileCopy`
+
+## Version 5.4.1
+* Updated Azure.Core to 1.28.0.
 
 ## Version 5.4.0
 * Added a warning message for the upcoming breaking change when creating a Storage account

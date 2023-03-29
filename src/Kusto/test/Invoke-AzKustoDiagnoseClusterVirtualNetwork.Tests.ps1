@@ -17,14 +17,14 @@ Describe 'Invoke-AzKustoDiagnoseClusterVirtualNetwork' {
     }
     It 'Diagnose' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         { Invoke-AzKustoDiagnoseClusterVirtualNetwork -ResourceGroupName $resourceGroupName -ClusterName $clusterName } | Should -Not -Throw
     }
 
     It 'DiagnoseViaIdentity' {
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
 
         $cluster = Get-AzKustoCluster -ResourceGroupName $resourceGroupName -Name $clusterName
         { Invoke-AzKustoDiagnoseClusterVirtualNetwork -InputObject $cluster } | Should -Not -Throw
