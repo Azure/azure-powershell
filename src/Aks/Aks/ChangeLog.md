@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2023-02-01
 * Fixed the issue that system variable `$IsWindows` is undefined in `Windows PowerShell`.
 * Decoupled AutoMapper dependency, replaced with AdapterHelper.
 
