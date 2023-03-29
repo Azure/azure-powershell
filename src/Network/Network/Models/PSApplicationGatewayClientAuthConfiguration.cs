@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSApplicationGatewayClientAuthConfiguration
     {
         public bool? VerifyClientCertIssuerDN { get; set; }
+        public string VerifyClientRevocation { get; set; }
     }
 }

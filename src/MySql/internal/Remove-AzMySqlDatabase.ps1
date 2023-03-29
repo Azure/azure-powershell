@@ -20,13 +20,9 @@ Deletes a database.
 .Description
 Deletes a database.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -50,7 +46,7 @@ INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VirtualNetworkRuleName <String>]: The name of the virtual network rule.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/remove-azmysqldatabase
+https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqldatabase
 #>
 function Remove-AzMySqlDatabase {
 [OutputType([System.Boolean])]
@@ -163,6 +159,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.MySql.private\Remove-AzMySqlDatabase_Delete';
             DeleteViaIdentity = 'Az.MySql.private\Remove-AzMySqlDatabase_DeleteViaIdentity';
@@ -176,6 +173,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -184,15 +182,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

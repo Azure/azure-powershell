@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagerconnectivitygroupitem
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkmanagerconnectivitygroupitem
 schema: 2.0.0
 ---
 
@@ -64,12 +64,13 @@ Accept wildcard characters: False
 ```
 
 ### -GroupConnectivity
-Group Connectivity. Valid values include 'None' and 'DirectlyConnected'.
+Group Connectivity.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, DirectlyConnected
 
 Required: False
 Position: Named

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Datadog
-online version: https://docs.microsoft.com/powershell/module/az.datadog/get-azdatadogsinglesignonconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.datadog/get-azdatadogsinglesignonconfiguration
 schema: 2.0.0
 ---
 

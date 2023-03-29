@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 80DE5D60-93F8-4509-AA9C-F54E4AB70013
-online version: https://docs.microsoft.com/powershell/module/az.storage/remove-azstoragequeuestoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/remove-azstoragequeuestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -25,8 +25,8 @@ The **Remove-AzStorageQueueStoredAccessPolicy** cmdlet removes a stored access p
 ## EXAMPLES
 
 ### Example 1: Remove a stored access policy from a storage queue
-```
-PS C:\>Remove-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy04"
+```powershell
+Remove-AzStorageQueueStoredAccessPolicy -Queue "MyQueue" -Policy "Policy04"
 ```
 
 This command removes an access policy named Policy04 from the storage queue named MyQueue.

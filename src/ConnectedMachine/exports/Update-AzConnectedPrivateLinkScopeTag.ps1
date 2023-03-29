@@ -22,7 +22,13 @@ To update other fields use the CreateOrUpdate method.
 Updates an existing PrivateLinkScope's tags.
 To update other fields use the CreateOrUpdate method.
 .Example
-PS C:\> $scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
+$scope = Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
+
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name         eastus2euap Disabled            Succeeded
+
+$scope.Tag
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.ITagsResource
@@ -51,7 +57,7 @@ PRIVATELINKSCOPETAG <ITagsResource>: A container holding only the Tags for a res
   [Tag <ITagsResourceTags>]: Resource tags
     [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedprivatelinkscopetag
+https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedprivatelinkscopetag
 #>
 function Update-AzConnectedPrivateLinkScopeTag {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]

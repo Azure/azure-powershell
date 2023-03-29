@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -21,7 +22,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerConnectivityGroupItem"), OutputType(typeof(PSNetworkManagerConnectivityGroupItem))]
     public class NewAzNetworkManagerConnectivityGroupItemCommand : NetworkManagerConnectivityConfigurationBaseCmdlet
     {
-
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Group Connectivity. Valid values include 'None' and 'DirectlyConnected'.")]
+        [ValidateSet("None", "DirectlyConnected", IgnoreCase = true)]
         public string GroupConnectivity { get; set; }
 
         [Parameter(

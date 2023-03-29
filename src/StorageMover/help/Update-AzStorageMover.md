@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemover
 schema: 2.0.0
 ---
 
@@ -152,7 +152,7 @@ The Storage Mover resource.
 To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMoverUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IStorageMoverUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -229,13 +229,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMoverUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IStorageMoverUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IStorageMover
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IStorageMover
 
 ## NOTES
 

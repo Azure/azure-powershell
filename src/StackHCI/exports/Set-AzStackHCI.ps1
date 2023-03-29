@@ -27,7 +27,7 @@ Set-AzStackHCI -ComputerName ClusterNode1 -DiagnosticLevel Basic
 .Outputs
 System.Management.Automation.PSObject
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/set-azstackhci
+https://learn.microsoft.com/powershell/module/az.stackhci/set-azstackhci
 #>
 function Set-AzStackHCI {
 [OutputType([System.Management.Automation.PSObject])]
@@ -75,21 +75,20 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with GraphAccessToken and AccountId will avoid Azure interactive logon.
+    # Specifying this along with AccountId will avoid Azure interactive logon.
     ${ArmAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
-    # Specifies the Graph access token.
-    # Specifying this along with ArmAccessToken and AccountId will avoid Azure interactive logon.
+    # GraphAccessToken is deprecated.
     ${GraphAccessToken},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Category('Body')]
     [System.String]
     # Specifies the ARM access token.
-    # Specifying this along with ArmAccessToken and GraphAccessToken will avoid Azure interactive logon.
+    # Specifying this along with ArmAccessToken will avoid Azure interactive logon.
     ${AccountId},
 
     [Parameter()]
@@ -122,7 +121,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

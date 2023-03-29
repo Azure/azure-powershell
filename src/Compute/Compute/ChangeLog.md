@@ -20,7 +20,75 @@
 
 -->
 ## Upcoming Release
+* Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
+* Added `-CustomData`, `-AdminPassword`, and `-ExactVersion` parameters to `Invoke-AzVMReimage`.
+* Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 
+  Updated the names of the `openSUSE-Leap` and `SLES` aliases to `OpenSuseLeap154` and `SuseSles15SP4` respectively. Updated these aliases to point to an image that actually exists.
+* Added a breaking change warning to `New-AzVM` and `New-AzVmss` for future planned image alias removals due to the images reaching their End of Support date. 
+* Added new descriptive and versioned alias names for the Linux image aliases, including a new alias for  the `Kinvolk` publisher. 
+
+## Version 5.6.0
+* Added `-NetworkAccessPolicy` parameter to `New-AzSnapshotUpdateConfig`.
+* Added `-SharedGalleryImageId` parameter to `New-AzVM`, `New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVmss`, and `Set-AzVmssStorageProfile`.
+* Updated `Set-AzVMDiagnosticsExtension` to correct capitalization by passing "StorageAccount" as configuration property instead of "storageAccount".
+
+## Version 5.5.0
+* Added breaking change message for `New-AzVmss`.
+* Added `-PerformancePlus` parameter to `New-AzDiskConfig`
+* Added 'MaxSurge' to Set-AzVmssRollingUpgradePolicyCommand
+* Added support for 'latest' in 'Get-AzvmImage' '-Version' parameter
+* Added `CompletionPercent` property to PSDisk object. 
+
+## Version 5.4.0
+* Added `-SkipIdentity`, `-PathUserIdentity`, `-IsTest` parameter to `Set-AzVMAEMExtension` 
+* Added `ConsistencyMode` parameter to `New-AzRestorePoint`.
+* Updated the storage account type value in several locations from the outdated `StandardLRS` to the current `Standard_LRS`.
+* Filled in missing parameter descriptions across multiple parameters and improved some existing parameter descriptions.
+* Updated Compute PS to use the new .Net SDK version 59.0.0. This includes an approved breaking change for a non-functional feature. 
+  - The type of the property `Source` of type `Microsoft.Azure.Management.Compute.Models.GalleryDataDiskImage`, `Microsoft.Azure.Management.Compute.Models.GalleryOSDiskImage`, and `Microsoft.Azure.Management.Compute.Models.GalleryImageVersionStorageProfile` has changed from `Microsoft.Azure.Management.Compute.Models.GalleryArtifactVersionSource` to `Microsoft.Azure.Management.Compute.Models.GalleryDiskImageSource`.
+* Updated the broken `UbuntuLTS` image alias to use its original sku version of `16.04-LTS` instead of the nonexistent image `20.04-LTS`. This fixes an issue introduced in the version 5.3.0 release. 
+* Updated Set-AzVMRunCommand and Set-AzVmssRunCommand ScriptLocalPath parameter set to work with Linux and with files that have comments.
+* Added `-TargetExtendedLocation` parameter to `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion`
+* Added `-AllowDeletionOfReplicatedLocation` to `Update-AzGalleryImageVersion`
+
+## Version 5.3.0
+* Removed the image `Win2008R2SP1` from the list of available images and documentation. This image is no longer available on the backend so the client tools need to sync to that change.
+* Fixed a bug for creating Linux VM's from SIG/Community Gallery Images
+* Added `ImageReferenceId` string parameter to the `New-AzVmssConfig` cmdlet. This allows gallery image references to be added for the Confidential VM feature.
+* Added `SecurityEncryptionType` and `SecureVMDiskEncryptionSet` string parameters to the `Set-AzVmssStorageProfile` cmdlet for the Confidential VM feature.
+
+## Version 5.2.0
+* Fixed issue found for `Set-AzVmssVMRunCommand` [#19985]
+* Fixed `Get-AzVm` cmdlet when parameter "-Status" is provided, return property `OsName`, `OsVersion` and `HyperVGeneration`
+* Fixed `New-AzVM` cmdlet when creating VM with bootdiagnostic storage causes exception `Kind` cannot be null. 
+
+## Version 5.1.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+## Version 5.1.0
+* Fixed EdgeZone does not pass to VM for `New-AzVM` "SimpleParameterSet" [#18978] 
+* Added 'ScriptFilePath' parameter set for `Set-AzVMRunCommand` and `Set-AzVmssVMRunCommand` to allow users to pass in the path of the file that has the run command script
+* Added `-AsJob` optional parameter to `Remove-AzVMExtension` cmdlet.
+* Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
+* Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
+* Improved printed output for `Get-AzComputeResourceSku`
+* Updated `Get-AzHost` cmdlet logic to return Host for `-ResourceId` parameterset.
+* Added `-OSDiskSizeGB` optional parameter for `Set-AzVmssStorageProfile`.
+* Improved cmdlet description for `Set-AzVM` and added examples.
+* Updated property mapping for parameter `Encryption` of `New-AzGalleryImageVersion`
+* Updated list format to display all VmssVmRunCommand properties for `Get-AzVmssVmRunCommand`
+* Updated `Get-AzGallery`, `New-AzGallery`, `Update-AzGallery`, `Get-AzGalleryImageDefinition`, `Get-AzGalleryImageVersion`, `New-AzVm` and `New-AzVmss` to support community galleries
+
+## Version 5.0.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
+* Added Confidential VM functionality to multiple cmdlets.
+  * Added new parameter `SecureVMDiskEncryptionSet` to cmdlet `Set-AzDiskSecurityProfile`.
+  * Added new parameters `SecureVMDiskEncryptionSet` and `SecurityEncryptionType` to cmdlet `Set-AzVMOSDisk`.
+* Improved cmdlet descriptions and parameter descriptions for VM/VMSS creation.
+* Added the 'BaseRegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
+* Added the 'RegularPriorityPercentage' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
+* Added Breaking Changes for Add-AzVMAdditionalUnattendContent and Get-AzGallery cmdlets
+* Added `-DiskControllerType` property to the following cmdlets: `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, `Set-AzVmssStorageProfile`
 
 ## Version 4.31.0
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.

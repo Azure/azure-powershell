@@ -16,21 +16,21 @@
 
 <#
 .Synopsis
-list source configurations for a linker.
+list source configurations for a Linker.
 .Description
-list source configurations for a linker.
+list source configurations for a Linker.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration
+Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfiguration
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfiguration
 #>
 function Get-AzServiceLinkerConfiguration {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

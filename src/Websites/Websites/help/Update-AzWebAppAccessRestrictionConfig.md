@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 schema: 2.0.0
 ---
 
@@ -34,6 +34,8 @@ The **Update-AzWebAppAccessRestrictionConfig** cmdlet updates Access Restriction
 The following example updates a Web App named IpRule that belongs to the resource group MyResourceGroup to use access restriction config of main site on the scm site.
 
 <!-- Aladdin Generated Example -->
+
+
 ```powershell
 Update-AzWebAppAccessRestrictionConfig -Name IpRule -ResourceGroupName MyResourceGroup -ScmSiteUseMainSiteRestrictionConfig
 ```

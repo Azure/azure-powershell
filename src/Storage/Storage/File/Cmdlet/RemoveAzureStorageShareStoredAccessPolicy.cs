@@ -15,9 +15,12 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Storage.File;
     using Model.Contract;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -44,26 +47,41 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         [Parameter(Mandatory = false, HelpMessage = "Return whether the specified policy is successfully removed")]
         public SwitchParameter PassThru { get; set; }
-        
+
         internal bool RemoveAzureShareStoredAccessPolicy(IStorageFileManagement localChannel, string shareName, string policyName)
         {
             bool success = false;
             string result = string.Empty;
 
-            //Get existing permissions
-            CloudFileShare share = localChannel.GetShareReference(shareName);
-            FileSharePermissions permissions = localChannel.GetSharePermissions(share);
+            //Get share instance
+            ShareClient share = Util.GetTrack2ShareReference(shareName,
+                 (AzureStorageContext)this.Context,
+                 null,
+                 ClientOptions);
+
+            IEnumerable<ShareSignedIdentifier> signedIdentifiers = share.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
 
             //remove the specified policy
-            if (!permissions.SharedAccessPolicies.Keys.Contains(policyName))
+            ShareSignedIdentifier signedIdentifier = null;
+            foreach (ShareSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == policyName)
+                {
+                    signedIdentifier = identifier;
+                }
+            }
+
+            if (signedIdentifier == null)
             {
                 throw new ResourceNotFoundException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyNotFound, policyName));
             }
 
             if (ShouldProcess(policyName, "Remove policy"))
             {
-                permissions.SharedAccessPolicies.Remove(policyName);
-                localChannel.SetSharePermissions(share, permissions, null, null, OperationContext);
+                List<ShareSignedIdentifier> newsignedIdentifiers = new List<ShareSignedIdentifier>(signedIdentifiers);
+                newsignedIdentifiers.Remove(signedIdentifier);
+
+                share.SetAccessPolicy(newsignedIdentifiers, cancellationToken: CmdletCancellationToken);
                 success = true;
             }
 

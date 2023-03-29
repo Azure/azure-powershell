@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.EdgeOrder
-online version: https://docs.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
+online version: https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderShippingAddressObject
 schema: 2.0.0
 ---
 

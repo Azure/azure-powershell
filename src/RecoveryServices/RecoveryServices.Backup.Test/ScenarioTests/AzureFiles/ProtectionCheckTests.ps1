@@ -71,7 +71,6 @@ function Test-AzureFSProtectionCheck
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 	}
 	finally

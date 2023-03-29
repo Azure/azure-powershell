@@ -21,6 +21,10 @@ namespace Microsoft.Azure.Commands.Network.Models
     {
         public string Cidr { get; set; }
 
+        public string Geo { get; set; }
+
+        public string Asn { get; set; }
+
         public string CommissionedState { get; set; }
 
         public List<PSResourceId> PublicIpPrefixes { get; set; }
@@ -36,6 +40,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSResourceId CustomIpPrefixParent { get; set; }
 
         public List<PSResourceId> ChildCustomIpPrefixes { get; set; }
+
+        public bool? NoInternetAdvertise { get; set; }
+
+        public bool? ExpressRouteAdvertise { get; set; }
+
+        public string PrefixType { get; set; }
 
         [JsonIgnore]
         public string PublicIpPrefixesText

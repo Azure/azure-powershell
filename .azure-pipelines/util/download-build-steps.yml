@@ -3,7 +3,7 @@ parameters:
 
 steps:
 - task: DownloadPipelineArtifact@0
-  displayName: 'Download {{ parameters.artifactName }}'
+  displayName: 'Download ${{ parameters.artifactName }}'
   inputs:
     artifactName: ${{ parameters.artifactName }}
     targetPath: artifacts

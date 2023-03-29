@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: BB139312-A536-4B61-A005-6CAF02BE1637
-online version: https://docs.microsoft.com/powershell/module/az.storage/new-azstoragefilesastoken
+online version: https://learn.microsoft.com/powershell/module/az.storage/new-azstoragefilesastoken
 schema: 2.0.0
 ---
 
@@ -49,17 +49,17 @@ The **New-AzStorageFileSASToken** cmdlet generates a shared access signature tok
 ## EXAMPLES
 
 ### Example 1: Generate a shared access signature token that has full file permissions
-```
-PS C:\> New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd"
+```powershell
+New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd"
 ```
 
 This command generates a shared access signature token that has full permissions for the file that is named FilePath.
 
 ### Example 2: Generate a shared access signature token that has a time limit
-```
-PS C:\> $StartTime = Get-Date
-PS C:\> $EndTime = $StartTime.AddHours(2.0)
-PS C:\> New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd" -StartTime $StartTime -ExpiryTime $EndTime
+```powershell
+$StartTime = Get-Date
+$EndTime = $StartTime.AddHours(2.0)
+New-AzStorageFileSASToken -ShareName "ContosoShare" -Path "FilePath" -Permission "rwd" -StartTime $StartTime -ExpiryTime $EndTime
 ```
 
 The first command creates a **DateTime** object by using the Get-Date cmdlet.
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

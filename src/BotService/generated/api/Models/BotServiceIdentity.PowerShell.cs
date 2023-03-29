@@ -87,6 +87,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ConnectionName = (string) content.GetValueForProperty("ConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ConnectionName, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -127,6 +131,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Models
             if (content.Contains("ConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ConnectionName = (string) content.GetValueForProperty("ConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).ConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateEndpointConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.IBotServiceIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

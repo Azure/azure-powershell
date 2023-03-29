@@ -15,9 +15,12 @@
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     using Common;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.File;
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Management.Automation;
     using System.Security.Permissions;
@@ -67,40 +70,44 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 throw new ArgumentException(String.Format(CultureInfo.CurrentCulture, Resources.InvalidAccessPolicyName, this.Policy));
             }
 
-            //Get existing permissions
-            CloudFileShare fileShare = this.Channel.GetShareReference(this.ShareName);
+            //Get share instance
+            ShareClient share = Util.GetTrack2ShareReference(ShareName,
+                 (AzureStorageContext)this.Context,
+                 null,
+                 ClientOptions);
 
-            FileSharePermissions fileSharePermissions;
-            try
-            {
-                fileSharePermissions = fileShare.GetPermissionsAsync().Result;
-            }
-            catch (AggregateException e) when (e.InnerException is StorageException)
-            {
-                throw e.InnerException;
-            }
+            IEnumerable<ShareSignedIdentifier> signedIdentifiers = share.GetAccessPolicy(cancellationToken: CmdletCancellationToken).Value;
 
             //Add new policy
-            if (fileSharePermissions.SharedAccessPolicies.Keys.Contains(this.Policy))
+            foreach (ShareSignedIdentifier identifier in signedIdentifiers)
             {
-                throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, this.Policy));
+                if (identifier.Id == this.Policy)
+                {
+                    throw new ResourceAlreadyExistException(String.Format(CultureInfo.CurrentCulture, Resources.PolicyAlreadyExists, this.Policy));
+                }
             }
 
-            SharedAccessFilePolicy policy = new SharedAccessFilePolicy();
-            AccessPolicyHelper.SetupAccessPolicy<SharedAccessFilePolicy>(policy, this.StartTime, this.ExpiryTime, this.Permission);
-            fileSharePermissions.SharedAccessPolicies.Add(this.Policy, policy);
-
-            //Set permissions back to container
-            try
+            ShareSignedIdentifier signedIdentifier = new ShareSignedIdentifier();
+            signedIdentifier.Id = this.Policy;
+            signedIdentifier.AccessPolicy = new ShareAccessPolicy();
+            if (StartTime != null)
             {
-                Task.Run(() => fileShare.SetPermissionsAsync(fileSharePermissions, null, null, OperationContext)).Wait();
+                signedIdentifier.AccessPolicy.PolicyStartsOn = StartTime.Value.ToUniversalTime();
             }
-            catch (AggregateException e) when (e.InnerException is StorageException)
+            if (ExpiryTime != null)
             {
-                throw e.InnerException;
+                signedIdentifier.AccessPolicy.PolicyExpiresOn = ExpiryTime.Value.ToUniversalTime();
             }
+            if (!string.IsNullOrEmpty(this.Permission))
+            {
+                signedIdentifier.AccessPolicy.Permissions = AccessPolicyHelper.OrderBlobPermission(this.Permission);
+            }
+            var newsignedIdentifiers = new List<ShareSignedIdentifier>(signedIdentifiers);
+            newsignedIdentifiers.Add(signedIdentifier);
 
-            WriteObject(Policy);
+            //Set permissions back to Share
+            share.SetAccessPolicy(newsignedIdentifiers, cancellationToken: CmdletCancellationToken);
+            WriteObject(Policy); 
         }
     }
 }

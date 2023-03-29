@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusencryptionconfig
 schema: 2.0.0
 ---
 

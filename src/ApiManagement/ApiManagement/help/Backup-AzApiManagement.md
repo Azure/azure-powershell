@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 5846BBB7-DA8E-41B5-A894-BA2B61C2212C
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/backup-azapimanagement
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/backup-azapimanagement
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ This cmdlet stores the backup as an Azure Storage blob.
 New-AzStorageAccount -StorageAccountName "ContosoStorage" -Location $location -ResourceGroupName "ContosoGroup02" -Type Standard_LRS
 $storageKey = (Get-AzStorageAccountKey -ResourceGroupName "ContosoGroup02" -StorageAccountName "ContosoStorage")[0].Value
 $storageContext = New-AzStorageContext -StorageAccountName "ContosoStorage" -StorageAccountKey $storageKey
-Backup-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi" -StorageContext $StorageContext -TargetContainerName "ContosoBackups" -TargetBlobName "ContosoBackup.apimbackup"
+Backup-AzApiManagement -ResourceGroupName "ContosoGroup02" -Name "ContosoApi" -StorageContext $StorageContext -TargetContainerName "contosobackups" -TargetBlobName "contosobackups.apimbackup"
 ```
 
 ### Example 2: Back up using Managed Identity

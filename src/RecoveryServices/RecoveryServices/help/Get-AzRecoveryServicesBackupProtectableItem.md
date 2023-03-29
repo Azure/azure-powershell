@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Backup.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectableitem
 schema: 2.0.0
 ---
 
@@ -41,7 +41,7 @@ A container that is registered to an Azure Recovery Services vault can have one 
 ### Example 1
 ```powershell
 $Vault = Get-AzRecoveryServicesVault -Name "MyRecoveryVault"
-$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -Status Registered -VaultId $Vault.Id
+$Container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -VaultId $Vault.Id
 $Item = Get-AzRecoveryServicesBackupProtectableItem -Container $Container -ItemType "SQLInstance" -WorkloadType "MSSQL" -VaultId $Vault.ID
 ```
 

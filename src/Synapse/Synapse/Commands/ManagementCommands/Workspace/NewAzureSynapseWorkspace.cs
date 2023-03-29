@@ -82,6 +82,13 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNullOrEmpty]
         public string EncryptionKeyIdentifier { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UserAssignedIdentityInEncryption)]
+        public string UserAssignedIdentityInEncryption { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UseSystemAssignedIdentityInEncryption)]
+        [ValidateNotNullOrEmpty]
+        public object UseSystemAssignedIdentityInEncryption { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -156,6 +163,11 @@ namespace Microsoft.Azure.Commands.Synapse
                         {
                             Name = this.EncryptionKeyName,
                             KeyVaultUrl = this.EncryptionKeyIdentifier
+                        },
+                        KekIdentity = new KekIdentityProperties
+                        {
+                            UserAssignedIdentity = this.UserAssignedIdentityInEncryption,
+                            UseSystemAssignedIdentity = this.UseSystemAssignedIdentityInEncryption
                         }
                     }
                 } : null,

@@ -16,8 +16,8 @@ Describe 'Remove-AzKustoCluster' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'Delete' {
-        $name = "testcluster" + $env.rstr4
-        New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name -Location $env.location -SkuName $env.skuName -SkuTier $env.skuTier
+        $name = "testcluster" + $env.rstr5
+        New-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name -Location $env.location -SkuName $env.kustoSkuName -SkuTier $env.kustoClusterTier
         { Remove-AzKustoCluster -ResourceGroupName $env.resourceGroupName -Name $name } | Should -Not -Throw
     }
 }

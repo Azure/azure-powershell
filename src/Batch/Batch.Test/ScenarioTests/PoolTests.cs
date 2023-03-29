@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 },
                 () =>
                 {
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                     ScenarioTestHelpers.DeletePool(this, context, poolId);
                 },
                 $"Test-ResizeAndStopResizePool '{poolId}'"

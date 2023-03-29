@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: Az.RecoveryServices
-online version: https://docs.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrrecoveryplan
+online version: https://learn.microsoft.com/powershell/module/az.recoveryservices/new-azrecoveryservicesasrrecoveryplan
 schema: 2.0.0
 ---
 
@@ -28,9 +28,30 @@ New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> 
 
 ### AzureZoneToZone
 ```
-New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -PrimaryZone <String>
- -RecoveryZone <String> [-AzureZoneToZone] [-PrimaryEdgeZone <string>] [-RecoveryEdgeZone <string>] 
- -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
+New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> [-PrimaryZone <String>]
+ [-RecoveryZone <String>] [-PrimaryEdgeZone <String>] [-RecoveryEdgeZone <String>] [-AzureZoneToZone]
+ -ReplicationProtectedItem <ASRReplicationProtectedItem[]> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### EdgeZoneToAzure
+```
+New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -PrimaryEdgeZone <String>
+ [-EdgeZoneToAzure] -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureToEdgeZone
+```
+New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -RecoveryEdgeZone <String>
+ [-AzureToEdgeZone] -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EdgeZoneToEdgeZone
+```
+New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -PrimaryEdgeZone <String>
+ -RecoveryEdgeZone <String> [-EdgeZoneToEdgeZone] -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -85,6 +106,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AzureToEdgeZone
+Switch parameter specifies creating the replicated item in Azure to EdgeZone scenario.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureToEdgeZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AzureZoneToZone
 Switch parameter specifies creating the replicated item in azure zone to zone scenario.
 
@@ -116,6 +152,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EdgeZoneToAzure
+Switch parameter specifies creating the replicated item in EdgeZone to Azure scenario.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EdgeZoneToAzure
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EdgeZoneToEdgeZone
+Switch parameter specifies creating the replicated item EdgeZone to EdgeZone scenario.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EdgeZoneToEdgeZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FailoverDeploymentModel
 Specifies the failover deployment model (Classic or Resource Manager) of the replication protected items that will be part of this recovery plan.
 
@@ -137,7 +203,7 @@ Name of the recovery plan.
 
 ```yaml
 Type: System.String
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, AzureZoneToZone
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, AzureZoneToZone, EdgeZoneToAzure, AzureToEdgeZone, EdgeZoneToEdgeZone
 Aliases:
 
 Required: True
@@ -162,12 +228,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrimaryEdgeZone
+Specifies the primary edge zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: EdgeZoneToAzure, EdgeZoneToEdgeZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PrimaryFabric
 Specifies the ASR fabric object for the primary ASR fabric of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
-Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, AzureZoneToZone
+Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure, AzureZoneToZone, EdgeZoneToAzure, AzureToEdgeZone, EdgeZoneToEdgeZone
 Aliases:
 
 Required: True
@@ -183,6 +276,33 @@ Specifies the primary Availabilty zone of the replication protected items that w
 ```yaml
 Type: System.String
 Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryEdgeZone
+Specifies the recovery edge zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToEdgeZone, EdgeZoneToEdgeZone
 Aliases:
 
 Required: True
@@ -215,37 +335,7 @@ Type: System.String
 Parameter Sets: AzureZoneToZone
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrimaryEdgeZone
-Specifies the primary edge zone of the replication protected items that will be part of this recovery plan.
-
-```yaml
-Type: System.String
-Parameter Sets: AzureZoneToZone
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RecoveryEdgeZone
-Specifies the recovery edge zone of the replication protected items that will be part of this recovery plan.
-
-```yaml
-Type: System.String
-Parameter Sets: AzureZoneToZone
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -269,7 +359,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
-Parameter Sets: AzureZoneToZone
+Parameter Sets: AzureZoneToZone, EdgeZoneToAzure, AzureToEdgeZone, EdgeZoneToEdgeZone
 Aliases:
 
 Required: True

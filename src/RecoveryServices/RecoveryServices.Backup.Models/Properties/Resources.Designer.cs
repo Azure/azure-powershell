@@ -1447,7 +1447,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to ScheduleRunTimes in Schedule Policy should be in UTC Timezone.
+        ///   Looks up a localized string similar to ScheduleRunTimes in Schedule Policy should be in UTC Time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute
         /// </summary>
         public static string ScheduleTimeNotInUTCTimeZoneException
         {
@@ -2586,6 +2586,39 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("TierAfterDurationCheckFailedWithRetentionDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the recovery point is zone pinned. Please remove TargetZone parameter or try a valid scenario.
+        /// </summary>
+        public static string UnsupportedCZRWithNonZonePinnedVMForCRRVault
+        {
+            get
+            {
+                return ResourceManager.GetString("UnsupportedCZRWithNonZonePinnedVMForCRRVault", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For triggering cross zonal restore for CRR enabled (RA-GRS) vaults, please ensure that the restore is triggered for secondary region. Please remove TargetZone parameter or try a valid scenario.
+        /// </summary>
+        public static string UnsupportedCZRForCRRVaultToPrimaryRegion
+        {
+            get
+            {
+                return ResourceManager.GetString("UnsupportedCZRForCRRVaultToPrimaryRegion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RemoveRecoveryPoints and RetainRecoveryPointsAsPerPolicy parameters can't be used simultaneously.
+        /// </summary>
+        public static string CantRemoveAndRetainRPsSimultaneously
+        {
+            get
+            {
+                return ResourceManager.GetString("CantRemoveAndRetainRPsSimultaneously", resourceCulture);
             }
         }
     }

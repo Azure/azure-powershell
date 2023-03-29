@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion
 schema: 2.0.0
 ---
 
@@ -19,7 +19,8 @@ New-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-DataDiskImage <GalleryDataDiskImage[]>] [-OSDiskImage <GalleryOSDiskImage>]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
  [-SourceImageId <String>] [-StorageAccountType <String>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-TargetExtendedLocation <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +52,9 @@ $galleryImageDefinitionName = "myImage"
 $galleryImageVersionName = "1.0.0"
 $location = "eastus"
 $sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myImageRG/providers/Microsoft.Compute/images/myImage"
-New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId
+$storageAccountType = "StandardSSD_LRS"
+
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -StorageAccountType $storageAccountType -SourceImageId $sourceImageId
 ```
 
 Add a new image version from a managed image into the image definition.
@@ -154,15 +157,18 @@ $galleryName = "myGallery"
 $galleryImageDefinitionName = "myImage"
 $galleryImageVersionName = "1.0.0"
 $location = "eastus"
+
 $sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/virtualMachines/myVM"
-$diskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/cvmDiskEncryptionSet"
 $replicaCount = 1
 $storageAccountType = "Standard_ZRS"
-$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; CVMEncryptionType="EncryptedWithCmk"; CVMDiskEncryptionSetID=$diskEncryptionSetId}
+
+$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'}
 $region_westus = @{Name = 'West US'}
 $region_ukwest = @{Name = 'UK West';ReplicaCount = 2}
 $region_southcentralus = @{Name = 'South Central US';StorageAccountType = 'Standard_LRS'}
+
 $targetRegions = @($region_eastus, $region_westus, $region_ukwest, $region_southcentralus)
+
 New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType $storageAccountType -TargetRegion $targetRegions
 ```
 
@@ -229,6 +235,53 @@ New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -
 ```
 
 This example has the end-of-life date for image version set to August 2, 2024 at mignight UTC. End-of-life dates can be specified for both the image definitions and image versions. Image versions can still be used after the end-of-life dates.
+
+### Example 13: Create an image version for Confidential VM
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$galleryImageDefinitionName = "cvmImage"
+$galleryImageVersionName = "1.0.0"
+$location = "North Europe"
+
+$sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/virtualMachines/myVM"
+$cvmDiskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/cvmDiskEncryptionSet"
+$dataDiskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/dataDiskEncryptionSet"
+
+$cvmOsDiskEncryption = @{CVMEncryptionType='EncryptedWithCmk'; CVMDiskEncryptionSetID=$cvmDiskEncryptionSetId}
+
+$cvmDataDiskEncryption_lun0 = @{DiskEncryptionSetId = $dataDiskEncryptionSetId ; Lun = 0}
+$cvmDataDiskEncryption = @($cvmDataDiskEncryption_lun0)
+
+$cvmEncryption = @{OSDiskImage = $cvmOsDiskEncryption; DataDiskImages = $cvmDataDiskEncryption}
+$region_northEurope = @{Name = 'NorthEurope';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; Encryption = $cvmEncryption}
+$targetRegions = @($region_northEurope)
+
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType "Standard_LRS" -TargetRegion $targetRegions
+```
+
+In this example, Confidential VM (CVM) Image with Customer Managed Key (CMK) is created under Image definition which supports ConfidentialVM security type.
+
+### Example 14: Create an image version with a target extended location
+
+```powershell
+$rgName = "myResourceGroup"
+$galleryName = "myGallery"
+$galleryImageDefinitionName = "cvmImage"
+$galleryImageVersionName = "1.0.0"
+$location = "EastUs"
+$sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/virtualMachines/myVM"
+
+$replicaCount = 1  
+$extendedLocation = @{Name = 'microsoftlosangeles1';Type='EdgeZone'}
+$edgezone_losangeles = @{Location = "westus";ExtendedLocation=$extendedLocation;ReplicaCount = 3;StorageAccountType = 'StandardSSD_LRS'}  
+$targetExtendedLocations = @($edgezone_losangeles) 
+
+New-AzGalleryImageVersion -ResourceGroupName $rgName -GalleryName $galleryName -GalleryImageDefinitionName $galleryImageDefinitionName -Name $galleryImageVersionName -Location $location -SourceImageId $sourceImageId -ReplicaCount 1 -StorageAccountType "Standard_LRS" -TargetExtendedLocation $targetExtendedLocations
+```
+
+This example creates a hashtable for target extended location properties and passes in with -TargetExtendedLocation parameter.
 
 ## PARAMETERS
 
@@ -462,6 +515,21 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TargetExtendedLocation
+The target extended locations where the Image Version is going to be replicated to. This property is updatable.
+
+```yaml
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases:
 

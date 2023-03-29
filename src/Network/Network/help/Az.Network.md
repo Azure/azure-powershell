@@ -1,7 +1,7 @@
 ---
 Module Name: Az.Network
 Module Guid: eb75c732-e274-4a20-b502-e9958e63484a
-Download Help Link: https://docs.microsoft.com/powershell/module/az.network
+Download Help Link: https://learn.microsoft.com/powershell/module/az.network
 Help Version: 5.4.2.0
 Locale: en-US
 ---
@@ -1049,6 +1049,15 @@ Create a new VpnServerConfiguration for point to site connectivity.
 
 ### [New-AzVpnServerConfigurationPolicyGroup ](New-AzVpnServerConfigurationPolicyGroup .md)
 Create a new AzVpnServerConfigurationPolicyGroup under VpnServerConfiguration for point to site connectivity.
+
+### [New-AzVirtualNetworkGatewayPolicyGroup ](New-AzVirtualNetworkGatewayPolicyGroup.md)
+Create a new AzVirtualNetworkGatewayPolicyGroup for point to site connectivity.
+
+### [New-AzVirtualNetworkGatewayPolicyGroupMember ](New-AzVirtualNetworkGatewayPolicyGroupMember.md)
+Create a new AzVirtualNetworkGatewayPolicyGroupMember for point to site connectivity.
+
+### [New-AzVpnClientConnectionConfiguration ](New-AzVpnClientConnectionConfiguration.md)
+Create a new AzVpnClientConnectionConfiguration for point to site connectivity.
 
 ### [New-AzVpnSite](New-AzVpnSite.md)
 Creates a new Azure VpnSite resource. This is an RM representation of customer branches that are uploaded to Azure

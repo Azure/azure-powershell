@@ -25,11 +25,13 @@ Get-AzADUser -SignedIn
 Get-AzADUser -First 10 -Select 'City' -AppendSelected
 .Example
 Get-AzADUser -DisplayName $name
+.Example
+Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/get-azaduser
 #>
 function Get-AzADUser {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]

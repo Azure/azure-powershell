@@ -23,6 +23,8 @@ using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 {
@@ -113,6 +115,16 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
                 AutoRotationEnabled = model.AutoRotationEnabled                
             });
             return CreateEncryptionProtectorModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
+        }
+
+        /// <summary>
+        /// Revalidates encryption protector for the server.
+        /// </summary>
+        /// <param name="resourceGroupName">Resource group of the server</param>
+        /// <param name="serverName">Name of the server</param>
+        public Rest.Azure.AzureOperationResponse RevalidateEncryptionProtector(string resourceGroupName, string serverName)
+        {
+            return Communicator.RevalidateEncryptionProtector(resourceGroupName, serverName).GetAwaiter().GetResult();
         }
 
         /// <summary>

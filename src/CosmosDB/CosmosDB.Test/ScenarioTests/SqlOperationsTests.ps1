@@ -289,7 +289,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
 
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
-  $locations += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 1 -IsZoneRedundant 0
 
   Try{
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
@@ -431,7 +431,7 @@ function Test-SqlInAccountRestoreOperationsCmdlets
       #add region
       $locationObject3 = @()
       $locationObject3 += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
-      $locationObject3 += New-AzCosmosDBLocationObject -LocationName "Central US" -FailoverPriority 1 -IsZoneRedundant 0
+      $locationObject3 += New-AzCosmosDBLocationObject -LocationName "East US" -FailoverPriority 1 -IsZoneRedundant 0
       Update-AzCosmosDBAccountRegion -ResourceGroupName $rgName -Name $AccountName -LocationObject $locationObject3
 
       # restore deleted database
@@ -538,7 +538,7 @@ function Test-SqlInAccountRestoreOperationsSharedResourcesCmdlets
       Restore-AzCosmosDBSqlContainer -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -RestoreTimestampInUtc $restoreTimestampInUtc
       }
       Catch {
-          Assert-AreEqual $_.Exception.Message.Contains("Partial restore of shared throughput data is not allowed. Please perform restore operation on a shared throughput database or a provisioned collection") true
+          Assert-AreEqual $_.Exception.Message.Contains("InAccount restore of individual shared database collections is not supported. Please restore shared database to restore its collections that shared the throughput") true
       }
       # remove database
       Remove-AzCosmosDBSqlDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName

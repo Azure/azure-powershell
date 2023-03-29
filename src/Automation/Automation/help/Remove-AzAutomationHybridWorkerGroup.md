@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationhybridworkergroup
+online version: https://learn.microsoft.com/powershell/module/az.automation/remove-azautomationhybridworkergroup
 schema: 2.0.0
 ---
 
@@ -141,6 +141,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Void
 ## NOTES
-## RELATED LINKS
 
 ## RELATED LINKS

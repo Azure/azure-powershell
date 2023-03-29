@@ -31,7 +31,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IOperationResponse
 .Link
-https://docs.microsoft.com/powershell/module/az.quota/get-azquotaoperation
+https://learn.microsoft.com/powershell/module/az.quota/get-azquotaoperation
 #>
 function Get-AzQuotaOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.IOperationResponse])]

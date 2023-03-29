@@ -14,7 +14,7 @@ Describe 'Test-AzKustoClusterNameAvailability' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'CheckExpanded' {
-        $clusterName = $env.clusterName
+        $clusterName = $env.kustoClusterName
         $location = $env.location
 
         $testResult = Test-AzKustoClusterNameAvailability -Name $clusterName -Location $location

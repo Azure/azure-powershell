@@ -25,7 +25,7 @@ New-AzMLWorkspaceMLTableJobOutputObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MlTableJobOutput
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLTableJobOutputObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLTableJobOutputObject
 #>
 function New-AzMLWorkspaceMLTableJobOutputObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLTableJobOutput])]

@@ -13,6 +13,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.ApiVersionParameter TwoThousandTwentyTwo0801 = @"2022-08-01";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.ApiVersionParameter TwoThousandTwentyTwo1101 = @"2022-11-01";
+
         /// <summary>the value for an instance of the <see cref="ApiVersionParameter" /> Enum.</summary>
         private string _value { get; set; }
 

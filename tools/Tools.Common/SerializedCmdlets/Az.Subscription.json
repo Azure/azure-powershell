@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Subscription",
-  "ModuleVersion": "0.8.1",
+  "ModuleVersion": "0.9.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Subscription.Models",
             "Name": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -198,7 +198,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Subscription.Models",
             "Name": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -391,7 +391,7 @@
                 },
                 "ValidateNotNullOrEmpty": false
               },
-              "Mandatory": false,
+              "Mandatory": true,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": false
@@ -500,7 +500,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Subscription.Models",
             "Name": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",
@@ -682,7 +682,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Subscription.Models",
             "Name": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription, Microsoft.Azure.PowerShell.Cmdlets.Subscription, Version=0.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "ExtendedProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Id": "System.String",

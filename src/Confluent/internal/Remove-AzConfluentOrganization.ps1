@@ -46,7 +46,7 @@ INPUTOBJECT <IConfluentIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Resource group name
   [SubscriptionId <String>]: Microsoft Azure subscription id
 .Link
-https://docs.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
+https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 #>
 function Remove-AzConfluentOrganization {
 [OutputType([System.Boolean])]

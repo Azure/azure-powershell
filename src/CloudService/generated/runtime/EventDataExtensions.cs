@@ -7,7 +7,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
 {
     using System;
 
-    [System.ComponentModel.TypeConverter(typeof(EventDataConverter))]
     /// <summary>
     /// PowerShell-specific data on top of the llc# EventData
     /// </summary>
@@ -16,6 +15,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime
     /// Obviously, this code would need to be duplcated on both modules.
     /// This is preferable to sharing a common library, as versioning makes that problematic.
     /// </remarks>
+    [System.ComponentModel.TypeConverter(typeof(EventDataConverter))]
     public partial class EventData : EventArgs
     {
     }

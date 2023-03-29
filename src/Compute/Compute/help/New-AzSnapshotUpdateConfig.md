@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotupdateconfig
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azsnapshotupdateconfig
 schema: 2.0.0
 ---
 
@@ -15,10 +15,11 @@ Creates a configurable snapshot update object.
 ```
 New-AzSnapshotUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
  [[-Tag] <Hashtable>] [-SupportsHibernation <Boolean>] [-EncryptionSettingsEnabled <Boolean>]
- [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
- [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-PublicNetworkAccess <String>]
- [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-EdgeZone <String>]
+ [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DiskEncryptionSetId <String>] [-EncryptionType <String>]
+ [-PublicNetworkAccess <String>] [-DataAccessAuthMode <String>] [-Architecture <String>]
+ [-NetworkAccessPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +145,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EdgeZone
+Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EncryptionSettingsEnabled
 Enable encryption settings.
 
@@ -179,6 +195,21 @@ Specifies the Key encryption key on a snapshot.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkAccessPolicy
+Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -SupportsHibernation
-{{ Fill SupportsHibernation Description }}
+Indicates if the OS on the snapshot supports hibernation with $true or $false
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]

@@ -129,103 +129,104 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public PSProbe Probe { get; set; }
 
-
         public override void Execute()
         {
-
-            if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
+            if (ShouldProcess(this.Name, "Creating the rule configuration"))
             {
-                if (this.FrontendIpConfiguration != null)
+                if (string.Equals(ParameterSetName, Microsoft.Azure.Commands.Network.Properties.Resources.SetByResource))
                 {
-                    this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
+                    if (this.FrontendIpConfiguration != null)
+                    {
+                        this.FrontendIpConfigurationId = this.FrontendIpConfiguration.Id;
+                    }
+
+                    if (this.BackendAddressPool != null && this.BackendAddressPool.Length > 0)
+                    {
+                        this.BackendAddressPoolId = new string[this.BackendAddressPool.Length];
+                        for (int i = 0; i < this.BackendAddressPool.Length; i++)
+                        {
+                            this.BackendAddressPoolId[i] = this.BackendAddressPool[i].Id;
+                        }
+                    }
+
+                    if (this.Probe != null)
+                    {
+                        this.ProbeId = this.Probe.Id;
+                    }
+                }
+                var vLoadBalancingRules = new PSLoadBalancingRule();
+
+                vLoadBalancingRules.Protocol = this.Protocol;
+                vLoadBalancingRules.LoadDistribution = this.LoadDistribution;
+                vLoadBalancingRules.FrontendPort = this.FrontendPort;
+                vLoadBalancingRules.BackendPort = this.BackendPort;
+                vLoadBalancingRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : Constants.LoadBalancingIdleTimeoutDefault;
+                vLoadBalancingRules.EnableFloatingIP = this.EnableFloatingIP;
+                vLoadBalancingRules.EnableTcpReset = this.EnableTcpReset;
+                vLoadBalancingRules.DisableOutboundSNAT = this.DisableOutboundSNAT;
+                vLoadBalancingRules.Name = this.Name;
+                if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
+                {
+                    // FrontendIPConfiguration
+                    if (vLoadBalancingRules.FrontendIPConfiguration == null)
+                    {
+                        vLoadBalancingRules.FrontendIPConfiguration = new PSResourceId();
+                    }
+                    vLoadBalancingRules.FrontendIPConfiguration.Id = this.FrontendIpConfigurationId;
                 }
 
-                if (this.BackendAddressPool != null && this.BackendAddressPool.Length > 0)
+                if (this.BackendAddressPoolId != null && this.BackendAddressPoolId.Length > 0)
                 {
-                    this.BackendAddressPoolId = new string[this.BackendAddressPool.Length];
-                    for (int i = 0; i < this.BackendAddressPool.Length; i++)
+                    if (this.BackendAddressPoolId.Length == 1)
                     {
-                        this.BackendAddressPoolId[i] = this.BackendAddressPool[i].Id;
+                        // BackendAddressPool
+                        if (vLoadBalancingRules.BackendAddressPool == null)
+                        {
+                            vLoadBalancingRules.BackendAddressPool = new PSResourceId();
+                        }
+
+                        vLoadBalancingRules.BackendAddressPool.Id = this.BackendAddressPoolId[0];
+                    }
+                    else if (this.BackendAddressPoolId.Length == 2)
+                    {
+                        // BackendAddressPools
+                        if (vLoadBalancingRules.BackendAddressPools == null)
+                        {
+                            vLoadBalancingRules.BackendAddressPools = new List<PSResourceId>();
+                        }
+
+                        foreach (string backendAddressPoolId in this.BackendAddressPoolId)
+                        {
+                            vLoadBalancingRules.BackendAddressPools.Add(new PSResourceId() { Id = backendAddressPoolId });
+                        }
+                    }
+                    else
+                    {
+                        throw new AzPSArgumentException("BackendAddressPool cannot be more than 2", "BackendAddressPool");
                     }
                 }
 
-                if (this.Probe != null)
+                if (!string.IsNullOrEmpty(this.ProbeId))
                 {
-                    this.ProbeId = this.Probe.Id;
-                }
-            }
-            var vLoadBalancingRules = new PSLoadBalancingRule();
-
-            vLoadBalancingRules.Protocol = this.Protocol;
-            vLoadBalancingRules.LoadDistribution = this.LoadDistribution;
-            vLoadBalancingRules.FrontendPort = this.FrontendPort;
-            vLoadBalancingRules.BackendPort = this.BackendPort;
-            vLoadBalancingRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
-            vLoadBalancingRules.EnableFloatingIP = this.EnableFloatingIP;
-            vLoadBalancingRules.EnableTcpReset = this.EnableTcpReset;
-            vLoadBalancingRules.DisableOutboundSNAT = this.DisableOutboundSNAT;
-            vLoadBalancingRules.Name = this.Name;
-            if (!string.IsNullOrEmpty(this.FrontendIpConfigurationId))
-            {
-                // FrontendIPConfiguration
-                if (vLoadBalancingRules.FrontendIPConfiguration == null)
-                {
-                    vLoadBalancingRules.FrontendIPConfiguration = new PSResourceId();
-                }
-                vLoadBalancingRules.FrontendIPConfiguration.Id = this.FrontendIpConfigurationId;
-            }
-
-            if (this.BackendAddressPoolId != null && this.BackendAddressPoolId.Length > 0)
-            {
-                if (this.BackendAddressPoolId.Length == 1)
-                {
-                    // BackendAddressPool
-                    if (vLoadBalancingRules.BackendAddressPool == null)
+                    // Probe
+                    if (vLoadBalancingRules.Probe == null)
                     {
-                        vLoadBalancingRules.BackendAddressPool = new PSResourceId();
+                        vLoadBalancingRules.Probe = new PSResourceId();
                     }
+                    vLoadBalancingRules.Probe.Id = this.ProbeId;
+                }
 
-                    vLoadBalancingRules.BackendAddressPool.Id = this.BackendAddressPoolId[0];
-                }
-                else if (this.BackendAddressPoolId.Length == 2)
-                {
-                    // BackendAddressPools
-                    if (vLoadBalancingRules.BackendAddressPools == null)
-                    {
-                        vLoadBalancingRules.BackendAddressPools = new List<PSResourceId>();
-                    }
+                var generatedId = string.Format(
+                    "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
+                    this.NetworkClient.NetworkManagementClient.SubscriptionId,
+                    Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
+                    Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
+                    "LoadBalancingRules",
+                    this.Name);
+                vLoadBalancingRules.Id = generatedId;
 
-                    foreach (string backendAddressPoolId in this.BackendAddressPoolId)
-                    {
-                        vLoadBalancingRules.BackendAddressPools.Add(new PSResourceId() { Id = backendAddressPoolId });
-                    }
-                }
-                else
-                {
-                    throw new AzPSArgumentException("BackendAddressPool cannot be more than 2", "BackendAddressPool");
-                }
+                WriteObject(vLoadBalancingRules, true);
             }
-
-            if (!string.IsNullOrEmpty(this.ProbeId))
-            {
-                // Probe
-                if (vLoadBalancingRules.Probe == null)
-                {
-                    vLoadBalancingRules.Probe = new PSResourceId();
-                }
-                vLoadBalancingRules.Probe.Id = this.ProbeId;
-            }
-
-            var generatedId = string.Format(
-                "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/{3}/{4}",
-                this.NetworkClient.NetworkManagementClient.SubscriptionId,
-                Microsoft.Azure.Commands.Network.Properties.Resources.ResourceGroupNotSet,
-                Microsoft.Azure.Commands.Network.Properties.Resources.LoadBalancerNameNotSet,
-                "LoadBalancingRules",
-                this.Name);
-            vLoadBalancingRules.Id = generatedId;
-
-            WriteObject(vLoadBalancingRules, true);
         }
     }
 }

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointobject
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkwatcherconnectionmonitorendpointobject
 schema: 2.0.0
 ---
 
@@ -59,6 +59,12 @@ New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-MMAWorkspac
 New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureVMSS] -ResourceId <String>
  -IncludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>
  [-ExcludeItem <PSNetworkWatcherConnectionMonitorEndpointScopeItem[]>] [-CoverageLevel <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureArcVM
+```
+New-AzNetworkWatcherConnectionMonitorEndpointObject -Name <String> [-AzureArcVM] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -285,6 +291,21 @@ Azure Virtual Machine Scale sets.
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AzureVMSS
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureArcVM
+AzureArc VM endpoint switch
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: AzureArcVM
 Aliases:
 
 Required: True

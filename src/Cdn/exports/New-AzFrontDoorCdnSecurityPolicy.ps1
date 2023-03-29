@@ -29,7 +29,7 @@ New-AzFrontDoorCdnSecurityPolicy -ResourceGroupName testps-rg-da16jm -ProfileNam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicy
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecuritypolicy
+https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnsecuritypolicy
 #>
 function New-AzFrontDoorCdnSecurityPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ISecurityPolicy])]

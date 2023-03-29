@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azmanagedcassandradatacenter
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/new-azmanagedcassandradatacenter
 schema: 2.0.0
 ---
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Name of the virtual machine sku to use for nodes in this data center. See the [documentation](https://docs.microsoft.com/en-us/azure/managed-instance-apache-cassandra/create-cluster-cli) for supported skus.
+Name of the virtual machine sku to use for nodes in this data center. See the [documentation](https://learn.microsoft.com/en-us/azure/managed-instance-apache-cassandra/create-cluster-cli) for supported skus.
 
 ```yaml
 Type: System.String

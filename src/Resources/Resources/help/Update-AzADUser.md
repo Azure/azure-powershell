@@ -1,7 +1,7 @@
 ---
 external help file: Az.Resources-help.xml
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/update-azaduser
+online version: https://learn.microsoft.com/powershell/module/az.resources/update-azaduser
 schema: 2.0.0
 ---
 
@@ -88,6 +88,8 @@ Update user by user principal name
 
 ### -AccountEnabled
 true for enabling the account; otherwise, false.
+Always true when combined with `-Password`.
+`-AccountEnabled $false` is ignored when changing the account's password.
 
 ```yaml
 Type: System.Boolean
@@ -584,9 +586,14 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-Password for the user.
-It must meet the tenant's password complexity requirements.
-It is recommended to set a strong password.
+The password for the user.
+This property is required when a user is created.
+
+It can be updated, but the user will be required to change the password on the next login.
+
+The password must satisfy minimum requirements as speci./fied by the user's passwordPolicies property.
+By default, a strong password is required.
+When changing the password using this method, AccountEnabled is set to true.
 
 ```yaml
 Type: System.Security.SecureString
@@ -870,7 +877,7 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IMicrosoftGraphUser>`: user input object
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[DeletedDateTime <DateTime?>]`: 
+  - `[DeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
   - `[DisplayName <String>]`: The name displayed in directory
   - `[AccountEnabled <Boolean?>]`: true if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter (eq, ne, NOT, and in).
   - `[AgeGroup <String>]`: Sets the age group of the user. Allowed values: null, minor, notAdult and adult. Refer to the legal age group property definitions for further information. Supports $filter (eq, ne, NOT, and in).
@@ -902,7 +909,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Mail <String>]`: The SMTP address for the user, for example, admin@contoso.com. Changes to this property will also update the user's proxyAddresses collection to include the value as an SMTP address. While this property can contain accent characters, using them can cause access issues with other Microsoft applications for the user. Supports $filter (eq, ne, NOT, ge, le, in, startsWith, endsWith).
   - `[MailNickname <String>]`: The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   - `[Manager <IMicrosoftGraphDirectoryObject>]`: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
-    - `[DeletedDateTime <DateTime?>]`: 
+    - `[DeletedDateTime <DateTime?>]`: Date and time when this object was deleted. Always null when the object hasn't been deleted.
     - `[DisplayName <String>]`: The name displayed in directory
   - `[OfficeLocation <String>]`: The office location in the user's place of business. Maximum length is 128 characters. Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
   - `[OnPremisesImmutableId <String>]`: This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, NOT, ge, le, in)..

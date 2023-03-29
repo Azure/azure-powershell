@@ -39,7 +39,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceCRUDMinimalParameters()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceCRUDMinimalParameters");
@@ -47,7 +47,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceCRUDAllParameters()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceCRUDAllParameters");
@@ -55,7 +55,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceIpConfigurationCRUDMinimalParameters()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceIpConfigurationCRUDMinimalParameters");
@@ -63,7 +63,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceIpConfigurationCRUDAllParameters()
         {
             TestRunner.RunTestScript("Test-NetworkInterfaceIpConfigurationCRUDAllParameters");
@@ -71,7 +71,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
         public void TestNetworkInterfaceGetEffectiveRouteTable()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceGetEffectiveRouteTable -baseDir '{0}'", System.AppDomain.CurrentDomain.BaseDirectory));

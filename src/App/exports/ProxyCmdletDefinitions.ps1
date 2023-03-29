@@ -47,7 +47,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/disable-azcontainerapprevision
+https://learn.microsoft.com/powershell/module/az.app/disable-azcontainerapprevision
 #>
 function Disable-AzContainerAppRevision {
 [OutputType([System.Boolean])]
@@ -251,7 +251,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/enable-azcontainerapprevision
+https://learn.microsoft.com/powershell/module/az.app/enable-azcontainerapprevision
 #>
 function Enable-AzContainerAppRevision {
 [OutputType([System.Boolean])]
@@ -453,7 +453,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappauthconfig
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappauthconfig
 #>
 function Get-AzContainerAppAuthConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig])]
@@ -651,7 +651,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvcert
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvcert
 #>
 function Get-AzContainerAppManagedEnvCert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate])]
@@ -832,7 +832,7 @@ Get-AzContainerAppManagedEnvDaprSecret -EnvName azps-env -ResourceGroupName azps
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdaprsecret
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdaprsecret
 #>
 function Get-AzContainerAppManagedEnvDaprSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ISecret])]
@@ -1022,7 +1022,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdapr
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvdapr
 #>
 function Get-AzContainerAppManagedEnvDapr {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprComponent])]
@@ -1224,7 +1224,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvstorage
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenvstorage
 #>
 function Get-AzContainerAppManagedEnvStorage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironmentStorage])]
@@ -1428,7 +1428,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenv
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappmanagedenv
 #>
 function Get-AzContainerAppManagedEnv {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironment])]
@@ -1625,7 +1625,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerapprevision
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerapprevision
 #>
 function Get-AzContainerAppRevision {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IRevision])]
@@ -1811,7 +1811,7 @@ Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppSecret
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerappsecret
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerappsecret
 #>
 function Get-AzContainerAppSecret {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerAppSecret])]
@@ -1997,7 +1997,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/get-azcontainerapp
+https://learn.microsoft.com/powershell/module/az.app/get-azcontainerapp
 #>
 function Get-AzContainerApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp])]
@@ -2229,7 +2229,7 @@ IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the
   [RegistrationOpenIdIssuer <String>]: The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.         When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.         This URI is a case-sensitive identifier for the token issuer.         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
   [TwitterEnabled <Boolean?>]: <code>false</code> if the Twitter provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappauthconfig
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappauthconfig
 #>
 function New-AzContainerAppAuthConfig {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IAuthConfig])]
@@ -2517,7 +2517,7 @@ New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -Resource
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvcert
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvcert
 #>
 function New-AzContainerAppManagedEnvCert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate])]
@@ -2728,7 +2728,7 @@ SECRET <ISecret[]>: Collection of secrets used by a Dapr component
   [Name <String>]: Secret Name.
   [Value <String>]: Secret Value.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvdapr
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvdapr
 #>
 function New-AzContainerAppManagedEnvDapr {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IDaprComponent])]
@@ -2946,7 +2946,7 @@ New-AzContainerAppManagedEnvStorage -EnvName azps-env -ResourceGroupName azpstes
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironmentStorage
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvstorage
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvstorage
 #>
 function New-AzContainerAppManagedEnvStorage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironmentStorage])]
@@ -3143,7 +3143,7 @@ New-AzContainerAppManagedEnv -EnvName azps-env -ResourceGroupName azpstest_gp -L
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironment
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenv
 #>
 function New-AzContainerAppManagedEnv {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IManagedEnvironment])]
@@ -3404,7 +3404,7 @@ Create or update a Container App.
 .Description
 Create or update a Container App.
 .Example
-$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+$trafficWeight = New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
 $secretObject = New-AzContainerAppSecretObject -Name "facebook-secret" -Value "facebook-password"
 
 $containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
@@ -3413,7 +3413,11 @@ $image = New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.mic
 
 $EnvId = (Get-AzContainerAppManagedEnv -ResourceGroupName azpstest_gp -EnvName azps-env).Id
 
-New-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
+$scaleRule = @()
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+
+New-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp
@@ -3495,7 +3499,7 @@ TEMPLATEVOLUME <IVolume[]>: List of volume definitions for the Container App.
   [StorageName <String>]: Name of storage resource. No need to provide for EmptyDir.
   [StorageType <StorageType?>]: Storage type for the volume. If not provided, use EmptyDir.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerapp
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerapp
 #>
 function New-AzContainerApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp])]
@@ -3866,7 +3870,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerappauthconfig
+https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappauthconfig
 #>
 function Remove-AzContainerAppAuthConfig {
 [OutputType([System.Boolean])]
@@ -4070,7 +4074,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvcert
+https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvcert
 #>
 function Remove-AzContainerAppManagedEnvCert {
 [OutputType([System.Boolean])]
@@ -4275,7 +4279,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr
+https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvdapr
 #>
 function Remove-AzContainerAppManagedEnvDapr {
 [OutputType([System.Boolean])]
@@ -4479,7 +4483,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvstorage
+https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenvstorage
 #>
 function Remove-AzContainerAppManagedEnvStorage {
 [OutputType([System.Boolean])]
@@ -4683,7 +4687,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenv
+https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerappmanagedenv
 #>
 function Remove-AzContainerAppManagedEnv {
 [OutputType([System.Boolean])]
@@ -4893,7 +4897,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/remove-azcontainerapp
+https://learn.microsoft.com/powershell/module/az.app/remove-azcontainerapp
 #>
 function Remove-AzContainerApp {
 [OutputType([System.Boolean])]
@@ -5104,7 +5108,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/restart-azcontainerapprevision
+https://learn.microsoft.com/powershell/module/az.app/restart-azcontainerapprevision
 #>
 function Restart-AzContainerAppRevision {
 [OutputType([System.Boolean])]
@@ -5310,7 +5314,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   [StorageName <String>]: Name of the storage.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/update-azcontainerappmanagedenvcert
+https://learn.microsoft.com/powershell/module/az.app/update-azcontainerappmanagedenvcert
 #>
 function Update-AzContainerAppManagedEnvCert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate])]
@@ -5489,7 +5493,12 @@ Patches a Container App using JSON Merge Patch
 .Description
 Patches a Container App using JSON Merge Patch
 .Example
-Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
+$secretObject = Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+$newSecretObject = @(0..($secretObject.Count-1))
+[array]::copy($secretObject,$newSecretObject,$secretObject.Count)
+$secretObject += New-AzContainerAppSecretObject -Name "yourkey" -Value "yourvalue"
+
+Update-AzContainerApp -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationSecret $secretObject -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -5587,7 +5596,7 @@ TEMPLATEVOLUME <IVolume[]>: List of volume definitions for the Container App.
   [StorageName <String>]: Name of storage resource. No need to provide for EmptyDir.
   [StorageType <StorageType?>]: Storage type for the volume. If not provided, use EmptyDir.
 .Link
-https://docs.microsoft.com/powershell/module/az.app/update-azcontainerapp
+https://learn.microsoft.com/powershell/module/az.app/update-azcontainerapp
 #>
 function Update-AzContainerApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IContainerApp])]
@@ -5946,7 +5955,7 @@ $customDomain = New-AzContainerAppCustomDomainObject -CertificateId $certificate
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappcustomdomainobject
 #>
 function New-AzContainerAppCustomDomainObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.CustomDomain])]
@@ -6058,7 +6067,7 @@ New-AzContainerAppDaprMetadataObject -Name "masterkey" -Value "masterkey"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappdaprmetadataobject
 #>
 function New-AzContainerAppDaprMetadataObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.DaprMetadata])]
@@ -6168,7 +6177,7 @@ New-AzContainerAppEnvironmentVarObject -Name "envVarName" -SecretRef "facebook-s
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappenvironmentvarobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappenvironmentvarobject
 #>
 function New-AzContainerAppEnvironmentVarObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.EnvironmentVar])]
@@ -6285,7 +6294,7 @@ To create the parameters described below, construct a hash table containing the 
 CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
   [(Any) <ICustomOpenIdConnectProvider>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappidentityproviderobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappidentityproviderobject
 #>
 function New-AzContainerAppIdentityProviderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.IdentityProviders])]
@@ -6643,7 +6652,7 @@ New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeheaderobject
 #>
 function New-AzContainerAppProbeHeaderObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbeHttpGetHttpHeadersItem])]
@@ -6755,7 +6764,7 @@ HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>: Custom headers t
   Name <String>: The header field name
   Value <String>: The header field value
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappprobeobject
 #>
 function New-AzContainerAppProbeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ContainerAppProbe])]
@@ -6964,7 +6973,7 @@ New-AzContainerAppRegistryCredentialObject -Identity system -PasswordSecretRef "
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappregistrycredentialobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappregistrycredentialobject
 #>
 function New-AzContainerAppRegistryCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.RegistryCredentials])]
@@ -7082,7 +7091,7 @@ New-AzContainerAppScaleRuleAuthObject -SecretRef "facebook-secret" -TriggerParam
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappscaleruleauthobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleauthobject
 #>
 function New-AzContainerAppScaleRuleAuthObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRuleAuth])]
@@ -7181,7 +7190,9 @@ Create an in-memory object for ScaleRule.
 .Description
 Create an in-memory object for ScaleRule.
 .Example
-New-AzContainerAppScaleRuleObject -Name scaleRuleName -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule = @()
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName1 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
+$scaleRule += New-AzContainerAppScaleRuleObject -Name scaleRuleName2 -AzureQueueLength 30 -AzureQueueName azps_containerapp -CustomType "azure-servicebus"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule
@@ -7208,7 +7219,7 @@ HTTPAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
 HTTPMETADATA <IHttpScaleRuleMetadata>: Metadata properties to describe http scale rule.
   [(Any) <String>]: This indicates any property can be added to this object.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappscaleruleobject
 #>
 function New-AzContainerAppScaleRuleObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ScaleRule])]
@@ -7360,7 +7371,7 @@ New-AzContainerAppSecretObject -Name "masterkey" -Value "keyvalue"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappsecretobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappsecretobject
 #>
 function New-AzContainerAppSecretObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Secret])]
@@ -7459,7 +7470,11 @@ Create an in-memory object for Container.
 .Description
 Create an in-memory object for Container.
 .Example
-New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probe -ResourceCpu 2.0 -ResourceMemory 4.0Gi
+$containerAppHttpHeader = New-AzContainerAppProbeHeaderObject -Name Custom-Header -Value Awesome
+$probeArray = @()
+$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health01" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+$probeArray += New-AzContainerAppProbeObject -HttpGetPath "/health02" -HttpGetPort 8080 -InitialDelaySecond 3 -PeriodSecond 3 -Type Liveness -HttpGetHttpHeader $containerAppHttpHeader
+New-AzContainerAppTemplateObject -Name azps-containerapp -Image mcr.microsoft.com/azuredocs/containerapps-helloworld:latest -Probe $probeArray -ResourceCpu 2.0 -ResourceMemory 4.0Gi
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container
@@ -7495,7 +7510,7 @@ VOLUMEMOUNT <IVolumeMount[]>: Container volume mounts.
   [MountPath <String>]: Path within the container at which the volume should be mounted.Must not contain ':'.
   [VolumeName <String>]: This must match the Name of a Volume.
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerapptemplateobject
 #>
 function New-AzContainerAppTemplateObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Container])]
@@ -7641,12 +7656,12 @@ Create an in-memory object for TrafficWeight.
 .Description
 Create an in-memory object for TrafficWeight.
 .Example
-New-AzContainerAppTrafficWeightObject -Label production -LatestRevision:$True -Weight 100
+New-AzContainerAppTrafficWeightObject -Label production -LatestRevision $True -Weight 100
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerapptrafficweightobject
 #>
 function New-AzContainerAppTrafficWeightObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.TrafficWeight])]
@@ -7762,7 +7777,7 @@ New-AzContainerAppVolumeMountObject -MountPath "/mountPath" -VolumeName "VolumeN
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappvolumemountobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumemountobject
 #>
 function New-AzContainerAppVolumeMountObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.VolumeMount])]
@@ -7866,7 +7881,7 @@ New-AzContainerAppVolumeObject -Name "volumeName" -StorageName "azpssa"
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume
 .Link
-https://docs.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
+https://learn.microsoft.com/powershell/module/az./new-azcontainerappvolumeobject
 #>
 function New-AzContainerAppVolumeObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.Volume])]

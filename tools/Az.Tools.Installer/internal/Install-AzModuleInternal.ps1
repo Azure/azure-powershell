@@ -86,7 +86,7 @@ function Install-AzModuleInternal {
                     }
                     $downloader.WaitForAllTasks()
                     $file = $null
-                    foreach($file in $fileList) {
+                    foreach ($file in $fileList) {
                         if (!(Test-Path -Path $file.Path)) {
                             Throw "[$Invoker] Fail to download $($file.Name) to $tempRepo. Please check your network connection and retry."
                         }
@@ -207,7 +207,6 @@ function Install-AzModuleInternal {
                                 $result = Install-SingleModule -ModuleName $tmodule.Name -ModuleVersion $tmodule.Version -InstallModuleParam $tInstallModuleParam -RemovePrevious:($using:confirmUninstallation)
                                 Write-Output $result
                             } -ThrottleLimit $maxJobCount
-                             #-StreamingHost $Host
                         }
                     }
                     else {

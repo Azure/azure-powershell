@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: 9830CD16-D797-47EB-BEF5-6CFE3454BCAA
-online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azactiongroupreceiver
+online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azactiongroupreceiver
 schema: 2.0.0
 ---
 
@@ -16,6 +16,13 @@ Creates an new action group receiver.
 ### NewEmailReceiver (Default)
 ```
 New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-EmailReceiver] -EmailAddress <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### NewEventHubReceiver
+```
+New-AzActionGroupReceiver -Name <String> [-UseCommonAlertSchema] [-EventHubReceiver]
+ -EventHubNameSpace <String> -EventHubName <String> -SubscriptionId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -300,6 +307,51 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EventHubName
+The EventHubName of the event hub receiver
+
+```yaml
+Type: System.String
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventHubNameSpace
+The name space of the event hub receiver
+
+```yaml
+Type: System.String
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventHubReceiver
+Create a event hub receiver
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -FunctionAppResourceId
 the function app resourceId
 
@@ -534,6 +586,21 @@ Parameter Sets: NewSmsReceiver
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription id of the event hub receiver
+
+```yaml
+Type: System.String
+Parameter Sets: NewEventHubReceiver
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

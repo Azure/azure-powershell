@@ -25,7 +25,7 @@ Get-AzStackHCIRemoteSupportSessionHistory
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
+https://learn.microsoft.com/powershell/module/az.stackhci/get-azstackhciremotesupportsessionhistory
 #>
 function Get-AzStackHCIRemoteSupportSessionHistory {
 [OutputType([System.Boolean])]
@@ -66,7 +66,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

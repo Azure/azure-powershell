@@ -25,7 +25,7 @@ New-AzFrontDoorCdnRuleRemoteAddressConditionObject -Name RemoteAddress -Paramete
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRemoteAddressCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRemoteAddressConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRemoteAddressConditionObject
 #>
 function New-AzFrontDoorCdnRuleRemoteAddressConditionObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRemoteAddressCondition])]

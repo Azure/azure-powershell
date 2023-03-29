@@ -20,9 +20,9 @@ Get geodata for a single IP address
 .Description
 Get geodata for a single IP address
 .Example
- Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com
+ Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com"
 .Example
- Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" IPAddress "1.1.1.1"
+ Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -IPAddress "1.1.1.1"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -59,7 +59,7 @@ INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [WorkspaceName <String>]: The name of the workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.securityinsights/get-azsentinelenrichment
+https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelenrichment
 #>
 function Get-AzSentinelEnrichment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentIPGeodata], [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.IEnrichmentDomainWhois])]

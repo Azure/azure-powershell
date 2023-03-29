@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 4.9.2
+* Updated Azure.Core to 1.28.0.
+
+## Version 4.9.1
+* Fixed certificate export parameter issue in `Add-AzKeyVaultKey` [#19623]
+* Fixed CertificateString decoding issue in `Import-AzKeyVaultCertificate`
+* Shifted the location of key CVM release policy to GitHub [#19984]
+* Added fallback logic (reading default CVM policy from a local copy) if fetching default CVM Policy from GitHub failed.
+
+## Version 4.9.0
+* Bumped API version to 2022-07-01
+* Added `Undo-AzKeyVaultManagedHsm` to recover deleted managed HSM
+
+## Version 4.8.0
+* Fixed the exception content swallowed issue when exception.Response is null [#19531]
+* Added the existing parameters `Exportable`, `Immutable`, `UseDefaultCVMPolicy`, and `ReleasePolicyPath`
+  to the parameter sets `InteractiveCreate`, `InputObjectCreate`, and `ResourceIdCreate`.
+
 ## Version 4.7.0
 * Fixed parameter validation logic of `-UseDefaultCVMPolicy`
 * Added parameter `ContentType` in `Import-AzKeyVaultCertificate` to support importing pem via certificate string
@@ -29,7 +47,7 @@
 
 ## Version 4.6.0
 * Supported importing pem certificate by `Import-AzKeyVaultCertificate` [#18494]
-* Supported accepting rotation policy in a JSON file 
+* Supported accepting rotation policy in a JSON file
 * [Breaking Change] Changed parameter `ExpiresIn` in `Set-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string. It must be an ISO 8601 duration like "P30D" for 30 days.
 * [Breaking Change] Changed output properties `ExpiresIn`, `TimeAfterCreate` and `TimeBeforeExpiry` of `Set-AzKeyVaultKeyRotationPolicy` and `Get-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string.
 * Supported creating/updating key with release policy in a Managed HSM
@@ -46,7 +64,7 @@
 
 ## Version 4.3.1
 * Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API
- 
+
 ## Version 4.3.0
 * `New-AzKeyVaultManagedHsm`: supported specifying how long a deleted managed hsm is retained by `SoftDeleteRetentionInDays` and enabling purge protection by `EnablePurgeProtection`
 * `Update-AzKeyVaultManagedHsm`: supported enabling purge protection by `EnablePurgeProtection`

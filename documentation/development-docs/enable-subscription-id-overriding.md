@@ -62,7 +62,7 @@ This design is compatible with most modules, however, there are some uncommon ca
 
 The `-SubscriptionId` parameter is added via `IDynamicParameters` interface, so if your cmdlet has already implemented it, make sure:
 
-1. `GetDynamicParameters()` is decorated with [`new` modifier](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/new-modifier).
+1. `GetDynamicParameters()` is decorated with [`new` modifier](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/new-modifier).
 1. Call `base.GetDynamicParameters()` and combine the results in your `GetDynamicParameters()`.
 
 A sample implementation:

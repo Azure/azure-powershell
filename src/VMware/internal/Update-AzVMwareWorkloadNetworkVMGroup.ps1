@@ -20,13 +20,9 @@ Create or update a vm group by id in a private cloud workload network.
 .Description
 Create or update a vm group by id in a private cloud workload network.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -64,7 +60,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkvmgroup
+https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkvmgroup
 #>
 function Update-AzVMwareWorkloadNetworkVMGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkVMGroup])]
@@ -190,6 +186,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkVMGroup_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkVMGroup_UpdateViaIdentityExpanded';
@@ -203,6 +200,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -211,15 +209,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

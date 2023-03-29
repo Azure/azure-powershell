@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualhubroutetable
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualhubroutetable
 schema: 2.0.0
 ---
 
 # Get-AzVirtualHubRouteTable
 
 ## SYNOPSIS
-Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a virtual hub.
+Gets a Virtual Hub Route Table in a virtual hub or lists all route tables in a virtual hub. The cmdlet [Get-AzVHubRouteTable](./Get-AzVHubRouteTable.md) is replacing this cmdlet.
 
 ## SYNTAX
 

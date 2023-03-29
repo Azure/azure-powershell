@@ -191,10 +191,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(dirClient, BlobProperties, setToServer: false);
                     IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(dirClient, BlobMetadata, setToServer: false);
 
-                    dirClient.Create(pathHttpHeaders, 
-                        metadata, 
-                        this.Permission, 
-                        this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null);
+                    DataLakePathCreateOptions createOptions = new DataLakePathCreateOptions()
+                    {
+                        HttpHeaders = pathHttpHeaders,
+                        Metadata = metadata,
+                        AccessOptions = new DataLakeAccessOptions()
+                        {
+                            Permissions = this.Permission,
+                            Umask = this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null
+                        }
+                    };
+
+                    dirClient.Create(createOptions, this.CmdletCancellationToken);
 
                     WriteDataLakeGen2Item(localChannel, dirClient);
                 }
@@ -236,15 +244,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         {
             if (this.Force.IsPresent || !fileClient.Exists() || ShouldContinue(string.Format(Resources.OverwriteConfirmation, GetDataLakeItemUriWithoutSas(fileClient)), null))
             {
-
                 // Set Item Properties and MetaData
                 PathHttpHeaders pathHttpHeaders = SetDatalakegen2ItemProperties(fileClient, BlobProperties, setToServer: false);
                 IDictionary<string, string> metadata = SetDatalakegen2ItemMetaData(fileClient, BlobMetadata, setToServer: false);
-
-                fileClient.Create(pathHttpHeaders,
-                    metadata,
-                    this.Permission,
-                    this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null);
 
                 long fileSize = new FileInfo(ResolvedFileName).Length;
                 string activity = String.Format(Resources.SendAzureBlobActivity, this.Source, this.Path, this.FileSystem);
@@ -261,10 +263,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     }
                 });
 
-                using (FileStream stream = File.OpenRead(ResolvedFileName))
-                {
-                    await fileClient.AppendAsync(stream, 0, progressHandler: progressHandler, cancellationToken: CmdletCancellationToken).ConfigureAwait(false);
-                }
+                await fileClient.UploadAsync(ResolvedFileName,
+                    new DataLakeFileUploadOptions()
+                    {
+                        Metadata = metadata,
+                        Permissions = this.Permission,
+                        Umask = this.Umask != null ? DataLakeModels.PathPermissions.ParseSymbolicPermissions(this.Umask).ToOctalPermissions() : null,
+                        ProgressHandler = progressHandler,
+                        HttpHeaders = pathHttpHeaders
+                    },
+                    this.CmdletCancellationToken).ConfigureAwait(false);
+
                 WriteDataLakeGen2Item(Channel, fileClient, taskId: taskId);
             }
 

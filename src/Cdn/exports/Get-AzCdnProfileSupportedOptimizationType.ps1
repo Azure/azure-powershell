@@ -27,7 +27,7 @@ Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -P
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azcdnprofilesupportedoptimizationtype
+https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofilesupportedoptimizationtype
 #>
 function Get-AzCdnProfileSupportedOptimizationType {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.OptimizationType])]

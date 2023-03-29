@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginCreateWithHttpMessagesAsync(
                     policyName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient()
                 .ReplicationPolicies.BeginUpdateWithHttpMessagesAsync(
                     policyName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

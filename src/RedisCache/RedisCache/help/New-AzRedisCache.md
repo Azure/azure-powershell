@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
 ms.assetid: 81179AFE-6524-4F59-8BC2-3E152F51D1DD
-online version: https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscache
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/new-azrediscache
 schema: 2.0.0
 ---
 
@@ -151,7 +151,7 @@ New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central
 
 ### Example 5: Configure data persistence for a Premium Azure Cache for Redis
 
-Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need to have [storage account](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell) in same resource group. Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
+Persistence writes Redis data into an Azure Storage account that you own and manage. So before configuring data persistence you need to have [storage account](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-create?tabs=azure-powershell) in same resource group. Choose a storage account in the same region and subscription as the cache, and a Premium Storage account is recommended because premium storage has higher throughput.
 
 After creating a storage account, get the storage account connection string using this procedure.
 
@@ -159,7 +159,7 @@ After creating a storage account, get the storage account connection string usin
 1. From the output of above, copy any key.
 1. Put the storage account key and the storage account name in format below to get the connection string of your storage account.
 
-Connection String Format :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=core.windows.net"</br>
+Connection String Format :- "DefaultEndpointsProtocol=https;AccountName={storageAccountName};AccountKey={storageAccountKey};EndpointSuffix=mySuffix"</br>
 
 You must have the specific Redis configuration settings to enable data persistence.
 
@@ -171,7 +171,7 @@ For RDB backup enable
 
 
 ```powershell
-New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"; "rdb-backup-frequency" = "30"}
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"rdb-backup-enabled" = "true"; "rdb-storage-connection-string" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=mySuffix"; "rdb-backup-frequency" = "30"}
 ```
 
 ```output
@@ -204,7 +204,7 @@ For AOF back up enabled.
 -  aof-storage-connection-string-1 (You can optionally configure another storage account. If a second storage account is configured, the writes to the replica cache are written to this second storage account.)
 
 ```powershell
-New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=core.windows.net"}
+New-AzRedisCache -ResourceGroupName "MyGroup" -Name "MyCache" -Location "Central US" -Size P1 -Sku "Premium" -RedisConfiguration @{"aof-backup-enabled" = "true"; "aof-storage-connection-string-0" = "DefaultEndpointsProtocol=https;AccountName=mystorageaccount;AccountKey=pJ+jruGKPHDKsEC8kmoybobH3TZx2njBR3ipEsquZFo=;EndpointSuffix=mySuffix"}
 ```
 
 ```output
@@ -379,6 +379,10 @@ Configures the number of databases.
 This property can be configured only at cache creation.
 Standard and Premium tiers.
 For more information, see Manage Azure Redis Cache with Azure PowerShellhttp://go.microsoft.com/fwlink/?LinkId=800051 (http://go.microsoft.com/fwlink/?LinkId=800051).
+- preferred-data-archive-auth-method
+Preferred auth method to communicate to storage account used for data archive, specify SAS or ManagedIdentity, default value is SAS
+- preferred-data-persistence-auth-method
+Preferred auth method to communicate to storage account used for data persistence, specify SAS or ManagedIdentity, default value is SAS
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -393,7 +397,7 @@ Accept wildcard characters: False
 ```
 
 ### -RedisVersion
-Redis version. Valid values: 4, 6
+Redis version. This should be in the form 'major[.minor]' (only 'major' is required) or the value 'latest' which refers to the latest stable Redis version that is available. Supported versions: 4.0, 6.0 (latest). Default value is 'latest'.
 
 ```yaml
 Type: System.String
@@ -583,7 +587,7 @@ Accept wildcard characters: False
 ```
 
 ### -Zone
-List of Azure regions with [Availability zones](https://docs.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
+List of Azure regions with [Availability zones](https://learn.microsoft.com/en-us/azure/availability-zones/az-region#azure-services-supporting-availability-zones).
 
 ```yaml
 Type: System.String[]

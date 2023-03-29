@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend
 schema: 2.0.0
 ---
 
@@ -154,8 +154,7 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Management Uri of the Resource in External System.
-This parameter is optional.
-This url can be the Arm Resource Id of Logic Apps, Function Apps or Api Apps.
+The absolute http URL of the Azure Resource. This parameter is optional.
 
 ```yaml
 Type: System.String

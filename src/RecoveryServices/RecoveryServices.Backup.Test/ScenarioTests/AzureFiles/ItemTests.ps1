@@ -66,7 +66,6 @@ function Test-AzureFSItem
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 		
 		# VARIATION-1: Get all items for container
@@ -150,7 +149,6 @@ function Test-AzureFSBackup
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 
 		# Trigger backup and wait for completion
@@ -185,7 +183,6 @@ function Test-AzureFSProtection
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 
 		$item = Get-AzRecoveryServicesBackupItem `
@@ -231,7 +228,6 @@ function Test-AzureFSGetRPs
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 		$backupJob = Backup-Item $vault $item
 
@@ -270,7 +266,6 @@ function Test-AzureFSFullRestore
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName
 		$backupJob = Backup-Item $vault $item
 

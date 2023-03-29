@@ -41,7 +41,7 @@ INPUTOBJECT <IWindowsIotServicesIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group that contains the Windows IoT Device Service.
   [SubscriptionId <String>]: The subscription identifier.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.windowsiotservices/remove-azwindowsiotservicesdevice
+https://learn.microsoft.com/en-us/powershell/module/az.windowsiotservices/remove-azwindowsiotservicesdevice
 #>
 function Remove-AzWindowsIotServicesDevice {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.WindowsIotServices.Models.Api20190601.IDeviceService])]

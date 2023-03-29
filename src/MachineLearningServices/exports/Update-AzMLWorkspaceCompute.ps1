@@ -52,7 +52,7 @@ INPUTOBJECT <IMachineLearningServicesIdentity>: Identity Parameter
   [Version <String>]: Version identifier. This is case-sensitive.
   [WorkspaceName <String>]: Name of Azure Machine Learning workspace.
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacecompute
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlworkspacecompute
 #>
 function Update-AzMLWorkspaceCompute {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResource])]

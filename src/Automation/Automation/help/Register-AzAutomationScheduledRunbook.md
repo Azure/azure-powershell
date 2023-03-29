@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: F79AFF9A-CEDA-4E57-B5DB-9D0A7CDA6D27
-online version: https://docs.microsoft.com/powershell/module/az.automation/register-azautomationscheduledrunbook
+online version: https://learn.microsoft.com/powershell/module/az.automation/register-azautomationscheduledrunbook
 schema: 2.0.0
 ---
 
@@ -87,6 +87,7 @@ Specifies a hash table of key/value pairs.
 The keys are runbook parameter names.
 The values are runbook parameter values.
 When the runbook starts in response to the associated schedule, these parameters are passed to the runbook.
+Example: -Parameters @{"Key1"="Value1";"Key2"="Value2"}
 
 ```yaml
 Type: System.Collections.IDictionary

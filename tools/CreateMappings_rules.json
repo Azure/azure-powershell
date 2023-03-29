@@ -140,6 +140,10 @@
     "alias": "Networking"
   },
   {
+    "module": "Nginx",
+    "alias": "Nginx"
+  },
+  {
     "regex": "FrontDoor",
     "alias": "Front Door"
   },
@@ -404,6 +408,11 @@
     "alias": "Active Directory"
   },
   {
+    "regex": "ManagedApplication",
+    "group": "Resources",
+    "alias": "Managed Applications"
+  },
+  {
     "regex": "Resources",
     "group": "Resources",
     "alias": "Resources"
@@ -462,7 +471,7 @@
     "alias": "Kusto"
   },
   {
-    "regex": "Advisor",
+    "module": "Advisor",
     "alias": "Advisor"
   },
   {
@@ -766,5 +775,37 @@
   {
     "module": "DeviceUpdate",
     "alias": "DeviceUpdate"
+  },
+  {
+    "alias": "ElasticSan",
+    "module": "ElasticSan"
+  },
+  {
+    "alias": "SSH",
+    "module": "Ssh"
+  },
+  {
+    "alias": "Automanage",
+    "module": "Automanage"
+  },
+  {
+    "alias": "VoiceServices",
+    "module": "VoiceServices"
+  },
+  {
+    "module": "BillingBenefits",
+    "alias": "BillingBenefits"
+  },
+  {
+    "module": "LoadTesting",
+    "alias": "LoadTesting"
+  },
+  {
+    "alias": "MobileNetwork",
+    "module": "MobileNetwork"
+  },
+  {
+    "module": "ArcResourceBridge",
+    "alias": "ArcResourceBridge"
   }
 ]

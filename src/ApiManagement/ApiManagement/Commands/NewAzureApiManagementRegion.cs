@@ -16,6 +16,7 @@
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Management.ApiManagement.Models;
     using ResourceManager.Common;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
@@ -67,7 +68,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 new PsApiManagementRegion
                 {
                     Location = Location,
-                    Sku = PsApiManagementSku.Premium, // additional regions are only supported in Premium Sku
+                    Sku = SkuType.Premium, // additional regions are only supported in Premium Sku
                     Capacity = Capacity.HasValue ? Capacity.Value : 1,
                     VirtualNetwork = VirtualNetwork,
                     Zone = Zone,

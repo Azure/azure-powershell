@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceconnection
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/get-azmlworkspaceconnection
 schema: 2.0.0
 ---
 
 # Get-AzMLWorkspaceConnection
 
 ## SYNOPSIS
-
+Get the connection of the specified machine learning workspace.
 
 ## SYNTAX
 
@@ -31,7 +31,7 @@ Get-AzMLWorkspaceConnection -InputObject <IMachineLearningServicesIdentity> [-De
 ```
 
 ## DESCRIPTION
-
+Get the connection of the specified machine learning workspace.
 
 ## EXAMPLES
 

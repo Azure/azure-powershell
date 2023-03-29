@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
+online version: https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 schema: 2.0.0
 ---
 
@@ -17,8 +17,16 @@ Initializes Restore Request object for triggering restore on a protected backup 
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetResourceId <String>
  [-PointInTime <DateTime>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [<CommonParameters>]
+ [-RehydrationPriority <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
+ [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>] [<CommonParameters>]
+```
+
+### AlternateLocationILR
+```
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -ItemLevelRecovery
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
+ -TargetResourceId <String> [-RecoveryPoint <String>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
@@ -26,7 +34,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Res
 Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResource>
  -DatasourceType <DatasourceTypes> -RestoreLocation <String> -RestoreType <RestoreTargetType>
  -SourceDataStore <DataStoreType> [-PointInTime <DateTime>] [-RecoveryPoint <String>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreType <SecretStoreTypes>]
  [-SecretStoreURI <String>] [<CommonParameters>]
 ```
 
@@ -36,7 +45,8 @@ Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResourc
  -DatasourceType <DatasourceTypes> -ItemLevelRecovery -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> [-ContainersList <String[]>]
  [-FromPrefixPattern <String[]>] [-PointInTime <DateTime>] [-RecoveryPoint <String>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreType <SecretStoreTypes>]
  [-SecretStoreURI <String>] [-ToPrefixPattern <String[]>] [<CommonParameters>]
 ```
 
@@ -83,7 +93,6 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataS
 ObjectType                                 RestoreTargetInfoObjectType RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointTime
 ----------                                 --------------------------- ------------------------------- -------------------------------- ------------------- -----------------
 AzureBackupRecoveryTimeBasedRestoreRequest restoreTargetInfo           FailIfExists                    eastus2euap                      OperationalStore    2021-04-24T13:32:41.7018481Z
-
 ```
 
 This command initialized a restore request object which can be used to trigger restore for Blobs.
@@ -101,7 +110,6 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataS
 ObjectType                                 RestoreTargetInfoObjectType RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointTime
 ----------                                 --------------------------- ------------------------------- -------------------------------- ------------------- -----------------
 AzureBackupRecoveryTimeBasedRestoreRequest itemLevelRestoreTargetInfo  FailIfExists                    eastus2euap                      OperationalStore    2021-04-23T02:47:02.9500000Z
-
 ```
 
 This command initialized a restore request object which can be used to trigger Item Level Recovery at container level for Blobs.
@@ -119,7 +127,6 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataS
 ObjectType                                 RestoreTargetInfoObjectType RestoreTargetInfoRecoveryOption RestoreTargetInfoRestoreLocation SourceDataStoreType RecoveryPointTime
 ----------                                 --------------------------- ------------------------------- -------------------------------- ------------------- -----------------
 AzureBackupRecoveryTimeBasedRestoreRequest itemLevelRestoreTargetInfo  FailIfExists                    eastus2euap                      OperationalStore    2021-04-23T02:47:02.9500000Z
-
 ```
 
 This command initialized a restore request object which can be used to trigger Item Level Recovery at blobs level based on name prefixes under Blob containers.
@@ -133,7 +140,7 @@ FromPrefix           ToPrefix
 "container3"        "container3-0"   (restores whole container3)
                     
 Note: The ranges shouldn't overlap with each other.
-Reference: https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
+Reference: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
 
 ## PARAMETERS
 
@@ -142,7 +149,7 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -214,11 +221,11 @@ Accept wildcard characters: False
 ```
 
 ### -ItemLevelRecovery
-Switch Parameter to enable item level recovery.
+Switch parameter to enable item level recovery.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: OriginalLocationILR
+Parameter Sets: AlternateLocationILR, OriginalLocationILR
 Aliases:
 
 Required: True
@@ -263,7 +270,7 @@ Rehydration duration for the archived recovery point to stay rehydrated, default
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
 
 Required: False
@@ -279,7 +286,24 @@ This parameter is mandatory for rehydrate restore of archived points.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreConfiguration
+Restore configuration for restore.
+Use this parameter to restore with AzureKubernetesService.
+To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteria
+Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
 Required: False
@@ -325,7 +349,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
-Parameter Sets: (All)
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
 
 Required: False
@@ -341,7 +365,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
 
 Required: False
@@ -386,7 +410,7 @@ Target resource Id to which backup data will be restored.
 
 ```yaml
 Type: System.String
-Parameter Sets: AlternateLocationFullRecovery
+Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR
 Aliases:
 
 Required: True
@@ -418,7 +442,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
 
 ## NOTES
 
@@ -429,7 +453,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BACKUPINSTANCE `<BackupInstanceResource>`: Backup Instance object to trigger original localtion restore.
+`BACKUPINSTANCE <BackupInstanceResource>`: Backup Instance object to trigger original localtion restore.
   - `[Property <IBackupInstance>]`: BackupInstanceResource properties
     - `DataSourceInfo <IDatasource>`: Gets or sets the data source information.
       - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
@@ -443,6 +467,8 @@ BACKUPINSTANCE `<BackupInstanceResource>`: Backup Instance object to trigger ori
     - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
       - `PolicyId <String>`: 
       - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
+        - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
+          - `ObjectType <String>`: Type of the specific object - used for deserializing
         - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
           - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
           - `ObjectType <String>`: Type of the specific object - used for deserializing
@@ -458,6 +484,21 @@ BACKUPINSTANCE `<BackupInstanceResource>`: Backup Instance object to trigger ori
       - `ObjectType <String>`: Type of the specific object - used for deserializing
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
     - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+  - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+`RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>`: Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.
+  - `IncludeClusterScopeResource <Boolean>`: Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+  - `ObjectType <String>`: Type of the specific object - used for deserializing
+  - `[ConflictPolicy <ExistingResourcePolicy?>]`: Gets or sets the Conflict Policy property. This property sets policy during conflict of resources during restore.
+  - `[ExcludedNamespace <String[]>]`: Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+  - `[ExcludedResourceType <String[]>]`: Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+  - `[IncludedNamespace <String[]>]`: Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+  - `[IncludedResourceType <String[]>]`: Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+  - `[LabelSelector <String[]>]`: Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+  - `[NamespaceMapping <IKubernetesClusterRestoreCriteriaNamespaceMappings>]`: Gets or sets the Namespace Mappings property. This property sets if namespace needs to be change during restore.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+  - `[PersistentVolumeRestoreMode <PersistentVolumeRestoreMode?>]`: Gets or sets the PV (Persistent Volume) Restore Mode property. This property sets whether volumes needs to be restored.
 
 ## RELATED LINKS
 

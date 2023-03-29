@@ -17,13 +17,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewallHubIpAddresses), DeprecatedOutputProperties = new[] { "publicIPAddresses" })]
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewall), DeprecatedOutputProperties = new[] { "IdentifyTopFatFlow" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
     public class SetAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
@@ -43,6 +40,14 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.IsAzureFirewallPresent(this.AzureFirewall.ResourceGroupName, this.AzureFirewall.Name))
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+            }
+
+            if (this.AzureFirewall.Sku != null && this.AzureFirewall.Sku.Tier != null && this.AzureFirewall.Sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.AzureFirewall.Location))
+            {
+                if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.AzureFirewall.Location))
+                {
+                    throw new ArgumentException("Basic Sku Firewall is not supported in this region yet - " + this.AzureFirewall.Location, nameof(this.AzureFirewall.Location));
+                }
             }
 
             // Map to the sdk object

@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices", "RecoveryServices\RecoveryServices.csproj", "{604260DC-B392-4CF4-81EC-34B14591E2D2}"
 EndProject
@@ -47,6 +47,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.AlcWrapper", "..\Compute\Compute.AlcWrapper\Compute.AlcWrapper.csproj", "{2F7F35C7-945E-44F3-B77F-817FD58663FE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Compute", "..\Compute\Compute.Autorest\Az.Compute.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Management.Sdk", "RecoveryServices.Management.Sdk\RecoveryServices.Management.Sdk.csproj", "{7794316A-C01A-4553-95F2-0D90A76E29D0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup.Management.Sdk", "RecoveryServices.Backup.Management.Sdk\RecoveryServices.Backup.Management.Sdk.csproj", "{80E8A865-6AA5-487E-86D2-F96B8E1BE97A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.Backup.CrossRegionRestore.Management.Sdk", "RecoveryServices.Backup.CrossRegionRestore.Management.Sdk\RecoveryServices.Backup.CrossRegionRestore.Management.Sdk.csproj", "{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecoveryServices.SiteRecovery.Management.Sdk", "RecoveryServices.SiteRecovery.Management.Sdk\RecoveryServices.SiteRecovery.Management.Sdk.csproj", "{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -142,6 +150,22 @@ Global
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7794316A-C01A-4553-95F2-0D90A76E29D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7794316A-C01A-4553-95F2-0D90A76E29D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7794316A-C01A-4553-95F2-0D90A76E29D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7794316A-C01A-4553-95F2-0D90A76E29D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E8A865-6AA5-487E-86D2-F96B8E1BE97A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E8A865-6AA5-487E-86D2-F96B8E1BE97A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E8A865-6AA5-487E-86D2-F96B8E1BE97A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E8A865-6AA5-487E-86D2-F96B8E1BE97A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5976479A-21D1-49E2-BAB8-4AC2F1AA2462}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87F6AF90-9E0E-4EE7-BAD1-D38E7A04257B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

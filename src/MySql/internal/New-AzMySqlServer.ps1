@@ -22,11 +22,7 @@ The update action will overwrite the existing server.
 Creates a new server or updates an existing server.
 The update action will overwrite the existing server.
 .Example
-PS C:\> New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
-
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
+New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerForCreate
@@ -73,7 +69,7 @@ PARAMETER <IServerForCreate>: Represents a server to be created.
     [(Any) <String>]: This indicates any property can be added to this object.
   [Version <ServerVersion?>]: Server version.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserver
 #>
 function New-AzMySqlServer {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer])]
@@ -328,6 +324,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.MySql.private\New-AzMySqlServer_Create';
             CreateExpanded = 'Az.MySql.private\New-AzMySqlServer_CreateExpanded';
@@ -343,6 +340,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -351,15 +349,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -20,7 +20,7 @@ Get-AzDataMigrationSqlService  -ResourceGroupName "MyResourceGroup"
 Location  Name                   Type                                         ProvisioningState IntegrationRuntimeState
 --------  ----                   ----                                         ----------------- -----------------------
 eastus    MySqlMigrationService1 Microsoft.DataMigration/sqlMigrationServices Succeeded
-eastus2   MySqlMigrationService  Microsoft.DataMigration/sqlMigrationServices Succeeded                  
+eastus2   MySqlMigrationService  Microsoft.DataMigration/sqlMigrationServices Succeeded
 ```
 
 This command gets all Sql Migration Services in a given Resource Group.
@@ -35,7 +35,7 @@ Location  Name                      Type                                        
 --------  ----                      ----                                         ----------------- -----------------------
 eastus    MySqlMigrationService1    Microsoft.DataMigration/sqlMigrationServices Succeeded
 eastus2   MySqlMigrationService     Microsoft.DataMigration/sqlMigrationServices Succeeded
-uksouth   MySqlMigrationService-UK  Microsoft.DataMigration/sqlMigrationServices Succeeded                   
+uksouth   MySqlMigrationService-UK  Microsoft.DataMigration/sqlMigrationServices Succeeded
 ```
 
 This command gets all Sql Migration Services in a given Subscription.

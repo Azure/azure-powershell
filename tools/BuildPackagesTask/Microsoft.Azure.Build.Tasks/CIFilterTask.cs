@@ -69,11 +69,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         private const string RelatedModule = "related-module"; // self, modules that self dependent on and modules dependent on this module
 
         private const string BUILD_PHASE = "build";
-        private const string ANALYSIS_BREAKING_CHANGE_PHASE = "breaking-change";
-        private const string ANALYSIS_HELP_PHASE = "help";
-        private const string ANALYSIS_DEPENDENCY_PHASE = "dependency";
-        private const string ANALYSIS_SIGNATURE_PHASE = "signature";
         private const string TEST_PHASE = "test";
+        private readonly List<string> ANALYSIS_PHASE_LIST = new List<string>() { "breaking-change", "help-example", "help", "dependency", "signature", "file-change", "ux" };
+        private readonly List<string> ONLY_AFFECT_MODULE_PHASE_LIST = new List<string>() { "cmdlet-diff" }; // These phases will be triggered only when the module is modified, not when its dependent module is updated.
         private const string ACCOUNT_MODULE_NAME = "Accounts";
 
         private const string MODULE_NAME_PLACEHOLDER = "ModuleName";
@@ -175,8 +173,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
-            return GetRelatedCsprojList(moduleName, csprojMap)
-                .Where(x => x.Contains("Test")).ToList();;
+            List<string> csprojList = GetRelatedCsprojList(moduleName, csprojMap)
+                .Where(x => x.Contains("Test")).ToList();
+            if (csprojList.Count == 0)
+            {
+                csprojList.Add(moduleName);
+            }
+            return csprojList;
         }
 
         private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
@@ -184,12 +187,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
             {
                 [BUILD_PHASE] = new HashSet<string>(GetBuildCsprojList(TargetModule, csprojMap).ToList()),
-                [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
-                [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
-                [ANALYSIS_HELP_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
-                [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()),
                 [TEST_PHASE] = new HashSet<string>(GetTestCsprojList(TargetModule, csprojMap).ToList())
             };
+            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+            {
+                influencedModuleInfo.Add(analysisPhase, new HashSet<string>(GetDependenceModuleList(TargetModule, csprojMap).ToList()));
+            }
 
             Console.WriteLine("----------------- InfluencedModuleInfo TargetModule -----------------");
             foreach (string phaseName in influencedModuleInfo.Keys)
@@ -199,7 +202,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             Console.WriteLine("--------------------------------------------------------");
 
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
-            
+
             return true;
         }
 
@@ -238,19 +241,19 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     phaseList = new List<string>()
                     {
                         BUILD_PHASE + ":" + AllModule,
-                        ANALYSIS_BREAKING_CHANGE_PHASE + ":" + AllModule,
-                        ANALYSIS_DEPENDENCY_PHASE + ":" + AllModule,
-                        ANALYSIS_HELP_PHASE + ":" + AllModule,
-                        ANALYSIS_SIGNATURE_PHASE + ":" + AllModule,
                         TEST_PHASE + ":" + AllModule,
                     };
+                    foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+                    {
+                        phaseList.Add(string.Format("{0}:{1}", analysisPhase, AllModule));
+                    }
                 }
                 foreach (string phase in phaseList)
                 {
                     string phaseName = phase.Split(':')[0];
                     string scope = phase.Split(':')[1];
                     HashSet<string> scopes = influencedModuleInfo.ContainsKey(phaseName) ? influencedModuleInfo[phaseName] : new HashSet<string>();
-                    if (scope.Equals(AllModule))
+                    if (scope.Equals(AllModule) && !ONLY_AFFECT_MODULE_PHASE_LIST.Contains(phaseName))
                     {
                         scopes.UnionWith(GetSelectedModuleList());
                     }
@@ -285,12 +288,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             List<string> expectedKeyList = new List<string>()
             {
                 BUILD_PHASE,
-                ANALYSIS_BREAKING_CHANGE_PHASE,
-                ANALYSIS_DEPENDENCY_PHASE,
-                ANALYSIS_HELP_PHASE,
-                ANALYSIS_SIGNATURE_PHASE,
                 TEST_PHASE
             };
+            expectedKeyList.AddRange(ANALYSIS_PHASE_LIST);
             foreach (string phaseName in expectedKeyList)
             {
                 if (!influencedModuleInfo.ContainsKey(phaseName))
@@ -337,7 +337,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     }
                     if (csprojSet.Count != 0)
                     {
-                        foreach (string filename in Directory.GetFiles(@"src/Accounts", "*.csproj", SearchOption.AllDirectories).Where(x => !x.Contains("Test")))
+                        foreach (string filename in Directory.GetFiles(@"src\Accounts", "*.csproj", SearchOption.AllDirectories).Where(x => !x.Contains("Test")))
                         {
                             csprojSet.Add(filename);
                         }
@@ -353,7 +353,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     }
                     if (csprojSet.Count != 0)
                     {
-                        csprojSet.Add("tools/TestFx/TestFx.csproj");
+                        csprojSet.Add(@"tools\TestFx\TestFx.csproj");
                     }
                     influencedModuleInfo[phaseName] = csprojSet;
                 }
@@ -394,10 +394,39 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             influencedModuleInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
             DateTime endTime = DateTime.Now;
             Console.WriteLine(string.Format("Takes {0} seconds for RE match, {1} seconds for phase config.", (endOfRegularExpressionTime - startTime).TotalSeconds, (endTime - endOfRegularExpressionTime).TotalSeconds));
-            
+
             FilterTaskResult.PhaseInfo = influencedModuleInfo;
 
+            if (!Directory.Exists(config.ArtifactPipelineInfoFolder))
+            {
+                Directory.CreateDirectory(config.ArtifactPipelineInfoFolder);
+            }
+            Dictionary<string, HashSet<string>> CIPlan = new Dictionary<string, HashSet<string>>
+            {
+                [BUILD_PHASE] = new HashSet<string>(influencedModuleInfo[BUILD_PHASE].Select(GetModuleNameFromPath).Where(x => x != null)),
+                [TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Select(GetModuleNameFromPath).Where(x => x != null))
+            };
+            foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+            {
+                CIPlan.Add(analysisPhase, influencedModuleInfo[analysisPhase]);
+            }
+            File.WriteAllText(Path.Combine(config.ArtifactPipelineInfoFolder, "CIPlan.json"), JsonConvert.SerializeObject(CIPlan, Formatting.Indented));
+            influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
+
             return true;
+        }
+
+        private string GetModuleNameFromPath(string path)
+        {
+            if (path.IndexOf(".csproj") == -1)
+            {
+                return path;
+            }
+            if (path.IndexOf("src") == -1)
+            {
+                return null;
+            }
+            return path.Replace("\\", "/").Split("src/")[1].Split('/')[0];
         }
 
         /// <summary>
@@ -429,12 +458,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
                     {
                         [BUILD_PHASE] = new HashSet<string>(selectedModuleList),
-                        [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>(selectedModuleList),
-                        [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>(selectedModuleList),
-                        [ANALYSIS_HELP_PHASE] = new HashSet<string>(selectedModuleList),
-                        [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>(selectedModuleList),
                         [TEST_PHASE] = new HashSet<string>(selectedModuleList)
                     };
+                    foreach (var analysisPhase in ANALYSIS_PHASE_LIST)
+                    {
+                        influencedModuleInfo.Add(analysisPhase, new HashSet<string>(selectedModuleList));
+                    }
                     FilterTaskResult.PhaseInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
                     return true;
                 }

@@ -1,7 +1,7 @@
 ---
 Module Name: Az.OperationalInsights
 Module Guid: e827799a-7abf-4538-a61f-94dc52a48bd4
-Download Help Link: https://docs.microsoft.com/powershell/module/az.operationalinsights
+Download Help Link: https://learn.microsoft.com/powershell/module/az.operationalinsights
 Help Version: 4.3.2.0
 Locale: en-US
 ---
@@ -54,7 +54,7 @@ List deleted workspaces.
 Gets the available Intelligence Packs.
 
 > [!NOTE]
-> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://learn.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://learn.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Get-AzOperationalInsightsLinkedService](Get-AzOperationalInsightsLinkedService.md)
 Get or list linked service for workspace
@@ -191,7 +191,7 @@ Updates a data source.
 ### [Set-AzOperationalInsightsIntelligencePack](Set-AzOperationalInsightsIntelligencePack.md)
 Enables or disables the specified Intelligence Pack.
 > [!NOTE]
-> Solutions is being deprecated, please use [az monitor log-analytics solution](https://docs.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://docs.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
+> Solutions is being deprecated, please use [az monitor log-analytics solution](https://learn.microsoft.com/en-us/cli/azure/monitor/log-analytics/solution?view=azure-cli-latest) and [Get-AzMonitorLogAnalyticsSolution](https://learn.microsoft.com/en-us/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution?view=azps-5.9.0) instead if this command.
 
 ### [Set-AzOperationalInsightsLinkedService](Set-AzOperationalInsightsLinkedService.md)
 link service for workspace

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoveragent
 schema: 2.0.0
 ---
 
@@ -82,7 +82,7 @@ The Agent resource.
 To construct, see NOTES section for AGENT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IAgentUpdateParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IAgentUpdateParameters
 Parameter Sets: Update, UpdateViaIdentity
 Aliases:
 
@@ -236,13 +236,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IAgentUpdateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IAgentUpdateParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IAgent
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IAgent
 
 ## NOTES
 

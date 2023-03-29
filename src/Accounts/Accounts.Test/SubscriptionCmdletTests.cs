@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             TestRunner.RunTestScript("Test-GetSubscriptionsEndToEnd");
         }
 
-        [Fact]
+        [Fact(Skip ="Need a service principal that can access more than one subscription.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureRmContextWorks()
         {

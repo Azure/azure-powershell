@@ -55,13 +55,14 @@ namespace Microsoft.Azure.Commands.DataLake.Test.ScenarioTests
                 .WithRecordMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => new UrlDecodingRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore)
                 )
-                .WithMockContextAction(
-                    mockContext =>
+                .WithManagementClients(mockContext =>
                     {
                         var currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
                         AdlsClientFactory.IsTest = true;
                         AdlsClientFactory.CustomDelegatingHAndler = mockContext.AddHandlers(currentEnvironment, new AdlMockDelegatingHandler());
                         AdlsClientFactory.MockCredentials = currentEnvironment.TokenInfo[TokenAudience.Management];
+                        var dummyObj = new object();
+                        return dummyObj;
                     }
                 )
                 .WithCleanupAction(

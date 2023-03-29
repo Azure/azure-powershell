@@ -41,7 +41,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
   [TargetDbName <String>]: The name of the target database.
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservice
+https://learn.microsoft.com/powershell/module/az.datamigration/remove-azdatamigrationsqlservice
 #>
 function Remove-AzDataMigrationSqlService {
 [OutputType([System.Boolean])]
@@ -150,7 +150,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -159,8 +159,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
 
         public const string BreakingChangeNotification = "- PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.";
-        public const string DeprecateByVersion = "Az 9.0";
-        public const string ChangeInEffectByDate = "12th October, 2022";
+        public const string DeprecateByVersion = "Az 10.0";
+        public const string ChangeInEffectByDate = "23rd May, 2023";
         public const string TimespanBreakingChange = "Input type of the parameter has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables.";
 
         public static TimeSpan ParseTimespan(string strTimespan)

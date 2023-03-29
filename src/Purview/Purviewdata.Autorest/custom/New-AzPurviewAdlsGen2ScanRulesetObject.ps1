@@ -23,7 +23,7 @@ Create an in-memory object for AdlsGen2ScanRuleset.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2ScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen2ScanRulesetObject
 #>
 function New-AzPurviewAdlsGen2ScanRulesetObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen2ScanRuleset')]

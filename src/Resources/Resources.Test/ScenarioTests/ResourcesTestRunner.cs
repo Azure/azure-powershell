@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     },
                     resourceProviders: new Dictionary<string, string>()
                 )
-                .WithMockContextAction(mockContext =>
+                .WithManagementClients(mockContext =>
                 {
                     var credentials = HttpMockServer.Mode != HttpRecorderMode.Playback
                         ? new Func<ServiceClientCredentials>(() =>
@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         : new TokenCredentials("foo");
 
                     HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
+                    return HttpClientHelperFactory.Instance;
                 })
                 .Build();
         }

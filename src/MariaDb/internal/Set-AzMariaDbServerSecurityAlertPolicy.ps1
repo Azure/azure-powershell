@@ -45,7 +45,7 @@ PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbserversecurityalertpolicy
+https://learn.microsoft.com/en-us/powershell/module/az.mariadb/set-azmariadbserversecurityalertpolicy
 #>
 function Set-AzMariaDbServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServerSecurityAlertPolicy])]

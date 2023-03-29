@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: A96A1A67-6C9C-499F-9935-B90F7ACEB50E
-online version: https://docs.microsoft.com/powershell/module/az.storage/start-azstoragefilecopy
+online version: https://learn.microsoft.com/powershell/module/az.storage/start-azstoragefilecopy
 schema: 2.0.0
 ---
 
@@ -99,16 +99,16 @@ This cmdlet will trigger asynchronous blob copy, the copy process is handled by 
 ## EXAMPLES
 
 ### Example 1: Start copy operation from file to file by using share name and file name
-```
-PS C:\>Start-AzStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
+```powershell
+Start-AzStorageFileCopy -SrcShareName "ContosoShare01" -SrcFilePath "FilePath01" -DestShareName "ContosoShare02" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from file to file.
 The command specifies share name and file name
 
 ### Example 2: Start copy operation from blob to file by using container name and blob name
-```
-PS C:\>Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
+```powershell
+Start-AzStorageFileCopy -SrcContainerName "ContosoContainer01" -SrcBlobName "ContosoBlob01" -DestShareName "ContosoShare" -DestFilePath "FilePath02"
 ```
 
 This command starts a copy operation from blob to file.
@@ -447,7 +447,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

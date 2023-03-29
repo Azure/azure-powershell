@@ -18,7 +18,24 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Set default value for `-RepositoryUrl` of `New-AzStaticWebApp` [#21202]
 
+## Version 2.13.0
+* Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
+* Added a new parametre `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
+* Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]
+* Added a new parameter `-CopyIdentity` for `New-AzWebAppSlot` to copy the identity from the parent app to the slot.
+* Updated `New-AzWebAppSSLBinding` to support -WhatIf parameter
+
+## Version 2.12.1
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as portal [#19592]
+
+## Version 2.12.0
+* Added Tag parameter for `New-AzWebApp` and `New-AzWebAppSlot`
+* Fixed `Set-AzWebApp` and `Set-AZWebAppSlot` to rethrow exception when Service Principal/User doesn't have permission to list web app configuration. [#19942]
+
+## Version 2.11.5
+* Fixed `Publish-AzWebApp` to use latest publish API when deploying war package [#19791]
 ## Version 2.11.4
 * Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
 

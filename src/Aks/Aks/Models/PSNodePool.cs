@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.ContainerService.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Aks.Models
@@ -96,10 +97,36 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public int? OsDiskSizeGB { get; set; }
 
         /// <summary>
+        /// Gets or sets possible values include: 'Managed', 'Ephemeral'
+        /// </summary>
+        public string OsDiskType { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'OS', 'Temporary'
+        /// </summary>
+        public string KubeletDiskType { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'OCIContainer', 'WasmWasi'
+        /// </summary>
+        public string WorkloadRuntime { get; set; }
+
+        /// <summary>
         /// Gets or sets vNet SubnetID specifies the VNet's subnet identifier.
         /// </summary>
 
         public string VnetSubnetID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID of the subnet which pods will join when
+        /// launched.
+        /// </summary>
+        /// <remarks>
+        /// If omitted, pod IPs are statically assigned on the node subnet (see
+        /// vnetSubnetID for more details). This is of the form:
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
+        /// </remarks>
+        public string PodSubnetID { get; set; }
 
         /// <summary>
         /// Gets or sets maximum number of pods that can run on a node.
@@ -114,6 +141,12 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
 
         public string OsType { get; set; }
+
+        /// <summary>
+        /// Gets or sets possible values include: 'Ubuntu', 'CBLMariner',
+        /// 'Windows2019', 'Windows2022'
+        /// </summary>
+        public string OsSKU { get; set; }
 
         /// <summary>
         /// Gets or sets maximum number of nodes for auto-scaling
@@ -134,6 +167,23 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public bool? EnableAutoScaling { get; set; }
 
         /// <summary>
+        /// Gets or sets the scale down mode to use when scaling the Agent
+        /// Pool.
+        /// </summary>
+        /// <remarks>
+        /// This also effects the cluster autoscaler behavior. If not
+        /// specified, it defaults to Delete. Possible values include:
+        /// 'Delete', 'Deallocate'
+        /// </remarks>
+        public string ScaleDownMode { get; set; }
+
+
+        /// <summary>
+        /// Gets or sets mode for agent pool System or User
+        /// </summary>
+        public string Mode { get; set; }
+
+        /// <summary>
         /// Gets or sets agentPoolType represents types of an node pool.
         /// Possible values include: 'VirtualMachineScaleSets',
         /// 'AvailabilitySet'
@@ -149,11 +199,44 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string OrchestratorVersion { get; set; }
 
         /// <summary>
+        /// Gets the version of Kubernetes the Agent Pool is running.
+        /// </summary>
+        /// <remarks>
+        /// If orchestratorVersion is a fully specified version
+        /// (major.minor.patch), this field will be exactly equal to it. If
+        /// orchestratorVersion is (major.minor), this field will contain the
+        /// full (major.minor.patch) version being used.
+        /// </remarks>
+        public string CurrentOrchestratorVersion { get; private set; }
+
+        /// <summary>
+        /// Gets the version of node image
+        /// </summary>
+        public string NodeImageVersion { get; private set; }
+
+        /// <summary>
+        /// Gets or sets settings for upgrading the agentpool
+        /// </summary>
+        public AgentPoolUpgradeSettings UpgradeSettings { get; set; }
+
+        /// <summary>
         /// Gets the current deployment or provisioning state, which only
         /// appears in the response.
         /// </summary>
 
         public string ProvisioningState { get; private set; }
+
+        /// <summary>
+        /// Gets or sets whether the Agent Pool is running or stopped.
+        /// </summary>
+        /// <remarks>
+        /// When an Agent Pool is first created it is initially Running. The
+        /// Agent Pool can be stopped by setting this field to Stopped. A
+        /// stopped Agent Pool stops all of its VMs and does not accrue billing
+        /// charges. An Agent Pool can only be stopped if it is Running and
+        /// provisioning state is Succeeded
+        /// </remarks>
+        public PowerState PowerState { get; set; }
 
         /// <summary>
         /// Gets or sets (PREVIEW) Availability zones for nodes. Must use
@@ -167,6 +250,16 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
 
         public bool? EnableNodePublicIP { get; set; }
+
+        /// <summary>
+        /// Gets or sets the public IP prefix ID which VM nodes should use IPs
+        /// from.
+        /// </summary>
+        /// <remarks>
+        /// This is of the form:
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPPrefixes/{publicIPPrefixName}
+        /// </remarks>
+        public string NodePublicIPPrefixID { get; set; }
 
         /// <summary>
         /// Gets or sets scaleSetPriority to be used to specify virtual machine
@@ -185,11 +278,104 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string ScaleSetEvictionPolicy { get; set; }
 
         /// <summary>
+        /// Gets or sets the max price (in US Dollars) you are willing to pay
+        /// for spot instances. Possible values are any decimal value greater
+        /// than zero or -1 which indicates default price to be up-to
+        /// on-demand.
+        /// </summary>
+        /// <remarks>
+        /// Possible values are any decimal value greater than zero or -1 which
+        /// indicates the willingness to pay any on-demand price. For more
+        /// details on spot pricing, see [spot VMs
+        /// pricing](https://learn.microsoft.com/azure/virtual-machines/spot-vms#pricing)
+        /// </remarks>
+        public double? SpotMaxPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets the tags to be persisted on the agent pool virtual
+        /// machine scale set.
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Gets or sets the node labels to be persisted across all nodes in
+        /// agent pool.
+        /// </summary>
+        public IDictionary<string, string> NodeLabels { get; set; }
+
+        /// <summary>
         /// Gets or sets taints added to new nodes during node pool create and
         /// scale. For example, key=value:NoSchedule.
         /// </summary>
 
         public IList<string> NodeTaints { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ID for Proximity Placement Group.
+        /// </summary>
+        public string ProximityPlacementGroupID { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Kubelet configuration on the agent pool nodes.
+        /// </summary>
+        public KubeletConfig KubeletConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets the OS configuration of Linux agent nodes.
+        /// </summary>
+        public LinuxOSConfig LinuxOSConfig { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable host based OS and data drive
+        /// encryption.
+        /// </summary>
+        /// <remarks>
+        /// This is only supported on certain VM sizes and in certain Azure
+        /// regions. For more information, see:
+        /// https://learn.microsoft.com/azure/aks/enable-host-encryption
+        /// </remarks>
+        public bool? EnableEncryptionAtHost { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to enable UltraSSD
+        /// </summary>
+        public bool? EnableUltraSSD { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether to use a FIPS-enabled OS.
+        /// </summary>
+        /// <remarks>
+        /// See [Add a FIPS-enabled node
+        /// pool](https://learn.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview)
+        /// for more details.
+        /// </remarks>
+        public bool? EnableFIPS { get; set; }
+
+        /// <summary>
+        /// Gets or sets gPUInstanceProfile to be used to specify GPU MIG
+        /// instance profile for supported GPU VM SKU. Possible values include:
+        /// 'MIG1g', 'MIG2g', 'MIG3g', 'MIG4g', 'MIG7g'
+        /// </summary>
+        public string GpuInstanceProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets creationData to be used to specify the source Snapshot
+        /// ID if the node pool will be created/upgraded using a snapshot.
+        /// </summary>
+        public CreationData CreationData { get; set; }
+
+        /// <summary>
+        /// Gets or sets the fully qualified resource ID of the Dedicated Host
+        /// Group to provision virtual machines from, used only in creation
+        /// scenario and not allowed to changed once set.
+        /// </summary>
+        /// <remarks>
+        /// This is of the form:
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
+        /// For more information see [Azure dedicated
+        /// hosts](https://learn.microsoft.com/azure/virtual-machines/dedicated-hosts).
+        /// </remarks>
+        public string HostGroupID { get; set; }
 
     }
 }

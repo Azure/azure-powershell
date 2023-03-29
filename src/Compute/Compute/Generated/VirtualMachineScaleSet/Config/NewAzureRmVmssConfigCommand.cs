@@ -292,6 +292,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Replace", "Restart", "Reimage")]
         public string AutomaticRepairAction { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The number of VMs that should be regular priority VMs before adding any Spot VMs",
+            ValueFromPipelineByPropertyName = true)]
+        public int BaseRegularPriorityCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The percentage of VMs that should be regular priority after the base number of regular priority VMs has been reached",
+            ValueFromPipelineByPropertyName = true)]
+        public int RegularPriorityPercentage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the gallery image resource id for vmss deployment. This can be fetched from the gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -331,6 +354,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             // ExtendedLocation
             CM.PSExtendedLocation vExtendedLocation = null;
+
+            // PriorityMix
+            PriorityMixPolicy vPriorityMixPolicy = null;
 
             if (this.IsParameterBound(c => c.SkuName))
             {
@@ -711,6 +737,62 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vAutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
             }
 
+            if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.BaseRegularPriorityCount = this.BaseRegularPriorityCount;
+            }
+
+            if (this.IsParameterBound(c => c.RegularPriorityPercentage))
+            {
+                if (vPriorityMixPolicy == null)
+                {
+                    vPriorityMixPolicy = new PriorityMixPolicy();
+                }
+                vPriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.ImageReferenceId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+
+            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
+            }
+
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet
             {
                 Overprovision = this.IsParameterBound(c => c.Overprovision) ? this.Overprovision : (bool?)null,
@@ -732,7 +814,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ScaleInPolicy = vScaleInPolicy,
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
-                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null
+                SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
+                PriorityMixPolicy = vPriorityMixPolicy 
             };
 
             WriteObject(vVirtualMachineScaleSet);

@@ -23,7 +23,7 @@ Create an in-memory object for AzureFileServiceScanRuleset.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceScanRulesetObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceScanRulesetObject
 #>
 function New-AzPurviewAzureFileServiceScanRulesetObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceScanRuleset')]

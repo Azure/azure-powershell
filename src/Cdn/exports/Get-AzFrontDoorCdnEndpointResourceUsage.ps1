@@ -25,7 +25,7 @@ Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName testps-rg-da16jm -Pro
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpointresourceusage
+https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnendpointresourceusage
 #>
 function Get-AzFrontDoorCdnEndpointResourceUsage {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage])]

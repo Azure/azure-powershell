@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     mappingName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             var op = this.GetSiteRecoveryClient().ReplicationProtectionContainers.BeginCreateWithHttpMessagesAsync(
                 fabricName,
                 protectionContainerName,
-                input,
+                input.Properties,
                 this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();
@@ -197,11 +197,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     mappingName,
-                    updateInput,
+                    updateInput.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
-                .GetResult()
-                .Body;
+                .GetResult();
             var result = SiteRecoveryAutoMapperProfile.Mapper.Map<PSSiteRecoveryLongRunningOperation>(op);
             return result;
         }
@@ -292,7 +291,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     fabricName,
                     protectionContainerName,
                     mappingName,
-                    input,
+                    input.Properties,
                     this.GetRequestHeaders(true))
                 .GetAwaiter()
                 .GetResult();

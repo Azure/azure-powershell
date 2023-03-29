@@ -1,7 +1,9 @@
 ### Example 1: Create a comparison expression object of query for cost management export
 ```powershell
-PS C:\> New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
+New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
+```
 
+```output
 Name             Operator Value
 ----             -------- -----
 ResourceLocation In       {East US, West Europe}

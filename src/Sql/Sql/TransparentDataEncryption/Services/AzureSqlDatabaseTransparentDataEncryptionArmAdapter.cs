@@ -148,6 +148,21 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
                 model.ResourceGroupName, model.ManagedInstanceName, managedInstanceEncryptionProtector);
         }
 
+        public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel GetAzureRmSqlManagedInstanceTransparentDataEncryptionProtector(string resourceGroupName, string managedInstanceName)
+        {
+            var managedInstanceEncryptionProtector = Communicator.GetManagedInstanceEncryptionProtector(
+                resourceGroupName: resourceGroupName,
+                managedInstanceName: managedInstanceName);
+
+            return AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel.FromManagedInstanceEncryptionProtector(
+                resourceGroupName, managedInstanceName, managedInstanceEncryptionProtector);
+        }
+
+        public void RevalidateAzureRmSqlManagedInstanceTransparentDataEncryptionProtector(string resourceGroupName, string managedInstanceName)
+        {
+            Communicator.RevalidateManagedInstanceEncryptionProtector(resourceGroupName, managedInstanceName);
+        }
+
         public AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel CreateOrUpdateManagedInstanceEncryptionProtector(AzureRmSqlManagedInstanceTransparentDataEncryptionProtectorModel model)
         {
             ManagedInstanceEncryptionProtector managedInstanceEncryptionProtector = Communicator.CreateOrUpdateManagedInstanceEncryptionProtector(

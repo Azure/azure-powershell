@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
@@ -21,9 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// <summary>
     /// Returns the Advanced Threat Protection policy of a specific server.
     /// </summary>
-    [GenericBreakingChange("Get-AzSqlServerAdvancedThreatProtectionPolicy alias will be removed in an upcoming breaking change release", "9.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedDataSecurityPolicy"), OutputType(typeof(ServerAdvancedDataSecurityPolicyModel))]
-    [Alias("Get-AzSqlServerAdvancedThreatProtectionPolicy")]
     public class GetAzureSqlServerAdvancedDataSecurityPolicy : SqlServerAdvancedDataSecurityCmdletBase
     {
         /// <summary>

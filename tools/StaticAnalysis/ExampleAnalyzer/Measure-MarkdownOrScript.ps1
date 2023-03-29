@@ -64,7 +64,7 @@ $null = New-Item -ItemType File  $TempScriptPath
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     # When the input $MarkdownPaths is the path of txt file contained markdown paths
     if ((Test-Path $MarkdownPaths -PathType Leaf) -and $MarkdownPaths.EndsWith(".txt")) {
-        $MarkdownPath = Get-Content $MarkdownPaths
+        $MarkdownPath = Get-Content $MarkdownPaths | Where-Object { $_.StartsWith("src") -and (Test-Path $_) }
     }
     # When the input $MarkdownPaths is the path of a folder
     else {
@@ -74,6 +74,11 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
         # Filter the .md of overview in "\help\"
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
             if ((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1") {
+                continue
+            }
+            # Skip Az.Tools.* modules as they may not comply with Az convention
+            if (($_.FullName -cmatch "Az\.Tools\.")) {
+                Write-Debug "Skipping $($_.FullName)"
                 continue
             }
             Write-Output "Searching in file $($_.FullName) ..."

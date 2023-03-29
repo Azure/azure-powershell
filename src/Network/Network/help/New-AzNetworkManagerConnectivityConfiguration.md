@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkmanagerconnectivityconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkmanagerconnectivityconfiguration
 schema: 2.0.0
 ---
 
@@ -149,12 +149,13 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectivityTopology
-Connectivity Topology. Valid values include 'HubAndSpoke' and 'Mesh'.
+Connectivity Topology.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: HubAndSpoke, Mesh
 
 Required: True
 Position: Named
