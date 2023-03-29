@@ -21,7 +21,7 @@ Update-AzEventGridSystemTopicEventSubscription [-DefaultProfile <IAzureContextCo
 ### SystemTopicEventSuscriptionParameterSet
 ```
 Update-AzEventGridSystemTopicEventSubscription -EventSubscriptionName <String> -ResourceGroupName <String>
- -SystemTopicName <String> [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <String[]>]
+ -SystemTopicName <String> [-DeadLetterEndpoint <String>] [-DeliveryAttributeMapping <Hashtable[]>]
  [-Endpoint <String>] [-EndpointType <String>] [-Label <String[]>] [-StorageQueueMessageTtl <Int64>]
  [-AdvancedFilter <Hashtable[]>] [-AdvancedFilteringOnArray] [-IncludedEventType <String[]>]
  [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-SubjectCaseSensitive]
@@ -126,10 +126,15 @@ Accept wildcard characters: False
 ```
 
 ### -DeliveryAttributeMapping
-The delivery attribute mappings for this system topic event subscription
+The delivery attribute mappings for this system topic event subscription.
+Each delivery attribute mapping should contain following two mandatory fields : Name and Type.
+The Type can either be 'Static' or 'Dynamic'.
+If the type is 'Static' then properties 'Value' and 'IsSecret' are required.
+If the type is 'Dynamic' then property 'SourceField' is required.
+An example of the DynamicAttributeMapping parameters: $DeliveryAttributeMapping=@($DeliveryAttributeMapping1, $DeliveryAttributeMapping2) where $DeliveryAttributeMapping1=@{Name="Name1"; Type="Static"; Values="value"; IsSecret="false"} and $DeliveryAttributeMapping2=@{Name="Name2"; Type="Dynamic"; SourceField="data.prop1"}
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: SystemTopicEventSuscriptionParameterSet
 Aliases:
 
