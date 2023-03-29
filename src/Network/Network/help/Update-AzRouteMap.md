@@ -57,10 +57,34 @@ Update-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "t
 ```
 
 ```output
-Name                            : testRouteMap
-AssociatedInboundConnections    :
-AssociatedOutboundConnections   :
-Rules                           : [routeMapRule2]
+Name                          : testRouteMap
+Id                            : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/routemap0419/providers/Microsoft.Network/virtualHubs/westcentralus_hub1/routeMaps/tes
+                                tRouteMap
+ProvisioningState             : Succeeded
+RouteMapRules                 : [
+                                  {
+                                    "MatchCriteria": [
+                                      {
+                                        "MatchCondition": "Equals",
+                                        "RoutePrefix": [],
+                                        "Community": [],
+                                        "AsPath": [
+                                          "12345"
+                                        ]
+                                      }
+                                    ],
+                                    "Actions": [
+                                      {
+                                        "Type": "Drop",
+                                        "Parameters": []
+                                      }
+                                    ],
+                                    "NextStepIfMatched": "Terminate",
+                                    "Name": "rule2"
+                                  }
+                                ]
+AssociatedInboundConnections  : {}
+AssociatedOutboundConnections : {}
 
 ```
 

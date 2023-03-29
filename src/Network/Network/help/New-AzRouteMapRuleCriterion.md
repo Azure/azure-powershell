@@ -30,9 +30,13 @@ New-AzRouteMapRuleCriterion -MatchCondition "Contains" -RoutePrefix @("10.0.0.0/
 ```
 
 ```output
-MatchCondition RoutePrefix   Community AsPath
--------------- -----------   --------- ------
-Contains       {10.0.0.0/16}
+MatchCondition : Contains
+RoutePrefix    : {10.0.0.0/16}
+Community      :
+AsPath         :
+Name           :
+Etag           :
+Id             :
 
 ```
 

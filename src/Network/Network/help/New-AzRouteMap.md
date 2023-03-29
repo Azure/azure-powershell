@@ -103,13 +103,7 @@ RouteMapRules                 : [
                                     "Actions": [
                                       {
                                         "Type": "Drop",
-                                        "Parameters": [
-                                          {
-                                            "RoutePrefix": [],
-                                            "Community": [],
-                                            "AsPath": []
-                                          }
-                                        ]
+                                        "Parameters": []
                                       }
                                     ],
                                     "NextStepIfMatched": "Terminate"

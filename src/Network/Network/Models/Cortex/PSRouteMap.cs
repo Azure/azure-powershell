@@ -59,6 +59,18 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<PSRouteMapRuleAction> Actions { get; set; }
 
         public string NextStepIfMatched { get; set; }
+
+        [JsonIgnore]
+        public string MatchCriteriaText
+        {
+            get { return JsonConvert.SerializeObject(MatchCriteria, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string ActionsText
+        {
+            get { return JsonConvert.SerializeObject(Actions, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 
     public class PSRouteMapRuleCriterion : PSChildResource
@@ -77,6 +89,12 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Type { get; set; }
 
         public List<PSRouteMapRuleActionParameter> Parameters { get; set; }
+
+        [JsonIgnore]
+        public string ParametersText
+        {
+            get { return JsonConvert.SerializeObject(Parameters, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
     }
 
     public class PSRouteMapRuleActionParameter : PSChildResource

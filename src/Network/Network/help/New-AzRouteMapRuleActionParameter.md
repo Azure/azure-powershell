@@ -30,9 +30,12 @@ New-AzRouteMapRuleActionParameter -AsPath @("12345")
 ```
 
 ```output
-RoutePrefix Community AsPath
------------ --------- ------
-                      {12345}
+RoutePrefix :
+Community   :
+AsPath      : {12345}
+Name        :
+Etag        :
+Id          :
 
 ```
 

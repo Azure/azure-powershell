@@ -31,9 +31,18 @@ New-AzRouteMapRuleAction -Type "Add" -Parameter @($routeMapRuleActionParameter1)
 ```
 
 ```output
-Type Parameters
----- ----------
-Add  {Microsoft.Azure.Commands.Network.Models.PSRouteMapRuleActionParameter}
+Type           : Add
+Parameters     : {}
+ParametersText : [
+                   {
+                     "AsPath": [
+                       "12345"
+                     ]
+                   }
+                 ]
+Name           :
+Etag           :
+Id             :
 
 ```
 

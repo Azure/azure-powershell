@@ -33,10 +33,32 @@ New-AzRouteMapRule -Name "rule1" -MatchCriteria @($routeMapMatchCriterion1) -Rou
 ```
 
 ```output
-Name                : rule1
-MatchCriteria       :
-Actions             :
-NextStepIfMatched   : Continue
+MatchCriteria     : {}
+Actions           : {}
+NextStepIfMatched : Continue
+MatchCriteriaText : [
+                      {
+                        "MatchCondition": "Contains",
+                        "RoutePrefix": [
+                          "10.0.0.0/16"
+                        ]
+                      }
+                    ]
+ActionsText       : [
+                      {
+                        "Type": "Add",
+                        "Parameters": [
+                          {
+                            "AsPath": [
+                              "12345"
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+Name              : rule1
+Etag              :
+Id                :
 
 ```
 
