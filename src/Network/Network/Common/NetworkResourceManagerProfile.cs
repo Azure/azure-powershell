@@ -1096,6 +1096,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.ApplicationGatewayWebApplicationFirewallConfiguration, CNM.PSApplicationGatewayWebApplicationFirewallConfiguration>();
                 cfg.CreateMap<MNM.MatchCondition, CNM.PSApplicationGatewayFirewallCondition>();
                 cfg.CreateMap<MNM.WebApplicationFirewallCustomRule, CNM.PSApplicationGatewayFirewallCustomRule>();
+                cfg.CreateMap<MNM.GroupByUserSession, CNM.PSApplicationGatewayGroupByUserSession>();
+                cfg.CreateMap<MNM.GroupByVariable, CNM.PSApplicationGatewayGroupByVariable>();
                 cfg.CreateMap<MNM.MatchVariable, CNM.PSApplicationGatewayFirewallMatchVariable>();
                 cfg.CreateMap<MNM.WebApplicationFirewallPolicy, CNM.PSApplicationGatewayWebApplicationFirewallPolicy>();
                 cfg.CreateMap<MNM.PolicySettings, CNM.PSApplicationGatewayFirewallPolicySettings>();
