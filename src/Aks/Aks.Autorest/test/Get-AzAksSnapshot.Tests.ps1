@@ -15,19 +15,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksSnapshot'))
 }
 
 Describe 'Get-AzAksSnapshot' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $Snapshot = Get-AzAksSnapshot
+        $Snapshot.Count | Should -Be 3
+        $Snapshot.Name.Contains('snapshot1') | Should -Be $true
+        $Snapshot.Name.Contains('snapshot2') | Should -Be $true
+        $Snapshot.Name.Contains('snapshot3') | Should -Be $true
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $Snapshot = Get-AzAksSnapshot -ResourceGroupName $env.ResourceGroupName
+        $Snapshot.Count | Should -Be 2
+        $Snapshot.Name.Contains('snapshot1') | Should -Be $true
+        $Snapshot.Name.Contains('snapshot2') | Should -Be $true
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $Snapshot = Get-AzAksSnapshot -ResourceGroupName $env.ResourceGroupName -ResourceName 'snapshot1'
+        $Snapshot.Count | Should -Be 1
+        $Snapshot.Name.Contains('snapshot1') | Should -Be $true
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $InputObject = @{Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1" }
+        $Snapshot = Get-AzAksSnapshot -InputObject $InputObject
+        $Snapshot.Count | Should -Be 1
+        $Snapshot.Name.Contains('snapshot1') | Should -Be $true
     }
 }
