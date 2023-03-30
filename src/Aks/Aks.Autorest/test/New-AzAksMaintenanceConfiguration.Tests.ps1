@@ -20,6 +20,14 @@ Describe 'New-AzAksMaintenanceConfiguration' {
         $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
         $TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
         $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
+        
+        $MaintenanceConfig.Name | Should -Be $MaintenanceConfigName
+        $MaintenanceConfig.NotAllowedTime.Start.ToShortDateString() | Should -Be '3/1/2023'
+        $MaintenanceConfig.NotAllowedTime.End.ToShortDateString() | Should -Be '3/2/2023'
+        $MaintenanceConfig.TimeInWeek.Day | Should -Be 'Sunday'
+        $MaintenanceConfig.TimeInWeek.HourSlot.Count | Should -Be 2
+        $MaintenanceConfig.TimeInWeek.HourSlot.Contains(1) | Should -Be $true
+        $MaintenanceConfig.TimeInWeek.HourSlot.Contains(2) | Should -Be $true
 
         Remove-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName
     }
