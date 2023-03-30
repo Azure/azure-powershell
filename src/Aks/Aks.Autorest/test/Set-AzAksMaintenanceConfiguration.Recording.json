@@ -1,0 +1,114 @@
+{
+  "Set-AzAksMaintenanceConfiguration+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"timeInWeek\": [\r\n      {\r\n        \"day\": \"Sunday\",\r\n        \"hourSlots\": [ 1, 2 ]\r\n      }\r\n    ],\r\n    \"notAllowedTime\": [\r\n      {\r\n        \"start\": \"2023-03-01T17:38:33.5305763+08:00\",\r\n        \"end\": \"2023-03-02T17:38:33.5308462+08:00\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "289" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "5c768abc-75f5-416b-b2b4-292595e85faf" ],
+        "x-ms-request-id": [ "5c2e1f2e-71df-4112-a490-f5b1106082c6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T093834Z:5c768abc-75f5-416b-b2b4-292595e85faf" ],
+        "Date": [ "Thu, 30 Mar 2023 09:38:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "487" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config\",\n  \"name\": \"aks_maintenance_config\",\n  \"properties\": {\n   \"timeInWeek\": [\n    {\n     \"day\": \"Sunday\",\n     \"hourSlots\": [\n      1,\n      2\n     ]\n    }\n   ],\n   \"notAllowedTime\": [\n    {\n     \"start\": \"2023-03-01T09:38:33.5305763Z\",\n     \"end\": \"2023-03-02T09:38:33.5308462Z\"\n    }\n   ]\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzAksMaintenanceConfiguration+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"timeInWeek\": [\r\n      {\r\n        \"day\": \"Monday\",\r\n        \"hourSlots\": [ 5, 12 ]\r\n      }\r\n    ],\r\n    \"notAllowedTime\": [\r\n      {\r\n        \"start\": \"2023-02-25T17:38:35.7262201+08:00\",\r\n        \"end\": \"2023-02-27T17:38:35.7262880+08:00\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "290" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "f9d62a70-ecab-4389-b56b-b06e80d48c48" ],
+        "x-ms-request-id": [ "b09aaca5-dd29-4730-8ff4-e4fd9fa5cb2d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T093835Z:f9d62a70-ecab-4389-b56b-b06e80d48c48" ],
+        "Date": [ "Thu, 30 Mar 2023 09:38:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "487" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config\",\n  \"name\": \"aks_maintenance_config\",\n  \"properties\": {\n   \"timeInWeek\": [\n    {\n     \"day\": \"Monday\",\n     \"hourSlots\": [\n      5,\n      12\n     ]\n    }\n   ],\n   \"notAllowedTime\": [\n    {\n     \"start\": \"2023-02-25T09:38:35.7262201Z\",\n     \"end\": \"2023-02-27T09:38:35.726288Z\"\n    }\n   ]\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzAksMaintenanceConfiguration+[NoContext]+UpdateExpanded+$DELETE+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01+3": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/maintenanceConfigurations/aks_maintenance_config?api-version=2023-02-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "8607af5a-1ff5-4551-843b-c7915e79a670" ],
+        "CommandName": [ "Remove-AzAksMaintenanceConfiguration" ],
+        "FullCommandName": [ "Remove-AzAksMaintenanceConfiguration_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-correlation-request-id": [ "98b4bf57-62b1-41a3-8c40-0fece3241b8c" ],
+        "x-ms-request-id": [ "c384e548-d615-4131-9ce6-ef03afc31abc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T093836Z:98b4bf57-62b1-41a3-8c40-0fece3241b8c" ],
+        "Date": [ "Thu, 30 Mar 2023 09:38:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}
