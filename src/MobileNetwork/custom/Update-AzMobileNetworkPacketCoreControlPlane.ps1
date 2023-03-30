@@ -315,7 +315,7 @@ param(
                 $PSBoundParameters.Version = $dataBase.Version
             }
 
-            if ($IdentityType -ieq 'none') {
+            if ('NONE' -ieq $IdentityType.ToString()) {
                 $PSBoundParameters.IdentityType = 'None'
                 $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
             } else {
