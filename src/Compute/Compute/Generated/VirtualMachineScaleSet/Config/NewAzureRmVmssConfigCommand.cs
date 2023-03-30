@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
-        public SwitchParameter OSImageScheduledEvent { get; set; }
+        public SwitchParameter OSImageScheduledEventEnabled { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -803,7 +803,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vVirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
             }
 
-            if (this.IsParameterBound(c => c.OSImageScheduledEvent))
+            if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
             {
                 if (vVirtualMachineProfile == null)
                 {
@@ -817,7 +817,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
                 }
-                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEvent;
+                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
             }
 
             if (this.IsParameterBound(c => c.OSImageScheduledEventNotBeforeTimeoutInMinutes))
