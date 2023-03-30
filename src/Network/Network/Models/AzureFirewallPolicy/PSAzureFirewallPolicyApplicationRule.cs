@@ -13,6 +13,7 @@
 // limitations under the License.
 //
 
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -44,6 +45,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 10, PropertyName = "terminateTLS")]
         public bool? TerminateTLS { get; set; }
+
+        [JsonProperty(Order = 11, PropertyName = "terminateTLS")]
+        public List<PSAzureFirewallPolicyHttpHeaderToInsert> HttpHeadersToInsert { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -97,6 +101,18 @@ namespace Microsoft.Azure.Commands.Network.Models
             var protocol = PSAzureFirewallPolicyApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
 
             (this.Protocols ?? (this.Protocols = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
+        }
+
+        public void AddHttpHeader(PSAzureFirewallPolicyHttpHeaderToInsert httpHeader)
+        {
+            // TODO - Validate
+
+            if (this.HttpHeadersToInsert == null)
+            {
+                this.HttpHeadersToInsert = new List<PSAzureFirewallPolicyHttpHeaderToInsert>();
+            }
+
+            this.HttpHeadersToInsert.Add(httpHeader);
         }
     }
 }
