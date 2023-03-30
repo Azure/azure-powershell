@@ -57,7 +57,7 @@ $routeMapRule2 = New-AzRouteMapRule -Name "rule2" -MatchCriteria @($routeMapMatc
 
 New-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap" -RouteMapRule @($routeMapRule1, $routeMapRule2)
 $routeMap1 = Get-AzRouteMap -ResourceGroupName "testRg" -VirtualHubName "testHub" -Name "testRouteMap"
-Remove-AzRouteMap $routeMap1
+Remove-AzRouteMap -InputObject $routeMap1
 
 ```
 
