@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.4.0
 * Added new property `Encryption` of type `EncryptionProperties` to `AccountCreateParameters`.
   - Configures how customer data is encrypted inside the Batch account.
 
