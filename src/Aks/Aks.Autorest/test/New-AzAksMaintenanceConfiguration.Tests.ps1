@@ -15,19 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAksMaintenanceConfigura
 }
 
 Describe 'New-AzAksMaintenanceConfiguration' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'CreateExpanded' {
+        $MaintenanceConfigName = 'aks_maintenance_config'
+        $TimeSpan = New-AzAksTimeSpanObject -Start (Get-Date -Year 2023 -Month 3 -Day 1) -End (Get-Date -Year 2023 -Month 3 -Day 2)
+        $TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
+        $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -TimeInWeek $TimeInWeek -NotAllowedTime $TimeSpan
 
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Remove-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName
     }
 }

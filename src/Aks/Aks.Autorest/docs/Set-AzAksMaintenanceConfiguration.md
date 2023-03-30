@@ -12,18 +12,10 @@ Creates or updates a maintenance configuration in the specified managed cluster.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Set-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-NotAllowedTime <ITimeSpan[]>] [-TimeInWeek <ITimeInWeek[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzAksMaintenanceConfiguration -ConfigName <String> -ResourceGroupName <String> -ResourceName <String>
- -Parameter <IMaintenanceConfiguration> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,29 +84,13 @@ To construct, see NOTES section for NOTALLOWEDTIME properties and create a hash 
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITimeSpan[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -170,7 +146,7 @@ To construct, see NOTES section for TIMEINWEEK properties and create a hash tabl
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITimeInWeek[]
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -216,8 +192,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IMaintenanceConfiguration
@@ -234,20 +208,6 @@ To create the parameters described below, construct a hash table containing the 
 `NOTALLOWEDTIME <ITimeSpan[]>`: Time slots on which upgrade is not allowed.
   - `[End <DateTime?>]`: The end of a time span
   - `[Start <DateTime?>]`: The start of a time span
-
-`PARAMETER <IMaintenanceConfiguration>`: See [planned maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance) for more information about planned maintenance.
-  - `[NotAllowedTime <ITimeSpan[]>]`: Time slots on which upgrade is not allowed.
-    - `[End <DateTime?>]`: The end of a time span
-    - `[Start <DateTime?>]`: The start of a time span
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[TimeInWeek <ITimeInWeek[]>]`: If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
-    - `[Day <WeekDay?>]`: The day of the week.
-    - `[HourSlot <Int32[]>]`: Each integer hour represents a time range beginning at 0m after the hour ending at the next hour (non-inclusive). 0 corresponds to 00:00 UTC, 23 corresponds to 23:00 UTC. Specifying [0, 1] means the 00:00 - 02:00 UTC time range.
 
 `TIMEINWEEK <ITimeInWeek[]>`: If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
   - `[Day <WeekDay?>]`: The day of the week.

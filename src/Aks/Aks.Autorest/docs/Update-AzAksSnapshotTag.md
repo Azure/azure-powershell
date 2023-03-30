@@ -18,18 +18,6 @@ Update-AzAksSnapshotTag -ResourceGroupName <String> -ResourceName <String> [-Sub
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzAksSnapshotTag -ResourceGroupName <String> -ResourceName <String> -Parameter <ITagsObject>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzAksSnapshotTag -InputObject <IAksIdentity> -Parameter <ITagsObject> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzAksSnapshotTag -InputObject <IAksIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
@@ -87,23 +75,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Parameter
-Tags object for patch operations.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITagsObject
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -119,7 +91,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -134,7 +106,7 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -149,7 +121,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -164,7 +136,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -210,8 +182,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ITagsObject
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
 ## OUTPUTS
@@ -238,10 +208,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`PARAMETER <ITagsObject>`: Tags object for patch operations.
-  - `[Tag <ITagsObjectTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

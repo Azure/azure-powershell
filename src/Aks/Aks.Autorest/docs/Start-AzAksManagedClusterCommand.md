@@ -21,19 +21,6 @@ Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <Stri
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Run
-```
-Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String>
- -RequestPayload <IRunCommandRequest> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentity
-```
-Start-AzAksManagedClusterCommand -InputObject <IAksIdentity> -RequestPayload <IRunCommandRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### RunViaIdentityExpanded
 ```
 Start-AzAksManagedClusterCommand -InputObject <IAksIdentity> -Command <String> [-ClusterToken <String>]
@@ -91,7 +78,7 @@ AuthToken issued for AKS AAD Server App.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -106,7 +93,7 @@ The command to run.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -121,7 +108,7 @@ A base64 encoded zip file containing the files required by the command.
 
 ```yaml
 Type: System.String
-Parameter Sets: RunExpanded, RunViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -153,7 +140,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -178,29 +165,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RequestPayload
-A run command request
-To construct, see NOTES section for REQUESTPAYLOAD properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandRequest
-Parameter Sets: Run, RunViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -215,7 +186,7 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: True
@@ -230,7 +201,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded
+Parameter Sets: RunExpanded
 Aliases:
 
 Required: False
@@ -276,8 +247,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
 
 ## OUTPUTS
@@ -304,11 +273,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceName <String>]`: The name of the managed cluster resource.
   - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`REQUESTPAYLOAD <IRunCommandRequest>`: A run command request
-  - `Command <String>`: The command to run.
-  - `[ClusterToken <String>]`: AuthToken issued for AKS AAD Server App.
-  - `[Context <String>]`: A base64 encoded zip file containing the files required by the command.
 
 ## RELATED LINKS
 

@@ -59,6 +59,12 @@ Creates or updates a maintenance configuration in the specified managed cluster.
 ### [New-AzAksSnapshot](New-AzAksSnapshot.md)
 Creates or updates a snapshot.
 
+### [New-AzAksTimeInWeekObject](New-AzAksTimeInWeekObject.md)
+Create an in-memory object for TimeInWeek.
+
+### [New-AzAksTimeSpanObject](New-AzAksTimeSpanObject.md)
+Create an in-memory object for TimeSpan.
+
 ### [Remove-AzAksMaintenanceConfiguration](Remove-AzAksMaintenanceConfiguration.md)
 Deletes a maintenance configuration.
 

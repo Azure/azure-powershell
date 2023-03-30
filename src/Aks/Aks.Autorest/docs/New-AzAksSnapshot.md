@@ -12,30 +12,10 @@ Creates or updates a snapshot.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -Location <String>
  [-SubscriptionId <String>] [-CreationDataSourceResourceId <String>] [-SnapshotType <SnapshotType>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -Parameter <ISnapshot>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzAksSnapshot -InputObject <IAksIdentity> -Parameter <ISnapshot> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzAksSnapshot -InputObject <IAksIdentity> -Location <String> [-CreationDataSourceResourceId <String>]
- [-SnapshotType <SnapshotType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +52,7 @@ This is the ARM ID of the source object to be used to create the target object.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -98,28 +78,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -129,29 +93,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-A node pool snapshot resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -166,7 +114,7 @@ The name of the managed cluster resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -182,7 +130,7 @@ The default is NodePool.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,7 +145,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,7 +160,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -258,10 +206,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
-
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
@@ -269,36 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAksIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
-  - `[CommandId <String>]`: Id of the command.
-  - `[ConfigName <String>]`: The name of the maintenance configuration.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
-  - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`PARAMETER <ISnapshot>`: A node pool snapshot resource.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[CreationDataSourceResourceId <String>]`: This is the ARM ID of the source object to be used to create the target object.
-  - `[SnapshotType <SnapshotType?>]`: The type of a snapshot. The default is NodePool.
 
 ## RELATED LINKS
 

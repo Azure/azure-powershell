@@ -51,6 +51,13 @@ directive:
       verb: Get|New|Set|Remove
     remove: true
   - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$
+      subject: ^MaintenanceConfiguration$|^Snapshot$|^ManagedClusterCommand$|^SnapshotTag$
+    remove: true
+  - model-cmdlet:
+    - TimeSpan
+    - TimeInWeek
+  - where:
       subject: ^ManagedCluster$
       parameter-name: ResourceName
     set:

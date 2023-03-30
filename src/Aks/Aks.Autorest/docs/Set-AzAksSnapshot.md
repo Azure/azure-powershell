@@ -12,17 +12,10 @@ Creates or updates a snapshot.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Set-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -Location <String>
  [-SubscriptionId <String>] [-CreationDataSourceResourceId <String>] [-SnapshotType <SnapshotType>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Set-AzAksSnapshot -ResourceGroupName <String> -ResourceName <String> -Parameter <ISnapshot>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +52,7 @@ This is the ARM ID of the source object to be used to create the target object.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -90,29 +83,13 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Parameter
-A node pool snapshot resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
-Parameter Sets: Update
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -153,7 +130,7 @@ The default is NodePool.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.SnapshotType
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,7 +160,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -229,8 +206,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISnapshot
@@ -238,24 +213,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETER <ISnapshot>`: A node pool snapshot resource.
-  - `Location <String>`: The geo-location where the resource lives
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[CreationDataSourceResourceId <String>]`: This is the ARM ID of the source object to be used to create the target object.
-  - `[SnapshotType <SnapshotType?>]`: The type of a snapshot. The default is NodePool.
 
 ## RELATED LINKS
 
