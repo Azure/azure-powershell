@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAksMaintenanceConfig
 }
 
 Describe 'Remove-AzAksMaintenanceConfiguration' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $MaintenanceConfigName = 'aks_maintenance_config'
+        $TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
+        $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -TimeInWeek $TimeInWeek
+        Remove-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $MaintenanceConfigName = 'aks_maintenance_config'
+        $TimeInWeek = New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
+        $MaintenanceConfig = New-AzAksMaintenanceConfiguration -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -ConfigName $MaintenanceConfigName -TimeInWeek $TimeInWeek
+        Remove-AzAksMaintenanceConfiguration -InputObject $MaintenanceConfig
     }
 }
