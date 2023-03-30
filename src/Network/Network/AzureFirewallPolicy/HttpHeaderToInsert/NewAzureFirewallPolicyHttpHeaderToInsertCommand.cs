@@ -13,16 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -32,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
 
     public class NewAzureFirewallPolicyHttpHeaderToInsertCommand : NetworkBaseCmdlet
     {
+        private const int HttpHeaderValueMaxLength = 512;
+        private const int HttpHeaderNameMaxLength = 100;
+
         [Parameter(
              Mandatory = true,
              HelpMessage = "Http header name."
@@ -50,15 +47,31 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
+            Validate();
+
             var headerToInsert = new PSAzureFirewallPolicyHttpHeaderToInsert
             {
                 HeaderName = this.HeaderName,
                 HeaderValue = this.HeaderValue
             };
-            
-            // TODO - validate
 
             WriteObject(headerToInsert);
+        }
+
+        private void Validate()
+        {
+            // validate name length
+            if (this.HeaderName.Length > HttpHeaderNameMaxLength)
+            {
+                throw new ArgumentException($"Header Name length is limited to {HttpHeaderNameMaxLength} characters.");
+            }
+
+
+            // validate value length
+            if (this.HeaderValue.Length > HttpHeaderValueMaxLength)
+            {
+                throw new ArgumentException($"Header value length is limited to {HttpHeaderValueMaxLength} characters.");
+            }
         }
     }
 }

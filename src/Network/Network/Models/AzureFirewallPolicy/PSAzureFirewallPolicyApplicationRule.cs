@@ -15,7 +15,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -105,7 +107,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void AddHttpHeader(PSAzureFirewallPolicyHttpHeaderToInsert httpHeader)
         {
-            // TODO - Validate
+            ValidateHeaderAddition();
 
             if (this.HttpHeadersToInsert == null)
             {
@@ -113,6 +115,23 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             this.HttpHeadersToInsert.Add(httpHeader);
+        }
+
+        private void ValidateHeaderAddition()
+        {
+            // validate protocol is HTTP or HTTPS
+            if (this.Protocols.Any(p => !(p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Http || p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Https)))
+            {
+                throw new ArgumentException($"Rule protocol is not supported for custom HTTP headers.");
+                //throw
+            }
+
+            // validate TLS if HTTPS
+            if (this.TerminateTLS == true && this.Protocols.Any(p => p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Https))
+            {
+                throw new ArgumentException("Custom headers for HTTPS protocol must enable TLS termination.");
+                // throw
+            }
         }
     }
 }
