@@ -1019,7 +1019,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallCondition, MNM.MatchCondition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallCustomRule, MNM.WebApplicationFirewallCustomRule>();
                 cfg.CreateMap<CNM.PSApplicationGatewayGroupByUserSession, MNM.GroupByUserSession>();
-                cfg.CreateMap<CNM.PSApplicationGatewayGroupByVariable, MNM.GroupByVariable>();
+                cfg.CreateMap<CNM.PSApplicationGatewayGroupByVariable, MNM.GroupByVariables>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallMatchVariable, MNM.MatchVariable>();
                 cfg.CreateMap<CNM.PSApplicationGatewayWebApplicationFirewallPolicy, MNM.WebApplicationFirewallPolicy>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicySettings, MNM.PolicySettings>();
@@ -1097,7 +1097,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.MatchCondition, CNM.PSApplicationGatewayFirewallCondition>();
                 cfg.CreateMap<MNM.WebApplicationFirewallCustomRule, CNM.PSApplicationGatewayFirewallCustomRule>();
                 cfg.CreateMap<MNM.GroupByUserSession, CNM.PSApplicationGatewayGroupByUserSession>();
-                cfg.CreateMap<MNM.GroupByVariable, CNM.PSApplicationGatewayGroupByVariable>();
+                cfg.CreateMap<MNM.GroupByVariables, CNM.PSApplicationGatewayGroupByVariable>();
                 cfg.CreateMap<MNM.MatchVariable, CNM.PSApplicationGatewayFirewallMatchVariable>();
                 cfg.CreateMap<MNM.WebApplicationFirewallPolicy, CNM.PSApplicationGatewayWebApplicationFirewallPolicy>();
                 cfg.CreateMap<MNM.PolicySettings, CNM.PSApplicationGatewayFirewallPolicySettings>();
