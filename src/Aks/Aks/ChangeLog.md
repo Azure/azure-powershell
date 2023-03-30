@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 * Added parameter `-NodePodSubnetID` for `New-AzAksCluster`, `-PodSubnetID` for `New-AzAksNodePool`
-* Bumped API version to 2023-02-01
 * Fixed the issue that system variable `$IsWindows` is undefined in `Windows PowerShell`.
 * Decoupled AutoMapper dependency, replaced with AdapterHelper.
 
