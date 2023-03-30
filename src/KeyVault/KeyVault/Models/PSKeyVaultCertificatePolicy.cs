@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using Track2Certificate = Azure.Security.KeyVault.Certificates;
+Track2Certificate.CertificatePolicy;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {

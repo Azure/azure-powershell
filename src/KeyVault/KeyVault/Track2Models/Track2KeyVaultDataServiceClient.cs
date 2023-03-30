@@ -10,7 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using CertificatePolicy = Azure.Security.KeyVault.Certificates.CertificatePolicy;
+//using CertificatePolicy = Azure.Security.KeyVault.Certificates.CertificatePolicy;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 {
