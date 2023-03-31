@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     /// <remarks>
     /// For more details see [managed AAD on
-    /// AKS](https://learn.microsoft.com/azure/aks/managed-aad).
+    /// AKS](https://docs.microsoft.com/azure/aks/managed-aad).
     /// </remarks>
     public partial class ManagedClusterAADProfile
     {
@@ -40,10 +40,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Kubernetes authorization.</param>
         /// <param name="adminGroupObjectIDs">The list of AAD group object IDs
         /// that will have admin role of the cluster.</param>
-        /// <param name="clientAppID">The client AAD application ID.</param>
-        /// <param name="serverAppID">The server AAD application ID.</param>
-        /// <param name="serverAppSecret">The server AAD application
-        /// secret.</param>
+        /// <param name="clientAppID">(DEPRECATED) The client AAD application
+        /// ID. Learn more at https://aka.ms/aks/aad-legacy.</param>
+        /// <param name="serverAppID">(DEPRECATED) The server AAD application
+        /// ID. Learn more at https://aka.ms/aks/aad-legacy.</param>
+        /// <param name="serverAppSecret">(DEPRECATED) The server AAD
+        /// application secret. Learn more at
+        /// https://aka.ms/aks/aad-legacy.</param>
         /// <param name="tenantID">The AAD tenant ID to use for authentication.
         /// If not specified, will use the tenant of the deployment
         /// subscription.</param>
@@ -85,19 +88,22 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public IList<string> AdminGroupObjectIDs { get; set; }
 
         /// <summary>
-        /// Gets or sets the client AAD application ID.
+        /// Gets or sets (DEPRECATED) The client AAD application ID. Learn more
+        /// at https://aka.ms/aks/aad-legacy.
         /// </summary>
         [JsonProperty(PropertyName = "clientAppID")]
         public string ClientAppID { get; set; }
 
         /// <summary>
-        /// Gets or sets the server AAD application ID.
+        /// Gets or sets (DEPRECATED) The server AAD application ID. Learn more
+        /// at https://aka.ms/aks/aad-legacy.
         /// </summary>
         [JsonProperty(PropertyName = "serverAppID")]
         public string ServerAppID { get; set; }
 
         /// <summary>
-        /// Gets or sets the server AAD application secret.
+        /// Gets or sets (DEPRECATED) The server AAD application secret. Learn
+        /// more at https://aka.ms/aks/aad-legacy.
         /// </summary>
         [JsonProperty(PropertyName = "serverAppSecret")]
         public string ServerAppSecret { get; set; }
