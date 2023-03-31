@@ -10,33 +10,30 @@
 
 namespace Microsoft.Azure.Management.ContainerService.Models
 {
-    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Profile for diagnostics on the container service cluster.
+    /// Workload Auto-scaler profile for the managed cluster.
     /// </summary>
-    public partial class ContainerServiceDiagnosticsProfile
+    public partial class ManagedClusterWorkloadAutoScalerProfile
     {
         /// <summary>
         /// Initializes a new instance of the
-        /// ContainerServiceDiagnosticsProfile class.
+        /// ManagedClusterWorkloadAutoScalerProfile class.
         /// </summary>
-        public ContainerServiceDiagnosticsProfile()
+        public ManagedClusterWorkloadAutoScalerProfile()
         {
             CustomInit();
         }
 
         /// <summary>
         /// Initializes a new instance of the
-        /// ContainerServiceDiagnosticsProfile class.
+        /// ManagedClusterWorkloadAutoScalerProfile class.
         /// </summary>
-        /// <param name="vmDiagnostics">Profile for diagnostics on the
-        /// container service VMs.</param>
-        public ContainerServiceDiagnosticsProfile(ContainerServiceVMDiagnostics vmDiagnostics)
+        public ManagedClusterWorkloadAutoScalerProfile(ManagedClusterWorkloadAutoScalerProfileKeda keda = default(ManagedClusterWorkloadAutoScalerProfileKeda))
         {
-            VmDiagnostics = vmDiagnostics;
+            Keda = keda;
             CustomInit();
         }
 
@@ -46,26 +43,21 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets profile for diagnostics on the container service VMs.
         /// </summary>
-        [JsonProperty(PropertyName = "vmDiagnostics")]
-        public ContainerServiceVMDiagnostics VmDiagnostics { get; set; }
+        [JsonProperty(PropertyName = "keda")]
+        public ManagedClusterWorkloadAutoScalerProfileKeda Keda { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="ValidationException">
+        /// <exception cref="Rest.ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            if (VmDiagnostics == null)
+            if (Keda != null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "VmDiagnostics");
-            }
-            if (VmDiagnostics != null)
-            {
-                VmDiagnostics.Validate();
+                Keda.Validate();
             }
         }
     }

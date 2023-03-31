@@ -12,11 +12,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 {
 
     /// <summary>
-    /// Defines values for ContainerServiceStorageProfileTypes.
+    /// Defines values for NetworkPluginMode.
     /// </summary>
-    public static class ContainerServiceStorageProfileTypes
+    public static class NetworkPluginMode
     {
-        public const string StorageAccount = "StorageAccount";
-        public const string ManagedDisks = "ManagedDisks";
+        /// <summary>
+        /// Used with networkPlugin=azure, pods are given IPs from the PodCIDR
+        /// address space but use Azure Routing Domains rather than Kubenet's
+        /// method of route tables. For more information visit
+        /// https://aka.ms/aks/azure-cni-overlay.
+        /// </summary>
+        public const string Overlay = "overlay";
     }
 }

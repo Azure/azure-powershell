@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// connection.</param>
         /// <param name="type">The resource type.</param>
         /// <param name="provisioningState">The current provisioning state.
-        /// Possible values include: 'Succeeded', 'Creating', 'Deleting',
-        /// 'Failed'</param>
+        /// Possible values include: 'Canceled', 'Creating', 'Deleting',
+        /// 'Failed', 'Succeeded'</param>
         /// <param name="privateEndpoint">The resource of private
         /// endpoint.</param>
         public PrivateEndpointConnection(PrivateLinkServiceConnectionState privateLinkServiceConnectionState, string id = default(string), string name = default(string), string type = default(string), string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint))
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <summary>
         /// Gets the current provisioning state. Possible values include:
-        /// 'Succeeded', 'Creating', 'Deleting', 'Failed'
+        /// 'Canceled', 'Creating', 'Deleting', 'Failed', 'Succeeded'
         /// </summary>
         [JsonProperty(PropertyName = "properties.provisioningState")]
         public string ProvisioningState { get; private set; }

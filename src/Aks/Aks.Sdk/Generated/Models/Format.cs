@@ -18,7 +18,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     {
         /// <summary>
         /// Return azure auth-provider kubeconfig. This format is deprecated in
-        /// 1.22 and will be fully removed in 1.25.
+        /// v1.22 and will be fully removed in v1.26. See:
+        /// https://aka.ms/k8s/changes-1-26.
         /// </summary>
         public const string Azure = "azure";
         /// <summary>
