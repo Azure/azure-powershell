@@ -71,12 +71,6 @@ Deletes a maintenance configuration.
 ### [Remove-AzAksSnapshot](Remove-AzAksSnapshot.md)
 Deletes a snapshot.
 
-### [Set-AzAksMaintenanceConfiguration](Set-AzAksMaintenanceConfiguration.md)
-Creates or updates a maintenance configuration in the specified managed cluster.
-
-### [Set-AzAksSnapshot](Set-AzAksSnapshot.md)
-Creates or updates a snapshot.
-
 ### [Start-AzAksCluster](Start-AzAksCluster.md)
 See [starting a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about starting a cluster.
 

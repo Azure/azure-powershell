@@ -54,6 +54,10 @@ directive:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$
       subject: ^MaintenanceConfiguration$|^Snapshot$|^ManagedClusterCommand$|^SnapshotTag$
     remove: true
+  - where:  
+      subject: ^MaintenanceConfiguration$|^Snapshot$
+      verb: Set
+    remove: true
   - model-cmdlet:
     - TimeSpan
     - TimeInWeek
