@@ -1,0 +1,39 @@
+{
+  "Test-AzRelayName+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01",
+      "Content": "{\r\n  \"name\": \"relaynamespace-01\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "35" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "f20ba680-0c29-4aeb-b246-2d8089e69910_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "29a11e11-665e-4337-bfd8-ad176244e386" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082319Z:29a11e11-665e-4337-bfd8-ad176244e386" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:23:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "53" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nameAvailable\":true,\"reason\":\"None\",\"message\":null}",
+      "isContentBase64": false
+    }
+  }
+}

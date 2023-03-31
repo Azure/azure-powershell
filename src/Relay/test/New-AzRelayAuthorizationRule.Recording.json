@@ -1,0 +1,868 @@
+{
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"rights\": [ \"Listen\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
+        "x-ms-request-id": [ "b066f247-805d-4424-bcca-13904f684869" ],
+        "x-ms-correlation-request-id": [ "b066f247-805d-4424-bcca-13904f684869" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081758Z:b066f247-805d-4424-bcca-13904f684869" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:17:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "cdd974b0-6819-4e31-a6ef-831f02932765" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_List" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-request-id": [ "ee7937d0-78d6-45a2-86d9-4b9c5b027700" ],
+        "x-ms-correlation-request-id": [ "ee7937d0-78d6-45a2-86d9-4b9c5b027700" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081759Z:ee7937d0-78d6-45a2-86d9-4b9c5b027700" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:17:59 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "993" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationrules/RootManageSharedAccessKey\",\"name\":\"RootManageSharedAccessKey\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\",\"Manage\",\"Send\"]}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationrules/authRule-5xkwij\",\"name\":\"authRule-5xkwij\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\",\"Send\"]}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "249017ab-efd0-4fd5-af79-44a96ff7e2b6" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_Get" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-request-id": [ "2ffb537a-91cd-4f99-be14-b58b67def256" ],
+        "x-ms-correlation-request-id": [ "2ffb537a-91cd-4f99-be14-b58b67def256" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081800Z:2ffb537a-91cd-4f99-be14-b58b67def256" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "e9218eb5-f323-49b0-a672-0882fe419221" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_Get" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "x-ms-request-id": [ "0b85928d-b46b-48de-8906-4c08173612d0" ],
+        "x-ms-correlation-request-id": [ "0b85928d-b46b-48de-8906-4c08173612d0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081801Z:0b85928d-b46b-48de-8906-4c08173612d0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "1f48f91b-3423-4eb4-8e9d-e4061626ec19" ],
+        "CommandName": [ "Az.Relay.private\\Remove-AzRelayAuthorizationRule_Delete" ],
+        "FullCommandName": [ "Remove-AzRelayAuthorizationRule_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "x-ms-request-id": [ "d24986f3-e1d8-4736-a9e5-0a3e06607c07" ],
+        "x-ms-correlation-request-id": [ "d24986f3-e1d8-4736-a9e5-0a3e06607c07" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081814Z:d24986f3-e1d8-4736-a9e5-0a3e06607c07" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"rights\": [ \"Listen\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-request-id": [ "54f892d9-9725-4b39-8adc-78b61e29899a" ],
+        "x-ms-correlation-request-id": [ "54f892d9-9725-4b39-8adc-78b61e29899a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081821Z:54f892d9-9725-4b39-8adc-78b61e29899a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "18" ],
+        "x-ms-client-request-id": [ "5c06f747-efde-4918-975e-69b0b6a8c397" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_GetViaIdentity" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "24d5d0a1-6b17-42b9-a353-aab9781089aa" ],
+        "x-ms-correlation-request-id": [ "24d5d0a1-6b17-42b9-a353-aab9781089aa" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081822Z:24d5d0a1-6b17-42b9-a353-aab9781089aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "312" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/Namespaces/AuthorizationRules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+RelayNamespace+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+8": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "dce7fe9f-fcb7-45b0-8c6c-514ad82e7e24" ],
+        "CommandName": [ "Az.Relay.private\\Remove-AzRelayAuthorizationRule_DeleteViaIdentity" ],
+        "FullCommandName": [ "Remove-AzRelayAuthorizationRule_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "c5dbb446-f02f-4027-bc4c-089f9a98d139" ],
+        "x-ms-correlation-request-id": [ "c5dbb446-f02f-4027-bc4c-089f9a98d139" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081835Z:c5dbb446-f02f-4027-bc4c-089f9a98d139" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+HybridConnection+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"rights\": [ \"Listen\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-request-id": [ "72efe030-b507-491a-84cd-e7067e0c2c42" ],
+        "x-ms-correlation-request-id": [ "72efe030-b507-491a-84cd-e7067e0c2c42" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081836Z:72efe030-b507-491a-84cd-e7067e0c2c42" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "352" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections/authorizationrules\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+HybridConnection+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "da9512f1-03f8-4dd9-8745-10e8c5cf3075" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_Get1" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_Get1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "d34bb2ac-c5e5-42a1-a35c-28abbb16a871" ],
+        "x-ms-correlation-request-id": [ "d34bb2ac-c5e5-42a1-a35c-28abbb16a871" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081837Z:d34bb2ac-c5e5-42a1-a35c-28abbb16a871" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "372" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridconnections/hybridConnection-m5s10u/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+HybridConnection+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "23" ],
+        "x-ms-client-request-id": [ "d435384e-6a4c-4d63-ae54-f316094feb79" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_Get1" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_Get1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "c39a12c2-8052-4dc0-8639-8bef6bd8bed6" ],
+        "x-ms-correlation-request-id": [ "c39a12c2-8052-4dc0-8639-8bef6bd8bed6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081837Z:c39a12c2-8052-4dc0-8639-8bef6bd8bed6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "372" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridconnections/hybridConnection-m5s10u/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+HybridConnection+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "caa0140b-6102-486b-b40d-72c9c0993de5" ],
+        "CommandName": [ "Az.Relay.private\\Remove-AzRelayAuthorizationRule_Delete1" ],
+        "FullCommandName": [ "Remove-AzRelayAuthorizationRule_Delete1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "e2c24acf-608b-4ef7-8e1b-bfd119a33a1f" ],
+        "x-ms-correlation-request-id": [ "e2c24acf-608b-4ef7-8e1b-bfd119a33a1f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081839Z:e2c24acf-608b-4ef7-8e1b-bfd119a33a1f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+HybridConnection+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"rights\": [ \"Listen\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
+        "x-ms-request-id": [ "06cc4460-b9ab-4444-a242-1f04cccde404" ],
+        "x-ms-correlation-request-id": [ "06cc4460-b9ab-4444-a242-1f04cccde404" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081840Z:06cc4460-b9ab-4444-a242-1f04cccde404" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:39 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "352" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections/authorizationrules\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+HybridConnection+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "27" ],
+        "x-ms-client-request-id": [ "ee358f56-6a0a-4ab0-a884-9d17d1237cd3" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_GetViaIdentity1" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_GetViaIdentity1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "00454c9f-c9bb-4aed-882f-ee784ce30afd" ],
+        "x-ms-correlation-request-id": [ "00454c9f-c9bb-4aed-882f-ee784ce30afd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081841Z:00454c9f-c9bb-4aed-882f-ee784ce30afd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "372" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridconnections/hybridConnection-m5s10u/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/hybridconnections/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+HybridConnection+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+7": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/hybridConnections/hybridConnection-m5s10u/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "29" ],
+        "x-ms-client-request-id": [ "ee3a9a2b-fde0-404f-80c0-aecb2947a06f" ],
+        "CommandName": [ "Az.Relay.private\\Remove-AzRelayAuthorizationRule_DeleteViaIdentity1" ],
+        "FullCommandName": [ "Remove-AzRelayAuthorizationRule_DeleteViaIdentity1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-request-id": [ "51cfac58-c9e5-4eaa-8811-b09977280ddd" ],
+        "x-ms-correlation-request-id": [ "51cfac58-c9e5-4eaa-8811-b09977280ddd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081842Z:51cfac58-c9e5-4eaa-8811-b09977280ddd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+WcfRelay+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"rights\": [ \"Listen\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1186" ],
+        "x-ms-request-id": [ "09a750e5-8edf-428e-8511-56b99acc42d3" ],
+        "x-ms-correlation-request-id": [ "09a750e5-8edf-428e-8511-56b99acc42d3" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081843Z:09a750e5-8edf-428e-8511-56b99acc42d3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays/authorizationrules\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+WcfRelay+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "e6537c1d-0c00-4f41-9adf-dfa60a548204" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_Get2" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "3a4185b4-28dc-4758-93f6-5c17d3f6ac57" ],
+        "x-ms-correlation-request-id": [ "3a4185b4-28dc-4758-93f6-5c17d3f6ac57" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081843Z:3a4185b4-28dc-4758-93f6-5c17d3f6ac57" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfrelays/wcfRelay-x9ofgb/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+WcfRelay+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "dc979c73-15c3-4a17-a49c-7c7fb8b74aa8" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_Get2" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-request-id": [ "d16ae8ce-899b-46b1-94d0-c53a7a85d83c" ],
+        "x-ms-correlation-request-id": [ "d16ae8ce-899b-46b1-94d0-c53a7a85d83c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081844Z:d16ae8ce-899b-46b1-94d0-c53a7a85d83c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfrelays/wcfRelay-x9ofgb/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+WcfRelay+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "9f198ab7-0fe5-4bde-b73a-ab4169b9c3cc" ],
+        "CommandName": [ "Az.Relay.private\\Remove-AzRelayAuthorizationRule_Delete2" ],
+        "FullCommandName": [ "Remove-AzRelayAuthorizationRule_Delete2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
+        "x-ms-request-id": [ "9bd22e35-e260-495e-8c30-e8efe435793f" ],
+        "x-ms-correlation-request-id": [ "9bd22e35-e260-495e-8c30-e8efe435793f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081845Z:9bd22e35-e260-495e-8c30-e8efe435793f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+WcfRelay+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"rights\": [ \"Listen\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "56" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-request-id": [ "4b6d8d60-bfc5-4b22-89dd-98e0a721058a" ],
+        "x-ms-correlation-request-id": [ "4b6d8d60-bfc5-4b22-89dd-98e0a721058a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081846Z:4b6d8d60-bfc5-4b22-89dd-98e0a721058a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "328" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays/authorizationrules\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+WcfRelay+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "23d4a610-f98e-4fef-b136-189392cb9730" ],
+        "CommandName": [ "Az.Relay.private\\Get-AzRelayAuthorizationRule_GetViaIdentity2" ],
+        "FullCommandName": [ "Get-AzRelayAuthorizationRule_GetViaIdentity2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "x-ms-request-id": [ "a8557ea3-17e0-4b8d-854a-fe308708d03b" ],
+        "x-ms-correlation-request-id": [ "a8557ea3-17e0-4b8d-854a-fe308708d03b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081847Z:a8557ea3-17e0-4b8d-854a-fe308708d03b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "348" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfrelays/wcfRelay-x9ofgb/authorizationrules/authRule-ozyl7w\",\"name\":\"authRule-ozyl7w\",\"type\":\"Microsoft.Relay/namespaces/wcfrelays/authorizationrules\",\"location\":\"eastus\",\"properties\":{\"rights\":[\"Listen\"]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayAuthorizationRule+[NoContext]+WcfRelay+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01+7": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9/wcfRelays/wcfRelay-x9ofgb/authorizationRules/authRule-ozyl7w?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "edfd498b-2648-41bb-ab35-e6bbf987ddc9" ],
+        "CommandName": [ "Az.Relay.private\\Remove-AzRelayAuthorizationRule_DeleteViaIdentity2" ],
+        "FullCommandName": [ "Remove-AzRelayAuthorizationRule_DeleteViaIdentity2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14994" ],
+        "x-ms-request-id": [ "361dd0f1-11bb-4f6c-8221-1295e0a93e1e" ],
+        "x-ms-correlation-request-id": [ "361dd0f1-11bb-4f6c-8221-1295e0a93e1e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081849Z:361dd0f1-11bb-4f6c-8221-1295e0a93e1e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:18:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,571 @@
+{
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01",
+      "Content": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a5dbc147-5752-4c9a-a840-e86cea944c1d_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "48" ],
+        "x-ms-correlation-request-id": [ "cfc39edf-f81c-4b35-beee-66bc0c771f7c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081920Z:cfc39edf-f81c-4b35-beee-66bc0c771f7c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:19:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "565" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:19:18.59Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Activating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "57" ],
+        "x-ms-client-request-id": [ "4738fa9f-ac35-4c60-acb4-dfb68afef7ed" ],
+        "CommandName": [ "New-AzRelayNamespace" ],
+        "FullCommandName": [ "New-AzRelayNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d465fe4c-1954-47eb-8037-d78acc1fa470_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-correlation-request-id": [ "d37f5434-961e-407a-a3b1-db35fa533cba" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T081951Z:d37f5434-961e-407a-a3b1-db35fa533cba" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:19:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "565" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:19:18.59Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Activating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "58" ],
+        "x-ms-client-request-id": [ "4738fa9f-ac35-4c60-acb4-dfb68afef7ed" ],
+        "CommandName": [ "New-AzRelayNamespace" ],
+        "FullCommandName": [ "New-AzRelayNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "779ffb00-f28a-48d5-8c75-54353526d80d_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-correlation-request-id": [ "fa196473-1404-413a-958d-22b740a10eb0" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082022Z:fa196473-1404-413a-958d-22b740a10eb0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:20:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:20:05.003Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "4738fa9f-ac35-4c60-acb4-dfb68afef7ed" ],
+        "CommandName": [ "New-AzRelayNamespace" ],
+        "FullCommandName": [ "New-AzRelayNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "618dec5f-96b3-4bcd-bf66-08300f411928_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11980" ],
+        "x-ms-correlation-request-id": [ "c74bfa57-be44-40d1-bf53-4435a76f5196" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082023Z:c74bfa57-be44-40d1-bf53-4435a76f5196" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:20:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:20:05.003Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/namespaces?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/namespaces?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "60" ],
+        "x-ms-client-request-id": [ "860597f0-180b-4050-b12d-c8279d8f296f" ],
+        "CommandName": [ "Get-AzRelayNamespace" ],
+        "FullCommandName": [ "Get-AzRelayNamespace_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-inline-count": [ "" ],
+        "x-ms-request-id": [ "5c9c2bde-b6ca-432f-b2ef-594cca144be5_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11979" ],
+        "x-ms-correlation-request-id": [ "da490b87-3cfa-4a7d-a8e6-3f1d1dbff8a9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082023Z:da490b87-3cfa-4a7d-a8e6-3f1d1dbff8a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:20:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1718" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Relay-ServiceBus-EastUS/providers/Microsoft.Relay/namespaces/namespace-pwsh01\",\"name\":\"namespace-pwsh01\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-pwsh01\",\"createdAt\":\"2023-03-31T02:07:23.473Z\",\"updatedAt\":\"2023-03-31T05:43:45.49Z\",\"serviceBusEndpoint\":\"https://namespace-pwsh01.servicebus.windows.net:443/\",\"status\":\"Active\"}},{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9\",\"name\":\"namespace-qa3tw9\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-qa3tw9\",\"createdAt\":\"2023-03-31T08:16:26.707Z\",\"updatedAt\":\"2023-03-31T08:17:08.807Z\",\"serviceBusEndpoint\":\"https://namespace-qa3tw9.servicebus.windows.net:443/\",\"status\":\"Active\"}},{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:20:05.003Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Active\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "61" ],
+        "x-ms-client-request-id": [ "01fad940-d952-4906-874e-2b736b773803" ],
+        "CommandName": [ "Get-AzRelayNamespace" ],
+        "FullCommandName": [ "Get-AzRelayNamespace_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ad84a6f0-c850-44d4-bb85-ee09a70d713f_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11978" ],
+        "x-ms-correlation-request-id": [ "57e2b98e-81fb-4dd5-982f-f6744888d562" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082024Z:57e2b98e-81fb-4dd5-982f-f6744888d562" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:20:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1142" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-qa3tw9\",\"name\":\"namespace-qa3tw9\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-qa3tw9\",\"createdAt\":\"2023-03-31T08:16:26.707Z\",\"updatedAt\":\"2023-03-31T08:17:08.807Z\",\"serviceBusEndpoint\":\"https://namespace-qa3tw9.servicebus.windows.net:443/\",\"status\":\"Active\"}},{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:20:05.003Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Active\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "62" ],
+        "x-ms-client-request-id": [ "5e784450-5e9c-48ad-9da3-00d8d34193ac" ],
+        "CommandName": [ "Get-AzRelayNamespace" ],
+        "FullCommandName": [ "Get-AzRelayNamespace_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "603efff4-c2c7-4787-b894-cb321c8e952b_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11977" ],
+        "x-ms-correlation-request-id": [ "be2e7e46-14df-4648-afc2-1b3ca5b78a57" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082025Z:be2e7e46-14df-4648-afc2-1b3ca5b78a57" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:20:24 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:20:05.003Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01+8": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp?api-version=2021-11-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"k\": \"v\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "36" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "fba6b025-ddcb-4bed-97e2-8fd1eee559cd_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "47" ],
+        "x-ms-correlation-request-id": [ "2003dc47-842e-4670-8ca5-873c7038dd2b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082029Z:2003dc47-842e-4670-8ca5-873c7038dd2b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:20:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "573" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-ultrhp\",\"name\":\"namespace-ultrhp\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{\"k\":\"v\"},\"properties\":{\"provisioningState\":\"Updating\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-ultrhp\",\"createdAt\":\"2023-03-31T08:19:18.59Z\",\"updatedAt\":\"2023-03-31T08:20:26.37Z\",\"serviceBusEndpoint\":\"https://namespace-ultrhp.servicebus.windows.net:443/\",\"status\":\"Activating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded2+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01",
+      "Content": "{\r\n  \"location\": \"eastus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "28" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "21dba3ec-ecc2-4fe1-a7a0-adfb7f2d8d21_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "46" ],
+        "x-ms-correlation-request-id": [ "6e094bb7-a284-4c22-8ab7-6b3af69a446b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082034Z:6e094bb7-a284-4c22-8ab7-6b3af69a446b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:20:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "565" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d\",\"name\":\"namespace-kt5p0d\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-kt5p0d\",\"createdAt\":\"2023-03-31T08:20:32.41Z\",\"updatedAt\":\"2023-03-31T08:20:32.41Z\",\"serviceBusEndpoint\":\"https://namespace-kt5p0d.servicebus.windows.net:443/\",\"status\":\"Activating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "65" ],
+        "x-ms-client-request-id": [ "e83aa545-4d30-47e5-94a3-22988ce03f1e" ],
+        "CommandName": [ "New-AzRelayNamespace" ],
+        "FullCommandName": [ "New-AzRelayNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "dda263e2-ec44-4f38-aac4-560e7794b4b1_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
+        "x-ms-correlation-request-id": [ "2ebc5e34-5820-45b3-9797-2973e8b95b81" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082104Z:2ebc5e34-5820-45b3-9797-2973e8b95b81" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:21:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "565" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d\",\"name\":\"namespace-kt5p0d\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Created\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-kt5p0d\",\"createdAt\":\"2023-03-31T08:20:32.41Z\",\"updatedAt\":\"2023-03-31T08:20:32.41Z\",\"serviceBusEndpoint\":\"https://namespace-kt5p0d.servicebus.windows.net:443/\",\"status\":\"Activating\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "66" ],
+        "x-ms-client-request-id": [ "e83aa545-4d30-47e5-94a3-22988ce03f1e" ],
+        "CommandName": [ "New-AzRelayNamespace" ],
+        "FullCommandName": [ "New-AzRelayNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "03027740-18cf-4b9f-9251-b6f0335f045a_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
+        "x-ms-correlation-request-id": [ "fd511184-e8f8-42b3-8e7e-353be599a9be" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082135Z:fd511184-e8f8-42b3-8e7e-353be599a9be" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:21:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d\",\"name\":\"namespace-kt5p0d\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-kt5p0d\",\"createdAt\":\"2023-03-31T08:20:32.41Z\",\"updatedAt\":\"2023-03-31T08:21:16.227Z\",\"serviceBusEndpoint\":\"https://namespace-kt5p0d.servicebus.windows.net:443/\",\"status\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "67" ],
+        "x-ms-client-request-id": [ "e83aa545-4d30-47e5-94a3-22988ce03f1e" ],
+        "CommandName": [ "New-AzRelayNamespace" ],
+        "FullCommandName": [ "New-AzRelayNamespace_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "e80fbae8-b15e-44d2-960e-bf5c681e1314_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "x-ms-correlation-request-id": [ "7600e595-2eab-4f12-be1b-1fb94ade74cb" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082136Z:7600e595-2eab-4f12-be1b-1fb94ade74cb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:21:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d\",\"name\":\"namespace-kt5p0d\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-kt5p0d\",\"createdAt\":\"2023-03-31T08:20:32.41Z\",\"updatedAt\":\"2023-03-31T08:21:16.227Z\",\"serviceBusEndpoint\":\"https://namespace-kt5p0d.servicebus.windows.net:443/\",\"status\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded2+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "68" ],
+        "x-ms-client-request-id": [ "8be6151f-e30a-4323-abbe-356d97282339" ],
+        "CommandName": [ "Get-AzRelayNamespace" ],
+        "FullCommandName": [ "Get-AzRelayNamespace_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.3", "Az.Relay/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "220cb89f-cc90-4171-bb64-03658e1cc7d4_M4CH3_M4CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "x-ms-correlation-request-id": [ "f411078f-6b82-45c1-a2c3-e0e8036d150a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082137Z:f411078f-6b82-45c1-a2c3-e0e8036d150a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:21:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d\",\"name\":\"namespace-kt5p0d\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{},\"properties\":{\"provisioningState\":\"Succeeded\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-kt5p0d\",\"createdAt\":\"2023-03-31T08:20:32.41Z\",\"updatedAt\":\"2023-03-31T08:21:16.227Z\",\"serviceBusEndpoint\":\"https://namespace-kt5p0d.servicebus.windows.net:443/\",\"status\":\"Active\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzRelayNamespace+[NoContext]+CreateExpanded2+$PATCH+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01+6": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d?api-version=2021-11-01",
+      "Content": "{\r\n  \"tags\": {\r\n    \"k\": \"v\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "36" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "b7801c51-d40f-47a8-a69c-3988ade153e2_M5SN1_M5SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "45" ],
+        "x-ms-correlation-request-id": [ "2570944e-8333-4bd4-b176-b148e33eb010" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230331T082141Z:2570944e-8333-4bd4-b176-b148e33eb010" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 31 Mar 2023 08:21:40 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "572" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"sku\":{\"name\":\"Standard\",\"tier\":\"Standard\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/relay-k5sn20/providers/Microsoft.Relay/namespaces/namespace-kt5p0d\",\"name\":\"namespace-kt5p0d\",\"type\":\"Microsoft.Relay/Namespaces\",\"location\":\"East US\",\"tags\":{\"k\":\"v\"},\"properties\":{\"provisioningState\":\"Updating\",\"metricId\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f:namespace-kt5p0d\",\"createdAt\":\"2023-03-31T08:20:32.41Z\",\"updatedAt\":\"2023-03-31T08:21:38.7Z\",\"serviceBusEndpoint\":\"https://namespace-kt5p0d.servicebus.windows.net:443/\",\"status\":\"Activating\"}}",
+      "isContentBase64": false
+    }
+  }
+}
