@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.12.0
 * Added cmdlet `Invoke-AzReservationReturn`
 * Removed parameters `RefreshSummary`, `Skiptoken`, `Take` from cmdlet `Get-AzReservation`
 * Added parameters `First`, `Skip` for cmdlet `Get-AzReservation`

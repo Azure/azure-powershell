@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.13.1
 * Removed notice and attestation from `New-AzCognitiveServicesAccount`.
 
 ## Version 1.13.0

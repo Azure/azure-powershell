@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.0
 * Added fix for DeliveryAttributeMapping
 * Added validation for StorageQueueTtl
 

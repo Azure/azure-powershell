@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.14.0
 * Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
 * Added a new parameter `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
 * Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]

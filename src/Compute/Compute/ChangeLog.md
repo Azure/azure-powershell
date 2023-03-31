@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 5.7.0
 * Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
 * Added `-CustomData`, `-AdminPassword`, and `-ExactVersion` parameters to `Invoke-AzVMReimage`.
 * Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 

@@ -364,6 +364,16 @@
       "Update-AzApplicationInsightsWorkbook": {},
       "Update-AzApplicationInsightsWorkbookTemplate": {}
     },
+    "Az.ArcResourceBridge": {
+      "Get-AzArcResourceBridge": {},
+      "Get-AzArcResourceBridgeApplianceCredential": {},
+      "Get-AzArcResourceBridgeCredential": {},
+      "Get-AzArcResourceBridgeTelemetryConfig": {},
+      "Get-AzArcResourceBridgeUpgradeGraph": {},
+      "New-AzArcResourceBridge": {},
+      "Remove-AzArcResourceBridge": {},
+      "Update-AzArcResourceBridge": {}
+    },
     "Az.Attestation": {
       "Get-AzAttestationPolicy": {},
       "Set-AzAttestationPolicy": {},
@@ -1405,7 +1415,16 @@
       "Remove-AzCosmosDBMongoDBUserDefinition": {},
       "Get-AzCosmosDBService": {},
       "New-AzCosmosDBService": {},
-      "Remove-AzCosmosDBService": {}
+      "Remove-AzCosmosDBService": {},
+      "Get-AzCosmosDBGremlinGraphBackupInformation": {},
+      "Get-AzCosmosDBGremlinRestorableDatabase": {},
+      "Get-AzCosmosDBGremlinRestorableGraph": {},
+      "Get-AzCosmosDBGremlinRestorableResource": {},
+      "Get-AzCosmosDBTableRestorableTable": {},
+      "Get-AzCosmosDBTableRestorableResource": {},
+      "Get-AzCosmosDBTableBackupInformation": {},
+      "New-AzCosmosDBGremlinDatabaseToRestore": {},
+      "New-AzCosmosDBTableToRestore": {}
     },
     "Az.CostManagement": {
       "Get-AzCostManagementExport": {},
@@ -1871,6 +1890,7 @@
       "Get-AzDataProtectionResourceGuard": {},
       "Initialize-AzDataProtectionBackupInstance": {},
       "Initialize-AzDataProtectionRestoreRequest": {},
+      "New-AzDataProtectionBackupConfigurationClientObject": {},
       "New-AzDataProtectionBackupInstance": {},
       "New-AzDataProtectionBackupPolicy": {},
       "New-AzDataProtectionBackupVault": {},
@@ -1878,6 +1898,7 @@
       "New-AzDataProtectionPolicyTagCriteriaClientObject": {},
       "New-AzDataProtectionPolicyTriggerScheduleClientObject": {},
       "New-AzDataProtectionResourceGuard": {},
+      "New-AzDataProtectionRestoreConfigurationClientObject": {},
       "New-AzDataProtectionRetentionLifeCycleClientObject": {},
       "Remove-AzDataProtectionBackupInstance": {},
       "Remove-AzDataProtectionBackupPolicy": {},
@@ -2799,6 +2820,7 @@
       "Get-AzKustoPrivateEndpointConnection": {},
       "Get-AzKustoPrivateLinkResource": {},
       "Get-AzKustoScript": {},
+      "Get-AzKustoSku": {},
       "Invoke-AzKustoDataConnectionValidation": {},
       "Invoke-AzKustoDetachClusterFollowerDatabase": {},
       "Invoke-AzKustoDiagnoseClusterVirtualNetwork": {},
@@ -4324,6 +4346,7 @@
       "Set-AzNetworkManagerManagementGroupConnection": {},
       "Get-AzFirewallLearnedIpPrefix": {},
       "New-AzFirewallPolicySnat": {},
+      "New-AzGatewayCustomBgpIpConfigurationObject": {},
       "List-AzApplicationGatewayAvailableWafRuleSets": {},
       "List-AzApplicationGatewayAvailableSslOptions": {},
       "List-AzApplicationGatewaySslPredefinedPolicy": {},
@@ -5721,6 +5744,7 @@
       "Update-AzSpringCloudMonitoringSetting": {}
     },
     "Az.Sql": {
+      "Invoke-AzSqlServerExternalGovernanceStatusRefresh": {},
       "Get-AzSqlDatabaseTransparentDataEncryption": {},
       "Get-AzSqlDatabaseTransparentDataEncryptionActivity": {},
       "Set-AzSqlDatabaseTransparentDataEncryption": {},
