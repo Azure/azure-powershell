@@ -1,0 +1,74 @@
+{
+  "Set-AzAksSnapshot+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"creationData\": {\r\n      \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\r\n    },\r\n    \"snapshotType\": \"NodePool\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "297" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "b0e9e194-7b91-41fc-88a4-7b013ec14677" ],
+        "x-ms-request-id": [ "596fc05a-debf-4636-a241-1cfbcdca1bc3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T102712Z:b0e9e194-7b91-41fc-88a4-7b013ec14677" ],
+        "Date": [ "Thu, 30 Mar 2023 10:27:11 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "941" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"name\": \"snapshot1\",\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1\",\n  \"type\": \"Microsoft.ContainerService/Snapshots\",\n  \"location\": \"eastus\",\n  \"systemData\": {\n   \"createdBy\": \"yanxu1@microsoft.com\",\n   \"createdByType\": \"User\",\n   \"createdAt\": \"2023-03-30T10:27:10.433796Z\",\n   \"lastModifiedBy\": \"yanxu1@microsoft.com\",\n   \"lastModifiedByType\": \"User\",\n   \"lastModifiedAt\": \"2023-03-30T10:27:10.433796Z\"\n  },\n  \"properties\": {\n   \"creationData\": {\n    \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default\"\n   },\n   \"snapshotType\": \"NodePool\",\n   \"kubernetesVersion\": \"1.24.9\",\n   \"nodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\",\n   \"osType\": \"Linux\",\n   \"osSku\": \"Ubuntu\",\n   \"vmSize\": \"Standard_D2_v2\"\n  }\n }",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzAksSnapshot+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/snapshots/snapshot1?api-version=2023-02-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"creationData\": {\r\n      \"sourceResourceId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/pool2\"\r\n    },\r\n    \"snapshotType\": \"NodePool\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "295" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-correlation-request-id": [ "a029c61c-cc45-416a-8995-fc7318be82db" ],
+        "x-ms-request-id": [ "3d600413-93cf-4e8c-bc69-ce2b19fc981a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230330T102713Z:a029c61c-cc45-416a-8995-fc7318be82db" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 30 Mar 2023 10:27:12 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "175" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"code\": \"BadRequest\",\n  \"message\": \"Updating existing snapshot is not allowed, you can refer to https://aka.ms/aks/nodepool-snapshot for more details.\",\n  \"subcode\": \"\"\n }",
+      "isContentBase64": false
+    }
+  }
+}
