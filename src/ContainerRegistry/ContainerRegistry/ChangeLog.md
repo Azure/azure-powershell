@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.3
 * Added breaking change attributes for cmdlets
 
 ## Version 3.0.2

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Added support for AKS workload with Backup Vaults
 * Added support for `Set-AzDataProtectionMSIPermission` during restore with AKS workload
 
