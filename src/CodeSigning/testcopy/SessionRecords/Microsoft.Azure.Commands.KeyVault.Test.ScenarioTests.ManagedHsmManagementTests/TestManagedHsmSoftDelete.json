@@ -1,0 +1,2935 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Resources?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuUmVzb3VyY2VzP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9bda1fd8-f368-4d16-9e53-c55acb5c7f0f"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "39048fa3-3834-401d-bb61-076a1fafca38"
+        ],
+        "x-ms-correlation-request-id": [
+          "39048fa3-3834-401d-bb61-076a1fafca38"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095534Z:39048fa3-3834-401d-bb61-076a1fafca38"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:55:34 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "14362"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Resources\",\r\n  \"namespace\": \"Microsoft.Resources\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"3b990c8b-9607-4c2a-8b04-1d41985facca\"\r\n    },\r\n    {\r\n      \"applicationId\": \"94946920-7f9c-4956-93c0-2fcf94608102\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"tenants\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2020-01-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"notifyResourceJobs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"tags\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-10-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"checkPolicyCompliance\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkresourcename\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"calculateTemplateHash\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-10-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/providers\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/operationresults\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Qatar Central\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourceGroups\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US\",\r\n        \"East US 2\",\r\n        \"West US\",\r\n        \"West US 2\",\r\n        \"North Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Brazil South\",\r\n        \"Australia Southeast\",\r\n        \"Australia East\",\r\n        \"West India\",\r\n        \"South India\",\r\n        \"Central India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"South Africa North\",\r\n        \"UAE North\",\r\n        \"Australia Central\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Jio India West\",\r\n        \"West US 3\",\r\n        \"Qatar Central\",\r\n        \"Sweden Central\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/resourcegroups/resources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagnames\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"subscriptions/tagNames/tagValues\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-01-01\",\r\n        \"2020-10-01\",\r\n        \"2020-06-01\",\r\n        \"2019-09-01\",\r\n        \"2019-08-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deployments/operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2021-04-01\",\r\n        \"2021-01-01\",\r\n        \"2020-10-01\",\r\n        \"2020-06-01\",\r\n        \"2019-09-01\",\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"validateResources\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"links\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2015-01-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"bulkDelete\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2019-05-01\",\r\n        \"2019-04-01\",\r\n        \"2019-03-01\",\r\n        \"2018-11-01\",\r\n        \"2018-09-01\",\r\n        \"2018-08-01\",\r\n        \"2018-07-01\",\r\n        \"2018-05-01\",\r\n        \"2018-02-01\",\r\n        \"2018-01-01\",\r\n        \"2017-08-01\",\r\n        \"2017-06-01\",\r\n        \"2017-05-10\",\r\n        \"2017-05-01\",\r\n        \"2017-03-01\",\r\n        \"2016-09-01\",\r\n        \"2016-07-01\",\r\n        \"2016-06-01\",\r\n        \"2016-02-01\",\r\n        \"2015-11-01\",\r\n        \"2015-01-01\",\r\n        \"2014-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deploymentScripts\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Jio India West\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"Sweden Central\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"West US 3\",\r\n        \"South Africa North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-10-01\",\r\n        \"2019-10-01-preview\"\r\n      ],\r\n      \"capabilities\": \"None\"\r\n    },\r\n    {\r\n      \"resourceType\": \"deploymentScripts/logs\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Jio India West\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"Sweden Central\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"West US 3\",\r\n        \"South Africa North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-10-01\",\r\n        \"2019-10-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deploymentScriptOperationResults\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"Jio India West\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"Sweden Central\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"South Central US\",\r\n        \"West US 3\",\r\n        \"South Africa North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2020-10-01\",\r\n        \"2019-10-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"templateSpecs\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"Qatar Central\",\r\n        \"Sweden Central\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"West US 3\",\r\n        \"South Central US\",\r\n        \"South Africa North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-02-01\",\r\n        \"2021-05-01\",\r\n        \"2021-03-01-preview\",\r\n        \"2019-06-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"templateSpecs/versions\",\r\n      \"locations\": [\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"Australia East\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"Switzerland North\",\r\n        \"Germany West Central\",\r\n        \"East US 2\",\r\n        \"East US\",\r\n        \"Central US\",\r\n        \"North Central US\",\r\n        \"France Central\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central India\",\r\n        \"West India\",\r\n        \"Jio India West\",\r\n        \"South India\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"North Europe\",\r\n        \"Norway East\",\r\n        \"Qatar Central\",\r\n        \"Sweden Central\",\r\n        \"UAE North\",\r\n        \"West Central US\",\r\n        \"West Europe\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"West US 3\",\r\n        \"South Central US\",\r\n        \"South Africa North\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-02-01\",\r\n        \"2021-05-01\",\r\n        \"2021-03-01-preview\",\r\n        \"2019-06-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"builtInTemplateSpecs\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"builtInTemplateSpecs/versions\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-02-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"changes\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-05-01\",\r\n        \"2022-03-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    },\r\n    {\r\n      \"resourceType\": \"snapshots\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-11-01-preview\"\r\n      ],\r\n      \"capabilities\": \"SupportsExtension\"\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQ/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "bdaab285-36ef-41f1-be67-d2954be0371d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "1d068375-521a-4d63-9750-7b28bf1e7ad6"
+        ],
+        "x-ms-correlation-request-id": [
+          "1d068375-521a-4d63-9750-7b28bf1e7ad6"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095535Z:1d068375-521a-4d63-9750-7b28bf1e7ad6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:55:35 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "14851"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault\",\r\n  \"namespace\": \"Microsoft.KeyVault\",\r\n  \"authorizations\": [\r\n    {\r\n      \"applicationId\": \"cfa8b339-82a2-471a-a3c9-0fc0be7a4093\",\r\n      \"roleDefinitionId\": \"1cf9858a-28a2-4228-abba-94e606305b95\"\r\n    },\r\n    {\r\n      \"applicationId\": \"589d5083-6f11-4d30-a62a-a4b316a14abf\",\r\n      \"roleDefinitionId\": \"1f7e9952-ea79-42b8-a90e-b2dabbe1c1f2\"\r\n    },\r\n    {\r\n      \"applicationId\": \"a1b76039-a76c-499f-a2dd-846b4cc32627\"\r\n    }\r\n  ],\r\n  \"resourceTypes\": [\r\n    {\r\n      \"resourceType\": \"operations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\",\r\n        \"2015-06-01\",\r\n        \"2014-12-19-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\",\r\n        \"2015-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/notifyNetworkSecurityPerimeterUpdatesAvailable\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"managedHSMs\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Canada Central\",\r\n        \"Switzerland North\",\r\n        \"South Africa North\",\r\n        \"UK South\",\r\n        \"SouthEast Asia\",\r\n        \"East Asia\",\r\n        \"Korea Central\",\r\n        \"Australia Central\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"Canada East\",\r\n        \"Japan East\",\r\n        \"UAE North\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Switzerland West\",\r\n        \"Central India\",\r\n        \"Brazil South\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"deletedManagedHSMs\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Canada Central\",\r\n        \"Switzerland North\",\r\n        \"South Africa North\",\r\n        \"UK South\",\r\n        \"SouthEast Asia\",\r\n        \"East Asia\",\r\n        \"Korea Central\",\r\n        \"Australia Central\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"Canada East\",\r\n        \"Japan East\",\r\n        \"UAE North\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Switzerland West\",\r\n        \"Central India\",\r\n        \"Brazil South\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deletedManagedHSMs\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Canada Central\",\r\n        \"Switzerland North\",\r\n        \"South Africa North\",\r\n        \"UK South\",\r\n        \"SouthEast Asia\",\r\n        \"East Asia\",\r\n        \"Korea Central\",\r\n        \"Australia Central\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"Canada East\",\r\n        \"Japan East\",\r\n        \"UAE North\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Switzerland West\",\r\n        \"Central India\",\r\n        \"Brazil South\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/managedHsmOperationResults\",\r\n      \"locations\": [\r\n        \"Central US\",\r\n        \"Central US EUAP\",\r\n        \"East US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"South Central US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"Canada Central\",\r\n        \"Switzerland North\",\r\n        \"South Africa North\",\r\n        \"UK South\",\r\n        \"SouthEast Asia\",\r\n        \"East Asia\",\r\n        \"Korea Central\",\r\n        \"Australia Central\",\r\n        \"West US\",\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"West US 3\",\r\n        \"Canada East\",\r\n        \"Japan East\",\r\n        \"UAE North\",\r\n        \"Australia East\",\r\n        \"France Central\",\r\n        \"Switzerland West\",\r\n        \"Central India\",\r\n        \"Brazil South\",\r\n        \"Sweden Central\",\r\n        \"Qatar Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"checkMhsmNameAvailability\",\r\n      \"locations\": [],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"vaults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\",\r\n        \"2015-06-01\"\r\n      ],\r\n      \"capabilities\": \"CrossResourceGroupResourceMove, CrossSubscriptionResourceMove\"\r\n    },\r\n    {\r\n      \"resourceType\": \"vaults/secrets\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\",\r\n        \"2015-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"vaults/accessPolicies\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\",\r\n        \"2015-06-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"deletedVaults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deletedVaults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/deleteVirtualNetworkOrSubnets\",\r\n      \"locations\": [\r\n        \"East US\",\r\n        \"North Central US\",\r\n        \"West Europe\",\r\n        \"North Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"Central US EUAP\",\r\n        \"East US 2 EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"locations/operationResults\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\",\r\n        \"2016-10-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"vaults/eventGridFilters\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\",\r\n        \"2018-02-14-preview\",\r\n        \"2018-02-14\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"vaults/keys\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\"\r\n      ]\r\n    },\r\n    {\r\n      \"resourceType\": \"vaults/keys/versions\",\r\n      \"locations\": [\r\n        \"North Central US\",\r\n        \"East US\",\r\n        \"North Europe\",\r\n        \"West Europe\",\r\n        \"East Asia\",\r\n        \"Southeast Asia\",\r\n        \"East US 2\",\r\n        \"Central US\",\r\n        \"South Central US\",\r\n        \"West US\",\r\n        \"Japan East\",\r\n        \"Japan West\",\r\n        \"Australia East\",\r\n        \"Australia Southeast\",\r\n        \"Brazil South\",\r\n        \"Central India\",\r\n        \"South India\",\r\n        \"West India\",\r\n        \"Canada Central\",\r\n        \"Canada East\",\r\n        \"UK South\",\r\n        \"UK West\",\r\n        \"West Central US\",\r\n        \"West US 2\",\r\n        \"East US 2 EUAP\",\r\n        \"Central US EUAP\",\r\n        \"Korea Central\",\r\n        \"Korea South\",\r\n        \"France Central\",\r\n        \"France South\",\r\n        \"Australia Central\",\r\n        \"Australia Central 2\",\r\n        \"UAE Central\",\r\n        \"UAE North\",\r\n        \"South Africa North\",\r\n        \"South Africa West\",\r\n        \"Switzerland North\",\r\n        \"Switzerland West\",\r\n        \"Germany North\",\r\n        \"Germany West Central\",\r\n        \"Norway East\",\r\n        \"Norway West\",\r\n        \"Brazil Southeast\",\r\n        \"West US 3\",\r\n        \"Jio India Central\",\r\n        \"Jio India West\",\r\n        \"Sweden Central\",\r\n        \"Sweden South\",\r\n        \"Qatar Central\",\r\n        \"Poland Central\"\r\n      ],\r\n      \"apiVersions\": [\r\n        \"2022-07-01\",\r\n        \"2022-02-01-preview\",\r\n        \"2021-11-01-preview\",\r\n        \"2021-10-01\",\r\n        \"2021-06-01-preview\",\r\n        \"2021-04-01-preview\",\r\n        \"2020-04-01-preview\",\r\n        \"2019-09-01\"\r\n      ]\r\n    }\r\n  ],\r\n  \"registrationState\": \"Registered\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/ps5377?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3BzNTM3Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "abb37429-5f77-45be-8377-c86984143a83"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-request-id": [
+          "978c7312-933f-41f5-9520-f752600d6dc0"
+        ],
+        "x-ms-correlation-request-id": [
+          "978c7312-933f-41f5-9520-f752600d6dc0"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095537Z:978c7312-933f-41f5-9520-f752600d6dc0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:55:37 GMT"
+        ],
+        "Content-Length": [
+          "165"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps5377\",\r\n  \"name\": \"ps5377\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resources?$filter=resourceType%20eq%20'Microsoft.KeyVault%2FmanagedHSMs'&api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlcz8kZmlsdGVyPXJlc291cmNlVHlwZSUyMGVxJTIwJ01pY3Jvc29mdC5LZXlWYXVsdCUyRm1hbmFnZWRIU01zJyZhcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "e8c83e85-583e-4443-b8d0-3263a488a50c"
+        ],
+        "x-ms-correlation-request-id": [
+          "e8c83e85-583e-4443-b8d0-3263a488a50c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095538Z:e8c83e85-583e-4443-b8d0-3263a488a50c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:55:37 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "544"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg/providers/Microsoft.KeyVault/managedHSMs/bezmhsm09\",\r\n      \"name\": \"bezmhsm09\",\r\n      \"type\": \"Microsoft.KeyVault/managedHSMs\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_B1\",\r\n        \"family\": \"B\"\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yishitest/providers/Microsoft.KeyVault/managedHSMs/ystesthsm\",\r\n      \"name\": \"ystesthsm\",\r\n      \"type\": \"Microsoft.KeyVault/managedHSMs\",\r\n      \"sku\": {\r\n        \"name\": \"Standard_B1\",\r\n        \"family\": \"B\"\r\n      },\r\n      \"location\": \"eastus\",\r\n      \"tags\": {}\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps5377/providers/Microsoft.KeyVault/managedHSMs/ps816?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3BzNTM3Ny9wcm92aWRlcnMvTWljcm9zb2Z0LktleVZhdWx0L21hbmFnZWRIU01zL3BzODE2P2FwaS12ZXJzaW9uPTIwMjItMDctMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "323"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"tenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n    \"initialAdminObjectIds\": [\r\n      \"37f6731d-0484-43e3-b7e2-1f1bbc562109\"\r\n    ],\r\n    \"softDeleteRetentionInDays\": 70,\r\n    \"networkAcls\": {}\r\n  },\r\n  \"location\": \"West US\",\r\n  \"sku\": {\r\n    \"name\": \"Standard_B1\",\r\n    \"family\": \"B\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "0e32ce3c-5414-4e01-bbd9-d93205af6e90"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "479bddef-ae0c-4e34-b5a1-d45d14692fcf"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095546Z:479bddef-ae0c-4e34-b5a1-d45d14692fcf"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:55:46 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "b79f255a-dfc9-452f-b0b4-1fef5438e492"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0554604c-3e1f-4818-9b37-3370ec15d72a"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095617Z:0554604c-3e1f-4818-9b37-3370ec15d72a"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:56:16 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "4551b01d-5222-4805-a24b-bde4a9c745bf"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "9be033c4-a761-456e-bc0e-5509abf0fe5a"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095647Z:9be033c4-a761-456e-bc0e-5509abf0fe5a"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:56:47 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "3d82d823-e555-443b-bb6f-c1f8598eb8aa"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "0ecd0ba6-49f6-4c94-b4eb-cc0c04256c33"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095717Z:0ecd0ba6-49f6-4c94-b4eb-cc0c04256c33"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:57:17 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "81a8526d-34f8-4503-b385-0f5da3043bee"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "36a4b163-865f-45bd-a699-23824cef6038"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095748Z:36a4b163-865f-45bd-a699-23824cef6038"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:57:47 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "6ec3e85e-9dd4-4117-b229-12125e15ffff"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "f5c272e4-a59b-48c6-aad5-11f487c537f5"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095818Z:f5c272e4-a59b-48c6-aad5-11f487c537f5"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:58:17 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "7e7464c3-6223-4d36-849b-422fe5a087a7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "61494a22-eccf-4953-a425-c1d0bfa3d5d8"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095848Z:61494a22-eccf-4953-a425-c1d0bfa3d5d8"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:58:48 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "83233fd3-b56e-4f37-a192-363ae2b5853c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "5ea0fe0e-ef4a-4905-bca8-c9d9c0547e48"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095919Z:5ea0fe0e-ef4a-4905-bca8-c9d9c0547e48"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:59:19 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "6cbf7ed1-0412-4fd9-b3b7-88a8b8305c3b"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "31cbfd91-4124-48a6-9132-e564577eec48"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T095949Z:31cbfd91-4124-48a6-9132-e564577eec48"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 09:59:49 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "527a72fd-3319-416a-a748-14b463a363d0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-correlation-request-id": [
+          "5d66fe67-9450-4875-a4bc-b8b14f59a489"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100019Z:5d66fe67-9450-4875-a4bc-b8b14f59a489"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:00:19 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "0147f5b1-2926-4a15-b6bb-323333322c4a"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11990"
+        ],
+        "x-ms-correlation-request-id": [
+          "cc8cde47-5b39-437a-bd14-bc3d9b52ef9e"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100050Z:cc8cde47-5b39-437a-bd14-bc3d9b52ef9e"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:00:50 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "c598fb8d-7bc2-4b1a-8476-76c1dcd9c319"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11989"
+        ],
+        "x-ms-correlation-request-id": [
+          "62a4a79d-1133-4eed-80ae-a8f152087114"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100121Z:62a4a79d-1133-4eed-80ae-a8f152087114"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:01:20 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "945722b8-8a21-4c39-8886-b6b071ed9ab6"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11988"
+        ],
+        "x-ms-correlation-request-id": [
+          "d06977c0-2078-4b97-b382-a8ef66ac86c2"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100151Z:d06977c0-2078-4b97-b382-a8ef66ac86c2"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:01:50 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "575d87c5-6942-48a9-b609-5ef0a5851f75"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11987"
+        ],
+        "x-ms-correlation-request-id": [
+          "5545969d-fb0c-4b2b-b0e2-92f387ecec63"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100222Z:5545969d-fb0c-4b2b-b0e2-92f387ecec63"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:02:21 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "05ebe7ff-b051-4c2a-95b9-8c093b74e229"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11986"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a273314-d97b-4ef1-b283-5a091f2c232b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100252Z:7a273314-d97b-4ef1-b283-5a091f2c232b"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:02:51 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "92c439de-0e61-4ad2-9e88-3ecf1fd7c00c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11985"
+        ],
+        "x-ms-correlation-request-id": [
+          "7f20c232-2af2-4409-b1f2-41b7d05d2249"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100322Z:7f20c232-2af2-4409-b1f2-41b7d05d2249"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:03:22 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "fa7b8ae2-b541-487b-8f95-fce5d005ccf0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11984"
+        ],
+        "x-ms-correlation-request-id": [
+          "9645f466-7fab-4ca1-9577-669b8b3efc60"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100353Z:9645f466-7fab-4ca1-9577-669b8b3efc60"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:03:52 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "9a2fbd0a-d25a-4880-8d41-f8dd119ea203"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11983"
+        ],
+        "x-ms-correlation-request-id": [
+          "c968e20f-643e-445b-9d08-920a651f90e5"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100423Z:c968e20f-643e-445b-9d08-920a651f90e5"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:04:23 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "17a36107-b7bb-4468-8e2f-f235785cd3e7"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11982"
+        ],
+        "x-ms-correlation-request-id": [
+          "43e41ec5-466f-42ef-a33e-e2ea75a81616"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100454Z:43e41ec5-466f-42ef-a33e-e2ea75a81616"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:04:53 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/d46d9fa3-abef-45a5-974a-215f0311de0f?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9kNDZkOWZhMy1hYmVmLTQ1YTUtOTc0YS0yMTVmMDMxMWRlMGY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "c5c7e098-84a9-4310-991a-b7ec3db5020d"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "2ea4ecd8-9005-44f3-87a0-309d9bbbc527"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11981"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-correlation-request-id": [
+          "5daed08e-2f6d-4d24-8528-bc1c42ab2911"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100524Z:5daed08e-2f6d-4d24-8528-bc1c42ab2911"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:05:23 GMT"
+        ],
+        "Content-Length": [
+          "1280"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"family\": \"B\",\r\n    \"name\": \"Standard_B1\"\r\n  },\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps5377/providers/Microsoft.KeyVault/managedHSMs/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.KeyVault/managedHSMs\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {},\r\n  \"systemData\": {\r\n    \"createdBy\": \"74be032e-9cbe-4a2d-b1ab-c6beee96a311\",\r\n    \"createdByType\": \"Application\",\r\n    \"createdAt\": \"2022-10-20T09:55:42.479Z\",\r\n    \"lastModifiedBy\": \"74be032e-9cbe-4a2d-b1ab-c6beee96a311\",\r\n    \"lastModifiedByType\": \"Application\",\r\n    \"lastModifiedAt\": \"2022-10-20T09:55:42.479Z\"\r\n  },\r\n  \"properties\": {\r\n    \"tenantId\": \"54826b22-38d6-4fb2-bad9-b7b93a3e9c5a\",\r\n    \"hsmUri\": \"https://ps816.managedhsm.azure.net/\",\r\n    \"initialAdminObjectIds\": [\r\n      \"37f6731d-0484-43e3-b7e2-1f1bbc562109\"\r\n    ],\r\n    \"enableSoftDelete\": true,\r\n    \"softDeleteRetentionInDays\": 70,\r\n    \"enablePurgeProtection\": false,\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"statusMessage\": \"The Managed HSM is provisioned and ready to use.\",\r\n    \"networkAcls\": {\r\n      \"bypass\": \"AzureServices\",\r\n      \"defaultAction\": \"Allow\",\r\n      \"ipRules\": [],\r\n      \"virtualNetworkRules\": []\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"regions\": [],\r\n    \"securityDomainProperties\": {\r\n      \"activationStatus\": \"NotActivated\",\r\n      \"activationStatusMessage\": \"Your HSM has been provisioned, but cannot be used for cryptographic operations until it is activated. To activate the HSM, download the security domain.\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps5377/providers/Microsoft.KeyVault/managedHSMs/ps816?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlR3JvdXBzL3BzNTM3Ny9wcm92aWRlcnMvTWljcm9zb2Z0LktleVZhdWx0L21hbmFnZWRIU01zL3BzODE2P2FwaS12ZXJzaW9uPTIwMjItMDctMDE=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5e005fb2-7654-464f-90d7-d7045a6b0a72"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/ef9aa556-6d21-4239-bec6-5a70cf7a3b22?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "5e005fb2-7654-464f-90d7-d7045a6b0a72"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "2294bc69-809c-428f-af75-59cd0abc81bd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "26b9d785-cdbd-4802-8dc7-d2d800a6efca"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100525Z:26b9d785-cdbd-4802-8dc7-d2d800a6efca"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:05:25 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/ef9aa556-6d21-4239-bec6-5a70cf7a3b22?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9lZjlhYTU1Ni02ZDIxLTQyMzktYmVjNi01YTcwY2Y3YTNiMjI/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5e005fb2-7654-464f-90d7-d7045a6b0a72"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "5e005fb2-7654-464f-90d7-d7045a6b0a72"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "90e41112-df18-44e7-b224-c3f229b4ecf0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "f00feb33-5bec-485a-9acf-c00ab02c11f1"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100556Z:f00feb33-5bec-485a-9acf-c00ab02c11f1"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:05:56 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/ef9aa556-6d21-4239-bec6-5a70cf7a3b22?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy9lZjlhYTU1Ni02ZDIxLTQyMzktYmVjNi01YTcwY2Y3YTNiMjI/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5e005fb2-7654-464f-90d7-d7045a6b0a72"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "5e005fb2-7654-464f-90d7-d7045a6b0a72"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "576475d5-25f6-4241-a950-2f12bd0430b0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "adb3c453-bea8-40bd-97d1-f20fb56a7158"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100556Z:adb3c453-bea8-40bd-97d1-f20fb56a7158"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:05:56 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/West%20US/deletedManagedHSMs/ps816?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL1dlc3QlMjBVUy9kZWxldGVkTWFuYWdlZEhTTXMvcHM4MTY/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "65b55a3d-cea9-4452-8ada-ed97c48b5412"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "65b55a3d-cea9-4452-8ada-ed97c48b5412"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "0dcea21d-83d4-424a-912f-eb64e71cfd5f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "3ae939d9-a15c-499a-ab2a-7a5875c82409"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100557Z:3ae939d9-a15c-499a-ab2a-7a5875c82409"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:05:57 GMT"
+        ],
+        "Content-Length": [
+          "483"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/deletedManagedHSMs/ps816\",\r\n  \"name\": \"ps816\",\r\n  \"type\": \"Microsoft.Keyvault/deletedManagedHSMs\",\r\n  \"properties\": {\r\n    \"mhsmId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/ps5377/providers/Microsoft.KeyVault/managedHSMs/ps816\",\r\n    \"location\": \"westus\",\r\n    \"deletionDate\": \"2022-10-20T10:05:25Z\",\r\n    \"scheduledPurgeDate\": \"2022-12-29T10:05:25Z\",\r\n    \"purgeProtectionEnabled\": false,\r\n    \"tags\": {}\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/deletedManagedHSMs/ps816/purge?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9kZWxldGVkTWFuYWdlZEhTTXMvcHM4MTYvcHVyZ2U/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "8a348d91-9e55-407e-9c6d-b7d6ec83f112"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "48abc9bd-852c-4f81-9381-9449904a5b4e"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100600Z:48abc9bd-852c-4f81-9381-9449904a5b4e"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:06:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "92f24ca7-4222-4a7b-a85a-f0974207fbfb"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "7bc4d3a8-342f-4351-bdae-f5b2f80fe386"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100630Z:7bc4d3a8-342f-4351-bdae-f5b2f80fe386"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:06:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "2dcb37f3-7ca8-499a-a430-9839e5e7979d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "051dc82f-3141-4ee5-b1af-a5d557cbedb6"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100701Z:051dc82f-3141-4ee5-b1af-a5d557cbedb6"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:07:00 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "dec0f83c-4984-4148-ac91-ece1515f309f"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "d3f02756-0c0e-458b-a7b0-d6ef34af88a9"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100731Z:d3f02756-0c0e-458b-a7b0-d6ef34af88a9"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:07:30 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "e19d8d33-60b0-4571-9564-9a3d3fe61b2d"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "ac9ae913-2054-4c31-b0db-89ff834ffdaf"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100801Z:ac9ae913-2054-4c31-b0db-89ff834ffdaf"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:08:01 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "b6fd04f2-7104-44a1-855f-2048e3987e74"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-correlation-request-id": [
+          "a5599e46-847e-4a50-8d04-e78274524d0b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100832Z:a5599e46-847e-4a50-8d04-e78274524d0b"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:08:31 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "a4fb3631-026c-4c9e-bd49-60691973517c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-correlation-request-id": [
+          "e99bc88f-074c-4088-8bc4-8acdc88200f7"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100902Z:e99bc88f-074c-4088-8bc4-8acdc88200f7"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:09:02 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "ffe31341-b237-4de3-89e4-d38938935f74"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11993"
+        ],
+        "x-ms-correlation-request-id": [
+          "22d09e57-7ae9-4632-b4c1-7549b88dee80"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100933Z:22d09e57-7ae9-4632-b4c1-7549b88dee80"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:09:32 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.KeyVault/locations/westus/managedHsmOperationResults/3634fb5d-7090-4710-b73f-1b43b8a0b013?api-version=2022-07-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Byb3ZpZGVycy9NaWNyb3NvZnQuS2V5VmF1bHQvbG9jYXRpb25zL3dlc3R1cy9tYW5hZ2VkSHNtT3BlcmF0aW9uUmVzdWx0cy8zNjM0ZmI1ZC03MDkwLTQ3MTAtYjczZi0xYjQzYjhhMGIwMTM/YXBpLXZlcnNpb249MjAyMi0wNy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.KeyVault.KeyVaultManagementClient/4.8.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-client-request-id": [
+          "cec5137b-1138-419f-810a-f81f1024d2a0"
+        ],
+        "x-ms-keyvault-service-version": [
+          "1.5.517.0"
+        ],
+        "x-ms-request-id": [
+          "10959cf1-3fae-42cc-9d74-a29d28aa691c"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11992"
+        ],
+        "x-ms-correlation-request-id": [
+          "28ab71a1-67f4-4a4a-9eea-d6e67a300a16"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100934Z:28ab71a1-67f4-4a4a-9eea-d6e67a300a16"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:09:33 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/ps5377?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL3Jlc291cmNlZ3JvdXBzL3BzNTM3Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e11c8c6d-e334-414e-99d9-956fd9fefcf6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "6bf0e6cc-9c6f-4deb-bfe0-430890d4877e"
+        ],
+        "x-ms-correlation-request-id": [
+          "6bf0e6cc-9c6f-4deb-bfe0-430890d4877e"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100939Z:6bf0e6cc-9c6f-4deb-bfe0-430890d4877e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:09:39 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpVek56Y3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-request-id": [
+          "bf25e5fb-4526-42d5-9f3a-9df849829917"
+        ],
+        "x-ms-correlation-request-id": [
+          "bf25e5fb-4526-42d5-9f3a-9df849829917"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T100955Z:bf25e5fb-4526-42d5-9f3a-9df849829917"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:09:54 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpVek56Y3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-request-id": [
+          "42eba42d-0f06-4742-b7d6-68c39ca2ecd4"
+        ],
+        "x-ms-correlation-request-id": [
+          "42eba42d-0f06-4742-b7d6-68c39ca2ecd4"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T101010Z:42eba42d-0f06-4742-b7d6-68c39ca2ecd4"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:10:09 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpVek56Y3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-request-id": [
+          "c4ec640c-5bda-4d89-90df-5655ca56f5c2"
+        ],
+        "x-ms-correlation-request-id": [
+          "c4ec640c-5bda-4d89-90df-5655ca56f5c2"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T101025Z:c4ec640c-5bda-4d89-90df-5655ca56f5c2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:10:25 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpVek56Y3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11996"
+        ],
+        "x-ms-request-id": [
+          "42b61395-354d-43a7-9d3a-856532a6020c"
+        ],
+        "x-ms-correlation-request-id": [
+          "42b61395-354d-43a7-9d3a-856532a6020c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T101041Z:42b61395-354d-43a7-9d3a-856532a6020c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:10:40 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpVek56Y3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11995"
+        ],
+        "x-ms-request-id": [
+          "467b846e-ccde-48e7-8162-fa4537162c24"
+        ],
+        "x-ms-correlation-request-id": [
+          "467b846e-ccde-48e7-8162-fa4537162c24"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T101056Z:467b846e-ccde-48e7-8162-fa4537162c24"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:10:55 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzUzNzctV0VTVFVTIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMifQ?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGIxZjY0NzEtMWJmMC00ZGRhLWFlYzMtY2I5MjcyZjA5NTkwL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpVek56Y3RWMFZUVkZWVElpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE1pZlE/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.700.22.47601",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.63"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11994"
+        ],
+        "x-ms-request-id": [
+          "c039b1aa-b009-4435-87d5-51514dc13b41"
+        ],
+        "x-ms-correlation-request-id": [
+          "c039b1aa-b009-4435-87d5-51514dc13b41"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20221020T101057Z:c039b1aa-b009-4435-87d5-51514dc13b41"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 20 Oct 2022 10:10:56 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-ManagedHsmSoftDelete": [
+      "ps5377",
+      "ps816"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+  }
+}
