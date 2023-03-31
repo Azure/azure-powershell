@@ -15,11 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksManagedClusterComman
 }
 
 Describe 'Get-AzAksManagedClusterCommandResult' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $CommandId = '706de66629b14267b4962cf015122c12'
+        $result = Get-AzAksManagedClusterCommandResult -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -CommandId $CommandId
+        
+        $result.ProvisioningState | Should -Be 'Succeeded'
+        $result.ExitCode | Should -Be 0
+        $result.Log.Contains("aks-default") | Should -Be $true
+        $result.Log.Contains("aks-pool2")| Should -Be $true
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $command = @{Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/commandResults/706de66629b14267b4962cf015122c12"}
+        $result = Get-AzAksManagedClusterCommandResult -InputObject $command
+        
+        $result.ProvisioningState | Should -Be 'Succeeded'
+        $result.ExitCode | Should -Be 0
+        $result.Log.Contains("aks-default") | Should -Be $true
+        $result.Log.Contains("aks-pool2")| Should -Be $true
+
     }
 }

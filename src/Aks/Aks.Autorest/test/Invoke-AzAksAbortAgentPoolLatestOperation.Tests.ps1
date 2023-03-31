@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzAksAbortAgentPoolLat
 }
 
 Describe 'Invoke-AzAksAbortAgentPoolLatestOperation' {
-    It 'Abort' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Abort' {
+        Invoke-AzAksAbortAgentPoolLatestOperation -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -AgentPoolName 'cancelpool1'
     }
 
-    It 'AbortViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'AbortViaIdentity' {
+        $pool = @{Id="/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/cancelpool2"}
+        Invoke-AzAksAbortAgentPoolLatestOperation -InputObject $pool
     }
 }

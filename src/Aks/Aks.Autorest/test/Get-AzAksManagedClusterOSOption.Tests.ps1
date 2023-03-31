@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAksManagedClusterOSOpti
 }
 
 Describe 'Get-AzAksManagedClusterOSOption' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $result = Get-AzAksManagedClusterOSOption -Location $env.location
+        $result.Name | Should -Be 'default'
+        $result.OSOptionPropertyList.Count | Should -Be 5
     }
 
     It 'GetViaIdentity' -skip {

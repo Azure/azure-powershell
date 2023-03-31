@@ -15,19 +15,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzAksManagedClusterComm
 }
 
 Describe 'Start-AzAksManagedClusterCommand' {
-    It 'RunExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RunExpanded' {
+        $result = Start-AzAksManagedClusterCommand -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName -Command "kubectl get pods --all-namespaces -o wide"
+        $result.ProvisioningState | Should -Be 'Succeeded'
+        $result.ExitCode | Should -Be 0
+        $result.Log.contains("aks-command") | Should -Be $true
+        $result.Log.contains("kube-system") | Should -Be $true
     }
 
-    It 'Run' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RunViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RunViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RunViaIdentityExpanded' {
+        $aks = @{Id = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks"}
+        $result = Start-AzAksManagedClusterCommand -InputObject $aks -Command "kubectl get nodes"
+        $result.ProvisioningState | Should -Be 'Succeeded'
+        $result.ExitCode | Should -Be 0
+        $result.Log.contains("aks-default") | Should -Be $true
+        $result.Log.contains("aks-pool2") | Should -Be $true
     }
 }
