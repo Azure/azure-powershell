@@ -14,12 +14,13 @@
 
 using Microsoft.Azure.KeyVault.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using Track2Certificate = Azure.Security.KeyVault.Certificates;
-Track2Certificate.CertificatePolicy;
+// Track2Certificate.CertificatePolicy;
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
@@ -221,6 +222,154 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     (RenewAtPercentageLifetime.HasValue ? 1:0) +
                     (EmailAtNumberOfDaysBeforeExpiry.HasValue ? 1:0) +
                     (EmailAtPercentageLifetime.HasValue ? 1:0) > 1)
+                {
+                    throw new ArgumentException("Only one of the values for RenewAtNumberOfDaysBeforeExpiry, RenewAtPercentageLifetime, EmailAtNumberOfDaysBeforeExpiry, EmailAtPercentageLifetime  can be set.");
+                }
+
+                if (certificatePolicy.LifetimeActions == null)
+                {
+                    certificatePolicy.LifetimeActions = new List<LifetimeAction>();
+                }
+
+                if (RenewAtNumberOfDaysBeforeExpiry.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new LifetimeAction
+                        {
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.AutoRenew },
+                            Trigger = new Trigger { DaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry },
+                        }
+                    );
+                }
+
+                if (RenewAtPercentageLifetime.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new LifetimeAction
+                        {
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.AutoRenew },
+                            Trigger = new Trigger { LifetimePercentage = RenewAtPercentageLifetime },
+                        }
+                    );
+                }
+                if (EmailAtNumberOfDaysBeforeExpiry.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new LifetimeAction
+                        {
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.EmailContacts },
+                            Trigger = new Trigger { DaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry },
+                        }
+                    );
+                }
+
+                if (EmailAtPercentageLifetime.HasValue)
+                {
+                    certificatePolicy.LifetimeActions.Add(
+                        new LifetimeAction
+                        {
+                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.EmailContacts },
+                            Trigger = new Trigger { LifetimePercentage = EmailAtPercentageLifetime },
+                        }
+                    );
+                }
+            }
+
+            return certificatePolicy;
+        }
+
+        internal Track2Certificate.CertificatePolicy ToTrack2CertificatePolicy()
+        {
+            Track2Certificate.CertificatePolicy certificatePolicy;
+            if (!string.IsNullOrWhiteSpace(IssuerName) || !string.IsNullOrWhiteSpace(SubjectName) || ((DnsNames != null) && (!DnsNames.Any())))
+            {
+                // if()
+                certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName);
+            }else
+            {
+                certificatePolicy = new Track2Certificate.CertificatePolicy();
+            }
+
+            // KeyProperties
+            if (!string.IsNullOrWhiteSpace(Kty) ||
+                KeySize.HasValue ||
+                !string.IsNullOrWhiteSpace(Curve) ||
+                ReuseKeyOnRenewal.HasValue ||
+                Exportable.HasValue)
+            {
+                certificatePolicy.KeyType = Kty;
+                certificatePolicy.KeySize = KeySize;
+                certificatePolicy.KeyCurveName = Curve;
+                certificatePolicy.Exportable = Exportable;
+                certificatePolicy.ReuseKey = ReuseKeyOnRenewal;
+            }
+
+            if (CertificateTransparency.HasValue)
+            {
+                certificatePolicy.CertificateTransparency = CertificateTransparency;
+            }
+
+            if (!string.IsNullOrWhiteSpace(CertificateType))
+            {
+
+                certificatePolicy.CertificateType = CertificateType;
+            }
+
+            if (Enabled.HasValue)
+            {
+                certificatePolicy.Enabled = Enabled;
+            }
+
+            // X509CertificateProperties
+            if (//!string.IsNullOrWhiteSpace(SubjectName) ||
+                DnsNames != null ||
+                Ekus != null ||
+                KeyUsage != null ||
+                ValidityInMonths.HasValue)
+            {
+                /*
+                var x509CertificateProperties = new X509CertificateProperties
+                {
+                    Subject = SubjectName,
+                };
+
+                if (KeyUsage != null)
+                {
+                    certificatePolicy.KeyUsage = new List<string>(KeyUsage);
+                }
+
+                if (Ekus != null)
+                {
+                    x509CertificateProperties.Ekus = new List<string>(Ekus);
+                }*/
+
+                if (DnsNames != null)
+                {
+                    x509CertificateProperties.SubjectAlternativeNames = new SubjectAlternativeNames
+                    {
+                        DnsNames = new string[DnsNames.Count],
+                    };
+
+                    certificatePolicy.SubjectAlternativeNames.DnsNames = new List<string>(DnsNames);
+                }
+
+                if (ValidityInMonths.HasValue)
+                {
+                    x509CertificateProperties.ValidityInMonths = ValidityInMonths.Value;
+                }
+
+                certificatePolicy.X509CertificateProperties = x509CertificateProperties;
+            }
+
+            if (RenewAtNumberOfDaysBeforeExpiry.HasValue ||
+                RenewAtPercentageLifetime.HasValue ||
+                EmailAtNumberOfDaysBeforeExpiry.HasValue ||
+                EmailAtPercentageLifetime.HasValue)
+            {
+                if ((RenewAtNumberOfDaysBeforeExpiry.HasValue ? 1 : 0) +
+                    (RenewAtPercentageLifetime.HasValue ? 1 : 0) +
+                    (EmailAtNumberOfDaysBeforeExpiry.HasValue ? 1 : 0) +
+                    (EmailAtPercentageLifetime.HasValue ? 1 : 0) > 1)
                 {
                     throw new ArgumentException("Only one of the values for RenewAtNumberOfDaysBeforeExpiry, RenewAtPercentageLifetime, EmailAtNumberOfDaysBeforeExpiry, EmailAtPercentageLifetime  can be set.");
                 }
