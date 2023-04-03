@@ -31,6 +31,11 @@
 * Blocked some regions when creating/updating Basic Sku firewall
 * Fixed bugs related to auto learn IP prefixes and Snat
 * Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
+* Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
+    - 'New-AzApplicationGatewayLogScrubbingConfiguration',
+    - 'New-AzApplicationGatewayLogScrubbingRule',
+    - Also updated cmdlet to add the property of LogScrubbing 
+        - `New-AzApplicationGatewayFirewallPolicySetting`
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.

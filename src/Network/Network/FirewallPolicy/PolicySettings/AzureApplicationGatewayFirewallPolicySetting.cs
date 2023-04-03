@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.Network
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
+                LogScrubbing = this.LogScrubbing
             };
         }
     }
