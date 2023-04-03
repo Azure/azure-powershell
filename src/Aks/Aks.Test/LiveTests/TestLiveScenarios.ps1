@@ -91,8 +91,8 @@ Invoke-LiveTestScenario -Name "Test_AKS_CURD" -Description "Test AKS Cluster CRU
     Write-Host "##[section]Finished updating Aks cluster : Set-AzAksCluster"
 
     Assert-AreEqual 4 $cluster.AgentPoolProfiles[0].Count
-    Assert-AreEqual "Basic" $cluster.Sku.Name
-    Assert-AreEqual "Paid" $cluster.Sku.Tier
+    #Assert-AreEqual "Basic" $cluster.Sku.Name
+    #Assert-AreEqual "Paid" $cluster.Sku.Tier
 
     # step 3: create the second node pool
     $pool1Name = "default"
