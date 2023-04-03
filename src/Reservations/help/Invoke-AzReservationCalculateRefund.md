@@ -97,11 +97,11 @@ The SessionId in the response is a required input parameter for cmdlet Invoke-Az
 ## PARAMETERS
 
 ### -Body
-.
+Request containing information needed for calculating refund.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
 Parameter Sets: Post, PostViaIdentity
 Aliases:
 
@@ -113,7 +113,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -190,7 +191,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationToReturnReservationId
-Fully qualified identifier of the Reservation being returned
+Fully qualified identifier of the reservation being returned
 
 ```yaml
 Type: System.String
@@ -256,13 +257,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundResponse
 
 ## NOTES
 
@@ -273,15 +274,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <ICalculateRefundRequest>`: .
+`BODY <ICalculateRefundRequest>`: Request containing information needed for calculating refund.
   - `[Id <String>]`: Fully qualified identifier of the reservation order being returned
   - `[ReservationToReturnQuantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
-  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the Reservation being returned
+  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the reservation being returned
   - `[Scope <String>]`: The scope of the refund, e.g. Reservation
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 

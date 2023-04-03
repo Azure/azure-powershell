@@ -16,9 +16,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     public static class PrivateEndpointConnectionProvisioningState
     {
-        public const string Succeeded = "Succeeded";
+        public const string Canceled = "Canceled";
         public const string Creating = "Creating";
         public const string Deleting = "Deleting";
         public const string Failed = "Failed";
+        public const string Succeeded = "Succeeded";
     }
 }

@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 PoolAllocationMode = parameters.PoolAllocationMode,
                 KeyVaultReference = keyVaultRef,
                 PublicNetworkAccess = parameters.PublicNetworkAccess,
-                Identity = parameters.Identity
+                Identity = parameters.Identity,
+                Encryption = parameters.Encryption
             });
 
             var context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(response, this.azureContext);

@@ -5,22 +5,37 @@ function GetDatasourceSetInfo
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
-		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IDatasource]
-		$DatasourceInfo
+		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IDatasource]
+		$DatasourceInfo,
+
+		[Parameter(Mandatory=$true)]
+		[ValidateNotNullOrEmpty()]
+		[System.String]
+		$DatasourceType
 	)
 
 	process 
 	{
-		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.DatasourceSet]::new()
+		$DataSourceSetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.DatasourceSet]::new()
 		$DataSourceSetInfo.DatasourceType = $DatasourceInfo.Type
-        $DataSourceSetInfo.ObjectType = "DatasourceSet"
-        $splitResourceId = $DatasourceInfo.ResourceId.Split("/")
-        $DataSourceSetInfo.ResourceId =  [System.String]::Join('/', $splitResourceId[0..($splitResourceId.Count -3)]) 
-        $DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
-        $DataSourceSetInfo.ResourceName = $splitResourceId[$splitResourceId.Count -3]
-        $splitResourceType = $DatasourceInfo.ResourceType.Split("/")
-        $DataSourceSetInfo.ResourceType =  [System.String]::Join('/', $splitResourceType[0..($splitResourceType.Count -2)])     # Use manifest for datasource set type
-        $DataSourceSetInfo.ResourceUri = ""
+		$DataSourceSetInfo.ObjectType = "DatasourceSet"        
+		$DataSourceSetInfo.ResourceLocation = $DatasourceInfo.ResourceLocation
+		
+		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
+		if($manifest.enableDataSourceSetInfo -eq $true){		
+			$DataSourceSetInfo.ResourceId =  $DatasourceInfo.ResourceId
+			$DataSourceSetInfo.ResourceName = $DatasourceInfo.ResourceName			
+			$DataSourceSetInfo.ResourceType =  $DataSourceInfo.ResourceType
+			$DataSourceSetInfo.ResourceUri = $DatasourceInfo.ResourceUri
+		}
+		else{
+			$splitResourceId = $DatasourceInfo.ResourceId.Split("/")
+			$DataSourceSetInfo.ResourceId =  [System.String]::Join('/', $splitResourceId[0..($splitResourceId.Count -3)]) 			
+			$DataSourceSetInfo.ResourceName = $splitResourceId[$splitResourceId.Count -3]
+			$splitResourceType = $DatasourceInfo.ResourceType.Split("/")
+			$DataSourceSetInfo.ResourceType =  [System.String]::Join('/', $splitResourceType[0..($splitResourceType.Count -2)])
+			$DataSourceSetInfo.ResourceUri = ""
+		}
 
 		return $DataSourceSetInfo
 	}
@@ -48,9 +63,8 @@ function GetDatasourceInfo
 
 	process
 	{
-
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.Datasource]::new()
+		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.Datasource]::new()
 		$DataSourceInfo.ObjectType = "Datasource"
         $DataSourceInfo.ResourceId = $ResourceId
         $DataSourceInfo.ResourceLocation = $ResourceLocation
@@ -58,7 +72,7 @@ function GetDatasourceInfo
         $DataSourceInfo.ResourceType = $manifest.resourceType
         $DataSourceInfo.ResourceUri = ""
 
-        if($manifest.isProxyResource -eq $false)
+        if($manifest.isProxyResource -eq $false -or $manifest.enableDataSourceSetInfo -eq $true)
         {
             $DataSourceInfo.ResourceUri = $ResourceId
         }

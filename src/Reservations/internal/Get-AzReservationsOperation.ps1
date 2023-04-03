@@ -25,12 +25,12 @@ List all the operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IOperationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IOperationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationsoperation
 #>
 function Get-AzReservationsOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IOperationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IOperationResponse])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -38,7 +38,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

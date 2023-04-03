@@ -176,6 +176,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
         public string NodeHostGroupID { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
+        public string NodePodSubnetID { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -192,7 +195,7 @@ namespace Microsoft.Azure.Commands.Aks
                 {
 
                     var cluster = this.CreateOrUpdate(ResourceGroupName, Name, managedCluster);
-                    var psObj = PSMapper.Instance.Map<PSKubernetesCluster>(cluster);
+                    var psObj = AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(cluster);
 
                     if (this.IsParameterBound(c => c.AcrNameToAttach))
                     {
@@ -414,11 +417,11 @@ namespace Microsoft.Azure.Commands.Aks
             {
                 if (EnableUptimeSLA.ToBool())
                 {
-                    managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Standard");
                 }
                 else
                 {
-                    managedCluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                    managedCluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Free");
                 }
             }
             if (this.IsParameterBound(c => c.EdgeZone))
@@ -535,6 +538,9 @@ namespace Microsoft.Azure.Commands.Aks
                 {
                     defaultAgentPoolProfile.Tags.Add(key.ToString(), NodePoolTag[key].ToString());
                 }
+            }
+            if (this.IsParameterBound(c => c.NodePodSubnetID)) {
+                defaultAgentPoolProfile.PodSubnetID = NodePodSubnetID;
             }
             if (this.IsParameterBound(c => c.AvailabilityZone))
             {

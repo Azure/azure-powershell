@@ -204,7 +204,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IResourceGuardResource
 
 ## NOTES
 

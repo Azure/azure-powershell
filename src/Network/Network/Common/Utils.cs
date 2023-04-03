@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -56,6 +57,28 @@ namespace Microsoft.Azure.Commands.Network
                   privatePeering.SecondaryPeerAddressPrefix == null))
             {
                 return true;
+            }
+            return false;
+        }
+    }
+
+    public static class FirewallConstants
+    {
+        public static readonly System.Collections.Generic.List<string> RestrictedBasicSkuFirewallRegions = new System.Collections.Generic.List<string>()
+        {
+            "TaiwanNorth","CanadaEast","JioIndiaWest", "PolandCentral", "SpainCentral", "USSecWestCentral", "BelgiumCentral", "GermanyNorth", "SwedenSouth", "ChinaEast3"
+        };
+        public static bool IsRegionRestrictedForBasicFirewall(string region)
+        {
+            if (!string.IsNullOrEmpty(region))
+            {
+                foreach(var reg in RestrictedBasicSkuFirewallRegions)
+                {
+                    if(String.Compare(reg, region, CultureInfo.CurrentCulture, CompareOptions.IgnoreCase | CompareOptions.IgnoreSymbols) == 0)
+                    {
+                        return true;
+                    }
+                }
             }
             return false;
         }
