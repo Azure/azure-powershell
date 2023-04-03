@@ -11,7 +11,6 @@
 	</PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="60.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.RecoveryServices" Version="4.3.3-preview" />
 	<PackageReference Include="Microsoft.Azure.Management.RecoveryServices.Backup" Version="5.0.0-preview" />
@@ -28,5 +27,9 @@
 	<ItemGroup>
 		<None Update="ScenarioTests\**\*.ps1" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
+  </ItemGroup>
 
 </Project>

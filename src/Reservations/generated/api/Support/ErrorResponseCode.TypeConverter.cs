@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 {
 
-    /// <summary>TypeConverter implementation for ErrorResponseCode.</summary>
+    /// <summary>
+    /// Error code describing the reason that service is not able to process the incoming request
+    /// </summary>
     public partial class ErrorResponseCodeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -17,8 +17,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     public static class ManagedClusterPodIdentityProvisioningState
     {
         public const string Assigned = "Assigned";
-        public const string Updating = "Updating";
+        public const string Canceled = "Canceled";
         public const string Deleting = "Deleting";
         public const string Failed = "Failed";
+        public const string Succeeded = "Succeeded";
+        public const string Updating = "Updating";
     }
 }

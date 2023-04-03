@@ -23,9 +23,9 @@ Returns one or more `Reservations` in exchange for one or more `Reservation` pur
 Invoke-AzReservationExchange -SessionId 8982593c-679e-4d4e-b971-c48b6d824cba
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -37,12 +37,12 @@ BODY <IExchangeRequest>: Exchange request
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 #>
 function Invoke-AzReservationExchange {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest]
     # Exchange request
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -58,7 +58,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -122,7 +123,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

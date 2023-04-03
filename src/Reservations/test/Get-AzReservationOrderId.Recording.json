@@ -1,17 +1,16 @@
 {
-  "Get-AzReservationOrderId+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-03-01+1": {
+  "Get-AzReservationOrderId+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-11-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/Microsoft.Capacity/appliedReservations?api-version=2022-11-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "f266d6ef-0e03-4d29-a35b-de30e9be04ee" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "f1d34311-1216-4a54-9743-74ebd3cf5cb8" ],
         "CommandName": [ "Get-AzReservationOrderId" ],
         "FullCommandName": [ "Get-AzReservationOrderId_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.4", "Az.Reservations/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,23 +22,21 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-request-id": [ "westus:3650e898-0f7d-4b7c-b25d-54089e1d462b" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-request-id": [ "westcentralus:f427f227-8334-4e7a-8236-c0a9c5a50944" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-correlation-request-id": [ "d23a4261-2077-4936-ab07-4af59f03f13c" ],
-        "x-ms-routing-request-id": [ "WESTUS:20220627T222005Z:d23a4261-2077-4936-ab07-4af59f03f13c" ],
+        "x-ms-correlation-request-id": [ "1679565d-649e-40ac-ba7e-d7da5c0fd4b7" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230210T165249Z:1679565d-649e-40ac-ba7e-d7da5c0fd4b7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Mon, 27 Jun 2022 22:20:05 GMT" ]
+        "Date": [ "Fri, 10 Feb 2023 16:52:49 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1449" ],
+        "Content-Length": [ "8235" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/microsoft.capacity/AppliedReservations/default\",\"type\":\"Microsoft.Capacity/AppliedReservations\",\"name\":\"default\",\"properties\":{\"reservationOrderIds\":{\"value\":[\"/providers/Microsoft.Capacity/reservationorders/50000000-aaaa-bbbb-cccc-100000000004\",\"/providers/Microsoft.Capacity/reservationorders/40000000-aaaa-bbbb-cccc-100000000002\",\"/providers/Microsoft.Capacity/reservationorders/40000000-aaaa-bbbb-cccc-100000000003\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000000\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000001\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000002\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000003\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000004\"]}}}",
-      "isContentBase64": false
-    }
+      "Content": "{\"id\":\"/subscriptions/10000000-aaaa-bbbb-cccc-100000000005/providers/microsoft.capacity/AppliedReservations/default\",\"type\":\"Microsoft.Capacity/AppliedReservations\",\"name\":\"default\",\"properties\":{\"reservationOrderIds\":{\"value\":[\"/providers/Microsoft.Capacity/reservationorders/50000000-aaaa-bbbb-cccc-100000000004\",\"/providers/Microsoft.Capacity/reservationorders/40000000-aaaa-bbbb-cccc-100000000002\",\"/providers/Microsoft.Capacity/reservationorders/40000000-aaaa-bbbb-cccc-100000000003\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000000\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000001\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000002\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000003\",\"/providers/Microsoft.Capacity/reservationorders/10000000-aaaa-bbbb-cccc-100000000004\"]}}}"    }
   }
 }

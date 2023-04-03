@@ -1,6 +1,6 @@
 ### Example 1: Check the availability of a Kusto cluster name which is in use
 ```powershell
-Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US'
 ```
 
 ```output
@@ -13,7 +13,7 @@ The above command returns whether or not a Kusto cluster named "testnewkustoclus
 
 ### Example 2: Check the availability of a Kusto cluster name which is not in use
 ```powershell
-Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US'
 ```
 
 ```output

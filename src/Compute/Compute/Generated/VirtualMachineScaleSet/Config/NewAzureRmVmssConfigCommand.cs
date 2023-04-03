@@ -310,6 +310,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
         public string ImageReferenceId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -767,6 +772,25 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
                 }
                 vVirtualMachineProfile.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+
+            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile == null)
+                {
+                    vVirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+
+                if (vVirtualMachineProfile.StorageProfile.ImageReference == null)
+                {
+                    vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
+                }
+                vVirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet

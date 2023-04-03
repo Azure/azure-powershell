@@ -832,6 +832,7 @@ function Test-CortexExpressRouteCRUD
     $VpnServerConfiguration1Name = Get-ResourceName
     $VpnServerConfiguration2Name = Get-ResourceName
     $VpnServerConfigurationMultiAuthName = Get-ResourceName
+    $VpnServerConfiguration2MultiAuthName = Get-ResourceName
     $P2SVpnGatewayName = Get-ResourceName
     $vpnclientAuthMethod = "EAPTLS"
     
@@ -964,10 +965,29 @@ function Test-CortexExpressRouteCRUD
 		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
 		Assert-AreEqual 2 @($authenticationTypes).Count
 
-		# List all VpnServerConfigurations under Resource group
+		# Create the VpnServerConfiguration2MultiAuth with OpenVPN & IkeV2 and only AAD auth should throw error
+		Assert-ThrowsContains { New-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 -VpnAuthenticationType AAD -AadAudience $aadAudience -AadTenant $aadTenant -AadIssuer $aadIssuer -Location $rglocation } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
+		# check no new server configuration got created
 		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
 		Assert-NotNull $vpnServerConfigs
 		Assert-AreEqual 3 @($vpnServerConfigs).Count
+
+		# Create the VpnServerConfiguration2MultiAuth with a valid configuration to be used for testing Set later
+		# VpnProtocol is OpenVPN and auth type is AAD
+		New-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN -VpnAuthenticationType AAD -AadAudience $aadAudience -AadTenant $aadTenant -AadIssuer $aadIssuer -Location $rglocation
+		$vpnServerConfig2MultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2MultiAuthName
+		Assert-AreEqual "Succeeded" $vpnServerConfig2MultiAuth.ProvisioningState
+		Assert-AreEqual $aadAudience $vpnServerConfig2MultiAuth.AadAuthenticationParameters.AadAudience
+		Assert-AreEqual $aadTenant $vpnServerConfig2MultiAuth.AadAuthenticationParameters.AadTenant
+		Assert-AreEqual $aadIssuer $vpnServerConfig2MultiAuth.AadAuthenticationParameters.AadIssuer
+		$protocols = $vpnServerConfig2MultiAuth.VpnProtocols
+		Assert-AreEqual 1 @($protocols).Count
+		Assert-AreEqual "OpenVPN" $protocols[0]
+
+		# List all VpnServerConfigurations under Resource group
+		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName
+		Assert-NotNull $vpnServerConfigs
+		Assert-AreEqual 4 @($vpnServerConfigs).Count
 
 		# Create a PolicyGroup2 Object
 		$policyGroup2= New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroup
@@ -1037,6 +1057,12 @@ function Test-CortexExpressRouteCRUD
 		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
 		Assert-AreEqual 3 @($authenticationTypes).Count
 
+		# Update existing VpnServerConfiguration2MultiAuth to use OpenVPN and IkeV2 with only AAD should fail
+		Assert-ThrowsContains { Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2MultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVPN, IkeV2 } "Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol";
+		$protocols = $vpnServerConfig2MultiAuth.VpnProtocols
+		Assert-AreEqual 1 @($protocols).Count
+		Assert-AreEqual "OpenVPN" $protocols[0]
+
 		# Update existing P2SVpnGateway  with new VpnClientAddressPool and CustomDnsServers using Update-AzP2sVpnGateway
 		$vpnClientAddressSpaces[1] = "192.168.4.0/24"
 		$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9 -DisableInternetSecurityFlag
@@ -1081,6 +1107,10 @@ function Test-CortexExpressRouteCRUD
 
 		# Delete VpnServerConfigurationMultiAuthName using Remove-AzVpnServerConfiguration
 		$delete = Remove-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete VpnServerConfiguration2MultiAuth
+		$delete = Remove-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2MultiAuthName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		$vpnServerConfigs = Get-AzVpnServerConfiguration -ResourceGroupName $rgName

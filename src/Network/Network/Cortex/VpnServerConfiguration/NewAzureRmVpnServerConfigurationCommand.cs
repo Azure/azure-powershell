@@ -162,6 +162,32 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(string.Format(Properties.Resources.ResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName));
             }
 
+            if (this.VpnAuthenticationType != null)
+            {
+                if (this.VpnAuthenticationType.Contains(MNM.VpnAuthenticationType.AAD))
+                {
+                    if ((this.VpnProtocol == null) ||
+                        (this.VpnProtocol != null &&
+                        this.VpnProtocol.Contains(MNM.VpnClientProtocol.IkeV2) &&
+                        this.VpnProtocol.Contains(MNM.VpnClientProtocol.OpenVPN) &&
+                        this.VpnProtocol.Count() == 2))
+                    {
+                        // In the case of multi-auth with OpenVPN and IkeV2, block user from configuring with just AAD since AAD is not supported for IkeV2
+                        if (this.VpnAuthenticationType.Count() == 1)
+                        {
+                            throw new ArgumentException(Properties.Resources.VpnMultiAuthIkev2OpenvpnOnlyAad);
+                        }
+                        else if (this.VpnAuthenticationType.Count() > 1)
+                        {
+                            if (!ShouldContinue(Properties.Resources.VpnMultiAuthIkev2OpenvpnAadWarning, Properties.Resources.ConfirmMessage))
+                            {
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
             vpnServerConfigurationToCreate = this.CreateVpnServerConfigurationObject(
                 vpnServerConfigurationToCreate,
                 this.VpnProtocol,
