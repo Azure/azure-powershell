@@ -173,34 +173,23 @@ param(
 
 process {
     try {
-        # 1. Get
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
-
-        $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
+        # 1. Get
         $hasDefaultAction = $PSBoundParameters.Remove('DefaultAction')
         $hasIPRule = $PSBoundParameters.Remove('IPRule')
-        $hasInputObject = $PSBoundParameters.Remove('InputObject')
+        $hasPublicNetworkAccess = $PSBoundParameters.Remove('PublicNetworkAccess')
 
-        if ($hasInputObject) {
-            $networkRuleSet = Get-AzRelayNamespaceNetworkRuleSet -InputObject $InputObject
-        }
-        else {
-            $networkRuleSet = Get-AzRelayNamespaceNetworkRuleSet @PSBoundParameters
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('SubscriptionId')    
-        }
-        
+        $networkRuleSet = Get-AzRelayNamespaceNetworkRuleSet @PSBoundParameters
+
         # 2. Put
-
-        if ($hasPublicNetworkAccess) {
-            $networkRuleSet.PublicNetworkAccess = $PublicNetworkAccess
-        }
-
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        $null = $PSBoundParameters.Remove('NamespaceName')
+        $null = $PSBoundParameters.Remove('SubscriptionId')
+            
         if ($hasDefaultAction) {
             $networkRuleSet.DefaultAction = $DefaultAction
         }
@@ -208,7 +197,11 @@ process {
         if ($hasIPRule) {
             $networkRuleSet.IPRule = $IPRule
         }
-
+            
+        if ($hasPublicNetworkAccess) {
+            $networkRuleSet.PublicNetworkAccess = $PublicNetworkAccess
+        }
+        
         if ($PSCmdlet.ShouldProcess("Relay Network Rule Set on namespace $($networkRuleSet.Name)", "Update")) {
             Az.Relay.private\New-AzRelayNamespaceNetworkRuleSet_CreateViaIdentity -InputObject $networkRuleSet -Parameter $networkRuleSet @PSBoundParameters
         }

@@ -181,7 +181,7 @@ process {
         }
         
         if ($PSCmdlet.ShouldProcess("WCF relay on namespace $($wcfRelay.Name)", "Update")) {
-            Az.Relay.internal\Set-AzWcfRelay -InputObject $wcfRelay -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name -Namespace $PSBoundParameters.Namespace
+            Az.Relay.internal\Set-AzWcfRelay -InputObject $wcfRelay @PSBoundParameters
         }
 
     } catch {

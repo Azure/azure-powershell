@@ -107,7 +107,7 @@ Type                         : Microsoft.Relay/Namespaces/AuthorizationRules
 
 This cmdlet adds Send from the access rights of the authorization rule for the Relay namespace with InputeObject parameter.
 
-### Example 3: Adds Listen from the access rights of the authorization rule for the Hybrid Connection
+### Example 3: Set or update Listen from the access rights of the authorization rule for the Hybrid Connection
 ```powershell
 Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-02 -Rights 'Listen' | fl
 ```
@@ -128,7 +128,7 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.Relay/namespaces/hybridconnections/authorizationrules
 ```
 
-This cmdlet adds Listen from the access rights of the authorization rule for the Hybrid Connection.
+This cmdlet set or update Listen from the access rights of the authorization rule for the Hybrid Connection.
 
 ### Example 4: Adds Send from the access rights of the authorization rule for the Hybrid Connection with InputeObject parameter
 ```powershell

@@ -195,7 +195,7 @@ process {
         }
 
         if (('UpdateExpanded1') -contains $parameterSet) {
-            $authorizationRule = Get-AzRelayAuthorizationRule @PSBoundParameters -HybridConnection $HybridConnection
+            $authorizationRule = Get-AzRelayAuthorizationRule @PSBoundParameters
             $parameterSet = 'Update1'
         }
 
@@ -205,7 +205,6 @@ process {
         }
 
         # 2. Put
-        # if (('UpdateExpanded', 'UpdateExpanded1', 'UpdateExpanded2') -contains $parameterSet -and $hasInputObject ) {
         if ( $hasInputObject ) {
             $authorizationRule = $InputObject
         }
@@ -214,15 +213,15 @@ process {
         }
 
         if (('Update') -contains $parameterSet) {
-            Az.Relay.private\Set-AzRelayAuthorizationRule_Update -InputObject $authorizationRule -SubscriptionId $PSBoundParameters.SubscriptionId -ResourceGroupName $authorizationRule.ResourceGroupName -Name $authorizationRule.Name -Namespace $PSBoundParameters.Namespace
+            Az.Relay.private\Set-AzRelayAuthorizationRule_Update -InputObject $authorizationRule @PSBoundParameters
         }
 
         if (('Update1') -contains $parameterSet) {
-            Az.Relay.private\Set-AzRelayAuthorizationRule_Update1 -InputObject $authorizationRule -SubscriptionId $PSBoundParameters.SubscriptionId -ResourceGroupName $authorizationRule.ResourceGroupName -Name $authorizationRule.Name -HybridConnection $HybridConnection -Namespace $PSBoundParameters.Namespace 
+            Az.Relay.private\Set-AzRelayAuthorizationRule_Update1 -InputObject $authorizationRule @PSBoundParameters
         }
 
         if (('Update2') -contains $parameterSet) {
-            Az.Relay.private\Set-AzRelayAuthorizationRule_Update2 -InputObject $authorizationRule -SubscriptionId $PSBoundParameters.SubscriptionId -ResourceGroupName $authorizationRule.ResourceGroupName -Name $authorizationRule.Name -WcfRelay $WcfRelay -Namespace $PSBoundParameters.Namespace 
+            Az.Relay.private\Set-AzRelayAuthorizationRule_Update2 -InputObject $authorizationRule @PSBoundParameters
         }
 
     } catch {

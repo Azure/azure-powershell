@@ -43,9 +43,7 @@ $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.1
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.2"
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.3"
 $GetRuleSet = Get-AzRelayNamespaceNetworkRuleSet -ResourceGroupName Relay-ServiceBus-EastUS -NamespaceName namespace-pwsh01
-$GetRuleSet.IPRule = $rules
-$GetRuleSet.DefaultAction = 'Deny'
-Set-AzRelayNamespaceNetworkRuleSet -InputObject $GetRuleSet | fl
+Set-AzRelayNamespaceNetworkRuleSet -InputObject $GetRuleSet -DefaultAction 'Deny' -IPRule $rules -PublicNetworkAccess 'Enabled' | fl
 ```
 
 ```output

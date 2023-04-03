@@ -175,7 +175,7 @@ process {
         }
         
         if ($PSCmdlet.ShouldProcess("WCF relay on namespace $($hybridConnection.Name)", "Update")) {
-            Az.Relay.internal\Set-AzRelayHybridConnection -InputObject $hybridConnection -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.Name -Namespace $PSBoundParameters.Namespace
+            Az.Relay.internal\Set-AzRelayHybridConnection -InputObject $hybridConnection @PSBoundParameters
         }
 
     } catch {

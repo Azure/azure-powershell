@@ -20,7 +20,8 @@ Describe 'New-AzRelayHybridConnection' {
             New-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02 -UserMetadata "test 01"
             Get-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01
             Get-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02
-            Set-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02 -UserMetadata "Test UserMetadata updated"
+            $connection = Set-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02 -UserMetadata "Test UserMetadata updated"
+            $connection.UserMetadata | Should -Be "Test UserMetadata updated"
             Remove-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName02
         } | Should -Not -Throw
     }
@@ -31,8 +32,9 @@ Describe 'New-AzRelayHybridConnection' {
             $connection = New-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName03 -InputObject $connection
             $connection = Get-AzRelayHybridConnection -InputObject $connection
             $connection.UserMetadata = "testHybirdConnection"
-            Set-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName03 -InputObject $connection
-            Remove-AzRelayHybridConnection -InputObject $connection
+            $newconnection = Set-AzRelayHybridConnection -ResourceGroupName $env.resourceGroupName -Namespace $env.namespaceName01 -Name $env.hybridConnectionName03 -InputObject $connection
+            $newconnection.UserMetadata | Should -Be "testHybirdConnection"
+            Remove-AzRelayHybridConnection -InputObject $newconnection
         } | Should -Not -Throw
     }
 }
