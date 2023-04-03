@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public bool? ReuseKeyOnRenewal { get; set; }
         public string SubjectName { get; set; }
         public List<string> DnsNames { get; set; }
+        public List<string> Emails { get; set; }
+        public List<string> UserPrincipalNames { get; set; }
         public List<string> KeyUsage { get; set; }
         public List<string> Ekus { get; set; }
         public int? ValidityInMonths { get; set; }
@@ -277,14 +279,54 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
             return certificatePolicy;
         }
+        internal bool HasSubjectAlternativeNames()
+        {
+            if ((DnsNames != null && DnsNames.Any())
+                || (Emails != null && Emails.Any())
+                || (UserPrincipalNames != null && UserPrincipalNames.Any()))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
+        internal void SetSubjectAlternativeNames(Track2Certificate.CertificatePolicy certificatePolicy)
+        {
+            if (DnsNames != null && DnsNames.Any())
+                foreach (var dnsName in DnsNames)
+                    certificatePolicy.SubjectAlternativeNames.DnsNames.Add(dnsName);
+            if (Emails != null && Emails.Any())
+                foreach (var email in Emails)
+                    certificatePolicy.SubjectAlternativeNames.Emails.Add(email);
+            if (UserPrincipalNames != null && UserPrincipalNames.Any())
+                foreach (var principalName in UserPrincipalNames)
+                    certificatePolicy.SubjectAlternativeNames.UserPrincipalNames.Add(principalName);
+        }
 
         internal Track2Certificate.CertificatePolicy ToTrack2CertificatePolicy()
         {
             Track2Certificate.CertificatePolicy certificatePolicy;
-            if (!string.IsNullOrWhiteSpace(IssuerName) || !string.IsNullOrWhiteSpace(SubjectName) || ((DnsNames != null) && (!DnsNames.Any())))
+            if (!string.IsNullOrWhiteSpace(IssuerName) || !string.IsNullOrWhiteSpace(SubjectName) || HasSubjectAlternativeNames())
             {
-                // if()
-                certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName);
+                if (!string.IsNullOrWhiteSpace(SubjectName) && HasSubjectAlternativeNames())
+                {
+                    Track2Certificate.SubjectAlternativeNames subjectAlternativeNames = new Track2Certificate.SubjectAlternativeNames();
+                    certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName, subjectAlternativeNames);
+                    SetSubjectAlternativeNames(certificatePolicy);
+                }
+                else if (!string.IsNullOrWhiteSpace(SubjectName))
+                {
+                    certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName);
+                }
+                else if (HasSubjectAlternativeNames())
+                {
+                    Track2Certificate.SubjectAlternativeNames subjectAlternativeNames = new Track2Certificate.SubjectAlternativeNames();
+                    certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, subjectAlternativeNames);
+                    SetSubjectAlternativeNames(certificatePolicy);
+                }
+                else
+                    certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName);
             }else
             {
                 certificatePolicy = new Track2Certificate.CertificatePolicy();
@@ -305,61 +347,17 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             if (CertificateTransparency.HasValue)
-            {
                 certificatePolicy.CertificateTransparency = CertificateTransparency;
-            }
 
             if (!string.IsNullOrWhiteSpace(CertificateType))
-            {
-
                 certificatePolicy.CertificateType = CertificateType;
-            }
 
             if (Enabled.HasValue)
-            {
                 certificatePolicy.Enabled = Enabled;
-            }
 
-            // X509CertificateProperties
-            if (//!string.IsNullOrWhiteSpace(SubjectName) ||
-                DnsNames != null ||
-                Ekus != null ||
-                KeyUsage != null ||
-                ValidityInMonths.HasValue)
-            {
-                /*
-                var x509CertificateProperties = new X509CertificateProperties
-                {
-                    Subject = SubjectName,
-                };
-
-                if (KeyUsage != null)
-                {
-                    certificatePolicy.KeyUsage = new List<string>(KeyUsage);
-                }
-
-                if (Ekus != null)
-                {
-                    x509CertificateProperties.Ekus = new List<string>(Ekus);
-                }*/
-
-                if (DnsNames != null)
-                {
-                    x509CertificateProperties.SubjectAlternativeNames = new SubjectAlternativeNames
-                    {
-                        DnsNames = new string[DnsNames.Count],
-                    };
-
-                    certificatePolicy.SubjectAlternativeNames.DnsNames = new List<string>(DnsNames);
-                }
-
+            if (ValidityInMonths.HasValue)
                 if (ValidityInMonths.HasValue)
-                {
-                    x509CertificateProperties.ValidityInMonths = ValidityInMonths.Value;
-                }
-
-                certificatePolicy.X509CertificateProperties = x509CertificateProperties;
-            }
+                    certificatePolicy.ValidityInMonths = ValidityInMonths.Value;
 
             if (RenewAtNumberOfDaysBeforeExpiry.HasValue ||
                 RenewAtPercentageLifetime.HasValue ||
@@ -374,18 +372,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     throw new ArgumentException("Only one of the values for RenewAtNumberOfDaysBeforeExpiry, RenewAtPercentageLifetime, EmailAtNumberOfDaysBeforeExpiry, EmailAtPercentageLifetime  can be set.");
                 }
 
-                if (certificatePolicy.LifetimeActions == null)
-                {
-                    certificatePolicy.LifetimeActions = new List<LifetimeAction>();
-                }
-
                 if (RenewAtNumberOfDaysBeforeExpiry.HasValue)
                 {
                     certificatePolicy.LifetimeActions.Add(
-                        new LifetimeAction
+                        new Track2Certificate.LifetimeAction(new Track2Certificate.CertificatePolicyAction("AutoRenew"))
                         {
-                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.AutoRenew },
-                            Trigger = new Trigger { DaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry },
+                            DaysBeforeExpiry = RenewAtNumberOfDaysBeforeExpiry
                         }
                     );
                 }
@@ -393,20 +385,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (RenewAtPercentageLifetime.HasValue)
                 {
                     certificatePolicy.LifetimeActions.Add(
-                        new LifetimeAction
+                        new Track2Certificate.LifetimeAction(new Track2Certificate.CertificatePolicyAction("AutoRenew"))
                         {
-                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.AutoRenew },
-                            Trigger = new Trigger { LifetimePercentage = RenewAtPercentageLifetime },
+                            LifetimePercentage = RenewAtPercentageLifetime
                         }
                     );
                 }
                 if (EmailAtNumberOfDaysBeforeExpiry.HasValue)
                 {
                     certificatePolicy.LifetimeActions.Add(
-                        new LifetimeAction
+                        new Track2Certificate.LifetimeAction(new Track2Certificate.CertificatePolicyAction("EmailContacts"))
                         {
-                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.EmailContacts },
-                            Trigger = new Trigger { DaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry },
+                            DaysBeforeExpiry = EmailAtNumberOfDaysBeforeExpiry
                         }
                     );
                 }
@@ -414,10 +404,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (EmailAtPercentageLifetime.HasValue)
                 {
                     certificatePolicy.LifetimeActions.Add(
-                        new LifetimeAction
+                        new Track2Certificate.LifetimeAction(new Track2Certificate.CertificatePolicyAction("EmailContacts"))
                         {
-                            Action = new Azure.KeyVault.Models.Action { ActionType = ActionType.EmailContacts },
-                            Trigger = new Trigger { LifetimePercentage = EmailAtPercentageLifetime },
+                            LifetimePercentage = EmailAtPercentageLifetime
                         }
                     );
                 }

@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
         PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, byte[] certBytes, Dictionary<string, string> tags);
 
-        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, string certPolicyPath = null);
+        PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicyPath = null);
 
         PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string base64CertString, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType);
 

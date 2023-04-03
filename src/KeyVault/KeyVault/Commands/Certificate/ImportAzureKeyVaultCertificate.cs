@@ -170,10 +170,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
-                        CertificatePolicy policy = null;
+                        PSKeyVaultCertificatePolicy policy = null;
                         if (!String.IsNullOrEmpty(PolicyPath))
                         {
-                            policy = (CertificatePolicy)GetPolicyFromFile(PolicyPath);
+                            policy = (PSKeyVaultCertificatePolicy)GetPolicyFromFile(PolicyPath);
                         }
                         // Pem file can't be handled by X509Certificate2Collection in dotnet standard
                         // Just read it as raw data and pass it to service side
@@ -182,7 +182,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                             byte[] pemBytes = File.ReadAllBytes(FilePath);
                             if (policy != null)
                             {
-                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType, PolicyPath);
+                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType, policy);
                             }
                             else
                             {
@@ -254,9 +254,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             return certificateCollection;
         }
 
-        private CertificatePolicy GetPolicyFromFile(string filePath)
+        private PSKeyVaultCertificatePolicy GetPolicyFromFile(string filePath)
         {
-            CertificatePolicy policy;
+            PSKeyVaultCertificatePolicy policy;
             /* new CertificatePolicy()
                 {
                     ContentType = contentType
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     string jsonContent = r.ReadToEnd();
                     // dynamic array = JsonConvert.DeserializeObject(jsonContent);
-                    policy = (CertificatePolicy)JsonConvert.DeserializeObject(jsonContent);
+                    policy = (PSKeyVaultCertificatePolicy)JsonConvert.DeserializeObject(jsonContent);
                 }
             }
             else
