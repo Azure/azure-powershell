@@ -22,7 +22,7 @@ function Test-AzureFirewallPolicyCRUD {
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus2euap"
+    $location = "westus2"
 
     $ruleGroupName = Get-ResourceName
 
@@ -269,7 +269,7 @@ function Test-AzureFirewallPolicyWithThreatIntelWhitelistCRUD {
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus2euap"
+    $location = "westus2"
 
     $ruleGroupName = Get-ResourceName
     $threatIntelWhiteListIp1 = "20.3.4.5"
@@ -332,7 +332,7 @@ function Test-AzureFirewallPolicyWithDNSSettings {
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus2euap"
+    $location = "westus2"
     $dnsServers = @("10.10.10.1", "20.20.20.2")
 
     try {
@@ -425,7 +425,7 @@ function Test-AzureFirewallPolicyWithSQLSetting {
     $rgname = Get-ResourceGroupName
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyName2 = Get-ResourceName
-    $location = "eastus2euap"
+    $location = "westus2"
 
     try {
 
@@ -451,7 +451,7 @@ function Test-AzureFirewallPolicyWithSQLSetting {
         $disallowSql = New-AzFirewallPolicySqlSetting
         $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $disallowSql
         $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
-        Assert-Null $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
+        Assert-AreEqual false $getAzureFirewallPolicy.SqlSetting.AllowSqlRedirect
 
         # test set AzureFirewallPolicy with sql redirect
         $azureFirewallPolicy = Set-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SqlSetting $allowSql
@@ -489,7 +489,7 @@ function Test-AzureFirewallPolicyCRUDWithNetworkRuleDestinationFQDNs {
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus2euap"
+    $location = "westus2"
     $dnsServers = @("10.10.10.1", "20.20.20.2")
 
     $ruleGroupName = Get-ResourceName
@@ -610,8 +610,8 @@ function Test-AzureFirewallPolicyWithIpGroups {
     $azureFirewallPolicyName = Get-ResourceName
     $azureFirewallPolicyAsJobName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
-    $location = "eastus2euap"
-    $ipGroupLocation = Get-ProviderLocation ResourceManagement "eastus2euap"
+    $location = "westus2"
+    $ipGroupLocation = Get-ProviderLocation ResourceManagement "westus2"
     $ipGroupName1 = Get-ResourceName
     $ipGroupName2 = Get-ResourceName
 

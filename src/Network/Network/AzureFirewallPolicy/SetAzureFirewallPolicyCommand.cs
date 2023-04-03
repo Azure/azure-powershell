@@ -306,6 +306,7 @@ namespace Microsoft.Azure.Commands.Network
                     Snat = this.Snat
                 };
 
+
                 AddPremiumProperties(firewallPolicy);
 
                 // Map to the sdk object
