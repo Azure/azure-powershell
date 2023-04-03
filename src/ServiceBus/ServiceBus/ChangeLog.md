@@ -20,6 +20,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.1
+* Added upcoming breaking change notifications for Az.ServiceBus module.
+
 ## Version 2.2.0
 * Upgraded API version to 2022-10-01-preview
 * Fixed a bug for `Set-AzServiceBusQueue`

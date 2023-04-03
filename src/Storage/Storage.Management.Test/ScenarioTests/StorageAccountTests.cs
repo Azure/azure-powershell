@@ -305,16 +305,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestStorageAccountDnsEndpointType()
+        public void TestNewSetAzStorageAccountFileAADKERB()
         {
-            TestRunner.RunTestScript("Test-StorageAccountDnsEndpointType");
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccountFileAADKERB");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewSetAzStorageAccountFileAADKERB()
+        public void TestStorageAccountDnsEndpointType()
         {
-            TestRunner.RunTestScript("Test-NewSetAzStorageAccountFileAADKERB");
+            TestRunner.RunTestScript("Test-StorageAccountDnsEndpointType");
         }
     }
 }

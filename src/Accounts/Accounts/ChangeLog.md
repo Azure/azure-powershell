@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 2.12.1
+* Fixed an issue that broke some cmdlets in Az.Synapse module.
+
 ## Version 2.12.0
 * Fixed the issue that errors related to WAM are thrown when it is not enabled. [#20871] [#20824]
 * Updated Azure.Core library to 1.28.0.

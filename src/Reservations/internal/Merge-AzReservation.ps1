@@ -26,29 +26,29 @@ $arr=@("72bc398d-b201-4a2e-a1fa-60fb48a85b23", "34f2474f-b4d7-41ec-a96d-d4bb7c2f
 Merge-AzReservation -ReservationOrderId "79ebddac-4030-4296-ab93-1ad90f032058" -ReservationId $arr
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IMergeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IMergeRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IMergeRequest>: .
+BODY <IMergeRequest>: The request for reservation merge
   [Source <String[]>]: Format of the resource id should be /providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 #>
 function Merge-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='MergeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Merge', Mandatory)]
@@ -70,8 +70,8 @@ param(
     [Parameter(ParameterSetName='Merge', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='MergeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IMergeRequest]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IMergeRequest]
+    # The request for reservation merge
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -88,7 +88,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]

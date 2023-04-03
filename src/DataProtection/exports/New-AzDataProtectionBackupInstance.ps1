@@ -34,6 +34,16 @@ $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName
 $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -ResourceGroupName "ResourceGroupName" -VaultName "vaultName" -Name "MyPolicy"
 $instance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDatabaseForPostgreSQL -DatasourceLocation $vault.Location -PolicyId $policy.Id -DatasourceId $dataSourceId -SecretStoreURI $secretURI -SecretStoreType AzureKeyVault
 New-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName "ResourceGroupName" -VaultName "vaultName" -BackupInstance $instance
+.Example
+$policy = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | where {$_.Name -eq "policyName"}
+$sourceClusterId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster"
+$snapshotResourceGroupId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName"
+$backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService -LabelSelector "x=y","foo=bar" 
+$backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService  -DatasourceLocation "eastus" -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName "aks-cluster-friendlyName" -BackupConfiguration $backupConfig
+Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup"
+$tag= @{"Owner"="BIOwnerName";"Foo"="Bar";"A"="B"}
+$biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "ResourceGroupName" -VaultName "vaultName" -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag
+$biCreate
 
 .Notes
 COMPLEX PARAMETER PROPERTIES
@@ -56,6 +66,8 @@ BACKUPINSTANCE <IBackupInstanceResource>: Backup instance request object which w
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
+        [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+          ObjectType <String>: Type of the specific object - used for deserializing
         [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
           DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
           ObjectType <String>: Type of the specific object - used for deserializing
@@ -91,7 +103,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource]
     # Backup instance request object which will be used to configure backup
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
@@ -168,7 +180,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

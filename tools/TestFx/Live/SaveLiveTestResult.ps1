@@ -25,22 +25,51 @@ param (
 
     [Parameter(Mandatory, Position = 6)]
     [ValidateNotNullOrEmpty()]
-    [string] $LiveTestTableName,
+    [string] $TableName,
 
     [Parameter(Mandatory, Position = 7)]
     [ValidateNotNullOrEmpty()]
-    [string] $TestCoverageTableName,
+    [string] $DataLocation,
 
     [Parameter(Mandatory, Position = 8)]
     [ValidateNotNullOrEmpty()]
-    [string] $DataLocation
+    [string] $BuildId,
+
+    [Parameter(Mandatory, Position = 9)]
+    [ValidateNotNullOrEmpty()]
+    [string] $OSVersion,
+
+    [Parameter(Position = 10)]
+    [string] $Tag = [string]::Empty
 )
 
-Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -Force
-
 $liveTestDir = Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis" | Join-Path -ChildPath "Raw"
-if (Test-Path -LiteralPath $liveTestDir) {
-    $liveTestResults = Get-ChildItem -Path $liveTestDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
+$liveTestResults = Get-ChildItem -Path $liveTestDir -Filter "*.csv" -File -ErrorAction SilentlyContinue | Select-Object -ExpandProperty FullName
+
+if (![string]::IsNullOrWhiteSpace($liveTestResults)) {
+    if (![string]::IsNullOrEmpty($Tag)) {
+        $exProps = @{ Tag = $Tag } | ConvertTo-Json -Compress
+    }
+
+    $liveTestResults | ForEach-Object {
+        (Import-Csv -Path $_) |
+        Select-Object `
+        @{ Name = "Source"; Expression = { "LiveTest" } }, `
+        @{ Name = "BuildId"; Expression = { $BuildId } }, `
+        @{ Name = "OSVersion"; Expression = { $OSVersion } }, `
+        @{ Name = "PSVersion"; Expression = { $_.PSVersion } }, `
+        @{ Name = "Module"; Expression = { $_.Module } }, `
+        @{ Name = "Name"; Expression = { $_.Name } }, `
+        @{ Name = "Description"; Expression = { $_.Description } }, `
+        @{ Name = "StartDateTime"; Expression = { $_.StartDateTime } }, `
+        @{ Name = "EndDateTime"; Expression = { $_.EndDateTime } }, `
+        @{ Name = "IsSuccess"; Expression = { $_.IsSuccess } }, `
+        @{ Name = "Errors"; Expression = { $_.Errors } }, `
+        @{ Name = "ExtendedProperties"; Expression = { $exProps } } |
+        Export-Csv -Path $_ -Encoding utf8 -NoTypeInformation -Force
+    }
+
+    Import-Module "./tools/TestFx/Utilities/KustoUtility.psd1" -Force
     Import-KustoDataFromCsv `
         -ServicePrincipalTenantId $ServicePrincipalTenantId `
         -ServicePrincipalId $ServicePrincipalId `
@@ -48,26 +77,9 @@ if (Test-Path -LiteralPath $liveTestDir) {
         -ClusterName $ClusterName `
         -ClusterRegion $ClusterRegion `
         -DatabaseName $DatabaseName `
-        -TableName $LiveTestTableName `
+        -TableName $TableName `
         -CsvFile $liveTestResults
 }
 else {
-    Write-Warning "No live test data generated."
-}
-
-$testCoverageDir = Join-Path -Path $DataLocation -ChildPath "TestCoverageAnalysis" | Join-Path -ChildPath "Raw"
-if (Test-Path -LiteralPath $testCoverageDir) {
-    $testCoverageResults = Get-ChildItem -Path $testCoverageDir -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
-    Import-KustoDataFromCsv `
-        -ServicePrincipalTenantId $ServicePrincipalTenantId `
-        -ServicePrincipalId $ServicePrincipalId `
-        -ServicePrincipalSecret $ServicePrincipalSecret `
-        -ClusterName $ClusterName `
-        -ClusterRegion $ClusterRegion `
-        -DatabaseName $DatabaseName `
-        -TableName $TestCoverageTableName `
-        -CsvFile $testCoverageResults
-}
-else {
-    Write-Warning "No test coverage data generated."
+    Write-Host "##[warning]No live test data was found."
 }

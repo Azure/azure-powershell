@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.0.1
+* Fixed pagination for `Get-AzConsumptionPriceSheet` cmdlet
+
 ## Version 2.0.0
 * Added `Get-AzBillingAccount` cmdlet
 * Added `Get-AzBillingProfile` cmdlet

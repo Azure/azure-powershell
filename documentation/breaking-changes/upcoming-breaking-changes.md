@@ -111,13 +111,162 @@
 ### `New-AzVM`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - Starting in May 2023 the "New-AzVM" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://learn.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+  - Consider using the image alias including the version of the distribution you want to use in the "-Image" parameter of the "New-AzVM" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life.
+  - Starting in May 2023 the "New-AzVM" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
   - It is recommended to use parameter "-PublicIpSku Standard" in order to create a new VM with a Standard public IP.Specifying zone(s) using the "-Zone" parameter will also result in a Standard public IP.If "-Zone" and "-PublicIpSku" are not specified, the VM will be created with a Basic public IP instead.Please note that the Standard SKU IPs will become the default behavior for VM creation in the future
 
 ### `New-AzVmss`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - Starting May 2023, the "New-AzVmss" cmdlet will use new defaults: Flexible orchestration mode, use of Trusted Launch, and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://learn.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes. For Trusted Launch, visit https://learn.microsoft.com/azure/virtual-machines/trusted-launch.
+  - Starting May 2023, the "New-AzVmss" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/trustedLaunchVMSS.
+  - Starting November 2023, the "New-AzVmss" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.
+  - Consider using the image alias including the version of the distribution you want to use in the "-ImageName" parameter of the "New-AzVmss" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life.
+
+## Az.ContainerRegistry
+
+### `Get-AzContainerRegistry`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Get-AzContainerRegistryCredential`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+### `Get-AzContainerRegistryReplication`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Get-AzContainerRegistryUsage`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+### `Get-AzContainerRegistryWebhook`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-IncludeConfiguration`
+    - Parameter is being deprecated without being replaced
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Get-AzContainerRegistryWebhookEvent`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `New-AzContainerRegistry`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+### `New-AzContainerRegistryNetworkRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet 'New-AzContainerRegistryIPRuleObject' is replacing this cmdlet.
+
+### `New-AzContainerRegistryReplication`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `New-AzContainerRegistryWebhook`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Remove-AzContainerRegistry`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Remove-AzContainerRegistryReplication`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Remove-AzContainerRegistryWebhook`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Set-AzContainerRegistryNetworkRuleSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
+### `Test-AzContainerRegistryNameAvailability`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+### `Test-AzContainerRegistryWebhook`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The output type is changing from the existing type :'Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo' to the new type :'String'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Update-AzContainerRegistry`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-NetworkRuleSet`
+    - Parameter is being deprecated without being replaced
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+  - `-StorageAccountName`
+    - Parameter is being deprecated without being replaced
+
+### `Update-AzContainerRegistryCredential`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
+
+### `Update-AzContainerRegistryWebhook`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The Az.ContainerRegistry module is upgrading. The output properties may have some changes
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-ResourceId`
+    - Parameter is being deprecated without being replaced
 
 ## Az.DataLakeStore
 
@@ -334,9 +483,7 @@
 ### `Get-AzEventHubNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes' is changing
-  - The following properties in the output type are being deprecated : 'ResourceGroup'
-  - The following properties are being added to the output type : 'ResourceGroupName' 'Tags'
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace`. This cmdlet would henceforth be alias cmdlet with Get-AzEventHubNamespaceV2.
 
 ### `New-AzEventHub`
 
@@ -345,17 +492,39 @@
     - The parameter : 'MessageRetentionInDays' is changing.
     - The change is expected to take effect from the version : '4.0.0'
 
+### `New-AzEventHubEncryptionConfig`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.KeyVaultProperties`.
+
 ### `New-AzEventHubNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes' is changing
-  - The following properties in the output type are being deprecated : 'ResourceGroup' 'Identity'
-  - The following properties are being added to the output type : 'ResourceGroupName' 'Tags' 'IdentityType'
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace`. This cmdlet would henceforth be alias cmdlet with New-AzEventHubNamespaceV2.
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableKafka`
+    - This parameter would be removed in version Az 10.0
+  - `-EncryptionConfig`
+    - The parameter : 'EncryptionConfig' is being replaced by parameter : 'KeyVaultProperty'.
+    The type of the parameter is changing from 'Microsoft.Azure.Commands.EventHub.Models.PSEncryptionConfigAttributes[]' to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202210Preview.IKeyVaultProperties[]'.
+  - `-IdentityId`
+    - The parameter : 'IdentityId' is being replaced by parameter : 'UserAssignedIdentityId'.
+  - `-MaximumThroughputUnits`
+    - The parameter : 'MaximumThroughputUnits' is being replaced by parameter : 'MaximumThroughputUnit'.
 
 ### `Remove-AzEventHubIPRule`
 
 - Cmdlet breaking-change will happen to all parameter set
   - This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.
+
+### `Remove-AzEventHubNamespace`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - The type of the `-InputObject` parameter would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace`.
+  - `-ResourceId`
+    - This parameter would be removed. Henceforth, resource Id's can be provided as input to `-InputObject` parameter.
 
 ### `Remove-AzEventHubNetworkRuleSet`
 
@@ -378,9 +547,18 @@
 ### `Set-AzEventHubNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes' is changing
-  - The following properties in the output type are being deprecated : 'ResourceGroup' 'IdentityUserDefined' 'Identity' 'KeyProperty'
-  - The following properties are being added to the output type : 'ResourceGroupName' 'Tags' 'IdentityType' 'EncryptionConfig'
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace`. This cmdlet would henceforth be alias cmdlet with Set-AzEventHubNamespaceV2.
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableKafka`
+    - This parameter would be removed in version Az 10.0
+  - `-EncryptionConfig`
+    - The parameter : 'EncryptionConfig' is being replaced by parameter : 'KeyVaultProperty'.
+    The type of the parameter is changing from 'Microsoft.Azure.Commands.EventHub.Models.PSEncryptionConfigAttributes[]' to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202210Preview.IKeyVaultProperties[]'.
+  - `-IdentityId`
+    - The parameter : 'IdentityId' is being replaced by parameter : 'UserAssignedIdentityId'.
+  - `-MaximumThroughputUnits`
+    - The parameter : 'MaximumThroughputUnits' is being replaced by parameter : 'MaximumThroughputUnit'.
 
 ## Az.HDInsight
 
@@ -1086,21 +1264,37 @@
 ### `Get-AzServiceBusNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes' is changing
-  - The following properties in the output type are being deprecated : 'ResourceGroup'
-  - The following properties are being added to the output type : 'ResourceGroupName'
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace`. This cmdlet would henceforth be alias cmdlet with Get-AzServiceBusNamespaceV2.
+
+### `New-AzServiceBusEncryptionConfig`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202210Preview.KeyVaultProperties`.
 
 ### `New-AzServiceBusNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes' is changing
-  - The following properties in the output type are being deprecated : 'ResourceGroup'
-  - The following properties are being added to the output type : 'ResourceGroupName'
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace`. This cmdlet would henceforth be alias cmdlet with New-AzServiceBusNamespaceV2.
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EncryptionConfig`
+    - The parameter : 'EncryptionConfig' is being replaced by parameter : 'KeyVaultProperty'.
+    The type of the parameter is changing from 'Microsoft.Azure.Commands.ServiceBus.Models.PSEncryptionConfigAttributes[]' to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202210Preview.IKeyVaultProperties[]'.
+  - `-IdentityId`
+    - The parameter : 'IdentityId' is being replaced by parameter : 'UserAssignedIdentityId'.
 
 ### `Remove-AzServiceBusIPRule`
 
 - Cmdlet breaking-change will happen to all parameter set
   - This cmdlet would be deprecated in a future release. Please use Set-AzServiceBusNetworkRuleSet.
+
+### `Remove-AzServiceBusNamespace`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - The type of the `-InputObject` parameter would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202210Preview.ISbNamespace`.
+  - `-ResourceId`
+    - This parameter would be removed. Henceforth, resource Id's can be provided as input to `-InputObject` parameter.
 
 ### `Remove-AzServiceBusNetworkRuleSet`
 
@@ -1115,9 +1309,14 @@
 ### `Set-AzServiceBusNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes' is changing
-  - The following properties in the output type are being deprecated : 'ResourceGroup'
-  - The following properties are being added to the output type : 'ResourceGroupName'
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace`. This cmdlet would henceforth be alias cmdlet with Set-AzServiceBusNamespaceV2.
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EncryptionConfig`
+    - The parameter : 'EncryptionConfig' is being replaced by parameter : 'KeyVaultProperty'.
+    The type of the parameter is changing from 'Microsoft.Azure.Commands.ServiceBus.Models.PSEncryptionConfigAttributes[]' to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202210Preview.IKeyVaultProperties[]'.
+  - `-IdentityId`
+    - The parameter : 'IdentityId' is being replaced by parameter : 'UserAssignedIdentityId'.
 
 ## Az.SignalR
 
@@ -1231,6 +1430,95 @@
   - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel' is changing
   - The following properties in the output type are being deprecated : 'BackupStorageRedundancy'
   - The following properties are being added to the output type : 'CurrentBackupStorageRedundancy' 'RequestedBackupStorageRedundancy'
+
+## Az.SqlVirtualMachine
+
+### `Get-AzAvailabilityGroupListener`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SqlVMGroupObject`
+    - SqlVMGroupObject parameter is being deprecated without being replaced.
+
+### `Get-AzSqlVM`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' is changing
+  - The following properties in the output type are being deprecated : 'SqlManagementType'
+
+### `New-AzAvailabilityGroupListener`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SqlVMGroupObject`
+    - SqlVMGroupObject parameter is being deprecated without being replaced.
+
+### `New-AzSqlVM`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' is changing
+  - The following properties in the output type are being deprecated : 'SqlManagementType'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SqlVM`
+    - SqlManagementType parameter is being deprecated
+
+### `New-AzSqlVMConfig`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
+### `Remove-AzAvailabilityGroupListener`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SqlVMGroupObject`
+    - SqlVMGroupObject parameter is being deprecated without being replaced.
+
+### `Remove-AzSqlVM`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' is changing
+  - The following properties in the output type are being deprecated : 'SqlManagementType'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - InputObject parameter alias 'SqlVM' will be removed.
+
+### `Remove-AzSqlVMGroup`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - InputObject parameter alias 'SqlVMGroup' will be removed.
+
+### `Set-AzSqlVMConfigGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
+### `Update-AzAvailabilityGroupListener`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-SqlVMGroupObject`
+    - SqlVMGroupObject parameter is being deprecated without being replaced.
+
+### `Update-AzSqlVM`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The output type 'Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Model.AzureSqlVMModel' is changing
+  - The following properties in the output type are being deprecated : 'SqlManagementType'
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - InputObject parameter alias 'SqlVM' will be removed.
+  - `-SqlManagementType`
+    - SqlManagementType parameter is being deprecated
+
+### `Update-AzSqlVMGroup`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - InputObject parameter alias 'SqlVMGroup' will be removed.
 
 ## Az.Storage
 

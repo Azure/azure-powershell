@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Added support for RBAC authentication
+
 ## Version 0.8.0
 * Added support for new networking features
 	- Updated dependency for Microsoft.Azure.Management.Search from 3.0.0 to 4.0.0

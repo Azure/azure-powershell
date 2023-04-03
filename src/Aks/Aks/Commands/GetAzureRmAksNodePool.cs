@@ -19,6 +19,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
+using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
 
@@ -83,12 +84,12 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     {
                         var pools = ListPaged(() => Client.AgentPools.List(ResourceGroupName, ClusterName),
                             nextPageLink => Client.AgentPools.ListNext(nextPageLink));
-                        WriteObject(pools.Select(PSMapper.Instance.Map<PSNodePool>), true);
+                        WriteObject(pools.Select(AdapterHelper<AgentPool, PSNodePool>.Adapt), true);
                     }
                     else
                     {
                         var pool = Client.AgentPools.Get(ResourceGroupName, ClusterName, Name);
-                        WriteObject(PSMapper.Instance.Map<PSNodePool>(pool));
+                        WriteObject(AdapterHelper<AgentPool, PSNodePool>.Adapt(pool));
                     }
                 }
                 catch (ValidationException e)

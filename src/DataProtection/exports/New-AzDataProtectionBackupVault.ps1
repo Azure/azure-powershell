@@ -26,7 +26,7 @@ New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-r
 .Example
 $sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
-New-AzDataProtectionBackupVault -SubscriptionId $sub "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
+New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location westus -StorageSetting $storagesetting -CrossSubscriptionRestoreState Enabled -ImmutabilityState Unlocked -SoftDeleteRetentionDurationInDay 100 -SoftDeleteState On
 
 .Outputs
 System.Management.Automation.PSObject
@@ -65,7 +65,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IStorageSetting[]]
     # Storage Settings of the vault.
     # Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
@@ -189,7 +189,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
