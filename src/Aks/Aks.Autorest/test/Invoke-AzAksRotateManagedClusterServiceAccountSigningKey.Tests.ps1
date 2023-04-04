@@ -15,11 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzAksRotateManagedClus
 }
 
 Describe 'Invoke-AzAksRotateManagedClusterServiceAccountSigningKey' {
-    It 'Rotate' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Rotate' {
+        Invoke-AzAksRotateManagedClusterServiceAccountSigningKey -ResourceGroupName $env.ResourceGroupName -ResourceName $env.AksName
     }
 
-    It 'RotateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RotateViaIdentity' {
+        $aks = @{Id="/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks"}
+        Invoke-AzAksRotateManagedClusterServiceAccountSigningKey -InputObject $aks
     }
 }
