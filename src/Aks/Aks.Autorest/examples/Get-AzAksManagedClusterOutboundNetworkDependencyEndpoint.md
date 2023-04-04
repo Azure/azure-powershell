@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: List egress endpoints (network endpoints of all outbound dependencies) in the specified managed cluster
 ```powershell
-{{ Add code here }}
+$result = Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint -ResourceGroupName mygroup -ResourceName mycluster
+$result | select Category,Endpoint
 ```
 
 ```output
-{{ Add output here }}
+Category                  Endpoint
+--------                  --------
+azure-resource-management {management.azure.com, login.microsoftonline.com}
+images                    {mcr.microsoft.com, *.data.mcr.microsoft.com}
+artifacts                 {packages.microsoft.com, acs-mirror.azureedge.net}
+time-sync                 {ntp.ubuntu.com}
+ubuntu-optional           {security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com}
+apiserver                 {aks0b1f-idb7vuoi.hcp.eastus.azmk8s.io}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

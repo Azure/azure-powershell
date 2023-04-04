@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an AKS snapshot
 ```powershell
-{{ Add code here }}
+Remove-AzAksSnapshot -ResourceGroupName mygroup -ResourceName 'snapshot1'
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove an AKS snapshot via identity
 ```powershell
-{{ Add code here }}
+$Snapshot = Get-AzAksSnapshot -ResourceGroupName mygroup -ResourceName 'snapshot1'
+$Snapshot | Remove-AzAksSnapshot
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

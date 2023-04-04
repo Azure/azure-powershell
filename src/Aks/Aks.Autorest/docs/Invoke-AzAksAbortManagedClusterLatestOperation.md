@@ -34,27 +34,14 @@ If the operation completes before cancellation can take place, a 409 error code 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Abort the currently running operation on the managed cluster.
 ```powershell
-{{ Add code here }}
+Invoke-AzAksAbortManagedClusterLatestOperation -ResourceGroupName mygroup -ResourceName mycluster
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Abort the currently running operation on the managed cluster "mycluster".
+The Managed Cluster will be moved to a Canceling state and eventually to a Canceled state when cancellation finishes.
+If the operation completes before cancellation can take place, a 409 error code is returned.
 
 ## PARAMETERS
 

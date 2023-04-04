@@ -21,27 +21,20 @@ Create an in-memory object for TimeInWeek.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for time in a week
 ```powershell
-{{ Add code here }}
+New-AzAksTimeInWeekObject -Day 'Sunday' -HourSlot 1,2
 ```
 
 ```output
-{{ Add output here }}
+Day    HourSlot
+---    --------
+Sunday {1, 2}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+*New-AzAksTimeInWeekObject* creates an in-memory object of type *TimeInWeek*.
+This object represents time in a week.
+and will be used for parameter *TimeInWeek* in cmdlet *New-AzAksMaintenanceConfiguration*.
 
 ## PARAMETERS
 

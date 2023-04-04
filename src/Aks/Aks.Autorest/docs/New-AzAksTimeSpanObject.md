@@ -21,27 +21,21 @@ Create an in-memory object for TimeSpan.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create Create an in-memory object for a time span
 ```powershell
-{{ Add code here }}
+$startDate = Get-Date -Year 2023 -Month 3 -Day 1
+$endDate = Get-Date -Year 2023 -Month 3 -Day 2
+New-AzAksTimeSpanObject -Start  $startDate -End $endDate
 ```
 
 ```output
-{{ Add output here }}
+End                 Start
+---                 -----
+3/2/2023 1:53:53 PM 3/1/2023 1:53:45 PM
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+*New-AzAksTimeSpanObject* creates an in-memory object of type *TimeSpan*.
+This object represents a time span and will be used for parameter *NotAllowedTime* in cmdlet *New-AzAksMaintenanceConfiguration*.
 
 ## PARAMETERS
 

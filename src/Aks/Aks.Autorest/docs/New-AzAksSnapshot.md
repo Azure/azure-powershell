@@ -23,27 +23,20 @@ Creates or updates a snapshot.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a snapshot
 ```powershell
-{{ Add code here }}
+$pool = Get-AzAksNodePool -ResourceGroupName mygroup -ClusterName mycluster -Name default
+New-AzAksSnapshot -ResourceGroupName mygroup -ResourceName 'snapshot1' -Location eastus -SnapshotType 'NodePool' -CreationDataSourceResourceId $pool.Id
 ```
 
 ```output
-{{ Add output here }}
+Location Name      SystemDataCreatedAt   SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType
+-------- ----      -------------------   -------------------  ----------------------- ------------------------ ------------------------ ----------------------------
+eastus   snapshot1 3/30/2023 10:24:43 AM user1@microsoft.com User                    3/30/2023 10:24:43 AM    user1@microsoft.com     User
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates or updates a snapshot for a nodepool "default" of a managed cluster "mycluster".
 
 ## PARAMETERS
 

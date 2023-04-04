@@ -29,27 +29,18 @@ Gets supported OS options in the specified subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get supported OS options
 ```powershell
-{{ Add code here }}
+Get-AzAksManagedClusterOSOption -Location eastus
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+default
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
