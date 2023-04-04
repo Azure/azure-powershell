@@ -104,6 +104,16 @@ function New-AzRedisEnterpriseCache {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IClusterPropertiesEncryption]
+        ${Encryption},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api40.IManagedServiceIdentity]
+        ${Identity},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String[]]
         # The Availability Zones where this cluster will be deployed.
         ${Zone},
