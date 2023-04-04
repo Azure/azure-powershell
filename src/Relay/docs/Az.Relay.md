@@ -42,9 +42,6 @@ Regenerates the primary or secondary connection strings to the namespace.
 ### [New-AzRelayNamespace](New-AzRelayNamespace.md)
 Create Azure Relay namespace.
 
-### [New-AzRelayNamespaceNetworkRuleSet](New-AzRelayNamespaceNetworkRuleSet.md)
-Create or update NetworkRuleSet for a Namespace.
-
 ### [New-AzRelayNetworkRuleSetIPRuleObject](New-AzRelayNetworkRuleSetIPRuleObject.md)
 Create an in-memory object for NwRuleSetIPRules.
 
@@ -71,6 +68,9 @@ Creates or updates an authorization rule for a namespace.
 ### [Set-AzRelayHybridConnection](Set-AzRelayHybridConnection.md)
 Creates or updates a service hybrid connection.
 This operation is idempotent.
+
+### [Set-AzRelayNamespaceNetworkRuleSet](Set-AzRelayNamespaceNetworkRuleSet.md)
+Update NetworkRuleSet for a Namespace.
 
 ### [Set-AzWcfRelay](Set-AzWcfRelay.md)
 Creates or updates a WCF relay.

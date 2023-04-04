@@ -14,8 +14,8 @@ Create Azure Relay namespace.
 
 ```
 New-AzRelayNamespace -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -106,22 +107,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublicNetworkAccess
-This determines if traffic is allowed over public network.
-By default it is enabled.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 

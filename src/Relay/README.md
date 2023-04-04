@@ -127,10 +127,46 @@ directive:
      subject: PrivateEndpointConnection|PrivateLinkResource
     remove: true
 
+  # Custom New-AzRelayNamespaceNetworkRuleSet to Set-AzRelayNamespaceNetworkRuleSet 
+  - where:
+      verb: New
+      subject: ^NamespaceNetworkRuleSet$
+    hide: true
+
+  - where:
+      verb: New
+      subject: ^NamespaceNetworkRuleSet$
+      variant: ^Create$
+    remove: true
+
+  - where:
+      verb: New
+      subject: ^NamespaceNetworkRuleSet$
+      variant: ^CreateViaIdentity$
+    hide: true
+
   - where:
       verb: Set
       subject: ^NamespaceNetworkRuleSet$
     remove: true
+
+  # Custom Set Wcf Relay UpdateExpanded
+  - where:
+      verb: Set
+      subject: ^WcfRelay$
+    hide: true
+
+# Custom Set-AzRelayAuthorizationRule
+  - where:
+      verb: Set
+      subject: ^AuthorizationRule$
+    hide: true
+
+# Custom Set-AzRelayHybridConnection
+  - where:
+      verb: Set
+      subject: ^HybridConnection$
+    hide: true
 
   - where:
       verb: Set
@@ -150,7 +186,7 @@ directive:
 
   - where:
       verb: New
-      subject: ^Namespace$|^NamespaceNetworkRuleSet$
+      subject: ^Namespace$
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
@@ -174,12 +210,6 @@ directive:
   - where:
       subject: ^AuthorizationRule$
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Create1$|^^CreateViaIdentity1$|^CreateViaIdentityExpanded1$|^Create2$|^^CreateViaIdentity2$|^CreateViaIdentityExpanded2$
-    remove: true
-
-  - where:
-      verb: Set
-      subject: ^Relay$
-      variant: ^UpdateExpanded$
     remove: true
 
   - where:
@@ -312,6 +342,20 @@ directive:
   - where:
       verb: Get|Remove
       subject: ^AuthorizationRule$
+    hide: true
+
+  # Hide parameter -PublicNetworkAccess from New-AzRelayNamespace and Update-AzRelayNamespace
+  - where:
+      verb: New|Update
+      subject: ^NameSpace$
+      parameter-name: PublicNetworkAccess
+    hide: true
+
+  # Hide parameter -SkuTier in Update-AzRelayNamespace
+  - where:
+      verb: Update
+      subject: ^NameSpace$
+      parameter-name: SkuTier
     hide: true
 
   # - model-cmdlet:

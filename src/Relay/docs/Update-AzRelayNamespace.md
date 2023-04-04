@@ -17,15 +17,13 @@ This operation is idempotent.
 ### UpdateExpanded (Default)
 ```
 Update-AzRelayNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzRelayNamespace -InputObject <IRelayIdentity> [-PublicNetworkAccess <PublicNetworkAccess>]
- [-SkuTier <SkuTier>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzRelayNamespace -InputObject <IRelayIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +62,8 @@ This cmdlet updates a Relay namespace by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -109,22 +108,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublicNetworkAccess
-This determines if traffic is allowed over public network.
-By default it is enabled.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.PublicNetworkAccess
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
@@ -134,21 +117,6 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuTier
-The tier of this SKU.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Support.SkuTier
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
