@@ -15,7 +15,7 @@
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicyHttpHeaderToInsert
+    public class PSAzureFirewallPolicyApplicationRuleCustomHttpHeader
     {
         public string HeaderName { get; set; }
 

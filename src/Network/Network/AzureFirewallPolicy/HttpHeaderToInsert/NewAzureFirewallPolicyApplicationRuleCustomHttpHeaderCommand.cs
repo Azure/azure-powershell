@@ -13,18 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.Data;
-using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyHttpHeaderToInsert",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallPolicyApplicationRuleCustomHttpHeader",
         SupportsShouldProcess = true),
-        OutputType(typeof(PSAzureFirewallPolicyIntrusionDetection))]
-
-    public class NewAzureFirewallPolicyHttpHeaderToInsertCommand : NetworkBaseCmdlet
+        OutputType(typeof(PSAzureFirewallPolicyApplicationRuleCustomHttpHeader))]
+    
+    public class NewAzFirewallPolicyApplicationRuleCustomHttpHeaderCommand : NetworkBaseCmdlet
     {
         private const int HttpHeaderValueMaxLength = 512;
         private const int HttpHeaderNameMaxLength = 100;
@@ -49,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-            var headerToInsert = new PSAzureFirewallPolicyHttpHeaderToInsert
+            var headerToInsert = new PSAzureFirewallPolicyApplicationRuleCustomHttpHeader
             {
                 HeaderName = this.HeaderName,
                 HeaderValue = this.HeaderValue
@@ -65,7 +63,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException($"Header Name length is limited to {HttpHeaderNameMaxLength} characters.");
             }
-
 
             // validate value length
             if (this.HeaderValue.Length > HttpHeaderValueMaxLength)
