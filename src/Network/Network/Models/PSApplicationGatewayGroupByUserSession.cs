@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSApplicationGatewayGroupByUserSession
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayGroupByVariable> GroupByVariables { get; set; }
+        public List<PSApplicationGatewayGroupByVariable> GroupByVariable { get; set; }
 
     }
 }

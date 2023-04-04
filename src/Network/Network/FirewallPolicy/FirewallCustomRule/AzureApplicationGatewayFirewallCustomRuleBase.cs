@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 this.State = "Enabled";
             }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("RateLimitThreshold"))
+            {
+                this.RateLimitThreshold = 1;
+            }
         }
 
         protected PSApplicationGatewayFirewallCustomRule NewObject()

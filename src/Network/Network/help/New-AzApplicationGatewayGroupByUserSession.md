@@ -13,7 +13,7 @@ Creates a new GroupByUserSession for the application gateway firewall custom rul
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayGroupByUserSession -GroupByVariables<PSApplicationGatewayGroupByVariable[]> 
+New-AzApplicationGatewayGroupByUserSession -GroupByVariable<PSApplicationGatewayGroupByVariable[]> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,14 +24,14 @@ The **New-AzApplicationGatewayGroupByUserSession** creates a new GroupByUserSess
 
 ### Example 1
 ```powershell
-New-AzApplicationGatewayGroupByUserSession -GroupByVariables $groupbyVar 
+New-AzApplicationGatewayGroupByUserSession -GroupByVariable $groupbyVar 
 ```
 
 The command creates a new GroupByUserSession, with the GroupByVariables condition named groupbyVar
 
 ## PARAMETERS
 
-### -GroupByVariables
+### -GroupByVariable
 Define user session group by clause variables.
 
 ```yaml
