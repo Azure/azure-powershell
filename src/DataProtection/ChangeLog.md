@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 1.2.0
+* Added support for AKS workload with Backup Vaults
+* Added support for `Set-AzDataProtectionMSIPermission` during restore with AKS workload
+
 ## Version 1.1.0
 * Added support for Immutable backup vaults
 * Added Cross subscription restore flag for backup vaults

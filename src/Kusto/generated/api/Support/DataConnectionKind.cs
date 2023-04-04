@@ -10,6 +10,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
     public partial struct DataConnectionKind :
         System.IEquatable<DataConnectionKind>
     {
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind CosmosDb = @"CosmosDb";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind EventGrid = @"EventGrid";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind EventHub = @"EventHub";
@@ -26,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
             return new DataConnectionKind(global::System.Convert.ToString(value));
         }
 
-        /// <summary>Creates an instance of the <see cref="DataConnectionKind" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="DataConnectionKind"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private DataConnectionKind(string underlyingValue)
         {
@@ -80,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         }
 
         /// <summary>Overriding != operator for enum DataConnectionKind</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind e1, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind e2)
         {
@@ -89,8 +91,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         }
 
         /// <summary>Overriding == operator for enum DataConnectionKind</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind e1, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DataConnectionKind e2)
         {

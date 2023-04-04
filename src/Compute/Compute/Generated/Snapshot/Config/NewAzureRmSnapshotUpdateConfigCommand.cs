@@ -121,6 +121,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("X64", "Arm64")]
         public string Architecture { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll")]
+        [PSArgumentCompleter("AllowAll", "AllowPrivate", "DenyAll")]
+        public string NetworkAccessPolicy { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("SnapshotUpdate", "New"))
@@ -243,7 +250,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 SupportsHibernation = this.IsParameterBound(c => c.SupportsHibernation) ? SupportsHibernation : null,
                 PublicNetworkAccess = this.IsParameterBound(c => c.PublicNetworkAccess) ? PublicNetworkAccess : null,
                 DataAccessAuthMode = this.IsParameterBound(c => c.DataAccessAuthMode) ? DataAccessAuthMode : null,
-                SupportedCapabilities = vSupportedCapabilities
+                SupportedCapabilities = vSupportedCapabilities,
+                NetworkAccessPolicy = this.IsParameterBound(c => c.NetworkAccessPolicy) ? this.NetworkAccessPolicy : null
             };
 
             WriteObject(vSnapshotUpdate);

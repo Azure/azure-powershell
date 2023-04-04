@@ -765,4 +765,13 @@
   <data name="InvalidVnetLocalRouteOverrideCriteriaValue" xml:space="preserve">
     <value>Permitted values for VnetLocalRouteOverrideCriteria are Equal and Contains.</value>
   </data>
+  <data name="VpnMultiAuthIkev2OpenvpnAadWarning" xml:space="preserve">
+    <value>Warning: VpnClientProtocol being configured are: OpenVPN, IkeV2. AAD is one of the auth types configured. Since AAD is only supported for OpenVPN, it will only be used for OpenVPN.</value>
+  </data>
+  <data name="VpnMultiAuthIkev2OpenvpnOnlyAad" xml:space="preserve">
+    <value>VpnClientProtocol being configured are : OpenVPN, IkeV2. VpnAuthenticationType being configured is AAD. Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol.</value>
+  </data>
+  <data name="ConfirmMessage" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
 </root>

@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     break;
                 case Constants.InputObjectParameterSet:
                     WriteVerbose(Resources.UsingAgentPoolFromPipeline);
-                    pool = PSMapper.Instance.Map<AgentPool>(InputObject);
+                    pool = AdapterHelper<PSNodePool, AgentPool>.Adapt(InputObject);
                     resource = new ResourceIdentifier(pool.Id);
                     ResourceGroupName = resource.ResourceGroupName;
                     ClusterName = Utilities.GetParentResourceName(resource.ParentResource, nameof(InputObject));
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                         }
 
                         var upgradedPool = Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, ClusterName, Name);
-                        WriteObject(PSMapper.Instance.Map<PSNodePool>(upgradedPool));
+                        WriteObject(AdapterHelper<AgentPool, PSNodePool>.Adapt(upgradedPool));
                         return;
                     }
                     if (this.IsParameterBound(c => c.NodeLabel))
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     }
 
                     var updatedPool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);
-                    WriteObject(PSMapper.Instance.Map<PSNodePool>(updatedPool));
+                    WriteObject(AdapterHelper<AgentPool, PSNodePool>.Adapt(updatedPool));
                 });
             }
         }

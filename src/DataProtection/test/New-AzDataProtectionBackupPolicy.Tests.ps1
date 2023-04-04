@@ -24,9 +24,8 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         Write-Debug  -Message $vaultName
         $DebugPreference = "SilentlyContinue"
 
-
         $pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDatabaseForPostgreSQL
-                
+        
         $lifeCycle1 = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore ArchiveStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 6
         $lifeCycle = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 3 -TargetDataStore ArchiveStore -CopyOption CopyOnExpiryOption
          
@@ -59,6 +58,53 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
         $policy.Name | Should be $newPolicyName
         
+        Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
+        $policy | Should be $null
+    }
+
+    It 'AzureKubernetesServicePolicy' {
+        $sub = $env.TestAksBackupScenario.SubscriptionId
+        $rgName = $env.TestAksBackupScenario.ResourceGroupName
+        $vaultName = $env.TestAksBackupScenario.VaultName
+        $newPolicyName = $env.TestAksBackupScenario.NewPolicyName
+        
+        $pol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureKubernetesService
+        
+        # update backup schedule
+        $schDates = @(
+        (
+          (Get-Date -Year 2023 -Month 03 -Day 18 -Hour 16 -Minute 0 -Second 0)
+        ))
+        $trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDates -IntervalType Daily -IntervalCount 1
+        Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $pol   
+
+        # add retention rules
+        $lifeCycleDaily = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 8
+        $lifeCycleWeekly = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore OperationalStore -SourceRetentionDurationType Weeks -SourceRetentionDurationCount 9
+
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Daily -LifeCycles $lifeCycleDaily -IsDefault $false
+        Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $pol -Name Weekly -LifeCycles $lifeCycleWeekly -IsDefault $false
+        
+        # update tag criteria
+        $tagCriteriaDaily = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfDay
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Daily -Criteria $tagCriteriaDaily
+
+        $tagCriteriaWeekly = New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfWeek 
+        Edit-AzDataProtectionPolicyTagClientObject -Policy $pol -Name Weekly -Criteria $tagCriteriaWeekly
+
+        $newPolicy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName -Policy $pol -SubscriptionId $sub
+
+        # this Policy should be there - then delete it and then this policy shouldn't be there
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
+        
+        # verify policy
+        $policy.Name | Should be $newPolicyName
+        $policy.Property.PolicyRule[0].Trigger.ScheduleTimeZone | Should be "India Standard Time"
+        $policy.Property.PolicyRule[2].Lifecycle[0].DeleteAfterDuration | Should be "P8D"
+        $policy.Property.PolicyRule[3].Lifecycle[0].DeleteAfterDuration | Should be "P9W"
+
+        # remove policy
         Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
         $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
         $policy | Should be $null

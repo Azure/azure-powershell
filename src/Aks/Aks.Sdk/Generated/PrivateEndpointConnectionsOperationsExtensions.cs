@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// To learn more about private clusters, see:
-            /// https://learn.microsoft.com/azure/aks/private-clusters
+            /// https://docs.microsoft.com/azure/aks/private-clusters
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// To learn more about private clusters, see:
-            /// https://learn.microsoft.com/azure/aks/private-clusters
+            /// https://docs.microsoft.com/azure/aks/private-clusters
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// To learn more about private clusters, see:
-            /// https://learn.microsoft.com/azure/aks/private-clusters
+            /// https://docs.microsoft.com/azure/aks/private-clusters
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// To learn more about private clusters, see:
-            /// https://learn.microsoft.com/azure/aks/private-clusters
+            /// https://docs.microsoft.com/azure/aks/private-clusters
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.

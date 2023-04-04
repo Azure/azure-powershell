@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.3
+* Added upcoming breaking change notifications for Az.EventHub module.
+
 ## Version 3.2.2
 * Added breaking change description for parameter `MessageRetentionInDays`, which would be deprecated and would be replaced by `RetentionTimeInHours`
 

@@ -1,0 +1,57 @@
+{
+  "resourceType": "sites/triggeredwebjobs/history",
+  "apiVersion": "2021-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.websites"
+  },
+  "commands": [
+    {
+      "name": "Get-AzWebAppTriggeredWebJobHistory",
+      "description": "Get or list triggered web job's history for an app.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{name}/triggeredwebjobs/{webJobName}/history/{id}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.websites/get-azwebapptriggeredwebjobhistory"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AppName <String>",
+              "-Id <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get or list triggered web job's history for an app.",
+          "parameters": [
+            {
+              "name": "-AppName",
+              "value": "[Path.name]"
+            },
+            {
+              "name": "-Id",
+              "value": "[Path.id]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.webJobName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

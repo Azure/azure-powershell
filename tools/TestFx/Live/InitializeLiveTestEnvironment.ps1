@@ -15,14 +15,14 @@ function InstallLiveTestDesiredPowerShell {
         [string] $DesiredVersion
     )
 
-    Write-Host "Validating desired PowerShell version ..."
+    Write-Host "Validating desired PowerShell version."
 
     if ($isWinPSDesired) {
         powershell -NoLogo -NoProfile -NonInteractive -Command "(Get-Variable -Name PSVersionTable).Value"
-        Write-Host "Desired Windows Powershell version $DesiredVersion has been installed."
+        Write-Host "##[section]Desired Windows Powershell version $DesiredVersion has been installed."
     }
     else {
-        Write-Host "Installing PowerShell version $DesiredVersion ..."
+        Write-Host "##[section]Installing PowerShell version $DesiredVersion."
 
         dotnet --version
         dotnet new tool-manifest --force
@@ -36,7 +36,7 @@ function InstallLiveTestDesiredPowerShell {
 
         dotnet tool run pwsh -Version
 
-        Write-Host "Desired PowerShell version $DesiredVersion has been installed."
+        Write-Host "##[section]Desired PowerShell version $DesiredVersion has been installed."
     }
 }
 

@@ -298,6 +298,7 @@ $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "myst
         defaultAction="deny"}) 
 $account.EnableNfsV3
 ```
+
 ```output
 True
 ```
@@ -311,6 +312,7 @@ $account = New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "myst
 
 $account.PublicNetworkAccess
 ```
+
 ```output
 Disabled
 ```
@@ -380,12 +382,12 @@ LastKeyRotationTimestamp      : 3/3/2022 2:07:34 AM
 
 This command creates a storage account with Keyvault from another tenant (access Keyvault with FederatedClientId).
 
-### Example 20: Create account with DnsEndpointType as AzureDnsZone
+### Example 18: Create account with DnsEndpointType as AzureDnsZone
 ```powershell
-New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone
+New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -SkuName Standard_LRS  -Location centraluseuap -Kind StorageV2 -DnsEndpointType AzureDnsZone 
 ```
 
-The command creates account with DnsEndpointType as AzureDnsZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
+The command creates a storage account with DnsEndpointType as AzureDnsZone to create a large number of accounts in a single subscription, which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier.
 
 ## PARAMETERS
 
