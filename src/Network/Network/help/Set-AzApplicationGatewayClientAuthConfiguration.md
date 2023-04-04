@@ -14,7 +14,8 @@ Modifies the client auth configuration of a ssl profile object.
 
 ```
 Set-AzApplicationGatewayClientAuthConfiguration -SslProfile <PSApplicationGatewaySslProfile>
- [-VerifyClientCertIssuerDN] [-VerifyClientRevocation <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VerifyClientCertIssuerDN] [-VerifyClientRevocation <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,7 @@ The first command gets the application gateway named ApplicationGateway01 in the
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +53,7 @@ Accept wildcard characters: False
 The ssl profile
 
 ```yaml
-Type: PSApplicationGatewaySslProfile
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslProfile
 Parameter Sets: (All)
 Aliases:
 
@@ -67,10 +68,9 @@ Accept wildcard characters: False
 Verify client certificate revocation status.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, OCSP
 
 Required: False
 Position: Named
@@ -83,9 +83,10 @@ Accept wildcard characters: False
 Verify client certificate issuer name.
 
 ```yaml
-Type: SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, OCSP
 
 Required: False
 Position: Named
