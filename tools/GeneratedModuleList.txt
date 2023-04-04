@@ -47,6 +47,7 @@ Az.PostgreSql
 Az.ProviderHub
 Az.Purview
 Az.RedisEnterpriseCache
+Az.Relay
 Az.ResourceMover
 Az.SpringCloud
 Az.StreamAnalytics
