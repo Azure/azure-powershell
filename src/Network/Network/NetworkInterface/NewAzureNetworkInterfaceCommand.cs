@@ -245,8 +245,21 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.NetworkInterfaceAuxiliaryMode.None,
             MNM.NetworkInterfaceAuxiliaryMode.MaxConnections,
+            MNM.NetworkInterfaceAuxiliaryMode.AcceleratedConnections,
             IgnoreCase = true)]
         public string AuxiliaryMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The auxiliary sku of the Network Interface ")]
+        [ValidateSet(
+            MNM.NetworkInterfaceAuxiliarySku.None,
+            MNM.NetworkInterfaceAuxiliarySku.A1,
+            MNM.NetworkInterfaceAuxiliarySku.A2,
+            MNM.NetworkInterfaceAuxiliarySku.A4,
+            MNM.NetworkInterfaceAuxiliarySku.A8,
+            IgnoreCase = true)]
+        public string AuxiliarySku { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -461,6 +474,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.AuxiliaryMode))
             {
                 networkInterface.AuxiliaryMode = this.AuxiliaryMode;
+            }
+
+            if (!string.IsNullOrEmpty(this.AuxiliarySku))
+            {
+                networkInterface.AuxiliarySku = this.AuxiliarySku;
             }
 
             List<string> resourceIdsRequiringAuthToken = new List<string>();
