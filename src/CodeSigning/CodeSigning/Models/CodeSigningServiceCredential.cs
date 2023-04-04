@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             catch (Exception ex)
             {
                 //throw new ArgumentException(CodeSigningProperties.Resources.InvalidSubscriptionState, ex);
-                throw new ArgumentException("",ex);
+                throw new ArgumentException("InvalidSubscriptionState",ex);
             }
         }
     }

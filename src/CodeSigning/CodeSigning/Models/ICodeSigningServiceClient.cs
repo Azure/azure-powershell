@@ -12,9 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -27,12 +29,14 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         string GetCodeSigningEku(string metadataPath);
 
-        byte[] GetCodeSigningRootCert(string accountName, string profileName, string endpoint);
+        Stream GetCodeSigningRootCert(string accountName, string profileName, string endpoint);
 
-        byte[] GetCodeSigningRootCert(string metadataPath);
+        Stream GetCodeSigningRootCert(string metadataPath);
 
-        void SubmitCIPolicySigning(string accountName, string profileName, string endpoint);
-        void SubmitCIPolicySigning(string metadataPath);
+        void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
+                string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
+        void SubmitCIPolicySigning(string metadataPath, 
+                string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
 
     }
 }

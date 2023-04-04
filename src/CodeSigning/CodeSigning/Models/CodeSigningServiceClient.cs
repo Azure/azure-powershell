@@ -19,6 +19,10 @@ using Azure.Identity;
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Azure.Core;
+using System.Text.Json;
+using System.IO;
+using System.Collections;
+using Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
@@ -31,8 +35,9 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         {
         }
         private CertificateProfileClient CertificateProfileClient { get; set; }
+        private Metadata Metadata { get; set; }
 
-        private Metadata Metadata { get; }
+        TokenCredential user_creds;
 
         public CodeSigningServiceClient(IAuthenticationFactory authFactory, IAzureContext context)
         {
@@ -43,8 +48,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             if (context.Environment == null)
                 //throw new ArgumentException(KeyVaultProperties.Resources.InvalidAzureEnvironment);
                 throw new ArgumentException("Invalid Environment");
-            
-            Initialize(authFactory, context);         
+
+            Initialize(authFactory, context);
         }
 
         private Exception GetInnerException(Exception exception)
@@ -63,55 +68,88 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         private void Initialize(IAuthenticationFactory authFactory, IAzureContext context)
         {
+            var clientCred = new CodeSigningServiceCredential(authFactory, context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
+            var tenantId = clientCred.TenantId;
+            try
+            {
+                var creds = clientCred.GetAccessToken();
+            }
+            catch 
+            {
+                user_creds = new DefaultAzureCredential();
+            }           
+         
+        }
+
+        private void GetCertificateProfileClient(string endpoint)
+        {
             var options = new CertificateProfileClientOptions();
             options.Diagnostics.IsTelemetryEnabled = false;
             options.Diagnostics.IsLoggingEnabled = false;
             options.Diagnostics.IsLoggingContentEnabled = false;
 
-            TokenCredential user_creds;
-
-            var clientCred = new CodeSigningServiceCredential(authFactory, context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
-            var tenantId = clientCred.TenantId;
-            user_creds = (TokenCredential)clientCred.GetAccessToken();           
-
             CertificateProfileClient = new CertificateProfileClient(
-                user_creds,
-                new Uri(Metadata.Endpoint),
-                options);
+             user_creds,
+             new Uri(endpoint),
+             options);
         }
-                
+
         public string GetCodeSigningEku(string accountName, string profileName, string endpoint)
         {
+            GetCertificateProfileClient(endpoint);
+
              var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return eku;
+            return string.Join(",", ((List<string>)eku).ToArray()); 
         }
         public string GetCodeSigningEku(string metadataPath)
         {
+            var rawMetadata = File.ReadAllBytes(metadataPath);
+            Metadata = JsonSerializer.Deserialize<Metadata>(rawMetadata);
 
-            var accountName = "";
-            var profileName = "";
+            GetCertificateProfileClient(Metadata.Endpoint);
+
+            var accountName = Metadata.CodeSigningAccountName;
+            var profileName = Metadata.CertificateProfileName;
             var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return eku;
+            return eku.ToString();
         }
 
-        public byte[] GetCodeSigningRootCert(string accountName, string profileName, string endpoint)
+        public Stream GetCodeSigningRootCert(string accountName, string profileName, string endpoint)
         {
-            throw new NotImplementedException();
+            GetCertificateProfileClient(endpoint);
+
+            var rootCert = CertificateProfileClient.GetSignCertificateRoot(accountName, profileName);
+            return rootCert;
         }
 
-        public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint)
-        {
-            throw new NotImplementedException();
+        public void SubmitCIPolicySigning(string accountName, string profileName, string endpoint, 
+            string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl = null)
+        {            
+           var cipolicySigner = new CmsSigner();
+           cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
         }
 
-        public byte[] GetCodeSigningRootCert(string metadataPath)
+        public Stream GetCodeSigningRootCert(string metadataPath)
         {
-            throw new NotImplementedException();
+            var rawMetadata = File.ReadAllBytes(metadataPath);
+            Metadata = JsonSerializer.Deserialize<Metadata>(rawMetadata);
+
+            GetCertificateProfileClient(Metadata.Endpoint);
+
+            var accountName = Metadata.CodeSigningAccountName;
+            var profileName = Metadata.CertificateProfileName;
+
+            var rootCert = CertificateProfileClient.GetSignCertificateRoot(accountName, profileName);
+            return rootCert;
         }
 
-        public void SubmitCIPolicySigning(string metadataPath)
+        public void SubmitCIPolicySigning(string metadataPath, string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl)
         {
-            throw new NotImplementedException();
+            var rawMetadata = File.ReadAllBytes(metadataPath);
+            Metadata = JsonSerializer.Deserialize<Metadata>(rawMetadata);
+
+            var accountName = Metadata.CodeSigningAccountName;
+            var profileName = Metadata.CertificateProfileName;
         }
     }
 }

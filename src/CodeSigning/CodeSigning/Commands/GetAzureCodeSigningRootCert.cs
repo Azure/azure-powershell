@@ -15,13 +15,17 @@
 using Microsoft.Azure.Commands.CodeSigning.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Security;
+using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
@@ -44,11 +48,23 @@ namespace Microsoft.Azure.Commands.CodeSigning
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByAccountProfileNameParameterSet,
-            HelpMessage = "Account Profile name. Cmdlet constructs the FQDN of an account profile based on the name and currently selected environment.")]       
-        [ResourceNameCompleter("Microsoft.CodeSigning/certs", "FakeResourceGroupName")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The account name of Azure CodeSigning.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
+        [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
+        [Parameter(Mandatory = true,
+            Position = 2,
+            ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The endpoint url used to submit request to Azure CodeSigning.")]
         public string EndpointUrl { get; set; }
 
 
@@ -58,16 +74,16 @@ namespace Microsoft.Azure.Commands.CodeSigning
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByMetadataFileParameterSet,
+             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Metadata File path. Cmdlet constructs the FQDN of an account profile based on the Metadata File and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.CodeSigning/certs", "FakeResourceGroupName")]
         [ValidateNotNullOrEmpty]
         public string MetadatFilePath { get; set; }
-               
+
         #endregion
 
         public override void ExecuteCmdlet()
         {
-            byte[] rootcert;
+            Stream rootcert;
 
             if (!string.IsNullOrEmpty(AccountName))
             {
@@ -80,9 +96,14 @@ namespace Microsoft.Azure.Commands.CodeSigning
                 WriteRootCert(rootcert);            
             }
         }
-        private void WriteRootCert(byte[] rootcert)
-        {  
-            WriteObject(rootcert);         
+        private void WriteRootCert(Stream rootcert)
+        {
+            var downloadPath = Util.GetDownloadsPath() + "\\root.cer";
+            
+            var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write);
+            rootcert.CopyTo(fileStream);
+            fileStream.Dispose();
+            WriteObject(downloadPath.Replace("\\",@"\"));         
         }      
     }
 }
