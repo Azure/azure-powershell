@@ -33,20 +33,20 @@ This operation is idempotent.
 
 ## EXAMPLES
 
-### Example 1: Updates the specified HybridConnection with a new description in the specified namespace.
+### Example 1: Updates the specified HybridConnection with a new UserMetadata in the specified namespace.
 ```powershell
-Set-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Test UserMetadata updated" | fl
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Update UserMetaData" | fl
 ```
 
 ```output
 CreatedAt                    : 1/1/0001 12:00:00 AM
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridc
-                               onnections/connection-01
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Relay-ServiceBus-EastUS/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridconnectio 
+                               ns/connection-01
 ListenerCount                : 0
 Location                     : eastus
 Name                         : connection-01
 RequiresClientAuthorization  : True
-ResourceGroupName            : lucas-relay-rg
+ResourceGroupName            : Relay-ServiceBus-EastUS
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
@@ -55,28 +55,28 @@ SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType : 
 Type                         : Microsoft.Relay/namespaces/hybridconnections
 UpdatedAt                    : 1/1/0001 12:00:00 AM
-UserMetadata                 : Test UserMetadata updated
+UserMetadata                 : Update UserMetaData
 ```
 
-This command updates the specified HybridConnection with a new description in the specified namespace.
+This command updates the specified HybridConnection with a new UserMetadata in the specified namespace.
 This example updates the UserMetadata property with new value.
 
 ### Example 2: Updates a HybridConnection in the specified Relay namespace
 ```powershell
-$connection = Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01
+$connection = Get-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01
 $connection.UserMetadata = "testHybirdConnection"
-Set-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection                                                                     
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | fl                                                                    
 ```
 
 ```output
-CreatedAt                    : 1/1/0001 12:00:00 AM
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridc
-                               onnections/connection-01
+CreatedAt                    : 3/30/2023 3:34:25 AM
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Relay-ServiceBus-EastUS/providers/Microsoft.Relay/namespaces/namespace-pwsh01/hybridconnectio 
+                               ns/connection-01
 ListenerCount                : 0
 Location                     : eastus
 Name                         : connection-01
 RequiresClientAuthorization  : True
-ResourceGroupName            : lucas-relay-rg
+ResourceGroupName            : Relay-ServiceBus-EastUS
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
@@ -84,8 +84,8 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     : 
 SystemDataLastModifiedByType : 
 Type                         : Microsoft.Relay/namespaces/hybridconnections
-UpdatedAt                    : 1/1/0001 12:00:00 AM
-UserMetadata                 : Test UserMetadata updated
+UpdatedAt                    : 3/30/2023 6:28:37 AM
+UserMetadata                 : testHybirdConnection
 ```
 
 This command updates a HybridConnection in the specified Relay namespace.
@@ -93,7 +93,8 @@ This command updates a HybridConnection in the specified Relay namespace.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

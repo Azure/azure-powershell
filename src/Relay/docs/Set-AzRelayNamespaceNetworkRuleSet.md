@@ -1,36 +1,44 @@
 ---
 external help file:
 Module Name: Az.Relay
-online version: https://learn.microsoft.com/powershell/module/az.relay/new-azrelaynamespacenetworkruleset
+online version: https://learn.microsoft.com/powershell/module/az.relay/set-azrelaynamespacenetworkruleset
 schema: 2.0.0
 ---
 
-# New-AzRelayNamespaceNetworkRuleSet
+# Set-AzRelayNamespaceNetworkRuleSet
 
 ## SYNOPSIS
-Create or update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
+### UpdateExpanded (Default)
 ```
-New-AzRelayNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
+Set-AzRelayNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### UpdateViaIdentityExpanded
+```
+Set-AzRelayNamespaceNetworkRuleSet -InputObject <IRelayIdentity> [-DefaultAction <DefaultAction>]
+ [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Create or update NetworkRuleSet for a Namespace.
+Update NetworkRuleSet for a Namespace.
 
 ## EXAMPLES
 
-### Example 1: Create or update NetworkRuleSet for a Relay Namespace
+### Example 1: Update NetworkRuleSet for a Relay Namespace
 ```powershell
 $rules = @()
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.1"
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.2"
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.3"
-New-AzRelayNamespaceNetworkRuleSet -ResourceGroupName lucas-relay-rg -NamespaceName namespace-pwsh01 -DefaultAction 'Deny' -IPRule $rules | fl
+Set-AzRelayNamespaceNetworkRuleSet -ResourceGroupName Relay-ServiceBus-EastUS -NamespaceName namespace-pwsh01 -DefaultAction 'Deny' -IPRule $rules | fl
 ```
 
 ```output
@@ -45,11 +53,11 @@ IPRule                       : {{
                                  "ipMask": "1.1.1.3",
                                  "action": "Allow"
                                }}
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/lucas-relay-rg/providers/Microsoft.Relay/namespaces/namespa
-                               ce-pwsh01/networkRuleSets/default
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Relay-ServiceBus-EastUS/providers/Microsoft.Relay/namespaces/namespace-pwsh01/networkRuleSets
+                               /default
 Name                         : default
 PublicNetworkAccess          : Enabled
-ResourceGroupName            : lucas-relay-rg
+ResourceGroupName            : Relay-ServiceBus-EastUS
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
@@ -59,7 +67,46 @@ SystemDataLastModifiedByType :
 Type                         : Microsoft.Relay/Namespaces/NetworkRuleSets
 ```
 
-This cmdlet create or update NetworkRuleSet for a Relay Namespace.
+This cmdlet update NetworkRuleSet for a Relay Namespace.
+Updates the specified NetworkRuleSet with a new IPRule in the specified namespace.
+
+### Example 2: Update NetworkRuleSet for a Relay Namespace
+```powershell
+$rules = @()
+$rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.1"
+$rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.2"
+$rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.3"
+$GetRuleSet = Get-AzRelayNamespaceNetworkRuleSet -ResourceGroupName Relay-ServiceBus-EastUS -NamespaceName namespace-pwsh01
+Set-AzRelayNamespaceNetworkRuleSet -InputObject $GetRuleSet -DefaultAction 'Deny' -IPRule $rules -PublicNetworkAccess 'Enabled' | fl
+```
+
+```output
+DefaultAction                : Deny
+IPRule                       : {{
+                                 "ipMask": "1.1.1.1",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "1.1.1.2",
+                                 "action": "Allow"
+                               }, {
+                                 "ipMask": "1.1.1.3",
+                                 "action": "Allow"
+                               }}
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Relay-ServiceBus-EastUS/providers/Microsoft.Relay/namespaces/namespace-pwsh01/networkRuleSets 
+                               /default
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : Relay-ServiceBus-EastUS
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.Relay/Namespaces/NetworkRuleSets
+```
+
+This cmdlet update the specified NetworkRuleSet for a Relay Namespace.
 
 ## PARAMETERS
 
@@ -79,7 +126,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -90,6 +138,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -114,7 +178,7 @@ The namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -145,7 +209,7 @@ Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -161,7 +225,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -207,6 +271,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.IRelayIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Relay.Models.Api20211101.INetworkRuleSet
@@ -219,6 +285,17 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+
+`INPUTOBJECT <IRelayIdentity>`: Identity Parameter
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[HybridConnectionName <String>]`: The hybrid connection name.
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[PrivateLinkResourceName <String>]`: The PrivateLinkResource name
+  - `[RelayName <String>]`: The relay name.
+  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
+  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 `IPRULE <INwRuleSetIPRules[]>`: List of IpRules
   - `[Action <NetworkRuleIPAction?>]`: The IP Filter Action

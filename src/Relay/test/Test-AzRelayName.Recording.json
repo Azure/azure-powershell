@@ -3,13 +3,13 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Relay/checkNameAvailability?api-version=2021-11-01",
-      "Content": "{\n  \"name\": \"relaynamespace-01\"\n}",
+      "Content": "{\r\n  \"name\": \"relaynamespace-01\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "33" ]
+        "Content-Length": [ "35" ]
       }
     },
     "Response": {
@@ -17,15 +17,15 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "6f30ef3e-03f8-4525-9128-7e66ad09bdd8_M9SN1_M9SN1" ],
+        "x-ms-request-id": [ "4b2d5236-49e1-4b09-b775-b1a63255b2c2_M9SN1_M9SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
         "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "83d2449b-1d50-4ec0-afd0-56225105ad6a" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20230115T120643Z:83d2449b-1d50-4ec0-afd0-56225105ad6a" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "5bc38661-0b5e-4de6-824d-cfaf6abbbe63" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230403T093908Z:5bc38661-0b5e-4de6-824d-cfaf6abbbe63" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 15 Jan 2023 12:06:43 GMT" ]
+        "Date": [ "Mon, 03 Apr 2023 09:39:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "53" ],
