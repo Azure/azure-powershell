@@ -419,6 +419,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             return GetTrack2BlobClient(blobUriBuilder.ToUri(), context, options, blobType);
         }
 
+        public static BlobBaseClient GetTrack2BlobClientNoSlashTrim(BlobContainerClient track2container, string blobName, AzureStorageContext context, string versionId = null, bool? IsCurrentVersion = null, string snapshot = null, BlobClientOptions options = null, global::Azure.Storage.Blobs.Models.BlobType? blobType = null)
+        {
+            //Get Track2 Blob Client Uri
+            BlobUriBuilder blobUriBuilder = new BlobUriBuilder(track2container.Uri, false)
+            {
+                BlobName = blobName
+            };
+            if (versionId != null && (IsCurrentVersion == null || !IsCurrentVersion.Value)) // only none current version blob need versionId in Uri
+            {
+                blobUriBuilder.VersionId = versionId;
+            }
+            if (snapshot != null)
+            {
+                blobUriBuilder.Snapshot = snapshot;
+            }
+
+            return GetTrack2BlobClient(blobUriBuilder.ToUri(), context, options, blobType);
+        }
+
         public static BlobBaseClient GetTrack2BlobClient(Uri blobUri, AzureStorageContext context, BlobClientOptions options = null, global::Azure.Storage.Blobs.Models.BlobType? blobType = null)
         {
             BlobBaseClient blobClient;
