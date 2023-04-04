@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Updates a workspace.
+Updates an access rule.
 .Description
-Updates a workspace.
+Updates an access rule.
 #>
 function Update-AzNetworkSecurityPerimeterAccessRule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]
@@ -160,6 +160,18 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         # Fully qualified domain name
         ${FullyQualifiedDomainName},
 
+        [Parameter(HelpMessage = "Email Addresses")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [System.Collections.ArrayList]
+        # Email Addresses
+        ${EmailAddress},
+
+        [Parameter(HelpMessage = "Phone Numbers")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [System.Collections.ArrayList]
+        # Phone Numbers
+        ${PhoneNumber},
+
         [Parameter(HelpMessage = "Inbound rule specified by the perimeter id")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]]
@@ -190,7 +202,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Perimeter', 'Direction', 'Subscription',  'AsJob'
+            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'Perimeter', 'Direction', 'Subscription', 'EmailAddress', 'PhoneNumber',  'AsJob'
 
             $bodyParamsMap = @{}
 

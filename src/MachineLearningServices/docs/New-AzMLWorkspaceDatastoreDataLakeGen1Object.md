@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen1Object
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreDataLakeGen1Object
 schema: 2.0.0
 ---
 
@@ -145,13 +145,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CREDENTIALS <IDatastoreCredentials>: [Required] Account credentials.
+`CREDENTIALS <IDatastoreCredentials>`: [Required] Account credentials.
   - `CredentialsType <CredentialsType>`: [Required] Credential type used to authentication with storage.
 
-PROPERTY <IResourceBaseProperties>: The asset property dictionary.
+`PROPERTY <IResourceBaseProperties>`: The asset property dictionary.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
+`TAG <IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

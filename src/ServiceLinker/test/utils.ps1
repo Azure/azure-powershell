@@ -22,6 +22,7 @@ function setupEnv() {
     
     $resourceGroup = "servicelinker-test-linux-group"
     $env.resourceGroup = $resourceGroup
+    $env.location = "eastus"
     $env.newLinker = "ps_linker"
     $env.clientType = "dotnet"
 

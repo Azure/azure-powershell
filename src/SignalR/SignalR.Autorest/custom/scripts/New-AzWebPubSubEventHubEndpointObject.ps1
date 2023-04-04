@@ -22,8 +22,6 @@ Create an in-memory object for EventHubEndpoint.
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventHubEndpoint
-.Link
-https://learn.microsoft.com/powershell/module/az./new-AzWebPubSubEventHubEndpointObject
 #>
 function New-AzWebPubSubEventHubEndpointObject
 {

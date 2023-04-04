@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceComputeInstanceObject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceComputeInstanceObject
 schema: 2.0.0
 ---
 
@@ -457,7 +457,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SCHEDULECOMPUTESTARTSTOP <IComputeStartStopSchedule[]>: The list of compute start stop schedules to be applied.
+`SCHEDULECOMPUTESTARTSTOP <IComputeStartStopSchedule[]>`: The list of compute start stop schedules to be applied.
   - `[Action <ComputePowerAction?>]`: The compute power action.
   - `[ScheduleId <String>]`: 
   - `[ScheduleProvisioningStatus <ScheduleProvisioningState?>]`: 

@@ -30,27 +30,12 @@ Deletes the specified SIM.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes the specified SIM.
 ```powershell
-{{ Add code here }}
+Remove-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes the specified SIM.
 
 ## PARAMETERS
 
@@ -242,7 +227,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
   - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
   - `[DataNetworkName <String>]`: The name of the data network.
   - `[Id <String>]`: Resource identity path

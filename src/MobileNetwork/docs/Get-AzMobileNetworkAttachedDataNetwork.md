@@ -36,27 +36,31 @@ Gets information about the specified attached data network.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List information about the specified attached data network by PacketCoreControlPlaneName and PacketCoreDataPlaneName.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName azps=mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName ProvisioningState
+-------- ----        ----------------- -----------------
+eastus   azps-mn-adn azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
+List information about the specified attached data network by PacketCoreControlPlaneName and PacketCoreDataPlaneName.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about the specified attached data network by Name.
 ```powershell
-{{ Add code here }}
+Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName azps=mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -Name azps-mn-adn
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName ProvisioningState
+-------- ----        ----------------- -----------------
+eastus   azps-mn-adn azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
+Get information about the specified attached data network by Name.
 
 ## PARAMETERS
 
@@ -187,7 +191,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
+`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
   - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
   - `[DataNetworkName <String>]`: The name of the data network.
   - `[Id <String>]`: Resource identity path

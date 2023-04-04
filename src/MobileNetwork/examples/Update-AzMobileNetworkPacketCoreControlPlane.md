@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates packet core control planes tags.
 ```powershell
-{{ Add code here }}
+Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName ProvisioningState
+-------- ----         ----------------- -----------------
+eastus   azps-mn-pccp azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Updates packet core control planes tags.

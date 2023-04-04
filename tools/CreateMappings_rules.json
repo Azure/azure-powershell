@@ -799,5 +799,13 @@
   {
     "module": "LoadTesting",
     "alias": "LoadTesting"
+  },
+  {
+    "alias": "MobileNetwork",
+    "module": "MobileNetwork"
+  },
+  {
+    "module": "ArcResourceBridge",
+    "alias": "ArcResourceBridge"
   }
 ]

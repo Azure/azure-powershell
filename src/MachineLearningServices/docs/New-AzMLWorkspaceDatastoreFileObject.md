@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreFileObject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreFileObject
 schema: 2.0.0
 ---
 
@@ -174,10 +174,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROPERTY <IResourceBaseProperties>: The asset property dictionary.
+`PROPERTY <IResourceBaseProperties>`: The asset property dictionary.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-TAG <IResourceBaseTags>: Tag dictionary. Tags can be added, removed, and updated.
+`TAG <IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

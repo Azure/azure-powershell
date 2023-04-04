@@ -14,21 +14,11 @@ Update savings plan.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String>
- [-AppliedScopePropertiesDisplayName <String>] [-AppliedScopePropertiesManagementGroupId <String>]
- [-AppliedScopePropertiesResourceGroupId <String>] [-AppliedScopePropertiesSubscriptionId <String>]
- [-AppliedScopePropertiesTenantId <String>] [-AppliedScopeType <AppliedScopeType>]
- [-BillingPlan <BillingPlan>] [-BillingScopeId <String>] [-CommitmentAmount <Double>]
- [-CommitmentCurrencyCode <String>] [-CommitmentGrain <CommitmentGrain>] [-DisplayName <String>] [-Renew]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopeType <AppliedScopeType>]
- [-RenewPropertiesPurchasePropertiesDisplayName <String>] [-RenewPropertiesPurchasePropertiesRenew]
- [-SkuName <String>] [-Term <Term>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> [-AppliedScopePropertyDisplayName <String>]
+ [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
+ [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
+ [-AppliedScopeType <AppliedScopeType>] [-DisplayName <String>] [-Renew] [-RenewProperty <IRenewProperties>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -46,19 +36,10 @@ Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity> -Bod
 ### UpdateViaIdentityExpanded
 ```
 Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity>
- [-AppliedScopePropertiesDisplayName <String>] [-AppliedScopePropertiesManagementGroupId <String>]
- [-AppliedScopePropertiesResourceGroupId <String>] [-AppliedScopePropertiesSubscriptionId <String>]
- [-AppliedScopePropertiesTenantId <String>] [-AppliedScopeType <AppliedScopeType>]
- [-BillingPlan <BillingPlan>] [-BillingScopeId <String>] [-CommitmentAmount <Double>]
- [-CommitmentCurrencyCode <String>] [-CommitmentGrain <CommitmentGrain>] [-DisplayName <String>] [-Renew]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId <String>]
- [-RenewPropertiesPurchasePropertiesAppliedScopeType <AppliedScopeType>]
- [-RenewPropertiesPurchasePropertiesDisplayName <String>] [-RenewPropertiesPurchasePropertiesRenew]
- [-SkuName <String>] [-Term <Term>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
+ [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>] [-DisplayName <String>]
+ [-Renew] [-RenewProperty <IRenewProperties>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -82,7 +63,7 @@ Update savings plan property value
 
 ## PARAMETERS
 
-### -AppliedScopePropertiesDisplayName
+### -AppliedScopePropertyDisplayName
 Display name
 
 ```yaml
@@ -97,7 +78,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppliedScopePropertiesManagementGroupId
+### -AppliedScopePropertyManagementGroupId
 Fully-qualified identifier of the management group where the benefit must be applied.
 
 ```yaml
@@ -112,7 +93,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppliedScopePropertiesResourceGroupId
+### -AppliedScopePropertyResourceGroupId
 Fully-qualified identifier of the resource group.
 
 ```yaml
@@ -127,7 +108,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppliedScopePropertiesSubscriptionId
+### -AppliedScopePropertySubscriptionId
 Fully-qualified identifier of the subscription.
 
 ```yaml
@@ -142,7 +123,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AppliedScopePropertiesTenantId
+### -AppliedScopePropertyTenantId
 Tenant ID where the benefit is applied.
 
 ```yaml
@@ -172,37 +153,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BillingPlan
-Represents the billing plan in ISO 8601 format.
-Required only for monthly billing plans.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BillingScopeId
-Subscription that will be charged for purchasing the benefit
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Body
 Savings plan patch request
 To construct, see NOTES section for BODY properties and create a hash table.
@@ -216,51 +166,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -CommitmentAmount
-.
-
-```yaml
-Type: System.Double
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommitmentCurrencyCode
-The ISO 4217 3-letter currency code for the currency used by this purchase record.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CommitmentGrain
-Commitment grain.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -370,146 +275,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName
-Display name
+### -RenewProperty
+.
+To construct, see NOTES section for RENEWPROPERTY properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId
-Fully-qualified identifier of the management group where the benefit must be applied.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId
-Fully-qualified identifier of the resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId
-Fully-qualified identifier of the subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId
-Tenant ID where the benefit is applied.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenewPropertiesPurchasePropertiesAppliedScopeType
-Type of the Applied Scope.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenewPropertiesPurchasePropertiesDisplayName
-Friendly name of the savings plan
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RenewPropertiesPurchasePropertiesRenew
-Setting this to true will automatically purchase a new benefit on the expiration date time.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-Name of the SKU to be applied
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Term
-Represent benefit term in ISO 8601 format.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term
+Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.Api20221101.IRenewProperties
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -574,29 +345,31 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `BODY <ISavingsPlanUpdateRequest>`: Savings plan patch request
-  - `[AppliedScopePropertiesDisplayName <String>]`: Display name
-  - `[AppliedScopePropertiesManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-  - `[AppliedScopePropertiesResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-  - `[AppliedScopePropertiesSubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-  - `[AppliedScopePropertiesTenantId <String>]`: Tenant ID where the benefit is applied.
+  - `[AppliedScopePropertyDisplayName <String>]`: Display name
+  - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
+  - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
+  - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
+  - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
   - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-  - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
-  - `[CommitmentAmount <Double?>]`: 
-  - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
   - `[DisplayName <String>]`: Display name
   - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  - `[RenewPropertiesPurchasePropertiesAppliedScopePropertiesDisplayName <String>]`: Display name
-  - `[RenewPropertiesPurchasePropertiesAppliedScopePropertiesManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-  - `[RenewPropertiesPurchasePropertiesAppliedScopePropertiesResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-  - `[RenewPropertiesPurchasePropertiesAppliedScopePropertiesSubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-  - `[RenewPropertiesPurchasePropertiesAppliedScopePropertiesTenantId <String>]`: Tenant ID where the benefit is applied.
-  - `[RenewPropertiesPurchasePropertiesAppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[RenewPropertiesPurchasePropertiesDisplayName <String>]`: Friendly name of the savings plan
-  - `[RenewPropertiesPurchasePropertiesRenew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  - `[SkuName <String>]`: Name of the SKU to be applied
-  - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
+  - `[RenewProperty <IRenewProperties>]`: 
+    - `[PurchaseProperty <IPurchaseRequest>]`: 
+      - `[AppliedScopePropertyDisplayName <String>]`: Display name
+      - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
+      - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
+      - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
+      - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
+      - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
+      - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+      - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
+      - `[CommitmentAmount <Double?>]`: 
+      - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+      - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
+      - `[DisplayName <String>]`: Friendly name of the savings plan
+      - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
+      - `[SkuName <String>]`: Name of the SKU to be applied
+      - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
 
 `INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
@@ -604,6 +377,24 @@ To create the parameters described below, construct a hash table containing the 
   - `[SavingsPlanId <String>]`: ID of the savings plan
   - `[SavingsPlanOrderAliasName <String>]`: Name of the savings plan order alias
   - `[SavingsPlanOrderId <String>]`: Order ID of the savings plan
+
+`RENEWPROPERTY <IRenewProperties>`: .
+  - `[PurchaseProperty <IPurchaseRequest>]`: 
+    - `[AppliedScopePropertyDisplayName <String>]`: Display name
+    - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
+    - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
+    - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
+    - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
+    - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
+    - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+    - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
+    - `[CommitmentAmount <Double?>]`: 
+    - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+    - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
+    - `[DisplayName <String>]`: Friendly name of the savings plan
+    - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
+    - `[SkuName <String>]`: Name of the SKU to be applied
+    - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
 
 ## RELATED LINKS
 

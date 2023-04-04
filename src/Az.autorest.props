@@ -14,11 +14,12 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <OutputPath>$(RepoArtifacts)$(Configuration)\Az.$(PsModuleName)\bin</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
+    <!-- warning CS1998: This async method lacks 'await' operators and will run synchronously -->
     <!-- Some methods are marked async and don't have an await in them -->
     <NoWarn>$(NoWarn);1998</NoWarn>
   </PropertyGroup>
 
-  <!-- Generate XML file-->
+<!-- Generate XML file-->
   <PropertyGroup>
     <!-- warning CS1570: XML comment has badly formed XML -->
     <!-- warning CS1572: XML comment on 'construct' has a param tag for 'parameter', but there is no parameter by that name -->

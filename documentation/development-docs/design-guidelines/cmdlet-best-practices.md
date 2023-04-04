@@ -6,7 +6,7 @@ The following are naming conventions to keep in mind when coming up with a name 
 
 #### Verb-Noun Format
 
-Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/approved-verbs-for-windows-powershell-commands), and the noun is a specific noun describing a resource within your service.
+Cmdlet names should follow the _Verb-Noun_ format, where the verb is from the [list of approved PowerShell verbs](https://learn.microsoft.com/en-us/powershell/developer/cmdlet/approved-verbs-for-windows-powershell-commands), and the noun is a specific noun describing a resource within your service.
 
 #### Noun Prefix
 
@@ -14,13 +14,13 @@ For ARM cmdlets, the noun must be prefixed with `Az`.
 
 #### Pascal Case
 
-From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#use-pascal-case-for-cmdlet-names-sd02):
+From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#use-pascal-case-for-cmdlet-names-sd02):
 
 > _Use Pascal case for cmdlet names. In other words, capitalize the first letter of the verb and all terms used in the noun. For example, "Clear-ItemProperty"._
 
 #### Specific Noun and Noun Singularity
 
-From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#use-a-specific-noun-for-a-cmdlet-name-sd01):
+From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#use-a-specific-noun-for-a-cmdlet-name-sd01):
 
 > _Nouns used in cmdlet naming need to be very specific so that the user can discover your cmdlets. Prefix generic nouns such as "server" with a shortened version of the product name. For example, if a noun refers to a server that is running an instance of Microsoft SQL Server, use a noun such as "SQLServer". The combination of specific nouns and the short list of approved verbs enable the user to quickly discover and anticipate functionality while avoiding duplication among cmdlet names._
 >
@@ -56,7 +56,7 @@ For example, the `Get-AzVM` cmdlet uses the .NET SDK to retrieve objects of the 
 
 In the case where your cmdlet doesn't return any output (_e.g._, deleting, starting, stopping a resource), the cmdlet should implement the `-PassThru` parameter and the `OutputType` should be set to `bool`. The `-PassThru` parameter is a `SwitchParameter` set by the user to signal that they would like to receive output from a cmdlet which does not return anything. If the `-PassThru` parameter is provided, you should return the value `true` so the user is made aware that the operation was successful. If the operation was unsuccessful, then the cmdlet should throw an exception.
 
-From the [_Strongly Encouraged Development Guidelines_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#support-the-passthru-parameter):
+From the [_Strongly Encouraged Development Guidelines_](https://learn.microsoft.com/en-us/powershell/developer/cmdlet/strongly-encouraged-development-guidelines#support-the-passthru-parameter):
 
 > _By default, many cmdlets that modify the system, such as the `Stop-Process` cmdlet, act as "sinks" for objects and do not return a result. These cmdlet should implement the `-PassThru` parameter to force the cmdlet to return an object._
 
@@ -120,7 +120,7 @@ The `-Force` parameter is reserved for special scenarios where additional confir
 
 ### `AsJob`
 
-All long running operations must implement the `-AsJob` parameter, which will allow the user to create jobs in the background. For more information about PowerShell jobs and the `-AsJob` parameter, read [this doc](https://docs.microsoft.com/en-us/powershell/azure/using-psjobs).
+All long running operations must implement the `-AsJob` parameter, which will allow the user to create jobs in the background. For more information about PowerShell jobs and the `-AsJob` parameter, read [this doc](https://learn.microsoft.com/en-us/powershell/azure/using-psjobs).
 
 To implement the `-AsJob` parameter, simply add the parameter to the end of the parameter list:
 

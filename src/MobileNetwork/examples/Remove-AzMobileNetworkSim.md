@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes the specified SIM.
 ```powershell
-{{ Add code here }}
+Remove-AzMobileNetworkSim -GroupName azps-mn-simgroup -Name azps-mn-sim -ResourceGroupName azps_test_group
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes the specified SIM.

@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates or updates a packet core data plane.
 ```powershell
-{{ Add code here }}
+New-AzMobileNetworkPacketCoreDataPlane -Name azps-mn-pcdp -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Location eastus -UserPlaneAccessInterfaceIpv4Address 10.0.1.10 -UserPlaneAccessInterfaceIpv4Gateway 10.0.1.1 -UserPlaneAccessInterfaceIpv4Subnet 10.0.1.0/24 -UserPlaneAccessInterfaceName N3
 ```
 
 ```output
-{{ Add output here }}
+Location Name         ResourceGroupName ProvisioningState
+-------- ----         ----------------- -----------------
+eastus   azps-mn-pcdp azps_test_group   Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates or updates a packet core data plane.
+Must be created in the same location as its parent packet core control plane.

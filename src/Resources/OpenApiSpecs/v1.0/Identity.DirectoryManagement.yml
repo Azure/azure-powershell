@@ -14,7 +14,7 @@ paths:
       description: Retrieve a list of organization objects.
       externalDocs:
         description: Find more info here
-        url: https://docs.microsoft.com/graph/api/organization-list?view=graph-rest-1.0
+        url: https://learn.microsoft.com/graph/api/organization-list?view=graph-rest-1.0
       operationId: organization.organization_ListOrganization
       parameters:
         - $ref: '#/components/parameters/top'

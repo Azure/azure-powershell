@@ -14,11 +14,13 @@ Calculate price for placing a `ReservationOrder`.
 
 ### CalculateExpanded (Default)
 ```
-Get-AzReservationQuote [-AppliedScope <String[]>] [-AppliedScopeType <AppliedScopeType>]
- [-BillingPlan <ReservationBillingPlan>] [-BillingScopeId <String>] [-DisplayName <String>]
- [-InstanceFlexibility <InstanceFlexibility>] [-Location <String>] [-Quantity <Int32>] [-Renew]
- [-ReservedResourceType <ReservedResourceType>] [-Sku <String>] [-Term <ReservationTerm>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzReservationQuote [-AppliedScope <String[]>] [-AppliedScopePropertyDisplayName <String>]
+ [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
+ [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
+ [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <ReservationBillingPlan>] [-BillingScopeId <String>]
+ [-DisplayName <String>] [-InstanceFlexibility <InstanceFlexibility>] [-Location <String>] [-Quantity <Int32>]
+ [-Renew] [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-Sku <String>]
+ [-Term <ReservationTerm>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Calculate
@@ -123,9 +125,85 @@ Get reservation price with 'Monthly' billing plan
 ### -AppliedScope
 List of the subscriptions that the benefit will be applied.
 Do not specify if AppliedScopeType is Shared.
+This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyDisplayName
+Display name
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyManagementGroupId
+Fully-qualified identifier of the management group where the benefit must be applied.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyResourceGroupId
+Fully-qualified identifier of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertySubscriptionId
+Fully-qualified identifier of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AppliedScopePropertyTenantId
+Tenant ID where the savings plan should apply benefit.
+
+```yaml
+Type: System.String
 Parameter Sets: CalculateExpanded
 Aliases:
 
@@ -167,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -BillingScopeId
-Subscription that will be charged for purchasing Reservation
+Subscription that will be charged for purchasing reservation or savings plan
 
 ```yaml
 Type: System.String
@@ -182,11 +260,11 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-.
+The request for reservation purchase
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest
 Parameter Sets: Calculate
 Aliases:
 
@@ -213,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Friendly name of the Reservation
+Friendly name of the reservation
 
 ```yaml
 Type: System.String
@@ -244,7 +322,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The Azure Region where the reserved resource lives.
+The Azure region where the reserved resource lives.
 
 ```yaml
 Type: System.String
@@ -259,7 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### -Quantity
-Quantity of the SKUs that are part of the Reservation.
+Quantity of the skus that are part of the reservation.
 
 ```yaml
 Type: System.Int32
@@ -303,6 +381,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReviewDateTime
+This is the date-time when the Azure hybrid benefit needs to be reviewed.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: CalculateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Sku
 .
 
@@ -319,7 +412,7 @@ Accept wildcard characters: False
 ```
 
 ### -Term
-Represent the term of Reservation.
+Represent the term of reservation.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm
@@ -369,11 +462,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponseProperties
 
 ## NOTES
 
@@ -384,19 +477,25 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <IPurchaseRequest>`: .
+`BODY <IPurchaseRequest>`: The request for reservation purchase
+  - `[AppliedScopePropertyDisplayName <String>]`: Display name
+  - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
+  - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
+  - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
+  - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the savings plan should apply benefit.
   - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+  - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
   - `[BillingPlan <ReservationBillingPlan?>]`: Represent the billing plans.
-  - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing Reservation
-  - `[DisplayName <String>]`: Friendly name of the Reservation
+  - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing reservation or savings plan
+  - `[DisplayName <String>]`: Friendly name of the reservation
   - `[InstanceFlexibility <InstanceFlexibility?>]`: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  - `[Location <String>]`: The Azure Region where the reserved resource lives.
-  - `[Quantity <Int32?>]`: Quantity of the SKUs that are part of the Reservation.
+  - `[Location <String>]`: The Azure region where the reserved resource lives.
+  - `[Quantity <Int32?>]`: Quantity of the skus that are part of the reservation.
   - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new reservation on the expiration date time.
   - `[ReservedResourceType <ReservedResourceType?>]`: The type of the resource that is being reserved.
+  - `[ReviewDateTime <DateTime?>]`: This is the date-time when the Azure hybrid benefit needs to be reviewed.
   - `[Sku <String>]`: 
-  - `[Term <ReservationTerm?>]`: Represent the term of Reservation.
+  - `[Term <ReservationTerm?>]`: Represent the term of reservation.
 
 ## RELATED LINKS
 

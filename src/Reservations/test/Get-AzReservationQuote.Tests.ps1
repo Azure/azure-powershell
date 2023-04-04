@@ -18,10 +18,10 @@ function ExecuteTestCases([object]$response) {
     $response | Should -Not -Be $null
     $response.BillingCurrencyTotal | Should -Not -Be $null
     $response.PricingCurrencyTotal | Should -Not -Be $null
-    $response.BillingCurrencyTotal.CurrencyCode | Should -Be "GBP"
-    $response.BillingCurrencyTotal.Amount | Should -Be 24
-    $response.PricingCurrencyTotal.CurrencyCode | Should -Be "GBP"
-    $response.PricingCurrencyTotal.Amount | Should -Be 24
+    $response.BillingCurrencyTotal.CurrencyCode | Should -Be "USD"
+    $response.BillingCurrencyTotal.Amount | Should -Be 32
+    $response.PricingCurrencyTotal.CurrencyCode | Should -Be "USD"
+    $response.PricingCurrencyTotal.Amount | Should -Be 32
     $response.ReservationOrderId | Should -Not -Be $null
 }
 
