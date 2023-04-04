@@ -179,6 +179,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
         public string NodePodSubnetID { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -427,6 +430,11 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.EdgeZone))
             {
                 managedCluster.ExtendedLocation = new ExtendedLocation(name: EdgeZone, type: "EdgeZone");
+            }
+
+            if (EnableOidcIssuer.IsPresent)
+            {
+                managedCluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
             }
 
             return managedCluster;
