@@ -39,7 +39,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/ea6bb1c836308d5b11166b9b2da6b306bc665a0f/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/redisenterprise.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/c7518808df7ec9280bcd7731f7aec6bd4c012812/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2023-03-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
