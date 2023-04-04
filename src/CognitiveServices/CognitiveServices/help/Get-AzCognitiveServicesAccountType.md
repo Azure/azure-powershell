@@ -35,6 +35,14 @@ Get-AzCognitiveServicesAccountType
 ```
 
 Get the list of available Types.
+```output
+CognitiveServices
+ComputerVision
+Face
+FormRecognizer
+LUIS
+...
+```
 
 ### Example 2
 ```powershell
@@ -42,6 +50,14 @@ Get-AzCognitiveServicesAccountType -Location westus
 ```
 
 Get the list of available Types in westus.
+```output
+CognitiveServices
+ComputerVision
+Face
+FormRecognizer
+LUIS
+...
+```
 
 ### Example 3
 ```powershell
