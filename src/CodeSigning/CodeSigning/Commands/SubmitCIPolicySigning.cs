@@ -25,7 +25,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
-    [Cmdlet("Submit", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
     [OutputType(typeof(string))]
     public class SubmitCIPolicySigning : CodeSigningCmdletBase
     {
@@ -44,27 +44,58 @@ namespace Microsoft.Azure.Commands.CodeSigning
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByAccountProfileNameParameterSet,
-            HelpMessage = "Account Profile name. Cmdlet constructs the FQDN of an account profile based on the name and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.CodeSigning/certs", "FakeResourceGroupName")]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The account name of Azure CodeSigning.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
+
+        [Parameter(Mandatory = true,
+            Position = 1,
+            ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
+        [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
+        [Parameter(Mandatory = true,
+            Position = 2,
+            ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The endpoint url used to submit request to Azure CodeSigning.")]
         public string EndpointUrl { get; set; }
-       
+
+
         /// <summary>
         /// Metadata File Path
         /// </summary>
         [Parameter(Mandatory = true,
             Position = 0,
             ParameterSetName = ByMetadataFileParameterSet,
-            HelpMessage = "Metadata File path. Cmdlet constructs the FQDN of an account profile based on the Metadata File and currently selected environment.")]
-        [ResourceNameCompleter("Microsoft.CodeSigning/certs", "FakeResourceGroupName")]
+             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Metadata File path.")]
         [ValidateNotNullOrEmpty]
         public string MetadatFilePath { get; set; }
 
         //common parameters
+        [Parameter(Mandatory = true,
+           Position = 3,
+           ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Original unsigned CI policy file path.")]
+        [ValidateNotNullOrEmpty]
         public string CIPolicyFilePath { get; set; }
+        [Parameter(Mandatory = true,
+           Position = 4,
+           ParameterSetName = ByAccountProfileNameParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Signed CI policy file path")]
+        [ValidateNotNullOrEmpty]
         public string SignedCIPolicyFilePath { get; set; }
+        [Parameter(Mandatory = true,
+                   Position = 5,
+                   ParameterSetName = ByAccountProfileNameParameterSet,
+                    ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Time Stamper Url.")]
+        [ValidateNotNullOrEmpty]
         public string TimeStamperUrl { get; set; }
 
         #endregion
@@ -73,11 +104,11 @@ namespace Microsoft.Azure.Commands.CodeSigning
         {   
             if (!string.IsNullOrEmpty(AccountName))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, CIPolicyFilePath, SignedCIPolicyFilePath, TimeStamperUrl);                
             }
             else if (!string.IsNullOrEmpty(MetadatFilePath))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(MetadatFilePath);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(MetadatFilePath, CIPolicyFilePath, SignedCIPolicyFilePath, TimeStamperUrl);                
             }
         }
 
