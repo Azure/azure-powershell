@@ -98,6 +98,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
+            if (EnableBurstCapacity != null)
+            {
+                databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =
@@ -227,7 +231,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (ShouldProcess(Name, "Updating Database Account"))
             {
                 DatabaseAccountGetResults cosmosDBAccount = CosmosDBManagementClient.DatabaseAccounts.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, databaseAccountUpdateParameters).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccountGetResults(cosmosDBAccount));
+                WriteObject(new PSDatabaseAccountGetResults(cosmosDBAccount));//PSDatabaseAccountGetResults doesn't have enableburstcapacity
             }
 
             return;

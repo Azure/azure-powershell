@@ -67,7 +67,7 @@ Gets the CosmosDB MongoDB Collection.
 Retrieves the latest restorable timestamp for a mongodb collection.
 
 ### [Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput](Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Gets the Partition throughput distribution for a MongoDB collection.
 
 ### [Get-AzCosmosDBMongoDBCollectionThroughput](Get-AzCosmosDBMongoDBCollectionThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Collection.
@@ -103,7 +103,7 @@ Gets the CosmosDB Sql Container.
 Retrieves the latest restorable timestamp for a sql container.
 
 ### [Get-AzCosmosDBSqlContainerPerPartitionThroughput](Get-AzCosmosDBSqlContainerPerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Gets the CosmosDB Sql Container Partition throughput.
 
 ### [Get-AzCosmosDBSqlContainerThroughput](Get-AzCosmosDBSqlContainerThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Container.
@@ -286,7 +286,7 @@ Creates a new CosmosDB MongoDB User Definition.
 Creates a new CosmosDB Permission object to be used to create or update a Role Definition.
 
 ### [New-AzCosmosDBPhysicalPartitionThroughputObject](New-AzCosmosDBPhysicalPartitionThroughputObject.md)
-{{ Fill in the Synopsis }}
+Creates a new PhysicalPartitionThroughputObject
 
 ### [New-AzCosmosDBSqlCompositePath](New-AzCosmosDBSqlCompositePath.md)
 Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
@@ -466,7 +466,7 @@ Updates the throughput value of a CosmosDB Gremlin Graph.
 Updates the CosmosDB MongoDB Collection. Performs a client side patch operation by reading the existing Collection.
 
 ### [Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput](Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Updates the Partition Throughput for a MongoDB collection.
 
 ### [Update-AzCosmosDBMongoDBCollectionThroughput](Update-AzCosmosDBMongoDBCollectionThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Collection.
@@ -487,7 +487,7 @@ Update an existing CosmosDB MongoDB User Definition.
 Updates the CosmosDB Sql Container. Performs a client side patch operation by reading the existing Container.
 
 ### [Update-AzCosmosDBSqlContainerPerPartitionThroughput](Update-AzCosmosDBSqlContainerPerPartitionThroughput.md)
-{{ Fill in the Synopsis }}
+Updates the throughput of selected partitions in a CosmosDB Sql container.
 
 ### [Update-AzCosmosDBSqlContainerThroughput](Update-AzCosmosDBSqlContainerThroughput.md)
 Updates the throughput value of a CosmosDB Sql Container.
