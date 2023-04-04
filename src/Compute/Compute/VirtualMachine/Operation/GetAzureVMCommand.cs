@@ -29,7 +29,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [GenericBreakingChange("In the June 2023 PS release, the NextLink parameter set will be removed. Powershell by default now loops through the list of VMs returned, so the user no longer has to use this parameter set.")]
+    [GenericBreakingChange("In the June 2023 Powershell release, the NextLink parameter set will be removed. Powershell by default loops through the list of VMs returned, so the user no longer has to use this parameter set.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", DefaultParameterSetName = DefaultParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMCommand : VirtualMachineBaseCmdlet
