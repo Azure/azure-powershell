@@ -85,6 +85,3 @@ Stopping a cluster stops the control plane and agent nodes entirely, while maint
 A cluster does not accrue charges while it is stopped.
 See [stopping a cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more details about stopping a cluster.
 
-### [Update-AzAksSnapshotTag](Update-AzAksSnapshotTag.md)
-Updates tags on a snapshot.
-

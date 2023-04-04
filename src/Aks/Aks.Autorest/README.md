@@ -58,6 +58,11 @@ directive:
       subject: ^MaintenanceConfiguration$|^Snapshot$
       verb: Set
     remove: true
+# this API (Update SnapshotTag) is defined in swagger but not supported by RP
+  - where:  
+      subject: ^SnapshotTag$
+      verb: Update
+    remove: true
   - model-cmdlet:
     - TimeSpan
     - TimeInWeek
