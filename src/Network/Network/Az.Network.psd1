@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.6.0'
+ModuleVersion = '5.6.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -714,7 +714,7 @@ PrivateData = @{
 * Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
