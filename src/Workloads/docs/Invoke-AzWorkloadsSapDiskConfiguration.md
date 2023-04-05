@@ -33,27 +33,39 @@ Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the SAP Disk Configuration Layout for prod/non-prod SAP System
 ```powershell
-{{ Add code here }}
+Invoke-AzWorkloadsSapDiskConfiguration -Location eastus -AppLocation eastus -DatabaseType HANA -DbVMSku Standard_M32ts -DeploymentType SingleServer -Environment NonProd -SapProduct S4HANA
 ```
 
 ```output
-{{ Add output here }}
+Keys                 : {hana/data, hana/log, hana/shared, usr/sap...}
+Values               : {{
+                         "recommendedConfiguration": {
+                           "sku": {
+                             "name": "Premium_LRS"
+                           },
+                           "count": 4,
+                           "sizeGB": 128
+                         },
+                         "supportedConfigurations": [
+                           {
+                             "sku": {
+                               "name": "Premium_LRS"
+                             },
+                             "sizeGB": 128,
+                             "minimumSupportedDiskCount": 4,
+                             "maximumSupportedDiskCount": 5,
+                             "iopsReadWrite": 500,
+                             "mbpsReadWrite": 100,
+                             "diskTier": "P10"
+                           }
+                         ]
+                       }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command will help you understand the default disk configuration that will b deployed for the SAP system for a selected deployment type.
+You can customize this when you are deploying your SAP system from Azure Center for SAP solutions
 
 ## PARAMETERS
 
@@ -104,7 +116,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

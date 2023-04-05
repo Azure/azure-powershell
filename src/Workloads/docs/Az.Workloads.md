@@ -32,9 +32,6 @@ Gets configuration values for Single Pane Of Glass for SAP monitor for the speci
 ### [Get-AzWorkloadsSapVirtualInstance](Get-AzWorkloadsSapVirtualInstance.md)
 Gets a Virtual Instance for SAP solutions resource
 
-### [Invoke-AzWorkloadsSapAvailabilityZoneDetail](Invoke-AzWorkloadsSapAvailabilityZoneDetail.md)
-Get the recommended SAP Availability Zone Pair Details for your region.
-
 ### [Invoke-AzWorkloadsSapDiskConfiguration](Invoke-AzWorkloadsSapDiskConfiguration.md)
 Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 
@@ -68,27 +65,6 @@ Create an in-memory object for SapNetWeaverProviderInstanceProperties.
 ### [New-AzWorkloadsProviderSqlServerInstanceObject](New-AzWorkloadsProviderSqlServerInstanceObject.md)
 Create an in-memory object for MsSqlServerProviderInstanceProperties.
 
-### [New-AzWorkloadsSapApplicationInstance](New-AzWorkloadsSapApplicationInstance.md)
-Puts the SAP Application Server Instance resource.
-
-
-This will be used by service only.
-PUT by end user will return a Bad Request error.
-
-### [New-AzWorkloadsSapCentralInstance](New-AzWorkloadsSapCentralInstance.md)
-Creates the SAP Central Services Instance resource.
-
-
-This will be used by service only.
-PUT operation on this resource by end user will return a Bad Request error.
-
-### [New-AzWorkloadsSapDatabaseInstance](New-AzWorkloadsSapDatabaseInstance.md)
-Creates the Database resource corresponding to the Virtual Instance for SAP solutions resource.
-
-
-This will be used by service only.
-PUT by end user will return a Bad Request error.
-
 ### [New-AzWorkloadsSapLandscapeMonitor](New-AzWorkloadsSapLandscapeMonitor.md)
 Creates a SAP Landscape Monitor Dashboard for the specified subscription, resource group, and resource name.
 
@@ -106,28 +82,6 @@ Deletes a SAP monitor with the specified subscription, resource group, and SAP m
 
 ### [Remove-AzWorkloadsProviderInstance](Remove-AzWorkloadsProviderInstance.md)
 Deletes a provider instance for the specified subscription, resource group, SAP monitor name, and resource name.
-
-### [Remove-AzWorkloadsSapApplicationInstance](Remove-AzWorkloadsSapApplicationInstance.md)
-Deletes the SAP Application Server Instance resource.
-
-
-This operation will be used by service only.
-Delete by end user will return a Bad Request error.
-
-### [Remove-AzWorkloadsSapCentralInstance](Remove-AzWorkloadsSapCentralInstance.md)
-Deletes the SAP Central Services Instance resource.
-
-
-This will be used by service only.
-Delete operation on this resource by end user will return a Bad Request error.
-You can delete the parent resource, which is the Virtual Instance for SAP solutions resource, using the delete operation on it.
-
-### [Remove-AzWorkloadsSapDatabaseInstance](Remove-AzWorkloadsSapDatabaseInstance.md)
-Deletes the Database resource corresponding to a Virtual Instance for SAP solutions resource.
-
-
-This will be used by service only.
-Delete by end user will return a Bad Request error.
 
 ### [Remove-AzWorkloadsSapLandscapeMonitor](Remove-AzWorkloadsSapLandscapeMonitor.md)
 Deletes a SAP Landscape Monitor Dashboard with the specified subscription, resource group, and SAP monitor name.
