@@ -89,6 +89,12 @@ directive:
     set:
       alias: Import-AzRedisEnterpriseCacheDatabase
   - where:
+      verb: Clear
+      subject: Database
+    set:
+      verb: Invoke
+      subject: DatabaseFlush
+  - where:
       verb: Export
       subject: ^$
     set:
@@ -200,6 +206,16 @@ directive:
   - where:
       subject: ForceDatabaseUnlink
       parameter-name: DatabaseName
+    hide: true
+    set:
+      default:
+        script: '"default"'
+
+  # DatabaseName parameter to have value 'default'
+  - where:
+      verb: Invoke
+      subject: DatabaseFlush
+      parameter-name: Name
     hide: true
     set:
       default:
