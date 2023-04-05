@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayLogScrubbingConfiguration()
             {
                 State = this.State,
-                ScrubbingRules = this.ScrubbingRule?.ToList()
+                ScrubbingRule = this.ScrubbingRule?.ToList()
             };
         }
     }

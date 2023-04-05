@@ -26,6 +26,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string State { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayLogScrubbingRule> ScrubbingRules { get; set; }
+        public List<PSApplicationGatewayLogScrubbingRule> ScrubbingRule { get; set; }
     }
 }
