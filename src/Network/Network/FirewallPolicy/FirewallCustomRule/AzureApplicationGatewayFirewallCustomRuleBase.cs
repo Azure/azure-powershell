@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.MyInvocation.BoundParameters.ContainsKey("RateLimitThreshold"))
             {
-                this.RateLimitThreshold = 1;
+                this.RateLimitThreshold = 10;
             }
         }
 
