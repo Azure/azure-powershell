@@ -37,7 +37,7 @@ function setupEnv() {
     $null = $env.Add("HostPoolPersistent2", "alecbRemoteAppHP")
     $null = $env.Add("HostPoolPersistentArmPath", "/subscriptions/"+ $env.SubscriptionId + "/resourcegroups/"+ $env.ResourceGroupPersistent + "/providers/Microsoft.DesktopVirtualization/hostpools/"+ $env.HostPoolPersistent)
     $null = $env.Add("SessionHostName", "pwsh-0")
-    $null = $env.Add("SessionHostNameRemove", "userSess-sh-2")
+    $null = $env.Add("SessionHostNameRemove", "userSess-sh-3")
     $null = $env.Add("PersistentDesktopAppGroup", "alecbUserSessionHP-DAG")
     $null = $env.Add("PersistentRemoteAppGroup", "alecbRemoteAppHP-RAG")
     # The context in which the tests are run will change the tenant and subscription ID when -record is run. 
