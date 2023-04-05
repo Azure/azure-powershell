@@ -211,7 +211,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         #endregion
 
         #region Certificate actions
-        internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -221,17 +221,26 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw new ArgumentNullException(nameof(certificate));
 
             var certClient = CreateCertificateClient(vaultName);
-            return ImportCertificate(certClient, certName, certificate, password, tags, contentType);
+            return ImportCertificate(certClient, certName, certificate, password, tags, contentType, certPolicy);
         }
 
-        private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
-            var options = new ImportCertificateOptions(certName, certificate)
+            CertificatePolicy certificatePolicy = null;
+            if (certPolicy == null)
             {
-                Policy = new CertificatePolicy()
+                certificatePolicy = new CertificatePolicy()
                 {
                     ContentType = contentType
-                },
+                };
+            }
+            else
+            {
+                certificatePolicy = certPolicy.ToTrack2CertificatePolicy();
+            }
+            var options = new ImportCertificateOptions(certName, certificate)
+            {
+                Policy = certificatePolicy,
                 Password = password?.ConvertToString()
             };
             tags?.ForEach((entry) =>

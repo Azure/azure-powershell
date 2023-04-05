@@ -27,8 +27,8 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 
-using CertificatePolicy = Azure.Security.KeyVault.Certificates.CertificatePolicy;
 using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         PSKeyVaultCertificatePolicy policy = null;
                         if (!String.IsNullOrEmpty(PolicyPath))
                         {
-                            policy = (PSKeyVaultCertificatePolicy)GetPolicyFromFile(PolicyPath);
+                            policy = GetPolicyFromFile(PolicyPath);
                         }
                         // Pem file can't be handled by X509Certificate2Collection in dotnet standard
                         // Just read it as raw data and pass it to service side
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                             {
                                 
                                 byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
-                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary());
+                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary(), certPolicy:policy);
                             }
                             else
                             {
@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     string jsonContent = r.ReadToEnd();
                     // dynamic array = JsonConvert.DeserializeObject(jsonContent);
-                    policy = (PSKeyVaultCertificatePolicy)JsonConvert.DeserializeObject(jsonContent);
+                    var policyJson = JsonConvert.DeserializeObject<JsonElement>(jsonContent); //(PSKeyVaultCertificatePolicy)
                 }
             }
             else
@@ -277,5 +277,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             return policy;
         }
+
+
     }
 }

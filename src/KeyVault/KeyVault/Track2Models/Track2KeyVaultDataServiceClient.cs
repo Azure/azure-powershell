@@ -240,14 +240,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             throw new NotImplementedException();
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
-            return VaultClient.ImportCertificate(vaultName, certName, Convert.FromBase64String(certificate), certPassword, tags, contentType);
+            return VaultClient.ImportCertificate(vaultName, certName, Convert.FromBase64String(certificate), certPassword, tags, contentType, certPolicy);
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicyPath = null)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
-            return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags, contentType);
+            return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags, contentType, certPolicy);
         }
 
         public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
