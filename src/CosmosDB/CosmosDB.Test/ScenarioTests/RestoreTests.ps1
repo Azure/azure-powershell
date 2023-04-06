@@ -788,9 +788,9 @@ function Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets {
 
 function Test-CrossRegionRestoreAccountCmdlets {
   #use an existing account with the following information
-  $rgName = "PSCosmosDBResourceGroup52"
-  $cosmosDBAccountName = "restored-ps-xrr-cosmosdb-12103"
-  $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12104"
+  $rgName = "PSCosmosDBResourceGroup53"
+  $cosmosDBAccountName = "restored-ps-xrr-cosmosdb-12105"
+  $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12105"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
   $collectionName2 = "TestCollectionInDB2";
@@ -809,16 +809,17 @@ function Test-CrossRegionRestoreAccountCmdlets {
   $NewDatabase =  New-AzCosmosDBSqlDatabase -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -Name $databaseName
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName1  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
   $NewContainer = New-AzCosmosDBSqlContainer -AccountName $sourceCosmosDBAccountName -ResourceGroupName $rgName -DatabaseName $databaseName -Name $collectionName2  -PartitionKeyPath $PartitionKeyPathValue -PartitionKeyKind $PartitionKeyKindValue -Throughput 600
-  Start-Sleep -s 3662
-  $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
 
   $datatabaseToRestore = New-AzCosmosDBDatabaseToRestore -DatabaseName $databaseName -CollectionName $collectionName1, $collectionName2
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
-  Assert-NotNull $sourceRestorableAccount.Location
-  Assert-AreEqual $sourceRestorableAccount.Location $location
+  Assert-NotNull $sourceCosmosDBAccount.Location
+  Assert-AreEqual $sourceCosmosDBAccount.Location $location
 
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
-  #$restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(200)
+  
+  Start-Sleep -s 3662
+  $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
+
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceCosmosDBAccount.Location -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
 
   Assert-NotNull $sourceRestorableAccount
