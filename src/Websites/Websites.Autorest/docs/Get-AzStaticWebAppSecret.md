@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappsecret
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappsecret
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ Description for Lists the secrets for an existing static site.
 ```powershell
 Get-AzStaticWebAppSecret -ResourceGroupName resourceGroup -Name staticweb-portal04
 ```
+
 ```output
 Kind Name    Type
 ---- ----    ----

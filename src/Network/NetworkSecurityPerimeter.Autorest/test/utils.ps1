@@ -42,7 +42,19 @@ function setupEnv() {
     $env.randomStr = $randomString
 
     #Create variable for template
+    $rgname = 'psrg_' + $randomString
     $tmpNsp1 =  $randomString + 't-nsp1'
+    $tmpNsp2 =  $randomString + 't-nsp2'
+    $tmpNsp3 =  $randomString + 't-nsp3'
+    $tmpNsp4 =  $randomString + 't-nsp4'
+    $tmpNsp5 =  $randomString + 't-nsp5'
+    $tmpNsp6 =  $randomString + 't-nsp6'
+    $tmpNsp7 =  $randomString + 't-nsp7'
+    $tmpNsp8 =  $randomString + 't-nsp8'
+    $tmpNsp9 =  $randomString + 't-nsp9'
+    $tmpNsp10 =  $randomString + 't-nsp10'
+    $tmpNsp11 =  $randomString + 't-nsp11'
+    $tmpNsp12 =  $randomString + 't-nsp12'
     $tmpNspDelBase1 =  $randomString + 't-nspDelB1'
     $tmpNspDelete1 =  $randomString + 't-nspD1'
     $tmpNspDelete2 =  $randomString + 't-nspD2'
@@ -55,6 +67,8 @@ function setupEnv() {
     $tmpProfileDelBase2 = 't-prDelB2'
     $tmpAccessRule1 = 't-ar1'
     $tmpAccessRule2 = 't-ar2'
+    $tmpAccessRule3 = 't-ar3'
+    $tmpAccessRule4 = 't-ar4'
     $tmpAccessRuleDelete1 = 't-arD1'
     $tmpAccessRuleDelete2 = 't-arD2'
     $tmpAssociation1 = 't-asn1'
@@ -64,9 +78,13 @@ function setupEnv() {
     $tmpPaas2Rp = $randomString + 't-paas2Rp'
     $tmpPaas3Rp = $randomString + 't-paas3Rp'
     $tmpPaas4Rp = $randomString + 't-paas4Rp'
+    $tmpLink1 = 't-link1'
+    $tmpLink2 = 't-link2'
+    $tmpLinkDelete3 = 't-linkD3'
+    $tmpLinkDelete4 = 't-linkD4'
 
-    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
-    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
+    $tmpKeys = 'rgname', 'tmpNsp1', 'tmpNsp2', 'tmpNsp3', 'tmpNsp4', 'tmpNsp5', 'tmpNsp6', 'tmpNsp7', 'tmpNsp8', 'tmpNsp9', 'tmpNsp10', 'tmpNsp11', 'tmpNsp12', 'tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRule3', 'tmpAccessRule4', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2', 'tmpLink1', 'tmpLink2', 'tmpLinkDelete3', 'tmpLinkDelete4'
+    $tmpValues = $rgname, $tmpNsp1, $tmpNsp2, $tmpNsp3, $tmpNsp4, $tmpNsp5, $tmpNsp6, $tmpNsp7, $tmpNsp8, $tmpNsp9, $tmpNsp10, $tmpNsp11, $tmpNsp12, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRule3, $tmpAccessRule4, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2, $tmpLink1, $tmpLink2, $tmpLinkDelete3, $tmpLinkDelete4
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($env.Contains($tmpKeys[$i])) {
@@ -94,6 +112,17 @@ function setupEnv() {
         ResourceGroupName = $env.rgname
         TemplateFile = ".\test\NSPTemplate.json"
         nsp1Name = $env.tmpNsp1
+        nsp2Name = $env.tmpNsp2
+        nsp3Name = $env.tmpNsp3
+        nsp4Name = $env.tmpNsp4
+        nsp5Name = $env.tmpNsp5
+        nsp6Name = $env.tmpNsp6
+        nsp7Name = $env.tmpNsp7
+        nsp8Name = $env.tmpNsp8
+        nsp9Name = $env.tmpNsp9
+        nsp10Name = $env.tmpNsp10
+        nsp11Name = $env.tmpNsp11
+        nsp12Name = $env.tmpNsp12
         nspDelBase1Name = $env.tmpNspDelBase1
         nspDelete1Name = $env.tmpNspDelete1
         nspDelete2Name = $env.tmpNspDelete2
@@ -106,6 +135,8 @@ function setupEnv() {
         profileDelBase2Name = $env.tmpProfileDelBase2
         accessRule1Name = $env.tmpAccessRule1
         accessRule2Name = $env.tmpAccessRule2
+        accessRule3Name = $env.tmpAccessRule3
+        accessRule4Name = $env.tmpAccessRule4
         accessRuleDelete1Name = $env.tmpAccessRuleDelete1
         accessRuleDelete2Name = $env.tmpAccessRuleDelete2
         paas1Name = $env.tmpPaas1Rp
@@ -115,6 +146,10 @@ function setupEnv() {
         association1Name = $env.tmpAssociation1
         associationDelete1Name = $env.tmpAssociationDelete1
         associationDelete2Name = $env.tmpAssociationDelete2
+        link1Name = $env.tmpLink1
+        link2Name = $env.tmpLink2
+        linkDelete3Name = $env.tmpLinkDelete3
+        linkDelete4Name = $env.tmpLinkDelete4
        }
     
     #deploy template
@@ -122,106 +157,104 @@ function setupEnv() {
 
     Write-Host -ForegroundColor Magenta "Template deployed"
 
+    Write-Host "Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp2 -Debug"
+
 }
+
 function cleanupEnv() {
 
     # Clean resources you create for testing
     
-    Write-Host -ForegroundColor Magenta "Removing associations"
+    Write-Host -ForegroundColor Magenta "Removing resources"
 
-    
-    # Remove associations
-    $remove_association1 = @{
-        SecurityPerimeterName = $env.tmpNsp1
-        ResourceGroupName = $env.rgname
-        Name = $env.tmpAssociation1
-       }
+	try{
+        $rg = $env.rgname
 
-    Remove-AzNetworkSecurityPerimeterAssociation @remove_association1
+		$nsps = Get-AzNetworkSecurityPerimeter -ResourceGroupName $rg
+		Write-Host "Get-AzNetworkSecurityPerimeter -ResourceGroupName $rg"
+		Write-Host -ForegroundColor Green "Success list nsp"
 
-    
-    $remove_associationDelete1 = @{
-        SecurityPerimeterName = $env.tmpNspDelBase1
-        ResourceGroupName = $env.rgname
-        Name = $env.tmpAssociationDelete1
+		foreach($nspObj in $nsps){
+
+	    	$nsp = $nspObj.Name
+
+	    	try{
+
+	    		Write-Host "Get-AzNetworkSecurityPerimeterLink -ResourceGroupName $rg -SecurityPerimeterName $nsp"
+
+				$links = Get-AzNetworkSecurityPerimeterLink -ResourceGroupName $rg -SecurityPerimeterName $nsp
+				Write-Host -ForegroundColor Green "Success list links"
+
+				foreach($linkObj in $links){
+
+					$linkName = $linkObj.Name
+
+					try
+					{
+						Write-Host "Remove-AzNetworkSecurityPerimeterLink -Name $linkName -ResourceGroupName $rg -SecurityPerimeterName $nsp"
+						Remove-AzNetworkSecurityPerimeterLink -Name $linkName -ResourceGroupName $rg -SecurityPerimeterName $nsp
+						Write-Host -ForegroundColor Green "Success remove link"
+					}
+					catch{
+						Write-Host -ForegroundColor Red "Error occcured with removing link"
+						$_.Exception.ToString()
+					}
+				}
+	    	}
+	    	catch{
+	    		Write-Host -ForegroundColor Red "Error occcured with listing link"
+				$_.Exception.ToString()
+
+	    	}
+
+	    	try {
+
+	    		Write-Host "Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $rg -SecurityPerimeterName $nsp"
+	    		$linkRefs = Get-AzNetworkSecurityPerimeterLinkReference -ResourceGroupName $rg -SecurityPerimeterName $nsp
+	    		Write-Host -ForegroundColor Green "Success list references"
+
+	    		foreach($ref in $linkRefs){
+	    			try{
+
+	    				Write-Host "Remove-AzNetworkSecurityPerimeterLinkReference -Name $ref.Name -ResourceGroupName $rg -SecurityPerimeterName $nsp"
+	    				Remove-AzNetworkSecurityPerimeterLinkReference -Name $ref.Name -ResourceGroupName $rg -SecurityPerimeterName $nsp
+	    			Write-Host -ForegroundColor Green "Success remove reference"
+	    			}catch{
+	    			Write-Host -ForegroundColor Red "Error occcured with removing link reference"
+	    				$_.Exception.ToString()
+	    			}
+	    		}
+
+	    	}
+	    	catch{
+		    	Write-Host -ForegroundColor Red "Error occcured with listing link ref"
+				$_.Exception.ToString()
+	    	}
+
+	    	try{
+	    		Write-Host "Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg"
+				Remove-AzNetworkSecurityPerimeter -Name $nsp -ResourceGroupName $rg
+				Write-Host -ForegroundColor Green "Success remove nsp"
+	    	}
+	    	catch{
+		    	Write-Host -ForegroundColor Red "Error occcured with removing nsp"
+	    		$_.Exception.ToString()
+	    	}
+	    }
+
+    	try{
+	    	Write-Host "Remove-AzResourceGroup -Name $rg" 
+			Remove-AzResourceGroup -Name $rg
+			Write-Host -ForegroundColor Green "Success remove resource group"
+    	}
+    	catch{
+	    	Write-Host -ForegroundColor Red "Error occcured with removing rg"
+    		$_.Exception.ToString()
+    	}
+    }
+    catch{
+        Write-Host -ForegroundColor Red "Error occcured with listing nsps"
     }
 
-    Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete1
-
-    $remove_associationDelete2 = @{
-        SecurityPerimeterName = $env.tmpNspDelBase1
-        ResourceGroupName = $env.rgname
-        Name = $env.tmpAssociationDelete2
-    }
-
-    Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete2
-
-    
-    #Remove association created by testcase
-    $remove_association2 = @{
-        SecurityPerimeterName = $env.tmpNsp1
-        ResourceGroupName = $env.rgname
-        Name = $env.association1
-    }
-
-
-    Remove-AzNetworkSecurityPerimeterAssociation @remove_association2
-
-    Write-Host -ForegroundColor Magenta "Done"
-
-
-    $isDeleted = $false
-
-    While(-Not $isDeleted){
-        $isDeleted = $true
-
-        Write-Host -ForegroundColor Magenta "Sleep 20"
-
-        Start-Sleep -Seconds 20
-
-        try{
-             $isDeleted = $false
-             Get-AzNetworkSecurityPerimeterAssociation @remove_association1
-             continue
-        }
-        catch{
-            $isDeleted = $true
-        }
-
-        try{
-             $isDeleted = $false
-             Get-AzNetworkSecurityPerimeterAssociation @remove_associationDelete1
-             continue
-        }
-        catch{
-            $isDeleted = $true
-        }
-
-        try{
-             $isDeleted = $false
-             Get-AzNetworkSecurityPerimeterAssociation @remove_associationDelete2
-             continue
-        }
-        catch{
-            $isDeleted = $true
-        }
-
-        try{
-             $isDeleted = $false
-             Get-AzNetworkSecurityPerimeterAssociation @remove_association2
-             continue
-        }
-        catch{
-            $isDeleted = $true
-        }
-
-    }
-
-    Write-Host -ForegroundColor Magenta "Removing RG"
-
-    #Remove resourceGroup
-    Remove-AzResourceGroup -Name $env.rgname
-
-    Write-Host -ForegroundColor Magenta "Removed RG"
+    Write-Host -ForegroundColor Magenta "Removing resources done, check previous logs for details."
 }
-

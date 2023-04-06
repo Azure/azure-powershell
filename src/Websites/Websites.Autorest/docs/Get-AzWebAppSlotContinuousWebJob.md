@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azwebappslotcontinuouswebjob
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslotcontinuouswebjob
 schema: 2.0.0
 ---
 
@@ -39,6 +39,7 @@ Get or list continuous web for a deployment slot.
 ```powershell
 Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
 ```
+
 ```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------
@@ -52,6 +53,7 @@ This command lists continuous webs for a deployment slot.
 ```powershell
 Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
 ```
+
 ```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------
@@ -66,6 +68,7 @@ $webjob = Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -Ap
 Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
 $webjob.Id | Get-AzWebAppSlotContinuousWebJob
 ```
+
 ```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------

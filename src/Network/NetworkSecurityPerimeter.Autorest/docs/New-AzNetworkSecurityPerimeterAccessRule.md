@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.NetworkSecurityPerimeter
-online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeteraccessrule
+Module Name: Az.Network
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworksecurityperimeteraccessrule
 schema: 2.0.0
 ---
 
@@ -16,9 +16,10 @@ Creates or updates a network access rule.
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessRuleId <String>]
- [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>] [-FullyQualifiedDomainName <String[]>]
- [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>] [-EmailAddress <String[]>]
+ [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
+ [-PhoneNumber <String[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -32,9 +33,9 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
 ```
 New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>]
- [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
- [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EmailAddress <String[]>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
+ [-Perimeter <IPerimeterBasedAccessRule[]>] [-PhoneNumber <String[]>] [-Subscription <ISubscriptionId[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +78,7 @@ $perimeter2 = @{
 
 $networkSecurityPerimeters  =  @($perimeter1,$perimeter2)
 
-New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -SecurityPerimeterName 'testt-nsp1'  -ProfileName 't-profile2'  -ResourceGroupName 'ResourceGroup-1'  -Direction 'Inbound' -Location 'eastus2euap' -NetworkSecurityPerimeters $networkSecurityPerimeters
+New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -SecurityPerimeterName 'testt-nsp1'  -ProfileName 't-profile2'  -ResourceGroupName 'ResourceGroup-1'  -Direction 'Inbound' -Location 'eastus2euap' -Perimeter $networkSecurityPerimeters
 
 ```
 
@@ -143,6 +144,21 @@ Direction that specifies whether the access rules is inbound/outbound.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Support.AccessRuleDirection
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EmailAddress
+Outbound rules email address format.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -236,6 +252,21 @@ To construct, see NOTES section for PERIMETER properties and create a hash table
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PhoneNumber
+Outbound rules phone number format.
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -395,6 +426,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[AccessRuleName <String>]`: The name of the NSP access rule.
   - `[AssociationName <String>]`: The name of the NSP association.
   - `[Id <String>]`: Resource identity path
+  - `[LinkName <String>]`: The name of the NSP link.
+  - `[LinkReferenceName <String>]`: The name of the NSP linkReference.
+  - `[Location <String>]`: The location of network security perimeter.
   - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
   - `[ProfileName <String>]`: The name of the NSP profile.
   - `[ResourceGroupName <String>]`: The name of the resource group.
@@ -407,9 +441,11 @@ To create the parameters described below, construct a hash table containing the 
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AddressPrefix <String[]>]`: Inbound address prefixes (IPv4/IPv6)
   - `[Direction <AccessRuleDirection?>]`: Direction that specifies whether the access rules is inbound/outbound.
+  - `[EmailAddress <String[]>]`: Outbound rules email address format.
   - `[FullyQualifiedDomainName <String[]>]`: Outbound rules fully qualified domain name format.
   - `[NetworkSecurityPerimeter <IPerimeterBasedAccessRule[]>]`: Inbound rule specified by the perimeter id.
     - `[Id <String>]`: NSP id in the ARM id format.
+  - `[PhoneNumber <String[]>]`: Outbound rules phone number format.
   - `[Subscription <ISubscriptionId[]>]`: List of subscription ids
     - `[Id <String>]`: Subscription id in the ARM id format.
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlSigningActionObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlSigningActionObject
 schema: 2.0.0
 ---
 
@@ -111,7 +111,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string parameters in the url to be considered for expires, key id etc. .
+`PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>`: Defines which query string parameters in the url to be considered for expires, key id etc. .
   - `ParamIndicator <ParamIndicator>`: Indicates the purpose of the parameter
   - `ParamName <String>`: Parameter name
 

@@ -1,7 +1,7 @@
 @{
   GUID = 'd6053d97-1a9b-4fc6-9bd2-09c5b23b34db'
   RootModule = './Az.StorageMover.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '1.0.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

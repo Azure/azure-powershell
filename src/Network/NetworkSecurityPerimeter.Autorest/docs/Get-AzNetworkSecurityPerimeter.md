@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.NetworkSecurityPerimeter
-online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeter
+Module Name: Az.Network
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworksecurityperimeter
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Gets the specified network security perimeter by the name.
 
 ### List (Default)
 ```
-Get-AzNetworkSecurityPerimeter -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNetworkSecurityPerimeter [-SubscriptionId <String[]>] [-SkipToken <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -28,6 +28,12 @@ Get-AzNetworkSecurityPerimeter -Name <String> -ResourceGroupName <String> [-Subs
 ```
 Get-AzNetworkSecurityPerimeter -InputObject <INetworkSecurityPerimeterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzNetworkSecurityPerimeter -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,7 +63,29 @@ eastus2euap nsp5
 
 List NetworkSecurityPerimeter
 
-### Example 2: Gets a NetworkSecurityPerimeter by Name
+### Example 2: List NetworkSecurityPerimeter in a subscription
+```powershell
+
+ Get-AzNetworkSecurityPerimeter
+
+```
+
+```output
+
+Location    Name
+--------    ----
+eastus2euap nsp4
+eastus2euap nsp3
+eastus2euap nsp1
+eastus2euap nsp6
+eastus2euap nsp5
+
+
+```
+
+List NetworkSecurityPerimeter in a subscription
+
+### Example 3: Gets a NetworkSecurityPerimeter by Name
 ```powershell
 
  Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
@@ -75,7 +103,7 @@ eastus2euap nsp3
 
 Gets a NetworkSecurityPerimeter by Name
 
-### Example 3: Gets a NetworkSecurityPerimeter by identity (using pipe)
+### Example 4: Gets a NetworkSecurityPerimeter by identity (using pipe)
 ```powershell
 
  $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
@@ -146,7 +174,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -162,7 +190,7 @@ If a previous response contains a nextLink element, the value of the nextLink el
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -178,7 +206,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
@@ -193,7 +221,7 @@ An optional query parameter which specifies the maximum number of records to be 
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List, List1
 Aliases:
 
 Required: False
@@ -227,6 +255,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[AccessRuleName <String>]`: The name of the NSP access rule.
   - `[AssociationName <String>]`: The name of the NSP association.
   - `[Id <String>]`: Resource identity path
+  - `[LinkName <String>]`: The name of the NSP link.
+  - `[LinkReferenceName <String>]`: The name of the NSP linkReference.
+  - `[Location <String>]`: The location of network security perimeter.
   - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
   - `[ProfileName <String>]`: The name of the NSP profile.
   - `[ResourceGroupName <String>]`: The name of the resource group.

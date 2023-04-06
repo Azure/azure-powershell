@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
+online version: https://learn.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
 schema: 2.0.0
 ---
 
@@ -237,12 +237,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMDOMAINHTTPSPARAMETER <ICustomDomainHttpsParameters>: The JSON object that contains the properties to secure a custom domain.
+`CUSTOMDOMAINHTTPSPARAMETER <ICustomDomainHttpsParameters>`: The JSON object that contains the properties to secure a custom domain.
   - `CertificateSource <CertificateSource>`: Defines the source of the SSL certificate.
   - `ProtocolType <ProtocolType>`: Defines the TLS extension protocol that is used for secure delivery.
   - `[MinimumTlsVersion <MinimumTlsVersion?>]`: TLS protocol version that will be used for Https
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

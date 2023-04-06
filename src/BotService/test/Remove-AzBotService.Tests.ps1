@@ -19,9 +19,9 @@ Describe 'Remove-AzBotService' {
     }
 
     It 'DeleteViaIdentity' {
-        $GetService = Get-AzBotService -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService2
+        $GetService = Get-AzBotService -ResourceGroupName $env.ResourceGroupName -Name $env.NewBotService4
         Remove-AzBotService -InputObject $GetService
         $GetServiceList = Get-AzBotService
-        $GetServiceList.Name | Should -Not -Contain $env.WebApplicationName2
+        $GetServiceList.Name | Should -Not -Contain $env.WebApplicationName4
     }
 }

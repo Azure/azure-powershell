@@ -1,7 +1,7 @@
 ---
 Module Name: Az.CloudService
 Module Guid: a41eb61d-c5a1-4e9b-81a7-b8905fff7f2c
-Download Help Link: https://docs.microsoft.com/powershell/module/az.cloudservice
+Download Help Link: https://learn.microsoft.com/powershell/module/az.cloudservice
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -75,7 +75,7 @@ Create a in-memory object for Remote Desktop Extension
 Create a in-memory object for CloudServiceRoleProfileProperties
 
 ### [New-AzCloudServiceVaultSecretGroupObject](New-AzCloudServiceVaultSecretGroupObject.md)
-Create a in-memory object for Secret Group
+Create a in-memory object for Vault Secret Group
 
 ### [Remove-AzCloudService](Remove-AzCloudService.md)
 Deletes a cloud service.

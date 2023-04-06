@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.BotService.private.dll'
   FormatsToProcess = './Az.BotService.format.ps1xml'
-  FunctionsToExport = 'Export-AzBotServiceApp', 'Get-AzBotService', 'Initialize-AzBotServicePrepareDeploy', 'New-AzBotService', 'Publish-AzBotServiceApp', 'Remove-AzBotService', 'Update-AzBotService', '*'
+  FunctionsToExport = 'Export-AzBotServiceApp', 'Get-AzBotService', 'Get-AzBotServiceHostSetting', 'Initialize-AzBotServicePrepareDeploy', 'New-AzBotService', 'New-AzBotServiceDirectLineKey', 'Publish-AzBotServiceApp', 'Remove-AzBotService', 'Update-AzBotService', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

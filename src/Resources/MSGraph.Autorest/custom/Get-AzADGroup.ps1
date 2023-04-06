@@ -19,7 +19,7 @@ Lists entities from groups or get entity from groups by key
 .Description
 Lists entities from groups or get entity from groups by key
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
+https://learn.microsoft.com/powershell/module/az.resources/get-azadgroup
 #>
 function Get-AzADGroup {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
@@ -54,8 +54,14 @@ function Get-AzADGroup {
         ${Select},
 
         [Parameter(ParameterSetName='EmptyParameterSet')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+        [System.Management.Automation.SwitchParameter]
+        # Include count of items
+        ${Count},
+
+        [Parameter(ParameterSetName='EmptyParameterSet')]
         [System.String]
-        # Filter items by property values
+        # Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
         ${Filter},
 
         [Parameter(ParameterSetName='EmptyParameterSet')]

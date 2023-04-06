@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.StorageMover
-online version: https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveragent
+online version: https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveragent
 schema: 2.0.0
 ---
 
@@ -201,7 +201,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IAgent
+### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IAgent
 
 ## NOTES
 

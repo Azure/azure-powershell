@@ -158,7 +158,7 @@ Below is a table with some information about important fields of the module mani
 | Field                | Detail |
 | -------------------- | ------ |
 | `ModuleVersion`      | This should not be touched unless otherwise specified to do so. Preview modules are noted by this version being `0.x.x`, or with the `preview` prefix specified in the `Prerelease` field at the bottom of the file. All other versions should signal that the module is stable. |
-| `Description`        | This should be updated to include information about the service, as well as a link to any corresponding service docs found on https://docs.microsoft.com. |
+| `Description`        | This should be updated to include information about the service, as well as a link to any corresponding service docs found on https://learn.microsoft.com. |
 | `RequiredModules`    | This should only contain a module dependency on the `Az.Accounts` module, unless otherwise noted. The version should be the latest version of `Az.Accounts` (found in the `Az.Accounts.psd1` file). |
 | `RequiredAssemblies` | This should only contain assemblies that the module needs to run all of the cmdlets successfully. At a minimum, the service's SDK should be included in this list. Any other additional modules should be verified by the Azure PowerShell team. **No external service team SDK should be included in this field**. |
 | `FormatsToProcess`   | This should contain any formatting files that are used by the module to alter the display of cmdlets' output. |

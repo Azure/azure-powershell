@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.ImportExport
-online version: https://docs.microsoft.com/powershell/module/az.importexport/get-azimportexportlocation
+online version: https://learn.microsoft.com/powershell/module/az.importexport/get-azimportexportlocation
 schema: 2.0.0
 ---
 
@@ -159,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api20161101.ILocation
+### Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Models.Api202101.ILocation
 
 ## NOTES
 
@@ -170,7 +170,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImportExportIdentity>: Identity Parameter
+`INPUTOBJECT <IImportExportIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[JobName <String>]`: The name of the import/export job.
   - `[LocationName <String>]`: The name of the location. For example, West US or westus.

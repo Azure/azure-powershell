@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 schema: 2.0.0
 ---
 
@@ -111,7 +111,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-HTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+`HTTPERRORRANGE <IHttpErrorRangeParameters[]>`: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
   - `[Begin <Int32?>]`: The inclusive start of the http status code range.
   - `[End <Int32?>]`: The inclusive end of the http status code range.
 

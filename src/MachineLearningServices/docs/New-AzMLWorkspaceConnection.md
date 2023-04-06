@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceconnection
 schema: 2.0.0
 ---
 
 # New-AzMLWorkspaceConnection
 
 ## SYNOPSIS
-
+Creating or updating a new workspace connection
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> -Workspac
 ```
 
 ## DESCRIPTION
-
+Creating or updating a new workspace connection
 
 ## EXAMPLES
 

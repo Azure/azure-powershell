@@ -24,3 +24,16 @@ vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
 ```
 
 This command disables the monitor alerts for all the job failures for the backup vault. Allowed values are: Enabled, Disabled. Note that by default this setting is enabled. 
+
+### Example 3: Update vault ImmutabilityState, CrossSubscriptionRestoreState, soft delete settings
+```powershell
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CrossSubscriptionRestoreState Disabled -ImmutabilityState Disabled -SoftDeleteRetentionDurationInDay 99 -SoftDeleteState Off
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
+```
+
+This command is used to modify Immutability state, cross subscription restore state, soft delete settings of the vault. These parameters are optional and can be used independently.

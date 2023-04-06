@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Websites
-online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappuser
+online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappuser
 schema: 2.0.0
 ---
 
@@ -26,6 +26,7 @@ Description for Gets the list of users of a static site.
 ```powershell
 Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal04 -Authprovider all
 ```
+
 ```output
 Kind Name                             Type
 ---- ----                             ----

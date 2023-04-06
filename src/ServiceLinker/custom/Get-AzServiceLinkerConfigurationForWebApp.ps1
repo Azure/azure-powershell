@@ -20,10 +20,10 @@ list source configurations for a linker in webapp.
 .Description
 list source configurations for a linker in webapp.
 .Link
-https://docs.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
+https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
 #>
 function Get-AzServiceLinkerConfigurationForWebApp {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20220501.ISourceConfiguration])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.Api20221101Preview.ISourceConfiguration])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

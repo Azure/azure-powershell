@@ -17,16 +17,19 @@ Describe 'Get-AzKustoClusterFollowerDatabase' {
         . ($mockingPath | Select-Object -First 1).FullName
     }
     It 'List' {
-        $subscriptionId = $env.SubscriptionId
         $resourceGroupName = $env.resourceGroupName
-        $clusterName = $env.clusterName
-        $databaseName = $env.databaseName
-        $attachedDatabaseConfigurationName = $env.attachedDatabaseConfigurationName
-        $followerClusterName = $env.followerClusterName
-        $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$followerClusterName"
+        $clusterName = $env.kustoClusterName
+        $databaseName = $env.kustoDatabaseName
+        $attachedDatabaseConfigurationName = "testAttachedDatabaseConfiguration"
+        $followerClusterName = $env.kustoFollowerClusterName
+        $followerClusterResourceId = $env.kustoFolowerClusterResourceId
 
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $env.location -ClusterResourceId $env.kustoClusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind "Union"
+        
         [array]$clusterFollowerDatabaseGet = Get-AzKustoClusterFollowerDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName
         $clusterFollowerDatabase = $clusterFollowerDatabaseGet[0]
-        Validate_ClusterFollowerDatabase $clusterFollowerDatabase $attachedDatabaseConfigurationName $clusterResourceId $databaseName
+        Validate_ClusterFollowerDatabase $clusterFollowerDatabase $attachedDatabaseConfigurationName $followerClusterResourceId $databaseName
+
+        Remove-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName
     }
 }

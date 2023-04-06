@@ -26,7 +26,7 @@ Describe 'New-AzImageBuilderTemplate' {
         # the userAssignedIdentity should have access permissions to the image above
         $userAssignedIdentity = $env.identity.Id
         # Create a virtual machine image template
-        New-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg -Location $env.location -IdentityType 'UserAssigned' -UserAssignedIdentity @{$userAssignedIdentity= @{}} -Source $source -Customize $customizer -Distribute $distributor  
+        New-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg -Location $env.location -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
         $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName1 -ResourceGroupName $env.rg
     }
 

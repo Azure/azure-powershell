@@ -1,10 +1,13 @@
 variables:
-  WindowsName: windows
-  WindowsImage: windows-2019
+  WindowsName: windows 
+  WindowsAgentPoolName: pool-windows-2019
+  WindowsAgentPoolVMImage: ''
   LinuxName: linux
-  LinuxImage: ubuntu-20.04
+  LinuxAgentPoolName: pool-ubuntu-2004
+  LinuxAgentPoolVMImage: ''
   MacOSName: macOS
-  MacOSImage: macOS-11
+  MacOSAgentPoolName: 'Azure Pipelines'
+  MacOSAgentPoolVMImage: macOS-11
   TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
@@ -14,6 +17,9 @@ variables:
   AnalysisTimeoutInMinutes: 120
   TestTimeoutInMinutes: 180
   BuildAzPredictor: false
+  EnableTestCoverage: true
+  TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
+  PowerShellPlatform: PowerShell Core
 
 trigger: none
 
@@ -29,40 +35,28 @@ jobs:
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: pool-windows-2019
 
   steps:
   - template: util/build-steps.yml
     parameters:
-      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-  pool:
-    vmImage: $(ImageName)
+  pool: pool-windows-2019
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}
 
 - job: Test
   displayName: Test
@@ -73,15 +67,19 @@ jobs:
     matrix:
       windows:
         OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
+        agentPoolName: ${{ variables.WindowsAgentPoolName }}
+        agentPoolVMImage: ${{ variables.WindowsAgentPoolVMImage }}
       linux:
         OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
+        agentPoolName: ${{ variables.LinuxAgentPoolName }}
+        agentPoolVMImage: ${{ variables.LinuxAgentPoolVMImage }}
       macOS:
         OSName: ${{ variables.MacOSName }}
-        ImageName: ${{ variables.MacOSImage }}
+        agentPoolName: ${{ variables.MacOSAgentPoolName }}
+        agentPoolVMImage: ${{ variables.MacOSAgentPoolVMImage }}
   pool:
-    vmImage: $(ImageName)
+    name: $(agentPoolName)
+    vmImage: $(agentPoolVMImage)
 
   steps:
   - template: util/test-steps.yml
@@ -90,3 +88,4 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}
+      powerShellPlatform: ${{ variables.PowerShellPlatform }}

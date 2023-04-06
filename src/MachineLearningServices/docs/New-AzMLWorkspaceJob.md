@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MachineLearningServices
-online version: https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
+online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacejob
 schema: 2.0.0
 ---
 
@@ -191,7 +191,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-JOB <IJobBaseProperties>: [Required] Additional attributes of the entity.
+`JOB <IJobBaseProperties>`: [Required] Additional attributes of the entity.
   - `JobType <JobType>`: [Required] Specifies the type of job.
   - `[Description <String>]`: The asset description text.
   - `[Property <IResourceBaseProperties>]`: The asset property dictionary.

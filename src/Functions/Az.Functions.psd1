@@ -8,7 +8,7 @@
   Copyright = 'Microsoft Corporation. All rights reserved.'
   Description = 'Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.
 
-For information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/'
+For information on Azure Functions, please visit the following: https://learn.microsoft.com/azure/azure-functions/'
   PowerShellVersion = '5.1'
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Functions.private.dll'

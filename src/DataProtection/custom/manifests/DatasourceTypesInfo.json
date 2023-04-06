@@ -11,6 +11,10 @@
     {
       "serviceDatasourceType": "Microsoft.Storage/storageAccounts/blobServices",
       "clientDatasourceType": "AzureBlob"
+    },
+    {
+      "serviceDatasourceType": "Microsoft.ContainerService/managedClusters",
+      "clientDatasourceType": "AzureKubernetesService"
     }
   ]
 }

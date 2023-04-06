@@ -30,7 +30,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public string PrintHeaders()
         {
             return
-                "\"AssemblyFileName\",\"ClassName\",\"Target\",\"Severity\",\"ProblemId\",\"Description\",\"Remediation\"";
+                "\"Module\",\"ClassName\",\"Target\",\"Severity\",\"ProblemId\",\"Description\",\"Remediation\"";
         }
         public string FormatRecord()
         {

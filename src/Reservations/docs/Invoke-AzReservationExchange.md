@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
+online version: https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 schema: 2.0.0
 ---
 
@@ -65,7 +65,7 @@ Exchange request
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest
 Parameter Sets: Post
 Aliases:
 
@@ -157,11 +157,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse
 
 ## NOTES
 
@@ -172,7 +172,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IExchangeRequest>: Exchange request
+`BODY <IExchangeRequest>`: Exchange request
   - `[SessionId <String>]`: SessionId that was returned by CalculateExchange API.
 
 ## RELATED LINKS
