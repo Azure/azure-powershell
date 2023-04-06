@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string RuleType { get; set; }
         public List<PSApplicationGatewayFirewallCondition> MatchConditions { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSApplicationGatewayGroupByUserSession GroupByUserSession { get; set; }
+        public List<PSApplicationGatewayGroupByUserSession> GroupByUserSession { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public string Action { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]

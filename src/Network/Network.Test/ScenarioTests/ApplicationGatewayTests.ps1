@@ -4260,7 +4260,7 @@ function Test-ApplicationGatewayFirewallPolicyWithRateLimitRule
 		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
 		$groupbyVar = New-AzApplicationGatewayGroupByVariable -VariableName ClientAddr 
-		$groupbyUserSes = New-AzApplicationGatewayGroupByUserSession -GroupByVariables $groupbyVar
+		$groupbyUserSes = New-AzApplicationGatewayGroupByUserSession -GroupByVariable $groupbyVar
 		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Block
 
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
@@ -4282,8 +4282,7 @@ function Test-ApplicationGatewayFirewallPolicyWithRateLimitRule
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
-		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession $customRule.GroupByUserSession
-		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession.GroupByVariable[0].VariableName $customRule.GroupByUserSession.GroupByVariable[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariable[0].VariableName $customRule.GroupByUserSession[0].GroupByVariable[0].VariableName
 		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
 		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck

@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Define user session identifier group by clauses.")]
         [ValidateCount(1, 1)]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayGroupByUserSession GroupByUserSession { get; set; }
+        public PSApplicationGatewayGroupByUserSession[] GroupByUserSession { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Network
                 RateLimitDuration = this.RateLimitDuration,
                 RateLimitThreshold = this.RateLimitThreshold,
                 MatchConditions = this.MatchCondition?.ToList(),
-                GroupByUserSession = this.GroupByUserSession,
+                GroupByUserSession = this.GroupByUserSession?.ToList(),
                 Action = this.Action,
                 State = this.State
             };

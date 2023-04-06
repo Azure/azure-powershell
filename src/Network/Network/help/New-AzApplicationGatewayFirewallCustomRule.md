@@ -14,7 +14,7 @@ Creates a new custom rule for the application gateway firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration<String>] [-RateLimitThreshold<Int32>] -RuleType <String>
- -MatchCondition <PSApplicationGatewayFirewallCondition[]> [-GroupByUserSession<PSApplicationGatewayGroupByUserSession>] -Action <String> [-State <String>]
+ -MatchCondition <PSApplicationGatewayFirewallCondition[]> [-GroupByUserSession<PSApplicationGatewayGroupByUserSession[]>] -Action <String> [-State <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -250,7 +250,7 @@ Accept wildcard characters: False
 List of match conditions.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayGroupByUserSession
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayGroupByUserSession[]
 Parameter Sets: (All)
 Aliases:
 
