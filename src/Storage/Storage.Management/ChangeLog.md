@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning messages for an upcoming cmdlet breaking change 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
 
 ## Version 5.5.0
 * Supported create storage account with DnsEndpointType
