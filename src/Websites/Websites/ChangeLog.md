@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed Tag parameter issues with ASE for `New-AzWebApp`
 
 ## Version 2.14.0
 * Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
