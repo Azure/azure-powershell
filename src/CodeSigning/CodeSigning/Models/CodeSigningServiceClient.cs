@@ -137,6 +137,10 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
             var accountName = Metadata.CodeSigningAccountName;
             var profileName = Metadata.CertificateProfileName;
+            var endpoint = Metadata.Endpoint;
+
+            var cipolicySigner = new CmsSigner();
+            cipolicySigner.SignCIPolicy(user_creds, accountName, profileName, endpoint, unsignedCIFilePath, signedCIFilePath, timeStamperUrl);
         }
     }
 }
