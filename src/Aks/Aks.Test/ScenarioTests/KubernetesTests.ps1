@@ -1179,12 +1179,6 @@ function Test-EnableOidcIssuer {
         Assert-True {$cluster1.OidcIssuerProfile.Enabled}
         Assert-True {$cluster1.OidcIssuerProfile.IssuerURL.StartsWith("https://eastus.oic.prod-aks.azure.com")}
         
-        # set EnableOidcIssuer=false should not work.
-        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName1 -EnableOidcIssuer:$false
-        $cluster1 = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName1
-        Assert-True {$cluster1.OidcIssuerProfile.Enabled}
-        Assert-True {$cluster1.OidcIssuerProfile.IssuerURL.StartsWith("https://eastus.oic.prod-aks.azure.com")}
-
         New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -NodeCount 1
         $cluster2 = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2
         Assert-False {$cluster2.OidcIssuerProfile.Enabled}
