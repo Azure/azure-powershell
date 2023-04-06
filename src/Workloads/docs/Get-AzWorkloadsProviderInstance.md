@@ -35,7 +35,7 @@ Gets properties of a provider instance for the specified subscription, resource 
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all providers in an AMS Instance
 ```powershell
 Get-AzWorkloadsProviderInstance -ResourceGroupName ad-ams-rg -MonitorName ad-ams
 ```
@@ -55,36 +55,40 @@ as1-sysdb         ad-ams-rg         Succeeded         SapHana
 h2-test           ad-ams-rg         Failed            SapHana
 ```
 
-{{ Add description here }}
+List all the providers created for an AMS Instance
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about an AMS Provider
 ```powershell
 Get-AzWorkloadsProviderInstance -ResourceGroupName ad-ams-rg -MonitorName ad-ams -Name hana-test-2
 ```
 
 ```output
-Name        ResourceGroupName ProvisioningState ProviderSettingProviderType IdentityType
-----        ----------------- ----------------- --------------------------- ------------
-hana-test-2 ad-ams-rg         Succeeded         SapHana
+Name        ResourceGroupName ProvisioningState IdentityType
+----        ----------------- -----------------  ------------
+hana-test-2 ad-ams-rg         Succeeded         
 ```
 
-{{ Add description here }}
+Gets information about a specific AMS Provider
 
-### Example 3: {{ Add title here }}
+### Example 3: Get information about an AMS Provider by Id
 ```powershell
-{{ Add code here }}
+Get-AzWorkloadsProviderInstance -InputObject "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/ams_mon/providerInstances/suha-db2-1"
 ```
 
 ```output
-{{ Add output here }}
+
+Name       ResourceGroupName ProvisioningState IdentityType
+----       ----------------- ----------------- ------------
+suha-db2-1 suha-0802-rg1     Succeeded
 ```
 
-{{ Add description here }}
+Get information about an AMS Provider by ArmId
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
