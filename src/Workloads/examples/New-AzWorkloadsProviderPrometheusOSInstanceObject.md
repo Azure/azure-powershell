@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create Linux OS Provider
 ```powershell
-{{ Add code here }}
+New-AzWorkloadsProviderPrometheusOSInstanceObject -PrometheusUrl "http://10.1.0.4:9100/metrics" -SapSid X00 -SslPreference Disabled
 ```
 
 ```output
-{{ Add output here }}
+ProviderType PrometheusUrl                SapSid SslCertificateUri SslPreference
+------------ -------------                ------ ----------------- -------------
+PrometheusOS http://10.1.0.4:9100/metrics X00                      Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create Linux Operating System provider for an AMS instance

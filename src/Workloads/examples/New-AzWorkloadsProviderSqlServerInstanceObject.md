@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create Microsoft SQL server provider
 ```powershell
-{{ Add code here }}
+New-AzWorkloadsProviderSqlServerInstanceObject -Password 'Password@123' -Port 1433 -Username ams -Hostname 10.1.14.5 -SapSid X00 -SslPreference Disabled
 ```
 
 ```output
-{{ Add output here }}
+ProviderType DbPassword   DbPasswordUri DbPort DbUsername Hostname  SapSid SslCertificateUri SslPreference
+------------ ----------   ------------- ------ ---------- --------  ------ ----------------- -------------
+MsSqlServer  Password@123               1433   ams        10.1.14.5 X00                      Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create Microsoft SQL server provider for an AMS instance

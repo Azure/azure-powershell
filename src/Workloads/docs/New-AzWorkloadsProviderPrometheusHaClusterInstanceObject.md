@@ -23,27 +23,18 @@ Create an in-memory object for PrometheusHaClusterProviderInstanceProperties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create High Availability Pacemaker cluster provider
 ```powershell
-{{ Add code here }}
+New-AzWorkloadsProviderPrometheusHaClusterInstanceObject -ClusterName hacluster -Hostname h20dbvm0 -PrometheusUrl "http://10.0.92.5:964/metrics" -Sid X00 -SslPreference Disabled
 ```
 
 ```output
-{{ Add output here }}
+ProviderType        ClusterName Hostname PrometheusUrl                Sid SslCertificateUri SslPreference
+------------        ----------- -------- -------------                --- ----------------- -------------
+PrometheusHaCluster hacluster   h20dbvm0 http://10.0.92.5:964/metrics X00                   Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create High Availability Pacemaker cluster for an AMS instance
 
 ## PARAMETERS
 
