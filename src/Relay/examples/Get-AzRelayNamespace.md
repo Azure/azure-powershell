@@ -14,7 +14,7 @@ The cmdlet lists all Relay namespaces within the resource group.
 
 ### Example 2: Gets a description for the specified Relay namespace within the resource group
 ```powershell
-Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | fl
+Get-AzRelayNamespace -ResourceGroupName lucas-relay-rg -Name namespace-pwsh01 | Format-List
 ```
 
 ```output
