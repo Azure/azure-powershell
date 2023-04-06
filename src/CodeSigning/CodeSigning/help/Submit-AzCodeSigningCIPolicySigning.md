@@ -15,7 +15,7 @@ Submit CI Policy signing to Azure.CodeSigning
 
 ### InteractiveSubmit (Default)
 ```
-Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
+Submit-AzCodeSigningCIPolicySigning [-AccountName] <String> [-ProfileName] <String> -Destination <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] [-KeyType <String>]
  [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
  [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -128,21 +128,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Disable
-Indicates that the key you are adding is set to an initial state of disabled. Any attempt to use
-the key will fail. Use this parameter if you are preloading keys that you intend to enable later.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Expires
 Specifies the expiration time, as a **DateTime** object, for the key that this cmdlet adds. This
@@ -162,20 +147,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Exportable
-Indicates if the private key can be exported.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate, HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 
 ### CommonParameters
@@ -183,22 +154,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+### Azure CodeSigning AccountName
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
+### Azure CodeSigning Profile Name
+
+### Azure CodeSigning Signing EndpointUrl
+
+### Azure CodeSigning UnSigned CI Policy File Path
+
+### Azure CodeSigning Signed CI Policy File Path
 
 ### System.String
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
+### Signed CI Policy file
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Backup-AzKeyVaultKey](./Backup-AzKeyVaultKey.md)
+[Get-AzCodeSigningEku](./Get-AzCodeSigningEku.md)
 
-[Get-AzKeyVaultKey](./Get-AzKeyVaultKey.md)
-
-[Remove-AzKeyVaultKey](./Remove-AzKeyVaultKey.md)
+[Get-AzCodeSigningRootCert](./Get-AzCodeSigningRootCert.md)

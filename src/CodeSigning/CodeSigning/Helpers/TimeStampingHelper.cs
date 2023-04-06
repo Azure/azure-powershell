@@ -6,10 +6,10 @@ using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Win32.SafeHandles;
-using static Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers.NativeMethod;
-using static Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers.CapiUtil;
+using static Microsoft.Azure.Commands.CodeSigning.Helpers.NativeMethod;
+using static Microsoft.Azure.Commands.CodeSigning.Helpers.CapiUtil;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 {
     public unsafe static class TimeStampingHelper
     {   

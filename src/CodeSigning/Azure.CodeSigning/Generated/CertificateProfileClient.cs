@@ -6,6 +6,8 @@
 #nullable disable
 
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Azure;
@@ -98,11 +100,11 @@ namespace Azure.CodeSigning
             }
         }
 
-        /// <summary> Gets the EKU of a customer&apos;s cert profile. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the ekus defined for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual async Task<Response<string>> GetSignEkuAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<IReadOnlyList<string>>> GetSignEkuAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
             using var scope = _clientDiagnostics.CreateScope("CertificateProfileClient.GetSignEku");
             scope.Start();
@@ -117,11 +119,11 @@ namespace Azure.CodeSigning
             }
         }
 
-        /// <summary> Gets the EKU of a customer&apos;s cert profile. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the ekus defined for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual Response<string> GetSignEku(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public virtual Response<IReadOnlyList<string>> GetSignEku(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
             using var scope = _clientDiagnostics.CreateScope("CertificateProfileClient.GetSignEku");
             scope.Start();
@@ -136,17 +138,17 @@ namespace Azure.CodeSigning
             }
         }
 
-        /// <summary> Gets the Private Trust Root Cert. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the root certificate for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual async Task<Response<byte[]>> GetSignPrivateTrustRootCertAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<System.IO.Stream>> GetSignCertificateRootAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
-            using var scope = _clientDiagnostics.CreateScope("CertificateProfileClient.GetSignPrivateTrustRootCert");
+            using var scope = _clientDiagnostics.CreateScope("CertificateProfileClient.GetSignCertificateRoot");
             scope.Start();
             try
             {
-                return await RestClient.GetSignPrivateTrustRootCertAsync(codeSigningAccountName, certificateProfileName, cancellationToken).ConfigureAwait(false);
+                return await RestClient.GetSignCertificateRootAsync(codeSigningAccountName, certificateProfileName, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception e)
             {
@@ -155,17 +157,17 @@ namespace Azure.CodeSigning
             }
         }
 
-        /// <summary> Gets the Private Trust Root Cert. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the root certificate for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
-        public virtual Response<byte[]> GetSignPrivateTrustRootCert(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public virtual Response<System.IO.Stream> GetSignCertificateRoot(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
-            using var scope = _clientDiagnostics.CreateScope("CertificateProfileClient.GetSignPrivateTrustRootCert");
+            using var scope = _clientDiagnostics.CreateScope("CertificateProfileClient.GetSignCertificateRoot");
             scope.Start();
             try
             {
-                return RestClient.GetSignPrivateTrustRootCert(codeSigningAccountName, certificateProfileName, cancellationToken);
+                return RestClient.GetSignCertificateRoot(codeSigningAccountName, certificateProfileName, cancellationToken);
             }
             catch (Exception e)
             {

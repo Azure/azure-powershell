@@ -15,14 +15,11 @@
 using System;
 using System.Collections.Generic;
 using Azure.CodeSigning;
-using Azure.Identity;
-using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Azure.Core;
 using System.Text.Json;
 using System.IO;
-using System.Collections;
-using Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers;
+using Azure.Core;
+using Microsoft.Azure.Commands.CodeSigning.Helpers;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
@@ -68,17 +65,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         private void Initialize(IAuthenticationFactory authFactory, IAzureContext context)
         {
-            var clientCred = new CodeSigningServiceCredential(authFactory, context, AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId);
-            var tenantId = clientCred.TenantId;
-            try
-            {
-                var creds = clientCred.GetAccessToken();
-            }
-            catch 
-            {
-                user_creds = new DefaultAzureCredential();
-            }           
-         
+            user_creds = new UserSuppliedCredential(new CodeSigningServiceCredential(authFactory, context, "api://cf2ab426-f71a-4b61-bb8a-9e505b85bc2e"));            
         }
 
         private void GetCertificateProfileClient(string endpoint)
@@ -98,7 +85,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         {
             GetCertificateProfileClient(endpoint);
 
-             var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
+            var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
             return string.Join(",", ((List<string>)eku).ToArray()); 
         }
         public string GetCodeSigningEku(string metadataPath)
@@ -111,7 +98,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             var accountName = Metadata.CodeSigningAccountName;
             var profileName = Metadata.CertificateProfileName;
             var eku = CertificateProfileClient.GetSignEku(accountName, profileName);
-            return eku.ToString();
+            return string.Join(",", ((List<string>)eku).ToArray());
         }
 
         public Stream GetCodeSigningRootCert(string accountName, string profileName, string endpoint)

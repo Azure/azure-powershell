@@ -110,16 +110,12 @@ namespace Microsoft.Azure.Commands.CodeSigning
             {
                 CodeSigningServiceClient.SubmitCIPolicySigning(MetadatFilePath, CIPolicyFilePath, SignedCIPolicyFilePath, TimeStamperUrl);                
             }
+
+            WriteMessage("CI Policy is successfully signed. " + SignedCIPolicyFilePath);
         }
-
-        //why need GetAndWrite??
-        //private void GetAndWriteEku(string accountName, ) =>
-        //    GetAndWriteObjects(new KeyVaultObjectFilterOptions
-        //        {
-        //            VaultName = vaultName,
-        //            NextLink = null
-        //        },
-        //        (options) => KVSubResourceWildcardFilter(name, DataServiceClient.GetSecrets(options)));
-
+        private void WriteMessage(string message)
+        {
+            WriteObject(message);
+        }
     }
 }
