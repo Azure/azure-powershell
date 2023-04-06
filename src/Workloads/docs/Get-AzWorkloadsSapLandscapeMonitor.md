@@ -29,34 +29,81 @@ Gets configuration values for Single Pane Of Glass for SAP monitor for the speci
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get information about a SAP landscape monitor
 ```powershell
-New-AzWorkloadsSapLandscapeMonitor -ResourceGroupName PowerShell-CLI-TestRG -MonitorName lucasmonitor01
+Get-AzWorkloadsSapLandscapeMonitor -MonitorName suha-0202-ams9 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c
 ```
 
 ```output
-Name    ResourceGroupName     ProvisioningState GroupingLandscape GroupingSapApplication
-----    -----------------     ----------------- ----------------- ----------------------
-default PowerShell-CLI-TestRG Succeeded
+GroupingLandscape            : {{
+                                 "name": "Prod",
+                                 "topSid": [ "SID1", "SID2" ]
+                               }}
+GroupingSapApplication       : {{
+                                 "name": "ERP1",
+                                 "topSid": [ "SID1", "SID2" ]
+                               }}
+Id                           : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.
+                               Workloads/monitors/suha-0202-ams9/sapLandscapeMonitor/default
+Name                         : default
+ProvisioningState            : Succeeded
+ResourceGroupName            : suha-0802-rg1
+SystemData                   : {
+                               }
+SystemDataCreatedAt          : 06-04-2023 05:30:54
+SystemDataCreatedByType      : User
+SystemDataLastModifiedByType : User
+TopMetricsThreshold          : {{
+                                 "name": "Instance Availability",
+                                 "green": 90,
+                                 "yellow": 75,
+                                 "red": 50
+                               }}
+Type                         : microsoft.workloads/monitors/saplandscapemonitor
 ```
 
-{{ Add description here }}
+Gets information about a specific SAP landscape monitor
 
-### Example 2: {{ Add title here }}
+### Example 2: Get information about a SAP landscape monitor by Id
 ```powershell
-
+Get-AzWorkloadsSapLandscapeMonitor -InputObject "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0/providers/Microsoft.Workloads/monitors/suha-0202-ams9/sapLandscapeMonitor/default"
 ```
 
 ```output
-{{ Add output here }}
+GroupingLandscape            : {{
+                                 "name": "Prod",
+                                 "topSid": [ "SID1", "SID2" ]
+                               }}
+GroupingSapApplication       : {{
+                                 "name": "ERP1",
+                                 "topSid": [ "SID1", "SID2" ]
+                               }}
+Id                           : /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.
+                               Workloads/monitors/suha-0202-ams9/sapLandscapeMonitor/default
+Name                         : default
+ProvisioningState            : Succeeded
+ResourceGroupName            : suha-0802-rg1
+SystemData                   : {
+                               }
+SystemDataCreatedAt          : 06-04-2023 05:30:54
+SystemDataCreatedByType      : User
+SystemDataLastModifiedByType : User
+TopMetricsThreshold          : {{
+                                 "name": "Instance Availability",
+                                 "green": 90,
+                                 "yellow": 75,
+                                 "red": 50
+                               }}
+Type                         : microsoft.workloads/monitors/saplandscapemonitor
 ```
 
-{{ Add description here }}
+Gets information about a specific SAP landscape monitor by ArmId
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
