@@ -81,6 +81,11 @@ namespace Microsoft.Azure.Commands.CodeSigning
            ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
            HelpMessage = "Original unsigned CI policy file path.")]
+        [Parameter(Mandatory = true,
+           Position = 3,
+           ParameterSetName = ByMetadataFileParameterSet,
+            ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Original unsigned CI policy file path.")]
         [ValidateNotNullOrEmpty]
         public string CIPolicyFilePath { get; set; }
         [Parameter(Mandatory = true,
@@ -88,14 +93,23 @@ namespace Microsoft.Azure.Commands.CodeSigning
            ParameterSetName = ByAccountProfileNameParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Signed CI policy file path")]
+        [Parameter(Mandatory = true,
+           Position = 4,
+           ParameterSetName = ByMetadataFileParameterSet,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "Signed CI policy file path")]
         [ValidateNotNullOrEmpty]
         public string SignedCIPolicyFilePath { get; set; }
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
                    Position = 5,
                    ParameterSetName = ByAccountProfileNameParameterSet,
                     ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Time Stamper Url.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false,
+                   Position = 5,
+                   ParameterSetName = ByMetadataFileParameterSet,
+                    ValueFromPipelineByPropertyName = true,
+                   HelpMessage = "Time Stamper Url.")]        
         public string TimeStamperUrl { get; set; }
 
         #endregion
