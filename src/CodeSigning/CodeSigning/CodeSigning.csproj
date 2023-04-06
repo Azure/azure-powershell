@@ -9,6 +9,8 @@
   <PropertyGroup>    
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>    
     <OutputType>Library</OutputType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -35,13 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Azure.CodeSigning\Azure.CodeSigning.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <Reference Include="Azure.CodeSigning">
+      <HintPath>..\Azure.CodeSigning\bin\Debug\netstandard2.0\Azure.CodeSigning.dll</HintPath>
+    </Reference>
     <Reference Include="Azure.CodeSigning.Client.CryptoProvider">
       <HintPath>Libraries\Azure.CodeSigning.Client.CryptoProvider.dll</HintPath>
-      <Private>True</Private>
     </Reference>
   </ItemGroup>
   
