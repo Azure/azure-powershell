@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Test ConnectedKubernetes" -Description "Test New-AzConnectedKubernetes" -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test ConnectedKubernetes" -Description "Test New-AzConnectedKubernetes" -Platform "Windows","Linux" -ScenarioScript `
 {
     param ($rg)
     $rgName = $rg.ResourceGroupName
