@@ -205,33 +205,33 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkService -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.ServiceName
-            $PSBoundParameters.Add('Location', $dataBase.Location)
+            $service = Get-AzMobileNetworkService -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.ServiceName
+            $PSBoundParameters.Add('Location', $service.Location)
 
-            if (!$PSBoundParameters.ContainsKey('PccRule') -and $dataBase.PccRule) {
-                $PSBoundParameters.PccRule = $dataBase.PccRule
+            if (!$PSBoundParameters.ContainsKey('PccRule') -and $service.PccRule) {
+                $PSBoundParameters.PccRule = $service.PccRule
             }
-            if (!$PSBoundParameters.ContainsKey('MaximumBitRateDownlink') -and $dataBase.MaximumBitRateDownlink) {
-                $PSBoundParameters.MaximumBitRateDownlink = $dataBase.MaximumBitRateDownlink
+            if (!$PSBoundParameters.ContainsKey('MaximumBitRateDownlink') -and $service.MaximumBitRateDownlink) {
+                $PSBoundParameters.MaximumBitRateDownlink = $service.MaximumBitRateDownlink
             }
-            if (!$PSBoundParameters.ContainsKey('MaximumBitRateUplink') -and $dataBase.MaximumBitRateUplink) {
-                $PSBoundParameters.MaximumBitRateUplink = $dataBase.MaximumBitRateUplink
+            if (!$PSBoundParameters.ContainsKey('MaximumBitRateUplink') -and $service.MaximumBitRateUplink) {
+                $PSBoundParameters.MaximumBitRateUplink = $service.MaximumBitRateUplink
             }
-            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyAllocationAndRetentionPriorityLevel') -and $dataBase.ServiceQoPolicyAllocationAndRetentionPriorityLevel) {
-                $PSBoundParameters.ServiceQoPolicyAllocationAndRetentionPriorityLevel = $dataBase.ServiceQoPolicyAllocationAndRetentionPriorityLevel
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyAllocationAndRetentionPriorityLevel') -and $service.ServiceQoPolicyAllocationAndRetentionPriorityLevel) {
+                $PSBoundParameters.ServiceQoPolicyAllocationAndRetentionPriorityLevel = $service.ServiceQoPolicyAllocationAndRetentionPriorityLevel
             }
-            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyFiveQi') -and $dataBase.ServiceQoPolicyFiveQi) {
-                $PSBoundParameters.ServiceQoPolicyFiveQi = $dataBase.ServiceQoPolicyFiveQi
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyFiveQi') -and $service.ServiceQoPolicyFiveQi) {
+                $PSBoundParameters.ServiceQoPolicyFiveQi = $service.ServiceQoPolicyFiveQi
             }
-            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyPreemptionCapability') -and $dataBase.ServiceQoPolicyPreemptionCapability) {
-                $PSBoundParameters.ServiceQoPolicyPreemptionCapability = $dataBase.ServiceQoPolicyPreemptionCapability
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyPreemptionCapability') -and $service.ServiceQoPolicyPreemptionCapability) {
+                $PSBoundParameters.ServiceQoPolicyPreemptionCapability = $service.ServiceQoPolicyPreemptionCapability
             }
-            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyPreemptionVulnerability') -and $dataBase.ServiceQoPolicyPreemptionVulnerability) {
-               $PSBoundParameters.ServiceQoPolicyPreemptionVulnerability = $dataBase.ServiceQoPolicyPreemptionVulnerability
+            if (!$PSBoundParameters.ContainsKey('ServiceQoPolicyPreemptionVulnerability') -and $service.ServiceQoPolicyPreemptionVulnerability) {
+               $PSBoundParameters.ServiceQoPolicyPreemptionVulnerability = $service.ServiceQoPolicyPreemptionVulnerability
             }
 
             if (!$PSBoundParameters.ContainsKey('Tag')) {
-                $PSBoundParameters.Tag = $dataBase.Tag
+                $PSBoundParameters.Tag = $service.Tag
             }
 
             Az.MobileNetwork.private\New-AzMobileNetworkService_CreateExpanded @PSBoundParameters

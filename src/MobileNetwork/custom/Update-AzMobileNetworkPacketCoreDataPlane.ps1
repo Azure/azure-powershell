@@ -163,24 +163,24 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.PacketCoreDataPlaneName
-            $PSBoundParameters.Add('Location', $dataBase.Location)
+            $packetCoreDataPlane = Get-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.PacketCoreDataPlaneName
+            $PSBoundParameters.Add('Location', $packetCoreDataPlane.Location)
 
-            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Address') -and $dataBase.UserPlaneAccessInterfaceIpv4Address) {
-                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Address = $dataBase.UserPlaneAccessInterfaceIpv4Address
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Address') -and $packetCoreDataPlane.UserPlaneAccessInterfaceIpv4Address) {
+                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Address = $packetCoreDataPlane.UserPlaneAccessInterfaceIpv4Address
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Gateway') -and $dataBase.UserPlaneAccessInterfaceIpv4Gateway) {
-                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Gateway = $dataBase.UserPlaneAccessInterfaceIpv4Gateway
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Gateway') -and $packetCoreDataPlane.UserPlaneAccessInterfaceIpv4Gateway) {
+                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Gateway = $packetCoreDataPlane.UserPlaneAccessInterfaceIpv4Gateway
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Subnet') -and $dataBase.UserPlaneAccessInterfaceIpv4Subnet) {
-                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Subnet = $dataBase.UserPlaneAccessInterfaceIpv4Subnet
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceIpv4Subnet') -and $packetCoreDataPlane.UserPlaneAccessInterfaceIpv4Subnet) {
+                $PSBoundParameters.UserPlaneAccessInterfaceIpv4Subnet = $packetCoreDataPlane.UserPlaneAccessInterfaceIpv4Subnet
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceName') -and $dataBase.UserPlaneAccessInterfaceName) {
-                $PSBoundParameters.UserPlaneAccessInterfaceName = $dataBase.UserPlaneAccessInterfaceName
+            if (!$PSBoundParameters.ContainsKey('UserPlaneAccessInterfaceName') -and $packetCoreDataPlane.UserPlaneAccessInterfaceName) {
+                $PSBoundParameters.UserPlaneAccessInterfaceName = $packetCoreDataPlane.UserPlaneAccessInterfaceName
             }
 
             if (!$PSBoundParameters.ContainsKey('Tag')) {
-                $PSBoundParameters.Tag = $dataBase.Tag
+                $PSBoundParameters.Tag = $packetCoreDataPlane.Tag
             }
 
             Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateExpanded @PSBoundParameters

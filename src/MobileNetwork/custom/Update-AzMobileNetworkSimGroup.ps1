@@ -161,30 +161,30 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SimGroupName
-            $PSBoundParameters.Add('Location', $dataBase.Location)
+            $simGroup = Get-AzMobileNetworkSimGroup -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SimGroupName
+            $PSBoundParameters.Add('Location', $simGroup.Location)
 
-            if (!$PSBoundParameters.ContainsKey('MobileNetworkId') -and $dataBase.MobileNetworkId) {
-                $PSBoundParameters.MobileNetworkId = $dataBase.MobileNetworkId
+            if (!$PSBoundParameters.ContainsKey('MobileNetworkId') -and $simGroup.MobileNetworkId) {
+                $PSBoundParameters.MobileNetworkId = $simGroup.MobileNetworkId
             }
-            if (!$PSBoundParameters.ContainsKey('EncryptionKeyUrl') -and $dataBase.EncryptionKeyUrl) {
-                $PSBoundParameters.EncryptionKeyUrl = $dataBase.EncryptionKeyUrl
+            if (!$PSBoundParameters.ContainsKey('EncryptionKeyUrl') -and $simGroup.EncryptionKeyUrl) {
+                $PSBoundParameters.EncryptionKeyUrl = $simGroup.EncryptionKeyUrl
             }
 
             if ('NONE' -ieq $IdentityType.ToString()) {
                 $PSBoundParameters.IdentityType = 'None'
                 $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
             } else {
-                if (!$PSBoundParameters.ContainsKey('IdentityType') -and $dataBase.IdentityType) {
-                    $PSBoundParameters.IdentityType = $dataBase.IdentityType
+                if (!$PSBoundParameters.ContainsKey('IdentityType') -and $simGroup.IdentityType) {
+                    $PSBoundParameters.IdentityType = $simGroup.IdentityType
                 }
                 if (!$PSBoundParameters.ContainsKey('IdentityUserAssignedIdentity')) {
-                    $PSBoundParameters.IdentityUserAssignedIdentity = $dataBase.IdentityUserAssignedIdentity
+                    $PSBoundParameters.IdentityUserAssignedIdentity = $simGroup.IdentityUserAssignedIdentity
                 }
             }
 
             if (!$PSBoundParameters.ContainsKey('Tag')) {
-                $PSBoundParameters.Tag = $dataBase.Tag
+                $PSBoundParameters.Tag = $simGroup.Tag
             }
 
             Az.MobileNetwork.private\New-AzMobileNetworkSimGroup_CreateExpanded @PSBoundParameters

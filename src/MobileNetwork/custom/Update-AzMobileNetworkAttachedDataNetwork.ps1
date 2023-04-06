@@ -257,60 +257,60 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -PacketCoreDataPlaneName $PSBoundParameters.PacketCoreDataPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.AttachedDataNetworkName 
-            $PSBoundParameters.Add('Location', $dataBase.Location)
+            $attachedDataNetwork = Get-AzMobileNetworkAttachedDataNetwork -PacketCoreControlPlaneName $PSBoundParameters.PacketCoreControlPlaneName -PacketCoreDataPlaneName $PSBoundParameters.PacketCoreDataPlaneName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.AttachedDataNetworkName 
+            $PSBoundParameters.Add('Location', $attachedDataNetwork.Location)
 
-            if (!$PSBoundParameters.ContainsKey('DnsAddress') -and $dataBase.DnsAddress) {
-                $PSBoundParameters.DnsAddress = $dataBase.DnsAddress
+            if (!$PSBoundParameters.ContainsKey('DnsAddress') -and $attachedDataNetwork.DnsAddress) {
+                $PSBoundParameters.DnsAddress = $attachedDataNetwork.DnsAddress
             }
-            if (!$PSBoundParameters.ContainsKey('NaptConfigurationEnabled') -and $dataBase.NaptConfigurationEnabled) {
-                $PSBoundParameters.NaptConfigurationEnabled = $dataBase.NaptConfigurationEnabled
+            if (!$PSBoundParameters.ContainsKey('NaptConfigurationEnabled') -and $attachedDataNetwork.NaptConfigurationEnabled) {
+                $PSBoundParameters.NaptConfigurationEnabled = $attachedDataNetwork.NaptConfigurationEnabled
             }
-            if (!$PSBoundParameters.ContainsKey('NaptConfigurationPinholeLimit') -and $dataBase.NaptConfigurationPinholeLimit) {
-                $PSBoundParameters.NaptConfigurationPinholeLimit = $dataBase.NaptConfigurationPinholeLimit
+            if (!$PSBoundParameters.ContainsKey('NaptConfigurationPinholeLimit') -and $attachedDataNetwork.NaptConfigurationPinholeLimit) {
+                $PSBoundParameters.NaptConfigurationPinholeLimit = $attachedDataNetwork.NaptConfigurationPinholeLimit
             }
-            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutIcmp') -and $dataBase.PinholeTimeoutIcmp) {
-                $PSBoundParameters.PinholeTimeoutIcmp = $dataBase.PinholeTimeoutIcmp
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutIcmp') -and $attachedDataNetwork.PinholeTimeoutIcmp) {
+                $PSBoundParameters.PinholeTimeoutIcmp = $attachedDataNetwork.PinholeTimeoutIcmp
             }
-            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutTcp') -and $dataBase.PinholeTimeoutTcp) {
-                $PSBoundParameters.PinholeTimeoutTcp = $dataBase.PinholeTimeoutTcp
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutTcp') -and $attachedDataNetwork.PinholeTimeoutTcp) {
+                $PSBoundParameters.PinholeTimeoutTcp = $attachedDataNetwork.PinholeTimeoutTcp
             }
-            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutUdp') -and $dataBase.PinholeTimeoutUdp) {
-                $PSBoundParameters.PinholeTimeoutUdp = $dataBase.PinholeTimeoutUdp
+            if (!$PSBoundParameters.ContainsKey('PinholeTimeoutUdp') -and $attachedDataNetwork.PinholeTimeoutUdp) {
+                $PSBoundParameters.PinholeTimeoutUdp = $attachedDataNetwork.PinholeTimeoutUdp
             }
-            if (!$PSBoundParameters.ContainsKey('PortRangeMaxPort') -and $dataBase.PortRangeMaxPort) {
-                $PSBoundParameters.PortRangeMaxPort = $dataBase.PortRangeMaxPort
+            if (!$PSBoundParameters.ContainsKey('PortRangeMaxPort') -and $attachedDataNetwork.PortRangeMaxPort) {
+                $PSBoundParameters.PortRangeMaxPort = $attachedDataNetwork.PortRangeMaxPort
             }
-            if (!$PSBoundParameters.ContainsKey('PortRangeMinPort') -and $dataBase.PortRangeMinPort) {
-                $PSBoundParameters.PortRangeMinPort = $dataBase.PortRangeMinPort
+            if (!$PSBoundParameters.ContainsKey('PortRangeMinPort') -and $attachedDataNetwork.PortRangeMinPort) {
+                $PSBoundParameters.PortRangeMinPort = $attachedDataNetwork.PortRangeMinPort
             }
-            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeTcp') -and $dataBase.PortReuseHoldTimeTcp) {
-                $PSBoundParameters.PortReuseHoldTimeTcp = $dataBase.PortReuseHoldTimeTcp
+            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeTcp') -and $attachedDataNetwork.PortReuseHoldTimeTcp) {
+                $PSBoundParameters.PortReuseHoldTimeTcp = $attachedDataNetwork.PortReuseHoldTimeTcp
             }
-            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeUdp') -and $dataBase.PortReuseHoldTimeUdp) {
-                $PSBoundParameters.PortReuseHoldTimeUdp = $dataBase.PortReuseHoldTimeUdp
+            if (!$PSBoundParameters.ContainsKey('PortReuseHoldTimeUdp') -and $attachedDataNetwork.PortReuseHoldTimeUdp) {
+                $PSBoundParameters.PortReuseHoldTimeUdp = $attachedDataNetwork.PortReuseHoldTimeUdp
             }
-            if (!$PSBoundParameters.ContainsKey('UserEquipmentAddressPoolPrefix') -and $dataBase.UserEquipmentAddressPoolPrefix) {
-                $PSBoundParameters.UserEquipmentAddressPoolPrefix = $dataBase.UserEquipmentAddressPoolPrefix
+            if (!$PSBoundParameters.ContainsKey('UserEquipmentAddressPoolPrefix') -and $attachedDataNetwork.UserEquipmentAddressPoolPrefix) {
+                $PSBoundParameters.UserEquipmentAddressPoolPrefix = $attachedDataNetwork.UserEquipmentAddressPoolPrefix
             }
-            if (!$PSBoundParameters.ContainsKey('UserEquipmentStaticAddressPoolPrefix') -and $dataBase.UserEquipmentStaticAddressPoolPrefix) {
-                $PSBoundParameters.UserEquipmentStaticAddressPoolPrefix = $dataBase.UserEquipmentStaticAddressPoolPrefix
+            if (!$PSBoundParameters.ContainsKey('UserEquipmentStaticAddressPoolPrefix') -and $attachedDataNetwork.UserEquipmentStaticAddressPoolPrefix) {
+                $PSBoundParameters.UserEquipmentStaticAddressPoolPrefix = $attachedDataNetwork.UserEquipmentStaticAddressPoolPrefix
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Address') -and $dataBase.UserPlaneDataInterfaceIpv4Address) {
-                $PSBoundParameters.UserPlaneDataInterfaceIpv4Address = $dataBase.UserPlaneDataInterfaceIpv4Address
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Address') -and $attachedDataNetwork.UserPlaneDataInterfaceIpv4Address) {
+                $PSBoundParameters.UserPlaneDataInterfaceIpv4Address = $attachedDataNetwork.UserPlaneDataInterfaceIpv4Address
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Gateway') -and $dataBase.UserPlaneDataInterfaceIpv4Gateway) {
-                $PSBoundParameters.UserPlaneDataInterfaceIpv4Gateway = $dataBase.UserPlaneDataInterfaceIpv4Gateway
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Gateway') -and $attachedDataNetwork.UserPlaneDataInterfaceIpv4Gateway) {
+                $PSBoundParameters.UserPlaneDataInterfaceIpv4Gateway = $attachedDataNetwork.UserPlaneDataInterfaceIpv4Gateway
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Subnet') -and $dataBase.UserPlaneDataInterfaceIpv4Subnet) {
-                $PSBoundParameters.UserPlaneDataInterfaceIpv4Subnet = $dataBase.UserPlaneDataInterfaceIpv4Subnet
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceIpv4Subnet') -and $attachedDataNetwork.UserPlaneDataInterfaceIpv4Subnet) {
+                $PSBoundParameters.UserPlaneDataInterfaceIpv4Subnet = $attachedDataNetwork.UserPlaneDataInterfaceIpv4Subnet
             }
-            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceName') -and $dataBase.UserPlaneDataInterfaceName) {
-                $PSBoundParameters.UserPlaneDataInterfaceName = $dataBase.UserPlaneDataInterfaceName
+            if (!$PSBoundParameters.ContainsKey('UserPlaneDataInterfaceName') -and $attachedDataNetwork.UserPlaneDataInterfaceName) {
+                $PSBoundParameters.UserPlaneDataInterfaceName = $attachedDataNetwork.UserPlaneDataInterfaceName
             }
 
             if (!$PSBoundParameters.ContainsKey('Tag')) {
-                $PSBoundParameters.Tag = $dataBase.Tag
+                $PSBoundParameters.Tag = $attachedDataNetwork.Tag
             }
 
             Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateExpanded @PSBoundParameters

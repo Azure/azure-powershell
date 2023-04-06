@@ -156,18 +156,18 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSlice -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -SliceName $PSBoundParameters.SliceName
-            $PSBoundParameters.Add('Location', $dataBase.Location)
+            $mobileNetworkSlice = Get-AzMobileNetworkSlice -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -SliceName $PSBoundParameters.SliceName
+            $PSBoundParameters.Add('Location', $mobileNetworkSlice.Location)
 
-            if (!$PSBoundParameters.ContainsKey('Description') -and $dataBase.Description) {
-                $PSBoundParameters.Description = $dataBase.Description
+            if (!$PSBoundParameters.ContainsKey('Description') -and $mobileNetworkSlice.Description) {
+                $PSBoundParameters.Description = $mobileNetworkSlice.Description
             }
-            if (!$PSBoundParameters.ContainsKey('SnssaiSd') -and $dataBase.SnssaiSd) {
-                $PSBoundParameters.SnssaiSd = $dataBase.SnssaiSd
+            if (!$PSBoundParameters.ContainsKey('SnssaiSd') -and $mobileNetworkSlice.SnssaiSd) {
+                $PSBoundParameters.SnssaiSd = $mobileNetworkSlice.SnssaiSd
             }
 
             if (!$PSBoundParameters.ContainsKey('Tag')) {
-                $PSBoundParameters.Tag = $dataBase.Tag
+                $PSBoundParameters.Tag = $mobileNetworkSlice.Tag
             }
 
             Az.MobileNetwork.private\New-AzMobileNetworkSlice_CreateExpanded @PSBoundParameters

@@ -144,15 +144,15 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkDataNetwork -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.DataNetworkName
-            $PSBoundParameters.Add('Location', $dataBase.Location)
+            $dataNetwork = Get-AzMobileNetworkDataNetwork -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.DataNetworkName
+            $PSBoundParameters.Add('Location', $dataNetwork.Location)
 
-            if (!$PSBoundParameters.ContainsKey('Description') -and $dataBase.Description) {
-                $PSBoundParameters.Description = $dataBase.Description
+            if (!$PSBoundParameters.ContainsKey('Description') -and $dataNetwork.Description) {
+                $PSBoundParameters.Description = $dataNetwork.Description
             }
 
             if (!$PSBoundParameters.ContainsKey('Tag')) {
-                $PSBoundParameters.Tag = $dataBase.Tag
+                $PSBoundParameters.Tag = $dataNetwork.Tag
             }
 
             Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateExpanded @PSBoundParameters

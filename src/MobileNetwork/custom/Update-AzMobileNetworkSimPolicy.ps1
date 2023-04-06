@@ -178,31 +178,31 @@ param(
 
     process {
         try {
-            $dataBase = Get-AzMobileNetworkSimPolicy -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SimPolicyName
-            $PSBoundParameters.Add('Location', $dataBase.Location)
+            $simPolicy = Get-AzMobileNetworkSimPolicy -MobileNetworkName $PSBoundParameters.MobileNetworkName -ResourceGroupName $PSBoundParameters.ResourceGroupName -Name $PSBoundParameters.SimPolicyName
+            $PSBoundParameters.Add('Location', $simPolicy.Location)
 
             # README.md file Line 142 ReNamed DefaultSlouseId -> DefaultSliceId
-            if (!$PSBoundParameters.ContainsKey('DefaultSliceId') -and $dataBase.DefaultSlouseId) {
-                $PSBoundParameters.DefaultSliceId = $dataBase.DefaultSlouseId
+            if (!$PSBoundParameters.ContainsKey('DefaultSliceId') -and $simPolicy.DefaultSlouseId) {
+                $PSBoundParameters.DefaultSliceId = $simPolicy.DefaultSlouseId
             }
-            if (!$PSBoundParameters.ContainsKey('SliceConfiguration') -and $dataBase.SliceConfiguration) {
-                $PSBoundParameters.SliceConfiguration = $dataBase.SliceConfiguration
+            if (!$PSBoundParameters.ContainsKey('SliceConfiguration') -and $simPolicy.SliceConfiguration) {
+                $PSBoundParameters.SliceConfiguration = $simPolicy.SliceConfiguration
             }
-            if (!$PSBoundParameters.ContainsKey('UeAmbrDownlink') -and $dataBase.UeAmbrDownlink) {
-                $PSBoundParameters.UeAmbrDownlink = $dataBase.UeAmbrDownlink
+            if (!$PSBoundParameters.ContainsKey('UeAmbrDownlink') -and $simPolicy.UeAmbrDownlink) {
+                $PSBoundParameters.UeAmbrDownlink = $simPolicy.UeAmbrDownlink
             }
-            if (!$PSBoundParameters.ContainsKey('UeAmbrUplink') -and $dataBase.UeAmbrUplink) {
-                $PSBoundParameters.UeAmbrUplink = $dataBase.UeAmbrUplink
+            if (!$PSBoundParameters.ContainsKey('UeAmbrUplink') -and $simPolicy.UeAmbrUplink) {
+                $PSBoundParameters.UeAmbrUplink = $simPolicy.UeAmbrUplink
             }
-            if (!$PSBoundParameters.ContainsKey('RegistrationTimer') -and "$dataBase.RegistrationTimer") {
-                $PSBoundParameters.RegistrationTimer = $dataBase.RegistrationTimer
+            if (!$PSBoundParameters.ContainsKey('RegistrationTimer') -and "$simPolicy.RegistrationTimer") {
+                $PSBoundParameters.RegistrationTimer = $simPolicy.RegistrationTimer
             }
-            if (!$PSBoundParameters.ContainsKey('RfspIndex') -and $dataBase.RfspIndex) {
-                $PSBoundParameters.RfspIndex = $dataBase.RfspIndex
+            if (!$PSBoundParameters.ContainsKey('RfspIndex') -and $simPolicy.RfspIndex) {
+                $PSBoundParameters.RfspIndex = $simPolicy.RfspIndex
             }
 
             if (!$PSBoundParameters.ContainsKey('Tag')) {
-                $PSBoundParameters.Tag = $dataBase.Tag
+                $PSBoundParameters.Tag = $simPolicy.Tag
             }
 
             Az.MobileNetwork.private\New-AzMobileNetworkSimPolicy_CreateExpanded @PSBoundParameters
