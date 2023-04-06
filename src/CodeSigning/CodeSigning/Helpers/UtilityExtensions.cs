@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Security;
 
-namespace Microsoft.Azure.Commands.KeyVault
+namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 {
     internal static class UtilityExtensions
     {

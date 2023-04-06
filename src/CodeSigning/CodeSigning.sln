@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.CodeSigning", "..\..\..\..\Ess.Sign.Acs.Core.Shared\src\Azure.CodeSigning\Azure.CodeSigning.csproj", "{BE85CA43-6BD1-41CB-BF86-D31033702985}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.CodeSigning", "Azure.CodeSigning\Azure.CodeSigning.csproj", "{BE85CA43-6BD1-41CB-BF86-D31033702985}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeSigning.Test", "CodeSigning.Test\CodeSigning.Test.csproj", "{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}"
 EndProject

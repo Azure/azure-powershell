@@ -61,8 +61,6 @@ RequiredAssemblies = 'Azure.CodeSigning.Client.CryptoProvider.dll',
                'Azure.CodeSigning.Client.CryptoProvider.Utilities.dll', 
                'Azure.CodeSigning.dll', 
                'Polly.dll', 
-               'Azure.Core.dll', 
-               'Azure.Identity.dll',
                'Newtonsoft.Json.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.

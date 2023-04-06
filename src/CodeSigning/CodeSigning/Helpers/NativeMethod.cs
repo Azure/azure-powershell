@@ -8,7 +8,7 @@ using System.Security;
 using System.Text;
 using System.Runtime.CompilerServices;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 {   
     [SuppressUnmanagedCodeSecurity]
     internal unsafe static class NativeMethod

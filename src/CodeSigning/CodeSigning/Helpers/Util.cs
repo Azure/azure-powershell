@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers
+namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 {
     internal class Util
     {

@@ -162,38 +162,36 @@
         }
       }
     },
-    "/codesigningaccounts/{codeSigningAccountName}/certificateprofiles/{certificateProfileName}/sign/Eku": {
+    "/codesigningaccounts/{codeSigningAccountName}/certificateprofiles/{certificateProfileName}/sign/eku": {
       "get": {
         "tags": [
           "CertificateProfiles"
         ],
-        "summary": "Gets the EKU of a customer's cert profile.",
+        "summary": "Gets the ekus defined for that account and profile.",
         "operationId": "CertificateProfile_GetSignEku",
         "parameters": [
           {
             "name": "codeSigningAccountName",
             "in": "path",
-            "description": "Azure Code Signing account name.",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "example": "accountB"
+            }
           },
           {
             "name": "certificateProfileName",
             "in": "path",
-            "description": "Certificate profile name.",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "example": "profileA1"
+            }
           },
           {
             "name": "api-version",
             "in": "query",
-            "description": "Version of the API to use.",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string",
@@ -203,11 +201,14 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the EKU of the customer's cert profile.",
+            "description": "Returns a list of EKUs.",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -217,7 +218,10 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string"
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -225,38 +229,36 @@
         }
       }
     },
-    "/codesigningaccounts/{codeSigningAccountName}/certificateprofiles/{certificateProfileName}/sign/PrivateTrustRootCert": {
+    "/codesigningaccounts/{codeSigningAccountName}/certificateprofiles/{certificateProfileName}/sign/rootcert": {
       "get": {
         "tags": [
           "CertificateProfiles"
         ],
-        "summary": "Gets the Private Trust Root Cert",
-        "operationId": "CertificateProfile_GetSignPrivateTrustRootCert",
+        "summary": "Gets the root certificate for that account and profile.",
+        "operationId": "CertificateProfile_GetSignCertificateRoot",
         "parameters": [
           {
             "name": "codeSigningAccountName",
             "in": "path",
-            "description": "Azure Code Signing account name.",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "example": "accountB"
+            }
           },
           {
             "name": "certificateProfileName",
             "in": "path",
-            "description": "Certificate profile name.",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
-            },
-            "example": "profileA1"
+            }
           },
           {
             "name": "api-version",
             "in": "query",
-            "description": "Version of the API to use.",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string",
@@ -266,12 +268,12 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the Private Trust Root Cert of the customer's cert profile.",
+            "description": "returns the root certificate",
             "content": {
-              "application/json": {
+              "application/x-x509-ca-cert": {
                 "schema": {
                   "type": "string",
-                  "format": "byte"
+                  "format": "binary"
                 }
               }
             }
@@ -281,8 +283,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "string",
-                  "format": "byte"
+                  "$ref": "#/components/schemas/Stream"
                 }
               }
             }
@@ -403,6 +404,45 @@
           "name": "Status",
           "modelAsString": true
         }
+      },
+      "Stream": {
+        "type": "object",
+        "properties": {
+          "canRead": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "canWrite": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "canSeek": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "canTimeout": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "length": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "position": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "readTimeout": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "writeTimeout": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
       }
     },
     "securitySchemes": {

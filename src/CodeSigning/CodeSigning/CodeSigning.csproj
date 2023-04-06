@@ -19,8 +19,7 @@
     <NoWarn>1701;1702;CS0214;</NoWarn>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.6.1" />
+  <ItemGroup>    
     <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="System.Security.Cryptography.Pkcs" Version="7.0.1" />
   </ItemGroup>
@@ -36,7 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Ess.Sign.Acs.Core.Shared\src\Azure.CodeSigning\Azure.CodeSigning.csproj" />
+    <ProjectReference Include="..\Azure.CodeSigning\Azure.CodeSigning.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,10 +49,6 @@
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
     </Compile>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.25.0" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

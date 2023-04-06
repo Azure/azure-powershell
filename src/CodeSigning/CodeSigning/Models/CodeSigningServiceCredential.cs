@@ -17,7 +17,8 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Rest;
+using Azure.Core;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
@@ -102,7 +103,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
                 }
 
                 var accesstoken = authFactory.Authenticate(context.Account, context.Environment, tenantId, null, ShowDialog.Never,
-                    null, tokenCache,resourceIdEndpoint);
+                    null, tokenCache, resourceIdEndpoint);
 
                 if (context.TokenCache != null && context.TokenCache.CacheData != null && context.TokenCache.CacheData.Length > 0)
                 {

@@ -6,6 +6,8 @@
 #nullable disable
 
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -225,19 +227,19 @@ namespace Azure.CodeSigning
             uri.AppendPath(codeSigningAccountName, true);
             uri.AppendPath("/certificateprofiles/", false);
             uri.AppendPath(certificateProfileName, true);
-            uri.AppendPath("/sign/Eku", false);
+            uri.AppendPath("/sign/eku", false);
             uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
             request.Headers.Add("Accept", "application/json");
             return message;
         }
 
-        /// <summary> Gets the EKU of a customer&apos;s cert profile. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the ekus defined for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="codeSigningAccountName"/> or <paramref name="certificateProfileName"/> is null. </exception>
-        public async Task<Response<string>> GetSignEkuAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public async Task<Response<IReadOnlyList<string>>> GetSignEkuAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
             if (codeSigningAccountName == null)
             {
@@ -254,9 +256,14 @@ namespace Azure.CodeSigning
             {
                 case 200:
                     {
-                        string value = default;
+                        IReadOnlyList<string> value = default;
                         using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = document.RootElement.GetString();
+                        List<string> array = new List<string>();
+                        foreach (var item in document.RootElement.EnumerateArray())
+                        {
+                            array.Add(item.GetString());
+                        }
+                        value = array;
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -264,12 +271,12 @@ namespace Azure.CodeSigning
             }
         }
 
-        /// <summary> Gets the EKU of a customer&apos;s cert profile. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the ekus defined for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="codeSigningAccountName"/> or <paramref name="certificateProfileName"/> is null. </exception>
-        public Response<string> GetSignEku(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public Response<IReadOnlyList<string>> GetSignEku(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
             if (codeSigningAccountName == null)
             {
@@ -286,9 +293,14 @@ namespace Azure.CodeSigning
             {
                 case 200:
                     {
-                        string value = default;
+                        IReadOnlyList<string> value = default;
                         using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = document.RootElement.GetString();
+                        List<string> array = new List<string>();
+                        foreach (var item in document.RootElement.EnumerateArray())
+                        {
+                            array.Add(item.GetString());
+                        }
+                        value = array;
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -296,7 +308,7 @@ namespace Azure.CodeSigning
             }
         }
 
-        internal HttpMessage CreateGetSignPrivateTrustRootCertRequest(string codeSigningAccountName, string certificateProfileName)
+        internal HttpMessage CreateGetSignCertificateRootRequest(string codeSigningAccountName, string certificateProfileName)
         {
             var message = _pipeline.CreateMessage();
             var request = message.Request;
@@ -307,19 +319,19 @@ namespace Azure.CodeSigning
             uri.AppendPath(codeSigningAccountName, true);
             uri.AppendPath("/certificateprofiles/", false);
             uri.AppendPath(certificateProfileName, true);
-            uri.AppendPath("/sign/PrivateTrustRootCert", false);
+            uri.AppendPath("/sign/rootcert", false);
             uri.AppendQuery("api-version", apiVersion, true);
             request.Uri = uri;
-            request.Headers.Add("Accept", "application/json");
+            request.Headers.Add("Accept", "application/x-x509-ca-cert, application/json");
             return message;
         }
 
-        /// <summary> Gets the Private Trust Root Cert. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the root certificate for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="codeSigningAccountName"/> or <paramref name="certificateProfileName"/> is null. </exception>
-        public async Task<Response<byte[]>> GetSignPrivateTrustRootCertAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public async Task<Response<System.IO.Stream>> GetSignCertificateRootAsync(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
             if (codeSigningAccountName == null)
             {
@@ -330,15 +342,13 @@ namespace Azure.CodeSigning
                 throw new ArgumentNullException(nameof(certificateProfileName));
             }
 
-            using var message = CreateGetSignPrivateTrustRootCertRequest(codeSigningAccountName, certificateProfileName);
+            using var message = CreateGetSignCertificateRootRequest(codeSigningAccountName, certificateProfileName);
             await _pipeline.SendAsync(message, cancellationToken).ConfigureAwait(false);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        byte[] value = default;
-                        using var document = await JsonDocument.ParseAsync(message.Response.ContentStream, default, cancellationToken).ConfigureAwait(false);
-                        value = document.RootElement.GetBytesFromBase64("D");
+                        var value = message.ExtractResponseContent();
                         return Response.FromValue(value, message.Response);
                     }
                 default:
@@ -346,12 +356,12 @@ namespace Azure.CodeSigning
             }
         }
 
-        /// <summary> Gets the Private Trust Root Cert. </summary>
-        /// <param name="codeSigningAccountName"> Azure Code Signing account name. </param>
-        /// <param name="certificateProfileName"> Certificate profile name. </param>
+        /// <summary> Gets the root certificate for that account and profile. </summary>
+        /// <param name="codeSigningAccountName"> The String to use. </param>
+        /// <param name="certificateProfileName"> The String to use. </param>
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="codeSigningAccountName"/> or <paramref name="certificateProfileName"/> is null. </exception>
-        public Response<byte[]> GetSignPrivateTrustRootCert(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
+        public Response<System.IO.Stream> GetSignCertificateRoot(string codeSigningAccountName, string certificateProfileName, CancellationToken cancellationToken = default)
         {
             if (codeSigningAccountName == null)
             {
@@ -362,15 +372,13 @@ namespace Azure.CodeSigning
                 throw new ArgumentNullException(nameof(certificateProfileName));
             }
 
-            using var message = CreateGetSignPrivateTrustRootCertRequest(codeSigningAccountName, certificateProfileName);
+            using var message = CreateGetSignCertificateRootRequest(codeSigningAccountName, certificateProfileName);
             _pipeline.Send(message, cancellationToken);
             switch (message.Response.Status)
             {
                 case 200:
                     {
-                        byte[] value = default;
-                        using var document = JsonDocument.Parse(message.Response.ContentStream);
-                        value = document.RootElement.GetBytesFromBase64("D");
+                        var value = message.ExtractResponseContent();
                         return Response.FromValue(value, message.Response);
                     }
                 default:

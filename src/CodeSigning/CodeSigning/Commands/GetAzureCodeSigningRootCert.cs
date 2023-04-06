@@ -12,20 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.CodeSigning.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.Helpers;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Management.Automation;
-using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security;
-using System.Text.Json;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
