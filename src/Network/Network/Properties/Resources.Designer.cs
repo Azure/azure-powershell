@@ -322,6 +322,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string ConfirmMessage {
+            get {
+                return ResourceManager.GetString("ConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connection monitor test group contains duplicates in destination endpoint names. Destination endpoint names in testGroup must be unique..
         /// </summary>
         internal static string ConnectionMonitorDestinationEndpointNamesMustBeUnique {
@@ -1902,6 +1911,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string VpnGatewayRequiredToCreateVpnNatRule {
             get {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnNatRule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning: VpnClientProtocol being configured are: OpenVPN, IkeV2. AAD is one of the auth types configured. Since AAD is only supported for OpenVPN, it will only be used for OpenVPN..
+        /// </summary>
+        internal static string VpnMultiAuthIkev2OpenvpnAadWarning {
+            get {
+                return ResourceManager.GetString("VpnMultiAuthIkev2OpenvpnAadWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VpnClientProtocol being configured are : OpenVPN, IkeV2. VpnAuthenticationType being configured is AAD. Since AAD is only supported for OpenVPN, please choose one additional auth type or choose only OpenVPN protocol..
+        /// </summary>
+        internal static string VpnMultiAuthIkev2OpenvpnOnlyAad {
+            get {
+                return ResourceManager.GetString("VpnMultiAuthIkev2OpenvpnOnlyAad", resourceCulture);
             }
         }
         

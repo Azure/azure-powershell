@@ -360,8 +360,8 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("AadTenantUri, AadIssuerUri and AadAudienceId must be specified if AAD authentication is being configured for P2S.");
                 }
 
-                if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 1 && 
-                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.First().Equals(MNM.VpnClientProtocol.OpenVPN))
+                if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Count() >= 1 &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.OpenVPN))
                 {
                     this.VirtualNetworkGateway.VpnClientConfiguration.AadTenant = this.AadTenantUri;
                     this.VirtualNetworkGateway.VpnClientConfiguration.AadIssuer = this.AadIssuerUri;
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
                 else
                 {
-                    throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
+                    throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should contain :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
                 }
             }
             if (this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Count() > 0)
@@ -413,7 +413,25 @@ namespace Microsoft.Azure.Commands.Network
                     this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = new List<PSVpnClientRevokedCertificate>();
                     this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRootCertificates = new List<PSVpnClientRootCertificate>();
                 }
-                
+
+                if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.IkeV2) &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.OpenVPN) &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 2 &&
+                    this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Contains(MNM.VpnAuthenticationType.AAD))
+                {
+                    // In the case of multi-auth with OpenVPN and IkeV2, block user from configuring with just AAD since AAD is not supported for IkeV2
+                    if (this.VirtualNetworkGateway.VpnClientConfiguration.VpnAuthenticationTypes.Count() == 1)
+                    {
+                        throw new ArgumentException(Properties.Resources.VpnMultiAuthIkev2OpenvpnOnlyAad);
+                    }
+                    else
+                    {
+                        if (!ShouldContinue(Properties.Resources.VpnMultiAuthIkev2OpenvpnAadWarning, Properties.Resources.ConfirmMessage))
+                        {
+                            return;
+                        }
+                    }
+                }
             }
 
             if ((this.Asn > 0 || this.PeerWeight > 0) && this.VirtualNetworkGateway.BgpSettings == null)

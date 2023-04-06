@@ -11,7 +11,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2023 -Month 01 -Day 22 -Hour 18 -Minute 13 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2023 -Month 03 -Day 20 -Hour 11 -Minute 25 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
         
     $BackupInstanceTestVariables = @{
@@ -108,8 +108,20 @@ function setupEnv() {
         OssId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg/providers/Microsoft.DBforPostgreSQL/servers/rishitserver3/databases/postgres"
         Ossrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg"
         KeyURI = "https://rishitkeyvault3.vault.azure.net/secrets/rishitnewsecret"
-        KeyVaultId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3"
- 
+        KeyVaultId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3" 
+    }
+
+    $AksVariables = @{
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "aksbackuptestrg-rajat"
+        VaultName = "demobackupvault"
+        NewPolicyName = "pstest-aks-policy"
+        PolicyName = "demoaksbackuppolicy"
+        DataSourceLocation = "eastus"
+        SourceClusterId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-pstest-cluster"
+        TargetClusterId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-clitest-cluster"
+        SnapshotResourceGroupId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat"
+        FriendlyName = "pstest-aks-cluster"        
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
@@ -122,7 +134,7 @@ function setupEnv() {
     $env.add("TestOssBackupScenario", $OssVariables) | Out-Null
     $env.add("TestResourceGuard", $ResourceGuardVariables) | Out-Null
     $env.add("TestGrantPermission", $GrantPermissionVariables) | Out-Null
-    
+    $env.add("TestAksBackupScenario", $AksVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

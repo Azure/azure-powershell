@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints/{recoveryPointId}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataProtectionRecoveryPoint_Get")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description(@"Gets a Recovery Point using recoveryPointId for a Datasource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Generated]
     public partial class GetAzDataProtectionRecoveryPoint_Get : global::System.Management.Automation.PSCmdlet,
@@ -56,9 +56,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.DataProtection Client => Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DataProtection.ParameterCategory.Azure)]
@@ -173,24 +174,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ICloudError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -366,12 +367,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ICloudError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ICloudError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -388,7 +389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, VaultName=VaultName, BackupInstanceName=BackupInstanceName, Id=Id })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -406,12 +407,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource">Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource> response)
         {
             using( NoSynchronizationContext )
             {
@@ -423,7 +424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource
                 WriteObject((await response));
             }
         }

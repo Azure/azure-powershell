@@ -23,11 +23,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
+
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancer", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerCommand : NetworkBaseCmdlet
     {
@@ -107,9 +107,35 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 }
 
-                if(!present)
+                if (!present)
                 {
                     throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                }
+
+                if ((this.LoadBalancer.Sku?.Tier ?? string.Empty) == "Global")
+                {
+                    if ((this.LoadBalancer.InboundNatRules?.Count() ?? 0) > 0 || (this.LoadBalancer.OutboundRules?.Count() ?? 0) > 0)
+                    {
+                        throw new ArgumentException("Only load balancing rules are supported on global load balancers.");
+                    }
+
+                    if ((this.LoadBalancer.Probes?.Count() ?? 0) > 0)
+                    {
+                        throw new ArgumentException("User defined probes are not supported on global load balancers.");
+                    }
+
+                    foreach (PSLoadBalancingRule lbRule in this.LoadBalancer.LoadBalancingRules?.ToList() ?? new List<PSLoadBalancingRule>())
+                    {
+                        if (lbRule.EnableTcpReset == true)
+                        {
+                            throw new ArgumentException("TCP reset is not supported on global load balancers.");
+                        }
+
+                        if (lbRule.IdleTimeoutInMinutes != Constants.LoadBalancingIdleTimeoutDefault)
+                        {
+                            throw new ArgumentException("Idle timeout is not supported on global load balancers.");
+                        }
+                    }
                 }
 
                 NormalizeChildIds(this.LoadBalancer);

@@ -185,6 +185,11 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://learn.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
@@ -327,6 +332,19 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.StorageProfile.ImageReference = new ImageReference();
                 }
                 vm.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+
+            if (this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                if (vm.StorageProfile.ImageReference == null)
+                {
+                    vm.StorageProfile.ImageReference = new ImageReference();
+                }
+                vm.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
             }
 
             if (this.IsParameterBound(c => c.DiskControllerType))

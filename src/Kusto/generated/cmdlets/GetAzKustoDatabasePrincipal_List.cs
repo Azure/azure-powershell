@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     /// [OpenAPI] ListPrincipals=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/Databases/{databaseName}/listPrincipals"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzKustoDatabasePrincipal_List", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipal))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipal))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Returns a list of database principals of the given Kusto cluster and database.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
     public partial class GetAzKustoDatabasePrincipal_List : global::System.Management.Automation.PSCmdlet,
@@ -70,9 +70,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         public string DatabaseName { get => this._databaseName; set => this._databaseName = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Azure)]
@@ -94,11 +95,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -162,24 +163,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalListResult"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -358,12 +359,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -380,7 +381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, ClusterName=ClusterName, DatabaseName=DatabaseName, SubscriptionId=SubscriptionId })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -398,12 +399,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalListResult"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabasePrincipalListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabasePrincipalListResult> response)
         {
             using( NoSynchronizationContext )
             {

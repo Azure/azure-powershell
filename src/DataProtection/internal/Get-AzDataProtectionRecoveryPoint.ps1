@@ -27,12 +27,12 @@ $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxx-xxx-xxx" -R
 Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstanceName $instance[2].Name -Id 892e5c5014dc4a96807d22924f5745c9
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionrecoverypoint
 #>
 function Get-AzDataProtectionRecoveryPoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRecoveryPointResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRecoveryPointResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -79,7 +79,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

@@ -37,11 +37,11 @@ $2ds = New-TimeSpan -Days 2
 Update-AzKustoDatabase -InputObject $database -Kind ReadOnlyFollowing -HotCachePeriod $2ds -Location 'East US'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IKustoIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -71,7 +71,7 @@ PARAMETER <IDatabase>: Class representing a Kusto database.
 https://learn.microsoft.com/powershell/module/az.kusto/update-azkustodatabase
 #>
 function Update-AzKustoDatabase {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -113,10 +113,18 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Query')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.CallerRole]
+    # By default, any user who run operation on a database become an Admin on it.
+    # This property allows the caller to exclude the caller from Admins list.
+    ${CallerRole},
+
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDatabase]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDatabase]
     # Class representing a Kusto database.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -141,7 +149,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
