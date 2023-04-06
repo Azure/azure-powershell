@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`
+* Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
 
 ## Version 1.10.0
 * Introduced restorable apis support for Gremlin and Table, which includes:
