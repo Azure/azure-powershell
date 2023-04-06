@@ -1,6 +1,6 @@
 ### Example 1: Gets NetworkRuleSet for a Relay Namespace
 ```powershell
-Get-AzRelayNamespaceNetworkRuleSet -ResourceGroupName lucas-relay-rg -NamespaceName namespace-pwsh01 | fl
+Get-AzRelayNamespaceNetworkRuleSet -ResourceGroupName lucas-relay-rg -NamespaceName namespace-pwsh01 | Format-List
 ```
 
 ```output
@@ -37,7 +37,7 @@ $rules = @()
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.1"
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.2"
 $rules += New-AzRelayNetworkRuleSetIPRuleObject -Action 'Allow' -IPMask "1.1.1.3"
-New-AzRelayNamespaceNetworkRuleSet -ResourceGroupName lucas-relay-rg -NamespaceName namespace-pwsh01 -DefaultAction 'Deny' -IPRule $rules | Get-AzRelayNamespaceNetworkRuleSet
+Set-AzRelayNamespaceNetworkRuleSet -ResourceGroupName lucas-relay-rg -NamespaceName namespace-pwsh01 -DefaultAction 'Deny' -IPRule $rules | Get-AzRelayNamespaceNetworkRuleSet | Format-List
 ```
 
 ```output

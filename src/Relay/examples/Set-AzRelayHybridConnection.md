@@ -1,6 +1,6 @@
 ### Example 1: Updates the specified HybridConnection with a new UserMetadata in the specified namespace.
 ```powershell
-Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Update UserMetaData" | fl
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "Update UserMetaData" | Format-List
 ```
 
 ```output
@@ -30,7 +30,7 @@ This example updates the UserMetadata property with new value.
 ```powershell
 $connection = Get-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01
 $connection.UserMetadata = "testHybirdConnection"
-Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | fl                                                                    
+Set-AzRelayHybridConnection -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name connection-01 -InputObject $connection | Format-List                                                                    
 ```
 
 ```output

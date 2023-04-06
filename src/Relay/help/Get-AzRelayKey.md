@@ -67,7 +67,7 @@ This cmdlet gets the primary and secondary connection strings for the given Hybr
 
 ### Example 3: Get the primary and secondary connection strings for the given Wcf Relay
 ```powershell
-Get-AzRelayKey -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01  -Name authRule-01 | fl
+Get-AzRelayKey -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01  -Name authRule-01 | Format-List
 ```
 
 ```output

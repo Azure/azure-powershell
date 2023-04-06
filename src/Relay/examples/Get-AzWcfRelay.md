@@ -14,7 +14,7 @@ This cmdlet lists all Wcf Relays within the Relay namespace.
 
 ### Example 2: Get a Wcf Relay
 ```powershell
-Get-AzWcfRelay -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name wcf-02 | fl
+Get-AzWcfRelay -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name wcf-02 | Format-List
 ```
 
 ```output

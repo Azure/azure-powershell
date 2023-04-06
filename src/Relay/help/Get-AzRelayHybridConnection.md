@@ -49,7 +49,7 @@ This cmdlet lists all Hybrid Connections within the Relay namespace.
 
 ### Example 2: Gets a HybridConnection within the Relay namespace
 ```powershell
-Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 | fl
+Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 | Format-List
 ```
 
 ```output
