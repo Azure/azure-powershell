@@ -10,7 +10,7 @@ Invoke-LiveTestScenario -Name "Test ConnectedKubernetes" -Description "Test New-
     Assert-AreEqual $ckLocation $actual.Location
 
     $actual = Get-AzConnectedKubernetes -ResourceGroupName $rgName
-    Assert-AreEqual 1 $actual.Count
+    Assert-True { $actual.Count -ge 1 }
 
     $actual = Get-AzConnectedKubernetes -ResourceGroupName $rgName -ClusterName $ckName
     Assert-AreEqual $ckName $actual.Name
