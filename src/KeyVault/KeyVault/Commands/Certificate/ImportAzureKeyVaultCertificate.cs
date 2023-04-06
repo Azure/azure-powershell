@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// File Path
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(Mandatory = false,
                    ParameterSetName = ImportCertificateFromFileParameterSet,
                    HelpMessage = "Specifies the path to the file that contains the certificate policy to import to key vault.")]
         public string PolicyPath { get; set; }
@@ -171,9 +171,9 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     case ImportCertificateFromFileParameterSet:
                         PSKeyVaultCertificatePolicy policy = null;
-                        if (!String.IsNullOrEmpty(PolicyPath))
+                        if (!string.IsNullOrEmpty(PolicyPath))
                         {
-                            policy = GetPolicyFromFile(PolicyPath);
+                            policy = PSKeyVaultCertificatePolicy.FromJsonFile(PolicyPath);
                         }
                         // Pem file can't be handled by X509Certificate2Collection in dotnet standard
                         // Just read it as raw data and pass it to service side
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
             return certificateCollection;
         }
-
+        /*
         private PSKeyVaultCertificatePolicy GetPolicyFromFile(string filePath)
         {
             PSKeyVaultCertificatePolicy policy;
@@ -261,7 +261,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     ContentType = contentType
                 }
-            */
+            
             if (".json".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase))
             {
                 using (StreamReader r = new StreamReader(filePath))
@@ -276,7 +276,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 throw new AzPSArgumentException(string.Format(Resources.UnsupportedFileFormat, this.PolicyPath), nameof(PolicyPath));
             }
             return policy;
-        }
+        }*/
 
 
     }

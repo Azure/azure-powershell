@@ -17,11 +17,13 @@ using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Bcpg;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
@@ -298,17 +300,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 return false;
         }
 
-        internal void SetSubjectAlternativeNames(Track2Certificate.CertificatePolicy certificatePolicy)
+        internal Track2Certificate.SubjectAlternativeNames SetSubjectAlternativeNames(Track2Certificate.SubjectAlternativeNames SubjectAlternativeNames)
         {
             if (DnsNames != null && DnsNames.Any())
                 foreach (var dnsName in DnsNames)
-                    certificatePolicy.SubjectAlternativeNames.DnsNames.Add(dnsName);
+                    SubjectAlternativeNames.DnsNames.Add(dnsName);
             if (Emails != null && Emails.Any())
                 foreach (var email in Emails)
-                    certificatePolicy.SubjectAlternativeNames.Emails.Add(email);
+                    SubjectAlternativeNames.Emails.Add(email);
             if (UserPrincipalNames != null && UserPrincipalNames.Any())
                 foreach (var principalName in UserPrincipalNames)
-                    certificatePolicy.SubjectAlternativeNames.UserPrincipalNames.Add(principalName);
+                    SubjectAlternativeNames.UserPrincipalNames.Add(principalName);
+            // SubjectAlternativeNames.UserPrincipalNames.Add(principalName);
+            return SubjectAlternativeNames;
         }
 
         internal Track2Certificate.CertificatePolicy ToTrack2CertificatePolicy()
@@ -319,8 +323,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 if (!string.IsNullOrWhiteSpace(SubjectName) && HasSubjectAlternativeNames())
                 {
                     Track2Certificate.SubjectAlternativeNames subjectAlternativeNames = new Track2Certificate.SubjectAlternativeNames();
+                    subjectAlternativeNames = SetSubjectAlternativeNames(subjectAlternativeNames);
                     certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName, subjectAlternativeNames);
-                    SetSubjectAlternativeNames(certificatePolicy);
+                    
                 }
                 else if (!string.IsNullOrWhiteSpace(SubjectName))
                 {
@@ -329,8 +334,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 else if (HasSubjectAlternativeNames())
                 {
                     Track2Certificate.SubjectAlternativeNames subjectAlternativeNames = new Track2Certificate.SubjectAlternativeNames();
+                    subjectAlternativeNames = SetSubjectAlternativeNames(subjectAlternativeNames);
                     certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, subjectAlternativeNames);
-                    SetSubjectAlternativeNames(certificatePolicy);
+                    // SetSubjectAlternativeNames(certificatePolicy);
                 }
                 else
                     certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName);
@@ -338,20 +344,23 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 certificatePolicy = new Track2Certificate.CertificatePolicy();
             }
+            if (!string.IsNullOrWhiteSpace(SecretContentType))
+                certificatePolicy.ContentType = SecretContentType;
 
-            // KeyProperties
-            if (!string.IsNullOrWhiteSpace(Kty) ||
-                KeySize.HasValue ||
-                !string.IsNullOrWhiteSpace(Curve) ||
-                ReuseKeyOnRenewal.HasValue ||
-                Exportable.HasValue)
-            {
+            if (!string.IsNullOrWhiteSpace(Kty))
                 certificatePolicy.KeyType = Kty;
+
+            if (KeySize.HasValue)
                 certificatePolicy.KeySize = KeySize;
+
+            if (!string.IsNullOrWhiteSpace(Curve))
                 certificatePolicy.KeyCurveName = Curve;
-                certificatePolicy.Exportable = Exportable;
+
+            if (ReuseKeyOnRenewal.HasValue)
                 certificatePolicy.ReuseKey = ReuseKeyOnRenewal;
-            }
+
+            if (Exportable.HasValue)
+                certificatePolicy.Exportable = Exportable;
 
             if (CertificateTransparency.HasValue)
                 certificatePolicy.CertificateTransparency = CertificateTransparency;
@@ -482,9 +491,35 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
         }
 
-        internal interface IJsonDeserializable
+        private void ReadSubjectAlternativeNames(JsonProperty json)
         {
-            void ReadProperties(JsonElement json);
+            foreach (JsonProperty item in json.Value.EnumerateObject())
+            {
+                switch (item.Name)
+                {
+                    case "dns_names":
+                        DnsNames = new List<string>();
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            DnsNames.Add(item2.GetString());
+                        }
+                        break;
+                    case "emails":
+                        Emails = new List<string>();
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            Emails.Add(item2.GetString());
+                        }
+                        break;
+                    case "upns":
+                        UserPrincipalNames = new List<string>();
+                        foreach (JsonElement item2 in item.Value.EnumerateArray())
+                        {
+                            UserPrincipalNames.Add(item2.GetString());
+                        }
+                        break;
+                }
+            }
         }
 
         private void ReadX509CertificateProperties(JsonElement json)
@@ -498,7 +533,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         break;
                     case "sans":
                         var SubjectAlternativeNames = new Track2Certificate.SubjectAlternativeNames();
-                        ((IJsonDeserializable)SubjectAlternativeNames).ReadProperties(item.Value);
+                        ReadSubjectAlternativeNames(item);
+                            // SubjectAlternativeNames .ReadProperties(item.Value);
                         break;
                     case "key_usage":
                         foreach (JsonElement item2 in item.Value.EnumerateArray())
@@ -527,29 +563,16 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 switch (item.Name)
                 {
-                    case "subject":
-                        SubjectName = item.Value.GetString();
+                    case "cert_transparency":
+                        CertificateTransparency = item.Value.GetBoolean();
                         break;
-                    case "sans":
-                        var SubjectAlternativeNames = new Track2Certificate.SubjectAlternativeNames();
-                        ((IJsonDeserializable)SubjectAlternativeNames).ReadProperties(item.Value);
+                    
+                    case "cty":
+                        CertificateType = item.Value.GetString();
                         break;
-                    case "key_usage":
-                        foreach (JsonElement item2 in item.Value.EnumerateArray())
-                        {
-                            KeyUsage.Add(item2.GetString());
-                        }
 
-                        break;
-                    case "ekus":
-                        foreach (JsonElement item3 in item.Value.EnumerateArray())
-                        {
-                            Ekus.Add(item3.GetString());
-                        }
-
-                        break;
-                    case "validity_months":
-                        ValidityInMonths = item.Value.GetInt32();
+                    case "name":
+                        IssuerName = item.Value.GetString();
                         break;
                 }
             }
@@ -565,10 +588,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                         Enabled = item.Value.GetBoolean();
                         break;
                     case "created":
-                        CreatedOn = DateTimeOffset.FromUnixTimeSeconds(item.Value.GetInt64());
+                        Created = DateTimeOffset.FromUnixTimeSeconds(item.Value.GetInt64()).DateTime;
                         break;
                     case "updated":
-                        UpdatedOn = DateTimeOffset.FromUnixTimeSeconds(item.Value.GetInt64());
+                        Updated = DateTimeOffset.FromUnixTimeSeconds(item.Value.GetInt64()).DateTime;
                         break;
                 }
             }
@@ -582,8 +605,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 using (StreamReader r = new StreamReader(filePath))
                 {
                     string jsonContent = r.ReadToEnd();
-                    // dynamic array = JsonConvert.DeserializeObject(jsonContent);
-                    policyJson = JsonConvert.DeserializeObject<JsonElement>(jsonContent); //(PSKeyVaultCertificatePolicy)
+                    policyJson = JsonDocument.Parse(jsonContent).RootElement; 
                 }
             }
             else
@@ -609,42 +631,54 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     case "attributes":
                         policy.ReadAttributesProperties(item.Value);
                         break;
+
                     case "lifetime_actions":
+                        string actionType = null;
+                        string triggerType = null;
+                        int? triggerValue = null;
+
                         foreach (JsonElement item2 in item.Value.EnumerateArray())
                         {
-                            LifetimeActions.Add(LifetimeAction.FromJsonObject(item2));
+                            foreach (JsonProperty item3 in item2.EnumerateObject())
+                            {
+                                if (item3.Name == "trigger")
+                                {
+                                    if (item3.Value.EnumerateObject().Count() > 1)
+                                        throw new AzPSArgumentException(string.Format("Json file property {0} exceed expected number.", item3.Name), nameof(item.Name));
+                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
+                                    {
+                                        triggerType = item4.Name;
+                                        triggerValue = item4.Value.GetInt32();
+                                    }
+                                }
+                                else if (item3.Name == "action")
+                                {
+                                    foreach (JsonProperty item4 in item3.Value.EnumerateObject())
+                                    {
+                                        if (item4.Name == "action_type")
+                                            actionType = item4.Value.GetString();
+                                    }
+                                }
+                            }
                         }
 
+                        if (actionType == "AutoRenew")
+                        {
+                            if (triggerType == "days_before_expiry")
+                                policy.RenewAtNumberOfDaysBeforeExpiry = triggerValue;
+                            else if (triggerType == "lifetime_percentage")
+                                policy.RenewAtPercentageLifetime = triggerValue;
+                        }
+                        else if (actionType == "EmailContacts")
+                        {
+                            if (triggerType == "days_before_expiry")
+                                policy.EmailAtNumberOfDaysBeforeExpiry = triggerValue;
+                            else if (triggerType == "lifetime_percentage")
+                                policy.EmailAtPercentageLifetime = triggerValue;
+                        }
                         break;
                 }
             }
-            /*
-            return new PSKeyVaultCertificatePolicy
-            {
-                SecretContentType = policyJson["SecretProperties"] == null ? null : certificatePolicy.SecretProperties.ContentType,
-                Kty = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.KeyType,
-                KeySize = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.KeySize,
-                Curve = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.Curve,
-                Exportable = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.Exportable,
-                ReuseKeyOnRenewal = certificatePolicy.KeyProperties == null ? null : certificatePolicy.KeyProperties.ReuseKey,
-                SubjectName = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.Subject,
-                DnsNames = certificatePolicy.X509CertificateProperties == null || certificatePolicy.X509CertificateProperties.SubjectAlternativeNames == null ?
-                    null : new List<string>(certificatePolicy.X509CertificateProperties.SubjectAlternativeNames.DnsNames),
-                KeyUsage = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.KeyUsage == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.KeyUsage),
-                Ekus = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.Ekus == null ? null : new List<string>(certificatePolicy.X509CertificateProperties.Ekus),
-                ValidityInMonths = certificatePolicy.X509CertificateProperties == null ? null : certificatePolicy.X509CertificateProperties.ValidityInMonths,
-                CertificateTransparency = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.CertificateTransparency,
-                IssuerName = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.Name,
-                CertificateType = certificatePolicy.IssuerParameters == null ? null : certificatePolicy.IssuerParameters.CertificateType,
-                RenewAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),
-                RenewAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions, (trigger) => trigger.LifetimePercentage),
-                EmailAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions, (trigger) => trigger.DaysBeforeExpiry),
-                EmailAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions, (trigger) => trigger.LifetimePercentage),
-                Enabled = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Enabled,
-                Created = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Created,
-                Updated = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Updated,
-            };
-            */
             return policy;
         }
 
