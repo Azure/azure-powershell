@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Import-AzCdnEndpointContent')
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Import-AzCdnEndpointContent' -Tag 'LiveOnly' {
+Describe 'Import-AzCdnEndpointContent'  {
     It 'LoadExpanded' {
         {
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

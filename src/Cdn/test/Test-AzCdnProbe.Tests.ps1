@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzCdnProbe'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Test-AzCdnProbe' -Tag 'LiveOnly' {
+Describe 'Test-AzCdnProbe'  {
     It 'ValidateExpanded' {
         { 
             $probeUrl = "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"	

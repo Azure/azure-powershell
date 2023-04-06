@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnCustomDo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnCustomDomain' -Tag 'LiveOnly' {
+Describe 'Update-AzFrontDoorCdnCustomDomain'  {
     It 'UpdateExpanded' {
         { 
             $ResourceGroupName = 'powershelltest'

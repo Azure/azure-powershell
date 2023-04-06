@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfileS
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnProfileSku' -Tag 'LiveOnly' {
+Describe 'Update-AzFrontDoorCdnProfileSku'  {
     It 'Upgrade' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {

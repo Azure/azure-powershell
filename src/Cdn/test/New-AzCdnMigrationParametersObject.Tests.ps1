@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnMigrationParametersO
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnMigrationParametersObject' -Tag 'LiveOnly' {
+Describe 'New-AzCdnMigrationParametersObject'  {
     It '__AllParameterSets' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {

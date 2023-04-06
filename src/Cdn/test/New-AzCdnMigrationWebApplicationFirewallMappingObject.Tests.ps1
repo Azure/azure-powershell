@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnMigrationWebApplicat
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnMigrationWebApplicationFirewallMappingObject' -Tag 'LiveOnly' {
+Describe 'New-AzCdnMigrationWebApplicationFirewallMappingObject'  {
     It '__AllParameterSets' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         {

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnSubscriptionResource
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnSubscriptionResourceUsage' -Tag 'LiveOnly' {
+Describe 'Get-AzCdnSubscriptionResourceUsage'  {
     It 'List' {
         { 
             $subscriptionResourceUsage = Get-AzCdnSubscriptionResourceUsage

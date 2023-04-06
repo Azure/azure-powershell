@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Clear-AzFrontDoorCdnEndpointC
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Clear-AzFrontDoorCdnEndpointContent' -Tag 'LiveOnly' {
+Describe 'Clear-AzFrontDoorCdnEndpointContent'  {
     It 'PurgeExpanded' {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try

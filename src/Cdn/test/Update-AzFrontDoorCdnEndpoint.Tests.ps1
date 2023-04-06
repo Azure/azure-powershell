@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnEndpoint
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnEndpoint' -Tag 'LiveOnly' {
+Describe 'Update-AzFrontDoorCdnEndpoint'  {
     It 'UpdateExpanded'  {
         $PSDefaultParameterValues['Disabled'] = $true
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

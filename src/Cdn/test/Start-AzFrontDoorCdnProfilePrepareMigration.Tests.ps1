@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzFrontDoorCdnProfilePr
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Start-AzFrontDoorCdnProfilePrepareMigration'-Tag 'LiveOnly' {
+Describe 'Start-AzFrontDoorCdnProfilePrepareMigration' {
 
     BeforeAll {
         $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
