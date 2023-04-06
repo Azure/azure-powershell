@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new SID mapping for SAP Landscape Monitor
 ```powershell
-{{ Add code here }}
+New-AzWorkloadsSapLandscapeMonitorSidMappingObject -Name Prod -TopSid "{SID2,SID1}"
 ```
 
 ```output
-{{ Add output here }}
+Name TopSid
+---- ------
+Prod {{SID2,SID1}}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create a new Metrics Threshold object to be used for creating a SAP Landscape Monitor
