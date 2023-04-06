@@ -63,7 +63,7 @@ This cmdlet creates Authorization Rule with Listen rights for the Relay namespac
 
 ### Example 2: Creates Authorization Rule with Listen rights for the Hybrid Connection
 ```powershell
-New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 -Rights 'Listen','Send' | fl
+New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 -Rights 'Listen','Send' | Format-List
 ```
 
 ```output
@@ -86,7 +86,7 @@ This cmdlet creates Authorization Rule with Listen rights for the Hybrid Connect
 
 ### Example 3: Creates Authorization Rule with Listen rights for the Wcf Relay
 ```powershell
-New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -Rights 'Listen','Send' | fl
+New-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -Rights 'Listen','Send' | Format-List
 ```
 
 ```output

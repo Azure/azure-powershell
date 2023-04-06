@@ -61,7 +61,7 @@ Creates or updates an authorization rule for a namespace.
 
 ### Example 1: Adds Listen from the access rights of the authorization rule for the Relay namespace
 ```powershell
-Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name authRule-01 -Rights 'Listen' | fl
+Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name authRule-01 -Rights 'Listen' | Format-List
 ```
 
 ```output
@@ -86,7 +86,7 @@ This cmdlet adds Listen from the access rights of the authorization rule for the
 ```powershell
 $authRule = Get-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name authRule-01
 $authRule.Rights += 'Send'
-Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name authRule-01 -InputObject $authRule | fl
+Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name authRule-01 -InputObject $authRule | Format-List
 ```
 
 ```output
@@ -109,7 +109,7 @@ This cmdlet adds Send from the access rights of the authorization rule for the R
 
 ### Example 3: Set or update Listen from the access rights of the authorization rule for the Hybrid Connection
 ```powershell
-Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-02 -Rights 'Listen' | fl
+Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-02 -Rights 'Listen' | Format-List
 ```
 
 ```output
@@ -134,7 +134,7 @@ This cmdlet set or update Listen from the access rights of the authorization rul
 ```powershell
 $authRule = Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01
 $authRule.Rights += 'Send'
-Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 -InputObject $authRule | fl
+Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 -InputObject $authRule | Format-List
 ```
 
 ```output
@@ -157,7 +157,7 @@ This cmdlet adds Send from the access rights of the authorization rule for the H
 
 ### Example 5: Adds Send from the access rights of the authorization rule for the Wcf Relay
 ```powershell
-Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -WcfRelay wcfrelay-01 -Name authRule-03 -Rights 'Listen' | fl
+Set-AzRelayAuthorizationRule -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -WcfRelay wcfrelay-01 -Name authRule-03 -Rights 'Listen' | Format-List
 ```
 
 ```output
@@ -182,7 +182,7 @@ This cmdlet adds Send from the access rights of the authorization rule for the W
 ```powershell
 $authRule = Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01
 $authRule.Rights += 'Send'
-Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -InputObject $authRule | fl
+Set-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay wcf-01 -Name authRule-01 -InputObject $authRule | Format-List
 ```
 
 ```output

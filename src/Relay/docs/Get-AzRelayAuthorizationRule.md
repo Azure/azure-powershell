@@ -74,7 +74,7 @@ This cmdlet lists all Authorization Rules of the Relay namespace.
 
 ### Example 2: Get the specified authorization rule description for a given Relay namespace
 ```powershell
-Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name authRule-03 | fl
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name authRule-03 | Format-List
 ```
 
 ```output
@@ -110,7 +110,7 @@ This cmdlet lists all Authorization Rules of the Hybrid Connection.
 
 ### Example 4: Get the specified authorization rule description for a given Hybrid Connection
 ```powershell
-Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 | fl
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -HybridConnection connection-01 -Name authRule-01 | Format-List
 ```
 
 ```output
@@ -146,7 +146,7 @@ This cmdlet lists all Authorization Rules of the Wcf Relay.
 
 ### Example 6: Get the specified authorization rule description for a given Wcf Relay
 ```powershell
-Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay connection-01 -Name authRule-01 | fl
+Get-AzRelayAuthorizationRule -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -WcfRelay connection-01 -Name authRule-01 | Format-List
 ```
 
 ```output

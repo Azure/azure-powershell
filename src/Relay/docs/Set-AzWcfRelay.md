@@ -36,7 +36,7 @@ This operation is idempotent.
 ```powershell
 $wcf = Get-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01
 $wcf.UserMetadata = "User Meta Data"
-Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -InputObject $wcf | fl
+Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -InputObject $wcf | Format-List
 ```
 
 ```output
@@ -66,7 +66,7 @@ This command updates the description for the WcfRelay in the specified Relay nam
 
 ### Example 2: Updates the description for the WcfRelay in the specified Relay namespace with Properties
 ```powershell
-Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -UserMetadata "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored." | fl
+Set-AzWcfRelay -ResourceGroupName Relay-ServiceBus-EastUS -Namespace namespace-pwsh01 -Name wcfRelay-01 -UserMetadata "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored." | Format-List
 ```
 
 ```output

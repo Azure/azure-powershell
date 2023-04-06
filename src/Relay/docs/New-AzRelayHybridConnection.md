@@ -35,7 +35,7 @@ This operation is idempotent.
 
 ### Example 1: Creates a Hybrid Connection in the specified Relay namespace
 ```powershell
-New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "test 01" | fl
+New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01 -UserMetadata "test 01" | Format-List
 ```
 
 ```output
@@ -64,7 +64,7 @@ This cmdlet creates a Hybrid Connection in the specified Relay namespace.
 ```powershell
 $connection = Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-01
 $connection.RequiresClientAuthorization = $false
-New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | fl
+New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | Format-List
 ```
 
 ```output
@@ -93,7 +93,7 @@ This cmdlet creates a new Hybrid Connection using an existing Hybrid Connection 
 ```powershell
 $connection = Get-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02
 $connection.UserMetadata = "TestHybirdConnection2"
-New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | fl
+New-AzRelayHybridConnection -ResourceGroupName lucas-relay-rg -Namespace namespace-pwsh01 -Name connection-02 -InputObject $connection | Format-List
 ```
 
 ```output
