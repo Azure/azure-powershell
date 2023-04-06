@@ -29,27 +29,35 @@ Deletes a SAP monitor with the specified subscription, resource group, and SAP m
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a specific AMS 
 ```powershell
-{{ Add code here }}
+Remove-AzWorkloadsMonitor -Name suha-050423-ams7 -ResourceGroupName suha-0802-rg1 -SubscriptionId 49d64d54-e966-4c46-a868-1999802b762c
 ```
 
 ```output
-{{ Add output here }}
+EndTime Name                                                                                                  PercentComplete Resour
+                                                                                                                              ceGrou
+                                                                                                                              pName
+------- ----                                                                                                  --------------- ------
+        2a2acaca-6dbb-4531-859e-5cc8bf6d66a0*223F4A00A95CA88C8A59BF9C0FAD97B67B40E41D4AF631069741A1BF6DDA8BFB
 ```
 
-{{ Add description here }}
+Delete a specific AMS
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a specific AMS by Id
 ```powershell
-{{ Add code here }}
+Remove-AzWorkloadsMonitor -InputObject "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-050423-ams7"
 ```
 
 ```output
-{{ Add output here }}
+EndTime Name                                                                                                  PercentComplete Resour
+                                                                                                                              ceGrou
+                                                                                                                              pName
+------- ----                                                                                                  --------------- ------
+        2a2acaca-6dbb-4531-859e-5cc8bf6d66a0*223F4A00A95CA88C8A59BF9C0FAD97B67B40E41D4AF631069741A1BF6DDA8BFB
 ```
 
-{{ Add description here }}
+Delete a specific AMS by Arm Id
 
 ## PARAMETERS
 
@@ -69,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
