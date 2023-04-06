@@ -62,6 +62,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.SourceBackupLocationHelpMessage)]
+        public string SourceBackupLocation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             DateTime utcRestoreDateTime;
@@ -210,7 +213,8 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 RestoreTimestampInUtc = utcRestoreDateTime,
                 DatabasesToRestore = DatabasesToRestore,
                 TablesToRestore = TablesToRestore,
-                GremlinDatabasesToRestore = GremlinDatabasesToRestore
+                GremlinDatabasesToRestore = GremlinDatabasesToRestore,
+                SourceBackupLocation = SourceBackupLocation
             };
 
             Collection<Location> LocationCollection = new Collection<Location>();
