@@ -747,6 +747,15 @@
   <data name="RemoveRoutingIntentWarning" xml:space="preserve">
     <value>Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub</value>
   </data>
+  <data name="RemoveRouteMapWarning" xml:space="preserve">
+    <value>Removing this Route Map resource may affect the routing in your VirtualHub</value>
+  </data>
+  <data name="VHubRouteMapReferenceNotFound" xml:space="preserve">
+    <value>A valid VHub RouteMap reference is required</value>
+  </data>
+  <data name="RouteMapNotFound" xml:space="preserve">
+    <value>The route map resource could not be found</value>
+  </data>
   <data name="RoutingIntentNotFound" xml:space="preserve">
     <value>The routing intent resource could not be found</value>
   </data>

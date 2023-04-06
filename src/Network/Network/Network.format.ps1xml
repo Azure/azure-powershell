@@ -7040,11 +7040,11 @@
               </ListItem>
               <ListItem>
                 <Label>AssociatedInboundConnections</Label>
-                <PropertyName>AssociatedOutboundConnections</PropertyName>
+                <PropertyName>AssociatedInboundConnectionsText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>AssociatedOutboundConnections</Label>
-                <PropertyName>AssociatedOutboundConnections</PropertyName>
+                <PropertyName>AssociatedOutboundConnectionsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

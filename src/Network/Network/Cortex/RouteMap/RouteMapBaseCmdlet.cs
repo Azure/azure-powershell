@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.Network
         public PSRouteMap ToPsRouteMap(MNM.RouteMap routeMap)
         {
             var psRouteMap = NetworkResourceManagerProfile.Mapper.Map<PSRouteMap>(routeMap);
-
             return psRouteMap;
         }
 

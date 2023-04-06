@@ -489,7 +489,7 @@ function Test-RoutingIntentCRUD
 	}
 }
 
-function TestRouteMapCRUD
+function Test-RouteMapCRUD
 {
  # Setup
     $rgName = Get-ResourceName
@@ -538,8 +538,7 @@ function TestRouteMapCRUD
 		Assert-AreEqual $routeMap.AssociatedInboundConnections.Count 0
 
 		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
-		$rt2 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "noneRouteTable"
-		$testRoutingConfiguration =New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt2.Id) -InboundRouteMap @($routeMap.Id)
+		$testRoutingConfiguration =New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -Label @("testLabel") -Id @($rt1.Id) -InboundRouteMap $routeMap.Id
 
 		# creating virtual network and a virtual hub vnet connection resource
 		$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.2.1.0/24"

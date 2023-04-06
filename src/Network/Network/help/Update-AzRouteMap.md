@@ -83,8 +83,8 @@ RouteMapRules                 : [
                                     "Name": "rule2"
                                   }
                                 ]
-AssociatedInboundConnections  : {}
-AssociatedOutboundConnections : {}
+AssociatedInboundConnections  : []
+AssociatedOutboundConnections : []
 
 ```
 

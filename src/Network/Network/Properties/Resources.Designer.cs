@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -1195,6 +1195,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Removing this Route Map resource may affect the routing in your VirtualHub.
+        /// </summary>
+        internal static string RemoveRouteMapWarning {
+            get {
+                return ResourceManager.GetString("RemoveRouteMapWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing a Route Server will also remove all peerings associated with it. Are you sure you want to remove resource &apos;{0}&apos;.
         /// </summary>
         internal static string RemoveRouteServerWarning {
@@ -1211,18 +1220,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RemoveRoutingIntentWarning", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Removing this Route Map resource and may affect the routing in your VirtualHub.
-        /// </summary>
-        internal static string RemoveRouteMapWarning
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveRouteMapWarning", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Removing this HubRouteTable will remove all routes present in this and may affect the routing in your VirtualHub..
         /// </summary>
@@ -1350,6 +1348,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The route map resource could not be found.
+        /// </summary>
+        internal static string RouteMapNotFound {
+            get {
+                return ResourceManager.GetString("RouteMapNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The virtual hub route table to modify could not be found.
         /// </summary>
         internal static string RouteTableNotFound {
@@ -1366,18 +1373,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("RoutingIntentNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The route map resource could not be found.
-        /// </summary>
-        internal static string RouteMapNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("RouteMapNotFound", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
         /// </summary>
@@ -1694,6 +1690,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A valid VHub RouteMap reference is required.
+        /// </summary>
+        internal static string VHubRouteMapReferenceNotFound {
+            get {
+                return ResourceManager.GetString("VHubRouteMapReferenceNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The HubRouteTable could not be found..
         /// </summary>
         internal static string VHubRouteTableNotFound {
@@ -1710,18 +1715,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VHubRouteTableReferenceNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to A valid RouteMap reference is required..
-        /// </summary>
-        internal static string VHubRouteMapReferenceNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("VHubRouteMapReferenceNotFound", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to A valid VirtualNetworkGateway is required to create Virtual Router.
         /// </summary>

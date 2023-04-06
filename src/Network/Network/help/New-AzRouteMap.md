@@ -109,8 +109,8 @@ RouteMapRules                 : [
                                     "NextStepIfMatched": "Terminate"
                                   }
                                 ]
-AssociatedInboundConnections  : {}
-AssociatedOutboundConnections : {}
+AssociatedInboundConnections  : []
+AssociatedOutboundConnections : []
 
 ```
 
