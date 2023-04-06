@@ -4,18 +4,18 @@ Get-AzWorkloadsProviderInstance -ResourceGroupName ad-ams-rg -MonitorName ad-ams
 ```
 
 ```output
-Name              ResourceGroupName ProvisioningState ProviderSettingProviderType IdentityType
-----              ----------------- ----------------- --------------------------- ------------
-Hana-1-test       ad-ams-rg         Failed            SapHana
-hana-test-2       ad-ams-rg         Succeeded         SapHana
-prov-1            ad-ams-rg         Failed            PrometheusOS
-hana-test         ad-ams-rg         Failed            SapHana
-SAP-NETWEAVER     ad-ams-rg         Failed            SapNetWeaver
-HA3-HANA-HighAvl  ad-ams-rg         Succeeded         SapHana
-lh-28022023-host  ad-ams-rg         Failed            SapHana
-blahblah-28020223 ad-ams-rg         Succeeded         SapHana
-as1-sysdb         ad-ams-rg         Succeeded         SapHana
-h2-test           ad-ams-rg         Failed            SapHana
+Name              ResourceGroupName ProvisioningState IdentityType
+----              ----------------- ----------------- ------------
+Hana-1-test       ad-ams-rg         Failed            
+hana-test-2       ad-ams-rg         Succeeded         
+prov-1            ad-ams-rg         Failed            
+hana-test         ad-ams-rg         Failed            
+SAP-NETWEAVER     ad-ams-rg         Failed            
+HA3-HANA-HighAvl  ad-ams-rg         Succeeded         
+lh-28022023-host  ad-ams-rg         Failed            
+blahblah-28020223 ad-ams-rg         Succeeded         
+as1-sysdb         ad-ams-rg         Succeeded         
+h2-test           ad-ams-rg         Failed            
 ```
 
  List all the providers created for an AMS Instance
