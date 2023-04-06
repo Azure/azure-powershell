@@ -31,6 +31,7 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -110,6 +111,10 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The outbound (egress) routing method.")]
+        [PSArgumentCompleter("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
+        public string OutboundType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
@@ -466,6 +471,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.DockerBridgeCidr))
             {
                 networkProfile.DockerBridgeCidr = DockerBridgeCidr;
+            }
+            if (this.IsParameterBound(c => c.OutboundType))
+            {
+                networkProfile.OutboundType = OutboundType;
             }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
 

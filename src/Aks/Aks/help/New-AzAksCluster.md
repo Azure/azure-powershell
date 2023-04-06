@@ -23,12 +23,13 @@ New-AzAksCluster [-NodeVmSetType <String>] [-NodeVnetSubnetID <String>] [-NodeMa
  [-SubnetName <String>] [-EnableRbac] [-WindowsProfileAdminUserName <String>]
  [-WindowsProfileAdminUserPassword <SecureString>] [-NetworkPlugin <String>] [-NetworkPolicy <String>]
  [-PodCidr <String>] [-ServiceCidr <String>] [-DnsServiceIP <String>] [-DockerBridgeCidr <String>]
- [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp] [-NodePublicIPPrefixID <String>]
- [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>] [-EnableEncryptionAtHost] [-EnableUltraSSD]
- [-NodeLinuxOSConfig <LinuxOSConfig>] [-NodeKubeletConfig <KubeletConfig>] [-NodeMaxSurge <String>]
- [-PPG <String>] [-EnableFIPS] [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>]
- [-GpuInstanceProfile <String>] [-EnableUptimeSLA] [-EdgeZone <String>] [-NodeHostGroupID <String>]
- [-NodePodSubnetID <String>] [-EnableOidcIssuer] [-ResourceGroupName] <String> [-Name] <String>
+ [-OutboundType <String>] [-LoadBalancerSku <String>] [-Force] [-GenerateSshKey] [-EnableNodePublicIp]
+ [-NodePublicIPPrefixID <String>] [-AvailabilityZone <String[]>] [-NodeResourceGroup <String>]
+ [-EnableEncryptionAtHost] [-EnableUltraSSD] [-NodeLinuxOSConfig <LinuxOSConfig>]
+ [-NodeKubeletConfig <KubeletConfig>] [-NodeMaxSurge <String>] [-PPG <String>] [-EnableFIPS]
+ [-AutoScalerProfile <ManagedClusterPropertiesAutoScalerProfile>] [-GpuInstanceProfile <String>]
+ [-EnableUptimeSLA] [-EdgeZone <String>] [-NodeHostGroupID <String>] [-NodePodSubnetID <String>]
+ [-EnableOidcIssuer] [-ResourceGroupName] <String> [-Name] <String>
  [[-ServicePrincipalIdAndSecret] <PSCredential>] [-Location <String>] [-LinuxProfileAdminUserName <String>]
  [-DnsNamePrefix <String>] [-KubernetesVersion <String>] [-NodeName <String>] [-NodeMinCount <Int32>]
  [-NodeMaxCount <Int32>] [-EnableNodeAutoScaling] [-NodeCount <Int32>] [-NodeOsDiskSize <Int32>]
@@ -1179,6 +1180,21 @@ Accept wildcard characters: False
 
 ### -NodeVnetSubnetID
 VNet SubnetID specifies the VNet's subnet identifier.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutboundType
+The outbound (egress) routing method.
 
 ```yaml
 Type: System.String

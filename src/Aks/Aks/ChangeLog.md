@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `-OutboundType` for `New-AzAksCluster`
 * Added parameter `-EnableOidcIssuer` for `New-AzAksCluster` and `Set-AzAksCluster`
 * Added parameter `-NodePodSubnetID` for `New-AzAksCluster`, `-PodSubnetID` for `New-AzAksNodePool`
 
