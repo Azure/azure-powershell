@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Accept subscription ownership status.
 ```powershell
-{{ Add code here }}
+Get-AzSubscriptionAcceptOwnershipStatus
 ```
 
 ```output
-{{ Add output here }}
+AcceptOwnershipState BillingOwner DisplayName       ProvisioningState SubscriptionId
+-------------------- ------------ -----------       ----------------- --------------
+Completed                         test-subscription Pending           XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Accept subscription ownership status.

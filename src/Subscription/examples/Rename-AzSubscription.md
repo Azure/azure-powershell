@@ -1,22 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: The operation to rename a subscription.
 ```powershell
-{{ Add code here }}
+Rename-AzSubscription -Id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX -SubscriptionName test-subscription
 ```
 
 ```output
-{{ Add output here }}
+XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+The operation to rename a subscription.

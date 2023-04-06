@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create Alias Subscription.
 ```powershell
-{{ Add code here }}
+New-AzSubscriptionAlias -Name test-subscription
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+test-subscription
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create Alias Subscription.

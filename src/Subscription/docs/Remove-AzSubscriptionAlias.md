@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/remove-azsubscriptionalias
+online version: https://learn.microsoft.com/powershell/module/az.subscription/remove-azsubscriptionalias
 schema: 2.0.0
 ---
 
@@ -29,27 +29,12 @@ Delete Alias.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete Alias.
 ```powershell
-{{ Add code here }}
+Remove-AzSubscriptionAlias -Name test-subscription
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete Alias.
 
 ## PARAMETERS
 

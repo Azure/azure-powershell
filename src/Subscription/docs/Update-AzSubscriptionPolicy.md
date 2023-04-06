@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/update-azsubscriptionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.subscription/update-azsubscriptionpolicy
 schema: 2.0.0
 ---
 

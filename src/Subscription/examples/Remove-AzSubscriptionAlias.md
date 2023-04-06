@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete Alias.
 ```powershell
-{{ Add code here }}
+Remove-AzSubscriptionAlias -Name test-subscription
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Delete Alias.

@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Alias Subscription.
 ```powershell
-{{ Add code here }}
+Get-AzSubscriptionAlias
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+test-subscription
 ```
 
-{{ Add description here }}
+List Alias Subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Alias Subscription.
 ```powershell
-{{ Add code here }}
+Get-AzSubscriptionAlias -Name test-subscription
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+test-subscription
 ```
 
-{{ Add description here }}
-
+Get Alias Subscription.

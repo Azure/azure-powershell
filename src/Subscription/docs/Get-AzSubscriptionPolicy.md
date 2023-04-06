@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/get-azsubscriptionpolicy
+online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionpolicy
 schema: 2.0.0
 ---
 
@@ -27,27 +27,18 @@ Get the subscription tenant policy for the user's tenant.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the subscription tenant policy for the user's tenant.
 ```powershell
-{{ Add code here }}
+Get-AzSubscriptionPolicy
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+test-subscription
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get the subscription tenant policy for the user's tenant.
 
 ## PARAMETERS
 

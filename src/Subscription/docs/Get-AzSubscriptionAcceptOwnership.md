@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownership
+online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownership
 schema: 2.0.0
 ---
 

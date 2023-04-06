@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/get-azsubscriptionalias
+online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionalias
 schema: 2.0.0
 ---
 
@@ -32,27 +32,31 @@ Get Alias Subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List Alias Subscription.
 ```powershell
-{{ Add code here }}
+Get-AzSubscriptionAlias
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+test-subscription
 ```
 
-{{ Add description here }}
+List Alias Subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get Alias Subscription.
 ```powershell
-{{ Add code here }}
+Get-AzSubscriptionAlias -Name test-subscription
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+test-subscription
 ```
 
-{{ Add description here }}
+Get Alias Subscription.
 
 ## PARAMETERS
 

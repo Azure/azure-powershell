@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/disable-azsubscription
+online version: https://learn.microsoft.com/powershell/module/az.subscription/disable-azsubscription
 schema: 2.0.0
 ---
 
@@ -28,27 +28,13 @@ The operation to cancel a subscription
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: The operation to cancel a subscription.
 ```powershell
-{{ Add code here }}
+Disable-AzSubscription -Id XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The operation to cancel a subscription.
+Please wait a moment.
 
 ## PARAMETERS
 
