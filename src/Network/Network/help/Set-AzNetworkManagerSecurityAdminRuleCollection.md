@@ -13,9 +13,8 @@ Updates a network manager security admin rule collection.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerSecurityAdminRuleCollection
- -InputObject <PSNetworkManagerSecurityAdminRuleCollection> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzNetworkManagerSecurityAdminRuleCollection -InputObject <PSNetworkManagerSecurityAdminRuleCollection>
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,6 +33,7 @@ $configGroup.Add($groupItem2)
 $NetworkManagerSecurityAdminRuleCollection.AppliesToGroups = $configGroup
 Set-AzNetworkManagerSecurityAdminRuleCollection -InputObject $NetworkManagerSecurityAdminRuleCollection
 ```
+
 ```output
 AppliesToGroups     : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
                       /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2}
@@ -64,6 +64,7 @@ Name                : psRuleCollection
 Etag                :
 Id                  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig/ruleCollections/psRuleCollection
 ```
+
 Updates a network manager security admin rule collection to include new network groups.
 
 ## PARAMETERS
@@ -72,7 +73,7 @@ Updates a network manager security admin rule collection to include new network 
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +88,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -102,7 +103,7 @@ Accept wildcard characters: False
 The NetworkManagerSecurityAdminRuleCollection
 
 ```yaml
-Type: PSNetworkManagerSecurityAdminRuleCollection
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityAdminRuleCollection
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +118,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -133,7 +134,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
