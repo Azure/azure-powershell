@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Static Site Reset Properties ARM resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteResetPropertiesArmResource _resetPropertiesEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.StaticSiteResetPropertiesArmResource();
+
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Websites.ParameterCategory.Runtime)]
@@ -42,9 +45,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Websites.Websites Client => Microsoft.Azure.PowerShell.Cmdlets.Websites.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Websites.ParameterCategory.Azure)]
@@ -74,14 +78,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Kind of resource.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => ResetPropertiesEnvelopeBody.Kind ?? null; set => ResetPropertiesEnvelopeBody.Kind = value; }
+        public string Kind { get => _resetPropertiesEnvelopeBody.Kind ?? null; set => _resetPropertiesEnvelopeBody.Kind = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -135,13 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"The token which proves admin privileges to the repository.",
         SerializedName = @"repositoryToken",
         PossibleTypes = new [] { typeof(string) })]
-        public string RepositoryToken { get => ResetPropertiesEnvelopeBody.RepositoryToken ?? null; set => ResetPropertiesEnvelopeBody.RepositoryToken = value; }
-
-        /// <summary>Backing field for <see cref="ResetPropertiesEnvelopeBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteResetPropertiesArmResource _resetPropertiesEnvelopeBody= new Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.StaticSiteResetPropertiesArmResource();
-
-        /// <summary>Static Site Reset Properties ARM resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteResetPropertiesArmResource ResetPropertiesEnvelopeBody { get => this._resetPropertiesEnvelopeBody; set => this._resetPropertiesEnvelopeBody = value; }
+        public string RepositoryToken { get => _resetPropertiesEnvelopeBody.RepositoryToken ?? null; set => _resetPropertiesEnvelopeBody.RepositoryToken = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -166,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Determines whether the repository should be updated with the new properties.",
         SerializedName = @"shouldUpdateRepository",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter ShouldUpdateRepository { get => ResetPropertiesEnvelopeBody.ShouldUpdateRepository ?? default(global::System.Management.Automation.SwitchParameter); set => ResetPropertiesEnvelopeBody.ShouldUpdateRepository = value; }
+        public global::System.Management.Automation.SwitchParameter ShouldUpdateRepository { get => _resetPropertiesEnvelopeBody.ShouldUpdateRepository ?? default(global::System.Management.Automation.SwitchParameter); set => _resetPropertiesEnvelopeBody.ShouldUpdateRepository = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -193,8 +191,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -215,6 +213,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Websites.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -226,7 +229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -329,7 +332,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Websites.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -344,12 +346,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.StaticSitesResetStaticSiteApiKey(ResourceGroupName, Name, SubscriptionId, ResetPropertiesEnvelopeBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.StaticSitesResetStaticSiteApiKey(ResourceGroupName, Name, SubscriptionId, _resetPropertiesEnvelopeBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=ResetPropertiesEnvelopeBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_resetPropertiesEnvelopeBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -380,8 +382,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -403,14 +405,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ResetPropertiesEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_resetPropertiesEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ResetPropertiesEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_resetPropertiesEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

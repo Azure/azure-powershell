@@ -44,8 +44,27 @@ Performing the operation "
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): A
 Assigning Reader permission to the backup vault
 Assigned Reader permission to the backup vault
-Waiting for 60 seconds for roles to propogate
+Waiting for 60 seconds for roles to propagate
 ```
 
 The above command is used to assign permissions to the backup vault "Vaultname" under resource group "VaultRG" at the "Resource" scope of the Azure Database For PostgreSQL.
 It takes an additional KeyVaultId parameter to assign the necessary permissions to the backup vault on the keyvault.
+
+### Example 4: Grant missing permissions to configure backup for AzureKubernetesService
+```powershell
+Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup"
+```
+
+```output
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Allow Contributor permission over snapshot resource group" on target
+"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster".
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): Y
+Assigned Contributor permission to DataSource with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster over snapshot resource group with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/snapshotResourceGroup
+Assigned Reader permission to the backup vault over snapshot resource group with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/snapshotResourceGroup
+Required permission Reader is already assigned to backup vault over DataSource with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster
+Waiting for 60 seconds for roles to propagate
+```
+
+The above command is used to assign permissions to the backup vault "VaultName" under resource group "resourceGroupName" at the "ResourceGroup" scope.

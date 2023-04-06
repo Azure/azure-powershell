@@ -43,11 +43,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
                 {
+                    VirtualMachineReimageParameters vmReimageParams = new VirtualMachineReimageParameters();
+                    vmReimageParams.TempDisk = this.TempDisk.IsPresent ? true : (bool?)null;
                     string resourceGroupName = this.ResourceGroupName;
                     string vmName = this.VMName;
-                    bool? tempDisk = this.TempDisk.IsPresent ? true : (bool?)null;
 
-                    var result = VirtualMachinesClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmName, tempDisk).GetAwaiter().GetResult();
+                    if (this.IsParameterBound(c => c.ExactVersion))
+                    {
+                        vmReimageParams.ExactVersion = this.ExactVersion;
+                    }
+
+                    if (this.IsParameterBound(c => c.CustomData))
+                    {
+                        if (vmReimageParams.OsProfile == null) { 
+                            vmReimageParams.OsProfile = new OSProfileProvisioningData();
+                        }
+                        vmReimageParams.OsProfile.CustomData = this.CustomData;
+                    }
+
+                    if (this.IsParameterBound(c => c.AdminPassword))
+                    {
+                        if (vmReimageParams.OsProfile == null)
+                        {
+                            vmReimageParams.OsProfile = new OSProfileProvisioningData();
+                        }
+                        vmReimageParams.OsProfile.AdminPassword = this.AdminPassword; 
+                    }
+
+                    var result = VirtualMachinesClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmName, vmReimageParams).GetAwaiter().GetResult();
                     PSOperationStatusResponse output = new PSOperationStatusResponse
                     {
                         StartTime = this.StartTime,
@@ -87,5 +110,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies in decimal number, the version the OS disk should be reimaged to. If exact version is not provided, the OS disk is reimaged to the existing version of OS Disk.")]
+        public string ExactVersion { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies a base-64 encoded string of custom data. The base-64 encoded string is decoded to a binary array that is saved as a file on the Virtual Machine. The maximum length of the binary array is 65535 bytes.")]
+        public string CustomData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the password of the administrator account.")]
+        public string AdminPassword { get; set; }
     }
 }

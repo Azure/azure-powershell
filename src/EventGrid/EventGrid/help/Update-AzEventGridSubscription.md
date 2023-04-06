@@ -17,10 +17,11 @@ Update the properties of an Event Grid event subscription.
 Update-AzEventGridSubscription [-EventSubscriptionName] <String> [[-ResourceGroupName] <String>]
  [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
  [-IncludedEventType <String[]>] [-Label <String[]>] [-ExpirationDate <DateTime>]
- [-AdvancedFilter <Hashtable[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
- [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AzureActiveDirectoryTenantId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AdvancedFilter <Hashtable[]>] [-DeliveryAttributeMapping <Hashtable[]>] [-EventTtl <Int32>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AzureActiveDirectoryTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdEventSubscriptionParameterSet
@@ -28,21 +29,22 @@ Update-AzEventGridSubscription [-EventSubscriptionName] <String> [[-ResourceGrou
 Update-AzEventGridSubscription [-ResourceId] <String> [-EventSubscriptionName] <String>
  [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>]
  [-IncludedEventType <String[]>] [-Label <String[]>] [-ExpirationDate <DateTime>]
- [-AdvancedFilter <Hashtable[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
- [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AzureActiveDirectoryTenantId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AdvancedFilter <Hashtable[]>] [-DeliveryAttributeMapping <Hashtable[]>] [-EventTtl <Int32>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AzureActiveDirectoryTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EventSubscriptionCustomTopicInputObjectParameterSet
 ```
 Update-AzEventGridSubscription [-InputObject] <PSEventSubscription> [-EndpointType <String>]
  [-Endpoint <String>] [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-IncludedEventType <String[]>]
- [-Label <String[]>] [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-EventTtl <Int32>]
- [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>]
- [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
- [-AzureActiveDirectoryTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Label <String[]>] [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>]
+ [-DeliveryAttributeMapping <Hashtable[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
+ [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
+ [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AzureActiveDirectoryTenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CustomTopicEventSubscriptionParameterSet
@@ -50,10 +52,11 @@ Update-AzEventGridSubscription [-InputObject] <PSEventSubscription> [-EndpointTy
 Update-AzEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
  [-TopicName] <String> [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>]
  [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>] [-ExpirationDate <DateTime>]
- [-AdvancedFilter <Hashtable[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
- [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AzureActiveDirectoryTenantId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AdvancedFilter <Hashtable[]>] [-DeliveryAttributeMapping <Hashtable[]>] [-EventTtl <Int32>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AzureActiveDirectoryTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DomainEventSubscriptionParameterSet
@@ -61,10 +64,11 @@ Update-AzEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroup
 Update-AzEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
  [-DomainName] <String> [-EndpointType <String>] [-Endpoint <String>] [-SubjectBeginsWith <String>]
  [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>] [-ExpirationDate <DateTime>]
- [-AdvancedFilter <Hashtable[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
- [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AzureActiveDirectoryTenantId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AdvancedFilter <Hashtable[]>] [-DeliveryAttributeMapping <Hashtable[]>] [-EventTtl <Int32>]
+ [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AzureActiveDirectoryTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DomainTopicEventSubscriptionParameterSet
@@ -72,10 +76,11 @@ Update-AzEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroup
 Update-AzEventGridSubscription [-EventSubscriptionName] <String> [-ResourceGroupName] <String>
  [-DomainName] <String> [-DomainTopicName] <String> [-EndpointType <String>] [-Endpoint <String>]
  [-SubjectBeginsWith <String>] [-SubjectEndsWith <String>] [-IncludedEventType <String[]>] [-Label <String[]>]
- [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>]
- [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>] [-PreferredBatchSizeInKiloByte <Int32>]
- [-AzureActiveDirectoryApplicationIdOrUri <String>] [-AzureActiveDirectoryTenantId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExpirationDate <DateTime>] [-AdvancedFilter <Hashtable[]>] [-DeliveryAttributeMapping <Hashtable[]>]
+ [-EventTtl <Int32>] [-MaxDeliveryAttempt <Int32>] [-DeadLetterEndpoint <String>] [-MaxEventsPerBatch <Int32>]
+ [-PreferredBatchSizeInKiloByte <Int32>] [-AzureActiveDirectoryApplicationIdOrUri <String>]
+ [-AzureActiveDirectoryTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,6 +186,26 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeliveryAttributeMapping
+The delivery attribute mappings for this system topic event subscription.
+Each delivery attribute mapping should contain following two mandatory fields : Name and Type.
+The Type can either be 'Static' or 'Dynamic'.
+If the type is 'Static' then properties 'Value' and 'IsSecret' are required.
+If the type is 'Dynamic' then property 'SourceField' is required.
+An example of the DynamicAttributeMapping parameters: $DeliveryAttributeMapping=@($DeliveryAttributeMapping1, $DeliveryAttributeMapping2) where $DeliveryAttributeMapping1=@{Name="Name1"; Type="Static"; Values="value"; IsSecret="false"} and $DeliveryAttributeMapping2=@{Name="Name2"; Type="Dynamic"; SourceField="data.prop1"}
+
+```yaml
+Type: System.Collections.Hashtable[]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

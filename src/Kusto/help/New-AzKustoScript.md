@@ -108,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -173,7 +174,7 @@ Class representing a database script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 Parameter Sets: Create
 Aliases:
 
@@ -300,11 +301,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IScript
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IScript
 
 ## NOTES
 
@@ -315,7 +316,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER `<IScript>`: Class representing a database script.
+`PARAMETER <IScript>`: Class representing a database script.
   - `[AzureAsyncOperation <String>]`: 
   - `[Content <String>]`: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
   - `[ContinueOnError <Boolean?>]`: Flag that indicates whether to continue if one of the command fails.

@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzReservationCatalog'))
 
 Describe 'Get-AzReservationCatalog' {
     It 'GetSkusWithLocation' {
-        $response = Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" -Location "westus" -ReservedResourceType "VirtualMachine"
+        $response = Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" -Location "westus" -ReservedResourceType "PostgreSql"
         $response.Count | Should -BeGreaterOrEqual 1
         foreach ($sku in $response)
         {
-            $sku.ResourceType | Should -Be virtualMachines
+            $sku.ResourceType | Should -Be PostgreSql
             $sku.Locations | Should -Not -Be $null
             $sku.Locations.Count | Should -Be 1
             $sku.Locations[0] | Should -Be westus
@@ -40,9 +40,8 @@ Describe 'Get-AzReservationCatalog' {
     }
 
     It 'Get3PPSkus' {
-        $response = Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" -ReservedResourceType "VirtualMachineSoftware" -PublisherId "test_test_pmc2pc1" -OfferId "mnk_vmri_test_001" -PlanId "testplan001"
+        $response = Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" -ReservedResourceType "VirtualMachineSoftware" -PublisherId "canonical" -OfferId "0001-com-ubuntu-pro-jammy" -PlanId "pro-22_04-lts"
         $response.Count | Should -BeGreaterOrEqual 1
-        Write-Output $response
         foreach ($sku in $response)
         {
             $sku.ResourceType | Should -Be VirtualMachineSoftware

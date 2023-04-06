@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
 using Microsoft.Azure.Management.CosmosDB.Models;
+using Newtonsoft.Json.Converters;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
@@ -32,8 +33,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [ValidateNotNullOrEmpty]
         public string DatabaseAccountInstanceId { get; set; }
 
+        [Newtonsoft.Json.JsonConverter(typeof(IsoDateTimeConverter))]
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreTimestampHelpMessage)]
-        public DateTimeOffset RestoreTimestampInUtc { get; set; }
+        public DateTime RestoreTimestampInUtc { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = Constants.RestoreLocationNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -51,10 +53,20 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 DatabaseAccountInstanceId = InputObject.DatabaseAccountInstanceId;
             }
 
-            IEnumerable restorableMongoDBResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, RestoreLocation, RestoreTimestampInUtc.ToString()).GetAwaiter().GetResult().Body;
-            foreach (DatabaseRestoreResource restorableMongoDBResource in restorableMongoDBResources)
+            DateTime dateTimeInUtc;
+            if (RestoreTimestampInUtc.Kind == DateTimeKind.Unspecified)
             {
-                WriteObject(new PSDatabaseToRestore(restorableMongoDBResource));
+                dateTimeInUtc = RestoreTimestampInUtc;
+            }
+            else
+            {
+                dateTimeInUtc = RestoreTimestampInUtc.ToUniversalTime();
+            }
+
+            IEnumerable restorableMongoDBResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(Location, DatabaseAccountInstanceId, RestoreLocation, dateTimeInUtc.ToString()).GetAwaiter().GetResult().Body;
+            foreach (RestorableMongodbResourcesGetResult restorableMongoDBResource in restorableMongoDBResources)
+            {
+                WriteObject(new PSDatabaseToRestore(new DatabaseRestoreResource(restorableMongoDBResource.DatabaseName, restorableMongoDBResource.CollectionNames)));
             }
         }
     }

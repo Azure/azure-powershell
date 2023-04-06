@@ -1,17 +1,17 @@
 {
-  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2022-12-01+1": {
+  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2022-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2023-01-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "233" ],
-        "x-ms-client-request-id": [ "be51e724-c26a-49d1-94fa-f495988fa636" ],
+        "x-ms-unique-id": [ "148" ],
+        "x-ms-client-request-id": [ "5658688c-ec80-4cf6-b100-63544520d31a" ],
         "CommandName": [ "Get-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.1", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.2", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -27,10 +27,10 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
-        "x-ms-correlation-request-id": [ "fa3e8191-23f0-4b17-bad5-2e478af74b3b" ],
-        "x-ms-routing-request-id": [ "EASTUS2EUAP:20230122T131232Z:fa3e8191-23f0-4b17-bad5-2e478af74b3b" ],
-        "Date": [ "Sun, 22 Jan 2023 13:12:31 GMT" ]
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-correlation-request-id": [ "bfb454e2-068f-48b5-82fb-c7c39edb0d75" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230320T061727Z:bfb454e2-068f-48b5-82fb-c7c39edb0d75" ],
+        "Date": [ "Mon, 20 Mar 2023 06:17:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "639" ],
