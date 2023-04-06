@@ -340,4 +340,9 @@ directive:
 #   - DB2ProviderInstanceProperties
 #   - PrometheusHaClusterProviderInstanceProperties
 #   - MsSqlServerProviderInstanceProperties
+
+# Correct generated code
+- from: InvokeAzWorkloadsSapSizingRecommendation_SapExpanded
+  where: $
+  transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property', 'public Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult Property');
 ```
