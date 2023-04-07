@@ -13,7 +13,8 @@ autorest.cmd README.md --version=v2
 > see https://aka.ms/autorest
 ``` yaml
 title: NetworkManagementClient
-csharp: true
+isSdkGenerator: true
+powershell: true
 clear-output-folder: true
 reflect-api-versions: true
 openapi-type: arm
