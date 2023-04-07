@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `PolicyPath` in `Import-AzKeyVaultCertificate` to support custom policy [#20780]
 
 ## Version 4.9.2
 * Updated Azure.Core to 1.28.0.
