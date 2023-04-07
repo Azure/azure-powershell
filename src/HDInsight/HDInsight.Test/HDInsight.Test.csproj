@@ -26,9 +26,5 @@
   <ItemGroup>
     <Folder Include="SessionRecords\Commands.HDInsight.Test.ScenarioTests.HDInsightClusterTests\" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
-  </ItemGroup>
 
 </Project>
