@@ -1,0 +1,331 @@
+{
+    "AzSubscription+[NoContext]+CreateAliasExpanded+$PUT+https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01+1": {
+      "Request": {
+        "Method": "PUT",
+        "RequestUri": "https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01",
+        "Content": "{\r\n  \"properties\": {\r\n    \"subscriptionId\": \"40774a6a-cca3-4315-ae11-1e19fe6c5ef3\"\r\n  }\r\n}",
+        "isContentBase64": false,
+        "Headers": {
+        },
+        "ContentHeaders": {
+          "Content-Type": [ "application/json" ],
+          "Content-Length": [ "90" ]
+        }
+      },
+      "Response": {
+        "StatusCode": 200,
+        "Headers": {
+          "Cache-Control": [ "no-cache" ],
+          "Pragma": [ "no-cache" ],
+          "Vary": [ "Accept-Encoding" ],
+          "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+          "mise-correlation-id": [ "0d7ea6ab-dc10-42df-8458-53f80a671272" ],
+          "MS-CV": [ "Fb1bkXh+jU2IspP3PkSH4w.0" ],
+          "x-ms-correlation-request-id": [ "c5f44220-5ffb-4e72-8f8c-251e65051f49" ],
+          "Request-Id": [ "c5f44220-5ffb-4e72-8f8c-251e65051f49" ],
+          "x-gsm": [ "1.0.0.0" ],
+          "X-Content-Type-Options": [ "nosniff" ],
+          "Server": [ "Microsoft-IIS/10.0" ],
+          "X-AspNet-Version": [ "4.0.30319" ],
+          "X-Powered-By": [ "ASP.NET" ],
+          "x-ms-request-id": [ "c5f44220-5ffb-4e72-8f8c-251e65051f49" ],
+          "x-ms-routing-request-id": [ "WESTCENTRALUS:20230407T032208Z:c5f44220-5ffb-4e72-8f8c-251e65051f49" ],
+          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+          "Date": [ "Fri, 07 Apr 2023 03:22:08 GMT" ]
+        },
+        "ContentHeaders": {
+          "Content-Length": [ "216" ],
+          "Content-Type": [ "application/json; charset=utf-8" ],
+          "Expires": [ "-1" ]
+        },
+        "Content": "{\"id\":\"/providers/Microsoft.Subscription/aliases/8hnomc\",\"name\":\"8hnomc\",\"type\":\"Microsoft.Subscription/aliases\",\"properties\":{\"subscriptionId\":\"40774a6a-cca3-4315-ae11-1e19fe6c5ef3\",\"provisioningState\":\"Succeeded\"}}",
+        "isContentBase64": false
+      }
+    },
+    "AzSubscription+[NoContext]+CreateAliasExpanded+$GET+https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01+2": {
+      "Request": {
+        "Method": "GET",
+        "RequestUri": "https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01",
+        "Content": null,
+        "isContentBase64": false,
+        "Headers": {
+          "Authorization": [ "[Filtered]" ],
+          "x-ms-unique-id": [ "2" ],
+          "x-ms-client-request-id": [ "5aeaf16c-0c6e-41cc-b596-30b1593283a9" ],
+          "CommandName": [ "New-AzSubscriptionAlias" ],
+          "FullCommandName": [ "New-AzSubscriptionAlias_CreateExpanded" ],
+          "ParameterSetName": [ "__AllParameterSets" ],
+          "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Subscription/0.1.0" ]
+        },
+        "ContentHeaders": {
+        }
+      },
+      "Response": {
+        "StatusCode": 200,
+        "Headers": {
+          "Cache-Control": [ "no-cache" ],
+          "Pragma": [ "no-cache" ],
+          "Vary": [ "Accept-Encoding" ],
+          "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+          "mise-correlation-id": [ "30ba44f3-87e6-465c-b90c-48590390d31d" ],
+          "MS-CV": [ "1YgWvkJl8U6wvf21XYAt3Q.0" ],
+          "x-ms-correlation-request-id": [ "8b17b370-c26f-420a-970e-127e150375e6" ],
+          "Request-Id": [ "8b17b370-c26f-420a-970e-127e150375e6" ],
+          "x-gsm": [ "1.0.0.0" ],
+          "X-Content-Type-Options": [ "nosniff" ],
+          "Server": [ "Microsoft-IIS/10.0" ],
+          "X-AspNet-Version": [ "4.0.30319" ],
+          "X-Powered-By": [ "ASP.NET" ],
+          "x-ms-request-id": [ "8b17b370-c26f-420a-970e-127e150375e6" ],
+          "x-ms-routing-request-id": [ "WESTCENTRALUS:20230407T032239Z:8b17b370-c26f-420a-970e-127e150375e6" ],
+          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+          "Date": [ "Fri, 07 Apr 2023 03:22:38 GMT" ]
+        },
+        "ContentHeaders": {
+          "Content-Length": [ "792" ],
+          "Content-Type": [ "application/json; charset=utf-8" ],
+          "Expires": [ "-1" ]
+        },
+        "Content": "{\"id\":\"/providers/Microsoft.Subscription/aliases/8hnomc\",\"name\":\"8hnomc\",\"type\":\"Microsoft.Subscription/aliases\",\"properties\":{\"subscriptionId\":\"40774a6a-cca3-4315-ae11-1e19fe6c5ef3\",\"provisioningState\":\"Succeeded\",\"workload\":\"Production\",\"displayName\":\"TAMS_63c33585-0d7c-4ed0-81f5-f32f6165818a\",\"billingScope\":\"/providers/Microsoft.Billing/billingAccounts/7c05a543-80ff-571e-9f98-1063b3b53cf2:99ad03ad-2d1b-4889-a452-090ad407d25f_2019-05-31/billingProfiles/2USN-TPCD-BG7-TGB/invoiceSections/TAMS_b69a7832-2929-4f60-bf9d-c6784a865ed8_P10109641\",\"acceptOwnershipUrl\":\"/providers/Microsoft.Subscription/subscriptions/40774a6a-cca3-4315-ae11-1e19fe6c5ef3/acceptOwnership\",\"acceptOwnershipState\":\"Completed\",\"createdTime\":\"4/7/2023 3:22:07 AM\",\"subscriptionOwnerId\":\"v-xiaohtang@microsoft.com\"}}",
+        "isContentBase64": false
+      }
+    },
+    "AzSubscription+[NoContext]+CreateAliasExpanded+$GET+https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01+3": {
+      "Request": {
+        "Method": "GET",
+        "RequestUri": "https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01",
+        "Content": null,
+        "isContentBase64": false,
+        "Headers": {
+          "Authorization": [ "[Filtered]" ],
+          "x-ms-unique-id": [ "3" ],
+          "x-ms-client-request-id": [ "5aeaf16c-0c6e-41cc-b596-30b1593283a9" ],
+          "CommandName": [ "New-AzSubscriptionAlias" ],
+          "FullCommandName": [ "New-AzSubscriptionAlias_CreateExpanded" ],
+          "ParameterSetName": [ "__AllParameterSets" ],
+          "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Subscription/0.1.0" ]
+        },
+        "ContentHeaders": {
+        }
+      },
+      "Response": {
+        "StatusCode": 200,
+        "Headers": {
+          "Cache-Control": [ "no-cache" ],
+          "Pragma": [ "no-cache" ],
+          "Vary": [ "Accept-Encoding" ],
+          "x-ms-ratelimit-remaining-tenant-reads": [ "11998" ],
+          "mise-correlation-id": [ "c8ad529f-fe1b-4db6-9e8b-acfe17ea7626" ],
+          "MS-CV": [ "1mKQCcrVnUOFhwJVMbOvvA.0" ],
+          "x-ms-correlation-request-id": [ "e7aec71b-6adc-44e1-ad0b-0b78d5fc018d" ],
+          "Request-Id": [ "e7aec71b-6adc-44e1-ad0b-0b78d5fc018d" ],
+          "x-gsm": [ "1.0.0.0" ],
+          "X-Content-Type-Options": [ "nosniff" ],
+          "Server": [ "Microsoft-IIS/10.0" ],
+          "X-AspNet-Version": [ "4.0.30319" ],
+          "X-Powered-By": [ "ASP.NET" ],
+          "x-ms-request-id": [ "e7aec71b-6adc-44e1-ad0b-0b78d5fc018d" ],
+          "x-ms-routing-request-id": [ "WESTCENTRALUS:20230407T032239Z:e7aec71b-6adc-44e1-ad0b-0b78d5fc018d" ],
+          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+          "Date": [ "Fri, 07 Apr 2023 03:22:38 GMT" ]
+        },
+        "ContentHeaders": {
+          "Content-Length": [ "792" ],
+          "Content-Type": [ "application/json; charset=utf-8" ],
+          "Expires": [ "-1" ]
+        },
+        "Content": "{\"id\":\"/providers/Microsoft.Subscription/aliases/8hnomc\",\"name\":\"8hnomc\",\"type\":\"Microsoft.Subscription/aliases\",\"properties\":{\"subscriptionId\":\"40774a6a-cca3-4315-ae11-1e19fe6c5ef3\",\"provisioningState\":\"Succeeded\",\"workload\":\"Production\",\"displayName\":\"TAMS_63c33585-0d7c-4ed0-81f5-f32f6165818a\",\"billingScope\":\"/providers/Microsoft.Billing/billingAccounts/7c05a543-80ff-571e-9f98-1063b3b53cf2:99ad03ad-2d1b-4889-a452-090ad407d25f_2019-05-31/billingProfiles/2USN-TPCD-BG7-TGB/invoiceSections/TAMS_b69a7832-2929-4f60-bf9d-c6784a865ed8_P10109641\",\"acceptOwnershipUrl\":\"/providers/Microsoft.Subscription/subscriptions/40774a6a-cca3-4315-ae11-1e19fe6c5ef3/acceptOwnership\",\"acceptOwnershipState\":\"Completed\",\"createdTime\":\"4/7/2023 3:22:07 AM\",\"subscriptionOwnerId\":\"v-xiaohtang@microsoft.com\"}}",
+        "isContentBase64": false
+      }
+    },
+    "AzSubscription+[NoContext]+ListAlias+$GET+https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01+1": {
+      "Request": {
+        "Method": "GET",
+        "RequestUri": "https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01",
+        "Content": null,
+        "isContentBase64": false,
+        "Headers": {
+          "x-ms-unique-id": [ "4" ],
+          "x-ms-client-request-id": [ "c04df4b9-6632-484d-971c-3c5e2620b9f8" ],
+          "CommandName": [ "Get-AzSubscriptionAlias" ],
+          "FullCommandName": [ "Get-AzSubscriptionAlias_Get" ],
+          "ParameterSetName": [ "__AllParameterSets" ],
+          "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Subscription/0.1.0" ],
+          "Authorization": [ "[Filtered]" ]
+        },
+        "ContentHeaders": {
+        }
+      },
+      "Response": {
+        "StatusCode": 200,
+        "Headers": {
+          "Cache-Control": [ "no-cache" ],
+          "Pragma": [ "no-cache" ],
+          "Vary": [ "Accept-Encoding" ],
+          "x-ms-ratelimit-remaining-tenant-reads": [ "11997" ],
+          "mise-correlation-id": [ "b63aee17-9358-4737-b14a-b14fd66e7df9" ],
+          "MS-CV": [ "1cFKNWEudkaGEyZpVqRkXw.0" ],
+          "x-ms-correlation-request-id": [ "2eaf1904-9073-4004-93c2-04c4ff1ef148" ],
+          "Request-Id": [ "2eaf1904-9073-4004-93c2-04c4ff1ef148" ],
+          "x-gsm": [ "1.0.0.0" ],
+          "X-Content-Type-Options": [ "nosniff" ],
+          "Server": [ "Microsoft-IIS/10.0" ],
+          "X-AspNet-Version": [ "4.0.30319" ],
+          "X-Powered-By": [ "ASP.NET" ],
+          "x-ms-request-id": [ "2eaf1904-9073-4004-93c2-04c4ff1ef148" ],
+          "x-ms-routing-request-id": [ "WESTCENTRALUS:20230407T032240Z:2eaf1904-9073-4004-93c2-04c4ff1ef148" ],
+          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+          "Date": [ "Fri, 07 Apr 2023 03:22:39 GMT" ]
+        },
+        "ContentHeaders": {
+          "Content-Length": [ "792" ],
+          "Content-Type": [ "application/json; charset=utf-8" ],
+          "Expires": [ "-1" ]
+        },
+        "Content": "{\"id\":\"/providers/Microsoft.Subscription/aliases/8hnomc\",\"name\":\"8hnomc\",\"type\":\"Microsoft.Subscription/aliases\",\"properties\":{\"subscriptionId\":\"40774a6a-cca3-4315-ae11-1e19fe6c5ef3\",\"provisioningState\":\"Succeeded\",\"workload\":\"Production\",\"displayName\":\"TAMS_63c33585-0d7c-4ed0-81f5-f32f6165818a\",\"billingScope\":\"/providers/Microsoft.Billing/billingAccounts/7c05a543-80ff-571e-9f98-1063b3b53cf2:99ad03ad-2d1b-4889-a452-090ad407d25f_2019-05-31/billingProfiles/2USN-TPCD-BG7-TGB/invoiceSections/TAMS_b69a7832-2929-4f60-bf9d-c6784a865ed8_P10109641\",\"acceptOwnershipUrl\":\"/providers/Microsoft.Subscription/subscriptions/40774a6a-cca3-4315-ae11-1e19fe6c5ef3/acceptOwnership\",\"acceptOwnershipState\":\"Completed\",\"createdTime\":\"4/7/2023 3:22:07 AM\",\"subscriptionOwnerId\":\"v-xiaohtang@microsoft.com\"}}",
+        "isContentBase64": false
+      }
+    },
+    "AzSubscription+[NoContext]+GetPolicy+$GET+https://management.azure.com/providers/Microsoft.Subscription/policies/default?api-version=2021-10-01+1": {
+      "Request": {
+        "Method": "GET",
+        "RequestUri": "https://management.azure.com/providers/Microsoft.Subscription/policies/default?api-version=2021-10-01",
+        "Content": null,
+        "isContentBase64": false,
+        "Headers": {
+          "x-ms-unique-id": [ "5" ],
+          "x-ms-client-request-id": [ "f7d7755a-fd35-4005-a1af-4625df6a66f5" ],
+          "CommandName": [ "Get-AzSubscriptionPolicy" ],
+          "FullCommandName": [ "Get-AzSubscriptionPolicy_Get" ],
+          "ParameterSetName": [ "__AllParameterSets" ],
+          "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Subscription/0.1.0" ],
+          "Authorization": [ "[Filtered]" ]
+        },
+        "ContentHeaders": {
+        }
+      },
+      "Response": {
+        "StatusCode": 200,
+        "Headers": {
+          "Cache-Control": [ "no-cache" ],
+          "Pragma": [ "no-cache" ],
+          "Vary": [ "Accept-Encoding" ],
+          "x-ms-ratelimit-remaining-tenant-reads": [ "11996" ],
+          "mise-correlation-id": [ "1cdb108a-b856-4f74-bb20-3ef9f28a9ee4" ],
+          "MS-CV": [ "orQ7TRtZh0GY6jcP02loJg.0" ],
+          "x-ms-correlation-request-id": [ "3eeaa996-3de1-4586-b765-ae4d0ea9c854" ],
+          "Request-Id": [ "3eeaa996-3de1-4586-b765-ae4d0ea9c854" ],
+          "x-gsm": [ "1.0.0.0" ],
+          "X-Content-Type-Options": [ "nosniff" ],
+          "Server": [ "Microsoft-IIS/10.0" ],
+          "X-AspNet-Version": [ "4.0.30319" ],
+          "X-Powered-By": [ "ASP.NET" ],
+          "x-ms-request-id": [ "3eeaa996-3de1-4586-b765-ae4d0ea9c854" ],
+          "x-ms-routing-request-id": [ "WESTCENTRALUS:20230407T032240Z:3eeaa996-3de1-4586-b765-ae4d0ea9c854" ],
+          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+          "Date": [ "Fri, 07 Apr 2023 03:22:39 GMT" ]
+        },
+        "ContentHeaders": {
+          "Content-Length": [ "291" ],
+          "Content-Type": [ "application/json; charset=utf-8" ],
+          "Expires": [ "-1" ]
+        },
+        "Content": "{\"id\":\"providers/Microsoft.Subscription/policies/default\",\"name\":\"default\",\"type\":\"providers/Microsoft.Subscription/policies\",\"properties\":{\"policyId\":\"888d76fa-54b2-4ced-8ee5-aac1585adee7\",\"blockSubscriptionsLeavingTenant\":true,\"blockSubscriptionsIntoTenant\":false,\"exemptedPrincipals\":[]}}",
+        "isContentBase64": false
+      }
+    },
+    "AzSubscription+[NoContext]+AcceptExpandedOwnershipStatus+$GET+https://management.azure.com/providers/Microsoft.Subscription/subscriptions/40774a6a-cca3-4315-ae11-1e19fe6c5ef3/acceptOwnershipStatus?api-version=2021-10-01+1": {
+      "Request": {
+        "Method": "GET",
+        "RequestUri": "https://management.azure.com/providers/Microsoft.Subscription/subscriptions/40774a6a-cca3-4315-ae11-1e19fe6c5ef3/acceptOwnershipStatus?api-version=2021-10-01",
+        "Content": null,
+        "isContentBase64": false,
+        "Headers": {
+          "x-ms-unique-id": [ "6" ],
+          "x-ms-client-request-id": [ "55dd0872-c2b5-4156-8f55-9452923514d8" ],
+          "CommandName": [ "Get-AzSubscriptionAcceptOwnershipStatus" ],
+          "FullCommandName": [ "Get-AzSubscriptionAcceptOwnershipStatus_AcceptExpanded" ],
+          "ParameterSetName": [ "__AllParameterSets" ],
+          "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Subscription/0.1.0" ],
+          "Authorization": [ "[Filtered]" ]
+        },
+        "ContentHeaders": {
+        }
+      },
+      "Response": {
+        "StatusCode": 200,
+        "Headers": {
+          "Cache-Control": [ "no-cache" ],
+          "Pragma": [ "no-cache" ],
+          "Vary": [ "Accept-Encoding" ],
+          "x-ms-ratelimit-remaining-tenant-reads": [ "11995" ],
+          "mise-correlation-id": [ "be556054-99ac-4221-b070-e2fac87cfdbc" ],
+          "MS-CV": [ "qM42fsftq0GMB4W7UNK+AA.0" ],
+          "x-ms-correlation-request-id": [ "a5d89a0a-0a26-4957-9b92-c94a12332943" ],
+          "Request-Id": [ "a5d89a0a-0a26-4957-9b92-c94a12332943" ],
+          "x-gsm": [ "1.0.0.0" ],
+          "X-Content-Type-Options": [ "nosniff" ],
+          "Server": [ "Microsoft-IIS/10.0" ],
+          "X-AspNet-Version": [ "4.0.30319" ],
+          "X-Powered-By": [ "ASP.NET" ],
+          "x-ms-request-id": [ "a5d89a0a-0a26-4957-9b92-c94a12332943" ],
+          "x-ms-routing-request-id": [ "WESTCENTRALUS:20230407T032240Z:a5d89a0a-0a26-4957-9b92-c94a12332943" ],
+          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+          "Date": [ "Fri, 07 Apr 2023 03:22:39 GMT" ]
+        },
+        "ContentHeaders": {
+          "Content-Length": [ "260" ],
+          "Content-Type": [ "application/json; charset=utf-8" ],
+          "Expires": [ "-1" ]
+        },
+        "Content": "{\"subscriptionId\":\"40774a6a-cca3-4315-ae11-1e19fe6c5ef3\",\"provisioningState\":\"Pending\",\"acceptOwnershipState\":\"Completed\",\"subscriptionTenantId\":\"888d76fa-54b2-4ced-8ee5-aac1585adee7\",\"billingOwner\":\"\",\"displayName\":\"TAMS_63c33585-0d7c-4ed0-81f5-f32f6165818a\"}",
+        "isContentBase64": false
+      }
+    },
+    "AzSubscription+[NoContext]+Delete+$DELETE+https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01+1": {
+      "Request": {
+        "Method": "DELETE",
+        "RequestUri": "https://management.azure.com/providers/Microsoft.Subscription/aliases/8hnomc?api-version=2021-10-01",
+        "Content": null,
+        "isContentBase64": false,
+        "Headers": {
+          "x-ms-unique-id": [ "7" ],
+          "x-ms-client-request-id": [ "3c95d78f-efea-49d7-b300-47af103e7bc4" ],
+          "CommandName": [ "Remove-AzSubscriptionAlias" ],
+          "FullCommandName": [ "Remove-AzSubscriptionAlias_Delete" ],
+          "ParameterSetName": [ "__AllParameterSets" ],
+          "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Subscription/0.1.0" ],
+          "Authorization": [ "[Filtered]" ]
+        },
+        "ContentHeaders": {
+        }
+      },
+      "Response": {
+        "StatusCode": 200,
+        "Headers": {
+          "Cache-Control": [ "no-cache" ],
+          "Pragma": [ "no-cache" ],
+          "mise-correlation-id": [ "837eb00d-517c-4d82-b9c2-59ad002c45a3" ],
+          "MS-CV": [ "S0o4ZA9x7EuF6w/3LB4ivg.0" ],
+          "x-ms-correlation-request-id": [ "dbc8271d-2d4d-42d0-b577-9d0c9e1518dc" ],
+          "Request-Id": [ "dbc8271d-2d4d-42d0-b577-9d0c9e1518dc" ],
+          "x-gsm": [ "1.0.0.0" ],
+          "X-Content-Type-Options": [ "nosniff" ],
+          "Server": [ "Microsoft-IIS/10.0" ],
+          "X-AspNet-Version": [ "4.0.30319" ],
+          "X-Powered-By": [ "ASP.NET" ],
+          "x-ms-ratelimit-remaining-tenant-deletes": [ "14999" ],
+          "x-ms-request-id": [ "dbc8271d-2d4d-42d0-b577-9d0c9e1518dc" ],
+          "x-ms-routing-request-id": [ "WESTCENTRALUS:20230407T032242Z:dbc8271d-2d4d-42d0-b577-9d0c9e1518dc" ],
+          "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+          "Date": [ "Fri, 07 Apr 2023 03:22:41 GMT" ]
+        },
+        "ContentHeaders": {
+          "Expires": [ "-1" ],
+          "Content-Length": [ "0" ]
+        },
+        "Content": null,
+        "isContentBase64": false
+      }
+    }
+  }

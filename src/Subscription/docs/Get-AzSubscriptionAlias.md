@@ -38,9 +38,10 @@ Get-AzSubscriptionAlias
 ```
 
 ```output
-Name
-----
-test-subscription
+Name               DisplayName       SubscriptionId                       ProvisioningState
+----               -----------       --------------                       -----------------
+test-subscription  TEST_Subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
+test-subscription2 TEST_Subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 List Alias Subscription.
@@ -51,9 +52,9 @@ Get-AzSubscriptionAlias -Name test-subscription
 ```
 
 ```output
-Name
-----
-test-subscription
+Name              DisplayName       SubscriptionId                       ProvisioningState
+----              -----------       --------------                       -----------------
+test-subscription TEST_Subscription XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX Succeeded
 ```
 
 Get Alias Subscription.

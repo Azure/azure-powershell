@@ -33,9 +33,9 @@ Get-AzSubscriptionPolicy
 ```
 
 ```output
-Name
-----
-test-subscription
+Name    PolicyId                             BlockSubscriptionsIntoTenant BlockSubscriptionsLeavingTenant
+----    --------                             ---------------------------- -------------------------------
+default XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX False                        True
 ```
 
 Get the subscription tenant policy for the user's tenant.

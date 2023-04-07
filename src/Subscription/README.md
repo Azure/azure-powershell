@@ -41,12 +41,11 @@ require:
 input-file: 
   - $(repo)/specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json
 
-module-version: 0.1.0
+module-version: 0.2.0
 title: Subscription
 subject-prefix: $(service-name)
 
 identity-correction-for-post: true
-resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
@@ -115,4 +114,22 @@ directive:
       parameter-name: AdditionalPropertyTag
     set:
       parameter-name: Tag
+  - where:
+      model-name: SubscriptionAliasResponse
+    set:
+      format-table:
+        properties:
+          - Name
+          - DisplayName
+          - SubscriptionId
+          - ProvisioningState
+  - where:
+      model-name: GetTenantPolicyResponse
+    set:
+      format-table:
+        properties:
+          - Name
+          - PolicyId
+          - BlockSubscriptionsIntoTenant
+          - BlockSubscriptionsLeavingTenant
 ```

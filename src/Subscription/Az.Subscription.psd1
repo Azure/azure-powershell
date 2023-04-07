@@ -1,7 +1,7 @@
 @{
   GUID = 'd687e965-0990-42dd-a1cd-a2e30af042c9'
   RootModule = './Az.Subscription.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.2.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
