@@ -16,10 +16,10 @@ using System;
 using System.Collections.Generic;
 using Azure.CodeSigning;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using System.Text.Json;
 using System.IO;
 using Azure.Core;
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Models
 {
@@ -90,8 +90,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         }
         public string GetCodeSigningEku(string metadataPath)
         {
-            var rawMetadata = File.ReadAllBytes(metadataPath);
-            Metadata = JsonSerializer.Deserialize<Metadata>(rawMetadata);
+            var rawMetadata = File.ReadAllText(metadataPath);
+            Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);
 
             GetCertificateProfileClient(Metadata.Endpoint);
 
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         public Stream GetCodeSigningRootCert(string metadataPath)
         {
-            var rawMetadata = File.ReadAllBytes(metadataPath);
-            Metadata = JsonSerializer.Deserialize<Metadata>(rawMetadata);
+            var rawMetadata = File.ReadAllText(metadataPath);
+            Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);
 
             GetCertificateProfileClient(Metadata.Endpoint);
 
@@ -132,8 +132,8 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
 
         public void SubmitCIPolicySigning(string metadataPath, string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl)
         {
-            var rawMetadata = File.ReadAllBytes(metadataPath);
-            Metadata = JsonSerializer.Deserialize<Metadata>(rawMetadata);
+            var rawMetadata = File.ReadAllText(metadataPath);
+            Metadata = JsonConvert.DeserializeObject<Metadata>(rawMetadata);
 
             var accountName = Metadata.CodeSigningAccountName;
             var profileName = Metadata.CertificateProfileName;
