@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <Reference Include="Azure.CodeSigning">
-      <HintPath>..\Azure.CodeSigning\bin\Debug\netstandard2.0\Azure.CodeSigning.dll</HintPath>
+      <HintPath>Libraries\Azure.CodeSigning.dll</HintPath>
     </Reference>
     <Reference Include="Azure.CodeSigning.Client.CryptoProvider">
       <HintPath>Libraries\Azure.CodeSigning.Client.CryptoProvider.dll</HintPath>
