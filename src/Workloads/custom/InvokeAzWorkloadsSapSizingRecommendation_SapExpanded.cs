@@ -27,8 +27,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow)
         {
             // onOk - response for 200 / application/json
-            // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult
-            WriteObject(response);
+            // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult
+            WriteObject(response.Result);
             returnNow = global::System.Threading.Tasks.Task.FromResult(true);
         }
     }

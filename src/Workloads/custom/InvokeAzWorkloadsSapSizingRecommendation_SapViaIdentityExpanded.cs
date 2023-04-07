@@ -28,7 +28,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         {
             // onOk - response for 200 / application/json
             // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapSizingRecommendationResult
-            WriteObject(response);
+            WriteObject(response.Result);
             returnNow = global::System.Threading.Tasks.Task.FromResult(true);
         }
     }
