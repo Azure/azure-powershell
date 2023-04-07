@@ -339,8 +339,6 @@ General availability for Az.RecoveryServices module.
 * Update the sdk version of dataplane to 1.1.14 for SDK fixes.
     - Fix handling of negative acesstime and modificationtime for getfilestatus and liststatus, Fix async cancellation token
 
-#### Az.DesktopVirtualization
-* Create powershell release for 2022-10-14-preview api version.
 #### Az.EventGrid
 * Updated to use the 2019-01-01 API version.
 * Update the following cmdlets to support new scenario in 2019-01-01 API version
