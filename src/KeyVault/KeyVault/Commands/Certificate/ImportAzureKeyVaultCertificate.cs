@@ -55,8 +55,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         /// <summary>
         /// VaultName
-        /// 
-        /// 
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
@@ -159,7 +157,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         private void ValidateParameters()
         {
             // Verify the FileNotFound whether exists
-            if (this.IsParameterBound(c => c.FilePath) )
+            if (this.IsParameterBound(c => c.FilePath))
             {
                 if (!File.Exists(FilePath))
                 {

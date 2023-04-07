@@ -15,20 +15,14 @@
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
-using Newtonsoft.Json;
-using Org.BouncyCastle.Bcpg;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using Track2Certificate = Azure.Security.KeyVault.Certificates;
-
-// Track2Certificate.CertificatePolicy
 
 namespace Microsoft.Azure.Commands.KeyVault.Models
 {
