@@ -2,6 +2,7 @@ using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.KeyVault.Models;
+using Org.BouncyCastle.Asn1.X509;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -250,9 +251,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags, contentType, certPolicy);
         }
 
-        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
-            throw new NotImplementedException();
+            byte[] certificate = certificateCollection.Export(X509ContentType.Pfx, certPassword?.ConvertToString());
+            return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags, contentType, certPolicy);
         }
 
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)

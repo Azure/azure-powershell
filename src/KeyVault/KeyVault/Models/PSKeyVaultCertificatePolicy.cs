@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-// using Azure.Security.KeyVault.Keys;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.KeyVault.Models;
@@ -336,7 +335,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                     Track2Certificate.SubjectAlternativeNames subjectAlternativeNames = new Track2Certificate.SubjectAlternativeNames();
                     subjectAlternativeNames = SetSubjectAlternativeNames(subjectAlternativeNames);
                     certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, subjectAlternativeNames);
-                    // SetSubjectAlternativeNames(certificatePolicy);
                 }
                 else
                     certificatePolicy = new Track2Certificate.CertificatePolicy(IssuerName, SubjectName);
@@ -457,6 +455,39 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 Enabled = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Enabled,
                 Created = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Created,
                 Updated = certificatePolicy.Attributes == null ? null : certificatePolicy.Attributes.Updated,
+            };
+        }
+
+        internal static PSKeyVaultCertificatePolicy FromTrack2CertificatePolicy(Track2Certificate.CertificatePolicy certificatePolicy)
+        {
+            return new PSKeyVaultCertificatePolicy
+            {
+                SecretContentType = certificatePolicy.ContentType.Equals(null) ? null : certificatePolicy.ContentType.ToString(),
+                Kty = certificatePolicy.KeyType == null ? null : certificatePolicy.KeyType.ToString(),
+                KeySize = certificatePolicy.KeySize == null ? null : certificatePolicy.KeySize,
+                Curve = certificatePolicy.KeyCurveName == null ? null : certificatePolicy.KeyCurveName.ToString(),
+                Exportable = certificatePolicy.Exportable == null ? null : certificatePolicy.Exportable,
+                ReuseKeyOnRenewal = certificatePolicy.ReuseKey == null ? null : certificatePolicy.ReuseKey,
+                SubjectName = certificatePolicy.Subject == null ? null : certificatePolicy.Subject,
+                DnsNames = certificatePolicy.SubjectAlternativeNames == null || certificatePolicy.SubjectAlternativeNames.DnsNames == null ?
+                    null : new List<string>(certificatePolicy.SubjectAlternativeNames.DnsNames),
+                Emails = certificatePolicy.SubjectAlternativeNames == null || certificatePolicy.SubjectAlternativeNames.Emails == null ?
+                    null : new List<string>(certificatePolicy.SubjectAlternativeNames.Emails),
+                UserPrincipalNames = certificatePolicy.SubjectAlternativeNames == null || certificatePolicy.SubjectAlternativeNames.UserPrincipalNames == null ?
+                    null : new List<string>(certificatePolicy.SubjectAlternativeNames.UserPrincipalNames),
+                KeyUsage = certificatePolicy.KeyUsage == null ? null : certificatePolicy.KeyUsage == null ? null : certificatePolicy.KeyUsage.Select(keyUsage => keyUsage.ToString()).ToList(),
+                Ekus = certificatePolicy.EnhancedKeyUsage == null ? null : new List<string>(certificatePolicy.EnhancedKeyUsage),
+                ValidityInMonths = certificatePolicy.ValidityInMonths == null ? null : certificatePolicy.ValidityInMonths,
+                CertificateTransparency = certificatePolicy.CertificateTransparency == null ? null : certificatePolicy.CertificateTransparency,
+                IssuerName = certificatePolicy.IssuerName == null ? null : certificatePolicy.IssuerName,
+                CertificateType = certificatePolicy.CertificateType == null ? null : certificatePolicy.CertificateType,
+                RenewAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions),
+                RenewAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForAutoRenewAction(certificatePolicy.LifetimeActions),
+                EmailAtNumberOfDaysBeforeExpiry = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions),
+                EmailAtPercentageLifetime = certificatePolicy.LifetimeActions == null ? null : FindIntValueForEmailAction(certificatePolicy.LifetimeActions),
+                Enabled = certificatePolicy.Enabled == null ? null : certificatePolicy.Enabled,
+                Created = certificatePolicy.CreatedOn.HasValue ? certificatePolicy.CreatedOn.Value.DateTime : (DateTime?)null,
+                Updated = certificatePolicy.UpdatedOn.HasValue ? certificatePolicy.UpdatedOn.Value.DateTime : (DateTime?)null,
             };
         }
         private void ReadKeyProperties(JsonElement json)
@@ -694,6 +725,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return intValueGetter(lifetimeAction.Trigger);
         }
 
+        private static int? FindIntValueForAutoRenewAction(IList<Track2Certificate.LifetimeAction> lifetimeActions)
+        {
+            var lifetimeAction = 
+                lifetimeActions.FirstOrDefault(x => string.IsNullOrEmpty(x.Action.ToString()) && 0 == string.Compare(x.Action.ToString(), Track2Certificate.CertificatePolicyAction.AutoRenew.ToString(), true)
+                                                && (x.DaysBeforeExpiry.HasValue || x.LifetimePercentage.HasValue));
+            if (lifetimeAction == null)
+                return null;
+            if (lifetimeAction.DaysBeforeExpiry.HasValue)
+                return lifetimeAction.DaysBeforeExpiry;
+            if (lifetimeAction.LifetimePercentage.HasValue)
+                return lifetimeAction.LifetimePercentage;
+            else
+                return null;
+        }
+
         private static int? FindIntValueForEmailAction(IEnumerable<LifetimeAction> lifetimeActions, Func<Trigger, int?> intValueGetter)
         {
             var lifetimeAction = lifetimeActions.FirstOrDefault(x => x.Action.ActionType.HasValue && 0 == string.Compare(x.Action.ActionType.Value.ToString(), ActionType.EmailContacts.ToString(), true) && intValueGetter(x.Trigger).HasValue);
@@ -704,6 +750,21 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             }
 
             return intValueGetter(lifetimeAction.Trigger);
+        }
+
+        private static int? FindIntValueForEmailAction(IList<Track2Certificate.LifetimeAction> lifetimeActions)
+        {
+            var lifetimeAction =
+                lifetimeActions.FirstOrDefault(x => string.IsNullOrEmpty(x.Action.ToString()) && 0 == string.Compare(x.Action.ToString(), Track2Certificate.CertificatePolicyAction.EmailContacts.ToString(), true)
+                                                && (x.DaysBeforeExpiry.HasValue || x.LifetimePercentage.HasValue));
+            if (lifetimeAction == null)
+                return null;
+            if (lifetimeAction.DaysBeforeExpiry.HasValue)
+                return lifetimeAction.DaysBeforeExpiry;
+            if (lifetimeAction.LifetimePercentage.HasValue)
+                return lifetimeAction.LifetimePercentage;
+            else
+                return null;
         }
 
         private void ValidateInternal(
