@@ -141,5 +141,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-CrossRegionRestoreAccountCmdlets");
         }
+        
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCrossRegionRestoreSingleRegionAccountCmdlets()
+        {
+            TestRunner.RunTestScript("Test-CrossRegionRestoreSingleRegionAccountCmdlets");
+        }
     }
 }
