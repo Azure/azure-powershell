@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network		
 {
-    [GenericBreakingChange("Get-AzExpressRouteCircuitStats alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Get-AzExpressRouteCircuitStats alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ExpressRouteCircuitStat"), OutputType(typeof(PSExpressRouteCircuitStats))]
     [Alias("Get-AzExpressRouteCircuitStats")]
     public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		

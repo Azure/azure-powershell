@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     [CmdletOutputBreakingChange(
         deprecatedCmdletOutputTypeName: typeof(AzureReplicationLinkModel),
-        deprecateByVersion: "3.0.0",
         DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
         NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseSecondary", SupportsShouldProcess = true), OutputType(typeof(AzureReplicationLinkModel))]
