@@ -789,7 +789,7 @@ function Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets {
 function Test-CrossRegionRestoreAccountCmdlets {
   #use an existing account with the following information
   $rgName = "PSCosmosDBResourceGroup53"
-  $cosmosDBAccountName = "restored-ps-xrr-cosmosdb-12105"
+  $cosmosDBAccountName = "ps-xrr-cosmosdb-12105-restored"
   $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12105"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
@@ -803,6 +803,7 @@ function Test-CrossRegionRestoreAccountCmdlets {
   $locations += New-AzCosmosDBLocationObject -Location "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
   $locations += New-AzCosmosDBLocationObject -Location "North Central US" -FailoverPriority 1 -IsZoneRedundant 0
   $targetLocation = "North Central US"
+  $sourceBackupLocation = "West Central US"
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -820,7 +821,7 @@ function Test-CrossRegionRestoreAccountCmdlets {
   Start-Sleep -s 3662
   $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
 
-  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceCosmosDBAccount.Location -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
+  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
 
   Assert-NotNull $sourceRestorableAccount
   Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
@@ -832,14 +833,14 @@ function Test-CrossRegionRestoreAccountCmdlets {
   Assert-NotNull $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].DatabaseName $databaseName
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].CollectionNames[0] $collectionName1
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $location
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $sourceBackupLocation
   Assert-AreEqual $restoredCosmosDBAccount.WriteLocations[0].LocationName $targetLocation
 }
 
 function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   #use an existing account with the following information
   $rgName = "PSCosmosDBResourceGroup54"
-  $cosmosDBAccountName = "restored-ps-xrr-cosmosdb-12106"
+  $cosmosDBAccountName = "ps-xrr-cosmosdb-12106-restored"
   $sourceCosmosDBAccountName = "ps-xrr-cosmosdb-12106"
   $databaseName = "TestDB1";
   $collectionName1 = "TestCollectionInDB1";
@@ -852,6 +853,7 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location "West Central US" -FailoverPriority 0 -IsZoneRedundant 0
   $targetLocation = "North Central US"
+  $sourceBackupLocation = "West Central US"
 
   $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
@@ -869,7 +871,7 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   Start-Sleep -s 3662
   $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
 
-  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceCosmosDBAccount.Location -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
+  $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
 
   Assert-NotNull $sourceRestorableAccount
   Assert-AreEqual $restoredCosmosDBAccount.Name $cosmosDBAccountName
@@ -881,6 +883,6 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
   Assert-NotNull $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].DatabaseName $databaseName
   Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.DatabasesToRestore[0].CollectionNames[0] $collectionName1
-  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $location
+  Assert-AreEqual $restoredCosmosDBAccount.RestoreParameters.SourceBackupLocation $sourceBackupLocation
   Assert-AreEqual $restoredCosmosDBAccount.WriteLocations[0].LocationName $targetLocation
 }
