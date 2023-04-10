@@ -353,7 +353,20 @@ Function Move-Generation2MasterHybrid {
                 [string] $Psd1FolderPostfix
             )
             Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
-            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
+            #workaround for AKS: AKS and platyPS have different version of YamlDotNet.dll, copy YamlDotNet.dll from AKS to platyPS
+            if ($ModuleName -eq "AKS") {
+                $YamlDotNetPath = Join-Path (Get-Module -ListAvailable -Name platyPS).Path ".." YamlDotNet.dll
+                $YamlDotNetPathCopy = Join-Path (Get-Module -ListAvailable -Name platyPS).Path ".." YamlDotNet.dll.copy
+                Move-Item $YamlDotNetPath $YamlDotNetPathCopy
+                Copy-Item "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\YamlDotNet.dll" $YamlDotNetPath
+            }
+            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow   
+            #workaround for AKS: copy YamlDotNet.dll back
+            if ($ModuleName -eq "AKS") {
+                $YamlDotNetPath = Join-Path (Get-Module -ListAvailable -Name platyPS).Path ".." YamlDotNet.dll
+                $YamlDotNetPathCopy = Join-Path (Get-Module -ListAvailable -Name platyPS).Path ".." YamlDotNet.dll.copy
+                Move-Item $YamlDotNetPathCopy $YamlDotNetPath
+            }
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
