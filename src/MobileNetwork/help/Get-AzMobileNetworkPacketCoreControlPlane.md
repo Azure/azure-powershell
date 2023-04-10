@@ -56,7 +56,7 @@ List information about the specified packet core control plane by Sub.
 
 ### Example 2: Get information about the specified packet core control plane by ResourceGroup.
 ```powershell
-Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroup azps_test_group
+Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName azps_test_group
 ```
 
 ```output
@@ -69,7 +69,7 @@ Get information about the specified packet core control plane by ResourceGroup.
 
 ### Example 3: Get information about the specified packet core control plane by Name.
 ```powershell
-Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroup azps_test_group -Name azps-mn-pccp
+Get-AzMobileNetworkPacketCoreControlPlane -ResourceGroupName azps_test_group -Name azps-mn-pccp
 ```
 
 ```output
@@ -83,7 +83,8 @@ Get information about the specified packet core control plane by Name.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
