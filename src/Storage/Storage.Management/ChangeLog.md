@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue of listing blobs with leading slashes 
+    - `Get-AzStorageBlob`
 * Added warning messages for an upcoming cmdlet breaking change 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`

@@ -388,7 +388,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         public static AzureStorageBlob GetAzureStorageBlob(BlobItem blobItem, BlobContainerClient track2container, AzureStorageContext context, string continuationToken = null, BlobClientOptions options = null)
         {
-            BlobBaseClient blobClient = Util.GetTrack2BlobClientNoSlashTrim(track2container, blobItem.Name, context, blobItem.VersionId, blobItem.IsLatestVersion, blobItem.Snapshot, options, blobItem.Properties.BlobType);
+            BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobItem.Name, context, blobItem.VersionId, blobItem.IsLatestVersion, blobItem.Snapshot, options, blobItem.Properties.BlobType, shouldTrimSlash: false);
             AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options, blobItem);
             if (!string.IsNullOrEmpty(continuationToken))
             {
