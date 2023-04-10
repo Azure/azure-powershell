@@ -24,6 +24,18 @@
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
 * Fixed the issue for `Update-AzCustomIpPrefix` that `NoInternetAdvertise` will should be set to false if not provided
+* Added new cmdlets for RouteMap child resource of VirtualHub.
+    -`Get-AzRouteMap`
+    -`New-AzRouteMapRuleCriterion`
+    -`New-AzRouteMapRuleActionParameter`
+    -`New-AzRouteMapRuleAction`
+    -`New-AzRouteMapRule`
+    -`New-AzRouteMap`
+    -`Set-AzRouteMap`
+    -`Remove-AzRouteMap`
+* Update cmdlets to add inbound/outbound route maps in routingConfiguration
+    -`New-AzRoutingConfiguration`
+* Added support for AdditionalNic Property in New-AzNetworkVirtualAppliance
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
