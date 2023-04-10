@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning messages for an upcoming cmdlet breaking change 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+
+## Version 5.5.0
 * Supported create storage account with DnsEndpointType
     - `New-AzStorageAccount`
 * Fixed file cmdlets potential context issue when the current context doesn't match with the credential of input Azure File object

@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("Get-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Get-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayBackendHttpSetting"),OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     [Alias("Get-AzApplicationGatewayBackendHttpSettings")]
     public class GetAzureApplicationGatewayBackendHttpSettings : NetworkBaseCmdlet

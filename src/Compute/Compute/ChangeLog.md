@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Updated the breaking change warning in `New-AzVM` and `New-AzVmss` regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
+
+## Version 5.7.0
 * Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
 * Added `-CustomData`, `-AdminPassword`, and `-ExactVersion` parameters to `Invoke-AzVMReimage`.
 * Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 

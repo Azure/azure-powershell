@@ -180,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionStrings
-Connection Strings HashTable
+Connection Strings HashTable. Example: `$connStrings = @{ConnectionStringName = @{ Type = "MySql"; Value = "TestValue"}}`
 
 ```yaml
 Type: System.Collections.Hashtable

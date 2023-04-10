@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// To learn more about private clusters, see:
-        /// https://learn.microsoft.com/azure/aks/private-clusters
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Management.ContainerService
         /// </summary>
         /// <remarks>
         /// To learn more about private clusters, see:
-        /// https://learn.microsoft.com/azure/aks/private-clusters
+        /// https://docs.microsoft.com/azure/aks/private-clusters
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

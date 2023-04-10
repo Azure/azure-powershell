@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
 * Added property 'AuthorizationStatus' to ExpressRouteCircuit
 * Added property 'BillingType' to ExpressRoutePort

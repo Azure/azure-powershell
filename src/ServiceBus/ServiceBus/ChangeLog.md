@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.1
 * Added upcoming breaking change notifications for Az.ServiceBus module.
 
 ## Version 2.2.0
