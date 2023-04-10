@@ -1,71 +1,64 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.dll-Help.xml
 Module Name: Az.CosmosDB
-online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqlcontainerperpartitionthroughput
+online version: https://learn.microsoft.com/powershell/module/az.cosmosdb/update-azcosmosdbsqldatabaseperpartitionthroughput
 schema: 2.0.0
 ---
 
-# Update-AzCosmosDBSqlContainerPerPartitionThroughput
+# Update-AzCosmosDBSqlDatabasePerPartitionThroughput
 
 ## SYNOPSIS
-Updates the throughput of selected partitions in a CosmosDB Sql container.
+Updates the throughput of selected partitions in a CosmosDB Sql database.
 
 ## SYNTAX
 
 ### ByNameParameterSet (Default)
 ```
-Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
- [-Name <String>] [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
+Update-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName <String> -DatabaseName <String>
+ [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
  [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
  [-DefaultProfile <IAzureContextContainer>] -AccountName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByParentObjectParameterSet
-```
-Update-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -ParentObject <PSSqlDatabaseGetResults>
- [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
- [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ByObjectParameterSet
 ```
-Update-AzCosmosDBSqlContainerPerPartitionThroughput [-Name <String>] -InputObject <PSSqlContainerGetResults>
+Update-AzCosmosDBSqlDatabasePerPartitionThroughput -InputObject <PSSqlDatabaseGetResults>
  [-SourcePhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>]
  [-TargetPhysicalPartitionThroughputObject <PSPhysicalPartitionThroughputInfo[]>] [-EqualDistributionPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet can be used to redistribute the throughput across partitions in a CosmosDB Sql container.
+This cmdlet can be used to redistribute the throughput across partitions in a CosmosDB Sql database.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$partitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
-      
+$partitions = Get-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -AllPartitions
       $sources = @()
       $targets = @()
-      Foreach($partition in $partitions)
+      $oldPartitions = @()
+      for($i = 0; $i -lt $partitions.Count; $i++)
       {
-      
-          if($partition.Id -lt 2)
+          if($i -lt 2)
           {
-            $throughput = $partition.Throughput - 100
-            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+            $throughput = $partitions[$i].Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
           }
           else
           {
-              $throughput = $partition.Throughput + 100
-              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+              $throughput = $partitions[$i].Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partitions[$i].Id -Throughput $throughput
           }
+          $oldPartitions += $partitions[$i]
       }
       
-      $newPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
-      
-      $resetPartitions = Update-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy      
-      $somePartitions = Get-AzCosmosDBSqlContainerPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
+      $newPartitions = Update-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+
+      $resetPartitions = Update-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -EqualDistributionPolicy
+
+      $somePartitions = Get-AzCosmosDBSqlDatabasePerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -PhysicalPartitionIds ($oldPartitions[0].Id, $oldPartitions[1].Id)
 ```
 
 ## PARAMETERS
@@ -131,41 +124,11 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Sql Container object.
-
-```yaml
-Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
-Parameter Sets: ByObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-Container name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ParentObject
 Sql Database object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
-Parameter Sets: ByParentObjectParameterSet
+Parameter Sets: ByObjectParameterSet
 Aliases:
 
 Required: True
@@ -257,8 +220,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
-
-### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
 
 ## OUTPUTS
 
