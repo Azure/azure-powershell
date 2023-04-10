@@ -23,6 +23,7 @@
     <PackageReference Include="Microsoft.Azure.Management.OperationalInsights" Version="0.25.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.ManagedServiceIdentity" Version="0.10.0-preview" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,8 +51,5 @@
     <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkManagerTests\" />
   </ItemGroup>
   
-  <ItemGroup>
-    <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
-  </ItemGroup>
 
 </Project>
