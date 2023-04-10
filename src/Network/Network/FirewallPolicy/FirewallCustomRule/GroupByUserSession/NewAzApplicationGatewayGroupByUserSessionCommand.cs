@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             return new PSApplicationGatewayGroupByUserSession()
             {
-                GroupByVariable = this.GroupByVariable?.ToList()
+                GroupByVariables = this.GroupByVariable?.ToList()
             };
         }
     }

@@ -4282,7 +4282,7 @@ function Test-ApplicationGatewayFirewallPolicyWithRateLimitRule
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
-		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariable[0].VariableName $customRule.GroupByUserSession[0].GroupByVariable[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].GroupByUserSession[0].GroupByVariables[0].VariableName $customRule.GroupByUserSession[0].GroupByVariables[0].VariableName
 		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
 		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
