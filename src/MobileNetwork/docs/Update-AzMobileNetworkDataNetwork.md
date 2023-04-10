@@ -8,29 +8,22 @@ schema: 2.0.0
 # Update-AzMobileNetworkDataNetwork
 
 ## SYNOPSIS
-Updates data network tags.
+Updates data network.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzMobileNetworkDataNetwork -DataNetworkName <String> -MobileNetworkName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzMobileNetworkDataNetwork -InputObject <IMobileNetworkIdentity> [-Tag <Hashtable>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-Description <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates data network tags.
+Updates data network.
 
 ## EXAMPLES
 
-### Example 1: Updates data network tags.
+### Example 1: Updates data network.
 ```powershell
 Update-AzMobileNetworkDataNetwork -MobileNetworkName azps-mn -DataNetworkName azps-mn-datanetwork -ResourceGroupName azps_test_group -Tag @{"abc"="`12"}
 ```
@@ -41,7 +34,7 @@ Location Name                ResourceGroupName ProvisioningState
 eastus   azps-mn-datanetwork azps_test_group   Succeeded
 ```
 
-Updates data network tags.
+Updates data network.
 
 ## PARAMETERS
 
@@ -50,7 +43,7 @@ The name of the data network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -61,7 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -75,19 +69,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Description
+An optional description for this data network.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -96,7 +89,7 @@ The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -112,7 +105,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -127,7 +120,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,28 +190,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
-  - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
-  - `[DataNetworkName <String>]`: The name of the data network.
-  - `[Id <String>]`: Resource identity path
-  - `[MobileNetworkName <String>]`: The name of the mobile network.
-  - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
-  - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  - `[SimGroupName <String>]`: The name of the SIM Group.
-  - `[SimName <String>]`: The name of the SIM.
-  - `[SimPolicyName <String>]`: The name of the SIM policy.
-  - `[SiteName <String>]`: The name of the mobile network site.
-  - `[SliceName <String>]`: The name of the network slice.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VersionName <String>]`: The name of the packet core control plane version.
 
 ## RELATED LINKS
 
