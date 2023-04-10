@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// the total agent pool size at the time of the upgrade. For
         /// percentages, fractional nodes are rounded up. If not specified, the
         /// default is 1. For more information, including best practices, see:
-        /// https://learn.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
+        /// https://docs.microsoft.com/azure/aks/upgrade-cluster#customize-node-surge-upgrade
         /// </remarks>
         [JsonProperty(PropertyName = "maxSurge")]
         public string MaxSurge { get; set; }

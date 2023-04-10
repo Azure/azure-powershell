@@ -5,10 +5,12 @@
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.CosmosDB" Version="3.9.1-preview" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="SessionRecords\Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest.ServiceTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 </Project>

@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.10.0
 * Introduced restorable apis support for Gremlin and Table, which includes:
     - Added the apis for RestorableGremlinDatabases, RestorableGremlinGraphs, RestorableGremlinResources,RestorableTables, RestorableResources.
     - Added RetrieveContinuousBackupInfo apis for Gremlin and Table which help in determining the restore point of time and the resources to restore.

@@ -364,7 +364,7 @@ namespace Microsoft.Azure.Management.ContainerService
             ResolvePrivateLinkServiceId = new ResolvePrivateLinkServiceIdOperations(this);
             Snapshots = new SnapshotsOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2022-09-01";
+            ApiVersion = "2023-02-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

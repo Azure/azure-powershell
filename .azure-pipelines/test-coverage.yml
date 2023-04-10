@@ -111,14 +111,10 @@ jobs:
       pwsh: true
       targetType: inline
       script: |
+        git checkout -b testcoverage-baseline
         $blDir = "./tools/TestFx/Coverage"
         $blCsv = Join-Path -Path $blDir -ChildPath "Baseline.csv"
-        if (Test-Path -Path $blCsv) {
-          Remove-Item -Path $blCsv -Force
-        }
-
-        git checkout -b testcoverage-baseline
-        Copy-Item -Path "$(Pipeline.Workspace)/artifacts/TestCoverageAnalysis/Results/Baseline.csv" -Destination $blDir
+        Copy-Item -Path "$(Pipeline.Workspace)/artifacts/TestCoverageAnalysis/Results/Baseline.csv" -Destination $blDir -Force
         git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
         git config user.name "azure-powershell-bot"
         git add $blCsv
