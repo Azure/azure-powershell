@@ -50,7 +50,6 @@ hana-test         ad-ams-rg         Failed
 SAP-NETWEAVER     ad-ams-rg         Failed            
 HA3-HANA-HighAvl  ad-ams-rg         Succeeded         
 lh-28022023-host  ad-ams-rg         Failed            
-blahblah-28020223 ad-ams-rg         Succeeded         
 as1-sysdb         ad-ams-rg         Succeeded         
 h2-test           ad-ams-rg         Failed            
 ```
