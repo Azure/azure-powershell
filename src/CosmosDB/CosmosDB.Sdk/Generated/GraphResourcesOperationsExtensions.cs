@@ -178,9 +178,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='graphName'>
             /// Cosmos DB graph resource name.
             /// </param>
-            public static GraphResourcesDeleteGraphResourceHeaders DeleteGraphResource(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName)
+            public static void DeleteGraphResource(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName)
             {
-                return operations.DeleteGraphResourceAsync(resourceGroupName, accountName, graphName).GetAwaiter().GetResult();
+                operations.DeleteGraphResourceAsync(resourceGroupName, accountName, graphName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -201,12 +201,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GraphResourcesDeleteGraphResourceHeaders> DeleteGraphResourceAsync(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteGraphResourceAsync(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteGraphResourceWithHttpMessagesAsync(resourceGroupName, accountName, graphName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteGraphResourceWithHttpMessagesAsync(resourceGroupName, accountName, graphName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -276,9 +273,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='graphName'>
             /// Cosmos DB graph resource name.
             /// </param>
-            public static GraphResourcesDeleteGraphResourceHeaders BeginDeleteGraphResource(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName)
+            public static void BeginDeleteGraphResource(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName)
             {
-                return operations.BeginDeleteGraphResourceAsync(resourceGroupName, accountName, graphName).GetAwaiter().GetResult();
+                operations.BeginDeleteGraphResourceAsync(resourceGroupName, accountName, graphName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -299,12 +296,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GraphResourcesDeleteGraphResourceHeaders> BeginDeleteGraphResourceAsync(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteGraphResourceAsync(this IGraphResourcesOperations operations, string resourceGroupName, string accountName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteGraphResourceWithHttpMessagesAsync(resourceGroupName, accountName, graphName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteGraphResourceWithHttpMessagesAsync(resourceGroupName, accountName, graphName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

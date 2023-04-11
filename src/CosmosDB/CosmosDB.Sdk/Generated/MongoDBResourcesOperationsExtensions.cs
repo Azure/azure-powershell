@@ -180,9 +180,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='databaseName'>
             /// Cosmos DB database name.
             /// </param>
-            public static MongoDBResourcesDeleteMongoDBDatabaseHeaders DeleteMongoDBDatabase(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+            public static void DeleteMongoDBDatabase(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return operations.DeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                operations.DeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -203,12 +203,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBResourcesDeleteMongoDBDatabaseHeaders> DeleteMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -815,9 +812,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='collectionName'>
             /// Cosmos DB collection name.
             /// </param>
-            public static MongoDBResourcesDeleteMongoDBCollectionHeaders DeleteMongoDBCollection(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
+            public static void DeleteMongoDBCollection(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
             {
-                return operations.DeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
+                operations.DeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -841,12 +838,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBResourcesDeleteMongoDBCollectionHeaders> DeleteMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1620,9 +1614,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='databaseName'>
             /// Cosmos DB database name.
             /// </param>
-            public static MongoDBResourcesDeleteMongoDBDatabaseHeaders BeginDeleteMongoDBDatabase(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+            public static void BeginDeleteMongoDBDatabase(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return operations.BeginDeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                operations.BeginDeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1643,12 +1637,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBResourcesDeleteMongoDBDatabaseHeaders> BeginDeleteMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -2105,9 +2096,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='collectionName'>
             /// Cosmos DB collection name.
             /// </param>
-            public static MongoDBResourcesDeleteMongoDBCollectionHeaders BeginDeleteMongoDBCollection(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
+            public static void BeginDeleteMongoDBCollection(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
             {
-                return operations.BeginDeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
+                operations.BeginDeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -2131,12 +2122,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<MongoDBResourcesDeleteMongoDBCollectionHeaders> BeginDeleteMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

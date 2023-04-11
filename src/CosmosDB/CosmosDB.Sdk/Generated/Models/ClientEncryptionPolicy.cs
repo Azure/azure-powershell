@@ -35,9 +35,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="includedPaths">Paths of the item that need encryption
         /// along with path-specific settings.</param>
         /// <param name="policyFormatVersion">Version of the client encryption
-        /// policy definition. Supported versions are 1 and 2. Version 2
-        /// supports id and partition key path encryption. </param>
-        public ClientEncryptionPolicy(IList<ClientEncryptionIncludedPath> includedPaths, int policyFormatVersion)
+        /// policy definition. Please note, user passed value is ignored.
+        /// Default policy version is 1.</param>
+        public ClientEncryptionPolicy(IList<ClientEncryptionIncludedPath> includedPaths, int? policyFormatVersion = default(int?))
         {
             IncludedPaths = includedPaths;
             PolicyFormatVersion = policyFormatVersion;
@@ -58,11 +58,11 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <summary>
         /// Gets or sets version of the client encryption policy definition.
-        /// Supported versions are 1 and 2. Version 2 supports id and partition
-        /// key path encryption.
+        /// Please note, user passed value is ignored. Default policy version
+        /// is 1.
         /// </summary>
         [JsonProperty(PropertyName = "policyFormatVersion")]
-        public int PolicyFormatVersion { get; set; }
+        public int? PolicyFormatVersion { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -85,14 +85,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
                         element.Validate();
                     }
                 }
-            }
-            if (PolicyFormatVersion > 2)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "PolicyFormatVersion", 2);
-            }
-            if (PolicyFormatVersion < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "PolicyFormatVersion", 1);
             }
         }
     }

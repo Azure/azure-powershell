@@ -178,9 +178,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='databaseName'>
             /// Cosmos DB database name.
             /// </param>
-            public static SqlResourcesDeleteSqlDatabaseHeaders DeleteSqlDatabase(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+            public static void DeleteSqlDatabase(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return operations.DeleteSqlDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                operations.DeleteSqlDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -201,12 +201,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlDatabaseHeaders> DeleteSqlDatabaseAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteSqlDatabaseAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -739,9 +736,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='containerName'>
             /// Cosmos DB container name.
             /// </param>
-            public static SqlResourcesDeleteSqlContainerHeaders DeleteSqlContainer(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
+            public static void DeleteSqlContainer(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
             {
-                return operations.DeleteSqlContainerAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
+                operations.DeleteSqlContainerAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -765,12 +762,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlContainerHeaders> DeleteSqlContainerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteSqlContainerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1480,9 +1474,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='storedProcedureName'>
             /// Cosmos DB storedProcedure name.
             /// </param>
-            public static SqlResourcesDeleteSqlStoredProcedureHeaders DeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
+            public static void DeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
             {
-                return operations.DeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
+                operations.DeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1509,12 +1503,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlStoredProcedureHeaders> DeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1716,9 +1707,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='userDefinedFunctionName'>
             /// Cosmos DB userDefinedFunction name.
             /// </param>
-            public static SqlResourcesDeleteSqlUserDefinedFunctionHeaders DeleteSqlUserDefinedFunction(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName)
+            public static void DeleteSqlUserDefinedFunction(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName)
             {
-                return operations.DeleteSqlUserDefinedFunctionAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName).GetAwaiter().GetResult();
+                operations.DeleteSqlUserDefinedFunctionAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1745,12 +1736,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlUserDefinedFunctionHeaders> DeleteSqlUserDefinedFunctionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteSqlUserDefinedFunctionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteSqlUserDefinedFunctionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteSqlUserDefinedFunctionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1948,9 +1936,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='triggerName'>
             /// Cosmos DB trigger name.
             /// </param>
-            public static SqlResourcesDeleteSqlTriggerHeaders DeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
+            public static void DeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
             {
-                return operations.DeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
+                operations.DeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1977,12 +1965,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlTriggerHeaders> DeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -2476,9 +2461,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='databaseName'>
             /// Cosmos DB database name.
             /// </param>
-            public static SqlResourcesDeleteSqlDatabaseHeaders BeginDeleteSqlDatabase(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+            public static void BeginDeleteSqlDatabase(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return operations.BeginDeleteSqlDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                operations.BeginDeleteSqlDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -2499,12 +2484,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlDatabaseHeaders> BeginDeleteSqlDatabaseAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteSqlDatabaseAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteSqlDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -2789,9 +2771,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='containerName'>
             /// Cosmos DB container name.
             /// </param>
-            public static SqlResourcesDeleteSqlContainerHeaders BeginDeleteSqlContainer(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
+            public static void BeginDeleteSqlContainer(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName)
             {
-                return operations.BeginDeleteSqlContainerAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
+                operations.BeginDeleteSqlContainerAsync(resourceGroupName, accountName, databaseName, containerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -2815,12 +2797,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlContainerHeaders> BeginDeleteSqlContainerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteSqlContainerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteSqlContainerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -3362,9 +3341,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='storedProcedureName'>
             /// Cosmos DB storedProcedure name.
             /// </param>
-            public static SqlResourcesDeleteSqlStoredProcedureHeaders BeginDeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
+            public static void BeginDeleteSqlStoredProcedure(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName)
             {
-                return operations.BeginDeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
+                operations.BeginDeleteSqlStoredProcedureAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -3391,12 +3370,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlStoredProcedureHeaders> BeginDeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteSqlStoredProcedureAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string storedProcedureName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteSqlStoredProcedureWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, storedProcedureName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -3484,9 +3460,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='userDefinedFunctionName'>
             /// Cosmos DB userDefinedFunction name.
             /// </param>
-            public static SqlResourcesDeleteSqlUserDefinedFunctionHeaders BeginDeleteSqlUserDefinedFunction(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName)
+            public static void BeginDeleteSqlUserDefinedFunction(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName)
             {
-                return operations.BeginDeleteSqlUserDefinedFunctionAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName).GetAwaiter().GetResult();
+                operations.BeginDeleteSqlUserDefinedFunctionAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -3513,12 +3489,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlUserDefinedFunctionHeaders> BeginDeleteSqlUserDefinedFunctionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteSqlUserDefinedFunctionAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string userDefinedFunctionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteSqlUserDefinedFunctionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteSqlUserDefinedFunctionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, userDefinedFunctionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -3606,9 +3579,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='triggerName'>
             /// Cosmos DB trigger name.
             /// </param>
-            public static SqlResourcesDeleteSqlTriggerHeaders BeginDeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
+            public static void BeginDeleteSqlTrigger(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName)
             {
-                return operations.BeginDeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
+                operations.BeginDeleteSqlTriggerAsync(resourceGroupName, accountName, databaseName, containerName, triggerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -3635,12 +3608,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SqlResourcesDeleteSqlTriggerHeaders> BeginDeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteSqlTriggerAsync(this ISqlResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string containerName, string triggerName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteSqlTriggerWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, containerName, triggerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

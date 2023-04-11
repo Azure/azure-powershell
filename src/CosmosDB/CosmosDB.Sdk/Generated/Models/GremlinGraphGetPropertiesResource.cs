@@ -42,17 +42,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="conflictResolutionPolicy">The conflict resolution
         /// policy for the graph.</param>
         /// <param name="analyticalStorageTtl">Analytical TTL.</param>
-        /// <param name="restoreParameters">Parameters to indicate the
-        /// information about the restore</param>
-        /// <param name="createMode">Enum to indicate the mode of resource
-        /// creation. Possible values include: 'Default', 'Restore'</param>
         /// <param name="_rid">A system generated property. A unique
         /// identifier.</param>
         /// <param name="_ts">A system generated property that denotes the last
         /// updated timestamp of the resource.</param>
         /// <param name="_etag">A system generated property representing the
         /// resource etag required for optimistic concurrency control.</param>
-        public GremlinGraphGetPropertiesResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), long? analyticalStorageTtl = default(long?), ResourceRestoreParameters restoreParameters = default(ResourceRestoreParameters), string createMode = default(string), string _rid = default(string), double? _ts = default(double?), string _etag = default(string))
+        public GremlinGraphGetPropertiesResource(string id, IndexingPolicy indexingPolicy = default(IndexingPolicy), ContainerPartitionKey partitionKey = default(ContainerPartitionKey), int? defaultTtl = default(int?), UniqueKeyPolicy uniqueKeyPolicy = default(UniqueKeyPolicy), ConflictResolutionPolicy conflictResolutionPolicy = default(ConflictResolutionPolicy), long? analyticalStorageTtl = default(long?), string _rid = default(string), double? _ts = default(double?), string _etag = default(string))
         {
             Id = id;
             IndexingPolicy = indexingPolicy;
@@ -61,8 +57,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             UniqueKeyPolicy = uniqueKeyPolicy;
             ConflictResolutionPolicy = conflictResolutionPolicy;
             AnalyticalStorageTtl = analyticalStorageTtl;
-            RestoreParameters = restoreParameters;
-            CreateMode = createMode;
             this._rid = _rid;
             this._ts = _ts;
             this._etag = _etag;
@@ -119,20 +113,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "analyticalStorageTtl")]
         public long? AnalyticalStorageTtl { get; set; }
-
-        /// <summary>
-        /// Gets or sets parameters to indicate the information about the
-        /// restore
-        /// </summary>
-        [JsonProperty(PropertyName = "restoreParameters")]
-        public ResourceRestoreParameters RestoreParameters { get; set; }
-
-        /// <summary>
-        /// Gets or sets enum to indicate the mode of resource creation.
-        /// Possible values include: 'Default', 'Restore'
-        /// </summary>
-        [JsonProperty(PropertyName = "createMode")]
-        public string CreateMode { get; set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.

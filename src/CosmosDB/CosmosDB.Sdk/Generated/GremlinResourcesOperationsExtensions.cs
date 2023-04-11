@@ -180,9 +180,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='databaseName'>
             /// Cosmos DB database name.
             /// </param>
-            public static GremlinResourcesDeleteGremlinDatabaseHeaders DeleteGremlinDatabase(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+            public static void DeleteGremlinDatabase(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return operations.DeleteGremlinDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                operations.DeleteGremlinDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -203,12 +203,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinResourcesDeleteGremlinDatabaseHeaders> DeleteGremlinDatabaseAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteGremlinDatabaseAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -583,9 +580,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='graphName'>
             /// Cosmos DB graph name.
             /// </param>
-            public static GremlinResourcesDeleteGremlinGraphHeaders DeleteGremlinGraph(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName)
+            public static void DeleteGremlinGraph(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName)
             {
-                return operations.DeleteGremlinGraphAsync(resourceGroupName, accountName, databaseName, graphName).GetAwaiter().GetResult();
+                operations.DeleteGremlinGraphAsync(resourceGroupName, accountName, databaseName, graphName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -609,12 +606,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinResourcesDeleteGremlinGraphHeaders> DeleteGremlinGraphAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteGremlinGraphAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.DeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -964,9 +958,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='databaseName'>
             /// Cosmos DB database name.
             /// </param>
-            public static GremlinResourcesDeleteGremlinDatabaseHeaders BeginDeleteGremlinDatabase(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
+            public static void BeginDeleteGremlinDatabase(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return operations.BeginDeleteGremlinDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+                operations.BeginDeleteGremlinDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -987,12 +981,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinResourcesDeleteGremlinDatabaseHeaders> BeginDeleteGremlinDatabaseAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteGremlinDatabaseAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteGremlinDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1221,9 +1212,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='graphName'>
             /// Cosmos DB graph name.
             /// </param>
-            public static GremlinResourcesDeleteGremlinGraphHeaders BeginDeleteGremlinGraph(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName)
+            public static void BeginDeleteGremlinGraph(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName)
             {
-                return operations.BeginDeleteGremlinGraphAsync(resourceGroupName, accountName, databaseName, graphName).GetAwaiter().GetResult();
+                operations.BeginDeleteGremlinGraphAsync(resourceGroupName, accountName, databaseName, graphName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1247,12 +1238,9 @@ namespace Microsoft.Azure.Management.CosmosDB
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GremlinResourcesDeleteGremlinGraphHeaders> BeginDeleteGremlinGraphAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteGremlinGraphAsync(this IGremlinResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string graphName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginDeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Headers;
-                }
+                (await operations.BeginDeleteGremlinGraphWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, graphName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
