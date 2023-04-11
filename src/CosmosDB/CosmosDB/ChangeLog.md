@@ -17,6 +17,9 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+## Upcoming Preview Release
+* Introduced Restore-AzCosmosDBGremlinDatabase, Restore-AzCosmosDBGremlinGraph to restore deleted database and graph in the same account for Gremlin.
+* Introduced Restore-AzCosmosDBTable to restore deleted table in the same account.
 
 ## Upcoming Release
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
