@@ -352,7 +352,15 @@ Function Move-Generation2MasterHybrid {
                 [string] $DestPath,
                 [string] $Psd1FolderPostfix
             )
-            Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+            $psd1Path = "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+            $assemblyToRemove = "YamlDotNet.dll"
+            $psd1Data = Import-PowerShellDataFile -Path $psd1Path
+            if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
+                $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
+                Write-Host $psd1Data.RequiredAssemblies
+                Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
+            }
+            Import-Module $psd1Path
             Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
