@@ -362,7 +362,7 @@ Function Move-Generation2MasterHybrid {
             }
             Import-Module $psd1Path
             Import-Module platyPS
-            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
+            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job
