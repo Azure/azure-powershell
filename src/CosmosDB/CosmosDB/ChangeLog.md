@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.30.0.
 
 ## Version 1.10.0
 * Introduced restorable apis support for Gremlin and Table, which includes:
