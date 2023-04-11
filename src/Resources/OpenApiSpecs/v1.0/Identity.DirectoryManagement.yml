@@ -240,20 +240,6 @@ components:
               x-ms-navigationProperty: true
           additionalProperties:
             type: object
-    microsoft.graph.directoryObject:
-      allOf:
-        - $ref: '#/components/schemas/microsoft.graph.entity'
-        - title: directoryObject
-          type: object
-          properties:
-            deletedDateTime:
-              pattern: '^[0-9]{4,}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])T([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]([.][0-9]{1,12})?(Z|[+-][0-9][0-9]:[0-9][0-9])$'
-              type: string
-              description: Date and time when this object was deleted. Always null when the object hasn't been deleted.
-              format: date-time
-              nullable: true
-          additionalProperties:
-            type: object
     microsoft.graph.extensionProperty:
       allOf:
         - $ref: '../CommonTypes.yml#/components/schemas/microsoft.graph.directoryObject'
