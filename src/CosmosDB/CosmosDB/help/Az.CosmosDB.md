@@ -75,6 +75,9 @@ Gets the CosmosDB throughput properties of MongoDB Collection.
 ### [Get-AzCosmosDBMongoDBDatabase](Get-AzCosmosDBMongoDBDatabase.md)
 Gets the CosmosDB MongoDB Database
 
+### [Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
+Gets the Partition throughput distribution for a MongoDB Database.
+
 ### [Get-AzCosmosDBMongoDBDatabaseThroughput](Get-AzCosmosDBMongoDBDatabaseThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Database.
 
@@ -110,6 +113,9 @@ Gets the throughput settings corresponding to a CosmosDB Sql Container.
 
 ### [Get-AzCosmosDBSqlDatabase](Get-AzCosmosDBSqlDatabase.md)
 Gets the CosmosDB Sql Database.
+
+### [Get-AzCosmosDBSqlDatabasePerPartitionThroughput](Get-AzCosmosDBSqlDatabasePerPartitionThroughput.md)
+Gets the CosmosDB Sql Database Partition throughput.
 
 ### [Get-AzCosmosDBSqlDatabaseThroughput](Get-AzCosmosDBSqlDatabaseThroughput.md)
 Gets the throughput settings corresponding to a CosmosDB Sql Database.
@@ -414,17 +420,17 @@ Deletes a Cosmos DB Service
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
 
-### [Restore-AzCosmosDBSqlDatabase](Restore-AzCosmosDBSqlDatabase)
-Restore a deleted sql database to a given timestamp in the same account
+### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection.md)
+Restore a deleted mongodb collection in a database to a given timestamp in the same account
 
-### [Restore-AzCosmosDBSqlContainer](Restore-AzCosmosDBSqlContainer)
-Restore a deleted sql container in a database to a given timestamp in the same account
-
-### [Restore-AzCosmosDBMongoDBDatabase](Restore-AzCosmosDBMongoDBDatabase)
+### [Restore-AzCosmosDBMongoDBDatabase](Restore-AzCosmosDBMongoDBDatabase.md)
 Restore a deleted mongodb database to a given timestamp in the same account
 
-### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection)
-Restore a deleted mongodb collection in a database to a given timestamp in the same account
+### [Restore-AzCosmosDBSqlContainer](Restore-AzCosmosDBSqlContainer.md)
+Restore a deleted sql container in a database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBSqlDatabase](Restore-AzCosmosDBSqlDatabase.md)
+Restore a deleted sql database to a given timestamp in the same account
 
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
 Update a CosmosDB account attributes.
@@ -474,6 +480,9 @@ Updates the throughput value of a CosmosDB MongoDB Collection.
 ### [Update-AzCosmosDBMongoDBDatabase](Update-AzCosmosDBMongoDBDatabase.md)
 Updates the CosmosDB MongoDB Database. Performs a client side patch operation by reading the existing Database.
 
+### [Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
+Updates the Partition Throughput for a MongoDB Database.
+
 ### [Update-AzCosmosDBMongoDBDatabaseThroughput](Update-AzCosmosDBMongoDBDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Database.
 
@@ -494,6 +503,9 @@ Updates the throughput value of a CosmosDB Sql Container.
 
 ### [Update-AzCosmosDBSqlDatabase](Update-AzCosmosDBSqlDatabase.md)
 Updates the CosmosDB Sql Database. Performs a client side patch operation by reading the existing Database.
+
+### [Update-AzCosmosDBSqlDatabasePerPartitionThroughput](Update-AzCosmosDBSqlDatabasePerPartitionThroughput.md)
+Updates the throughput of selected partitions in a CosmosDB Sql database.
 
 ### [Update-AzCosmosDBSqlDatabaseThroughput](Update-AzCosmosDBSqlDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB Sql Database.

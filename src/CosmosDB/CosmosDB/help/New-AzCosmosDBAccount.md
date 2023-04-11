@@ -609,21 +609,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RestoreTimestampInUtc
-The timestamp to which the source account has to be restored to.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServerVersion
 ServerVersion, valid only in case of MongoDB Accounts.
 
@@ -638,37 +623,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
-### -SourceDatabaseAccountName
-The name of the source database account of the restore
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceRestorableDatabaseAccountId
-The restorable database account Id of the source account of the restore.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 
 ### -Tag
 Hashtable of tags as key-value pairs.
