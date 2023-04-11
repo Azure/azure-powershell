@@ -357,7 +357,6 @@ Function Move-Generation2MasterHybrid {
             $psd1Data = Import-PowerShellDataFile -Path $psd1Path
             if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
                 $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
-                Write-Host $psd1Data.RequiredAssemblies
                 Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
             }
             Import-Module $psd1Path
