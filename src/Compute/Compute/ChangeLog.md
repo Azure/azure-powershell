@@ -21,7 +21,7 @@
 -->
 ## Upcoming Release
 * Updated the breaking change warning in `New-AzVM` and `New-AzVmss` regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
-* Updated the `Get-AzVMRunCommand` to include the `ProvisioningState` value.
+* Updated the `Get-AzVMRunCommand` to include the `ProvisioningState` value. Fix [#21473]
 
 ## Version 5.7.0
 * Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
