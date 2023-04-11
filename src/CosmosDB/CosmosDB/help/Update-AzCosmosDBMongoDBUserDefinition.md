@@ -75,7 +75,7 @@ Update-AzCosmosDBMongoDBUserDefinition `
 	-Id id `
 	-Mechanisms 'SCRAM-SHA-256' `
 	-CustomData 'test' `
-	-Roles $Roles 
+	-Roles $Roles
 ```
 
 ```output
