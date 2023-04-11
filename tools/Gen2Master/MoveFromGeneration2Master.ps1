@@ -361,6 +361,7 @@ Function Move-Generation2MasterHybrid {
                 Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
             }
             Import-Module $psd1Path
+            Import-Module platyPS
             Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
