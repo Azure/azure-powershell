@@ -18,8 +18,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
-    using Newtonsoft.Json.Serialization;
-
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -52,7 +50,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             Converters = new List<JsonConverter>
             {
                 new TimeSpanConverter(),
-                new StringEnumConverter(new DefaultNamingStrategy()),
+                new StringEnumConverter { CamelCaseText = false },
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AdjustToUniversal },
             },
         };
@@ -71,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
             Converters = new List<JsonConverter>
             {
                 new TimeSpanConverter(),
-                new StringEnumConverter(new DefaultNamingStrategy()),
+                new StringEnumConverter { CamelCaseText = false },
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AdjustToUniversal },
             },
         };
