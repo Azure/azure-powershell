@@ -1,12 +1,12 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnM/YXBpLXZlcnNpb249MjAyMi0wOC0xNS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations?api-version=2022-11-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnM/YXBpLXZlcnNpb249MjAyMi0xMS0xNS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2c2df22c-bccb-4730-963a-2d3b90ba29a2"
+          "70f4e9e1-9722-4e35-8d39-22252fecd52a"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,7 +15,7 @@
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.9.1"
         ]
       },
       "RequestBody": "",
@@ -36,22 +36,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11813"
+          "11975"
         ],
         "x-ms-request-id": [
-          "18b90bdd-0f00-4e7f-8362-4a71315ab4ed"
+          "2429f56f-9604-47ea-840d-dc20946db121"
         ],
         "x-ms-correlation-request-id": [
-          "18b90bdd-0f00-4e7f-8362-4a71315ab4ed"
+          "2429f56f-9604-47ea-840d-dc20946db121"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2EUAP:20230328T154208Z:18b90bdd-0f00-4e7f-8362-4a71315ab4ed"
+          "EASTUS2EUAP:20230412T120521Z:2429f56f-9604-47ea-840d-dc20946db121"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 28 Mar 2023 15:42:08 GMT"
+          "Wed, 12 Apr 2023 12:05:20 GMT"
         ],
         "Content-Length": [
           "14563"
@@ -64,12 +64,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/East%20US?api-version=2022-08-15-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvRWFzdCUyMFVTP2FwaS12ZXJzaW9uPTIwMjItMDgtMTUtcHJldmlldw==",
+      "RequestUri": "/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/East%20US?api-version=2022-11-15-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjM1ODdlOTgtYjZhYy00MzI4LWE3NTMtMDNiY2QzYzhlNzQ0L3Byb3ZpZGVycy9NaWNyb3NvZnQuRG9jdW1lbnREQi9sb2NhdGlvbnMvRWFzdCUyMFVTP2FwaS12ZXJzaW9uPTIwMjItMTEtMTUtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "730ce34c-1ba5-457a-ba66-d871a2b1cf51"
+          "c42d2f14-ff8d-4312-b6ee-86a046e65a49"
         ],
         "Accept-Language": [
           "en-US"
@@ -78,7 +78,7 @@
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.9.1"
         ]
       },
       "RequestBody": "",
@@ -99,22 +99,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11802"
+          "11992"
         ],
         "x-ms-request-id": [
-          "d875651e-b9bc-468a-a488-9e8c0ed59d5b"
+          "74148b30-97c1-4cf5-8d0a-cf8de1d3c88b"
         ],
         "x-ms-correlation-request-id": [
-          "d875651e-b9bc-468a-a488-9e8c0ed59d5b"
+          "74148b30-97c1-4cf5-8d0a-cf8de1d3c88b"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS2EUAP:20230328T154210Z:d875651e-b9bc-468a-a488-9e8c0ed59d5b"
+          "EASTUS2EUAP:20230412T120523Z:74148b30-97c1-4cf5-8d0a-cf8de1d3c88b"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 28 Mar 2023 15:42:09 GMT"
+          "Wed, 12 Apr 2023 12:05:22 GMT"
         ],
         "Content-Length": [
           "294"
