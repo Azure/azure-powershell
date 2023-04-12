@@ -25,7 +25,7 @@ Restores the deleted gremlin graph in the same account with the given name and t
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzCosmosDBGremlinGraph  -AccountName “my-pitr-gremlin-account” -ResourceGroupName “my-rg” -DatabaseName “my-database” -Name “my-graph” -RestoreTimestampInUtc “2023-04-25T07:16:20Z”
+Restore-AzCosmosDBGremlinGraph  -AccountName “my-pitr-gremlin-account” -ResourceGroupName “my-rg” -DatabaseName “my-database” -Name “my-graph” -RestoreTimestampInUtc “2023-04-25T07:16:20Z”
 ```
 
 ```output

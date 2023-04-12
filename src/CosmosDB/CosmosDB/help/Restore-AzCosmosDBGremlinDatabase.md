@@ -25,7 +25,7 @@ Restores the deleted gremlin database in the same account with the given name an
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzCosmosDBGremlinDatabase -AccountName “my-pitr-gremlin-account” -ResourceGroupName “my-rg” -Name “my-database” -RestoreTimestampInUtc “2023-04-25T07:16:20Z”
+Restore-AzCosmosDBGremlinDatabase -AccountName “my-pitr-gremlin-account” -ResourceGroupName “my-rg” -Name “my-database” -RestoreTimestampInUtc “2023-04-25T07:16:20Z”
 ```
 
 ```output

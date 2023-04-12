@@ -25,7 +25,7 @@ Restores the deleted table in the same account with the given name and timestamp
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzCosmosDBTable -AccountName “my-pitr-table-account” -ResourceGroupName “my-rg” -Name “my-table” -RestoreTimestampInUtc “2023-04-25T07:16:20Z”
+Restore-AzCosmosDBTable -AccountName “my-pitr-table-account” -ResourceGroupName “my-rg” -Name “my-table” -RestoreTimestampInUtc “2023-04-25T07:16:20Z”
 ```
 
 ```output
