@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.1
 * Added breaking change notification for cmdlets to be removed and parameters to be changed.
     * Cmdlet `New-AzSqlVMConfig` will be removed.
     * Cmdlet `Set-AzSqlVMConfigGroup` will be removed.

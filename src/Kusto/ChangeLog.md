@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added cmdlet `Get-AzKustoSku`
 * Added parameter `CallerRole` for cmdlet `AzKustoDatabase` and `Update-AzKustoDatabase`
 * Added support for new data connection kind `CosmosDb` for cmdlet `New-AzKustoDataConnection` and `Update-AzKustoDataConnection`

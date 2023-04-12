@@ -24,7 +24,7 @@ New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <Stri
 ### PrivateRegistry
 ```
 New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>] [[-AppServicePlan] <String>]
- -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String>
+ -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String> [-Tag <Hashtable>]
  -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String
 New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-AppServicePlan] <String>]
  [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>] [-EnableContainerContinuousDeployment]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -383,7 +383,7 @@ Tags are name/value pairs that enable you to categorize resources
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: SimpleParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False

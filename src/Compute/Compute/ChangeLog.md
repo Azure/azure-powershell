@@ -20,6 +20,12 @@
 
 -->
 ## Upcoming Release
+* Added a breaking change warning to the `Get-AzVM` cmdlet to show that the `NextLink` parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 
+* Updated the breaking change warning in `New-AzVM` and `New-AzVmss` regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
+* Updated Azure.Core to 1.30.0.
+
+
+## Version 5.7.0
 * Addressed bug in `Remove-AzVmss` to throw error when `-InstanceId` is null. [#21162]
 * Added `-CustomData`, `-AdminPassword`, and `-ExactVersion` parameters to `Invoke-AzVMReimage`.
 * Removed the image alias `CoreOS` as the publisher CoreOS no longer has any images for Azure. 

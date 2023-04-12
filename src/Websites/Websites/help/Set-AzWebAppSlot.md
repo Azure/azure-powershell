@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureStoragePath
-Azure Storage to mount inside a Web App for Container. Use New-AzureRmWebAppAzureStoragePath to create it
+Azure Storage to mount inside a Web App for Container. Use New-AzWebAppAzureStoragePath to create it
 
 ```yaml
 Type: Microsoft.Azure.Commands.WebApps.Models.WebAppAzureStoragePath[]
@@ -180,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionStrings
-Connection Strings HashTable
+Connection Strings HashTable. Example: `$connStrings = @{ConnectionStringName = @{ Type = "MySql"; Value = "TestValue"}}`
 
 ```yaml
 Type: System.Collections.Hashtable

@@ -144,5 +144,44 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             Assert.Equal(keyVaultId, actualCreateParameters.KeyVaultId);
             Assert.Equal(keyVaultUrl, actualCreateParameters.KeyVaultUrl);
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void NewBatchWithCustomerEncryptionKeyAccountTest()
+        {
+            string accountName = "account01";
+            string resourceGroup = "resourceGroup";
+            string location = "location";
+            string identityId = "subscriptions/0000/resourceGroups/resourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/encryptionIdentity";
+            string encryptionKeyVaultId = "subscriptions/0000/resourceGroups/resourceGroup/providers/Microsoft.KeyVault/vaults/encryptionVault";
+            AccountCreateParameters actualCreateParameters = null;
+
+            // Setup the mock client to return a fake response and capture the account create parameters
+            BatchAccount accountResource = BatchTestHelpers.CreateAccountResource(accountName, resourceGroup, location);
+            BatchAccountContext fakeResponse = BatchAccountContext.ConvertAccountResourceToNewAccountContext(accountResource, null);
+
+            batchClientMock.Setup(b => b.CreateAccount(It.IsAny<AccountCreateParameters>()))
+                .Returns(fakeResponse)
+                .Callback((AccountCreateParameters p) => actualCreateParameters = p);
+
+            // Setup and run the cmdlet
+            cmdlet.AccountName = accountName;
+            cmdlet.ResourceGroupName = resourceGroup;
+            cmdlet.Location = location;
+            cmdlet.IdentityType = ResourceIdentityType.UserAssigned;
+            cmdlet.IdentityId = new string[] { identityId };
+            cmdlet.EncryptionKeySource = KeySource.MicrosoftKeyVault;
+            cmdlet.EncryptionKeyIdentifier = encryptionKeyVaultId;
+            cmdlet.ExecuteCmdlet();
+
+            // Verify the fake response was written to the pipeline and that the captured account create
+            // parameters matched expectations.
+            commandRuntimeMock.Verify(r => r.WriteObject(fakeResponse), Times.Once());
+            Assert.Equal(accountName, actualCreateParameters.BatchAccount);
+            Assert.Equal(resourceGroup, actualCreateParameters.ResourceGroup);
+            Assert.Equal(location, actualCreateParameters.Location);
+            Assert.Equal(KeySource.MicrosoftKeyVault, actualCreateParameters.Encryption.KeySource);
+            Assert.Equal(encryptionKeyVaultId, actualCreateParameters.Encryption.KeyVaultProperties.KeyIdentifier);
+        }
     }
 }
