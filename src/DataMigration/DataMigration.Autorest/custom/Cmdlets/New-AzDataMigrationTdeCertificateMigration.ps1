@@ -85,24 +85,33 @@ function New-AzDataMigrationTdeCertificateMigration
             $DefaultOutputFolder = Get-DefaultTdeMigrationsOutputFolder
 
             #Defining Base and Exe paths
-            $BaseFolder = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
-
-            $ExePath = Join-Path -Path $BaseFolder -ChildPath "Microsoft.SqlServer.Migration.Tde.ConsoleApp.csproj\Microsoft.SqlServer.Migration.Tde.ConsoleApp.exe";
+            $BaseFolder = Join-Path -Path $DefaultOutputFolder -ChildPath "Downloads" -AdditionalChildPath "TdeConsoleApp";
 
             #Checking if BaseFolder Path is valid or not
             if(-Not (Test-Path $BaseFolder))
             {
-                $null = New-Item -Path $BaseFolder -ItemType "directory"
+                $null = New-Item -Path $BaseFolder -ItemType "directory";
             }
 
-            #Testing Whether Console App is downloaded or not
-            $TestExePath = Test-Path -Path $ExePath;
+            # TODO: Check if there is a more recent NuGet on nuget.org
+            #       If so, download new version.
+            #       If download is successful delete old files
+            
+            $ConsolePathExists = Test-Path -Path "console";
 
-            #Downloading and extracting TdeMigration Zip file
-            if(-Not $TestExePath)
+            if ($ConsolePathExists -eq $False)
             {
+                $Nugets = Get-ChildItem -Path $BaseFolder -Filter "Microsoft.SqlServer.Migration.TdeConsoleApp.*.nupkg";
 
+                if ($Nugets.Length -gt 0)
+                {
+                    # TODO: Fix sorting
+                    # $Nugets | Sort-Object;
+                    Expand-Archive -Path $Nugets[0] -DestinationPath $BaseFolder;
+                }
             }
+
+            $ExePath = Join-Path -Path $BaseFolder -ChildPath "console\Microsoft.SqlServer.Migration.Tde.ConsoleApp.exe";
 
             [System.Collections.ArrayList] $parameterArray = @(
                 "--sourceSqlConnectionString", $SourceSqlConnectionString,
