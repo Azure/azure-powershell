@@ -1153,19 +1153,22 @@ function Test-CreateNewWebAppOnAse
 	$whpName = "ASP-PS-UnitTesting"
 	$aseName = "ASE-PS-Unittesting"
 	$resourceType = "Microsoft.Web/sites"
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
 		$serverFarm = Get-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName -Tag $tag -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
 		# Assert
 		Assert-AreEqual $wname $actual.Name
 		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+		Assert-AreEqual $tag.Keys $actual.Tags.Keys
+        Assert-AreEqual $tag.Values $actual.Tags.Values
 
 		# Get new web app
 		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname

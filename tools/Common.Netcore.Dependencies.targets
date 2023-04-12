@@ -19,9 +19,10 @@
     <PackageReference Include="Microsoft.Azure.PowerShell.Strategies" Version="1.3.73-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Websites" Version="1.3.73-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Common.Share" Version="1.3.73-preview"/>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.28.0"/>
+    <PackageReference Include="Azure.Core" Version="1.30.0"/>
   </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1">
@@ -39,6 +40,6 @@
     <StorageToolsPath>$(NugetPackageRoot)\microsoft.azure.powershell.storage\1.3.73-preview\tools\</StorageToolsPath>
   </PropertyGroup>
   <ItemGroup Condition="'$(OmitJsonPackage)' != 'true'">
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3"/>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2"/>
   </ItemGroup>
 </Project>
