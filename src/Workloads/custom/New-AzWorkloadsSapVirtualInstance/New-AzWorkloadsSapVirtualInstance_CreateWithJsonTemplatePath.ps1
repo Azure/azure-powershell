@@ -175,11 +175,10 @@ function New-AzWorkloadsSapVirtualInstance_CreateWithJsonTemplatePath {
   )
   process {
       try {
-            if (-not (Test-Path $Configuration))
-            {
-                Write-Error "Cannot find file $Configuration . Please make sure it exists!"
-                exit 1
+            if (-not (Test-Path $Configuration)) {
+              throw "Cannot find file $Configuration . Please make sure the file name and file path are correct."
             }
+
             $bodyHashTable = @{};
             if($PSBoundParameters.ContainsKey('Tag')) {
               $bodyHashTable.tags = $Tag
