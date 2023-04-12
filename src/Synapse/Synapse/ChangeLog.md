@@ -19,7 +19,6 @@
 -->
 
 ## Upcoming Release
-* Updated Azure.Core to 1.30.0.
 
 ## Version 2.3.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.17
