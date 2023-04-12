@@ -27,6 +27,7 @@ Description for Creates a new static site custom domain in an existing resource 
 ```powershell
 New-AzStaticWebAppCustomDomain -ResourceGroupName resourceGroup -Name staticweb00 -DomainName 'www01.azpstest.net'
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----

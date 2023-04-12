@@ -48,5 +48,3 @@ Kind Location   Name               Type
 ```
 
 This commands gets a satic web application by pipline.
-
-

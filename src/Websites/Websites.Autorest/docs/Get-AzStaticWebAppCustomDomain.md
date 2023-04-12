@@ -39,6 +39,7 @@ Description for Gets an existing custom domain for a particular static site.
 ```powershell
 Get-AzStaticWebAppCustomDomain -ResourceGroupName azure-rg-test -Name staticweb00
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -51,6 +52,7 @@ This command lists all existing custom domains for a particular static site.
 ```powershell
 Get-AzStaticWebAppCustomDomain -ResourceGroupName azure-rg-test -Name staticweb00 -DomainName 'www02.azpstest.net'
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
@@ -63,6 +65,7 @@ This command gets an existing custom domain for a particular static site.
 ```powershell
 New-AzStaticWebAppCustomDomain -ResourceGroupName azure-rg-test -Name staticweb00 -DomainName 'www02.azpstest.net' | Get-AzStaticWebAppCustomDomain
 ```
+
 ```output
 Kind Name               Type
 ---- ----               ----
