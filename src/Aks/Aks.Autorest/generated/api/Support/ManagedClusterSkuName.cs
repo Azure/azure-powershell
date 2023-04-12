@@ -6,11 +6,12 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Name of a managed cluster SKU.</summary>
+    /// <summary>The name of a managed cluster SKU.</summary>
     public partial struct ManagedClusterSkuName :
         System.IEquatable<ManagedClusterSkuName>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuName Basic = @"Basic";
+        /// <summary>Base option for the AKS control plane.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuName Base = @"Base";
 
         /// <summary>the value for an instance of the <see cref="ManagedClusterSkuName" /> Enum.</summary>
         private string _value { get; set; }

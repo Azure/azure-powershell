@@ -30,12 +30,12 @@ For information on how to develop for `Az.Aks`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: e320555a456cbc894c5a89466defdfca45ca18a8
+branch: 6031674c73a95ffd60f58b5cdd633c94b3360467
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2020-09-01/managedClusters.json
-  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2019-08-01/location.json
+  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-02-01/managedClusters.json
+  - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2019-08-01/location.json
 
 title: Aks
 module-version: 0.1.0
@@ -50,6 +50,22 @@ directive:
       subject: ^ManagedCluster$
       verb: Get|New|Set|Remove
     remove: true
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Run$|^RunViaIdentity$
+      subject: ^MaintenanceConfiguration$|^Snapshot$|^ManagedClusterCommand$|^SnapshotTag$
+    remove: true
+  - where:  
+      subject: ^MaintenanceConfiguration$|^Snapshot$
+      verb: Set
+    remove: true
+# this API (Update SnapshotTag) is defined in swagger but not supported by RP
+  - where:  
+      subject: ^SnapshotTag$
+      verb: Update
+    remove: true
+  - model-cmdlet:
+    - TimeSpan
+    - TimeInWeek
   - where:
       subject: ^ManagedCluster$
       parameter-name: ResourceName

@@ -24,7 +24,7 @@ The operation returns properties of each orchestrator including version, availab
 
 ## EXAMPLES
 
-### Example 1: List available version for creating managed Kubernetes cluster.
+### Example 1: List available version for creating managed Kubernetes cluster
 ```powershell
 Get-AzAksVersion -location eastus
 ```
