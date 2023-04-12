@@ -88,8 +88,8 @@ Test Table InAccount Restore operations
 #>
 function Test-TableInAccountRestoreOperationsCmdlets
 {
-  $AccountName = "table-db2529"
-  $rgName = "CosmosDBResourceGroup39"
+  $AccountName = "table-db2530"
+  $rgName = "CosmosDBResourceGroup40"
   $TableName = "table1"
   $apiKind = "Table"
   $ThroughputValue = 500
