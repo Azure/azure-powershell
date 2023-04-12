@@ -129,15 +129,15 @@ directive:
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobSecrets', 'public Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IJobSecrets');  
     
   - model-cmdlet:
-    - DataBoxDiskJobDetails
-    - DataBoxHeavyJobDetails
-    - DataBoxJobDetails
-    - StorageAccountDetails
-    - ManagedDiskDetails
-    - KeyEncryptionKey
-    - ShippingAddress
-    - ContactDetails
-    - TransferConfiguration
+    - model-name: DataBoxDiskJobDetails
+    - model-name: DataBoxHeavyJobDetails
+    - model-name: DataBoxJobDetails
+    - model-name: StorageAccountDetails
+    - model-name: ManagedDiskDetails
+    - model-name: KeyEncryptionKey
+    - model-name: ShippingAddress
+    - model-name: ContactDetails
+    - model-name: TransferConfiguration
 ```
 ``` yaml
 directive:

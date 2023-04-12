@@ -111,67 +111,67 @@ directive:
     set:      
         suppress-format: true
   - model-cmdlet:
-    - CustomClassificationRule
-    - RegexClassificationRulePattern
-    - AzureKeyVault
-    - Filter
-    - AzureSubscriptionDataSource
-    - AzureResourceGroupDataSource
-    - AzureSynapseWorkspaceDataSource
-    - AdlsGen1DataSource
-    - AdlsGen2DataSource
-    - AmazonAccountDataSource
-    - AmazonS3DataSource
-    - AmazonSqlDataSource
-    - AzureCosmosDbDataSource
-    - AzureDataExplorerDataSource
-    - AzureFileServiceDataSource
-    - AzureSqlDatabaseDataSource
-    - AmazonPostgreSqlDataSource
-    - AzurePostgreSqlDataSource
-    - SqlServerDatabaseDataSource
-    - AzureSqlDatabaseManagedInstanceDataSource
-    - AzureSqlDataWarehouseDataSource
-    - AzureMySqlDataSource
-    - AzureStorageDataSource
-    - TeradataDataSource
-    - OracleDataSource
-    - SapS4HanaDataSource
-    - SapEccDataSource
-    - PowerBIDataSource
-    - AzureSubscriptionCredentialScan
-    - AzureSubscriptionMsiScan
-    - AzureResourceGroupCredentialScan
-    - AzureResourceGroupMsiScan
-    - AzureSynapseWorkspaceCredentialScan
-    - AzureSynapseWorkspaceMsiScan
-    - AdlsGen1CredentialScan
-    - AdlsGen1MsiScan
-    - AdlsGen2CredentialScan
-    - AdlsGen2MsiScan
-    - AmazonAccountCredentialScan
-    - AmazonS3CredentialScan
-    - AmazonSqlCredentialScan
-    - AzureCosmosDbCredentialScan
-    - AzureDataExplorerCredentialScan
-    - AzureDataExplorerMsiScan
-    - AzureFileServiceCredentialScan
-    - AzureSqlDatabaseCredentialScan
-    - AzureSqlDatabaseMsiScan
-    - AmazonPostgreSqlCredentialScan
-    - AzurePostgreSqlCredentialScan
-    - SqlServerDatabaseCredentialScan
-    - AzureSqlDatabaseManagedInstanceCredentialScan
-    - AzureSqlDatabaseManagedInstanceMsiScan
-    - AzureSqlDataWarehouseCredentialScan
-    - AzureSqlDataWarehouseMsiScan
-    - AzureMySqlCredentialScan
-    - AzureStorageCredentialScan
-    - AzureStorageMsiScan
-    - TeradataTeradataCredentialScan
-    - OracleOracleCredentialScan
-    - SapS4HanaSapS4HanaCredentialScan
-    - SapEccSapEccCredentialScan
-    - PowerBIDelegatedScan
-    - PowerBIMsiScan
+    - model-name: CustomClassificationRule
+    - model-name: RegexClassificationRulePattern
+    - model-name: AzureKeyVault
+    - model-name: Filter
+    - model-name: AzureSubscriptionDataSource
+    - model-name: AzureResourceGroupDataSource
+    - model-name: AzureSynapseWorkspaceDataSource
+    - model-name: AdlsGen1DataSource
+    - model-name: AdlsGen2DataSource
+    - model-name: AmazonAccountDataSource
+    - model-name: AmazonS3DataSource
+    - model-name: AmazonSqlDataSource
+    - model-name: AzureCosmosDbDataSource
+    - model-name: AzureDataExplorerDataSource
+    - model-name: AzureFileServiceDataSource
+    - model-name: AzureSqlDatabaseDataSource
+    - model-name: AmazonPostgreSqlDataSource
+    - model-name: AzurePostgreSqlDataSource
+    - model-name: SqlServerDatabaseDataSource
+    - model-name: AzureSqlDatabaseManagedInstanceDataSource
+    - model-name: AzureSqlDataWarehouseDataSource
+    - model-name: AzureMySqlDataSource
+    - model-name: AzureStorageDataSource
+    - model-name: TeradataDataSource
+    - model-name: OracleDataSource
+    - model-name: SapS4HanaDataSource
+    - model-name: SapEccDataSource
+    - model-name: PowerBIDataSource
+    - model-name: AzureSubscriptionCredentialScan
+    - model-name: AzureSubscriptionMsiScan
+    - model-name: AzureResourceGroupCredentialScan
+    - model-name: AzureResourceGroupMsiScan
+    - model-name: AzureSynapseWorkspaceCredentialScan
+    - model-name: AzureSynapseWorkspaceMsiScan
+    - model-name: AdlsGen1CredentialScan
+    - model-name: AdlsGen1MsiScan
+    - model-name: AdlsGen2CredentialScan
+    - model-name: AdlsGen2MsiScan
+    - model-name: AmazonAccountCredentialScan
+    - model-name: AmazonS3CredentialScan
+    - model-name: AmazonSqlCredentialScan
+    - model-name: AzureCosmosDbCredentialScan
+    - model-name: AzureDataExplorerCredentialScan
+    - model-name: AzureDataExplorerMsiScan
+    - model-name: AzureFileServiceCredentialScan
+    - model-name: AzureSqlDatabaseCredentialScan
+    - model-name: AzureSqlDatabaseMsiScan
+    - model-name: AmazonPostgreSqlCredentialScan
+    - model-name: AzurePostgreSqlCredentialScan
+    - model-name: SqlServerDatabaseCredentialScan
+    - model-name: AzureSqlDatabaseManagedInstanceCredentialScan
+    - model-name: AzureSqlDatabaseManagedInstanceMsiScan
+    - model-name: AzureSqlDataWarehouseCredentialScan
+    - model-name: AzureSqlDataWarehouseMsiScan
+    - model-name: AzureMySqlCredentialScan
+    - model-name: AzureStorageCredentialScan
+    - model-name: AzureStorageMsiScan
+    - model-name: TeradataTeradataCredentialScan
+    - model-name: OracleOracleCredentialScan
+    - model-name: SapS4HanaSapS4HanaCredentialScan
+    - model-name: SapEccSapEccCredentialScan
+    - model-name: PowerBIDelegatedScan
+    - model-name: PowerBIMsiScan
 ```

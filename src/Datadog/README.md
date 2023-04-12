@@ -121,5 +121,5 @@ directive:
       parameter-name: Name
   # For memory object that generate cmdlet.
   - model-cmdlet:
-    - FilteringTag
+    - model-name: FilteringTag
 ```

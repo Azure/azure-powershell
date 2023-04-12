@@ -83,7 +83,7 @@ directive:
       subject-prefix: ""
 
   - model-cmdlet:
-    - AlertRuleAnyOfOrLeafCondition
-    - AlertRuleLeafCondition
-    - ActionGroup
+    - model-name: AlertRuleAnyOfOrLeafCondition
+    - model-name: AlertRuleLeafCondition
+    - model-name: ActionGroup
 ```

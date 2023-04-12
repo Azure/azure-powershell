@@ -406,4 +406,4 @@ directive:
       suppress-format: true
 
   - model-cmdlet:
-    - KeyVaultProperties
+    - model-name: KeyVaultProperties

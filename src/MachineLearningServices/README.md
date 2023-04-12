@@ -515,7 +515,7 @@ directive:
     # # --> New-AzMLWorkspaceDataLakeAnalyticsObject
     # - SynapseSpark 
     # # --> New-AzMLWorkspaceSynapseSparkObject
-    - ComputeStartStopSchedule
+    - model-name: ComputeStartStopSchedule
 # Datastore
     ## Datastore Type
     # - AzureBlobDatastore --> New-AzMLWorkspaceDatastoreBlobObject
@@ -536,22 +536,22 @@ directive:
     # - SweepJob 
     ## --> New-AzMLWorkspaceSweepJobObject
 # Job input and output
-    - CustomModelJobInput
-    - CustomModelJobOutput
-    - LiteralJobInput   
-    - MLFlowModelJobInput
-    - MLFlowModelJobOutput
-    - MLTableJobInput
-    - MLTableJobOutput
-    - TritonModelJobInput
-    - TritonModelJobOutput
-    - UriFileJobInput
-    - UriFileJobOutput
-    - UriFolderJobInput
-    - UriFolderJobOutput
+    - model-name: CustomModelJobInput
+    - model-name: CustomModelJobOutput
+    - model-name: LiteralJobInput   
+    - model-name: MLFlowModelJobInput
+    - model-name: MLFlowModelJobOutput
+    - model-name: MLTableJobInput
+    - model-name: MLTableJobOutput
+    - model-name: TritonModelJobInput
+    - model-name: TritonModelJobOutput
+    - model-name: UriFileJobInput
+    - model-name: UriFileJobOutput
+    - model-name: UriFolderJobInput
+    - model-name: UriFolderJobOutput
 
-    - JobService
-    - SharedPrivateLinkResource
+    - model-name: JobService
+    - model-name: SharedPrivateLinkResource
     # - QuotaBaseProperties --> New-AzMLWorkspaceQuotaPropertiesObject
 
 ```

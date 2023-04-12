@@ -96,8 +96,8 @@ directive:
       subject: DiskPool
     hide: true
   - model-cmdlet:
-    - Acl
-    - IscsiLun
+    - model-name: Acl
+    - model-name: IscsiLun
   - where:
       model-name: DiskPoolZoneInfo
     set:

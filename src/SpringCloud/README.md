@@ -543,8 +543,8 @@ directive:
   - model-cmdlet:
       # - BuildpacksGroupProperties
       # - BuildpackProperties
-      - ConfigurationServiceGitRepository
-      - GitPatternRepository
+      - model-name: ConfigurationServiceGitRepository
+      - model-name: GitPatternRepository
       # - KeyVaultCertificateProperties
       # - ContentCertificateProperties
     # - LoadedCertificate

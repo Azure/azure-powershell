@@ -87,6 +87,6 @@ directive:
     where: $
     transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator Equal = @"Equals";');
   - model-cmdlet:
-    - Condition
-    - Dimension
+    - model-name: Condition
+    - model-name: Dimension
 ```

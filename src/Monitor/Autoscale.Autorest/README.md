@@ -99,9 +99,9 @@ directive:
       }
 
   - model-cmdlet:
-    - AutoscaleProfile
-    - ScaleRule
-    - AutoscaleNotification
-    - WebhookNotification
-    - ScaleRuleMetricDimension
+    - model-name: AutoscaleProfile
+    - model-name: ScaleRule
+    - model-name: AutoscaleNotification
+    - model-name: WebhookNotification
+    - model-name: ScaleRuleMetricDimension
 ```

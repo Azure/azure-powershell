@@ -134,8 +134,8 @@ directive:
     set:
       parameter-name: ResourceForest
   - model-cmdlet:
-    - ForestTrust
-    - ReplicaSet
+    - model-name: ForestTrust
+    - model-name: ReplicaSet
   - where:
       model-name: DomainService
     set:

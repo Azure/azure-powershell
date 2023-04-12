@@ -232,10 +232,10 @@ directive:
         ]
       }
   - model-cmdlet:
-    - NginxConfigurationFile
-    - NginxPrivateIPAddress
-    - NginxPublicIPAddress
-    - NginxNetworkProfile
+    - model-name: NginxConfigurationFile
+    - model-name: NginxPrivateIPAddress
+    - model-name: NginxPublicIPAddress
+    - model-name: NginxNetworkProfile
   - no-inline:
     - NginxNetworkProfile
 ```
