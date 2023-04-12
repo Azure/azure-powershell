@@ -22,27 +22,19 @@ Create an in-memory object for SapLandscapeMonitorMetricThresholds.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Metrics Threshold for SAP Landscape Monitor
 ```powershell
-{{ Add code here }}
+New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject -Green 90 -Name X00 -Red 50 -Yellow 80
 ```
 
 ```output
-{{ Add output here }}
+Green Name Red Yellow
+----- ---- --- ------
+90    X00  50  80
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a new Metrics Threshold object to be used for creating a SAP Landscape Monitor
 
 ## PARAMETERS
 

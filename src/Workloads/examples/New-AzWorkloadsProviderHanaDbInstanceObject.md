@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create SAP HANA provider 
 ```powershell
-{{ Add code here }}
+New-AzWorkloadsProviderHanaDbInstanceObject -Name SYSTEMDB -Password ''  -Username SYSTEM -Hostname 10.0.81.4 -InstanceNumber 00 -SapSid X00 -SqlPort 1433 -SslPreference Disabled
 ```
 
 ```output
-{{ Add output here }}
+ProviderType DbName   DbPassword DbPasswordUri DbUsername Hostname  InstanceNumber SapSid SqlPort SslCertificateUri SslHostNameInCer
+                                                                                                                    tificate
+------------ ------   ---------- ------------- ---------- --------  -------------- ------ ------- ----------------- ----------------
+SapHana      SYSTEMDB                          SYSTEM     10.0.81.4 00             X00    1433
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create SAP HANA provider for an AMS instance
