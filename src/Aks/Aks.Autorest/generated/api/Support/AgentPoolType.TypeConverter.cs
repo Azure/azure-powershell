@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>AgentPoolType represents types of an agent pool.</summary>
+    /// <summary>The type of Agent Pool.</summary>
     public partial class AgentPoolTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

@@ -10,8 +10,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
     public partial struct Code :
         System.IEquatable<Code>
     {
+        /// <summary>The cluster is running.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code Running = @"Running";
 
+        /// <summary>The cluster is stopped.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.Code Stopped = @"Stopped";
 
         /// <summary>the value for an instance of the <see cref="Code" /> Enum.</summary>

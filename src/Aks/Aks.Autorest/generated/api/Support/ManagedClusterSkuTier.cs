@@ -6,13 +6,25 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Tier of a managed cluster SKU.</summary>
+    /// <summary>
+    /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+    /// for more details.
+    /// </summary>
     public partial struct ManagedClusterSkuTier :
         System.IEquatable<ManagedClusterSkuTier>
     {
+        /// <summary>
+        /// The cluster management is free, but charged for VM, storage, and networking usage. Best for experimenting, learning, simple
+        /// testing, or workloads with fewer than 10 nodes. Not recommended for production use cases.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier Free = @"Free";
 
-        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier Paid = @"Paid";
+        /// <summary>
+        /// Recommended for mission-critical and production workloads. Includes Kubernetes control plane autoscaling, workload-intensive
+        /// testing, and up to 5,000 nodes per cluster. Guarantees 99.95% availability of the Kubernetes API server endpoint for clusters
+        /// that use Availability Zones and 99.9% of availability for clusters that don't use Availability Zones.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTier Standard = @"Standard";
 
         /// <summary>the value for an instance of the <see cref="ManagedClusterSkuTier" /> Enum.</summary>
         private string _value { get; set; }

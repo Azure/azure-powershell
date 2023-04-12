@@ -6,13 +6,26 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network policy used for building Kubernetes network.</summary>
+    /// <summary>Network policy used for building the Kubernetes network.</summary>
     public partial struct NetworkPolicy :
         System.IEquatable<NetworkPolicy>
     {
+        /// <summary>
+        /// Use Azure network policies. See [differences between Azure and Calico policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy Azure = @"azure";
 
+        /// <summary>
+        /// Use Calico network policies. See [differences between Azure and Calico policies](https://docs.microsoft.com/azure/aks/use-network-policies#differences-between-azure-and-calico-policies-and-their-capabilities)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy Calico = @"calico";
+
+        /// <summary>
+        /// Use Cilium to enforce network policies. This requires networkDataplane to be 'cilium'.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPolicy Cilium = @"cilium";
 
         /// <summary>the value for an instance of the <see cref="NetworkPolicy" /> Enum.</summary>
         private string _value { get; set; }
