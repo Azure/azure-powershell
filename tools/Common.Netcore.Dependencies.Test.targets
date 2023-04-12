@@ -16,7 +16,7 @@
     <PackageReference Include="xunit.runner.console" Version="2.4.0" />
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.5.0" />
     <Reference Include="System.Net.Http" />
-    <PackageReference Include="Newtonsoft.Json" version="10.0.3" />
+    <PackageReference Include="Newtonsoft.Json" version="13.0.2" />
     <PackageReference Include="Microsoft.Extensions.Primitives" Version="2.2.0" />
   </ItemGroup>
 
@@ -34,7 +34,7 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
     <!-- version of SDK should reference https://docs.microsoft.com/en-us/powershell/azure/what-is-azure-powershell -->
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.2.4" IncludeAssets="All" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
