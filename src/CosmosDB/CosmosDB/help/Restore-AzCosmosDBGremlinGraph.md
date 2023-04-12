@@ -36,6 +36,8 @@ Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinGraphGetPropertiesResource
 ```
 
+{{ Restores the deleted gremlin graph in the same account with the given name and timestamp. }}
+
 ## PARAMETERS
 
 ### -AccountName

@@ -36,6 +36,8 @@ Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSTableGetPropertiesResource
 ```
 
+{{ Restores the deleted table in the same account with the given name and timestamp. }}
+
 ## PARAMETERS
 
 ### -AccountName

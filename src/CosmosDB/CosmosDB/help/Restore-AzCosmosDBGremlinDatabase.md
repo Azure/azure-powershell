@@ -36,6 +36,8 @@ Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseGetPropertiesResource
 ```
 
+{{ Restores the deleted gremlin database in the same account with the given name and timestamp. }}
+
 ## PARAMETERS
 
 ### -AccountName
