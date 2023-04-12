@@ -35,7 +35,7 @@ Gets the SAP Database Instance resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:  Get an overview of the Database Instance(s)
 ```powershell
 Get-AzWorkloadsSapDatabaseInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT
 ```
@@ -46,11 +46,11 @@ Name ResourceGroupName ProvisioningState Location    Status  IPAddress DatabaseS
 db0  DemoRGVIS         Succeeded         eastus2euap Running 10.0.0.6  XRT
 ```
 
-{{ Add description here }}
+This command will help you get an overview, including health and status of a Database instance in the Virtual instance for SAP solutions
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an overview of the Database Instance(s)
 ```powershell
-Get-AzWorkloadsSapDatabaseInstance -ResourceGroupName DemoRGVIS -SapVirtualInstanceName DRT -Name db0
+Get-AzWorkloadsSapDatabaseInstance -InputObject /subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/DemoRGVIS/providers/Microsoft.Workloads/sapVirtualInstances/DRT/databaseInstances/db0
 ```
 
 ```output
@@ -59,23 +59,13 @@ Name ResourceGroupName ProvisioningState Location    Status  IPAddress DatabaseS
 db0  DemoRGVIS         Succeeded         eastus2euap Running 10.0.0.6  XRT
 ```
 
-{{ Add description here }}
-
-### Example 3: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command will help you get an overview, including health and status of a Database instance in the Virtual instance for SAP solutions by using the Azure resource ID of the Database instance
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

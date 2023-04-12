@@ -80,7 +80,6 @@ directive:
 - where:
     verb: New
     subject: ^SapApplicationServerInstance$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
   remove: true
 
 - where:
@@ -93,6 +92,11 @@ directive:
     verb: Update
     subject: ^SapApplicationServerInstance$
     variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    verb: Remove
+    subject: ^SapApplicationServerInstance$
   remove: true
 
 - where:
@@ -110,7 +114,6 @@ directive:
 - where:
     verb: New
     subject: ^SapCentralInstance$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
   remove: true
 - where:
     verb: Stop
@@ -122,6 +125,11 @@ directive:
     verb: Update
     subject: ^SapCentralInstance$
     variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    verb: Remove
+    subject: ^SapCentralInstance$
   remove: true
 
 - where:
@@ -134,7 +142,6 @@ directive:
 - where:
     verb: New
     subject: ^SapDatabaseInstance$
-    variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
   remove: true
 
 - where:
@@ -147,6 +154,11 @@ directive:
     verb: Update
     subject: ^SapDatabaseInstance$
     variant: ^Update$|^UpdateViaIdentity$
+  remove: true
+
+- where:
+    verb: Remove
+    subject: ^SapDatabaseInstance$
   remove: true
 
 - where:
@@ -214,7 +226,6 @@ directive:
 - where:
     verb: Invoke
     subject: ^SapAvailabilityZoneDetail$
-    variant: ^Sap$|^SapViaIdentity$
   remove: true
 
 # SapDiskConfiguration
