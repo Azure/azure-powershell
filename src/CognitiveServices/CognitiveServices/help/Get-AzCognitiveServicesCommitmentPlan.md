@@ -34,7 +34,6 @@ Get Cognitive Services Commitment Plan
 Get-AzCognitiveServicesCommitmentPlan -ResourceGroupName ResourceGroupName -Name CommitmentPlanName
 ```
 
-Get a Cognitive Services Commitment Plan
 ```output
 SystemData : Microsoft.Azure.Management.CognitiveServices.Models.SystemData
 Etag       : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -47,6 +46,8 @@ Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/
 Name       : plan-name
 Type       : Microsoft.CognitiveServices/accounts/commitmentplans
 ```
+
+Get a Cognitive Services Commitment Plan
 
 ## PARAMETERS
 
