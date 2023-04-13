@@ -27,7 +27,6 @@ Get CommitmentTier of Cognitive Services
 Get-AzCognitiveServicesCommitmentTier -Location 'WestUS'
 ```
 
-Get CommitmentTier of Cognitive Services
 ```output
 Kind         : kind
 SkuName      : sku
@@ -37,9 +36,9 @@ Tier         : tier
 MaxCount     : 
 Quota        : Microsoft.Azure.Management.CognitiveServices.Models.CommitmentQuota
 Cost         : Microsoft.Azure.Management.CognitiveServices.Models.CommitmentCost
-
-...
 ```
+
+Get CommitmentTier of Cognitive Services
 
 ## PARAMETERS
 
