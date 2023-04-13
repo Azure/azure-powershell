@@ -36,7 +36,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: Create a directory with specified permission, Umask, properties, and metadata
 ```powershell
-New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
+New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwT -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 ```
 
 ```output
@@ -44,7 +44,7 @@ New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Director
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
-dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwx    $superuser           $superuser
+dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwT    $superuser           $superuser
 ```
 
 This command creates a directory with specified Permission, Umask, properties, and metadata
