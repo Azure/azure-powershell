@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/unlock-aznetappfilesvolumefilelocks
 schema: 2.0.0
 ---
 
 # Unlock-AzNetAppFilesVolumeFileLocks
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Break file locks
 
 ## SYNTAX
 
@@ -38,16 +38,16 @@ Unlock-AzNetAppFilesVolumeFileLocks [-ClientIp <String>] -InputObject <PSNetAppF
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Break all the file locks on a volume
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Unlock-AzNetAppFilesVolumeFileLocks -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume"
 ```
 
-{{ Add example description here }}
+This command breaks file locks on the specified ANF volume
 
 ## PARAMETERS
 

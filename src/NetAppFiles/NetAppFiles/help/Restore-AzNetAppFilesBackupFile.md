@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/restore-aznetappfilesbackupfile
 schema: 2.0.0
 ---
 
 # Restore-AzNetAppFilesBackupFile
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a new Backup Restore Files request
 
 ## SYNTAX
 
@@ -42,16 +42,18 @@ Restore-AzNetAppFilesBackupFile -FileList <String[]> [-RestoreFilePath <String>]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Restore the specified files from the specified backup to the active filesystem
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>$fileList = New-Object string[] 1
+PS C:\>$fileList[0] = "/dir1/customer1.db"
+PS C:\> Restore-AzNetAppFilesBackupFile -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyVolume" -BackupName "MyBackup" -FileList $fileList -DestinationVolumeId "destinationVolumeResourceId"
 ```
 
-{{ Add example description here }}
+This command Restores the file customer1.db from "MyBackup" to the specified destingation volume
 
 ## PARAMETERS
 
