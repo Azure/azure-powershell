@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderDB2InstanceObject.
+online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderdb2instanceobject
 schema: 2.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Workloads
-online version: https://learn.microsoft.com/powershell/module/az./new-AzWorkloadsProviderPrometheusOSInstanceObject
+online version: https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadsproviderprometheusosinstanceobject
 schema: 2.0.0
 ---
 
