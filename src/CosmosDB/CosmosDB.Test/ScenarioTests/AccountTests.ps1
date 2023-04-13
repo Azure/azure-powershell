@@ -153,8 +153,8 @@ function Test-AccountRelatedCmdletsUsingRid
 function Test-AccountRelatedCmdletsUsingObject
 {
   #use an existing account with the following properties
-  $cosmosDBExistingAccountName = "dbaccount31" 
-  $existingResourceGroupName = "CosmosDBResourceGroup28"
+  $cosmosDBExistingAccountName = "dbaccount32" 
+  $existingResourceGroupName = "CosmosDBResourceGroup29"
   $location = "East US"
   $IpRule = "201.168.50.1"
   $tags = @{ name = "test"; Shape = "Square"; Color = "Blue"}
@@ -232,8 +232,8 @@ function Test-PrivateEndpoint
   $storageAccount = "xdmsa2";
   $vnetName = "MyVnetPE"
 	
-  $cosmosDBAccountName = "db947"
-  $rgname = "CosmosDBResourceGroup9507"
+  $cosmosDBAccountName = "db948"
+  $rgname = "CosmosDBResourceGroup9508"
 
   try{
 

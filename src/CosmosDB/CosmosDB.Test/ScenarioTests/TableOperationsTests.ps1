@@ -18,8 +18,8 @@ Test Table CRUD operations
 #>
 function Test-TableOperationsCmdlets
 {
-  $AccountName = "table-db2528"
-  $rgName = "CosmosDBResourceGroup38"
+  $AccountName = "table-db2533"
+  $rgName = "CosmosDBResourceGroup39"
   $TableName = "table1"
   $TableName2 = "table2"
   $apiKind = "Table"
@@ -227,8 +227,8 @@ Test Table throughput cmdlets using all parameter sets
 #>
 function Test-TableThroughputCmdlets
 {
-  $AccountName = "table-db2527"
-  $rgName = "CosmosDBResourceGroup35"
+  $AccountName = "table-db2531"
+  $rgName = "CosmosDBResourceGroup37"
   $TableName = "tableName3"
   $apiKind = "Table"
   $consistencyLevel = "Session"
@@ -271,8 +271,8 @@ Test Cassandra migrate throughput cmdlets
 #>
 function Test-TableMigrateThroughputCmdlets
 {
-  $AccountName = "table-db2529"
-  $rgName = "CosmosDBResourceGroup34"
+  $AccountName = "table-db2532"
+  $rgName = "CosmosDBResourceGroup36"
   $TableName = "tableName4"
   $apiKind = "Table"
   $consistencyLevel = "Session"
