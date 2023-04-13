@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Updated Azure.Core to 1.30.0.
+* Updated Azure.Core to 1.31.0.
 
 ## Version 2.12.1
 * Fixed an issue that broke some cmdlets in Az.Synapse module.

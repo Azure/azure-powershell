@@ -6,12 +6,17 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network mode used for building Kubernetes network.</summary>
+    /// <summary>This cannot be specified if networkPlugin is anything other than 'azure'.</summary>
     public partial struct NetworkMode :
         System.IEquatable<NetworkMode>
     {
+        /// <summary>This is no longer supported</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkMode Bridge = @"bridge";
 
+        /// <summary>
+        /// No bridge is created. Intra-VM Pod to Pod communication is through IP routes created by Azure CNI. See [Transparent Mode](https://docs.microsoft.com/azure/aks/faq#transparent-mode)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkMode Transparent = @"transparent";
 
         /// <summary>the value for an instance of the <see cref="NetworkMode" /> Enum.</summary>

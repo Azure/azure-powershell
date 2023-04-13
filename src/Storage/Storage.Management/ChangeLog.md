@@ -25,7 +25,7 @@
 * Added warning messages for an upcoming cmdlet breaking change 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
-* Updated Azure.Core to 1.30.0
+* Updated Azure.Core to 1.31.0
 
 ## Version 5.5.0
 * Supported create storage account with DnsEndpointType
