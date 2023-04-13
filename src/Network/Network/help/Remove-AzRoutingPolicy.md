@@ -12,9 +12,9 @@ Removes the specified routing policy from a routing intent resource associated w
 
 ## SYNTAX
 
-### ByRoutingIntentObject
-```powershell
-Remove-AzRoutingPolicy -Name <String> -RoutingIntent <PSRoutingIntent> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+Remove-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,31 +64,15 @@ RoutingPoliciesText : [
 Name                : routingIntent1
 Etag                : W/"etag"
 Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/hub1/routingIntent/routingIntent1
-
 ```
 
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -103,9 +87,9 @@ Accept wildcard characters: False
 The policy name.
 
 ```yaml
-Type: String
-Parameter Sets: ByRoutingPolicyName, ByVirtualHubObject
-Aliases: ResourceName, RoutingPolicyName
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: Named
@@ -125,7 +109,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,7 +117,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -149,7 +133,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

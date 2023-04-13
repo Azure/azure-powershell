@@ -17,7 +17,8 @@ Creates an Azure VirtualHub resource.
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
- [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>] [-AsJob]
+ [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +27,8 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtu
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
- [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>] [-AsJob]
+ [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -338,6 +340,21 @@ The ASN of this virtual hub
 
 ```yaml
 Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualRouterAutoScaleConfiguration
+Autoscale configuration for the hub router
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterAutoScaleConfiguration
 Parameter Sets: (All)
 Aliases:
 
