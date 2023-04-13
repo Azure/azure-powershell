@@ -34,9 +34,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// list azure blobs in specified azure container
     /// </summary>
-    [GenericBreakingChange("Leading and trailing slashes on the blob name will not be trimmed when getting a single blob",
-       OldWay = "Leading and trailing slashes on the blob name are trimmed",
-       NewWay = "Leading and trailing slashes on the blob name are not trimmed")]
+    [GenericBreakingChange("Leading and trailing slashes on the blob name will not be trimmed when getting a single blob")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
     public class GetAzureStorageBlobCommand : StorageCloudBlobCmdletBase
     {
