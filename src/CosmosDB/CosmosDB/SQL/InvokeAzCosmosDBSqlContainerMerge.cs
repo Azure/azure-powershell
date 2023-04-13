@@ -91,14 +91,14 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 if (this.Force.IsPresent || ShouldContinue($"This command will merge the partitions of collection {Name} , do you want to continue?", "This operation might take a long time (potentially hours) depending on the data movement involved."))
                 {
                     physicalPartitionStorageInfoCollection =
-                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: false));
+                    CosmosDBManagementClient.SqlResources.ListSqlContainerPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: false));
                 }
             }
             else if (shouldProcessReason == ShouldProcessReason.WhatIf)
             {
                 mergeParameters.IsDryRun = true;
                 physicalPartitionStorageInfoCollection =
-                    CosmosDBManagementClient.MongoDBResources.ListMongoDBCollectionPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: true));
+                    CosmosDBManagementClient.SqlResources.ListSqlContainerPartitionMerge(ResourceGroupName, AccountName, DatabaseName, Name, new MergeParameters(isDryRun: true));
             }
 
             if (physicalPartitionStorageInfoCollection != null)
