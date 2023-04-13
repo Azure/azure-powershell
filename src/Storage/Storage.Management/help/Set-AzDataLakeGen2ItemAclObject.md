@@ -139,7 +139,10 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-The permission field is a 3-character sequence where the first character is 'r' to grant read access, the second character is 'w' to grant write access, and the third character is 'x' to grant execute permission. If access is not granted, the '-' character is used to denote that the permission is denied. The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.
+The permission field is a 3-character sequence where the first character is 'r' to grant read access, the second character is 'w' to grant write access, 
+and the third character is 'x' to grant execute permission. If access is not granted, the '-' character is used to denote that the permission is denied. 
+The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether 
+the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.
 
 ```yaml
 Type: System.String
