@@ -6,12 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>AgentPoolType represents types of an agent pool.</summary>
+    /// <summary>The type of Agent Pool.</summary>
     public partial struct AgentPoolType :
         System.IEquatable<AgentPoolType>
     {
+        /// <summary>Use of this is strongly discouraged.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType AvailabilitySet = @"AvailabilitySet";
 
+        /// <summary>Create an Agent Pool backed by a Virtual Machine Scale Set.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolType VirtualMachineScaleSets = @"VirtualMachineScaleSets";
 
         /// <summary>the value for an instance of the <see cref="AgentPoolType" /> Enum.</summary>
