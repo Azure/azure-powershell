@@ -72,7 +72,7 @@ directive:
           "description": "HTTP 200 (OK) should be returned if the object exists and was deleted successfully."
         }
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create$|^CreateViaIdentity.*$|^Update$|^UpdateViaIdentity(?!.*?Expanded)$
     remove: true
   # Remove the set-* cmdlet
   - where:
