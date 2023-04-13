@@ -67,7 +67,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading
                 CreateAssembly("netfx", "Azure.Core", "1.30.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "Microsoft.Identity.Client", "4.49.1.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "Microsoft.Identity.Client.Extensions.Msal", "2.23.0.0").WithWindowsPowerShell(),
-                CreateAssembly("netfx", "Newtonsoft.Json", "12.0.0.0").WithWindowsPowerShell(),
+                CreateAssembly("netfx", "Newtonsoft.Json", "13.0.0.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Diagnostics.DiagnosticSource", "4.0.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Numerics.Vectors", "4.1.4.0").WithWindowsPowerShell(),
                 CreateAssembly("netfx", "System.Reflection.DispatchProxy", "4.0.4.0").WithWindowsPowerShell(),
