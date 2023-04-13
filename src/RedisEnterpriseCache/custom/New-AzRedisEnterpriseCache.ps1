@@ -168,26 +168,34 @@ function New-AzRedisEnterpriseCache {
         # Allowed values: EnterpriseCluster, OSSCluster
         ${ClusteringPolicy},
 
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
         # Key encryption key Url versioned only. Ex: https://contosovault.vault.azure.net/keys/contosokek/562a4bb76b524a1493a6afe8e536ee78"
         ${CustomerManagedKeyEncryptionKeyUrl},
 
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ManagedServiceIdentityType]
         # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
         ${IdentityType},
 
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api40.IUserAssignedIdentities]))]
         [System.Collections.Hashtable]
         # The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.
         ${IdentityUserAssignedIdentity},
 
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.CmkIdentityType])]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.CmkIdentityType]
         # Only userAssignedIdentity is supported in this API version; other types may be supported in the future
         ${KeyEncryptionKeyIdentityType},
 
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
         [System.String]
         # User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/<sub uuid>/resourceGroups/<resource group>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
@@ -328,6 +336,11 @@ function New-AzRedisEnterpriseCache {
         $null = $PSBoundParameters.Remove("MinimumTlsVersion")
         $null = $PSBoundParameters.Remove("Zone")
         $null = $PSBoundParameters.Remove("Tag")
+        $null = $PSBoundParameters.Remove("IdentityType")
+        $null = $PSBoundParameters.Remove("IdentityUserAssignedIdentity")
+        $null = $PSBoundParameters.Remove("CustomerManagedKeyEncryptionKeyUrl")
+        $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityType")
+        $null = $PSBoundParameters.Remove("KeyEncryptionKeyIdentityUserAssignedIdentityResourceId")
         $null = $PSBoundParameters.Add("DatabaseName", "default")
         $database = Az.RedisEnterpriseCache.internal\New-AzRedisEnterpriseCacheDatabase @PSBoundParameters
         $cluster.Database = @{$database.Name = $database}

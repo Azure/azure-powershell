@@ -44,27 +44,14 @@ Flushes all the keys in this database and also from its linked databases.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Flush Cache
 ```powershell
-{{ Add code here }}
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup"
+-Id @("Mydatabase1") , @("MyLinkedDatabase1")
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+## DESCRIPTION
+Flushes all the keys in this database and also from its linked databases.
 
 ## PARAMETERS
 
