@@ -98,12 +98,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             {
                 case Constants.DirectoryParameterSetName:
                     baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Directory, ClientOptions);
-
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Directory.ServiceClient, DefaultContext);
-                    }
                     break;
 
                 case Constants.ShareNameParameterSetName:
@@ -114,21 +108,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                 case Constants.ShareParameterSetName:
                     baseDirClient = AzureStorageFileDirectory.GetTrack2FileDirClient(this.Share.GetRootDirectoryReference(), ClientOptions);
-
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
-                    }
                     break;
+
                 case Constants.FileParameterSetName:
                     targetFile = AzureStorageFile.GetTrack2FileClient(this.File, ClientOptions);
-
-                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                    if (this.Context == null)
-                    {
-                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
-                    }
                     break;
 
                 default:

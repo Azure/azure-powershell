@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
             RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
             RegisterConfiguration("Microsoft.OpenEnergyPlatform/energyServices", "2022-07-21-preview", true, true);
+            RegisterConfiguration("Microsoft.DBforMySQL/flexibleServers", "2022-09-30-privatepreview", true, true);
         }
         /// <summary>
         /// Register priavte endopoint connection and private link resource configuration

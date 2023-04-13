@@ -34,7 +34,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// </summary>
     [CmdletOutputBreakingChange(
         deprecatedCmdletOutputTypeName: typeof(AzureSqlDatabaseCopyModel),
-        deprecateByVersion: "3.0.0",
         DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
         NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseCopy", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseCopyModel))]
@@ -262,7 +261,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 LicenseType = LicenseType, // note: default license type is LicenseIncluded
                 RequestedBackupStorageRedundancy = BackupStorageRedundancy,
                 ZoneRedundant = this.IsParameterBound(p => p.ZoneRedundant) ? ZoneRedundant.ToBool() : (bool?)null,
-                Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
+                Identity = Common.DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 Keys = Common.DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId

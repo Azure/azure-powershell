@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated Azure.Core to 1.31.0.
 * Added cmdLet `Restore-AzNetAppFilesBackupFile` **todo
 * Added cmdLet `Unlock-AzMetAppFilesVolumeFilesLocks`
 * Added parameter `LdapSearchScope` and `PreferredServersForLdapClient` to `New-AzNetAppFilesActiveDirectory`

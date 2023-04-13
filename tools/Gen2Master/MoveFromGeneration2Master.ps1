@@ -172,7 +172,7 @@ Function Move-Generation2Master {
         else {
             Copy-Template -SourceName Az.ModuleName.csproj -DestPath $DestPath -DestName "Az.$ModuleName.csproj" -ModuleName $ModuleName
         }
-        Copy-Template -SourceName Changelog.md -DestPath $DestPath -DestName Changelog.md -ModuleName $ModuleName
+        Copy-Template -SourceName ChangeLog.md -DestPath $DestPath -DestName ChangeLog.md -ModuleName $ModuleName
         #Region create a solution file for module and add the related csproj files to this solution.
         dotnet new sln -n $ModuleName -o $DestPath --force
         $SolutionPath = Join-Path -Path $DestPath -ChildPath $ModuleName.sln
@@ -225,7 +225,7 @@ Function Move-Generation2MasterHybrid {
             if (-not (Test-Path -path $SolutionPath)) {
                 # It means there is no handcraft module for this module, so we need to create the solution file and other related files
                 Copy-Template -SourceName ModuleName.sln -DestPath $DestPath -DestName "$ModuleName.sln" -ModuleName $ModuleName
-                Copy-Template -SourceName Changelog.md -DestPath $DestPath\$ModuleName -DestName Changelog.md -ModuleName $ModuleName
+                Copy-Template -SourceName ChangeLog.md -DestPath $DestPath\$ModuleName -DestName ChangeLog.md -ModuleName $ModuleName
                 Copy-Template -SourceName Module.psd1 -DestPath $DestPath\$ModuleName -DestName "Az.$ModuleName.psd1" -ModuleName $ModuleName
                 Copy-Template -SourceName HandcraftedModule.csproj -DestPath $DestPath\$ModuleName -DestName "$ModuleName.csproj" -ModuleName $ModuleName
                 Copy-Template -SourceName ModulePage.md -DestPath $DestPath\$ModuleName\help -DestName "Az.$ModuleName.md" -ModuleName $ModuleName
@@ -252,7 +252,7 @@ Function Move-Generation2MasterHybrid {
                 Remove-Item -Path $LocalModulesPath -Recurse -Force
             }
             #EndRegion
-            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml')
+            $File2Copy = @('*.ps1', 'how-to.md', 'readme.md', 'README.md', '*.psm1', '*.ps1xml', '*.psd1')
             Foreach ($File in $File2Copy) {
                 $SourceItem = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath $File
                 $DestItem = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath $File
@@ -352,8 +352,16 @@ Function Move-Generation2MasterHybrid {
                 [string] $DestPath,
                 [string] $Psd1FolderPostfix
             )
-            Import-Module "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
-            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow         
+            $psd1Path = "$DestPath\..\..\artifacts\Debug\Az.$ModuleName\Az.$ModuleName.psd1"
+            $assemblyToRemove = "YamlDotNet.dll"
+            $psd1Data = Import-PowerShellDataFile -Path $psd1Path
+            if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
+                $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
+                Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
+            }
+            Import-Module $psd1Path
+            Import-Module platyPS
+            Update-MarkdownHelpModule -Path "$DestPath\$ModuleName$Psd1FolderPostfix\help" -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
         } -ArgumentList $ModuleName, $DestPath, $Psd1FolderPostfix
 
         $job | Wait-Job | Receive-Job

@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     /// </summary>
     [CmdletOutputBreakingChange(
         deprecatedCmdletOutputTypeName: typeof(AzureSqlDatabaseModel),
-        deprecateByVersion: "3.0.0",
         DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
         NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseModel))]
@@ -371,7 +370,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
                 EnableLedger = this.IsParameterBound(p => p.EnableLedger) ? EnableLedger.ToBool() : (bool?)null,
                 PreferredEnclaveType = this.PreferredEnclaveType,
-                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId, null),
+                Identity = DatabaseIdentityAndKeysHelper.GetDatabaseIdentity(this.AssignIdentity.IsPresent, this.UserAssignedIdentityId),
                 Keys = DatabaseIdentityAndKeysHelper.GetDatabaseKeysDictionary(this.KeyList),
                 EncryptionProtector = this.EncryptionProtector,
                 FederatedClientId = this.FederatedClientId

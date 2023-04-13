@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>
-    /// ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
-    /// </summary>
+    /// <summary>The Virtual Machine Scale Set priority.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetPriorityTypeConverter))]
     public partial struct ScaleSetPriority :
         System.Management.Automation.IArgumentCompleter

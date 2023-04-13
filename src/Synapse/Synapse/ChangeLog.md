@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.31.0.
+
+## Version 2.3.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.17
 * Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool isolated compute by `-EnableIsolatedCompute`
 * Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool node size to 'XLarge', 'XXLarge', 'XXXLarge'

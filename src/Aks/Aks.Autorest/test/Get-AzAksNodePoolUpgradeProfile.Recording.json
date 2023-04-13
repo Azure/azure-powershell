@@ -1,17 +1,17 @@
 {
-  "Get-AzAksNodePoolUpgradeProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default?api-version=2020-09-01+1": {
+  "Get-AzAksNodePoolUpgradeProfile+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default?api-version=2023-02-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default?api-version=2020-09-01",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default?api-version=2023-02-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "c68f6f77-0b6f-4827-b747-35684f2feb11" ],
+        "x-ms-client-request-id": [ "e995b955-a1d6-471f-a628-5947e5717a70" ],
         "CommandName": [ "Get-AzAksNodePoolUpgradeProfile" ],
         "FullCommandName": [ "Get-AzAksNodePoolUpgradeProfile_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Aks/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,21 +22,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "d4270e69-4048-429e-9502-976fbb79d4cf" ],
-        "x-ms-request-id": [ "516ba672-b585-402e-9330-630467ccf3fb" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-correlation-request-id": [ "facf4fab-89f9-4eef-bcfd-9cdc8bbfd55f" ],
+        "x-ms-request-id": [ "d207c51f-abf8-44a9-9757-8a1580b4d5cf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "nginx" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20210707T064942Z:d4270e69-4048-429e-9502-976fbb79d4cf" ],
-        "Date": [ "Wed, 07 Jul 2021 06:49:42 GMT" ]
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230329T083459Z:facf4fab-89f9-4eef-bcfd-9cdc8bbfd55f" ],
+        "Date": [ "Wed, 29 Mar 2023 08:34:58 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "441" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default\",\n  \"name\": \"default\",\n  \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles\",\n  \"properties\": {\n   \"kubernetesVersion\": \"1.19.11\",\n   \"osType\": \"Linux\",\n   \"latestNodeImageVersion\": \"AKSUbuntu-1804containerd-2021.06.09\"\n  }\n }",
+      "Content": "{\n  \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/aks-test/providers/Microsoft.ContainerService/managedClusters/aks/agentPools/default/upgradeProfiles/default\",\n  \"name\": \"default\",\n  \"type\": \"Microsoft.ContainerService/managedClusters/agentPools/upgradeProfiles\",\n  \"properties\": {\n   \"kubernetesVersion\": \"1.24.9\",\n   \"osType\": \"Linux\",\n   \"latestNodeImageVersion\": \"AKSUbuntu-1804containerd-202303.13.0\"\n  }\n }",
       "isContentBase64": false
     }
   }

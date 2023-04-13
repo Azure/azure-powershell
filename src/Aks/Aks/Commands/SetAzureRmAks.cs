@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
         public SwitchParameter EnableUptimeSLA { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
+
         private ManagedCluster BuildNewCluster()
         {
             BeforeBuildNewCluster();
@@ -153,7 +156,7 @@ namespace Microsoft.Azure.Commands.Aks
                 case InputObjectParameterSet:
                 {
                     WriteVerbose(Resources.UsingClusterFromPipeline);
-                    cluster = PSMapper.Instance.Map<ManagedCluster>(InputObject);
+                    cluster = AdapterHelper<PSKubernetesCluster, ManagedCluster>.Adapt(InputObject);
                     var resource = new ResourceIdentifier(cluster.Id);
                     ResourceGroupName = resource.ResourceGroupName;
                     Name = resource.ResourceName;
@@ -313,7 +316,7 @@ namespace Microsoft.Azure.Commands.Aks
                                 Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, Name, agentPoolProfile.Name);
                             }
                             cluster = Client.ManagedClusters.Get(ResourceGroupName, Name);
-                            WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(cluster));
+                            WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(cluster));
                             return;
                         }
                         if (this.IsParameterBound(c => c.KubernetesVersion))
@@ -409,16 +412,20 @@ namespace Microsoft.Azure.Commands.Aks
                     {
                         if (EnableUptimeSLA.ToBool())
                         {
-                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Paid");
+                            cluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Standard");
                         }
                         else
                         {
-                            cluster.Sku = new ManagedClusterSKU(name: "Basic", tier: "Free");
+                            cluster.Sku = new ManagedClusterSKU(name: "Base", tier: "Free");
                         }
                     }
                     if (this.IsParameterBound(c => c.AadProfile))
                     {
                         cluster.AadProfile = AadProfile;
+                    }
+                    if (EnableOidcIssuer.IsPresent)
+                    {
+                        cluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
                     }
                     SetIdentity(cluster);
 
@@ -433,7 +440,7 @@ namespace Microsoft.Azure.Commands.Aks
                         cluster.DisableLocalAccounts = DisableLocalAccount;
                     }
                     
-                    WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
+                    WriteObject(AdapterHelper<ManagedCluster, PSKubernetesCluster>.Adapt(kubeCluster));
                 });
             }
         }

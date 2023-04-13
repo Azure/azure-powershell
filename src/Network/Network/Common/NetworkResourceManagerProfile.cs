@@ -939,6 +939,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewayPolicyGroup, MNM.VirtualNetworkGatewayPolicyGroup>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewayPolicyGroupMember, MNM.VirtualNetworkGatewayPolicyGroupMember>();
                 cfg.CreateMap<CNM.PSClientConnectionConfiguration, MNM.VngClientConnectionConfiguration>();
+                cfg.CreateMap<CNM.PSGatewayCustomBgpIpConfiguration, MNM.GatewayCustomBgpIpAddressIpConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
@@ -966,6 +967,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualNetworkGatewayPolicyGroup, CNM.PSVirtualNetworkGatewayPolicyGroup>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewayPolicyGroupMember, CNM.PSVirtualNetworkGatewayPolicyGroupMember>();
                 cfg.CreateMap<MNM.VngClientConnectionConfiguration, CNM.PSClientConnectionConfiguration>();
+                cfg.CreateMap<MNM.GatewayCustomBgpIpAddressIpConfiguration, CNM.PSGatewayCustomBgpIpConfiguration>();
 
                 // Application Gateways
                 // CNM to MNM

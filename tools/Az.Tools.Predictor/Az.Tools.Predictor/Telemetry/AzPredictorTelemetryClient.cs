@@ -321,12 +321,6 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// </summary>
         protected virtual void SendTelemetry(string eventName, IDictionary<string, string> properties)
         {
-            if (this._azContext.IsInternal)
-            {
-                // To better filter internal telemetry, we append "_INTERNAL" to the event name.
-                eventName = eventName + "_INTERNAL";
-            }
-
             _telemetryClient.TrackEvent(eventName, properties);
         }
 

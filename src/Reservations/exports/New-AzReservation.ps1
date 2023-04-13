@@ -23,40 +23,46 @@ Purchase `ReservationOrder` and create resource under the specified URI.
 New-AzReservation -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'TestVm2222' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y' -ReservationOrderId '846655fa-d9e7-4fb8-9512-3ab7367352f1'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IPurchaseRequest>: .
+BODY <IPurchaseRequest>: The request for reservation purchase
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
   [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-  [DisplayName <String>]: Friendly name of the Reservation
+  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+  [DisplayName <String>]: Friendly name of the reservation
   [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Location <String>]: The Azure Region where the reserved resource lives.
-  [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+  [Location <String>]: The Azure region where the reserved resource lives.
+  [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
   [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
   [Sku <String>]: 
-  [Term <ReservationTerm?>]: Represent the term of Reservation.
+  [Term <ReservationTerm?>]: Represent the term of reservation.
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/new-azreservation
 #>
 function New-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse])]
 [CmdletBinding(DefaultParameterSetName='PurchaseExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Purchase', Mandatory)]
@@ -77,8 +83,8 @@ param(
     [Parameter(ParameterSetName='Purchase', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurchaseViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest]
+    # The request for reservation purchase
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -89,7 +95,43 @@ param(
     [System.String[]]
     # List of the subscriptions that the benefit will be applied.
     # Do not specify if AppliedScopeType is Shared.
+    # This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     ${AppliedScope},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Display name
+    ${AppliedScopePropertyDisplayName},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the management group where the benefit must be applied.
+    ${AppliedScopePropertyManagementGroupId},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the resource group.
+    ${AppliedScopePropertyResourceGroupId},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the subscription.
+    ${AppliedScopePropertySubscriptionId},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Tenant ID where the savings plan should apply benefit.
+    ${AppliedScopePropertyTenantId},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
@@ -111,14 +153,14 @@ param(
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Subscription that will be charged for purchasing Reservation
+    # Subscription that will be charged for purchasing reservation or savings plan
     ${BillingScopeId},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Friendly name of the Reservation
+    # Friendly name of the reservation
     ${DisplayName},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
@@ -134,14 +176,14 @@ param(
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # The Azure Region where the reserved resource lives.
+    # The Azure region where the reserved resource lives.
     ${Location},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.Int32]
-    # Quantity of the SKUs that are part of the Reservation.
+    # Quantity of the skus that are part of the reservation.
     ${Quantity},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
@@ -162,6 +204,13 @@ param(
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.DateTime]
+    # This is the date-time when the Azure hybrid benefit needs to be reviewed.
+    ${ReviewDateTime},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # .
     ${Sku},
@@ -171,7 +220,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm])]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm]
-    # Represent the term of Reservation.
+    # Represent the term of reservation.
     ${Term},
 
     [Parameter()]
@@ -179,7 +228,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -243,7 +293,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

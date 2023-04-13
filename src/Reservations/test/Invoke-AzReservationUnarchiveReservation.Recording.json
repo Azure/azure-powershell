@@ -1,17 +1,16 @@
 {
-  "Invoke-AzReservationUnarchiveReservation+[NoContext]+Unarchive+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/afeee3d5-5e0c-4df1-be77-409d34863e9a/unarchive?api-version=2022-03-01+1": {
+  "Invoke-AzReservationUnarchiveReservation+[NoContext]+Unarchive+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/afeee3d5-5e0c-4df1-be77-409d34863e9a/unarchive?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/afeee3d5-5e0c-4df1-be77-409d34863e9a/unarchive?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/30000000-aaaa-bbbb-cccc-100000000003/reservations/afeee3d5-5e0c-4df1-be77-409d34863e9a/unarchive?api-version=2022-11-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "0df2dd31-26f6-46cc-a230-ce38e4163783" ],
+        "x-ms-unique-id": [ "30" ],
+        "x-ms-client-request-id": [ "589680e8-6ad7-4376-8f46-2b8bfb3efbe2" ],
         "CommandName": [ "Invoke-AzReservationUnarchiveReservation" ],
         "FullCommandName": [ "Invoke-AzReservationUnarchiveReservation_Unarchive" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Reservations/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,37 +21,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "westcentralus:1ba370b6-a1bd-47e0-ac98-1a2b113b6ff5" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "eccf6517-1e98-4fcc-aa96-68e6b3c2fb40" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223626Z:eccf6517-1e98-4fcc-aa96-68e6b3c2fb40" ],
+        "x-ms-request-id": [ "589680e8-6ad7-4376-8f46-2b8bfb3efbe2" ],
+        "x-ms-version": [ "1.0.2206.71" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1183" ],
+        "x-ms-correlation-request-id": [ "bd49b2b0-e712-4c34-853f-2bd2a98ea16d" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230210T182311Z:bd49b2b0-e712-4c34-853f-2bd2a98ea16d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 22:36:26 GMT" ]
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 10 Feb 2023 18:23:11 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null,
-      "isContentBase64": false
+      "Content": null
     }
   },
-  "Invoke-AzReservationUnarchiveReservation+[NoContext]+UnarchiveViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/unarchive?api-version=2022-03-01+1": {
+  "Invoke-AzReservationUnarchiveReservation+[NoContext]+UnarchiveViaIdentity+$POST+https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/unarchive?api-version=2022-11-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/unarchive?api-version=2022-03-01",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000005/reservations/30000000-aaaa-bbbb-cccc-100000000005/unarchive?api-version=2022-11-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "2" ],
-        "x-ms-client-request-id": [ "d189f55d-af85-4354-b805-17c2ea54543b" ],
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "c8925fc1-34ab-4b67-870e-34b873828b99" ],
         "CommandName": [ "Invoke-AzReservationUnarchiveReservation" ],
         "FullCommandName": [ "Invoke-AzReservationUnarchiveReservation_UnarchiveViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Reservations/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -63,22 +59,20 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "westcentralus:fec58d30-9623-46a0-8027-3de1a0236948" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-AspNet-Version": [ "4.0.30319" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "40e31d9b-030f-4010-87c7-f22cde19a7ed" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220920T223628Z:40e31d9b-030f-4010-87c7-f22cde19a7ed" ],
+        "x-ms-request-id": [ "c8925fc1-34ab-4b67-870e-34b873828b99" ],
+        "x-ms-version": [ "1.0.2206.71" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1182" ],
+        "x-ms-correlation-request-id": [ "8a619ed5-c366-4de8-a60d-1902edb60026" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230210T182312Z:8a619ed5-c366-4de8-a60d-1902edb60026" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Tue, 20 Sep 2022 22:36:28 GMT" ]
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 10 Feb 2023 18:23:12 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
         "Content-Length": [ "0" ]
       },
-      "Content": null,
-      "isContentBase64": false
+      "Content": null
     }
   }
 }

@@ -312,3 +312,189 @@ function Test-ImageCapture
     }
 }
 
+function Test-DefaultImagesExistManual
+{
+    
+    # Setup
+    #$rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+    $rgname = Get-ComputeTestResourceName;
+    
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        $user = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $domainNameLabel = "d" + $rgname;
+        
+        # assuming the below file path:
+        # C:\repos\ps3\azure-powershell\src\Compute\Compute\Strategies\ComputeRp\Images.json
+        #$imagesFile = Get-Content -Path "..\..\..\..\Compute\Compute\Strategies\ComputeRp\Images.json";
+        $imagesFile = Get-Content -Path "..\..\..\..\Compute\Strategies\ComputeRp\Images.json";
+        $images = $imagesFile | ConvertFrom-Json;
+        
+        # Linux
+        # UbuntuLTS test
+        $publisher = $images.Linux.UbuntuLTS.publisher;
+        $offer = $images.Linux.UbuntuLTS.offer;
+        $sku = $images.Linux.UbuntuLTS.sku;
+        $version = $images.Linux.UbuntuLTS.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image UbuntuLTS;
+
+        # Ubuntu2204 test
+        $publisher = $images.Linux.Ubuntu2204.publisher;
+        $offer = $images.Linux.Ubuntu2204.offer;
+        $sku = $images.Linux.Ubuntu2204.sku;
+        $version = $images.Linux.Ubuntu2204.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Ubuntu2204;
+        
+        # CentOS test
+        $publisher = $images.Linux.CentOS.publisher;
+        $offer = $images.Linux.CentOS.offer;
+        $sku = $images.Linux.CentOS.sku;
+        $version = $images.Linux.CentOS.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image CentOS;
+
+        # CentOS versioned test
+        $publisher = $images.Linux.CentOS85Gen2.publisher;
+        $offer = $images.Linux.CentOS85Gen2.offer;
+        $sku = $images.Linux.CentOS85Gen2.sku;
+        $version = $images.Linux.CentOS85Gen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image CentOS85Gen2;
+        
+        # Debian test
+        $publisher = $images.Linux.Debian.publisher;
+        $offer = $images.Linux.Debian.offer;
+        $sku = $images.Linux.Debian.sku;
+        $version = $images.Linux.Debian.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian;
+        
+        # Debian versioned test
+        $publisher = $images.Linux.Debian11.publisher;
+        $offer = $images.Linux.Debian11.offer;
+        $sku = $images.Linux.Debian11.sku;
+        $version = $images.Linux.Debian11.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Debian11;
+        
+        # OpenSuseLeap154Gen2 versioned test
+        $publisher = $images.Linux.OpenSuseLeap154Gen2.publisher;
+        $offer = $images.Linux.OpenSuseLeap154Gen2.offer;
+        $sku = $images.Linux.OpenSuseLeap154Gen2.sku;
+        $version = $images.Linux.OpenSuseLeap154Gen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image OpenSuseLeap154Gen2;
+
+        # RHEL test
+        $publisher = $images.Linux.RHEL.publisher;
+        $offer = $images.Linux.RHEL.offer;
+        $sku = $images.Linux.RHEL.sku;
+        $version = $images.Linux.RHEL.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHEL;
+
+        # RHELRaw8LVMGen2 test
+        $publisher = $images.Linux.RHELRaw8LVMGen2.publisher;
+        $offer = $images.Linux.RHELRaw8LVMGen2.offer;
+        $sku = $images.Linux.RHELRaw8LVMGen2.sku;
+        $version = $images.Linux.RHELRaw8LVMGen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image RHELRaw8LVMGen2;
+
+        # SuseSles15SP3 versioned test
+        $publisher = $images.Linux.SuseSles15SP3.publisher;
+        $offer = $images.Linux.SuseSles15SP3.offer;
+        $sku = $images.Linux.SuseSles15SP3.sku;
+        $version = $images.Linux.SuseSles15SP3.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image SuseSles15SP3;
+
+        # FlatcarLinuxFreeGen2 versioned test
+        $publisher = $images.Linux.FlatcarLinuxFreeGen2.publisher;
+        $offer = $images.Linux.FlatcarLinuxFreeGen2.offer;
+        $sku = $images.Linux.FlatcarLinuxFreeGen2.sku;
+        $version = $images.Linux.FlatcarLinuxFreeGen2.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image FlatcarLinuxFreeGen2;
+        
+        
+        # Windows
+        # Win2022AzureEditionCore test
+        $publisher = $images.Windows.Win2022AzureEditionCore.publisher;
+        $offer = $images.Windows.Win2022AzureEditionCore.offer;
+        $sku = $images.Windows.Win2022AzureEditionCore.sku;
+        $version = $images.Windows.Win2022AzureEditionCore.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2022AzureEditionCore;
+
+        # Win2019Datacenter test
+        $publisher = $images.Windows.Win2019Datacenter.publisher;
+        $offer = $images.Windows.Win2019Datacenter.offer;
+        $sku = $images.Windows.Win2019Datacenter.sku;
+        $version = $images.Windows.Win2019Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2019Datacenter;
+
+        # Win2016Datacenter test
+        $publisher = $images.Windows.Win2016Datacenter.publisher;
+        $offer = $images.Windows.Win2016Datacenter.offer;
+        $sku = $images.Windows.Win2016Datacenter.sku;
+        $version = $images.Windows.Win2016Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2016Datacenter;
+
+        # Win2012R2Datacenter test
+        $publisher = $images.Windows.Win2012R2Datacenter.publisher;
+        $offer = $images.Windows.Win2012R2Datacenter.offer;
+        $sku = $images.Windows.Win2012R2Datacenter.sku;
+        $version = $images.Windows.Win2012R2Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2012R2Datacenter;
+
+        # Win2012Datacenter test
+        $publisher = $images.Windows.Win2012Datacenter.publisher;
+        $offer = $images.Windows.Win2012Datacenter.offer;
+        $sku = $images.Windows.Win2012Datacenter.sku;
+        $version = $images.Windows.Win2012Datacenter.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win2012Datacenter;
+
+        # Win10 test
+        $publisher = $images.Windows.Win10.publisher;
+        $offer = $images.Windows.Win10.offer;
+        $sku = $images.Windows.Win10.sku;
+        $version = $images.Windows.Win10.version;
+        $img = Get-AzVMImage -Location $loc -Publisher $publisher -Offer $offer -Sku $sku -Version $version;
+        Assert-NotNull $img;
+        New-AzVM -ResourceGroupName MyResourceGroup -Name mytestvm -Location $loc -Credential $cred -DomainNameLabel $domainNameLabel -Image Win10;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 {
 
-    /// <summary>Represent the current display state of the Reservation.</summary>
+    /// <summary>Represent the current display state of the reservation.</summary>
     public partial class DisplayProvisioningStateTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

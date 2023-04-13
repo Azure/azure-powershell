@@ -34,8 +34,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-TimeZone <String>] [-UltraSSDEnabled <Boolean>] [-UpgradePolicyMode <UpgradeMode>]
  [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>]
  [-UserData <String>] [-AutomaticRepairAction <String>] [-BaseRegularPriorityCount <Int32>]
- [-RegularPriorityPercentage <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -59,7 +59,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-TerminateScheduledEvents <Boolean>] [-TimeZone <String>] [-UltraSSDEnabled <Boolean>]
  [-UpgradePolicyMode <UpgradeMode>] [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob]
  [-EncryptionAtHost <Boolean>] [-UserData <String>] [-AutomaticRepairAction <String>]
- [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>]
+ [-BaseRegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -760,6 +760,21 @@ Applying Force Deletion when using ScaleIn Policy.
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedGalleryImageId
+Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
