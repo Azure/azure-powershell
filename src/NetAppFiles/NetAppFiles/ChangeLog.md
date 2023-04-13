@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added cmdLet `Restore-AzNetAppFilesBackupFile` **todo
+* Added cmdLet `Unlock-AzMetAppFilesVolumeFilesLocks`
+* Added parameter `LdapSearchScope` and `PreferredServersForLdapClient` to `New-AzNetAppFilesActiveDirectory`
+* Added parameter `IsLargeVolume` to `NewAzNetAppFilesVolume`
+* Added property `PreferredServersForLdapClient` to `PSNetAppFilesActiveDirectory`
+* Added property `TennantId` and `Type` to `PSNetAppFilesActiveDirectory`
+* Added property `FileAccessLogs`, `DataStoreResourceId`, `ProvisionedAvailabilityZone`, `IsLargeVolume` to `PSNetAppFilesVolume`
+* Added property `TenantId` `Type` to `PSEncryptionIdentity`
+Breaking change:
+* Removed `Get-AzNetAppFilesVault` this cmdLet is no longer needed
+* Removed `vaultId` from `PSNetAppFilesVolumeBackupProperties`
+* `YearlyBackupsToKeep` property is not supported by the service and has been removed from `New-AzNetAppFilesBackupPolicy`, `Set-AzNetAppFilesBackupPolicy` and `Update-AzNetAppFilesBackupPolicy` deprecation warning removed
 
 ## Version 0.11.0
 * Added cmdlet `Reset-AzNetAppFilesVolumeCifsPassword`

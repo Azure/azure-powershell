@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 Name = backup.Name,
                 BackupId = backup.BackupId,
                 Type = backup.Type,
-                BackupType = backup.Type,
+                BackupType = backup.BackupType,
                 Label = backup.Label,
                 ProvisioningState = backup.ProvisioningState,
                 Size = backup.Size,

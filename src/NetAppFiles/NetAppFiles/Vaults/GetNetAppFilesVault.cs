@@ -13,83 +13,83 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.NetAppFiles.Common;
-using Microsoft.Azure.Commands.NetAppFiles.Models;
-using Microsoft.Azure.Management.NetApp;
-using System.Globalization;
-using Microsoft.Azure.Commands.NetAppFiles.Helpers;
-using System.Linq;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+//using System.Collections;
+//using System.Management.Automation;
+//using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+//using Microsoft.Azure.Commands.NetAppFiles.Common;
+//using Microsoft.Azure.Commands.NetAppFiles.Models;
+//using Microsoft.Azure.Management.NetApp;
+//using System.Globalization;
+//using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+//using System.Linq;
+//using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+//using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Vault
-{
-    /// <summary>
-    /// This cmdLet is not needed as of api-version 2022-09-01
-    /// </summary>
-    [CmdletDeprecation()]
-    [Cmdlet(
-        "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVault",
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
-    [Alias("Get-AnfVault")]
-    public class GetAzureRmNetAppFilesVault: AzureNetAppFilesCmdletBase
-    {
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = FieldsParameterSet,
-            HelpMessage = "The resource group of the ANF account")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter()]
-        public string ResourceGroupName { get; set; }
+//namespace Microsoft.Azure.Commands.NetAppFiles.Vault
+//{
+//    /// <summary>
+//    /// This cmdLet is not needed as of api-version 2022-09-01
+//    /// </summary>
+//    [CmdletDeprecation()]
+//    [Cmdlet(
+//        "Get",
+//        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVault",
+//        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
+//    [Alias("Get-AnfVault")]
+//    public class GetAzureRmNetAppFilesVault: AzureNetAppFilesCmdletBase
+//    {
+//        [Parameter(
+//            Mandatory = true,
+//            ParameterSetName = FieldsParameterSet,
+//            HelpMessage = "The resource group of the ANF account")]
+//        [ValidateNotNullOrEmpty]
+//        [ResourceGroupCompleter()]
+//        public string ResourceGroupName { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = FieldsParameterSet,
-            HelpMessage = "The name of the ANF account")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter(
-            "Microsoft.NetApp/netAppAccount",
-            nameof(ResourceGroupName))]
-        public string AccountName { get; set; }
+//        [Parameter(
+//            Mandatory = false,
+//            ParameterSetName = FieldsParameterSet,
+//            HelpMessage = "The name of the ANF account")]
+//        [ValidateNotNullOrEmpty]
+//        [ResourceNameCompleter(
+//            "Microsoft.NetApp/netAppAccount",
+//            nameof(ResourceGroupName))]
+//        public string AccountName { get; set; }
 
-        [Parameter(
-            ParameterSetName = ParentObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            HelpMessage = "The account for the new backup object")]
-        [ValidateNotNullOrEmpty]
-        public PSNetAppFilesAccount AccountObject { get; set; }
+//        [Parameter(
+//            ParameterSetName = ParentObjectParameterSet,
+//            Mandatory = true,
+//            ValueFromPipeline = true,
+//            HelpMessage = "The account for the new backup object")]
+//        [ValidateNotNullOrEmpty]
+//        public PSNetAppFilesAccount AccountObject { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource id of the ANF pool",
-            ParameterSetName = ResourceIdParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+//        [Parameter(
+//            Mandatory = true,
+//            ValueFromPipelineByPropertyName = true,
+//            HelpMessage = "The resource id of the ANF pool",
+//            ParameterSetName = ResourceIdParameterSet)]
+//        [ValidateNotNullOrEmpty]
+//        public string ResourceId { get; set; }
 
-        public override void ExecuteCmdlet()
-        {
-            if (ParameterSetName == ResourceIdParameterSet)
-            {
-                var resourceIdentifier = new ResourceIdentifier(ResourceId);
-                ResourceGroupName = resourceIdentifier.ResourceGroupName;
-                var parentResource = resourceIdentifier.ParentResource;
-                AccountName = parentResource.Substring(parentResource.LastIndexOf('/') + 1);             
-            }
-            if (ParameterSetName == ParentObjectParameterSet)
-            {
-                ResourceGroupName = AccountObject.ResourceGroupName;
-                var NameParts = AccountObject.Name.Split('/');
-                AccountName = NameParts[0];
-            }
+//        public override void ExecuteCmdlet()
+//        {
+//            if (ParameterSetName == ResourceIdParameterSet)
+//            {
+//                var resourceIdentifier = new ResourceIdentifier(ResourceId);
+//                ResourceGroupName = resourceIdentifier.ResourceGroupName;
+//                var parentResource = resourceIdentifier.ParentResource;
+//                AccountName = parentResource.Substring(parentResource.LastIndexOf('/') + 1);             
+//            }
+//            if (ParameterSetName == ParentObjectParameterSet)
+//            {
+//                ResourceGroupName = AccountObject.ResourceGroupName;
+//                var NameParts = AccountObject.Name.Split('/');
+//                AccountName = NameParts[0];
+//            }
 
-            var anfVault = AzureNetAppFilesManagementClient.Vaults.List(ResourceGroupName, accountName: AccountName).Select(e => e.ConvertToPs());
-            WriteObject(anfVault, true);
-        }
-    }
-}
+//            var anfVault = AzureNetAppFilesManagementClient.Vaults.List(ResourceGroupName, accountName: AccountName).Select(e => e.ConvertToPs());
+//            WriteObject(anfVault, true);
+//        }
+//    }
+//}

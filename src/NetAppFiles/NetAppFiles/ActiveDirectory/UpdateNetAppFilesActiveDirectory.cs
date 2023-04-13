@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Username of Active Directory domain administrator")]
+            HelpMessage = "A domain user account with permission to create machine accounts")]
         [ValidateNotNullOrEmpty]
         public string Username { get; set; }
 
@@ -179,6 +179,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
             HelpMessage = "If enabled, Traffic between the SMB server to Domain Controller (DC) will be encrypted.")]
         [ValidateNotNullOrEmpty]
         public SwitchParameter EncryptDCConnection { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "LDAP Search scope options.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesLdapSearchScopeOpt LdapSearchScope { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Comma separated list of IPv4 addresses of preferred servers for LDAP client. At most two comma separated IPv4 addresses can be passed.")]
+        [ValidateNotNullOrEmpty]
+        public string[] PreferredServersForLdapClient { get; set; }
 
         [Parameter(
             ParameterSetName = ParentObjectParameterSet,
@@ -270,12 +282,13 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 {
                     anfADConfig.EncryptDCConnections = EncryptDCConnection;
                 }
+                anfADConfig.LdapSearchScope = LdapSearchScope?.ConvertFromPs();
+                anfADConfig.PreferredServersForLdapClient = PreferredServersForLdapClient is null ? null : string.Join(",", PreferredServersForLdapClient);
 
                 var netAppAccountBody = new NetAppAccountPatch()
                 {
                     ActiveDirectories = anfAccount.ActiveDirectories                    
                 };
-
                 var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(netAppAccountBody, ResourceGroupName, AccountName);
                 var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
                 WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));

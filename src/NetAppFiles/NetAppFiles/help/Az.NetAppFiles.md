@@ -47,9 +47,6 @@ Gets details of an Azure NetApp Files (ANF) subvolume.
 ### [Get-AzNetAppFilesSubvolumeMetadata](Get-AzNetAppFilesSubvolumeMetadata.md)
 Gets metadata details of an Azure NetApp Files (ANF) subvolume.
 
-### [Get-AzNetAppFilesVault](Get-AzNetAppFilesVault.md)
-Gets list of Azure NetApp Files (ANF) Accounts backup vaults.
-
 ### [Get-AzNetAppFilesVolume](Get-AzNetAppFilesVolume.md)
 Gets details of an Azure NetApp Files (ANF) volume.
 
@@ -182,6 +179,9 @@ Suspend/break the replication connection on the destination volume
 
 ### [Update-AzNetAppFilesAccount](Update-AzNetAppFilesAccount.md)
 Updates an Azure NetApp Files (ANF) account according to the optional modifiers provided.
+
+### [Update-AzNetAppFilesAccountCredential](Update-AzNetAppFilesAccountCredential.md)
+Renew identity credentials
 
 ### [Update-AzNetAppFilesActiveDirectory](Update-AzNetAppFilesActiveDirectory.md)
 Updates an Azure NetApp Files (ANF) active directory configuration to the optional modifiers provided.
