@@ -15,16 +15,16 @@ Deletes a file share.
 
 ### ShareName (Default)
 ```
-Remove-AzStorageShare [-Name] <String> [-IncludeAllSnapshot] [-Force] [-PassThru] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzStorageShare [-Name] <String> [-IncludeAllSnapshot] [-SnapshotTime <DateTimeOffset>] [-Force]
+ [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### Share
 ```
-Remove-AzStorageShare [-Share] <CloudFileShare> [-IncludeAllSnapshot] [-Force] [-PassThru]
- [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Remove-AzStorageShare [-Share] <CloudFileShare> [[-ShareClient] <ShareClient>] [-IncludeAllSnapshot] [-Force]
+ [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -210,6 +210,36 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareClient
+File share Client to be removed.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareClient
+Parameter Sets: Share
+Aliases:
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -SnapshotTime
+SnapshotTime of the file share snapshot to be removed.
+
+```yaml
+Type: System.Nullable`1[System.DateTimeOffset]
+Parameter Sets: ShareName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

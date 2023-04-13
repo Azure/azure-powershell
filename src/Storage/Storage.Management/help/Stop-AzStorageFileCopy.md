@@ -23,8 +23,8 @@ Stop-AzStorageFileCopy [-ShareName] <String> [-FilePath] <String> [-CopyId <Stri
 
 ### File
 ```
-Stop-AzStorageFileCopy [-File] <CloudFile> [-CopyId <String>] [-Force] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Stop-AzStorageFileCopy [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-CopyId <String>] [-Force]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -183,6 +183,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ShareFileClient
+ShareFileClient object indicated the file to Stop Copy.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareFileClient
+Parameter Sets: File
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

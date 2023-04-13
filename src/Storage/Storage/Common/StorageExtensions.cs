@@ -95,7 +95,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         private static string GetFileSASToken(CloudFile file)
         {
             if (null == file.ServiceClient.Credentials
-                || file.ServiceClient.Credentials.IsAnonymous)
+                || file.ServiceClient.Credentials.IsAnonymous
+                || file.ServiceClient.Credentials.IsToken)
             {
                 return string.Empty;
             }

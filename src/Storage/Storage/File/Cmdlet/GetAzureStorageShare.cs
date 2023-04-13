@@ -53,10 +53,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 [ValidateNotNullOrEmpty]
                 public DateTimeOffset? SnapshotTime { get; set; }
 
-        [Parameter(Mandatory = false, 
-            HelpMessage = "Include deleted shares, by default get share won't include deleted shares", 
+        [Parameter(Mandatory = false,
+            HelpMessage = "Include deleted shares, by default get share won't include deleted shares",
             ParameterSetName = Constants.MatchingPrefixParameterSetName)]
         public SwitchParameter IncludeDeleted { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = "Specify this parameter to only generate a local share object, without get share properties from server.",
+            ParameterSetName = Constants.SpecificParameterSetName)]
+        public SwitchParameter SkipGetProperty { get; set; }
 
         [Parameter(
             ValueFromPipeline = true,
@@ -81,8 +86,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         (AzureStorageContext)this.Context, 
                         this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00","Z"),
                         ClientOptions);
-                    ShareProperties shareProperties = share.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
-                    WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
+                    if (!this.SkipGetProperty)
+                    {
+                        ShareProperties shareProperties = share.GetProperties(cancellationToken: this.CmdletCancellationToken).Value;
+                        WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
+                    }
+                    else
+                    {
+                        WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties: null, ClientOptions));
+                    }
 
                     break;
 
