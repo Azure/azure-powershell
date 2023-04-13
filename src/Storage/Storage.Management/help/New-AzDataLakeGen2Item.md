@@ -40,7 +40,7 @@ New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Director
 ```
 
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -55,8 +55,9 @@ $task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/fi
 $task | Wait-Job
 $task.Output
 ```
+
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group                
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -204,9 +205,7 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Sets POSIX access permissions for the file owner, the file owning group, and others.
-Each class may be granted read, write, or execute permission.
-Symbolic (rwxrw-rw-) is supported.
+Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported. The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, absence of t or T indicates sticky bit not set.
 
 ```yaml
 Type: System.String
@@ -301,7 +300,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
