@@ -26,7 +26,8 @@
 * Added property `PreferredServersForLdapClient` to `PSNetAppFilesActiveDirectory`
 * Added property `TennantId` and `Type` to `PSNetAppFilesActiveDirectory`
 * Added property `FileAccessLogs`, `DataStoreResourceId`, `ProvisionedAvailabilityZone`, `IsLargeVolume` to `PSNetAppFilesVolume`
-* Added property `TenantId` `Type` to `PSEncryptionIdentity`
+* Added property `TenantId`, `Type` to `PSEncryptionIdentity`
+* Added property `Name`, `Tags`, `location` to `PSNetAppFilesVolumeQuotaRule`
 Breaking change:
 * Removed `Get-AzNetAppFilesVault` this cmdLet is no longer needed
 * Removed `vaultId` from `PSNetAppFilesVolumeBackupProperties`
