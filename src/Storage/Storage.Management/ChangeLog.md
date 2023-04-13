@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a warning message for an upcoming breaking change when getting a single blob 
+    - `Get-AzStorageBlob`
 * Fixed the issue of listing blobs with leading slashes 
     - `Get-AzStorageBlob`
 * Added warning messages for an upcoming cmdlet breaking change 
