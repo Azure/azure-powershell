@@ -96,8 +96,8 @@ function New-AzDataMigrationTdeCertificateMigration
             # TODO: Check if there is a more recent NuGet on nuget.org
             #       If so, download new version.
             #       If download is successful delete old files
-            
-            $ConsolePathExists = Test-Path -Path "console";
+
+            $ConsolePathExists = Test-Path -Path (Join-Path -Path $BaseFolder -ChildPath "console");
 
             if ($ConsolePathExists -eq $False)
             {
@@ -105,9 +105,9 @@ function New-AzDataMigrationTdeCertificateMigration
 
                 if ($Nugets.Length -gt 0)
                 {
-                    # TODO: Fix sorting
-                    # $Nugets | Sort-Object;
-                    Expand-Archive -Path $Nugets[0] -DestinationPath $BaseFolder;
+                    $Nugets = $Nugets | Sort-Object -Property Name -Descending;
+                    $LatestNugetPath = $Nugets[0].FullName;
+                    Expand-Archive -Path $LatestNugetPath -DestinationPath $BaseFolder;
                 }
             }
 
