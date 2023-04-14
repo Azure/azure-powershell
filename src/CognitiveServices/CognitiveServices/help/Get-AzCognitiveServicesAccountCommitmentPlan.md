@@ -34,6 +34,19 @@ Get CommitmentPlan of a Cognitive Services account
 Get-AzCognitiveServicesAccountCommitmentPlan -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
 ```
 
+```output
+SystemData : Microsoft.Azure.Management.CognitiveServices.Models.SystemData
+Etag       : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Kind       : 
+Sku        : 
+Tags       : 
+Location   : 
+Properties : Microsoft.Azure.Management.CognitiveServices.Models.CommitmentPlanProperties
+Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.CognitiveServices/accounts/resource-name/commitmentplans/plan-name
+Name       : plan-name
+Type       : Microsoft.CognitiveServices/accounts/commitmentplans
+```
+
 Get CommitmentPlan of a Cognitive Services account
 
 ## PARAMETERS

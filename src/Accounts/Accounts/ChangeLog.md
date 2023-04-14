@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `AzureSynapseAnalyticsEndpointResourceId` of `USGovernment` environment.
 * Updated Azure.Core to 1.31.0.
 
 ## Version 2.12.1
