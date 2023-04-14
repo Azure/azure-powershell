@@ -180,7 +180,7 @@ Change pool for an Azure NetApp Files (ANF) volume.
 ### [Suspend-AzNetAppFilesReplication](Suspend-AzNetAppFilesReplication.md)
 Suspend/break the replication connection on the destination volume
 
-### [Unlock-AzNetAppFilesVolumeFileLocks](Unlock-AzNetAppFilesVolumeFileLocks.md)
+### [Unlock-AzNetAppFilesVolumeFileLock](Unlock-AzNetAppFilesVolumeFileLock.md)
 Break file locks
 
 ### [Update-AzNetAppFilesAccount](Update-AzNetAppFilesAccount.md)
