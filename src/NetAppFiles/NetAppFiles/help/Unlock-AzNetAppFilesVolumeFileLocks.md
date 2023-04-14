@@ -44,7 +44,7 @@ Break all the file locks on a volume
 
 ### Example 1
 ```powershell
-PS C:\> Unlock-AzNetAppFilesVolumeFileLocks -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume"
+Unlock-AzNetAppFilesVolumeFileLocks -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume"
 ```
 
 This command breaks file locks on the specified ANF volume
