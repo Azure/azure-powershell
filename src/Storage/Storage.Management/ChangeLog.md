@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a warning message for an upcoming breaking change when getting a single blob 
+    - `Get-AzStorageBlob`
+* Fixed the issue of listing blobs with leading slashes 
+    - `Get-AzStorageBlob`
 * Added support for sticky bit 
     - `New-AzDataLakeGen2Item`
     - `New-AzDataLakeGen2ACLObject`
