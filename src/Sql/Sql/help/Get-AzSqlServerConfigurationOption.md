@@ -44,7 +44,9 @@ The **Get-AzSqlServerConfigurationOption** cmdlet returns information about one 
 ### Example 1
 ```powershell
 PS C:\> Get-AzSqlServerConfigurationOption -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "allowPolybaseExport"
+```
 
+```Output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Type              : Microsoft.Sql/managedInstances/serverConfigurationOptions

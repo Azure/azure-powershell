@@ -33,7 +33,9 @@ The **Set-AzSqlServerConfigurationOption** cmdlet sets the value of a server con
 ### Example 1
 ```powershell
 PS C:\> Set-AzSqlServerConfigurationOption -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "allowPolybaseExport"
+```
 
+```Output
 ResourceGroupName : ResourceGroup01
 InstanceName      : ManagedInstance01
 Type              : Microsoft.Sql/managedInstances/serverConfigurationOptions
