@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Added new cmdlets for RouteMap child resource of VirtualHub.
+    -`Get-AzRouteMap`
+    -`New-AzRouteMapRuleCriterion`
+    -`New-AzRouteMapRuleActionParameter`
+    -`New-AzRouteMapRuleAction`
+    -`New-AzRouteMapRule`
+    -`New-AzRouteMap`
+    -`Set-AzRouteMap`
+    -`Remove-AzRouteMap`
+* Update cmdlets to add inbound/outbound route maps in routingConfiguration
+    -`New-AzRoutingConfiguration`
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
