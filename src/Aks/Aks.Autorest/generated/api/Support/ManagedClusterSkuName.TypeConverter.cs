@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Name of a managed cluster SKU.</summary>
+    /// <summary>The name of a managed cluster SKU.</summary>
     public partial class ManagedClusterSkuNameTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

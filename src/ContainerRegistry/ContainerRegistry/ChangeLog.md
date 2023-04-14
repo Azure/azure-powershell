@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Updated Azure.Core to 1.30.0.
+* Updated Azure.Core to 1.31.0.
 
 ## Version 3.0.3
 * Added breaking change attributes for cmdlets
