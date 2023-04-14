@@ -23,10 +23,6 @@ parameters:
   displayName: PowerShell 7.0.x Version
   type: string
   default: 7.0.*
-- name: ps_7_1_x
-  displayName: PowerShell 7.1.x Version
-  type: string
-  default: 7.1.*
 - name: ps_7_2_x
   displayName: PowerShell 7.2.x Version
   type: string
@@ -90,14 +86,6 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_1_x_win_2019'
-    vmImage: ${{ parameters.img_windows_2019 }}
-    osType: 'Windows'
-    psVersion: ${{ parameters.ps_7_1_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
     name: 'ps_7_2_x_win_2019'
     vmImage: ${{ parameters.img_windows_2019 }}
     osType: 'Windows'
@@ -118,14 +106,6 @@ jobs:
     vmImage: ${{ parameters.img_windows_2022 }}
     osType: 'Windows'
     psVersion: ${{ parameters.ps_7_0_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
-    name: 'ps_7_1_x_win_2022'
-    vmImage: ${{ parameters.img_windows_2022 }}
-    osType: 'Windows'
-    psVersion: ${{ parameters.ps_7_1_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
@@ -154,14 +134,6 @@ jobs:
 
 - template: util/live-test-steps.yml
   parameters:
-    name: 'ps_7_1_x_linux'
-    vmImage: ${{ parameters.img_linux }}
-    osType: 'Linux'
-    psVersion: ${{ parameters.ps_7_1_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
     name: 'ps_7_2_x_linux'
     vmImage: ${{ parameters.img_linux }}
     osType: 'Linux'
@@ -182,14 +154,6 @@ jobs:
     vmImage: ${{ parameters.img_macos }}
     osType: 'MacOS'
     psVersion: ${{ parameters.ps_7_0_x }}
-    dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
-
-- template: util/live-test-steps.yml
-  parameters:
-    name: 'ps_7_1_x_macOS'
-    vmImage: ${{ parameters.img_macos }}
-    osType: 'MacOS'
-    psVersion: ${{ parameters.ps_7_1_x }}
     dotnetVersion: ${{ parameters.dotnet_sdk_6 }}
 
 - template: util/live-test-steps.yml
