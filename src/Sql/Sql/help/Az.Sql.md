@@ -345,7 +345,7 @@ Gets the auditing settings of an Azure SQL server.
 Gets communication links for elastic database transactions between database servers.
 
 ### [Get-AzSqlServerConfigurationOption](Get-AzSqlServerConfigurationOption.md)
-{{ Fill in the Synopsis }}
+Gets server configuration option of an Azure SQL Managed Instance.
 
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
