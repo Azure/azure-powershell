@@ -32,7 +32,7 @@ The **Set-AzSqlServerConfigurationOption** cmdlet sets the value of a server con
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSqlServerConfigurationOption -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "allowPolybaseExport"
+Set-AzSqlServerConfigurationOption -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "allowPolybaseExport"
 ```
 
 ```Output
