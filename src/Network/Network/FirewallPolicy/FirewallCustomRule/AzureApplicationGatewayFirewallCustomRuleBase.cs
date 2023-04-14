@@ -44,9 +44,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1")]
-        [ValidateRange(1, 5000)]
         [ValidateNotNullOrEmpty]
-        public int RateLimitThreshold { get; set; } 
+        public int RateLimitThreshold { get; set; } = 10;
 
         [Parameter(
             Mandatory = true,
