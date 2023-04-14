@@ -20,6 +20,10 @@ param (
     [ValidateNotNullOrEmpty()]
     [string] $RunPlatform,
 
+    [Parameter(Mandatory)]
+    [ValidateNotNullOrEmpty()]
+    [string] $PowerShellLatest,
+
     [Parameter()]
     [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
     [string] $DataLocation
@@ -38,8 +42,6 @@ New-Variable -Name ScenarioDelay -Value 5 -Scope Script -Option Constant
 New-Variable -Name LiveTestAnalysisDirectory -Value (Join-Path -Path $DataLocation -ChildPath "LiveTestAnalysis") -Scope Script -Option Constant
 New-Variable -Name LiveTestRawDirectory -Value (Join-Path -Path $script:LiveTestAnalysisDirectory -ChildPath "Raw") -Scope Script -Option Constant
 New-Variable -Name LiveTestRawCsvFile -Value (Join-Path -Path $script:LiveTestRawDirectory -ChildPath "Az.$ModuleName.csv") -Scope Script -Option Constant
-
-New-Variable -Name PowerShellLatestVersion -Value "7.3" -Scope Script -Option Constant
 
 function InitializeLiveTestModule {
     [CmdletBinding()]
@@ -249,7 +251,7 @@ function Invoke-LiveTestScenario {
 
     $curPSVer = (Get-Variable -Name PSVersionTable -ValueOnly).PSVersion
     if ($PSBoundParameters.ContainsKey("PowerShellVersion")) {
-        $psSimpleVer = $PowerShellVersion -replace "Latest", $script:PowerShellLatestVersion
+        $psSimpleVer = $PowerShellVersion -replace "Latest", $PowerShellLatest
         $curMajorVer = $curPSVer.Major
         $curMinorVer = $curPSVer.Minor
         $curSimpleVer = "$curMajorVer.$curMinorVer"
