@@ -25,7 +25,7 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningEku", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCustomerEku", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
     [OutputType(typeof(string))]
     public class GetAzureCodeSigningEku : CodeSigningCmdletBase
     {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
         private void WriteEku(string eku)
         {  
-            WriteObject(eku);         
+            WriteObject(eku.Split(','));         
         }      
     }
 }

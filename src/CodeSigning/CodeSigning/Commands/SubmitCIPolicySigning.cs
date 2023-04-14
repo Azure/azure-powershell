@@ -12,16 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.CodeSigning.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Management.Automation;
-using System.Runtime.InteropServices;
-using System.Security;
+using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
@@ -33,6 +29,10 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
         private const string ByAccountProfileNameParameterSet = "ByAccountProfileNameParameterSet";
         private const string ByMetadataFileParameterSet = "ByMetadataFileParameterSet";
+        /// <summary>
+        /// The root element inside an SI Policy XML file.
+        /// </summary>
+        private static readonly XName SiPolicyRootElementName = XName.Get("SiPolicy", "urn:schemas-microsoft-com:sipolicy");
 
         #endregion
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Signed CI policy file path")]
         [ValidateNotNullOrEmpty]
-        public string SignedCIPolicyFilePath { get; set; }
+        public string SignedCIPolicyFileDestination { get; set; }
         [Parameter(Mandatory = false,
                    Position = 5,
                    ParameterSetName = ByAccountProfileNameParameterSet,
@@ -115,21 +115,66 @@ namespace Microsoft.Azure.Commands.CodeSigning
         #endregion
 
         public override void ExecuteCmdlet()
-        {   
+        {           
+            ValidateFileType(ResolvePath(CIPolicyFilePath));
+
+            WriteMessage(Environment.NewLine);
+            WriteMessage("CI Policy signing in progress....");
+            WriteMessage(Environment.NewLine);
+
+
             if (!string.IsNullOrEmpty(AccountName))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, CIPolicyFilePath, SignedCIPolicyFilePath, TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(CIPolicyFilePath), ResolvePath(SignedCIPolicyFileDestination), TimeStamperUrl);                
             }
             else if (!string.IsNullOrEmpty(MetadatFilePath))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(MetadatFilePath, CIPolicyFilePath, SignedCIPolicyFilePath, TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(MetadatFilePath, ResolvePath(CIPolicyFilePath), ResolvePath(SignedCIPolicyFileDestination), TimeStamperUrl);                
             }
 
-            WriteMessage("CI Policy is successfully signed. " + SignedCIPolicyFilePath);
+            WriteMessage("CI Policy is successfully signed. " + ResolvePath(SignedCIPolicyFileDestination));
         }
         private void WriteMessage(string message)
         {
             WriteObject(message);
+        }
+
+        private void ValidateFileType(string fullInPath)
+        {
+            if (Path.GetExtension(fullInPath).ToLower() == ".bin")
+            {
+                WriteMessage("CI Policy file submitted");
+            }
+            else
+            {
+                // Is this an XML policy file?
+                // We can display a better error message here.
+                XDocument doc;
+                try
+                {
+                    var fullInContents = File.ReadAllBytes(fullInPath);
+                    doc = XmlUtil.SafeLoadXDocument(fullInContents);
+                }
+                catch
+                {
+                    doc = null;
+                }
+
+                if (doc?.Root.Name == SiPolicyRootElementName)
+                {
+                    WriteWarning("Input file is an XML-based policy file.");
+                    WriteWarning("Please run 'ConvertFrom-CiPolicy' to create a .bin file before running this command.");
+                }
+
+                try
+                {
+                    throw new InvalidOperationException($"File '{fullInPath}' is of a type that cannot be signed.");
+                }
+                catch (Exception ex)
+                {
+                    throw new TerminatingErrorException(ex, ErrorCategory.InvalidData);
+                }
+            }
         }
     }
 }
