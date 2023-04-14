@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added support for Azure resources deployment with parameters file using Bicep parameters syntax
 
 ## Version 6.6.0
 * Fixed an issue when running the `New-AzManagementGroup` command where it tried to cast an async operation as a Management Group. [#21000]
