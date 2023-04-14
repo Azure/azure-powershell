@@ -23,27 +23,18 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
 ```powershell
-{{ Add code here }}
+New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
 ```
 
 ```output
-{{ Add output here }}
+ResponseBasedDetectedErrorType ResponseBasedFailoverThresholdPercentage
+------------------------------ ----------------------------------------
+testDetctedError               6
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
 
 ## PARAMETERS
 

@@ -34,7 +34,7 @@ Name
 RequestBody
 ```
 
-
+Create an in-memory object for DeliveryRuleRequestBodyCondition
 
 ## PARAMETERS
 

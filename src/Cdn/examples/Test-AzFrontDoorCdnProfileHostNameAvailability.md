@@ -9,4 +9,4 @@ Message NameAvailable Reason
         True
 ```
 
-
+Test the availability of a host name under the AzureFrontDoor profile

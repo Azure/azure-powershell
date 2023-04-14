@@ -17,6 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOriginGroup'))
 Describe 'Update-AzCdnOriginGroup'  {
     It 'UpdateExpanded' {
         { 
+            Start-Sleep -Seconds 500
             $subId = $env.SubscriptionId
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try

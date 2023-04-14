@@ -29,21 +29,11 @@ Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken'  {
                 $profileSku = "Standard_AzureFrontDoor";
                 New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
-                $secretName = "se-" + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
-
-                $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-                -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
-                
-                $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
-                $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-                $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
-
                 $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
                 $hostName = "pstestrefresh1.dev.cdn.azure.cn"
                 $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-                -HostName $hostName -TlsSetting $tlsSetting
+                -HostName $hostName
                 Write-Host -ForegroundColor Green "Use customDomain token : $($customDomain.ValidationPropertyValidationTokenex)"
 
                 Update-AzFrontDoorCdnCustomDomainValidationToken -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
@@ -69,21 +59,11 @@ Describe 'Update-AzFrontDoorCdnCustomDomainValidationToken'  {
                 $profileSku = "Standard_AzureFrontDoor";
                 New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
 
-                $secretName = "se-" + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
-
-                $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-                -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
-                
-                $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
-                $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-                $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
-
                 $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
                 $hostName = "pstestrefresh2.dev.cdn.azure.cn"
                 $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
-                -HostName $hostName -TlsSetting $tlsSetting
+                -HostName $hostName
                 Write-Host -ForegroundColor Green "Use customDomain token : $($customDomain.ValidationPropertyValidationTokenex)"
 
                 $customDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -CustomDomainName $customDomainName `

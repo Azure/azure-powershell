@@ -33,7 +33,7 @@ Name
 SslProtocol
 ```
 
-
+Create an in-memory object for DeliveryRuleSslProtocolCondition
 
 ## PARAMETERS
 

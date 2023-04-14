@@ -33,7 +33,7 @@ AdditionalLatencyInMillisecond SampleSize SuccessfulSamplesRequired
 200                            5          4
 ```
 
-
+Create an in-memory object for AzureFrontDoor origin group `LoadBalancingSetting` object
 
 ## PARAMETERS
 

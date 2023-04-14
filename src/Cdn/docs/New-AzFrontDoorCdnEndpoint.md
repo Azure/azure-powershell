@@ -35,7 +35,7 @@ Location Name   ResourceGroupName
 Global   end001 testps-rg-da16jm
 ```
 
-
+Create an AzureFrontDoor endpoint under the AzureFrontDoor profile
 
 ## PARAMETERS
 

@@ -6,3 +6,4 @@ Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-da16jm -Profile
 ```output
 ```
 
+Clear the content of an AzureFrontDoor endpoint

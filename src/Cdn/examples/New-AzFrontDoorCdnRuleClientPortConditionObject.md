@@ -9,3 +9,4 @@ Name
 ClientPort
 ```
 
+Create an in-memory object for DeliveryRuleClientPortCondition

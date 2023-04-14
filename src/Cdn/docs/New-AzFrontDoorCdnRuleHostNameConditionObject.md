@@ -34,7 +34,7 @@ Name
 HostName
 ```
 
-
+Create an in-memory object for DeliveryRuleHostNameCondition
 
 ## PARAMETERS
 

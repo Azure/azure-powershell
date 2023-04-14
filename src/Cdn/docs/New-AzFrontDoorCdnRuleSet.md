@@ -33,7 +33,7 @@ Name       ResourceGroupName
 ruleset001 testps-rg-da16jm
 ```
 
-
+Create an AzureFrontDoor rule set under the AzureFrontDoor profile
 
 ## PARAMETERS
 

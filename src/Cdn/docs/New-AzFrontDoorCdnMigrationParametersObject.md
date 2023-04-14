@@ -34,7 +34,7 @@ ProfileName
 test
 ```
 
-Create an in-memory object for MigrationParameters.
+Create an in-memory object for MigrationParameters
 
 ## PARAMETERS
 

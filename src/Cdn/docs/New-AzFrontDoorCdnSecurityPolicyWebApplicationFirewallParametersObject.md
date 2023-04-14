@@ -37,7 +37,7 @@ Association
 {{...
 ```
 
-
+Create an in-memory object for AzureFrontDoor SecurityPolicyWebApplicationFirewallAssociation
 
 ## PARAMETERS
 

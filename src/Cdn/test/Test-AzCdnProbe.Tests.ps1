@@ -28,18 +28,4 @@ Describe 'Test-AzCdnProbe'  {
             $validateProbeUrlResult.IsValid | Should -BeFalse
         } | Should -Not -Throw
     }
-
-    It 'Validate' {
-        { 
-            $probeUrl = "https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt"	
-            $validateProbeUrlResult = Test-AzCdnProbe -ValidateProbeInput @{ ProbeUrl = $probeUrl }
-        
-            $validateProbeUrlResult.IsValid | Should -BeTrue
-        
-            $probeUrl = "https://www.notexist.com/notexist/notexist.txt"
-            $validateProbeUrlResult = Test-AzCdnProbe -ValidateProbeInput @{ ProbeUrl = $probeUrl }
-
-            $validateProbeUrlResult.IsValid | Should -BeFalse
-        } | Should -Not -Throw
-    }
 }

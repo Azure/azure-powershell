@@ -13,4 +13,4 @@ Name      ResourceGroupName
 policy001 testps-rg-da16jm
 ```
 
-
+Create an AzureFrontDoor security policy within the specified AzureFrontDoor profile

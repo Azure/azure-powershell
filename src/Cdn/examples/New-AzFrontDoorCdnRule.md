@@ -23,3 +23,4 @@ Name  ResourceGroupName
 rule1 testps-rg-da16jm
 ```
 
+Creates an AzureFrontDoor delivery rule within the specified rule set

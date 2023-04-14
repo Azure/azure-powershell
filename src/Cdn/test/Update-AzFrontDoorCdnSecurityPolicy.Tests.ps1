@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnSecurity
 
 Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
     It 'PatchExpanded' {
-        { 
+        {
             $PSDefaultParameterValues['Disabled'] = $true
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try

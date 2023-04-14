@@ -30,9 +30,9 @@ Describe 'Update-AzFrontDoorCdnProfileSku'  {
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
                 $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
+                New-AzFrontDoorCdnProfile -SubscriptionId $subId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
-                $updatedProfile = Update-AzFrontDoorCdnProfileSku -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -ProfileUpgradeParameter @{}
+                $updatedProfile = Update-AzFrontDoorCdnProfileSku -SubscriptionId $subId -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -ProfileUpgradeParameter @{}
                 $updatedProfile.SkuName | Should -Be "Premium_AzureFrontDoor"
             } Finally
             {

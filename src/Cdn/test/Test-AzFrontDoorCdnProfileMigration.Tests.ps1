@@ -35,7 +35,7 @@ Describe 'Test-AzFrontDoorCdnProfileMigration'{
         $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
         $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
         
-        New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+        New-AzFrontDoor -SubscriptionId $subId -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
         $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/Frontdoors/$Name"
     }
 
@@ -43,7 +43,7 @@ Describe 'Test-AzFrontDoorCdnProfileMigration'{
         try
         {
             Write-Host -ForegroundColor Green "resource id: $($classicResourceReferenceId)"
-            $canMigrate = Test-AzFrontDoorCdnProfileMigration -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId
+            $canMigrate = Test-AzFrontDoorCdnProfileMigration -SubscriptionId $subId -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId
             $canMigrate.CanMigrate | Should -BeTrue
         } Finally
         {

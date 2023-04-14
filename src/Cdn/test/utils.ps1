@@ -17,6 +17,7 @@ function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
+    Write-Host -ForegroundColor Green "Use SubscriptionId : ($env.SubscriptionId)"
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
     $env.location = 'westus'

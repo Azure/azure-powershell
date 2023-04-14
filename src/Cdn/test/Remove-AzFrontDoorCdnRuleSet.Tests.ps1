@@ -19,6 +19,7 @@ Describe 'Remove-AzFrontDoorCdnRuleSet'  {
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         try
         {
+            Start-Sleep -Seconds 500
             Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
             New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 

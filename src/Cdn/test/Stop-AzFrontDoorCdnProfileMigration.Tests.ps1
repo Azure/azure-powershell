@@ -29,13 +29,13 @@ Describe 'Stop-AzFrontDoorCdnProfileMigration'  {
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor";
-        New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+        New-AzFrontDoorCdnProfile -SubscriptionId $subId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
     }
 
     It 'Delete' {
         try
         {
-            Stop-AzFrontDoorCdnProfileMigration -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName
+            Stop-AzFrontDoorCdnProfileMigration -SubscriptionId $subId -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName
         } Finally
         {
             Remove-AzResourceGroup -Name $ResourceGroupName -NoWait

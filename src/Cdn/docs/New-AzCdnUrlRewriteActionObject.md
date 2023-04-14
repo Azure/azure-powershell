@@ -22,27 +22,18 @@ Create an in-memory object for UrlRewriteAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for UrlRewriteAction
 ```powershell
-{{ Add code here }}
+New-AzCdnUrlRewriteActionObject -Name rewrite01 -ParameterDestination dest01 -ParameterSourcePattern pattern01
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+rewrite01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for UrlRewriteAction
 
 ## PARAMETERS
 

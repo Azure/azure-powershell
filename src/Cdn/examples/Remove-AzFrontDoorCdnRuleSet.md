@@ -3,4 +3,4 @@
 Remove-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
 
-
+ Delete an AzureFrontDoor rule set under the profile

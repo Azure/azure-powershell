@@ -9,3 +9,4 @@ Name
 IsDevice
 ```
 
+Create an in-memory object for DeliveryRuleIsDeviceCondition

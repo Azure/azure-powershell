@@ -9,3 +9,4 @@ Name
 ServerPort
 ```
 
+Create an in-memory object for DeliveryRuleServerPortCondition

@@ -35,7 +35,7 @@ Deletes an existing AzureFrontDoor endpoint with the specified endpoint name und
 Remove-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
 ```
 
-
+Delete an AzureFrontDoor endpoint under the profile
 
 ## PARAMETERS
 

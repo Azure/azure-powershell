@@ -43,7 +43,7 @@ Name  ResourceGroupName
 rule1 testps-rg-da16jm
 ```
 
-
+Update an AzureFrontDoor delivery rule within the specified rule set
 
 ## PARAMETERS
 
