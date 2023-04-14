@@ -531,9 +531,9 @@ function Test-SetVolumePool
 
 <#
 .SYNOPSIS
-Test Volume Unlock-AzNetAppFilesVolumeFileLocks operation 
+Test Volume Unlock-AzNetAppFilesVolumeFileLock operation 
 #>
-function Test-UnlockVolumeFileLocks
+function Test-UnlockVolumeFileLock
 {
     $currentSub = (Get-AzureRmContext).Subscription	
     $subsid = $currentSub.SubscriptionId
@@ -610,7 +610,7 @@ function Test-UnlockVolumeFileLocks
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         		
         # BreakFileLocks and check the volume
-        $poolChangeResult = Unlock-AzNetAppFilesVolumeFileLocks -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
+        $poolChangeResult = Unlock-AzNetAppFilesVolumeFileLock -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         
         # check GET no change to rest of volume
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1

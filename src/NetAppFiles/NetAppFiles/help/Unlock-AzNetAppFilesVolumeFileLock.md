@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://learn.microsoft.com/powershell/module/az.netappfiles/unlock-aznetappfilesvolumefilelocks
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/unlock-aznetappfilesvolumefilelock
 schema: 2.0.0
 ---
 
-# Unlock-AzNetAppFilesVolumeFileLocks
+# Unlock-AzNetAppFilesVolumeFileLock
 
 ## SYNOPSIS
 Break file locks
@@ -14,26 +14,26 @@ Break file locks
 
 ### ByFieldsParameterSet (Default)
 ```
-Unlock-AzNetAppFilesVolumeFileLocks -ResourceGroupName <String> -AccountName <String> -PoolName <String>
+Unlock-AzNetAppFilesVolumeFileLock -ResourceGroupName <String> -AccountName <String> -PoolName <String>
  -Name <String> [-ClientIp <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
-Unlock-AzNetAppFilesVolumeFileLocks -Name <String> [-ClientIp <String>] -PoolObject <PSNetAppFilesPool>
+Unlock-AzNetAppFilesVolumeFileLock -Name <String> [-ClientIp <String>] -PoolObject <PSNetAppFilesPool>
  [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
-Unlock-AzNetAppFilesVolumeFileLocks [-ClientIp <String>] -ResourceId <String> [-PassThru]
+Unlock-AzNetAppFilesVolumeFileLock [-ClientIp <String>] -ResourceId <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
-Unlock-AzNetAppFilesVolumeFileLocks [-ClientIp <String>] -InputObject <PSNetAppFilesVolume> [-PassThru]
+Unlock-AzNetAppFilesVolumeFileLock [-ClientIp <String>] -InputObject <PSNetAppFilesVolume> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -44,7 +44,7 @@ Break all the file locks on a volume
 
 ### Example 1
 ```powershell
-Unlock-AzNetAppFilesVolumeFileLocks -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume"
+Unlock-AzNetAppFilesVolumeFileLock -ResourceGroupName "MyRG" -AccountName "MyAnfAccount" -PoolName "MyAnfPool" -VolumeName "MyAnfVolume"
 ```
 
 This command breaks file locks on the specified ANF volume

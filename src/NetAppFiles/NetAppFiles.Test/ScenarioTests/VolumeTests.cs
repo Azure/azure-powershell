@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUnlockVolumeFileLocks()
+        public void TestUnlockVolumeFileLock()
         {
-            TestRunner.RunTestScript("Test-UnlockVolumeFileLocks");
+            TestRunner.RunTestScript("Test-UnlockVolumeFileLock");
         }
 
         [Fact]

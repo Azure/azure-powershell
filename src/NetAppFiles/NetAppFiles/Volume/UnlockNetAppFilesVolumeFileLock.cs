@@ -28,12 +28,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
     /// </summary>
     [Cmdlet(
         "Unlock",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeFileLocks",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesVolumeFileLock",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
-    [Alias("Unlock-AnfVolumeFileLocks")]
+    [Alias("Unlock-AnfVolumeFileLock")]
     [CmdletPreview(PreviewMessage)]
-    public class UnlockAzureRmNetAppFilesVolumeFileLocks : AzureNetAppFilesCmdletBase
+    public class UnlockAzureRmNetAppFilesVolumeFileLock : AzureNetAppFilesCmdletBase
     {        
         [Parameter(
             Mandatory = true,
