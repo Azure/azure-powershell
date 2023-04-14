@@ -854,7 +854,9 @@ function Test-DatalakeGen2
         $dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
         Assert-AreEqual $dir1.Path $directoryPath1
         Assert-AreEqual $dir1.Permissions.ToSymbolicPermissions() "rwx---rwx"
-        $dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory
+        $dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory -Permission r---wx-wT -Umask --x-wx--x
+        Assert-AreEqual $dir2.Path $directoryPath2
+        Assert-AreEqual $dir2.Permissions.ToSymbolicPermissions() "r------wT"
 
         # Create (upload) File
         $t = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Source $localSrcFile -Force -AsJob
@@ -874,20 +876,20 @@ function Test-DatalakeGen2
         ## create ACL with 3 ACEs
         $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
         $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-        $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
+        $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wt" -InputObject $acl
         ##Update File with pipeline		
         $file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 | Update-AzDataLakeGen2Item  `
                 -Acl $acl `
                 -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} `
                 -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
-                -Permission rw-rw--wx `
+                -Permission rw-rw--wt `
                 -Owner '$superuser' `
                 -Group '$superuser'
         $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $filePath1 -Permission rw -Context $storageContext
         $ctxsas = New-AzStorageContext -StorageAccountName $StorageAccountName -SasToken $sas
         $file1 = Get-AzDataLakeGen2Item -Context $ctxsas -FileSystem $filesystemName -Path $filePath1
         Assert-AreEqual $file1.Path $filePath1
-        Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
+        Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wt"
         Assert-AreEqual $file1.Properties.ContentType $ContentType
         Assert-AreEqual $file1.Properties.Metadata.Count 2
         Assert-AreEqual $file1.Owner '$superuser'
