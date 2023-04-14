@@ -1,0 +1,144 @@
+{
+    "configurationType": "DeploymentWithOSConfig",
+    "appLocation": "eastus",
+    "infrastructureConfiguration": {
+        "deploymentType": "ThreeTier",
+        "centralServer": {
+            "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/SAP-E2ETest-rg/providers/Microsoft.Network/virtualNetworks/loop-test-vnet/subnets/loopsubnet",
+            "virtualMachineConfiguration": {
+                "vmSize": "Standard_E4ds_v4",
+                "imageReference": {
+                    "sku": "82sapha-gen2",
+                    "publisher": "RedHat",
+                    "version": "8.2.2021091202",
+                    "offer": "RHEL-SAP-HA"
+                },
+                "osProfile": {
+                    "adminUsername": "adminuser",
+                    "osConfiguration": {
+                        "osType": "Linux",
+                        "disablePasswordAuthentication": true,
+                        "sshKeyPair": {
+                            "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPasKQ7pRBFzDsyM3y8UiH+ZvhDeGzqUsuTPktiz/YJeufmgjWnKqYTuZX/tLhSAtX/imG9dBDCLEe5bxLtOn1m2i1vRCfsh2NxNqVxSl2GRXTnsC9Ehw5PHqXQhxSHNItDD1K6vKlydVw7DhmJgkl+1Og7WPdxeO/D6YQr1ogmaQHoK2A0AJyH9HXGbNtIiFUuPers8sKhzYztPSZCO9EZvYTB7quNSa7usgv6CByiJ2MOre/RuLaE7B7lRKhysjeIn1M+fQ3xKxW9cXsJhAHTgbqO2peydz5TLpP0S9XuIna0O5pQEXFgUnfdX/W6NT94Vl/Cqs8obSfQntZ/QmGvr1Qb27ZBSQ24eIsYDfr1mI423TuXwUr+1AEvaSCapgRBnDaV3nBzk9qp1kIIGWRGpaz6qb3ahYpDGP+A8lABy19rBk+/Kmfb9N8qkUK7kdNytHeusKoR0kzhW8xpctCnd/13oN3gXbps0Tx8O2E5w7n+BIDNodxEGxzdYD1hh0= generated-by-azure"
+                        }
+                    }
+                }
+            },
+            "instanceCount": 2
+        },
+        "applicationServer": {
+            "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/SAP-E2ETest-rg/providers/Microsoft.Network/virtualNetworks/loop-test-vnet/subnets/loopsubnet",
+            "virtualMachineConfiguration": {
+                "vmSize": "Standard_E4ds_v4",
+                "imageReference": {
+                    "sku": "82sapha-gen2",
+                    "publisher": "RedHat",
+                    "version": "8.2.2021091202",
+                    "offer": "RHEL-SAP-HA"
+                },
+                "osProfile": {
+                    "adminUsername": "adminuser",
+                    "osConfiguration": {
+                        "osType": "Linux",
+                        "disablePasswordAuthentication": true,
+                        "sshKeyPair": {
+                            "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPasKQ7pRBFzDsyM3y8UiH+ZvhDeGzqUsuTPktiz/YJeufmgjWnKqYTuZX/tLhSAtX/imG9dBDCLEe5bxLtOn1m2i1vRCfsh2NxNqVxSl2GRXTnsC9Ehw5PHqXQhxSHNItDD1K6vKlydVw7DhmJgkl+1Og7WPdxeO/D6YQr1ogmaQHoK2A0AJyH9HXGbNtIiFUuPers8sKhzYztPSZCO9EZvYTB7quNSa7usgv6CByiJ2MOre/RuLaE7B7lRKhysjeIn1M+fQ3xKxW9cXsJhAHTgbqO2peydz5TLpP0S9XuIna0O5pQEXFgUnfdX/W6NT94Vl/Cqs8obSfQntZ/QmGvr1Qb27ZBSQ24eIsYDfr1mI423TuXwUr+1AEvaSCapgRBnDaV3nBzk9qp1kIIGWRGpaz6qb3ahYpDGP+A8lABy19rBk+/Kmfb9N8qkUK7kdNytHeusKoR0kzhW8xpctCnd/13oN3gXbps0Tx8O2E5w7n+BIDNodxEGxzdYD1hh0= generated-by-azure"
+                        }
+                    }
+                }
+            },
+            "instanceCount": 2
+        },
+        "databaseServer": {
+            "subnetId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/SAP-E2ETest-rg/providers/Microsoft.Network/virtualNetworks/loop-test-vnet/subnets/loopsubnet-db",
+            "virtualMachineConfiguration": {
+                "vmSize": "Standard_E16ds_v4",
+                "imageReference": {
+                    "sku": "82sapha-gen2",
+                    "publisher": "RedHat",
+                    "version": "8.2.2021091202",
+                    "offer": "RHEL-SAP-HA"
+                },
+                "osProfile": {
+                    "adminUsername": "adminuser",
+                    "osConfiguration": {
+                        "osType": "Linux",
+                        "disablePasswordAuthentication": true,
+                        "sshKeyPair": {
+                            "publicKey": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDPasKQ7pRBFzDsyM3y8UiH+ZvhDeGzqUsuTPktiz/YJeufmgjWnKqYTuZX/tLhSAtX/imG9dBDCLEe5bxLtOn1m2i1vRCfsh2NxNqVxSl2GRXTnsC9Ehw5PHqXQhxSHNItDD1K6vKlydVw7DhmJgkl+1Og7WPdxeO/D6YQr1ogmaQHoK2A0AJyH9HXGbNtIiFUuPers8sKhzYztPSZCO9EZvYTB7quNSa7usgv6CByiJ2MOre/RuLaE7B7lRKhysjeIn1M+fQ3xKxW9cXsJhAHTgbqO2peydz5TLpP0S9XuIna0O5pQEXFgUnfdX/W6NT94Vl/Cqs8obSfQntZ/QmGvr1Qb27ZBSQ24eIsYDfr1mI423TuXwUr+1AEvaSCapgRBnDaV3nBzk9qp1kIIGWRGpaz6qb3ahYpDGP+A8lABy19rBk+/Kmfb9N8qkUK7kdNytHeusKoR0kzhW8xpctCnd/13oN3gXbps0Tx8O2E5w7n+BIDNodxEGxzdYD1hh0= generated-by-azure"
+                        }
+                    }
+                }
+            },
+            "instanceCount": 2,
+            "diskConfiguration": {
+                "diskVolumeConfigurations": {
+                    "hana/data": {
+                        "count": 3,
+                        "sizeGB": 128,
+                        "sku": {
+                            "name": "Premium_LRS"
+                        }
+                    },
+                    "hana/log": {
+                        "count": 3,
+                        "sizeGB": 128,
+                        "sku": {
+                            "name": "Premium_LRS"
+                        }
+                    },
+                    "hana/shared": {
+                        "count": 1,
+                        "sizeGB": 256,
+                        "sku": {
+                            "name": "StandardSSD_LRS"
+                        }
+                    },
+                    "usr/sap": {
+                        "count": 1,
+                        "sizeGB": 256,
+                        "sku": {
+                            "name": "Premium_LRS"
+                        }
+                    },
+                    "os": {
+                        "count": 1,
+                        "sizeGB": 64,
+                        "sku": {
+                            "name": "StandardSSD_LRS"
+                        }
+                    },
+                    "backup": {
+                        "count": 2,
+                        "sizeGB": 512,
+                        "sku": {
+                            "name": "StandardSSD_LRS"
+                        }
+                    }
+                }
+            }
+        },
+        "highAvailabilityConfig": {
+            "highAvailabilityType": "AvailabilitySet"
+        },
+        "storageConfiguration": {
+            "transportFileShareConfiguration": {
+                "configurationType": "CreateAndMount",
+                "storageAccountName": "e2enfs78b57"
+            }
+        },
+        "appResourceGroup": "Dhruv-svi-scale-test-AVSDiscovery8.2.202109120216Feb5738-infra"
+    },
+    "softwareConfiguration": {
+        "softwareInstallationType": "SAPInstallWithoutOSConfig",
+        "bomUrl": "https://ybteststorageaccount.blob.core.windows.net/sapbits7/sapfiles/boms/S41909SPS03_v0011ms/S41909SPS03_v0011ms.yaml",
+        "softwareVersion": "SAP S/4HANA 1909 SPS 03",
+        "sapBitsStorageAccountId": "/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/yb-SapInstall/providers/Microsoft.Storage/storageAccounts/ybteststorageaccount",
+        "highAvailabilitySoftwareConfiguration": {
+            "fencingClientId": "9ec12e34-c451-4592-aad2-7078f497fd5b"
+        }
+    },
+    "osSapConfiguration": {
+        "sapFqdn": "sap.bpaas.com"
+    }
+}
