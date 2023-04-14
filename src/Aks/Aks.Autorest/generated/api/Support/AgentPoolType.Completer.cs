@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>AgentPoolType represents types of an agent pool.</summary>
+    /// <summary>The type of Agent Pool.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolTypeTypeConverter))]
     public partial struct AgentPoolType :
         System.Management.Automation.IArgumentCompleter
