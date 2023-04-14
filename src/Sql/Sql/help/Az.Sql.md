@@ -344,6 +344,9 @@ Gets the auditing settings of an Azure SQL server.
 ### [Get-AzSqlServerCommunicationLink](Get-AzSqlServerCommunicationLink.md)
 Gets communication links for elastic database transactions between database servers.
 
+### [Get-AzSqlServerConfigurationOption](Get-AzSqlServerConfigurationOption.md)
+{{ Fill in the Synopsis }}
+
 ### [Get-AzSqlServerDisasterRecoveryConfiguration](Get-AzSqlServerDisasterRecoveryConfiguration.md)
 Gets a database server system recovery configuration.
 
@@ -772,6 +775,9 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 
 ### [Set-AzSqlServerAudit](Set-AzSqlServerAudit.md)
 Changes the auditing settings of an Azure SQL server.
+
+### [Set-AzSqlServerConfigurationOption](Set-AzSqlServerConfigurationOption.md)
+{{ Fill in the Synopsis }}
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
