@@ -44,7 +44,7 @@ $accountsDir = Join-Path -Path $srcDir -ChildPath "Accounts"
 $accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
 if ($null -ne $accountsLiveScenario) {
     Import-Module "./tools/TestFx/Assert.ps1" -Force
-    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, $DataLocation -Force
+    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, $PowerShellLatest, $DataLocation -Force
     . $accountsLiveScenario
 }
 
