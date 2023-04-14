@@ -777,7 +777,7 @@ Updates the auto execute status of an Azure SQL Server Advisor.
 Changes the auditing settings of an Azure SQL server.
 
 ### [Set-AzSqlServerConfigurationOption](Set-AzSqlServerConfigurationOption.md)
-{{ Fill in the Synopsis }}
+Sets the value of a server configuration option on Azure SQL Managed Instance.
 
 ### [Set-AzSqlServerDisasterRecoveryConfiguration](Set-AzSqlServerDisasterRecoveryConfiguration.md)
 Modifies a database server recovery configuration.
