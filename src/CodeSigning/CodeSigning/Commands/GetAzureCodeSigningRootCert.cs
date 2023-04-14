@@ -14,8 +14,12 @@
 
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.CodeSigning.Models;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
@@ -69,6 +73,18 @@ namespace Microsoft.Azure.Commands.CodeSigning
         [ValidateNotNullOrEmpty]
         public string MetadatFilePath { get; set; }
 
+        [Parameter(Mandatory = true,
+          Position = 3,
+          ParameterSetName = ByAccountProfileNameParameterSet,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Downloaded Root Cert file full path, including file name")]
+        [Parameter(Mandatory = true,
+          Position = 3,
+          ParameterSetName = ByMetadataFileParameterSet,
+          ValueFromPipelineByPropertyName = true,
+          HelpMessage = "Downloaded Root Cert file full path, including file name")]
+        [ValidateNotNullOrEmpty]
+        public string RootCertDestination { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -88,12 +104,27 @@ namespace Microsoft.Azure.Commands.CodeSigning
         }
         private void WriteRootCert(Stream rootcert)
         {
-            var downloadPath = Util.GetDownloadsPath() + "\\root.cer";
-            
+            //var downloadPath = Util.GetDownloadsPath() + "\\root.cer";
+            var downloadPath = ResolvePath(RootCertDestination);
+
             var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write);
             rootcert.CopyTo(fileStream);
             fileStream.Dispose();
-            WriteObject(downloadPath.Replace("\\",@"\"));         
+
+            //read thumbprint and subject namme                      
+            byte[] rawData = File.ReadAllBytes(downloadPath);
+            X509Certificate2 x509 = new X509Certificate2(rawData);
+            var certDic = new Dictionary<string, string>();
+            certDic.Add("Thumbprint", x509.Thumbprint);
+            certDic.Add("Subject", x509.Subject);
+
+            WriteObject(downloadPath.Replace("\\",@"\"));
+            WriteObject(Environment.NewLine);
+            WriteObject(certDic, true);
+            WriteObject(Environment.NewLine);
+            WriteObject(x509);
+            WriteObject(Environment.NewLine);
+            WriteObject((JsonConvert.SerializeObject(certDic)));
         }      
     }
 }

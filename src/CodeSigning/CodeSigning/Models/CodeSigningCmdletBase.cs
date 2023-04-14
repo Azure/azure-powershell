@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using Azure.Core.Diagnostics;
@@ -47,7 +48,15 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
             }
         }
 
-       
+        protected string ResolvePath(string path)
+        {
+            // See http://stackoverflow.com/a/8506768/59641 for a good primer
+            // on how to resolve paths in Powershell cmdlets.
+            string basePath = SessionState.Path.CurrentFileSystemLocation.ProviderPath;
+            string fullPath = Path.Combine(basePath, path);
+            return Path.GetFullPath(fullPath); // normalize
+        }
+
         protected string GetDefaultFileForOperation(string operationName, string vaultName, string entityName)
         {
             // caller is responsible for parameter validation

@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.CodeSigning", "Azure.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeSigning.Test", "CodeSigning.Test\CodeSigning.Test.csproj", "{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{1F6E85D8-6920-4F62-B378-F4948BF8DF2D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F6E85D8-6920-4F62-B378-F4948BF8DF2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F6E85D8-6920-4F62-B378-F4948BF8DF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F6E85D8-6920-4F62-B378-F4948BF8DF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F6E85D8-6920-4F62-B378-F4948BF8DF2D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
