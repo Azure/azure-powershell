@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -63,10 +64,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public Hashtable Tag { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = ResourceGroupNameParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The tag filter operator to filter resource groups by.")]
+        public TagOperators FilterOperator { get; set; }
+
         protected override void OnProcessRecord()
         {
             Name = Name ?? ResourceIdentifier.FromResourceGroupIdentifier(this.Id).ResourceGroupName;
-            this.WriteObject(ResourceManagerSdkClient.FilterResourceGroups(name: this.Name, tag: this.Tag, detailed: false, location: this.Location), true);
+
+            var tagSettings = this.IsParameterBound(c => c.Tag)
+                ? new TagSettings(Tag, FilterOperator)
+                : null;
+
+            WriteObject(ResourceManagerSdkClient.FilterResourceGroups(
+                name: Name,
+                tagSettings,
+                detailed: false,
+                location: Location), true);
         }
 
     }

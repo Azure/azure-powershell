@@ -853,38 +853,49 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             return resourceGroup.ToPSResourceGroup();
         }
 
+        private static bool MatchesTag(PSResourceGroup resourceGroup, TagSettings tagSettings)
+        {
+            if (tagSettings == null || !tagSettings.HasTags)
+            {
+                return true;
+            }
+
+            IDictionary<string, string> resourceGroupTags = TagsConversionHelper.CreateTagDictionary(resourceGroup.Tags, validate: false);
+
+            if (resourceGroupTags != null && resourceGroupTags.Count > 0)
+            {
+                switch (tagSettings.FilterOperator)
+                {
+                    case TagOperators.Any:
+                        return tagSettings.Tags.Any(t => resourceGroupTags.TryGetValue(t.Key, out string tagValue)
+                            && (string.Equals(tagValue, t.Value, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(t.Value)));
+
+                    case TagOperators.All:
+                        return tagSettings.Tags.All(t => resourceGroupTags.TryGetValue(t.Key, out string tagValue)
+                            && (string.Equals(tagValue, t.Value, StringComparison.OrdinalIgnoreCase) || string.IsNullOrEmpty(t.Value)));
+                }
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Filters the subscription's resource groups.
         /// </summary>
         /// <param name="name">The resource group name.</param>
-        /// <param name="tag">The resource group tag.</param>
+        /// <param name="tagSettings">The resource group tag settings.</param>
         /// <param name="detailed">Whether the  return is detailed or not.</param>
         /// <param name="location">The resource group location.</param>
         /// <returns>The filtered resource groups</returns>
-        public virtual List<PSResourceGroup> FilterResourceGroups(string name, Hashtable tag, bool detailed, string location = null)
+        public virtual List<PSResourceGroup> FilterResourceGroups(string name, TagSettings tagSettings, bool detailed, string location = null)
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
-
-            ODataQuery<ResourceGroupFilter> resourceGroupFilter = null;
-
-            if (tag != null && tag.Count >= 1)
-            {
-                PSTagValuePair tagValuePair = TagsConversionHelper.Create(tag);
-                if (tagValuePair == null || tag.Count > 1)
-                {
-                    throw new ArgumentException(ProjectResources.InvalidTagFormat);
-                }
-
-                resourceGroupFilter = string.IsNullOrEmpty(tagValuePair.Value)
-                    ? new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name)
-                    : new ODataQuery<ResourceGroupFilter>(rgFilter => rgFilter.TagName == tagValuePair.Name && rgFilter.TagValue == tagValuePair.Value);
-            }
 
             if (string.IsNullOrEmpty(name) || WildcardPattern.ContainsWildcardCharacters(name))
             {
                 List<ResourceGroup> resourceGroups = new List<ResourceGroup>();
 
-                var listResult = ResourceManagementClient.ResourceGroups.List(odataQuery: resourceGroupFilter);
+                var listResult = ResourceManagementClient.ResourceGroups.List();
                 resourceGroups.AddRange(listResult);
 
                 while (!string.IsNullOrEmpty(listResult.NextPageLink))
@@ -921,7 +932,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 }
             }
 
-            return result;
+            return result
+                .Where(rg => MatchesTag(rg, tagSettings))
+                .ToList();
         }
 
         /// <summary>

@@ -1033,7 +1033,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                                 }));
             SetupListForResourceGroupAsync(name, new List<GenericResourceExpanded>() { resource1, resource2 });
 
-            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(name, null, true);
+            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(name, null, true, null);
 
             Assert.Single(actual);
             Assert.Equal(name, actual[0].ResourceGroupName);
@@ -1062,7 +1062,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
 
-            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(null, null, false);
+            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(null, null, false, null);
 
             Assert.Equal(4, actual.Count);
             Assert.Equal(resourceGroup1.Name, actual[0].ResourceGroupName);
@@ -1092,13 +1092,106 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
             SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
 
-            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(null, null, true);
+            List<PSResourceGroup> actual = resourcesClient.FilterResourceGroups(null, null, true, null);
 
             Assert.Equal(4, actual.Count);
             Assert.Equal(resourceGroup1.Name, actual[0].ResourceGroupName);
             Assert.Equal(resourceGroup2.Name, actual[1].ResourceGroupName);
             Assert.Equal(resourceGroup3.Name, actual[2].ResourceGroupName);
             Assert.Equal(resourceGroup4.Name, actual[3].ResourceGroupName);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetResourceGroupsByTags()
+        {
+            ResourceGroup resourceGroup1 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 1)
+            {
+                Tags = new Dictionary<string, string> { 
+                    { "environment", "dev" },
+                    { "costCentre", "1234" }
+                }
+            };
+
+            ResourceGroup resourceGroup2 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 2)
+            {
+                Tags = new Dictionary<string, string> { 
+                    { "environment", "dev" },
+                    { "costCentre", "5678" }
+                }
+            };
+
+            ResourceGroup resourceGroup3 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 3)
+            {
+                Tags = new Dictionary<string, string> { 
+                    { "environment", "uat" },
+                    { "costCentre", "0000" }
+                }
+            };
+
+            ResourceGroup resourceGroup4 = new ResourceGroup(location: resourceGroupLocation, name: resourceGroupName + 4)
+            {
+                Tags = new Dictionary<string, string> {
+                    { "environment", "prod" },
+                    { "costCentre", "0000" }
+                }
+            };
+
+            var listResult = new List<ResourceGroup>() { resourceGroup1, resourceGroup2, resourceGroup3, resourceGroup4 };
+            var pagableResult = new Page<ResourceGroup>();
+            pagableResult.SetItemValue(listResult);
+            resourceGroupMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
+            .Returns(Task.Factory.StartNew(() => new AzureOperationResponse<IPage<ResourceGroup>>()
+            {
+                Body = pagableResult
+            }));
+            SetupListForResourceGroupAsync(resourceGroup1.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup2.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup3.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
+            SetupListForResourceGroupAsync(resourceGroup4.Name, new List<GenericResourceExpanded>() { CreateGenericResource(null, null, "resource") });
+
+            var tagSettings = new TagSettings
+            {
+                Tags = new Dictionary<string, string>
+                {
+                    { "environment", "dev" },
+                    { "costCentre", "1234" }
+                },
+                FilterOperator = TagOperators.Any
+            };
+
+            List<PSResourceGroup> actual1 = resourcesClient.FilterResourceGroups(null, tagSettings, false, null);
+
+            Assert.Equal(2, actual1.Count);
+            Assert.Equal(resourceGroup1.Name, actual1[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, actual1[1].ResourceGroupName);
+
+            tagSettings.FilterOperator = TagOperators.All;
+
+            List<PSResourceGroup> actual2 = resourcesClient.FilterResourceGroups(null, tagSettings, false, null);
+
+            Assert.Single(actual2);
+            Assert.Equal(resourceGroup1.Name, actual2[0].ResourceGroupName);
+
+            tagSettings.Tags = null;
+
+            List<PSResourceGroup> actual3 = resourcesClient.FilterResourceGroups(null, tagSettings, false, null);
+
+            Assert.Equal(4, actual3.Count);
+            Assert.Equal(resourceGroup1.Name, actual3[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, actual3[1].ResourceGroupName);
+            Assert.Equal(resourceGroup3.Name, actual3[2].ResourceGroupName);
+            Assert.Equal(resourceGroup4.Name, actual3[3].ResourceGroupName);
+
+            tagSettings = null;
+
+            List<PSResourceGroup> actual4 = resourcesClient.FilterResourceGroups(null, tagSettings, false, null);
+
+            Assert.Equal(4, actual4.Count);
+            Assert.Equal(resourceGroup1.Name, actual4[0].ResourceGroupName);
+            Assert.Equal(resourceGroup2.Name, actual4[1].ResourceGroupName);
+            Assert.Equal(resourceGroup3.Name, actual4[2].ResourceGroupName);
+            Assert.Equal(resourceGroup4.Name, actual4[3].ResourceGroupName);
         }
 
         [Fact]
