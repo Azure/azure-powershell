@@ -421,10 +421,10 @@ Deletes a Azure Managed Instances for Apache Cassandra data center.
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
 
 ### [Restore-AzCosmosDBGremlinDatabase](Restore-AzCosmosDBGremlinDatabase.md)
-{{ Fill in the Synopsis }}
+Restore a deleted gremlin database to a given timestamp in the same account
 
 ### [Restore-AzCosmosDBGremlinGraph](Restore-AzCosmosDBGremlinGraph.md)
-{{ Fill in the Synopsis }}
+Restore a deleted gremlin graph in a database to a given timestamp in the same account
 
 ### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection.md)
 Restore a deleted mongodb collection in a database to a given timestamp in the same account
@@ -439,7 +439,7 @@ Restore a deleted sql container in a database to a given timestamp in the same a
 Restore a deleted sql database to a given timestamp in the same account
 
 ### [Restore-AzCosmosDBTable](Restore-AzCosmosDBTable.md)
-{{ Fill in the Synopsis }}
+Restore a deleted table to a given timestamp in the same account
 
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
 Update a CosmosDB account attributes.
