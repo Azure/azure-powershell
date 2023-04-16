@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "eaaa3fbc-6590-40f1-b9aa-6311b551dfbf"
+          "98bec610-5ad6-4b72-b823-959e0ed2143a"
         ],
         "Accept-Language": [
           "en-US"
@@ -15,7 +15,7 @@
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.9.1"
         ]
       },
       "RequestBody": "",
@@ -36,22 +36,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11999"
         ],
         "x-ms-request-id": [
-          "28d2dfbd-2dd2-4241-a771-3d9714238cfc"
+          "83e79863-8f90-4374-903f-3ae3cac3b099"
         ],
         "x-ms-correlation-request-id": [
-          "28d2dfbd-2dd2-4241-a771-3d9714238cfc"
+          "83e79863-8f90-4374-903f-3ae3cac3b099"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230411T130745Z:28d2dfbd-2dd2-4241-a771-3d9714238cfc"
+          "EASTUS:20230413T145433Z:83e79863-8f90-4374-903f-3ae3cac3b099"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 11 Apr 2023 13:07:44 GMT"
+          "Thu, 13 Apr 2023 14:54:32 GMT"
         ],
         "Content-Length": [
           "14563"
@@ -69,7 +69,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e705d027-e111-4df2-bb65-2b554384c975"
+          "79f435ca-0604-4b75-9f4d-8410a5a782ed"
         ],
         "Accept-Language": [
           "en-US"
@@ -78,7 +78,7 @@
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/3.9.1.0"
+          "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.9.1"
         ]
       },
       "RequestBody": "",
@@ -99,22 +99,22 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11972"
+          "11976"
         ],
         "x-ms-request-id": [
-          "e9a9753f-9909-4abe-9a3a-5671d560affd"
+          "2c57167e-defc-46d5-bfea-adb024621ebf"
         ],
         "x-ms-correlation-request-id": [
-          "e9a9753f-9909-4abe-9a3a-5671d560affd"
+          "2c57167e-defc-46d5-bfea-adb024621ebf"
         ],
         "x-ms-routing-request-id": [
-          "EASTUS:20230411T130746Z:e9a9753f-9909-4abe-9a3a-5671d560affd"
+          "EASTUS:20230413T145434Z:2c57167e-defc-46d5-bfea-adb024621ebf"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Tue, 11 Apr 2023 13:07:46 GMT"
+          "Thu, 13 Apr 2023 14:54:34 GMT"
         ],
         "Content-Length": [
           "294"
