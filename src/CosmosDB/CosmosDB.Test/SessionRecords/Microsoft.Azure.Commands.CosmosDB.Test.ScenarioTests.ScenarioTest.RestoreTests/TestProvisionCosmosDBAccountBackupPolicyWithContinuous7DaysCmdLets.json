@@ -381,7 +381,7 @@
           "appId=d2acab17-5eeb-497c-be35-9a48c149a367,tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=749ae451-1681-4488-ba62-98b91ab2e76e/eastus2euap/2601d653-b83a-4900-83c8-84684a9812b4"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11975"
         ],
         "x-ms-request-id": [
           "5e11de74-1361-4fac-a281-6f3068233184"

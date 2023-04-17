@@ -77,6 +77,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string CreateMode {get; set; }
 
         /// <summary>
+        /// Gets or sets parameters to indicate the information about the
+        /// restore
+        /// </summary>
+        [JsonProperty(PropertyName = "restoreParameters")]
+        public ResourceRestoreParameters RestoreParameters { get; set; }
+
+        /// <summary>
+        /// Gets or sets enum to indicate the mode of resource creation.
+        /// Possible values include: 'Default', 'Restore'
+        /// </summary>
+        [JsonProperty(PropertyName = "createMode")]
+        public string CreateMode { get; set; }
+
+        /// <summary>
         /// Gets a system generated property. A unique identifier.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "_rid")]
@@ -107,10 +121,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Id");
             }
-
-
-
-
 
         }
     }

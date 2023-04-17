@@ -318,7 +318,7 @@
           "appId=d2acab17-5eeb-497c-be35-9a48c149a367,tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47,objectId=749ae451-1681-4488-ba62-98b91ab2e76e/eastus2euap/d5da203b-3ae1-4305-b23c-f658c27165fb"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
           "7a5fae74-c5a5-4708-b0a2-fb5f6cccd40c"
@@ -2969,13 +2969,13 @@
           "Thu, 14 Dec 2023 14:39:13 GMT"
         ],
         "Content-Length": [
-          "414"
+          "21"
         ],
         "Content-Type": [
           "application/json"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/providers/Microsoft.DocumentDB/locations/West%20US/restorableDatabaseAccounts/21208b8f-536f-479e-a767-12a71c96054f/restorableSqlResources/TestDB1\",\r\n      \"type\": \"Microsoft.DocumentDB/locations/restorableDatabaseAccounts/restorableSqlResources\",\r\n      \"name\": \"TestDB1\",\r\n      \"databaseName\": \"TestDB1\",\r\n      \"collectionNames\": [\r\n        \"TestCollectionInDB2\",\r\n        \"TestCollectionInDB1\"\r\n      ]\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"status\": \"Dequeued\"\r\n}",
       "StatusCode": 200
     },
     {

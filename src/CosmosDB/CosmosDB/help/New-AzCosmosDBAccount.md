@@ -391,6 +391,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableBurstCapacity
+Bool to indicate if Burst Capacity is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableFreeTier
 Bool to indicate if FreeTier is enabled on the account.
 

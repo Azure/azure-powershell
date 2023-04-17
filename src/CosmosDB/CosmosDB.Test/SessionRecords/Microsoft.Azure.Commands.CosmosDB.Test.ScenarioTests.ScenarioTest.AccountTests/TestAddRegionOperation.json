@@ -33,7 +33,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1193"
         ],
         "x-ms-request-id": [
           "1894f388-a556-43b6-bfc8-fb924f99021c"
@@ -159,7 +159,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11803"
+          "11975"
         ],
         "x-ms-request-id": [
           "449fed95-e96d-4edd-a3f3-700307c1b543"

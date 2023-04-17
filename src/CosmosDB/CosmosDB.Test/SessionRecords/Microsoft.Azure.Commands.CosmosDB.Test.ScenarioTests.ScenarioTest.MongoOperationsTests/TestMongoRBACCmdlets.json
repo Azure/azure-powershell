@@ -294,7 +294,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
+          "11997"
         ],
         "x-ms-request-id": [
           "b117e396-7d6a-41e8-ac80-f2eb75cf55ca"
@@ -675,7 +675,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1195"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
           "c8646c84-846e-40a9-907f-a526bb4c761b"
@@ -732,7 +732,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
+          "11998"
         ],
         "x-ms-request-id": [
           "09a5c7e0-63de-422d-af9f-4815bf04ef8c"
@@ -795,7 +795,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11978"
+          "11984"
         ],
         "x-ms-request-id": [
           "5cf763b4-08f8-4e3a-bae7-ce250bb1e2ae"
@@ -855,7 +855,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11976"
+          "11982"
         ],
         "x-ms-request-id": [
           "183db146-c9d8-4907-8e34-f51fac9097d3"
@@ -3144,7 +3144,7 @@
           "Microsoft.Azure.Management.CosmosDB.CosmosDBManagementClient/1.14.0"
         ]
       },
-      "RequestBody": "",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"roleName\": \"mongoPSRole1\",\r\n    \"type\": \"CustomRole\",\r\n    \"databaseName\": \"dbName\",\r\n    \"privileges\": [\r\n      {\r\n        \"resource\": {\r\n          \"db\": \"dbName\",\r\n          \"collection\": \"collection1\"\r\n        },\r\n        \"actions\": [\r\n          \"insert\",\r\n          \"find\"\r\n        ]\r\n      }\r\n    ],\r\n    \"roles\": []\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-store, no-cache"
@@ -3297,7 +3297,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11977"
+          "11992"
         ],
         "x-ms-request-id": [
           "1ee3cc82-5e3a-4f78-8432-532b74f4736e"
@@ -3357,7 +3357,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11976"
+          "11991"
         ],
         "x-ms-request-id": [
           "6c6c6cb8-946d-4c08-9682-4b1a26b87e5f"
@@ -3411,7 +3411,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
+          "11971"
         ],
         "x-ms-request-id": [
           "f414209b-97ec-46a4-bdf6-93c2d2fcc8e9"
@@ -3471,7 +3471,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11970"
         ],
         "x-ms-request-id": [
           "eabdc00b-0a06-4b1d-b470-dc2ec507c09c"

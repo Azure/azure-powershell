@@ -120,74 +120,76 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return ((IMongoDbResourcesOperations)operations).CreateUpdateMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters).GetAwaiter().GetResult();
         }
 
-        /// <summary>
-        /// Create or updates Azure Cosmos DB MongoDB database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDBDatabaseGetResults> CreateUpdateMongoDBDatabaseAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Create or updates Azure Cosmos DB MongoDB database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateMongoDBDatabaseParameters'>
+            /// The parameters to provide for the current MongoDB database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBDatabaseGetResults> CreateUpdateMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                return _result.Body;
+                using (var _result = await operations.CreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static MongoDbResourcesDeleteMongoDbdatabaseHeaders DeleteMongoDBDatabase(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IMongoDbResourcesOperations)operations).DeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
 
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoDbdatabaseHeaders> DeleteMongoDBDatabaseAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            public static void DeleteMongoDBDatabase(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return _result.Headers;
+                operations.DeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
         }
         /// <summary>
@@ -499,108 +501,168 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return ((IMongoDbResourcesOperations)operations).CreateUpdateMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters).GetAwaiter().GetResult();
         }
 
-        /// <summary>
-        /// Create or update an Azure Cosmos DB MongoDB Collection
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDBCollectionGetResults> CreateUpdateMongoDBCollectionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.CreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Create or update an Azure Cosmos DB MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='createUpdateMongoDBCollectionParameters'>
+            /// The parameters to provide for the current MongoDB Collection.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBCollectionGetResults> CreateUpdateMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                return _result.Body;
+                using (var _result = await operations.CreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB Collection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        public static MongoDbResourcesDeleteMongoDbcollectionHeaders DeleteMongoDBCollection(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
-        {
-                return ((IMongoDbResourcesOperations)operations).DeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
-        }
 
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB Collection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoDbcollectionHeaders> DeleteMongoDBCollectionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.DeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            public static void DeleteMongoDBCollection(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
             {
-                return _result.Headers;
+                operations.DeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
             }
-        }
-        /// <summary>
-        /// Gets the RUs per second of the MongoDB collection under an existing Azure
-        /// Cosmos DB database account with the provided name.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        public static ThroughputSettingsGetResults GetMongoDBCollectionThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
-        {
-                return ((IMongoDbResourcesOperations)operations).GetMongoDBCollectionThroughputAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
-        }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task DeleteMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.DeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Merges the partitions of a MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='mergeParameters'>
+            /// The parameters for the merge operation.
+            /// </param>
+            public static PhysicalPartitionStorageInfoCollection ListMongoDBCollectionPartitionMerge(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MergeParameters mergeParameters)
+            {
+                return operations.ListMongoDBCollectionPartitionMergeAsync(resourceGroupName, accountName, databaseName, collectionName, mergeParameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Merges the partitions of a MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='mergeParameters'>
+            /// The parameters for the merge operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PhysicalPartitionStorageInfoCollection> ListMongoDBCollectionPartitionMergeAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MergeParameters mergeParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListMongoDBCollectionPartitionMergeWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, mergeParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets the RUs per second of the MongoDB collection under an existing Azure
+            /// Cosmos DB database account with the provided name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            public static ThroughputSettingsGetResults GetMongoDBCollectionThroughput(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
+            {
+                return operations.GetMongoDBCollectionThroughputAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
+            }
 
         /// <summary>
         /// Gets the RUs per second of the MongoDB collection under an existing Azure
@@ -1205,74 +1267,76 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return ((IMongoDbResourcesOperations)operations).BeginCreateUpdateMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters).GetAwaiter().GetResult();
         }
 
-        /// <summary>
-        /// Create or updates Azure Cosmos DB MongoDB database
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDBDatabaseGetResults> BeginCreateUpdateMongoDBDatabaseAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Create or updates Azure Cosmos DB MongoDB database
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='createUpdateMongoDBDatabaseParameters'>
+            /// The parameters to provide for the current MongoDB database.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBDatabaseGetResults> BeginCreateUpdateMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, MongoDBDatabaseCreateUpdateParameters createUpdateMongoDBDatabaseParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                return _result.Body;
+                using (var _result = await operations.BeginCreateUpdateMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, createUpdateMongoDBDatabaseParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        public static MongoDbResourcesDeleteMongoDbdatabaseHeaders BeginDeleteMongoDBDatabase(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginDeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
-        }
 
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB database.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoDbdatabaseHeaders> BeginDeleteMongoDBDatabaseAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            public static void BeginDeleteMongoDBDatabase(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName)
             {
-                return _result.Headers;
+                operations.BeginDeleteMongoDBDatabaseAsync(resourceGroupName, accountName, databaseName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB database.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteMongoDBDatabaseAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteMongoDBDatabaseWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
         }
         /// <summary>
@@ -1437,107 +1501,171 @@ namespace Microsoft.Azure.Management.CosmosDB
                 return ((IMongoDbResourcesOperations)operations).BeginCreateUpdateMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters).GetAwaiter().GetResult();
         }
 
-        /// <summary>
-        /// Create or update an Azure Cosmos DB MongoDB Collection
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDBCollectionGetResults> BeginCreateUpdateMongoDBCollectionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginCreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Create or update an Azure Cosmos DB MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='createUpdateMongoDBCollectionParameters'>
+            /// The parameters to provide for the current MongoDB Collection.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<MongoDBCollectionGetResults> BeginCreateUpdateMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MongoDBCollectionCreateUpdateParameters createUpdateMongoDBCollectionParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                return _result.Body;
+                using (var _result = await operations.BeginCreateUpdateMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, createUpdateMongoDBCollectionParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
             }
-        }
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB Collection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        public static MongoDbResourcesDeleteMongoDbcollectionHeaders BeginDeleteMongoDBCollection(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginDeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
-        }
 
-        /// <summary>
-        /// Deletes an existing Azure Cosmos DB MongoDB Collection.
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        public static async System.Threading.Tasks.Task<MongoDbResourcesDeleteMongoDbcollectionHeaders> BeginDeleteMongoDBCollectionAsync(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-            using (var _result = await operations.BeginDeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false))
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            public static void BeginDeleteMongoDBCollection(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName)
             {
-                return _result.Headers;
+                operations.BeginDeleteMongoDBCollectionAsync(resourceGroupName, accountName, databaseName, collectionName).GetAwaiter().GetResult();
             }
-        }
-        /// <summary>
-        /// Update the RUs per second of an Azure Cosmos DB MongoDB collection
-        /// </summary>
-        /// <param name='operations'>
-        /// The operations group for this extension method.
-        /// </param>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='accountName'>
-        /// Cosmos DB database account name.
-        /// </param>
-        /// <param name='databaseName'>
-        /// Cosmos DB database name.
-        /// </param>
-        /// <param name='collectionName'>
-        /// Cosmos DB collection name.
-        /// </param>
-        public static ThroughputSettingsGetResults BeginUpdateMongoDBCollectionThroughput(this IMongoDbResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputSettingsUpdateParameters updateThroughputParameters)
-        {
-                return ((IMongoDbResourcesOperations)operations).BeginUpdateMongoDBCollectionThroughputAsync(resourceGroupName, accountName, databaseName, collectionName, updateThroughputParameters).GetAwaiter().GetResult();
-        }
+
+            /// <summary>
+            /// Deletes an existing Azure Cosmos DB MongoDB Collection.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task BeginDeleteMongoDBCollectionAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                (await operations.BeginDeleteMongoDBCollectionWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            }
+
+            /// <summary>
+            /// Merges the partitions of a MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='mergeParameters'>
+            /// The parameters for the merge operation.
+            /// </param>
+            public static PhysicalPartitionStorageInfoCollection BeginListMongoDBCollectionPartitionMerge(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MergeParameters mergeParameters)
+            {
+                return operations.BeginListMongoDBCollectionPartitionMergeAsync(resourceGroupName, accountName, databaseName, collectionName, mergeParameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Merges the partitions of a MongoDB Collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='mergeParameters'>
+            /// The parameters for the merge operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<PhysicalPartitionStorageInfoCollection> BeginListMongoDBCollectionPartitionMergeAsync(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, MergeParameters mergeParameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginListMongoDBCollectionPartitionMergeWithHttpMessagesAsync(resourceGroupName, accountName, databaseName, collectionName, mergeParameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Update the RUs per second of an Azure Cosmos DB MongoDB collection
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// Cosmos DB database account name.
+            /// </param>
+            /// <param name='databaseName'>
+            /// Cosmos DB database name.
+            /// </param>
+            /// <param name='collectionName'>
+            /// Cosmos DB collection name.
+            /// </param>
+            /// <param name='updateThroughputParameters'>
+            /// The RUs per second of the parameters to provide for the current MongoDB
+            /// collection.
+            /// </param>
+            public static ThroughputSettingsGetResults BeginUpdateMongoDBCollectionThroughput(this IMongoDBResourcesOperations operations, string resourceGroupName, string accountName, string databaseName, string collectionName, ThroughputSettingsUpdateParameters updateThroughputParameters)
+            {
+                return operations.BeginUpdateMongoDBCollectionThroughputAsync(resourceGroupName, accountName, databaseName, collectionName, updateThroughputParameters).GetAwaiter().GetResult();
+            }
 
         /// <summary>
         /// Update the RUs per second of an Azure Cosmos DB MongoDB collection

@@ -408,6 +408,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.customerManagedKeyStatus")]
         public string CustomerManagedKeyStatus {get; set; }
+
         /// <summary>
         /// Validate the object.
         /// </summary>

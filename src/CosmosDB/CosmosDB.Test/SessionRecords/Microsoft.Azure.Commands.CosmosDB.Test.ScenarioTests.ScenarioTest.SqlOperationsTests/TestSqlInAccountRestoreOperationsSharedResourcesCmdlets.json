@@ -1044,7 +1044,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
           "19b55fbc-e9fc-44db-bc54-76f1fad44e39"
@@ -1119,7 +1119,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-correlation-request-id": [
           "8c392402-9973-410d-b644-172189ffcead"
@@ -1194,7 +1194,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1195"
         ],
         "x-ms-correlation-request-id": [
           "68d669f4-5427-4da9-9412-695b16d457dd"
@@ -1326,7 +1326,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11973"
         ],
         "x-ms-request-id": [
           "c7a22839-535b-495f-89c8-82012cea9a6b"
@@ -1449,7 +1449,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11964"
         ],
         "x-ms-request-id": [
           "e95d619a-956d-484e-915d-d4d52f3740cd"
@@ -1512,7 +1512,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11971"
         ],
         "x-ms-request-id": [
           "5e944f69-567e-457c-8c59-a04e933d9e7e"
@@ -1575,7 +1575,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
+          "11963"
         ],
         "x-ms-request-id": [
           "1440f140-64b6-4a5e-ad0e-b66cc1dca57d"
@@ -3405,7 +3405,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
+          "11961"
         ],
         "x-ms-request-id": [
           "81ba7fdd-4d03-4917-a412-f148f369deb2"
@@ -3459,13 +3459,13 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-activity-id": [
-          "954e84c1-e3d4-4aa0-94f9-a94e87c91d06"
+          "0e61bb0c-15b1-4f7f-9c89-1b412fe3a88c"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11979"
+          "11960"
         ],
         "x-ms-request-id": [
           "ed6c698c-ea64-469b-8dbd-1b8a59e2f4e0"

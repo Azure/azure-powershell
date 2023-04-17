@@ -128,9 +128,6 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public virtual void Validate()
         {
 
-
-
-
             if (this.FailoverPriority != null)
             {
                 if (this.FailoverPriority < 0)
