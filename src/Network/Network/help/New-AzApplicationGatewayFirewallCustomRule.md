@@ -215,13 +215,12 @@ Accept wildcard characters: False
 ```
 
 ### -RateLimitThreshold
-Describes rate limit threshold. Applies only when ruleType is RateLimitRule.
+Describes rate limit threshold. Applies only when ruleType is RateLimitRule.Accepted range for this value is 1 - 5000.
 
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Accepted ranges: 1, 5000
 
 Required: False
 Position: Named
