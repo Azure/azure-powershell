@@ -61,6 +61,19 @@ ruleset001 testps-rg-da16jm
 
 Get an AzureFrontDoor rule set under the profile
 
+### Example 3: Get an AzureFrontDoor rule set under the profile via identity
+```powershell
+ew-AzFrontDoorCdnRuleSet -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 | Get-AzFrontDoorCdnRuleSet
+```
+
+```output
+Name       ResourceGroupName
+----       -----------------
+ruleset001 testps-rg-da16jm
+```
+
+Get an AzureFrontDoor rule set under the profile via identity
+
 ## PARAMETERS
 
 ### -DefaultProfile

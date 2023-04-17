@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 .Description
-Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -44,7 +44,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   [OriginGroupName <String>]: Name of the origin group which is unique within the endpoint.
   [OriginName <String>]: Name of the origin which is unique within the profile.
   [PolicyName <String>]: The name of the CdnWebApplicationFirewallPolicy.
-  [ProfileName <String>]: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  [ProfileName <String>]: Name of the CDN profile which is unique within the resource group.
   [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
   [RouteName <String>]: Name of the routing rule.
   [RuleName <String>]: Name of the delivery rule which is unique within the endpoint.
@@ -63,7 +63,7 @@ function Update-AzCdnProfile {
         [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
-        # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        # Name of the CDN profile which is unique within the resource group.
         ${Name},
     
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]

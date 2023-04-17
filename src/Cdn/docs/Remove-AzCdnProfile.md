@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCdnProfile
 
 ## SYNOPSIS
-Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
 ## SYNTAX
@@ -26,7 +26,7 @@ Remove-AzCdnProfile -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-A
 ```
 
 ## DESCRIPTION
-Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
 ## EXAMPLES
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String

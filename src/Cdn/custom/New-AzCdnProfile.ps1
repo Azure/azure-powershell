@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 .Description
-Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 .Example
 PS C:\> {{ Add code here }}
 
@@ -41,7 +41,7 @@ function New-AzCdnProfile {
         [Alias('ProfileName')]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Path')]
         [System.String]
-        # Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+        # Name of the CDN profile which is unique within the resource group.
         ${Name},
     
         [Parameter(Mandatory)]

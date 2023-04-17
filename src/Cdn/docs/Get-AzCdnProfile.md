@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCdnProfile
 
 ## SYNOPSIS
-Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Defa
 ```
 
 ## DESCRIPTION
-Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## EXAMPLES
 
@@ -81,6 +81,19 @@ Global   cdn001 cdn  testps-rg-da16jm
 
 Get an AzureCDN profile under the resource group
 
+### Example 4: Get an AzureCDN profile under the resource group via identity
+```powershell
+New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global | Get-AzCdnProfile
+```
+
+```output
+Location Name   Kind ResourceGroupName
+-------- ----   ---- -----------------
+Global   cdn001 cdn  testps-rg-da16jm
+```
+
+Get an AzureCDN profile under the resource group via identity
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -115,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String

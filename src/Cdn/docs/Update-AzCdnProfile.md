@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzCdnProfile
 
 ## SYNOPSIS
-Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Update-AzCdnProfile -InputObject <ICdnIdentity> [-OriginResponseTimeoutSecond <I
 ```
 
 ## DESCRIPTION
-Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## EXAMPLES
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String

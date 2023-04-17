@@ -43,6 +43,13 @@ True
 
 Test an AzureCDN custom domain under the AzureCDN endpoint
 
+### Example 2: Test an AzureCDN custom domain under the AzureCDN endpoint via identity
+```powershell
+Get-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 | Test-AzCdnEndpointCustomDomain -HostName 'testcm.dev.cdn.azure.cn'
+```
+
+Test an AzureCDN custom domain under the AzureCDN endpoint via identity
+
 ## PARAMETERS
 
 ### -DefaultProfile

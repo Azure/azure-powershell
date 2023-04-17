@@ -45,7 +45,7 @@ Gets an existing origin within an endpoint.
 Gets an existing origin group within an endpoint.
 
 ### [Get-AzCdnProfile](Get-AzCdnProfile.md)
-Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Gets an CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [Get-AzCdnProfileResourceUsage](Get-AzCdnProfileResourceUsage.md)
 Checks the quota and actual usage of endpoints under the given Azure Front Door Standard or Azure Front Door Premium or CDN profile.
@@ -182,7 +182,7 @@ Creates a new origin group within the specified endpoint.
 Create an in-memory object for OriginGroupOverrideAction.
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
-Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
+Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [New-AzCdnResourceReferenceObject](New-AzCdnResourceReferenceObject.md)
 Create an in-memory object for ResourceReference.
@@ -362,7 +362,7 @@ Deletes an existing origin within an endpoint.
 Deletes an existing origin group within an endpoint.
 
 ### [Remove-AzCdnProfile](Remove-AzCdnProfile.md)
-Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
 ### [Remove-AzFrontDoorCdnCustomDomain](Remove-AzFrontDoorCdnCustomDomain.md)
@@ -452,7 +452,7 @@ Updates an existing origin within an endpoint.
 Updates an existing origin group within an endpoint.
 
 ### [Update-AzCdnProfile](Update-AzCdnProfile.md)
-Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
+Updates an existing CDN profile with the specified profile name under the specified subscription and resource group.
 
 ### [Update-AzFrontDoorCdnCustomDomain](Update-AzFrontDoorCdnCustomDomain.md)
 Updates an existing domain within a profile.

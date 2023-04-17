@@ -21,6 +21,7 @@ Get-AzCdnSubscriptionResourceUsage.md,No examples found
 New-AzCdnCustomDomain.md,No examples found
 New-AzCdnEndpoint.md,No examples found
 New-AzCdnProfile.md,No examples found
+New-AzFrontDoorCdnRule.md,No examples found
 Publish-AzCdnEndpointContent.md,No examples found
 Remove-AzCdnCustomDomain.md,No examples found
 Remove-AzCdnEndpoint.md,No examples found
