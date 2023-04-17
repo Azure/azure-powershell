@@ -25,7 +25,7 @@ Restores the deleted table in the same account with the given name and timestamp
 
 ### Example 1
 ```powershell
-Restore-AzCosmosDBTable -AccountName “my-pitr-table-account” -ResourceGroupName “my-rg” -Name “my-table” -RestoreTimestampInUtc “2023-04-25T07:16:20Z”
+Restore-AzCosmosDBTable -AccountName "my-pitr-table-account" -ResourceGroupName "my-rg" -Name "my-table" -RestoreTimestampInUtc "2023-04-25T07:16:20Z"
 ```
 
 ```output
@@ -49,21 +49,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -124,6 +109,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
