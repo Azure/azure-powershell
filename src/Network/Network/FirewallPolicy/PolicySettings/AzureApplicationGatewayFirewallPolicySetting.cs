@@ -127,8 +127,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Mode = this.Mode,
                 State = this.State,
+                RequestBodyEnforcement = this.RequestBodyEnforcement,
+                RequestBodyInspectLimitInKB = this.RequestBodyInspectLimitInKB,
                 RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
                 MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
+                FileUploadEnforcement = this.FileUploadEnforcement,
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
