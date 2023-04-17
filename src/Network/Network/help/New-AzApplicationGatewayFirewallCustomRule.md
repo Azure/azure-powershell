@@ -91,7 +91,7 @@ RateLimitDuration   : OneMin
 RateLimitThreshold  : 10
 RuleType            : RateLimitRule
 MatchConditions     : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition}
-GroupByUserSession  : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayGroupByUserSession}
+GroupByUserSession  : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallGroupByUserSession}
 Action              : Allow
 State               : Disabled
 MatchConditionsText : [
