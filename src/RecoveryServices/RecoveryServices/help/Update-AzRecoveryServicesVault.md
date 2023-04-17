@@ -17,8 +17,8 @@ Updates MSIdentity to the recovery services vault.
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-IdentityId <String[]>]
  [-RemoveUserAssigned] [-RemoveSystemAssigned] [-DisableClassicAlerts <Boolean>]
  [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-ImmutabilityState <ImmutabilityState>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ImmutabilityState <ImmutabilityState>] [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultAddMSIdentity
@@ -26,7 +26,8 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
  [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-ImmutabilityState <ImmutabilityState>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +105,38 @@ The first cmdlet fetches the recovery services vault.
 The second cmdlet updates  PublicNetworkAccess, ImmutabilityState properties of the recovery services vault.
 The third and fourth command are used to fetch the public network access and immutability state of the vault.
 
+### Example 5: Enable/Disable CrossSubscriptionRestore for recovery services vault
+```powershell
+$vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
+$updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -CrossSubscriptionRestoreState Disabled
+$updatedVault.Properties.RestoreSettings.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState
+```
+
+```output
+Disabled
+```
+
+The first cmdlet fetches the recovery services vault.
+The second cmdlet updates CrossSubscriptionRestoreState of the recovery services vault.
+The third command gets the cross subscription restore state of the vault.
+
 ## PARAMETERS
+
+### -CrossSubscriptionRestoreState
+Cross subscription restore state of the vault. Allowed values are "Enabled", "Disabled", "PermanentlyDisabled".
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.CrossSubscriptionRestoreState]
+Parameter Sets: (All)
+Aliases:
+Accepted values: Enabled, Disabled, PermanentlyDisabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
