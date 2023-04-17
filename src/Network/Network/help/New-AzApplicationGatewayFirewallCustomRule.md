@@ -221,7 +221,7 @@ Describes rate limit threshold. Applies only when ruleType is RateLimitRule.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Accepted range: 1, 5000
+Accepted ranges: 1, 5000
 
 Required: False
 Position: Named
