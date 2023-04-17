@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayGroupByVariable"), OutputType(typeof(PSApplicationGatewayGroupByVariable))]
-    public class NewAzApplicationGatewayGroupByVariableCommand : NetworkBaseCmdlet
+    public class NewAzureApplicationGatewayGroupByVariableCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,

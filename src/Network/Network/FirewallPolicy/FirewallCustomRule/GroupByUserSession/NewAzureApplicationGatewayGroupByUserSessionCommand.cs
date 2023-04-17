@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayGroupByUserSession"), OutputType(typeof(PSApplicationGatewayGroupByUserSession))]
-    public class NewAzApplicationGatewayGroupByUserSessionCommand : NetworkBaseCmdlet
+    public class NewAzureApplicationGatewayGroupByUserSessionCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
