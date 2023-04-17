@@ -5,20 +5,20 @@ online version: https://learn.microsoft.com/powershell/module/az.network/new-aza
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayGroupByVariable
+# New-AzApplicationGatewayFirewallGroupByVariable
 
 ## SYNOPSIS
-Creates a new GroupByVariable for the application gateway GroupByUserSession.
+Creates a new GroupByVariable for the application gateway Firewall GroupByUserSession.
 
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayGroupByVariable -VariableName<String> 
+New-AzApplicationGatewayFirewallGroupByVariable -VariableName<String> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayGroupByVariable** creates a new GroupByVariable for the application gateway GroupByUserSession.
+The **New-AzApplicationGatewayGroupByVariable** creates a new GroupByVariable for the application gateway Firewall GroupByUserSession.
 
 ## EXAMPLES
 

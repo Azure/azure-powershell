@@ -14,7 +14,7 @@ Creates a new custom rule for the application gateway firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> [-RateLimitDuration<String>] [-RateLimitThreshold<Int32>] -RuleType <String>
- -MatchCondition <PSApplicationGatewayFirewallCondition[]> [-GroupByUserSession<PSApplicationGatewayGroupByUserSession[]>] -Action <String> [-State <String>]
+ -MatchCondition <PSApplicationGatewayFirewallCondition[]> [-GroupByUserSession<PSApplicationGatewayFirewallGroupByUserSession[]>] -Action <String> [-State <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -205,7 +205,7 @@ Describes duration over which Rate Limit policy will be applied. Applies only wh
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Onemin, FiveMins
+Accepted values: OneMin, FiveMins
 
 Required: False
 Position: Named
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 List of match conditions.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayGroupByUserSession[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallGroupByUserSession[]
 Parameter Sets: (All)
 Aliases:
 

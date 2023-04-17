@@ -14,14 +14,13 @@
 //using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayGroupByUserSession
+    public partial class PSApplicationGatewayFirewallGroupByVariable
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayGroupByVariable> GroupByVariables { get; set; }
+        public string VariableName { get; set; }
 
     }
 }

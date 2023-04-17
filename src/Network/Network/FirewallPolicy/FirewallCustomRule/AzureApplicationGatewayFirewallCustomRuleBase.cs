@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Duration over which Rate Limit policy will be applied. Applies only when ruleType is RateLimitRule.")]
-        [ValidateSet("Onemin", "FiveMins", IgnoreCase = true)]
+        [ValidateSet("OneMin", "FiveMins", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
         public string RateLimitDuration { get; set; }
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Define user session identifier group by clauses.")]
         [ValidateCount(1, 1)]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayGroupByUserSession[] GroupByUserSession { get; set; }
+        public PSApplicationGatewayFirewallGroupByUserSession[] GroupByUserSession { get; set; }
 
         [Parameter(
             Mandatory = true,

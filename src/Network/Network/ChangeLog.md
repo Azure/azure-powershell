@@ -45,8 +45,8 @@
 * Fixed bugs related to auto learn IP prefixes and Snat
 * Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
 * Added new cmdlets to support Rate Limiting Rule for Application Gateway WAF
-    - 'New-AzApplicationGatewayGroupByUserSession',
-    - 'New-AzApplicationGatewayGroupByVariable',
+    - 'New-AzApplicationGatewayFirewallGroupByUserSession',
+    - 'New-AzApplicationGatewayFirewallGroupByVariable',
     - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
         - `New-AzureApplicationGatewayFirewallCustomRule`
 

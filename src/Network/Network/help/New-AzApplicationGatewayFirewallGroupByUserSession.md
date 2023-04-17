@@ -5,7 +5,7 @@ online version: https://learn.microsoft.com/powershell/module/az.network/new-aza
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayGroupByUserSession
+# New-AzApplicationGatewayFirewallGroupByUserSession
 
 ## SYNOPSIS
 Creates a new GroupByUserSession for the application gateway firewall custom rule.
@@ -13,7 +13,7 @@ Creates a new GroupByUserSession for the application gateway firewall custom rul
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayGroupByUserSession -GroupByVariable<PSApplicationGatewayGroupByVariable[]> 
+New-AzApplicationGatewayGroupByUserSession -GroupByVariable<PSApplicationGatewayFirewallGroupByVariable[]> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ The command creates a new GroupByUserSession, with the GroupByVariables conditio
 Define user session group by clause variables.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayGroupByVariable[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallGroupByVariable[]
 Parameter Sets: (All)
 Aliases:
 

@@ -4259,8 +4259,8 @@ function Test-ApplicationGatewayFirewallPolicyWithRateLimitRule
 		# WAF Policy with rate limiting rule custom Rule
 		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
-		$groupbyVar = New-AzApplicationGatewayGroupByVariable -VariableName ClientAddr 
-		$groupbyUserSes = New-AzApplicationGatewayGroupByUserSession -GroupByVariable $groupbyVar
+		$groupbyVar = New-AzApplicationGatewayFirewallGroupByVariable -VariableName ClientAddr 
+		$groupbyUserSes = New-AzApplicationGatewayFirewallGroupByUserSession -GroupByVariable $groupbyVar
 		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Block
 
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
