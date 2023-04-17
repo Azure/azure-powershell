@@ -54,7 +54,7 @@ $jobs = Get-AzBatchJob -BatchContext $batchcontext
 
 # Loop through jobs
 foreach ($element in $jobs) {
-	Write-Host "Processing "$element.Id
+	Write-Host "Processing :" $element.Id
 	Remove-AzBatchJob -Id $element.Id -BatchContext $batchcontext -Force -Confirm:$false
 }
 ```
