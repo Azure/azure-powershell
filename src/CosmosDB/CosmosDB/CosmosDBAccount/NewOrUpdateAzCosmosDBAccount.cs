@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.EnableAnalyticalStorageHelpMessage)]
         public bool? EnableAnalyticalStorage { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnableBurstCapacityHelpMessage)]
+        public bool? EnableBurstCapacity { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AsJobHelpMessage)]
         public SwitchParameter AsJob { get; set; }
 

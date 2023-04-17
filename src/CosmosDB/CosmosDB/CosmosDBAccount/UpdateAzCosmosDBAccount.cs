@@ -98,6 +98,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
             }
+            if (EnableBurstCapacity != null)
+            {
+                databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
             if (NetworkAclBypass != null)
             {
                 databaseAccountUpdateParameters.NetworkAclBypass =

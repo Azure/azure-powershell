@@ -19,8 +19,9 @@ New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations]
  -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
  [-VirtualNetworkRule <String[]>] [-VirtualNetworkRuleObject <PSVirtualNetworkRule[]>]
- [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] [-AsJob]
- [-NetworkAclBypass <String>] [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
+ [-PublicNetworkAccess <String>] [-KeyVaultKeyUri <String>] [-EnableAnalyticalStorage <Boolean>] 
+ [-EnableBurstCapacity <Boolean>] [-AsJob] [-NetworkAclBypass <String>] 
+ [-NetworkAclBypassResourceId <String[]>] [-ServerVersion <String>]
  [-BackupIntervalInMinutes <Int32>] [-BackupRetentionIntervalInHours <Int32>]
  [-BackupStorageRedundancy <String>] [-BackupPolicyType <String>] [-ContinuousTier <String>]
  [-AnalyticalStorageSchemaType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -357,6 +358,20 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableBurstCapacity
+Bool to indicate if Burst Capacity is enabled on the account.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 Required: False
 Position: Named
 Default value: None
