@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewaygroupbyvariable
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallgroupbyvariable
 schema: 2.0.0
 ---
 
@@ -18,13 +18,13 @@ New-AzApplicationGatewayFirewallGroupByVariable -VariableName<String>
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayGroupByVariable** creates a new GroupByVariable for the application gateway Firewall GroupByUserSession.
+The **New-AzApplicationGatewayFirewallGroupByVariable** creates a new GroupByVariable for the application gateway Firewall GroupByUserSession.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzApplicationGatewayGroupByVariable -VariableName ClientAddr
+New-AzApplicationGatewayFirewallGroupByVariable -VariableName ClientAddr
 ```
 
 The command creates a new GroupByVariable, with the VariableName ClientAddr

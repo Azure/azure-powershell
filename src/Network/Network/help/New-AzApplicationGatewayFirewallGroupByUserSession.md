@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewaygroupbyusersession
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallgroupbyusersession
 schema: 2.0.0
 ---
 
@@ -13,18 +13,18 @@ Creates a new GroupByUserSession for the application gateway firewall custom rul
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayGroupByUserSession -GroupByVariable<PSApplicationGatewayFirewallGroupByVariable[]> 
+New-AzApplicationGatewayFirewallGroupByUserSession -GroupByVariable<PSApplicationGatewayFirewallGroupByVariable[]> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayGroupByUserSession** creates a new GroupByUserSession for the application gateway firewall custom rule.
+The **New-AzApplicationGatewayFirewallGroupByUserSession** creates a new GroupByUserSession for the application gateway firewall custom rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzApplicationGatewayGroupByUserSession -GroupByVariable $groupbyVar 
+New-AzApplicationGatewayFirewallGroupByUserSession -GroupByVariable $groupbyVar 
 ```
 
 The command creates a new GroupByUserSession, with the GroupByVariables condition named groupbyVar
