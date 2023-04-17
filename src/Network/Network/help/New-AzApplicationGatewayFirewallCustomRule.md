@@ -81,7 +81,7 @@ The command creates a new custom rule with name of example-rule, state as Disabl
 
 ### Example 3
 ```powershell
-New-AzApplicationGatewayFirewallCustomRule -Name RateLimitRule3 -Priority 3 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes-Action Allow -State Disabled
+New-AzApplicationGatewayFirewallCustomRule -Name RateLimitRule3 -Priority 3 -RateLimitDuration OneMin -RateLimitThreshold 10 -RuleType RateLimitRule -MatchCondition $condition -GroupByUserSession $groupbyUserSes -Action Allow -State Disabled
 ```
 
 ```output
