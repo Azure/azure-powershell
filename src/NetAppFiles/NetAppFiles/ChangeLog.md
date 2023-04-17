@@ -19,8 +19,8 @@
 -->
 ## Upcoming Release
 * Updated Azure.Core to 1.31.0.
-* Added cmdLet `Restore-AzNetAppFilesBackupFile` **todo
-* Added cmdLet `Unlock-AzMetAppFilesVolumeFilesLock`
+* Added cmdLet `Restore-AzNetAppFilesBackupFile`                 
+* Added cmdLet `Unlock-AzNetAppFilesVolumeFileLockUnlock-AzNetAppFilesVolumeFileLock`
 * Added parameter `LdapSearchScope` and `PreferredServersForLdapClient` to `New-AzNetAppFilesActiveDirectory`
 * Added parameter `IsLargeVolume` to `NewAzNetAppFilesVolume`
 * Added property `PreferredServersForLdapClient` to `PSNetAppFilesActiveDirectory`
