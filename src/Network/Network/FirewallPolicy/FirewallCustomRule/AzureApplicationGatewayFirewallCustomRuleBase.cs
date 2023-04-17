@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Rate Limit threshold to apply in case ruleType is RateLimitRule. Must be greater than or equal to 1")]
         [ValidateNotNullOrEmpty]
-        public int RateLimitThreshold { get; set; } = 10;
+        public int RateLimitThreshold { get; set; } 
 
         [Parameter(
             Mandatory = true,
@@ -87,11 +87,6 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.MyInvocation.BoundParameters.ContainsKey("State"))
             {
                 this.State = "Enabled";
-            }
-
-            if (!this.MyInvocation.BoundParameters.ContainsKey("RateLimitThreshold"))
-            {
-                this.RateLimitThreshold = 10;
             }
         }
 
