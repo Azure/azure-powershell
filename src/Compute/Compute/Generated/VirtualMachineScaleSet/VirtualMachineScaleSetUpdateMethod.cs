@@ -1255,6 +1255,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
                 }
+                
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
             }
 
