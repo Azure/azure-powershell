@@ -819,7 +819,7 @@ function Test-CrossRegionRestoreAccountCmdlets {
 
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
 
-  Start-Sleep -s 3662
+  Start-TestSleep -s 3662
   $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
 
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
@@ -869,7 +869,7 @@ function Test-CrossRegionRestoreSingleRegionAccountCmdlets {
 
   $sourceRestorableAccount = Get-AzCosmosDBRestorableDatabaseAccount -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
 
-  Start-Sleep -s 3662
+  Start-TestSleep -s 3662
   $restoreTimestampInUtc = $sourceRestorableAccount.CreationTime.AddSeconds(3610)
 
   $restoredCosmosDBAccount = Restore-AzCosmosDBAccount -RestoreTimestampInUtc $restoreTimestampInUtc -SourceDatabaseAccountName $sourceCosmosDBAccountName -SourceBackupLocation $sourceBackupLocation -Location $targetLocation -TargetResourceGroupName $rgName -TargetDatabaseAccountName $cosmosDBAccountName -DatabasesToRestore $datatabaseToRestore
