@@ -143,10 +143,10 @@ $subnetId = $vnet.Subnets[0].Id;
 
 # Create VMSS with managed disk
 $timeoutValue = 'PT15M';
-$ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
-$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -OSImageScheduledEventEnabled -OSImageScheduledEventNotBeforeTimeoutInMinutes $timeoutValue -UpgradePolicy "Automatic" `
+$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
+$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSku -OSImageScheduledEventEnabled -OSImageScheduledEventNotBeforeTimeoutInMinutes $timeoutValue -UpgradePolicyMode "Automatic" `
     | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
-    | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $username -AdminPassword $password `
+    | Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $username -AdminPassword $password `
     | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'None' `
        -ImageReferenceOffer $offer -ImageReferenceSku $imgSku -ImageReferenceVersion $version `
        -ImageReferencePublisher $publisher;
