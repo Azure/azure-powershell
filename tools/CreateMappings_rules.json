@@ -807,5 +807,9 @@
   {
     "module": "ArcResourceBridge",
     "alias": "ArcResourceBridge"
+  },
+  {
+    "module": "Workloads",
+    "alias": "Workloads"
   }
 ]
