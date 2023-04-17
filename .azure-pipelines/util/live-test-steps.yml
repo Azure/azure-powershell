@@ -119,7 +119,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -RunPlatform ${{ parameters.osType }} -RepoLocation $(Build.SourcesDirectory) -DataLocation $(DataLocation)'
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }} -PowerShellLatest $(PowerShellLatest) -RepoLocation $(Build.SourcesDirectory) -DataLocation $(DataLocation)'
 
   - task: PowerShell@2
     displayName: Save live test results to Kusto
