@@ -76,7 +76,7 @@ Gets the CosmosDB throughput properties of MongoDB Collection.
 Gets the CosmosDB MongoDB Database
 
 ### [Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Get-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
-Gets the Partition throughput distribution for a MongoDB Database.
+Gets the Partition throughput distribution for a MongoDB database.
 
 ### [Get-AzCosmosDBMongoDBDatabaseThroughput](Get-AzCosmosDBMongoDBDatabaseThroughput.md)
 Gets the CosmosDB throughput properties of MongoDB Database.
@@ -98,6 +98,9 @@ Gets the CosmosDB MongoDB User Definition.
 
 ### [Get-AzCosmosDBRestorableDatabaseAccount](Get-AzCosmosDBRestorableDatabaseAccount.md)
 Gets the restorable database account object
+
+### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
+Gets the CosmosDB Service
 
 ### [Get-AzCosmosDBSqlContainer](Get-AzCosmosDBSqlContainer.md)
 Gets the CosmosDB Sql Container.
@@ -164,9 +167,6 @@ Gets a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
 Gets a Azure Managed Instances for Apache Cassandra data center.
-
-### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
-Gets the Cosmos DB Service
 
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
@@ -294,6 +294,9 @@ Creates a new CosmosDB Permission object to be used to create or update a Role D
 ### [New-AzCosmosDBPhysicalPartitionThroughputObject](New-AzCosmosDBPhysicalPartitionThroughputObject.md)
 Creates a new PhysicalPartitionThroughputObject
 
+### [New-AzCosmosDBService](New-AzCosmosDBService.md)
+Creates a new CosmosDB Service.
+
 ### [New-AzCosmosDBSqlCompositePath](New-AzCosmosDBSqlCompositePath.md)
 Creates a new object of type PSCompositePath. It can be passed as a parameter value for Set-AzCosmosDBSqlContainer.
 
@@ -354,9 +357,6 @@ Creates a new Azure Managed Instances for Apache Cassandra cluster.
 ### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
 Create a new Azure Managed Instances for Apache Cassandra data center.
 
-### [New-AzCosmosDBService](New-AzCosmosDBService.md)
-Creates a new Cosmos DB Service
-
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a CosmosDB Account.
 
@@ -383,6 +383,9 @@ Deletes a CosmosDB MongoDB Database.
 
 ### [Remove-AzCosmosDBMongoDBUserDefinition](Remove-AzCosmosDBMongoDBUserDefinition.md)
 Deletes an existing CosmosDB MongoDB User Definition.
+
+### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
+Deletes the CosmosDB Service.
 
 ### [Remove-AzCosmosDBSqlContainer](Remove-AzCosmosDBSqlContainer.md)
 Deletes the CosmosDB Sql Container.
@@ -414,11 +417,14 @@ Deletes a Azure Managed Instances for Apache Cassandra cluster.
 ### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
 Deletes a Azure Managed Instances for Apache Cassandra data center.
 
-### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
-Deletes a Cosmos DB Service
-
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account
+
+### [Restore-AzCosmosDBGremlinDatabase](Restore-AzCosmosDBGremlinDatabase.md)
+Restore a deleted gremlin database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBGremlinGraph](Restore-AzCosmosDBGremlinGraph.md)
+Restore a deleted gremlin graph in a database to a given timestamp in the same account
 
 ### [Restore-AzCosmosDBMongoDBCollection](Restore-AzCosmosDBMongoDBCollection.md)
 Restore a deleted mongodb collection in a database to a given timestamp in the same account
@@ -431,6 +437,9 @@ Restore a deleted sql container in a database to a given timestamp in the same a
 
 ### [Restore-AzCosmosDBSqlDatabase](Restore-AzCosmosDBSqlDatabase.md)
 Restore a deleted sql database to a given timestamp in the same account
+
+### [Restore-AzCosmosDBTable](Restore-AzCosmosDBTable.md)
+Restore a deleted table to a given timestamp in the same account
 
 ### [Update-AzCosmosDBAccount](Update-AzCosmosDBAccount.md)
 Update a CosmosDB account attributes.
@@ -481,7 +490,7 @@ Updates the throughput value of a CosmosDB MongoDB Collection.
 Updates the CosmosDB MongoDB Database. Performs a client side patch operation by reading the existing Database.
 
 ### [Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput](Update-AzCosmosDBMongoDBDatabasePerPartitionThroughput.md)
-Updates the Partition Throughput for a MongoDB Database.
+Updates the Partition Throughput for a MongoDB database.
 
 ### [Update-AzCosmosDBMongoDBDatabaseThroughput](Update-AzCosmosDBMongoDBDatabaseThroughput.md)
 Updates the throughput value of a CosmosDB MongoDB Database.

@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.CosmosDB.dll',
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.CosmosDB.Management.Sdk.dll',
                'Azure.Security.KeyVault.Keys.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -109,7 +109,8 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Get-AzCosmosDBGremlinGraphThroughput', 
                'Remove-AzCosmosDBGremlinDatabase', 'Remove-AzCosmosDBGremlinGraph', 
                'New-AzCosmosDBGremlinDatabase', 'New-AzCosmosDBGremlinGraph', 
-               'Update-AzCosmosDBGremlinDatabase', 'Update-AzCosmosDBGremlinGraph', 
+               'Update-AzCosmosDBGremlinDatabase', 'Update-AzCosmosDBGremlinGraph',
+               'Restore-AzCosmosDBGremlinDatabase', 'Restore-AzCosmosDBGremlinGraph',
                'New-AzCosmosDBGremlinIndexingPolicy', 
                'New-AzCosmosDBGremlinUniqueKey', 
                'New-AzCosmosDBGremlinUniqueKeyPolicy', 
@@ -120,6 +121,7 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'New-AzCosmosDBGremlinIncludedPathIndex', 'Get-AzCosmosDBTable', 
                'Get-AzCosmosDBTableThroughput', 'Remove-AzCosmosDBTable', 
                'New-AzCosmosDBTable', 'Update-AzCosmosDBTable', 
+               'Restore-AzCosmosDBTable',
                'Get-AzCosmosDBCassandraKeyspace', 
                'Get-AzCosmosDBCassandraKeyspaceThroughput', 
                'Get-AzCosmosDBCassandraTable', 

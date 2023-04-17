@@ -13,7 +13,7 @@ Creates a new CosmosDB Table to Restore object(PSTableToRestore)
 ## SYNTAX
 
 ```
-New-AzCosmosDBTableToRestore [-TableNames <String[]>] [-DefaultProfile <IAzureContextContainer>]
+New-AzCosmosDBTableToRestore [-TableName <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -52,9 +52,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TableNames
-The names of the tables to be restored.
-(If not provided, all the tables will be restored)
+### -TableName
+The names of the tables to be restored. (If not provided, all the tables will be restored)
 
 ```yaml
 Type: System.String[]

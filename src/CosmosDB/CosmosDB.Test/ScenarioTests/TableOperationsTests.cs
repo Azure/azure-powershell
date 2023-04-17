@@ -50,5 +50,12 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-TableMigrateThroughputCmdlets");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestTableInAccountRestoreOperationsCmdlets()
+        {
+            TestRunner.RunTestScript("Test-TableInAccountRestoreOperationsCmdlets");
+        }
     }
 }
