@@ -439,7 +439,7 @@ function Test-LoadBalancerCRUD-InternalHighlyAvailableBasicSku
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $vnet.Subnets[0]
         $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
         $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol All -FrontendPort 0 -BackendPort 0 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP
         $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $location -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Basic
         
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
@@ -463,9 +463,9 @@ function Test-LoadBalancerCRUD-InternalHighlyAvailableBasicSku
         Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id
-		Assert-AreEqual 0 $expectedLb.LoadBalancingRules[0].FrontendPort
-		Assert-AreEqual 0 $expectedLb.LoadBalancingRules[0].BackendPort
-		Assert-AreEqual All $expectedLb.LoadBalancingRules[0].Protocol
+		Assert-AreEqual 80 $expectedLb.LoadBalancingRules[0].FrontendPort
+		Assert-AreEqual 80 $expectedLb.LoadBalancingRules[0].BackendPort
+		Assert-AreEqual Tcp $expectedLb.LoadBalancingRules[0].Protocol
 
         # Delete
         $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
@@ -2877,9 +2877,8 @@ function Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier
         # Create LoadBalancer
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
         $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
-        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Standard -Tier Global
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp -FrontendPort 80 -BackendPort 80 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -LoadBalancingRule $lbrule -Sku Standard -Tier Global
         
         $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
 
@@ -2897,9 +2896,6 @@ function Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier
         Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
         
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
-        
-        Assert-AreEqual $probeName $expectedLb.Probes[0].Name
-        Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
         
         Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
@@ -3032,7 +3028,6 @@ function Test-LoadBalancerZones
     $subnetName = Get-ResourceName
     $vnetName = Get-ResourceName
     $frontendName = Get-ResourceName
-    $zones = "1";
     $rglocation = Get-ProviderLocation ResourceManagement
     $location = Get-ProviderLocation "Microsoft.Network/loadBalancers" "Central US"
 
@@ -3043,7 +3038,7 @@ function Test-LoadBalancerZones
       $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
       $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/8 -Subnet $subnet
       $subnet = Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet
-      $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $subnet -Zone $zones
+      $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $subnet
 
       # Create loadBalancer
       $actual = New-AzLoadBalancer -ResourceGroupName $rgname -name $rname -location $location -frontendIpConfiguration $frontend;
