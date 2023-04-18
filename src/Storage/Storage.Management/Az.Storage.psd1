@@ -206,7 +206,8 @@ CmdletsToExport = 'Get-AzStorageAccount', 'Get-AzStorageAccountKey',
                'New-AzStorageLocalUserSshPublicKey', 
                'New-AzStorageLocalUserPermissionScope', 
                'Get-AzDataLakeGen2DeletedItem', 
-               'Restore-AzDataLakeGen2DeletedItem'
+               'Restore-AzDataLakeGen2DeletedItem',
+               'Rename-AzStorageFile', 'Rename-AzStorageDirectory'
 
 # Variables to export from this module
 # VariablesToExport = @()
