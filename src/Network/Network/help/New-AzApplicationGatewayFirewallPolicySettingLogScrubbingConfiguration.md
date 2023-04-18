@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicysetting
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicysettinglogscrubbingconfiguration
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayLogScrubbingConfiguration
+# New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration
 
 ## SYNOPSIS
 Creates a log scrubbing configuration for firewall policy
@@ -13,17 +13,17 @@ Creates a log scrubbing configuration for firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayLogScrubbingConfiguration -State <String> -ScrubbingRule  <PSApplicationGatewayLogScrubbingRule[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration -State <String> -ScrubbingRule  <PSApplicationGatewayFirewallPolicySettingLogScrubbingRule[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayLogScrubbingConfiguration** creates a log scrubbing configuration for firewall policy.
+The **New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration** creates a log scrubbing configuration for firewall policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$logScrubbingRuleConfig = New-AzApplicationGatewayLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1
+$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1
 ```
 
 The command creates a log scrubbing rule configuration with state as enable, ScrubbingRule as $logScrubbingRule1.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The rules that are applied to the logs for scrubbing.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayLogScrubbingRule[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicySettingLogScrubbingRule[]
 Parameter Sets: (All)
 Aliases:
 

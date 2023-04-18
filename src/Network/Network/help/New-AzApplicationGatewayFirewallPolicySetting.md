@@ -15,7 +15,7 @@ Creates a policy setting for the firewall policy
 ```
 New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-DisableRequestBodyCheck]
  [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-CustomBlockResponseStatusCode <Int32>]
- [-CustomBlockResponseBody <String>] [-LogScrubbing <PSApplicationGatewayLogScrubbingConfiguration>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomBlockResponseBody <String>] [-LogScrubbing <PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 Allow certain variables to be scrubbed on WAF logs.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayLogScrubbingConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration
 Parameter Sets: (All)
 Aliases:
 
