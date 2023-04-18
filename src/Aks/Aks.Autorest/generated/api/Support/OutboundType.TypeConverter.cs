@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>The outbound (egress) routing method.</summary>
+    /// <summary>
+    /// This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+    /// </summary>
     public partial class OutboundTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

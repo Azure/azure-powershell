@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network mode used for building Kubernetes network.</summary>
+    /// <summary>This cannot be specified if networkPlugin is anything other than 'azure'.</summary>
     public partial class NetworkModeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

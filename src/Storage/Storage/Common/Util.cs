@@ -400,10 +400,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
         }
 
-        public static BlobBaseClient GetTrack2BlobClient(BlobContainerClient track2container, string blobName, AzureStorageContext context, string versionId = null, bool? IsCurrentVersion = null, string snapshot = null, BlobClientOptions options = null, global::Azure.Storage.Blobs.Models.BlobType? blobType = null)
+        public static BlobBaseClient GetTrack2BlobClient(BlobContainerClient track2container, string blobName, AzureStorageContext context, string versionId = null, bool? IsCurrentVersion = null, string snapshot = null, BlobClientOptions options = null, global::Azure.Storage.Blobs.Models.BlobType? blobType = null, bool shouldTrimSlash = true)
         {
             //Get Track2 Blob Client Uri
-            BlobUriBuilder blobUriBuilder = new BlobUriBuilder(track2container.Uri)
+            BlobUriBuilder blobUriBuilder = new BlobUriBuilder(track2container.Uri, trimBlobNameSlashes: shouldTrimSlash)
             {
                 BlobName = blobName
             };

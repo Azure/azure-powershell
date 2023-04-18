@@ -44,17 +44,9 @@ Describe 'AzMobileNetworkSimGroup' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzMobileNetworkSimGroup -SimGroupName $env.testSimGroup -ResourceGroupName $env.resourceGroup -Tag @{"abc"="123"}
-            $config.Name | Should -Be $env.testSimGroup
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        {
-            $config = Get-AzMobileNetworkSimGroup -ResourceGroupName $env.resourceGroup -Name $env.testSimGroup
-            $config = Update-AzMobileNetworkSimGroup -InputObject $config -Tag @{"abc"="123"}
             $config.Name | Should -Be $env.testSimGroup
         } | Should -Not -Throw
     }

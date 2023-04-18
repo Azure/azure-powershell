@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Argument completer implementation for Expander.</summary>
+    /// <summary>
+    /// If not specified, the default is 'random'. See [expanders](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders)
+    /// for more information.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ExpanderTypeConverter))]
     public partial struct Expander :
         System.Management.Automation.IArgumentCompleter
@@ -33,6 +36,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "most-pods".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'most-pods'", "most-pods", global::System.Management.Automation.CompletionResultType.ParameterValue, "most-pods");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "priority".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'priority'", "priority", global::System.Management.Automation.CompletionResultType.ParameterValue, "priority");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "random".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
