@@ -19,17 +19,6 @@
 --->
 
 ## Upcoming Release
-* Added new cmdlets for RouteMap child resource of VirtualHub.
-    -`Get-AzRouteMap`
-    -`New-AzRouteMapRuleCriterion`
-    -`New-AzRouteMapRuleActionParameter`
-    -`New-AzRouteMapRuleAction`
-    -`New-AzRouteMapRule`
-    -`New-AzRouteMap`
-    -`Set-AzRouteMap`
-    -`Remove-AzRouteMap`
-* Update cmdlets to add inbound/outbound route maps in routingConfiguration
-    -`New-AzRoutingConfiguration`
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
@@ -44,6 +33,11 @@
 * Blocked some regions when creating/updating Basic Sku firewall
 * Fixed bugs related to auto learn IP prefixes and Snat
 * Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
+* Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
+    - 'New-AzApplicationGatewayLogScrubbingConfiguration',
+    - 'New-AzApplicationGatewayLogScrubbingRule',
+    - Also updated cmdlet to add the property of LogScrubbing 
+        - `New-AzApplicationGatewayFirewallPolicySetting`
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
