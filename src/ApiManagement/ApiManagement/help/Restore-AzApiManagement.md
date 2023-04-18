@@ -39,13 +39,55 @@ This command restores an API Management service from Azure storage blob.
 
 ### Example 2: Restore an API Management service using Managed Identity Credentials
 ```powershell
-PS D:> $storageContext=New-AzStorageContext -StorageAccountName apimbackupmsi
-PS D:> $resourceGroupName="ContosoGroup02";
-PS D:> $apiManagementName="contosoapi";
-PS D:> $containerName="apimbackupcontainer";
-PS D:> $backupName="test-sdk-backup-1";
-PS D:> $msiClientId="a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
-PS D:> Restore-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
+$storageContext=New-AzStorageContext -StorageAccountName apimbackupmsi
+$resourceGroupName="ContosoGroup02";
+$apiManagementName="contosoapi";
+$containerName="apimbackupcontainer";
+$backupName="test-sdk-backup-1";
+$msiClientId="a6270d0c-7d86-478b-8cbe-dc9047ba54f7"
+Restore-AzApiManagement -ResourceGroupName $resourceGroupName -Name $apiManagementName -StorageContext $storageContext -SourceContainerName $containerName -SourceBlobName $backupName -AccessType "UserAssignedManagedIdentity" -IdentityClientId $msiClientId -PassThru
+```
+
+```output
+PublicIPAddresses                     : {52.143.79.150}
+PrivateIPAddresses                    :
+Id                                    : /subscriptions/4f5285a3-9fd7-40ad-91b1-d8fc3823983d/resourceGroups/ContosoGroup02/providers/Microsoft.ApiManagement/service/contosoapi
+Name                                  : contosoapi
+Location                              : West US 2
+Sku                                   : Premium
+Capacity                              : 1
+CreatedTimeUtc                        : 10/13/2021 5:49:32 PM
+ProvisioningState                     : Succeeded
+RuntimeUrl                            : https://contosoapi.azure-api.net
+RuntimeRegionalUrl                    : https://contosoapi-westus2-01.regional.azure-api.net
+PortalUrl                             : https://contosoapi.portal.azure-api.net
+DeveloperPortalUrl                    : https://contosoapi.developer.azure-api.net
+ManagementApiUrl                      : https://contosoapi.management.azure-api.net
+ScmUrl                                : https://contosoapi.scm.azure-api.net
+PublisherEmail                        : foobar@microsoft.com
+OrganizationName                      : fsdfsdfs
+NotificationSenderEmail               : apimgmt-noreply@mail.windowsazure.com
+VirtualNetwork                        :
+VpnType                               : None
+PortalCustomHostnameConfiguration     :
+ProxyCustomHostnameConfiguration      : {contosoapi.azure-api.net}
+ManagementCustomHostnameConfiguration :
+ScmCustomHostnameConfiguration        :
+DeveloperPortalHostnameConfiguration  :
+SystemCertificates                    :
+Tags                                  : {}
+AdditionalRegions                     : {}
+SslSetting                            : Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSslSetting
+Identity                              : Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity
+EnableClientCertificate               :
+Zone                                  :
+DisableGateway                        : False
+MinimalControlPlaneApiVersion         :
+PublicIpAddressId                     :
+PlatformVersion                       : stv2
+PublicNetworkAccess                   : Enabled
+PrivateEndpointConnections            :
+ResourceGroupName                     : ContosoGroup02
 ```
 
 This command restores the API Management service using the Managed Identity credentials of APIM which are whitelisted as StorageBlobContributor on the Azure Storage Account `apimbackupmsi`
