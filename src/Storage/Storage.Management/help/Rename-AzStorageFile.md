@@ -1,7 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.storage/rename-azstoragefile
+
 schema: 2.0.0
 ---
 
