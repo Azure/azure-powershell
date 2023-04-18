@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet("Rename", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory")]
+    [Cmdlet("Rename", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory", SupportsShouldProcess = true, DefaultParameterSetName = ShareNameParameterSet)]
     [OutputType(typeof(AzureStorageFileDirectory))]
     public class RenameAzureStorageDirectory : StorageFileDataManagementCmdletBase
     {
