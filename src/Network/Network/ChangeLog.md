@@ -48,7 +48,7 @@
     - 'New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession',
     - 'New-AzApplicationGatewayFirewallCustomRuleGroupByVariable',
     - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
-        - `New-AzureApplicationGatewayFirewallCustomRule`
+    - `New-AzureApplicationGatewayFirewallCustomRule`
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
