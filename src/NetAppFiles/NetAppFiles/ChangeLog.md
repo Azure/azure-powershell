@@ -33,6 +33,9 @@ Breaking change:
 * Removed `vaultId` from `PSNetAppFilesVolumeBackupProperties`
 * `YearlyBackupsToKeep` property is not supported by the service and has been removed from `New-AzNetAppFilesBackupPolicy`, `Set-AzNetAppFilesBackupPolicy` and `Update-AzNetAppFilesBackupPolicy` deprecation warning removed
 
+## Version 0.11.1
+* Updated Azure.Core to 1.28.0.
+
 ## Version 0.11.0
 * Added cmdlet `Reset-AzNetAppFilesVolumeCifsPassword`
 * Added cmdlet `Get-AzNetAppFilesVolumeReplications` and `Restore-AzNetAppFilesVolume`
