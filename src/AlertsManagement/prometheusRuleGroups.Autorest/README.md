@@ -62,10 +62,6 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
-    # Remove cmdlet, Private link related resource should be ignored. 
-    - where:
-        subject: PrivateEndpointConnection|PrivateLinkResource
-        remove: true
     # Remove the unexpanded parameter set
     - where:
         variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
@@ -73,12 +69,17 @@ directive:
     # Hide CreateViaIdentity for customization
     - where:
         variant: ^CreateViaIdentity$
-        hide: true
+      remove: true
+    - where:
+        variant: ^Create$
+      remove: true
     - where:
         subject: PrometheuRuleGroup
       set: 
         subject: PrometheusRuleGroup
-
+    - where:
+        verb: Set
+      hid: true
     - model-cmdlet:
         - PrometheusRule
         - PrometheusRuleGroupAction

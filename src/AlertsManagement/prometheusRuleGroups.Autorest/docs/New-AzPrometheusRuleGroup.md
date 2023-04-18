@@ -12,17 +12,11 @@ Create or update a Prometheus rule group definition.
 
 ## SYNTAX
 
-### CreateViaIdentity (Default)
+### CreateViaIdentityExpanded (Default)
 ```
-New-AzPrometheusRuleGroup -InputObject <IAlertsIdentity> -Parameter <IPrometheusRuleGroupResource>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String>
- -Parameter <IPrometheusRuleGroupResource> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzPrometheusRuleGroup -InputObject <IAlertsIdentity> -Location <String> -Rule <IPrometheusRule[]>
+ -Scope <String[]> [-ClusterName <String>] [-Description <String>] [-Enabled] [-Interval <TimeSpan>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateExpanded
@@ -33,13 +27,6 @@ New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String> -L
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
-```
-New-AzPrometheusRuleGroup -InputObject <IAlertsIdentity> -Location <String> -Rule <IPrometheusRule[]>
- -Scope <String[]> [-ClusterName <String>] [-Description <String>] [-Enabled] [-Interval <TimeSpan>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Create or update a Prometheus rule group definition.
 
@@ -47,7 +34,9 @@ Create or update a Prometheus rule group definition.
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+$a = New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m"
+$scope = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitorworkspace"
+New-AzPrometheusRuleGroup -ResourceGroupName lnxtest -RuleGroupName newrule -Location eastus -Rule $a -Scope $scope
 ```
 
 ```output
@@ -74,7 +63,7 @@ Apply rule to data from a specific cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -105,7 +94,7 @@ Rule group description.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -120,7 +109,7 @@ Enable/disable rule group.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -136,7 +125,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.IAlertsIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -152,7 +141,7 @@ Should be between 1 and 15 minutes
 
 ```yaml
 Type: System.TimeSpan
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -167,7 +156,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -177,29 +166,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-The Prometheus rule group resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleGroupResource
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -215,7 +188,7 @@ To construct, see NOTES section for RULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRule[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -230,7 +203,7 @@ The name of the rule group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -247,7 +220,7 @@ This may change in future.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -262,7 +235,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -277,7 +250,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -323,8 +296,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleGroupResource
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.IAlertsIdentity
 
 ## OUTPUTS
@@ -345,39 +316,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleGroupName <String>]`: The name of the rule group.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`PARAMETER <IPrometheusRuleGroupResource>`: The Prometheus rule group resource.
-  - `Location <String>`: The geo-location where the resource lives
-  - `Rule <IPrometheusRule[]>`: Defines the rules in the Prometheus rule group.
-    - `Expression <String>`: The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
-    - `[Action <IPrometheusRuleGroupAction[]>]`: Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-      - `[ActionGroupId <String>]`: The resource id of the action group to use.
-      - `[ActionProperty <IPrometheusRuleGroupActionProperties>]`: The properties of an action group object.
-        - `[(Any) <String>]`: This indicates any property can be added to this object.
-    - `[Alert <String>]`: Alert rule name.
-    - `[Annotation <IPrometheusRuleAnnotations>]`: The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
-      - `[(Any) <String>]`: This indicates any property can be added to this object.
-    - `[Enabled <Boolean?>]`: Enable/disable rule.
-    - `[For <TimeSpan?>]`: The amount of time alert must be active before firing.
-    - `[Label <IPrometheusRuleLabels>]`: Labels to add or overwrite before storing the result.
-      - `[(Any) <String>]`: This indicates any property can be added to this object.
-    - `[Record <String>]`: Recorded metrics name.
-    - `[ResolveConfigurationAutoResolved <Boolean?>]`: Enable alert auto-resolution.
-    - `[ResolveConfigurationTimeToResolve <TimeSpan?>]`: Alert auto-resolution timeout.
-    - `[Severity <Int32?>]`: The severity of the alerts fired by the rule. Must be between 0 and 4.
-  - `Scope <String[]>`: Target Azure Monitor workspaces resource ids. This api-version is currently limited to creating with one scope. This may change in future.
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[ClusterName <String>]`: Apply rule to data from a specific cluster.
-  - `[Description <String>]`: Rule group description.
-  - `[Enabled <Boolean?>]`: Enable/disable rule group.
-  - `[Interval <TimeSpan?>]`: The interval in which to run the Prometheus rule group represented in ISO 8601 duration format. Should be between 1 and 15 minutes
 
 `RULE <IPrometheusRule[]>`: Defines the rules in the Prometheus rule group.
   - `Expression <String>`: The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
