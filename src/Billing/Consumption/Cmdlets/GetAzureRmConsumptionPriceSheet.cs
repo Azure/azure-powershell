@@ -68,6 +68,14 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                             expand, skipToken, numberToFetch);
                         UpdateResult(result, priceSheet);
                         nextLink = priceSheet?.NextLink;
+                        if (!string.IsNullOrWhiteSpace(nextLink))
+                        {
+                            string tempSkipToken = 
+                                nextLink.Substring(
+                                    nextLink.LastIndexOf("skiptoken", StringComparison.InvariantCultureIgnoreCase) + 10);
+                            skipToken =
+                                tempSkipToken.Substring(0, tempSkipToken.IndexOf("&"));
+                        }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));                    
                 }
                 else
@@ -77,6 +85,14 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                         priceSheet = ConsumptionManagementClient.PriceSheet.Get(expand, skipToken, numberToFetch);
                         UpdateResult(result, priceSheet);
                         nextLink = priceSheet?.NextLink;
+                        if (!string.IsNullOrWhiteSpace(nextLink))
+                        {
+                            string tempSkipToken = 
+                                nextLink.Substring(
+                                    nextLink.LastIndexOf("skiptoken", StringComparison.InvariantCultureIgnoreCase) + 10);
+                            skipToken =
+                                tempSkipToken.Substring(0, tempSkipToken.IndexOf("&"));
+                        }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));
                 }
             }
