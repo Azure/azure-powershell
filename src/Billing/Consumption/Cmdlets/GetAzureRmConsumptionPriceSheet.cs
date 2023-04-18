@@ -68,13 +68,18 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                             expand, skipToken, numberToFetch);
                         UpdateResult(result, priceSheet);
                         nextLink = priceSheet?.NextLink;
-                        if (!string.IsNullOrWhiteSpace(nextLink))
+                        if (!string.IsNullOrWhiteSpace(nextLink) && nextLink.IndexOf("skiptoken") > 0)
                         {
                             string tempSkipToken = 
                                 nextLink.Substring(
                                     nextLink.LastIndexOf("skiptoken", StringComparison.InvariantCultureIgnoreCase) + 10);
+                            int lastIndexForQuery = tempSkipToken.IndexOf("&");
+                            if(lastIndexForQuery < 0)
+                            {
+                                lastIndexForQuery = tempSkipToken.Length;
+                            }
                             skipToken =
-                                tempSkipToken.Substring(0, tempSkipToken.IndexOf("&"));
+                                tempSkipToken.Substring(0, lastIndexForQuery);
                         }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));                    
                 }
@@ -85,13 +90,18 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                         priceSheet = ConsumptionManagementClient.PriceSheet.Get(expand, skipToken, numberToFetch);
                         UpdateResult(result, priceSheet);
                         nextLink = priceSheet?.NextLink;
-                        if (!string.IsNullOrWhiteSpace(nextLink))
+                        if (!string.IsNullOrWhiteSpace(nextLink) && nextLink.IndexOf("skiptoken") > 0)
                         {
                             string tempSkipToken = 
                                 nextLink.Substring(
                                     nextLink.LastIndexOf("skiptoken", StringComparison.InvariantCultureIgnoreCase) + 10);
+                            int lastIndexForQuery = tempSkipToken.IndexOf("&");
+                            if(lastIndexForQuery < 0)
+                            {
+                                lastIndexForQuery = tempSkipToken.Length;
+                            }
                             skipToken =
-                                tempSkipToken.Substring(0, tempSkipToken.IndexOf("&"));
+                                tempSkipToken.Substring(0, lastIndexForQuery);
                         }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));
                 }
