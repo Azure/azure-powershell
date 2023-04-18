@@ -10,8 +10,6 @@
 
 namespace Microsoft.Azure.Management.NetApp.Models
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     public partial class ResourceModelWithAllowedPropertySetIdentity : Identity
@@ -29,19 +27,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// Initializes a new instance of the
         /// ResourceModelWithAllowedPropertySetIdentity class.
         /// </summary>
-        /// <param name="type">The identity type. Possible values include:
-        /// 'None', 'SystemAssigned', 'UserAssigned',
-        /// 'SystemAssigned,UserAssigned'</param>
         /// <param name="principalId">The principal ID of resource
         /// identity.</param>
         /// <param name="tenantId">The tenant ID of resource.</param>
-        /// <param name="userAssignedIdentities">Gets or sets a list of key
-        /// value pairs that describe the set of User Assigned identities that
-        /// will be used with this storage account. The key is the ARM resource
-        /// identifier of the identity. Only 1 User Assigned identity is
-        /// permitted here.</param>
-        public ResourceModelWithAllowedPropertySetIdentity(string type, string principalId = default(string), string tenantId = default(string), IDictionary<string, UserAssignedIdentity> userAssignedIdentities = default(IDictionary<string, UserAssignedIdentity>))
-            : base(type, principalId, tenantId, userAssignedIdentities)
+        /// <param name="type">The identity type. Possible values include:
+        /// 'SystemAssigned'</param>
+        public ResourceModelWithAllowedPropertySetIdentity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?))
+            : base(principalId, tenantId, type)
         {
             CustomInit();
         }
@@ -51,15 +43,5 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </summary>
         partial void CustomInit();
 
-        /// <summary>
-        /// Validate the object.
-        /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public override void Validate()
-        {
-            base.Validate();
-        }
     }
 }

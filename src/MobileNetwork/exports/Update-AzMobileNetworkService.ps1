@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-Updates service tags.
+Updates service.
 .Description
-Updates service tags.
+Updates service.
 .Example
-Update-AzMobileNetworkService -MobileNetworkName azps-mn -ServiceName azps-mn-service -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
+Update-AzMobileNetworkService -MobileNetworkName azps-mn -ServiceName azps-mn-service -ResourceGroupName azps_test_group -Tag @{"abc"="123"} -ServicePrecedence 0
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
@@ -31,22 +31,24 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
-  [AttachedDataNetworkName <String>]: The name of the attached data network.
-  [DataNetworkName <String>]: The name of the data network.
-  [Id <String>]: Resource identity path
-  [MobileNetworkName <String>]: The name of the mobile network.
-  [PacketCoreControlPlaneName <String>]: The name of the packet core control plane.
-  [PacketCoreDataPlaneName <String>]: The name of the packet core data plane.
-  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
-  [ServiceName <String>]: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  [SimGroupName <String>]: The name of the SIM Group.
-  [SimName <String>]: The name of the SIM.
-  [SimPolicyName <String>]: The name of the SIM policy.
-  [SiteName <String>]: The name of the mobile network site.
-  [SliceName <String>]: The name of the network slice.
-  [SubscriptionId <String>]: The ID of the target subscription.
-  [VersionName <String>]: The name of the packet core control plane version.
+PCCRULE <IPccRuleConfiguration[]>: The set of data flow policy rules that make up this service.
+  RuleName <String>: The name of the rule. This must be unique within the parent service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
+  RulePrecedence <Int32>: A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all data flow policy rules configured in the mobile network.
+  ServiceDataFlowTemplate <IServiceDataFlowTemplate[]>: The set of data flow templates to use for this data flow policy rule.
+    Direction <SdfDirection>: The direction of this flow.
+    Protocol <String[]>: A list of the allowed protocol(s) for this flow. If you want this flow to be able to use any protocol within the internet protocol suite, use the value `ip`. If you only want to allow a selection of protocols, you must use the corresponding IANA Assigned Internet Protocol Number for each protocol, as described in https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml. For example, for UDP, you must use 17. If you use the value `ip` then you must leave the field `port` unspecified.
+    RemoteIPList <String[]>: The remote IP address(es) to which UEs will connect for this flow. If you want to allow connections on any IP address, use the value 'any'. Otherwise, you must provide each of the remote IP addresses to which the packet core instance will connect for this flow. You must provide each IP address in CIDR notation, including the netmask (for example, 192.0.2.54/24).
+    TemplateName <String>: The name of the data flow template. This must be unique within the parent data flow policy rule. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
+    [Port <String[]>]: The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].
+  [GuaranteedBitRateDownlink <String>]: Downlink bit rate.
+  [GuaranteedBitRateUplink <String>]: Uplink bit rate.
+  [RuleQoPolicyAllocationAndRetentionPriorityLevel <Int32?>]: QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [RuleQoPolicyFiveQi <Int32?>]: 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
+  [RuleQoPolicyMaximumBitRateDownlink <String>]: Downlink bit rate.
+  [RuleQoPolicyMaximumBitRateUplink <String>]: Uplink bit rate.
+  [RuleQoPolicyPreemptionCapability <PreemptionCapability?>]: QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [RuleQoPolicyPreemptionVulnerability <PreemptionVulnerability?>]: QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+  [TrafficControl <TrafficControlPermission?>]: Determines whether flows that match this data flow policy rule are permitted.
 .Link
 https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkservice
 #>
@@ -54,39 +56,98 @@ function Update-AzMobileNetworkService {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the mobile network.
     ${MobileNetworkName},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
-
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [System.String]
     # The name of the service.
     # You must not use any of the following reserved strings - 'default', 'requested' or 'service'
     ${ServiceName},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
+    [System.String]
+    # The name of the resource group.
+    # The name is case insensitive.
+    ${ResourceGroupName},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # A precedence value that is used to decide between services when identifying the QoS values to use for a particular SIM.
+    # A lower value means a higher priority.
+    # This value should be unique among all services configured in the mobile network.
+    ${ServicePrecedence},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPccRuleConfiguration[]]
+    # The set of data flow policy rules that make up this service.
+    # To construct, see NOTES section for PCCRULE properties and create a hash table.
+    ${PccRule},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Downlink bit rate.
+    ${MaximumBitRateDownlink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.String]
+    # Uplink bit rate.
+    ${MaximumBitRateUplink},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # QoS Flow allocation and retention priority (ARP) level.
+    # Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it.
+    # 1 is the highest level of priority.
+    # If this field is not specified then `5qi` is used to derive the ARP value.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${ServiceQoPolicyAllocationAndRetentionPriorityLevel},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [System.Int32]
+    # QoS Flow 5G QoS Indicator value.
+    # The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
+    # This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
+    # The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
+    # See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+    ${ServiceQoPolicyFiveQi},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+    # QoS Flow preemption capability.
+    # The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${ServiceQoPolicyPreemptionCapability},
+
+    [Parameter()]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+    # QoS Flow preemption vulnerability.
+    # The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level.
+    # See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
+    ${ServiceQoPolicyPreemptionVulnerability},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Body')]
@@ -100,7 +161,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -152,7 +214,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -169,8 +231,7 @@ begin {
         }
 
         $mapping = @{
-            UpdateExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkService_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.MobileNetwork.private\Update-AzMobileNetworkService_UpdateViaIdentityExpanded';
+            UpdateExpanded = 'Az.MobileNetwork.custom\Update-AzMobileNetworkService';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id

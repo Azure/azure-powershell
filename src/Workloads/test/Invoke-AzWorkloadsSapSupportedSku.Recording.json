@@ -1,0 +1,38 @@
+{
+  "Invoke-AzWorkloadsSapSupportedSku+[NoContext]+SapExpanded+$POST+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/eastus/sapVirtualInstanceMetadata/default/getSapSupportedSku?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/eastus/sapVirtualInstanceMetadata/default/getSapSupportedSku?api-version=2023-04-01",
+      "Content": "{\r\n  \"appLocation\": \"eastus\",\r\n  \"environment\": \"Prod\",\r\n  \"sapProduct\": \"S4HANA\",\r\n  \"deploymentType\": \"ThreeTier\",\r\n  \"databaseType\": \"HANA\"\r\n}",
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "145" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "6810504d-b28a-4ed9-8e30-495f954e3dd1" ],
+        "api-supported-versions": [ "2021-12-01-preview, 2022-10-15-preview, 2022-11-01-preview, 2023-04-01" ],
+        "x-ms-request-id": [ "abd7705d-a452-435f-b52d-ee0fb68e659b" ],
+        "x-ms-correlation-request-id": [ "8f9f09dc-5a22-4298-8bd0-50fa51ffdc96" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20230313T062551Z:8f9f09dc-5a22-4298-8bd0-50fa51ffdc96" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Mon, 13 Mar 2023 06:25:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3170" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"supportedSkus\":[{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D16ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D16ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D32ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D32ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D48ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D48ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D4ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D4ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D64ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D64ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D8ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D8ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_D96ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E16ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E16ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E20ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E20ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E32ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E32ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E48ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E48ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E4ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E4ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E64ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_E64ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E8ds_v4\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E8ds_v5\"},{\"isAppServerCertified\":true,\"isDatabaseCertified\":false,\"vmSku\":\"Standard_E96ds_v5\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128ms\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M128s\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M208ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M208s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M32ts\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416ms_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M416s_v2\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64ms\"},{\"isAppServerCertified\":false,\"isDatabaseCertified\":true,\"vmSku\":\"Standard_M64s\"}]}"
+    }
+  }
+}
