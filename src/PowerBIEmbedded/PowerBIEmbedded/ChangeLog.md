@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Deprecate workspace collection cmdlets
+* Added deprecate warning message for workspace collection cmdlets
   
 ## Version 1.2.0
 * Updated SKU allowed values to support A7 and A8
