@@ -305,13 +305,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`HEALTHPROBESETTING <IHealthProbeParameters>`: Health probe settings to the origin that is used to determine the health of the origin.
+HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
   - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
   - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
-  - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
-  - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
+  - `[ProbeProtocol <String>]`: Protocol to use for health probe.
+  - `[ProbeRequestType <String>]`: The type of health probe request that is made.
 
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
+INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
@@ -326,14 +326,14 @@ To create the parameters described below, construct a hash table containing the 
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
-`ORIGIN <IResourceReference[]>`: The source of the content being delivered via CDN within given origin group.
+ORIGIN <IResourceReference[]>: The source of the content being delivered via CDN within given origin group.
   - `[Id <String>]`: Resource ID.
 
-`RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionParameters>`: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
-  - `[HttpErrorRange <IHttpErrorRangeParameters[]>]`: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionParameters>: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
+  - `[HttpErrorRange <List<IHttpErrorRangeParameters>>]`: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
     - `[Begin <Int32?>]`: The inclusive start of the http status code range.
     - `[End <Int32?>]`: The inclusive end of the http status code range.
-  - `[ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes?>]`: Type of response errors for real user requests for which origin will be deemed unhealthy
+  - `[ResponseBasedDetectedErrorType <String>]`: Type of response errors for real user requests for which origin will be deemed unhealthy
   - `[ResponseBasedFailoverThresholdPercentage <Int32?>]`: The percentage of failed requests in the sample where failover should trigger.
 
 ## RELATED LINKS

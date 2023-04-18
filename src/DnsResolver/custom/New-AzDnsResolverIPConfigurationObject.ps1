@@ -33,7 +33,7 @@ function New-AzDnsResolverIPConfigurationObject {
         [string]
         $PrivateIPAddress,
         [Parameter(HelpMessage="Private IP address allocation method.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Support.IPAllocationMethod]
+        [System.String]
         $PrivateIPAllocationMethod,
         [Parameter(HelpMessage="Resource ID.")]
         [string]

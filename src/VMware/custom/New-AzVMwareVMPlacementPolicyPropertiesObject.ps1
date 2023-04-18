@@ -31,8 +31,8 @@ function New-AzVMwareVMPlacementPolicyPropertiesObject {
     Param(
 
         [Parameter(Mandatory, HelpMessage="placement policy affinity type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.AffinityType]
+        
+        [System.String]
         $AffinityType,
         [Parameter(Mandatory, HelpMessage="Virtual machine members list.")]
         [string[]]
@@ -41,12 +41,12 @@ function New-AzVMwareVMPlacementPolicyPropertiesObject {
         [string]
         $DisplayName,
         [Parameter(HelpMessage="Whether the placement policy is enabled or disabled.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyState]
+        
+        [System.String]
         $State,
         [Parameter(Mandatory, HelpMessage="placement policy type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.PlacementPolicyType]
+        
+        [System.String]
         $Type
     )
 

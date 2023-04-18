@@ -48,8 +48,8 @@ function New-AzServiceLinkerSecretAuthInfoObject {
         $SecretNameInKeyVault,
         [Parameter(DontShow, HelpMessage="The authentication type.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"secret"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
+        
+        [System.String]
         $AuthType
     )
 

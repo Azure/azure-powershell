@@ -37,27 +37,27 @@ param(
     ${ExternalCloudProviderId},
 
     [Parameter(ParameterSetName='UsageExpanded1', Mandatory, HelpMessage="The external cloud provider type associated with dimension/query operations.")]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType]
+    [System.String]
     # The external cloud provider type associated with dimension/query operations.
     # This includes 'externalSubscriptions' for linked account and 'externalBillingAccounts' for consolidated account.
     ${ExternalCloudProviderType},
 
     [Parameter(ParameterSetName='UsageExpanded', Mandatory, HelpMessage="The time frame for pulling data for the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', Mandatory, HelpMessage="The time frame for pulling data for the query.")]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the query.
     # If custom, then a specific time period must be provided.
     ${Timeframe},
 
     [Parameter(ParameterSetName='UsageExpanded', Mandatory, HelpMessage="The type of the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', Mandatory, HelpMessage="The type of the query.")]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the query.
     ${Type},
 
@@ -90,9 +90,9 @@ param(
 
     [Parameter(ParameterSetName='UsageExpanded', HelpMessage="The granularity of rows in the query.")]
     [Parameter(ParameterSetName='UsageExpanded1', HelpMessage="The granularity of rows in the query.")]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the query.
     ${DatasetGranularity},
 

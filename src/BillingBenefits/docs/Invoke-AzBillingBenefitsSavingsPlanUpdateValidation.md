@@ -196,9 +196,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanUpdateValidateRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanUpdateValidateRequest
 
 ## OUTPUTS
 
@@ -213,13 +213,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BENEFIT <ISavingsPlanUpdateRequestProperties[]>`: .
+BENEFIT <ISavingsPlanUpdateRequestProperties[]>: .
   - `[AppliedScopePropertyDisplayName <String>]`: Display name
   - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
   - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
   - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
   - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-  - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
+  - `[AppliedScopeType <String>]`: Type of the Applied Scope.
   - `[DisplayName <String>]`: Display name
   - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
   - `[RenewProperty <IRenewProperties>]`: 
@@ -229,25 +229,25 @@ To create the parameters described below, construct a hash table containing the 
       - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
       - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
       - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-      - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-      - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+      - `[AppliedScopeType <String>]`: Type of the Applied Scope.
+      - `[BillingPlan <String>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
       - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
       - `[CommitmentAmount <Double?>]`: 
       - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-      - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
+      - `[CommitmentGrain <String>]`: Commitment grain.
       - `[DisplayName <String>]`: Friendly name of the savings plan
       - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
       - `[SkuName <String>]`: Name of the SKU to be applied
-      - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
+      - `[Term <String>]`: Represent benefit term in ISO 8601 format.
 
-`BODY <ISavingsPlanUpdateValidateRequest>`: .
-  - `[Benefit <ISavingsPlanUpdateRequestProperties[]>]`: 
+BODY <ISavingsPlanUpdateValidateRequest>: .
+  - `[Benefit <List<ISavingsPlanUpdateRequestProperties>>]`: 
     - `[AppliedScopePropertyDisplayName <String>]`: Display name
     - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
     - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
     - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
     - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-    - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
+    - `[AppliedScopeType <String>]`: Type of the Applied Scope.
     - `[DisplayName <String>]`: Display name
     - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
     - `[RenewProperty <IRenewProperties>]`: 
@@ -257,18 +257,18 @@ To create the parameters described below, construct a hash table containing the 
         - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
         - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
         - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-        - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-        - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+        - `[AppliedScopeType <String>]`: Type of the Applied Scope.
+        - `[BillingPlan <String>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
         - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
         - `[CommitmentAmount <Double?>]`: 
         - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-        - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
+        - `[CommitmentGrain <String>]`: Commitment grain.
         - `[DisplayName <String>]`: Friendly name of the savings plan
         - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
         - `[SkuName <String>]`: Name of the SKU to be applied
-        - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
+        - `[Term <String>]`: Represent benefit term in ISO 8601 format.
 
-`INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
+INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ReservationOrderAliasName <String>]`: Name of the reservation order alias
   - `[SavingsPlanId <String>]`: ID of the savings plan

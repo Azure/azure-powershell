@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurekeyvaultobject
 schema: 2.0.0
 ---
 

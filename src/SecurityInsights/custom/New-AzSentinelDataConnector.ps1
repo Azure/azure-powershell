@@ -53,9 +53,9 @@ function New-AzSentinelDataConnector {
         ${Id},
         
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind]
+        [System.String]
         # Kind of the the data connection
         ${Kind},
 
@@ -88,25 +88,25 @@ function New-AzSentinelDataConnector {
         [Parameter(ParameterSetName = 'MicrosoftDefenderAdvancedThreatProtection')]
         [Parameter(ParameterSetName = 'OfficeATP')]
         [Parameter(ParameterSetName = 'OfficeIRM')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Alerts},
 
         [Parameter(ParameterSetName = 'Dynamics365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${CommonDataServiceActivity},
 
         [Parameter(ParameterSetName = 'MicrosoftCloudAppSecurity')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${DiscoveryLog},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatIntelligence')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${BingSafetyPhishingURL},
@@ -118,7 +118,7 @@ function New-AzSentinelDataConnector {
         ${BingSafetyPhishingUrlLookbackPeriod},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatIntelligence')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${MicrosoftEmergingThreatFeed},
@@ -130,31 +130,31 @@ function New-AzSentinelDataConnector {
         ${MicrosoftEmergingThreatFeedLookbackPeriod},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatProtection')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Incident},
 
         [Parameter(ParameterSetName = 'Office365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Exchange},
 
         [Parameter(ParameterSetName = 'Office365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${SharePoint},
 
         [Parameter(ParameterSetName = 'Office365')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Teams},
 
         [Parameter(ParameterSetName = 'ThreatIntelligence')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Indicator},
@@ -196,9 +196,9 @@ function New-AzSentinelDataConnector {
         ${TaxiiLookbackPeriod},
 
         [Parameter(ParameterSetName = 'ThreatIntelligenceTaxii', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency]
+        [System.String]
         ${PollingFrequency},
 
         [Parameter(ParameterSetName = 'AmazonWebServicesCloudTrail', Mandatory)]
@@ -209,7 +209,7 @@ function New-AzSentinelDataConnector {
 
         [Parameter(ParameterSetName = 'AmazonWebServicesCloudTrail')]
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         ${Log},

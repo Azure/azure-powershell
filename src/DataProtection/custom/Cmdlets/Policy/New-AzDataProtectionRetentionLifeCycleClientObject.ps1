@@ -5,15 +5,15 @@
 
     param (
         [Parameter(Mandatory, HelpMessage='Source Datastore')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
+        [System.String]
         ${SourceDataStore},
 
         [Parameter(Mandatory=$false, HelpMessage='Target Datastore')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
+        [System.String]
         ${TargetDataStore},
 
         [Parameter(Mandatory, HelpMessage='Retention Duration Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DurationType]
+        [System.String]
         ${SourceRetentionDurationType},
 
         [Parameter(Mandatory, HelpMessage='Retention Duration Count')]
@@ -21,7 +21,7 @@
         ${SourceRetentionDurationCount},
 
         [Parameter(Mandatory=$false, HelpMessage='CopyOption')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CopyOption]
+        [System.String]
         ${CopyOption}
     )
 

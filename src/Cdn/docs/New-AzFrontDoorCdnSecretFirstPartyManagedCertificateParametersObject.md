@@ -13,7 +13,7 @@ Create an in-memory object for AzureFirstPartyManagedCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type <SecretType> [<CommonParameters>]
+New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject -Type <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ Add output here
 The type of the secret resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

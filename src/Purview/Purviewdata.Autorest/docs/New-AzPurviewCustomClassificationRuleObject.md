@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewCustomClassificationRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewcustomclassificationruleobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,9 @@ Create an in-memory object for CustomClassificationRule.
 ## SYNTAX
 
 ```
-New-AzPurviewCustomClassificationRuleObject -Kind <ClassificationRuleType> [-ClassificationName <String>]
+New-AzPurviewCustomClassificationRuleObject [-ClassificationName <String>]
  [-ColumnPattern <IClassificationRulePattern[]>] [-DataPattern <IClassificationRulePattern[]>]
- [-Description <String>] [-MinimumPercentageMatch <Double>] [-RuleStatus <ClassificationRuleStatus>]
- [<CommonParameters>]
+ [-Description <String>] [-MinimumPercentageMatch <Double>] [-RuleStatus <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,21 +117,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MinimumPercentageMatch
 
 
@@ -152,7 +136,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationRuleStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

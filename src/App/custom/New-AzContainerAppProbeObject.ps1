@@ -46,8 +46,8 @@ function New-AzContainerAppProbeObject {
         [int]
         $HttpGetPort,
         [Parameter(HelpMessage="Scheme to use for connecting to the host. Defaults to HTTP.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.Scheme])]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Support.Scheme]
+        
+        [System.String]
         $HttpGetScheme,
         [Parameter(HelpMessage="Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.")]
         [int]
@@ -71,8 +71,8 @@ function New-AzContainerAppProbeObject {
         [int]
         $TimeoutSecond,
         [Parameter(HelpMessage="The type of probe.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.Type])]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Support.Type]
+        
+        [System.String]
         $Type
     )
 

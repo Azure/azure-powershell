@@ -50,9 +50,9 @@ function Update-AzApplicationInsights {
         ${SubscriptionId},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ApplicationType]
+        [System.String]
         # Type of application being monitored.
         ${ApplicationType},
     
@@ -75,9 +75,9 @@ function Update-AzApplicationInsights {
         ${Etag},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.FlowType]
+        [System.String]
         # Used by the Application Insights system to determine what kind of flow this component was created by.
         # This is to be set to 'Bluefield' when creating/updating a component via the REST API.
         ${FlowType},
@@ -101,30 +101,30 @@ function Update-AzApplicationInsights {
         ${ImmediatePurgeDataOn30Day},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.IngestionMode]
+        [System.String]
         # Indicates the flow of the ingestion.
         ${IngestionMode},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
+        [System.String]
         # The network access type for accessing Application Insights ingestion.
         ${PublicNetworkAccessForIngestion},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.PublicNetworkAccessType]
+        [System.String]
         # The network access type for accessing Application Insights query.
         ${PublicNetworkAccessForQuery},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.RequestSource]
+        [System.String]
         # Describes what tool created this Application Insights component.
         # Customers using this API should set this to the default 'rest'.
         ${RequestSource},

@@ -14,7 +14,7 @@ Create or update storage for a managedEnvironment.
 
 ```
 New-AzContainerAppManagedEnvStorage -EnvName <String> -ResourceGroupName <String> -StorageName <String>
- [-SubscriptionId <String>] [-AzureFileAccessMode <AccessMode>] [-AzureFileAccountKey <String>]
+ [-SubscriptionId <String>] [-AzureFileAccessMode <String>] [-AzureFileAccountKey <String>]
  [-AzureFileAccountName <String>] [-AzureFileShareName <String>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -46,7 +46,7 @@ Create or update storage for a managedEnvironment.
 Access mode for storage
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.AccessMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -52,8 +52,8 @@ function New-AzMLWorkspacePipelineJobObject {
         [string]
         $ExperimentName,
         [Parameter(HelpMessage="[Required] Specifies the type of identity framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType]
+        
+        [System.String]
         $IdentityType,
         [Parameter(HelpMessage="Is the asset archived?.")]
         [bool]

@@ -13,10 +13,10 @@ Create an in-memory object for AzureStorageScanRuleset.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureStorageScanRulesetObject -Kind <DataSourceType> [-Description <String>]
+New-AzPurviewAzureStorageScanRulesetObject -Kind <String> [-Description <String>]
  [-ExcludedSystemClassification <String[]>] [-IncludedCustomClassificationRuleName <String[]>]
- [-ScanningRuleCustomFileExtension <ICustomFileExtension[]>]
- [-ScanningRuleFileExtension <FileExtensionsType[]>] [-Type <ScanRulesetType>] [<CommonParameters>]
+ [-ScanningRuleCustomFileExtension <ICustomFileExtension[]>] [-ScanningRuleFileExtension <String[]>]
+ [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +173,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 SCANNINGRULECUSTOMFILEEXTENSION <ICustomFileExtension[]>: 
-  - `[CustomFileTypeBuiltInType <FileExtensionsType?>]`: 
+  - `[CustomFileTypeBuiltInType <String>]`: 
   - `[CustomFileTypeCustomDelimiter <String>]`: 
   - `[Description <String>]`: 
   - `[Enabled <Boolean?>]`: 

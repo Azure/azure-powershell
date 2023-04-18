@@ -34,8 +34,8 @@ function New-AzEdgeOrderFilterablePropertyObject {
         [string[]]
         $SupportedValue,
         [Parameter(Mandatory, HelpMessage="Type of product filter.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.SupportedFilterTypes])]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.SupportedFilterTypes]
+        
+        [System.String]
         $Type
     )
 

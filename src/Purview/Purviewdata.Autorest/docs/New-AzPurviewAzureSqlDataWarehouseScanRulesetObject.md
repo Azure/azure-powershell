@@ -13,9 +13,9 @@ Create an in-memory object for AzureSqlDataWarehouseScanRuleset.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureSqlDataWarehouseScanRulesetObject -Kind <DataSourceType> [-Description <String>]
+New-AzPurviewAzureSqlDataWarehouseScanRulesetObject -Kind <String> [-Description <String>]
  [-ExcludedSystemClassification <String[]>] [-IncludedCustomClassificationRuleName <String[]>]
- [-Type <ScanRulesetType>] [<CommonParameters>]
+ [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

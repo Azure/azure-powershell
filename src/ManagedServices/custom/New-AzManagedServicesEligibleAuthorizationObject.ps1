@@ -36,8 +36,8 @@
             [System.TimeSpan]
             $JustInTimeAccessPolicyMaximumActivationDuration,
             [Parameter(HelpMessage="The multi-factor authorization provider to be used for just-in-time access requests.")]
-            [Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider]
-            [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Support.MultiFactorAuthProvider])]
+            [System.String]
+            
             $JustInTimeAccessPolicyMultiFactorAuthProvider,
             [Parameter(Mandatory, HelpMessage="The identifier of the Azure Active Directory principal.")]
             [string]

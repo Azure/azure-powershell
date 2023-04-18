@@ -13,8 +13,8 @@ Create an in-memory object for AFDDomainHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <AfdCertificateType>
- [-MinimumTlsVersion <AfdMinimumTlsVersion>] [-Secret <IResourceReference>] [<CommonParameters>]
+New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType <String>
+ [-MinimumTlsVersion <String>] [-Secret <IResourceReference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Create an in-memory object for AFDDomainHttpsParameters
 Defines the source of the SSL certificate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdCertificateType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 TLS protocol version that will be used for Https.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`SECRET <IResourceReference>`: Resource reference to the secret. ie. subs/rg/profile/secret.
+SECRET <IResourceReference>: Resource reference to the secret. ie. subs/rg/profile/secret.
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS

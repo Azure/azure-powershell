@@ -52,7 +52,7 @@ function Update-AzSentinelSetting {
 
         [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateExpandedUeba', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.SettingKind])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
         # The setting Name 
@@ -78,9 +78,9 @@ function Update-AzSentinelSetting {
         #.Ueba
         [Parameter(ParameterSetName = 'UpdateExpandedUeba', Mandatory)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedUeba', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources[]]
+        [System.String[]]
         ${DataSource},
 
         [Parameter()]

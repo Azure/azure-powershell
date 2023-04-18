@@ -62,9 +62,9 @@ param(
     ${ScopeTenantId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.ScopeType]
+    [System.String]
     # The scope where the default account is set.
     ${ScopeType},
 

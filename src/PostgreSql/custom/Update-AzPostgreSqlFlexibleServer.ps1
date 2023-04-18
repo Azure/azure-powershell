@@ -62,9 +62,9 @@ function Update-AzPostgreSqlFlexibleServer {
         ${Sku},
 
         [Parameter(HelpMessage='The tier of the particular SKU. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.SkuTier]
+        [System.String]
         ${SkuTier},
 
         [Parameter(HelpMessage='Enable or disable high availability feature. Allowed values: Enabled, Disabled')]

@@ -71,7 +71,7 @@ function Update-AzKustoDatabase {
         [Parameter(Mandatory)]
         [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('ReadWrite', 'ReadOnlyFollowing') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
+        [System.String]
         # Kind of the database
         ${Kind},
 

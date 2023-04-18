@@ -31,8 +31,8 @@ function New-AzMobileNetworkServiceDataFlowTemplateObject {
     Param(
 
         [Parameter(Mandatory, HelpMessage="The direction of this flow.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SdfDirection])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.SdfDirection]
+        
+        [System.String]
         $Direction,
         [Parameter(HelpMessage="The port(s) to which UEs will connect for this flow. You can specify zero or more ports or port ranges. If you specify one or more ports or port ranges then you must specify a value other than `ip` in the `protocol` field. This is an optional setting. If you do not specify it then connections will be allowed on all ports. Port ranges must be specified as <FirstPort>-<LastPort>. For example: [`8080`, `8082-8085`].")]
         [string[]]

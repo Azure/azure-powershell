@@ -32,8 +32,8 @@ function New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject {
 
         [Parameter(DontShow, HelpMessage="The authentication type.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"systemAssignedIdentity"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
+        
+        [System.String]
         $AuthType
     )
 

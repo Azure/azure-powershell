@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnresponsebasedoriginerrordetectionparametersobject
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ```
 New-AzCdnResponseBasedOriginErrorDetectionParametersObject [-HttpErrorRange <IHttpErrorRangeParameters[]>]
- [-ResponseBasedDetectedErrorType <ResponseBasedDetectedErrorTypes>]
- [-ResponseBasedFailoverThresholdPercentage <Int32>] [<CommonParameters>]
+ [-ResponseBasedDetectedErrorType <String>] [-ResponseBasedFailoverThresholdPercentage <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +29,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -40,7 +40,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Type of response errors for real user requests for which origin will be deemed unhealthy.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResponseBasedDetectedErrorTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`HTTPERRORRANGE <IHttpErrorRangeParameters[]>`: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
+HTTPERRORRANGE <IHttpErrorRangeParameters[]>: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
   - `[Begin <Int32?>]`: The inclusive start of the http status code range.
   - `[End <Int32?>]`: The inclusive end of the http status code range.
 

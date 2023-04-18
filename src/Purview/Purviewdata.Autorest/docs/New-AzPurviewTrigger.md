@@ -188,22 +188,22 @@ BODY <ITrigger>: .
   - `[IncrementalScanStartTime <DateTime?>]`: 
   - `[Interval <Int32?>]`: 
   - `[RecurrenceEndTime <DateTime?>]`: 
-  - `[RecurrenceFrequency <TriggerFrequency?>]`: 
+  - `[RecurrenceFrequency <String>]`: 
   - `[RecurrenceInterval <String>]`: 
-  - `[RecurrenceStartTime <DateTime?>]`: 
-  - `[RecurrenceTimeZone <String>]`: 
-  - `[ScanLevel <ScanLevelType?>]`: 
-  - `[ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]`: Dictionary of <any>
+  - `[RecurrenceScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]`: Dictionary of <any>
     - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[ScheduleHour <Int32[]>]`: 
-  - `[ScheduleMinute <Int32[]>]`: 
-  - `[ScheduleMonthDay <Int32[]>]`: 
-  - `[ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>]`: 
+  - `[RecurrenceScheduleHour <List<Int32>>]`: 
+  - `[RecurrenceScheduleMinute <List<Int32>>]`: 
+  - `[RecurrenceScheduleMonthDay <List<Int32>>]`: 
+  - `[RecurrenceScheduleMonthlyOccurrence <List<IRecurrenceScheduleOccurrence>>]`: 
     - `[AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]`: Dictionary of <any>
       - `[(Any) <Object>]`: This indicates any property can be added to this object.
-    - `[Day <DayOfWeek?>]`: 
+    - `[Day <String>]`: 
     - `[Occurrence <Int32?>]`: 
-  - `[ScheduleWeekDay <DaysOfWeek[]>]`: 
+  - `[RecurrenceScheduleWeekDay <List<String>>]`: 
+  - `[RecurrenceStartTime <DateTime?>]`: 
+  - `[RecurrenceTimeZone <String>]`: 
+  - `[ScanLevel <String>]`: 
 
 ## RELATED LINKS
 

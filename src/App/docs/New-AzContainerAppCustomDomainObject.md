@@ -13,7 +13,7 @@ Create an in-memory object for CustomDomain.
 ## SYNTAX
 
 ```
-New-AzContainerAppCustomDomainObject -CertificateId <String> -Name <String> [-BindingType <BindingType>]
+New-AzContainerAppCustomDomainObject -CertificateId <String> -Name <String> [-BindingType <String>]
  [<CommonParameters>]
 ```
 
@@ -43,7 +43,7 @@ Create a CustomDomain object for ContainerApp.
 Custom Domain binding type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.BindingType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

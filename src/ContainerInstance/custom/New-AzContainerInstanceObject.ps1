@@ -45,7 +45,7 @@ function New-AzContainerInstanceObject {
         [int]
         $LimitsGpuCount,
         [Parameter(HelpMessage="The SKU of the GPU resource.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku])]
+        
         [string]
         $LimitsGpuSku,
         [Parameter(HelpMessage="The commands to execute within the container.")]
@@ -64,7 +64,7 @@ function New-AzContainerInstanceObject {
         [int]
         $LivenessProbeHttpGetPort,
         [Parameter(HelpMessage="The scheme.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.Scheme])]
+        
         [string]
         $LivenessProbeHttpGetScheme,
         [Parameter(HelpMessage="The initial delay seconds.")]
@@ -101,7 +101,7 @@ function New-AzContainerInstanceObject {
         [int]
         $ReadinessProbeHttpGetPort,
         [Parameter(HelpMessage="The scheme.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.Scheme])]
+        
         [string]
         $ReadinessProbeHttpGetScheme,
         [Parameter(HelpMessage="The initial delay seconds.")]
@@ -126,7 +126,7 @@ function New-AzContainerInstanceObject {
         [int]
         $RequestsGpuCount,
         [Parameter(HelpMessage="The SKU of the GPU resource.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.GpuSku])]
+        
         [string]
         $RequestsGpuSku,
         [Parameter(HelpMessage="The volume mounts available to the container instance.")]

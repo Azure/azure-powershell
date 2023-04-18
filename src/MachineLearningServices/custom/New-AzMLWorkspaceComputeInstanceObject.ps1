@@ -40,8 +40,8 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [string]
         $ResourceId,
         [Parameter(HelpMessage="Policy for sharing applications on this compute instance among users of parent workspace. If Personal, only the creator can access applications on this compute instance. When Shared, any workspace user can access applications on this instance depending on his/her assigned role.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ApplicationSharingPolicy]
+        
+        [System.String]
         $ApplicationSharingPolicy,
         [Parameter(HelpMessage="User’s AAD Object Id.")]
         [string]
@@ -50,8 +50,8 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [string]
         $AssignedUserTenantId,
         [Parameter(HelpMessage="The Compute Instance Authorization type. Available values are personal (default).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputeInstanceAuthorizationType]
+        
+        [System.String]
         $AuthorizationType,
         [Parameter(HelpMessage="Optional command line arguments passed to the script to run.")]
         [string]
@@ -69,19 +69,19 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [bool]
         $EnableNodePublicIP,
         [Parameter(HelpMessage="Name of the last operation.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationName]
+        
+        [System.String]
         $LastOperationName,
         [Parameter(HelpMessage="Operation status.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationStatus]
+        
+        [System.String]
         $LastOperationStatus,
         [Parameter(HelpMessage="Time of the last operation.")]
         [System.DateTime]
         $LastOperationTime,
         [Parameter(HelpMessage="Trigger of operation.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperationTrigger]
+        
+        [System.String]
         $LastOperationTrigger,
         [Parameter(HelpMessage="The list of compute start stop schedules to be applied.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IComputeStartStopSchedule[]]
@@ -90,8 +90,8 @@ function New-AzMLWorkspaceComputeInstanceObject {
         [string]
         $SshSettingAdminPublicKey,
         [Parameter(HelpMessage="State of the public SSH port. Possible values are: Disabled - Indicates that the public ssh port is closed on this instance. Enabled - Indicates that the public ssh port is open and accessible according to the VNet/subnet policy if applicable.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SshPublicAccess]
+        
+        [System.String]
         $SshSettingSshPublicAccess,
         [Parameter(HelpMessage="Optional command line arguments passed to the script to run.")]
         [string]

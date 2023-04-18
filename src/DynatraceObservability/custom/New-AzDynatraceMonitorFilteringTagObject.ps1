@@ -31,8 +31,8 @@ function New-AzDynatraceMonitorFilteringTagObject {
     Param(
 
         [Parameter(HelpMessage="Valid actions for a filtering tag. Exclusion takes priority over inclusion.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.TagAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.TagAction]
+        
+        [System.String]
         $Action,
         [Parameter(HelpMessage="The name (also known as the key) of the tag.")]
         [string]

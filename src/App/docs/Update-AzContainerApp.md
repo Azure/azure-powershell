@@ -14,13 +14,12 @@ Patches a Container App using JSON Merge Patch
 
 ### UpdateExpanded (Default)
 ```
-Update-AzContainerApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-ConfigurationActiveRevisionsMode <ActiveRevisionsMode>] [-ConfigurationRegistry <IRegistryCredentials[]>]
- [-ConfigurationSecret <ISecret[]>] [-DaprAppId <String>] [-DaprAppPort <Int32>]
- [-DaprAppProtocol <AppProtocol>] [-DaprEnabled] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IngressAllowInsecure] [-IngressCustomDomain <ICustomDomain[]>]
- [-IngressExternal] [-IngressTargetPort <Int32>] [-IngressTraffic <ITrafficWeight[]>]
- [-IngressTransport <IngressTransportMethod>] [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>]
+Update-AzContainerApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ConfigurationActiveRevisionsMode <String>] [-ConfigurationRegistry <IRegistryCredentials[]>]
+ [-ConfigurationSecret <ISecret[]>] [-DaprAppId <String>] [-DaprAppPort <Int32>] [-DaprAppProtocol <String>]
+ [-DaprEnabled] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-IngressAllowInsecure]
+ [-IngressCustomDomain <ICustomDomain[]>] [-IngressExternal] [-IngressTargetPort <Int32>]
+ [-IngressTraffic <ITrafficWeight[]>] [-IngressTransport <String>] [-ScaleMaxReplica <Int32>]
  [-ScaleMinReplica <Int32>] [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
  [-TemplateRevisionSuffix <String>] [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -28,14 +27,13 @@ Update-AzContainerApp -Name <String> -ResourceGroupName <String> -Location <Stri
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzContainerApp -InputObject <IAppIdentity> -Location <String>
- [-ConfigurationActiveRevisionsMode <ActiveRevisionsMode>] [-ConfigurationRegistry <IRegistryCredentials[]>]
- [-ConfigurationSecret <ISecret[]>] [-DaprAppId <String>] [-DaprAppPort <Int32>]
- [-DaprAppProtocol <AppProtocol>] [-DaprEnabled] [-IdentityType <ManagedServiceIdentityType>]
+Update-AzContainerApp -InputObject <IAppIdentity> [-ConfigurationActiveRevisionsMode <String>]
+ [-ConfigurationRegistry <IRegistryCredentials[]>] [-ConfigurationSecret <ISecret[]>] [-DaprAppId <String>]
+ [-DaprAppPort <Int32>] [-DaprAppProtocol <String>] [-DaprEnabled] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-IngressAllowInsecure] [-IngressCustomDomain <ICustomDomain[]>]
  [-IngressExternal] [-IngressTargetPort <Int32>] [-IngressTraffic <ITrafficWeight[]>]
- [-IngressTransport <IngressTransportMethod>] [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>]
- [-ScaleMinReplica <Int32>] [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
+ [-IngressTransport <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
+ [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
  [-TemplateRevisionSuffix <String>] [-TemplateVolume <IVolume[]>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -86,7 +84,7 @@ Revision weights can not be used in this mode.
 If no value if provided, this is the default.\</item\>\</list\>
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.ActiveRevisionsMode
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +163,7 @@ Valid options are http and grpc.
 Default is http
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.AppProtocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -210,7 +208,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -320,7 +318,7 @@ Accept wildcard characters: False
 Ingress transport protocol
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.IngressTransportMethod
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -344,36 +342,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagedEnvironmentId
-Resource ID of the Container App's environment.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -600,28 +568,28 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`CONFIGURATIONREGISTRY <IRegistryCredentials[]>`: Collection of private container registry credentials for containers used by the Container app
+CONFIGURATIONREGISTRY <IRegistryCredentials[]>: Collection of private container registry credentials for containers used by the Container app
   - `[Identity <String>]`: A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
   - `[PasswordSecretRef <String>]`: The name of the Secret that contains the registry login password
   - `[Server <String>]`: Container Registry Server
   - `[Username <String>]`: Container Registry Username
 
-`CONFIGURATIONSECRET <ISecret[]>`: Collection of secrets used by a Container app
+CONFIGURATIONSECRET <ISecret[]>: Collection of secrets used by a Container app
   - `[Name <String>]`: Secret Name.
   - `[Value <String>]`: Secret Value.
 
-`INGRESSCUSTOMDOMAIN <ICustomDomain[]>`: custom domain bindings for Container Apps' hostnames.
+INGRESSCUSTOMDOMAIN <ICustomDomain[]>: custom domain bindings for Container Apps' hostnames.
   - `CertificateId <String>`: Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
   - `Name <String>`: Hostname.
-  - `[BindingType <BindingType?>]`: Custom Domain binding type.
+  - `[BindingType <String>]`: Custom Domain binding type.
 
-`INGRESSTRAFFIC <ITrafficWeight[]>`: Traffic weights for app's revisions
+INGRESSTRAFFIC <ITrafficWeight[]>: Traffic weights for app's revisions
   - `[Label <String>]`: Associates a traffic label with a revision
   - `[LatestRevision <Boolean?>]`: Indicates that the traffic weight belongs to a latest stable revision
   - `[RevisionName <String>]`: Name of a revision
   - `[Weight <Int32?>]`: Traffic weight assigned to a revision
 
-`INPUTOBJECT <IAppIdentity>`: Identity Parameter
+INPUTOBJECT <IAppIdentity>: Identity Parameter
   - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
   - `[CertificateName <String>]`: Name of the Certificate.
   - `[ComponentName <String>]`: Name of the Dapr Component.
@@ -635,39 +603,39 @@ To create the parameters described below, construct a hash table containing the 
   - `[StorageName <String>]`: Name of the storage.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-`SCALERULE <IScaleRule[]>`: Scaling rules.
-  - `[AzureQueueAuth <IScaleRuleAuth[]>]`: Authentication secrets for the queue scale rule.
+SCALERULE <IScaleRule[]>: Scaling rules.
+  - `[AzureQueueAuth <List<IScaleRuleAuth>>]`: Authentication secrets for the queue scale rule.
     - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
     - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
   - `[AzureQueueLength <Int32?>]`: Queue length.
   - `[AzureQueueName <String>]`: Queue name.
-  - `[CustomAuth <IScaleRuleAuth[]>]`: Authentication secrets for the custom scale rule.
+  - `[CustomAuth <List<IScaleRuleAuth>>]`: Authentication secrets for the custom scale rule.
   - `[CustomMetadata <ICustomScaleRuleMetadata>]`: Metadata properties to describe custom scale rule.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[CustomType <String>]`: Type of the custom scale rule         eg: azure-servicebus, redis etc.
-  - `[HttpAuth <IScaleRuleAuth[]>]`: Authentication secrets for the custom scale rule.
+  - `[HttpAuth <List<IScaleRuleAuth>>]`: Authentication secrets for the custom scale rule.
   - `[HttpMetadata <IHttpScaleRuleMetadata>]`: Metadata properties to describe http scale rule.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Name <String>]`: Scale Rule Name
 
-`TEMPLATECONTAINER <IContainer[]>`: List of container definitions for the Container App.
-  - `[Arg <String[]>]`: Container start command arguments.
-  - `[Command <String[]>]`: Container start command.
-  - `[Env <IEnvironmentVar[]>]`: Container environment variables.
+TEMPLATECONTAINER <IContainer[]>: List of container definitions for the Container App.
+  - `[Arg <List<String>>]`: Container start command arguments.
+  - `[Command <List<String>>]`: Container start command.
+  - `[Env <List<IEnvironmentVar>>]`: Container environment variables.
     - `[Name <String>]`: Environment variable name.
     - `[SecretRef <String>]`: Name of the Container App secret from which to pull the environment variable value.
     - `[Value <String>]`: Non-secret environment variable value.
   - `[Image <String>]`: Container image tag.
   - `[Name <String>]`: Custom container name.
-  - `[Probe <IContainerAppProbe[]>]`: List of probes for the container.
+  - `[Probe <List<IContainerAppProbe>>]`: List of probes for the container.
     - `[FailureThreshold <Int32?>]`: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1. Maximum value is 10.
     - `[HttpGetHost <String>]`: Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-    - `[HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>]`: Custom headers to set in the request. HTTP allows repeated headers.
+    - `[HttpGetHttpHeader <List<IContainerAppProbeHttpGetHttpHeadersItem>>]`: Custom headers to set in the request. HTTP allows repeated headers.
       - `Name <String>`: The header field name
       - `Value <String>`: The header field value
     - `[HttpGetPath <String>]`: Path to access on the HTTP server.
     - `[HttpGetPort <Int32?>]`: Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-    - `[HttpGetScheme <Scheme?>]`: Scheme to use for connecting to the host. Defaults to HTTP.
+    - `[HttpGetScheme <String>]`: Scheme to use for connecting to the host. Defaults to HTTP.
     - `[InitialDelaySecond <Int32?>]`: Number of seconds after the container has started before liveness probes are initiated. Minimum value is 1. Maximum value is 60.
     - `[PeriodSecond <Int32?>]`: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value is 240.
     - `[SuccessThreshold <Int32?>]`: Minimum consecutive successes for the probe to be considered successful after having failed. Defaults to 1. Must be 1 for liveness and startup. Minimum value is 1. Maximum value is 10.
@@ -675,17 +643,17 @@ To create the parameters described below, construct a hash table containing the 
     - `[TcpSocketPort <Int32?>]`: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
     - `[TerminationGracePeriodSecond <Int64?>]`: Optional duration in seconds the pod needs to terminate gracefully upon probe failure. The grace period is the duration in seconds after the processes running in the pod are sent a termination signal and the time when the processes are forcibly halted with a kill signal. Set this value longer than the expected cleanup time for your process. If this value is nil, the pod's terminationGracePeriodSeconds will be used. Otherwise, this value overrides the value provided by the pod spec. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down). This is an alpha field and requires enabling ProbeTerminationGracePeriod feature gate. Maximum value is 3600 seconds (1 hour)
     - `[TimeoutSecond <Int32?>]`: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 240.
-    - `[Type <Type?>]`: The type of probe.
+    - `[Type <String>]`: The type of probe.
   - `[ResourceCpu <Double?>]`: Required CPU in cores, e.g. 0.5
   - `[ResourceMemory <String>]`: Required memory, e.g. "250Mb"
-  - `[VolumeMount <IVolumeMount[]>]`: Container volume mounts.
+  - `[VolumeMount <List<IVolumeMount>>]`: Container volume mounts.
     - `[MountPath <String>]`: Path within the container at which the volume should be mounted.Must not contain ':'.
     - `[VolumeName <String>]`: This must match the Name of a Volume.
 
-`TEMPLATEVOLUME <IVolume[]>`: List of volume definitions for the Container App.
+TEMPLATEVOLUME <IVolume[]>: List of volume definitions for the Container App.
   - `[Name <String>]`: Volume name.
   - `[StorageName <String>]`: Name of storage resource. No need to provide for EmptyDir.
-  - `[StorageType <StorageType?>]`: Storage type for the volume. If not provided, use EmptyDir.
+  - `[StorageType <String>]`: Storage type for the volume. If not provided, use EmptyDir.
 
 ## RELATED LINKS
 

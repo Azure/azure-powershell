@@ -55,8 +55,8 @@ function New-AzOrbitalContactProfileLinkChannelObject {
         [string]
         $EndPointPort,
         [Parameter(Mandatory, HelpMessage="Protocol either UDP or TCP.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Protocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Protocol]
+        
+        [System.String]
         $EndPointProtocol,
         [Parameter(HelpMessage="Configuration for modulation.")]
         [string]

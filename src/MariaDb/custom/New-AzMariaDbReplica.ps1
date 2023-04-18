@@ -195,7 +195,7 @@ function New-AzMariaDbReplica {
             }
             #endregion ServerForCreate
 
-            $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::Replica
+            $Parameter.CreateMode = [System.String]::Replica
 
 
             $PSBoundParameters.Add('Parameter', $Parameter)

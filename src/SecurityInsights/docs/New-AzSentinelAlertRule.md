@@ -15,27 +15,27 @@ Creates or updates the alert rule.
 ### FusionMLTI (Default)
 ```
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -AlertRuleTemplate <String>
- -Kind <AlertRuleKind> [-RuleId <String>] [-SubscriptionId <String>] [-Enabled] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Kind <String> [-RuleId <String>] [-SubscriptionId <String>] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftSecurityIncidentCreation
 ```
-New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Kind <AlertRuleKind>
- -ProductFilter <MicrosoftSecurityProductName> [-RuleId <String>] [-SubscriptionId <String>]
- [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String>]
- [-DisplayNamesFilter <String>] [-Enabled] [-SeveritiesFilter <AlertSeverity[]>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Kind <String>
+ -ProductFilter <String> [-RuleId <String>] [-SubscriptionId <String>] [-AlertRuleTemplateName <String>]
+ [-Description <String>] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>] [-Enabled]
+ [-SeveritiesFilter <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### NRT
 ```
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -DisplayName <String>
- -Kind <AlertRuleKind> -Query <String> -Severity <AlertSeverity> [-RuleId <String>] [-SubscriptionId <String>]
+ -Kind <String> -Query <String> -Severity <String> [-RuleId <String>] [-SubscriptionId <String>]
  [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>]
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-CreateIncident]
- [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>] [-GroupByAlertDetail <AlertDetail>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
+ [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>] [-GroupByAlertDetail <String>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <String>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-ReOpenClosedIncident]
  [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -44,13 +44,13 @@ New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -Dis
 ### Scheduled
 ```
 New-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -DisplayName <String>
- -Kind <AlertRuleKind> -Query <String> -QueryFrequency <TimeSpan> -QueryPeriod <TimeSpan>
- -Severity <AlertSeverity> -TriggerOperator <TriggerOperator> -TriggerThreshold <Int32> [-RuleId <String>]
- [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
- [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
- [-CreateIncident] [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
+ -Kind <String> -Query <String> -QueryFrequency <TimeSpan> -QueryPeriod <TimeSpan> -Severity <String>
+ -TriggerOperator <String> -TriggerThreshold <Int32> [-RuleId <String>] [-SubscriptionId <String>]
+ [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>]
+ [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-CreateIncident]
+ [-Description <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-EventGroupingSettingAggregationKind <String>] [-GroupByAlertDetail <String>]
+ [-GroupByCustomDetail <String[]>] [-GroupByEntity <String>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-ReOpenClosedIncident]
  [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -341,7 +341,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EventGroupingAggregationKind
+Type: System.String
 Parameter Sets: Scheduled
 Aliases:
 
@@ -356,7 +356,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertDetail
+Type: System.String
 Parameter Sets: NRT, Scheduled
 Aliases:
 
@@ -386,7 +386,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityMappingType
+Type: System.String
 Parameter Sets: NRT, Scheduled
 Aliases:
 
@@ -416,7 +416,7 @@ Accept wildcard characters: False
 Kind of the the data connection
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertRuleKind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -476,7 +476,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName
+Type: System.String
 Parameter Sets: MicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -582,7 +582,7 @@ Accept wildcard characters: False
 High, Medium, Low, Informational
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity[]
+Type: System.String[]
 Parameter Sets: MicrosoftSecurityIncidentCreation
 Aliases:
 
@@ -597,7 +597,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AlertSeverity
+Type: System.String
 Parameter Sets: NRT, Scheduled
 Aliases:
 
@@ -655,7 +655,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tactic
-[Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.AttackTactic]
+[System.String]
 InitialAccess, Execution, Persistence, PrivilegeEscalation, DefenseEvasion, CredentialAccess, Discovery, LateralMovement, Collection, Exfiltration, CommandAndControl, Impact, PreAttack
 
 ```yaml
@@ -674,7 +674,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.TriggerOperator
+Type: System.String
 Parameter Sets: Scheduled
 Aliases:
 
@@ -765,8 +765,8 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ENTITYMAPPING <EntityMapping>: 'Account', 'Host', 'IP', 'Malware', 'File', 'Process', 'CloudApplication', 'DNS', 'AzureResource', 'FileHash', 'RegistryKey', 'RegistryValue', 'SecurityGroup', 'URL', 'Mailbox', 'MailCluster', 'MailMessage', 'SubmissionMail'
-  - `[EntityType <EntityMappingType?>]`: The V3 type of the mapped entity
-  - `[FieldMapping <IFieldMapping[]>]`: array of field mappings for the given entity mapping
+  - `[EntityType <String>]`: The V3 type of the mapped entity
+  - `[FieldMapping <List<IFieldMapping>>]`: array of field mappings for the given entity mapping
     - `[ColumnName <String>]`: the column name to be mapped to the identifier
     - `[Identifier <String>]`: the V3 identifier of the entity
 

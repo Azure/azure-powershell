@@ -250,8 +250,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IAdvisorIdentity>`: Identity Parameter
-  - `[ConfigurationName <ConfigurationName?>]`: Advisor configuration name. Value must be 'default'
+INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  - `[ConfigurationName <String>]`: Advisor configuration name. Value must be 'default'
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: Name of metadata entity.
   - `[OperationId <String>]`: The operation ID, which can be found from the Location field in the generate recommendation response header.

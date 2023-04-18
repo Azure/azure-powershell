@@ -15,13 +15,13 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 
 ### CheckExpanded (Default)
 ```
-Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzCdnNameAvailability -Name <String> -Type <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CheckExpanded1
 ```
-Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-SubscriptionId <String>]
+Test-AzCdnNameAvailability -Name <String> -Type <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The type of the resource whose name is to be validated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

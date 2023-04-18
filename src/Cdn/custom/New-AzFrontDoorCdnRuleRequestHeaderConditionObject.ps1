@@ -37,19 +37,19 @@ function New-AzFrontDoorCdnRuleRequestHeaderConditionObject {
         [bool]
         $ParameterNegateCondition,
         [Parameter(Mandatory, HelpMessage="Describes operator to be matched.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RequestHeaderOperator])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RequestHeaderOperator]
+        
+        [System.String]
         $ParameterOperator,
         [Parameter(HelpMessage="Name of Header to be matched.")]
         [string]
         $ParameterSelector,
         [Parameter(HelpMessage="List of transforms.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
+        
+        [System.String[]]
         $ParameterTransform,
         [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
+        
+        [System.String]
         $Name
     )
 

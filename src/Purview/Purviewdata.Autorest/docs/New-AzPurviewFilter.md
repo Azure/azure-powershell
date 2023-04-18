@@ -169,8 +169,8 @@ To create the parameters described below, construct a hash table containing the 
 
 
 BODY <IFilter>: .
-  - `[ExcludeUriPrefix <String[]>]`: 
-  - `[IncludeUriPrefix <String[]>]`: 
+  - `[ExcludeUriPrefix <List<String>>]`: 
+  - `[IncludeUriPrefix <List<String>>]`: 
 
 ## RELATED LINKS
 

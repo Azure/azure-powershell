@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRulePostArgsConditionObject -Name <MatchVariable> -ParameterOperator <PostArgsOperator>
+New-AzFrontDoorCdnRulePostArgsConditionObject -Name <String> -ParameterOperator <String>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterSelector <String>]
- [-ParameterTransform <Transform[]>] [<CommonParameters>]
+ [-ParameterTransform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ PostArgs
 The name of the condition for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.PostArgsOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

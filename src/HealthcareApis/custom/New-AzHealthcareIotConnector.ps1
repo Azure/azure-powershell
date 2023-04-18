@@ -76,9 +76,9 @@ function New-AzHealthcareIotConnector {
         ${Etag},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType]
+        [System.String]
         # Type of identity being specified, currently SystemAssigned and None are allowed.
         ${IdentityType},
 

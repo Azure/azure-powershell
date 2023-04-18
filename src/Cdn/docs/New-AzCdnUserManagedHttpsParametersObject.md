@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUserManagedHttpsParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnusermanagedhttpsparametersobject
 schema: 2.0.0
 ---
 
@@ -13,11 +13,10 @@ Create an in-memory object for UserManagedHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnUserManagedHttpsParametersObject -CertificateSource <CertificateSource>
- -CertificateSourceParameterResourceGroupName <String> -CertificateSourceParameterSecretName <String>
- -CertificateSourceParameterSubscriptionId <String> -CertificateSourceParameterVaultName <String>
- -ProtocolType <ProtocolType> [-CertificateSourceParameterSecretVersion <String>]
- [-MinimumTlsVersion <MinimumTlsVersion>] [<CommonParameters>]
+New-AzCdnUserManagedHttpsParametersObject -CertificateSourceParameterResourceGroupName <String>
+ -CertificateSourceParameterSecretName <String> -CertificateSourceParameterSubscriptionId <String>
+ -CertificateSourceParameterVaultName <String> -ProtocolType <String>
+ [-CertificateSourceParameterSecretVersion <String>] [-MinimumTlsVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +30,7 @@ Create an in-memory object for UserManagedHttpsParameters.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -42,27 +41,12 @@ Create an in-memory object for UserManagedHttpsParameters.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -CertificateSource
-Defines the source of the SSL certificate.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -CertificateSourceParameterResourceGroupName
 Resource group of the user's Key Vault containing the SSL certificate.
@@ -143,7 +127,7 @@ Accept wildcard characters: False
 TLS protocol version that will be used for Https.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +142,7 @@ Accept wildcard characters: False
 Defines the TLS extension protocol that is used for secure delivery.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

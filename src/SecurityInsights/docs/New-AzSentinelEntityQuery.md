@@ -14,11 +14,10 @@ Creates or updates the entity query.
 
 ```
 New-AzSentinelEntityQuery -ResourceGroupName <String> -WorkspaceName <String> -Content <String>
- -Description <String> -InputEntityType <EntityType> -Kind <EntityQueryKind> -QueryDefinitionQuery <String>
- -Title <String> [-Id <String>] [-SubscriptionId <String>]
- [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-RequiredInputFieldsSet <String[]>]
- [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -Description <String> -InputEntityType <String> -Kind <String> -QueryDefinitionQuery <String> -Title <String>
+ [-Id <String>] [-SubscriptionId <String>] [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>]
+ [-RequiredInputFieldsSet <String[]>] [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +147,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +162,7 @@ Accept wildcard characters: False
 Kind of the the Entity Query
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityQueryKind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -346,7 +345,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ENTITIESFILTER <ActivityEntityQueriesPropertiesEntitiesFilter>: 
-  - `[(Any) <String[]>]`: This indicates any property can be added to this object.
+  - `[(Any) <List<String>>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

@@ -40,10 +40,10 @@ function New-AzConnectedNetworkInterfaceIPConfigurationObject {
         [string]
         $IPAddress,
         [Parameter(HelpMessage="IP address allocation method.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPAllocationMethod]
+        [System.String]
         $IPAllocationMethod,
         [Parameter(HelpMessage="IP address version.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.IPVersion]
+        [System.String]
         $IPVersion,
         [Parameter(HelpMessage="The value of the subnet.")]
         [string]

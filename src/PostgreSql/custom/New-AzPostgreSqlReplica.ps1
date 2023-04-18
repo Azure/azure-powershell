@@ -111,7 +111,7 @@ function New-AzPostgreSqlReplica {
         try {
           $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerForCreate]::new()
           $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.ServerPropertiesForReplica]::new()
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Replica
+          $Parameter.CreateMode = [System.String]::Replica
 
           $server = $PSBoundParameters['Master']
           $Parameter.Property.SourceServerId = $server.Id

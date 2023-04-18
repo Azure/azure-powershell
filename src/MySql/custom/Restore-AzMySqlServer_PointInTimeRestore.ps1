@@ -130,7 +130,7 @@ function Restore-AzMySqlServer_PointInTimeRestore {
           $Parameter.Property.RestorePointInTime = $PSBoundParameters['RestorePointInTime']
           $null = $PSBoundParameters.Remove('RestorePointInTime')
           $null = $PSBoundParameters.Remove('UsePointInTimeRestore')
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::PointInTimeRestore
+          $Parameter.CreateMode = [System.String]::PointInTimeRestore
 
           $server = $PSBoundParameters['InputObject']
           $Parameter.Property.SourceServerId = $server.Id

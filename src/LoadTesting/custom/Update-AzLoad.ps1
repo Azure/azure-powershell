@@ -68,9 +68,9 @@ function Update-AzLoad {
         ${EncryptionKey},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LoadTesting.Support.ManagedServiceIdentityType]
+        [System.String]
         # Type of managed identity.
         ${IdentityType},
     

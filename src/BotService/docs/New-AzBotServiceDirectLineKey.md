@@ -13,9 +13,9 @@ Regenerates secret keys and returns them for the DirectLine Channel of a particu
 ## SYNTAX
 
 ```
-New-AzBotServiceDirectLineKey -ChannelName <RegenerateKeysChannelName> -ResourceGroupName <String>
- -ResourceName <String> -Key <Key> -SiteName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzBotServiceDirectLineKey -ChannelName <String> -ResourceGroupName <String> -ResourceName <String>
+ -Key <String> -SiteName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +36,7 @@ Regenerates secret keys and returns them for the DirectLine Channel of a particu
 The name of the Channel resource for which keys are to be regenerated.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.RegenerateKeysChannelName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Determines which key is to be regenerated
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Key
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

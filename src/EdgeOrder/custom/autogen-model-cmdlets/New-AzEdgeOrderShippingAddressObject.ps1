@@ -31,8 +31,8 @@ function New-AzEdgeOrderShippingAddressObject {
     Param(
 
         [Parameter(HelpMessage="Type of address.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.AddressType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.AddressType]
+        
+        [System.String]
         $AddressType,
         [Parameter(HelpMessage="Name of the City.")]
         [string]

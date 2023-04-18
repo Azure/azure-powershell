@@ -67,8 +67,8 @@ function New-AzStorageMoverNfsEndpoint {
 
         [Parameter(ParameterSetName = 'CreateExpanded')]
         [Parameter(HelpMessage="The NFS protocol version.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion])]
-        [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.NfsVersion]
+        
+        [System.String]
         ${NfsVersion},
     
         [Parameter(ParameterSetName = 'CreateExpanded')]

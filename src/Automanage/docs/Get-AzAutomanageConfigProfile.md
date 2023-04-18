@@ -180,7 +180,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IAutomanageIdentity>`: Identity Parameter
+INPUTOBJECT <IAutomanageIdentity>: Identity Parameter
   - `[BestPracticeName <String>]`: The Automanage best practice name.
   - `[ClusterName <String>]`: The name of the Arc machine.
   - `[ConfigurationProfileAssignmentName <String>]`: Name of the configuration profile assignment. Only default is supported.

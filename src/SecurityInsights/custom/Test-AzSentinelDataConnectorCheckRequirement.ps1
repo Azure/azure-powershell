@@ -48,9 +48,9 @@ function Test-AzSentinelDataConnectorCheckRequirement {
         ${WorkspaceName},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind]
+        [System.String]
         # Kind of the the data connection
         ${Kind},
 

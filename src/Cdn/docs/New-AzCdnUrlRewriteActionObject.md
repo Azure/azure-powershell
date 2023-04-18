@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRewriteActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnurlrewriteactionobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for UrlRewriteAction.
 ## SYNTAX
 
 ```
-New-AzCdnUrlRewriteActionObject -Name <DeliveryRuleAction> -ParameterDestination <String>
- -ParameterSourcePattern <String> [-ParameterPreserveUnmatchedPath <Boolean>] [<CommonParameters>]
+New-AzCdnUrlRewriteActionObject -ParameterDestination <String> -ParameterSourcePattern <String>
+ [-ParameterPreserveUnmatchedPath <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Create an in-memory object for UrlRewriteAction.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -39,27 +39,12 @@ Create an in-memory object for UrlRewriteAction.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterDestination
 Define the relative URL to which the above requests will be rewritten by.

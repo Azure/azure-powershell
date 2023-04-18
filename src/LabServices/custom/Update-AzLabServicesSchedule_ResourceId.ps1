@@ -32,7 +32,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
+    [System.String]
     ${RecurrencePatternFrequency},
 
     [Parameter()]
@@ -42,7 +42,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
+    [System.String[]]
     ${RecurrencePatternWeekDay},
 
     [Parameter()]

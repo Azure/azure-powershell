@@ -49,7 +49,7 @@ function New-AzTimeSeriesInsightsEnvironment {
         [Parameter(Mandatory)]
         [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Gen1', 'Gen2')})]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind]
+        [System.String]
         # The kind of the environment.
         ${Kind},
     
@@ -85,9 +85,9 @@ function New-AzTimeSeriesInsightsEnvironment {
         ${StorageLimitExceededBehavior},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuName]
+        [System.String]
         # The name of this SKU.
         ${Sku},
     

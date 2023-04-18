@@ -163,7 +163,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 BODY <IDataSource>: .
-  - `Kind <DataSourceType>`: 
+  - `Kind <String>`: 
 
 ## RELATED LINKS
 

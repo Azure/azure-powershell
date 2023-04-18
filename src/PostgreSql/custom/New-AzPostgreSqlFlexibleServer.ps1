@@ -102,9 +102,9 @@ function New-AzPostgreSqlFlexibleServer {
         ${Tag},
 
         [Parameter(HelpMessage = 'Server version.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.ServerVersion]
+        [System.String]
         ${Version},
 
         [Parameter(HelpMessage = 'The id of an existing private dns zone. You can use the
@@ -289,17 +289,17 @@ function New-AzPostgreSqlFlexibleServer {
 
             if ($PSBoundParameters.ContainsKey('HaEnabled')){
                 if ($PSBoundParameters["HaEnabled"] -eq "Enabled"){
-                    $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode]::ZoneRedundant
+                    $PSBoundParameters.HighAvailabilityMode = [System.String]::ZoneRedundant
                 }
                 else {
-                    $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.HighAvailabilityMode]::Disabled
+                    $PSBoundParameters.HighAvailabilityMode = [System.String]::Disabled
                 }
                 $null = $PSBoundParameters.Remove('HaEnabled')
             }
 
             
 
-            $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Support.CreateMode]::Default
+            $PSBoundParameters.CreateMode = [System.String]::Default
 
             # Handling Vnet & Subnet
             $NetworkKeys = 'PublicAccess', 'Subnet', 'Vnet', 'SubnetPrefix', 'VnetPrefix', 'PrivateDnsZone'

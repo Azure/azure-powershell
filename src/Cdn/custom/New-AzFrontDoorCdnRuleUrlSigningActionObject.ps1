@@ -31,15 +31,15 @@ function New-AzFrontDoorCdnRuleUrlSigningActionObject {
     Param(
 
         [Parameter(HelpMessage="Algorithm to use for URL signing.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Algorithm])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Algorithm]
+        
+        [System.String]
         $ParameterAlgorithm,
         [Parameter(HelpMessage="Defines which query string parameters in the url to be considered for expires, key id etc. .")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IUrlSigningParamIdentifier[]]
         $ParameterNameOverride,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        
+        [System.String]
         $Name
     )
 
