@@ -12,9 +12,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
 {
 
     /// <summary>
-    /// Defines values for IdentityType.
+    /// Defines values for ManagedServiceIdentityType.
     /// </summary>
-    public static class IdentityType
+    public static class ManagedServiceIdentityType
     {
         public const string None = "None";
         public const string SystemAssigned = "SystemAssigned";
