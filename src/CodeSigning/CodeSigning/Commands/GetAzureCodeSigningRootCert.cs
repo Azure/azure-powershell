@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.CodeSigning.Models;
 using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
              ValueFromPipelineByPropertyName = true,
             HelpMessage = "Metadata File path. Cmdlet constructs the FQDN of an account profile based on the Metadata File and currently selected environment.")]
         [ValidateNotNullOrEmpty]
-        public string MetadatFilePath { get; set; }
+        public string MetadataFilePath { get; set; }
 
         [Parameter(Mandatory = true,
           Position = 3,
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
           ValueFromPipelineByPropertyName = true,
           HelpMessage = "Downloaded Root Cert file full path, including file name")]
         [ValidateNotNullOrEmpty]
-        public string RootCertDestination { get; set; }
+        public string Destination { get; set; }
         #endregion
 
         public override void ExecuteCmdlet()
@@ -95,17 +96,16 @@ namespace Microsoft.Azure.Commands.CodeSigning
             {
                 rootcert = CodeSigningServiceClient.GetCodeSigningRootCert(AccountName, ProfileName, EndpointUrl);
                 WriteRootCert(rootcert);
-            }          
-            else if (!string.IsNullOrEmpty(MetadatFilePath))
+            }
+            else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
-                rootcert = CodeSigningServiceClient.GetCodeSigningRootCert(MetadatFilePath);
-                WriteRootCert(rootcert);            
+                rootcert = CodeSigningServiceClient.GetCodeSigningRootCert(MetadataFilePath);
+                WriteRootCert(rootcert);
             }
         }
         private void WriteRootCert(Stream rootcert)
-        {
-            //var downloadPath = Util.GetDownloadsPath() + "\\root.cer";
-            var downloadPath = ResolvePath(RootCertDestination);
+        {   
+            var downloadPath = ResolvePath(Destination);
 
             var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write);
             rootcert.CopyTo(fileStream);
@@ -114,17 +114,14 @@ namespace Microsoft.Azure.Commands.CodeSigning
             //read thumbprint and subject namme                      
             byte[] rawData = File.ReadAllBytes(downloadPath);
             X509Certificate2 x509 = new X509Certificate2(rawData);
-            var certDic = new Dictionary<string, string>();
-            certDic.Add("Thumbprint", x509.Thumbprint);
-            certDic.Add("Subject", x509.Subject);
+         
+            WriteObject(downloadPath.Replace("\\", @"\"));           
 
-            WriteObject(downloadPath.Replace("\\",@"\"));
-            WriteObject(Environment.NewLine);
-            WriteObject(certDic, true);
-            WriteObject(Environment.NewLine);
-            WriteObject(x509);
-            WriteObject(Environment.NewLine);
-            WriteObject((JsonConvert.SerializeObject(certDic)));
-        }      
-    }
+            PSSigningCertificate pscert = new PSSigningCertificate();
+            pscert.Subject = x509.Subject;
+            pscert.Thumbprint = x509.Thumbprint;
+
+            WriteObject(pscert, false);
+        }
+    }   
 }

@@ -21,9 +21,9 @@ using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
-    [Cmdlet(VerbsLifecycle.Submit, ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
     [OutputType(typeof(string))]
-    public class SubmitCIPolicySigning : CodeSigningCmdletBase
+    public class InvokeCIPolicySigning : CodeSigningCmdletBase
     {
         #region Parameter Set Names
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
              ValueFromPipelineByPropertyName = true,
             HelpMessage = "Metadata File path.")]
         [ValidateNotNullOrEmpty]
-        public string MetadatFilePath { get; set; }
+        public string MetadataFilePath { get; set; }
 
         //common parameters
         [Parameter(Mandatory = true,
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
             ValueFromPipelineByPropertyName = true,
            HelpMessage = "Original unsigned CI policy file path.")]
         [ValidateNotNullOrEmpty]
-        public string CIPolicyFilePath { get; set; }
+        public string Path { get; set; }
         [Parameter(Mandatory = true,
            Position = 4,
            ParameterSetName = ByAccountProfileNameParameterSet,
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Signed CI policy file path")]
         [ValidateNotNullOrEmpty]
-        public string SignedCIPolicyFileDestination { get; set; }
+        public string Destination { get; set; }
         [Parameter(Mandatory = false,
                    Position = 5,
                    ParameterSetName = ByAccountProfileNameParameterSet,
@@ -116,23 +116,21 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
         public override void ExecuteCmdlet()
         {           
-            ValidateFileType(ResolvePath(CIPolicyFilePath));
+            ValidateFileType(ResolvePath(Path));
 
-            WriteMessage(Environment.NewLine);
+            
             WriteMessage("CI Policy signing in progress....");
-            WriteMessage(Environment.NewLine);
-
-
+            
             if (!string.IsNullOrEmpty(AccountName))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(CIPolicyFilePath), ResolvePath(SignedCIPolicyFileDestination), TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);                
             }
-            else if (!string.IsNullOrEmpty(MetadatFilePath))
+            else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(MetadatFilePath, ResolvePath(CIPolicyFilePath), ResolvePath(SignedCIPolicyFileDestination), TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);                
             }
 
-            WriteMessage("CI Policy is successfully signed. " + ResolvePath(SignedCIPolicyFileDestination));
+            WriteMessage("CI Policy is successfully signed. " + ResolvePath(Destination));
         }
         private void WriteMessage(string message)
         {
@@ -141,8 +139,9 @@ namespace Microsoft.Azure.Commands.CodeSigning
 
         private void ValidateFileType(string fullInPath)
         {
-            if (Path.GetExtension(fullInPath).ToLower() == ".bin")
+            if (System.IO.Path.GetExtension(fullInPath).ToLower() == ".bin")
             {
+                WriteMessage(Environment.NewLine);
                 WriteMessage("CI Policy file submitted");
             }
             else

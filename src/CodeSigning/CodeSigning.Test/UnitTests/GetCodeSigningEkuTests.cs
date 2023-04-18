@@ -23,14 +23,14 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
 {
     public class GetCodeSigningEkuTests : CodeSigningUnitTestBase
     {
-        private GetAzureCodeSigningEku cmdlet;
+        private GetAzureCodeSigningCustomerEku cmdlet;
 
 
         public GetCodeSigningEkuTests()
         {
             base.SetupTest();
 
-            cmdlet = new GetAzureCodeSigningEku()
+            cmdlet = new GetAzureCodeSigningCustomerEku()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 CodeSigningServiceClient = codeSigningServiceClientMock.Object,
