@@ -169,10 +169,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         FilePermission = this.Permission,
                     };
 
-                    srcFileClient = srcFileClient.Rename(this.DestinationPath, options, this.CmdletCancellationToken);
+                    destFileClient = srcFileClient.Rename(this.DestinationPath, options, this.CmdletCancellationToken);
 
-                    ShareFileProperties fileProperties = srcFileClient.GetProperties(this.CmdletCancellationToken).Value;
-                    WriteObject(new AzureStorageFile(srcFileClient, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
+                    ShareFileProperties fileProperties = destFileClient.GetProperties(this.CmdletCancellationToken).Value;
+                    WriteObject(new AzureStorageFile(destFileClient, (AzureStorageContext)this.Context, fileProperties, ClientOptions));
                 }
             }
         }
