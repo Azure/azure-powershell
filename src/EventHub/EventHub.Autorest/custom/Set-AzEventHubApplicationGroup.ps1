@@ -19,7 +19,7 @@ Sets an EventHub Application Group
 Sets an EventHub Application Group
 #>
 function Set-AzEventHubApplicationGroup{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroup])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Application Group.")]
@@ -70,7 +70,7 @@ function Set-AzEventHubApplicationGroup{
 
         [Parameter(ValueFromPipelineByPropertyName, HelpMessage = "List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroupPolicy[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IApplicationGroupPolicy[]]
         # List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
         ${Policy},
 		

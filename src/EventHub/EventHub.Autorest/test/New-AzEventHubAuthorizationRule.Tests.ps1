@@ -22,7 +22,7 @@ Describe 'New-AzEventHubAuthorizationRule' {
         $authRule.Rights.Count | Should -Be 3
 
         $listOfAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-        $listOfAuthRules.Count | Should -Be 3
+        $listOfAuthRules.Count | Should -Be 4
     }
 
     It 'NewExpandedEntity' {

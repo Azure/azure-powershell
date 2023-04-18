@@ -31,24 +31,24 @@ For information on how to develop for `Az.EventHub`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 6f0c7d58c0a923917c2b3467ee756f21dbd2f8e2
+branch: 18d6e40325d28de8a69db60f07319bce877fb424
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/AvailableClusterRegions-preview.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/Clusters-preview.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/namespaces-preview.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/networkrulessets-preview.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/AuthorizationRules.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/CheckNameAvailability.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/consumergroups.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/disasterRecoveryConfigs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/operations.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/SchemaRegistry.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/eventhubs.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-01-01-preview/ApplicationGroups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/AvailableClusterRegions-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/Clusters-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/namespaces-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/networkrulessets-preview.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/AuthorizationRules.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/CheckNameAvailability.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/consumergroups.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/disasterRecoveryConfigs.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/operations.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/SchemaRegistry.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/eventhubs.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/eventhub/resource-manager/Microsoft.EventHub/preview/2022-10-01-preview/ApplicationGroups.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger
 
@@ -276,6 +276,30 @@ directive:
       property-name: CaptureDescriptionEnabled
     set:
       property-name: CaptureEnabled
+  
+  - where:
+      verb: New
+      subject: EventHub
+      parameter-name: RetentionDescriptionRetentionTimeInHour
+    set:
+      parameter-name: RetentionTimeInHour
+  - where:
+      model-name: EventHub
+      property-name: RetentionDescriptionRetentionTimeInHour
+    set:
+      property-name: RetentionTimeInHour
+
+  - where:
+      verb: New
+      subject: EventHub
+      parameter-name: RetentionDescriptionCleanupPolicy
+    set:
+      parameter-name: CleanupPolicy
+  - where:
+      model-name: EventHub
+      property-name: RetentionDescriptionCleanupPolicy
+    set:
+      property-name: CleanupPolicy
 
   - where:
       verb: New
@@ -342,6 +366,18 @@ directive:
       property-name: MessageRetentionInDay
     set:
       property-name: MessageRetentionInDays
+
+  - where:
+      verb: New
+      subject: EventHub
+      parameter-name: RetentionDescriptionTombstoneRetentionTimeInHour
+    set:
+      parameter-name: TombstoneRetentionTimeInHour
+  - where:
+      model-name: EventHub
+      property-name: RetentionDescriptionTombstoneRetentionTimeInHour
+    set:
+      property-name: TombstoneRetentionTimeInHour
 
 # Cluster
   - where:

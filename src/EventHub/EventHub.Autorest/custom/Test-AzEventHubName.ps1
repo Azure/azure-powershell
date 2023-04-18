@@ -20,7 +20,7 @@ Checks availability of a namespace name or disaster recovery alias.
 #>
 
 function Test-AzEventHubName {
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.ICheckNameAvailabilityResult])]
     [CmdletBinding(DefaultParameterSetName = 'NamespaceAvailability', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, ParameterSetName = 'AliasAvailability', HelpMessage = "The name of EventHub namespace")]

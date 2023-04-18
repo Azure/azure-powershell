@@ -1,8 +1,8 @@
 {
-  "New-AzEventHubApplicationGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestsco2iq/providers/Microsoft.EventHub/namespaces/namespaceNamed4ygvc/applicationGroups/appGroup9crdwb?api-version=2022-01-01-preview+1": {
+  "New-AzEventHubApplicationGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/applicationGroups/appGroup5p9zhu?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestsco2iq/providers/Microsoft.EventHub/namespaces/namespaceNamed4ygvc/applicationGroups/appGroup9crdwb?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5oibwu/providers/Microsoft.EventHub/namespaces/namespaceName9ys3v4/applicationGroups/appGroup5p9zhu?api-version=2022-10-01-preview",
       "Content": "{\n  \"properties\": {\n    \"clientAppGroupIdentifier\": \"NamespaceSASKeyName=a\",\n    \"policies\": [\n      {\n        \"name\": \"t1\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 10000,\n        \"metricId\": \"IncomingMessages\"\n      },\n      {\n        \"name\": \"t2\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 20000,\n        \"metricId\": \"OutgoingBytes\"\n      }\n    ]\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -13,26 +13,26 @@
       }
     },
     "Response": {
-      "StatusCode": 200,
+      "StatusCode": 400,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "9da38abf-fddb-45c1-9660-9c49c9ce3cc5_M3CH3_M3CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
-        "x-ms-correlation-request-id": [ "f5a56998-bc91-40b7-9434-a45a2ebcbf52" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20221215T093250Z:f5a56998-bc91-40b7-9434-a45a2ebcbf52" ],
+        "x-ms-request-id": [ "02cce070-2aa9-4ed0-86f5-be4b6ba456f8_M7SN1_M7SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-correlation-request-id": [ "3dc0cd57-ed6f-49f0-88bf-e0657fbd70ca" ],
+        "x-ms-routing-request-id": [ "SOUTHCENTRALUS:20230417T055541Z:3dc0cd57-ed6f-49f0-88bf-e0657fbd70ca" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Dec 2022 09:32:49 GMT" ]
+        "Date": [ "Mon, 17 Apr 2023 05:55:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "585" ],
+        "Content-Length": [ "396" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestsco2iq/providers/Microsoft.EventHub/namespaces/namespaceNamed4ygvc/applicationGroups/appGroup9crdwb\",\"name\":\"appGroup9crdwb\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"East US\",\"properties\":{\"clientAppGroupIdentifier\":\"NamespaceSASKeyName=a\",\"policies\":[{\"type\":\"ThrottlingPolicy\",\"name\":\"t1\",\"metricId\":\"IncomingMessages\",\"rateLimitThreshold\":10000},{\"type\":\"ThrottlingPolicy\",\"name\":\"t2\",\"metricId\":\"OutgoingBytes\",\"rateLimitThreshold\":20000}],\"isEnabled\":true}}",
+      "Content": "{\"error\":{\"message\":\"\u003cError\u003e\u003cCode\u003e400\u003c/Code\u003e\u003cDetail\u003eCannot create or update an Application Group with non-existent SAS Key. TrackingId:46c13b9c-8977-4ef8-b0ae-6d30e9c73c4f_M7SN1_G11, SystemTracker:namespacename9ys3v4.servicebus.windows.net:$applicationgroups/appGroup5p9zhu, Timestamp:2023-04-17T05:55:41\u003c/Detail\u003e\u003c/Error\u003e CorrelationId: 3dc0cd57-ed6f-49f0-88bf-e0657fbd70ca\",\"code\":\"BadRequest\"}}",
       "isContentBase64": false
     }
   }

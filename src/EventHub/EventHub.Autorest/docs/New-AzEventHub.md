@@ -14,10 +14,12 @@ Creates or updates a new Event Hub as a nested resource within a Namespace.
 
 ```
 New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
+ [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled]
+ [-CleanupPolicy <CleanupPolicyRetentionDescription>] [-DestinationName <String>]
  [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
- [-PartitionCount <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
- [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
+ [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,8 +137,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CleanupPolicy
+Enumerates the possible values for cleanup policy
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -271,6 +289,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RetentionTimeInHour
+Number of hours to retain the events for this Event Hub.
+This value is only used when cleanupPolicy is Delete.
+If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
+
+```yaml
+Type: System.Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SizeLimitInBytes
 The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
 
@@ -347,6 +382,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TombstoneRetentionTimeInHour
+Number of hours to retain the tombstone markers of a compacted Event Hub.
+This value is only used when cleanupPolicy is Compaction.
+Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -385,7 +437,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api20221001Preview.IEventhub
 
 ## NOTES
 

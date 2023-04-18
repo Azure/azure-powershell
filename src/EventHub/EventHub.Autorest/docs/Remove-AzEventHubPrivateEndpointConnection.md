@@ -8,7 +8,8 @@ schema: 2.0.0
 # Remove-AzEventHubPrivateEndpointConnection
 
 ## SYNOPSIS
-Deletes a Private Endpoint Connection.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ## SYNTAX
 
@@ -26,7 +27,8 @@ Remove-AzEventHubPrivateEndpointConnection -InputObject <IEventHubIdentity> [-De
 ```
 
 ## DESCRIPTION
-Deletes a Private Endpoint Connection.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ## EXAMPLES
 
@@ -55,7 +57,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
