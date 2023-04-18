@@ -12,8 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 ### Skip because $hostpool = Az.DesktopVirtualization\Get-AzWvdHostPool @PSBoundParametersd, $hostpool.PreferredAppGroupType is null in response, needs to record or check PreferredAppGroupType in response
-Describe 'New-AzWvdRegistrationInfo' -Skip {
-    It 'Create new RegistrationInfo' {
+Describe 'New-AzWvdRegistrationInfo' {
+    It 'Create new RegistrationInfo' -skip {
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
                             -Name 'HostPoolPowershellContained1' `
