@@ -48,7 +48,7 @@
     - 'New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration',
     - 'New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule',
     - Also updated cmdlet to add the property of LogScrubbing 
-        - `New-AzApplicationGatewayFirewallPolicySetting`
+    - `New-AzApplicationGatewayFirewallPolicySetting`
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
