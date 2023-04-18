@@ -43,4 +43,3 @@ Global   endptest010 testps-rg-da16jm
 ```
 
 Get an AzureCDN Endpoint under the AzureCDN profile via identity
-
