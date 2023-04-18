@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCustomerEku", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
     [OutputType(typeof(string))]
-    public class GetAzureCodeSigningEku : CodeSigningCmdletBase
+    public class GetAzureCodeSigningCustomerEku : CodeSigningCmdletBase
     {
         #region Parameter Set Names
 
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.CodeSigning
              ValueFromPipelineByPropertyName = true,
             HelpMessage = "Metadata File path. Cmdlet constructs the FQDN of an account profile based on the Metadata File and currently selected environment.")]        
         [ValidateNotNullOrEmpty]
-        public string MetadatFilePath { get; set; }
+        public string MetadataFilePath { get; set; }
                
         #endregion
 
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.CodeSigning
                 eku = CodeSigningServiceClient.GetCodeSigningEku(AccountName, ProfileName, EndpointUrl);
                 WriteEku(eku);
             }          
-            else if (!string.IsNullOrEmpty(MetadatFilePath))
+            else if (!string.IsNullOrEmpty(MetadataFilePath))
             { 
-                eku = CodeSigningServiceClient.GetCodeSigningEku(MetadatFilePath);
+                eku = CodeSigningServiceClient.GetCodeSigningEku(MetadataFilePath);
                 WriteEku(eku);            
             }
         }

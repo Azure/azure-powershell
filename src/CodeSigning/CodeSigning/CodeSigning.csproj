@@ -60,6 +60,7 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.28.0" />
     <PackageReference Update="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
