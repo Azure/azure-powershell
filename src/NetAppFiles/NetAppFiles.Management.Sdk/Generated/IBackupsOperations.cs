@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get the status of the backup for a volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get the status of the restore for a volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// List all backups for a volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Gets the specified backup of the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Create a backup for the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Patch a backup for the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete a backup of the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -277,13 +277,51 @@ namespace Microsoft.Azure.Management.NetApp
         /// </exception>
         Task<AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Create a new Backup Restore Files request
+        /// </summary>
+        /// <remarks>
+        /// Restore the specified files from the specified backup to the active
+        /// filesystem
+        /// </remarks>
+        /// <param name='body'>
+        /// Restore payload supplied in the body of the operation.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='backupName'>
+        /// The name of the backup
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<BackupsRestoreFilesHeaders>> RestoreFilesWithHttpMessagesAsync(BackupRestoreFiles body, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Create a backup
         /// </summary>
         /// <remarks>
         /// Create a backup for the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -323,7 +361,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Patch a backup for the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -363,7 +401,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete a backup of the volume
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -390,5 +428,43 @@ namespace Microsoft.Azure.Management.NetApp
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Create a new Backup Restore Files request
+        /// </summary>
+        /// <remarks>
+        /// Restore the specified files from the specified backup to the active
+        /// filesystem
+        /// </remarks>
+        /// <param name='body'>
+        /// Restore payload supplied in the body of the operation.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='backupName'>
+        /// The name of the backup
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<BackupsRestoreFilesHeaders>> BeginRestoreFilesWithHttpMessagesAsync(BackupRestoreFiles body, string resourceGroupName, string accountName, string poolName, string volumeName, string backupName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }
