@@ -11,14 +11,14 @@ function Get-AzFunctionAppAvailableLocation {
         ${SubscriptionId},
 
         [Parameter(HelpMessage="The plan type. Valid inputs: Consumption or Premium")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.AvailablePlanType])]
+        
         [ValidateNotNullOrEmpty()]
         [System.String]
         # Plan type (Consumption or Premium)
         ${PlanType},
 
         [Parameter(HelpMessage='The OS type for the service plan.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerType])]
+        
         [ValidateNotNullOrEmpty()]
         [System.String]
         # OS type (Linux or Windows)

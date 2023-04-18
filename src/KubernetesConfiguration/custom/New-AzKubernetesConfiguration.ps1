@@ -187,9 +187,9 @@ function New-AzKubernetesConfiguration {
 
     process {
         if ($PSBoundParameters.ContainsKey('ClusterScoped')) {
-            $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Cluster
+            $PSBoundParameters.OperatorScope = [System.String]::Cluster
         } else {
-            $PSBoundParameters.OperatorScope = [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorScopeType]::Namespace
+            $PSBoundParameters.OperatorScope = [System.String]::Namespace
         }
 
         if ($ClusterType -eq 'ManagedClusters') {
@@ -199,7 +199,7 @@ function New-AzKubernetesConfiguration {
             $PSBoundParameters.Add('ClusterRp', 'Microsoft.Kubernetes')
         }
 
-        $PSBoundParameters.Add('OperatorType', [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.OperatorType]::Flux)
+        $PSBoundParameters.Add('OperatorType', [System.String]::Flux)
 
         Az.KubernetesConfiguration.internal\New-AzKubernetesConfiguration @PSBoundParameters
     }

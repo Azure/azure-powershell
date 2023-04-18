@@ -41,8 +41,8 @@ function New-AzServiceLinkerServicePrincipalSecretAuthInfoObject {
         $Secret,
         [Parameter(DontShow, HelpMessage="The authentication type.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"servicePrincipalSecret"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AuthType]
+        
+        [System.String]
         $AuthType
     )
 

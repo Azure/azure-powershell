@@ -14,11 +14,11 @@ Create or update the AuthConfig for a Container App.
 
 ```
 New-AzContainerAppAuthConfig -AuthConfigName <String> -ContainerAppName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-CookieExpirationConvention <CookieExpirationConvention>]
- [-CookieExpirationTimeToExpiration <String>] [-ForwardProxyConvention <ForwardProxyConvention>]
+ [-SubscriptionId <String>] [-CookieExpirationConvention <String>]
+ [-CookieExpirationTimeToExpiration <String>] [-ForwardProxyConvention <String>]
  [-ForwardProxyCustomHostHeaderName <String>] [-ForwardProxyCustomProtoHeaderName <String>]
  [-GlobalValidationExcludedPath <String[]>] [-GlobalValidationRedirectToProvider <String>]
- [-GlobalValidationUnauthenticatedClientAction <UnauthenticatedClientActionV2>] [-HttpSettingRequireHttps]
+ [-GlobalValidationUnauthenticatedClientAction <String>] [-HttpSettingRequireHttps]
  [-IdentityProvider <IIdentityProviders>] [-LoginAllowedExternalRedirectUrl <String[]>]
  [-LoginPreserveUrlFragmentsForLogin] [-NonceExpirationInterval <String>] [-NonceValidateNonce]
  [-PlatformEnabled] [-PlatformRuntimeVersion <String>] [-RouteApiPrefix <String>]
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The convention used when determining the session cookie's expiration.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.CookieExpirationConvention
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The convention used to determine the url of the request made.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.ForwardProxyConvention
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -201,7 +201,7 @@ Accept wildcard characters: False
 The action to take when an unauthenticated client attempts to access the app.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.UnauthenticatedClientActionV2
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -444,39 +444,39 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`IDENTITYPROVIDER <IIdentityProviders>`: The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
-  - `[AllowedPrincipalGroup <String[]>]`: The list of the allowed groups.
-  - `[AllowedPrincipalIdentity <String[]>]`: The list of the allowed identities.
+IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
+  - `[AllowedPrincipalGroup <List<String>>]`: The list of the allowed groups.
+  - `[AllowedPrincipalIdentity <List<String>>]`: The list of the allowed identities.
   - `[AppleEnabled <Boolean?>]`: <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  - `[AppleLoginScope <String[]>]`: A list of the scopes that should be requested while authenticating.
+  - `[AppleLoginScope <List<String>>]`: A list of the scopes that should be requested while authenticating.
   - `[AppleRegistrationClientId <String>]`: The Client ID of the app used for login.
   - `[AppleRegistrationClientSecretSettingName <String>]`: The app setting name that contains the client secret.
   - `[AzureActiveDirectoryEnabled <Boolean?>]`: <code>false</code> if the Azure Active Directory provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   - `[AzureActiveDirectoryIsAutoProvisioned <Boolean?>]`: Gets a value indicating whether the Azure AD configuration was auto-provisioned using 1st party tooling.         This is an internal flag primarily intended to support the Azure Management Portal. Users should not         read or write to this property.
   - `[AzureActiveDirectoryRegistrationClientId <String>]`: The Client ID of this relying party application, known as the client_id.         This setting is required for enabling OpenID Connection authentication with Azure Active Directory or         other 3rd party OpenID Connect providers.         More information on OpenID Connect: http://openid.net/specs/openid-connect-core-1_0.html
   - `[AzureActiveDirectoryRegistrationClientSecretSettingName <String>]`: The app setting name that contains the client secret of the relying party application.
-  - `[AzureActiveDirectoryValidationAllowedAudience <String[]>]`: The list of audiences that can make successful authentication/authorization requests.
+  - `[AzureActiveDirectoryValidationAllowedAudience <List<String>>]`: The list of audiences that can make successful authentication/authorization requests.
   - `[AzureStaticWebAppEnabled <Boolean?>]`: <code>false</code> if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   - `[AzureStaticWebAppsRegistrationClientId <String>]`: The Client ID of the app used for login.
   - `[CustomOpenIdConnectProvider <IIdentityProvidersCustomOpenIdConnectProviders>]`: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
     - `[(Any) <ICustomOpenIdConnectProvider>]`: This indicates any property can be added to this object.
-  - `[DefaultAuthorizationPolicyAllowedApplication <String[]>]`: The configuration settings of the Azure Active Directory allowed applications.
+  - `[DefaultAuthorizationPolicyAllowedApplication <List<String>>]`: The configuration settings of the Azure Active Directory allowed applications.
   - `[FacebookEnabled <Boolean?>]`: <code>false</code> if the Facebook provider should not be enabled despite the set registration; otherwise, <code>true</code>.
   - `[FacebookGraphApiVersion <String>]`: The version of the Facebook api to be used while logging in.
-  - `[FacebookLoginScope <String[]>]`: A list of the scopes that should be requested while authenticating.
+  - `[FacebookLoginScope <List<String>>]`: A list of the scopes that should be requested while authenticating.
   - `[GitHubEnabled <Boolean?>]`: <code>false</code> if the GitHub provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  - `[GitHubLoginScope <String[]>]`: A list of the scopes that should be requested while authenticating.
+  - `[GitHubLoginScope <List<String>>]`: A list of the scopes that should be requested while authenticating.
   - `[GitHubRegistrationClientId <String>]`: The Client ID of the app used for login.
   - `[GitHubRegistrationClientSecretSettingName <String>]`: The app setting name that contains the client secret.
   - `[GoogleEnabled <Boolean?>]`: <code>false</code> if the Google provider should not be enabled despite the set registration; otherwise, <code>true</code>.
-  - `[GoogleLoginScope <String[]>]`: A list of the scopes that should be requested while authenticating.
+  - `[GoogleLoginScope <List<String>>]`: A list of the scopes that should be requested while authenticating.
   - `[GoogleRegistrationClientId <String>]`: The Client ID of the app used for login.
   - `[GoogleRegistrationClientSecretSettingName <String>]`: The app setting name that contains the client secret.
-  - `[GoogleValidationAllowedAudience <String[]>]`: The configuration settings of the allowed list of audiences from which to validate the JWT token.
-  - `[JwtClaimCheckAllowedClientApplication <String[]>]`: The list of the allowed client applications.
-  - `[JwtClaimCheckAllowedGroup <String[]>]`: The list of the allowed groups.
+  - `[GoogleValidationAllowedAudience <List<String>>]`: The configuration settings of the allowed list of audiences from which to validate the JWT token.
+  - `[JwtClaimCheckAllowedClientApplication <List<String>>]`: The list of the allowed client applications.
+  - `[JwtClaimCheckAllowedGroup <List<String>>]`: The list of the allowed groups.
   - `[LoginDisableWwwAuthenticate <Boolean?>]`: <code>true</code> if the www-authenticate provider should be omitted from the request; otherwise, <code>false</code>.
-  - `[LoginParameter <String[]>]`: Login parameters to send to the OpenID Connect authorization endpoint when         a user logs in. Each parameter must be in the form "key=value".
+  - `[LoginParameter <List<String>>]`: Login parameters to send to the OpenID Connect authorization endpoint when         a user logs in. Each parameter must be in the form "key=value".
   - `[RegistrationAppId <String>]`: The App ID of the app used for login.
   - `[RegistrationAppSecretSettingName <String>]`: The app setting name that contains the app secret.
   - `[RegistrationClientSecretCertificateIssuer <String>]`: An alternative to the client secret thumbprint, that is the issuer of a certificate used for signing purposes. This property acts as         a replacement for the Client Secret Certificate Thumbprint. It is also optional.

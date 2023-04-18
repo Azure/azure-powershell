@@ -68,7 +68,7 @@ function Update-AzMariaDbServer
 
         [Parameter(HelpMessage='Enable ssl enforcement or not when connect to server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum]
+        [System.String]
         # Enable ssl enforcement or not when connect to server.
         ${SslEnforcement},
 
@@ -80,15 +80,15 @@ function Update-AzMariaDbServer
 
         [Parameter(HelpMessage='Enable Geo-redundant or not for server backup.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]
+        [System.String]
         # Enable Geo-redundant or not for server backup.
         ${GeoRedundantBackup},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
+        
         [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
+        [System.String]
         # Enable Storage Auto Grow.
         ${StorageAutogrow},
 

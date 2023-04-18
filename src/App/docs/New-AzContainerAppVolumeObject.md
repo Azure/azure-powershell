@@ -13,7 +13,7 @@ Create an in-memory object for Volume.
 ## SYNTAX
 
 ```
-New-AzContainerAppVolumeObject [-Name <String>] [-StorageName <String>] [-StorageType <StorageType>]
+New-AzContainerAppVolumeObject [-Name <String>] [-StorageName <String>] [-StorageType <String>]
  [<CommonParameters>]
 ```
 
@@ -73,7 +73,7 @@ Storage type for the volume.
 If not provided, use EmptyDir.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.StorageType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

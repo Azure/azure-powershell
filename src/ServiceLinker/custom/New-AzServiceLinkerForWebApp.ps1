@@ -70,17 +70,17 @@ function New-AzServiceLinkerForWebApp {
         ${AuthInfo},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script = '"none"')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ClientType]
+        [System.String]
         # The application client type
         ${ClientType},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+        [System.String]
         # Optional, indicate whether to apply configurations on source application.
         # If enable, generate configurations and applied to the source application.
         # Default is enable.
@@ -105,16 +105,16 @@ function New-AzServiceLinkerForWebApp {
         ${ConfigurationInfoCustomizedKey},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+        [System.String]
         # Allow Azure services to access the target service if true.
         ${FirewallRuleAzureService},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.AllowType]
+        [System.String]
         # Allow caller client IP to access the target service if true.
         # the property is used when connecting local application to target service.
         ${FirewallRuleCallerClientIP},
@@ -127,9 +127,9 @@ function New-AzServiceLinkerForWebApp {
         ${FirewallRuleIPRange},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.ActionType]
+        [System.String]
         # Optional.
         # Indicates public network solution.
         # If enable, enable public network access of target service with best try.
@@ -163,9 +163,9 @@ function New-AzServiceLinkerForWebApp {
         ${TargetService},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.VNetSolutionType]
+        [System.String]
         # Type of VNet solution.
         ${VNetSolutionType},
 

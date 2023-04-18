@@ -92,9 +92,9 @@ function New-AzCustomLocation {
         ${HostResourceId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Support.ResourceIdentityType]
+        [System.String]
         # The identity type.
         ${IdentityType},
 

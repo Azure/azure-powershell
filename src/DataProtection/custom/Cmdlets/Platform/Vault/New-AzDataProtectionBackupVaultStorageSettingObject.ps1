@@ -6,11 +6,11 @@ function New-AzDataProtectionBackupVaultStorageSettingObject{
 
     param(
         [Parameter(Mandatory, HelpMessage='Storage Type of the vault')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingType]
+        [System.String]
         ${Type},
 
         [Parameter(Mandatory, HelpMessage='DataStore Type of the vault')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
+        [System.String]
         ${DataStoreType}
     )
 

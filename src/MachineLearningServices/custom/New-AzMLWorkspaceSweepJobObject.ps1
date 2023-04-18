@@ -31,8 +31,8 @@ function New-AzMLWorkspaceSweepJobObject {
     Param(
 
         [Parameter(HelpMessage="[Required] Specifies the type of distribution framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType]
+        
+        [System.String]
         $DistributionType,
         [Parameter(HelpMessage="Number of intervals by which to delay the first evaluation.")]
         [int]
@@ -41,8 +41,8 @@ function New-AzMLWorkspaceSweepJobObject {
         [int]
         $EarlyTerminationEvaluationInterval,
         [Parameter(HelpMessage="[Required] Name of policy configuration.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EarlyTerminationPolicyType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EarlyTerminationPolicyType]
+        
+        [System.String]
         $EarlyTerminationPolicyType,
         [Parameter(HelpMessage="Mapping of input data bindings used in the job.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.ISweepJobInputs]
@@ -60,8 +60,8 @@ function New-AzMLWorkspaceSweepJobObject {
         [System.TimeSpan]
         $LimitTrialTimeout,
         [Parameter(Mandatory, HelpMessage="[Required] Defines supported metric goals for hyperparameter tuning.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.Goal])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.Goal]
+        
+        [System.String]
         $ObjectiveGoal,
         [Parameter(Mandatory, HelpMessage="[Required] Name of the metric to optimize.")]
         [string]
@@ -79,8 +79,8 @@ function New-AzMLWorkspaceSweepJobObject {
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IResourceConfigurationProperties]
         $ResourceProperty,
         [Parameter(Mandatory, HelpMessage="[Required] The algorithm used for generating hyperparameter values, along with configuration properties.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SamplingAlgorithmType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SamplingAlgorithmType]
+        
+        [System.String]
         $SamplingAlgorithmType,
         [Parameter(Mandatory, HelpMessage="[Required] A dictionary containing each parameter and its distribution. The dictionary key is the name of the parameter.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.IAny]
@@ -107,8 +107,8 @@ function New-AzMLWorkspaceSweepJobObject {
         [string]
         $ExperimentName,
         [Parameter(HelpMessage="[Required] Specifies the type of identity framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType]
+        
+        [System.String]
         $IdentityType,
         [Parameter(HelpMessage="Is the asset archived?.")]
         [bool]

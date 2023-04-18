@@ -11,7 +11,7 @@
 
         [Parameter(ParameterSetName='updateTag', Mandatory, HelpMessage='Name of the Schedule tag.')]
         [Parameter(ParameterSetName='RemoveTag', Mandatory, HelpMessage='Name of the Schedule tag.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.TagName]
+        [System.String]
         ${Name},
 
         [Parameter(ParameterSetName='RemoveTag', Mandatory, HelpMessage='Specify whether to remove the tag from the given policy object.')]

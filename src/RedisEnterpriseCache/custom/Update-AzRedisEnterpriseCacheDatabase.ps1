@@ -91,17 +91,17 @@ function Update-AzRedisEnterpriseCacheDatabase {
         ${InputObject},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
+        [System.String]
         # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols.
         # Allowed values: Encrypted, Plaintext
         ${ClientProtocol},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
+        [System.String]
         # Redis eviction policy.
         # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
@@ -115,9 +115,9 @@ function Update-AzRedisEnterpriseCacheDatabase {
         ${AofPersistenceEnabled},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which data is written to disk if AOF persistence is enabled.
         # Allowed values: 1s, always
         ${AofPersistenceFrequency},
@@ -131,9 +131,9 @@ function Update-AzRedisEnterpriseCacheDatabase {
         ${RdbPersistenceEnabled},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
         # Allowed values: 1h, 6h, 12h
         ${RdbPersistenceFrequency},

@@ -38,8 +38,8 @@ function New-AzServiceLinkerKeyVaultSecretReferenceSecretInfoObject {
         [string]
         $Version,
         [Parameter(Mandatory, HelpMessage="The secret type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.SecretType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.SecretType]
+        
+        [System.String]
         $SecretType
     )
 

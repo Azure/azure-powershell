@@ -97,9 +97,9 @@ param(
     ${EncryptionKeyName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.KeySource]
+    [System.String]
     # The encryption keySource (provider).
     # Possible values (case-insensitive): Default, Microsoft.Keyvault
     ${EncryptionKeySource},
@@ -153,9 +153,9 @@ param(
     ${PublicIPName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.PublicNetworkAccess]
+    [System.String]
     # The network access type for accessing workspace.
     # Set value to disabled to access workspace only via private link.
     ${PublicNetworkAccess},
@@ -173,9 +173,9 @@ param(
     ${RequireInfrastructureEncryption},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Support.RequiredNsgRules]
+    [System.String]
     # Gets or sets a value indicating whether data plane (clusters) to control plane communication happen over private endpoint.
     # Supported values are 'AllRules' and 'NoAzureDatabricksRules'.
     # 'NoAzureServiceRules' value is for internal use only.

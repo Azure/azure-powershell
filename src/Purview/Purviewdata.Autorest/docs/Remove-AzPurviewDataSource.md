@@ -12,16 +12,9 @@ Deletes a data source
 
 ## SYNTAX
 
-### Delete (Default)
 ```
 Remove-AzPurviewDataSource -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzPurviewDataSource -Endpoint <String> -InputObject <IPurviewdataIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,28 +79,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
-Parameter Sets: DeleteViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 .
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: (All)
 Aliases: DataSourceName
 
 Required: True
@@ -168,8 +145,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IDataSource
@@ -177,23 +152,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  - `[ClassificationRuleName <String>]`: 
-  - `[ClassificationRuleVersion <Int32?>]`: 
-  - `[DataSourceName <String>]`: 
-  - `[DataSourceType <DataSourceType?>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[KeyVaultName <String>]`: 
-  - `[RunId <String>]`: 
-  - `[ScanName <String>]`: 
-  - `[ScanRulesetName <String>]`: 
-  - `[Version <Int32?>]`: 
 
 ## RELATED LINKS
 

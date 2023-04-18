@@ -57,15 +57,15 @@ function New-AzMySqlServer {
         ${Sku},
 
         [Parameter(HelpMessage = 'Enable ssl enforcement or not when connect to server.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]
+        [System.String]
         ${SslEnforcement},
 
         [Parameter(HelpMessage = 'Set the minimal TLS version for connections to server when SSL is enabled. Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum]
+        [System.String]
         # Enforce a minimal Tls version for the server.
         ${MinimalTlsVersion},
 
@@ -75,16 +75,16 @@ function New-AzMySqlServer {
         ${BackupRetentionDay},
 
         [Parameter(HelpMessage = 'Enable Geo-redundant or not for server backup.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.GeoRedundantBackup]
+        [System.String]
         ${GeoRedundantBackup},
 
         [Parameter(HelpMessage = 'Enable Storage Auto Grow.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
+        
         [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
+        [System.String]
         ${StorageAutogrow},
 
         [Parameter(HelpMessage = 'Max storage allowed for a server.')]
@@ -99,9 +99,9 @@ function New-AzMySqlServer {
         ${Tag},
 
         [Parameter(HelpMessage = 'Server version.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion]
+        [System.String]
         ${Version},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
@@ -181,7 +181,7 @@ function New-AzMySqlServer {
           }
           else
           {
-              $Parameter.SslEnforcement = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]::Enable
+              $Parameter.SslEnforcement = [System.String]::Enable
           }
 
           if ($PSBoundParameters.ContainsKey('MinimalTlsVersion')) {
@@ -219,7 +219,7 @@ function New-AzMySqlServer {
               $null = $PSBoundParameters.Remove('Version')
           }
 
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Default
+          $Parameter.CreateMode = [System.String]::Default
 
           $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUserName']
           $null = $PSBoundParameters.Remove('AdministratorUserName')

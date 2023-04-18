@@ -101,7 +101,7 @@ param(
     ${Endpoint},
 
     [Parameter(ParameterSetName='RetrieveExpanded', Mandatory)]
-    [System.Management.Automation.ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.UdfType])]
+    [System.Management.Automation.ArgumentCompleter([System.String]
     [Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Category('Path')]
     [System.String]
     # The name of the resource group.

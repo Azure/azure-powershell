@@ -255,8 +255,8 @@ To create the parameters described below, construct a hash table containing the 
 
 TEAMPROPERTY <ITeamProperties>: Describes team properties
   - `TeamName <String>`: The name of the team
-  - `[GroupId <String[]>]`: List of group IDs to add their members to the team
-  - `[MemberId <String[]>]`: List of member IDs to add to the team
+  - `[GroupId <List<String>>]`: List of group IDs to add their members to the team
+  - `[MemberId <List<String>>]`: List of member IDs to add to the team
   - `[TeamDescription <String>]`: The description of the team
 
 ## RELATED LINKS

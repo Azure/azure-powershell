@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazurefileservicedatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for AzureFileServiceDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureFileServiceDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Endpoint <String>] [-Location <String>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-SubscriptionId <String>] [<CommonParameters>]
+New-AzPurviewAzureFileServiceDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Endpoint <String>] [-Location <String>] [-ResourceGroup <String>] [-ResourceName <String>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,21 +88,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

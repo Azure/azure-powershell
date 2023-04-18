@@ -34,8 +34,8 @@ function New-AzEdgeOrderOrderItemDetailsObject {
         [string[]]
         $NotificationEmailList,
         [Parameter(Mandatory, HelpMessage="Order item type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.OrderItemType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Support.OrderItemType]
+        
+        [System.String]
         $OrderItemType,
         [Parameter(HelpMessage="Customer notification Preferences.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.IPreferences]

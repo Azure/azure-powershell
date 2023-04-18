@@ -31,19 +31,19 @@ function New-AzFrontDoorCdnRuleSslProtocolConditionObject {
     Param(
 
         [Parameter(HelpMessage="The match value for the condition of the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SslProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SslProtocol[]]
+        
+        [System.String[]]
         $ParameterMatchValue,
         [Parameter(HelpMessage="Describes if this is negate condition or not.")]
         [bool]
         $ParameterNegateCondition,
         [Parameter(HelpMessage="List of transforms.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]]
+        
+        [System.String[]]
         $ParameterTransform,
         [Parameter(Mandatory, HelpMessage="The name of the condition for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable]
+        
+        [System.String]
         $Name
     )
 

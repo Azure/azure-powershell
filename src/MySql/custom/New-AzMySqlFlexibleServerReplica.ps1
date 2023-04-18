@@ -112,7 +112,7 @@ param(
 
 process {
     try {
-        $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Replica
+        $PSBoundParameters.CreateMode = [System.String]::Replica
 
         $server = $PSBoundParameters['Master']
         $PSBoundParameters.SourceServerResourceId = $server.Id

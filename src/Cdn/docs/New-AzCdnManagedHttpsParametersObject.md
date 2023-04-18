@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnManagedHttpsParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnmanagedhttpsparametersobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for CdnManagedHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnManagedHttpsParametersObject -CertificateSource <CertificateSource>
- -CertificateSourceParameterCertificateType <CertificateType> -ProtocolType <ProtocolType>
- [-MinimumTlsVersion <MinimumTlsVersion>] [<CommonParameters>]
+New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType <String>
+ -ProtocolType <String> [-MinimumTlsVersion <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,26 +37,11 @@ Create an in-memory object for AzureCDN CdnManagedHttpsParameters
 
 ## PARAMETERS
 
-### -CertificateSource
-Defines the source of the SSL certificate.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateSource
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CertificateSourceParameterCertificateType
 Type of certificate used.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.CertificateType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +56,7 @@ Accept wildcard characters: False
 TLS protocol version that will be used for Https.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MinimumTlsVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +71,7 @@ Accept wildcard characters: False
 Defines the TLS extension protocol that is used for secure delivery.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProtocolType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

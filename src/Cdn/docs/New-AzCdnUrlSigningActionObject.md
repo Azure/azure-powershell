@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnurlsigningactionobject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,7 @@ Create an in-memory object for UrlSigningAction.
 ## SYNTAX
 
 ```
-New-AzCdnUrlSigningActionObject -Name <DeliveryRuleAction> [-ParameterAlgorithm <Algorithm>]
+New-AzCdnUrlSigningActionObject [-ParameterAlgorithm <String>]
  [-ParameterNameOverride <IUrlSigningParamIdentifier[]>] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Create an in-memory object for UrlSigningAction.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -39,33 +39,18 @@ Create an in-memory object for UrlSigningAction.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
 
 ## PARAMETERS
 
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ParameterAlgorithm
 Algorithm to use for URL signing.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Algorithm
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,8 +96,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>`: Defines which query string parameters in the url to be considered for expires, key id etc. .
-  - `ParamIndicator <ParamIndicator>`: Indicates the purpose of the parameter
+PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>: Defines which query string parameters in the url to be considered for expires, key id etc. .
+  - `ParamIndicator <String>`: Indicates the purpose of the parameter
   - `ParamName <String>`: Parameter name
 
 ## RELATED LINKS

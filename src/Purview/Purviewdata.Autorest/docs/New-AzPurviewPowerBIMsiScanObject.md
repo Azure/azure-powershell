@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewpowerbimsiscanobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,9 @@ Create an in-memory object for PowerBIMsiScan.
 ## SYNTAX
 
 ```
-New-AzPurviewPowerBIMsiScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-IncludePersonalWorkspace <Boolean>]
- [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewPowerBIMsiScanObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ConnectedViaReferenceName <String>] [-IncludePersonalWorkspace <Boolean>] [-ScanRulesetName <String>]
+ [-ScanRulesetType <String>] [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,21 +109,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScanRulesetName
 
 
@@ -143,7 +128,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

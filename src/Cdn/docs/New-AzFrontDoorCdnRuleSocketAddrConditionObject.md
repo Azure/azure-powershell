@@ -13,8 +13,8 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name <MatchVariable> -ParameterOperator <SocketAddrOperator>
- [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
+New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name <String> -ParameterOperator <String>
+ [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ SocketAddr
 The name of the condition for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SocketAddrOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

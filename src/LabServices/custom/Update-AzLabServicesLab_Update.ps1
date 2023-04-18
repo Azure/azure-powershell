@@ -52,9 +52,9 @@ param(
     ${SubscriptionId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Flag to pre-install dedicated GPU drivers.
     ${AdditionalCapabilityInstallGpuDriver},
 
@@ -90,51 +90,51 @@ param(
     ${AutoShutdownProfileNoConnectDelay},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether shutdown on disconnect is enabled
     ${AutoShutdownProfileShutdownOnDisconnect},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode]
+    [System.String]
     # Whether a VM will get shutdown when it has idled for a period of time.
     ${AutoShutdownProfileShutdownOnIdle},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether a VM will get shutdown when it hasn't been connected to after a period of time.
     ${AutoShutdownProfileShutdownWhenNotConnected},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over RDP.
     ${ConnectionProfileClientRdpAccess},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Client Access over SSH.
     ${ConnectionProfileClientSshAccess},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over RDP.
     ${ConnectionProfileWebRdpAccess},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     # The enabled access level for Web Access over SSH.
     ${ConnectionProfileWebSshAccess},
 
@@ -227,9 +227,9 @@ param(
     ${RosterProfileLtiRosterEndpoint},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Whether any user or only specified users can register to a lab.
     ${SecurityProfileOpenAccess},
 
@@ -262,9 +262,9 @@ param(
     ${SkuSize},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.SkuTier]
+    [System.String]
     # This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
     ${SkuTier},
 
@@ -282,9 +282,9 @@ param(
     ${Title},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.CreateOption]
+    [System.String]
     # Indicates what lab virtual machines are created from.
     ${VirtualMachineProfileCreateOption},
 
@@ -296,9 +296,9 @@ param(
     ${VirtualMachineProfileUsageQuota},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Enabling this option will use the same password for all user VMs.
     ${VirtualMachineProfileUseSharedPassword},
 

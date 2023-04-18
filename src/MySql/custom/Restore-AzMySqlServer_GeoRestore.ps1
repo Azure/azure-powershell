@@ -122,7 +122,7 @@ function Restore-AzMySqlServer_GeoRestore {
           $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.ServerForCreate]::new()
 
           $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.ServerPropertiesForGeoRestore]::new()
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::GeoRestore
+          $Parameter.CreateMode = [System.String]::GeoRestore
           $null = $PSBoundParameters.Remove('UseGeoRestore')
 
           $server = $PSBoundParameters['InputObject']

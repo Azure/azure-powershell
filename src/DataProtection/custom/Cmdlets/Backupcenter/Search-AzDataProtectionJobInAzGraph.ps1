@@ -26,15 +26,15 @@
         ${EndTime},
 
         [Parameter(Mandatory=$false, HelpMessage='Operation filter for the backup job')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]]
+        [System.String[]]
         ${Operation},
 
         [Parameter(Mandatory=$false, HelpMessage='Status filter for the backup job')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobStatus[]]
+        [System.String[]]
         ${Status},
 
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+        [System.String]
         ${DatasourceType}
     )
 

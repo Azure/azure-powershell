@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResourceReferenceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnresourcereferenceobject
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Create an in-memory object for ResourceReference.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -38,7 +38,7 @@ Create an in-memory object for ResourceReference.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}

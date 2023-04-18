@@ -95,16 +95,16 @@ function New-AzDigitalTwinsEndpoint {
         [Parameter(ParameterSetName='EventHub', Mandatory)]
         [Parameter(ParameterSetName='EventGrid', Mandatory)]
         [Parameter(ParameterSetName='ServiceBus', Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.EndpointType]
+        [System.String]
         # The type of Digital Twins endpoint
         ${EndpointType},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.AuthenticationType]
+        [System.String]
         # Specifies the authentication type being used for connecting to the endpoint.
         # Defaults to 'KeyBased'.
         # If 'KeyBased' is selected, a connection string must be specified (at least the primary connection string).

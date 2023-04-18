@@ -55,19 +55,19 @@ function New-AzMobileNetworkPccRuleConfigurationObject {
         [string]
         $RuleQoPolicyMaximumBitRateUplink,
         [Parameter(HelpMessage="QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionCapability]
+        
+        [System.String]
         $RuleQoPolicyPreemptionCapability,
         [Parameter(HelpMessage="QoS Flow preemption vulnerability. The preemption vulnerability of a QoS Flow controls whether it can be preempted by a QoS Flow with a higher priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability]
+        
+        [System.String]
         $RuleQoPolicyPreemptionVulnerability,
         [Parameter(Mandatory, HelpMessage="The set of data flow templates to use for this data flow policy rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IServiceDataFlowTemplate[]]
         $ServiceDataFlowTemplate,
         [Parameter(HelpMessage="Determines whether flows that match this data flow policy rule are permitted.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.TrafficControlPermission]
+        
+        [System.String]
         $TrafficControl
     )
 

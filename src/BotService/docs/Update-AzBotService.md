@@ -19,11 +19,10 @@ Update-AzBotService -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-DeveloperAppInsightKey <String>] [-DeveloperAppInsightsApiKey <String>]
  [-DeveloperAppInsightsApplicationId <String>] [-DisableLocalAuth] [-DisplayName <String>]
  [-Endpoint <String>] [-Etag <String>] [-IconUrl <String>] [-IsCmekEnabled] [-IsStreamingSupported]
- [-Kind <Kind>] [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>] [-ManifestUrl <String>]
- [-MsaAppId <String>] [-MsaAppMsiResourceId <String>] [-MsaAppTenantId <String>] [-MsaAppType <MsaAppType>]
- [-OpenWithHint <String>] [-Parameter <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-PublishingCredentials <String>] [-SchemaTransformationVersion <String>] [-SkuName <SkuName>]
- [-StorageResourceId <String>] [-Tag <Hashtable>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-Kind <String>] [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>] [-ManifestUrl <String>]
+ [-MsaAppMsiResourceId <String>] [-MsaAppType <String>] [-OpenWithHint <String>] [-Parameter <Hashtable>]
+ [-PublicNetworkAccess <String>] [-PublishingCredentials <String>] [-SchemaTransformationVersion <String>]
+ [-SkuName <String>] [-StorageResourceId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,12 +32,11 @@ Update-AzBotService -InputObject <IBotServiceIdentity> [-AllSetting <Hashtable>]
  [-CmekKeyVaultUrl <String>] [-Description <String>] [-DeveloperAppInsightKey <String>]
  [-DeveloperAppInsightsApiKey <String>] [-DeveloperAppInsightsApplicationId <String>] [-DisableLocalAuth]
  [-DisplayName <String>] [-Endpoint <String>] [-Etag <String>] [-IconUrl <String>] [-IsCmekEnabled]
- [-IsStreamingSupported] [-Kind <Kind>] [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>]
- [-ManifestUrl <String>] [-MsaAppId <String>] [-MsaAppMsiResourceId <String>] [-MsaAppTenantId <String>]
- [-MsaAppType <MsaAppType>] [-OpenWithHint <String>] [-Parameter <Hashtable>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-PublishingCredentials <String>]
- [-SchemaTransformationVersion <String>] [-SkuName <SkuName>] [-StorageResourceId <String>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IsStreamingSupported] [-Kind <String>] [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>]
+ [-ManifestUrl <String>] [-MsaAppMsiResourceId <String>] [-MsaAppType <String>] [-OpenWithHint <String>]
+ [-Parameter <Hashtable>] [-PublicNetworkAccess <String>] [-PublishingCredentials <String>]
+ [-SchemaTransformationVersion <String>] [-SkuName <String>] [-StorageResourceId <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -322,7 +320,7 @@ Required.
 Gets or sets the Kind of the resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.Kind
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -393,38 +391,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MsaAppId
-Microsoft App Id for the bot
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -MsaAppMsiResourceId
 Microsoft App Managed Identity Resource Id for the bot
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MsaAppTenantId
-Microsoft App Tenant Id for the bot
 
 ```yaml
 Type: System.String
@@ -442,7 +410,7 @@ Accept wildcard characters: False
 Microsoft App Type for the bot
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -503,7 +471,7 @@ Accept wildcard characters: False
 Whether the bot is in an isolated network
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -563,7 +531,7 @@ Accept wildcard characters: False
 The sku name
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -609,21 +577,6 @@ Contains resource tags defined as key/value pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TenantId
-The Tenant Id for the bot
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -685,8 +638,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IBotServiceIdentity>`: Identity Parameter
-  - `[ChannelName <ChannelName?>]`: The name of the Channel resource.
+INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
+  - `[ChannelName <String>]`: The name of the Channel resource.
   - `[ConnectionName <String>]`: The name of the Bot Service Connection Setting resource.
   - `[Id <String>]`: Resource identity path
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource

@@ -160,9 +160,9 @@ function New-AzHealthcareFhirService {
         ${ExportStorageAccountName},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType]
+        [System.String]
         # Type of identity being specified, currently SystemAssigned and None are allowed.
         ${IdentityType},
 
@@ -176,9 +176,9 @@ function New-AzHealthcareFhirService {
         ${IdentityUserAssignedIdentity},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirServiceKind]
+        [System.String]
         # The kind of the service.
         ${Kind},
 
@@ -189,16 +189,16 @@ function New-AzHealthcareFhirService {
         ${Location},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess]
+        [System.String]
         # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
         ${PublicNetworkAccess},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.FhirResourceVersionPolicy]
+        [System.String]
         # The default value for tracking history across all resources.
         ${ResourceVersionPolicyConfigurationDefault},
 

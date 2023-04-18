@@ -18,7 +18,7 @@ function Initialize-AzDataProtectionBackupInstance {
         ${DatasourceId},
 
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+        [System.String]
         ${DatasourceType},
 
         [Parameter(Mandatory, HelpMessage='Location of the Datasource to be protected.')]
@@ -31,7 +31,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
         [Parameter(Mandatory=$false, HelpMessage='Secret store type for secret store authentication of data source. This parameter is only supported for AzureDatabaseForPostgreSQL currently.')]
         [ValidateSet("AzureKeyVault")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
+        [System.String]
         ${SecretStoreType},
 
         [Parameter(Mandatory=$false, HelpMessage='Sanpshot Resource Group')]

@@ -37,8 +37,8 @@ function New-AzContainerAppVolumeObject {
         [string]
         $StorageName,
         [Parameter(HelpMessage="Storage type for the volume. If not provided, use EmptyDir.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.StorageType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Support.StorageType]
+        
+        [System.String]
         $StorageType
     )
 

@@ -34,8 +34,8 @@ function New-AzOrbitalContactProfileLinkObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.IContactProfileLinkChannel[]]
         $Channel,
         [Parameter(Mandatory, HelpMessage="Direction (uplink or downlink).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction]
+        
+        [System.String]
         $Direction,
         [Parameter(HelpMessage="Effective Isotropic Radiated Power (EIRP) in dBW.")]
         [float]
@@ -47,8 +47,8 @@ function New-AzOrbitalContactProfileLinkObject {
         [string]
         $Name,
         [Parameter(Mandatory, HelpMessage="polarization. eg (RHCP, LHCP).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization]
+        
+        [System.String]
         $Polarization
     )
 

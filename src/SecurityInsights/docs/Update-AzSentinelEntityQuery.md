@@ -16,7 +16,7 @@ Updates the entity query.
 ```
 Update-AzSentinelEntityQuery -EntityQueryId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-Content <String>] [-Description <String>] [-Disabled] [-Enabled]
- [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-InputEntityType <EntityType>]
+ [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-InputEntityType <String>]
  [-QueryDefinitionQuery <String>] [-RequiredInputFieldsSet <String[]>] [-TemplateName <String>]
  [-Title <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Update-AzSentinelEntityQuery -EntityQueryId <String> -ResourceGroupName <String>
 ```
 Update-AzSentinelEntityQuery -InputObject <ISecurityInsightsIdentity> [-Content <String>]
  [-Description <String>] [-Disabled] [-Enabled]
- [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-InputEntityType <EntityType>]
+ [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-InputEntityType <String>]
  [-QueryDefinitionQuery <String>] [-RequiredInputFieldsSet <String[]>] [-TemplateName <String>]
  [-Title <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -369,7 +369,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ENTITIESFILTER <ActivityEntityQueriesPropertiesEntitiesFilter>: 
-  - `[(Any) <String[]>]`: This indicates any property can be added to this object.
+  - `[(Any) <List<String>>]`: This indicates any property can be added to this object.
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID

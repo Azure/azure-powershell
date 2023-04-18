@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Attestation.Models
             foreach (var certificate in certificateCollection)
             {
                 var jwk = new JsonWebKey() { Kty = "RSA" };
-                jwk.X5C = new List<string>() { System.Convert.ToBase64String(certificate.Export(X509ContentType.Cert)) }.ToArray();
+                jwk.X5C = new List<string>() { System.Convert.ToBase64String(certificate.Export(X509ContentType.Cert)) };
                 jsonWebKeys.Add(jwk);
             }
             return jsonWebKeys.ToArray();

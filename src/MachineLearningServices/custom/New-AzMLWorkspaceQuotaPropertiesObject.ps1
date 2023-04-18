@@ -40,8 +40,8 @@ function New-AzMLWorkspaceQuotaPropertiesObject {
         [string]
         $Type,
         [Parameter(HelpMessage="An enum describing the unit of quota measurement.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.QuotaUnit])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.QuotaUnit]
+        
+        [System.String]
         $Unit
     )
 

@@ -62,9 +62,9 @@ function Update-AzMySqlFlexibleServer {
         ${Sku},
 
         [Parameter(HelpMessage='The tier of the particular SKU. Accepted values: Burstable, GeneralPurpose, Memory Optimized. Default: Burstable.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier]
+        [System.String]
         ${SkuTier},
 
         [Parameter(HelpMessage = 'Enable or disable high availability feature.  Default value is Disabled. Default: Disabled.')]
@@ -79,10 +79,10 @@ function Update-AzMySqlFlexibleServer {
         ${BackupRetentionDay},
 
         [Parameter(HelpMessage='Enable or disable Storage Auto Grow. The default value is Disabled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
+        
         [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
+        [System.String]
         ${StorageAutogrow},
 
         [Parameter(HelpMessage='Max storage allowed for a server.')]
@@ -171,10 +171,10 @@ function Update-AzMySqlFlexibleServer {
 
             if ($PSBoundParameters.ContainsKey('StorageAutogrow')){
                 if ($PSBoundParameters['StorageAutogrow'] -eq 'Enabled') {
-                    $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Enabled
+                    $PSBoundParameters.StorageAutoGrow = [System.String]::Enabled
                 }
                 else {
-                    $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Disabled
+                    $PSBoundParameters.StorageAutoGrow = [System.String]::Disabled
                 }
                 $null = $PSBoundParameters.Remove('StorageAutogrow')
             }
@@ -185,13 +185,13 @@ function Update-AzMySqlFlexibleServer {
 
             if ($PSBoundParameters.ContainsKey('HighAvailability')){
                 if($PSBoundParameters['HighAvailability'].ToLower() -eq 'disabled'){
-                    $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::Disabled
+                    $PSBoundParameter.HighAvailabilityMode = [System.String]::Disabled
                 }
                 elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'zoneredundant') {
-                    $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::ZoneRedundant
+                    $PSBoundParameter.HighAvailabilityMode = [System.String]::ZoneRedundant
                 }
                 elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'samezone') {
-                    $PSBoundParameter.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::SameZone
+                    $PSBoundParameter.HighAvailabilityMode = [System.String]::SameZone
                 }
                 $null = $PSBoundParameters.Remove('HighAvailability')
             }

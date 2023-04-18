@@ -13,7 +13,7 @@ function Edit-AzDataProtectionPolicyRetentionRuleClientObject {
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Retention Rule Name')]
         [Parameter(ParameterSetName='RemoveRetention',Mandatory, HelpMessage='Retention Rule Name')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RetentionRuleName]
+        [System.String]
         ${Name},
 
         [Parameter(ParameterSetName='AddRetention',Mandatory, HelpMessage='Specifies if retention rule is default retention rule.')]

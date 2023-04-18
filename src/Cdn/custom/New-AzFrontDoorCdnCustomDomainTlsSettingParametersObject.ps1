@@ -31,12 +31,12 @@ function New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject {
     Param(
 
         [Parameter(Mandatory, HelpMessage="Defines the source of the SSL certificate.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdCertificateType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdCertificateType]
+        
+        [System.String]
         $CertificateType,
         [Parameter(HelpMessage="TLS protocol version that will be used for Https.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdMinimumTlsVersion]
+        
+        [System.String]
         $MinimumTlsVersion,
         [Parameter(HelpMessage="Resource reference to the secret. ie. subs/rg/profile/secret.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.IResourceReference]

@@ -123,9 +123,9 @@ Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -Workspa
 ```
 Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  -APIRootURL <String> -ThreatIntelligenceTaxii [-SubscriptionId <String>] [-CollectionId <String>]
- [-FriendlyName <String>] [-Password <String>] [-PollingFrequency <PollingFrequency>]
- [-TaxiiLookbackPeriod <String>] [-TenantId <String>] [-UserName <String>] [-WorkspaceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FriendlyName <String>] [-Password <String>] [-PollingFrequency <String>] [-TaxiiLookbackPeriod <String>]
+ [-TenantId <String>] [-UserName <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAADAATP
@@ -237,7 +237,7 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -ThreatI
 ### UpdateViaIdentityThreatIntelligenceTaxii
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -ThreatIntelligenceTaxii
- [-CollectionId <String>] [-FriendlyName <String>] [-Password <String>] [-PollingFrequency <PollingFrequency>]
+ [-CollectionId <String>] [-FriendlyName <String>] [-Password <String>] [-PollingFrequency <String>]
  [-TaxiiLookbackPeriod <String>] [-TenantId <String>] [-UserName <String>] [-WorkspaceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -853,7 +853,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency
+Type: System.String
 Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
 
@@ -1280,17 +1280,17 @@ PERMISSIONCUSTOM <PermissionsCustomsItem[]>:
 
 PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: 
   - `[PermissionsDisplayText <String>]`: Permission description text
-  - `[Provider <ProviderName?>]`: Provider name
+  - `[Provider <String>]`: Provider name
   - `[ProviderDisplayName <String>]`: Permission provider display name
   - `[RequiredPermissionAction <Boolean?>]`: action permission
   - `[RequiredPermissionDelete <Boolean?>]`: delete permission
   - `[RequiredPermissionRead <Boolean?>]`: read permission
   - `[RequiredPermissionWrite <Boolean?>]`: write permission
-  - `[Scope <PermissionProviderScope?>]`: Permission provider scope
+  - `[Scope <String>]`: Permission provider scope
 
 UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
-  - `[Type <ConnectivityType?>]`: type of connectivity
-  - `[Value <String[]>]`: Queries for checking connectivity
+  - `[Type <String>]`: type of connectivity
+  - `[Value <List<String>>]`: Queries for checking connectivity
 
 UICONFIGDATATYPE <LastDataReceivedDataType[]>: 
   - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
@@ -1303,9 +1303,7 @@ UICONFIGGRAPHQUERY <GraphQueries[]>:
 
 UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
   - `[Description <String>]`: Instruction step description
-  - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
-    - `Type <SettingType>`: The kind of the setting
-    - `[Parameter <IAny>]`: The parameters for the setting
+  - `[Instruction <List<IInstructionStepsInstructionsItem>>]`: Instruction step details
   - `[Title <String>]`: Instruction step title
 
 UICONFIGSAMPLEQUERY <SampleQueries[]>: 

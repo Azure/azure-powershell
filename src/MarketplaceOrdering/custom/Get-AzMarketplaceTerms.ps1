@@ -70,8 +70,8 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Support.OfferType]
+    
+    [System.String]
     # Publisher identifier string of image being deployed.
     ${OfferType},
 

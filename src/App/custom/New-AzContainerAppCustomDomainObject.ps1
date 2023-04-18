@@ -31,8 +31,8 @@ function New-AzContainerAppCustomDomainObject {
     Param(
 
         [Parameter(HelpMessage="Custom Domain binding type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.App.Support.BindingType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Support.BindingType]
+        
+        [System.String]
         $BindingType,
         [Parameter(Mandatory, HelpMessage="Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.")]
         [string]

@@ -13,7 +13,7 @@ Create an in-memory object for UrlSigningKeyParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId <String> -Type <SecretType>
+New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId <String> -Type <String>
  [-SecretSourceId <String>] [-SecretVersion <String>] [<CommonParameters>]
 ```
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The type of the secret resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

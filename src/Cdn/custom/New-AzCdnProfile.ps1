@@ -71,9 +71,9 @@ function New-AzCdnProfile {
         ${OriginResponseTimeoutSecond},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName]
+        [System.String]
         # Name of the pricing tier.
         ${SkuName},
     

@@ -43,16 +43,16 @@ function New-AzFrontDoorCdnRuleUrlRedirectActionObject {
         [string]
         $ParameterCustomQueryString,
         [Parameter(HelpMessage="Protocol to use for the redirect. The default value is MatchRequest.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DestinationProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DestinationProtocol]
+        
+        [System.String]
         $ParameterDestinationProtocol,
         [Parameter(Mandatory, HelpMessage="The redirect type the rule will use when redirecting traffic.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RedirectType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RedirectType]
+        
+        [System.String]
         $ParameterRedirectType,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        
+        [System.String]
         $Name
     )
 

@@ -201,12 +201,6 @@ To create the parameters described below, construct a hash table containing the 
 
 SENTINELONBOARDINGSTATEPARAMETER <ISentinelOnboardingState>: Sentinel onboarding state
   - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
   - `[CustomerManagedKey <Boolean?>]`: Flag that indicates the status of the CMK setting
 
 ## RELATED LINKS

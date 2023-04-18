@@ -14,20 +14,20 @@ Creates or updates the incident.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Classification <IncidentClassification>] [-ClassificationComment <String>]
- [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
- [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
- [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
- [-OwnerUserPrincipalName <String>] [-ProviderIncidentId <String>] [-ProviderName <String>]
- [-Severity <IncidentSeverity>] [-Status <IncidentStatus>] [-Title <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Classification <String>] [-ClassificationComment <String>]
+ [-ClassificationReason <String>] [-Description <String>] [-FirstActivityTimeUtc <DateTime>]
+ [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>] [-OwnerAssignedTo <String>]
+ [-OwnerEmail <String>] [-OwnerObjectId <String>] [-OwnerUserPrincipalName <String>]
+ [-ProviderIncidentId <String>] [-ProviderName <String>] [-Severity <String>] [-Status <String>]
+ [-Title <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -Incident <IIncident>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,7 @@ This command creates an Incident.
 The reason the incident was closed
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassification
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The classification reason the incident was closed with
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentClassificationReason
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -141,6 +141,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Incident ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: IncidentId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -302,7 +317,7 @@ Accept wildcard characters: False
 The severity of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -317,7 +332,7 @@ Accept wildcard characters: False
 The status of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentStatus
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -426,18 +441,12 @@ To create the parameters described below, construct a hash table containing the 
 
 INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
   - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Classification <IncidentClassification?>]`: The reason the incident was closed
+  - `[Classification <String>]`: The reason the incident was closed
   - `[ClassificationComment <String>]`: Describes the reason the incident was closed
-  - `[ClassificationReason <IncidentClassificationReason?>]`: The classification reason the incident was closed with
+  - `[ClassificationReason <String>]`: The classification reason the incident was closed with
   - `[Description <String>]`: The description of the incident
   - `[FirstActivityTimeUtc <DateTime?>]`: The time of the first activity in the incident
-  - `[Label <IIncidentLabel[]>]`: List of labels relevant to this incident
+  - `[Label <List<IIncidentLabel>>]`: List of labels relevant to this incident
     - `LabelName <String>`: The name of the label
   - `[LastActivityTimeUtc <DateTime?>]`: The time of the last activity in the incident
   - `[OwnerAssignedTo <String>]`: The name of the user the incident is assigned to.
@@ -446,8 +455,8 @@ INCIDENT <IIncident>: Represents an incident in Azure Security Insights.
   - `[OwnerUserPrincipalName <String>]`: The user principal name of the user the incident is assigned to.
   - `[ProviderIncidentId <String>]`: The incident ID assigned by the incident provider
   - `[ProviderName <String>]`: The name of the source provider that generated the incident
-  - `[Severity <IncidentSeverity?>]`: The severity of the incident
-  - `[Status <IncidentStatus?>]`: The status of the incident
+  - `[Severity <String>]`: The severity of the incident
+  - `[Status <String>]`: The status of the incident
   - `[Title <String>]`: The title of the incident
 
 LABEL <IIncidentLabel[]>: List of labels relevant to this incident

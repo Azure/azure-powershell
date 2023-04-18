@@ -198,9 +198,9 @@ param(
     # Hide as IdentityType only can be 'UserAssigned'
     # 'None' is not supported as removing identity is not supported when creating or updating an image template."
     # [Parameter(Mandatory)]
-    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
+    # 
     # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
+    # [System.String]
     # # The type of identity used for the image template.
     # # The type 'None' will remove any identities from the image template.
     # ${IdentityType},
@@ -359,7 +359,7 @@ param(
 )
 process {
     try {
-      $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]::UserAssigned
+      $IdentityType = [System.String]::UserAssigned
       $null = $PSBoundParameters.Add("IdentityType", $IdentityType)
 
       # Transfer from string to hashtable

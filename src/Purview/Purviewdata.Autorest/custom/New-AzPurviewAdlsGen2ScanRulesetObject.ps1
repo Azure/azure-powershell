@@ -43,16 +43,16 @@ function New-AzPurviewAdlsGen2ScanRulesetObject {
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.ICustomFileExtension[]]
         $ScanningRuleCustomFileExtension,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.FileExtensionsType[]]
+        
+        [string[]]
         $ScanningRuleFileExtension,
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
+        
+        [System.String]
         $Kind,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        
+        [System.String]
         $Type
     )
 

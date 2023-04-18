@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewfilterobject
 schema: 2.0.0
 ---
 

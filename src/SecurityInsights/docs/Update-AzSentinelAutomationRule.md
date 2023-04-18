@@ -283,7 +283,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ACTION <IAutomationRuleAction[]>: The actions to execute when the automation rule is triggered
-  - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
+  - `ActionType <String>`: The type of the automation rule action
   - `Order <Int32>`: The order of execution of the automation rule action
 
 INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter

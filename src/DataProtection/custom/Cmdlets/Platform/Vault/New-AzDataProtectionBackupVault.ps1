@@ -34,17 +34,17 @@
         ${StorageSetting},
 
         [Parameter(Mandatory=$false, HelpMessage='Parameter to Enable or Disable built-in azure monitor alerts for job failures. Security alerts cannot be disabled.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState]
+        [System.String]
         [ValidateSet('Enabled','Disabled')]
         ${AzureMonitorAlertsForAllJobFailure},
 
         [Parameter(Mandatory=$false, HelpMessage='Immutability state of the vault. Allowed values are Disabled, Unlocked, Locked.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ImmutabilityState]
+        [System.String]
         [ValidateSet('Disabled','Unlocked', 'Locked')]  
         ${ImmutabilityState},
         
         [Parameter(Mandatory=$false, HelpMessage='Cross subscription restore state of the vault. Allowed values are Disabled, Enabled, PermanentlyDisabled.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CrossSubscriptionRestoreState]
+        [System.String]
         [ValidateSet('Disabled','Enabled', 'PermanentlyDisabled')]
         ${CrossSubscriptionRestoreState},
         
@@ -53,7 +53,7 @@
         ${SoftDeleteRetentionDurationInDay},
 
         [Parameter(Mandatory=$false, HelpMessage='Soft delete state of the vault. Allowed values are Off, On, AlwaysOn')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SoftDeleteState]
+        [System.String]
         [ValidateSet('Off','On', 'AlwaysOn')]  
         ${SoftDeleteState},
 

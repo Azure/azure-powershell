@@ -31,33 +31,33 @@ function New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject {
     Param(
 
         [Parameter(HelpMessage="Caching behavior for the requests.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleCacheBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleCacheBehavior]
+        
+        [System.String]
         $CacheConfigurationCacheBehavior,
         [Parameter(HelpMessage="The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss.")]
         [string]
         $CacheConfigurationCacheDuration,
         [Parameter(HelpMessage="Indicates whether content compression is enabled. If compression is enabled, content will be served as compressed if user requests for a compressed version. Content won't be compressed on AzureFrontDoor when requested content is smaller than 1 byte or larger than 1 MB.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleIsCompressionEnabled])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleIsCompressionEnabled]
+        
+        [System.String]
         $CacheConfigurationIsCompressionEnabled,
         [Parameter(HelpMessage="query parameters to include or exclude (comma separated).")]
         [string]
         $CacheConfigurationQueryParameter,
         [Parameter(HelpMessage="Defines how Frontdoor caches requests that include query strings. You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleQueryStringCachingBehavior])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RuleQueryStringCachingBehavior]
+        
+        [System.String]
         $CacheConfigurationQueryStringCachingBehavior,
         [Parameter(HelpMessage="Resource ID.")]
         [string]
         $OriginGroupId,
         [Parameter(HelpMessage="Protocol this rule will use when forwarding traffic to backends.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol]
+        
+        [System.String]
         $OriginGroupOverrideForwardingProtocol,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        
+        [System.String]
         $Name
     )
 

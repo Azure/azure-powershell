@@ -4,7 +4,7 @@ function GetBackupFrequencyString {
 	param(
 		[Parameter(Mandatory=$true)]
 		[ValidateNotNullOrEmpty()]
-		[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency]
+		[System.String]
 		$frequency,
 
 		[Parameter(Mandatory=$true)]

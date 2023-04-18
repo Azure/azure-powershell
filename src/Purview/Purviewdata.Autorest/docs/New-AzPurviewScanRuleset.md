@@ -162,8 +162,8 @@ To create the parameters described below, construct a hash table containing the 
 
 
 BODY <IScanRuleset>: .
-  - `Kind <DataSourceType>`: 
-  - `[Type <ScanRulesetType?>]`: 
+  - `Kind <String>`: 
+  - `[Type <String>]`: 
 
 ## RELATED LINKS
 

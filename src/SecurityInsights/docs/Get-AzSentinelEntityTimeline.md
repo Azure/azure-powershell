@@ -14,7 +14,7 @@ Timeline for an entity.
 
 ```
 Get-AzSentinelEntityTimeline -EntityId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -EndTime <DateTime> -StartTime <DateTime> [-SubscriptionId <String[]>] [-Kind <EntityTimelineKind[]>]
+ -EndTime <DateTime> -StartTime <DateTime> [-SubscriptionId <String[]>] [-Kind <String[]>]
  [-NumberOfBucket <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Array of timeline Item kinds.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityTimelineKind[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

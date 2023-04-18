@@ -61,15 +61,15 @@ function New-AzMLWorkspaceAksObject {
         [string]
         $ClusterFqdn,
         [Parameter(HelpMessage="Intended usage of the cluster.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ClusterPurpose]
+        
+        [System.String]
         $ClusterPurpose,
         [Parameter(HelpMessage="Load Balancer Subnet.")]
         [string]
         $LoadBalancerSubnet,
         [Parameter(HelpMessage="Load Balancer Type.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.LoadBalancerType]
+        
+        [System.String]
         $LoadBalancerType,
         [Parameter(HelpMessage="Cert data.")]
         [string]
@@ -87,8 +87,8 @@ function New-AzMLWorkspaceAksObject {
         [bool]
         $SslOverwriteExistingDomain,
         [Parameter(HelpMessage="Enable or disable ssl for scoring.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.SslConfigStatus]
+        
+        [System.String]
         $SslStatus
     )
 

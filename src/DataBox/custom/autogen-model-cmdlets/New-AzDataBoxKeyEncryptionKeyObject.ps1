@@ -33,7 +33,7 @@
             [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IIdentityProperties]
             $IdentityProperty,
             [Parameter(Mandatory, HelpMessage="Type of encryption key used for key encryption.")]
-            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.KekType]
+            [System.String]
             $KekType,
             [Parameter(HelpMessage="Key encryption key. It is required in case of Customer managed KekType.")]
             [string]

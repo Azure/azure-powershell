@@ -23,12 +23,6 @@ Get-AzPurviewClassificationRule -Endpoint <String> -Name <String> [-DefaultProfi
  [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzPurviewClassificationRule -Endpoint <String> -InputObject <IPurviewdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get a classification rule
 
@@ -145,22 +139,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 .
 
@@ -181,8 +159,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IClassificationRule
@@ -190,23 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  - `[ClassificationRuleName <String>]`: 
-  - `[ClassificationRuleVersion <Int32?>]`: 
-  - `[DataSourceName <String>]`: 
-  - `[DataSourceType <DataSourceType?>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[KeyVaultName <String>]`: 
-  - `[RunId <String>]`: 
-  - `[ScanName <String>]`: 
-  - `[ScanRulesetName <String>]`: 
-  - `[Version <Int32?>]`: 
 
 ## RELATED LINKS
 

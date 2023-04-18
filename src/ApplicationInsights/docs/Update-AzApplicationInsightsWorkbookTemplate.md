@@ -281,14 +281,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`GALLERY <IWorkbookTemplateGallery[]>`: Workbook galleries supported by the template.
+GALLERY <IWorkbookTemplateGallery[]>: Workbook galleries supported by the template.
   - `[Category <String>]`: Category for the gallery.
   - `[Name <String>]`: Name of the workbook template in the gallery.
   - `[Order <Int32?>]`: Order of the template within the gallery.
   - `[ResourceType <String>]`: Azure resource type supported by the gallery.
   - `[Type <String>]`: Type of workbook supported by the workbook template.
 
-`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
+INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
   - `[ComponentName <String>]`: The name of the Application Insights component resource.
   - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
@@ -298,7 +298,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: The name of the Application Insights component resource.
   - `[RevisionId <String>]`: The id of the workbook's revision.
-  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
+  - `[StorageType <String>]`: The type of the Application Insights component data source for the linked storage account.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 

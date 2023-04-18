@@ -179,7 +179,7 @@ To create the parameters described below, construct a hash table containing the 
 
 
 BODY <IScan>: .
-  - `Kind <ScanAuthorizationType>`: 
+  - `Kind <String>`: 
 
 ## RELATED LINKS
 

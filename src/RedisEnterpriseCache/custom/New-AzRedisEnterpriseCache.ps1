@@ -79,9 +79,9 @@ function New-AzRedisEnterpriseCache {
 
         [Parameter(Mandatory)]
         [Alias('SkuName')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.SkuName]
+        [System.String]
         # The type of Redis Enterprise cluster to deploy.
         # Allowed values: Enterprise_E10, Enterprise_E20, Enterprise_E50, Enterprise_E100, EnterpriseFlash_F300, EnterpriseFlash_F700, EnterpriseFlash_F1500
         ${Sku},
@@ -95,9 +95,9 @@ function New-AzRedisEnterpriseCache {
         ${Capacity},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.TlsVersion]
+        [System.String]
         # The minimum TLS version for the cluster to support - default is 1.2
         # Allowed values: 1.0, 1.1, 1.2
         ${MinimumTlsVersion},
@@ -123,9 +123,9 @@ function New-AzRedisEnterpriseCache {
         ${Module},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.Protocol]
+        [System.String]
         # Specifies whether redis clients can connect using TLS-encrypted or plaintext redis protocols - default is Encrypted
         # Allowed values: Encrypted, Plaintext
         ${ClientProtocol},
@@ -138,9 +138,9 @@ function New-AzRedisEnterpriseCache {
         ${Port},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.EvictionPolicy]
+        [System.String]
         # Redis eviction policy - default is VolatileLRU
         # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
@@ -160,9 +160,9 @@ function New-AzRedisEnterpriseCache {
         ${LinkedDatabase},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy]
+        [System.String]
         # Clustering policy - default is OSSCluster
         # Specified at create time.
         # Allowed values: EnterpriseCluster, OSSCluster
@@ -177,9 +177,9 @@ function New-AzRedisEnterpriseCache {
         ${AofPersistenceEnabled},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AofFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which data is written to disk if AOF persistence is enabled.
         # Allowed values: 1s, always
         ${AofPersistenceFrequency},
@@ -193,9 +193,9 @@ function New-AzRedisEnterpriseCache {
         ${RdbPersistenceEnabled},
 
         [Parameter(ParameterSetName='CreateClusterWithDatabase')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.RdbFrequency]
+        [System.String]
         # [Preview] Sets the frequency at which a snapshot of the database is created if RDB persistence is enabled.
         # Allowed values: 1h, 6h, 12h
         ${RdbPersistenceFrequency},

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnOriginGroupOverrideActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnorigingroupoverrideactionobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,7 @@ Create an in-memory object for OriginGroupOverrideAction.
 ## SYNTAX
 
 ```
-New-AzCdnOriginGroupOverrideActionObject -Name <DeliveryRuleAction> [-OriginGroupId <String>]
- [<CommonParameters>]
+New-AzCdnOriginGroupOverrideActionObject [-OriginGroupId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,21 +35,6 @@ OriginGroupOverride
 Create an in-memory object for AzureCDN OriginGroupOverrideAction
 
 ## PARAMETERS
-
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -OriginGroupId
 Resource ID.

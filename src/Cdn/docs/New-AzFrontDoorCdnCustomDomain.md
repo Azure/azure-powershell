@@ -259,9 +259,9 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`TLSSETTING <IAfdDomainHttpsParameters>`: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
-  - `CertificateType <AfdCertificateType>`: Defines the source of the SSL certificate.
-  - `[MinimumTlsVersion <AfdMinimumTlsVersion?>]`: TLS protocol version that will be used for Https
+TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
+  - `CertificateType <String>`: Defines the source of the SSL certificate.
+  - `[MinimumTlsVersion <String>]`: TLS protocol version that will be used for Https
   - `[Secret <IResourceReference>]`: Resource reference to the secret. ie. subs/rg/profile/secret
     - `[Id <String>]`: Resource ID.
 

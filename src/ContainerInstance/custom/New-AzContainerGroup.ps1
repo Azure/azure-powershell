@@ -56,10 +56,10 @@ param(
     ${Container},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.DefaultInfo(Description='Sets OSType equal Linux by default.', Script='"Linux"')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.OperatingSystemTypes]
+    [System.String]
     # The operating system type required by the containers in the container group.
     ${OSType},
 
@@ -121,16 +121,16 @@ param(
     ${IPAddressPort},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupIPAddressType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupIPAddressType]
+    [System.String]
     # Specifies if the IP is exposed to the public internet or private VNET.
     ${IPAddressType},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ResourceIdentityType]
+    [System.String]
     # The type of identity used for the container group.
     # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities.
     # The type 'None' will remove any identities from the container group.
@@ -167,9 +167,9 @@ param(
     ${Location},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.LogAnalyticsLogType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.LogAnalyticsLogType]
+    [System.String]
     # The log type to be used.
     ${LogAnalyticLogType},
 
@@ -199,17 +199,17 @@ param(
     ${LogAnalyticWorkspaceResourceId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupRestartPolicy])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupRestartPolicy]
+    [System.String]
     # Restart policy for all containers within the container group.
     # - `Always` Always restart- `OnFailure` Restart on failure- `Never` Never restart
     ${RestartPolicy},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerGroupSku]
+    [System.String]
     # The SKU for a container group.
     ${Sku},
 

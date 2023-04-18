@@ -40,8 +40,8 @@ function New-AzImageBuilderTemplateDistributorObject_SharedImageDistributor {
         [string[]]
         $ReplicationRegion,
         [Parameter(HelpMessage="Storage account type to be used to store the shared image. Omit to use the default (Standard_LRS).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.SharedImageStorageAccountType]
+        
+        [System.String]
         $StorageAccountType,
         [Parameter(HelpMessage="Tags that will be applied to the artifact once it has been created/updated by the distributor.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.IImageTemplateDistributorArtifactTags]

@@ -285,7 +285,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`GALLERY <IWorkbookTemplateGallery[]>`: Workbook galleries supported by the template.
+GALLERY <IWorkbookTemplateGallery[]>: Workbook galleries supported by the template.
   - `[Category <String>]`: Category for the gallery.
   - `[Name <String>]`: Name of the workbook template in the gallery.
   - `[Order <Int32?>]`: Order of the template within the gallery.

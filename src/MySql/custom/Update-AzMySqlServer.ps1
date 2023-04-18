@@ -66,21 +66,21 @@ function Update-AzMySqlServer {
         ${Sku},
 
         [Parameter(HelpMessage='The tier of the particular SKU, e.g. Basic.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier]
+        [System.String]
         ${SkuTier},
 
         [Parameter(HelpMessage='Enable ssl enforcement or not when connect to server.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SslEnforcementEnum]
+        [System.String]
         ${SslEnforcement},
 
         [Parameter(HelpMessage = 'Set the minimal TLS version for connections to server when SSL is enabled. Default is TLSEnforcementDisabled.accepted values: TLS1_0, TLS1_1, TLS1_2, TLSEnforcementDisabled.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.MinimalTlsVersionEnum]
+        [System.String]
         # Enforce a minimal Tls version for the server.
         ${MinimalTlsVersion},
 
@@ -90,10 +90,10 @@ function Update-AzMySqlServer {
         ${BackupRetentionDay},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
+        
         [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
+        [System.String]
         ${StorageAutogrow},
 
         [Parameter(HelpMessage='Max storage allowed for a server.')]
@@ -109,9 +109,9 @@ function Update-AzMySqlServer {
 
         [Parameter(HelpMessage="Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'")]
         [Validateset('Enabled', 'Disabled')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum]
+        [System.String]
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]

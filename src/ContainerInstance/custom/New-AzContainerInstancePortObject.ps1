@@ -30,7 +30,7 @@ function New-AzContainerInstancePortObject {
         [int]
         $Port,
         [Parameter(HelpMessage="The protocol associated with the port.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Support.ContainerNetworkProtocol])]
+        
         [string]
         $Protocol
     )

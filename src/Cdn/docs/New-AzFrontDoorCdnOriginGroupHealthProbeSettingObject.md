@@ -14,7 +14,7 @@ Create an in-memory object for HealthProbeParameters.
 
 ```
 New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject [-ProbeIntervalInSecond <Int32>] [-ProbePath <String>]
- [-ProbeProtocol <ProbeProtocol>] [-ProbeRequestType <HealthProbeRequestType>] [<CommonParameters>]
+ [-ProbeProtocol <String>] [-ProbeRequestType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Protocol to use for health probe.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 The type of health probe request that is made.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

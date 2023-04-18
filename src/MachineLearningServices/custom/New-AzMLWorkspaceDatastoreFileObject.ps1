@@ -43,8 +43,8 @@ function New-AzMLWorkspaceDatastoreFileObject {
         [string]
         $Protocol,
         [Parameter(HelpMessage="Indicates which identity to use to authenticate service data access to customer's storage.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ServiceDataAccessAuthIdentity])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ServiceDataAccessAuthIdentity]
+        
+        [System.String]
         $ServiceDataAccessAuthIdentity,
         [Parameter(HelpMessage="The asset description text.")]
         [string]
