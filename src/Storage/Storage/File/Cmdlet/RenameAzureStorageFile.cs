@@ -176,6 +176,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 }
             }
         }
-
     }
 }

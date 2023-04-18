@@ -8,7 +8,7 @@ schema: 2.0.0
 # Rename-AzStorageDirectory
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Renames a directory.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ Rename-AzStorageDirectory [-ShareDirectoryClient] <ShareDirectoryClient> [[-Dest
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Rename-AzStorageDirectory** cmdlet renames a directory from a file share.
 
 ## EXAMPLES
 
