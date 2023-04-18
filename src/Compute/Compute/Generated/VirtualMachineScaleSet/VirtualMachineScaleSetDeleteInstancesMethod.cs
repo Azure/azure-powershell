@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     IList<string> instanceIds = this.InstanceId;
 
                     Rest.Azure.AzureOperationResponse result = null;
-                    if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && instanceIds != null)
+                    if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && this.IsParameterBound(c => c.InstanceId))
                     {
                         result = VirtualMachineScaleSetsClient.DeleteInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds, forceDeletion:forcedelete).GetAwaiter().GetResult();
                     }

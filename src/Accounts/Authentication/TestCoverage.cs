@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         {
 #if DEBUG || TESTCOVERAGE
             string moduleName = qos.ModuleName;
-            string commandName = qos.CommandName;
+            string commandName = ProcessCommandName(qos.CommandName);
             string sourceScriptPath = qos.SourceScript;
             string sourceScriptName = Path.GetFileName(sourceScriptPath);
 
@@ -149,6 +149,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 s_lock.ExitWriteLock();
             }
 #endif
+        }
+
+        private string ProcessCommandName(string commandName)
+        {
+            if (commandName.Contains("_"))
+            {
+                commandName = commandName.Substring(0, commandName.IndexOf("_"));
+            }
+            return commandName;
         }
     }
 }

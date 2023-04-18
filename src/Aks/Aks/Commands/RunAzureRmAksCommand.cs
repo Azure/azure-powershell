@@ -226,7 +226,7 @@ namespace Microsoft.Azure.Commands.Aks
                         request.ClusterToken = GetClusterToken();
                     }
                     RunCommandResult response = Client.ManagedClusters.RunCommand(ResourceGroupName, Name, request);
-                    WriteObject(PSMapper.Instance.Map<PSRunCommandResult>(response));
+                    WriteObject(AdapterHelper<RunCommandResult, PSRunCommandResult>.Adapt(response));
                 });
         }
     }

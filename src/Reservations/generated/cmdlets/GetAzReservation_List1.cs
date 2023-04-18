@@ -15,8 +15,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
     /// <remarks>
     /// [OpenAPI] ListAll=>GET:"/providers/Microsoft.Capacity/reservations"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzReservation_List1")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse))]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzReservation_List1", SupportsPaging = true)]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Description(@"List the reservations and the roll up counts of reservations group by provisioning states that the user has access to in the current tenant.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Generated]
     public partial class GetAzReservation_List1 : global::System.Management.Automation.PSCmdlet,
@@ -51,9 +51,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Reservations Client => Microsoft.Azure.PowerShell.Cmdlets.Reservations.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Azure)]
@@ -65,14 +66,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// <summary>
         /// May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support
         /// 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName,
-        /// displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term,
-        /// userFriendlyAppliedScopeType, userFriendlyRenewState}
+        /// displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType,
+        /// term, userFriendlyAppliedScopeType, userFriendlyRenewState}
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}")]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}",
+        Description = @"May be used to filter by reservation properties. The filter supports 'eq', 'or', and 'and'. It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'. Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}",
         SerializedName = @"$filter",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
@@ -149,6 +150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         Description = @"To indicate whether to refresh the roll up counts of the reservations group by provisioning states",
         SerializedName = @"refreshSummary",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
         public string RefreshSummary { get => this._refreshSummary; set => this._refreshSummary = value; }
 
@@ -177,6 +179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         Description = @"The number of reservations to skip from the list before returning results",
         SerializedName = @"$skiptoken",
         PossibleTypes = new [] { typeof(float) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
         public float Skiptoken { get => this._skiptoken; set => this._skiptoken = value; }
 
@@ -191,6 +194,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         Description = @"To number of reservations to return",
         SerializedName = @"take",
         PossibleTypes = new [] { typeof(float) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Query)]
         public float Take { get => this._take; set => this._take = value; }
 
@@ -199,24 +203,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IErrorResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IErrorResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationsListResult">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationsListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationsListResult">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationsListResult</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationsListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationsListResult> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -389,12 +393,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IErrorResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IErrorResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IErrorResponse> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IErrorResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -411,7 +415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IErrorResponse>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IErrorResponse>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Orderby=this.InvocationInformation.BoundParameters.ContainsKey("Orderby") ? Orderby : null, RefreshSummary=this.InvocationInformation.BoundParameters.ContainsKey("RefreshSummary") ? RefreshSummary : null, Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : default(float?), SelectedState=this.InvocationInformation.BoundParameters.ContainsKey("SelectedState") ? SelectedState : null, Take=this.InvocationInformation.BoundParameters.ContainsKey("Take") ? Take : default(float?) })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -429,12 +433,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationsListResult">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationsListResult</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationsListResult">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationsListResult</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationsListResult> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationsListResult> response)
         {
             using( NoSynchronizationContext )
             {
@@ -446,15 +450,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
+                // clientside pagination enabled
                 // response should be returning an array of some kind. +Pageable
                 // pageable / value / nextLink
                 var result = await response;
-                WriteObject(result.Value,true);
+                if ((ulong)result.Value.Length <= this.PagingParameters.Skip)
+                {
+                    this.PagingParameters.Skip = this.PagingParameters.Skip - (ulong)result.Value.Length;
+                }
+                else
+                {
+                    ulong toRead = Math.Min(this.PagingParameters.First, (ulong)result.Value.Length - this.PagingParameters.Skip);
+                    var requiredResult = result.Value.SubArray((int)this.PagingParameters.Skip, (int)toRead);
+                    WriteObject(requiredResult, true);
+                    this.PagingParameters.Skip = 0;
+                    this.PagingParameters.First = this.PagingParameters.First <= toRead ? 0 : this.PagingParameters.First - toRead;
+                }
                 _nextLink = result.NextLink;
                 if (_isFirst)
                 {
                     _isFirst = false;
-                    while (_nextLink != null)
+                    while (_nextLink != null && this.PagingParameters.First > 0)
                     {
                         if (responseMessage.RequestMessage is System.Net.Http.HttpRequestMessage requestMessage )
                         {

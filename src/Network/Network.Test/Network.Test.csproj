@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Graph.RBAC" Version="3.4.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
     <PackageReference Include="Microsoft.Azure.KeyVault" Version="3.0.5" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="4.0.0-preview.1" />
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
@@ -49,6 +48,10 @@
 
   <ItemGroup>
     <Folder Include="SessionRecords\Commands.Network.Test.ScenarioTests.NetworkManagerTests\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

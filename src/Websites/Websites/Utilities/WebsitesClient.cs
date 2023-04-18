@@ -219,16 +219,16 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                 WrappedWebsitesClient.WebApps().Stop(resourceGroupName, webSiteName);
             }
         }
-        public void RestartWebApp(string resourceGroupName, string webSiteName, string slotName)
+        public void RestartWebApp(string resourceGroupName, string webSiteName, string slotName, bool softRestart)
         {
             string qualifiedSiteName;
             if (CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName))
             {
-                WrappedWebsitesClient.WebApps().RestartSlot(resourceGroupName, webSiteName, slotName);
+                WrappedWebsitesClient.WebApps().RestartSlot(resourceGroupName, webSiteName, slotName, softRestart);
             }
             else
             {
-                WrappedWebsitesClient.WebApps().Restart(resourceGroupName, webSiteName);
+                WrappedWebsitesClient.WebApps().Restart(resourceGroupName, webSiteName, softRestart);
             }
         }
 
@@ -262,6 +262,9 @@ namespace Microsoft.Azure.Commands.WebApps.Utilities
                                        GetAzureStorageAccounts(resourceGroupName, webSiteName, slotName, true) :
                                        GetAzureStorageAccounts(resourceGroupName, webSiteName, null, false);
             psSite.AzureStoragePath = AzureStorageAccounts?.Properties.ConvertToWebAppAzureStorageArray();
+            psSite.VnetInfo = CmdletHelpers.ShouldUseDeploymentSlot(webSiteName, slotName, out qualifiedSiteName) ?
+                WrappedWebsitesClient.WebApps().ListVnetConnectionsSlot(resourceGroupName, webSiteName, slotName) :
+                WrappedWebsitesClient.WebApps().ListVnetConnections(resourceGroupName, webSiteName);
 
             return psSite;
         }

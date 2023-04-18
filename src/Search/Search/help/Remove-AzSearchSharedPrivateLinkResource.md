@@ -21,8 +21,8 @@ Remove-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-Service
 
 ### ParentObjectParameterSet
 ```
-Remove-AzSearchSharedPrivateLinkResource -ParentObject <PSSearchService> [-Name] <String> [-Force] [-PassThru]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzSearchSharedPrivateLinkResource [-ParentObject] <PSSearchService> [-Name] <String> [-Force]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -33,7 +33,7 @@ Remove-AzSearchSharedPrivateLinkResource [-ResourceId] <String> [-Force] [-PassT
 
 ### InputObjectParameterSet
 ```
-Remove-AzSearchSharedPrivateLinkResource -InputObject <PSSharedPrivateLinkResource> [-Force] [-PassThru]
+Remove-AzSearchSharedPrivateLinkResource [-InputObject] <PSSharedPrivateLinkResource> [-Force] [-PassThru]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,6 +46,7 @@ The **Remove-AzSearchSharedPrivateLinkResource** cmdlet removes the shared priva
 ```powershell
 Remove-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe
 ```
+
 ```output
 Confirm
 Remove Shared Private Link Resource 'blob-pe'.
@@ -110,7 +111,7 @@ Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -140,7 +141,7 @@ Parameter Sets: ParentObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Get Available Scopes for `Reservation`.\n
+Check whether the scopes from request is valid for `Reservation`.\n
 .Description
-Get Available Scopes for `Reservation`.\n
+Check whether the scopes from request is valid for `Reservation`.\n
 .Example
 Get-AzReservationAvailableScope -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISubscriptionScopeProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,21 +38,21 @@ BODY <IAvailableScopeRequest>: Available scope
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
 #>
 function Get-AzReservationAvailableScope {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISubscriptionScopeProperties])]
 [CmdletBinding(DefaultParameterSetName='AvailableExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Available', Mandatory)]
     [Parameter(ParameterSetName='AvailableExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
-    # Id of the Reservation Item
+    # Id of the reservation item
     ${ReservationId},
 
     [Parameter(ParameterSetName='Available', Mandatory)]
@@ -73,7 +73,7 @@ param(
     [Parameter(ParameterSetName='Available', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='AvailableViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest]
     # Available scope
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -91,7 +91,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -155,7 +156,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

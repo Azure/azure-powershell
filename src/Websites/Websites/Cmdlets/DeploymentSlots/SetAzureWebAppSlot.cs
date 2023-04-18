@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettings { get; set; }
 
-        [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings")]
+        [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings, Example: $connStrings = @{ConnectionStringName = @{ Type = \"MySql\"; Value = \"TestValue\"}}")]
         [ValidateNotNullOrEmpty]
         public Hashtable ConnectionStrings { get; set; }
 

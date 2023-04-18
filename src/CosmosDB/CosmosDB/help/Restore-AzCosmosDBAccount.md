@@ -15,7 +15,8 @@ Restores an existing CosmosDB account (live or deleted) to a given timestamp to 
 ```
 Restore-AzCosmosDBAccount -RestoreTimestampInUtc <DateTime> -SourceDatabaseAccountName <String>
  -Location <String> -TargetResourceGroupName <String> -TargetDatabaseAccountName <String>
- [-DatabasesToRestore <PSDatabaseToRestore[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-DatabasesToRestore <PSDatabaseToRestore[]>] [-GremlinDatabasesToRestore <PSGremlinDatabaseToRestore[]>]
+ [-TablesToRestore <PSTablesToRestore>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -113,6 +114,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GremlinDatabasesToRestore
+The list of PSGremlinDatabaseToRestore objects which specify the subset of databases and graphs to restore from the source account. (If not provided, all the databases will be restored)
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSGremlinDatabaseToRestore[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the source account from which restore is triggered.
 This will also be the write region of the restored account
@@ -153,6 +169,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TablesToRestore
+The list of PSTableToRestore objects which specify the subset of tables to restore from the source account. (If not provided, all the tables will be restored)
+
+```yaml
+Type: Microsoft.Azure.Commands.CosmosDB.Models.PSTablesToRestore
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

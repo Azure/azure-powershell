@@ -191,5 +191,12 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-HostGroupID");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPodSubnetID()
+        {
+            TestRunner.RunTestScript("Test-PodSubnetID");
+        }
     }
 }
