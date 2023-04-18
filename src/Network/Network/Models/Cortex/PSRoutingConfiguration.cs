@@ -28,12 +28,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "VnetRoutes", Target = ViewControl.Table)]
         public PSVnetRoute VnetRoutes { get; set; }
 
-        [Ps1Xml(Label = "InboundRouteMap", Target = ViewControl.Table, ScriptBlock = "$_.InboundRouteMap.Id")]
-        public PSResourceId InboundRouteMap { get; set; }
-
-        [Ps1Xml(Label = "OutboundRouteMap", Target = ViewControl.Table, ScriptBlock = "$_.OutboundRouteMap.Id")]
-        public PSResourceId OutboundRouteMap { get; set; }
-
         [JsonIgnore]
         public string PropagatedRouteTablesText
         {

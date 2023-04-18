@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "To scrub sensitive log fields")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayLogScrubbingConfiguration LogScrubbing { get; set; }
+        public PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration LogScrubbing { get; set; }
 
         public override void ExecuteCmdlet()
         {

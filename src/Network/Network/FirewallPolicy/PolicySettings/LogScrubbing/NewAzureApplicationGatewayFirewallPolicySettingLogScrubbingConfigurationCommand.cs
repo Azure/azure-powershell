@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayLogScrubbingConfiguration"), OutputType(typeof(PSApplicationGatewayLogScrubbingConfiguration))]
-    public class NewAzureApplicationGatewayLogScrubbingConfigurationCommand : NetworkBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration"), OutputType(typeof(PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration))]
+    public class NewAzureApplicationGatewayFirewallPolicySettingLogScrubbingConfigurationCommand : NetworkBaseCmdlet
     {
         [Alias("State")]
         [Parameter(
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The rules that are applied to the logs for scrubbing.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayLogScrubbingRule[] ScrubbingRule { get; set; }
+        public PSApplicationGatewayFirewallPolicySettingLogScrubbingRule[] ScrubbingRule { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -47,9 +47,9 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(NewObject());
         }
 
-        protected PSApplicationGatewayLogScrubbingConfiguration NewObject()
+        protected PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration NewObject()
         {
-            return new PSApplicationGatewayLogScrubbingConfiguration()
+            return new PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration()
             {
                 State = this.State,
                 ScrubbingRule = this.ScrubbingRule?.ToList()

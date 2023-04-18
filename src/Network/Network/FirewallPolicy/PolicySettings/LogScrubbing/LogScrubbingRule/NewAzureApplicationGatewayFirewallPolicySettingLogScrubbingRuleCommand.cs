@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayLogScrubbingRule"), OutputType(typeof(PSApplicationGatewayLogScrubbingRule))]
-    public class NewAzureApplicationGatewayLogScrubbingRuleCommand : NetworkBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicySettingLogScrubbingRule"), OutputType(typeof(PSApplicationGatewayFirewallPolicySettingLogScrubbingRule))]
+    public class NewAzureApplicationGatewayFirewallPolicySettingLogScrubbingRuleCommand : NetworkBaseCmdlet
     {
         [Alias("State")]
         [Parameter(
@@ -64,9 +64,9 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(NewObject());
         }
 
-        protected PSApplicationGatewayLogScrubbingRule NewObject()
+        protected PSApplicationGatewayFirewallPolicySettingLogScrubbingRule NewObject()
         {
-            return new PSApplicationGatewayLogScrubbingRule()
+            return new PSApplicationGatewayFirewallPolicySettingLogScrubbingRule()
             {
                 State = this.State,
                 MatchVariable = this.MatchVariable,
