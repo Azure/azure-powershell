@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Define user session identifier group by clauses.")]
         [ValidateCount(1, 1)]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallGroupByUserSession[] GroupByUserSession { get; set; }
+        public PSApplicationGatewayFirewallCustomRuleGroupByUserSession[] GroupByUserSession { get; set; }
 
         [Parameter(
             Mandatory = true,

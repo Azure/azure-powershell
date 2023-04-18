@@ -1,41 +1,41 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallgroupbyvariable
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallcustomrulegroupbyusersession
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayFirewallGroupByVariable
+# New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession
 
 ## SYNOPSIS
-Creates a new GroupByVariable for the application gateway Firewall GroupByUserSession.
+Creates a new GroupByUserSession for the application gateway firewall custom rule.
 
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallGroupByVariable -VariableName<String> 
+New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable<PSApplicationGatewayFirewallCustomRuleGroupByVariable[]> 
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFirewallGroupByVariable** creates a new GroupByVariable for the application gateway Firewall GroupByUserSession.
+The **New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession** creates a new GroupByUserSession for the application gateway firewall custom rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzApplicationGatewayFirewallGroupByVariable -VariableName ClientAddr
+New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable $groupbyVar 
 ```
 
-The command creates a new GroupByVariable, with the VariableName ClientAddr
+The command creates a new GroupByUserSession, with the GroupByVariables condition named groupbyVar
 
 ## PARAMETERS
 
-### -VariableName
-User Session clause variable.
+### -GroupByVariable
+Define user session group by clause variables.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCustomRuleGroupByVariable[]
 Parameter Sets: (All)
 Aliases:
 

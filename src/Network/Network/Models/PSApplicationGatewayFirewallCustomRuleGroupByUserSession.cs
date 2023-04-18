@@ -18,10 +18,10 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayFirewallGroupByUserSession
+    public partial class PSApplicationGatewayFirewallCustomRuleGroupByUserSession
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public List<PSApplicationGatewayFirewallGroupByVariable> GroupByVariables { get; set; }
+        public List<PSApplicationGatewayFirewallCustomRuleGroupByVariable> GroupByVariables { get; set; }
 
     }
 }

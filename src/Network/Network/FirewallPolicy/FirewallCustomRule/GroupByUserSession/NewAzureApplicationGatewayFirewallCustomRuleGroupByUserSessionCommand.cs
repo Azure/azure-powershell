@@ -18,14 +18,14 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallGroupByUserSession"), OutputType(typeof(PSApplicationGatewayFirewallGroupByUserSession))]
-    public class NewAzureApplicationGatewayFirewallGroupByUserSessionCommand : NetworkBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallGroupByUserSession"), OutputType(typeof(PSApplicationGatewayFirewallCustomRuleGroupByUserSession))]
+    public class NewAzureApplicationGatewayFirewallCustomRuleGroupByUserSessionCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "Define user session group by clause variables.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallGroupByVariable[] GroupByVariable { get; set; }
+        public PSApplicationGatewayFirewallCustomRuleGroupByVariable[] GroupByVariable { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -33,9 +33,9 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(NewObject());
         }
 
-        protected PSApplicationGatewayFirewallGroupByUserSession NewObject()
+        protected PSApplicationGatewayFirewallCustomRuleGroupByUserSession NewObject()
         {
-            return new PSApplicationGatewayFirewallGroupByUserSession()
+            return new PSApplicationGatewayFirewallCustomRuleGroupByUserSession()
             {
                 GroupByVariables = this.GroupByVariable?.ToList()
             };

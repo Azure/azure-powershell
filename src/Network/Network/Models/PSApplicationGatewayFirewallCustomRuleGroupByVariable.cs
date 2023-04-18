@@ -17,7 +17,7 @@ using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayFirewallGroupByVariable
+    public partial class PSApplicationGatewayFirewallCustomRuleGroupByVariable
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string VariableName { get; set; }
