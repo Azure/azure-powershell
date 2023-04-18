@@ -18,8 +18,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallGroupByVariable"), OutputType(typeof(PSApplicationGatewayFirewallGroupByVariable))]
-    public class NewAzureApplicationGatewayFirewallGroupByVariableCommand : NetworkBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallCustomRuleGroupByVariable"), OutputType(typeof(PSApplicationGatewayFirewallCustomRuleGroupByVariable))]
+    public class NewAzureApplicationGatewayFirewallCustomRuleGroupByVariableCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
             WriteObject(NewObject());
         }
 
-        protected PSApplicationGatewayFirewallGroupByVariable NewObject()
+        protected PSApplicationGatewayFirewallCustomRuleGroupByVariable NewObject()
         {
-            return new PSApplicationGatewayFirewallGroupByVariable()
+            return new PSApplicationGatewayFirewallCustomRuleGroupByVariable()
             {
                 VariableName = this.VariableName
             };

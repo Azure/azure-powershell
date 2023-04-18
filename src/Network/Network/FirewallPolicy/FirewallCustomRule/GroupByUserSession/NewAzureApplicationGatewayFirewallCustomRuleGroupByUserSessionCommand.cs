@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallGroupByUserSession"), OutputType(typeof(PSApplicationGatewayFirewallCustomRuleGroupByUserSession))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallCustomRuleGroupByUserSession"), OutputType(typeof(PSApplicationGatewayFirewallCustomRuleGroupByUserSession))]
     public class NewAzureApplicationGatewayFirewallCustomRuleGroupByUserSessionCommand : NetworkBaseCmdlet
     {
         [Parameter(
