@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicySettingLogScrubbingRule"), OutputType(typeof(PSApplicationGatewayFirewallPolicySettingLogScrubbingRule))]
     public class NewAzureApplicationGatewayFirewallPolicySettingLogScrubbingRuleCommand : NetworkBaseCmdlet
     {
-        [Alias("State")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "State of the log scrubbing config. Default value is Enabled")]
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string State { get; set; }
 
-        [Alias("MatchVariable")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "The variable to be scrubbed from the logs.")]
@@ -37,7 +35,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("RequestHeaderNames", "RequestCookieNames", "RequestArgNames", "RequestPostArgNames", "RequestJSONArgNames", "RequestIPAddress", IgnoreCase = true)]
         public string MatchVariable { get; set; }
 
-        [Alias("SelectorMatchOperator")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "When matchVariable is a collection, operate on the selector to specify which elements in the collection this rule applies to.")]
@@ -45,7 +42,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet("Equals", "EqualsAny", IgnoreCase = true)]
         public string SelectorMatchOperator { get; set; }
 
-        [Alias("Selector")]
         [Parameter(
          Mandatory = false,
          HelpMessage = "When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.")]

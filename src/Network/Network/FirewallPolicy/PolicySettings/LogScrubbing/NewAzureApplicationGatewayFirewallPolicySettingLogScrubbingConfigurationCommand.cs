@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration"), OutputType(typeof(PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration))]
     public class NewAzureApplicationGatewayFirewallPolicySettingLogScrubbingConfigurationCommand : NetworkBaseCmdlet
     {
-        [Alias("State")]
         [Parameter(
             Mandatory = true,
             HelpMessage = "State of the log scrubbing config. Default value is Enabled")]
