@@ -26,8 +26,5 @@
     <ProjectReference Include="..\Sql\Sql.csproj" />
   </ItemGroup>
   
-  <ItemGroup>
-    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
-  </ItemGroup>
 
 </Project>
