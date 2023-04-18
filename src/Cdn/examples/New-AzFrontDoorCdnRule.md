@@ -1,6 +1,5 @@
 ### Example 1: Creates an AzureFrontDoor delivery rule within the specified rule set
 ```powershell
-
 $conditions = @(
     New-AzFrontDoorCdnRuleClientPortConditionObject -Name ClientPort -ParameterOperator Equal -ParameterMatchValue 80,81
     New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
