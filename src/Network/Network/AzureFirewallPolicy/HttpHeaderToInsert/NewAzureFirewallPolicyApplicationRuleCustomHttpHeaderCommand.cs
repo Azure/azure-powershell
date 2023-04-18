@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-            var headerToInsert = new PSAzureFirewallPolicyApplicationRuleCustomHttpHeader
+            var customHttpHeader = new PSAzureFirewallPolicyApplicationRuleCustomHttpHeader
             {
                 HeaderName = this.HeaderName,
                 HeaderValue = this.HeaderValue
             };
 
-            WriteObject(headerToInsert);
+            WriteObject(customHttpHeader);
         }
 
         private void Validate()

@@ -12,13 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 //
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallPolicyApplicationRuleCustomHttpHeader
     {
+        [JsonProperty(Order = 1, PropertyName = "headerName")]
         public string HeaderName { get; set; }
 
+        [JsonProperty(Order = 2, PropertyName = "headerValue")]
         public string HeaderValue { get; set; }
     }
 }

@@ -97,6 +97,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(TargetUrls, Formatting.Indented); }
         }
 
+        [JsonIgnore]
+        public string HttpHeadersToInsertText
+        {
+            get { return JsonConvert.SerializeObject(HttpHeadersToInsert, Formatting.Indented); }
+        }
+
         public void AddProtocol(string protocolType, uint port = 0)
         {
             var stringToMap = protocolType + (port == 0 ? string.Empty : ":" + port);
@@ -108,7 +114,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void AddCustomHttpHeaderToInsert(PSAzureFirewallPolicyApplicationRuleCustomHttpHeader httpHeader)
         {
-            ValidateHeaderAddition();
+            ValidateHeaderAddition(httpHeader);
 
             if (this.HttpHeadersToInsert == null)
             {
@@ -118,7 +124,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             this.HttpHeadersToInsert.Add(httpHeader);
         }
 
-        private void ValidateHeaderAddition()
+        private void ValidateHeaderAddition(PSAzureFirewallPolicyApplicationRuleCustomHttpHeader newHttpHeader)
         {
             // validate protocol is HTTP or HTTPS
             if (this.Protocols.Any(p => !(p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Http || p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Https)))
@@ -127,19 +133,23 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             // validate TLS if HTTPS
-            if (this.TerminateTLS == true && this.Protocols.Any(p => p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Https))
+            if (this.TerminateTLS == false && this.Protocols.Any(p => p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Https))
             {
                 throw new ArgumentException("Custom headers for HTTPS protocol must enable TLS termination.");
             }
 
             // validate total length
-            var totalLength = 0;
-            foreach (var headerToInsert in this.HttpHeadersToInsert) {
-                totalLength += headerToInsert.HeaderName.Length + headerToInsert.HeaderValue.Length;
-                if (totalLength > HttpHeaderTotalMaxLength)
-                {
-                    throw new ArgumentException($"Total length of custom HTTP headers and values is limited to {HttpHeaderTotalMaxLength} characters.");
+            if (this.HttpHeadersToInsert != null)
+            {
+                var totalLength = newHttpHeader.HeaderName.Length + newHttpHeader.HeaderValue.Length;
+                foreach (var headerToInsert in this.HttpHeadersToInsert) {
+                    totalLength += headerToInsert.HeaderName.Length + headerToInsert.HeaderValue.Length;
+                    if (totalLength > HttpHeaderTotalMaxLength)
+                    {
+                        throw new ArgumentException($"Total length of custom HTTP headers and values is limited to {HttpHeaderTotalMaxLength} characters.");
+                    }
                 }
+
             }
         }
     }
