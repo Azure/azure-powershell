@@ -7,10 +7,6 @@ parameters:
   displayName: PowerShell 7.0.x Version
   type: string
   default: 7.0.*
-- name: ps7_1
-  displayName: PowerShell 7.1.x Version
-  type: string
-  default: 7.1.*
 - name: ps7_2
   displayName: PowerShell 7.2.x Version
   type: string
@@ -66,14 +62,6 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Win_PS7_1_X_SmokeTest'
-    agentPoolName: ${{ variables.winAgentPoolName }}
-    agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_1 }}
-    netCoreVersion: ${{ parameters.netCoreVersion }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
     name: 'Win_PS7_2_X_SmokeTest'
     agentPoolName: ${{ variables.winAgentPoolName }}
     agentPoolVMImage: ${{ variables.winAgentPoolVMImage }}
@@ -114,14 +102,6 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Linux_PS7_1_X_SmokeTest'
-    agentPoolName: ${{ variables.linuxAgentPoolName }}
-    agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_1 }}
-    netCoreVersion: ${{ parameters.netCoreVersion }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
     name: 'Linux_PS7_2_X_SmokeTest'
     agentPoolName: ${{ variables.linuxAgentPoolName }}
     agentPoolVMImage: ${{ variables.linuxAgentPoolVMImage }}
@@ -158,14 +138,6 @@ jobs:
     agentPoolName: ${{ variables.macOsAgentPoolName }}
     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
     psVersion: ${{ parameters.ps7 }}
-    netCoreVersion: ${{ parameters.netCoreVersion }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'MacOS_PS7_1_X_SmokeTest'
-    agentPoolName: ${{ variables.macOsAgentPoolName }}
-    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_1 }}
     netCoreVersion: ${{ parameters.netCoreVersion }}
 
 - template: util/smoke-test-steps.yml

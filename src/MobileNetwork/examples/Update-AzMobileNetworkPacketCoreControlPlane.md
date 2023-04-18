@@ -1,4 +1,4 @@
-### Example 1: Updates packet core control planes tags.
+### Example 1: Updates packet core control planes.
 ```powershell
 Update-AzMobileNetworkPacketCoreControlPlane -PacketCoreControlPlaneName azps-mn-pccp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 ```
@@ -9,4 +9,4 @@ Location Name         ResourceGroupName ProvisioningState
 eastus   azps-mn-pccp azps_test_group   Succeeded
 ```
 
-Updates packet core control planes tags.
+Updates packet core control planes.
