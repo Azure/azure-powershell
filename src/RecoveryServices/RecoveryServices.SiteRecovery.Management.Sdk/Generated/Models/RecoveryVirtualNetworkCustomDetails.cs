@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Recovery Virtual network custom input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("RecoveryVirtualNetworkCustomDetails")]
     public partial class RecoveryVirtualNetworkCustomDetails
     {
         /// <summary>
