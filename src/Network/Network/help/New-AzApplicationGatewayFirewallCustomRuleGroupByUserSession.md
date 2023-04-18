@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession
 
 ## SYNOPSIS
-Creates a new GroupByUserSession for the application gateway firewall custom rule.
+Creates a new GroupByUserSession for the ApplicationGateway Firewall CustomRule.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession -GroupByVariable<PS
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession** creates a new GroupByUserSession for the application gateway firewall custom rule.
+The **New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession** creates a new GroupByUserSession for the ApplicationGateway Firewall CustomRule.
 
 ## EXAMPLES
 
