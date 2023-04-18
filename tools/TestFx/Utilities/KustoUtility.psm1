@@ -24,8 +24,8 @@ function InitializeKustoPackages {
     New-Item -Path . -Name $kustoPackagesDirectoryName -ItemType Directory -Force
 
     $kustoPackages = @(
-        @{ PackageName = "Azure.Core"; PackageVersion = "1.25.0"; DllName = "Azure.Core.dll" },
-        @{ PackageName = "Azure.Data.Tables"; PackageVersion = "12.6.1"; DllName = "Azure.Data.Tables.dll" },
+        @{ PackageName = "Azure.Core"; PackageVersion = "1.30.0"; DllName = "Azure.Core.dll" },
+        @{ PackageName = "Azure.Data.Tables"; PackageVersion = "12.8.0"; DllName = "Azure.Data.Tables.dll" },
         @{ PackageName = "Azure.Storage.Blobs"; PackageVersion = "12.13.0"; DllName = "Azure.Storage.Blobs.dll" },
         @{ PackageName = "Azure.Storage.Common"; PackageVersion = "12.12.0"; DllName = "Azure.Storage.Common.dll" },
         @{ PackageName = "Azure.Storage.Queues"; PackageVersion = "12.11.0"; DllName = "Azure.Storage.Queues.dll" },
