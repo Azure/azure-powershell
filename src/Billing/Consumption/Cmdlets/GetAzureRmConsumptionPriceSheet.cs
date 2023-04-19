@@ -68,18 +68,15 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                             expand, skipToken, numberToFetch);
                         UpdateResult(result, priceSheet);
                         nextLink = priceSheet?.NextLink;
-                        if (!string.IsNullOrWhiteSpace(nextLink) && nextLink.IndexOf("skiptoken") > 0)
+                        if (!string.IsNullOrWhiteSpace(nextLink))
                         {
-                            string tempSkipToken = 
-                                nextLink.Substring(
-                                    nextLink.LastIndexOf("skiptoken", StringComparison.InvariantCultureIgnoreCase) + 10);
-                            int lastIndexForQuery = tempSkipToken.IndexOf("&");
-                            if(lastIndexForQuery < 0)
+                            string queryString = new Uri(nextLink).Query;
+                            var queryDictionary = System.Web.HttpUtility.ParseQueryString(queryString);
+
+                            if (queryDictionary.AllKeys.Contains("skipToken"))
                             {
-                                lastIndexForQuery = tempSkipToken.Length;
+                                skipToken = queryDictionary["skipToken"];
                             }
-                            skipToken =
-                                tempSkipToken.Substring(0, lastIndexForQuery);
                         }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));                    
                 }
@@ -90,18 +87,15 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
                         priceSheet = ConsumptionManagementClient.PriceSheet.Get(expand, skipToken, numberToFetch);
                         UpdateResult(result, priceSheet);
                         nextLink = priceSheet?.NextLink;
-                        if (!string.IsNullOrWhiteSpace(nextLink) && nextLink.IndexOf("skiptoken") > 0)
+                        if (!string.IsNullOrWhiteSpace(nextLink))
                         {
-                            string tempSkipToken = 
-                                nextLink.Substring(
-                                    nextLink.LastIndexOf("skiptoken", StringComparison.InvariantCultureIgnoreCase) + 10);
-                            int lastIndexForQuery = tempSkipToken.IndexOf("&");
-                            if(lastIndexForQuery < 0)
+                            string queryString = new Uri(nextLink).Query;
+                            var queryDictionary = System.Web.HttpUtility.ParseQueryString(queryString);
+
+                            if (queryDictionary.AllKeys.Contains("skipToken"))
                             {
-                                lastIndexForQuery = tempSkipToken.Length;
+                                skipToken = queryDictionary["skipToken"];
                             }
-                            skipToken =
-                                tempSkipToken.Substring(0, lastIndexForQuery);
                         }
                     } while (!this.Top.HasValue && !string.IsNullOrWhiteSpace(nextLink));
                 }
