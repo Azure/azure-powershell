@@ -427,7 +427,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The resource name.
+Specifies the name of the network security group that this cmdlet gets.
 
 ```yaml
 Type: System.String
@@ -454,7 +454,7 @@ Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
-The resource group name.
+Specifies the name of the resource group that the network security group belongs to.
 
 ```yaml
 Type: System.String
