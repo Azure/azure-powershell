@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage
     using System;
     using System.Collections.Generic;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
+    using global::Azure.Storage.Files.Shares.Models;
 
     /// <summary>
     /// Storage context
@@ -78,6 +79,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         /// Storage Library Track2 Oauth credential
         /// </summary>
         public virtual AzureSessionCredential Track2OauthToken { get; set; }
+
+        /// <summary>
+        /// Share File Request Intent, only for file oauth
+        /// </summary>
+        public virtual ShareTokenIntent? ShareTokenIntent { get; set; }
 
         /// <summary>
         /// Endpoint suffix (everything after "table.", "blob." or "queue.")

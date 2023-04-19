@@ -28,6 +28,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 using Azure.Storage.Files.Shares;
 using Azure;
 using Azure.Storage.Files.Shares.Models;
+using System.Diagnostics;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -119,11 +120,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [ValidateNotNullOrEmpty]
         public string DestFilePath { get; set; }
 
-        [Parameter(HelpMessage = "Dest file instance", Mandatory = true, ParameterSetName = BlobFileParameterSet)]
-        [Parameter(HelpMessage = "Dest file instance", Mandatory = true, ParameterSetName = FileFileParameterSet)]
-        [Parameter(HelpMessage = "Dest file instance", Mandatory = true, ParameterSetName = UriFileParameterSet)]
+        [Parameter(HelpMessage = "Dest file instance", Mandatory = false, ParameterSetName = BlobFileParameterSet)]
+        [Parameter(HelpMessage = "Dest file instance", Mandatory = false, ParameterSetName = FileFileParameterSet)]
+        [Parameter(HelpMessage = "Dest file instance", Mandatory = false, ParameterSetName = UriFileParameterSet)]
         [ValidateNotNull]
         public CloudFile DestFile { get; set; }
+
+        [Parameter(Mandatory = false, ParameterSetName = BlobFileParameterSet, HelpMessage = "ShareFileClient object indicated the Dest file.")]
+        [Parameter(Mandatory = false, ParameterSetName = FileFileParameterSet, HelpMessage = "ShareFileClient object indicated the Dest file.")]
+        [Parameter(Mandatory = false, ParameterSetName = UriFileParameterSet, HelpMessage = "ShareFileClient object indicated the Dest file.")]
+        [ValidateNotNull]
+        public ShareFileClient DestShareFileClient { get; set; }
 
         [Alias("SrcContext")]
         [Parameter(HelpMessage = "Source Azure Storage Context Object",
@@ -143,6 +150,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = ShareParameterSet)]
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = FileFilePathParameterSet)]
         [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = UriFilePathParameterSet)]
+        [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = BlobFileParameterSet)]
+        [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = FileFileParameterSet)]
+        [Parameter(HelpMessage = "Destination Storage context object", ParameterSetName = UriFileParameterSet)]
         public IStorageContext DestContext { get; set; }
 
         // Overwrite the useless parameter
@@ -263,7 +273,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
             Action copyAction = null;
-            string target = DestFile != null ? DestFile.Name : DestFilePath;
+            string target = this.DestShareFileClient != null ? this.DestShareFileClient.Name : (DestFile != null ? DestFile.Name : DestFilePath);
             switch (ParameterSetName)
             {
                 case ContainerNameParameterSet:
@@ -367,6 +377,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
             ShareFileClient destFile = this.GetDestFile();
 
+            if (sourceFile.ServiceClient.Credentials != null && sourceFile.ServiceClient.Credentials.IsToken
+                && string.Compare(sourceFile.Uri.Host, destFile.Uri.Host, ignoreCase: true) != 0)
+            {
+                WriteWarning("The source File is on Azure AD credential, might cause cross account file copy fail. Please use source File based on SharedKey or SAS creadencial to avoid the failure.");
+            }
+
             Func<long, Task> taskGenerator = (taskId) => StartAsyncCopy(
                 taskId,
                 destFile,
@@ -393,7 +409,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             destChannel = this.GetDestinationChannel();
 
-            if (null != this.DestFile)
+            if(this.DestShareFileClient != null)
+            {
+                return this.DestShareFileClient;
+            }
+            else if (null != this.DestFile)
             {
                 return AzureStorageFile.GetTrack2FileClient(this.DestFile, ClientOptions);
             }

@@ -23,26 +23,28 @@ Get-AzStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] 
 
 ### Share
 ```
-Get-AzStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
- [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+Get-AzStorageFileContent [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Path] <String>
+ [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
  [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
 ```
-Get-AzStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
- [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
+Get-AzStorageFileContent [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
+ [-Path] <String> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force] [-AsJob]
+ [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### File
 ```
-Get-AzStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
- [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+Get-AzStorageFileContent [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [[-Destination] <String>]
+ [-CheckMd5] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,7 +141,7 @@ Specifies an Azure Storage context. To obtain a context, use the New-AzStorageCo
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter Sets: ShareName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -318,6 +320,51 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -ShareClient
+CloudFileShare object indicated the share where the file would be downloaded.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareClient
+Parameter Sets: Share
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareDirectoryClient
+ShareDirectoryClient object indicated the cloud directory where the file would be downloaded.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareDirectoryClient
+Parameter Sets: Directory
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ShareFileClient
+ShareFileClient object indicated the cloud file to be downloaded.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareFileClient
+Parameter Sets: File
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -ShareName
 Specifies the name of the file share.
 This cmdlet downloads the contents of the file in the share this parameter specifies.
@@ -366,7 +413,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

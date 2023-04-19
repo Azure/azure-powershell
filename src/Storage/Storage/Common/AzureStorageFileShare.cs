@@ -234,6 +234,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 credentials = null;
             }
+            if (credentials.IsToken)
+            {
+                return new InvalidCloudFileShare(shareClient.Uri, credentials);
+            }
             CloudFileShare track1CloudFileShare = new CloudFileShare(shareClient.Uri, credentials);
             return track1CloudFileShare;
         }

@@ -149,6 +149,10 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 credentials = null;
             }
+            if (credentials.IsToken)
+            {
+                return new InvalidCloudFileDirectory(shareFileDirClient.Uri, credentials);
+            }
             CloudFileDirectory track1CloudFileDir;
             track1CloudFileDir = new CloudFileDirectory(shareFileDirClient.Uri, credentials);
             return track1CloudFileDir;

@@ -26,6 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using global::Azure.Storage.Files.Shares;
     using global::Azure.Storage.Sas;
     using global::Azure.Storage.Files.Shares.Models;
+    using global::Azure.Storage;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
@@ -102,6 +103,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             if (String.IsNullOrEmpty(ShareName)) return;
 
+            if (Channel.StorageContext != null && Channel.StorageContext.StorageAccount != null && !Channel.StorageContext.StorageAccount.Credentials.IsSharedKey)
+            {
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+            }
 
             ShareClient share = Util.GetTrack2ShareReference(this.ShareName,
                         (AzureStorageContext)this.Context,

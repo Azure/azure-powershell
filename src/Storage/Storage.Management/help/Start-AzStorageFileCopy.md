@@ -40,7 +40,8 @@ Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestShareName <String> -DestFilePa
 
 ### BlobInstanceFileInstance
 ```
-Start-AzStorageFileCopy -SrcBlob <CloudBlob> -DestFile <CloudFile> [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzStorageFileCopy -SrcBlob <CloudBlob> [-DestFile <CloudFile>] [-DestShareFileClient <ShareFileClient>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -72,7 +73,8 @@ Start-AzStorageFileCopy -SrcFile <CloudFile> -DestShareName <String> -DestFilePa
 
 ### FileInstanceToFileInstance
 ```
-Start-AzStorageFileCopy -SrcFile <CloudFile> -DestFile <CloudFile> [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzStorageFileCopy -SrcFile <CloudFile> [-DestFile <CloudFile>] [-DestShareFileClient <ShareFileClient>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -87,7 +89,8 @@ Start-AzStorageFileCopy -AbsoluteUri <String> -DestShareName <String> -DestFileP
 
 ### UriToFileInstance
 ```
-Start-AzStorageFileCopy -AbsoluteUri <String> -DestFile <CloudFile> [-Force] [-ServerTimeoutPerRequest <Int32>]
+Start-AzStorageFileCopy -AbsoluteUri <String> [-DestFile <CloudFile>] [-DestShareFileClient <ShareFileClient>]
+ [-DestContext <IStorageContext>] [-Force] [-ServerTimeoutPerRequest <Int32>]
  [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -205,7 +208,7 @@ To obtain a context, use **New-AzStorageContext**.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareName, ShareInstance, FileInstanceToFilePath, UriToFilePath
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -224,7 +227,7 @@ Type: Microsoft.Azure.Storage.File.CloudFile
 Parameter Sets: BlobInstanceFileInstance, FileInstanceToFileInstance, UriToFileInstance
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -240,6 +243,21 @@ Parameter Sets: ContainerName, ContainerInstance, BlobInstanceFilePath, ShareNam
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestShareFileClient
+ShareFileClient object indicated the Dest file.
+
+```yaml
+Type: Azure.Storage.Files.Shares.ShareFileClient
+Parameter Sets: BlobInstanceFileInstance, FileInstanceToFileInstance, UriToFileInstance
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
