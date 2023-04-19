@@ -35,6 +35,11 @@
     - 'New-AzApplicationGatewayFirewallCustomRuleGroupByVariable',
     - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
     - `New-AzureApplicationGatewayFirewallCustomRule`
+* Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
+    - 'New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration',
+    - 'New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule',
+    - Also updated cmdlet to add the property of LogScrubbing 
+    - `New-AzApplicationGatewayFirewallPolicySetting`
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
@@ -49,11 +54,7 @@
 * Blocked some regions when creating/updating Basic Sku firewall
 * Fixed bugs related to auto learn IP prefixes and Snat
 * Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
-* Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
-    - 'New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration',
-    - 'New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule',
-    - Also updated cmdlet to add the property of LogScrubbing 
-    - `New-AzApplicationGatewayFirewallPolicySetting`
+
 
 
 ## Version 5.5.0
