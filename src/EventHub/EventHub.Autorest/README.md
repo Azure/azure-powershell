@@ -359,13 +359,7 @@ directive:
       verb: New
       subject: EventHub
       parameter-name: MessageRetentionInDay
-    set:
-      parameter-name: MessageRetentionInDays
-  - where:
-      model-name: EventHub
-      property-name: MessageRetentionInDay
-    set:
-      property-name: MessageRetentionInDays
+    hide: true
 
   - where:
       verb: New
