@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported rename file and directory
+    - `Rename-AzStorageFile`
+    - `Rename-AzStorageDirectory`
 * Added a warning message for an upcoming breaking change when getting a single blob 
     - `Get-AzStorageBlob`
 * Fixed the issue of listing blobs with leading slashes 
