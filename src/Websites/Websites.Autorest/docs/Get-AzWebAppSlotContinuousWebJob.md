@@ -37,8 +37,10 @@ Get or list continuous web for a deployment slot.
 
 ### Example 1: List continuous webs for a deployment slot
 ```powershell
-PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
+Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
+```
 
+```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------
 appService-test01/slot01/slotcontinuousjob-03                 webjob-rg-test
@@ -49,8 +51,10 @@ This command lists continuous webs for a deployment slot.
 
 ### Example 2: Get continuous web for a deployment slot
 ```powershell
-PS C:\> Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
+Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
+```
 
+```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------
 appService-test01/slot01/slotcontinuousjob-03                 webjob-rg-test
@@ -60,10 +64,12 @@ This command gets continuous web for a deployment slot.
 
 ### Example 3: Get continuous web for a deployment slot by pipeline
 ```powershell
-PS C:\> $webjob = Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
-PS C:\> Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
-PS C:\> $webjob.Id | Get-AzWebAppSlotContinuousWebJob
+$webjob = Get-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
+Start-AzWebAppSlotContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slotcontinuousjob-03
+$webjob.Id | Get-AzWebAppSlotContinuousWebJob
+```
 
+```output
 Name                                          Kind WebJobType ResourceGroupName
 ----                                          ---- ---------- -----------------
 appService-test01/slot01/slotcontinuousjob-03                 webjob-rg-test
@@ -89,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -217,7 +224,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

@@ -14,9 +14,11 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
+    [CmdletOutputBreakingChange(typeof(PSContainerRegistryEventInfo), ReplacementCmdletOutputTypeName = "String")]
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryWebhook", DefaultParameterSetName = ResourceIdParameterSet)]
     [OutputType(typeof(PSContainerRegistryEventInfo))]
     public class TestAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
@@ -39,7 +41,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [Parameter(Mandatory = true, ParameterSetName = WebhookObjectParameterSet, ValueFromPipeline = true, HelpMessage = "Container Registry Object.")]
         [ValidateNotNull]
         public PSContainerRegistryWebhook Webhook { get; set; }
-
+        
+        public const string ChangeDesc = "Parameter is being deprecated without being replaced"; 
+        [CmdletParameterBreakingChange("ResourceId", "4.0.0.0", "05/23/2023", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry Webhook resource id")]
         [ValidateNotNullOrEmpty]
         [Alias(ResourceIdAlias)]

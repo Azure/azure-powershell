@@ -120,6 +120,28 @@ function Install-AzAksCliTool
     }
 }
 
+function IsWindows {
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.DoNotExportAttribute()]
+    param(
+    )
+    process {
+        return (Get-OSName).contains("Windows")
+    }
+}
+
+function Get-OSName {
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.DoNotExportAttribute()]
+    param(
+    )
+    process {
+        if ($PSVersionTable.PSEdition.Contains("Core")) {
+            $OSPlatform = $PSVersionTable.OS
+        } else {
+            $OSPlatform = $env:OS
+        }
+        return $OSPlatform
+    }
+}
 Function Install-Kubectl
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.DoNotExportAttribute()]
@@ -163,7 +185,7 @@ Function Install-Kubectl
             $url = "$baseUrl/stable.txt"
             $Version = (Invoke-WebRequest -Uri $url).Content.Trim()
         }
-        If ($IsWindows)
+        If (IsWindows)
         {
             $destFilePath = [System.IO.Path]::Combine($Destination, "kubectl.exe")
             $downloadFileUrl = "$baseUrl/$Version/bin/windows/amd64/kubectl.exe"
@@ -258,7 +280,7 @@ Function Install-Kubelogin
             $Version = $latestVersionInfo.tag_name.Trim()
         }
         $downloadFileUrl = "$baseDownloadUrl/$Version/kubelogin.zip"
-        If ($IsWindows)
+        If (IsWindows)
         {
             $subDir = "windows_amd64"
             $binaryName = "kubelogin.exe"

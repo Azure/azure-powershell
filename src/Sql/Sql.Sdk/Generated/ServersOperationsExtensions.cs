@@ -22,6 +22,74 @@ namespace Microsoft.Azure.Management.Sql
     public static partial class ServersOperationsExtensions
     {
             /// <summary>
+            /// Determines whether a resource can be created with the specified name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='parameters'>
+            /// The name availability request parameters.
+            /// </param>
+            public static CheckNameAvailabilityResponse CheckNameAvailability(this IServersOperations operations, CheckNameAvailabilityRequest parameters)
+            {
+                return operations.CheckNameAvailabilityAsync(parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Determines whether a resource can be created with the specified name.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='parameters'>
+            /// The name availability request parameters.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CheckNameAvailabilityResponse> CheckNameAvailabilityAsync(this IServersOperations operations, CheckNameAvailabilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a list of all servers in the subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='expand'>
+            /// The child resources to include in the response.
+            /// </param>
+            public static IPage<Server> List(this IServersOperations operations, string expand = default(string))
+            {
+                return operations.ListAsync(expand).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of all servers in the subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='expand'>
+            /// The child resources to include in the response.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Server>> ListAsync(this IServersOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets a list of servers in a resource groups.
             /// </summary>
             /// <param name='operations'>
@@ -247,40 +315,6 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of all servers in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='expand'>
-            /// The child resources to include in the response.
-            /// </param>
-            public static IPage<Server> List(this IServersOperations operations, string expand = default(string))
-            {
-                return operations.ListAsync(expand).GetAwaiter().GetResult();
-            }
-
-            /// <summary>
-            /// Gets a list of all servers in the subscription.
-            /// </summary>
-            /// <param name='operations'>
-            /// The operations group for this extension method.
-            /// </param>
-            /// <param name='expand'>
-            /// The child resources to include in the response.
-            /// </param>
-            /// <param name='cancellationToken'>
-            /// The cancellation token.
-            /// </param>
-            public static async Task<IPage<Server>> ListAsync(this IServersOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
-            {
-                using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
-            }
-
-            /// <summary>
             /// Imports a bacpac into a new database.
             /// </summary>
             /// <param name='operations'>
@@ -329,34 +363,42 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Determines whether a resource can be created with the specified name.
+            /// Refresh external governance enablement status.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='parameters'>
-            /// The name availability request parameters.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
-            public static CheckNameAvailabilityResponse CheckNameAvailability(this IServersOperations operations, CheckNameAvailabilityRequest parameters)
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            public static RefreshExternalGovernanceStatusOperationResult RefreshStatus(this IServersOperations operations, string resourceGroupName, string serverName)
             {
-                return operations.CheckNameAvailabilityAsync(parameters).GetAwaiter().GetResult();
+                return operations.RefreshStatusAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Determines whether a resource can be created with the specified name.
+            /// Refresh external governance enablement status.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='parameters'>
-            /// The name availability request parameters.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CheckNameAvailabilityResponse> CheckNameAvailabilityAsync(this IServersOperations operations, CheckNameAvailabilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RefreshExternalGovernanceStatusOperationResult> RefreshStatusAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CheckNameAvailabilityWithHttpMessagesAsync(parameters, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.RefreshStatusWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -546,34 +588,42 @@ namespace Microsoft.Azure.Management.Sql
             }
 
             /// <summary>
-            /// Gets a list of servers in a resource groups.
+            /// Refresh external governance enablement status.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
             /// </param>
-            public static IPage<Server> ListByResourceGroupNext(this IServersOperations operations, string nextPageLink)
+            /// <param name='serverName'>
+            /// The name of the server.
+            /// </param>
+            public static RefreshExternalGovernanceStatusOperationResult BeginRefreshStatus(this IServersOperations operations, string resourceGroupName, string serverName)
             {
-                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+                return operations.BeginRefreshStatusAsync(resourceGroupName, serverName).GetAwaiter().GetResult();
             }
 
             /// <summary>
-            /// Gets a list of servers in a resource groups.
+            /// Refresh external governance enablement status.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='nextPageLink'>
-            /// The NextLink from the previous successful call to List operation.
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group that contains the resource. You can obtain
+            /// this value from the Azure Resource Manager API or the portal.
+            /// </param>
+            /// <param name='serverName'>
+            /// The name of the server.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Server>> ListByResourceGroupNextAsync(this IServersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RefreshExternalGovernanceStatusOperationResult> BeginRefreshStatusAsync(this IServersOperations operations, string resourceGroupName, string serverName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginRefreshStatusWithHttpMessagesAsync(resourceGroupName, serverName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -608,6 +658,40 @@ namespace Microsoft.Azure.Management.Sql
             public static async Task<IPage<Server>> ListNextAsync(this IServersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
             {
                 using (var _result = await operations.ListNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Gets a list of servers in a resource groups.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            public static IPage<Server> ListByResourceGroupNext(this IServersOperations operations, string nextPageLink)
+            {
+                return operations.ListByResourceGroupNextAsync(nextPageLink).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Gets a list of servers in a resource groups.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='nextPageLink'>
+            /// The NextLink from the previous successful call to List operation.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<IPage<Server>> ListByResourceGroupNextAsync(this IServersOperations operations, string nextPageLink, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListByResourceGroupNextWithHttpMessagesAsync(nextPageLink, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

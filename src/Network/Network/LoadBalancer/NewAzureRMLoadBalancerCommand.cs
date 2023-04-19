@@ -24,7 +24,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
+
 using MNM = Microsoft.Azure.Management.Network.Models;
+
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
@@ -208,6 +210,32 @@ namespace Microsoft.Azure.Commands.Network
                 vSku.Tier = this.Tier;
             }
 
+            if ((vSku?.Tier ?? string.Empty) == "Global")
+            {
+                if ((this.InboundNatRule?.Count() ?? 0) > 0 || (this.OutboundRule?.Count() ?? 0) > 0)
+                {
+                    throw new ArgumentException("Only load balancing rules are supported on global load balancers.");
+                }
+
+                if ((this.Probe?.Count() ?? 0) > 0)
+                {
+                    throw new ArgumentException("User defined probes are not supported on global load balancers.");
+                }
+
+                foreach (PSLoadBalancingRule lbRule in this.LoadBalancingRule?.ToList() ?? new List<PSLoadBalancingRule>())
+                {
+                    if (lbRule.EnableTcpReset == true)
+                    {
+                        throw new ArgumentException("TCP reset is not supported on global load balancers.");
+                    }
+
+                    if (lbRule.IdleTimeoutInMinutes != Constants.LoadBalancingIdleTimeoutDefault)
+                    {
+                        throw new ArgumentException("Idle timeout is not supported on global load balancers.");
+                    }
+                }
+            }
+
             var vLoadBalancer = new PSLoadBalancer
             {
                 Location = this.Location,
@@ -266,7 +294,6 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
-
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -282,7 +309,6 @@ namespace Microsoft.Azure.Commands.Network
                 WriteObject(psLoadBalancer, true);
             },
             () => present);
-
         }
     }
 }

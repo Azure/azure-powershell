@@ -21,8 +21,9 @@ Set-AzSearchSharedPrivateLinkResource [-ResourceGroupName] <String> [-ServiceNam
 
 ### ParentObjectParameterSet
 ```
-Set-AzSearchSharedPrivateLinkResource -ParentObject <PSSearchService> [-Name] <String> -RequestMessage <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzSearchSharedPrivateLinkResource [-ParentObject] <PSSearchService> [-Name] <String>
+ -RequestMessage <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
@@ -33,7 +34,7 @@ Set-AzSearchSharedPrivateLinkResource [-ResourceId] <String> -RequestMessage <St
 
 ### InputObjectParameterSet
 ```
-Set-AzSearchSharedPrivateLinkResource -RequestMessage <String> -InputObject <PSSharedPrivateLinkResource>
+Set-AzSearchSharedPrivateLinkResource -RequestMessage <String> [-InputObject] <PSSharedPrivateLinkResource>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -46,8 +47,8 @@ This **Set-AzSearchSharedPrivateLinkResource** updates the shared private link r
 ```powershell
 Set-AzSearchSharedPrivateLinkResource -ResourceGroupName arjagann -ServiceName arjagann-test-cuseuap -Name blob-pe -RequestMessage "Please kindly approve"
 ```
-```output
 
+```output
 Id                    : /subscriptions/a4337210-c6b0-4de4-907a-688f1c120d9a/resourceGroups/arjagann/providers/Microsoft.Search/searchServices/arjagann-test-cuseuap/sharedPrivateLinkResources/blob-pe
 Type                  : Microsoft.Search/searchServices/sharedPrivateLinkResources
 Status                : Pending
@@ -102,7 +103,7 @@ Parameter Sets: InputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -132,7 +133,7 @@ Parameter Sets: ParentObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

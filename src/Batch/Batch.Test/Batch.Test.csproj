@@ -16,7 +16,6 @@
     <PackageReference Include="Microsoft.Azure.Batch" Version="15.4.0" />
     <PackageReference Include="Microsoft.Azure.Management.Batch" Version="15.0.0" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +24,10 @@
 
   <ItemGroup>
     <None Update="Resources\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

@@ -122,9 +122,9 @@ function IngestDataFromCsv {
         $ingestionProps.IngestionMapping = $ingestionMapping
 
         $CsvFile | ForEach-Object {
-            Write-Host "##[section]Start to import the file $_." -ForegroundColor Green
-            $ingestClient.IngestFromStorageAsync($_, $ingestionProps).GetAwaiter().GetResult()
-            Write-Host "##[section]Successfully imported the file $_." -ForegroundColor Green
+            Write-Host "##[section]Start to import the file $_."
+            $ingestClient.IngestFromStorageAsync($_, $ingestionProps).GetAwaiter().GetResult() | Out-Null
+            Write-Host "##[section]Successfully imported the file $_."
         }
     }
     catch {

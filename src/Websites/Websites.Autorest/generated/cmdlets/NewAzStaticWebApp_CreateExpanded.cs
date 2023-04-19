@@ -36,6 +36,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Static Site ARM resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource _staticSiteEnvelopeBody = new Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.StaticSiteArmResource();
+
         /// <summary>
         /// <code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.
         /// </summary>
@@ -47,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"<code>false</code> if config file is locked for this static web app; otherwise, <code>true</code>.",
         SerializedName = @"allowConfigFileUpdates",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter AllowConfigFileUpdate { get => StaticSiteEnvelopeBody.AllowConfigFileUpdate ?? default(global::System.Management.Automation.SwitchParameter); set => StaticSiteEnvelopeBody.AllowConfigFileUpdate = value; }
+        public global::System.Management.Automation.SwitchParameter AllowConfigFileUpdate { get => _staticSiteEnvelopeBody.AllowConfigFileUpdate ?? default(global::System.Management.Automation.SwitchParameter); set => _staticSiteEnvelopeBody.AllowConfigFileUpdate = value; }
 
         /// <summary>
         /// A custom command to run during deployment of the Azure Functions API application.
@@ -60,7 +63,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"A custom command to run during deployment of the Azure Functions API application.",
         SerializedName = @"apiBuildCommand",
         PossibleTypes = new [] { typeof(string) })]
-        public string ApiBuildCommand { get => StaticSiteEnvelopeBody.BuildPropertyApiBuildCommand ?? null; set => StaticSiteEnvelopeBody.BuildPropertyApiBuildCommand = value; }
+        public string ApiBuildCommand { get => _staticSiteEnvelopeBody.BuildPropertyApiBuildCommand ?? null; set => _staticSiteEnvelopeBody.BuildPropertyApiBuildCommand = value; }
 
         /// <summary>The path to the api code within the repository.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The path to the api code within the repository.")]
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"The path to the api code within the repository.",
         SerializedName = @"apiLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string ApiLocation { get => StaticSiteEnvelopeBody.BuildPropertyApiLocation ?? null; set => StaticSiteEnvelopeBody.BuildPropertyApiLocation = value; }
+        public string ApiLocation { get => _staticSiteEnvelopeBody.BuildPropertyApiLocation ?? null; set => _staticSiteEnvelopeBody.BuildPropertyApiLocation = value; }
 
         /// <summary>
         /// Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)
@@ -84,7 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Deprecated: The path of the app artifacts after building (deprecated in favor of OutputLocation)",
         SerializedName = @"appArtifactLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppArtifactLocation { get => StaticSiteEnvelopeBody.BuildPropertyAppArtifactLocation ?? null; set => StaticSiteEnvelopeBody.BuildPropertyAppArtifactLocation = value; }
+        public string AppArtifactLocation { get => _staticSiteEnvelopeBody.BuildPropertyAppArtifactLocation ?? null; set => _staticSiteEnvelopeBody.BuildPropertyAppArtifactLocation = value; }
 
         /// <summary>A custom command to run during deployment of the static content application.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A custom command to run during deployment of the static content application.")]
@@ -95,7 +98,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"A custom command to run during deployment of the static content application.",
         SerializedName = @"appBuildCommand",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppBuildCommand { get => StaticSiteEnvelopeBody.BuildPropertyAppBuildCommand ?? null; set => StaticSiteEnvelopeBody.BuildPropertyAppBuildCommand = value; }
+        public string AppBuildCommand { get => _staticSiteEnvelopeBody.BuildPropertyAppBuildCommand ?? null; set => _staticSiteEnvelopeBody.BuildPropertyAppBuildCommand = value; }
 
         /// <summary>The path to the app code within the repository.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The path to the app code within the repository.")]
@@ -106,7 +109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"The path to the app code within the repository.",
         SerializedName = @"appLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string AppLocation { get => StaticSiteEnvelopeBody.BuildPropertyAppLocation ?? null; set => StaticSiteEnvelopeBody.BuildPropertyAppLocation = value; }
+        public string AppLocation { get => _staticSiteEnvelopeBody.BuildPropertyAppLocation ?? null; set => _staticSiteEnvelopeBody.BuildPropertyAppLocation = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -122,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"The target branch in the repository.",
         SerializedName = @"branch",
         PossibleTypes = new [] { typeof(string) })]
-        public string Branch { get => StaticSiteEnvelopeBody.Branch ?? null; set => StaticSiteEnvelopeBody.Branch = value; }
+        public string Branch { get => _staticSiteEnvelopeBody.Branch ?? null; set => _staticSiteEnvelopeBody.Branch = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -138,15 +141,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Current number of instances assigned to the resource.",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int Capacity { get => StaticSiteEnvelopeBody.Capacity ?? default(int); set => StaticSiteEnvelopeBody.Capacity = value; }
+        public int Capacity { get => _staticSiteEnvelopeBody.Capacity ?? default(int); set => _staticSiteEnvelopeBody.Capacity = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Websites.Websites Client => Microsoft.Azure.PowerShell.Cmdlets.Websites.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Websites.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Websites.ParameterCategory.Azure)]
@@ -161,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Description of the newly generated repository.",
         SerializedName = @"description",
         PossibleTypes = new [] { typeof(string) })]
-        public string ForkRepositoryDescription { get => StaticSiteEnvelopeBody.TemplatePropertyDescription ?? null; set => StaticSiteEnvelopeBody.TemplatePropertyDescription = value; }
+        public string ForkRepositoryDescription { get => _staticSiteEnvelopeBody.TemplatePropertyDescription ?? null; set => _staticSiteEnvelopeBody.TemplatePropertyDescription = value; }
 
         /// <summary>
         /// Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).
@@ -174,7 +178,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Whether or not the newly generated repository is a private repository. Defaults to false (i.e. public).",
         SerializedName = @"isPrivate",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter ForkRepositoryIsPrivate { get => StaticSiteEnvelopeBody.TemplatePropertyIsPrivate ?? default(global::System.Management.Automation.SwitchParameter); set => StaticSiteEnvelopeBody.TemplatePropertyIsPrivate = value; }
+        public global::System.Management.Automation.SwitchParameter ForkRepositoryIsPrivate { get => _staticSiteEnvelopeBody.TemplatePropertyIsPrivate ?? default(global::System.Management.Automation.SwitchParameter); set => _staticSiteEnvelopeBody.TemplatePropertyIsPrivate = value; }
 
         /// <summary>Name of the newly generated repository.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the newly generated repository.")]
@@ -185,7 +189,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Name of the newly generated repository.",
         SerializedName = @"repositoryName",
         PossibleTypes = new [] { typeof(string) })]
-        public string ForkRepositoryName { get => StaticSiteEnvelopeBody.TemplatePropertyRepositoryName ?? null; set => StaticSiteEnvelopeBody.TemplatePropertyRepositoryName = value; }
+        public string ForkRepositoryName { get => _staticSiteEnvelopeBody.TemplatePropertyRepositoryName ?? null; set => _staticSiteEnvelopeBody.TemplatePropertyRepositoryName = value; }
 
         /// <summary>Owner of the newly generated repository.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Owner of the newly generated repository.")]
@@ -196,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Owner of the newly generated repository.",
         SerializedName = @"owner",
         PossibleTypes = new [] { typeof(string) })]
-        public string ForkRepositoryOwner { get => StaticSiteEnvelopeBody.TemplatePropertyOwner ?? null; set => StaticSiteEnvelopeBody.TemplatePropertyOwner = value; }
+        public string ForkRepositoryOwner { get => _staticSiteEnvelopeBody.TemplatePropertyOwner ?? null; set => _staticSiteEnvelopeBody.TemplatePropertyOwner = value; }
 
         /// <summary>Github Action secret name override.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Github Action secret name override.")]
@@ -207,7 +211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Github Action secret name override.",
         SerializedName = @"githubActionSecretNameOverride",
         PossibleTypes = new [] { typeof(string) })]
-        public string GithubActionSecretNameOverride { get => StaticSiteEnvelopeBody.BuildPropertyGithubActionSecretNameOverride ?? null; set => StaticSiteEnvelopeBody.BuildPropertyGithubActionSecretNameOverride = value; }
+        public string GithubActionSecretNameOverride { get => _staticSiteEnvelopeBody.BuildPropertyGithubActionSecretNameOverride ?? null; set => _staticSiteEnvelopeBody.BuildPropertyGithubActionSecretNameOverride = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -231,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType IdentityType { get => StaticSiteEnvelopeBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType)""); set => StaticSiteEnvelopeBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType IdentityType { get => _staticSiteEnvelopeBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.ManagedServiceIdentityType)""); set => _staticSiteEnvelopeBody.IdentityType = value; }
 
         /// <summary>
         /// The list of user assigned identities associated with the resource. The user identity dictionary key references will be
@@ -246,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"The list of user assigned identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}",
         SerializedName = @"userAssignedIdentities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IManagedServiceIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => StaticSiteEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => StaticSiteEnvelopeBody.IdentityUserAssignedIdentity = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IManagedServiceIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _staticSiteEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _staticSiteEnvelopeBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -260,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Kind of resource.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => StaticSiteEnvelopeBody.Kind ?? null; set => StaticSiteEnvelopeBody.Kind = value; }
+        public string Kind { get => _staticSiteEnvelopeBody.Kind ?? null; set => _staticSiteEnvelopeBody.Kind = value; }
 
         /// <summary>Resource Location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource Location.")]
@@ -271,14 +275,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Resource Location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => StaticSiteEnvelopeBody.Location ?? null; set => StaticSiteEnvelopeBody.Location = value; }
+        public string Location { get => _staticSiteEnvelopeBody.Location ?? null; set => _staticSiteEnvelopeBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -312,7 +316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"The output path of the app after building.",
         SerializedName = @"outputLocation",
         PossibleTypes = new [] { typeof(string) })]
-        public string OutputLocation { get => StaticSiteEnvelopeBody.BuildPropertyOutputLocation ?? null; set => StaticSiteEnvelopeBody.BuildPropertyOutputLocation = value; }
+        public string OutputLocation { get => _staticSiteEnvelopeBody.BuildPropertyOutputLocation ?? null; set => _staticSiteEnvelopeBody.BuildPropertyOutputLocation = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.HttpPipeline" /> that the remote call will use.
@@ -346,7 +350,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"A user's github repository token. This is used to setup the Github Actions workflow file and API secrets.",
         SerializedName = @"repositoryToken",
         PossibleTypes = new [] { typeof(string) })]
-        public string RepositoryToken { get => StaticSiteEnvelopeBody.RepositoryToken ?? null; set => StaticSiteEnvelopeBody.RepositoryToken = value; }
+        public string RepositoryToken { get => _staticSiteEnvelopeBody.RepositoryToken ?? null; set => _staticSiteEnvelopeBody.RepositoryToken = value; }
 
         /// <summary>URL for the repository of the static site.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "URL for the repository of the static site.")]
@@ -357,7 +361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"URL for the repository of the static site.",
         SerializedName = @"repositoryUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string RepositoryUrl { get => StaticSiteEnvelopeBody.RepositoryUrl ?? null; set => StaticSiteEnvelopeBody.RepositoryUrl = value; }
+        public string RepositoryUrl { get => _staticSiteEnvelopeBody.RepositoryUrl ?? null; set => _staticSiteEnvelopeBody.RepositoryUrl = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -382,7 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Skip Github Action workflow generation.",
         SerializedName = @"skipGithubActionWorkflowGeneration",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter SkipGithubActionWorkflowGeneration { get => StaticSiteEnvelopeBody.BuildPropertySkipGithubActionWorkflowGeneration ?? default(global::System.Management.Automation.SwitchParameter); set => StaticSiteEnvelopeBody.BuildPropertySkipGithubActionWorkflowGeneration = value; }
+        public global::System.Management.Automation.SwitchParameter SkipGithubActionWorkflowGeneration { get => _staticSiteEnvelopeBody.BuildPropertySkipGithubActionWorkflowGeneration ?? default(global::System.Management.Automation.SwitchParameter); set => _staticSiteEnvelopeBody.BuildPropertySkipGithubActionWorkflowGeneration = value; }
 
         /// <summary>Capabilities of the SKU, e.g., is traffic manager enabled</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -394,7 +398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Capabilities of the SKU, e.g., is traffic manager enabled",
         SerializedName = @"capabilities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ICapability) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ICapability[] SkuCapability { get => StaticSiteEnvelopeBody.SkuCapability ?? null /* arrayOf */; set => StaticSiteEnvelopeBody.SkuCapability = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.ICapability[] SkuCapability { get => _staticSiteEnvelopeBody.SkuCapability ?? null /* arrayOf */; set => _staticSiteEnvelopeBody.SkuCapability = value; }
 
         /// <summary>Default number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Default number of workers for this App Service plan SKU.")]
@@ -405,7 +409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Default number of workers for this App Service plan SKU.",
         SerializedName = @"default",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacityDefault { get => StaticSiteEnvelopeBody.SkuCapacityDefault ?? default(int); set => StaticSiteEnvelopeBody.SkuCapacityDefault = value; }
+        public int SkuCapacityDefault { get => _staticSiteEnvelopeBody.SkuCapacityDefault ?? default(int); set => _staticSiteEnvelopeBody.SkuCapacityDefault = value; }
 
         /// <summary>Maximum number of Elastic workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum number of Elastic workers for this App Service plan SKU.")]
@@ -416,7 +420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Maximum number of Elastic workers for this App Service plan SKU.",
         SerializedName = @"elasticMaximum",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacityElasticMaximum { get => StaticSiteEnvelopeBody.SkuCapacityElasticMaximum ?? default(int); set => StaticSiteEnvelopeBody.SkuCapacityElasticMaximum = value; }
+        public int SkuCapacityElasticMaximum { get => _staticSiteEnvelopeBody.SkuCapacityElasticMaximum ?? default(int); set => _staticSiteEnvelopeBody.SkuCapacityElasticMaximum = value; }
 
         /// <summary>Maximum number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum number of workers for this App Service plan SKU.")]
@@ -427,7 +431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Maximum number of workers for this App Service plan SKU.",
         SerializedName = @"maximum",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacityMaximum { get => StaticSiteEnvelopeBody.SkuCapacityMaximum ?? default(int); set => StaticSiteEnvelopeBody.SkuCapacityMaximum = value; }
+        public int SkuCapacityMaximum { get => _staticSiteEnvelopeBody.SkuCapacityMaximum ?? default(int); set => _staticSiteEnvelopeBody.SkuCapacityMaximum = value; }
 
         /// <summary>Minimum number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Minimum number of workers for this App Service plan SKU.")]
@@ -438,7 +442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Minimum number of workers for this App Service plan SKU.",
         SerializedName = @"minimum",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacityMinimum { get => StaticSiteEnvelopeBody.SkuCapacityMinimum ?? default(int); set => StaticSiteEnvelopeBody.SkuCapacityMinimum = value; }
+        public int SkuCapacityMinimum { get => _staticSiteEnvelopeBody.SkuCapacityMinimum ?? default(int); set => _staticSiteEnvelopeBody.SkuCapacityMinimum = value; }
 
         /// <summary>Available scale configurations for an App Service plan.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Available scale configurations for an App Service plan.")]
@@ -449,7 +453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Available scale configurations for an App Service plan.",
         SerializedName = @"scaleType",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuCapacityScaleType { get => StaticSiteEnvelopeBody.SkuCapacityScaleType ?? null; set => StaticSiteEnvelopeBody.SkuCapacityScaleType = value; }
+        public string SkuCapacityScaleType { get => _staticSiteEnvelopeBody.SkuCapacityScaleType ?? null; set => _staticSiteEnvelopeBody.SkuCapacityScaleType = value; }
 
         /// <summary>Family code of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Family code of the resource SKU.")]
@@ -460,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Family code of the resource SKU.",
         SerializedName = @"family",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuFamily { get => StaticSiteEnvelopeBody.SkuFamily ?? null; set => StaticSiteEnvelopeBody.SkuFamily = value; }
+        public string SkuFamily { get => _staticSiteEnvelopeBody.SkuFamily ?? null; set => _staticSiteEnvelopeBody.SkuFamily = value; }
 
         /// <summary>Locations of the SKU.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -472,7 +476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Locations of the SKU.",
         SerializedName = @"locations",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] SkuLocation { get => StaticSiteEnvelopeBody.SkuLocation ?? null /* arrayOf */; set => StaticSiteEnvelopeBody.SkuLocation = value; }
+        public string[] SkuLocation { get => _staticSiteEnvelopeBody.SkuLocation ?? null /* arrayOf */; set => _staticSiteEnvelopeBody.SkuLocation = value; }
 
         /// <summary>Name of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the resource SKU.")]
@@ -483,7 +487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Name of the resource SKU.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => StaticSiteEnvelopeBody.SkuName ?? null; set => StaticSiteEnvelopeBody.SkuName = value; }
+        public string SkuName { get => _staticSiteEnvelopeBody.SkuName ?? null; set => _staticSiteEnvelopeBody.SkuName = value; }
 
         /// <summary>Size specifier of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Size specifier of the resource SKU.")]
@@ -494,7 +498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Size specifier of the resource SKU.",
         SerializedName = @"size",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuSize { get => StaticSiteEnvelopeBody.SkuSize ?? null; set => StaticSiteEnvelopeBody.SkuSize = value; }
+        public string SkuSize { get => _staticSiteEnvelopeBody.SkuSize ?? null; set => _staticSiteEnvelopeBody.SkuSize = value; }
 
         /// <summary>Service tier of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Service tier of the resource SKU.")]
@@ -505,7 +509,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Service tier of the resource SKU.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuTier { get => StaticSiteEnvelopeBody.SkuTier ?? null; set => StaticSiteEnvelopeBody.SkuTier = value; }
+        public string SkuTier { get => _staticSiteEnvelopeBody.SkuTier ?? null; set => _staticSiteEnvelopeBody.SkuTier = value; }
 
         /// <summary>
         /// State indicating whether staging environments are allowed or not allowed for a static web app.
@@ -519,13 +523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         SerializedName = @"stagingEnvironmentPolicy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy StagingEnvironmentPolicy { get => StaticSiteEnvelopeBody.StagingEnvironmentPolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy)""); set => StaticSiteEnvelopeBody.StagingEnvironmentPolicy = value; }
-
-        /// <summary>Backing field for <see cref="StaticSiteEnvelopeBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource _staticSiteEnvelopeBody= new Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.StaticSiteArmResource();
-
-        /// <summary>Static Site ARM resource.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource StaticSiteEnvelopeBody { get => this._staticSiteEnvelopeBody; set => this._staticSiteEnvelopeBody = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy StagingEnvironmentPolicy { get => _staticSiteEnvelopeBody.StagingEnvironmentPolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Support.StagingEnvironmentPolicy)""); set => _staticSiteEnvelopeBody.StagingEnvironmentPolicy = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -557,7 +555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResourceTags Tag { get => StaticSiteEnvelopeBody.Tag ?? null /* object */; set => StaticSiteEnvelopeBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IResourceTags Tag { get => _staticSiteEnvelopeBody.Tag ?? null /* object */; set => _staticSiteEnvelopeBody.Tag = value; }
 
         /// <summary>
         /// URL of the template repository. The newly generated repository will be based on this one.
@@ -570,15 +568,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         Description = @"URL of the template repository. The newly generated repository will be based on this one.",
         SerializedName = @"templateRepositoryUrl",
         PossibleTypes = new [] { typeof(string) })]
-        public string TemplateRepositoryUrl { get => StaticSiteEnvelopeBody.TemplatePropertyTemplateRepositoryUrl ?? null; set => StaticSiteEnvelopeBody.TemplatePropertyTemplateRepositoryUrl = value; }
+        public string TemplateRepositoryUrl { get => _staticSiteEnvelopeBody.TemplatePropertyTemplateRepositoryUrl ?? null; set => _staticSiteEnvelopeBody.TemplatePropertyTemplateRepositoryUrl = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -589,8 +587,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource">Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -601,6 +599,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Websites.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -626,7 +629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.StaticSiteEnvelopeBody = this.StaticSiteEnvelopeBody;
+            clone._staticSiteEnvelopeBody = this._staticSiteEnvelopeBody;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
             clone.SubscriptionId = this.SubscriptionId;
@@ -636,7 +639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -777,7 +780,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Websites.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -792,12 +794,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.StaticSitesCreateOrUpdateStaticSite(ResourceGroupName, Name, SubscriptionId, StaticSiteEnvelopeBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.StaticSitesCreateOrUpdateStaticSite(ResourceGroupName, Name, SubscriptionId, _staticSiteEnvelopeBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=StaticSiteEnvelopeBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_staticSiteEnvelopeBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -820,8 +822,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -843,14 +845,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Websites.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=StaticSiteEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_staticSiteEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=StaticSiteEnvelopeBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_staticSiteEnvelopeBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -860,8 +862,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Websites.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource">Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
