@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public bool? PolicyEnforced { get; set; }
 
         /// <summary>
-        /// Gets or sets VaultId
+        /// Gets or sets VaultId, this is being deprecated
         /// </summary>
         /// <remarks>
         /// Vault Resource ID
-        /// </remarks>
+        /// </remarks>        
         public string VaultId { get; set; }
 
         /// <summary>

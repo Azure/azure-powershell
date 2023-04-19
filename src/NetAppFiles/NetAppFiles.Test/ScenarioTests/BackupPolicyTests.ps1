@@ -27,7 +27,6 @@ function Test-BackupPolicyCrud
     $dailyBackupsToKeep = 4
     $weeklyBackupsToKeep = 3
     $monthlyBackupsToKeep = 2
-    $yearlyBackupsToKeep = 1
     $backupLocation = "southcentralus"
 
     try
@@ -42,14 +41,12 @@ function Test-BackupPolicyCrud
         Assert-AreEqual $accName1 $retrievedAcc.Name
         
         # create and check BackupPolicy        
-        $retrievedBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
+        $retrievedBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep
         Assert-AreEqual "$accName1/$backupPolicyName1" $retrievedBackupPolicy.Name
         Assert-True {$retrievedBackupPolicy.Enabled}
         Assert-AreEqual $dailyBackupsToKeep $retrievedBackupPolicy.DailyBackupsToKeep
         Assert-AreEqual $weeklyBackupsToKeep $retrievedBackupPolicy.WeeklyBackupsToKeep
         Assert-AreEqual $monthlyBackupsToKeep $retrievedBackupPolicy.MonthlyBackupsToKeep
-        #returns 0 atm service side issue
-        #Assert-AreEqual $yearlyBackupsToKeep $retrievedBackupPolicy.YearlyBackupsToKeep
         
         # get and check a BackupPolicy by name and check again
         $getRetrievedBackupPolicy = Get-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupPolicyName1
@@ -58,12 +55,10 @@ function Test-BackupPolicyCrud
         Assert-AreEqual $dailyBackupsToKeep $getRetrievedBackupPolicy.DailyBackupsToKeep
         Assert-AreEqual $weeklyBackupsToKeep $getRetrievedBackupPolicy.WeeklyBackupsToKeep
         Assert-AreEqual $monthlyBackupsToKeep $getRetrievedBackupPolicy.MonthlyBackupsToKeep
-        #returns 0 atm service side issue
-        #Assert-AreEqual $yearlyBackupsToKeep $retrievedBackupPolicy.YearlyBackupsToKeep
         
         #update with set
         $setDailyBackupsToKeep = 3
-        $retrievedBackupPolicy = Set-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $setDailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
+        $retrievedBackupPolicy = Set-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $setDailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep 
 
         $setDailyBackupsToKeep = Get-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -AccountName $accName1 -Name $backupPolicyName1
         Assert-AreEqual $updatedDailyBackupsToKeep $getSetBackupPolicy.DailyBackupsToKeep
@@ -76,14 +71,13 @@ function Test-BackupPolicyCrud
         Assert-AreEqual $updatedDailyBackupsToKeep $getUpdatedBackupPolicy.DailyBackupsToKeep
 
         #create second BackupPolicy
-        $secondBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName2 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
+        $secondBackupPolicy = New-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -Name $backupPolicyName2 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep
         Assert-AreEqual "$accName1/$backupPolicyName2" $secondBackupPolicy.Name        
         Assert-True {$retrievedBackupPolicy.Enabled}
         Assert-AreEqual $dailyBackupsToKeep $secondBackupPolicy.DailyBackupsToKeep
         Assert-AreEqual $weeklyBackupsToKeep $secondBackupPolicy.WeeklyBackupsToKeep
         Assert-AreEqual $monthlyBackupsToKeep $secondBackupPolicy.MonthlyBackupsToKeep
-        #returns 0 atm service side issue
-        #Assert-AreEqual $yearlyBackupsToKeep $retrievedBackupPolicy.YearlyBackupsToKeep
+
 
         # get and check BackupPolicies by Account (list)
         $retrievedBackupPolicyList = Get-AzNetAppFilesBackupPolicy -ResourceGroupName $resourceGroup -AccountName $accName1
@@ -134,8 +128,7 @@ function Test-BackupPolicyPipelines
     $resourceLocation = Get-ProviderLocation "Microsoft.NetApp"    
     $dailyBackupsToKeep = 4
     $weeklyBackupsToKeep = 3
-    $monthlyBackupsToKeep = 2
-    $yearlyBackupsToKeep = 1
+    $monthlyBackupsToKeep = 2    
     $backupLocation = "eastus2euap"
 
     try
@@ -147,7 +140,7 @@ function Test-BackupPolicyPipelines
         $newTagName = "tag1"
         $newTagValue = "tagValue1"  
      
-        $retrievedBackupPolicy = Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName1 | New-AzNetAppFilesBackupPolicy -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep -YearlyBackupsToKeep $yearlyBackupsToKeep
+        $retrievedBackupPolicy = Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName1 | New-AzNetAppFilesBackupPolicy -Name $backupPolicyName1 -Tag @{$newTagName = $newTagValue} -Enabled -DailyBackupsToKeep $dailyBackupsToKeep -WeeklyBackupsToKeep $weeklyBackupsToKeep -MonthlyBackupsToKeep $monthlyBackupsToKeep
 
         # get the policy by piping in from account 
         $getRetrievedBackupPolicy = Get-AnfAccount -ResourceGroupName $resourceGroup -Name $accName1 | Get-AzNetAppFilesBackupPolicy -Name $backupPolicyName1
