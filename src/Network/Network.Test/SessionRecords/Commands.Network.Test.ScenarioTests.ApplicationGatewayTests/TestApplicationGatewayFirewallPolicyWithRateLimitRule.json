@@ -6,7 +6,11 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "2113ae36-52ab-482b-89d8-61387a6ffd47"
+=======
+          "37de00c8-7047-4ccc-9143-166073e35889"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Accept-Language": [
           "en-US"
@@ -30,6 +34,7 @@
           "11999"
         ],
         "x-ms-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "9ac50d5e-e6a3-4e06-90ee-649452d3b50c"
         ],
         "x-ms-correlation-request-id": [
@@ -37,6 +42,15 @@
         ],
         "x-ms-routing-request-id": [
           "WESTUS:20230418T022034Z:9ac50d5e-e6a3-4e06-90ee-649452d3b50c"
+=======
+          "7d03736c-baf4-42ae-bd86-c6ed65bafa0a"
+        ],
+        "x-ms-correlation-request-id": [
+          "7d03736c-baf4-42ae-bd86-c6ed65bafa0a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230419T041334Z:7d03736c-baf4-42ae-bd86-c6ed65bafa0a"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -45,7 +59,11 @@
           "nosniff"
         ],
         "Date": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "Tue, 18 Apr 2023 02:20:33 GMT"
+=======
+          "Wed, 19 Apr 2023 04:13:33 GMT"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -61,12 +79,21 @@
       "StatusCode": 200
     },
     {
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
       "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps6787?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzNjc4Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "cabb27b1-f674-4ce3-8eac-0cdbff912341"
+=======
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps1247?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzMTI0Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "26c73f94-e6be-4ac0-bcef-18352efd9652"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Accept-Language": [
           "en-US"
@@ -96,6 +123,7 @@
           "1199"
         ],
         "x-ms-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "fa64799c-c584-4508-b599-4ab045b65a68"
         ],
         "x-ms-correlation-request-id": [
@@ -103,6 +131,15 @@
         ],
         "x-ms-routing-request-id": [
           "WESTUS:20230418T022036Z:fa64799c-c584-4508-b599-4ab045b65a68"
+=======
+          "2c1f1f8e-dbe8-487f-94c9-e11df4d7c37e"
+        ],
+        "x-ms-correlation-request-id": [
+          "2c1f1f8e-dbe8-487f-94c9-e11df4d7c37e"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230419T041335Z:2c1f1f8e-dbe8-487f-94c9-e11df4d7c37e"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +148,11 @@
           "nosniff"
         ],
         "Date": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "Tue, 18 Apr 2023 02:20:35 GMT"
+=======
+          "Wed, 19 Apr 2023 04:13:34 GMT"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Content-Length": [
           "238"
@@ -123,6 +164,7 @@
           "-1"
         ]
       },
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
       "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787\",\r\n  \"name\": \"ps6787\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"testtag\": \"APPGw tag\",\r\n    \"Created\": \"2023-04-18T02:20:35.7641452Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
@@ -133,6 +175,18 @@
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "29be19f6-dfc6-40c8-b3f3-59b00dc046a1"
+=======
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247\",\r\n  \"name\": \"ps1247\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"testtag\": \"APPGw tag\",\r\n    \"Created\": \"2023-04-19T04:13:35.4129243Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/ps9540?api-version=2022-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzMTI0Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTU0MD9hcGktdmVyc2lvbj0yMDIyLTExLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "408f3bc3-7c03-4b84-b6f2-cf0cb1ab46c2"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Accept-Language": [
           "en-US"
@@ -156,6 +210,7 @@
           "gateway"
         ],
         "x-ms-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "578be333-a081-4d20-81c5-479c20d303ed"
         ],
         "x-ms-correlation-request-id": [
@@ -163,6 +218,15 @@
         ],
         "x-ms-routing-request-id": [
           "WESTUS:20230418T022036Z:578be333-a081-4d20-81c5-479c20d303ed"
+=======
+          "2afba2ca-225e-43f8-a996-25efe9a0f1b4"
+        ],
+        "x-ms-correlation-request-id": [
+          "2afba2ca-225e-43f8-a996-25efe9a0f1b4"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230419T041336Z:2afba2ca-225e-43f8-a996-25efe9a0f1b4"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,7 +235,11 @@
           "nosniff"
         ],
         "Date": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "Tue, 18 Apr 2023 02:20:36 GMT"
+=======
+          "Wed, 19 Apr 2023 04:13:35 GMT"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -180,6 +248,7 @@
           "-1"
         ],
         "Content-Length": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "255"
         ]
       },
@@ -613,6 +682,21 @@
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "29be19f6-dfc6-40c8-b3f3-59b00dc046a1"
+=======
+          "251"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/ps9540' under resource group 'ps1247' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/ps9540?api-version=2022-11-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzMTI0Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTU0MD9hcGktdmVyc2lvbj0yMDIyLTExLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "408f3bc3-7c03-4b84-b6f2-cf0cb1ab46c2"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Accept-Language": [
           "en-US"
@@ -639,6 +723,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "1e6200a6-fb16-4485-a421-aada3bf36546"
         ],
         "Azure-AsyncOperation": [
@@ -652,6 +737,15 @@
         ],
         "x-ms-arm-service-request-id": [
           "cefb78ff-5a3f-4b2d-ba47-d1d0753fca39"
+=======
+          "c80dde95-8493-4750-8548-fcdde5a2d570"
+        ],
+        "x-ms-correlation-request-id": [
+          "033fd3d9-1565-4f64-93fa-8f0822d1f133"
+        ],
+        "x-ms-arm-service-request-id": [
+          "f885fc7e-e963-4a74-b05e-f2d8995e05c5"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -664,16 +758,27 @@
           "1199"
         ],
         "x-ms-routing-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "WESTUS:20230418T022039Z:ee7a25d1-3769-4a84-84bd-59cb01274320"
+=======
+          "WESTUS:20230419T041338Z:033fd3d9-1565-4f64-93fa-8f0822d1f133"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "Tue, 18 Apr 2023 02:20:39 GMT"
         ],
         "Content-Length": [
           "1182"
+=======
+          "Wed, 19 Apr 2023 04:13:37 GMT"
+        ],
+        "Content-Length": [
+          "347"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -682,6 +787,7 @@
           "-1"
         ]
       },
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
       "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"27ca928e-46c4-4779-962e-2a0a11454498\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
       "StatusCode": 201
     },
@@ -771,6 +877,18 @@
       "RequestHeaders": {
         "x-ms-client-request-id": [
           "31f9175b-6767-43d1-9f74-cf05e241cd72"
+=======
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ApplicationGatewayFirewallUnsupportedRuleSetVersionForLogScrubbing\",\r\n    \"message\": \"Log Scrubbing config is not supported for the ruleset versions in context '/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/ps9540'.\",\r\n    \"details\": []\r\n  }\r\n}",
+      "StatusCode": 400
+    },
+    {
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps1247?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzMTI0Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "fc797746-9be6-4f37-aa59-990bf02b7f40"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Accept-Language": [
           "en-US"
@@ -791,7 +909,11 @@
           "no-cache"
         ],
         "Location": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
+=======
+          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzEyNDctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Retry-After": [
           "15"
@@ -800,6 +922,7 @@
           "14999"
         ],
         "x-ms-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "765a5770-faae-45bd-bad7-a54aecb24eda"
         ],
         "x-ms-correlation-request-id": [
@@ -807,6 +930,15 @@
         ],
         "x-ms-routing-request-id": [
           "WESTUS:20230418T022042Z:765a5770-faae-45bd-bad7-a54aecb24eda"
+=======
+          "b02811ec-92c8-4fe5-82df-0034cba5f379"
+        ],
+        "x-ms-correlation-request-id": [
+          "b02811ec-92c8-4fe5-82df-0034cba5f379"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230419T041339Z:b02811ec-92c8-4fe5-82df-0034cba5f379"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -815,7 +947,11 @@
           "nosniff"
         ],
         "Date": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "Tue, 18 Apr 2023 02:20:42 GMT"
+=======
+          "Wed, 19 Apr 2023 04:13:38 GMT"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Expires": [
           "-1"
@@ -828,6 +964,7 @@
       "StatusCode": 202
     },
     {
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
       "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "GET",
@@ -1286,6 +1423,10 @@
     {
       "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+=======
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzEyNDctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFeU5EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
@@ -1307,6 +1448,7 @@
           "11991"
         ],
         "x-ms-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "97fa92c9-abd3-4acd-b19b-c50687291358"
         ],
         "x-ms-correlation-request-id": [
@@ -1314,6 +1456,15 @@
         ],
         "x-ms-routing-request-id": [
           "WESTUS:20230418T022258Z:97fa92c9-abd3-4acd-b19b-c50687291358"
+=======
+          "c20121af-722a-40c2-90c9-209025011b46"
+        ],
+        "x-ms-correlation-request-id": [
+          "c20121af-722a-40c2-90c9-209025011b46"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230419T041354Z:c20121af-722a-40c2-90c9-209025011b46"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1322,7 +1473,11 @@
           "nosniff"
         ],
         "Date": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "Tue, 18 Apr 2023 02:22:57 GMT"
+=======
+          "Wed, 19 Apr 2023 04:13:54 GMT"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Expires": [
           "-1"
@@ -1335,8 +1490,13 @@
       "StatusCode": 200
     },
     {
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
       "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+=======
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzEyNDctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFeU5EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
@@ -1358,6 +1518,7 @@
           "11990"
         ],
         "x-ms-request-id": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "f0d74578-58ca-40f9-8f95-66451cfe7226"
         ],
         "x-ms-correlation-request-id": [
@@ -1365,6 +1526,15 @@
         ],
         "x-ms-routing-request-id": [
           "WESTUS:20230418T022258Z:f0d74578-58ca-40f9-8f95-66451cfe7226"
+=======
+          "dfaf7bfd-163d-4a0b-b740-9ba2f0ec9570"
+        ],
+        "x-ms-correlation-request-id": [
+          "dfaf7bfd-163d-4a0b-b740-9ba2f0ec9570"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20230419T041354Z:dfaf7bfd-163d-4a0b-b740-9ba2f0ec9570"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1373,7 +1543,11 @@
           "nosniff"
         ],
         "Date": [
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
           "Tue, 18 Apr 2023 02:22:57 GMT"
+=======
+          "Wed, 19 Apr 2023 04:13:54 GMT"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
         ],
         "Expires": [
           "-1"
@@ -1387,8 +1561,14 @@
     }
   ],
   "Names": {
+<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
     "Test-ApplicationGatewayFirewallPolicyWithRateLimitRule": [
       "ps6787"
+=======
+    "Test-ApplicationGatewayFirewallPolicyWithLogScrubbing": [
+      "ps1247",
+      "ps9540"
+>>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
     ]
   },
   "Variables": {
