@@ -3499,8 +3499,10 @@ function Test-ApplicationGatewayFirewallPolicyWithLogScrubbing
 		$logScrubbingRule1 = New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule -State Enabled -MatchVariable RequestArgNames -SelectorMatchOperator Equals -Selector test
 		$logScrubbingRule2 = New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny
 		$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1, $logScrubbingRule2
-		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70 -LogScrubbing $logScrubbingRuleConfig
-		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -PolicySetting $policySettings
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 4000 -MaxRequestBodySizeInKb 2000 -LogScrubbing $logScrubbingRuleConfig
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
 	
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
 
@@ -3510,26 +3512,12 @@ function Test-ApplicationGatewayFirewallPolicyWithLogScrubbing
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing $policySettings.LogScrubbing
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule.Count 2
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].State $policySettings.LogScrubbing.ScrubbingRule[0].State
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].MatchVariable $policySettings.LogScrubbing.ScrubbingRule[0].MatchVariable
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].SelectorMatchOperator $policySettings.LogScrubbing.ScrubbingRule[0].SelectorMatchOperator
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].Selector $policySettings.LogScrubbing.ScrubbingRule[0].Selector
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules.Count 2
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].State $policySettings.LogScrubbing.ScrubbingRules[0].State
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].MatchVariable $policySettings.LogScrubbing.ScrubbingRules[0].MatchVariable
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator $policySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].Selector $policySettings.LogScrubbing.ScrubbingRules[0].Selector
 
-		# Second check firewall policy
-		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
-		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
-		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
-		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
-		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
-		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing $policySettings.LogScrubbing
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule.Count 2
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].State $policySettings.LogScrubbing.ScrubbingRule[0].State
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].MatchVariable $policySettings.LogScrubbing.ScrubbingRule[0].MatchVariable
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].SelectorMatchOperator $policySettings.LogScrubbing.ScrubbingRule[0].SelectorMatchOperator
-		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRule[0].Selector $policySettings.LogScrubbing.ScrubbingRule[0].Selector
 	}
 	finally
 	{

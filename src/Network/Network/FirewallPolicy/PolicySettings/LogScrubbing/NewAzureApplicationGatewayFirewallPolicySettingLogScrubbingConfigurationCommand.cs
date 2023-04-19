@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration()
             {
                 State = this.State,
-                ScrubbingRule = this.ScrubbingRule?.ToList()
+                ScrubbingRules = this.ScrubbingRule?.ToList()
             };
         }
     }
