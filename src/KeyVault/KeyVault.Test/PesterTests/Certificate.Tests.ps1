@@ -6,7 +6,7 @@ BeforeAll {
 Describe "Import Certificate with policy" {
     It "ImportCertificateFromFileWithPolicyParameterSet" {
         $certName = Get-CertificateName
-        $certFilePath = "..\Resources\importCert00.pfx"
+        $certFilePath = "..\Resources\importCertWithPolicy.pfx"
         $policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
 
         $cert = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName -FilePath $certFilePath -Policy $policy
@@ -14,7 +14,7 @@ Describe "Import Certificate with policy" {
     }
     It "ImportCertificateFromFileWithPolicyFileParameterSet" {
         $certName = Get-CertificateName
-        $certFilePath = "..\Resources\importCert00.pfx"
+        $certFilePath = "..\Resources\importCertWithPolicy.pfx"
         $policyPath = "..\Resources\certPolicy.json"
 
         $cert = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName -FilePath $certFilePath -PolicyPath $policyPath
@@ -22,7 +22,7 @@ Describe "Import Certificate with policy" {
     }
     It "ImportWithPrivateKeyFromStringWithPolicyFileParameterSet" {
         $certName = Get-CertificateName
-        $certFilePath = "..\Resources\importCert00.pfx"
+        $certFilePath = "..\Resources\importCertWithPolicy.pfx"
         $policyPath = "..\Resources\certPolicy.json"
         $Base64StringCertificate = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes($certFilePath))
 
@@ -31,7 +31,7 @@ Describe "Import Certificate with policy" {
     }
     It "ImportWithPrivateKeyFromCollectionWithPolicyFileParameterSet" {
         $certName = Get-CertificateName
-        $certFilePath = "..\Resources\importCert00.pfx"
+        $certFilePath = "..\Resources\importCertWithPolicy.pfx"
         $policyPath = "..\Resources\certPolicy.json"
         $certCollection = [System.Security.Cryptography.X509Certificates.X509Certificate2Collection]::new()
         $certCollection.Import($certFilePath, $null, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
