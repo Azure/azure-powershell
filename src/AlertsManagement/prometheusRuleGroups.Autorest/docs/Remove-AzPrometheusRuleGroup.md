@@ -29,27 +29,12 @@ Delete a Prometheus rule group definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Prometheus rule group definition.
 ```powershell
-{{ Add code here }}
+Remove-AzPrometheusRuleGroup -RuleGroupName MyRuleGroup -ResourceGroupName lnxtest
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a Prometheus rule group definition.
 
 ## PARAMETERS
 

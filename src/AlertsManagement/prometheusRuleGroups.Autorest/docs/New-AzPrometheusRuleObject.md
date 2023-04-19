@@ -14,9 +14,9 @@ Create an in-memory object for PrometheusRule.
 
 ```
 New-AzPrometheusRuleObject -Expression <String> [-Action <IPrometheusRuleGroupAction[]>] [-Alert <String>]
- [-Annotation <IPrometheusRuleAnnotations>] [-Enabled <Boolean>] [-For <TimeSpan>]
- [-Label <IPrometheusRuleLabels>] [-Record <String>] [-ResolveConfigurationAutoResolved <Boolean>]
- [-ResolveConfigurationTimeToResolve <TimeSpan>] [-Severity <Int32>] [<CommonParameters>]
+ [-Annotation <Hashtable>] [-Enabled <Boolean>] [-For <TimeSpan>] [-Label <Hashtable>] [-Record <String>]
+ [-ResolveConfigurationAutoResolved <Boolean>] [-ResolveConfigurationTimeToResolve <TimeSpan>]
+ [-Severity <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,27 +24,18 @@ Create an in-memory object for PrometheusRule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1:  Create an in-memory object for PrometheusRule.
 ```powershell
-{{ Add code here }}
+New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m" -Expression 'histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service="billing-processing"}[5m])) by (job_type))'
 ```
 
 ```output
-{{ Add output here }}
+Alert Enabled Expression
+----- ------- ----------
+              histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service="billing-processing"}[5m])) by (job_type))'
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for PrometheusRule.
 
 ## PARAMETERS
 
@@ -82,10 +73,9 @@ Accept wildcard characters: False
 ### -Annotation
 The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
 The annotation values can be templated.
-To construct, see NOTES section for ANNOTATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleAnnotations
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -145,10 +135,9 @@ Accept wildcard characters: False
 
 ### -Label
 Labels to add or overwrite before storing the result.
-To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleLabels
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -242,12 +231,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ActionGroupId <String>]`: The resource id of the action group to use.
   - `[ActionProperty <IPrometheusRuleGroupActionProperties>]`: The properties of an action group object.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`ANNOTATION <IPrometheusRuleAnnotations>`: The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`LABEL <IPrometheusRuleLabels>`: Labels to add or overwrite before storing the result.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

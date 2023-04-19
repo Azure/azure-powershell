@@ -65,7 +65,7 @@ directive:
     # Remove the unexpanded parameter set
     - where:
         variant: ^Create$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-        remove: true
+      remove: true
     # Hide CreateViaIdentity for customization
     - where:
         variant: ^CreateViaIdentity$
@@ -79,8 +79,18 @@ directive:
         subject: PrometheusRuleGroup
     - where:
         verb: Set
-      hid: true
+      hide: true
     - model-cmdlet:
         - PrometheusRule
         - PrometheusRuleGroupAction
+    - where:
+        model-name: PrometheusRuleGroupResource
+      set:
+        format-table:
+          properties:
+            - Name
+            - Location
+            - ClusterName
+            - Enabled
+    
 ```

@@ -15,16 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzPrometheusRuleGroup'))
 }
 
 Describe 'Get-AzPrometheusRuleGroup' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {Get-AzPrometheusRuleGroup } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {Get-AzPrometheusRuleGroup -ResourceGroupName $env.resourceGroup} | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {Get-AzPrometheusRuleGroup -ResourceGroupName $env.resourceGroup -RuleGroupName $env.rstr1} | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

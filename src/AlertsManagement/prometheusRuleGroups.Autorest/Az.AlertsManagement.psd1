@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.AlertsManagement.private.dll'
   FormatsToProcess = './Az.AlertsManagement.format.ps1xml'
-  FunctionsToExport = 'Get-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroupActionObject', 'New-AzPrometheusRuleObject', 'Remove-AzPrometheusRuleGroup', 'Set-AzPrometheusRuleGroup', 'Update-AzPrometheusRuleGroup', '*'
+  FunctionsToExport = 'Get-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroup', 'New-AzPrometheusRuleGroupActionObject', 'New-AzPrometheusRuleObject', 'Remove-AzPrometheusRuleGroup', 'Update-AzPrometheusRuleGroup', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

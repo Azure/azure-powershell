@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzPrometheusRuleGroupActi
 }
 
 Describe 'New-AzPrometheusRuleGroupActionObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {New-AzPrometheusRuleGroupActionObject -ActionGroupId $actiongroup -ActionProperty @{"key1" = "value1"}} | Should -Not -Throw
     }
 }

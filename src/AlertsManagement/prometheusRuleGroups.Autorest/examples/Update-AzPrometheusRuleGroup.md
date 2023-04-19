@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an Prometheus rule group definition.
 ```powershell
-{{ Add code here }}
+Update-AzPrometheusRuleGroup -RuleGroupName MyRuleGroup -ResourceGroupName MyResourceGroup -Enabled:$false
 ```
 
 ```output
-{{ Add output here }}
+Name         Location ClusterName Enabled
+----         -------- ----------- -------
+MyRuleGroup  eastus               False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Disable certain rule group.
 

@@ -13,8 +13,8 @@ Create an in-memory object for PrometheusRuleGroupAction.
 ## SYNTAX
 
 ```
-New-AzPrometheusRuleGroupActionObject [-ActionGroupId <String>]
- [-ActionProperty <IPrometheusRuleGroupActionProperties>] [<CommonParameters>]
+New-AzPrometheusRuleGroupActionObject [-ActionGroupId <String>] [-ActionProperty <Hashtable>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,27 +22,19 @@ Create an in-memory object for PrometheusRuleGroupAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for PrometheusRuleGroupAction.
 ```powershell
-{{ Add code here }}
+New-AzPrometheusRuleGroupActionObject -ActionGroupId /subscriptions/fffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MyresourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup -ActionProperty @{"key1" = "value1"}
+
 ```
 
 ```output
-{{ Add output here }}
+ActionGroupId
+-------------
+/subscriptions/fffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MyresourceGroup/providers/microsoft.insights/acti…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for PrometheusRuleGroupAction.
 
 ## PARAMETERS
 
@@ -63,10 +55,9 @@ Accept wildcard characters: False
 
 ### -ActionProperty
 The properties of an action group object.
-To construct, see NOTES section for ACTIONPROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleGroupActionProperties
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -89,14 +80,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ACTIONPROPERTY <IPrometheusRuleGroupActionProperties>`: The properties of an action group object.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

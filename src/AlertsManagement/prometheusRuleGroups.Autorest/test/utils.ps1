@@ -19,6 +19,22 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $rstr1 = RandomString -allChars $false -len 6
+    $rstr2 = RandomString -allChars $false -len 6
+    $rstr3 = RandomString -allChars $false -len 6
+    $null = $env.Add("rstr1", $rstr1)
+    $null = $env.Add("rstr2", $rstr2)
+    $null = $env.Add("rstr3", $rstr3)
+    $resourceGroup = 'prometheus-rg-' + $rstr1
+    $null = $env.Add("resourceGroup", $resourceGroup)
+    New-AzResourceGroup -Name $resourceGroup -Location eastus
+    $email1 = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
+    $actiongroup = Set-AzActionGroup -Name $rstr1 -ResourceGroupName $resourceGroup -ShortName $rstr1 -Receiver $email1
+    $rule1 = New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m" -Expression 'histogram_quantile(0.99, sum(rate(jobs_duration_seconds_bucket{service="billing-processing"}[5m])) by (job_type))'
+    $scope = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitorworkspace"
+    New-AzPrometheusRuleGroup -ResourceGroupName $resourceGroup -RuleGroupName $rstr1 -Location eastus -Rule $rule1 -Scope $scope -Enabled
+    New-AzPrometheusRuleGroup -ResourceGroupName $resourceGroup -RuleGroupName $rstr3 -Location eastus -Rule $rule1 -Scope $scope -Enabled
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -26,6 +42,6 @@ function setupEnv() {
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
 function cleanupEnv() {
-    # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

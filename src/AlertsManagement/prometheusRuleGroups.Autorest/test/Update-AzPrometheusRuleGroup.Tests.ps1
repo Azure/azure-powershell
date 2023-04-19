@@ -15,19 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzPrometheusRuleGroup'
 }
 
 Describe 'Update-AzPrometheusRuleGroup' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzPrometheusRuleGroup -ResourceGroupName $env.resourceGroup -RuleGroupName $env.rstr1 -Enabled} | Should -Not -Throw
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $obj = Get-AzPrometheusRuleGroup -ResourceGroupName $env.resourceGroup -RuleGroupName $env.rstr1
+        {Update-AzPrometheusRuleGroup -InputObject $obj -Enabled } | Should -Not -Throw
     }
 }

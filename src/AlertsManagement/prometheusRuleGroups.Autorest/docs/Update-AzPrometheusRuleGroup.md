@@ -18,20 +18,6 @@ Update-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String>
  [-Enabled] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String>
- -Parameter <IPrometheusRuleGroupResourcePatchParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzPrometheusRuleGroup -InputObject <IAlertsIdentity>
- -Parameter <IPrometheusRuleGroupResourcePatchParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzPrometheusRuleGroup -InputObject <IAlertsIdentity> [-Enabled] [-Tag <Hashtable>]
@@ -43,27 +29,18 @@ Update an Prometheus rule group definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an Prometheus rule group definition.
 ```powershell
-{{ Add code here }}
+Update-AzPrometheusRuleGroup -RuleGroupName MyRuleGroup -ResourceGroupName MyResourceGroup -Enabled:$false
 ```
 
 ```output
-{{ Add output here }}
+Name         Location ClusterName Enabled
+----         -------- ----------- -------
+MyRuleGroup  eastus               False
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Disable certain rule group.
 
 ## PARAMETERS
 
@@ -88,7 +65,7 @@ the flag that indicates whether the Prometheus rule group is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -104,23 +81,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.IAlertsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Parameter
-The Prometheus rule group resource for patch operations.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleGroupResourcePatchParameters
-Parameter Sets: Update, UpdateViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -136,7 +97,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -151,7 +112,7 @@ The name of the rule group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -166,7 +127,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -181,7 +142,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,8 +188,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleGroupResourcePatchParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.IAlertsIdentity
 
 ## OUTPUTS
@@ -249,11 +208,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[RuleGroupName <String>]`: The name of the rule group.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`PARAMETER <IPrometheusRuleGroupResourcePatchParameters>`: The Prometheus rule group resource for patch operations.
-  - `[Enabled <Boolean?>]`: the flag that indicates whether the Prometheus rule group is enabled.
-  - `[Tag <IPrometheusRuleGroupResourcePatchParametersTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

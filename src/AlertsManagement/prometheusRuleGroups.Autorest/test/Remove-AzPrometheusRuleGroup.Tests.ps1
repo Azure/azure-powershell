@@ -15,8 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzPrometheusRuleGroup'
 }
 
 Describe 'Remove-AzPrometheusRuleGroup' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete'{
+        {Get-AzPrometheusRuleGroup -ResourceGroupName $env.resourceGroup -RuleGroupName $env.rstr3} | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

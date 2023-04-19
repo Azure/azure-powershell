@@ -39,27 +39,32 @@ Retrieve a Prometheus rule group definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Retrieve a Prometheus rule group definition from subscription.
 ```powershell
-{{ Add code here }}
+Get-AzPrometheusRuleGroup
 ```
 
 ```output
-{{ Add output here }}
+Name     Location ClusterName Enabled
+----     -------- ----------- -------
+newrule  eastus               True
+newrule2 eastus               False
 ```
 
-{{ Add description here }}
+Retrieve a Prometheus rule group definition from subscription.
 
-### Example 2: {{ Add title here }}
+### Example 2: Retrieve a certain Prometheus rule group definition.
 ```powershell
-{{ Add code here }}
+ Get-AzPrometheusRuleGroup -RuleGroupName newrule -ResourceGroupName MyGroupName
 ```
 
 ```output
-{{ Add output here }}
+Name    Location ClusterName Enabled
+----    -------- ----------- -------
+newrule eastus               True
 ```
 
-{{ Add description here }}
+Retrieve a certain Prometheus rule group definition from ResourceGroup.
 
 ## PARAMETERS
 

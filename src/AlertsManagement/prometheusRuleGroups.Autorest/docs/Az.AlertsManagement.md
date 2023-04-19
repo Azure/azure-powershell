@@ -26,9 +26,6 @@ Create an in-memory object for PrometheusRule.
 ### [Remove-AzPrometheusRuleGroup](Remove-AzPrometheusRuleGroup.md)
 Delete a Prometheus rule group definition.
 
-### [Set-AzPrometheusRuleGroup](Set-AzPrometheusRuleGroup.md)
-Create or update a Prometheus rule group definition.
-
 ### [Update-AzPrometheusRuleGroup](Update-AzPrometheusRuleGroup.md)
 Update an Prometheus rule group definition.
 

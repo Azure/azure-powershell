@@ -12,14 +12,6 @@ Create or update a Prometheus rule group definition.
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-New-AzPrometheusRuleGroup -InputObject <IAlertsIdentity> -Location <String> -Rule <IPrometheusRule[]>
- -Scope <String[]> [-ClusterName <String>] [-Description <String>] [-Enabled] [-Interval <TimeSpan>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
 ```
 New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String> -Location <String>
  -Rule <IPrometheusRule[]> -Scope <String[]> [-SubscriptionId <String>] [-ClusterName <String>]
@@ -32,29 +24,39 @@ Create or update a Prometheus rule group definition.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create Prometheus rule group definition with one rule.
 ```powershell
-$a = New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m"
-$scope = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/lnxtest/providers/microsoft.monitor/accounts/lnxmonitorworkspace"
-New-AzPrometheusRuleGroup -ResourceGroupName lnxtest -RuleGroupName newrule -Location eastus -Rule $a -Scope $scope
+$rule1 = New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m"
+$scope = "/subscriptions/fffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/MyresourceGroup/providers/microsoft.monitor/accounts/MyAccounts"
+New-AzPrometheusRuleGroup -ResourceGroupName MyresourceGroup -RuleGroupName MyRuleGroup -Location eastus -Rule $rule1 -Scope $scope -Enabled
 ```
 
 ```output
-{{ Add output here }}
+Name        Location ClusterName Enabled
+----        -------- ----------- -------
+MyRuleGroup eastus               True
 ```
 
-{{ Add description here }}
+Create Prometheus rule group definition with one rule.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create Prometheus rule group definition with rules.
 ```powershell
-{{ Add code here }}
+$rule1 = New-AzPrometheusRuleObject -Record "job_type:billing_jobs_duration_seconds:99p5m"
+$action =  New-AzPrometheusRuleGroupActionObject -ActionGroupId /subscriptions/fffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/MyresourceGroup/providers/microsoft.insights/actiongroups/MyActionGroup -ActionProperty @{"key1" = "value1"}
+$Timespan = New-TimeSpan -Minutes 15
+$rule2 = New-AzPrometheusRuleObject -Alert Billing_Processing_Very_Slow -Expression "job_type:billing_jobs_duration_seconds:99p5m > 30" -Enabled $false -Severity 3 -For $Timespan -Label @{"team"="prod"} -Annotation @{"annotation" = "value"} -ResolveConfigurationAutoResolved $true -ResolveConfigurationTimeToResolve $Timespan -Action $action
+$rules = @($rule1, $rule2)
+$scope = "/subscriptions/fffffffff-ffff-ffff-ffff-ffffffffffff/resourcegroups/MyresourceGroup/providers/microsoft.monitor/accounts/MyAccounts"
+New-AzPrometheusRuleGroup -ResourceGroupName MyresourceGroup -RuleGroupName MyRuleGroup -Location eastus -Rule $rule1 -Scope $scope -Enabled
 ```
 
 ```output
-{{ Add output here }}
+Name        Location ClusterName Enabled
+----        -------- ----------- -------
+MyRuleGroup eastus               True
 ```
 
-{{ Add description here }}
+Create Prometheus rule group definition with rules.
 
 ## PARAMETERS
 
@@ -119,22 +121,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.IAlertsIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Interval
 The interval in which to run the Prometheus rule group represented in ISO 8601 duration format.
 Should be between 1 and 15 minutes
@@ -172,7 +158,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -203,7 +189,7 @@ The name of the rule group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -235,7 +221,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -296,8 +282,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.IAlertsIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleGroupResource
@@ -310,12 +294,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`INPUTOBJECT <IAlertsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleGroupName <String>]`: The name of the rule group.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 `RULE <IPrometheusRule[]>`: Defines the rules in the Prometheus rule group.
   - `Expression <String>`: The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
