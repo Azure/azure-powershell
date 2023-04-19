@@ -9,6 +9,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -227,16 +228,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
             CertificatePolicy certificatePolicy = null;
-            if (certPolicy == null)
+            if (certPolicy != null)
+            {
+                certificatePolicy = certPolicy.ToTrack2CertificatePolicy();
+                if ( certificatePolicy.ContentType != contentType )
+                {
+                    throw new Exception($"{contentType} conflicts with the ContentType stated as {certificatePolicy.ContentType} in Certificate Policy.");
+                }
+            }
+            else
             {
                 certificatePolicy = new CertificatePolicy()
                 {
                     ContentType = contentType
                 };
-            }
-            else
-            {
-                certificatePolicy = certPolicy.ToTrack2CertificatePolicy();
             }
             var options = new ImportCertificateOptions(certName, certificate)
             {

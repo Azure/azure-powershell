@@ -4,7 +4,15 @@ BeforeAll {
 }
 
 Describe "Import Certificate with policy" {
-    It "ImportCertificateFromFileParameterSet" {
+    It "ImportCertificateFromFileWithPolicyParameterSet" {
+        $certName = Get-CertificateName
+        $certFilePath = "..\Resources\importCert00.pfx"
+        $policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
+
+        $cert = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName -FilePath $certFilePath -Policy $policy
+        $cert.Policy.SecretContentType | Should -Be "application/x-pkcs12"
+    }
+    It "ImportCertificateFromFileWithPolicyFileParameterSet" {
         $certName = Get-CertificateName
         $certFilePath = "..\Resources\importCert00.pfx"
         $policyPath = "..\Resources\certPolicy.json"
@@ -12,7 +20,7 @@ Describe "Import Certificate with policy" {
         $cert = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName -FilePath $certFilePath -PolicyPath $policyPath
         $cert.Policy.SecretContentType | Should -Be "application/x-pkcs12"
     }
-    It "ImportWithPrivateKeyFromStringParameterSet" {
+    It "ImportWithPrivateKeyFromStringWithPolicyFileParameterSet" {
         $certName = Get-CertificateName
         $certFilePath = "..\Resources\importCert00.pfx"
         $policyPath = "..\Resources\certPolicy.json"
@@ -21,7 +29,7 @@ Describe "Import Certificate with policy" {
         $cert = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName -CertificateString $Base64StringCertificate -PolicyPath $policyPath
         $cert.Policy.SecretContentType | Should -Be "application/x-pkcs12"
     }
-    It "ImportWithPrivateKeyFromCollectionParameterSet" {
+    It "ImportWithPrivateKeyFromCollectionWithPolicyFileParameterSet" {
         $certName = Get-CertificateName
         $certFilePath = "..\Resources\importCert00.pfx"
         $policyPath = "..\Resources\certPolicy.json"
