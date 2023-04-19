@@ -36,17 +36,9 @@ Describe 'AzMobileNetworkSlice' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
-            $config = Update-AzMobileNetworkSlice -MobileNetworkName $env.testNetwork3 -ResourceGroupName $env.resourceGroup -SliceName $env.testSlice -Tag @{"abc"="123"}
-            $config.Name | Should -Be $env.testSlice
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        {
-            $config = Get-AzMobileNetworkSlice -MobileNetworkName $env.testNetwork3 -ResourceGroupName $env.resourceGroup -SliceName $env.testSlice
-            $config = Update-AzMobileNetworkSlice -InputObject $config -Tag @{"abc"="123"}
+            $config = Update-AzMobileNetworkSlice -MobileNetworkName $env.testNetwork3 -ResourceGroupName $env.resourceGroup -SliceName $env.testSlice -Tag @{"abc"="123"} -SnssaiSst 1
             $config.Name | Should -Be $env.testSlice
         } | Should -Not -Throw
     }

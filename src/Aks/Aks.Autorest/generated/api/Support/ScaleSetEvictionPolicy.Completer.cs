@@ -7,7 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
     /// <summary>
-    /// ScaleSetEvictionPolicy to be used to specify eviction policy for Spot virtual machine scale set. Default to Delete.
+    /// The eviction policy specifies what to do with the VM when it is evicted. The default is Delete. For more information about
+    /// eviction see [spot VMs](https://docs.microsoft.com/azure/virtual-machines/spot-vms)
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetEvictionPolicyTypeConverter))]
     public partial struct ScaleSetEvictionPolicy :

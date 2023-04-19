@@ -30,7 +30,7 @@ For information on how to develop for `Az.MobileNetwork`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 63adf8a58565b729f70895b65aa7d1333b22d15f
+branch: 933dbc070dda85e2d115dc42893f07b2ed5b74f6
 require:
   - $(this-folder)/../readme.azure.noprofile.md 
 input-file:
@@ -92,11 +92,6 @@ directive:
     remove: true
 
   - where:
-      verb: New
-      subject: SimGroup
-    hide: true
-
-  - where:
       verb: Set
     remove: true
   - where:
@@ -147,6 +142,16 @@ directive:
       parameter-name: DefaultSlouseId
     set:
       parameter-name: DefaultSliceId
+
+  - where:
+      verb: Update
+      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
+      variant: ^UpdateViaIdentityExpanded$
+    remove: true
+  - where:
+      verb: Update
+      subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
+    hide: true
 
   # - where:
   #     verb: Invoke

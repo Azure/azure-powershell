@@ -38,24 +38,26 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ```powershell
 $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
 $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rwt" -InputObject $acl
 Get-AzDataLakeGen2ChildItem -FileSystem "filesystem1" -Recurse | Update-AzDataLakeGen2Item -ACL $acl
 ```
 
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
-dir1                 True                         2020-03-13 13:07:34Z rwxrw-rw-    $superuser           $superuser           
-dir1/file1           False        1024            2020-03-23 09:29:18Z rwxrw-rw-    $superuser           $superuser          
-dir2                 True                         2020-03-23 09:28:36Z rwxrw-rw-    $superuser           $superuser
+dir1                 True                         2020-03-13 13:07:34Z rwxrw-rwt    $superuser           $superuser           
+dir1/file1           False        1024            2020-03-23 09:29:18Z rwxrw-rwt    $superuser           $superuser          
+dir2                 True                         2020-03-23 09:28:36Z rwxrw-rwt    $superuser           $superuser
 ```
 
 This command first creates an ACL object with 3 acl entry (use -InputObject parameter to add acl entry to existing acl object), then get all items in a filesystem and update acl on the items.
 
 ### Example 2: Update all properties on a file, and show them
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $file = Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" `
                  -Acl $acl `
@@ -143,7 +145,7 @@ Update-AzDataLakeGen2Item -FileSystem "filesystem1" -Path 'dir1/dir3/' -ACL $acl
 ```
 
 ```output
-   FileSystem Name: filesystem1
+FileSystem Name: filesystem1
 
 Path                 IsDirectory  Length          LastModified         Permissions  Owner                Group               
 ----                 -----------  ------          ------------         -----------  -----                -----               
@@ -294,10 +296,9 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Sets POSIX access permissions for the file owner, the file owning group, and others.
-Each class may be granted read, write, or execute permission.
-Symbolic (rwxrw-rw-) is supported.
-Invalid in conjunction with Acl.
+Sets POSIX access permissions for the file owner, the file owning group, and others. Each class may be granted read, write, or execute permission. Symbolic (rwxrw-rw-) is supported.
+The sticky bit is also supported and its represented either by the letter t or T in the final character-place depending on whether the execution bit for the others category is set or unset respectively, 
+absence of t or T indicates sticky bit not set.Invalid in conjunction with ACL.
 
 ```yaml
 Type: System.String
@@ -360,7 +361,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         "Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupPolicy",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
-    [CmdletOutputBreakingChange(typeof(PSNetAppFilesBackupPolicy), DeprecatedOutputProperties = new string[] { "YearlyBackupsToKeep" })]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]    
     [Alias("Remove-AnfBackupPolicy")]
     public class RemoveAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
     {
