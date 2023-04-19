@@ -30,6 +30,11 @@
     -`Remove-AzRouteMap`
 * Update cmdlets to add inbound/outbound route maps in routingConfiguration
     -`New-AzRoutingConfiguration`
+* Added new cmdlets to support Rate Limiting Rule for Application Gateway WAF
+    - 'New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession',
+    - 'New-AzApplicationGatewayFirewallCustomRuleGroupByVariable',
+    - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
+    - `New-AzureApplicationGatewayFirewallCustomRule`
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
@@ -44,6 +49,7 @@
 * Blocked some regions when creating/updating Basic Sku firewall
 * Fixed bugs related to auto learn IP prefixes and Snat
 * Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
+
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
