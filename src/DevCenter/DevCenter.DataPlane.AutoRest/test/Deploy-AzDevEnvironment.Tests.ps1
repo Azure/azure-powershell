@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevDevCenterProject'))
+if(($null -eq $TestName) -or ($TestName -contains 'Deploy-AzDevEnvironment'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDevDevCenterProject.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Deploy-AzDevEnvironment.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevDevCenterProject'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDevDevCenterProject' {
-    It 'List' -skip {
+Describe 'Deploy-AzDevEnvironment' {
+    It 'ReplaceExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Replace' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'ReplaceViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'ReplaceViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

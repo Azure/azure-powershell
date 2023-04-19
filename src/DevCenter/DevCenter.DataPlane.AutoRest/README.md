@@ -35,9 +35,35 @@ branch: 1fd32d6d50f5be3dde6d0547f2f3c369998811e1
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/devcenter/data-plane/readme.md 
+  - $(this-folder)/../../specification/devcenter/data-plane/readme.md 
 
 directive:
+  - where:
+      subject: ^(.*)(DevBoxPool)(.*)$
+    set:
+      subject: Pool
+  - where:
+      subject: ^(.*)(DevBoxSchedule)(.*)$
+    set:
+      subject: Schedule
+  - where:
+      subject: ^(.*)(DevCenterProject)(.*)$
+    set:
+      subject: Project
+  - where:
+      subject: ^(.*)(EnvironmentCatalog)(.*)$
+    set:
+      subject: Catalog
+  - where:
+      subject: ^(.*)(DelayDevBoxAction)(.*)$
+    set: 
+      verb: Delay
+      subject: DevBoxAction
+  - where:
+      verb: Set
+      subject: ^(.*)(Environment)(.*)$
+    set: 
+      verb: Deploy
   - where:
       subject: ^(.*)
     set:

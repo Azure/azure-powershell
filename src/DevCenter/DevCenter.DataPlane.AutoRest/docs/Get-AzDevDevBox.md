@@ -14,8 +14,8 @@ Gets a Dev Box
 
 ### List (Default)
 ```
-Get-AzDevDevBox -Endpoint <String> -ProjectName <String> -UserId <String> [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevDevBox -Endpoint <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -28,6 +28,18 @@ Get-AzDevDevBox -Endpoint <String> -Name <String> -ProjectName <String> -UserId 
 ```
 Get-AzDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzDevDevBox -Endpoint <String> -UserId <String> [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzDevDevBox -Endpoint <String> -ProjectName <String> -UserId <String> [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +107,7 @@ An OData filter clause to apply to the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List, List1, List2
 Aliases:
 
 Required: False
@@ -141,7 +153,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List2
 Aliases:
 
 Required: True
@@ -157,7 +169,7 @@ Example: 'top=10'.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List, List1, List2
 Aliases:
 
 Required: False
@@ -173,7 +185,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, List1, List2
 Aliases:
 
 Required: True

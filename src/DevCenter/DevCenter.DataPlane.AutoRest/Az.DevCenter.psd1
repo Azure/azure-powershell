@@ -1,5 +1,5 @@
 @{
-  GUID = '7ecf6752-9e5d-434a-8fb4-dc59791c37fe'
+  GUID = '3cfc7165-158b-4c84-a966-01e1f1c829bc'
   RootModule = './Az.DevCenter.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DevCenter.private.dll'
   FormatsToProcess = './Az.DevCenter.format.ps1xml'
-  FunctionsToExport = 'Get-AzDevDevBox', 'Get-AzDevDevBoxAction', 'Get-AzDevDevBoxPool', 'Get-AzDevDevBoxRemoteConnection', 'Get-AzDevDevBoxSchedule', 'Get-AzDevDevCenterDevBox', 'Get-AzDevDevCenterProject', 'Get-AzDevEnvironment', 'Get-AzDevEnvironmentCatalog', 'Get-AzDevEnvironmentDefinition', 'Get-AzDevEnvironmentType', 'Invoke-AzDevDelayDevBoxAction', 'New-AzDevDevBox', 'New-AzDevEnvironment', 'Remove-AzDevDevBox', 'Remove-AzDevEnvironment', 'Restart-AzDevDevBox', 'Set-AzDevEnvironment', 'Skip-AzDevDevBoxAction', 'Start-AzDevDevBox', 'Stop-AzDevDevBox', '*'
+  FunctionsToExport = 'Delay-AzDevDevBoxAction', 'Deploy-AzDevEnvironment', 'Get-AzDevCatalog', 'Get-AzDevDevBox', 'Get-AzDevDevBoxAction', 'Get-AzDevDevBoxRemoteConnection', 'Get-AzDevEnvironment', 'Get-AzDevEnvironmentDefinition', 'Get-AzDevEnvironmentType', 'Get-AzDevPool', 'Get-AzDevProject', 'Get-AzDevSchedule', 'New-AzDevDevBox', 'New-AzDevEnvironment', 'Remove-AzDevDevBox', 'Remove-AzDevEnvironment', 'Restart-AzDevDevBox', 'Skip-AzDevDevBoxAction', 'Start-AzDevDevBox', 'Stop-AzDevDevBox', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

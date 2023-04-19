@@ -1,37 +1,37 @@
 ---
 external help file:
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevdevcenterproject
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevpool
 schema: 2.0.0
 ---
 
-# Get-AzDevDevCenterProject
+# Get-AzDevPool
 
 ## SYNOPSIS
-Gets a project.
+Gets a pool
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDevDevCenterProject -Endpoint <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevPool -Endpoint <String> -ProjectName <String> [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDevDevCenterProject -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+Get-AzDevPool -Endpoint <String> -PoolName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDevDevCenterProject -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+Get-AzDevPool -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a project.
+Gets a pool
 
 ## EXAMPLES
 
@@ -121,12 +121,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -PoolName
+The name of a pool of Dev Boxes.
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -161,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IProject
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IPool
 
 ## NOTES
 

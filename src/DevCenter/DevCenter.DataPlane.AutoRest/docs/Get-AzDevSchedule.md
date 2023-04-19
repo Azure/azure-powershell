@@ -1,44 +1,37 @@
 ---
 external help file:
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/invoke-azdevdelaydevboxaction
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevschedule
 schema: 2.0.0
 ---
 
-# Invoke-AzDevDelayDevBoxAction
+# Get-AzDevSchedule
 
 ## SYNOPSIS
-Delays the occurrence of an action.
+Gets a schedule.
 
 ## SYNTAX
 
-### Delay1 (Default)
+### List (Default)
 ```
-Invoke-AzDevDelayDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String> -UserId <String>
- -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDevSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> [-Filter <String>]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### Delay
+### Get
 ```
-Invoke-AzDevDelayDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String>
- -ProjectName <String> -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Get-AzDevSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDevSchedule -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### DelayViaIdentity
-```
-Invoke-AzDevDelayDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DelayViaIdentity1
-```
-Invoke-AzDevDelayDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Delays the occurrence of an action.
+Gets a schedule.
 
 ## EXAMPLES
 
@@ -66,21 +59,6 @@ Delays the occurrence of an action.
 
 ## PARAMETERS
 
-### -ActionName
-The name of an action that will take place on a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Delay
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
@@ -91,21 +69,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DevBoxName
-The name of a Dev Box.
-
-```yaml
-Type: System.String
-Parameter Sets: Delay, Delay1
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -127,13 +90,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+An OData filter clause to apply to the operation.
+
+```yaml
+Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: DelayViaIdentity, DelayViaIdentity1
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -143,12 +121,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -PoolName
+The name of a pool of Dev Boxes.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, Delay1
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -158,28 +151,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Until
-The time to delay the Dev Box action or actions until.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserId
-The AAD object id of the user.
-If value is 'me', the identity is taken from the authentication context.
+### -ScheduleName
+The name of a schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delay, Delay1
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -189,29 +166,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -Top
+The maximum number of resources to return from the operation.
+Example: 'top=10'.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: System.Int32
+Parameter Sets: List
+Aliases:
 
 Required: False
 Position: Named
@@ -229,9 +191,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IDevBoxAction
-
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IDevBoxActionDelayResult
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.ISchedule
 
 ## NOTES
 

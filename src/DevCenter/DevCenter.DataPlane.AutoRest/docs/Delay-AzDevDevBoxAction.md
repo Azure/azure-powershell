@@ -1,37 +1,43 @@
 ---
 external help file:
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevenvironmentcatalog
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevdevboxaction
 schema: 2.0.0
 ---
 
-# Get-AzDevEnvironmentCatalog
+# Delay-AzDevDevBoxAction
 
 ## SYNOPSIS
-Gets the specified catalog within the project
+Delays the occurrence of an action.
 
 ## SYNTAX
 
-### List (Default)
+### Delay1 (Default)
 ```
-Get-AzDevEnvironmentCatalog -Endpoint <String> -ProjectName <String> [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDevEnvironmentCatalog -Endpoint <String> -CatalogName <String> -ProjectName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Delay-AzDevDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String> -UserId <String>
+ -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### Delay
 ```
-Get-AzDevEnvironmentCatalog -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Delay-AzDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxName <String> -ProjectName <String>
+ -UserId <String> -Until <DateTime> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DelayViaIdentity
+```
+Delay-AzDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### DelayViaIdentity1
+```
+Delay-AzDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity> -Until <DateTime>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the specified catalog within the project
+Delays the occurrence of an action.
 
 ## EXAMPLES
 
@@ -59,12 +65,12 @@ Gets the specified catalog within the project
 
 ## PARAMETERS
 
-### -CatalogName
-The name of the catalog
+### -ActionName
+The name of an action that will take place on a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delay
 Aliases:
 
 Required: True
@@ -84,6 +90,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevBoxName
+The name of a Dev Box.
+
+```yaml
+Type: System.String
+Parameter Sets: Delay, Delay1
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,7 +132,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DelayViaIdentity, DelayViaIdentity1
 Aliases:
 
 Required: True
@@ -126,7 +147,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delay, Delay1
 Aliases:
 
 Required: True
@@ -136,14 +157,60 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
+### -Until
+The time to delay the Dev Box action or actions until.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
+Type: System.DateTime
+Parameter Sets: (All)
 Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserId
+The AAD object id of the user.
+If value is 'me', the identity is taken from the authentication context.
+
+```yaml
+Type: System.String
+Parameter Sets: Delay, Delay1
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
@@ -161,9 +228,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IDevBoxAction
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IDevBoxActionDelayResult
 
 ## NOTES
 

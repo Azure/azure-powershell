@@ -1,37 +1,37 @@
 ---
 external help file:
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevdevboxschedule
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcatalog
 schema: 2.0.0
 ---
 
-# Get-AzDevDevBoxSchedule
+# Get-AzDevCatalog
 
 ## SYNOPSIS
-Gets a schedule.
+Gets the specified catalog within the project
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDevDevBoxSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> [-Filter <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCatalog -Endpoint <String> -ProjectName <String> [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDevDevBoxSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCatalog -Endpoint <String> -CatalogName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDevDevBoxSchedule -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+Get-AzDevCatalog -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a schedule.
+Gets the specified catalog within the project
 
 ## EXAMPLES
 
@@ -58,6 +58,21 @@ Gets a schedule.
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -CatalogName
+The name of the catalog
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -90,21 +105,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-An OData filter clause to apply to the operation.
-
-```yaml
-Type: System.String
-Parameter Sets: List
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -121,42 +121,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of a pool of Dev Boxes.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleName
-The name of a schedule.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -191,7 +161,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.ISchedule
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.ICatalog
+
+### System.String
 
 ## NOTES
 
