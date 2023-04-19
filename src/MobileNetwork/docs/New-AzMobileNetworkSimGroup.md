@@ -14,8 +14,8 @@ Creates or updates a SIM group.
 
 ```
 New-AzMobileNetworkSimGroup -Name <String> -ResourceGroupName <String> -Location <String>
- -MobileNetworkId <String> [-SubscriptionId <String>] [-EncryptionKeyUrl <String>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-EncryptionKeyUrl <String>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-MobileNetworkId <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -26,8 +26,6 @@ Creates or updates a SIM group.
 
 ### Example 1: Creates or updates a SIM group.
 ```powershell
-$ManagedIdentity = @{"/subscriptions/{subId}/resourcegroups/azps_test_group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azps-mn-mi"="{}"}
-
 New-AzMobileNetworkSimGroup -Name azps-mn-simgroup -ResourceGroupName azps_test_group -Location eastus -MobileNetworkId "/subscriptions/{subId}/resourceGroups/azps_test_group/providers/Microsoft.MobileNetwork/mobileNetworks/azps-mn"
 ```
 
@@ -143,7 +141,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

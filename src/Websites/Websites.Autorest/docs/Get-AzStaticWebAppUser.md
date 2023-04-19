@@ -26,6 +26,7 @@ Description for Gets the list of users of a static site.
 ```powershell
 Get-AzStaticWebAppUser -ResourceGroupName azure-rg-test -Name staticweb-portal04 -Authprovider all
 ```
+
 ```output
 Kind Name                             Type
 ---- ----                             ----

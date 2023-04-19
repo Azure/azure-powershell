@@ -1,0 +1,353 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "kustoApiVersion": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO API Version>"
+            }
+        },
+        "kustoSkuName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO SKU NAME>"
+            }
+        },
+        "kustoClusterTier": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO CLUSTER TIER>"
+            }
+        },
+        "kustoClusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO CLUSTER NAME>"
+            }
+        },
+        "kustoFollowerClusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO FOLLOWER CLUSTER NAME>"
+            }
+        },
+        "kustoDatabaseName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO DATABASE NAME>"
+            }
+        },
+        "kustoDatabaseScriptName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO DATABASE SCRIPT NAME>"
+            }
+        },
+        "kustoTableName": {
+            "type": "string",
+            "metadata": {
+                "description": "<KUSTO TABLE NAME>"
+            }
+        },
+        "principalAppId": {
+            "type": "string",
+            "metadata": {
+                "description": "<ID OF THE APP TO BE ASSIGND AS A PRINCIPAL>"
+            }
+        },
+        "eventHubNameSpaceName": {
+            "type": "string",
+            "metadata": {
+                "description": "<NAME OF THE EVENT HUB NAMESPACE>"
+            }
+        },
+        "eventHubName": {
+            "type": "string",
+            "metadata": {
+                "description": "<NAME OF THE EVENT HUB>"
+            }
+        },
+        "iotHubName": {
+            "type": "string",
+            "metadata": {
+                "description": "<NAME OF THE IOT HUB>"
+            }
+        },
+        "cosmosDbAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "<COSMOSDB ACCOUNT NAME>"
+            }
+        },
+        "cosmosDbDatabaseName": {
+            "type": "string",
+            "metadata": {
+                "description": "<COSMOSDB DATABASE NAME>"
+            }
+        },
+        "cosmosDbContainerName": {
+            "type": "string",
+            "metadata": {
+                "description": "<COSMOSDB CONTAINER NAME>"
+            }
+        },
+        "storageAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "<COSMOSDB CONTAINER NAME>"
+            }
+        },
+        "virtualNetworkName": {
+            "type": "string",
+            "metadata": {
+                "description": "<VIRTUAL NETWORK NAME>"
+            }
+        },
+        "subnetName": {
+            "type": "string",
+            "metadata": {
+                "description": "<SUBNET NAME>"
+            }
+        },
+        "privateEndpointName": {
+            "type": "string",
+            "metadata": {
+                "description": "<PRIVATE ENDPOINT NAME>"
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Kusto/clusters",
+            "apiVersion": "[parameters('kustoApiVersion')]",
+            "name": "[parameters('kustoClusterName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "[parameters('kustoSkuName')]",
+                "tier": "[parameters('kustoClusterTier')]",
+                "capacity": 1
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Kusto/clusters/databases",
+            "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDatabaseName'))]",
+            "apiVersion": "[parameters('kustoApiVersion')]",
+            "location": "[resourceGroup().location]",
+            "kind": "ReadWrite",
+            "properties": {
+                "softDeletePeriodInDays": 365,
+                "hotCachePeriodInDays": 31
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Kusto/clusters/databases/principalAssignments",
+            "apiVersion": "[parameters('kustoApiVersion')]",
+            "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDatabaseName'), '/', 'DatabaseAppPrincipal')]",
+            "properties": {
+                "principalId": "[parameters('principalAppId')]",
+                "principalType": "App",
+                "role": "Admin",
+                "tenantId": "[tenant().tenantId]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters/databases', parameters('kustoClusterName'), parameters('kustoDatabaseName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Kusto/clusters/databases/scripts",
+            "apiVersion": "[parameters('kustoApiVersion')]",
+            "name": "[concat(parameters('kustoClusterName'), '/', parameters('kustoDatabaseName'), '/', parameters('kustoDatabaseScriptName'))]",
+            "properties": {
+                "scriptContent": "[concat('.create table ', parameters('kustoTableName'), ' (Level:string, Timestamp:datetime, UserId:string, TraceId:string, Message:string, ProcessId:int32)')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters/databases', parameters('kustoClusterName'), parameters('kustoDatabaseName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Kusto/clusters",
+            "apiVersion": "[parameters('kustoApiVersion')]",
+            "name": "[parameters('kustoFollowerClusterName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "[parameters('kustoSkuName')]",
+                "tier": "[parameters('kustoClusterTier')]",
+                "capacity": 1
+            },
+            "identity": {
+                "type": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces",
+            "apiVersion": "2021-11-01",
+            "name": "[parameters('eventHubNameSpaceName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard"
+            },
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "apiVersion": "2021-11-01",
+            "name": "[format('{0}/{1}', parameters('eventHubNameSpaceName'), parameters('eventHubName'))]",
+            "properties": {},
+            "dependsOn": [
+                "[resourceId('Microsoft.EventHub/namespaces', parameters('eventHubNameSpaceName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Devices/IotHubs",
+            "apiVersion": "2021-07-02",
+            "name": "[parameters('iotHubName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "capacity": 1
+            },
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "apiVersion": "2022-05-15",
+            "name": "[parameters('cosmosDbAccountName')]",
+            "location": "eastus",
+            "kind": "GlobalDocumentDB",
+            "properties": {
+                "databaseAccountOfferType": "Standard"
+            }
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+            "apiVersion": "2022-05-15",
+            "name": "[format('{0}/{1}', toLower(parameters('cosmosDbAccountName')), parameters('cosmosDbDatabaseName'))]",
+            "properties": {
+                "resource": {
+                    "id": "[parameters('cosmosDbDatabaseName')]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts', toLower(parameters('cosmosDbAccountName')))]"
+            ]
+        },
+        {
+            "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+            "apiVersion": "2022-05-15",
+            "name": "[format('{0}/{1}', format('{0}/{1}', toLower(parameters('cosmosDbAccountName')), parameters('cosmosDbDatabaseName')), parameters('cosmosDbContainerName'))]",
+            "properties": {
+                "resource": {
+                    "id": "[parameters('cosmosDbContainerName')]",
+                    "partitionKey": {
+                        "paths": [
+                            "/myPartitionKey"
+                        ],
+                        "kind": "Hash"
+                    }
+                },
+                "options": {
+                    "throughput": "400"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', split(format('{0}/{1}', toLower(parameters('cosmosDbAccountName')), parameters('cosmosDbDatabaseName')), '/')[0], split(format('{0}/{1}', toLower(parameters('cosmosDbDatabaseName')), parameters('cosmosDbDatabaseName')), '/')[1])]"
+            ]
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2022-05-01",
+            "name": "[parameters('storageAccountName')]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "StorageV2"
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2022-07-01",
+            "name": "[parameters('virtualNetworkName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [ "10.0.0.0/16" ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2022-07-01",
+            "name": "[concat(parameters('virtualNetworkName'), '/',parameters('subnetName'))]",
+            "properties": {
+                "addressPrefix": "10.0.0.0/24",
+                "privateLinkServiceNetworkPolicies": "Disabled"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
+            ]
+        },
+        {
+            "type": "Microsoft.Network/privateEndpoints",
+            "apiVersion": "2022-07-01",
+            "name": "[parameters('privateEndpointName')]",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "subnet": {
+                    "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
+                },
+                "privateLinkServiceConnections": [
+                    {
+                        "name": "[parameters('privateEndpointName')]",
+                        "properties": {
+                            "privateLinkServiceId": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]",
+                            "groupIds": [ "cluster" ]
+                        }
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]",
+                "[resourceId('Microsoft.Kusto/clusters/databases/scripts', parameters('kustoClusterName'), parameters('kustoDatabaseName'), parameters('kustoDatabaseScriptName'))]",
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
+            ]
+        }
+    ],
+    "outputs": {
+        "kustoClusterResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoClusterName'))]"
+        },
+        "kustoFolowerClusterResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Kusto/clusters', parameters('kustoFollowerClusterName'))]"
+        },
+        "eventHubNameSpaceResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.EventHub/namespaces', parameters('eventHubNameSpaceName'))]"
+        },
+        "eventHubResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('eventHubNameSpaceName'), parameters('eventHubName'))]"
+        },
+        "iotHubResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName'))]"
+        },
+        "cosmosDbResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosmosDbAccountName'))]"
+        },
+        "storageAccountResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+        }
+    }
+}

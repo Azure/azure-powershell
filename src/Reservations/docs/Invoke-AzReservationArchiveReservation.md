@@ -37,6 +37,7 @@ Invoke-AzReservationArchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc-1
 ```output
 200
 ```
+
 Archive Reservation which is in cancelled/expired/failed state
 
 ## PARAMETERS
@@ -88,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationId
-Id of the Reservation Item
+Id of the reservation item
 
 ```yaml
 Type: System.String
@@ -170,7 +171,7 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 

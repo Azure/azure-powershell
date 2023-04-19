@@ -239,11 +239,9 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceQoPolicyFiveQi
-QoS Flow 5G QoS Indicator value.
+5G QoS Flow Indicator value.
 The 5QI identifies a specific QoS forwarding treatment to be provided to a flow.
-This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow.
-The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85.
-See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
 
 ```yaml
 Type: System.Int32
@@ -370,7 +368,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PCCRULE <IPccRuleConfiguration[]>`: The set of data flow policy rules that make up this service.
+PCCRULE <IPccRuleConfiguration[]>: The set of data flow policy rules that make up this service.
   - `RuleName <String>`: The name of the rule. This must be unique within the parent service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'.
   - `RulePrecedence <Int32>`: A precedence value that is used to decide between data flow policy rules when identifying the QoS values to use for a particular SIM. A lower value means a higher priority. This value should be unique among all data flow policy rules configured in the mobile network.
   - `ServiceDataFlowTemplate <IServiceDataFlowTemplate[]>`: The set of data flow templates to use for this data flow policy rule.
@@ -382,7 +380,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[GuaranteedBitRateDownlink <String>]`: Downlink bit rate.
   - `[GuaranteedBitRateUplink <String>]`: Uplink bit rate.
   - `[RuleQoPolicyAllocationAndRetentionPriorityLevel <Int32?>]`: QoS Flow allocation and retention priority (ARP) level. Flows with higher priority preempt flows with lower priority, if the settings of `preemptionCapability` and `preemptionVulnerability` allow it. 1 is the highest level of priority. If this field is not specified then `5qi` is used to derive the ARP value. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
-  - `[RuleQoPolicyFiveQi <Int32?>]`: QoS Flow 5G QoS Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. This must not be a standardized 5QI value corresponding to a GBR (guaranteed bit rate) QoS Flow. The illegal GBR 5QI values are: 1, 2, 3, 4, 65, 66, 67, 71, 72, 73, 74, 75, 76, 82, 83, 84, and 85. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition of which are the GBR 5QI values.
+  - `[RuleQoPolicyFiveQi <Int32?>]`: 5G QoS Flow Indicator value. The 5QI identifies a specific QoS forwarding treatment to be provided to a flow. See 3GPP TS23.501 section 5.7.2.1 for a full description of the 5QI parameter, and table 5.7.4-1 for the definition the 5QI values.
   - `[RuleQoPolicyMaximumBitRateDownlink <String>]`: Downlink bit rate.
   - `[RuleQoPolicyMaximumBitRateUplink <String>]`: Uplink bit rate.
   - `[RuleQoPolicyPreemptionCapability <PreemptionCapability?>]`: QoS Flow preemption capability. The preemption capability of a QoS Flow controls whether it can preempt another QoS Flow with a lower priority level. See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.

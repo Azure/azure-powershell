@@ -287,22 +287,6 @@ function Set-AzServiceBusQueue{
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
-            if ($queue.DefaultMessageTimeToLive -gt (New-TimeSpan -Days 10675197)) {
-                $queue.DefaultMessageTimeToLive = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($queue.AutoDeleteOnIdle -gt (New-TimeSpan -Days 10675197)) {
-                $queue.AutoDeleteOnIdle = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($queue.DuplicateDetectionHistoryTimeWindow -gt (New-TimeSpan -Days 10675197)) {
-                $queue.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Days 10675197)
-            }
-
-            if ($queue.LockDuration -gt (New-TimeSpan -Days 10675197)) {
-                $queue.LockDuration = (New-TimeSpan -Days 10675197)
-            }
-
             if ($PSCmdlet.ShouldProcess("ServiceBus Queue $($queue.Name)", "Create or update")) {
                 Az.ServiceBus.private\New-AzServiceBusQueue_CreateViaIdentity -InputObject $queue -Parameter $queue @PSBoundParameters
             }

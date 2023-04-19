@@ -1,6 +1,6 @@
 ## ShouldProcess
 
-From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
+From [_Cmdlet Attribute Declaration_](https://learn.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
 
 > _All cmdlets that change resources outside of PowerShell should include the `SupportsShouldProcess` keyword when the `Cmdlet` attribute is declared, which allows the cmdlet to call the `ShouldProcess` method before the cmdlet performs its action. If the `ShouldProcess` call returns false, the action should not be taken._
 >
@@ -93,7 +93,7 @@ void ConfirmAction(bool force, string continueMessage, string processMessage, st
 
 ## ConfirmImpact
 
-From [_Cmdlet Attribute Declaration_](https://docs.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
+From [_Cmdlet Attribute Declaration_](https://learn.microsoft.com/en-us/powershell/developer/cmdlet/cmdlet-attribute-declaration):
 
 > _Specifies when the action of the cmdlet should be confirmed by a call to the `ShouldProcess` method. `ShouldProcess` will only be called when the `ConfirmImpact` value of the cmdlet (by default, Medium) is equal to or greater than the value of the `$ConfirmPreference` variable. This parameter should be specified only when the `SupportsShouldProcess` parameter is specified._
 
