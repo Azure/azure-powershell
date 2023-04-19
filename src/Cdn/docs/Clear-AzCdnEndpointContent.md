@@ -43,33 +43,21 @@ Removes a content from CDN.
 
 ## EXAMPLES
 
-### Example 1: Removes a content from CDN endpoint
+### Example 1: Removes a content from CDN endpoint using Parameter "ContentPath"
 ```powershell
 Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
 ```
 
-Removes a content from CDN using Parameter "ContentPath"
+Removes a content from CDN endpoint using Parameter "ContentPath"
 
-### Example 2: Removes a content from CDN endpoint
+### Example 2: Removes a content from CDN endpoint using Parameter "ContentFilePath"
 ```powershell
-Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath @("/movies/*","/pictures/pic1.jpg") 
+$contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg")
+$contentFilePath = New-AzCdnPurgeParametersObject -ContentPath $contentPath
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath $contentFilePath
 ```
 
-Removes a content from CDN using Parameter "ContentFilePath"
-
-### Example 3: Removes a content from CDN endpoint via identity
-```powershell
-Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
-```
-
-Removes a content from CDN using Parameter "ContentPath" via identity
-
-### Example 4: Removes a content from CDN endpoint via identity
-```powershell
-Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath @("/movies/*","/pictures/pic1.jpg") 
-```
-
-Removes a content from CDN using Parameter "ContenContentFilePathtPath" via identity
+Removes a content from CDN endpoint using Parameter "ContentFilePath"
 
 ## PARAMETERS
 

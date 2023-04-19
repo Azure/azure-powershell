@@ -169,6 +169,9 @@ Creates a new CDN endpoint with the specified endpoint name under the specified 
 ### [New-AzCdnHealthProbeParametersObject](New-AzCdnHealthProbeParametersObject.md)
 Create an in-memory object for HealthProbeParameters.
 
+### [New-AzCdnLoadParametersObject](New-AzCdnLoadParametersObject.md)
+Create an in-memory object for LoadParameters.
+
 ### [New-AzCdnManagedHttpsParametersObject](New-AzCdnManagedHttpsParametersObject.md)
 Create an in-memory object for CdnManagedHttpsParameters.
 
@@ -183,6 +186,9 @@ Create an in-memory object for OriginGroupOverrideAction.
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
+
+### [New-AzCdnPurgeParametersObject](New-AzCdnPurgeParametersObject.md)
+Create an in-memory object for PurgeParameters.
 
 ### [New-AzCdnResourceReferenceObject](New-AzCdnResourceReferenceObject.md)
 Create an in-memory object for ResourceReference.
@@ -237,6 +243,9 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 
 ### [New-AzFrontDoorCdnProfileUpgradeParametersObject](New-AzFrontDoorCdnProfileUpgradeParametersObject.md)
 Create an in-memory object for ProfileUpgradeParameters.
+
+### [New-AzFrontDoorCdnPurgeParametersObject](New-AzFrontDoorCdnPurgeParametersObject.md)
+Create an in-memory object for AfdPurgeParameters.
 
 ### [New-AzFrontDoorCdnResourceReferenceObject](New-AzFrontDoorCdnResourceReferenceObject.md)
 Create an in-memory object for ResourceReference.

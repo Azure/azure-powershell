@@ -103,6 +103,10 @@ directive:
     - UrlRewriteAction
     - DeliveryRuleRequestHeaderAction
     - DeliveryRuleResponseHeaderAction
+    # CDN content
+    - PurgeParameters
+    - LoadParameters
+
     # Migration to AFDx
     # - MigrationParameters
     # - MigrationWebApplicationFirewallMapping
