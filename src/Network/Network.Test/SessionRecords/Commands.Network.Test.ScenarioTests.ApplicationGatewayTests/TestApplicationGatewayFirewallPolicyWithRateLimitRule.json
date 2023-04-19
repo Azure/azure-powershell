@@ -6,11 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "2113ae36-52ab-482b-89d8-61387a6ffd47"
-=======
-          "37de00c8-7047-4ccc-9143-166073e35889"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "d9922cf9-42d0-4e90-a415-1336ccd1fca2"
         ],
         "Accept-Language": [
           "en-US"
@@ -34,23 +30,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "9ac50d5e-e6a3-4e06-90ee-649452d3b50c"
+          "96a3d527-d113-41b7-91df-b2011b4a31d4"
         ],
         "x-ms-correlation-request-id": [
-          "9ac50d5e-e6a3-4e06-90ee-649452d3b50c"
+          "96a3d527-d113-41b7-91df-b2011b4a31d4"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230418T022034Z:9ac50d5e-e6a3-4e06-90ee-649452d3b50c"
-=======
-          "7d03736c-baf4-42ae-bd86-c6ed65bafa0a"
-        ],
-        "x-ms-correlation-request-id": [
-          "7d03736c-baf4-42ae-bd86-c6ed65bafa0a"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230419T041334Z:7d03736c-baf4-42ae-bd86-c6ed65bafa0a"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "WESTUS:20230419T044419Z:96a3d527-d113-41b7-91df-b2011b4a31d4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -59,11 +45,7 @@
           "nosniff"
         ],
         "Date": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "Tue, 18 Apr 2023 02:20:33 GMT"
-=======
-          "Wed, 19 Apr 2023 04:13:33 GMT"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "Wed, 19 Apr 2023 04:44:18 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -79,21 +61,12 @@
       "StatusCode": 200
     },
     {
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps6787?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzNjc4Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps878?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzODc4P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "cabb27b1-f674-4ce3-8eac-0cdbff912341"
-=======
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps1247?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzMTI0Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "PUT",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "26c73f94-e6be-4ac0-bcef-18352efd9652"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "c7fde687-27f8-4073-b87e-79fb00fcd1c8"
         ],
         "Accept-Language": [
           "en-US"
@@ -123,23 +96,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "fa64799c-c584-4508-b599-4ab045b65a68"
+          "4fc380e5-5a0c-4844-8537-74d0bde076c2"
         ],
         "x-ms-correlation-request-id": [
-          "fa64799c-c584-4508-b599-4ab045b65a68"
+          "4fc380e5-5a0c-4844-8537-74d0bde076c2"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230418T022036Z:fa64799c-c584-4508-b599-4ab045b65a68"
-=======
-          "2c1f1f8e-dbe8-487f-94c9-e11df4d7c37e"
-        ],
-        "x-ms-correlation-request-id": [
-          "2c1f1f8e-dbe8-487f-94c9-e11df4d7c37e"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230419T041335Z:2c1f1f8e-dbe8-487f-94c9-e11df4d7c37e"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "WESTUS:20230419T044420Z:4fc380e5-5a0c-4844-8537-74d0bde076c2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -148,14 +111,10 @@
           "nosniff"
         ],
         "Date": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "Tue, 18 Apr 2023 02:20:35 GMT"
-=======
-          "Wed, 19 Apr 2023 04:13:34 GMT"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "Wed, 19 Apr 2023 04:44:19 GMT"
         ],
         "Content-Length": [
-          "238"
+          "236"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -164,731 +123,16 @@
           "-1"
         ]
       },
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787\",\r\n  \"name\": \"ps6787\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"testtag\": \"APPGw tag\",\r\n    \"Created\": \"2023-04-18T02:20:35.7641452Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps878\",\r\n  \"name\": \"ps878\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"testtag\": \"APPGw tag\",\r\n    \"Created\": \"2023-04-19T04:44:19.7205898Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "29be19f6-dfc6-40c8-b3f3-59b00dc046a1"
-=======
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247\",\r\n  \"name\": \"ps1247\",\r\n  \"location\": \"westus2\",\r\n  \"tags\": {\r\n    \"testtag\": \"APPGw tag\",\r\n    \"Created\": \"2023-04-19T04:13:35.4129243Z\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/ps9540?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzMTI0Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTU0MD9hcGktdmVyc2lvbj0yMDIyLTExLTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "408f3bc3-7c03-4b84-b6f2-cf0cb1ab46c2"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "578be333-a081-4d20-81c5-479c20d303ed"
-        ],
-        "x-ms-correlation-request-id": [
-          "578be333-a081-4d20-81c5-479c20d303ed"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022036Z:578be333-a081-4d20-81c5-479c20d303ed"
-=======
-          "2afba2ca-225e-43f8-a996-25efe9a0f1b4"
-        ],
-        "x-ms-correlation-request-id": [
-          "2afba2ca-225e-43f8-a996-25efe9a0f1b4"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230419T041336Z:2afba2ca-225e-43f8-a996-25efe9a0f1b4"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "Tue, 18 Apr 2023 02:20:36 GMT"
-=======
-          "Wed, 19 Apr 2023 04:13:35 GMT"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "255"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/wafPolicy1' under resource group 'ps6787' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "29be19f6-dfc6-40c8-b3f3-59b00dc046a1"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\""
-        ],
-        "x-ms-request-id": [
-          "f29c30cb-503b-4ca6-8c2b-16c41a42d3f5"
-        ],
-        "x-ms-correlation-request-id": [
-          "3c914cdf-0b16-4e1a-a29b-6dd8bdf72943"
-        ],
-        "x-ms-arm-service-request-id": [
-          "f5d0e693-02ce-46e9-ae55-639fe07c4605"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022039Z:3c914cdf-0b16-4e1a-a29b-6dd8bdf72943"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:20:39 GMT"
-        ],
-        "Content-Length": [
-          "1183"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "f132c3be-c341-4b57-b25a-ab9dec1e2354"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\""
-        ],
-        "x-ms-request-id": [
-          "4aac38f2-c756-46e3-a9f6-a383db332d12"
-        ],
-        "x-ms-correlation-request-id": [
-          "66e206a9-9748-45ca-ba7e-da3d032ec3b4"
-        ],
-        "x-ms-arm-service-request-id": [
-          "9ca3fabb-e48f-4b3d-995a-b62bc2d830bc"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022039Z:66e206a9-9748-45ca-ba7e-da3d032ec3b4"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:20:39 GMT"
-        ],
-        "Content-Length": [
-          "1183"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "505080c4-509f-49b4-bf6d-0aaa80d1fb68"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\""
-        ],
-        "x-ms-request-id": [
-          "433c3058-4914-4181-880b-df21f58069de"
-        ],
-        "x-ms-correlation-request-id": [
-          "3cc6b91a-707a-468b-af96-0ab8614024b2"
-        ],
-        "x-ms-arm-service-request-id": [
-          "4242ebd0-6b18-4160-85ca-2813942c6c25"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022040Z:3cc6b91a-707a-468b-af96-0ab8614024b2"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:20:39 GMT"
-        ],
-        "Content-Length": [
-          "1183"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "505080c4-509f-49b4-bf6d-0aaa80d1fb68"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\""
-        ],
-        "x-ms-request-id": [
-          "ab0127b3-cc8a-4b8d-a328-f063ec20f59b"
-        ],
-        "x-ms-correlation-request-id": [
-          "0939eb81-e1d8-46cc-9e74-0388a85e9251"
-        ],
-        "x-ms-arm-service-request-id": [
-          "4ab92e33-22e4-4cac-8593-ea617d9a0cb2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022040Z:0939eb81-e1d8-46cc-9e74-0388a85e9251"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:20:39 GMT"
-        ],
-        "Content-Length": [
-          "1183"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"30888c30-c5c1-4e75-9a8b-11fdb5c87e63\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "505080c4-509f-49b4-bf6d-0aaa80d1fb68"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"407bd9ce-800c-4a23-835d-6d8ddb257423\""
-        ],
-        "x-ms-request-id": [
-          "2bc93e15-b54a-47bf-adb4-7a51378eec8e"
-        ],
-        "x-ms-correlation-request-id": [
-          "706dd8ad-2131-405f-a8f0-ab3e189acae5"
-        ],
-        "x-ms-arm-service-request-id": [
-          "457c2cca-cd0f-40ab-8db2-8d965a7a6774"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022041Z:706dd8ad-2131-405f-a8f0-ab3e189acae5"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:20:40 GMT"
-        ],
-        "Content-Length": [
-          "1184"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"407bd9ce-800c-4a23-835d-6d8ddb257423\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Disabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "e4359cb8-50b9-4b9b-ab92-5db9b0e60a5e"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "ETag": [
-          "W/\"407bd9ce-800c-4a23-835d-6d8ddb257423\""
-        ],
-        "x-ms-request-id": [
-          "da31eea7-11d3-454f-a329-5f21213698ff"
-        ],
-        "x-ms-correlation-request-id": [
-          "d32d81e2-145b-4b7f-9880-9aeb51b2beaa"
-        ],
-        "x-ms-arm-service-request-id": [
-          "bfa6f78a-9354-4b4b-b9c8-4a5b1612256d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022041Z:d32d81e2-145b-4b7f-9880-9aeb51b2beaa"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:20:40 GMT"
-        ],
-        "Content-Length": [
-          "1184"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"407bd9ce-800c-4a23-835d-6d8ddb257423\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Disabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "29be19f6-dfc6-40c8-b3f3-59b00dc046a1"
-=======
-          "251"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/applicationGatewayWebApplicationFirewallPolicies/ps9540' under resource group 'ps1247' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/ps9540?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzMTI0Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTU0MD9hcGktdmVyc2lvbj0yMDIyLTExLTAx",
-      "RequestMethod": "PUT",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "408f3bc3-7c03-4b84-b6f2-cf0cb1ab46c2"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "1323"
-        ]
-      },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70\r\n    },\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"state\": \"Enabled\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"action\": \"Block\"\r\n      }\r\n    ],\r\n    \"managedRules\": {\r\n      \"exclusions\": [],\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"location\": \"West US 2\"\r\n}",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "1e6200a6-fb16-4485-a421-aada3bf36546"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/providers/Microsoft.Network/locations/westus2/operations/1e6200a6-fb16-4485-a421-aada3bf36546?api-version=2022-11-01"
-        ],
-        "x-ms-correlation-request-id": [
-          "ee7a25d1-3769-4a84-84bd-59cb01274320"
-        ],
-        "Azure-AsyncNotification": [
-          "Enabled"
-        ],
-        "x-ms-arm-service-request-id": [
-          "cefb78ff-5a3f-4b2d-ba47-d1d0753fca39"
-=======
-          "c80dde95-8493-4750-8548-fcdde5a2d570"
-        ],
-        "x-ms-correlation-request-id": [
-          "033fd3d9-1565-4f64-93fa-8f0822d1f133"
-        ],
-        "x-ms-arm-service-request-id": [
-          "f885fc7e-e963-4a74-b05e-f2d8995e05c5"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-routing-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "WESTUS:20230418T022039Z:ee7a25d1-3769-4a84-84bd-59cb01274320"
-=======
-          "WESTUS:20230419T041338Z:033fd3d9-1565-4f64-93fa-8f0822d1f133"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "Tue, 18 Apr 2023 02:20:39 GMT"
-        ],
-        "Content-Length": [
-          "1182"
-=======
-          "Wed, 19 Apr 2023 04:13:37 GMT"
-        ],
-        "Content-Length": [
-          "347"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"27ca928e-46c4-4779-962e-2a0a11454498\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Enabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1?api-version=2022-11-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlR3JvdXBzL3BzNjc4Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvQXBwbGljYXRpb25HYXRld2F5V2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3dhZlBvbGljeTE/YXBpLXZlcnNpb249MjAyMi0xMS0wMQ==",
-      "RequestMethod": "PUT",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "505080c4-509f-49b4-bf6d-0aaa80d1fb68"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Network.NetworkManagementClient/26.0.0.0"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "1496"
-        ]
-      },
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70\r\n    },\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"state\": \"Disabled\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"action\": \"Block\"\r\n      }\r\n    ],\r\n    \"managedRules\": {\r\n      \"exclusions\": [],\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"location\": \"westus2\"\r\n}",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "b99dce49-b93e-4ae1-8fe4-98df18689f16"
-        ],
-        "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/providers/Microsoft.Network/locations/westus2/operations/b99dce49-b93e-4ae1-8fe4-98df18689f16?api-version=2022-11-01"
-        ],
-        "x-ms-correlation-request-id": [
-          "53deba6e-5cf9-4cee-b760-ded155f0356d"
-        ],
-        "Azure-AsyncNotification": [
-          "Enabled"
-        ],
-        "x-ms-arm-service-request-id": [
-          "a1f82a74-5412-4a2f-b64b-eb16ec34c9c3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0",
-          "Microsoft-HTTPAPI/2.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022041Z:53deba6e-5cf9-4cee-b760-ded155f0356d"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:20:40 GMT"
-        ],
-        "Content-Length": [
-          "1183"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"wafPolicy1\",\r\n  \"id\": \"/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps6787/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/wafPolicy1\",\r\n  \"etag\": \"W/\\\"99529947-6224-4298-96ba-3bc05c5ac8df\\\"\",\r\n  \"type\": \"Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies\",\r\n  \"location\": \"westus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Updating\",\r\n    \"customRules\": [\r\n      {\r\n        \"name\": \"example\",\r\n        \"priority\": 2,\r\n        \"ruleType\": \"RateLimitRule\",\r\n        \"rateLimitDuration\": \"OneMin\",\r\n        \"action\": \"Block\",\r\n        \"rateLimitThreshold\": 10,\r\n        \"matchConditions\": [\r\n          {\r\n            \"matchVariables\": [\r\n              {\r\n                \"variableName\": \"RequestHeaders\",\r\n                \"selector\": \"Malicious-Header\"\r\n              }\r\n            ],\r\n            \"operator\": \"Any\",\r\n            \"negationConditon\": false,\r\n            \"matchValues\": [],\r\n            \"transforms\": []\r\n          }\r\n        ],\r\n        \"groupByUserSession\": [\r\n          {\r\n            \"groupByVariables\": [\r\n              {\r\n                \"variableName\": \"ClientAddr\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"skippedManagedRuleSets\": [],\r\n        \"state\": \"Disabled\"\r\n      }\r\n    ],\r\n    \"policySettings\": {\r\n      \"requestBodyCheck\": true,\r\n      \"maxRequestBodySizeInKb\": 70,\r\n      \"fileUploadLimitInMb\": 70,\r\n      \"state\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyInspectLimitInKB\": 70,\r\n      \"fileUploadEnforcement\": true,\r\n      \"requestBodyEnforcement\": true\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"OWASP\",\r\n          \"ruleSetVersion\": \"3.2\",\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ],\r\n      \"exclusions\": []\r\n    }\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps6787?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzNjc4Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps878?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzODc4P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "31f9175b-6767-43d1-9f74-cf05e241cd72"
-=======
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ApplicationGatewayFirewallUnsupportedRuleSetVersionForLogScrubbing\",\r\n    \"message\": \"Log Scrubbing config is not supported for the ruleset versions in context '/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourceGroups/ps1247/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/ps9540'.\",\r\n    \"details\": []\r\n  }\r\n}",
-      "StatusCode": 400
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/resourcegroups/ps1247?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L3Jlc291cmNlZ3JvdXBzL3BzMTI0Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "DELETE",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "fc797746-9be6-4f37-aa59-990bf02b7f40"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "af7a485b-e626-49b7-82e4-079df21e48c4"
         ],
         "Accept-Language": [
           "en-US"
@@ -909,11 +153,7 @@
           "no-cache"
         ],
         "Location": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-=======
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzEyNDctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg3OC1XRVNUVVMyIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMyIn0?api-version=2016-09-01"
         ],
         "Retry-After": [
           "15"
@@ -922,23 +162,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "765a5770-faae-45bd-bad7-a54aecb24eda"
+          "67c25371-7122-4846-bed0-2fdd7d30b955"
         ],
         "x-ms-correlation-request-id": [
-          "765a5770-faae-45bd-bad7-a54aecb24eda"
+          "67c25371-7122-4846-bed0-2fdd7d30b955"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230418T022042Z:765a5770-faae-45bd-bad7-a54aecb24eda"
-=======
-          "b02811ec-92c8-4fe5-82df-0034cba5f379"
-        ],
-        "x-ms-correlation-request-id": [
-          "b02811ec-92c8-4fe5-82df-0034cba5f379"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230419T041339Z:b02811ec-92c8-4fe5-82df-0034cba5f379"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "WESTUS:20230419T044422Z:67c25371-7122-4846-bed0-2fdd7d30b955"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -947,11 +177,7 @@
           "nosniff"
         ],
         "Date": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "Tue, 18 Apr 2023 02:20:42 GMT"
-=======
-          "Wed, 19 Apr 2023 04:13:38 GMT"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "Wed, 19 Apr 2023 04:44:21 GMT"
         ],
         "Expires": [
           "-1"
@@ -964,9 +190,8 @@
       "StatusCode": 202
     },
     {
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg3OC1XRVNUVVMyIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMyIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnM09DMVhSVk5VVlZNeUlpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE15SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
@@ -983,24 +208,18 @@
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-request-id": [
-          "06f4dd29-ca38-46c8-9c5e-0545443dfed4"
+          "4e84f181-3957-41bf-83b3-25c71207c465"
         ],
         "x-ms-correlation-request-id": [
-          "06f4dd29-ca38-46c8-9c5e-0545443dfed4"
+          "4e84f181-3957-41bf-83b3-25c71207c465"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230418T022057Z:06f4dd29-ca38-46c8-9c5e-0545443dfed4"
+          "WESTUS:20230419T044437Z:4e84f181-3957-41bf-83b3-25c71207c465"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1009,475 +228,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 18 Apr 2023 02:20:57 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-request-id": [
-          "e4c61e1f-9143-48d7-b92b-afbf2b683fb3"
-        ],
-        "x-ms-correlation-request-id": [
-          "e4c61e1f-9143-48d7-b92b-afbf2b683fb3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022112Z:e4c61e1f-9143-48d7-b92b-afbf2b683fb3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:21:12 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-request-id": [
-          "ded177fa-0042-4422-b482-3a0ec50aedc0"
-        ],
-        "x-ms-correlation-request-id": [
-          "ded177fa-0042-4422-b482-3a0ec50aedc0"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022128Z:ded177fa-0042-4422-b482-3a0ec50aedc0"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:21:27 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
-        ],
-        "x-ms-request-id": [
-          "71578b32-f575-4aa5-b835-23f9dde9bf70"
-        ],
-        "x-ms-correlation-request-id": [
-          "71578b32-f575-4aa5-b835-23f9dde9bf70"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022143Z:71578b32-f575-4aa5-b835-23f9dde9bf70"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:21:42 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11995"
-        ],
-        "x-ms-request-id": [
-          "b3776a6c-4ed2-41aa-a201-5baf9b321a1d"
-        ],
-        "x-ms-correlation-request-id": [
-          "b3776a6c-4ed2-41aa-a201-5baf9b321a1d"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022158Z:b3776a6c-4ed2-41aa-a201-5baf9b321a1d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:21:57 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-request-id": [
-          "60389a53-a905-4a70-a9f0-f8ac62efbd9f"
-        ],
-        "x-ms-correlation-request-id": [
-          "60389a53-a905-4a70-a9f0-f8ac62efbd9f"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022213Z:60389a53-a905-4a70-a9f0-f8ac62efbd9f"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:22:12 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11993"
-        ],
-        "x-ms-request-id": [
-          "b6d8ac16-3f24-4a16-8b10-df9696047529"
-        ],
-        "x-ms-correlation-request-id": [
-          "b6d8ac16-3f24-4a16-8b10-df9696047529"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022228Z:b6d8ac16-3f24-4a16-8b10-df9696047529"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:22:27 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Location": [
-          "https://management.azure.com/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11992"
-        ],
-        "x-ms-request-id": [
-          "afd30ec2-f515-454f-90fa-d8a7164e55ac"
-        ],
-        "x-ms-correlation-request-id": [
-          "afd30ec2-f515-454f-90fa-d8a7164e55ac"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022243Z:afd30ec2-f515-454f-90fa-d8a7164e55ac"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 18 Apr 2023 02:22:42 GMT"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "0"
-        ]
-      },
-      "ResponseBody": "",
-      "StatusCode": 202
-    },
-    {
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-=======
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzEyNDctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFeU5EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.700.22.55902",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.73"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "97fa92c9-abd3-4acd-b19b-c50687291358"
-        ],
-        "x-ms-correlation-request-id": [
-          "97fa92c9-abd3-4acd-b19b-c50687291358"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230418T022258Z:97fa92c9-abd3-4acd-b19b-c50687291358"
-=======
-          "c20121af-722a-40c2-90c9-209025011b46"
-        ],
-        "x-ms-correlation-request-id": [
-          "c20121af-722a-40c2-90c9-209025011b46"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230419T041354Z:c20121af-722a-40c2-90c9-209025011b46"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "Tue, 18 Apr 2023 02:22:57 GMT"
-=======
-          "Wed, 19 Apr 2023 04:13:54 GMT"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "Wed, 19 Apr 2023 04:44:36 GMT"
         ],
         "Expires": [
           "-1"
@@ -1490,13 +241,8 @@
       "StatusCode": 200
     },
     {
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzY3ODctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpZM09EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
-=======
-      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzEyNDctV0VTVFVTMiIsImpvYkxvY2F0aW9uIjoid2VzdHVzMiJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpFeU5EY3RWMFZUVkZWVE1pSXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkSFZ6TWlKOT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+      "RequestUri": "/subscriptions/1eca0587-27cc-4d6e-97ce-0b4935c307f4/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1QUzg3OC1XRVNUVVMyIiwiam9iTG9jYXRpb24iOiJ3ZXN0dXMyIn0?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWVjYTA1ODctMjdjYy00ZDZlLTk3Y2UtMGI0OTM1YzMwN2Y0L29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFRVXpnM09DMVhSVk5VVlZNeUlpd2lhbTlpVEc5allYUnBiMjRpT2lKM1pYTjBkWE15SW4wP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "User-Agent": [
@@ -1515,26 +261,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
+          "11998"
         ],
         "x-ms-request-id": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "f0d74578-58ca-40f9-8f95-66451cfe7226"
+          "420dcee0-b75d-491f-8131-33e93a4f40ef"
         ],
         "x-ms-correlation-request-id": [
-          "f0d74578-58ca-40f9-8f95-66451cfe7226"
+          "420dcee0-b75d-491f-8131-33e93a4f40ef"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20230418T022258Z:f0d74578-58ca-40f9-8f95-66451cfe7226"
-=======
-          "dfaf7bfd-163d-4a0b-b740-9ba2f0ec9570"
-        ],
-        "x-ms-correlation-request-id": [
-          "dfaf7bfd-163d-4a0b-b740-9ba2f0ec9570"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS:20230419T041354Z:dfaf7bfd-163d-4a0b-b740-9ba2f0ec9570"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "WESTUS:20230419T044437Z:420dcee0-b75d-491f-8131-33e93a4f40ef"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1543,11 +279,7 @@
           "nosniff"
         ],
         "Date": [
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
-          "Tue, 18 Apr 2023 02:22:57 GMT"
-=======
-          "Wed, 19 Apr 2023 04:13:54 GMT"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+          "Wed, 19 Apr 2023 04:44:36 GMT"
         ],
         "Expires": [
           "-1"
@@ -1561,14 +293,8 @@
     }
   ],
   "Names": {
-<<<<<<< Updated upstream:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayFirewallPolicyWithRateLimitRule.json
     "Test-ApplicationGatewayFirewallPolicyWithRateLimitRule": [
-      "ps6787"
-=======
-    "Test-ApplicationGatewayFirewallPolicyWithLogScrubbing": [
-      "ps1247",
-      "ps9540"
->>>>>>> Stashed changes:src/Network/Network.Test/SessionRecords/Commands.Network.Test.ScenarioTests.ApplicationGatewayTests/TestApplicationGatewayWithFirewallPolicyWithLogScrubbing.json
+      "ps878"
     ]
   },
   "Variables": {
