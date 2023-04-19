@@ -16,8 +16,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Azure.CodeSigning", "Azure.CodeSigning\Azure.CodeSigning.csproj", "{BE85CA43-6BD1-41CB-BF86-D31033702985}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeSigning.Test", "CodeSigning.Test\CodeSigning.Test.csproj", "{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLoading", "..\Accounts\AssemblyLoading\AssemblyLoading.csproj", "{1F6E85D8-6920-4F62-B378-F4948BF8DF2D}"
@@ -56,10 +54,6 @@ Global
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE85CA43-6BD1-41CB-BF86-D31033702985}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE85CA43-6BD1-41CB-BF86-D31033702985}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE85CA43-6BD1-41CB-BF86-D31033702985}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE85CA43-6BD1-41CB-BF86-D31033702985}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F35D6C0-5310-43F9-A320-193A2C1AEEC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
