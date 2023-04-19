@@ -16,36 +16,33 @@
 <#
 .Synopsis
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
-MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy.  MSI Identity should be associated if the frontdoor has Customer Certificates.
+MigrationWebApplicationFirewallMapping should be associated if the front door has WAF policy. MSI Identity should be associated if the frontdoor has Customer Certificates.
 The change need to be committed after this.
 .Description
 Migrate the CDN profile to Azure Frontdoor(Standard/Premium) profile.
 The change need to be committed after this.
 .Example
 PS C:\> {{ Add code here }}
+
 {{ Add output here }}
 .Example
 PS C:\> {{ Add code here }}
+
 {{ Add output here }}
+
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IMigrateResult
-.Link
-https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
+.Notes
+COMPLEX PARAMETER PROPERTIES
 
-MIGRATIONPARAMETER <IMigrationParameters>: Request body for Migrate operation.
-  ProfileName <String>: Name of the new profile that need to be created.
-  [ClassicResourceReferenceId <String>]: Resource ID of the classic front door instance.
-  [MigrationWebApplicationFirewallMapping <IMigrationWebApplicationFirewallMapping[]>]: Waf mapping for the migrated profile
-    [MigratedFromId <String>]: Resource ID.
-    [MigratedToId <String>]: Resource ID.
-  [SkuName <SkuName?>]: Name of the pricing tier.
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 MIGRATIONWEBAPPLICATIONFIREWALLMAPPING <IMigrationWebApplicationFirewallMapping[]>: Waf mapping for the migrated profile
   [MigratedFromId <String>]: Resource ID.
   [MigratedToId <String>]: Resource ID.
-  
 .Link
-https://docs.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
+https://learn.microsoft.com/powershell/module/az.cdn/start-azfrontdoorcdnprofilepreparemigration
+
 #>
 function Start-AzFrontDoorCdnProfilePrepareMigration {
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PreviewMessageAttribute("This cmdlet is using a preview API version and is subject to breaking change in a future release.")]
