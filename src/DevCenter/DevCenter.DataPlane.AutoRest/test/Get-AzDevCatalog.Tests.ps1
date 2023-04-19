@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevDevCenterDevBox'))
+if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevCatalog'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDevDevCenterDevBox.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzDevCatalog.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,12 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDevDevCenterDevBox'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzDevDevCenterDevBox' {
+Describe 'Get-AzDevCatalog' {
     It 'List' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GetViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

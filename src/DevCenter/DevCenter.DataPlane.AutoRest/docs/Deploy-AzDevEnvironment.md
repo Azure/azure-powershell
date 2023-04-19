@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevenvironment
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/deploy-azdevenvironment
 schema: 2.0.0
 ---
 
-# Set-AzDevEnvironment
+# Deploy-AzDevEnvironment
 
 ## SYNOPSIS
 Creates or updates an environment.
@@ -14,16 +14,29 @@ Creates or updates an environment.
 
 ### ReplaceExpanded (Default)
 ```
-Set-AzDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Deploy-AzDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Replace
 ```
-Set-AzDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Deploy-AzDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
  -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
+```
+
+### ReplaceViaIdentity
+```
+Deploy-AzDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -Body <IEnvironment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ReplaceViaIdentityExpanded
+```
+Deploy-AzDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +89,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IEnvironment
-Parameter Sets: Replace
+Parameter Sets: Replace, ReplaceViaIdentity
 Aliases:
 
 Required: True
@@ -91,7 +104,7 @@ Name of the catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -137,7 +150,7 @@ Name of the environment definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -152,7 +165,7 @@ Environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -162,12 +175,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Parameter Sets: ReplaceViaIdentity, ReplaceViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Replace, ReplaceExpanded
 Aliases: EnvironmentName
 
 Required: True
@@ -197,7 +226,7 @@ Parameters object for the environment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -212,7 +241,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Replace, ReplaceExpanded
 Aliases:
 
 Required: True
@@ -228,7 +257,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Replace, ReplaceExpanded
 Aliases:
 
 Required: True
@@ -276,6 +305,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IEnvironment
 
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -303,6 +334,18 @@ To create the parameters described below, construct a hash table containing the 
   - `[Message <String>]`: A message describing the error, intended to be suitable for display in a user interface.
   - `[OperationLocation <String>]`: 
   - `[Target <String>]`: The target of the particular error. For example, the name of the property in error.
+
+`INPUTOBJECT <IDevCenterIdentity>`: Identity Parameter
+  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
+  - `[CatalogName <String>]`: The name of the catalog
+  - `[DefinitionName <String>]`: The name of the environment definition
+  - `[DevBoxName <String>]`: The name of a Dev Box.
+  - `[EnvironmentName <String>]`: The name of the environment.
+  - `[Id <String>]`: Resource identity path
+  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
+  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
+  - `[ScheduleName <String>]`: The name of a schedule.
+  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
 

@@ -1,37 +1,36 @@
 ---
 external help file:
 Module Name: Az.DevCenter
-online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevdevboxpool
+online version: https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevproject
 schema: 2.0.0
 ---
 
-# Get-AzDevDevBoxPool
+# Get-AzDevProject
 
 ## SYNOPSIS
-Gets a pool
+Gets a project.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzDevDevBoxPool -Endpoint <String> -ProjectName <String> [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevProject -Endpoint <String> [-Filter <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDevDevBoxPool -Endpoint <String> -PoolName <String> -ProjectName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzDevProject -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzDevDevBoxPool -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+Get-AzDevProject -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a pool
+Gets a project.
 
 ## EXAMPLES
 
@@ -121,27 +120,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PoolName
-The name of a pool of Dev Boxes.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -176,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IPool
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api202301Preview.IProject
 
 ## NOTES
 
