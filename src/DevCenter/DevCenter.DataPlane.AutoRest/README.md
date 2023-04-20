@@ -35,7 +35,10 @@ branch: 1fd32d6d50f5be3dde6d0547f2f3c369998811e1
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(this-folder)/../../specification/devcenter/data-plane/readme.md 
+input-file:
+  - $(this-folder)/../../specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-01-01-preview/devbox.json
+  - $(this-folder)/../../specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-01-01-preview/devcenter.json
+  - $(this-folder)/../../specification/devcenter/data-plane/Microsoft.DevCenter/preview/2023-01-01-preview/environments.json
 
 directive:
   - where:
