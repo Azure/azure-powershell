@@ -64,6 +64,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// zone.</param>
         /// <param name="targetProximityPlacementGroupId">The target proximity
         /// placement group ARM Id.</param>
+        /// <param name="confidentialVmKeyVaultId">The confidential VM key
+        /// vault Id for ADE installation.</param>
+        /// <param name="targetVmSecurityProfile">The target VM security
+        /// profile.</param>
         /// <param name="targetBootDiagnosticsStorageAccountId">The target boot
         /// diagnostics storage account ARM Id.</param>
         /// <param name="performAutoResync">A value indicating whether auto
@@ -72,7 +76,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="seedDiskTags">The tags for the seed disks.</param>
         /// <param name="targetDiskTags">The tags for the target disks.</param>
         /// <param name="targetNicTags">The tags for the target NICs.</param>
-        public VMwareCbtEnableMigrationInput(string vmwareMachineId, IList<VMwareCbtDiskInput> disksToInclude, string dataMoverRunAsAccountId, string snapshotRunAsAccountId, string targetResourceGroupId, string targetNetworkId, string licenseType = default(string), string sqlServerLicenseType = default(string), string performSqlBulkRegistration = default(string), string targetVmName = default(string), string targetVmSize = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), string performAutoResync = default(string), IDictionary<string, string> targetVmTags = default(IDictionary<string, string>), IDictionary<string, string> seedDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetNicTags = default(IDictionary<string, string>))
+        public VMwareCbtEnableMigrationInput(string vmwareMachineId, IList<VMwareCbtDiskInput> disksToInclude, string dataMoverRunAsAccountId, string snapshotRunAsAccountId, string targetResourceGroupId, string targetNetworkId, string licenseType = default(string), string sqlServerLicenseType = default(string), string performSqlBulkRegistration = default(string), string targetVmName = default(string), string targetVmSize = default(string), string testNetworkId = default(string), string targetSubnetName = default(string), string testSubnetName = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVmKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVmSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), string performAutoResync = default(string), IDictionary<string, string> targetVmTags = default(IDictionary<string, string>), IDictionary<string, string> seedDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetNicTags = default(IDictionary<string, string>))
         {
             VmwareMachineId = vmwareMachineId;
             DisksToInclude = disksToInclude;
@@ -91,6 +95,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             TargetAvailabilitySetId = targetAvailabilitySetId;
             TargetAvailabilityZone = targetAvailabilityZone;
             TargetProximityPlacementGroupId = targetProximityPlacementGroupId;
+            ConfidentialVmKeyVaultId = confidentialVmKeyVaultId;
+            TargetVmSecurityProfile = targetVmSecurityProfile;
             TargetBootDiagnosticsStorageAccountId = targetBootDiagnosticsStorageAccountId;
             PerformAutoResync = performAutoResync;
             TargetVmTags = targetVmTags;
@@ -209,6 +215,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "targetProximityPlacementGroupId")]
         public string TargetProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential VM key vault Id for ADE installation.
+        /// </summary>
+        [JsonProperty(PropertyName = "confidentialVmKeyVaultId")]
+        public string ConfidentialVmKeyVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM security profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetVmSecurityProfile")]
+        public VMwareCbtSecurityProfileProperties TargetVmSecurityProfile { get; set; }
 
         /// <summary>
         /// Gets or sets the target boot diagnostics storage account ARM Id.
