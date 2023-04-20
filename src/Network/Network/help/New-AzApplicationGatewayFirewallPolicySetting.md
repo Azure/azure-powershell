@@ -13,8 +13,8 @@ Creates a policy setting for the firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-DisableRequestBodyCheck]
- [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-CustomBlockResponseStatusCode <Int32>]
+New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-RequestBodyEnforcement <Boolean>] [-RequestBodyInspectLimitInKB <Int32>] [-DisableRequestBodyCheck] 
+ [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-FileUploadEnforcement <Boolean>] [-CustomBlockResponseStatusCode <Int32>]
  [-CustomBlockResponseBody <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -31,7 +31,57 @@ $condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState 
 The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
 The new policySettings is stored to $condition.
 
+### Example 3
+```powershell
+$condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -RequestBodyEnforcement true -RequestBodyInspectLimitInKB 2000 -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -FileUploadEnforcement true -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
+```
+
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyEnforcement as true, RequestBodyInspectLimitInKB as 2000, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb, FileUploadEnforcement as true and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
+The new policySettings is stored to $condition.
+
 ## PARAMETERS
+
+### -RequestBodyEnforcement 
+Whether allow WAF to enforce request body limits.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+### -RequestBodyInspectLimitInKB  
+Max inspection limit in KB for request body inspection for WAF.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+
+### -FileUploadEnforcement  
+Whether allow WAF to enforce file upload limits.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 
 ### -CustomBlockResponseBody
 Custom Block Response Body in policy settings of the firewall policy.
