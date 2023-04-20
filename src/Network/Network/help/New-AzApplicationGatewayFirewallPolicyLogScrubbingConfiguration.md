@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicysettinglogscrubbingconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicylogscrubbingconfiguration
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration
+# New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration
 
 ## SYNOPSIS
 Creates a log scrubbing configuration for firewall policy
@@ -13,17 +13,17 @@ Creates a log scrubbing configuration for firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration -State <String> -ScrubbingRule  <PSApplicationGatewayFirewallPolicySettingLogScrubbingRule[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State <String> -ScrubbingRule  <PSApplicationGatewayFirewallPolicyLogScrubbingRule[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration** creates a log scrubbing configuration for firewall policy.
+The **New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration** creates a log scrubbing configuration for firewall policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1
+$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1
 ```
 
 The command creates a log scrubbing rule configuration with state as enable, ScrubbingRule as $logScrubbingRule1.
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The rules that are applied to the logs for scrubbing.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicySettingLogScrubbingRule[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyLogScrubbingRule[]
 Parameter Sets: (All)
 Aliases:
 

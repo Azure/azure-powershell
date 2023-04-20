@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicysettinglogscrubbingrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallpolicylogscrubbingrule
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule
+# New-AzApplicationGatewayFirewallPolicyLogScrubbingRule
 
 ## SYNOPSIS
 Creates a log scrubbing rule for firewall policy
@@ -13,17 +13,17 @@ Creates a log scrubbing rule for firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule -State <String> -MatchVariable <String> -SelectorMatchOperator <String> [-Selector <String> ] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State <String> -MatchVariable <String> -SelectorMatchOperator <String> [-Selector <String> ] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule** creates a log scrubbing rule for firewall policy.
+The **New-AzApplicationGatewayFirewallPolicyLogScrubbingRule** creates a log scrubbing rule for firewall policy.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$logScrubbingRuleConfig1 = New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule -State Enabled -MatchVariable RequestArgNames -SelectorMatchOperator Equals -Selector test
+$logScrubbingRuleConfig1 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestArgNames -SelectorMatchOperator Equals -Selector test
 ```
 
 The command creates a log scrubbing rule configuration with state as enable, MatchVariable as RequestArgNames, SelectorMatchOperator as Equals and Selector as test
@@ -31,7 +31,7 @@ The new log scrubbing rule is stored to $logScrubbingRuleConfig1.
 
 ### Example 2
 ```powershell
-$logScrubbingRuleConfig2 = New-AzApplicationGatewayFirewallPolicySettingLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny 
+$logScrubbingRuleConfig2 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny 
 ```
 
 The command creates a log scrubbing rule configuration with state as enable, MatchVariable as RequestIPAddress, SelectorMatchOperator as EqualsAny

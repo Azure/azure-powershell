@@ -20,18 +20,12 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayFirewallPolicySettingLogScrubbingRule
+    public partial class PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string State { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public string MatchVariable { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string SelectorMatchOperator { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string Selector { get; set; }
+        public List<PSApplicationGatewayFirewallPolicyLogScrubbingRule> ScrubbingRules { get; set; }
     }
 }

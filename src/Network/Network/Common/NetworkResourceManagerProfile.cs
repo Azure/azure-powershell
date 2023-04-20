@@ -1023,8 +1023,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallMatchVariable, MNM.MatchVariable>();
                 cfg.CreateMap<CNM.PSApplicationGatewayWebApplicationFirewallPolicy, MNM.WebApplicationFirewallPolicy>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicySettings, MNM.PolicySettings>();
-                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration, MNM.PolicySettingsLogScrubbing>();
-                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicySettingLogScrubbingRule, MNM.WebApplicationFirewallScrubbingRules>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration, MNM.PolicySettingsLogScrubbing>();
+                cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule, MNM.WebApplicationFirewallScrubbingRules>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRules, MNM.ManagedRulesDefinition>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet, MNM.ManagedRuleSet>();
                 cfg.CreateMap<CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride, MNM.ManagedRuleGroupOverride>();
@@ -1103,8 +1103,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.MatchVariable, CNM.PSApplicationGatewayFirewallMatchVariable>();
                 cfg.CreateMap<MNM.WebApplicationFirewallPolicy, CNM.PSApplicationGatewayWebApplicationFirewallPolicy>();
                 cfg.CreateMap<MNM.PolicySettings, CNM.PSApplicationGatewayFirewallPolicySettings>();
-                cfg.CreateMap<MNM.PolicySettingsLogScrubbing, CNM.PSApplicationGatewayFirewallPolicySettingLogScrubbingConfiguration>();
-                cfg.CreateMap<MNM.WebApplicationFirewallScrubbingRules, CNM.PSApplicationGatewayFirewallPolicySettingLogScrubbingRule>();
+                cfg.CreateMap<MNM.PolicySettingsLogScrubbing, CNM.PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>();
+                cfg.CreateMap<MNM.WebApplicationFirewallScrubbingRules, CNM.PSApplicationGatewayFirewallPolicyLogScrubbingRule>();
                 cfg.CreateMap<MNM.ManagedRulesDefinition, CNM.PSApplicationGatewayFirewallPolicyManagedRules>();
                 cfg.CreateMap<MNM.ManagedRuleSet, CNM.PSApplicationGatewayFirewallPolicyManagedRuleSet>();
                 cfg.CreateMap<MNM.ManagedRuleGroupOverride, CNM.PSApplicationGatewayFirewallPolicyManagedRuleGroupOverride>();
