@@ -31,7 +31,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHu
 ```
 
 ## DESCRIPTION
-The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance resource in Azure.
+The **New-AzNetworkVirtualAppliance** command creates a Network Virtual Appliance(NVA) resource in Azure.
 
 ## EXAMPLES
 
@@ -40,7 +40,6 @@ The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance re
 $sku=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
 $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
 $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!"
-
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg.
