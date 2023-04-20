@@ -19,9 +19,8 @@
 --->
 
 ## Upcoming Release
-* Updated `New-AzVirtualHub`, `Get-AzVirtualHub`, and `Update-AzVirtualHub` to include VirtualRouterAutoScaleConfiguration.
-    - Added `New-AzVirtualRouterAutoScaleConfiguration`.
-* Updated default formatting on all Network-related objects.
+* Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+* Fixed the issue for `Update-AzCustomIpPrefix` that `NoInternetAdvertise` will should be set to false if not provided
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
