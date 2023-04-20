@@ -12,4 +12,3 @@ appService-test01/slot01/slotcontinuousjob-04                 webjob-rg-test
 ```
 
 This command lists webjobs for a deployment slot.
-

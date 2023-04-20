@@ -1,5 +1,5 @@
 # Variable 'BotAccessToken' was defined in the Variables tab
-# Multi-job configuration must be converted to matrix strategy: https://learn.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#multi-job-configuration
+# Multi-job configuration must be converted to matrix strategy: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#multi-job-configuration
 parameters: 
 - name: AzurePowerShellVersion
   displayName: Azure PowerShell Version(like 9.0.0)

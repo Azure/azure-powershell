@@ -39,6 +39,7 @@ Get or list continuous web for an app.
 ```powershell
 Get-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01
 ```
+
 ```output
 Name                               Kind WebJobType ResourceGroupName
 ----                               ---- ---------- -----------------
@@ -52,6 +53,7 @@ This command lists continuous webs for an app.
 ```powershell
 Get-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name continuousjob-01
 ```
+
 ```output
 Name                               Kind WebJobType ResourceGroupName
 ----                               ---- ---------- -----------------
@@ -66,6 +68,7 @@ $webjob = Get-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppNam
 Start-AzWebAppContinuousWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -Name continuousjob-01 
 $webjob.Id | Get-AzWebAppContinuousWebJob
 ```
+
 ```output
 Name                               Kind WebJobType ResourceGroupName
 ----                               ---- ---------- -----------------

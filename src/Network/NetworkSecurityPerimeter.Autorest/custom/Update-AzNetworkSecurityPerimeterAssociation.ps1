@@ -114,7 +114,7 @@ function Update-AzNetworkSecurityPerimeterAssociation {
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the association.")]
-        [Alias('WorkspaceName')]
+        [Alias('AssociationName')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
         [System.String]
         # The name of the association.

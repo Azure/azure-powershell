@@ -1,0 +1,85 @@
+{
+  "resourceType": "appliances",
+  "apiVersion": "2022-10-27",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.arcresourcebridge"
+  },
+  "commands": [
+    {
+      "name": "Get-AzArcResourceBridge",
+      "description": "Gets the details of an Appliance with a specified resource group and name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridge"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the details of an Appliance with a specified resource group and name.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzArcResourceBridge",
+      "description": "Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ResourceConnector/appliances/{resourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.arcresourcebridge/remove-azarcresourcebridge"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an Appliance with the specified Resource Name, Resource Group, and Subscription Id.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.resourceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

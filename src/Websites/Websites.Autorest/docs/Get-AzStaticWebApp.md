@@ -43,6 +43,7 @@ Description for Gets the details of a static site.
 ```powershell
 Get-AzStaticWebApp
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----
@@ -56,6 +57,7 @@ This commands list all static web applications under a subscription.
 ```powershell
 Get-AzStaticWebApp -ResourceGroupName azure-rg-test
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----
@@ -69,6 +71,7 @@ This commands list all static web applications under a resource group.
 ```powershell
 Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----
@@ -81,6 +84,7 @@ This commands gets a satic web application by name.
 ```powershell
 New-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' | Get-AzStaticWebApp
 ```
+
 ```output
 Kind Location   Name               Type
 ---- --------   ----               ----

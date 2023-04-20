@@ -76,7 +76,7 @@ ConsumedRefundsTotal                                       : {
                                                                "currencyCode": "USD",
                                                                "amount": 365.43
                                                              }
-Id                                                         : /providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003
+Id                                                         : /providers/Microsoft.Capacity/reservationOrders/4336d060-da34-4228-91b0-feab5b2a1e1d/reservations/5e012942-5692-41c0-bc71-86303e11104d
 MaxRefundLimit                                             : {
                                                                "currencyCode": "USD",
                                                                "amount": 50000
@@ -90,17 +90,18 @@ Quantity                                                   : 1
 ResourceGroupName                                          :
 SessionId                                                  : b0a96155-5f75-4138-b01f-443130f5516e
 ```
+
 Calculate reservations refund amount.
 The SessionId in the response is a required input parameter for cmdlet Invoke-AzReservationReturn
 
 ## PARAMETERS
 
 ### -Body
-.
+Request containing information needed for calculating refund.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
 Parameter Sets: Post, PostViaIdentity
 Aliases:
 
@@ -189,7 +190,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservationToReturnReservationId
-Fully qualified identifier of the Reservation being returned
+Fully qualified identifier of the reservation being returned
 
 ```yaml
 Type: System.String
@@ -255,13 +256,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundResponse
 
 ## NOTES
 
@@ -272,15 +273,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <ICalculateRefundRequest>`: .
+`BODY <ICalculateRefundRequest>`: Request containing information needed for calculating refund.
   - `[Id <String>]`: Fully qualified identifier of the reservation order being returned
   - `[ReservationToReturnQuantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
-  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the Reservation being returned
+  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the reservation being returned
   - `[Scope <String>]`: The scope of the refund, e.g. Reservation
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 

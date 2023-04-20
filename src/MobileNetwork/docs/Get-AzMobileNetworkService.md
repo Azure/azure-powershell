@@ -176,7 +176,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
+INPUTOBJECT <IMobileNetworkIdentity>: Identity Parameter
   - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
   - `[DataNetworkName <String>]`: The name of the data network.
   - `[Id <String>]`: Resource identity path

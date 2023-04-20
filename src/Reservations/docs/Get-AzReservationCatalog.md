@@ -14,16 +14,16 @@ Get the regions and skus that are available for RI purchase for the specified Az
 
 ### Get (Default)
 ```
-Get-AzReservationCatalog [-SubscriptionId <String[]>] [-Location <String>] [-OfferId <String>]
- [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzReservationCatalog [-SubscriptionId <String[]>] [-Filter <String>] [-Location <String>]
+ [-OfferId <String>] [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>]
+ [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzReservationCatalog -InputObject <IReservationsIdentity> [-Location <String>] [-OfferId <String>]
- [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzReservationCatalog -InputObject <IReservationsIdentity> [-Filter <String>] [-Location <String>]
+ [-OfferId <String>] [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>]
+ [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,6 +120,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Filter
+May be used to filter by Catalog properties.
+The filter supports 'eq', 'or', and 'and'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -138,7 +154,7 @@ Accept wildcard characters: False
 
 ### -Location
 Filters the skus based on the location specified in this parameter.
-This can be an azure region or global
+This can be an Azure region or global
 
 ```yaml
 Type: System.String
@@ -212,6 +228,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Skip
+The number of reservations to skip from the list before returning results
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Id of the subscription
 
@@ -227,6 +258,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Take
+To number of reservations to return
+
+```yaml
+Type: System.Single
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -236,7 +282,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalog
 
 ## NOTES
 
@@ -249,7 +295,7 @@ To create the parameters described below, construct a hash table containing the 
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the Reservation Item
+  - `[ReservationId <String>]`: Id of the reservation item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 
