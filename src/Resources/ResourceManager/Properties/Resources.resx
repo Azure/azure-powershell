@@ -512,4 +512,10 @@ You can help us improve the accuracy of the result by opening an issue here: htt
   <data name="BuildBicepFileToJsonFailed" xml:space="preserve">
     <value>Build bicep file '{0}' to json failed.</value>
   </data>
+  <data name="InvalidBicepparamFilePath" xml:space="preserve">
+    <value>Invalid Bicepparam file path.</value>
+  </data>
+  <data name="BuildBicepparamFileToJsonFailed" xml:space="preserve">
+    <value>Build bicepparam file '{0}' to json failed.</value>
+  </data>
 </root>
