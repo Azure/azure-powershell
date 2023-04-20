@@ -106,7 +106,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DATANETWORKCONFIGURATION <IDataNetworkConfiguration[]>: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
+`DATANETWORKCONFIGURATION <IDataNetworkConfiguration[]>`: The allowed data networks and the settings to use for them. The list must not contain duplicate items and must contain at least one item.
   - `AllowedService <IServiceResourceId[]>`: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
     - `Id <String>`: Service resource ID.
   - `DataNetworkId <String>`: Data network resource ID.

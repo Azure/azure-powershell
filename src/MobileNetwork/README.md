@@ -153,56 +153,30 @@ directive:
       subject: ^AttachedDataNetwork$|^DataNetwork$|^PacketCoreControlPlane$|^PacketCoreDataPlane$|^Service$|^SimGroup$|^SimPolicy$|^Slice$
     hide: true
 
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimDelete$
-  #   set:
-  #     verb: Remove
+  - where:
+      verb: New
+      subject: ^Site$
+    hide: true
   - where:
       verb: Invoke
       subject: ^BulkSimDelete$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimUpload$
-  #   set:
-  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUpload$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^BulkSimUploadEncrypted$
-  #   set:
-  #     verb: Update
   - where:
       verb: Invoke
       subject: ^BulkSimUploadEncrypted$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
-  #   set:
-  #     verb: Update
   - where:
       verb: Invoke
       subject: ^CollectPacketCoreControlPlaneDiagnosticPackage$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^ReinstallPacketCoreControlPlane$
-  #   set:
-  #     verb: Reset
   - where:
       verb: Invoke
       subject: ^ReinstallPacketCoreControlPlane$
     remove: true
-  # - where:
-  #     verb: Invoke
-  #     subject: ^RollbackPacketCoreControlPlane$
-  #   set:
-  #     verb: Revoke
   - where:
       verb: Invoke
       subject: ^RollbackPacketCoreControlPlane$
