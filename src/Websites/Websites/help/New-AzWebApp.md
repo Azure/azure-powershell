@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: D6D4E733-31AE-4ABE-8C78-583EC48C56B8
 online version: https://learn.microsoft.com/powershell/module/az.websites/new-azwebapp
 schema: 2.0.0
@@ -17,14 +17,14 @@ Creates an Azure Web App.
 ```
 New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
  [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PrivateRegistry
 ```
 New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>] [[-AppServicePlan] <String>]
- -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String>
+ -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String> [-Tag <Hashtable>]
  -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String
 New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [[-AppServicePlan] <String>]
  [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>] [-EnableContainerContinuousDeployment]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
- [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob]
+ [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -383,7 +383,7 @@ Tags are name/value pairs that enable you to categorize resources
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: S1
+Parameter Sets: (All)
 Aliases:
 
 Required: False

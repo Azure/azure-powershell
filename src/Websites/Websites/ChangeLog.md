@@ -18,9 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed Tag parameter issues with ASE for `New-AzWebApp`
+
+## Version 2.14.0
 * Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
-* Added a new parametre `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
+* Added a new parameter `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
 * Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetwork Integration Info` [#10665]
+* Set default value for `-RepositoryUrl` of `New-AzStaticWebApp` [#21202]
+
+## Version 2.13.0
 * Added a new parameter `-CopyIdentity` for `New-AzWebAppSlot` to copy the identity from the parent app to the slot.
 * Updated `New-AzWebAppSSLBinding` to support -WhatIf parameter
 

@@ -29,17 +29,14 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Initializes a new instance of the VolumeRelocationProperties class.
         /// </summary>
-        /// <param name="oldVolumeId">The id of the old volume that is being
-        /// relocated</param>
-        /// <param name="oldBareMetalTenantId">The id of the bare metal tenant
-        /// owned by the existing volume</param>
         /// <param name="relocationRequested">Has relocation been requested for
         /// this volume</param>
-        public VolumeRelocationProperties(string oldVolumeId = default(string), string oldBareMetalTenantId = default(string), bool? relocationRequested = default(bool?))
+        /// <param name="readyToBeFinalized">Has relocation finished and is
+        /// ready to be cleaned up</param>
+        public VolumeRelocationProperties(bool? relocationRequested = default(bool?), bool? readyToBeFinalized = default(bool?))
         {
-            OldVolumeId = oldVolumeId;
-            OldBareMetalTenantId = oldBareMetalTenantId;
             RelocationRequested = relocationRequested;
+            ReadyToBeFinalized = readyToBeFinalized;
             CustomInit();
         }
 
@@ -49,23 +46,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the id of the old volume that is being relocated
-        /// </summary>
-        [JsonProperty(PropertyName = "oldVolumeId")]
-        public string OldVolumeId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the id of the bare metal tenant owned by the existing
-        /// volume
-        /// </summary>
-        [JsonProperty(PropertyName = "oldBareMetalTenantId")]
-        public string OldBareMetalTenantId { get; set; }
-
-        /// <summary>
         /// Gets or sets has relocation been requested for this volume
         /// </summary>
         [JsonProperty(PropertyName = "relocationRequested")]
         public bool? RelocationRequested { get; set; }
+
+        /// <summary>
+        /// Gets has relocation finished and is ready to be cleaned up
+        /// </summary>
+        [JsonProperty(PropertyName = "readyToBeFinalized")]
+        public bool? ReadyToBeFinalized { get; private set; }
 
     }
 }

@@ -38,11 +38,13 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="backup">Backup</param>
         /// <param name="replication">Replication</param>
         /// <param name="snapshot">Snapshot</param>
-        public VolumePropertiesDataProtection(VolumeBackupProperties backup = default(VolumeBackupProperties), ReplicationObject replication = default(ReplicationObject), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties))
+        /// <param name="volumeRelocation">VolumeRelocation</param>
+        public VolumePropertiesDataProtection(VolumeBackupProperties backup = default(VolumeBackupProperties), ReplicationObject replication = default(ReplicationObject), VolumeSnapshotProperties snapshot = default(VolumeSnapshotProperties), VolumeRelocationProperties volumeRelocation = default(VolumeRelocationProperties))
         {
             Backup = backup;
             Replication = replication;
             Snapshot = snapshot;
+            VolumeRelocation = volumeRelocation;
             CustomInit();
         }
 
@@ -77,6 +79,15 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </remarks>
         [JsonProperty(PropertyName = "snapshot")]
         public VolumeSnapshotProperties Snapshot { get; set; }
+
+        /// <summary>
+        /// Gets or sets volumeRelocation
+        /// </summary>
+        /// <remarks>
+        /// VolumeRelocation properties
+        /// </remarks>
+        [JsonProperty(PropertyName = "volumeRelocation")]
+        public VolumeRelocationProperties VolumeRelocation { get; set; }
 
         /// <summary>
         /// Validate the object.

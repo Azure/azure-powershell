@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="bindingSelector">The binding selector to use for the
         /// AzureIdentityBinding resource.</param>
         /// <param name="provisioningState">The current provisioning state of
-        /// the pod identity. Possible values include: 'Assigned', 'Updating',
-        /// 'Deleting', 'Failed'</param>
+        /// the pod identity. Possible values include: 'Assigned', 'Canceled',
+        /// 'Deleting', 'Failed', 'Succeeded', 'Updating'</param>
         public ManagedClusterPodIdentity(string name, string namespaceProperty, UserAssignedIdentity identity, string bindingSelector = default(string), string provisioningState = default(string), ManagedClusterPodIdentityProvisioningInfo provisioningInfo = default(ManagedClusterPodIdentityProvisioningInfo))
         {
             Name = name;
@@ -82,7 +82,8 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <summary>
         /// Gets the current provisioning state of the pod identity. Possible
-        /// values include: 'Assigned', 'Updating', 'Deleting', 'Failed'
+        /// values include: 'Assigned', 'Canceled', 'Deleting', 'Failed',
+        /// 'Succeeded', 'Updating'
         /// </summary>
         [JsonProperty(PropertyName = "provisioningState")]
         public string ProvisioningState { get; private set; }

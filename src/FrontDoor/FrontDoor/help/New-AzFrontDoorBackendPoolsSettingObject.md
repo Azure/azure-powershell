@@ -18,13 +18,13 @@ New-AzFrontDoorBackendPoolsSettingObject [-EnforceCertificateNameCheck <PSEnable
 ```
 
 ## DESCRIPTION
-The **New-AzFrontDoorBackendpoolsSettingObject** cmdlet creates a new PSBackendPoolsSettings object for Front Door creation.
+The **New-AzFrontDoorBackendPoolsSettingObject** cmdlet creates a new PSBackendPoolsSettings object for Front Door creation.
 
 ## EXAMPLES
 
 ### Example 1: Create BackendPoolsSettings object using defaults
 ```powershell
-New-AzFrontDoorBackendpoolsSettingObject
+New-AzFrontDoorBackendPoolsSettingObject
 ```
 
 ```output
@@ -37,7 +37,7 @@ Type                        :
 
 ### Example 2: Create BackendPoolsSettings object with user specified values
 ```powershell
-New-AzFrontDoorBackendpoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
+New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 60 -EnforceCertificateNameCheck Enabled
 ```
 
 ```output

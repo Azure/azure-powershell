@@ -29,9 +29,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [GenericBreakingChange("Consider using the image alias including the version of the distribution you want to use in the \"-ImageName\" parameter of the \"New-AzVmss\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In October 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.")]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
@@ -42,16 +44,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The name of the image for VMs in this Scale Set. If no value is provided, the 'Windows Server 2016 DataCenter' image will be used.")]
         [PSArgumentCompleter(
             "CentOS",
-            "CoreOS",
+            "CentOS85Gen2",
             "Debian",
-            "openSUSE-Leap",
+            "Debian11",
+            "OpenSuseLeap154Gen2",
             "RHEL",
-            "SLES",
+            "RHELRaw8LVMGen2",
+            "SuseSles15SP3",
             "UbuntuLTS",
+            "Ubuntu2204",
+            "FlatcarLinuxFreeGen2",
+            "Win2022AzureEditionCore",
+            "Win2019Datacenter",
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
             "Win10")]
+        [Alias("Image")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]

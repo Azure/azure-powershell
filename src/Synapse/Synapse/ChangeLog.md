@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Updated Azure.Core to 1.31.0.
+* Added PackageAction `Set` for `Update-AzSynapseSparkPool` to support removing and adding packages in one action
 
 ## Version 2.3.0
 * Upgraded Azure.Analytics.Synapse.Artifacts to 1.0.0-preview.17

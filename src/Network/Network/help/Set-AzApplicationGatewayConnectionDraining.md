@@ -18,7 +18,7 @@ Set-AzApplicationGatewayConnectionDraining -BackendHttpSettings <PSApplicationGa
 ```
 
 ## DESCRIPTION
-The **Set-AzApplicationGatewayWebApplicationFirewallConfiguration** cmdlet modifies the connection draining configuration of a back-end HTTP settings object.
+The **Set-AzApplicationGatewayConnectionDraining** cmdlet modifies the connection draining configuration of a back-end HTTP settings object.
 
 ## EXAMPLES
 

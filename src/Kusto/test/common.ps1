@@ -44,7 +44,7 @@ Gets a database soft delet perios in days parameter
 #>
 function Get-Soft-Delete-Period-In-Days
 {
-	return New-TimeSpan -Days 4
+	return New-TimeSpan -Days 365
 }
 
 <#
@@ -53,7 +53,7 @@ Gets a database hot cache period in days
 #>
 function Get-Hot-Cache-Period-In-Days
 {
-	return New-TimeSpan -Days 2
+	return New-TimeSpan -Days 31
 }
 
 <#
@@ -178,7 +178,6 @@ Validate if script is valid
 #>
 function Validate_Script {
 	Param ([Object]$Script,
-		[string]$ScriptUrl,
 		[string]$forceUpdateTag,
 		[bool]$continueOnErros,
 		[string]$clusterName,
@@ -187,7 +186,6 @@ function Validate_Script {
 		$ScriptFullName = "$clusterName/$databaseName/$scriptName"
 		$Script.Name | Should -Be $ScriptFullName
 		$Script.ForceUpdateTag | Should -Be $forceUpdateTag
-		$Script.Url | Should -Be $ScriptUrl
 }
 
 function Validate_Inline_Script {
@@ -317,7 +315,7 @@ function Validate_AttachedDatabaseConfiguration {
 		$AttachedDatabaseConfigurationCreated.Location | Should -Be $Location
 		$AttachedDatabaseConfigurationCreated.ClusterResourceId | Should -Be $ClusterResourceId
 		$AttachedDatabaseConfigurationCreated.DatabaseName | Should -Be $DatabaseName
-		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should -Be $env.DefaultPrincipalsModificationKind
+		$AttachedDatabaseConfigurationCreated.DefaultPrincipalsModificationKind | Should -Be "Union"
 }
 
 

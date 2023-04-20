@@ -18,6 +18,24 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a warning message for an upcoming breaking change when getting a single blob 
+    - `Get-AzStorageBlob`
+* Fixed the issue of listing blobs with leading slashes 
+    - `Get-AzStorageBlob`
+* Added support for sticky bit 
+    - `New-AzDataLakeGen2Item`
+    - `New-AzDataLakeGen2ACLObject`
+    - `Update-AzDataLakeGen2Item`
+* Added warning messages for an upcoming cmdlet breaking change 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Allowed to clear blob tags on a blob 
+    - `Set-AzStorageBlobTag`
+* Updated Azure.Core to 1.31.0
+
+## Version 5.5.0
+* Supported create storage account with DnsEndpointType
+    - `New-AzStorageAccount`
 * Fixed file cmdlets potential context issue when the current context doesn't match with the credential of input Azure File object
     - `Close-AzStorageFileHandle`
     - `Get-AzStorageFile`

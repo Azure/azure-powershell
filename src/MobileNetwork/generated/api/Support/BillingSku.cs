@@ -13,23 +13,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support
     public partial struct BillingSku :
         System.IEquatable<BillingSku>
     {
-        /// <summary>100 Mbps, 20 active SIMs plan</summary>
+        /// <summary>100 Mbps, 20 active SIMs plan, 2 RANs</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku G0 = @"G0";
 
-        /// <summary>1 Gbps, 100 active SIMs plan</summary>
+        /// <summary>1 Gbps, 100 active SIMs plan, 5 RANs</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku G1 = @"G1";
 
         /// <summary>10 Gbps, 1000 active SIMs plan</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku G10 = @"G10";
 
-        /// <summary>2 Gbps, 200 active SIMs plan</summary>
+        /// <summary>2 Gbps, 200 active SIMs plan, 10 RANs</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku G2 = @"G2";
-
-        /// <summary>3 Gbps, 300 active SIMs plan</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku G3 = @"G3";
-
-        /// <summary>4 Gbps, 400 active SIMs plan</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku G4 = @"G4";
 
         /// <summary>5 Gbps, 500 active SIMs plan</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.BillingSku G5 = @"G5";

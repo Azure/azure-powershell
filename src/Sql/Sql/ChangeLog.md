@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new cmdlets for managing server configuration options
+    - 'Set-AzSqlServerConfigurationOption'
+    - 'Get-AzSqlServerConfigurationOption'
+
+## Version 4.5.0
 * Added a new cmdlet to refresh external governance status
     - 'Invoke-AzSqlServerExternalGovernanceStatusRefresh'
 

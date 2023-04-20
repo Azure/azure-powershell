@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzKustoCluster_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Create or update a Kusto cluster.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
     public partial class NewAzKustoCluster_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Class representing a Kusto cluster.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.Cluster();
+
         /// <summary>The cluster's accepted audiences.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The cluster's accepted audiences.")]
@@ -42,8 +45,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         ReadOnly = false,
         Description = @"The cluster's accepted audiences.",
         SerializedName = @"acceptedAudiences",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAcceptedAudiences) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAcceptedAudiences[] AcceptedAudience { get => ParametersBody.AcceptedAudience ?? null /* arrayOf */; set => ParametersBody.AcceptedAudience = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAcceptedAudiences) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IAcceptedAudiences[] AcceptedAudience { get => _parametersBody.AcceptedAudience ?? null /* arrayOf */; set => _parametersBody.AcceptedAudience = value; }
 
         /// <summary>List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"List of allowed FQDNs(Fully Qualified Domain Name) for egress from Cluster.",
         SerializedName = @"allowedFqdnList",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] AllowedFqdnList { get => ParametersBody.AllowedFqdnList ?? null /* arrayOf */; set => ParametersBody.AllowedFqdnList = value; }
+        public string[] AllowedFqdnList { get => _parametersBody.AllowedFqdnList ?? null /* arrayOf */; set => _parametersBody.AllowedFqdnList = value; }
 
         /// <summary>The list of ips in the format of CIDR allowed to connect to the cluster.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -67,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The list of ips in the format of CIDR allowed to connect to the cluster.",
         SerializedName = @"allowedIpRangeList",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] AllowedIPRangeList { get => ParametersBody.AllowedIPRangeList ?? null /* arrayOf */; set => ParametersBody.AllowedIPRangeList = value; }
+        public string[] AllowedIPRangeList { get => _parametersBody.AllowedIPRangeList ?? null /* arrayOf */; set => _parametersBody.AllowedIPRangeList = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -83,9 +86,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Kusto Client => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Azure)]
@@ -103,7 +107,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"A boolean value that indicates if the cluster could be automatically stopped (due to lack of data or no activity for many days).",
         SerializedName = @"enableAutoStop",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableAutoStop { get => ParametersBody.EnableAutoStop ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableAutoStop = value; }
+        public global::System.Management.Automation.SwitchParameter EnableAutoStop { get => _parametersBody.EnableAutoStop ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableAutoStop = value; }
 
         /// <summary>A boolean value that indicates if the cluster's disks are encrypted.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A boolean value that indicates if the cluster's disks are encrypted.")]
@@ -114,7 +118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"A boolean value that indicates if the cluster's disks are encrypted.",
         SerializedName = @"enableDiskEncryption",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableDiskEncryption { get => ParametersBody.EnableDiskEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableDiskEncryption = value; }
+        public global::System.Management.Automation.SwitchParameter EnableDiskEncryption { get => _parametersBody.EnableDiskEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableDiskEncryption = value; }
 
         /// <summary>A boolean value that indicates if double encryption is enabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A boolean value that indicates if double encryption is enabled.")]
@@ -125,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"A boolean value that indicates if double encryption is enabled.",
         SerializedName = @"enableDoubleEncryption",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableDoubleEncryption { get => ParametersBody.EnableDoubleEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableDoubleEncryption = value; }
+        public global::System.Management.Automation.SwitchParameter EnableDoubleEncryption { get => _parametersBody.EnableDoubleEncryption ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableDoubleEncryption = value; }
 
         /// <summary>A boolean value that indicates if the purge operations are enabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A boolean value that indicates if the purge operations are enabled.")]
@@ -136,7 +140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"A boolean value that indicates if the purge operations are enabled.",
         SerializedName = @"enablePurge",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnablePurge { get => ParametersBody.EnablePurge ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnablePurge = value; }
+        public global::System.Management.Automation.SwitchParameter EnablePurge { get => _parametersBody.EnablePurge ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnablePurge = value; }
 
         /// <summary>A boolean value that indicates if the streaming ingest is enabled.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "A boolean value that indicates if the streaming ingest is enabled.")]
@@ -147,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"A boolean value that indicates if the streaming ingest is enabled.",
         SerializedName = @"enableStreamingIngest",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter EnableStreamingIngest { get => ParametersBody.EnableStreamingIngest ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.EnableStreamingIngest = value; }
+        public global::System.Management.Automation.SwitchParameter EnableStreamingIngest { get => _parametersBody.EnableStreamingIngest ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.EnableStreamingIngest = value; }
 
         /// <summary>The engine type</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The engine type")]
@@ -159,7 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"engineType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType EngineType { get => ParametersBody.EngineType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType)""); set => ParametersBody.EngineType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType EngineType { get => _parametersBody.EngineType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EngineType)""); set => _parametersBody.EngineType = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -186,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType IdentityType { get => ParametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType)""); set => ParametersBody.IdentityType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.IdentityType)""); set => _parametersBody.IdentityType = value; }
 
         /// <summary>
         /// The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM
@@ -200,8 +204,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         ReadOnly = false,
         Description = @"The list of user identities associated with the Kusto cluster. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.",
         SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IIdentityUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => ParametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => ParametersBody.IdentityUserAssignedIdentity = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IIdentityUserAssignedIdentities) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IIdentityUserAssignedIdentities IdentityUserAssignedIdentity { get => _parametersBody.IdentityUserAssignedIdentity ?? null /* object */; set => _parametersBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
         private string _ifMatch;
@@ -249,7 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The name of the key vault key.",
         SerializedName = @"keyName",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyName { get => ParametersBody.KeyVaultPropertyKeyName ?? null; set => ParametersBody.KeyVaultPropertyKeyName = value; }
+        public string KeyVaultPropertyKeyName { get => _parametersBody.KeyVaultPropertyKeyName ?? null; set => _parametersBody.KeyVaultPropertyKeyName = value; }
 
         /// <summary>The Uri of the key vault.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Uri of the key vault.")]
@@ -260,7 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The Uri of the key vault.",
         SerializedName = @"keyVaultUri",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyVaultUri { get => ParametersBody.KeyVaultPropertyKeyVaultUri ?? null; set => ParametersBody.KeyVaultPropertyKeyVaultUri = value; }
+        public string KeyVaultPropertyKeyVaultUri { get => _parametersBody.KeyVaultPropertyKeyVaultUri ?? null; set => _parametersBody.KeyVaultPropertyKeyVaultUri = value; }
 
         /// <summary>The version of the key vault key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the key vault key.")]
@@ -271,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The version of the key vault key.",
         SerializedName = @"keyVersion",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyKeyVersion { get => ParametersBody.KeyVaultPropertyKeyVersion ?? null; set => ParametersBody.KeyVaultPropertyKeyVersion = value; }
+        public string KeyVaultPropertyKeyVersion { get => _parametersBody.KeyVaultPropertyKeyVersion ?? null; set => _parametersBody.KeyVaultPropertyKeyVersion = value; }
 
         /// <summary>The user assigned identity (ARM resource id) that has access to the key.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The user assigned identity (ARM resource id) that has access to the key.")]
@@ -282,7 +286,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The user assigned identity (ARM resource id) that has access to the key.",
         SerializedName = @"userIdentity",
         PossibleTypes = new [] { typeof(string) })]
-        public string KeyVaultPropertyUserIdentity { get => ParametersBody.KeyVaultPropertyUserIdentity ?? null; set => ParametersBody.KeyVaultPropertyUserIdentity = value; }
+        public string KeyVaultPropertyUserIdentity { get => _parametersBody.KeyVaultPropertyUserIdentity ?? null; set => _parametersBody.KeyVaultPropertyUserIdentity = value; }
+
+        /// <summary>The list of language extensions.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of language extensions.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The list of language extensions.",
+        SerializedName = @"value",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtension) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ILanguageExtension[] LanguageExtensionValue { get => _parametersBody.LanguageExtensionValue ?? null /* arrayOf */; set => _parametersBody.LanguageExtensionValue = value; }
 
         /// <summary>The geo-location where the resource lives</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The geo-location where the resource lives")]
@@ -293,14 +309,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The geo-location where the resource lives",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
+        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -337,7 +353,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"A boolean value that indicate if the optimized autoscale feature is enabled or not.",
         SerializedName = @"isEnabled",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter OptimizedAutoscaleIsEnabled { get => ParametersBody.OptimizedAutoscaleIsEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => ParametersBody.OptimizedAutoscaleIsEnabled = value; }
+        public global::System.Management.Automation.SwitchParameter OptimizedAutoscaleIsEnabled { get => _parametersBody.OptimizedAutoscaleIsEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.OptimizedAutoscaleIsEnabled = value; }
 
         /// <summary>Maximum allowed instances count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum allowed instances count.")]
@@ -348,7 +364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"Maximum allowed instances count.",
         SerializedName = @"maximum",
         PossibleTypes = new [] { typeof(int) })]
-        public int OptimizedAutoscaleMaximum { get => ParametersBody.OptimizedAutoscaleMaximum ?? default(int); set => ParametersBody.OptimizedAutoscaleMaximum = value; }
+        public int OptimizedAutoscaleMaximum { get => _parametersBody.OptimizedAutoscaleMaximum ?? default(int); set => _parametersBody.OptimizedAutoscaleMaximum = value; }
 
         /// <summary>Minimum allowed instances count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Minimum allowed instances count.")]
@@ -359,7 +375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"Minimum allowed instances count.",
         SerializedName = @"minimum",
         PossibleTypes = new [] { typeof(int) })]
-        public int OptimizedAutoscaleMinimum { get => ParametersBody.OptimizedAutoscaleMinimum ?? default(int); set => ParametersBody.OptimizedAutoscaleMinimum = value; }
+        public int OptimizedAutoscaleMinimum { get => _parametersBody.OptimizedAutoscaleMinimum ?? default(int); set => _parametersBody.OptimizedAutoscaleMinimum = value; }
 
         /// <summary>The version of the template defined, for instance 1.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The version of the template defined, for instance 1.")]
@@ -370,13 +386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The version of the template defined, for instance 1.",
         SerializedName = @"version",
         PossibleTypes = new [] { typeof(int) })]
-        public int OptimizedAutoscaleVersion { get => ParametersBody.OptimizedAutoscaleVersion ?? default(int); set => ParametersBody.OptimizedAutoscaleVersion = value; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.Cluster();
-
-        /// <summary>Class representing a Kusto cluster.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        public int OptimizedAutoscaleVersion { get => _parametersBody.OptimizedAutoscaleVersion ?? default(int); set => _parametersBody.OptimizedAutoscaleVersion = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpPipeline" /> that the remote call will use.
@@ -411,7 +421,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"publicIPType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType PublicIPType { get => ParametersBody.PublicIPType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType)""); set => ParametersBody.PublicIPType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType PublicIPType { get => _parametersBody.PublicIPType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicIPType)""); set => _parametersBody.PublicIPType = value; }
 
         /// <summary>
         /// Public network access to the cluster is enabled by default. When disabled, only private endpoint connection to the cluster
@@ -426,7 +436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicNetworkAccess) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicNetworkAccess))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicNetworkAccess PublicNetworkAccess { get => ParametersBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicNetworkAccess)""); set => ParametersBody.PublicNetworkAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicNetworkAccess PublicNetworkAccess { get => _parametersBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PublicNetworkAccess)""); set => _parametersBody.PublicNetworkAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -454,7 +464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"restrictOutboundNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterNetworkAccessFlag) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterNetworkAccessFlag))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterNetworkAccessFlag RestrictOutboundNetworkAccess { get => ParametersBody.RestrictOutboundNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterNetworkAccessFlag)""); set => ParametersBody.RestrictOutboundNetworkAccess = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterNetworkAccessFlag RestrictOutboundNetworkAccess { get => _parametersBody.RestrictOutboundNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.ClusterNetworkAccessFlag)""); set => _parametersBody.RestrictOutboundNetworkAccess = value; }
 
         /// <summary>The number of instances of the cluster.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The number of instances of the cluster.")]
@@ -465,7 +475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The number of instances of the cluster.",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacity { get => ParametersBody.SkuCapacity ?? default(int); set => ParametersBody.SkuCapacity = value; }
+        public int SkuCapacity { get => _parametersBody.SkuCapacity ?? default(int); set => _parametersBody.SkuCapacity = value; }
 
         /// <summary>SKU name.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "SKU name.")]
@@ -477,7 +487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName SkuName { get => ParametersBody.SkuName; set => ParametersBody.SkuName = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName SkuName { get => _parametersBody.SkuName; set => _parametersBody.SkuName = value; }
 
         /// <summary>SKU tier.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "SKU tier.")]
@@ -489,7 +499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuTier) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuTier))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuTier SkuTier { get => ParametersBody.SkuTier; set => ParametersBody.SkuTier = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuTier SkuTier { get => _parametersBody.SkuTier; set => _parametersBody.SkuTier = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -522,7 +532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.ITrackedResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.ITrackedResourceTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api10.ITrackedResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>The cluster's external tenants.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -533,8 +543,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         ReadOnly = false,
         Description = @"The cluster's external tenants.",
         SerializedName = @"trustedExternalTenants",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ITrustedExternalTenant) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ITrustedExternalTenant[] TrustedExternalTenant { get => ParametersBody.TrustedExternalTenant ?? null /* arrayOf */; set => ParametersBody.TrustedExternalTenant = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ITrustedExternalTenant) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ITrustedExternalTenant[] TrustedExternalTenant { get => _parametersBody.TrustedExternalTenant ?? null /* arrayOf */; set => _parametersBody.TrustedExternalTenant = value; }
 
         /// <summary>Virtual Cluster graduation properties</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Virtual Cluster graduation properties")]
@@ -545,7 +555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"Virtual Cluster graduation properties",
         SerializedName = @"virtualClusterGraduationProperties",
         PossibleTypes = new [] { typeof(string) })]
-        public string VirtualClusterGraduationProperty { get => ParametersBody.VirtualClusterGraduationProperty ?? null; set => ParametersBody.VirtualClusterGraduationProperty = value; }
+        public string VirtualClusterGraduationProperty { get => _parametersBody.VirtualClusterGraduationProperty ?? null; set => _parametersBody.VirtualClusterGraduationProperty = value; }
 
         /// <summary>Data management's service public IP address resource id.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Data management's service public IP address resource id.")]
@@ -556,7 +566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"Data management's service public IP address resource id.",
         SerializedName = @"dataManagementPublicIpId",
         PossibleTypes = new [] { typeof(string) })]
-        public string VirtualNetworkConfigurationDataManagementPublicIPId { get => ParametersBody.VirtualNetworkConfigurationDataManagementPublicIPId ?? null; set => ParametersBody.VirtualNetworkConfigurationDataManagementPublicIPId = value; }
+        public string VirtualNetworkConfigurationDataManagementPublicIPId { get => _parametersBody.VirtualNetworkConfigurationDataManagementPublicIPId ?? null; set => _parametersBody.VirtualNetworkConfigurationDataManagementPublicIPId = value; }
 
         /// <summary>Engine service's public IP address resource id.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Engine service's public IP address resource id.")]
@@ -567,7 +577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"Engine service's public IP address resource id.",
         SerializedName = @"enginePublicIpId",
         PossibleTypes = new [] { typeof(string) })]
-        public string VirtualNetworkConfigurationEnginePublicIPId { get => ParametersBody.VirtualNetworkConfigurationEnginePublicIPId ?? null; set => ParametersBody.VirtualNetworkConfigurationEnginePublicIPId = value; }
+        public string VirtualNetworkConfigurationEnginePublicIPId { get => _parametersBody.VirtualNetworkConfigurationEnginePublicIPId ?? null; set => _parametersBody.VirtualNetworkConfigurationEnginePublicIPId = value; }
 
         /// <summary>The subnet resource id.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The subnet resource id.")]
@@ -578,7 +588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The subnet resource id.",
         SerializedName = @"subnetId",
         PossibleTypes = new [] { typeof(string) })]
-        public string VirtualNetworkConfigurationSubnetId { get => ParametersBody.VirtualNetworkConfigurationSubnetId ?? null; set => ParametersBody.VirtualNetworkConfigurationSubnetId = value; }
+        public string VirtualNetworkConfigurationSubnetId { get => _parametersBody.VirtualNetworkConfigurationSubnetId ?? null; set => _parametersBody.VirtualNetworkConfigurationSubnetId = value; }
 
         /// <summary>The availability zones of the cluster.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -590,31 +600,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The availability zones of the cluster.",
         SerializedName = @"zones",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] Zone { get => ParametersBody.Zone ?? null /* arrayOf */; set => ParametersBody.Zone = value; }
+        public string[] Zone { get => _parametersBody.Zone ?? null /* arrayOf */; set => _parametersBody.Zone = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -651,7 +661,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
+            clone._parametersBody = this._parametersBody;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
             clone.IfMatch = this.IfMatch;
@@ -818,12 +828,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ClustersCreateOrUpdate(ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, SubscriptionId, ParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.ClustersCreateOrUpdate(ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, SubscriptionId, _parametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,SubscriptionId=SubscriptionId,body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,SubscriptionId=SubscriptionId,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -846,12 +856,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -868,15 +878,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, SubscriptionId=SubscriptionId, body=ParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, SubscriptionId=SubscriptionId, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, SubscriptionId=SubscriptionId, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, SubscriptionId=SubscriptionId, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -886,12 +896,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster> response)
         {
             using( NoSynchronizationContext )
             {
@@ -903,7 +913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICluster
                 WriteObject((await response));
             }
         }

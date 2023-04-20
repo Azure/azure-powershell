@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     /// <remarks>
     /// See [planned
-    /// maintenance](https://learn.microsoft.com/azure/aks/planned-maintenance)
+    /// maintenance](https://docs.microsoft.com/azure/aks/planned-maintenance)
     /// for more information about planned maintenance.
     /// </remarks>
     [Rest.Serialization.JsonTransformation]
