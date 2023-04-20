@@ -62,17 +62,17 @@ directive:
   - from: swagger-document
     where: $.definitions..pfxCertificate
     transform: $.format = "byte"
-  # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AAD/domainServices/{domainServiceName}"].delete.responses
     transform: >-
         $["200"] = {
           "description": "HTTP 200 (OK) should be returned if the object exists and was deleted successfully."
         }
+  # Following is two common directive which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  # 2. For New-* cmdlets, ViaIdentity is not required
   - where:
-      variant: ^Create$|^CreateViaIdentity.*$|^Update$|^UpdateViaIdentity(?!.*?Expanded)$
+      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
     remove: true
   # Remove the set-* cmdlet
   - where:

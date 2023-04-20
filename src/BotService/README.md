@@ -96,8 +96,14 @@ directive:
   - from: botservice.json
     where: $.paths["/subscriptions/{subscriptionId}/providers/Microsoft.BotService/operationresults/{operationResultId}"]
     transform: delete $["get"]
+  # Following is two common directive which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^RegenerateViaIdentity.*$
+      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
+    remove: true
+  - where:
+      variant: ^RegenerateViaIdentity.*$
     remove: true
   - where:
       subject: Bot
@@ -138,7 +144,7 @@ directive:
   - where: 
       verb: Get
       subject: HostSetting
-      variant: GetViaIdentity
+      variant: ^GetViaIdentity.*$
     hide: true
   - where: 
       verb: Get

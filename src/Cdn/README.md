@@ -113,17 +113,15 @@ directive:
           - SystemDataLastModifiedAt
           - SystemDataLastModifiedBy
           - SystemDataLastModifiedByType
-          
   # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Patch$|^PatchViaIdentity$|^Check$|^Check1$|^CheckViaIdentity$|^Validate$|^ValidateViaIdentity$
+      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
+    remove: true         
+  - where:
+      variant: ^Patch(?!.*?Expanded)|^Check(?!.*?Expanded)|^Check(?!.*?Expanded)
       subject: ^(?!RuleSet).+$
-    remove: true
-  - where:
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject: ^RuleSet$
     remove: true
   # Remove the set-* cmdlet
   - where:
@@ -131,15 +129,15 @@ directive:
     remove: true
   # Remove some cmdlets' ViaIdentity which are inconvinient to call
   - where:
-      variant: ^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      variant: ^CheckViaIdentity.*$
       subject: ^NameAvailability$|^EndpointNameAvailability$
     remove: true
   - where:
-      variant: ^ValidateViaIdentity$|^ValidateViaIdentityExpanded$
+      variant: ^ValidateViaIdentity.*$
       subject: ^Probe$
     remove: true
   - where:
-      variant: ^EnableExpanded$|^EnableViaIdentityExpanded$
+      variant: ^Enable.*Expanded$
       subject: ^CustomDomainCustomHttps$
     remove: true
 

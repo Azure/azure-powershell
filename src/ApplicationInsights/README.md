@@ -118,6 +118,13 @@ directive:
           }
         }
 
+  # Following is two common directive which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
+  - where:
+      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
+    remove: true
+
   - where:
       subject: WebTest
       verb: Set
@@ -137,18 +144,13 @@ directive:
   - where:
       verb: Get
       subject: ^MyWorkbook$
-      variant: ^GetViaIdentity$
+      variant: ^GetViaIdentity.*$|^UpdateViaIdentity.*$|^DeleteViaIdentity.*$
     remove: true
 
-  - where:
-      subject: ^ApiKey$|^ContinuousExport$|LinkedStorageAccount|^WebTest$|^WebTestTag$|^Workbook$|^WorkbookTemplate$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-    remove: true
-
-  # The resource id of the Microsoft.Insights/myworkbooks does not match the path defined in swagger. 
+  # Remove Expanded parameter set for Update
   - where:
       subject: ^MyWorkbook$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^UpdateExpanded$|^UpdateViaIdentityExpanded$|^UpdateViaIdentity$|^DeleteViaIdentity$
+      variant: ^Update.*Expanded$
     remove: true
 
   # Hide ComponentCurrentBillingFeature related cmdlets

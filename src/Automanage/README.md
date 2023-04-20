@@ -62,15 +62,17 @@ directive:
       verb: Set
     remove: true
 
-  # remove variant
+  # Following is two common directive which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
     remove: true
 
   - where:
       verb: Get
       subject: ^BestPractice$|^BestPracticeVersion$
-      variant: ^GetViaIdentity$
+      variant: ^GetViaIdentity.*$
     remove: true
 
   # rename subject

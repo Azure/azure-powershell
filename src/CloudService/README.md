@@ -69,31 +69,31 @@ directive:
     set:
       subject: CloudServiceOSVersion
   - where:
-      variant: ^Restart$|^RestartViaIdentity$|^Reimage$|^ReimageViaIdentity$|^Rebuild$|^RebuildViaIdentity$
+      variant: ^Restart(?!.*?Expanded)|^Reimage(?!.*?Expanded)|^Rebuild(?!.*?Expanded)
       subject: ^CloudService$|^RebuildCloudService$
     remove: true
 
   - where:
       subject: ^CloudService$
-      variant: ^ReimageExpanded$|^ReimageViaIdentityExpanded$
+      variant: ^Reimage.*Expanded$
     set:
       subject: CloudServiceReimage
       verb: Invoke
   - where:
       subject: ^CloudServiceRoleInstance$
-      variant: ^Reimage$|^ReimageViaIdentity$
+      variant: ^Reimage.*$
     set:
       subject: CloudServiceRoleInstanceReimage
       verb: Invoke
 
   - where:
       subject: ^RebuildCloudService$
-      variant: ^RebuildExpanded$|^RebuildViaIdentityExpanded$
+      variant: ^Rebuild.*Expanded$
     set:
       subject: Rebuild
   - where:
       subject: ^RebuildCloudServiceRoleInstance$
-      variant: ^Rebuild$|^RebuildViaIdentity$
+      variant: ^Rebuild(?!.*?Expanded)
     set:
       subject: RoleInstanceRebuild
 
@@ -103,7 +103,7 @@ directive:
     remove: true
   - where:
       subject: ^WalkCloudServiceUpdateDomain$
-      variant: ^Walk$
+      variant: ^Walk(?!.*?Expanded)
     remove: true
   - where:
       subject: ^WalkCloudServiceUpdateDomain$
@@ -120,7 +120,7 @@ directive:
       verb: Remove
     remove: true
   - where:
-      variant: ^Delete$|^DeleteViaIdentity$
+      variant: ^Delete.*$
       subject: CloudServiceInstance
       verb: Remove
     remove: true

@@ -54,10 +54,10 @@ resourcegroup-append: true
 
 directive:
   # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  # 2. For New-* cmdlets, ViaIdentity is not required
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
     remove: true
   # Remove the set-* cmdlet
   - where:
