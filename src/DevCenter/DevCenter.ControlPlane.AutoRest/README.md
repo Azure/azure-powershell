@@ -35,7 +35,10 @@ branch: 1fd32d6d50f5be3dde6d0547f2f3c369998811e1
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-  - $(repo)/specification/devcenter/resource-manager/readme.md 
+input-file:
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-01-01-preview/commonDefinitions.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-01-01-preview/devcenter.json
+  - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/preview/2023-01-01-preview/vdi.json
 
 directive:
   - where:
