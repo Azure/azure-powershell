@@ -24,7 +24,7 @@ Returns a BotService specified by the parameters.
 
 ### Example 1: Download the BotService App folder
 ```powershell
-Export-AzBotServiceApp -ResourceGroupName youriBotTest -name youriechobottest
+Export-AzBotServiceApp -ResourceGroupNameyouriBotTest -name youriechobottest
 ```
 
 ```output
