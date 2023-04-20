@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Protection Profile custom input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ProtectionProfileCustomDetails")]
     public partial class ProtectionProfileCustomDetails
     {
         /// <summary>

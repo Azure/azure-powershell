@@ -66,7 +66,7 @@ RequiredAssemblies = 'Microsoft.Azure.PowerShell.AutoMapper.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Network.format.ps1xml'
+FormatsToProcess = 'Network.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Network.dll')
@@ -431,7 +431,8 @@ CmdletsToExport = 'Add-AzApplicationGatewayAuthenticationCertificate',
                'Remove-AzVirtualHub', 'Set-AzVirtualHub', 'New-AzVirtualHubRoute', 
                'Add-AzVirtualHubRoute', 'New-AzVirtualHubRouteTable', 
                'Add-AzVirtualHubRouteTable', 'Get-AzVirtualHubRouteTable', 
-               'Remove-AzVirtualHubRouteTable', 'New-AzRoutingPolicy', 
+               'Remove-AzVirtualHubRouteTable', 'New-AzRoutingPolicy',
+               'New-AzVirtualRouterAutoScaleConfiguration',
                'Get-AzRoutingPolicy', 'Add-AzRoutingPolicy', 
                'Remove-AzRoutingPolicy', 'Set-AzRoutingPolicy', 
                'New-AzRoutingIntent', 'Get-AzRoutingIntent', 'Set-AzRoutingIntent', 
