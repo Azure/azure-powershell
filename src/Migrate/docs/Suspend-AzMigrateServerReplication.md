@@ -37,7 +37,7 @@ Suspend-AzMigrateServerReplication -TargetObjectID "/Subscriptions/xxx-xxx-xxxxx
 ```output
 ActivityId                       : da61a495-48b7-40df-a251-f23f491b2566 ActivityId: e16e0301-be13-4c35-8242-1451cb057994
 AllowedAction                    : {}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          :
 Error                            : {}
@@ -68,7 +68,7 @@ Suspend-AzMigrateServerReplication -InputObject $obj
 ```output
 ActivityId                       : da61a495-48b7-40df-a251-f23f491b2566 ActivityId: e16e0301-be13-4c35-8242-1451cb057994
 AllowedAction                    : {}
-CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.JobDetailsAffectedObjectDetails
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.JobDetailsAffectedObjectDetails
 CustomDetailInstanceType         : AsrJobDetails
 EndTime                          :
 Error                            : {}
@@ -113,7 +113,7 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -193,7 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
 
 ## NOTES
 

@@ -22,7 +22,7 @@ The Start-AzMigrateTestMigration cmdlet initiates the test migration for the rep
 https://learn.microsoft.com/powershell/module/az.migrate/start-azmigratetestmigration
 #>
 function Start-AzMigrateTestMigration {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
@@ -33,7 +33,7 @@ function Start-AzMigrateTestMigration {
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IMigrationItem]
         # Specifies the replicating server for which the test migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${InputObject},
 
@@ -45,7 +45,13 @@ function Start-AzMigrateTestMigration {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]]
+        [System.String]
+        # Specifies the target version to which the Os has to be upgraded to. The valid values can be selected from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet.
+        ${OsUpgradeVersion},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]]
         # Updates the NIC for the Azure VM to be created.
         ${NicToUpdate},
 
@@ -133,6 +139,7 @@ function Start-AzMigrateTestMigration {
 
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
         $AvSetId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetAvailabilitySetId
+        $SupportedOsVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOsVersions
         if ($AvSetId)
         {
             Import-module -Name Az.Compute
@@ -177,9 +184,20 @@ function Start-AzMigrateTestMigration {
         }
 
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )) {
-            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtTestMigrateInput]::new()
+            $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtTestMigrateInput]::new()
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
+            if ($OsUpgradeVersion) {
+                if (null -eq $SupportedOsVersions) {
+                    throw "There is no supported target OS available. Please check or remove the OsUpgradeVersion input." 
+                }
+                elseif ($SupportedOsVersions -contains $OsUpgradeVersion) {
+                    $ProviderSpecificDetailInput.OsUpgradeVersion = $OsUpgradeVersion
+                }
+                else {
+                    throw "Please choose the appropriate option from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet"
+                }
+            }
             $ProviderSpecificDetailInput.VMNic = $NicToUpdate
             $ProviderSpecificDetailInput.RecoveryPointId = $ReplicationMigrationItem.ProviderSpecificDetail.LastRecoveryPointId
 

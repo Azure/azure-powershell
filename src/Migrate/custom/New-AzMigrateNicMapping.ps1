@@ -22,7 +22,7 @@ The New-AzMigrateNicMapping cmdlet creates a mapping of the source NIC attached 
 https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratenicmapping
 #>
 function New-AzMigrateNicMapping {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput])]
     [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -71,7 +71,7 @@ function New-AzMigrateNicMapping {
     )
     
     process {
-        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtNicInput]::new()
+        $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtNicInput]::new()
         $NicObject.NicId = $NicID
         if ($PSBoundParameters.ContainsKey('TargetNicSelectionType')) {
             if ($TargetNicSelectionType -eq 'primary') {
