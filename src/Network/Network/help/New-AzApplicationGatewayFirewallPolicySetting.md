@@ -54,6 +54,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -RequestBodyInspectLimitInKB  
 Max inspection limit in KB for request body inspection for WAF.
@@ -68,6 +69,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -FileUploadEnforcement  
 Whether allow WAF to enforce file upload limits.
@@ -82,6 +84,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### -CustomBlockResponseBody
 Custom Block Response Body in policy settings of the firewall policy.
