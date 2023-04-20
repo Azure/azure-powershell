@@ -21,18 +21,19 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
+                $subId = "4d894474-aa7f-4611-b830-344860c3eb9c"
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
 
                 $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
                 $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
                 $endpointName = 'end-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-                $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
                 $policyName = "pol-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
@@ -41,18 +42,18 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
                 $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
                 -WafPolicyId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
 
-                New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
+                New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter -SubscriptionId $subId
             
                 $endpointName2 = 'end-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName2)"
-                $endpoint2 = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName2 -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                $endpoint2 = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName2 -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
                 $updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
                 $updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
                 $updateParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  @($updateAssociation, $updateAssociation2) `
                 -WafPolicyId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
 
-                Update-AzFrontDoorCdnSecurityPolicy -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $policyName `
+                Update-AzFrontDoorCdnSecurityPolicy -SubscriptionId $subId -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $policyName `
                 -Parameter $updateParameter
             } Finally
             {
@@ -67,18 +68,19 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
             $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
             try
             {
+                $subId = "4d894474-aa7f-4611-b830-344860c3eb9c"
                 Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
 
                 $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
                 $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
                 $endpointName = 'end-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-                $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
                 $policyName = "pol-" + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
@@ -87,18 +89,18 @@ Describe 'Update-AzFrontDoorCdnSecurityPolicy'  {
                 $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
                 -WafPolicyId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
 
-                New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
+                New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter -SubscriptionId $subId
             
                 $endpointName2 = 'end-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName2)"
-                $endpoint2 = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName2 -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+                $endpoint2 = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName2 -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
 
                 $updateAssociation = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
                 $updateAssociation2 = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint2.Id)})            
                 $updateParameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  @($updateAssociation, $updateAssociation2) `
                 -WafPolicyId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
 
-                Get-AzFrontDoorCdnSecurityPolicy -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $policyName `
+                Get-AzFrontDoorCdnSecurityPolicy -SubscriptionId $subId -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $policyName `
                 | Update-AzFrontDoorCdnSecurityPolicy -Parameter $updateParameter
             } Finally
             {

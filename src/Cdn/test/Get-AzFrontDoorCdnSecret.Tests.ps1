@@ -37,7 +37,7 @@ Describe 'Get-AzFrontDoorCdnSecret'  {
             
             New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter -SubscriptionId $subId
 
-            $rules = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName Get-AzFrontDoorCdnSecret
+            $rules = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -SubscriptionId $subId
             $rules.Count | Should -Be 1
         } Finally
         {
