@@ -31,7 +31,7 @@ New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHu
 ```
 
 ## DESCRIPTION
-The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance resource in Azure.
+The **New-AzNetworkVirtualAppliance** command creates a Network Virtual Appliance(NVA) resource in Azure.
 
 ## EXAMPLES
 
