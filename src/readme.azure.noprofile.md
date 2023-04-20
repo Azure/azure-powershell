@@ -58,3 +58,8 @@ directive:
       default:
         script: '(Get-AzContext).Subscription.Id'
 ```
+
+> Configurations
+``` yaml
+enable-parent-pipeline-input-for-list: false
+```
