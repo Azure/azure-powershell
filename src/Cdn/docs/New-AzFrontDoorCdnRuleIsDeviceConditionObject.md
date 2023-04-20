@@ -22,18 +22,27 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for DeliveryRuleIsDeviceCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnRuleIsDeviceConditionObject -Name IsDevice -ParameterMatchValue Mobile
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-IsDevice
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -104,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleIsDeviceCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.DeliveryRuleIsDeviceCondition
 
 ## NOTES
 

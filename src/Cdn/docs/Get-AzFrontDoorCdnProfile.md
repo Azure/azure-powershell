@@ -39,47 +39,27 @@ Get-AzFrontDoorCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]
 
 ## EXAMPLES
 
-### Example 1: List AzureFrontDoor profiles under the subscription
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzFrontDoorCdnProfile
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Kind      ResourceGroupName
--------- ----       ----      -----------------
-Global   fdp-v542q6 frontdoor testps-rg-da16jm
-Global   fdp-a345e9 frontdoor testps-rg-da16jm
-Global   fdp-t0jfb9 frontdoor testps-rg-zvt8sy
+{{ Add output here }}
 ```
 
-List AzureFrontDoor profiles under the subscription
+{{ Add description here }}
 
-### Example 2: List AzureFrontDoor profiles under the resource group
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm
+{{ Add code here }}
 ```
 
 ```output
-Location Name       Kind      ResourceGroupName
--------- ----       ----      -----------------
-Global   fdp-v542q6 frontdoor testps-rg-da16jm
-Global   fdp-a345e9 frontdoor testps-rg-da16jm
+{{ Add output here }}
 ```
 
-List AzureFrontDoor profiles under the resource group
-
-### Example 3: Get an AzureFrontDoor profile under the resource group
-```powershell
-Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
-```
-
-```output
-Location Name       Kind      ResourceGroupName
--------- ----       ----      -----------------
-Global   fdp-v542q6 frontdoor testps-rg-da16jm
-```
-
-Get an AzureFrontDoor profile under the resource group
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -167,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.IProfile
 
 ## NOTES
 
@@ -184,7 +164,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

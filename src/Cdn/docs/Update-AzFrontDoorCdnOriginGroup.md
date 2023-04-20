@@ -66,7 +66,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,7 +86,7 @@ Health probe settings to the origin that is used to determine the health of the 
 To construct, see NOTES section for HEALTHPROBESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHealthProbeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.IHealthProbeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +118,7 @@ Load balancing settings for a backend pool
 To construct, see NOTES section for LOADBALANCINGSETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ILoadBalancingSettingsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.ILoadBalancingSettingsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -276,7 +277,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IAfdOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.IAfdOriginGroup
 
 ## NOTES
 
@@ -299,7 +300,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
@@ -310,6 +311,7 @@ To create the parameters described below, construct a hash table containing the 
 
 `LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>`: Load balancing settings for a backend pool
   - `[AdditionalLatencyInMillisecond <Int32?>]`: The additional latency in milliseconds for probes to fall into the lowest latency bucket
+  - `[CapacityConsciousThreshold <Int32?>]`: The threshold at which additional backends are added for capacity based load balancing
   - `[SampleSize <Int32?>]`: The number of samples to consider for load balancing decisions
   - `[SuccessfulSamplesRequired <Int32?>]`: The number of samples within the sample period that must succeed
 

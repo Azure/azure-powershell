@@ -22,18 +22,27 @@ Create an in-memory object for HealthProbeParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureFrontDoor origin group `HealthProbeSetting` object}}
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
+{{ Add code here }}
 ```
 
 ```output
-ProbeIntervalInSecond ProbePath ProbeProtocol ProbeRequestType
---------------------- --------- ------------- ----------------
-1                     /         Https         GET
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -104,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.HealthProbeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.HealthProbeParameters
 
 ## NOTES
 

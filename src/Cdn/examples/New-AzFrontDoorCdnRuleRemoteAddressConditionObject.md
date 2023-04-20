@@ -1,11 +1,22 @@
-### Example 1: Create an in-memory object for DeliveryRuleRemoteAddressCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnRuleRemoteAddressConditionObject -Name RemoteAddress -ParameterOperator GeoMatch -ParameterMatchValue BJ -ParameterNegateCondition $False -ParameterTransform Lowercase
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-RemoteAddress
+{{ Add output here }}
 ```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

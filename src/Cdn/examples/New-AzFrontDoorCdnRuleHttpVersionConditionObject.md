@@ -1,12 +1,22 @@
-### Example 1: Create an in-memory object for DeliveryRuleHttpVersionCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnRuleHttpVersionConditionObject -Name HttpVersion -ParameterMatchValue 2.0
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-HttpVersion
+{{ Add output here }}
 ```
 
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

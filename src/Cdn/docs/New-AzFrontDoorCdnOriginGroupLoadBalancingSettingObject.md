@@ -22,18 +22,27 @@ Create an in-memory object for LoadBalancingSettingsParameters.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureFrontDoor origin group `LoadBalancingSetting` object
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
+{{ Add code here }}
 ```
 
 ```output
-AdditionalLatencyInMillisecond SampleSize SuccessfulSamplesRequired
------------------------------- ---------- -------------------------
-200                            5          4
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -89,7 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.LoadBalancingSettingsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.LoadBalancingSettingsParameters
 
 ## NOTES
 

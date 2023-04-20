@@ -22,19 +22,27 @@ Create an in-memory object for SecurityPolicyWebApplicationFirewallAssociation.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for AzureFrontDoor SecurityPolicyWebApplicationFirewallAssociation
+### Example 1: {{ Add title here }}
 ```powershell
-$endpoint = Get-AzFrontDoorCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001
-New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+{{ Add code here }}
 ```
 
 ```output
-PatternsToMatch
----------------
-{/*}
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -43,7 +51,7 @@ List of domains.
 To construct, see NOTES section for DOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallAssociation
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.SecurityPolicyWebApplicationFirewallAssociation
 
 ## NOTES
 

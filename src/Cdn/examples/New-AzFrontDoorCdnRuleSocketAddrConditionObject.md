@@ -1,11 +1,22 @@
-### Example 1: Create an in-memory object for DeliveryRuleSocketAddrCondition
+### Example 1: {{ Add title here }}
 ```powershell
- New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-SocketAddr
+{{ Add output here }}
 ```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

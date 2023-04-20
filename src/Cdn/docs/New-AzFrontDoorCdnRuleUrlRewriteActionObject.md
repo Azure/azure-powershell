@@ -22,18 +22,27 @@ Create an in-memory object for UrlRewriteAction.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for UrlRewriteAction
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name UrlRewrite -ParameterDestination /b -ParameterSourcePattern /a -ParameterPreserveUnmatchedPath $False
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-UrlRewrite
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -106,7 +115,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.UrlRewriteAction
 
 ## NOTES
 

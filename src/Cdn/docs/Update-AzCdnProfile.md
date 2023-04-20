@@ -30,39 +30,27 @@ Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN
 
 ## EXAMPLES
 
-### Example 1: Update an AzureCDN profile under the resource group
+### Example 1: {{ Add title here }}
 ```powershell
-$tags = @{
-    Tag1 = 11
-    Tag2  = 22
-}
-Update-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -Tag $tags
+{{ Add code here }}
 ```
 
 ```output
-Location Name   Kind ResourceGroupName
--------- ----   ---- -----------------
-Global   cdn001 cdn  testps-rg-da16jm
+{{ Add output here }}
 ```
 
-Update an AzureCDN profile under the resource group
+{{ Add description here }}
 
-### Example 2: Update an AzureCDN profile under the resource group via identity
+### Example 2: {{ Add title here }}
 ```powershell
-$tags = @{
-    Tag1 = 11
-    Tag2  = 22
-}
-Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 | Update-AzCdnProfile -Tag $tags
+{{ Add code here }}
 ```
 
 ```output
-Location Name   Kind ResourceGroupName
--------- ----   ---- -----------------
-Global   cdn001 cdn  testps-rg-da16jm
+{{ Add output here }}
 ```
 
-Update an AzureCDN profile under the resource group via identity
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -243,7 +231,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.IProfile
 
 ## NOTES
 
@@ -260,7 +248,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

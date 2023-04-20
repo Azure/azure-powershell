@@ -1,11 +1,22 @@
-### Example 1: Create an in-memory object for UrlRedirectAction
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name UrlRedirect -ParameterRedirectType Moved -ParameterDestinationProtocol MatchRequest
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-UrlRedirect
+{{ Add output here }}
 ```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

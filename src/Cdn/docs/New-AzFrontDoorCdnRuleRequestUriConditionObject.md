@@ -23,18 +23,27 @@ Create an in-memory object for DeliveryRuleRequestUriCondition.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for DeliveryRuleRequestUriCondition
+### Example 1: {{ Add title here }}
 ```powershell
- New-AzFrontDoorCdnRuleRequestUriConditionObject -Name RequestUri -ParameterOperator Equal -ParameterMatchValue /test
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-RequestUri
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -120,7 +129,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestUriCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.DeliveryRuleRequestUriCondition
 
 ## NOTES
 

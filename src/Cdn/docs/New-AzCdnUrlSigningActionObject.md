@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlSigningActionObject
 schema: 2.0.0
 ---
 
@@ -82,7 +82,7 @@ Defines which query string parameters in the url to be considered for expires, k
 To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningParamIdentifier[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.IUrlSigningParamIdentifier[]
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +100,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.UrlSigningAction
 
 ## NOTES
 

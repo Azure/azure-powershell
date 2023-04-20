@@ -1,11 +1,22 @@
-### Example 1: Create an AzureCDN profile under the resource group
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn001 -SkuName Standard_Microsoft -Location Global
+{{ Add code here }}
 ```
 
 ```output
-Location Name   Kind ResourceGroupName
--------- ----   ---- -----------------
-Global   cdn001 cdn  testps-rg-da16jm
+{{ Add output here }}
 ```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

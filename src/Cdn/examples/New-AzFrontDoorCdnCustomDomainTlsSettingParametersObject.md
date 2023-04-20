@@ -1,15 +1,22 @@
-### Example 1: Create an in-memory object for AFDDomainHttpsParameters
+### Example 1: {{ Add title here }}
 ```powershell
-$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
-$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+{{ Add code here }}
 ```
 
 ```output
-CertificateType     MinimumTlsVersion
----------------     -----------------
-CustomerCertificate TLS12
+{{ Add output here }}
 ```
 
-Create an in-memory object for AFDDomainHttpsParameters
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 

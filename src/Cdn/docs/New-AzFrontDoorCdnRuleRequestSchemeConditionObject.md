@@ -22,18 +22,27 @@ Create an in-memory object for DeliveryRuleRequestSchemeCondition.
 
 ## EXAMPLES
 
-### Example 1: Create an in-memory object for DeliveryRuleRequestSchemeCondition
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzFrontDoorCdnRuleRequestSchemeConditionObject -Name RequestScheme -ParameterMatchValue HTTP
+{{ Add code here }}
 ```
 
 ```output
-Name
-----
-RequestScheme
+{{ Add output here }}
 ```
 
+{{ Add description here }}
 
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -104,7 +113,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestSchemeCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230201Preview.DeliveryRuleRequestSchemeCondition
 
 ## NOTES
 
