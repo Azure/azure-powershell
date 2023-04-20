@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Properties.PrivateEndpointStateForBackup = vault.Properties.PrivateEndpointStateForBackup;
             this.Properties.PrivateEndpointStateForSiteRecovery = vault.Properties.PrivateEndpointStateForSiteRecovery;
             this.Properties.PublicNetworkAccess = vault.Properties.PublicNetworkAccess;
+            this.Properties.RestoreSettings = vault.Properties.RestoreSettings;
                            
             if (vault.Properties.PrivateEndpointConnections != null)
             {
@@ -223,6 +224,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// Gets or sets PrivateEndpointStateForSiteRecovery.
         /// </summary>
         public string PrivateEndpointStateForSiteRecovery { get; set; }
+
+        /// <summary>
+        /// Gets or sets RestoreSettings.
+        /// </summary>
+        public RestoreSettings RestoreSettings { get; set; }
 
         /// <summary>
         /// Gets or sets PublicNetworkAccess.
@@ -407,6 +413,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         Disabled = 1,
         Unlocked,
         Locked
+    }
+
+    /// <summary>
+    /// Enum to define the cross subscription restore state of the vault.
+    /// </summary>
+    public enum CrossSubscriptionRestoreState
+    {
+        Enabled = 1,
+        Disabled,
+        PermanentlyDisabled
     }
 
     public enum PublicNetworkAccess
