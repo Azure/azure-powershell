@@ -328,7 +328,6 @@ function New-AzMobileNetworkSite {
             $null = $PSBoundParameters.Remove('MobileNetworkName')
             $null = $PSBoundParameters.Remove('DataNetworkName')
             $null = $PSBoundParameters.Remove('Name')
-
             if ($hasPlatformType -And $hasControlPlaneAccessInterfaceName `
                     -And $hasControlPlaneAccessInterfaceIpv4Address -And $hasControlPlaneAccessInterfaceIpv4Gateway `
                     -And $hasControlPlaneAccessInterfaceIpv4Subnet -And $hasCustomLocationId `
@@ -365,7 +364,6 @@ function New-AzMobileNetworkSite {
                 $null = $PSBoundParameters.Remove('LocalDiagnosticAccessAuthenticationType')
                 $null = $PSBoundParameters.Remove('CoreNetworkTechnology')
                 $null = $PSBoundParameters.Remove('Sku')
-
                 if ($hasUserPlaneAccessInterfaceIpv4Address -And $hasUserPlaneAccessInterfaceIpv4Gateway `
                         -And $hasUserPlaneAccessInterfaceIpv4Subnet -And $hasUserPlaneAccessInterfaceName) {
 
