@@ -128,10 +128,6 @@ namespace Microsoft.Azure.Management.NetApp.Models
                     throw new ValidationException(ValidationRules.Pattern, "Kind", "^[-\\w\\._,\\(\\)]+$");
                 }
             }
-            if (Identity != null)
-            {
-                Identity.Validate();
-            }
             if (Sku != null)
             {
                 Sku.Validate();

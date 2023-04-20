@@ -1,12 +1,12 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault?api-version=2022-10-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjItMTAtMDE=",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault?api-version=2023-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL3NxbGNvbnRhaW5lci1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9zcWxjb250YWluZXItcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "c7470a0d-9ee0-4ce1-9706-2d43956e0f31"
+          "a2fbca54-05e3-4120-8dae-db13e895e309"
         ],
         "Accept-Language": [
           "en-US"
@@ -14,8 +14,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -25,45 +25,45 @@
         ],
         "Pragma": [
           "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "a7a46109-c56a-4f88-a534-e6ccc0197619"
+        ],
+        "x-ms-client-request-id": [
+          "a2fbca54-05e3-4120-8dae-db13e895e309"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "60ff1a35-464e-4c20-b354-20bc8f423001"
-        ],
-        "x-ms-client-request-id": [
-          "c7470a0d-9ee0-4ce1-9706-2d43956e0f31"
-        ],
-        "Server": [
-          "Kestrel"
-        ],
         "x-ms-correlation-request-id": [
-          "60ff1a35-464e-4c20-b354-20bc8f423001"
+          "a7a46109-c56a-4f88-a534-e6ccc0197619"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T092838Z:60ff1a35-464e-4c20-b354-20bc8f423001"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "JIOINDIAWEST:20230418T174132Z:a7a46109-c56a-4f88-a534-e6ccc0197619"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 09:28:38 GMT"
+          "Tue, 18 Apr 2023 17:41:31 GMT"
         ],
         "Content-Length": [
-          "831"
+          "902"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"sqlcontainer-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2023-01-31T08%3A13%3A50.3523105Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2029\",\r\n    \"Owner\": \"hiaga\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V2\",\r\n    \"redundancySettings\": {\r\n      \"standardTierStorageRedundancy\": \"GeoRedundant\",\r\n      \"crossRegionRestore\": \"Disabled\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"sqlcontainer-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2023-04-18T13%3A42%3A34.8614306Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Purpose\": \"Testing\",\r\n    \"DeleteBy\": \"01-2029\",\r\n    \"Owner\": \"hiaga\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/sqlcontainer-pstest-rg/providers/Microsoft.RecoveryServices/vaults/sqlcontainer-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -72,7 +72,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e8c38a69-6e99-4862-a537-107006e29b88"
+          "db54ec35-fb5e-4017-ae12-212ec5b52ce3"
         ],
         "Accept-Language": [
           "en-US"
@@ -80,8 +80,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -96,37 +96,38 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "41c88f9d-f79e-4de7-8ccd-055933eb7081"
+          "1bd51b6f-11ef-4fe9-b08c-478ef1007121"
         ],
         "x-ms-client-request-id": [
-          "e8c38a69-6e99-4862-a537-107006e29b88"
+          "db54ec35-fb5e-4017-ae12-212ec5b52ce3",
+          "db54ec35-fb5e-4017-ae12-212ec5b52ce3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "299"
+          "297"
         ],
         "x-ms-correlation-request-id": [
-          "41c88f9d-f79e-4de7-8ccd-055933eb7081"
+          "1bd51b6f-11ef-4fe9-b08c-478ef1007121"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T092839Z:41c88f9d-f79e-4de7-8ccd-055933eb7081"
+          "JIOINDIAWEST:20230418T174137Z:1bd51b6f-11ef-4fe9-b08c-478ef1007121"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 09:28:39 GMT"
+          "Tue, 18 Apr 2023 17:41:37 GMT"
         ],
         "Content-Length": [
           "1198"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -141,7 +142,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6850403e-00c7-417c-92b5-a5b0e15d3162"
+          "fa49559c-6cbb-4896-8942-6843adddd39f"
         ],
         "Accept-Language": [
           "en-US"
@@ -149,8 +150,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -165,16 +166,17 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8a94877c-9b79-44fc-b0b5-eb510da051e3"
+          "b1edf3df-7cca-4976-b93f-3a5e4e2c4ed7"
         ],
         "x-ms-client-request-id": [
-          "6850403e-00c7-417c-92b5-a5b0e15d3162"
+          "fa49559c-6cbb-4896-8942-6843adddd39f",
+          "fa49559c-6cbb-4896-8942-6843adddd39f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -183,19 +185,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "8a94877c-9b79-44fc-b0b5-eb510da051e3"
+          "b1edf3df-7cca-4976-b93f-3a5e4e2c4ed7"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T092843Z:8a94877c-9b79-44fc-b0b5-eb510da051e3"
+          "JIOINDIAWEST:20230418T174147Z:b1edf3df-7cca-4976-b93f-3a5e4e2c4ed7"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 09:28:43 GMT"
+          "Tue, 18 Apr 2023 17:41:47 GMT"
         ],
         "Content-Length": [
           "1198"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -210,7 +212,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "262bca96-6211-4cb1-9a26-81bc78150ddd"
+          "421bcb75-390f-43a4-990d-3415c0007dc0"
         ],
         "Accept-Language": [
           "en-US"
@@ -218,8 +220,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -234,16 +236,17 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "b25b77a4-90ec-4716-9d2d-5d3b691f3ebc"
+          "7af9cd4d-f9ec-40f2-ac46-bb7bf566434c"
         ],
         "x-ms-client-request-id": [
-          "262bca96-6211-4cb1-9a26-81bc78150ddd"
+          "421bcb75-390f-43a4-990d-3415c0007dc0",
+          "421bcb75-390f-43a4-990d-3415c0007dc0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -252,19 +255,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "b25b77a4-90ec-4716-9d2d-5d3b691f3ebc"
+          "7af9cd4d-f9ec-40f2-ac46-bb7bf566434c"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20230131T092841Z:b25b77a4-90ec-4716-9d2d-5d3b691f3ebc"
+          "JIOINDIAWEST:20230418T174143Z:7af9cd4d-f9ec-40f2-ac46-bb7bf566434c"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 09:28:41 GMT"
+          "Tue, 18 Apr 2023 17:41:42 GMT"
         ],
         "Content-Length": [
           "1198"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
@@ -279,7 +282,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "daada6ff-07e2-47b7-a0f8-5b2761f65b8b"
+          "690cc5ed-4ca5-497a-8494-8a9be71b2e74"
         ],
         "Accept-Language": [
           "en-US"
@@ -287,8 +290,8 @@
         "User-Agent": [
           "FxVersion/4.700.22.55902",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.1.3"
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
         ]
       },
       "RequestBody": "",
@@ -303,16 +306,17 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "67de6ffc-bc2e-4850-a809-38a725e8af84"
+          "27fe9171-6a05-4bc3-9abf-cb90049dece5"
         ],
         "x-ms-client-request-id": [
-          "daada6ff-07e2-47b7-a0f8-5b2761f65b8b"
+          "690cc5ed-4ca5-497a-8494-8a9be71b2e74",
+          "690cc5ed-4ca5-497a-8494-8a9be71b2e74"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "Server": [
-          "Kestrel"
+          "Microsoft-IIS/10.0"
         ],
         "X-Powered-By": [
           "ASP.NET"
@@ -321,19 +325,19 @@
           "299"
         ],
         "x-ms-correlation-request-id": [
-          "67de6ffc-bc2e-4850-a809-38a725e8af84"
+          "27fe9171-6a05-4bc3-9abf-cb90049dece5"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20230131T092845Z:67de6ffc-bc2e-4850-a809-38a725e8af84"
+          "WESTINDIA:20230418T174149Z:27fe9171-6a05-4bc3-9abf-cb90049dece5"
         ],
         "Date": [
-          "Tue, 31 Jan 2023 09:28:44 GMT"
+          "Tue, 18 Apr 2023 17:41:48 GMT"
         ],
         "Content-Length": [
           "1198"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"

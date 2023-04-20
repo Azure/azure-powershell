@@ -130,7 +130,8 @@ This example is similar to Example 2, but also attaches a route table to the vir
 ```powershell
 New-AzResourceGroup -Location "West US" -Name "testRG"
 $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -HubRoutingPreference "VpnGateway"
+$autoscale = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity 3
+New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -HubRoutingPreference "VpnGateway" -VirtualRouterAutoScaleConfiguration $autoscale
 ```
 
 ```output
@@ -149,7 +150,7 @@ Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
 
-The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have preferred routing gateway as VPNGateway.
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have preferred routing gateway as VPNGateway and minimum capacity 3.
 
 ## PARAMETERS
 

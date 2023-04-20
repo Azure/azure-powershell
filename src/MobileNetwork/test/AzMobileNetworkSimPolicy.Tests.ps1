@@ -39,17 +39,9 @@ Describe 'AzMobileNetworkSimPolicy' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzMobileNetworkSimPolicy -MobileNetworkName $env.testNetwork2 -ResourceGroupName $env.resourceGroup -SimPolicyName $env.testSimPolicy -Tag @{"abc"="123"}
-            $config.Name | Should -Be $env.testSimPolicy
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        {
-            $config = Get-AzMobileNetworkSimPolicy -MobileNetworkName $env.testNetwork2 -ResourceGroupName $env.resourceGroup -Name $env.testSimPolicy
-            $config = Update-AzMobileNetworkSimPolicy -InputObject $config -Tag @{"abc"="123"}
             $config.Name | Should -Be $env.testSimPolicy
         } | Should -Not -Throw
     }

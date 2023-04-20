@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Updated `New-AzVirtualHub`, `Get-AzVirtualHub`, and `Update-AzVirtualHub` to include VirtualRouterAutoScaleConfiguration.
+    - Added `New-AzVirtualRouterAutoScaleConfiguration`.
+* Updated default formatting on all Network-related objects.
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers

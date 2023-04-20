@@ -87,6 +87,7 @@ $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
 $role.Id = $null
 $role.Name = "Virtual Machine Operator"
 $role.Description = "Can monitor, start, and restart virtual machines."
+$role.IsCustom = $True
 $role.Actions.RemoveRange(0,$role.Actions.Count)
 $role.Actions.Add("Microsoft.Compute/*/read")
 $role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")

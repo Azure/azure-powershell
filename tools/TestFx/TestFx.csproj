@@ -32,10 +32,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <!-- System.ServiceModel.Primitives is requried by Compute but version is not supported by PowerShellSDK 6.x -->
-    <!-- It should be removed after PowerShellSDK is upgraded to 7.x -->
 	<PackageReference Include="Moq" Version="4.7.145" />
-    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
+	<PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
+	<PackageReference Include="System.DirectoryServices.Protocols" Version="5.0.1" />
   </ItemGroup>
 
 </Project>

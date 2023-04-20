@@ -1357,7 +1357,7 @@ Creates a VirtualNetworkTap resource.
 Creates an Azure VirtualRouter.
 
 ### [New-AzVirtualRouterAutoScaleConfiguration](New-AzVirtualRouterAutoScaleConfiguration.md)
-{{ Fill in the Synopsis }}
+Create a VirtualRouterAutoScaleConfiguration object for a Virtual Hub.
 
 ### [New-AzVirtualWan](New-AzVirtualWan.md)
 Creates an Azure Virtual WAN.
