@@ -35,7 +35,7 @@ Returns a BotService specified by the parameters.
 
 ### Example 1: Create a new bot
 ```powershell
-New-AzBotService -resourcegroupnameBotTest-rg -name BotTest1 -ApplicationId "af5fce4d-ee68-4b25-be09-f3222582e133" -Location global -Sku F0 -Description "123134" -Registration
+New-AzBotService -resourcegroupname BotTest-rg -name BotTest1 -ApplicationId "af5fce4d-ee68-4b25-be09-f3222582e133" -Location global -Sku F0 -Description "123134" -Registration
 ```
 
 ```output
