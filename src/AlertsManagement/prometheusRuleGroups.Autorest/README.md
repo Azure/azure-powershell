@@ -51,9 +51,9 @@ branch: fdf43f2fdacf17bd78c0621df44a5c024b61db82
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/fdf43f2fdacf17bd78c0621df44a5c024b61db82/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2023-03-01/PrometheusRuleGroups.json
+  - $(repo)/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2023-03-01/PrometheusRuleGroups.json
   
-module-version: 0.6.0
+module-version: 0.1.0
 title: AlertsManagement
 module-name: Az.AlertsManagement
 subject-prefix: ""

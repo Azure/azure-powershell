@@ -1,7 +1,7 @@
 @{
   GUID = '4f8040cf-2321-48be-b66f-10d77ec02391'
   RootModule = './Az.AlertsManagement.psm1'
-  ModuleVersion = '0.6.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
