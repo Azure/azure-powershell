@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.12.0
 * Updated Azure.Core to 1.31.0.
 * Added cmdLet `Restore-AzNetAppFilesBackupFile`                 
 * Added cmdLet `Unlock-AzNetAppFilesVolumeFileLock`

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.6.0
 * Supported rename file and directory
     - `Rename-AzStorageFile`
     - `Rename-AzStorageDirectory`

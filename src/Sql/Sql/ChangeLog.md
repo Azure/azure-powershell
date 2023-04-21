@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.6.0
 * Added new cmdlets for managing server configuration options
     - 'Set-AzSqlServerConfigurationOption'
     - 'Get-AzSqlServerConfigurationOption'

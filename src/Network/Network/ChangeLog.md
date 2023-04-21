@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
 * Fixed the issue for `Update-AzCustomIpPrefix` that `NoInternetAdvertise` will should be set to false if not provided
 

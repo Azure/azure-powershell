@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.6.1
 * Added support for Azure resources deployment with parameters file using Bicep parameters syntax
 
 ## Version 6.6.0
