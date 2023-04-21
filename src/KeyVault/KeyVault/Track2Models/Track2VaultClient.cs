@@ -3,6 +3,7 @@ using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -233,7 +234,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 certificatePolicy = certPolicy.ToTrack2CertificatePolicy();
                 if ( certificatePolicy.ContentType != contentType )
                 {
-                    throw new Exception($"{contentType} conflicts with the ContentType stated as {certificatePolicy.ContentType} in Certificate Policy.");
+                    throw new AzPSArgumentException($"{contentType} indicated by certificate file conflicts with the ContentType stated as {certificatePolicy.ContentType} in Certificate Policy.", contentType);
                 }
             }
             else

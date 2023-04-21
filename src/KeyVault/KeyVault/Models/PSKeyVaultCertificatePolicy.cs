@@ -461,12 +461,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 Exportable = certificatePolicy.Exportable,
                 ReuseKeyOnRenewal = certificatePolicy.ReuseKey,
                 SubjectName = certificatePolicy.Subject,
-                DnsNames = certificatePolicy.SubjectAlternativeNames == null || certificatePolicy.SubjectAlternativeNames.DnsNames == null ?
-                    null : new List<string>(certificatePolicy.SubjectAlternativeNames.DnsNames),
-                Emails = certificatePolicy.SubjectAlternativeNames == null || certificatePolicy.SubjectAlternativeNames.Emails == null ?
-                    null : new List<string>(certificatePolicy.SubjectAlternativeNames.Emails),
-                UserPrincipalNames = certificatePolicy.SubjectAlternativeNames == null || certificatePolicy.SubjectAlternativeNames.UserPrincipalNames == null ?
-                    null : new List<string>(certificatePolicy.SubjectAlternativeNames.UserPrincipalNames),
+                DnsNames = certificatePolicy.SubjectAlternativeNames?.DnsNames?.ToList(),
+                Emails = certificatePolicy.SubjectAlternativeNames?.Emails?.ToList(),
+                UserPrincipalNames = certificatePolicy.SubjectAlternativeNames?.UserPrincipalNames?.ToList(),
                 KeyUsage = certificatePolicy.KeyUsage == null ? null : certificatePolicy.KeyUsage == null ? null : certificatePolicy.KeyUsage.Select(keyUsage => keyUsage.ToString()).ToList(),
                 Ekus = certificatePolicy.EnhancedKeyUsage == null ? null : new List<string>(certificatePolicy.EnhancedKeyUsage),
                 ValidityInMonths = certificatePolicy.ValidityInMonths,
