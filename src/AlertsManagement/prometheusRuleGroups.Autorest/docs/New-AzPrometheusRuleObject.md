@@ -14,9 +14,9 @@ Create an in-memory object for PrometheusRule.
 
 ```
 New-AzPrometheusRuleObject -Expression <String> [-Action <IPrometheusRuleGroupAction[]>] [-Alert <String>]
- [-Annotation <Hashtable>] [-Enabled <Boolean>] [-For <TimeSpan>] [-Label <Hashtable>] [-Record <String>]
- [-ResolveConfigurationAutoResolved <Boolean>] [-ResolveConfigurationTimeToResolve <TimeSpan>]
- [-Severity <Int32>] [<CommonParameters>]
+ [-Annotation <IPrometheusRuleAnnotations>] [-Enabled <Boolean>] [-For <TimeSpan>]
+ [-Label <IPrometheusRuleLabels>] [-Record <String>] [-ResolveConfigurationAutoResolved <Boolean>]
+ [-ResolveConfigurationTimeToResolve <TimeSpan>] [-Severity <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,7 @@ Actions that are performed when the alert rule becomes active, and when an alert
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.IPrometheusRuleGroupAction[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupAction[]
 Parameter Sets: (All)
 Aliases:
 
@@ -73,9 +73,10 @@ Accept wildcard characters: False
 ### -Annotation
 The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links.
 The annotation values can be templated.
+To construct, see NOTES section for ANNOTATION properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleAnnotations
 Parameter Sets: (All)
 Aliases:
 
@@ -135,9 +136,10 @@ Accept wildcard characters: False
 
 ### -Label
 Labels to add or overwrite before storing the result.
+To construct, see NOTES section for LABEL properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.PrometheusRule
+### Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRule
 
 ## NOTES
 
@@ -231,6 +233,12 @@ To create the parameters described below, construct a hash table containing the 
   - `[ActionGroupId <String>]`: The resource id of the action group to use.
   - `[ActionProperty <IPrometheusRuleGroupActionProperties>]`: The properties of an action group object.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+`ANNOTATION <IPrometheusRuleAnnotations>`: The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
+  - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+`LABEL <IPrometheusRuleLabels>`: Labels to add or overwrite before storing the result.
+  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

@@ -13,8 +13,8 @@ Create an in-memory object for PrometheusRuleGroupAction.
 ## SYNTAX
 
 ```
-New-AzPrometheusRuleGroupActionObject [-ActionGroupId <String>] [-ActionProperty <Hashtable>]
- [<CommonParameters>]
+New-AzPrometheusRuleGroupActionObject [-ActionGroupId <String>]
+ [-ActionProperty <IPrometheusRuleGroupActionProperties>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,9 +55,10 @@ Accept wildcard characters: False
 
 ### -ActionProperty
 The properties of an action group object.
+To construct, see NOTES section for ACTIONPROPERTY properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupActionProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -75,11 +76,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alerts.Models.Api20230301.PrometheusRuleGroupAction
+### Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.PrometheusRuleGroupAction
 
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`ACTIONPROPERTY <IPrometheusRuleGroupActionProperties>`: The properties of an action group object.
+  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

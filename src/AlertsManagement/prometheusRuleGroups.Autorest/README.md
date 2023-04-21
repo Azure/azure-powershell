@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.AlertsManagement
-This directory contains the PowerShell module for the Alerts service.
+# Az.PrometheusRuleGroups
+This directory contains the PowerShell module for the PrometheusRuleGroups service.
 
 ---
 ## Status
-[![Az.AlertsManagement](https://img.shields.io/powershellgallery/v/Az.AlertsManagement.svg?style=flat-square&label=Az.AlertsManagement "Az.AlertsManagement")](https://www.powershellgallery.com/packages/Az.AlertsManagement/)
+[![Az.PrometheusRuleGroups](https://img.shields.io/powershellgallery/v/Az.PrometheusRuleGroups.svg?style=flat-square&label=Az.PrometheusRuleGroups "Az.PrometheusRuleGroups")](https://www.powershellgallery.com/packages/Az.PrometheusRuleGroups/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.AlertsManagement`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.PrometheusRuleGroups`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ---
@@ -54,8 +54,8 @@ input-file:
   - $(repo)/specification/alertsmanagement/resource-manager/Microsoft.AlertsManagement/stable/2023-03-01/PrometheusRuleGroups.json
   
 module-version: 0.1.0
-title: AlertsManagement
-module-name: Az.AlertsManagement
+title: PrometheusRuleGroups
+root-module-name: $(prefix).AlertsManagement
 subject-prefix: ""
 inlining-threshold: 100
 resourcegroup-append: true

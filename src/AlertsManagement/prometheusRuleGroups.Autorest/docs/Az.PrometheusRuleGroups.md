@@ -1,16 +1,16 @@
 ---
-Module Name: Az.AlertsManagement
-Module Guid: 4f8040cf-2321-48be-b66f-10d77ec02391
-Download Help Link: https://learn.microsoft.com/powershell/module/az.alertsmanagement
+Module Name: Az.PrometheusRuleGroups
+Module Guid: dbc2402c-0892-4d72-9279-ab2398e7e02e
+Download Help Link: https://learn.microsoft.com/powershell/module/az.prometheusrulegroups
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.AlertsManagement Module
+# Az.PrometheusRuleGroups Module
 ## Description
-Microsoft Azure PowerShell: Alerts cmdlets
+Microsoft Azure PowerShell: PrometheusRuleGroups cmdlets
 
-## Az.AlertsManagement Cmdlets
+## Az.PrometheusRuleGroups Cmdlets
 ### [Get-AzPrometheusRuleGroup](Get-AzPrometheusRuleGroup.md)
 Retrieve a Prometheus rule group definition.
 
