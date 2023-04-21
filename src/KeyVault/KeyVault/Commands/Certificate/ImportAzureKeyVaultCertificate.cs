@@ -27,10 +27,6 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 
-using Newtonsoft.Json;
-using System.Text.Json;
-using Azure.Security.KeyVault.Certificates;
-
 namespace Microsoft.Azure.Commands.KeyVault
 {
     /// <summary>
