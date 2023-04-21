@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "State of the log scrubbing config. Default value is Enabled")]
+            HelpMessage = "State of the log scrubbing rule. Default value is Enabled")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Enabled", "Disabled", IgnoreCase = true)]
         public string State { get; set; }
@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.MyInvocation.BoundParameters.ContainsKey("State"))
             {
                 this.State = "Enabled";
+            }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("Selector"))
+            {
+                this.State = "*";
             }
 
             WriteObject(NewObject());
