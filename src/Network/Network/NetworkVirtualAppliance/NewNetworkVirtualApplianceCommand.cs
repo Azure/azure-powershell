@@ -134,6 +134,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Additional Nic Properties of the Virtual Appliance.")]
+        [ValidateNotNullOrEmpty]
         public IList<PSVirtualApplianceAdditionalNicProperties> AdditionalNic { get; set; }
 
         public override void Execute()
