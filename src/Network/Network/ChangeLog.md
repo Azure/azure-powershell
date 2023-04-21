@@ -2,7 +2,7 @@
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
-    
+
     ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
@@ -12,7 +12,7 @@
     * Overview of change #3
     * Overview of change #4
         - Additional information about change #4
-    
+
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
@@ -35,7 +35,7 @@
     -`Remove-AzRouteMap`
 * Update cmdlets to add inbound/outbound route maps in routingConfiguration
     -`New-AzRoutingConfiguration`
-* Added support for AdditionalNic Property in New-AzNetworkVirtualAppliance
+* Added support of `AdditionalNic` Property in New-AzNetworkVirtualAppliance
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers

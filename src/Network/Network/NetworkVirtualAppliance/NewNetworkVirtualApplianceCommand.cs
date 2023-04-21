@@ -125,8 +125,16 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overwrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Additional Nic Properties of the Virtual Appliance.")]
+        public IList<PSVirtualApplianceAdditionalNicProperties> AdditionalNic { get; set; }
 
         public override void Execute()
         {
@@ -168,6 +176,7 @@ namespace Microsoft.Azure.Commands.Network
             networkVirtualAppliance.BootStrapConfigurationBlobs = this.BootStrapConfigurationBlob;
             networkVirtualAppliance.CloudInitConfigurationBlobs = this.CloudInitConfigurationBlob;
             networkVirtualAppliance.CloudInitConfiguration = this.CloudInitConfiguration;
+            networkVirtualAppliance.VirtualApplianceAdditionalNics = this.AdditionalNic;
 
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);
 
