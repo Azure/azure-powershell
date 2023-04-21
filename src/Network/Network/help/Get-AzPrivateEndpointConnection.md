@@ -14,7 +14,7 @@ Gets a private endpoint connection resource.
 
 ### ByResourceId (Default)
 ```
-Get-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Get-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,8 +26,9 @@ Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String> [-Description <S
 
 ### ByResource
 ```
-Get-AzPrivateEndpointConnection -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
- [-Name <String>] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPrivateEndpointConnection [-Description <String>] [-Name <String>] -ResourceGroupName <String>
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

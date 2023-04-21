@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Recovery Proximity placement group custom input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("RecoveryProximityPlacementGroupCustomDetails")]
     public partial class RecoveryProximityPlacementGroupCustomDetails
     {
         /// <summary>
