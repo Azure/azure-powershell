@@ -35,6 +35,7 @@ The **Get-AzNetworkManagerSecurityAdminRuleCollection** cmdlet gets a security a
 ```powershell
 Get-AzNetworkManagerSecurityAdminRuleCollection  -Name "TestRC" -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
 ```
+
 ```output
 Name              : TestRC
 Description       : Sample rule Collection Description
@@ -56,12 +57,14 @@ SystemData        : {
                       "LastModifiedAt": "2021-10-18T04:06:03"
                     }
 ```
+
 Gets a rule collection with a security admin configuration.
 
 ### Example 2
 ```powershell
 Get-AzNetworkManagerSecurityAdminRuleCollection  -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
 ```
+
 ```output
 Name              : TestRC
 Description       : Sample rule Collection Description
@@ -103,6 +106,7 @@ SystemData        : {
                       "LastModifiedAt": "2021-10-18T04:06:03"
                     }
 ```
+
 Gets all rule collections within a security admin configuration.
 
 ## PARAMETERS
@@ -111,7 +115,7 @@ Gets all rule collections within a security admin configuration.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -126,7 +130,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -138,7 +142,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -153,7 +157,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +172,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +187,7 @@ Accept wildcard characters: True
 The network manager security admin configuration name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ConfigName
 
@@ -208,6 +212,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManagerSecurityAdminRuleCollection](./New-AzNetworkManagerSecurityAdminRuleCollection.md)
 
 [Remove-AzNetworkManagerSecurityAdminRuleCollection](./Remove-AzNetworkManagerSecurityAdminRuleCollection.md)

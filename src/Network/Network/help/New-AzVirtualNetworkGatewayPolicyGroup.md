@@ -20,11 +20,12 @@ New-AzVirtualNetworkGatewayPolicyGroup -Name <String> -Priority <Int32> [-Defaul
 
 ## DESCRIPTION
 Virtual Network Gateway Policy Group is a used for setting up different groups of users based on their identity or authentication credentials
+
 ## EXAMPLES
 
 ### Example 1
 ```powershell
- #create the policy group and connection client configuration
+#create the policy group and connection client configuration
 $member1=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member1" -AttributeType "CertificateGroupId" -AttributeValue "ab"
 $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
 $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1

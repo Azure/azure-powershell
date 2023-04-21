@@ -33,6 +33,7 @@ The **Get-AzNetworkManagerManagementGroupConnection** cmdlet gets a network mana
 ```powershell
 Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG" -Name "psConnection"
 ```
+
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ConnectionState   : Pending
@@ -46,12 +47,14 @@ Name              : psConnection
 Etag              :
 Id                : /providers/Microsoft.Management/managementGroups/newMG/providers/Microsoft.Network/networkManagerConnections/psConnection
 ```
+
 Gets a network manager connection on management group 'newMG'.
 
 ### Example 2
 ```powershell
 Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG"
 ```
+
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/jaredgorthy-testResources/providers/Microsoft.Network/networkManagers/jaredgorthy
 ConnectionState   : Pending
@@ -77,6 +80,7 @@ Name              : psConnection
 Etag              :
 Id                : /providers/Microsoft.Management/managementGroups/newMG/providers/Microsoft.Network/networkManagerConnections/psConnection
 ```
+
 Gets all network manager connections on management group 'newMG'.
 
 ## PARAMETERS
@@ -85,7 +89,7 @@ Gets all network manager connections on management group 'newMG'.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -100,7 +104,7 @@ Accept wildcard characters: False
 The management group ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +119,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -127,7 +131,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
