@@ -17,10 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzFrontDoorCdnProfilePr
 Describe 'Start-AzFrontDoorCdnProfilePrepareMigration' {
 
     BeforeAll {
-        $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
         Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-        New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+        New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
         $Name = 'fdp-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use frontDoorName : $($Name)"
@@ -35,7 +34,7 @@ Describe 'Start-AzFrontDoorCdnProfilePrepareMigration' {
         $backendpool1 = New-AzFrontDoorBackendPoolObject -Name "backendpool1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -Backend $backend1 -HealthProbeSettingsName "healthProbeSetting1" -LoadBalancingSettingsName "loadBalancingSetting1"
         $backendPoolsSetting1 = New-AzFrontDoorBackendPoolsSettingObject -SendRecvTimeoutInSeconds 33 -EnforceCertificateNameCheck "Enabled"
         
-        New-AzFrontDoor -SubscriptionId $subId -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
+        New-AzFrontDoor -Name $Name -ResourceGroupName $resourceGroupName -RoutingRule $routingrule1 -BackendPool $backendpool1 -BackendPoolsSetting $backendPoolsSetting1 -FrontendEndpoint $frontendEndpoint1 -LoadBalancingSetting $loadBalancingSetting1 -HealthProbeSetting $healthProbeSetting1 -Tag $tags
         $classicResourceReferenceId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Network/Frontdoors/$Name"
 
         $profileSku = "Standard_AzureFrontDoor"
@@ -48,7 +47,7 @@ Describe 'Start-AzFrontDoorCdnProfilePrepareMigration' {
     It 'MigrateExpanded' {
         try
         {
-            $migrateLocation = Start-AzFrontDoorCdnProfilePrepareMigration -SubscriptionId $subId -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId -ProfileName $migratedProfileName -SkuName $profileSku 
+            $migrateLocation = Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName $ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId -ProfileName $migratedProfileName -SkuName $profileSku 
             $migrateLocation.Location | Should -BeNullOrEmpty
         } Finally
         {

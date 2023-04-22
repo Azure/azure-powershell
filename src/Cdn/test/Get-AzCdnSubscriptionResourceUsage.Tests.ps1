@@ -16,9 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnSubscriptionResource
 
 Describe 'Get-AzCdnSubscriptionResourceUsage'  {
     It 'List' {
-        { 
-            $subscriptionResourceUsage = Get-AzCdnSubscriptionResourceUsage
-            $subscriptionResourceUsage.Count | Should -Be 2
-        } | Should -Not -Throw
+        $subscriptionResourceUsage = Get-AzCdnSubscriptionResourceUsage
+        $subscriptionResourceUsage.Count | Should -Be 2
     }
 }

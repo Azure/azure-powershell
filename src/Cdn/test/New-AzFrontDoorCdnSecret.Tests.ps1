@@ -16,29 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecret'))
 
 Describe 'New-AzFrontDoorCdnSecret'  {
     It 'CreateExpanded' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+        $subId = $env.SubscriptionId
+        Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
 
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+        $secretName = "se-" + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-
-            $secretName = "se-" + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
-
-            $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-            -SecretSourceId "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
-            
-            New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter -SubscriptionId $subId
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait -SubscriptionId $subId
-        }
+        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+        -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
+        
+        New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
     }
 }

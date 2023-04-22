@@ -43,6 +43,6 @@ Describe 'Get-AzCdnEdgeNode'  {
                     }
                 }
             } 
-        } | Should -Not -Throw
+        }
     }
 }

@@ -16,37 +16,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnCustomDomai
 
 Describe 'New-AzFrontDoorCdnCustomDomain'  {
     It 'CreateExpanded' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            $subId = "4d894474-aa7f-4611-b830-344860c3eb9c"
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+        $subId = $env.SubscriptionId
+        $secretName = "se-" + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+        -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
+        
+        $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
+        Write-Host -ForegroundColor Green "Use secret id : $($secret.Id)"
+        $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-
-            $secretName = "se-" + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
-
-            $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-            -SecretSourceId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
-            
-            $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter -SubscriptionId $subId
-            Write-Host -ForegroundColor Green "Use secret id : $($secret.Id)"
-            $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-            $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
-
-            $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
-            $hostName = "pstestnew.dev.cdn.azure.cn"
-            New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -SubscriptionId $subId `
-            -HostName $hostName -TlsSetting $tlsSetting
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
+        $hostName = "pstestnew.dev.cdn.azure.cn"
+        New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        -HostName $hostName -TlsSetting $tlsSetting
     }
 }

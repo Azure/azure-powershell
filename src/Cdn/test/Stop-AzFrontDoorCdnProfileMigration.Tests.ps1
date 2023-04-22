@@ -15,7 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzFrontDoorCdnProfileMig
 }
 
 Describe 'Stop-AzFrontDoorCdnProfileMigration'  {
-
     BeforeAll {
         $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
         $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)

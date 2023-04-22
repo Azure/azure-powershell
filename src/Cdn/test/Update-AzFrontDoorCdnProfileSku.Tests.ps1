@@ -16,28 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnProfileS
 
 Describe 'Update-AzFrontDoorCdnProfileSku'  {
     It 'Upgrade' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        {
-            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
+        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+        $profileSku = "Standard_AzureFrontDoor";
+        New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SubscriptionId $subId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-
-                $updatedProfile = Update-AzFrontDoorCdnProfileSku -SubscriptionId $subId -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -ProfileUpgradeParameter @{}
-                $updatedProfile.SkuName | Should -Be "Premium_AzureFrontDoor"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $updatedProfile = Update-AzFrontDoorCdnProfileSku -ProfileName $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -ProfileUpgradeParameter @{}
+        $updatedProfile.SkuName | Should -Be "Premium_AzureFrontDoor"
     }
 }
