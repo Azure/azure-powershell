@@ -4379,7 +4379,7 @@ function Test-ApplicationGatewayFirewallPolicyWithInspectionLimit
 
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 
-		# Second check firewll policy
+		# Check firewall policy
 		Assert-AreEqual $policy.CustomRules[0].Name $rule.Name
 		Assert-AreEqual $policy.CustomRules[0].RuleType $rule.RuleType
 		Assert-AreEqual $policy.CustomRules[0].Action $rule.Action
