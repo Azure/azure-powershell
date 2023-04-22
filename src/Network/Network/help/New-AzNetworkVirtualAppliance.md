@@ -16,7 +16,7 @@ Create a Network Virtual Appliance resource.
 ```
 New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Location <String>
  -VirtualHubId <String> -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
- [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>]
+ [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties>]
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,7 +26,7 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
 New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHubId <String>
  -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32> [-Identity <PSManagedServiceIdentity>]
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
- [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -265,6 +265,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AdditionalNic
+The AdditionalNic Properties of the Virtual Appliance.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceAdditionalNicProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
