@@ -57,11 +57,6 @@ namespace Microsoft.Azure.Commands.Network
                 this.State = "Enabled";
             }
 
-            if (!this.MyInvocation.BoundParameters.ContainsKey("Selector"))
-            {
-                this.State = "*";
-            }
-
             WriteObject(NewObject());
         }
 
