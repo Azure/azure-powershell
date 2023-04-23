@@ -30,6 +30,8 @@
     -`Remove-AzRouteMap`
 * Update cmdlets to add inbound/outbound route maps in routingConfiguration
     -`New-AzRoutingConfiguration`
+* Added the command New-AzFirewallPolicyApplicationRuleCustomHttpHeader
+* Added the method AddCustomHttpHeaderToInsert to PSAzureFirewallPolicyApplicationRule
 * Added new cmdlets to support Rate Limiting Rule for Application Gateway WAF
     - 'New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession',
     - 'New-AzApplicationGatewayFirewallCustomRuleGroupByVariable',

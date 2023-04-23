@@ -13,13 +13,17 @@
 // limitations under the License.
 //
 
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallPolicyApplicationRule : PSAzureFirewallPolicyRule
     {
+        private const int HttpHeaderTotalMaxLength = 4096;
 
         [JsonProperty(Order = 3, PropertyName = "sourceAddresses")]
         public List<string> SourceAddresses { get; set; }
@@ -44,6 +48,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [JsonProperty(Order = 10, PropertyName = "terminateTLS")]
         public bool? TerminateTLS { get; set; }
+
+        [JsonProperty(Order = 11, PropertyName = "httpHeadersToInsert")]
+        public List<PSAzureFirewallPolicyApplicationRuleCustomHttpHeader> HttpHeadersToInsert { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -90,6 +97,12 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(TargetUrls, Formatting.Indented); }
         }
 
+        [JsonIgnore]
+        public string HttpHeadersToInsertText
+        {
+            get { return JsonConvert.SerializeObject(HttpHeadersToInsert, Formatting.Indented); }
+        }
+
         public void AddProtocol(string protocolType, uint port = 0)
         {
             var stringToMap = protocolType + (port == 0 ? string.Empty : ":" + port);
@@ -97,6 +110,47 @@ namespace Microsoft.Azure.Commands.Network.Models
             var protocol = PSAzureFirewallPolicyApplicationRuleProtocol.MapUserInputToApplicationRuleProtocol(stringToMap);
 
             (this.Protocols ?? (this.Protocols = new List<PSAzureFirewallPolicyApplicationRuleProtocol>())).Add(protocol);
+        }
+
+        public void AddCustomHttpHeaderToInsert(PSAzureFirewallPolicyApplicationRuleCustomHttpHeader httpHeader)
+        {
+            ValidateHeaderAddition(httpHeader);
+
+            if (this.HttpHeadersToInsert == null)
+            {
+                this.HttpHeadersToInsert = new List<PSAzureFirewallPolicyApplicationRuleCustomHttpHeader>();
+            }
+
+            this.HttpHeadersToInsert.Add(httpHeader);
+        }
+
+        private void ValidateHeaderAddition(PSAzureFirewallPolicyApplicationRuleCustomHttpHeader newHttpHeader)
+        {
+            // validate protocol is HTTP or HTTPS
+            if (this.Protocols.Any(p => !(p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Http || p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Https)))
+            {
+                throw new ArgumentException($"Rule protocol is not supported for custom HTTP headers.");
+            }
+
+            // validate TLS if HTTPS
+            if (this.TerminateTLS == false && this.Protocols.Any(p => p.ProtocolType == MNM.AzureFirewallApplicationRuleProtocolType.Https))
+            {
+                throw new ArgumentException("Custom headers for HTTPS protocol must enable TLS termination.");
+            }
+
+            // validate total length
+            if (this.HttpHeadersToInsert != null)
+            {
+                var totalLength = newHttpHeader.HeaderName.Length + newHttpHeader.HeaderValue.Length;
+                foreach (var headerToInsert in this.HttpHeadersToInsert) {
+                    totalLength += headerToInsert.HeaderName.Length + headerToInsert.HeaderValue.Length;
+                    if (totalLength > HttpHeaderTotalMaxLength)
+                    {
+                        throw new ArgumentException($"Total length of custom HTTP headers and values is limited to {HttpHeaderTotalMaxLength} characters.");
+                    }
+                }
+
+            }
         }
     }
 }
