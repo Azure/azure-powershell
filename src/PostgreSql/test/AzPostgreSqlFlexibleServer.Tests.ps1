@@ -56,15 +56,15 @@ Describe 'AzPostgreSqlFlexibleServer' {
         $Server = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -ServerName $env.flexibleServerName4
 
         # stop
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)/stop"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)"
         Stop-AzPostgreSqlFlexibleServer -InputObject $ID
 
         # start
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)/start"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)"
         Start-AzPostgreSqlFlexibleServer -InputObject $ID
         
         # restart
-        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)/restart"
+        $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforPostgreSQL/flexibleServers/$($env.flexibleServerName4)"
         Restart-AzPostgreSqlFlexibleServer -InputObject $ID
 
         $UpdatedServer = Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 15 -InputObject $server
