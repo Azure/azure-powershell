@@ -15,19 +15,19 @@ Gets a role instance from a cloud service.
 ### List (Default)
 ```
 Get-AzCloudServiceRoleInstance -CloudServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Expand <InstanceViewTypes>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzCloudServiceRoleInstance -CloudServiceName <String> -ResourceGroupName <String>
- -RoleInstanceName <String> [-SubscriptionId <String[]>] [-Expand <InstanceViewTypes>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -RoleInstanceName <String> [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzCloudServiceRoleInstance -InputObject <ICloudServiceIdentity> [-Expand <InstanceViewTypes>]
+Get-AzCloudServiceRoleInstance -InputObject <ICloudServiceIdentity> [-Expand <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -102,7 +102,7 @@ The expand expression to apply to the operation.
 'UserData' is not supported for cloud services.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -195,7 +195,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <ICloudServiceIdentity>`: Identity Parameter
+INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
   - `[CloudServiceName <String>]`: Name of the cloud service.
   - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
