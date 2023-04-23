@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a resource name is available.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='name'>
         /// Resource name to verify.
@@ -99,9 +99,23 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -293,7 +307,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a file path is available.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='name'>
         /// File path to verify.
@@ -329,9 +343,23 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -518,7 +546,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a quota is available.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='name'>
         /// Name of the resource to verify.
@@ -560,9 +588,23 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (Client.ApiVersion == null)
             {
@@ -754,7 +796,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Provides storage to network proximity and logical zone mapping information.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -783,9 +825,23 @@ namespace Microsoft.Azure.Management.NetApp
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
+            if (Client.SubscriptionId != null)
+            {
+                if (Client.SubscriptionId.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "Client.SubscriptionId", 1);
+                }
+            }
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (location != null)
+            {
+                if (location.Length < 1)
+                {
+                    throw new ValidationException(ValidationRules.MinLength, "location", 1);
+                }
             }
             if (Client.ApiVersion == null)
             {
