@@ -15,8 +15,8 @@ Restarts a server.
 ### RestartExpanded (Default)
 ```
 Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-MaxFailoverSecond <Int32>] [-RestartWithFailover <EnableStatusEnum>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaxFailoverSecond <Int32>] [-RestartWithFailover <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Restart
@@ -35,8 +35,8 @@ Restart-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> -Parameter <IServerR
 ### RestartViaIdentityExpanded
 ```
 Restart-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-MaxFailoverSecond <Int32>]
- [-RestartWithFailover <EnableStatusEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RestartWithFailover <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -210,7 +210,7 @@ Accept wildcard characters: False
 Whether or not failover to standby server when restarting a server with high availability enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.EnableStatusEnum
+Type: System.String
 Parameter Sets: RestartExpanded, RestartViaIdentityExpanded
 Aliases:
 
@@ -272,9 +272,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
-
 ### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServerRestartParameter
 
 ## OUTPUTS
 
@@ -289,7 +289,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
@@ -297,14 +297,14 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
+  - `[SecurityAlertPolicyName <String>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
-`PARAMETER <IServerRestartParameter>`: Server restart parameters.
+PARAMETER <IServerRestartParameter>: Server restart parameters.
   - `[MaxFailoverSecond <Int32?>]`: The maximum allowed failover time in seconds.
-  - `[RestartWithFailover <EnableStatusEnum?>]`: Whether or not failover to standby server when restarting a server with high availability enabled.
+  - `[RestartWithFailover <String>]`: Whether or not failover to standby server when restarting a server with high availability enabled.
 
 ## RELATED LINKS
 

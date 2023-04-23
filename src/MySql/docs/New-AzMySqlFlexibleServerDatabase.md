@@ -25,6 +25,13 @@ New-AzMySqlFlexibleServerDatabase -InputObject <IMySqlIdentity> [-Charset <Strin
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityFlexibleServerExpanded
+```
+New-AzMySqlFlexibleServerDatabase -FlexibleServerInputObject <IMySqlIdentity> -Name <String>
+ [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Creates a new database or updates an existing database.
 
@@ -105,6 +112,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FlexibleServerInputObject
+Identity Parameter
+To construct, see NOTES section for FLEXIBLESERVERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: CreateViaIdentityFlexibleServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -126,7 +149,7 @@ The name of the database.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityFlexibleServerExpanded
 Aliases: DatabaseName
 
 Required: True
@@ -248,7 +271,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
+FLEXIBLESERVERINPUTOBJECT <IMySqlIdentity>: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
@@ -256,7 +279,20 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
+  - `[SecurityAlertPolicyName <String>]`: The name of the security alert policy.
+  - `[ServerName <String>]`: The name of the server.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
+  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
+
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+  - `[BackupName <String>]`: The name of the backup.
+  - `[ConfigurationName <String>]`: The name of the server configuration.
+  - `[DatabaseName <String>]`: The name of the database.
+  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
+  - `[Id <String>]`: Resource identity path
+  - `[LocationName <String>]`: The name of the location.
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[SecurityAlertPolicyName <String>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.

@@ -309,32 +309,32 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IServer>`: The source server object to restore from.
+INPUTOBJECT <IServer>: The source server object to restore from.
   - `Location <String>`: The geo-location where the resource lives
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
   - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
   - `[FullyQualifiedDomainName <String>]`: The fully qualified domain name of a server.
-  - `[IdentityType <IdentityType?>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  - `[InfrastructureEncryption <InfrastructureEncryption?>]`: Status showing whether the server enabled infrastructure encryption.
+  - `[IdentityType <String>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
+  - `[InfrastructureEncryption <String>]`: Status showing whether the server enabled infrastructure encryption.
   - `[MasterServerId <String>]`: The master server id of a replica server.
-  - `[MinimalTlsVersion <MinimalTlsVersionEnum?>]`: Enforce a minimal Tls version for the server.
-  - `[PublicNetworkAccess <PublicNetworkAccessEnum?>]`: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
+  - `[MinimalTlsVersion <String>]`: Enforce a minimal Tls version for the server.
+  - `[PublicNetworkAccess <String>]`: Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'
   - `[ReplicaCapacity <Int32?>]`: The maximum number of replicas that a master server can have.
   - `[ReplicationRole <String>]`: The replication role of the server.
   - `[SkuCapacity <Int32?>]`: The scale up/out capacity, representing server's compute units.
   - `[SkuFamily <String>]`: The family of hardware.
   - `[SkuName <String>]`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
   - `[SkuSize <String>]`: The size code, to be interpreted by resource as appropriate.
-  - `[SkuTier <SkuTier?>]`: The tier of the particular SKU, e.g. Basic.
-  - `[SslEnforcement <SslEnforcementEnum?>]`: Enable ssl enforcement or not when connect to server.
+  - `[SkuTier <String>]`: The tier of the particular SKU, e.g. Basic.
+  - `[SslEnforcement <String>]`: Enable ssl enforcement or not when connect to server.
   - `[StorageProfileBackupRetentionDay <Int32?>]`: Backup retention days for the server.
-  - `[StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]`: Enable Geo-redundant or not for server backup.
-  - `[StorageProfileStorageAutogrow <StorageAutogrow?>]`: Enable Storage Auto Grow.
+  - `[StorageProfileGeoRedundantBackup <String>]`: Enable Geo-redundant or not for server backup.
+  - `[StorageProfileStorageAutogrow <String>]`: Enable Storage Auto Grow.
   - `[StorageProfileStorageMb <Int32?>]`: Max storage allowed for a server.
-  - `[UserVisibleState <ServerState?>]`: A state of a server that is visible to user.
-  - `[Version <ServerVersion?>]`: Server version.
+  - `[UserVisibleState <String>]`: A state of a server that is visible to user.
+  - `[Version <String>]`: Server version.
 
 ## RELATED LINKS
 

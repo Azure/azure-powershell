@@ -66,13 +66,13 @@ Describe 'AzMySqlFlexibleServer' {
             $server.SkuTier | Should -Be 'GeneralPurpose'
             $server.SkuName | Should -Be 'Standard_D4ds_v4'
 
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/stop"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
             Stop-AzMySqlFlexibleServer -InputObject $ID
             
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/start"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
             Start-AzMySqlFlexibleServer -InputObject $ID
             
-            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)/restart"
+            $ID = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.DBforMySQL/flexibleServers/$($env.flexibleServerName)"
             Restart-AzMySqlFlexibleServer -InputObject $ID
             
             $restorePointInTime = (Get-Date).AddMinutes(-10)

@@ -57,6 +57,7 @@ input-file:
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
+identity-correction-for-post: true
 
 directive:
   - from: swagger-document

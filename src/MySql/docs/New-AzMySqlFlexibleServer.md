@@ -16,10 +16,10 @@ Creates a new MySQL flexible server.
 New-AzMySqlFlexibleServer [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <String>]
  [-AdministratorLoginPassword <SecureString>] [-AdministratorUserName <String>] [-BackupRetentionDay <Int32>]
  [-HighAvailability <String>] [-Iops <Int32>] [-Location <String>] [-PrivateDnsZone <String>]
- [-PublicAccess <String>] [-Sku <String>] [-SkuTier <String>] [-StorageAutogrow <StorageAutogrow>]
- [-StorageInMb <Int32>] [-Subnet <String>] [-SubnetPrefix <String>] [-Tag <Hashtable>]
- [-Version <ServerVersion>] [-Vnet <String>] [-VnetPrefix <String>] [-Zone <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PublicAccess <String>] [-Sku <String>] [-SkuTier <String>] [-StorageAutogrow <String>]
+ [-StorageInMb <Int32>] [-Subnet <String>] [-SubnetPrefix <String>] [-Tag <Hashtable>] [-Version <String>]
+ [-Vnet <String>] [-VnetPrefix <String>] [-Zone <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -434,7 +434,7 @@ Enable or disable Storage Auto Grow.
 The default value is Disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -528,7 +528,7 @@ Accept wildcard characters: False
 Server version.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

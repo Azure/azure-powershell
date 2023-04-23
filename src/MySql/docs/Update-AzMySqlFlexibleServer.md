@@ -18,16 +18,16 @@ Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server 
 ```
 Update-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AdministratorLoginPassword <SecureString>] [-BackupRetentionDay <Int32>] [-HighAvailability <String>]
- [-MaintenanceWindow <String>] [-ReplicationRole <String>] [-Sku <String>] [-SkuTier <SkuTier>]
- [-StorageAutogrow <StorageAutogrow>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MaintenanceWindow <String>] [-ReplicationRole <String>] [-Sku <String>] [-SkuTier <String>]
+ [-StorageAutogrow <String>] [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-AdministratorLoginPassword <SecureString>]
  [-BackupRetentionDay <Int32>] [-HighAvailability <String>] [-MaintenanceWindow <String>]
- [-ReplicationRole <String>] [-Sku <String>] [-SkuTier <SkuTier>] [-StorageAutogrow <StorageAutogrow>]
+ [-ReplicationRole <String>] [-Sku <String>] [-SkuTier <String>] [-StorageAutogrow <String>]
  [-StorageInMb <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -261,7 +261,7 @@ Accepted values: Burstable, GeneralPurpose, Memory Optimized.
 Default: Burstable.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.SkuTier
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +277,7 @@ Enable or disable Storage Auto Grow.
 The default value is Disabled
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -384,7 +384,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter.
+INPUTOBJECT <IMySqlIdentity>: Identity Parameter.
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
@@ -392,7 +392,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
+  - `[SecurityAlertPolicyName <String>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
