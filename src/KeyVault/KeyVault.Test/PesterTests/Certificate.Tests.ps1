@@ -9,7 +9,7 @@ Describe "Import Certificate with policy" {
         $certFilePath = "..\Resources\importCertWithPolicy.pfx"
         $policy = New-AzKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
 
-        $cert = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName -FilePath $certFilePath -Policy $policy
+        $cert = Import-AzKeyVaultCertificate -VaultName $vaultName -Name $certName -FilePath $certFilePath -PolicyObject $policy
         $cert.Policy.SecretContentType | Should -Be "application/x-pkcs12"
     }
     It "ImportCertificateFromFileWithPolicyFileParameterSet" {

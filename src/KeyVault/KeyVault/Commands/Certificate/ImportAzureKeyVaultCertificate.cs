@@ -36,18 +36,15 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// importing an existing certificate package file that contains both the 
     /// certificate and private key (example: PFX or P12 files).
     /// </summary>
-    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ImportCertificateFromFileWithPolicyFileParameterSet)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
     public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
-        private const string ImportCertificateFromFileWithPolicyObjectParameterSet = "ImportCertificateFromFileWithPolicyObject";
-        private const string ImportWithPrivateKeyFromCollectionWithPolicyObjectParameterSet = "ImportWithPrivateKeyFromCollectionWithPolicyObject";
-        private const string ImportWithPrivateKeyFromStringWithPolicyObjectParameterSet = "ImportWithPrivateKeyFromStringWithPolicyObject";
-        private const string ImportCertificateFromFileWithPolicyFileParameterSet = "ImportCertificateFromFileWithPolicyFile";
-        private const string ImportWithPrivateKeyFromCollectionWithPolicyFileParameterSet = "ImportWithPrivateKeyFromCollectionWithPolicyFile";
-        private const string ImportWithPrivateKeyFromStringWithPolicyFileParameterSet = "ImportWithPrivateKeyFromStringWithPolicyFile";
+        private const string ImportCertificateFromFileParameterSet = "ImportCertificateFromFile";
+        private const string ImportWithPrivateKeyFromCollectionParameterSet = "ImportWithPrivateKeyFromCollection";
+        private const string ImportWithPrivateKeyFromStringParameterSet = "ImportWithPrivateKeyFromString";
 
         #endregion
 
@@ -79,10 +76,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// File Path
         /// </summary>
         [Parameter(Mandatory = true,
-                   ParameterSetName = ImportCertificateFromFileWithPolicyObjectParameterSet,
-                   HelpMessage = "Specifies the path to the file that contains the certificate to add to key vault.")]
-        [Parameter(Mandatory = true,
-                   ParameterSetName = ImportCertificateFromFileWithPolicyFileParameterSet,
+                   ParameterSetName = ImportCertificateFromFileParameterSet,
                    HelpMessage = "Specifies the path to the file that contains the certificate to add to key vault.")]
         public string FilePath { get; set; }
 
@@ -90,10 +84,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Base64 encoded representation of the certificate object to import
         /// </summary>
         [Parameter(Mandatory = true,
-                   ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyObjectParameterSet,
-                   HelpMessage = "Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.")]
-        [Parameter(Mandatory = true,
-                   ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyFileParameterSet,
+                   ParameterSetName = ImportWithPrivateKeyFromStringParameterSet,
                    HelpMessage = "Base64 encoded representation of the certificate object to import. This certificate needs to contain the private key.")]
         public string CertificateString { get; set; }
 
@@ -101,10 +92,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Specifies type of the certificate to be imported.
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyObjectParameterSet,
-                   HelpMessage = "Specifies the type of the certificate to be imported. Regards certificate string as PFX format by default.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyFileParameterSet,
+                   ParameterSetName = ImportWithPrivateKeyFromStringParameterSet,
                    HelpMessage = "Specifies the type of the certificate to be imported. Regards certificate string as PFX format by default.")]
         [PSArgumentCompleter(Constants.Pkcs12ContentType, Constants.PemContentType)]
         public string ContentType { get; set; } = Constants.Pkcs12ContentType;
@@ -113,37 +101,18 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Password
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = ImportCertificateFromFileWithPolicyObjectParameterSet,
+                   ParameterSetName = ImportCertificateFromFileParameterSet,
                    HelpMessage = "Specifies the password for the certificate and private key file to import.")]
         [Parameter(Mandatory = false,
-                    ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyObjectParameterSet,
+                    ParameterSetName = ImportWithPrivateKeyFromStringParameterSet,
                     HelpMessage = "Specifies the password for the certificate and private key base64 encoded string to import.")]
-        [Parameter(Mandatory = false,
-                    ParameterSetName = ImportWithPrivateKeyFromCollectionWithPolicyObjectParameterSet,
-                    HelpMessage = "Specifies the password for the certificate collection and private key to import.")]
-        [Parameter(Mandatory = false,
-                   ParameterSetName = ImportCertificateFromFileWithPolicyFileParameterSet,
-                   HelpMessage = "Specifies the password for the certificate and private key file to import.")]
-        [Parameter(Mandatory = false,
-                    ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyFileParameterSet,
-                    HelpMessage = "Specifies the password for the certificate and private key base64 encoded string to import.")]
-        [Parameter(Mandatory = false,
-                    ParameterSetName = ImportWithPrivateKeyFromCollectionWithPolicyFileParameterSet,
-                    HelpMessage = "Specifies the password for the certificate collection and private key to import.")]
         public SecureString Password { get; set; }
 
         /// <summary>
         /// File Path
         /// </summary>
         [Parameter(Mandatory = false,
-                   ParameterSetName = ImportCertificateFromFileWithPolicyFileParameterSet,
                    HelpMessage = "A file path to specify management policy for the certificate that contains JSON encoded policy definition.")]
-        [Parameter(Mandatory = false,
-                    ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyFileParameterSet,
-                    HelpMessage = "A file path to specify management policy for the certificate that contains JSON encoded policy definition.")]
-        [Parameter(Mandatory = false,
-                    ParameterSetName = ImportWithPrivateKeyFromCollectionWithPolicyFileParameterSet,
-                    HelpMessage = "A file path to specify management policy for the certificate that contains JSON encoded policy definition. ")]
         public string PolicyPath { get; set; }
 
         /// <summary>
@@ -151,15 +120,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = false,
                     ValueFromPipeline = true,
-                    ParameterSetName = ImportCertificateFromFileWithPolicyObjectParameterSet,
-                    HelpMessage = "An in-memory object to specify management policy for the certificate.")]
-        [Parameter(Mandatory = false,
-                    ValueFromPipeline = true,
-                    ParameterSetName = ImportWithPrivateKeyFromStringWithPolicyObjectParameterSet,
-                    HelpMessage = "An in-memory object to specify management policy for the certificate.")]
-        [Parameter(Mandatory = false,
-                    ValueFromPipeline = true,
-                    ParameterSetName = ImportWithPrivateKeyFromCollectionWithPolicyObjectParameterSet,
                     HelpMessage = "An in-memory object to specify management policy for the certificate.")]
         public PSKeyVaultCertificatePolicy PolicyObject { get; set; }
 
@@ -169,12 +129,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = true,
                    Position = 2,
                    ValueFromPipeline = true,
-                   ParameterSetName = ImportWithPrivateKeyFromCollectionWithPolicyObjectParameterSet,
-                   HelpMessage = "Specifies the certificate collection to add to key vault.")]
-        [Parameter(Mandatory = true,
-                   Position = 2,
-                   ValueFromPipeline = true,
-                   ParameterSetName = ImportWithPrivateKeyFromCollectionWithPolicyFileParameterSet,
+                   ParameterSetName = ImportWithPrivateKeyFromCollectionParameterSet,
                    HelpMessage = "Specifies the certificate collection to add to key vault.")]
         public X509Certificate2Collection CertificateCollection { get; set; }
 
@@ -205,6 +160,10 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.FilePath), nameof(FilePath));
                 }
             }
+            if (this.IsParameterBound(c => c.PolicyPath) && this.IsParameterBound(c => c.PolicyObject))
+            {
+                throw new AzPSArgumentException($"Parameter {nameof(PolicyPath)} conflicts with Parameter {nameof(PolicyObject)}. Only one of these 2 parameters could be imported at once.", nameof(PolicyPath));
+            }
             if (this.IsParameterBound(c => c.PolicyPath))
             {
                 if (!File.Exists(PolicyPath))
@@ -213,7 +172,6 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 PolicyObject = PSKeyVaultCertificatePolicy.FromJsonFile(PolicyPath);
             }
-
             if (PolicyObject != null && this.IsParameterBound(c => c.ContentType) && PolicyObject.SecretContentType != ContentType)
             {
                 throw new AzPSArgumentException($"User input {ContentType} conflicts with the ContentType stated as {PolicyObject.SecretContentType} in Certificate Policy.", ContentType);
@@ -230,8 +188,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 switch (ParameterSetName)
                 {
-                    case ImportCertificateFromFileWithPolicyObjectParameterSet:
-                    case ImportCertificateFromFileWithPolicyFileParameterSet:
+                    case ImportCertificateFromFileParameterSet:
                         // Pem file can't be handled by X509Certificate2Collection in dotnet standard
                         // Just read it as raw data and pass it to service side
                         if (IsPemFile(FilePath))
@@ -269,14 +226,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                         }
                         break;
 
-                    case ImportWithPrivateKeyFromCollectionWithPolicyObjectParameterSet:
-                    case ImportWithPrivateKeyFromCollectionWithPolicyFileParameterSet:
-                        certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, CertificateCollection, Password, Tag?.ConvertToDictionary(), certPolicy: PolicyObject);
-
+                    case ImportWithPrivateKeyFromCollectionParameterSet:
+                        certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, CertificateCollection, null, Tag?.ConvertToDictionary(), certPolicy: PolicyObject);
                         break;
 
-                    case ImportWithPrivateKeyFromStringWithPolicyObjectParameterSet:
-                    case ImportWithPrivateKeyFromStringWithPolicyFileParameterSet:
+                    case ImportWithPrivateKeyFromStringParameterSet:
                         certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag?.ConvertToDictionary(), ContentType, certPolicy: PolicyObject);
 
                         break;

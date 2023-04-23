@@ -659,7 +659,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
 
                         foreach (JsonElement item2 in item.Value.EnumerateArray())
                         {
-                            if (item2.EnumerateObject().Count() > 1)
+                            if (item.Value.EnumerateArray().Count() > 1)
                                 throw new AzPSArgumentException(string.Format("Json file property {0} exceed expected number 1.", item.Name), nameof(item.Name));
                             foreach (JsonProperty item3 in item2.EnumerateObject())
                             {

@@ -251,8 +251,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, X509Certificate2Collection certificateCollection, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
-            byte[] certificate = certificateCollection.Export(X509ContentType.Pfx, certPassword?.ConvertToString());
-            return VaultClient.ImportCertificate(vaultName, certName, certificate, certPassword, tags, contentType, certPolicy);
+            // Export contentType ref: https://github.com/Azure/azure-sdk-for-net/blob/376b04164356dc9821923b75f2223163a2701669/sdk/keyvault/Microsoft.Azure.KeyVault/src/Customized/KeyVaultClientExtensions.cs#L605
+            return VaultClient.ImportCertificate(vaultName, certName, certificateCollection.Export(X509ContentType.Pfx), certPassword, tags, contentType, certPolicy);
         }
 
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, X509Certificate2Collection certs, IDictionary<string, string> tags)
