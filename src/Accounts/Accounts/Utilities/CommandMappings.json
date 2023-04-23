@@ -4261,6 +4261,7 @@
       "New-AzOffice365PolicyProperty": {},
       "Get-AzNetworkVirtualApplianceSku": {},
       "New-AzVirtualApplianceSkuProperty": {},
+      "New-AzVirtualApplianceAdditionalNicProperties": {},
       "New-AzCustomIpPrefix": {},
       "Update-AzCustomIpPrefix": {},
       "Get-AzCustomIpPrefix": {},
