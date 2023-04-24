@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Management.ContainerRegistry.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Rest.Azure.OData;
@@ -37,33 +36,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             _client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
         }
 
-        public DeploymentExtended CreateClassicRegistry(
-            string resourceGroupName,
-            string registryName,
-            string location,
-            bool? adminUserEnabled,
-            IDictionary<string, string> tags = null)
-        {
-            var storageAccountName = registryName.ToLowerInvariant();
-            if (storageAccountName.Length > 18)
-            {
-                storageAccountName = storageAccountName.Substring(0, 18);
-            }
-            storageAccountName += DateTime.UtcNow.ToString("hhmmss");
-
-            var deploymentName = $"ContainerRegistry_{registryName}";
-            Deployment deployment = new Deployment()
-            {
-                Properties = new DeploymentProperties()
-                {
-                    Template = DeploymentTemplateHelper.DeploymentTemplateNewStorage(
-                        registryName, location, SkuName.Classic, storageAccountName, adminUserEnabled),
-                    Mode = DeploymentMode.Incremental
-                }
-            };
-
-            return _client.Deployments.CreateOrUpdate(resourceGroupName, deploymentName, deployment);
-        }
 
         public string GetStorageAccountId(string storageAccountName)
         {

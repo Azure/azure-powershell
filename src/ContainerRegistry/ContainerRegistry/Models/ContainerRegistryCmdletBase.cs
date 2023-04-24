@@ -91,30 +91,6 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             internal const string Password2 = "password2";
         }
 
-        private ContainerRegistryClient _RegistryClient;
-
-        public ContainerRegistryClient RegistryClient
-        {
-            get
-            {
-                if (_RegistryClient == null)
-                {
-                    _RegistryClient = new ContainerRegistryClient(DefaultContext)
-                    {
-                        VerboseLogger = WriteVerboseWithTimestamp,
-                        ErrorLogger = WriteErrorWithTimestamp,
-                        WarningLogger = WriteWarningWithTimestamp
-                    };
-                }
-                return _RegistryClient;
-            }
-
-            set
-            {
-                _RegistryClient = value;
-            }
-        }
-
         private ResourceManagerClient _ResourceManagerClient;
 
         public ResourceManagerClient ResourceManagerClient
