@@ -26,7 +26,7 @@ Update-AzAlertProcessingRule -ResourceId <String> [-Enabled <String>] [-Tag <Has
 
 ### ByInputObject
 ```
-Update-AzAlertProcessingRule -InputObject <PSActionRule> [-Enabled <String>] [-Tag <Hashtable>]
+Update-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-Enabled <String>] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,11 +59,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Enabled
+Alert Processing rule status
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The action rule resource
 
 ```yaml
-Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSActionRule
+Type: Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -116,21 +131,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Enabled
-Alert Processing rule status
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
