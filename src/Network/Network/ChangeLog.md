@@ -35,8 +35,10 @@
     - 'New-AzApplicationGatewayFirewallCustomRuleGroupByVariable',
     - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
     - `New-AzureApplicationGatewayFirewallCustomRule`
+* Added support of `AdditionalNic` Property in New-AzNetworkVirtualAppliance
 * Updated cmdlet to add the property of RequestBodyEnforcement, RequestBodyInspectLimitInKB  and FileUploadEnforcement 
     - `New-AzApplicationGatewayFirewallPolicySetting`
+
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
