@@ -145,7 +145,7 @@ function Start-AzMigrateServerMigration {
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.PerformShutdown = $PerformShutDown
             if ($OsUpgradeVersion) {
-                if (null -eq $SupportedOsVersions) {
+                if ($null -eq $SupportedOsVersions) {
                     throw "There is no supported target OS available. Please check or remove the OsUpgradeVersion input." 
                 }
                 elseif ($SupportedOsVersions -contains $OsUpgradeVersion) {
