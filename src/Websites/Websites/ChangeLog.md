@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Used AAD Auth instead of Basic Auth for PublishAzureWebApps
+
+## Version 2.15.0
 * Fixed Tag parameter issues with ASE for `New-AzWebApp`
 
 ## Version 2.14.0

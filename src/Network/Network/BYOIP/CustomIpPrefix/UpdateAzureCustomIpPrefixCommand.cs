@@ -154,10 +154,7 @@ namespace Microsoft.Azure.Commands.Network
                 customIpPrefixToUpdate.Cidr = this.Cidr;
             }
 
-            if (NoInternetAdvertise)
-            {
-                customIpPrefixToUpdate.NoInternetAdvertise = true;
-            }
+            customIpPrefixToUpdate.NoInternetAdvertise = NoInternetAdvertise;
 
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(customIpPrefixToUpdate);
 

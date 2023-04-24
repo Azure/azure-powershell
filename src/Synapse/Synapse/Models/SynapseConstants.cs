@@ -332,7 +332,8 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public enum PackageActionType
         {
             Add,
-            Remove
+            Remove,
+            Set
         }
         public enum UserAssignedManagedIdentityActionType
         {

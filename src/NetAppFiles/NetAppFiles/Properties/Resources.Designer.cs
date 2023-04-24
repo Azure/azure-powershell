@@ -70,6 +70,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Breaking File Locks on volume {0}.
+        /// </summary>
+        internal static string BreakFileLockOnVolumeMessage {
+            get {
+                return ResourceManager.GetString("BreakFileLockOnVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create the new {0}.
         /// </summary>
         internal static string CreateResourceMessage {

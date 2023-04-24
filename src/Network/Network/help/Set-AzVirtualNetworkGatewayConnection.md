@@ -115,6 +115,7 @@ EgressBytesTransferred  : 91334484
 IngressBytesTransferred : 100386089
 TunnelConnectionStatus  : []
 ```
+
 ### Example 3: Add/Remove natRules to an existing VirtualNetworkGatewayConnection
 ```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
@@ -161,6 +162,7 @@ EgressNatRules          : [
                             }
                           ]
 ```
+
 The first command gets a virtual network gateway connection named 1 that belongs to resource group myRG and stores it to the variable named $conn.
 The second command gets the virtual network gateway natRule named natRule1 and stores it to the variable named $egressNatrule.
 The third command sets virtual network gateway connection with removed all IngressNatRules and add egressNatrule into EgressNatRules.
@@ -175,7 +177,7 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -Ga
 ```
 
 ```output
- Name                        : Conn
+Name                        : Conn
 ResourceGroupName           : PS_testing
 Location                    : eastus
 Id                          : /subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/connections/Conn
@@ -211,6 +213,7 @@ GatewayCustomBgpIpAddresses : [
                                 }
                               ]
 ```
+
 This will create new AzGatewayCustomBgpIpConfigurationObjects and update gateway connection with these GatewayCustomBgpIpAddress.
 
 ### Example 4: Remove GatewayCustomBgpIpAddress to an existing VirtualNetworkGatewayConnection
@@ -218,6 +221,7 @@ This will create new AzGatewayCustomBgpIpConfigurationObjects and update gateway
 $conn = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName PS_testing -ResourceName Conn
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -GatewayCustomBgpIpAddress @()
 ```
+
 ```output
 Name                      : Conn
 ResourceGroupName         : PS_testing
@@ -244,6 +248,7 @@ IngressNatRules           : []
 EgressNatRules            : []
 GatewayCustomBgpIpAddresses : []
 ```
+
 This will update gateway connection with removing these GatewayCustomBgpIpAddress.
 
 ## PARAMETERS
@@ -255,21 +260,6 @@ Run cmdlet in the background
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -312,7 +302,7 @@ Accept wildcard characters: False
 Dead Peer Detection Timeout of the connection in seconds.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -488,6 +478,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -528,6 +533,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzVirtualNetworkGatewayConnection](./Get-AzVirtualNetworkGatewayConnection.md)
 
 [New-AzVirtualNetworkGatewayConnection](./New-AzVirtualNetworkGatewayConnection.md)

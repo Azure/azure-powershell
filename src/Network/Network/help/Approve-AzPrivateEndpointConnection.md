@@ -14,14 +14,15 @@ Approves a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Approve-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Approve-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Approve-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Approve-AzPrivateEndpointConnection -Name <String> [-Description <String>] -ResourceGroupName <String>
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

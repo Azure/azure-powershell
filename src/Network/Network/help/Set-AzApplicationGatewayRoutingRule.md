@@ -41,7 +41,6 @@ $AppGw = Set-AzApplicationGatewayRoutingRule -ApplicationGateway $AppGw -Name "R
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
 The second command modifies the routing rule for the application gateway to use back-end settings specified in the $Setting variable, a listener specified in the $Listener variable, and a back-end address pool specified in the $Pool variable.
 
-
 ## PARAMETERS
 
 ### -ApplicationGateway

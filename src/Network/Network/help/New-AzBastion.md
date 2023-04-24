@@ -57,9 +57,8 @@ New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressId <Str
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetwork
 ```
 New-AzBastion -ResourceGroupName <String> -Name <String> -PublicIpAddressRgName <String>
- -PublicIpAddressName <String> -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>]
- [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PublicIpAddressName <String> -VirtualNetwork <PSVirtualNetwork> [-Sku <String>] [-ScaleUnit <Int32>] [-AsJob]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByPublicIpAddressRgNameByPublicIpAddressNameByVirtualNetworkRGNameByVirtualNetworkName
@@ -124,10 +123,10 @@ Sku                  : {
                        }
 Scale Units          : 2
 ```
+
 This example creates a bastion attached to virtual network "vnet" in the same resource group as the bastion.
 There must be a subnet with name AzureBastionSubnet in this vnet.
 The Ip Address must be created with Sku Standard.
-
 
 ### Example 2
 ```powershell
@@ -212,8 +211,8 @@ Sku                  : {
                        }
 Scale Units          : 3
 ```
-This example creates a BastionHost resource with Standard Sku and 3 Scale Units.
 
+This example creates a BastionHost resource with Standard Sku and 3 Scale Units.
 
 ## PARAMETERS
 

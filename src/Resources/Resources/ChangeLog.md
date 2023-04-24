@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 6.6.1
+* Added support for Azure resources deployment with parameters file using Bicep parameters syntax
+
 ## Version 6.6.0
 * Fixed an issue when running the `New-AzManagementGroup` command where it tried to cast an async operation as a Management Group. [#21000]
 * Fixed an issue when running `Get-AzResourceGroup -Name 'some_name'`, it ignores '-Location' if specified[#21225]

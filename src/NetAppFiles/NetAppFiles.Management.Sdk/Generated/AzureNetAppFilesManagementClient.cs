@@ -47,16 +47,14 @@ namespace Microsoft.Azure.Management.NetApp
         public ServiceClientCredentials Credentials { get; private set; }
 
         /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure
-        /// subscription. The subscription ID forms part of the URI for every service
-        /// call.
-        /// </summary>
-        public string SubscriptionId { get; set; }
-
-        /// <summary>
         /// The API version to use for this operation.
         /// </summary>
         public string ApiVersion { get; private set; }
+
+        /// <summary>
+        /// The ID of the target subscription.
+        /// </summary>
+        public string SubscriptionId { get; set; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -135,11 +133,6 @@ namespace Microsoft.Azure.Management.NetApp
         /// Gets the IVolumeQuotaRulesOperations.
         /// </summary>
         public virtual IVolumeQuotaRulesOperations VolumeQuotaRules { get; private set; }
-
-        /// <summary>
-        /// Gets the IVaultsOperations.
-        /// </summary>
-        public virtual IVaultsOperations Vaults { get; private set; }
 
         /// <summary>
         /// Gets the IVolumeGroupsOperations.
@@ -404,11 +397,10 @@ namespace Microsoft.Azure.Management.NetApp
             AccountBackups = new AccountBackupsOperations(this);
             BackupPolicies = new BackupPoliciesOperations(this);
             VolumeQuotaRules = new VolumeQuotaRulesOperations(this);
-            Vaults = new VaultsOperations(this);
             VolumeGroups = new VolumeGroupsOperations(this);
             Subvolumes = new SubvolumesOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
-            ApiVersion = "2022-05-01";
+            ApiVersion = "2022-09-01";
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;
             GenerateClientRequestId = true;

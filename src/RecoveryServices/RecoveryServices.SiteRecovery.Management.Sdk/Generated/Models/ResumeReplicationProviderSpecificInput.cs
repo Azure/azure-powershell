@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Resume replication provider specific input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ResumeReplicationProviderSpecificInput")]
     public partial class ResumeReplicationProviderSpecificInput
     {
         /// <summary>

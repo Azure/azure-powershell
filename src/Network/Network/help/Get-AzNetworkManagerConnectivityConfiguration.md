@@ -33,6 +33,7 @@ The **Get-AzNetworkManagerConnectivityConfiguration** cmdlet gets one or more co
 ```powershell
 Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psConnectivityConfig"
 ```
+
 ```output
 ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
@@ -79,12 +80,14 @@ Name                  : psConnectivityConfig
 Etag                  : "02002303-0000-0700-0000-62f05fc10000"
 Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
 ```
+
 Gets a connectivity configuration in a network manager.
 
 ### Example 2
 ```powershell
 Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager"
 ```
+
 ```output
 ConnectivityTopology  : HubAndSpoke
 Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
@@ -163,6 +166,7 @@ Name                  : psConnectivityConfigMesh
 Etag                  : "010010af-0000-0700-0000-62ef42d50000"
 Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfigMesh
 ```
+
 Gets all connectivity configurations in a network manager.
 
 ## PARAMETERS
@@ -171,7 +175,7 @@ Gets all connectivity configurations in a network manager.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -186,7 +190,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -198,7 +202,7 @@ Accept wildcard characters: True
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -213,7 +217,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +232,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
