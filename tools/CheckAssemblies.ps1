@@ -36,8 +36,12 @@ function Get-PreloadAssemblies{
 $ProjectPaths = @( "$PSScriptRoot\..\artifacts\$BuildConfig" )
 $DependencyMapPath = "$PSScriptRoot\..\artifacts\StaticAnalysisResults\DependencyMap.csv"
 
-$DependencyMap = Import-Csv -Path $DependencyMapPath
+if (-not (Test-Path $DependencyMapPath)) {
+    Write-Host "$DependencyMapPath does not exist. Skip it."
+    return
+}
 
+$DependencyMap = Import-Csv -Path $DependencyMapPath
 
 .($PSScriptRoot + "\PreloadToolDll.ps1")
 $ModuleManifestFiles = $ProjectPaths | ForEach-Object { Get-Item "Az.*.psd1" | Where-Object { $_.FullName -like "*$($BuildConfig)*" -and `

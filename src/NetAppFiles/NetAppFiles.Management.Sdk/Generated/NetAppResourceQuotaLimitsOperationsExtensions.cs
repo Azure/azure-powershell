@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             public static IEnumerable<SubscriptionQuotaItem> List(this INetAppResourceQuotaLimitsOperations operations, string location)
             {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='quotaLimitName'>
             /// The name of the Quota Limit
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='quotaLimitName'>
             /// The name of the Quota Limit

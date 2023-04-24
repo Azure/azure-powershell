@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 4.9.3
+* Added breaking changes for `Invoke-AzKeyVaultKeyOperation`. The encoded/decoded way between string and bytes in `Invoke-AzKeyVaultKeyOperation` will change to UTF8. 
+    - This change will take effect on 5/23/2023
+    - The change is expected to take effect from the version 5.0.0
+* Updated Azure.Core to 1.31.0.
+
 ## Version 4.9.2
 * Updated Azure.Core to 1.28.0.
 

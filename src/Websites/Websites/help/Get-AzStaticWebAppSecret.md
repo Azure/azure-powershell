@@ -1,6 +1,6 @@
 ---
 external help file: Az.Websites-help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebappsecret
 schema: 2.0.0
 ---
@@ -38,7 +38,8 @@ This command lists the secrets for an existing static site.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

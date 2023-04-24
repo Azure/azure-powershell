@@ -65,6 +65,12 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
         public IDictionary<string, string> Tags { get; set; }
 
+        [Ps1Xml(Label = "Disable local auth", Target = ViewControl.List, Position = 14)]
+        public bool? DisableLocalAuth { get; set; }
+
+        [Ps1Xml(Label = "Auth options", Target = ViewControl.List, Position = 15)]
+        public PSAuthOptions AuthOptions { get; set; }
+
         public PSSearchService(Azure.Management.Search.Models.SearchService searchService)
         {
             ResourceGroupName = new ResourceIdentifier(searchService.Id).ResourceGroupName;
@@ -110,6 +116,13 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             if (searchService.SharedPrivateLinkResources != null)
             {
                 SharedPrivateLinkResources = searchService.SharedPrivateLinkResources.Select(splr => (PSSharedPrivateLinkResource)splr).ToList();
+            }
+
+            DisableLocalAuth = searchService.DisableLocalAuth;
+
+            if (searchService.AuthOptions != null)
+            {
+                AuthOptions = (PSAuthOptions)searchService.AuthOptions;
             }
         }
 

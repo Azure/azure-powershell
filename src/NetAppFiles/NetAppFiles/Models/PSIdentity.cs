@@ -41,6 +41,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// account. The key is the ARM resource identifier of the identity.
         /// Only 1 User Assigned identity is permitted here.
         /// </summary>        
-        public IDictionary<string, PSUserAssignedIdentity> UserAssignedIdentities { get; set; }
+        public string UserAssignedIdentity { get; set; }
     }
 }

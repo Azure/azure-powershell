@@ -19,6 +19,14 @@
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+
+## Version 5.7.0
+* Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+* Fixed the issue for `Update-AzCustomIpPrefix` that `NoInternetAdvertise` will should be set to false if not provided
+
+## Version 5.6.0
+* Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
 * Added property 'AuthorizationStatus' to ExpressRouteCircuit
 * Added property 'BillingType' to ExpressRoutePort
 * Added support for connection flushing in network security group which when enabled, re-evaluates flows when rules are updated
@@ -29,6 +37,7 @@
 * Updated `Reset-AzVpnGateway` to support IpConfigurationId.
 * Blocked some regions when creating/updating Basic Sku firewall
 * Fixed bugs related to auto learn IP prefixes and Snat
+* Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.

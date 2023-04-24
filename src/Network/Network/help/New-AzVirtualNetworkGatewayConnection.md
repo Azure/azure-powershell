@@ -54,6 +54,7 @@ $vnetgw1 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "gw1"
 $vnetgw2 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "gw2"
 New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName "Rg1" -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location "eastus" -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5'
 ```
+
 ### Example 2 Add/Update IngressNatRule/EgressNatRule to an existing virtual network gateway connection
 ```powershell
 $vnetgw1 = Get-AzVirtualNetworkGateway -ResourceGroupName "Rg1" -Name "vnetgw1"
@@ -63,6 +64,7 @@ $egressnatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName "Rg1" -Na
 New-AzVirtualNetworkGatewayConnection -Name conn-client-1 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnetgw1 -VirtualNetworkGateway2 $vnetgw2 -Location "eastus" -ConnectionType Vnet2Vnet -SharedKey 'a1b2c3d4e5' `
 -IngressNatRule $ingressnatrule -EgressNatRule $egressnatrule
 ```
+
 The first command gets a virtual network gateway natRule named natRule1 that's type is IngressSnat.
 The second command gets a virtual network gateway natRule named natRule2 that's type is EgressSnat.
 The third command creates this new virtual Network gateway connection with Ingress and Egress NatRules.
@@ -74,8 +76,8 @@ $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName PS_testing -ResourceNa
 $address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "/subscriptions/83704d68-d560-4c67-b1c7-12404db89dc3/resourceGroups/PS_testing/providers/Microsoft.Network/virtualNetworkGateways/testGw/ipConfigurations/default" -CustomBgpIpAddress "169.254.21.1"
 
 New-AzVirtualNetworkGatewayConnection -ResourceGroupName "PS_testing" -name "Conn" -location "eastus" -VirtualNetworkGateway1 $gateway -LocalNetworkGateway2 $localnetGateway -ConnectionType IPsec -RoutingWeight 3 -SharedKey abc -GatewayCustomBgpIpAddress $address -EnableBgp $true
-
 ```
+
 The two command gets a local network gateway and virtual network gateway.
 The thrid command creates a AzGatewayCustomBgpIpConfigurationObject.
 The third command creates this new virtual Network gateway connection with GatewayCustomBgpIpAddress.
@@ -109,21 +111,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -535,6 +522,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
@@ -585,6 +587,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzVirtualNetworkGatewayConnection](./Get-AzVirtualNetworkGatewayConnection.md)
 
 [Remove-AzVirtualNetworkGatewayConnection](./Remove-AzVirtualNetworkGatewayConnection.md)

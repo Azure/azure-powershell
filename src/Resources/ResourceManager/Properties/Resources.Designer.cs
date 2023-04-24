@@ -97,6 +97,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Build bicepparam file &apos;{0}&apos; to json failed..
+        /// </summary>
+        internal static string BuildBicepparamFileToJsonFailed {
+            get {
+                return ResourceManager.GetString("BuildBicepparamFileToJsonFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancelling active deployment ....
         /// </summary>
         internal static string CancelDeploymentMessage {
@@ -481,6 +490,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties {
         internal static string InvalidBicepFilePath {
             get {
                 return ResourceManager.GetString("InvalidBicepFilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Bicepparam file path..
+        /// </summary>
+        internal static string InvalidBicepparamFilePath {
+            get {
+                return ResourceManager.GetString("InvalidBicepparamFilePath", resourceCulture);
             }
         }
         

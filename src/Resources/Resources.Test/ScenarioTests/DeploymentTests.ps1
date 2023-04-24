@@ -843,9 +843,42 @@ function Test-TestDeploymentFromBicepFile
         New-AzResourceGroup -Name $rgname -Location $location
 
         $list = Test-AzResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile sampleDeploymentBicepFile.bicep
-
+        
         # Assert
         Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Tests deployment via Bicep file.
+#>
+function Test-NewDeploymentFromBicepFileAndBicepparamFile
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = "West US 2"
+
+    try
+    {
+        # Test
+        New-AzResourceGroup -Name $rgname -Location $rglocation
+
+        $deployment = New-AzResourceGroupDeployment -Name $rname -ResourceGroupName $rgname -TemplateFile sampleDeploymentBicepFileWithoutParamValues.bicep -TemplateParameterFile sampleDeploymentBicepFileParams.bicepparam
+
+        # Assert
+        Assert-AreEqual Succeeded $deployment.ProvisioningState
+
+        $subId = (Get-AzContext).Subscription.SubscriptionId
+        $deploymentId = "/subscriptions/$subId/resourcegroups/$rgname/providers/Microsoft.Resources/deployments/$rname"
+        $getById = Get-AzResourceGroupDeployment -Id $deploymentId
+        Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
     }
     finally
     {

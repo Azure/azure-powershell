@@ -22,4 +22,3 @@ Kind Name                             Type
 ```
 
 This command updates a user entry with the listed roles by pipeline.
-

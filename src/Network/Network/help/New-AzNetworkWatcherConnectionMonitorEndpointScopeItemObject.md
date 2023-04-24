@@ -27,7 +27,6 @@ The New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject cmdlet creates 
 New-AzNetworkWatcherConnectionMonitorEndpointScopeItemObject -Address "10.0.1.0/24"
 ```
 
-
 ## PARAMETERS
 
 ### -Address

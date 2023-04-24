@@ -12,11 +12,14 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.ContainerRegistry" Version="4.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0">
       <NoWarn>NU1608</NoWarn>
     </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\..\Network\Network.Management.Sdk\Network.Management.Sdk.csproj" />
   </ItemGroup>
 
 </Project>

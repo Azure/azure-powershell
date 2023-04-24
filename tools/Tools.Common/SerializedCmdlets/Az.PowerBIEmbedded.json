@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.PowerBIEmbedded",
-  "ModuleVersion": "1.2.0",
+  "ModuleVersion": "1.2.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -274,7 +274,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Id": "System.String",
               "Name": "System.String",
@@ -451,7 +451,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Id": "System.String",
@@ -705,7 +705,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -884,7 +884,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1174,7 +1174,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Name": "System.String",
               "Id": "System.String",
@@ -1375,7 +1375,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1462,7 +1462,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1655,7 +1655,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -1914,7 +1914,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
             "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "KeyName": "System.String",
               "Value": "System.String"
@@ -2141,7 +2141,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2228,7 +2228,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2421,7 +2421,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2547,7 +2547,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2634,7 +2634,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -2827,7 +2827,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3054,7 +3054,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3179,7 +3179,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
             "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
               "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3586,7 +3586,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.PowerBI.Models",
                   "Name": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity, Microsoft.Azure.PowerShell.Cmdlets.PowerBI, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
                     "Administrator": "System.Collections.Generic.List`1[System.String]",
@@ -3906,7 +3906,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspace, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Id": "System.String",
         "Name": "System.String",
@@ -3955,7 +3955,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollection, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Name": "System.String",
         "Id": "System.String",
@@ -4004,7 +4004,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey"
       ]
@@ -4012,7 +4012,7 @@
     "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey": {
       "Namespace": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models",
       "Name": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Management.PowerBIEmbedded.Models.PSWorkspaceCollectionAccessKey, Microsoft.Azure.PowerShell.Cmdlets.PowerBIEmbedded, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "KeyName": "System.String",
         "Value": "System.String"

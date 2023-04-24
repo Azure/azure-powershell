@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing ContainerApp" -ScenarioScript `
+Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing ContainerApp" -PowerShellVersion "5.1", "Latest" -ScenarioScript `
 {
     param ($rg)
     $rgName = $rg.ResourceGroupName
@@ -34,7 +34,7 @@ Invoke-LiveTestScenario -Name "List ContainerApp" -Description "Test listing Con
     # Test Updating one specific ContainerApp
     $null = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule
     $null = Update-AzContainerApp -Name $appName -ResourceGroupName $rgName -DaprAppPort 8888 -Location $appLocation
-    $actual = Get-AzContainerApp -ResourceGroupName $rgName -Name $appName 
+    $actual = Get-AzContainerApp -ResourceGroupName $rgName -Name $appName
     Assert-AreEqual $actual.DaprAppPort 8888
     # Test Removing ContainerApp
     $null = New-AzContainerApp -Name $appName -ResourceGroupName $rgName -Location $appLocation -ConfigurationActiveRevisionsMode 'Single' -ManagedEnvironmentId $EnvId -IngressExternal -IngressTransport 'auto' -IngressTargetPort 80 -TemplateContainer $image -ConfigurationSecret $secretObject -IngressTraffic $trafficWeight -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080 -ScaleRule $scaleRule

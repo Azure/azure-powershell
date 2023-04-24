@@ -38,11 +38,11 @@ function Test-LoadBalancerCRUD-Public
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
-        
+
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        
+
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
@@ -2858,6 +2858,8 @@ function Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier
     $backendAddressPoolName = Get-ResourceName
     $probeName = Get-ResourceName
     $lbruleName = Get-ResourceName
+    $inboundNatRuleName = Get-ResourceName
+    $outboundRuleName = Get-ResourceName
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/loadBalancers"
     $gviplocation = "eastus2euap"
@@ -2866,23 +2868,22 @@ function Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier
     {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval"} 
-        
+
         # Create the Virtual Network
         $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
         $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $gviplocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        
+
         # Create the publicip
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -Location $gviplocation  -AllocationMethod Static -DomainNameLabel $domainNameLabel -Sku Standard -Tier Global
 
         # Create LoadBalancer
         $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -PublicIpAddress $publicip
         $backendAddressPool = New-AzLoadBalancerBackendAddressPoolConfig -Name $backendAddressPoolName
-        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
-        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
-        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Standard -Tier Global
-        
-        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp -FrontendPort 80 -BackendPort 80 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT
+        $actualLb = New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -LoadBalancingRule $lbrule -Sku Standard -Tier Global
 
+        $expectedLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        
         # Verification
         Assert-AreEqual $expectedLb.ResourceGroupName $actualLb.ResourceGroupName
         Assert-AreEqual $expectedLb.Name $actualLb.Name
@@ -2891,20 +2892,17 @@ function Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier
         Assert-AreEqual "Succeeded" $expectedLb.ProvisioningState
         Assert-NotNull $expectedLb.ResourceGuid
         Assert-AreEqual 1 @($expectedLb.FrontendIPConfigurations).Count
-        
+
         Assert-AreEqual $frontendName $expectedLb.FrontendIPConfigurations[0].Name
         Assert-AreEqual $publicip.Id $expectedLb.FrontendIPConfigurations[0].PublicIpAddress.Id
         Assert-Null $expectedLb.FrontendIPConfigurations[0].PrivateIpAddress
-        
+
         Assert-AreEqual $backendAddressPoolName $expectedLb.BackendAddressPools[0].Name
-        
-        Assert-AreEqual $probeName $expectedLb.Probes[0].Name
-        Assert-AreEqual $probe.RequestPath $expectedLb.Probes[0].RequestPath
-        
+
         Assert-AreEqual $lbruleName $expectedLb.LoadBalancingRules[0].Name
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Id $expectedLb.LoadBalancingRules[0].FrontendIPConfiguration.Id
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Id $expectedLb.LoadBalancingRules[0].BackendAddressPool.Id
-        
+
         # List
         $list = Get-AzLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 1 @($list).Count
@@ -2912,13 +2910,53 @@ function Test-LoadBalancerCRUD-PublicStandardSkuGlobalTier
         Assert-AreEqualObjectProperties $expectedLb.Sku $list[0].Sku
         Assert-AreEqual $expectedLb.FrontendIPConfigurations[0].Etag $list[0].FrontendIPConfigurations[0].Etag
         Assert-AreEqual $expectedLb.BackendAddressPools[0].Etag $list[0].BackendAddressPools[0].Etag
-        Assert-AreEqual $expectedLb.Probes[0].Etag $list[0].Probes[0].Etag
         Assert-AreEqual $expectedLb.LoadBalancingRules[0].Etag $list[0].LoadBalancingRules[0].Etag
+
+        # Creating or setting global loadbalancer with probe should fail
+        $probe = New-AzLoadBalancerProbeConfig -Name $probeName -RequestPath healthcheck.aspx -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        Assert-ThrowsContains { New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -Probe $probe -LoadBalancingRule $lbrule -Sku Standard -Tier Global } "User defined probes are not supported on global load balancers."
         
+        $modifyLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Add-AzLoadBalancerProbeConfig -Loadbalancer $modifyLb -Name $probeName -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+        Assert-ThrowsContains { Set-AzLoadBalancer -LoadBalancer $modifyLb } "User defined probes are not supported on global load balancers."
+
+        # Creating or setting global loadbalancer with tcp reset should fail
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp -FrontendPort 80 -BackendPort 80 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT -EnableTcpReset
+        Assert-ThrowsContains { New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -LoadBalancingRule $lbrule -Sku Standard -Tier Global } "TCP reset is not supported on global load balancers."
+        
+        $modifyLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        $lbRuleName += "_1"
+        Add-AzLoadBalancerRuleConfig -Loadbalancer $modifyLb -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp -FrontendPort 80 -BackendPort 80 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT -EnableTcpReset
+        Assert-ThrowsContains { Set-AzLoadBalancer -Loadbalancer $modifyLb } "TCP reset is not supported on global load balancers."
+
+        # Creating or setting global loadbalancer with idle timeout should fail
+        $lbrule = New-AzLoadBalancerRuleConfig -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp -FrontendPort 80 -BackendPort 80 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT -IdleTimeoutInMinutes 15
+        Assert-ThrowsContains { New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -LoadBalancingRule $lbrule -Sku Standard -Tier Global } "Idle timeout is not supported on global load balancers."
+
+        $modifyLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Add-AzLoadBalancerRuleConfig -Loadbalancer $modifyLb -Name $lbruleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp -FrontendPort 80 -BackendPort 80 -EnableFloatingIP -LoadDistribution SourceIP -DisableOutboundSNAT -IdleTimeoutInMinutes 15
+        Assert-ThrowsContains { Set-AzLoadBalancer -Loadbalancer $modifyLb } "Idle timeout is not supported on global load balancers."
+
+        # Creating or setting global loadbalancer with an inbound nat rule should fail
+        $inboundNatRule = New-AzLoadBalancerInboundNatRuleConfig -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        Assert-ThrowsContains { New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -LoadBalancingRule $lbrule -InboundNatRule $inboundNatRule -Sku Standard -Tier Global } "Only load balancing rules are supported on global load balancers."
+
+        $modifyLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Add-AzLoadBalancerInboundNatRuleConfig -Loadbalancer $modifyLb -Name $inboundNatRuleName -FrontendIPConfiguration $frontend -Protocol Tcp -FrontendPort 3389 -BackendPort 3389 -IdleTimeoutInMinutes 15 -EnableFloatingIP
+        Assert-ThrowsContains { Set-AzLoadBalancer -Loadbalancer $modifyLb } "Only load balancing rules are supported on global load balancers."
+
+        # Creating or setting global loadbalancer with an outbound rule should fail
+        $outboundRule = New-AzLoadBalancerOutboundRuleConfig -Name $outboundRuleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp
+        Assert-ThrowsContains { New-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -Location $gviplocation -FrontendIpConfiguration $frontend -BackendAddressPool $backendAddressPool -LoadBalancingRule $lbrule -OutboundRule $outboundRule -Sku Standard -Tier Global } "Only load balancing rules are supported on global load balancers."
+
+        $modifyLb = Get-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname
+        Add-AzLoadBalancerOutboundRuleConfig -Loadbalancer $modifyLb -Name $outboundRuleName -FrontendIPConfiguration $frontend -BackendAddressPool $backendAddressPool -Protocol Tcp
+        Assert-ThrowsContains { Set-AzLoadBalancer -Loadbalancer $modifyLb } "Only load balancing rules are supported on global load balancers."
+
         # Delete
         $deleteLb = Remove-AzLoadBalancer -Name $lbName -ResourceGroupName $rgname -PassThru -Force
         Assert-AreEqual true $deleteLb
-        
+
         $list = Get-AzLoadBalancer -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
     }
@@ -3046,7 +3084,7 @@ function Test-LoadBalancerZones
       $frontend = New-AzLoadBalancerFrontendIpConfig -Name $frontendName -Subnet $subnet -Zone $zones
 
       # Create loadBalancer
-      $actual = New-AzLoadBalancer -ResourceGroupName $rgname -name $rname -location $location -frontendIpConfiguration $frontend;
+      $actual = New-AzLoadBalancer -ResourceGroupName $rgname -name $rname -location $location -frontendIpConfiguration $frontend -Sku Standard
       $expected = Get-AzLoadBalancer -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name

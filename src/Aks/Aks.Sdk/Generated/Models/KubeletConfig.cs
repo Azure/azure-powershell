@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     /// <remarks>
     /// See [AKS custom node
-    /// configuration](https://learn.microsoft.com/azure/aks/custom-node-configuration)
+    /// configuration](https://docs.microsoft.com/azure/aks/custom-node-configuration)
     /// for more details.
     /// </remarks>
     public partial class KubeletConfig

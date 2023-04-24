@@ -16,6 +16,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     public static class ManagedClusterSKUName
     {
-        public const string Basic = "Basic";
+        /// <summary>
+        /// Base option for the AKS control plane.
+        /// </summary>
+        public const string Base = "Base";
     }
 }

@@ -1,0 +1,37 @@
+{
+  "resourceType": "packetCoreControlPlaneVersions",
+  "apiVersion": "2022-11-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMobileNetworkPacketCoreControlPlaneVersion",
+      "description": "Gets information about the specified packet core control plane version.",
+      "path": "/providers/Microsoft.MobileNetwork/packetCoreControlPlaneVersions/{versionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mobilenetwork/get-azmobilenetworkpacketcorecontrolplaneversion"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-VersionName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets information about the specified packet core control plane version.",
+          "parameters": [
+            {
+              "name": "-VersionName",
+              "value": "[Path.versionName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

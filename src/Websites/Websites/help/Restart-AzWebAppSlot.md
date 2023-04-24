@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: 645E74D2-640D-494F-9798-4375FE6A0AF2
 online version: https://learn.microsoft.com/powershell/module/az.websites/restart-azwebappslot
 schema: 2.0.0
@@ -10,17 +10,19 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Restarts an Azure Web App Slot.
+
 ## SYNTAX
 
 ### S1
 ```
-Restart-AzWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String> [-SoftRestart]
+Restart-AzWebAppSlot [-SoftRestart] [-ResourceGroupName] <String> [-Name] <String> [-Slot] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### S2
 ```
-Restart-AzWebAppSlot [-WebApp] <PSSite> [-SoftRestart] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Restart-AzWebAppSlot [-SoftRestart] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,7 +112,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

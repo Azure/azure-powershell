@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: D23BBF34-80C0-48B1-8E1C-6F345DEC61AD
 online version: https://learn.microsoft.com/powershell/module/az.websites/new-azwebappslot
 schema: 2.0.0
@@ -18,8 +18,8 @@ New-AzWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String
  [[-SourceWebApp] <PSSite>] [-IgnoreSourceControl] [-IgnoreCustomHostNames]
  [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
  [-ContainerImageName <String>] [-ContainerRegistryUrl <String>] [-ContainerRegistryUser <String>]
- [-ContainerRegistryPassword <SecureString>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-Tag <Hashtable>] [<CommonParameters>]
+ [-ContainerRegistryPassword <SecureString>] [-EnableContainerContinuousDeployment] [-CopyIdentity] [-AsJob]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

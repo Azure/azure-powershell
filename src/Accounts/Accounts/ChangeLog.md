@@ -20,6 +20,11 @@
 
 ## Upcoming Release
 
+## Version 2.12.2
+* Fixed `AzureSynapseAnalyticsEndpointResourceId` of `USGovernment` environment.
+* Updated Azure.Core to 1.31.0.
+* Updated the reference of Azure PowerShell Common to 1.3.75-preview.
+
 ## Version 2.12.1
 * Fixed an issue that broke some cmdlets in Az.Synapse module.
 

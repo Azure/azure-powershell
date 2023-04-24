@@ -32,7 +32,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupPolicy",
         SupportsShouldProcess = true,
         DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
-    [CmdletOutputBreakingChange(typeof(PSNetAppFilesBackupPolicy), DeprecatedOutputProperties = new string[] { "YearlyBackupsToKeep" })]
     [Alias("Update-AnfBackupPolicy")]
     public class UpdateAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
     {
@@ -96,12 +95,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
         [ValidateNotNullOrEmpty]
         public int? MonthlyBackupsToKeep { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Yearly backups count to keep")]
-        [CmdletParameterBreakingChange("YearlyBackupsToKeep", ChangeDescription = "Parameter YearlyBackupsToKeep is invalid and preserved for compatibility.")]
-        [ValidateNotNullOrEmpty]
-        public int? YearlyBackupsToKeep { get; set; }
 
         [Parameter(
             Mandatory = false,
