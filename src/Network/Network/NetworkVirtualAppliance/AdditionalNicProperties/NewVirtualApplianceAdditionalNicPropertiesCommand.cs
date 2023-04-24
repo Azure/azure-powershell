@@ -22,7 +22,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceAdditionalNicProperties"), OutputType(typeof(List<PSVirtualApplianceAdditionalNicProperties>))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceAdditionalNicProperties", SupportsShouldProcess = true), OutputType(typeof(List<PSVirtualApplianceAdditionalNicProperties>))]
     public class NewVirtualApplianceAdditionaNicPropertiesCommand : VirtualApplianceAdditionalNicPropertiesBaseCmdlet
     {
         [Parameter(
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = false,
             HelpMessage = "Additional Interface to have public IP or not.")]
         [ValidateNotNullOrEmpty]
-        public bool HasPublicIP { get; private set; }
+        public bool HasPublicIP { get; set; }
 
         [Parameter(
             Mandatory = false,
