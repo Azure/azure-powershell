@@ -704,14 +704,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var lifetimeAction = 
                 lifetimeActions.FirstOrDefault(x => string.IsNullOrEmpty(x.Action.ToString()) && 0 == string.Compare(x.Action.ToString(), Track2CertificateSDK.CertificatePolicyAction.AutoRenew.ToString(), true)
                                                 && (x.DaysBeforeExpiry.HasValue || x.LifetimePercentage.HasValue));
-            if (lifetimeAction == null)
-                return null;
-            if (lifetimeAction.DaysBeforeExpiry.HasValue)
-                return lifetimeAction.DaysBeforeExpiry;
-            if (lifetimeAction.LifetimePercentage.HasValue)
-                return lifetimeAction.LifetimePercentage;
-            else
-                return null;
+            return lifetimeAction == null ? null : (lifetimeAction.DaysBeforeExpiry ?? lifetimeAction.LifetimePercentage);
         }
 
         private static int? FindIntValueForEmailAction(IEnumerable<LifetimeAction> lifetimeActions, Func<Trigger, int?> intValueGetter)
