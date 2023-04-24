@@ -13,7 +13,7 @@ Creates a log scrubbing configuration for firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State <String> -ScrubbingRules  <PSApplicationGatewayFirewallPolicyLogScrubbingRule[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State <String> -ScrubbingRule  <PSApplicationGatewayFirewallPolicyLogScrubbingRule[]> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +23,10 @@ The **New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration** creates 
 
 ### Example 1
 ```powershell
-$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State Enabled -ScrubbingRules $logScrubbingRule1
+$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1
 ```
 
-The command creates a log scrubbing rule configuration with state as enable, ScrubbingRules as $logScrubbingRule1.
+The command creates a log scrubbing rule configuration with state as enable, ScrubbingRule as $logScrubbingRule1.
 The new log scrubbing rule configuration is stored to $logScrubbingRuleConfig.
 
 
@@ -48,7 +48,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScrubbingRules
+### -ScrubbingRule
 The rules that are applied to the logs for scrubbing.
 
 ```yaml

@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The rules that are applied to the logs for scrubbing.")]
         [ValidateNotNullOrEmpty]
-        public PSApplicationGatewayFirewallPolicyLogScrubbingRule[] ScrubbingRules { get; set; }
+        public PSApplicationGatewayFirewallPolicyLogScrubbingRule[] ScrubbingRule { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration()
             {
                 State = this.State,
-                ScrubbingRules = this.ScrubbingRules?.ToList()
+                ScrubbingRules = this.ScrubbingRule?.ToList()
             };
         }
     }
