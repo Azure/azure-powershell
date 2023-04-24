@@ -302,7 +302,7 @@ function New-AzMobileNetworkSite {
             $hasControlPlaneAccessInterfaceIpv4Address = $PSBoundParameters.Remove('ControlPlaneAccessInterfaceIpv4Address')
             $hasControlPlaneAccessInterfaceIpv4Gateway = $PSBoundParameters.Remove('ControlPlaneAccessInterfaceIpv4Gateway')
             $hasControlPlaneAccessInterfaceIpv4Subnet = $PSBoundParameters.Remove('ControlPlaneAccessInterfaceIpv4Subnet')
-            $null = $PSBoundParameters.Remove('CustomLocationId')
+            $hasCustomLocationId = $PSBoundParameters.Remove('CustomLocationId')
             $hasAzureStackEdgeDeviceId = $PSBoundParameters.Remove('AzureStackEdgeDeviceId')
             $hasLocalDiagnosticAccessAuthenticationType = $PSBoundParameters.Remove('LocalDiagnosticAccessAuthenticationType')
             $hasCoreNetworkTechnology = $PSBoundParameters.Remove('CoreNetworkTechnology')
@@ -314,13 +314,13 @@ function New-AzMobileNetworkSite {
             $hasUserPlaneAccessInterfaceName = $PSBoundParameters.Remove('UserPlaneAccessInterfaceName')
 
             $hasDnsAddress = $PSBoundParameters.Remove('DnsAddress')
-            $null = $PSBoundParameters.Remove('NaptConfigurationEnabled')
+            $hasNaptConfigurationEnabled = $PSBoundParameters.Remove('NaptConfigurationEnabled')
             $hasUserPlaneDataInterfaceIpv4Address = $PSBoundParameters.Remove('UserPlaneDataInterfaceIpv4Address')
             $hasUserPlaneDataInterfaceIpv4Gateway = $PSBoundParameters.Remove('UserPlaneDataInterfaceIpv4Gateway')
             $hasUserPlaneDataInterfaceIpv4Subnet = $PSBoundParameters.Remove('UserPlaneDataInterfaceIpv4Subnet')
             $hasUserPlaneDataInterfaceName = $PSBoundParameters.Remove('UserPlaneDataInterfaceName')
-            $null = $PSBoundParameters.Remove('UserEquipmentAddressPoolPrefix')
-            $null = $PSBoundParameters.Remove('UserEquipmentStaticAddressPoolPrefix')
+            $hasUserEquipmentAddressPoolPrefix = $PSBoundParameters.Remove('UserEquipmentAddressPoolPrefix')
+            $hasUserEquipmentStaticAddressPoolPrefix = $PSBoundParameters.Remove('UserEquipmentStaticAddressPoolPrefix')
 
             # Create Azure MobileNetwork Site
             Az.MobileNetwork.private\New-AzMobileNetworkSite_CreateExpanded @PSBoundParameters
@@ -356,11 +356,14 @@ function New-AzMobileNetworkSite {
                 $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Address', $ControlPlaneAccessInterfaceIpv4Address)
                 $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Gateway', $ControlPlaneAccessInterfaceIpv4Gateway)
                 $PSBoundParameters.Add('ControlPlaneAccessInterfaceIpv4Subnet', $ControlPlaneAccessInterfaceIpv4Subnet)
-                $PSBoundParameters.Add('CustomLocationId', $CustomLocationId)
                 $PSBoundParameters.Add('AzureStackEdgeDeviceId', $AzureStackEdgeDeviceId)
                 $PSBoundParameters.Add('LocalDiagnosticAccessAuthenticationType', $LocalDiagnosticAccessAuthenticationType)
                 $PSBoundParameters.Add('CoreNetworkTechnology', $CoreNetworkTechnology)
                 $PSBoundParameters.Add('Sku', $Sku)
+                
+                if ($hasCustomLocationId) {
+                    $PSBoundParameters.Add('CustomLocationId', $CustomLocationId)
+                }
 
                 Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateExpanded @PSBoundParameters
 
@@ -400,16 +403,23 @@ function New-AzMobileNetworkSite {
                             -And $hasUserPlaneDataInterfaceIpv4Subnet -And $hasUserPlaneDataInterfaceName) {
 
                         $PSBoundParameters.Add('DnsAddress', $DnsAddress)
-                        $PSBoundParameters.Add('NaptConfigurationEnabled', $NaptConfigurationEnabled)
                         $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Address', $UserPlaneDataInterfaceIpv4Address)
                         $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Gateway', $UserPlaneDataInterfaceIpv4Gateway)
                         $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Subnet', $UserPlaneDataInterfaceIpv4Subnet)
                         $PSBoundParameters.Add('UserPlaneDataInterfaceName', $UserPlaneDataInterfaceName)
-                        $PSBoundParameters.Add('UserEquipmentAddressPoolPrefix', $UserEquipmentAddressPoolPrefix)
-                        $PSBoundParameters.Add('UserEquipmentStaticAddressPoolPrefix', $UserEquipmentStaticAddressPoolPrefix)
                         $PSBoundParameters.Add('PacketCoreControlPlaneName', $Name + '-PacketCoreControlPlane')
                         $PSBoundParameters.Add('PacketCoreDataPlaneName', $Name + '-PacketCoreDataPlane')
                         $PSBoundParameters.Add('Name', $DataNetworkName)
+                        
+                        if ($hasNaptConfigurationEnabled) {
+                            $PSBoundParameters.Add('NaptConfigurationEnabled', $NaptConfigurationEnabled)
+                        }
+                        if ($hasUserEquipmentStaticAddressPoolPrefix) {
+                            $PSBoundParameters.Add('UserEquipmentStaticAddressPoolPrefix', $UserEquipmentStaticAddressPoolPrefix)
+                        }
+                        if ($hasUserEquipmentAddressPoolPrefix) {
+                            $PSBoundParameters.Add('UserEquipmentAddressPoolPrefix', $UserEquipmentAddressPoolPrefix)
+                        }
 
                         Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateExpanded @PSBoundParameters
                     }
