@@ -14,7 +14,7 @@ Flushes all the keys in this database and also from its linked databases.
 
 ### FlushExpanded (Default)
 ```
-Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String> [-Name <String>]
  [-SubscriptionId <String>] [-Id <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -22,8 +22,8 @@ Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupN
 ### Flush
 ```
 Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IFlushParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IFlushParameters> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### FlushViaIdentity
@@ -86,8 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -129,6 +128,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the database.
+
+```yaml
+Type: System.String
+Parameter Sets: Flush, FlushExpanded
+Aliases: DatabaseName
+
+Required: False
+Position: Named
+Default value: "default"
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -262,7 +276,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
+INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
@@ -272,7 +286,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-`PARAMETER <IFlushParameters>`: Parameters for a Redis Enterprise active geo-replication flush operation.
+PARAMETER <IFlushParameters>: Parameters for a Redis Enterprise active geo-replication flush operation.
   - `[Id <String[]>]`: The resource identifiers of all the other database resources in the georeplication group to be flushed
 
 ## RELATED LINKS

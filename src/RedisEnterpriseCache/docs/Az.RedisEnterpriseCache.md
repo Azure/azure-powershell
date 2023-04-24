@@ -26,9 +26,6 @@ Retrieves all access keys for a Redis Enterprise database.
 ### [Get-AzRedisEnterpriseCacheOperationStatus](Get-AzRedisEnterpriseCacheOperationStatus.md)
 Gets the status of operation.
 
-### [Get-AzRedisEnterpriseCacheSku](Get-AzRedisEnterpriseCacheSku.md)
-Gets information about skus in specified location for the given subscription id
-
 ### [Import-AzRedisEnterpriseCache](Import-AzRedisEnterpriseCache.md)
 Imports a database file to target database.
 
@@ -39,7 +36,7 @@ Flushes all the keys in this database and also from its linked databases.
 Forcibly removes the link to the specified database resource.
 
 ### [New-AzRedisEnterpriseCache](New-AzRedisEnterpriseCache.md)
-Creates a Redis Enterprise cache.
+Creates or updates an existing (overwrite/recreate, with potential downtime) cache cluster with an associated database.
 
 ### [New-AzRedisEnterpriseCacheDatabase](New-AzRedisEnterpriseCacheDatabase.md)
 Creates a database for a Redis Enterprise cache.

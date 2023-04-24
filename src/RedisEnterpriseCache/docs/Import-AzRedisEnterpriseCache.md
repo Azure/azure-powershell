@@ -197,7 +197,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ALIASES
 
-Import-AzRedisEnterpriseCacheDatabase
+### Import-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
 

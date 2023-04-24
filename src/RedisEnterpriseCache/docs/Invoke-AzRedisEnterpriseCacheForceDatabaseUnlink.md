@@ -15,15 +15,15 @@ Forcibly removes the link to the specified database resource.
 ### ForceExpanded (Default)
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Id <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Id <String[]> [-DatabaseName <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Force
 ```
 Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IForceUnlinkParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Parameter <IForceUnlinkParameters> [-DatabaseName <String>] [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ForceViaIdentity
@@ -83,9 +83,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DatabaseName
+The name of the database.
+
+```yaml
+Type: System.String
+Parameter Sets: Force, ForceExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: "default"
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -260,7 +274,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
+INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
@@ -270,7 +284,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-`PARAMETER <IForceUnlinkParameters>`: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
+PARAMETER <IForceUnlinkParameters>: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
   - `Id <String[]>`: The resource IDs of the database resources to be unlinked.
 
 ## RELATED LINKS
