@@ -53,7 +53,7 @@ $sku=New-AzVirtualApplianceSkuProperty -VendorName "ciscosdwantest" -BundledScal
 
 $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
 
-$additionalNic=New-AzVirtualApplianceAdditionalNicProperties -NicName "sdwan" -HasPublicIp $true
+$additionalNic=New-AzVirtualApplianceAdditionalNicProperty -NicName "sdwan" -HasPublicIp $true
 
 $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -AdditionalNic $additionalNic
 

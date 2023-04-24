@@ -19,10 +19,10 @@ using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceAdditionalNicProperties",
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceAdditionalNicProperty",
         SupportsShouldProcess = true),
         OutputType(typeof(List<PSVirtualApplianceAdditionalNicProperties>))]
-    public class NewVirtualApplianceAdditionaNicPropertiesCommand : VirtualApplianceAdditionalNicPropertiesBaseCmdlet
+    public class NewVirtualApplianceAdditionaNicPropertyCommand : VirtualApplianceAdditionalNicPropertiesBaseCmdlet
     {
         private const int NicNameValueMaxLength = 24;
 
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
 
             additionalNicProperties.Add(additionalNicProperty);
 
-            WriteObject(additionalNicProperties);
+            WriteObject(additionalNicProperties, true);
         }
 
         private void Validate()
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Network
             // validate name length
             if (this.NicName.Length > NicNameValueMaxLength)
             {
-                throw new ArgumentException($"Header Name length is limited to {NicNameValueMaxLength} characters.");
+                throw new ArgumentException($"Nic Name length is limited to {NicNameValueMaxLength} characters.");
             }
         }
     }
