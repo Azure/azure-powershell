@@ -16,7 +16,7 @@ Create a Network Virtual Appliance resource.
 ```
 New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Location <String>
  -VirtualHubId <String> -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32>
- [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>]
+ [-Identity <PSManagedServiceIdentity>] [-BootStrapConfigurationBlob <String[]>] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties>]
  [-CloudInitConfigurationBlob <String[]>] [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -26,12 +26,12 @@ New-AzNetworkVirtualAppliance -Name <String> -ResourceGroupName <String> -Locati
 New-AzNetworkVirtualAppliance -ResourceId <String> -Location <String> -VirtualHubId <String>
  -Sku <PSVirtualApplianceSkuProperties> -VirtualApplianceAsn <Int32> [-Identity <PSManagedServiceIdentity>]
  [-BootStrapConfigurationBlob <String[]>] [-CloudInitConfigurationBlob <String[]>]
- [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-CloudInitConfiguration <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-AdditionalNic <PSVirtualApplianceAdditionalNicProperties>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance resource in Azure.
+The **New-AzNetworkVirtualAppliance** command creates a Network Virtual Appliance(NVA) resource in Azure.
 
 ## EXAMPLES
 
@@ -40,7 +40,6 @@ The New-AzNetworkVirtualAppliance command creates a Network Virtual Appliance re
 $sku=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
 $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
 $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!"
-
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg.
@@ -266,6 +265,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AdditionalNic
+The AdditionalNic Properties of the Virtual Appliance.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualApplianceAdditionalNicProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
