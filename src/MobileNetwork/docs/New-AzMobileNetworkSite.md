@@ -25,8 +25,8 @@ New-AzMobileNetworkSite -MobileNetworkName <String> -Name <String> -ResourceGrou
  [-UserPlaneAccessInterfaceIpv4Address <String>] [-UserPlaneAccessInterfaceIpv4Gateway <String>]
  [-UserPlaneAccessInterfaceIpv4Subnet <String>] [-UserPlaneAccessInterfaceName <String>]
  [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
- [-UserPlaneDataInterfaceIpv4Subnet <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -524,6 +524,22 @@ Accept wildcard characters: False
 
 ### -UserPlaneDataInterfaceIpv4Subnet
 The IPv4 subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserPlaneDataInterfaceName
+The logical name for this interface.
+This should match one of the interfaces configured on your Azure Stack Edge device.
 
 ```yaml
 Type: System.String
