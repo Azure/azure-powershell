@@ -12,19 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
-using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
+using Microsoft.Azure.Commands.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceAdditionalNicProperties", SupportsShouldProcess = true), OutputType(typeof(List<PSVirtualApplianceAdditionalNicProperties>))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceAdditionalNicProperties",
+        SupportsShouldProcess = true),
+        OutputType(typeof(List<PSVirtualApplianceAdditionalNicProperties>))]
     public class NewVirtualApplianceAdditionaNicPropertiesCommand : VirtualApplianceAdditionalNicPropertiesBaseCmdlet
     {
+        private const int NicNameValueMaxLength = 24;
+
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
@@ -52,15 +53,28 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            Validate();
+
             var additionalNicProperties = new List<PSVirtualApplianceAdditionalNicProperties>();
 
             var additionalNicProperty = new PSVirtualApplianceAdditionalNicProperties();
             additionalNicProperty.Name = this.NicName;
             additionalNicProperty.HasPublicIP = this.HasPublicIP;
+            additionalNicProperty.AddressFamily = "IPv4";
 
             additionalNicProperties.Add(additionalNicProperty);
 
             WriteObject(additionalNicProperties);
+        }
+
+        private void Validate()
+        {
+            // validate name length
+            if (this.NicName.Length > NicNameValueMaxLength)
+            {
+                throw new ArgumentException($"Header Name length is limited to {NicNameValueMaxLength} characters.");
+            }
         }
     }
 }

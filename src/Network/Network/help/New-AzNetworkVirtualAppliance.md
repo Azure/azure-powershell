@@ -38,18 +38,25 @@ The **New-AzNetworkVirtualAppliance** command creates a Network Virtual Applianc
 ### Example 1
 ```powershell
 $sku=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
+
 $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
+
 $nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!"
+
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg.
 
 ### Example 2
 ```powershell
-$sku=New-AzVirtualApplianceSkuProperty -VendorName "barracudasdwanrelease" -BundledScaleUnit 1 -MarketPlaceVersion 'latest'
+$sku=New-AzVirtualApplianceSkuProperty -VendorName "ciscosdwantest" -BundledScaleUnit 4 -MarketPlaceVersion '17.6.03'
+
 $hub=Get-AzVirtualHub -ResourceGroupName testrg -Name hub
-$additionalNic=New-AzVirtualApplianceAdditionalNicProperties -NicName "sdwan" -HasPublicIp true
-$nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 1270 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -AdditionalNic $additionalNic
+
+$additionalNic=New-AzVirtualApplianceAdditionalNicProperties -NicName "sdwan" -HasPublicIp $true
+
+$nva=New-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -Location eastus2 -VirtualApplianceAsn 65222 -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo Hello World!" -AdditionalNic $additionalNic
+
 ```
 
 Creates a new Network Virtual Appliance resource in resource group: testrg with additional nic "sdwan" and a public IP attached to "sdwan" nic.
