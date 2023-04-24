@@ -159,6 +159,18 @@ namespace Microsoft.Azure.Commands.KeyVault
                 {
                     throw new AzPSArgumentException(string.Format(Resources.FileNotFound, this.FilePath), nameof(FilePath));
                 }
+                if (IsPemFile(FilePath))
+                {
+                    ContentType = Constants.PemContentType;
+                }
+                else
+                {
+                    ContentType = Constants.Pkcs12ContentType;
+                }
+            }
+            if (this.IsParameterBound(c => c.CertificateCollection))
+            {
+                ContentType = Constants.Pkcs12ContentType;
             }
             if (this.IsParameterBound(c => c.PolicyPath) && this.IsParameterBound(c => c.PolicyObject))
             {
@@ -172,7 +184,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
                 PolicyObject = PSKeyVaultCertificatePolicy.FromJsonFile(PolicyPath);
             }
-            if (PolicyObject != null && this.IsParameterBound(c => c.ContentType) && PolicyObject.SecretContentType != ContentType)
+            if (PolicyObject != null && PolicyObject.SecretContentType != ContentType)
             {
                 throw new AzPSArgumentException($"User input {ContentType} conflicts with the ContentType stated as {PolicyObject.SecretContentType} in Certificate Policy.", ContentType);
             }

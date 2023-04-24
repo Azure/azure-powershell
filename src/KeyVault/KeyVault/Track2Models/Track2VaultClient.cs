@@ -232,10 +232,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             if (certPolicy != null)
             {
                 certificatePolicy = certPolicy.ToTrack2CertificatePolicy();
-                if ( certificatePolicy.ContentType != contentType )
-                {
-                    throw new AzPSArgumentException($"{contentType} indicated by certificate file conflicts with the ContentType stated as {certificatePolicy.ContentType} in Certificate Policy.", contentType);
-                }
             }
             else
             {

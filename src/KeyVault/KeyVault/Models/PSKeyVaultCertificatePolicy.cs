@@ -331,39 +331,24 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
                 }
                 else
                     certificatePolicy = new Track2CertificateSDK.CertificatePolicy(IssuerName, SubjectName);
-            }else
+            }
+            else
             {
                 certificatePolicy = new Track2CertificateSDK.CertificatePolicy();
             }
-            if (!string.IsNullOrWhiteSpace(SecretContentType))
-                certificatePolicy.ContentType = SecretContentType;
-
-            if (!string.IsNullOrWhiteSpace(Kty))
+            certificatePolicy.ContentType = SecretContentType;
+            if ( !string.IsNullOrEmpty(Kty) )
                 certificatePolicy.KeyType = Kty;
-
-            if (KeySize.HasValue)
-                certificatePolicy.KeySize = KeySize;
-
-            if (!string.IsNullOrWhiteSpace(Curve))
+            certificatePolicy.KeySize = KeySize;
+            if (!string.IsNullOrEmpty(Curve))
                 certificatePolicy.KeyCurveName = Curve;
-
-            if (ReuseKeyOnRenewal.HasValue)
-                certificatePolicy.ReuseKey = ReuseKeyOnRenewal;
-
-            if (Exportable.HasValue)
-                certificatePolicy.Exportable = Exportable;
-
-            if (CertificateTransparency.HasValue)
-                certificatePolicy.CertificateTransparency = CertificateTransparency;
-
+            certificatePolicy.ReuseKey = ReuseKeyOnRenewal;
+            certificatePolicy.Exportable = Exportable;
+            certificatePolicy.CertificateTransparency = CertificateTransparency;
             if (!string.IsNullOrWhiteSpace(CertificateType))
                 certificatePolicy.CertificateType = CertificateType;
-
-            if (Enabled.HasValue)
-                certificatePolicy.Enabled = Enabled;
-
-            if (ValidityInMonths.HasValue)
-                certificatePolicy.ValidityInMonths = ValidityInMonths.Value;
+            certificatePolicy.Enabled = Enabled;
+            certificatePolicy.ValidityInMonths = ValidityInMonths;
 
             if (RenewAtNumberOfDaysBeforeExpiry.HasValue ||
                 RenewAtPercentageLifetime.HasValue ||
@@ -746,14 +731,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             var lifetimeAction =
                 lifetimeActions.FirstOrDefault(x => !string.IsNullOrEmpty(x.Action.ToString()) && 0 == string.Compare(x.Action.ToString(), Track2CertificateSDK.CertificatePolicyAction.EmailContacts.ToString(), true)
                                                 && (x.DaysBeforeExpiry.HasValue || x.LifetimePercentage.HasValue));
-            if (lifetimeAction == null)
-                return null;
-            if (lifetimeAction.DaysBeforeExpiry.HasValue)
-                return lifetimeAction.DaysBeforeExpiry;
-            if (lifetimeAction.LifetimePercentage.HasValue)
-                return lifetimeAction.LifetimePercentage;
-            else
-                return null;
+            return lifetimeAction == null ? null : (lifetimeAction.DaysBeforeExpiry ?? lifetimeAction.LifetimePercentage);
         }
 
         private void ValidateInternal(
