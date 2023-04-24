@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualApplianceAdditionalNicProperty",
         SupportsShouldProcess = true),
-        OutputType(typeof(List<PSVirtualApplianceAdditionalNicProperties>))]
+        OutputType(typeof(PSVirtualApplianceAdditionalNicProperties))]
     public class NewVirtualApplianceAdditionaNicPropertyCommand : VirtualApplianceAdditionalNicPropertiesBaseCmdlet
     {
         private const int NicNameValueMaxLength = 24;
@@ -56,16 +56,12 @@ namespace Microsoft.Azure.Commands.Network
 
             Validate();
 
-            var additionalNicProperties = new List<PSVirtualApplianceAdditionalNicProperties>();
-
             var additionalNicProperty = new PSVirtualApplianceAdditionalNicProperties();
             additionalNicProperty.Name = this.NicName;
             additionalNicProperty.HasPublicIP = this.HasPublicIP;
             additionalNicProperty.AddressFamily = "IPv4";
 
-            additionalNicProperties.Add(additionalNicProperty);
-
-            WriteObject(additionalNicProperties, true);
+            WriteObject(additionalNicProperty);
         }
 
         private void Validate()
