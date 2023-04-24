@@ -226,7 +226,8 @@ namespace Microsoft.Azure.Commands.Compute
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
-            "Win10")]
+            "Win10",
+            "Win2016DataCenterGenSecond")]
         [Alias("ImageName")]
         public string Image { get; set; } = "Win2016Datacenter";
 
@@ -423,6 +424,31 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
+        
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableSecureBoot { get; set; } = null;
 
         public override void ExecuteCmdlet()
         {
@@ -552,6 +578,13 @@ namespace Microsoft.Azure.Commands.Compute
                 else {
                     publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
+                
+                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                {
+                    _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                }
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
@@ -662,7 +695,10 @@ namespace Microsoft.Azure.Commands.Compute
                         auxAuthHeader: auxAuthHeader,
                         diskControllerType: _cmdlet.DiskControllerType,
                         extendedLocation: extLoc,
-                        sharedGalleryImageId: _cmdlet.SharedGalleryImageId
+                        sharedGalleryImageId: _cmdlet.SharedGalleryImageId,
+                        securityType: _cmdlet.SecurityType,
+                        enableVtpm: _cmdlet.EnableVtpm,
+                        enableSecureBoot: _cmdlet.EnableSecureBoot
                         );
                 }
                 else
@@ -699,7 +735,10 @@ namespace Microsoft.Azure.Commands.Compute
                         additionalCapabilities: vAdditionalCapabilities,
                         vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
                         vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
-                        extendedLocation: extLoc
+                        extendedLocation: extLoc,
+                        securityType: _cmdlet.SecurityType,
+                        enableVtpm: _cmdlet.EnableVtpm,
+                        enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
                 }
             }
@@ -861,6 +900,21 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.Identity == null)
             {
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+            }
+            
+            if (this.VM?.SecurityProfile?.SecurityType == "TrustedLaunch" || this.VM?.SecurityProfile?.SecurityType == "ConfidentialVM")
+            {
+                if (this.VM?.SecurityProfile?.UefiSettings != null)
+                {
+                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled != null ? this.VM.SecurityProfile.UefiSettings.SecureBootEnabled : true;
+                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled != null ? this.VM.SecurityProfile.UefiSettings.VTpmEnabled : true;
+
+                }
+                else
+                {
+                    this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+                }
+
             }
             
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
