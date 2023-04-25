@@ -40,7 +40,7 @@ function Start-AzMigrateServerMigration {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the target version to which the Os has to be upgraded to. The valid values can be selected from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet.
+        # Specifies the target version to which the Os has to be upgraded to. The valid values can be selected from SupportedOSVersions retrieved using Get-AzMigrateServerReplication cmdlet.
         ${OsUpgradeVersion},
 
         [Parameter()]
@@ -139,20 +139,20 @@ function Start-AzMigrateServerMigration {
         $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
 
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-        $SupportedOsVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOsVersions
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'Migrate' )) {
             $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtMigrateInput]::new()
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.PerformShutdown = $PerformShutDown
             if ($OsUpgradeVersion) {
-                if ($null -eq $SupportedOsVersions) {
+                $SupportedOSVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOSVersions
+                if ($null -eq $SupportedOSVersions) {
                     throw "There is no supported target OS available. Please check or remove the OsUpgradeVersion input." 
                 }
-                elseif ($SupportedOsVersions -contains $OsUpgradeVersion) {
+                elseif ($SupportedOSVersions -contains $OsUpgradeVersion) {
                     $ProviderSpecificDetailInput.OSUpgradeVersion = $OsUpgradeVersion
                 }
                 else {
-                    throw "Please choose the appropriate option from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet"
+                    throw "Please choose the appropriate option from SupportedOSVersions retrieved using Get-AzMigrateServerReplication cmdlet"
                 }
             }
                 

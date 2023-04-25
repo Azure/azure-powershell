@@ -46,7 +46,7 @@ function Start-AzMigrateTestMigration {
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the target version to which the Os has to be upgraded to. The valid values can be selected from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet.
+        # Specifies the target version to which the Os has to be upgraded to. The valid values can be selected from SupportedOSVersions retrieved using Get-AzMigrateServerReplication cmdlet.
         ${OsUpgradeVersion},
 
         [Parameter()]
@@ -139,7 +139,6 @@ function Start-AzMigrateTestMigration {
 
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
         $AvSetId = $ReplicationMigrationItem.ProviderSpecificDetail.TargetAvailabilitySetId
-        $SupportedOsVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOsVersions
         if ($AvSetId)
         {
             Import-module -Name Az.Compute
@@ -188,14 +187,15 @@ function Start-AzMigrateTestMigration {
             $ProviderSpecificDetailInput.InstanceType = 'VMwareCbt'
             $ProviderSpecificDetailInput.NetworkId = $TestNetworkID
             if ($OsUpgradeVersion) {
-                if ($null -eq $SupportedOsVersions) {
+                $SupportedOSVersions = $ReplicationMigrationItem.ProviderSpecificDetail.SupportedOSVersions
+                if ($null -eq $SupportedOSVersions) {
                     throw "There is no supported target OS available. Please check or remove the OsUpgradeVersion input." 
                 }
-                elseif ($SupportedOsVersions -contains $OsUpgradeVersion) {
+                elseif ($SupportedOSVersions -contains $OsUpgradeVersion) {
                     $ProviderSpecificDetailInput.OsUpgradeVersion = $OsUpgradeVersion
                 }
                 else {
-                    throw "Please choose the appropriate option from SupportedOsVersions retrieved using Get-AzMigrateServerReplication cmdlet"
+                    throw "Please choose the appropriate option from SupportedOSVersions retrieved using Get-AzMigrateServerReplication cmdlet"
                 }
             }
             $ProviderSpecificDetailInput.VMNic = $NicToUpdate
