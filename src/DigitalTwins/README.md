@@ -43,6 +43,7 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+keep-pec-and-plr: true
 
 directive:
   - where:
