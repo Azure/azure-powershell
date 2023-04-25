@@ -38,6 +38,8 @@
     - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
     - `New-AzureApplicationGatewayFirewallCustomRule`
 * Added support of `AdditionalNic` Property in New-AzNetworkVirtualAppliance
+* Added the new cmdlet for supporting `AdditionalNic` Property
+    - 'New-AzVirtualApplianceAdditionalNicProperty'
 * Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
     - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration',
     - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingRule',
