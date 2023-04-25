@@ -1,3 +1,7 @@
+## 9.7.1 - May 2023
+#### Az.Websites 2.15.1
+* Used AAD Auth instead of Basic Auth for PublishAzureWebApps
+
 ## 9.7.0 - May 2023
 #### Az.Accounts 2.12.2
 * Fixed 'AzureSynapseAnalyticsEndpointResourceId' of 'USGovernment' environment.
