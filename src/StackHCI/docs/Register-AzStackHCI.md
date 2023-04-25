@@ -196,8 +196,8 @@ Accept wildcard characters: False
 ```
 
 ### -EnableAzureArcServer
-EnableAzureArcServer needs to be specified $true in all the environments except AzureChinaCloud.
-Specifying this parameter to $false in environments except AzureChinaCloud will terminate the registration cmdlet.
+EnableAzureArcServer needs to be specified $true.
+Specifying this parameter to $false will terminate the registration cmdlet.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

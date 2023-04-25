@@ -12,7 +12,7 @@ Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes
 
 Note: Test-AzStackhHCIConnection is deprecated.
 Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
-For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/manage/use-environment-checker.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes
 
 Note: Test-AzStackhHCIConnection is deprecated.
 Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests.
-For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/whats-new#new-azure-stack-hci-environment-checker-tool.
+For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/manage/use-environment-checker.
 
 ## EXAMPLES
 
