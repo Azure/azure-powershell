@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove Registration Info
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> Remove-AzWvdRegistrationInfo -resourceGroupName rgName -hostpoolName hpName
 
-{{ Add output here }}
+Etag IdentityPrincipalId IdentityTenantId IdentityType Kind Location ManagedBy Name    PlanName PlanProduct PlanPromotionCode PlanPublisher PlanVersion SkuCapacity SkuFamily SkuName SkuSize SkuTier
+---- ------------------- ---------------- ------------ ---- -------- --------- ----    -------- ----------- ----------------- ------------- ----------- ----------- --------- ------- ------- -------
+                                                            ukwest             hpName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Removes a Registration Info from a HostPool

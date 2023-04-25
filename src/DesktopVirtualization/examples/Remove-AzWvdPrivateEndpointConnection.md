@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Private Endpoint Connection from a Hostpool
 ```powershell
 {{ Add code here }}
 ```
@@ -9,7 +9,7 @@
 
 {{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a Private Endpoint Connection from a WorkSpace
 ```powershell
 {{ Add code here }}
 ```

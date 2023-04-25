@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: List Private Link Resources by Workspace
 ```powershell
-{{ Add code here }}
+Get-AzWvdPrivateLinkResource -ResourceGroupName ResourceGroupName -WorkspaceName workspaceName
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+feed
+global
 ```
 
-{{ Add description here }}
+List the private link resources available for this workspace.
 
-### Example 2: {{ Add title here }}
+### Example 2: List Private Link Resources by Hostpool
 ```powershell
-{{ Add code here }}
+Get-AzWvdPrivateLinkResource -ResourceGroupName ResourceGroupName -HostPoolName hostpoolName
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+connection
 ```
 
-{{ Add description here }}
-
+List the private link resources available for this hostpool.

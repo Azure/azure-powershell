@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an Application Group
 ```powershell
 PS C:\> {{ Add code here }}
 
@@ -7,7 +7,7 @@ PS C:\> {{ Add code here }}
 
 {{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an Application Group
 ```powershell
 PS C:\> {{ Add code here }}
 

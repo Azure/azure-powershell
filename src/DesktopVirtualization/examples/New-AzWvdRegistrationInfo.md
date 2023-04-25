@@ -1,18 +1,10 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Registration Info for a HostPool
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\> New-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName -ExpirationTime 2050-02-14 12:00
 
-{{ Add output here }}
+ExpirationTime        RegistrationTokenOperation Token
+--------------        -------------------------- -----
+02/14/2050 12:00:00 PM Update                     <base64 encoded string>
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Creates a new Registration Info object for the selected HostPool

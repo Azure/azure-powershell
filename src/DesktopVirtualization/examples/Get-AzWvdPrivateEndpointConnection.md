@@ -1,22 +1,53 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a PrivateEndpointConnection by Workspace
 ```powershell
-{{ Add code here }}
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -workspaceName WorkspaceName -privateEndpointConnectionName privateName
 ```
 
 ```output
-{{ Add output here }}
+Name                                         PrivateEndpointId                                                                                                                           PrivateLinkServiceConnectionStateActionsRequired PrivateLinkServiceConnectionStateDescription PrivateLinkServiceConnectionStateStatus ProvisioningState
+----                                         -----------------                                                                                                                           ------------------------------------------------ -------------------------------------------- --------------------------------------- -----------------
+privateName1                                  /subscriptions/00000000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/microsoft.network/privateendpoints/WorkspaceName  None                                             Auto-approved                                Approved                                Succeeded
 ```
 
-{{ Add description here }}
+Gets a private endpoint connection from a Workspace.
 
-### Example 2: {{ Add title here }}
+### Example 1: List PrivateEndpointConnections by Workspace 
 ```powershell
-{{ Add code here }}
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -workspaceName WorkspaceName
 ```
 
 ```output
-{{ Add output here }}
+Name                                         PrivateEndpointId                                                                                                                           PrivateLinkServiceConnectionStateActionsRequired PrivateLinkServiceConnectionStateDescription PrivateLinkServiceConnectionStateStatus ProvisioningState
+----                                         -----------------                                                                                                                           ------------------------------------------------ -------------------------------------------- --------------------------------------- -----------------
+privateName1                                  /subscriptions/00000000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/microsoft.network/privateendpoints/WorkspaceName None                                             Auto-approved                                Approved                                Succeeded
+privateName2                                  /subscriptions/00000000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/microsoft.network/privateendpoints/WorkspaceName None                                             Auto-approved                                Approved                                Succeeded
 ```
 
-{{ Add description here }}
+Lists private endpoint connections from a Workspace.
 
+### Example 3: Get a PrivateEndpointConnection by HostPool
+```powershell
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -HostPoolName hpName -privateEndpointConnectionName privateName
+```
+
+```output
+Name                                         PrivateEndpointId                                                                                                                     PrivateLinkServiceConnectionStateActionsRequired PrivateLinkServiceConnectionStateDescription PrivateLinkServiceConnectionStateStatus ProvisioningState
+----                                         -----------------                                                                                                                     ------------------------------------------------ -------------------------------------------- --------------------------------------- -----------------
+privateName1                                  /subscriptions/00000000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/microsoft.network/privateendpoints/hpName  None                                             Auto-approved                                Approved                                Succeeded
+```
+
+Gets a private endpoint connection from a HostPool.
+
+### Example 1: List PrivateEndpointConnections by HostPool 
+```powershell
+Get-AzWvdPrivateEndpointConnection -ResourceGroupName ResourceGroupName -HostPoolName hpName
+```
+
+```output
+Name                                         PrivateEndpointId                                                                                                                    PrivateLinkServiceConnectionStateActionsRequired PrivateLinkServiceConnectionStateDescription PrivateLinkServiceConnectionStateStatus ProvisioningState
+----                                         -----------------                                                                                                                    ------------------------------------------------ -------------------------------------------- --------------------------------------- -----------------
+privateName1                                  /subscriptions/00000000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/microsoft.network/privateendpoints/hpName None                                             Auto-approved                                Approved                                Succeeded
+privateName2                                  /subscriptions/00000000-0000-0000-000000000000/resourceGroups/ResourceGroupName/providers/microsoft.network/privateendpoints/hpName None                                             Auto-approved                                Approved                                Succeeded
+```
+
+Lists private endpoint connections from a Hostpool.
