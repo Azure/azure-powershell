@@ -13,14 +13,15 @@ jobs:
 
   steps:
   - task: UseDotNet@2
-    condition: ne('${{ parameters.dotnetVersion }}', '')
     displayName: Install desired .NET version ${{ parameters.dotnetVersion }}
+    condition: ne('${{ parameters.dotnetVersion }}', '')
     inputs:
       packageType: sdk
       version: ${{ parameters.dotnetVersion }}
 
   - task: PowerShell@2
     displayName: Install desired Powershell version ${{ parameters.psVersion }}
+    condition: ne('${{ parameters.psVersion }}', '')
     inputs:
       pwsh: true
       targetType: filePath
@@ -29,6 +30,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Create live test data location directory
+    condition: ne(variables['skipLatest'], 'true')
     inputs:
       pwsh: true
       targetType: inline
@@ -36,7 +38,7 @@ jobs:
         New-Item -Name $(ArtifactsName) -Path $(Pipeline.Workspace) -ItemType Directory -Force
 
   - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), eq(variables['PipelineBuildId'], ''))
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'DailyBuild'), eq(variables['PipelineBuildId'], ''))
     displayName: Download latest artifacts from daily build pipeline main branch
     inputs:
       buildType: 'specific'
@@ -48,7 +50,7 @@ jobs:
       targetPath: $(Pipeline.Workspace)
 
   - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), eq(variables['GalleryName'], 'DailyBuild'), ne(variables['PipelineBuildId'], ''))
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'DailyBuild'), ne(variables['PipelineBuildId'], ''))
     displayName: Download specific artifacts from daily build pipeline
     inputs:
       buildType: 'specific'
@@ -60,7 +62,7 @@ jobs:
       targetPath: $(Pipeline.Workspace)
 
   - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), eq(variables['GalleryName'], 'Sign'), eq(variables['PipelineBuildId'], ''))
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'Sign'), eq(variables['PipelineBuildId'], ''))
     displayName: Download latest artifacts from sign pipeline internal/release branch
     inputs:
       buildType: 'specific'
@@ -72,7 +74,7 @@ jobs:
       targetPath: $(Pipeline.Workspace)
 
   - task: DownloadPipelineArtifact@2
-    condition: and(succeeded(), eq(variables['GalleryName'], 'Sign'), ne(variables['PipelineBuildId'], ''))
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), eq(variables['GalleryName'], 'Sign'), ne(variables['PipelineBuildId'], ''))
     displayName: Download specific artifacts from sign pipeline
     inputs:
       buildType: 'specific'
@@ -84,7 +86,7 @@ jobs:
       targetPath: $(Pipeline.Workspace)
 
   - task: PowerShell@2
-    condition: and(succeeded(), ne(variables['GalleryName'], 'PSGallery'))
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), ne(variables['GalleryName'], 'PSGallery'))
     displayName: Copy artifacts to local repository
     inputs:
       pwsh: true
@@ -97,6 +99,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Install desired Az module from $(GalleryName)
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
     inputs:
       pwsh: true
       targetType: filePath
@@ -105,6 +108,7 @@ jobs:
 
   - task: PowerShell@2
     displayName: Connect Azure with live test service principal
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
     inputs:
       pwsh: true
       targetType: filePath
@@ -114,28 +118,26 @@ jobs:
     retryCountOnTaskFailure: 3
 
   - task: PowerShell@2
-    displayName: Run top E2E live scenarios
+    displayName: Run end-to-end live scenarios
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
     inputs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/InvokeLiveTestCITask.ps1
-      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }} -PowerShellLatest $(PowerShellLatest) -RepoLocation $(Build.SourcesDirectory) -DataLocation $(DataLocation)'
-    retryCountOnTaskFailure: 3
+      arguments: -UseWindowsPowerShell ('${{ parameters.psVersion }}' -eq '5.1') -ScriptFile './tools/TestFx/Live/InvokeLiveTestScenarios.ps1 -OSVersion ${{ parameters.vmImage }} -RunPlatform ${{ parameters.osType }} -RunPowerShell ${{ parameters.psVersion }}'
 
   - task: PowerShell@2
     displayName: Save live test results to Kusto
-    condition: and(succeededOrFailed(), eq(variables['Build.Reason'], 'Schedule'))
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'), or(eq(variables['Build.Reason'], 'Schedule'), eq(variables['Build.SourceBranch'], 'refs/heads/internal/release')))
     inputs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Live/SaveLiveTestResult.ps1
-      arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(LiveTestDatabaseName) $(LiveTestTableName) $(DataLocation) $(Build.BuildId) ${{ parameters.vmImage }} "$(Tag)"
-      failOnStderr: true
-    retryCountOnTaskFailure: 3
+      arguments: $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
 
   - task: PublishPipelineArtifact@1
     displayName: Publish live test results to pipeline artifact
+    condition: and(succeeded(), ne(variables['skipLatest'], 'true'))
     inputs:
       artifact: livetest-os-${{ parameters.vmImage }}-ps-${{ replace(parameters.psVersion, '*', 'x') }}
       targetPath: $(DataLocation)
-    condition: always()

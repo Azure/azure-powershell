@@ -1,63 +1,34 @@
 param (
-    [Parameter(Mandatory, Position = 0)]
-    [ValidateNotNullOrEmpty()]
-    [guid] $ServicePrincipalTenantId,
-
-    [Parameter(Mandatory, Position = 1)]
-    [ValidateNotNullOrEmpty()]
-    [guid] $ServicePrincipalId,
-
-    [Parameter(Mandatory, Position = 2)]
-    [ValidateNotNullOrEmpty()]
-    [string] $ServicePrincipalSecret,
-
-    [Parameter(Mandatory, Position = 3)]
-    [ValidateNotNullOrEmpty()]
-    [string] $ClusterName,
-
-    [Parameter(Mandatory, Position = 4)]
-    [ValidateNotNullOrEmpty()]
-    [string] $ClusterRegion,
-
-    [Parameter(Mandatory, Position = 5)]
-    [ValidateNotNullOrEmpty()]
-    [string] $DatabaseName,
-
-    [Parameter(Mandatory, Position = 6)]
-    [ValidateNotNullOrEmpty()]
-    [string] $TableName,
-
-    [Parameter(Mandatory, Position = 7)]
-    [ValidateNotNullOrEmpty()]
-    [string] $BuildId,
-
-    [Parameter(Mandatory, Position = 8)]
+    [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
     [string] $EmailServiceConnectionString,
 
-    [Parameter(Mandatory, Position = 9)]
+    [Parameter(Mandatory)]
     [ValidateNotNullOrEmpty()]
-    [string] $EmailFrom,
-
-    [Parameter(Mandatory, Position = 10)]
-    [ValidateNotNullOrEmpty()]
-    [string] $EmailTo
+    [string] $EmailFrom
 )
 
-$utilDir = Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities"
+$ltResults = Get-ChildItem -Path ${env:DATALOCATION} -Filter "LiveTestAnalysis" -Directory -Recurse -ErrorAction SilentlyContinue | Get-ChildItem -Filter "Raw" -Directory | Get-ChildItem -Filter "*.csv" -File | Select-Object -ExpandProperty FullName
+if ($null -ne $ltResults) {
+    $errorsArr = $ltResults | ForEach-Object {
+        $ltCsv = $_
+        (Import-Csv -Path $ltCsv) | Where-Object IsSuccess -eq $false | Select-Object OSVersion, PSVersion, Module, Name, Errors | ForEach-Object {
+            $errors = $_.Errors | ConvertFrom-Json
+            [PSCustomObject]@{
+                OSVersion      = $_.OSVersion
+                PSVersion      = $_.PSVersion
+                Module         = $_.Module
+                Name           = $_.Name
+                Exception      = $errors.Exception
+                RetryException = $errors.Retry3Exception
+            }
+        }
+    }
+}
 
-$kustoUtil = $utilDir | Join-Path -ChildPath "KustoUtility.psd1"
-Import-Module $kustoUtil -ArgumentList $ServicePrincipalTenantId, $ServicePrincipalId, $ServicePrincipalSecret, $ClusterName, $ClusterRegion -Force
+$errorsArr
 
-$query = @"
-    $TableName
-    | where BuildId == $BuildId and IsSuccess == false
-    | project BuildId, OSVersion, PSVersion, Module, Name, Exception = tostring(Errors["Exception"]), RetryException = tostring(Errors["Retry3Exception"])
-"@
-$errors = Get-KustoQueryData -DatabaseName $DatabaseName -Query $query
-$errors
-
-$emailSvcUtil = $utilDir | Join-Path -ChildPath "EmailServiceUtility.psd1"
+$emailSvcUtil = Join-Path -Path ($PSScriptRoot | Split-Path) -ChildPath "Utilities" | Join-Path -ChildPath "EmailServiceUtility.psd1"
 Import-Module $emailSvcUtil -ArgumentList $EmailServiceConnectionString, $EmailFrom -Force
 
 $css = @"
@@ -79,19 +50,46 @@ $css = @"
         background-color: #05a6f0;
     }
 
-    h1 {
-        text-align: center;
+    table#summary {
+        width: 50%;
+    }
+
+    table#summary td {
+        width: 50%;
     }
     </style>
 "@
 
-$emailSubject = "Live Test Status Report"
+$emailSubject = "Azure PowerShell Live Test Status Report"
 
-if ($errors.Count -gt 0) {
-    $emailBody = $errors | ConvertTo-Html -Property BuildId, OSVersion, PSVersion, Module, Name, Exception, RetryException -Head $css -Title "Live Test Report" -PreContent "<h1>Live Test Error Details</h1>"
+$summarySection = @"
+    <h1>Live Test Summary</h1>
+    <table id='summary'>
+        <tr>
+            <td><b>Requested For:</b></td>
+            <td>${env:BUILD_REQUESTEDFOR}</td>
+        </tr>
+        <tr>
+            <td><b>Build Number:</b></td>
+            <td>${env:BUILD_BUILDID}</td>
+        </tr>
+        <tr>
+            <td><b>Build Reason:</b></td>
+            <td>${env:BUILD_REASON}</td>
+        </tr>
+        <tr>
+            <td><b>Source Branch Name:</b></td>
+            <td>${env:BUILD_SOURCEBRANCH}</td>
+        </tr>
+    </table>
+    <br />
+"@
+
+if ($errorsArr.Count -gt 0) {
+    $emailBody = $errorsArr | Sort-Object OSVersion, PSVersion, Module, Name | ConvertTo-Html -Property OSVersion, PSVersion, Module, Name, Exception, RetryException -Head $css -Title "Azure PowerShell Live Test Report" -PreContent "$summarySection<h1>Live Test Error Details</h1>"
 }
 else {
-    $emailBody = "<html><body>No live test errors reported. Please check the overall status from Azure pipeline.</body></html>"
+    $emailBody = "<html><head>$css</head><body>$summarySection<div>No live test errors reported. Please check the overall status from Azure pipeline.</div></body></html>"
 }
 
-Send-EmailServiceMail -To $EmailTo -Subject $emailSubject -Body $emailBody
+Send-EmailServiceMail -To "${env:EMAILTO}" -Subject $emailSubject -Body $emailBody
