@@ -50,11 +50,14 @@ directive:
       subject: ^AzureBareMetalInstance(.*)
     set:
       subject: $1
-  # Following is two common directive which are normally required in all the RPs
+  # Following are two common directives which are normally required for all RPs
   # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  - where:
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
   # 2. Remove ViaIdentity parameter set for New-* cmdlets
   - where:
-      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
+      variant: ^CreateViaIdentity.*$
     remove: true
   - where:
       variant: ^GetViaIdentity.*$

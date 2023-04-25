@@ -68,9 +68,14 @@ directive:
   - where:
       subject: OrganizationOperation
     hide: true
-  # Remove the unexpanded parameter set
+  # Following are two common directives which are normally required for all RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
   - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
   
   # Hide the Remove-AzConfluentOrganization for ask user confirmation before Remove-AzConfluentOrganization been invoken

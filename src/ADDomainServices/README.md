@@ -68,13 +68,13 @@ directive:
         $["200"] = {
           "description": "HTTP 200 (OK) should be returned if the object exists and was deleted successfully."
         }
-  # Following are two common directives which are normally required for all RPs
+  # Following are two common directives which are normally required for all the RPs
   # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
   - where:
       variant: ^(Create|Update)(?!.*?Expanded)
     remove: true
   # 2. Remove ViaIdentity parameter set for New-* cmdlets
-   - where:
+  - where:
       variant: ^CreateViaIdentity.*$
     remove: true
   # Remove the set-* cmdlet

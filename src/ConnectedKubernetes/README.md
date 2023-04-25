@@ -66,9 +66,14 @@ directive:
       subject: ^ConnectedCluster(.*)
     set:
       subject: $1
+  # Following are two common directives which are normally required for all RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
-      subject-prefix: ConnectedKubernetes
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
   - where:
       subject-prefix: ConnectedKubernetes

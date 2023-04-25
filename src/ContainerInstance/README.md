@@ -54,11 +54,17 @@ resourcegroup-append: true
 # identity-correctiEXon-for-post: true
 
 directive:
-  # Following is two common directive which are normally required in all the RPs
-  # 1. Remove the unexpanded parameter set
-  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  # Following are two common directives which are normally required for all RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Execute$|^ExecuteViaIdentity$|^ExecuteViaIdentityExpanded$|^AttachViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
+  - where:
+      variant: ^Execute$|^ExecuteViaIdentity$|^ExecuteViaIdentityExpanded$|^AttachViaIdentity$
     remove: true
   # Remove the set-* cmdlet
   - where:

@@ -49,8 +49,14 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  # Following are two common directives which are normally required for all RPs
+  # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
   - where:
       verb: Set

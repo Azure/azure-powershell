@@ -53,11 +53,14 @@ resourcegroup-append: true
 # identity-correction-for-post: true
 
 directive:
-  # Following is two common directive which are normally required in all the RPs
+  # Following are two common directives which are normally required for all RPs
   # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
-  # 2. For New-* cmdlets, ViaIdentity is not required
   - where:
-      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
+  # 2. Remove ViaIdentity parameter set for New-* cmdlets
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
   # Remove the set-* cmdlet
   - where:

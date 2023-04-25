@@ -113,14 +113,17 @@ directive:
           - SystemDataLastModifiedAt
           - SystemDataLastModifiedBy
           - SystemDataLastModifiedByType
-  # Following is two common directive which are normally required in all the RPs
+  # Following are two common directives which are normally required for all RPs
   # 1. Remove the unexpanded parameter set for 'New-*' and 'Update-*'
+  - where:
+      variant: ^(Create|Update)(?!.*?Expanded)
+    remove: true
   # 2. Remove ViaIdentity parameter set for New-* cmdlets
   - where:
-      variant: ^Create(?!.*?Expanded)$|^CreateViaIdentity.*$|^Update(?!.*?Expanded)
-    remove: true         
+      variant: ^CreateViaIdentity.*$
+    remove: true       
   - where:
-      variant: ^Patch(?!.*?Expanded)|^Check(?!.*?Expanded)|^Check(?!.*?Expanded)
+      variant: ^(Patch|Check|Validate)(?!.*?Expanded)
       subject: ^(?!RuleSet).+$
     remove: true
   # Remove the set-* cmdlet
