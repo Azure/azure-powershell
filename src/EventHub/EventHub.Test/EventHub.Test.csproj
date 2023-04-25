@@ -25,4 +25,8 @@
   <ItemGroup>
     <ProjectReference Include="..\EventHub\EventHub.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\" />
+  </ItemGroup>
 </Project>
