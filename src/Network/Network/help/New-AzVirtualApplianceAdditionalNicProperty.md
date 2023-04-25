@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualapplianceadditionalnicproperties
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvirtualapplianceadditionalnicproperty
 schema: 2.0.0
 ---
 
-# New-AzVirtualApplianceAdditionalNicProperties
+# New-AzVirtualApplianceAdditionalNicProperty
 
 ## SYNOPSIS
 Define a Network Virtual Appliance Additional Nic Property for the resource.
@@ -13,18 +13,18 @@ Define a Network Virtual Appliance Additional Nic Property for the resource.
 ## SYNTAX
 
 ```
-New-AzVirtualApplianceAdditionalNicProperties -NicName <String> -HasPublicIp <Boolean>
+New-AzVirtualApplianceAdditionalNicProperty -NicName <String> -HasPublicIp <Boolean>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The New-AzVirtualApplianceAdditionalNicProperties command defines an Additional Nic Property for Network Virtual Appliance resource.
+The New-AzVirtualApplianceAdditionalNicProperty command defines an Additional Nic Property for Network Virtual Appliance resource.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$var=New-AzVirtualApplianceAdditionalNicProperties -NicName "sdwan" -HasPublicIp true
+$var=New-AzVirtualApplianceAdditionalNicProperty -NicName "sdwan" -HasPublicIp $true
 ```
 
 Create an Additional Nic Property object to be used with New-AzNetworkVirtualAppliance command.

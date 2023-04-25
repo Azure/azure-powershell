@@ -38,8 +38,8 @@
     - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
     - `New-AzureApplicationGatewayFirewallCustomRule`
 * Added support of `AdditionalNic` Property in New-AzNetworkVirtualAppliance
-* Adding new cmdlets for supporting `AdditionalNic` Property
-    - 'New-AzVirtualApplianceAdditionalNicProperties'
+* Added the new cmdlet for supporting `AdditionalNic` Property
+    - 'New-AzVirtualApplianceAdditionalNicProperty'
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
