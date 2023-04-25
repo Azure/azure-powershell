@@ -24,7 +24,7 @@ Describe 'New-AzCdnEndpoint'  {
             $location = "westus"
             Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
 
-            $endpoint = New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
+            $endpoint = New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
             
             $endpoint.Name | Should -Be $endpointName
             $endpoint.Location | Should -Be $location

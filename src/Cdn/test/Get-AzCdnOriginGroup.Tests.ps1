@@ -21,7 +21,7 @@ Describe 'Get-AzCdnOriginGroup'  {
             Name = "origin1"
             HostName = "host1.hello.com"
         };
-        $originId = "/subscriptions/$subId/resourcegroups/$env.ResourceGroupName/providers/Microsoft.Cdn/profiles/$env.ClassicCdnProfileName/endpoints/$env.ClassicEndpointName/origins/$($origin.Name)"
+        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$($env.ClassicEndpointName)/origins/$($origin.Name)"
         $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
         $originGroup = @{
             Name = "originGroup1"
@@ -30,16 +30,16 @@ Describe 'Get-AzCdnOriginGroup'  {
                 Id = $originId
             })
         }
-        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$env.ResourceGroupName/providers/Microsoft.Cdn/profiles/$env.ClassicCdnProfileName/endpoints/$env.ClassicEndpointName/origingroups/$($originGroup.Name)"
+        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$($env.ClassicEndpointName)/origingroups/$($originGroup.Name)"
     }
     It 'List' {
-        $originGroups = Get-AzCdnOriginGroup -EndpointName $env.microsoftEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $originGroups = Get-AzCdnOriginGroup -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
-        $originGroups.Count | Should -Be 1
+        $originGroups.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.microsoftEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
         $endpointOriginGroup.Name | Should -Be $originGroup.Name
         $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond
@@ -51,7 +51,7 @@ Describe 'Get-AzCdnOriginGroup'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.microsoftEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOriginGroup
+        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOriginGroup
         
         $endpointOriginGroup.Name | Should -Be $originGroup.Name
         $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond

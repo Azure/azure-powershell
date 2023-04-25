@@ -27,13 +27,15 @@ Describe 'Clear-AzCdnEndpointContent' {
         # Purge content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
         { Clear-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentPath $contentPath } | Should -Throw
+        
+        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
     }
 
     It 'Purge' {
         $contentPath = @{ ContentPath = @("/movies/*","/pictures/pic1.jpg") }
 
         # Purge content on endpoint should succeed
-        Clear-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupNameName -ContentFilePath $contentPath
+        Clear-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentFilePath $contentPath
         # Purge content on non-existing endpoint should fail
         { Clear-AzCdnEndpointContent -EndpointName "fakeEndpoint" -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
         # Purge content on endpoint with invalid content paths should fail
@@ -41,6 +43,8 @@ Describe 'Clear-AzCdnEndpointContent' {
         # Purge content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
         { Clear-AzCdnEndpointContent -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -ContentFilePath $contentPath } | Should -Throw
+        
+        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
     }
 
     It 'PurgeViaIdentityExpanded' {
@@ -55,6 +59,8 @@ Describe 'Clear-AzCdnEndpointContent' {
         # Purge content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
         { $endpoint | Clear-AzCdnEndpointContent -ContentPath $contentPath } | Should -Throw
+
+        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
     }
 
     It 'PurgeViaIdentity' {
@@ -69,5 +75,7 @@ Describe 'Clear-AzCdnEndpointContent' {
         # Purge content on stopped endpoint should fail
         Stop-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
         { $endpoint | Clear-AzCdnEndpointContent -ContentFilePath $contentPath } | Should -Throw
+
+        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
     }
 }

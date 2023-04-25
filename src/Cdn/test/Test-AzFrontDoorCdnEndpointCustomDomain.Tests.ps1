@@ -17,13 +17,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzFrontDoorCdnEndpointCu
 Describe 'Test-AzFrontDoorCdnEndpointCustomDomain'  {
     It 'ValidateExpanded' {
         $hostName = "test.dev.cdn.azure.cn"
-        Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName $env.EndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $hostName
+        Test-AzFrontDoorCdnEndpointCustomDomain -EndpointName $env.FrontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $hostName
     }
 
     It 'ValidateViaIdentityExpanded' {
         $PSDefaultParameterValues['Disabled'] = $true
         $hostName = "test.dev.cdn.azure.cn"
-        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.EndpointName `
+        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName `
         | Test-AzFrontDoorCdnEndpointCustomDomain -HostName $hostName
     }
 }

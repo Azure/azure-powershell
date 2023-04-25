@@ -24,6 +24,7 @@ Describe 'Start-AzCdnEndpoint'  {
     }
 
     It 'StartViaIdentity' {
+        $PSDefaultParameterValues['Disabled'] = $true
         Stop-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Start-AzCdnEndpoint
 

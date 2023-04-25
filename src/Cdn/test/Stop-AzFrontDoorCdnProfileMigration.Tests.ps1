@@ -15,12 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzFrontDoorCdnProfileMig
 }
 
 Describe 'Stop-AzFrontDoorCdnProfileMigration'  {
-    BeforeAll {
-        $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-        New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
-
+    It 'Delete' {
+        $subId = $env.SubscriptionId
         $Name = 'fdp-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use frontDoorName : $($Name)"
 
@@ -28,16 +24,8 @@ Describe 'Stop-AzFrontDoorCdnProfileMigration'  {
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor";
-        New-AzFrontDoorCdnProfile -SubscriptionId $subId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-    }
+        New-AzFrontDoorCdnProfile -SubscriptionId $subId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-    It 'Delete' {
-        try
-        {
-            Stop-AzFrontDoorCdnProfileMigration -SubscriptionId $subId -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        Stop-AzFrontDoorCdnProfileMigration -SubscriptionId $subId -ResourceGroupName $env.ResourceGroupName -ProfileName $frontDoorCdnProfileName
     }
 }

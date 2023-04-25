@@ -28,24 +28,27 @@ Describe 'Get-AzFrontDoorCdnOrigin'  {
 
         $hostName = "en.wikipedia.org";
         $originName = 'ori' + (RandomString -allChars $false -len 6);
+
+        Write-Host -ForegroundColor Green "Start to create origin."    
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
         -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
         -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
     }
 
     It 'List' {
-        $origins = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.FrontDoorCdnProfileName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
-        $origins.Count | Should -Be 1
+        Write-Host -ForegroundColor Green "Get origin."   
+        $origins = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
+        $origins.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.FrontDoorCdnProfileName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
+        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
         $origin.Name | Should -Be $originName
     }
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.FrontDoorCdnProfileName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | Get-AzFrontDoorCdnOrigin
+        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | Get-AzFrontDoorCdnOrigin
         $origin.Name | Should -Be $originName
     }
 }

@@ -16,6 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOriginGroup'))
 
 Describe 'New-AzCdnOriginGroup'  {
     It 'CreateExpanded' {
+        $subId = $env.SubscriptionId
         $endpointName = 'e-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
         
@@ -24,7 +25,7 @@ Describe 'New-AzCdnOriginGroup'  {
             Name = "origin1"
             HostName = "host1.hello.com"
         };
-        $originId = "/subscriptions/$subId/resourcegroups/$env.ResourceGroupName/providers/Microsoft.Cdn/profiles/$env.ClassicCdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName/origins/$($origin.Name)"
         $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
         $originGroup = @{
             Name = "originGroup1"
@@ -33,7 +34,7 @@ Describe 'New-AzCdnOriginGroup'  {
                 Id = $originId
             })
         }
-        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$env.ResourceGroupName/providers/Microsoft.Cdn/profiles/$env.ClassicCdnProfileName/endpoints/$endpointName/origingroups/$($originGroup.Name)"
+        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName/origingroups/$($originGroup.Name)"
         $createdEndpoint = New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
             -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
 

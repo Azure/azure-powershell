@@ -21,6 +21,13 @@ Describe 'Update-AzFrontDoorCdnCustomDomain'  {
     }
     It 'UpdateExpanded' {
         {
+            $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
+            $hostName = "pstestrefresh3.dev.cdn.azure.cn"
+            $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
+            -HostName $hostName
+            Write-Host -ForegroundColor Green "Use customDomain token : $($customDomain.ValidationPropertyValidationTokenex)"
+            
             $secretName = "se-" + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
@@ -32,9 +39,9 @@ Describe 'Update-AzFrontDoorCdnCustomDomain'  {
 
             $updateSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 
-            Update-AzFrontDoorCdnCustomDomain -CustomDomainName $env.FrontDoorCustomDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
+            Update-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
             -TlsSetting $updateSetting
-        } | Should -Not -Throw
+        }
     }
 
     It 'UpdateViaIdentityExpanded' {

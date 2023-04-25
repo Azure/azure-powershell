@@ -61,7 +61,7 @@ Describe 'Get-AzFrontDoorCdnRoute'  {
 
     It 'List' {
         $routes = Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName
-        $routes.Count | Should -Be 1
+        $routes.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {

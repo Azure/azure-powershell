@@ -16,30 +16,77 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzCdnOriginGroup'))
 
 Describe 'Remove-AzCdnOriginGroup'  {
     It 'Delete' {
-        $originGroupName = "originGroup2"
-        $probeInterval = 120
-        $probePath = "/check-health.aspx"
-        $probeProtocol = "Http"
-        $probeRequestType = "HEAD"
-        $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond $probeInterval `
-            -ProbePath $probePath -ProbeProtocol $probeProtocol -ProbeRequestType $probeRequestType 
-
-        New-AzCdnOriginGroup -EndpointName $env.ClassicEndpointName -Name $originGroupName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-            -HealthProbeSetting $healthProbeParametersObject -Origin @(@{ Id = $originId })
+        $subId = $env.SubscriptionId
+        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
         
-        Remove-AzCdnOriginGroup -EndpointName $env.ClassicEndpointName -Name $originGroupName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $location = "westus"
+        $origin = @{
+            Name = "origin1"
+            HostName = "host1.hello.com"
+        };
+        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName/origins/$($origin.Name)"
+        $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
+        $originGroup = @{
+            Name = "originGroup1"
+            healthProbeSetting = $healthProbeParametersObject 
+            Origin = @(@{
+                Id = $originId
+            })
+        }
+        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName/origingroups/$($originGroup.Name)"
+        $createdEndpoint = New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+            -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup
+
+        $originGroupName2 = "originGroup2"
+        $probeInterval2 = 120
+        $probePath2 = "/check-health.aspx"
+        $probeProtocol2 = "Http"
+        $probeRequestType2 = "HEAD"
+        $healthProbeParametersObject2 = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond $probeInterval2 `
+            -ProbePath $probePath2 -ProbeProtocol $probeProtocol2 -ProbeRequestType $probeRequestType2 
+
+        New-AzCdnOriginGroup -EndpointName $endpointName -Name $originGroupName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -HealthProbeSetting $healthProbeParametersObject2 -Origin @(@{ Id = $originId })
+
+        Remove-AzCdnOriginGroup -EndpointName $endpointName -Name $originGroupName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'DeleteViaIdentity' {
-        $originGroupName = "originGroup2"
-        $probeInterval = 120
-        $probePath = "/check-health.aspx"
-        $probeProtocol = "Http"
-        $probeRequestType = "HEAD"
-
-        New-AzCdnOriginGroup -EndpointName $env.ClassicEndpointName -Name $originGroupName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-            -HealthProbeSetting $healthProbeParametersObject -Origin @(@{ Id = $originId })
+        $PSDefaultParameterValues['Disabled'] = $true
+        $subId = $env.SubscriptionId
+        $endpointName2 = 'e-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName2)"
         
-        Get-AzCdnOriginGroup -EndpointName $env.ClassicEndpointName -Name $originGroupName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Remove-AzCdnOriginGroup
+        $location = "westus"
+        $origin = @{
+            Name = "origin1"
+            HostName = "host1.hello.com"
+        };
+        $originId2 = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName2/origins/$($origin.Name)"
+        $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
+        $originGroup2 = @{
+            Name = "originGroup1"
+            healthProbeSetting = $healthProbeParametersObject 
+            Origin = @(@{
+                Id = $originId2
+            })
+        }
+        $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName2/origingroups/$($originGroup2.Name)"
+        $createdEndpoint = New-AzCdnEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+            -Origin $origin -OriginGroup $originGroup2 -DefaultOriginGroupId $defaultOriginGroup
+
+        $originGroupName2 = "originGroup2"
+        $probeInterval2 = 120
+        $probePath2 = "/check-health.aspx"
+        $probeProtocol2 = "Http"
+        $probeRequestType2 = "HEAD"
+        $healthProbeParametersObject2 = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond $probeInterval2 `
+            -ProbePath $probePath2 -ProbeProtocol $probeProtocol2 -ProbeRequestType $probeRequestType2 
+
+        New-AzCdnOriginGroup -EndpointName $endpointName2 -Name $originGroupName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -HealthProbeSetting $healthProbeParametersObject2 -Origin @(@{ Id = $originId2 })
+        
+        Get-AzCdnOriginGroup -EndpointName $endpointName2 -Name $originGroupName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Remove-AzCdnOriginGroup
     }
 }

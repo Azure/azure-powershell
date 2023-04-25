@@ -19,7 +19,8 @@ Describe 'New-AzFrontDoorCdnProfile'  {
         $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
-        $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        $profileSku = "Standard_AzureFrontDoor"
+        $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
         
         $frontDoorCdnProfile.Name | Should -Be $frontDoorCdnProfileName
         $frontDoorCdnProfile.SkuName | Should -Be $profileSku

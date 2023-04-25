@@ -15,19 +15,30 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzCdnEndpoint'))
 }
 
 Describe 'Stop-AzCdnEndpoint'  {
+    BeforeAll {
+        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $origin = @{
+            Name = "origin1"
+            HostName = "host1.hello.com"
+        };
+        $location = "westus"
+        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+
+        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
+    }
     It 'Stop' {
-        Stop-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
+        Stop-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
         
-        $endpoint.ResourceState | Should -Be "Stopped"
+        $res.ResourceState | Should -Be "Stopped"
     }
 
     It 'StopViaIdentity' {
-        Start-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName | Stop-AzCdnEndpoint
+        $PSDefaultParameterValues['Disabled'] = $true
+        $endpoint1 =  Start-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
+        Write-Host -ForegroundColor Green "Endpoint status: $($endpoint1.ResourceState)" 
+        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName | Stop-AzCdnEndpoint
 
-        $endpoint.ResourceState | Should -Be "Stopped"
-        # For other tests, we need to start the endpoint.
-        Start-AzCdnEndpoint -Name $env.ClassicEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
+        $res.ResourceState | Should -Be "Stopped"
     }
 }

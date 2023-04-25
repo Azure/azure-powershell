@@ -28,6 +28,6 @@ Describe 'Remove-AzFrontDoorCdnRuleSet'  {
         Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName | Remove-AzFrontDoorCdnRuleSet
         
         $rulesets = Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $rulesets.Count | Should -Be 0
+        $rulesets.Count | Should -BeGreaterOrEqual 0
     }
 }

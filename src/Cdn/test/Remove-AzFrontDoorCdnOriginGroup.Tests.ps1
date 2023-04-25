@@ -31,6 +31,9 @@ Describe 'Remove-AzFrontDoorCdnOriginGroup'  {
 
     It 'DeleteViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
+        New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+        
         Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName | Remove-AzFrontDoorCdnOriginGroup  
     }
 }

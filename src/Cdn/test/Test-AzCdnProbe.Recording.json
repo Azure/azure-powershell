@@ -1,0 +1,76 @@
+{
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview",
+      "Content": "{\r\n  \"probeURL\": \"https://azurecdn-files.azureedge.net/dsa-test/probe-v.txt\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "79" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "0d454a51-9808-44cb-9ea5-61528dc1a957" ],
+        "x-ms-client-request-id": [ "156effb0-92d4-4858-80f7-8561d58a3897" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "x-ms-correlation-request-id": [ "6d61c3b4-462a-4ea6-bb6d-879198cf5bd5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230425T145834Z:6d61c3b4-462a-4ea6-bb6d-879198cf5bd5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 25 Apr 2023 14:58:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "50" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"isValid\":true,\"errorCode\":\"None\",\"message\":null}",
+      "isContentBase64": false
+    }
+  },
+  "Test-AzCdnProbe+[NoContext]+ValidateExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/validateProbe?api-version=2022-11-01-preview",
+      "Content": "{\r\n  \"probeURL\": \"https://www.notexist.com/notexist/notexist.txt\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "68" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "97a6fbb9-9291-4399-8c8f-6e3c8c8176d6" ],
+        "x-ms-client-request-id": [ "2eb22de4-d1b8-43a4-b84f-5b69d2cfd43f" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
+        "x-ms-correlation-request-id": [ "c8f25849-a10a-4e93-ba38-68378a792acc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230425T145835Z:c8f25849-a10a-4e93-ba38-68378a792acc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 25 Apr 2023 14:58:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "194" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"isValid\":false,\"errorCode\":\"EndpointProbeCannotBeRetrieved\",\"message\":\"We couldn\u0027t retrieve the input probe. Please verify that it is publicly accessible and its size is approximately 10 KB.\"}",
+      "isContentBase64": false
+    }
+  }
+}

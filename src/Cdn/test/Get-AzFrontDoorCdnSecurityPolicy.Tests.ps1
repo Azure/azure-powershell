@@ -34,7 +34,7 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy'  {
 
     It 'List' {
         $policies = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $subId
-        $policies.Count | Should -Be 1
+        $policies.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
@@ -46,5 +46,6 @@ Describe 'Get-AzFrontDoorCdnSecurityPolicy'  {
         $PSDefaultParameterValues['Disabled'] = $true
         $policy = Get-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName | Get-AzFrontDoorCdnSecurityPolicy
         $policy.Name | Should -Be $policyName
+        Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
     }
 }

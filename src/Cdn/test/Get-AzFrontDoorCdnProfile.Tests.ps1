@@ -24,7 +24,7 @@ Describe 'Get-AzFrontDoorCdnProfile'  {
         $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName
 
         $frontDoorCdnProfile.Name | Should -Be $env.FrontDoorCdnProfileName
-        $frontDoorCdnProfile.SkuName | Should -Be $profileSku
+        $frontDoorCdnProfile.SkuName | Should -Be "Standard_AzureFrontDoor"
         $frontDoorCdnProfile.Location | Should -Be "Global"
     }
 
@@ -38,7 +38,7 @@ Describe 'Get-AzFrontDoorCdnProfile'  {
         $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName | Get-AzFrontDoorCdnProfile
 
         $frontDoorCdnProfile.Name | Should -Be $env.FrontDoorCdnProfileName
-        $frontDoorCdnProfile.SkuName | Should -Be $profileSku
+        $frontDoorCdnProfile.SkuName | Should -Be "Standard_AzureFrontDoor"
         $frontDoorCdnProfile.Location | Should -Be "Global"
     }
 }

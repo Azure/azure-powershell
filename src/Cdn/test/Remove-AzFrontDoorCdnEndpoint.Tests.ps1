@@ -18,12 +18,12 @@ Describe 'Remove-AzFrontDoorCdnEndpoint'  {
     It 'Delete' {
         $endpointName = 'end-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $$env.FrontDoorCdnProfileName -ResourceGroupName $$env.ResourceGroupName -Location Global
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         $endpoint.Name | Should -Be $endpointName
         $endpoint.Location | Should -Be "Global"
         
-        Remove-AzFrontdoorCdnEndpoint -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName
+        Remove-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
     }
 
     It 'DeleteViaIdentity' {
@@ -31,10 +31,10 @@ Describe 'Remove-AzFrontDoorCdnEndpoint'  {
 
         $endpointName = 'end-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $$env.FrontDoorCdnProfileName -ResourceGroupName $$env.ResourceGroupName -Location Global
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         $endpoint.Name | Should -Be $endpointName
         $endpoint.Location | Should -Be "Global"
-        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName | Remove-AzFrontdoorCdnEndpoint
+        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName | Remove-AzFrontdoorCdnEndpoint
     }
 }

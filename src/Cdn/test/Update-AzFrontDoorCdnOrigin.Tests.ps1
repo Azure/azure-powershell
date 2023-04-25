@@ -37,16 +37,16 @@ Describe 'Update-AzFrontDoorCdnOrigin'  {
     }
 
     It 'UpdateExpanded' {
-        Update-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName -Weight 999
-        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
+        Update-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName -Weight 999
+        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
         $origin.Weight | Should -Be 999
     }
 
     It 'UpdateViaIdentityExpanded' {
         $PSDefaultParameterValues['Disabled'] = $true
-        Get-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | `
+        Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | `
         Update-AzFrontDoorCdnOrigin -Weight 999
-        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
+        $origin = Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName
         $origin.Weight | Should -Be 999
     }
 }

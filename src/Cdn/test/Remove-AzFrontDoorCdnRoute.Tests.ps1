@@ -16,21 +16,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnRoute'))
 
 Describe 'Remove-AzFrontDoorCdnRoute'  {
     BeforeAll {
+        $frontDoorEndpointName = 'end-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"
+        New-AzFrontDoorCdnEndpoint -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+
         $originGroupName = 'org' + (RandomString -allChars $false -len 6);
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
-        -ProbeProtocol "Https" -ProbeRequestType "GET"
+            -ProbeProtocol "Https" -ProbeRequestType "GET"
         $loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200 `
-        -SampleSize 5 -SuccessfulSamplesRequired 4
+            -SampleSize 5 -SuccessfulSamplesRequired 4
         $originGroup = New-AzFrontDoorCdnOriginGroup -OriginGroupName $originGroupName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
+            -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 
         Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName
 
         $hostName = "en.wikipedia.org";
         $originName = 'ori' + (RandomString -allChars $false -len 6);
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-        -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-        -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
+            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
         $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
@@ -49,23 +53,25 @@ Describe 'Remove-AzFrontDoorCdnRoute'  {
         $ruleName = 'r' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-        -Action $actions -Condition $conditions
+            -Action $actions -Condition $conditions
 
         $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
 
         $routeName = 'route' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use routeName : $($routeName)"
-        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $env.FrontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
+        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
     }
 
     It 'Delete'  {
-        Remove-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName -Name $routeName
+        Remove-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName
     }
 
     It 'DeleteViaIdentity'  {
         $PSDefaultParameterValues['Disabled'] = $true
-        Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName -Name $routeName `
+        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
+        Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName `
         | Remove-AzFrontDoorCdnRoute
     }
 }

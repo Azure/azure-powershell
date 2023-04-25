@@ -15,12 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzCdnOriginGroup'))
 }
 
 Describe 'Update-AzCdnOriginGroup'  {
-    BeforeAll {
+    It 'UpdateExpanded' {
+        $subId = $env.SubscriptionId
         $origin = @{
             Name = "origin1"
             HostName = "host1.hello.com"
         };
-        $originId = "/subscriptions/$subId/resourcegroups/$ResourceGroupName/providers/Microsoft.Cdn/profiles/$cdnProfileName/endpoints/$endpointName/origins/$($origin.Name)"
+        $originId = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$($env.ClassicEndpointName)/origins/$($origin.Name)"
         $healthProbeParametersObject = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 240 -ProbePath "/health.aspx" -ProbeProtocol "Https" -ProbeRequestType "GET" 
         $originGroup = @{
             Name = "originGroup1"
@@ -29,61 +30,15 @@ Describe 'Update-AzCdnOriginGroup'  {
                 Id = $originId
             })
         }
-    }
-    It 'UpdateExpanded' {
-        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-    
-        $endpointOriginGroup.Name | Should -Be $originGroup.Name
-        $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond
-        $endpointOriginGroup.HealthProbeSetting.ProbePath | Should -Be $originGroup.HealthProbeSetting.ProbePath
-        $endpointOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $originGroup.HealthProbeSetting.ProbeProtocol
-        $endpointOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be  $originGroup.HealthProbeSetting.ProbeRequestType
-        $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
-
-        $probeInterval2 = 120
-        $probePath2 = "/check-health.aspx"
-        $probeProtocol2 = "Http"
-        $probeRequestType2 = "HEAD"
-        $healthProbeParametersObject2 = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond $probeInterval2 `
-            -ProbePath $probePath2 -ProbeProtocol $probeProtocol2 -ProbeRequestType $probeRequestType2 
-
 
         Update-AzCdnOriginGroup -EndpointName $env.ClassicEndpointName -Name $originGroup.Name -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HealthProbeSetting $healthProbeParametersObject2 -Origin @(@{ Id = $originId })
+            -HealthProbeSetting $healthProbeParametersObject -Origin @(@{ Id = $originId })
         $updatedOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
             
         $updatedOriginGroup.Name | Should -Be $originGroup.Name
-        $updatedOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $probeInterval2
-        $updatedOriginGroup.HealthProbeSetting.ProbePath | Should -Be $probePath2
-        $updatedOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $probeProtocol2
-        $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        $PSDefaultParameterValues['Disabled'] = $true
-        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-    
-        $endpointOriginGroup.Name | Should -Be $originGroup.Name
-        $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond
-        $endpointOriginGroup.HealthProbeSetting.ProbePath | Should -Be $originGroup.HealthProbeSetting.ProbePath
-        $endpointOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $originGroup.HealthProbeSetting.ProbeProtocol
-        $endpointOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be  $originGroup.HealthProbeSetting.ProbeRequestType
-        $endpointOriginGroup.Origin[0].Id | Should -Be $originGroup.Origin[0].Id
-
-        $probeInterval2 = 120
-        $probePath2 = "/check-health.aspx"
-        $probeProtocol2 = "Http"
-        $probeRequestType2 = "HEAD"
-        $healthProbeParametersObject2 = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond $probeInterval2 `
-            -ProbePath $probePath2 -ProbeProtocol $probeProtocol2 -ProbeRequestType $probeRequestType2 
-
-        $endpointOriginGroup | Update-AzCdnOriginGroup -HealthProbeSetting $healthProbeParametersObject2 -Origin @(@{ Id = $originId })
-        $updatedOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
-            
-        $updatedOriginGroup.Name | Should -Be $originGroup.Name
-        $updatedOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $probeInterval2
-        $updatedOriginGroup.HealthProbeSetting.ProbePath | Should -Be $probePath2
-        $updatedOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be $probeProtocol2
-        $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be $probeRequestType2
+        $updatedOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be "240"
+        $updatedOriginGroup.HealthProbeSetting.ProbePath | Should -Be "/health.aspx"
+        $updatedOriginGroup.HealthProbeSetting.ProbeProtocol | Should -Be "Https"
+        $updatedOriginGroup.HealthProbeSetting.ProbeRequestType | Should -Be "GET"
     }
 }

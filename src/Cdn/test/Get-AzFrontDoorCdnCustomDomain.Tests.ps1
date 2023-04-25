@@ -22,12 +22,12 @@ Describe 'Get-AzFrontDoorCdnCustomDomain'  {
 
     It 'Get' {
         $customDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName
-        $customDomain.Name | Should -Be $enve.FrontDoorCustomDomainName
+        $customDomain.Name | Should -Be $env.FrontDoorCustomDomainName
     }
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
         $customDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName | Get-AzFrontDoorCdnCustomDomain
-        $customDomain.Name | Should -Be $enve.FrontDoorCustomDomainName
+        $customDomain.Name | Should -Be $env.FrontDoorCustomDomainName
     }
 }

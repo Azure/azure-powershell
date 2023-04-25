@@ -16,6 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRoute'))
 
 Describe 'New-AzFrontDoorCdnRoute'  {
     It 'CreateExpanded' {
+        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+
         $originGroupName = 'org' + (RandomString -allChars $false -len 6);
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
         -ProbeProtocol "Https" -ProbeRequestType "GET"
@@ -29,8 +33,8 @@ Describe 'New-AzFrontDoorCdnRoute'  {
         $hostName = "en.wikipedia.org";
         $originName = 'ori' + (RandomString -allChars $false -len 6);
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-        -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-        -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
+            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 
         $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use rulesetName : $($rulesetName)"
@@ -49,13 +53,13 @@ Describe 'New-AzFrontDoorCdnRoute'  {
         $ruleName = 'r' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
         New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
-        -Action $actions -Condition $conditions
+            -Action $actions -Condition $conditions
 
         $ruleSetResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $ruleSet.Id
 
         $routeName = 'route' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use routeName : $($routeName)"
-        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $env.FrontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
+        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+            -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
     }
 }

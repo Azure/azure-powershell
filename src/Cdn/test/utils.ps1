@@ -29,24 +29,24 @@ function setupEnv() {
 
     $env.Add("ResourceGroupName", $resourceGroupName)
 
-    # # Create profile, Standard Verizon SKU
-    # $verizonCdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-    # Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"    
-    # New-AzCdnProfile -SkuName "Standard_Verizon" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+    # Create profile, Standard Verizon SKU
+    $verizonCdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
+    Write-Host -ForegroundColor Green "Start to create Standard_Verizon SKU profile : $($verizonCdnProfileName)"    
+    New-AzCdnProfile -SkuName "Standard_Verizon" -Name $verizonCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
 
-    # # Create endpoint, Standard Verizon SKU 
-    # $verizonEndpointName = 'e-' + (RandomString -allChars $false -len 6);
-    # $origin = @{
-    #     Name = "origin1"
-    #     HostName = "host1.hello.com"
-    # };
-    # Write-Host -ForegroundColor Green "Start to creat endpointName : $($verizonEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-    # New-AzCdnEndpoint -Name $verizonEndpointName -ResourceGroupName $resourceGroupName -ProfileName $verizonCdnProfileName -IsHttpAllowed -IsHttpsAllowed `
-    #     -Location $env.location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
-    #     -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString" | Out-Null
+    # Create endpoint, Standard Verizon SKU 
+    $verizonEndpointName = 'e-' + (RandomString -allChars $false -len 6);
+    $origin = @{
+        Name = "origin1"
+        HostName = "host1.hello.com"
+    };
+    Write-Host -ForegroundColor Green "Start to creat endpointName : $($verizonEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+    New-AzCdnEndpoint -Name $verizonEndpointName -ResourceGroupName $resourceGroupName -ProfileName $verizonCdnProfileName -IsHttpAllowed -IsHttpsAllowed `
+        -Location $env.location -Origin $origin -IsCompressionEnabled -ContentTypesToCompress "text/html","text/css" `
+        -OriginHostHeader "www.bing.com" -OriginPath "/photos" -QueryStringCachingBehavior "IgnoreQueryString" | Out-Null
 
-    # $env.Add("VerizonCdnProfileName", $verizonCdnProfileName)
-    # $env.Add("VerizonEndpointName", $verizonEndpointName)
+    $env.Add("VerizonCdnProfileName", $verizonCdnProfileName)
+    $env.Add("VerizonEndpointName", $verizonEndpointName)
     Write-Host -ForegroundColor Green "Standard_Verizon SKU resources have been added to the environment." 
 
     # Create profile, Standard Microsoft SKU
@@ -78,27 +78,31 @@ function setupEnv() {
     New-AzCdnEndpoint -Name $classicCdnEndpointName -ResourceGroupName $resourceGroupName -ProfileName $classicCdnProfileName -Location $location `
         -Origin $origin -OriginGroup $originGroup -DefaultOriginGroupId $defaultOriginGroup | Out-Null
 
+    Write-Host -ForegroundColor Green "Create customDomainName : $($customDomainName), customDomainHostName: $($customDomainHostName)"
+    New-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $classicCdnProfileName -ResourceGroupName $resourceGroupName -HostName $customDomainHostName | Out-Null
+
     $env.Add("ClassicCdnProfileName", $classicCdnProfileName)
     $env.Add("ClassicEndpointName", $classicCdnEndpointName)
+    $env.Add("ClassicCustomDomainName", $customDomainName)
+    $env.Add("ClassicCustomDomainHostName", $customDomainHostName)
     Write-Host -ForegroundColor Green "Standard_Microsoft Standard SKU resources have been added to the environment."    
 
+    $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+    Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU profile : $($frontDoorCdnProfileName)"
+    New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
 
-    # $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-    # Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU profile : $($frontDoorCdnProfileName)"
-    # New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
+    $frontDoorCustomDomainName = "domain-" + (RandomString -allChars $false -len 6);
+    Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU custom domain : $($frontDoorCustomDomainName)"
+    New-AzFrontDoorCdnCustomDomain -CustomDomainName $frontDoorCustomDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName `
+        -HostName "getdomain.dev.cdn.azure.cn" | Out-Null
 
-    # $frontDoorCustomDomainName = "domain-" + (RandomString -allChars $false -len 6);
-    # Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU custom domain : $($frontDoorCustomDomainName)"
-    # New-AzFrontDoorCdnCustomDomain -CustomDomainName $frontDoorCustomDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName `
-    # -HostName "getdomain.dev.cdn.azure.cn" | Out-Null
+    $frontDoorEndpointName = 'end-' + (RandomString -allChars $false -len 6);
+    Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"
+    New-AzFrontDoorCdnEndpoint -EndpointName $frontDoorEndpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global | Out-Null
 
-    # $frontDoorEndpointName = 'end-' + (RandomString -allChars $false -len 6);
-    # Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"
-    # New-AzFrontDoorCdnEndpoint -EndpointName $frontDoorEndpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-    # $env.Add("FrontDoorCdnProfileName", $frontDoorCdnProfileName)
-    # $env.Add("FrontDoorCustomDomainName", $frontDoorCustomDomainName)
-    # $env.Add("FrontDoorEndpointName", $frontDoorEndpointName)
+    $env.Add("FrontDoorCdnProfileName", $frontDoorCdnProfileName)
+    $env.Add("FrontDoorCustomDomainName", $frontDoorCustomDomainName)
+    $env.Add("FrontDoorEndpointName", $frontDoorEndpointName)
     Write-Host -ForegroundColor Green "Standard_AzureFrontDoor SKU resources have been added to the environment." 
         
     # Create 

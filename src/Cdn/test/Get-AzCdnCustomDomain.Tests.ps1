@@ -15,25 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnCustomDomain'))
 }
 
 Describe 'Get-AzCdnCustomDomain'  {
-    BeforeAll {
-        $subId = $env.SubscriptionId
-        # Hard-coding host and endpoint names due to requirement for DNS CNAME
-        $classicCdnEndpointName = 'aa-powershell-20230425-oigr9w'
-        $customDomainHostName = 'aa-powershell-20230425-oigr9w.cdne2e.azfdtest.xyz'
-        $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
-        $location = "westus"
-        $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
-        };
+    # BeforeAll {
+    #     $subId = $env.SubscriptionId
+    #     # Hard-coding host and endpoint names due to requirement for DNS CNAME
+    #     $classicCdnEndpointName = 'aa-powershell-20230425-oigr9w'
+    #     $customDomainHostName = 'aa-powershell-20230425-oigr9w.cdne2e.azfdtest.xyz'
+    #     $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
+    #     $location = "westus"
+    #     $origin = @{
+    #         Name = "origin1"
+    #         HostName = "host1.hello.com"
+    #     };
         
-        Write-Host -ForegroundColor Green "Create endpointName : $($classicCdnEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-        New-AzCdnEndpoint -Name $classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
-            -Origin $origin  | Out-Null
+    #     Write-Host -ForegroundColor Green "Create endpointName : $($classicCdnEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+    #     New-AzCdnEndpoint -Name $classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+    #         -Origin $origin  | Out-Null
 
-        Write-Host -ForegroundColor Green "Create customDomain : $($customDomainName), customDomain HostName : $($customDomainHostName)"
-        $customDomain = New-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $customDomainHostName
-    }
+    #     Write-Host -ForegroundColor Green "Create customDomain : $($customDomainName), customDomain HostName : $($customDomainHostName)"
+    #     $customDomain = New-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $customDomainHostName
+    # }
     
     It 'List' {
         $customDomains = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
@@ -42,17 +42,17 @@ Describe 'Get-AzCdnCustomDomain'  {
     }
 
     It 'Get' {
-        $customDomain = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $customDomain = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
-        $customDomain.Name | Should -Be $customDomainName
-        $customDomain.HostName | Should -Be $customDomainHostName
+        $customDomain.Name | Should -Be $env.ClassicCustomDomainName
+        $customDomain.HostName | Should -Be $env.ClassicCustomDomainHostName
     }
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $customDomain = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnCustomDomain
+        $customDomain = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnCustomDomain
 
-        $customDomain.Name | Should -Be $customDomainName
-        $customDomain.HostName | Should -Be $customDomainHostName
+        $customDomain.Name | Should -Be $env.ClassicCustomDomainName
+        $customDomain.HostName | Should -Be $env.ClassicCustomDomainHostName
     }
 }

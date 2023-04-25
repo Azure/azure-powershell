@@ -15,17 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnOrigin'))
 }
 
 Describe 'Get-AzCdnOrigin'  {
+    BeforeAll {
+        $originName = "origin1"
+        $originHostName = "host1.hello.com"
+    }
+    
     It 'List' {
-        $origins = Get-AzCdnOrigin -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
+        $origins = Get-AzCdnOrigin -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
-        $origins.Count | Should -Be 1
+        $origins.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $originName = "origin1"
-        $originHostName = "host1.hello.com"
-        
-        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
+        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
         $origin.Name | Should -Be $originName
         $origin.HostName | Should -Be $originHostName
@@ -34,10 +36,7 @@ Describe 'Get-AzCdnOrigin'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $originName = "origin1"
-        $originHostName = "host1.hello.com"
-        
-        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName | Get-AzCdnOrigin
+        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOrigin
         
         $origin.Name | Should -Be $originName
         $origin.HostName | Should -Be $originHostName

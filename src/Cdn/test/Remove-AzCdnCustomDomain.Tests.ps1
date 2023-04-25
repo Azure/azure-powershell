@@ -26,8 +26,8 @@ Describe 'Remove-AzCdnCustomDomain'  {
         $customDomainName2 = 'cd-' + (RandomString -allChars $false -len 6);
         
         $origin = @{
-            Name = "origin1"
-            HostName = "host1.hello.com"
+            Name = "origin2"
+            HostName = "host2.hello.com"
         };
         $location = "westus"
 
@@ -37,7 +37,7 @@ Describe 'Remove-AzCdnCustomDomain'  {
 
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName2), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
         New-AzCdnEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
-        New-AzCdnCustomDomain -EndpointName $endpointName -Name $customDomainName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $customDomainHostName2
+        New-AzCdnCustomDomain -EndpointName $endpointName2 -Name $customDomainName2 -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $customDomainHostName2
     }
 
     It 'Delete' {

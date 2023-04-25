@@ -29,8 +29,8 @@ Describe 'Remove-AzFrontDoorCdnOrigin'  {
         $hostName = "en.wikipedia.org";
         $originName = 'ori' + (RandomString -allChars $false -len 6);
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-        -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-        -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
+            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
     }
 
     It 'Delete' {
@@ -39,6 +39,10 @@ Describe 'Remove-AzFrontDoorCdnOrigin'  {
 
     It 'DeleteViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
+        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
+            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
+            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+
         Get-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName -OriginName $originName | Remove-AzFrontDoorCdnOrigin
     }
 }

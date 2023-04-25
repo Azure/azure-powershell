@@ -20,17 +20,9 @@ Describe 'New-AzFrontDoorCdnCustomDomain'  {
         $secretName = "se-" + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-        $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-        -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/certificates/cdndevcn2022-0329"
-        
-        $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
-        Write-Host -ForegroundColor Green "Use secret id : $($secret.Id)"
-        $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
-        $tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
-
         $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
         $hostName = "pstestnew.dev.cdn.azure.cn"
         New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
-        -HostName $hostName -TlsSetting $tlsSetting
+        -HostName $hostName
     }
 }

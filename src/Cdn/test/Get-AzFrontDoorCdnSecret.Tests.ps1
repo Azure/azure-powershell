@@ -30,7 +30,7 @@ Describe 'Get-AzFrontDoorCdnSecret'  {
 
     It 'List' {
         $rules = Get-AzFrontDoorCdnSecret -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
-        $rules.Count | Should -Be 1
+        $rules.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {

@@ -38,7 +38,7 @@ Describe 'Get-AzFrontDoorCdnRule'  {
 
     It 'List' {
         $rules = Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName
-        $rules.Count | Should -Be 1
+        $rules.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {

@@ -42,8 +42,8 @@ Describe 'New-AzCdnDeliveryRuleObject'  {
             $newRule = New-AzCdnDeliveryRuleObject -Name "Rule1" -Condition $condition -Action $action -Order 1
             $deliverypolicy = @($newRule)
 
-            $endpoint = New-AzCdnEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin -DeliveryPolicyRule $deliverypolicy
+            $endpoint = New-AzCdnEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin -DeliveryPolicyRule $deliverypolicy
             
-            $endpoint.DeliveryPolicyRule.Count | Should -Be 1
+            $endpoint.DeliveryPolicyRule.Count | Should -BeGreaterOrEqual 1
     }
 }

@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnEndpointRes
 
 Describe 'Get-AzFrontDoorCdnEndpointResourceUsage'  {
     It 'List' {
-        $endpointUsage = Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName
+        $endpointUsage = Get-AzFrontDoorCdnEndpointResourceUsage -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName
         $endpointUsage | Should -not -BeNullOrEmpty 
     }
 }

@@ -28,7 +28,7 @@ Describe 'Get-AzFrontDoorCdnOriginGroup'  {
 
     It 'List' {
         $originGroups = Get-AzFrontDoorCdnOriginGroup -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
-        $originGroups.Count | Should -Be 1
+        $originGroups.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {

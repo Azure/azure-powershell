@@ -25,7 +25,7 @@ Describe 'Test-AzFrontDoorCdnProfileHostNameAvailability'  {
         $PSDefaultParameterValues['Disabled'] = $true
         $hostName = "hello1.dev.cdn.azure.cn";
         $result = Get-AzFrontDoorCdnProfile -Name $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName | `
-        Test-AzFrontDoorCdnProfileHostNameAvailability -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $hostName
+        Test-AzFrontDoorCdnProfileHostNameAvailability -HostName $hostName
         $result.NameAvailable | Should -Be $true
     }
 }
