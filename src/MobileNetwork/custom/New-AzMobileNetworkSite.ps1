@@ -331,10 +331,12 @@ function New-AzMobileNetworkSite {
 
                 $PSBoundParameters.Add('Name', $DataNetworkName)
 
-                Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateExpanded @PSBoundParameters
-            }
-            else {
-                Write-Warning "In order to create a Mobile Network Data Network successfully, please ensure that parameter [-DataNetworkName] is correctly filled."
+                try {
+                    Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateExpanded @PSBoundParameters
+                }
+                catch {
+                    Write-Error "Failed to create a Mobile Network Data Network. Please ensure that parameter [-DataNetworkName] is correctly filled."
+                }
             }
 
             # New-AzMobileNetworkPacketCoreControlPlane
@@ -364,7 +366,13 @@ function New-AzMobileNetworkSite {
                     $PSBoundParameters.Add('CustomLocationId', $CustomLocationId)
                 }
 
-                Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateExpanded @PSBoundParameters
+                try {
+                    Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreControlPlane_CreateExpanded @PSBoundParameters
+                }
+                catch {
+                    Write-Error "Failed to create a Mobile Network Packet Core Control Plane. Please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-ControlPlaneAccessInterfaceIpv4Gateway], [-ControlPlaneAccessInterfaceIpv4Subnet], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology] and [-Sku] are correctly filled."
+                    throw
+                }
 
                 # New-AzMobileNetworkPacketCoreDataPlane
                 $null = $PSBoundParameters.Remove('Site')
@@ -389,8 +397,14 @@ function New-AzMobileNetworkSite {
                     $PSBoundParameters.Add('PacketCoreControlPlane', $Name + '-PacketCoreControlPlane')
                     $PSBoundParameters.Add('Name', $Name + '-PacketCoreDataPlane')
 
-                    Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateExpanded @PSBoundParameters
-                    
+                    try {
+                        Az.MobileNetwork.private\New-AzMobileNetworkPacketCoreDataPlane_CreateExpanded @PSBoundParameters
+                    }
+                    catch {
+                        Write-Error "Failed to create a Mobile Network Packet Core Data Plane. Please ensure that parameters [-UserPlaneAccessInterfaceIpv4Address], [-UserPlaneAccessInterfaceIpv4Gateway], [-UserPlaneAccessInterfaceIpv4Subnet] and [-UserPlaneAccessInterfaceName] are correctly filled."
+                        throw
+                    }
+
                     # New-AzMobileNetworkAttachedDataNetwork
                     $null = $PSBoundParameters.Remove('UserPlaneAccessInterfaceIpv4Address')
                     $null = $PSBoundParameters.Remove('UserPlaneAccessInterfaceIpv4Gateway')
@@ -399,7 +413,8 @@ function New-AzMobileNetworkSite {
                     $null = $PSBoundParameters.Remove('PacketCoreControlPlane')
                     $null = $PSBoundParameters.Remove('Name')
                     if ($hasDnsAddress -And $hasUserPlaneDataInterfaceIpv4Address -And $hasUserPlaneDataInterfaceIpv4Gateway `
-                            -And $hasUserPlaneDataInterfaceIpv4Subnet -And $hasUserPlaneDataInterfaceName) {
+                            -And $hasUserPlaneDataInterfaceIpv4Subnet -And $hasUserPlaneDataInterfaceName `
+                            -And ($hasUserEquipmentStaticAddressPoolPrefix -Or $hasUserEquipmentAddressPoolPrefix)) {
 
                         $PSBoundParameters.Add('DnsAddress', $DnsAddress)
                         $PSBoundParameters.Add('UserPlaneDataInterfaceIpv4Address', $UserPlaneDataInterfaceIpv4Address)
@@ -420,18 +435,15 @@ function New-AzMobileNetworkSite {
                             $PSBoundParameters.Add('UserEquipmentAddressPoolPrefix', $UserEquipmentAddressPoolPrefix)
                         }
 
-                        Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateExpanded @PSBoundParameters
-                    }
-                    else {
-                        Write-Warning "In order to create a Mobile Network Attached Data Network successfully, please ensure that parameters [-DnsAddress], [-UserPlaneDataInterfaceIpv4Address], [-UserPlaneDataInterfaceIpv4Gateway], [-UserPlaneDataInterfaceIpv4Subnet], [-UserPlaneDataInterfaceName] are correctly filled."
+                        try {
+                            Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateExpanded @PSBoundParameters
+                        }
+                        catch {
+                            Write-Error "Failed to create a Mobile Network Attached Data Network. Please ensure that parameters [-DnsAddress], [-UserPlaneDataInterfaceIpv4Address], [-UserPlaneDataInterfaceIpv4Gateway], [-UserPlaneDataInterfaceIpv4Subnet], [-UserPlaneDataInterfaceName], [-NaptConfigurationEnabled], [-UserEquipmentStaticAddressPoolPrefix] and [-UserEquipmentAddressPoolPrefix] are correctly filled."
+                            throw
+                        }
                     }
                 }
-                else {
-                    Write-Warning "In order to create a Mobile Network Packet Core Data Plane successfully, please ensure that parameters [-UserPlaneAccessInterfaceIpv4Address], [-UserPlaneAccessInterfaceIpv4Gateway], [-UserPlaneAccessInterfaceIpv4Subnet], [-UserPlaneAccessInterfaceName] are correctly filled."
-                }
-            }
-            else {
-                Write-Warning "In order to create a Mobile Network Packet Core Control Plane successfully, please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-ControlPlaneAccessInterfaceIpv4Gateway], [-ControlPlaneAccessInterfaceIpv4Subnet], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology], [-Sku] are correctly filled."
             }
         }
         catch {
