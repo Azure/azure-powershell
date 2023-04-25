@@ -61,7 +61,12 @@ namespace Microsoft.Azure.Commands.Network
             additionalNicProperty.HasPublicIP = this.HasPublicIP;
             additionalNicProperty.AddressFamily = "IPv4";
 
-            WriteObject(additionalNicProperty);
+            var additionalNicProperties = new List<PSVirtualApplianceAdditionalNicProperties>
+            {
+                additionalNicProperty
+            };
+
+            WriteObject(additionalNicProperties, true);
         }
 
         private void Validate()

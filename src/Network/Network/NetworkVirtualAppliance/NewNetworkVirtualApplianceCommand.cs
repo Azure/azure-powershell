@@ -179,10 +179,7 @@ namespace Microsoft.Azure.Commands.Network
             networkVirtualAppliance.CloudInitConfiguration = this.CloudInitConfiguration;
             if (AdditionalNic != null)
             {
-                networkVirtualAppliance.AdditionalNics = new List<PSVirtualApplianceAdditionalNicProperties>
-                {
-                    AdditionalNic[0]
-                };
+                networkVirtualAppliance.AdditionalNics = AdditionalNic;
             }
 
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);
