@@ -136,7 +136,6 @@ $AlreadyLoggedFlag = "Already Logged"
 #endregion
 
 #region Constants
-
 $UsageServiceFirstPartyAppId = "1322e676-dee7-41ee-a874-ac923822781c"
 $MicrosoftTenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
 
