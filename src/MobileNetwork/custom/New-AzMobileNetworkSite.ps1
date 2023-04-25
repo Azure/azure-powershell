@@ -424,13 +424,11 @@ function New-AzMobileNetworkSite {
                             -Or $hasUserPlaneDataInterfaceIpv4Subnet -Or $hasUserPlaneDataInterfaceName `
                             -Or $hasUserEquipmentStaticAddressPoolPrefix -Or $hasUserEquipmentAddressPoolPrefix) {
                         Write-Warning "In order to create a Mobile Network Attached Data Network successfully, please ensure that parameters [-DnsAddress], [-UserPlaneDataInterfaceIpv4Address], [-UserPlaneDataInterfaceIpv4Gateway], [-UserPlaneDataInterfaceIpv4Subnet], [-UserPlaneDataInterfaceName] are correctly filled."
-                        throw
                     }
                 }
                 elseif ($hasUserPlaneAccessInterfaceIpv4Address -Or $hasUserPlaneAccessInterfaceIpv4Gateway `
                         -Or $hasUserPlaneAccessInterfaceIpv4Subnet -Or $hasUserPlaneAccessInterfaceName) {
                     Write-Warning "In order to create a Mobile Network Packet Core Data Plane successfully, please ensure that parameters [-UserPlaneAccessInterfaceIpv4Address], [-UserPlaneAccessInterfaceIpv4Gateway], [-UserPlaneAccessInterfaceIpv4Subnet], [-UserPlaneAccessInterfaceName] are correctly filled."
-                    throw
                 }
             }
             elseif ($hasPlatformType -Or $hasControlPlaneAccessInterfaceName `
@@ -438,7 +436,6 @@ function New-AzMobileNetworkSite {
                     -Or $hasControlPlaneAccessInterfaceIpv4Subnet -Or $hasAzureStackEdgeDeviceId `
                     -Or $hasLocalDiagnosticAccessAuthenticationType -Or $hasCoreNetworkTechnology -Or $hasSku) {
                 Write-Warning "In order to create a Mobile Network Packet Core Control Plane successfully, please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-ControlPlaneAccessInterfaceIpv4Gateway], [-ControlPlaneAccessInterfaceIpv4Subnet], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology], [-Sku] are correctly filled."
-                throw
             }
         }
         catch {
