@@ -43,6 +43,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         
         public PSVirtualApplianceSkuProperties NvaSku { get; set; }
 
-        public IList<PSVirtualApplianceAdditionalNicProperties> VirtualApplianceAdditionalNics { get; set; }
+        public IList<PSVirtualApplianceAdditionalNicProperties> AdditionalNics { get; set; }
     }
 }

@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Additional Nic Properties of the Virtual Appliance.")]
         [ValidateNotNullOrEmpty]
-        public IList<PSVirtualApplianceAdditionalNicProperties> AdditionalNic { get; set; }
+        public PSVirtualApplianceAdditionalNicProperties[] AdditionalNic { get; set; }
 
         public override void Execute()
         {
@@ -177,12 +177,15 @@ namespace Microsoft.Azure.Commands.Network
             networkVirtualAppliance.BootStrapConfigurationBlobs = this.BootStrapConfigurationBlob;
             networkVirtualAppliance.CloudInitConfigurationBlobs = this.CloudInitConfigurationBlob;
             networkVirtualAppliance.CloudInitConfiguration = this.CloudInitConfiguration;
-            networkVirtualAppliance.VirtualApplianceAdditionalNics = this.AdditionalNic;
+            if (AdditionalNic != null)
+            {
+                networkVirtualAppliance.AdditionalNics = AdditionalNic;
+            }
 
             var networkVirtualApplianceModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkVirtualAppliance>(networkVirtualAppliance);
 
             networkVirtualApplianceModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-            
+
             this.NetworkVirtualAppliancesClient.CreateOrUpdate(this.ResourceGroupName, this.Name, networkVirtualApplianceModel);
             
             var getNetworkVirtualAppliance = this.GetNetworkVirtualAppliance(this.ResourceGroupName, this.Name);
