@@ -23,7 +23,7 @@ Describe 'Get-AzEventHub' {
     It 'Get' {
         $eventHub = Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub
         $eventHub.Name | Should -Be $env.eventHub
-        $eventHub.MessageRetentionInDays | Should -Be 1
+        $eventHub.CleanupPolicy |Should be "Delete"
         $eventHub.PartitionCount | Should -Be 1
     }
 
@@ -32,12 +32,11 @@ Describe 'Get-AzEventHub' {
 
         $eventHub = Get-AzEventHub -InputObject $eventHub
         $eventHub.Name | Should -Be $env.eventHub
-        $eventHub.MessageRetentionInDays | Should -Be 1
+        $eventHub.CleanupPolicy |Should be "Delete"
         $eventHub.PartitionCount | Should -Be 1
 
         $eventHub = Get-AzEventHub -InputObject $eventHub.Id
         $eventHub.Name | Should -Be $env.eventHub
-        $eventHub.MessageRetentionInDays | Should -Be 1
         $eventHub.PartitionCount | Should -Be 1
     }
 }

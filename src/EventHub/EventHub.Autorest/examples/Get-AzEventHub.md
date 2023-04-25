@@ -4,27 +4,38 @@ Get-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Na
 ```
 
 ```output
-ArchiveNameFormat            :
+ArchiveNameFormat            : Active
 BlobContainer                :
 CaptureEnabled               :
-CreatedAt                    : 9/13/2022 9:20:38 AM
+CleanupPolicy                : Compact
+CreatedAt                    : 4/25/2023 4:05:57 AM
 DataLakeAccountName          :
 DataLakeFolderPath           :
 DataLakeSubscriptionId       :
 DestinationName              :
-Encoding                     :
+Encoding                     : Microsoft.EventHub/namespaces/eventhubs
 Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
-IntervalInSeconds            :
-Location                     : australiaeast
-MessageRetentionInDays       : 1
-Name                         : myEventHub
-PartitionCount               : 1
-PartitionId                  : {0}
+IntervalInSeconds            : est [Az.EventHub]>
+Location                     : eastus
+MessageRetentionInDay        : 9223372036854775807
+Name                         : myEventntHub
+PartitionCount               : 4
+PartitionId                  : {0, 1, 2, 3}
 ResourceGroupName            : myResourceGroup
+RetentionTimeInHour          :
 SizeLimitInBytes             :
 SkipEmptyArchive             :
 Status                       : Active
 StorageAccountResourceId     :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TombstoneRetentionTimeInHour :
+Type                         : Microsoft.EventHub/namespaces/eventhubs
+UpdatedAt                    : 4/25/2023 4:05:58 AM
 ```
 
 Gets details of eventhub entity `myEventHub` from namespace `myNamespace`.
