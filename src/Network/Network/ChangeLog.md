@@ -38,6 +38,8 @@
     - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
     - `New-AzureApplicationGatewayFirewallCustomRule`
 * Added support of `AdditionalNic` Property in New-AzNetworkVirtualAppliance
+* Added the new cmdlet for supporting `AdditionalNic` Property
+    - 'New-AzVirtualApplianceAdditionalNicProperty'
 * Updated cmdlet to add the property of RequestBodyEnforcement, RequestBodyInspectLimitInKB  and FileUploadEnforcement 
     - `New-AzApplicationGatewayFirewallPolicySetting`
 
