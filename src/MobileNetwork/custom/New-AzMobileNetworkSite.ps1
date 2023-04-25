@@ -334,8 +334,7 @@ function New-AzMobileNetworkSite {
                 Az.MobileNetwork.private\New-AzMobileNetworkDataNetwork_CreateExpanded @PSBoundParameters
             }
             else {
-                Write-Error "In order to create a Mobile Network Data Network successfully, please ensure that parameter [-DataNetworkName] is correctly filled."
-                return
+                Write-Warning "In order to create a Mobile Network Data Network successfully, please ensure that parameter [-DataNetworkName] is correctly filled."
             }
 
             # New-AzMobileNetworkPacketCoreControlPlane
@@ -424,18 +423,15 @@ function New-AzMobileNetworkSite {
                         Az.MobileNetwork.private\New-AzMobileNetworkAttachedDataNetwork_CreateExpanded @PSBoundParameters
                     }
                     else {
-                        Write-Error "In order to create a Mobile Network Attached Data Network successfully, please ensure that parameters [-DnsAddress], [-UserPlaneDataInterfaceIpv4Address], [-UserPlaneDataInterfaceIpv4Gateway], [-UserPlaneDataInterfaceIpv4Subnet], [-UserPlaneDataInterfaceName] are correctly filled."
-                        return
+                        Write-Warning "In order to create a Mobile Network Attached Data Network successfully, please ensure that parameters [-DnsAddress], [-UserPlaneDataInterfaceIpv4Address], [-UserPlaneDataInterfaceIpv4Gateway], [-UserPlaneDataInterfaceIpv4Subnet], [-UserPlaneDataInterfaceName] are correctly filled."
                     }
                 }
                 else {
-                    Write-Error "In order to create a Mobile Network Packet Core Data Plane successfully, please ensure that parameters [-UserPlaneAccessInterfaceIpv4Address], [-UserPlaneAccessInterfaceIpv4Gateway], [-UserPlaneAccessInterfaceIpv4Subnet], [-UserPlaneAccessInterfaceName] are correctly filled."
-                    return
+                    Write-Warning "In order to create a Mobile Network Packet Core Data Plane successfully, please ensure that parameters [-UserPlaneAccessInterfaceIpv4Address], [-UserPlaneAccessInterfaceIpv4Gateway], [-UserPlaneAccessInterfaceIpv4Subnet], [-UserPlaneAccessInterfaceName] are correctly filled."
                 }
             }
             else {
-                Write-Error "In order to create a Mobile Network Packet Core Control Plane successfully, please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-ControlPlaneAccessInterfaceIpv4Gateway], [-ControlPlaneAccessInterfaceIpv4Subnet], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology], [-Sku] are correctly filled."
-                return
+                Write-Warning "In order to create a Mobile Network Packet Core Control Plane successfully, please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-ControlPlaneAccessInterfaceIpv4Gateway], [-ControlPlaneAccessInterfaceIpv4Subnet], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology], [-Sku] are correctly filled."
             }
         }
         catch {
