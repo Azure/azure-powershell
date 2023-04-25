@@ -436,7 +436,7 @@ function New-AzMobileNetworkSite {
             elseif ($hasPlatformType -Or $hasControlPlaneAccessInterfaceName `
                     -Or $hasControlPlaneAccessInterfaceIpv4Address -Or $hasControlPlaneAccessInterfaceIpv4Gateway `
                     -Or $hasControlPlaneAccessInterfaceIpv4Subnet -Or $hasAzureStackEdgeDeviceId `
-                    -Or $hasLocalDiagnosticAccessAuthenticationType -Or $hasCoreNetworkTechnology -And $hasSku) {
+                    -Or $hasLocalDiagnosticAccessAuthenticationType -Or $hasCoreNetworkTechnology -Or $hasSku) {
                 Write-Warning "In order to create a Mobile Network Packet Core Control Plane successfully, please ensure that parameters [-PlatformType], [-ControlPlaneAccessInterfaceName], [-ControlPlaneAccessInterfaceIpv4Address], [-ControlPlaneAccessInterfaceIpv4Gateway], [-ControlPlaneAccessInterfaceIpv4Subnet], [-AzureStackEdgeDeviceId], [-LocalDiagnosticAccessAuthenticationType], [-CoreNetworkTechnology], [-Sku] are correctly filled."
                 throw
             }
