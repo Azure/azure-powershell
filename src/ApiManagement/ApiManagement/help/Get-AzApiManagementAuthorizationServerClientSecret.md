@@ -35,7 +35,7 @@ $ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-Wes
 Get-AzApiManagementAuthorizationServerClientSecret -Context $ApiMgmtContext -ServerId "0123456789"
 ```
 
-This command gets the specified authorization server cient secret.
+This command gets the specified authorization server client secret.
 
 ## PARAMETERS
 
