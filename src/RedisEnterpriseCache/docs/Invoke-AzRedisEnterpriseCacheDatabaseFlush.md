@@ -1,55 +1,56 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
+online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecachedatabaseflush
 schema: 2.0.0
 ---
 
-# Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink
+# Invoke-AzRedisEnterpriseCacheDatabaseFlush
 
 ## SYNOPSIS
-Forcibly removes the link to the specified database resource.
+Flushes all the keys in this database and also from its linked databases.
 
 ## SYNTAX
 
-### ForceExpanded (Default)
+### FlushExpanded (Default)
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Id <String[]> [-DatabaseName <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Force
-```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
- -Parameter <IForceUnlinkParameters> [-DatabaseName <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String> [-Name <String>]
+ [-SubscriptionId <String>] [-Id <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ForceViaIdentity
+### Flush
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity>
- -Parameter <IForceUnlinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName <String> -ResourceGroupName <String>
+ -Parameter <IFlushParameters> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### FlushViaIdentity
+```
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IFlushParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### ForceViaIdentityExpanded
+### FlushViaIdentityExpanded
 ```
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity> -Id <String[]>
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -InputObject <IRedisEnterpriseCacheIdentity> [-Id <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Forcibly removes the link to the specified database resource.
+Flushes all the keys in this database and also from its linked databases.
 
 ## EXAMPLES
 
-### Example 1: Unlink database
+### Example 1: Flush Cache
 ```powershell
-Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("databaseId")
+Invoke-AzRedisEnterpriseCacheDatabaseFlush -ClusterName "MyCache" -ResourceGroupName "MyResourceGroup" -Id @("Mydatabase1") , @("MyLinkedDatabase1")
 ```
 
-Forcibly removes the link to the database resource whose id is given, from the georeplication group the specified cache belongs to
+## DESCRIPTION
+Flushes all the keys in this database and also from its linked databases.
 
 ## PARAMETERS
 
@@ -73,27 +74,12 @@ The name of the RedisEnterprise cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: Flush, FlushExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DatabaseName
-The name of the database.
-
-```yaml
-Type: System.String
-Parameter Sets: Force, ForceExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: "default"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -114,14 +100,14 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The resource IDs of the database resources to be unlinked.
+The resource identifiers of all the other database resources in the georeplication group to be flushed
 
 ```yaml
 Type: System.String[]
-Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
+Parameter Sets: FlushExpanded, FlushViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -134,13 +120,28 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: ForceViaIdentity, ForceViaIdentityExpanded
+Parameter Sets: FlushViaIdentity, FlushViaIdentityExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the database.
+
+```yaml
+Type: System.String
+Parameter Sets: Flush, FlushExpanded
+Aliases: DatabaseName
+
+Required: False
+Position: Named
+Default value: "default"
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -160,12 +161,12 @@ Accept wildcard characters: False
 ```
 
 ### -Parameter
-Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
+Parameters for a Redis Enterprise active geo-replication flush operation.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IForceUnlinkParameters
-Parameter Sets: Force, ForceViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IFlushParameters
+Parameter Sets: Flush, FlushViaIdentity
 Aliases:
 
 Required: True
@@ -196,7 +197,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: Flush, FlushExpanded
 Aliases:
 
 Required: True
@@ -211,7 +212,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Force, ForceExpanded
+Parameter Sets: Flush, FlushExpanded
 Aliases:
 
 Required: False
@@ -257,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IForceUnlinkParameters
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20230301Preview.IFlushParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
@@ -284,8 +285,8 @@ INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-PARAMETER <IForceUnlinkParameters>: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
-  - `Id <String[]>`: The resource IDs of the database resources to be unlinked.
+PARAMETER <IFlushParameters>: Parameters for a Redis Enterprise active geo-replication flush operation.
+  - `[Id <String[]>]`: The resource identifiers of all the other database resources in the georeplication group to be flushed
 
 ## RELATED LINKS
 

@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the RedisEnterpriseCache servi
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -39,7 +39,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/ea6bb1c836308d5b11166b9b2da6b306bc665a0f/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/redisenterprise.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/aef78a6d0f0bc49b42327621fc670200d7545816/specification/redisenterprise/resource-manager/Microsoft.Cache/preview/2023-03-01-preview/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -88,6 +88,12 @@ directive:
       subject: ^$
     set:
       alias: Import-AzRedisEnterpriseCacheDatabase
+  - where:
+      verb: Clear
+      subject: Database
+    set:
+      verb: Invoke
+      subject: DatabaseFlush
   - where:
       verb: Export
       subject: ^$
@@ -195,11 +201,25 @@ directive:
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     hide: true
+  - where:
+      verb: Get
+      subject: Sku
+    hide: true
 
   # DatabaseName parameter to have value 'default'
   - where:
       subject: ForceDatabaseUnlink
       parameter-name: DatabaseName
+    hide: true
+    set:
+      default:
+        script: '"default"'
+
+  # DatabaseName parameter to have value 'default'
+  - where:
+      verb: Invoke
+      subject: DatabaseFlush
+      parameter-name: Name
     hide: true
     set:
       default:
