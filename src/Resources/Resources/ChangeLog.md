@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `Update-AzADServicePrincipal` when empty array passed for `IdentifierUri` [#21345]
 * Fixed an issue where location header was missing in the response from the service for New-AzManagedApplication.
 
 ## Version 6.6.1

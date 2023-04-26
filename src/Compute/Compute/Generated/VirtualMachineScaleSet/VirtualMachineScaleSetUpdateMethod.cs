@@ -376,6 +376,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
 
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
+        public SwitchParameter OSImageScheduledEventEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The length of time a virtual machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M).")]
+        public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1225,6 +1235,48 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }                
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile = new VirtualMachineScaleSetUpdateVMProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
             if (this.VirtualMachineScaleSetUpdate != null
