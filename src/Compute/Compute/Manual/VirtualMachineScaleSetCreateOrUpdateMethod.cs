@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
-                    enableSecureBoot: _cmdlet.EnableSecureBoot,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
             }
 
@@ -598,7 +598,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
-                    enableSecureBoot: _cmdlet.EnableSecureBoot,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot
                     );
             }
 

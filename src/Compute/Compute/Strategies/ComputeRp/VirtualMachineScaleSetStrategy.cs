@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             Dictionary<string, List<string>> auxAuthHeader,
             string diskControllerType,
             string sharedImageGalleryId,
+            string securityType = null,
             bool? enableVtpm = null,
-            bool? enableSecureBoot = null,
-            string securityType = null
+            bool? enableSecureBoot = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
