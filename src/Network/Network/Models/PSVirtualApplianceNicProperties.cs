@@ -24,5 +24,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Name { get; set; }
         public string PublicIpAddress { get; set; }
         public string PrivateIpAddress { get; set; }
+        public string InstanceName { get; set; }
     }
 }
