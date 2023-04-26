@@ -144,3 +144,26 @@ function Test-CertAndExtension
 	$removeResponse = $cluster | Remove-AzServiceFabricManagedCluster -PassThru
 	Assert-True { $removeResponse }
 }
+
+# new network security rule test
+function Test-AddNetworkSecurityRule
+{
+	$resourceGroupName = "sfmcps-rg-" + (getAssetname)
+	$clusterName = "sfmcps-" + (getAssetname)
+	$pass = (ConvertTo-SecureString -AsPlainText -Force "TestPass1234!@#")
+	$location = "southcentralus"
+	$testClientTp = "123BDACDCDFB2C7B250192C6078E47D1E1DB119B"
+	Assert-ThrowsContains { Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName } "NotFound"
+
+	$tags = @{"test"="tag"}
+
+	$cluster = New-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Location $location `
+		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
+	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
+	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
+	# Assert-AreEqual "Wave0" $cluster.ClusterUpgradeCadence
+
+	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -DiskType Standard_LRS -Primary
+	Assert-AreEqual 5 $pnt.VmInstanceCount
+	Assert-AreEqual "Standard_LRS" $pnt.DataDiskType
+}
