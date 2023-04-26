@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '9.7.0'
+ModuleVersion = '9.7.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -187,85 +187,9 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '9.7.0 - May 2023
-Az.Accounts
-* Fixed ''AzureSynapseAnalyticsEndpointResourceId'' of ''USGovernment'' environment.
-* Updated Azure.Core to 1.31.0.
-* Updated the reference of Azure PowerShell Common to 1.3.75-preview.
-
-Az.Aks
-* Added cmdlet ''New-AzAksMaintenanceConfiguration'', ''Get-AzAksMaintenanceConfiguration'', ''Remove-AzAksMaintenanceConfiguration'', ''New-AzAksSnapshot'', ''Get-AzAksSnapshot'', ''Remove-AzAksSnapshot'', ''Get-AzAksManagedClusterCommandResult'', ''Get-AzAksManagedClusterOSOption'', ''Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint'', ''Invoke-AzAksAbortAgentPoolLatestOperation'', ''Invoke-AzAksAbortManagedClusterLatestOperation'', ''Invoke-AzAksRotateManagedClusterServiceAccountSigningKey'', ''Start-AzAksManagedClusterCommand'', ''New-AzAksTimeInWeekObject'', ''New-AzAksTimeSpanObject''.
-* Added parameter ''-OutboundType'' for ''New-AzAksCluster''
-* Added parameter ''-EnableOidcIssuer'' for ''New-AzAksCluster'' and ''Set-AzAksCluster''
-* Added parameter ''-NodePodSubnetID'' for ''New-AzAksCluster'', ''-PodSubnetID'' for ''New-AzAksNodePool''
-
-Az.Compute
-* Added a breaking change warning to the ''Get-AzVM'' cmdlet to show that the ''NextLink'' parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 
-* Updated the breaking change warning in ''New-AzVM'' and ''New-AzVmss'' regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
-* Updated the ''Get-AzVMRunCommand'' to include the ''ProvisioningState'' value. Fix [#21473]
-* Updated Azure.Core to 1.31.0.
-
-Az.ContainerRegistry
-* Updated Azure.Core to 1.31.0.
-
-Az.CosmosDB
-* Updated Azure.Core to 1.31.0.
-
-Az.KeyVault
-* Added breaking changes for ''Invoke-AzKeyVaultKeyOperation''. The encoded/decoded way between string and bytes in ''Invoke-AzKeyVaultKeyOperation'' will change to UTF8. 
-    - This change will take effect on 5/23/2023
-    - The change is expected to take effect from the version 5.0.0
-* Updated Azure.Core to 1.31.0.
-
-Az.LoadTesting
-* General availability of ''Az.LoadTesting'' module
-
-Az.Network
-* Onboarded ''Microsoft.HardwareSecurityModules/cloudHsmClusters'' to private link cmdlets
-* Fixed the issue for ''Update-AzCustomIpPrefix'' that ''NoInternetAdvertise'' will should be set to false if not provided
-
-Az.PolicyInsights
-* Updated Azure.Core to 1.31.0.
-
-Az.PowerBIEmbedded
-* Added deprecate warning message for workspace collection cmdlets
-
-Az.RecoveryServices
-* Added support for updating CrossSubscriptionRestoreState of the vault
-* Added Cross subscription restore support for workload type MSSQL
-
-Az.Resources
-* Added support for Azure resources deployment with parameters file using Bicep parameters syntax
-
-Az.Sql
-* Added new cmdlets for managing server configuration options
-    - ''Set-AzSqlServerConfigurationOption''
-    - ''Get-AzSqlServerConfigurationOption''
-
-Az.Storage
-* Supported rename file and directory
-    - ''Rename-AzStorageFile''
-    - ''Rename-AzStorageDirectory''
-* Added a warning message for an upcoming breaking change when getting a single blob 
-    - ''Get-AzStorageBlob''
-* Fixed the issue of listing blobs with leading slashes 
-    - ''Get-AzStorageBlob''
-* Added support for sticky bit 
-    - ''New-AzDataLakeGen2Item''
-    - ''New-AzDataLakeGen2ACLObject''
-    - ''Update-AzDataLakeGen2Item''
-* Added warning messages for an upcoming cmdlet breaking change 
-    - ''New-AzStorageAccount''
-    - ''Set-AzStorageAccount''
-* Allowed to clear blob tags on a blob 
-    - ''Set-AzStorageBlobTag''
-* Updated Azure.Core to 1.31.0
-
-Az.Synapse
-* Updated Azure.Core to 1.31.0.
-
-Az.Websites
-* Fixed Tag parameter issues with ASE for ''New-AzWebApp''
+        ReleaseNotes = '9.7.1 - May 2023
+Az.Websites 2.15.1
+* Used AAD Auth instead of Basic Auth for PublishAzureWebApps
 '
 
         # Prerelease string of this module
