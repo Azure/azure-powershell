@@ -2,7 +2,7 @@ parameters:
 - name: poolName
   displayName: Pool Name
   type: string
-  default: pool-ubuntu-2004
+  default: pool-windows-2019
 - name: dotnet_sdk_3_1
   displayName: .NET Core 3.1
   default: 3.1.x
@@ -102,7 +102,7 @@ jobs:
       pwsh: true
       targetType: filePath
       filePath: ./tools/TestFx/Coverage/SaveTestCoverageResult.ps1
-      arguments: CITest $(Build.BuildId) $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion) $(TestCoverageDatabaseName) $(TestCoverageTableName) $(TestCoverageLocation)
+      arguments: CITest $(KustoServicePrincipalTenantId) $(KustoServicePrincipalId) $(KustoServicePrincipalSecret) $(KustoClusterName) $(KustoClusterRegion)
 
   - task: PowerShell@2
     displayName: Update Test Coverage Baseline
