@@ -314,12 +314,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies whether the OS Image Scheduled event is enabled or disabled.")]
+        public SwitchParameter OSImageScheduledEventEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The length of time a virtual machine being reimaged or having its OS upgraded will have to potentially approve the OS Image Scheduled Event before the event is auto approved (timed out). The configuration is specified in ISO 8601 format, with the value set to 15 minutes (PT15M).")]
+        public string OSImageScheduledEventNotBeforeTimeoutInMinutes { get; set; }
 
         [Parameter(
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
         public string SecurityType { get; set; }
 
@@ -327,14 +336,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         public bool? EnableVtpm { get; set; } = null;
 
         [Parameter(
            HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
-        [ValidateNotNullOrEmpty]
         public bool? EnableSecureBoot { get; set; } = null;
 
         protected override void ProcessRecord()
@@ -869,6 +876,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.StorageProfile.ImageReference = new ImageReference();
                 }
                 vVirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId = this.SharedGalleryImageId;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                vVirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
             var vVirtualMachineScaleSet = new PSVirtualMachineScaleSet

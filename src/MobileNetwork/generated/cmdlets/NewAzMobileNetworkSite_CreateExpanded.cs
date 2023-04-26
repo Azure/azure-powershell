@@ -14,6 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/sites/{siteName}"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMobileNetworkSite_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.ISite))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Creates or updates a mobile network site. Must be created in the same location as its parent mobile network.")]
