@@ -111,7 +111,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/549bc277952e66577d69ce137eea810c9815ef22/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/InstanceFailoverGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/62bb0d101c8aee92e4d77ad14b20e4cf14bb181c/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/Servers.json
   - https://github.com/Azure/azure-rest-api-specs/blob/8e7fbe5d8c0e33f99ad365951485107a0ad8a181/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ServerConfigurationOptions.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/aef78a6d0f0bc49b42327621fc670200d7545816/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ElasticPools.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/a67a24b139cab94d66d85546bcdafe6053e71329/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ElasticPools.json
 
 output-folder: Generated
 
