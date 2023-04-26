@@ -53,7 +53,7 @@ Clear the content of an AzureFrontDoor endpoint using Parameter "ContentPath"
 ### Example 2: Clear the content of an AzureFrontDoor endpoint using Parameter "Content"
 ```powershell
 $contentPath = "/a"
-$content = New-AzCdnPurgeParametersObject -ContentPath $contentPath
+$content = New-AzFrontDoorCdnPurgeParametersObject -ContentPath $contentPath
 Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-afdx -ProfileName cdn001 -EndpointName endpointTest001 -Content $content
 ```
 

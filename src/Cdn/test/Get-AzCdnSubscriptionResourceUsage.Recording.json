@@ -1,0 +1,44 @@
+{
+  "Get-AzCdnSubscriptionResourceUsage+[NoContext]+List+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2022-11-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/providers/Microsoft.Cdn/checkResourceUsage?api-version=2022-11-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "158" ],
+        "x-ms-client-request-id": [ "f9935259-3eff-475f-ab11-ac0a4093e396" ],
+        "CommandName": [ "Get-AzCdnSubscriptionResourceUsage" ],
+        "FullCommandName": [ "Get-AzCdnSubscriptionResourceUsage_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.11", "Az.Cdn/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "605a23b1-7c85-4f56-b169-b5505f651539" ],
+        "x-ms-client-request-id": [ "f9935259-3eff-475f-ab11-ac0a4093e396" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "05e38531-d670-4dbc-98e9-6d6e3c7b6f1c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230426T143629Z:05e38531-d670-4dbc-98e9-6d6e3c7b6f1c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 26 Apr 2023 14:36:29 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "157" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"resourceType\":\"profile\",\"unit\":\"count\",\"currentValue\":86,\"limit\":200},{\"resourceType\":\"afdprofile\",\"unit\":\"count\",\"currentValue\":8,\"limit\":500}]}",
+      "isContentBase64": false
+    }
+  }
+}
