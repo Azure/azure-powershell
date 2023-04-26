@@ -42,7 +42,7 @@ The new policySettings is stored to $condition.
 ## PARAMETERS
 
 ### -RequestBodyEnforcement 
-Whether allow WAF to enforce request body limits.
+Configure WAF to enforce request body limits.
 
 ```yaml
 Type: System.Boolean
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadEnforcement  
-Whether allow WAF to enforce file upload limits.
+Configure WAF to enforce file upload limits.
 
 ```yaml
 Type: System.Boolean
