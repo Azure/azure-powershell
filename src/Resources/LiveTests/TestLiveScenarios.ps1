@@ -1,19 +1,19 @@
-Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process of create an application." -Platform Linux -PowerShellVersion Latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process of create an application." -NoResourceGroup -Platform Windows -PowerShellVersion Latest -ScenarioScript `
 {
     try {
         $today = (Get-Date).tostring('yyyy-MM-dd')
-        $appName1 = $today + 'testapp' + ${New-LiveTestRandomName}
+        $appName1 = $today + 'testapp' + (New-LiveTestRandomName)
         $replyUrl1 = 'https://' + $appName1 + '-reply.com'
         $homePage1 = 'https://' + $appName1 + '-home.com'
     
-        $appName2 = $today + 'testapp' + ${New-LiveTestRandomName}
+        $appName2 = $today + 'testapp' + (New-LiveTestRandomName)
         $replyUrl2 = 'https://' + $appName2 + '-reply.com'
         $homePage2 = 'https://' + $appName2 + '-home.com'
     
-        $spName1 = $today + 'testsp' + ${New-LiveTestRandomName}
-        $spName2 = $today + 'testsp' + ${New-LiveTestRandomName}
+        $spName1 = $today + 'testsp' + (New-LiveTestRandomName)
+        $spName2 = $today + 'testsp' + (New-LiveTestRandomName)
     
-        New-AzADApplication -DisplayName $appName1 -ReplyUrls $replyUrl1 -HomePage $homePage1 -AvailableToOtherTenants $true -StartDate (Get-Date)
+        $app1 = New-AzADApplication -DisplayName $appName1 -ReplyUrls $replyUrl1 -HomePage $homePage1 -AvailableToOtherTenants $true -StartDate (Get-Date)
         $app1 = Get-AzADApplication -DisplayName $appName1
         Assert-NotNullOrEmpty $app1
         Assert-AreEqual $replyUrl1 $app1.Web.RedirectUri
@@ -23,7 +23,7 @@ Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process 
         Assert-AreEqual $app1.Id (Get-AzADApplication -ObjectId $app1.id -Select Id).Id
         Assert-AreEqual $app1.Id (Get-AzADApplication -ApplicationId $app1.AppId -Select Id).Id
     
-        Update-AzADApplication -ObjectId $app1.Id -ReplyUrl $replyUrl2 -HomePage $homepage2 -AvailableToOtherTenants $false
+        $app1Update = Update-AzADApplication -ObjectId $app1.Id -ReplyUrl $replyUrl2 -HomePage $homepage2 -AvailableToOtherTenants $false
         $app1Update = Get-AzADApplication -DisplayName $appName1
 
         Assert-AreEqual $replyUrl2 $app1Update.Web.RedirectUri
@@ -39,10 +39,10 @@ Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process 
     
         Remove-AzADAppCredential -ObjectId $app1.Id -KeyId $pw.KeyId
     
-        New-AzADServicePrincipal -ApplicationId $app1.AppId
+        $sp1 = New-AzADServicePrincipal -ApplicationId $app1.AppId
         $sp1 = Get-AzADServicePrincipal -ApplicationId $app1.AppId
-        New-AzADServicePrincipal -DisplayName $spName2        
-        $sp2 = Get-AzADServicePrincipal -ApplicationId -DisplayName $spName2
+        $sp2 = New-AzADServicePrincipal -DisplayName $spName2        
+        $sp2 = Get-AzADServicePrincipal -DisplayName $spName2
         $app2 = Get-AzADApplication -DisplayName $spName2
     } finally {
         if ($sp1) {
@@ -60,41 +60,42 @@ Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process 
     }
 }
 
-Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process of create groups and members." -Platform Linux -PowerShellVersion Latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process of create groups and members." -NoResourceGroup -Platform Windows -PowerShellVersion Latest -ScenarioScript `
 {
     try {
         $today = (Get-Date).tostring('yyyy-MM-dd')
-        $groupName1 = $today + 'testgroup' + ${New-LiveTestRandomName}
-        $groupName2 = $today + 'testgroup' + ${New-LiveTestRandomName}
-        $userName = $today + 'testuser' + ${New-LiveTestRandomName}
+        $groupName1 = $today + 'testgroup' + (New-LiveTestRandomName)
+        $groupName2 = $today + 'testgroup' + (New-LiveTestRandomName)
+        $userName = $today + 'testuser' + (New-LiveTestRandomName)
         
         $groupMailNickName1 = New-LiveTestRandomName
         $groupMailNickName2 = New-LiveTestRandomName
         $userMailNickName = New-LiveTestRandomName
         $userPrincipalName = $userMailNickName + 'microsoft.com#EXT#@AzureSDKTeam.onmicrosoft.com'
 
-        New-AzADGroup -DisplayName $groupName1 -MailNickname $groupMailNickName1
+        $group1 = New-AzADGroup -DisplayName $groupName1 -MailNickname $groupMailNickName1
         $group1 = Get-AzADGroup -DisplayName $groupName1
-        New-AzADGroup -DisplayName $groupName2 -MailNickname $groupMailNickName2
+        $group2 = New-AzADGroup -DisplayName $groupName2 -MailNickname $groupMailNickName2
         $group2 = Get-AzADGroup -DisplayName $groupName2
 
-        $password = New-LiveTestRandomName
+        $password = 'A' + (New-LiveTestRandomName)
         $password = ConvertTo-SecureString -AsPlainText -Force $password
-        New-AzADUser -DisplayName $userName -Password $password -AccountEnabled $true -MailNickname $userMailNickname -UserPrincipalName $userPrincipalName
+        $user = New-AzADUser -DisplayName $userName -Password $password -AccountEnabled $true -MailNickname $userMailNickname -UserPrincipalName $userPrincipalName
         $user = Get-AzADUser -DisplayName $userName
 
         Add-AzADGroupMember -TargetGroupObjectId $group1.Id -MemberObjectId $group2.Id, $user.Id
 
         #TODO: test type of group member and properties, for example, user principal name from user
-        Get-AzADGroupMember -GroupObjectId $group1.Id | ForEach-Object {
-            switch ($_.OdataType) {
+        $members = Get-AzADGroupMember -GroupObjectId $group1.Id
+        foreach ($member in $members) {
+            switch ($member.OdataType) {
                 '#microsoft.graph.user' {
-                    Assert-AreEqual $user.Id $_.Id
-                    Remove-AzADGroupMember -MemberObjectId $user.Id
+                    Assert-AreEqual $user.Id $member.Id
+                    Remove-AzADGroupMember -GroupObjectId $group1.Id -MemberObjectId $user.Id
                 }
                 '#microsoft.graph.group' {
-                    Assert-AreEqual $group2.Id $_.Id
-                    Remove-AzADGroupMember -MemberObjectId $group2.Id
+                    Assert-AreEqual $group2.Id $member.Id
+                    Remove-AzADGroupMember -GroupObjectId $group1.Id -MemberObjectId $group2.Id
                 }
             }
         }
