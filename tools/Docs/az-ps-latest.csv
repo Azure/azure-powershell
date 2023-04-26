@@ -147,7 +147,7 @@ pac145,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-rele
 pac146,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.TrafficManager.1.2.0.nupkg;sourceType=sa]Az.TrafficManager,1.2.0
 pac147,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VMware.0.5.0.nupkg;sourceType=sa]Az.VMware,0.5.0
 pac148,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.VoiceServices.0.1.1.nupkg;sourceType=sa]Az.VoiceServices,0.1.1
-pac149,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Websites.2.15.0.nupkg;sourceType=sa]Az.Websites,2.15.0
+pac149,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Websites.2.15.1.nupkg;sourceType=sa]Az.Websites,2.15.1
 pac150,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.WindowsIotServices.0.1.0.nupkg;sourceType=sa]Az.WindowsIotServices,0.1.0
 pac151,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Workloads.0.1.0.nupkg;sourceType=sa]Az.Workloads,0.1.0
 

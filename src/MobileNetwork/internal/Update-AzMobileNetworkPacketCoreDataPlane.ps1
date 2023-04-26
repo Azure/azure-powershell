@@ -20,7 +20,7 @@ Updates packet core data planes tags.
 .Description
 Updates packet core data planes tags.
 .Example
-Update-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -Tag @{"abc"="123}
+Update-AzMobileNetworkPacketCoreDataPlane -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps-mn-pcdp -ResourceGroupName azps_test_group -Tag @{"abc"="123"}
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreDataPlane

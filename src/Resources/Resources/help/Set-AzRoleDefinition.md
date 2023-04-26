@@ -73,7 +73,6 @@ Following is a sample updated role definition json for Set-AzRoleDefinition:
 #>
 ```
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
