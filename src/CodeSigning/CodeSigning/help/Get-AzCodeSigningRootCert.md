@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CodeSigning.dll-Help.xml
 Module Name: Az.CodeSigning
 ms.assetid: 846F781C-73A3-4BBE-ABD9-897371109FBE
-online version: https://learn.microsoft.com/powershell/module/az.codesigning/invoke-azcodesigningcipolicysigning
+online version: https://learn.microsoft.com/powershell/module/az.codesigning/get-azcodesigningrootcert
 schema: 2.0.0
 ---
 
