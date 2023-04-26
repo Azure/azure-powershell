@@ -22,23 +22,12 @@ Remove the Windows virtual desktop registration info.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove Registration Info
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> Remove-AzWvdRegistrationInfo -resourceGroupName rgName -hostpoolName hpName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes Registration Info from a HostPool
 
 ## PARAMETERS
 
