@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Create protection intent provider specific input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("CreateProtectionIntentProviderSpecificDetails")]
     public partial class CreateProtectionIntentProviderSpecificDetails
     {
         /// <summary>

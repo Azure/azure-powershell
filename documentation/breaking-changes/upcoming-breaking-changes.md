@@ -103,6 +103,11 @@
 
 ## Az.Compute
 
+### `Get-AzVM`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - In the June 2023 Powershell release, the NextLink parameter set will be removed. Powershell by default loops through the list of VMs returned, so the user no longer has to use this parameter set.
+
 ### `New-AzDisk`
 
 - Cmdlet breaking-change will happen to all parameter set
@@ -111,7 +116,7 @@
 ### `New-AzVM`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - Consider using the image alias including the version of the distribution you want to use in the "-Image" parameter of the "New-AzVM" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life.
+  - Consider using the image alias including the version of the distribution you want to use in the "-Image" parameter of the "New-AzVM" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In October 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.
   - Starting in May 2023 the "New-AzVM" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
   - It is recommended to use parameter "-PublicIpSku Standard" in order to create a new VM with a Standard public IP.Specifying zone(s) using the "-Zone" parameter will also result in a Standard public IP.If "-Zone" and "-PublicIpSku" are not specified, the VM will be created with a Basic public IP instead.Please note that the Standard SKU IPs will become the default behavior for VM creation in the future
 
@@ -120,7 +125,7 @@
 - Cmdlet breaking-change will happen to all parameter set
   - Starting May 2023, the "New-AzVmss" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/trustedLaunchVMSS.
   - Starting November 2023, the "New-AzVmss" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.
-  - Consider using the image alias including the version of the distribution you want to use in the "-ImageName" parameter of the "New-AzVmss" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life.
+  - Consider using the image alias including the version of the distribution you want to use in the "-ImageName" parameter of the "New-AzVmss" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In October 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.
 
 ## Az.ContainerRegistry
 
@@ -570,6 +575,13 @@
   - `-RdpCredential`
     - This parameter is being deprecated.
 
+## Az.KeyVault
+
+### `Invoke-AzKeyVaultKeyOperation`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The encoded/decoded way between string and bytes will change to UTF8.
+
 ## Az.LogicApp
 
 ### `New-AzIntegrationAccountMap`
@@ -605,27 +617,6 @@
 
 ## Az.NetAppFiles
 
-### `Get-AzNetAppFilesBackupPolicy`
-
-- Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' is changing
-  - The following properties in the output type are being deprecated : 'YearlyBackupsToKeep'
-
-### `Get-AzNetAppFilesVault`
-
-- Cmdlet breaking-change will happen to all parameter set
-  - The cmdlet is being deprecated. There will be no replacement for it.
-
-### `New-AzNetAppFilesBackupPolicy`
-
-- Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' is changing
-  - The following properties in the output type are being deprecated : 'YearlyBackupsToKeep'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-YearlyBackupsToKeep`
-    - Parameter YearlyBackupsToKeep is invalid and preserved for compatibility.
-
 ### `New-AzNetAppFilesVolume`
 
 - Parameter breaking-change will happen to all parameter sets
@@ -633,32 +624,6 @@
     - Snapshot invalid and preserved for compatibility. Parameter SnapshotPolicyId should be used instead
   - `-UnixPermission`
     - Parameter Alias UnixPermissions will be removed, please use UnixPermission.
-
-### `Remove-AzNetAppFilesBackupPolicy`
-
-- Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' is changing
-  - The following properties in the output type are being deprecated : 'YearlyBackupsToKeep'
-
-### `Set-AzNetAppFilesBackupPolicy`
-
-- Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' is changing
-  - The following properties in the output type are being deprecated : 'YearlyBackupsToKeep'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-YearlyBackupsToKeep`
-    - Parameter YearlyBackupsToKeep is invalid and preserved for compatibility.
-
-### `Update-AzNetAppFilesBackupPolicy`
-
-- Cmdlet breaking-change will happen to all parameter set
-  - The output type 'Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy' is changing
-  - The following properties in the output type are being deprecated : 'YearlyBackupsToKeep'
-
-- Parameter breaking-change will happen to all parameter sets
-  - `-YearlyBackupsToKeep`
-    - Parameter YearlyBackupsToKeep is invalid and preserved for compatibility.
 
 ## Az.Network
 
@@ -1087,15 +1052,35 @@
 
 ## Az.PowerBIEmbedded
 
+### `Get-AzPowerBIWorkspace`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
+### `Get-AzPowerBIWorkspaceCollection`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
 ### `Get-AzPowerBIWorkspaceCollectionAccessKey`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - Get-AzPowerBIWorkspaceCollectionAccessKeys alias will be removed in an upcoming breaking change release
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
+### `New-AzPowerBIWorkspaceCollection`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
+
+### `Remove-AzPowerBIWorkspaceCollection`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The cmdlet is being deprecated. There will be no replacement for it.
 
 ### `Reset-AzPowerBIWorkspaceCollectionAccessKey`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - Reset-AzPowerBIWorkspaceCollectionAccessKeys alias will be removed in an upcoming breaking change release
+  - The cmdlet is being deprecated. There will be no replacement for it.
 
 ## Az.RecoveryServices
 
@@ -1522,10 +1507,26 @@
 
 ## Az.Storage
 
+### `Get-AzStorageBlob`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-Blob`
+    - Leading and trailing slashes will not be trimmed in a future release.
+
 ### `New-AzStorageAccount`
 
 - Cmdlet breaking-change will happen to all parameter set
   - Default value of AllowBlobPublicAccess will be changed from True to False in a future release. When AllowBlobPublicAccess is False on a storage account, it is not permitted to configure container ACLs to allow anonymous access to blobs within the storage account.
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableLargeFileShare`
+    - EnableLargeFileShare parameter will be deprecated in a future release.
+
+### `Set-AzStorageAccount`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-EnableLargeFileShare`
+    - EnableLargeFileShare parameter will be deprecated in a future release.
 
 ## Az.StorageSync
 

@@ -195,6 +195,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-TestDeploymentFromBicepFile");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestNewDeploymentFromBicepFileAndBicepparamFile()
+        {
+            TestRunner.RunTestScript("Test-NewDeploymentFromBicepFileAndBicepparamFile");
+        }
+
         //Please make sure to re-record this test if any changes are made to WhatIf, QueryString or ResourceGroupDeployments
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

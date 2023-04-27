@@ -13,8 +13,7 @@ Update a network manger management group connection
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerManagementGroupConnection
- -InputObject <PSNetworkManagerConnection> [-AsJob]
+Set-AzNetworkManagerManagementGroupConnection -InputObject <PSNetworkManagerConnection> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,6 +28,7 @@ $networkManagerConnection = Get-AzNetworkManagerManagementGroupConnection -Manag
 $networkManagerConnection.description = "new description"
 Set-AzNetworkManagerManagementGroupConnection -InputObject $networkManagerConnection
 ```
+
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ConnectionState   : Pending
@@ -51,7 +51,7 @@ Updates a network manger management group connection.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The NetworkManagerSubscriptionConnection
 
 ```yaml
-Type: PSNetworkManagerConnection
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnection
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +112,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

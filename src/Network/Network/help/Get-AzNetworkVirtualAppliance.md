@@ -31,7 +31,7 @@ The Get-AzNetworkVirtualAppliance commands gets or lists Network Virtual Applian
 
 ### Example 1
 ```powershell
-Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva                                                                                                                      
+Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
 ```
 
 ```output

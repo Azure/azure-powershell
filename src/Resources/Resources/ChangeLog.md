@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Fixed `Update-AzADServicePrincipal` when empty array passed for `IdentifierUri` [#21345]
+* Fixed an issue where location header was missing in the response from the service for New-AzManagedApplication.
+
+## Version 6.6.1
+* Added support for Azure resources deployment with parameters file using Bicep parameters syntax
 
 ## Version 6.6.0
 * Fixed an issue when running the `New-AzManagementGroup` command where it tried to cast an async operation as a Management Group. [#21000]

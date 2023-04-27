@@ -29,6 +29,31 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         public string ResourceGroupName { get; set; }
 
         /// <summary>
+        /// Gets or sets Resource location
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Gets resource Id
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Gets resource name
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
+        /// Gets resource type
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Gets or sets resource tags
+        /// </summary>
+        public object Tags { get; set; }
+
+        /// <summary>
         /// Gets or sets the ProvisioningState
         /// </summary>
         /// <remarks>possible values include: 'Accepted', 'Creating',
