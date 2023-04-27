@@ -57,9 +57,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.DesktopVirtualizationClient Client => Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.ParameterCategory.Azure)]
@@ -182,6 +183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         Description = @"The path to the legacy object to migrate.",
         SerializedName = @"migrationPath",
         PossibleTypes = new [] { typeof(string) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.ParameterBreakingChange("MigrationRequestMigrationPath", "4.0.0", ChangeDescription="This is parameter will be deleted.")]
         public string MigrationRequestMigrationPath { get => _applicationGroupBody.MigrationRequestMigrationPath ?? null; set => _applicationGroupBody.MigrationRequestMigrationPath = value; }
 
         /// <summary>The type of operation for migration.</summary>
@@ -193,6 +195,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Cmdlets
         Description = @"The type of operation for migration.",
         SerializedName = @"operation",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.ParameterBreakingChange("MigrationRequestOperation", "4.0.0", ChangeDescription="This is parameter will be deleted.")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation))]
         public Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation MigrationRequestOperation { get => _applicationGroupBody.MigrationRequestOperation ?? ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation)""); set => _applicationGroupBody.MigrationRequestOperation = value; }
 
