@@ -3,12 +3,14 @@ using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -211,7 +213,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
         #endregion
 
         #region Certificate actions
-        internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        internal PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
             if (string.IsNullOrEmpty(vaultName))
                 throw new ArgumentNullException(nameof(vaultName));
@@ -221,17 +223,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
                 throw new ArgumentNullException(nameof(certificate));
 
             var certClient = CreateCertificateClient(vaultName);
-            return ImportCertificate(certClient, certName, certificate, password, tags, contentType);
+            return ImportCertificate(certClient, certName, certificate, password, tags, contentType, certPolicy);
         }
 
-        private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
+        private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
+            CertificatePolicy certificatePolicy = certPolicy?.ToTrack2CertificatePolicy() ?? new CertificatePolicy()
+            {
+                ContentType = contentType
+            };
             var options = new ImportCertificateOptions(certName, certificate)
             {
-                Policy = new CertificatePolicy()
-                {
-                    ContentType = contentType
-                },
+                Policy = certificatePolicy,
                 Password = password?.ConvertToString()
             };
             tags?.ForEach((entry) =>
