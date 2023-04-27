@@ -4368,7 +4368,7 @@ function Test-ApplicationGatewayFirewallPolicyWithInspectionLimit
 		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Uppercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
-		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -RequestBodyEnforcement $True -RequestBodyInspectLimitInKB 2000 -MaxFileUploadInMb 70 -FileUploadEnforcement $True -MaxRequestBodySizeInKb 70
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -RequestBodyEnforcement $False -RequestBodyInspectLimitInKB 2000 -MaxFileUploadInMb 70 -FileUploadEnforcement $False -MaxRequestBodySizeInKb 70
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
 		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
