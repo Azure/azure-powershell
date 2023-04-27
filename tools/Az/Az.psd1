@@ -79,7 +79,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.12.2'; },
                @{ModuleName = 'Az.DataLakeStore'; RequiredVersion = '1.3.0'; }, 
                @{ModuleName = 'Az.DataProtection'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.DataShare'; RequiredVersion = '1.0.1'; }, 
-               @{ModuleName = 'Az.DesktopVirtualization'; RequiredVersion = '3.1.1'; }, 
+               @{ModuleName = 'Az.DesktopVirtualization'; RequiredVersion = '3.1.2'; }, 
                @{ModuleName = 'Az.DeploymentManager'; RequiredVersion = '1.1.0'; }, 
                @{ModuleName = 'Az.DevTestLabs'; RequiredVersion = '1.0.2'; }, 
                @{ModuleName = 'Az.Dns'; RequiredVersion = '1.1.2'; }, 
@@ -188,6 +188,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '9.7.1 - May 2023
+Az.DesktopVirtualization 3.1.2
+* Added breaking change warnings
 Az.Websites 2.15.1
 * Used AAD Auth instead of Basic Auth for PublishAzureWebApps
 '
