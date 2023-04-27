@@ -29,7 +29,7 @@ WAF policies will not be deleted.
 
 ### Example 1: Abort classic cdn migrate to AFDx.
 ```powershell
-Stop-AzFrontDoorCdnProfileMigration -Name name-migrated -ResourceGroupName rgName
+Stop-AzFrontDoorCdnProfileMigration -ProfileName name-migrated -ResourceGroupName rgName
 ```
 
 Abort classic cdn migrate to AFDx.
