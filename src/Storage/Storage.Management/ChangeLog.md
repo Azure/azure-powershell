@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.6.1
 * Support OAuth authentication on File service cmdlets
     - `New-AzStorageContext`
     - `Get-AzStorageFile`
