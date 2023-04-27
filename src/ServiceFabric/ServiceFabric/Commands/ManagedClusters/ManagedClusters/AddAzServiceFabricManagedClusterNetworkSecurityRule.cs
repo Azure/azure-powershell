@@ -96,8 +96,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 			{
 				try
 				{
-					ManagedCluster updatedCluster = this.GetNodeTypeWithAddedExtension();
-					var beginRequestResponse = this.SfrpMcClient.NodeTypes.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, updatedCluster)
+					ManagedCluster updatedCluster = this.GetClusterWithNewNetworkSecurityRule();
+					var beginRequestResponse = this.SfrpMcClient.ManagedClusters.BeginCreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.ClusterName, updatedCluster)
 						.GetAwaiter().GetResult();
 
 					var cluster = this.PollLongRunningOperation(beginRequestResponse);
@@ -114,14 +114,14 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
 		private ManagedCluster GetClusterWithNewNetworkSecurityRule()
 		{
-			ManagedCluster currentCluster = this.SfrpMcClient.ManagedClusters.Get(this.ResourceGroupName, this.Name);
+			ManagedCluster currentCluster = this.SfrpMcClient.ManagedClusters.Get(this.ResourceGroupName, this.ClusterName);
 
 			if (currentCluster.NetworkSecurityRules == null)
 			{
-				currentCluster.NetworkSecurityRules = new List<NetworkSecurityRules>();
+				currentCluster.NetworkSecurityRules = new List<NetworkSecurityRule>();
 			}
 
-			currentCluster.NetworkSecurityRules.Add(new NetworkSecurityRules()
+			currentCluster.NetworkSecurityRules.Add(new NetworkSecurityRule()
 			{
 				Access = this.Access,
 				Description = this.Description,

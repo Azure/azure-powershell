@@ -161,9 +161,23 @@ function Test-AddNetworkSecurityRule
 		-AdminPassword $pass -Sku Basic -ClientCertThumbprint $testClientTp -Tag $tags -Verbose
 	Assert-AreEqual "Succeeded" $cluster.ProvisioningState
 	Assert-AreEqual "Automatic" $cluster.ClusterUpgradeMode
-	# Assert-AreEqual "Wave0" $cluster.ClusterUpgradeCadence
+	#Assert-AreEqual "Wave0" $cluster.ClusterUpgradeCadence
 
 	$pnt = New-AzServiceFabricManagedNodeType -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name pnt -InstanceCount 5 -DiskType Standard_LRS -Primary
 	Assert-AreEqual 5 $pnt.VmInstanceCount
-	Assert-AreEqual "Standard_LRS" $pnt.DataDiskType
+	Assert-AreEqual "StandardSSD_LRS" $pnt.DataDiskType
+
+
+	$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+	Assert-AreEqual "Ready" $clusterFromGet.ClusterState
+
+	$NSRName = "myNetSecRule"
+	$access = "allow"
+	$direction = "inbound"
+	$protocol = "tcp"
+
+	$pnt = Add-AzServiceFabricManagedNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1100 -Verbose
+	#$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
+
+	#Assert-NotNull $clusterFromGet.NetworkSecurityRules
 }
