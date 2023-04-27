@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added breaking change warnings
 
 ## Version 3.1.1
 * Corrected parameter description of `-Force` in `Remove-AzWvdUserSession`.

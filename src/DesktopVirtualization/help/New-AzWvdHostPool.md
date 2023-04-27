@@ -53,7 +53,14 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
-                            -PreferredAppGroupType 'Desktop' `
+                            -VMTemplate $null `
+                            -SsoClientId $null `
+                            -SsoClientSecretKeyVaultPath $null `
+                            -SsoSecretType $null `
+                            -SsoadfsAuthority $null `
+                            -CustomRdpProperty $null `
+                            -Ring $null `
+                            -ValidationEnvironment:$false
 ```
 
 ```output
@@ -76,7 +83,14 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -Description 'Description' `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
-                            -PreferredAppGroupType 'Desktop' `
+                            -VMTemplate $null `
+                            -SsoClientId $null `
+                            -SsoClientSecretKeyVaultPath $null `
+                            -SsoSecretType $null `
+                            -SsoadfsAuthority $null `
+                            -CustomRdpProperty $null `
+                            -Ring $null `
+                            -ValidationEnvironment:$false
 ```
 
 ```output
@@ -105,7 +119,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -429,7 +444,7 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredAppGroupType
-The type of preferred application group type. Accepted Values: Desktop, RailApplications
+The type of preferred application group type, default to Desktop Application Group
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.PreferredAppGroupType
@@ -629,7 +644,7 @@ Accept wildcard characters: False
 ```
 
 ### -SsoSecretType
-The type of single sign on Secret Type. Accepted Values: Certificate, CertificateInKeyVault, SharedKey, SharedKeyInKeyVault	
+The type of single sign on Secret Type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SsoSecretType
