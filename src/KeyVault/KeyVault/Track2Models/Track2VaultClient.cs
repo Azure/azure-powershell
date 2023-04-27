@@ -228,18 +228,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         private PSKeyVaultCertificate ImportCertificate(CertificateClient certClient, string certName, byte[] certificate, SecureString password, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType, PSKeyVaultCertificatePolicy certPolicy = null)
         {
-            CertificatePolicy certificatePolicy = null;
-            if (certPolicy != null)
+            CertificatePolicy certificatePolicy = certPolicy?.ToTrack2CertificatePolicy() ?? new CertificatePolicy()
             {
-                certificatePolicy = certPolicy.ToTrack2CertificatePolicy();
-            }
-            else
-            {
-                certificatePolicy = new CertificatePolicy()
-                {
-                    ContentType = contentType
-                };
-            }
+                ContentType = contentType
+            };
             var options = new ImportCertificateOptions(certName, certificate)
             {
                 Policy = certificatePolicy,

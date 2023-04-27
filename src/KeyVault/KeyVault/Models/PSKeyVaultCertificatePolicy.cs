@@ -21,6 +21,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using System.Text.Json;
 using Track2CertificateSDK = Azure.Security.KeyVault.Certificates;
 
@@ -942,6 +943,20 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             {
                 throw new ArgumentException("The subject name provided is not a valid X500 name.", e);
             }
+        }
+
+        public override string ToString()
+        {
+            if (this == null) return string.Empty;
+
+            var sb = new StringBuilder();
+            sb.AppendLine();
+            sb.AppendFormat("{0, -15}: {1}{2}", "Secret Content Type", SecretContentType, Environment.NewLine);
+            sb.AppendFormat("{0, -15}: {1}{2}", "Issuer Name", IssuerName, Environment.NewLine);
+            sb.AppendFormat("{0, -15}: {1}{2}", "Created On", Created, Environment.NewLine);
+            sb.AppendFormat("{0, -15}: {1}{2}", "Updated On", Updated, Environment.NewLine);
+            sb.AppendLine("...");
+            return sb.ToString();
         }
     }
 }

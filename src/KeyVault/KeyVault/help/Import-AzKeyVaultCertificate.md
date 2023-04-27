@@ -148,7 +148,12 @@ Certificate : [Subject]
 KeyId         : https://ContosoKV01.vault.azure.net/keys/ImportCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 SecretId      : https://ContosoKV01.vault.azure.net/secrets/ImportCert01/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Thumbprint    : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-Policy        : Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
+Policy        :
+                Secret Content Type: application/x-pkcs12
+                Issuer Name    : Unknown
+                Created On     : 3/22/2023 6:00:52 AM
+                Updated On     : 4/27/2023 9:52:53 AM
+                ...
 RecoveryLevel : Recoverable+Purgeable
 Enabled       : True
 Expires       : 6/9/2023 6:20:26 AM
