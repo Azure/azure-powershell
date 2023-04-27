@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// File Path
         /// </summary>
         [Parameter(Mandatory = false,
-                   HelpMessage = "A file path to specify management policy for the certificate that contains JSON encoded policy definition. Mutual-exclusive to PolicyFile.")]
+                   HelpMessage = "A file path to specify management policy for the certificate that contains JSON encoded policy definition. Mutual-exclusive to PolicyObject.")]
         public string PolicyPath { get; set; }
 
         /// <summary>

@@ -281,7 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyObject
-An in-memory object to specify management policy for the certificate.
+An in-memory object to specify management policy for the certificate. Mutual-exclusive to PolicyPath.
 
 ```yaml
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
@@ -296,7 +296,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyPath
-A file path to specify management policy for the certificate that contains JSON encoded policy definition.
+A file path to specify management policy for the certificate that contains JSON encoded policy definition. Mutual-exclusive to PolicyObject.
 
 ```yaml
 Type: System.String
