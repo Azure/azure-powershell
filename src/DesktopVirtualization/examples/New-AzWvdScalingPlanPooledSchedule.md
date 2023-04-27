@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Scaling Plan Pooled Schedule
 ```powershell
 PS C:\> New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName planName -ScalingPlanScheduleName scheduleName
 ```

@@ -31,23 +31,19 @@ Create or update a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Scaling Plan Pooled Schedule
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+PS C:\> New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName -ScalingPlanName planName -ScalingPlanScheduleName scheduleName
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Name
+----
+scalingplan1/PooledSchedule1
 ```
 
-{{ Add description here }}
+Add a Scaling Plan Pooled Schedule to a.
+existing Scaling Plan.
 
 ## PARAMETERS
 
