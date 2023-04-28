@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -RequestBodyInspectLimitInKB  
-Max inspection limit in KB for request body inspection for WAF.
+Max inspection limit in KB for request body inspection.
 
 ```yaml
 Type: System.Int32

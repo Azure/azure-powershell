@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public bool RequestBodyEnforcement { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Max inspection limit in KB for request body inspection for WAF.")]
+        [Parameter(Mandatory = false, HelpMessage = "Max inspection limit in KB for request body inspection.")]
         [ValidateNotNullOrEmpty]
         public int RequestBodyInspectLimitInKB { get; set; }
 
@@ -84,16 +84,6 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.MyInvocation.BoundParameters.ContainsKey("State"))
             {
                 this.State = "Enabled";
-            }
-
-            if (!this.MyInvocation.BoundParameters.ContainsKey("RequestBodyEnforcement"))
-            {
-                this.RequestBodyEnforcement = true;
-            }
-
-            if (!this.MyInvocation.BoundParameters.ContainsKey("FileUploadEnforcement"))
-            {
-                this.FileUploadEnforcement = true;
             }
 
             if (!this.MyInvocation.BoundParameters.ContainsKey("MaxRequestBodySizeInKb"))
