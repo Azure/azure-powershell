@@ -2,7 +2,7 @@
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
-    
+
     ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
@@ -12,13 +12,40 @@
     * Overview of change #3
     * Overview of change #4
         - Additional information about change #4
-    
+
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
 --->
 
 ## Upcoming Release
+* Added new cmdlets for RouteMap child resource of VirtualHub.
+    -`Get-AzRouteMap`
+    -`New-AzRouteMapRuleCriterion`
+    -`New-AzRouteMapRuleActionParameter`
+    -`New-AzRouteMapRuleAction`
+    -`New-AzRouteMapRule`
+    -`New-AzRouteMap`
+    -`Set-AzRouteMap`
+    -`Remove-AzRouteMap`
+* Update cmdlets to add inbound/outbound route maps in routingConfiguration
+    -`New-AzRoutingConfiguration`
+* Added the command New-AzFirewallPolicyApplicationRuleCustomHttpHeader
+* Added the method AddCustomHttpHeaderToInsert to PSAzureFirewallPolicyApplicationRule
+* Added new cmdlets to support Rate Limiting Rule for Application Gateway WAF
+    - 'New-AzApplicationGatewayFirewallCustomRuleGroupByUserSession',
+    - 'New-AzApplicationGatewayFirewallCustomRuleGroupByVariable',
+    - Also updated cmdlet to add the property of RateLimitDuration, RateLimitThreshold and GroupByUserSession
+    - `New-AzureApplicationGatewayFirewallCustomRule`
+* Added support of `AdditionalNic` Property in New-AzNetworkVirtualAppliance
+* Added the new cmdlet for supporting `AdditionalNic` Property
+    - 'New-AzVirtualApplianceAdditionalNicProperty'
+* Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
+    - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration',
+    - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingRule',
+    - Also updated cmdlet to add the property of LogScrubbing 
+    - `New-AzApplicationGatewayFirewallPolicySetting`
+
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
@@ -33,6 +60,7 @@
 * Blocked some regions when creating/updating Basic Sku firewall
 * Fixed bugs related to auto learn IP prefixes and Snat
 * Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
+
 
 ## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.

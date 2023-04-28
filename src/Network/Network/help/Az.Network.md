@@ -797,6 +797,9 @@ Creates a new Azure Firewall Policy
 ### [New-AzFirewallPolicyApplicationRule](New-AzFirewallPolicyApplicationRule.md)
 Create a new Azure Firewall Policy Application Rule
 
+### [New-AzFirewallPolicyApplicationRuleCustomHttpHeader](New-AzFirewallPolicyApplicationRuleCustomHttpHeader.md)
+Create a new Azure Firewall Policy Application Rule Custom Http Header
+
 ### [New-AzFirewallPolicyFilterRuleCollection](New-AzFirewallPolicyFilterRuleCollection.md)
 Create a new Azure Firewall Policy Filter Rule Collection
 

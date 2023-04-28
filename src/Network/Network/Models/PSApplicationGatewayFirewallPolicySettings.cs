@@ -42,5 +42,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int? CustomBlockResponseStatusCode { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration LogScrubbing { get; set; }
     }
 }

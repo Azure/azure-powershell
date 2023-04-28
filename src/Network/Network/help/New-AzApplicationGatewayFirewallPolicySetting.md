@@ -15,7 +15,7 @@ Creates a policy setting for the firewall policy
 ```
 New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-DisableRequestBodyCheck]
  [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-CustomBlockResponseStatusCode <Int32>]
- [-CustomBlockResponseBody <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-CustomBlockResponseBody <String>] [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +29,14 @@ $condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState 
 ```
 
 The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
+The new policySettings is stored to $condition.
+
+### Example 2
+```powershell
+$condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb -LogScrubbing $logScrubbingRuleConfig
+```
+
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb with a scrubbing rule as $logScrubbingRuleConfig.
 The new policySettings is stored to $condition.
 
 ## PARAMETERS
@@ -53,6 +61,21 @@ Custom block response status code in policy settings of the firewall policy.
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogScrubbingConfig 
+Allow certain variables to be scrubbed on WAF logs.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration
 Parameter Sets: (All)
 Aliases:
 
