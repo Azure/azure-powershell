@@ -3479,6 +3479,55 @@ function Test-ApplicationGatewayFirewallPolicyWithPerRuleExclusions
 
 <#
 .SYNOPSIS
+Application gateway v2 waf policy with log scrubbing
+#>
+function Test-ApplicationGatewayFirewallPolicyWithLogScrubbing
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = Get-ResourceName
+
+	try
+	{
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		
+		# WAF Policy and Custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Lowercase -NegationCondition $False
+		$logScrubbingRule1 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestArgNames -SelectorMatchOperator Equals -Selector test
+		$logScrubbingRule2 = New-AzApplicationGatewayFirewallPolicyLogScrubbingRule -State Enabled -MatchVariable RequestIPAddress -SelectorMatchOperator EqualsAny
+		$logScrubbingRuleConfig = New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration -State Enabled -ScrubbingRule $logScrubbingRule1, $logScrubbingRule2
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 4000 -MaxRequestBodySizeInKb 2000 -LogScrubbing $logScrubbingRuleConfig
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
+	
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check firewall policy
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules.Count 2
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].State $policySettings.LogScrubbing.ScrubbingRules[0].State
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].MatchVariable $policySettings.LogScrubbing.ScrubbingRules[0].MatchVariable
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator $policySettings.LogScrubbing.ScrubbingRules[0].SelectorMatchOperator
+		Assert-AreEqual $policy.PolicySettings.LogScrubbing.ScrubbingRules[0].Selector $policySettings.LogScrubbing.ScrubbingRules[0].Selector
+
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
 This case tests the per-listener HostNames feature.
 #>
 function Test-ApplicationGatewayWithListenerHostNames
