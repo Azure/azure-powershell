@@ -40,8 +40,14 @@
 * Added support of `AdditionalNic` Property in New-AzNetworkVirtualAppliance
 * Added the new cmdlet for supporting `AdditionalNic` Property
     - 'New-AzVirtualApplianceAdditionalNicProperty'
+* Added new cmdlets to support Log Scrubbing Feature for Application Gateway WAF Firewall Policy
+    - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingConfiguration',
+    - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingRule',
+    - Also updated cmdlet to add the property of LogScrubbing 
+    - `New-AzApplicationGatewayFirewallPolicySetting`
 * Updated cmdlet to add the property of RequestBodyEnforcement, RequestBodyInspectLimitInKB  and FileUploadEnforcement 
     - `New-AzApplicationGatewayFirewallPolicySetting`
+
 
 
 ## Version 5.6.0
