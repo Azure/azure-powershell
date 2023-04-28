@@ -31,7 +31,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("It is recommended to use parameter '-Sku Standard' to create new Load Balancer. Please note that it will become the default behavior for Load Balancer creation in the future.")]
+    [GenericBreakingChange("It is recommended to use parameter '-Sku Standard' to create new Load Balancers. Please note that it will become the default behavior for Load Balancer creation in the next PS release 2023-05-23.")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancer", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class NewAzureRmLoadBalancer : NetworkBaseCmdlet
     {
