@@ -93,21 +93,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisableRequestBodyCheck  
-Enable/Disable Request Body check for WAF.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CustomBlockResponseBody
 Custom Block Response Body in policy settings of the firewall policy.
 
