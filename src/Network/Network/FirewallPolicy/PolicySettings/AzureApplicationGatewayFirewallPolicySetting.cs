@@ -56,6 +56,10 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string CustomBlockResponseBody { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "To scrub sensitive log fields")]
+        [ValidateNotNullOrEmpty]
+        public PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration LogScrubbing { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -107,6 +111,7 @@ namespace Microsoft.Azure.Commands.Network
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
+                LogScrubbing = this.LogScrubbing
             };
         }
     }

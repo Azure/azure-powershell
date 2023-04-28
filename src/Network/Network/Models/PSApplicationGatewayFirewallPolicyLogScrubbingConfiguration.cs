@@ -20,30 +20,12 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public partial class PSApplicationGatewayFirewallPolicySettings
+    public partial class PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration
     {
         [Ps1Xml(Target = ViewControl.Table)]
         public string State { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public string Mode { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public bool RequestBodyCheck { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public int MaxRequestBodySizeInKb { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public int FileUploadLimitInMb { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public string CustomBlockResponseBody { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public int? CustomBlockResponseStatusCode { get; set; }
-
-        [Ps1Xml(Target = ViewControl.Table)]
-        public PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration LogScrubbing { get; set; }
+        public List<PSApplicationGatewayFirewallPolicyLogScrubbingRule> ScrubbingRules { get; set; }
     }
 }
