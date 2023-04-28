@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 Options = options
             };
 
-            if (ShouldProcess(Name, "Creating a new CosmosDB Cassandra Keyspace"))
+            if (ShouldProcess(Name, "Creating a new CosmosDB Cassandra Keyspace__"))
             {
                 CassandraKeyspaceGetResults cassandraKeyspaceGetResults = CosmosDBManagementClient.CassandraResources.CreateUpdateCassandraKeyspaceWithHttpMessagesAsync(ResourceGroupName, AccountName, Name, cassandraKeyspaceCreateUpdateParameters).GetAwaiter().GetResult().Body;
                 WriteObject(new PSCassandraKeyspaceGetResults(cassandraKeyspaceGetResults));
