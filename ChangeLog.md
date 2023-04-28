@@ -1,4 +1,7 @@
 ## 9.7.1 - May 2023
+#### Az.DesktopVirtualization 3.1.2
+* Added breaking change warnings
+
 #### Az.Websites 2.15.1
 * Used AAD Auth instead of Basic Auth for PublishAzureWebApps
 
