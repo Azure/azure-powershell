@@ -31,8 +31,8 @@ Describe 'Get-AzFrontDoorCdnOrigin'  {
 
         Write-Host -ForegroundColor Green "Start to create origin."    
         New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
-        -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
-        -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
+            -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
+            -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
     }
 
     It 'List' {

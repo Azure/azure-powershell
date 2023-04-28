@@ -73,7 +73,7 @@ Describe 'Remove-AzCdnOriginGroup'  {
             })
         }
         $defaultOriginGroup = "/subscriptions/$subId/resourcegroups/$($env.ResourceGroupName)/providers/Microsoft.Cdn/profiles/$($env.ClassicCdnProfileName)/endpoints/$endpointName2/origingroups/$($originGroup2.Name)"
-        $createdEndpoint = New-AzCdnEndpoint -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+        $createdEndpoint = New-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $endpointName2 -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
             -Origin $origin -OriginGroup $originGroup2 -DefaultOriginGroupId $defaultOriginGroup
 
         $originGroupName2 = "originGroup2"

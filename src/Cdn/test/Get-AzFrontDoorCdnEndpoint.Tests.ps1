@@ -28,7 +28,7 @@ Describe 'Get-AzFrontDoorCdnEndpoint'  {
 
     It 'GetViaIdentity'  {
         $PSDefaultParameterValues['Disabled'] = $true
-        $endpoint = Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName | Get-AzFrontdoorCdnEndpoint
+        $endpoint = Get-AzFrontdoorCdnEndpoint -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $env.FrontDoorEndpointName | Get-AzFrontdoorCdnEndpoint
         $endpoint.Name | Should -Be $env.FrontDoorEndpointName
         $endpoint.Location | Should -Be "Global"
     }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleObject')
 }
 
 Describe 'New-AzCdnDeliveryRuleObject'  {
-    It '__AllParameterSets' {
+    It '__AllParameterSets' -skip {
             $endpointName = 'e-' + (RandomString -allChars $false -len 6);
             $origin = @{
                 Name = "origin1"

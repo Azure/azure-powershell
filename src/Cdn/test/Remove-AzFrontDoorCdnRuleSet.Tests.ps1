@@ -24,7 +24,7 @@ Describe 'Remove-AzFrontDoorCdnRuleSet'  {
     It 'DeleteViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
         $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
-        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
+        New-AzFrontDoorCdnRuleSet -SubscriptionId $env.SubscriptionId -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
         Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName | Remove-AzFrontDoorCdnRuleSet
         
         $rulesets = Get-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName

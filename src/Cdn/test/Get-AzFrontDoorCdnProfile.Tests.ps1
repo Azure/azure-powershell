@@ -35,7 +35,7 @@ Describe 'Get-AzFrontDoorCdnProfile'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName | Get-AzFrontDoorCdnProfile
+        $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -Name $env.FrontDoorCdnProfileName | Get-AzFrontDoorCdnProfile
 
         $frontDoorCdnProfile.Name | Should -Be $env.FrontDoorCdnProfileName
         $frontDoorCdnProfile.SkuName | Should -Be "Standard_AzureFrontDoor"

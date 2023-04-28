@@ -23,7 +23,7 @@ Describe 'Get-AzCdnOrigin'  {
     It 'List' {
         $origins = Get-AzCdnOrigin -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
         
-        $origins.Count | Should -BeGreaterOrEqual 1
+        $origins.Count | Should -Be 1
     }
 
     It 'Get' {
@@ -36,7 +36,7 @@ Describe 'Get-AzCdnOrigin'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOrigin
+        $origin = Get-AzCdnOrigin -SubscriptionId $env.SubscriptionId -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOrigin
         
         $origin.Name | Should -Be $originName
         $origin.HostName | Should -Be $originHostName

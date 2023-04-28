@@ -50,7 +50,7 @@ Describe 'Get-AzCdnCustomDomain'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $customDomain = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnCustomDomain
+        $customDomain = Get-AzCdnCustomDomain -SubscriptionId $env.SubscriptionId -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnCustomDomain
 
         $customDomain.Name | Should -Be $env.ClassicCustomDomainName
         $customDomain.HostName | Should -Be $env.ClassicCustomDomainHostName

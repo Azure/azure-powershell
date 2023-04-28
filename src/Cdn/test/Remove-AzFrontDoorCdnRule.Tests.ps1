@@ -59,7 +59,7 @@ Describe 'Remove-AzFrontDoorCdnRule'  {
         
         $ruleName = 'r' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use ruleName : $($ruleName)"
-        New-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
+        New-AzFrontDoorCdnRule -SubscriptionId $env.SubscriptionId -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName `
         -Action $actions -Condition $conditions
 
         Get-AzFrontDoorCdnRule -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -RuleSetName $rulesetName -Name $ruleName | Remove-AzFrontDoorCdnRule

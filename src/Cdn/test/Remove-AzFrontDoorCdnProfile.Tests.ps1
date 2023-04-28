@@ -30,7 +30,7 @@ Describe 'Remove-AzFrontDoorCdnProfile'  {
         Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
         $profileSku = "Standard_AzureFrontDoor"
-        New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        New-AzFrontDoorCdnProfile -SubscriptionId $env.SubscriptionId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
         Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $frontDoorCdnProfileName | Remove-AzFrontDoorCdnProfile
     }
 }

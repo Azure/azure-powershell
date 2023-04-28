@@ -51,7 +51,7 @@ Describe 'Get-AzCdnOriginGroup'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $endpointOriginGroup = Get-AzCdnOriginGroup -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOriginGroup
+        $endpointOriginGroup = Get-AzCdnOriginGroup -SubscriptionId $env.SubscriptionId -Name $originGroup.Name -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOriginGroup
         
         $endpointOriginGroup.Name | Should -Be $originGroup.Name
         $endpointOriginGroup.HealthProbeSetting.ProbeIntervalInSecond | Should -Be $originGroup.HealthProbeSetting.ProbeIntervalInSecond

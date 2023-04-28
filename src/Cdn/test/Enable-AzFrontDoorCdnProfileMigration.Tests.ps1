@@ -16,6 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzFrontDoorCdnProfileM
 
 Describe 'Enable-AzFrontDoorCdnProfileMigration'  {
     It 'Commit' {
+        Install-Module -Name Az.FrontDoor
+        Install-Module -Name Az.KeyVault
+        
         $subId = $env.SubscriptionId
         $Name = 'fdp-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use frontDoorName : $($Name)"
@@ -35,9 +38,6 @@ Describe 'Enable-AzFrontDoorCdnProfileMigration'  {
 
         $profileSku = "Standard_AzureFrontDoor"
         $migratedProfileName = 'migrated-test'
-
-        Install-Module -Name Az.FrontDoor
-        Install-Module -Name Az.KeyVault
 
         Start-AzFrontDoorCdnProfilePrepareMigration -ResourceGroupName $env.ResourceGroupName -ClassicResourceReferenceId $classicResourceReferenceId -ProfileName $migratedProfileName -SkuName $profileSku 
         Enable-AzFrontDoorCdnProfileMigration -ProfileName $migratedProfileName -ResourceGroupName $env.ResourceGroupName

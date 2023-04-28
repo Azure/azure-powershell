@@ -27,7 +27,7 @@ Describe 'Get-AzFrontDoorCdnCustomDomain'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $customDomain = Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName | Get-AzFrontDoorCdnCustomDomain
+        $customDomain = Get-AzFrontDoorCdnCustomDomain -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $env.FrontDoorCustomDomainName | Get-AzFrontDoorCdnCustomDomain
         $customDomain.Name | Should -Be $env.FrontDoorCustomDomainName
     }
 }

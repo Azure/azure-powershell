@@ -26,7 +26,7 @@ Describe 'Remove-AzFrontDoorCdnCustomDomain'  {
     It 'DeleteViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
         $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
-        New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        New-AzFrontDoorCdnCustomDomain -SubscriptionId $env.SubscriptionId -CustomDomainName $customDomainName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
         -HostName "removedomain.dev.cdn.azure.cn" 
 
         Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -CustomDomainName $customDomainName | Remove-AzFrontDoorCdnCustomDomain

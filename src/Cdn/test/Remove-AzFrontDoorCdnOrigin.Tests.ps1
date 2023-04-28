@@ -39,7 +39,7 @@ Describe 'Remove-AzFrontDoorCdnOrigin'  {
 
     It 'DeleteViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        New-AzFrontDoorCdnOrigin -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
+        New-AzFrontDoorCdnOrigin -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -OriginGroupName $originGroupName `
             -OriginName $originName -OriginHostHeader $hostName -HostName $hostName `
             -HttpPort 80 -HttpsPort 443 -Priority 1 -Weight 1000
 

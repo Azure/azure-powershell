@@ -31,7 +31,7 @@ Describe 'Remove-AzFrontDoorCdnEndpoint'  {
 
         $endpointName = 'end-' + (RandomString -allChars $false -len 6);
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        $endpoint = New-AzFrontDoorCdnEndpoint -SubscriptionId $env.SubscriptionId -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
         $endpoint.Name | Should -Be $endpointName
         $endpoint.Location | Should -Be "Global"

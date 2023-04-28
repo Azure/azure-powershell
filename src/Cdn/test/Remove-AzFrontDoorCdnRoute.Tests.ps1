@@ -69,7 +69,7 @@ Describe 'Remove-AzFrontDoorCdnRoute'  {
 
     It 'DeleteViaIdentity'  {
         $PSDefaultParameterValues['Disabled'] = $true
-        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        New-AzFrontDoorCdnRoute -SubscriptionId $env.SubscriptionId -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
             -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
         Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName `
         | Remove-AzFrontDoorCdnRoute

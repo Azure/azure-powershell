@@ -46,7 +46,7 @@ Describe 'Import-AzCdnEndpointContent'  {
 
     It 'LoadViaIdentityExpanded' {
         $PSDefaultParameterValues['Disabled'] = $true
-        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
+        Start-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
 
         $contentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") 
 
@@ -62,7 +62,7 @@ Describe 'Import-AzCdnEndpointContent'  {
 
     It 'LoadViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        Start-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
+        Start-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName 
 
         $contentPath = @{ ContentPath = @("/movies/amazing.mp4","/pictures/pic1.jpg") }
 

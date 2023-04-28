@@ -29,7 +29,7 @@ Describe 'Get-AzCdnEndpoint'  {
 
     It 'GetViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $endpoint = Get-AzCdnEndpoint -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnEndpoint
+        $endpoint = Get-AzCdnEndpoint -SubscriptionId $env.SubscriptionId -Name $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnEndpoint
         
         $endpoint.Name | Should -Be $env.ClassicEndpointName
     }

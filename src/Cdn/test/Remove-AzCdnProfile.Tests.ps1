@@ -30,7 +30,7 @@ Describe 'Remove-AzCdnProfile'  {
         Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
         $profileSku = "Standard_Microsoft"
         
-        New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        New-AzCdnProfile -SubscriptionId $env.SubscriptionId -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
         Get-AzCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $cdnProfileName | Remove-AzCdnProfile
     }
 }

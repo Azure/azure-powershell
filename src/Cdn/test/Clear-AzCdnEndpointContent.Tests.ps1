@@ -52,7 +52,7 @@ Describe 'Clear-AzCdnEndpointContent' {
         $contentPath = @("/movies/*","/pictures/pic1.jpg") 
 
         # Purge content on endpoint should succeed
-        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId
         $endpoint | Clear-AzCdnEndpointContent -ContentPath $contentPath
         # Purge content on endpoint with invalid content paths should fail
         { $endpoint | Clear-AzCdnEndpointContent -ContentPath "invalidpath!" } | Should -Throw
@@ -68,7 +68,7 @@ Describe 'Clear-AzCdnEndpointContent' {
         $contentPath = @{ ContentPath = @("/movies/*","/pictures/pic1.jpg") }
 
         # Purge content on endpoint should succeed
-        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $endpoint = Get-AzCdnEndpoint -Name $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName -SubscriptionId $env.SubscriptionId
         $endpoint | Clear-AzCdnEndpointContent -ContentFilePath $contentPath
         # Purge content on endpoint with invalid content paths should fail
         { $endpoint | Clear-AzCdnEndpointContent -ContentFilePath @{ ContentPath = "invalidpath!" } } | Should -Throw
