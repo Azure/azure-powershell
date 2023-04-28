@@ -85,5 +85,8 @@ namespace Commands.Network.Test
         // Windows Azure NRP dev team
         public const string wanrpdev = "wanrpdev";
         public const string wanrpdev_subset1 = "wanrpdev_subset1";
+
+        //NVA Network Virtual Appliance Team
+        public const string nvaengdev = "nvaeng";
     }
 }
