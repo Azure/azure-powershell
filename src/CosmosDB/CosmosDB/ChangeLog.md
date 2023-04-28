@@ -24,6 +24,8 @@
 * Update-AzCosmosDBAccount cmdlet was updated with: EnableBurstCapacity.
 
 ## Upcoming Release
+
+## Version 2.0.5
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
 
 ## Version 1.10.0
