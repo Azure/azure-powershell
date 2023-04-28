@@ -49,7 +49,7 @@ The command creates a policy setting with state as $enabledState, mode as $enabl
 ## PARAMETERS
 
 ### -RequestBodyEnforcement 
-Configure WAF to enforce request body limits.
+Enable/Disable request body enforcement limits for WAF.
 
 ```yaml
 Type: System.Boolean
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 ```
 
 ### -FileUploadEnforcement  
-Configure WAF to enforce file upload limits.
+Enable/Disable file upload enforcement limits for WAF.
 
 ```yaml
 Type: System.Boolean

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Configure WAF to enforce request body limits.")]
+        [Parameter(Mandatory = false, HelpMessage = "Enable/Disable request body enforcement limits for WAF.")]
         [ValidateNotNullOrEmpty]
         public bool RequestBodyEnforcement { get; set; }
 
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public int MaxRequestBodySizeInKb { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Configure WAF to enforce file upload limits.")]
+        [Parameter(Mandatory = false, HelpMessage = "Enable/Disable file upload enforcement limits for WAF.")]
         [ValidateNotNullOrEmpty]
         public bool FileUploadEnforcement { get; set; }
 
