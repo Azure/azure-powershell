@@ -22,7 +22,7 @@ This object is provided as an input to the Start-AzMigrateTestMigration cmdlet t
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a NIC object for test migration
 ```powershell
  New-AzMigrateTestNicMapping -NicID "93e74c1b-79cc-4761-b642-91cc6bfc16b9" -TestNicSubnet "default"
 ```
@@ -72,7 +72,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput
 
 ## NOTES
 

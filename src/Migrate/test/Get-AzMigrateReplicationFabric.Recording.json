@@ -1,8 +1,8 @@
 {
-  "Get-AzMigrateReplicationFabric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics?api-version=2022-05-01+1": {
+  "Get-AzMigrateReplicationFabric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics?api-version=2023-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "21" ],
@@ -39,10 +39,10 @@
       "Content": "{\"value\":[{\"name\":\"signoffccyappae52replicationfabric\",\"type\":\"Microsoft.RecoveryServices/vaults/replicationFabrics\",\"id\":\"/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric\",\"properties\":{\"friendlyName\":\"signoffccyappae52replicationfabric\",\"encryptionDetails\":{\"kekState\":\"None\",\"kekCertThumbprint\":null},\"rolloverEncryptionDetails\":{\"kekState\":\"None\",\"kekCertThumbprint\":null},\"internalIdentifier\":\"e87f6b0c-6076-5aa5-9e79-3e73df771c73\",\"bcdrState\":\"Valid\",\"customDetails\":{\"instanceType\":\"VMwareV2\",\"vmwareSiteId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.OffAzure/VMwareSites/signoffccyapp3352site\",\"physicalSiteId\":null,\"migrationSolutionId\":\"/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.Migrate/MigrateProjects/signoffccyproj/Solutions/Servers-Migration-ServerMigration\",\"serviceEndpoint\":\"https://pod01-srs1.ccy.hypervrecoverymanager.windowsazure.com\",\"serviceResourceId\":\"2966956768769697278\",\"serviceContainerId\":\"10186957526572\",\"processServers\":[]},\"healthErrorDetails\":[],\"health\":\"Normal\"}}],\"nextLink\":null}"
     }
   },
-  "Get-AzMigrateReplicationFabric+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric?api-version=2022-05-01+1": {
+  "Get-AzMigrateReplicationFabric+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric?api-version=2023-01-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric?api-version=2022-05-01",
+      "RequestUri": "https://management.azure.com/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.RecoveryServices/vaults/signoffccyapp3352vault/replicationFabrics/signoffccyappae52replicationfabric?api-version=2023-01-01",
       "Content": null,
       "Headers": {
         "x-ms-unique-id": [ "22" ],

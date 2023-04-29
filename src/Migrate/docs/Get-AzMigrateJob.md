@@ -173,7 +173,7 @@ Specifies the job object of the replicating server.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
 Parameter Sets: GetByInputObject
 Aliases:
 
@@ -296,7 +296,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
 
 ## NOTES
 

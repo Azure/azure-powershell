@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'New-AzMigrateReplicationProtectionContainerMapping' {
     It 'CreateExpanded' {
-    $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtContainerMappingInput]::new()
+    $providerSpecificInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.VMwareCbtContainerMappingInput]::new()
     $providerSpecificInput.InstanceType = "VMwareCbt"
         $providerSpecificInput.KeyVaultId = "/subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2201rg/providers/Microsoft.KeyVault/vaults/migratekv942102443"
         $providerSpecificInput.KeyVaultUri = "https://migratekv942102443.vault.azure.net/"
