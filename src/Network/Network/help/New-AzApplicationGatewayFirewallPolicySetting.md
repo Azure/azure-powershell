@@ -13,8 +13,8 @@ Creates a policy setting for the firewall policy
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-RequestBodyEnforcement <Boolean>] [-RequestBodyInspectLimitInKB <Int32>] [-DisableRequestBodyCheck] 
- [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-FileUploadEnforcement <Boolean>] [-CustomBlockResponseStatusCode <Int32>]
+New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>] [-DisableRequestBodyEnforcement <Boolean>] [-RequestBodyInspectLimitInKB <Int32>] [-DisableRequestBodyCheck] 
+ [-MaxRequestBodySizeInKb <Int32>] [-MaxFileUploadInMb <Int32>] [-DisableFileUploadEnforcement <Boolean>] [-CustomBlockResponseStatusCode <Int32>]
  [-CustomBlockResponseBody <String>] [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
