@@ -23,23 +23,20 @@ Register a Windows virtual desktop application group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Register an Application Group
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
+                                    -WorkspaceName WorkspaceName `
+                                    -ApplicationGroupPath '/subscriptions/SubscriptionId/resourceGroups/ResourceGroupName/providers/Microsoft.DesktopVirtualization/applicationGroups/ApplicationGroupName'
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Location   Name                 Type
+--------   ----                 ----
+eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-{{ Add description here }}
+This command registers an Application Group to a workspace
 
 ## PARAMETERS
 
