@@ -17,7 +17,7 @@ New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -rampDownLoadBalancingAlgorithm BreadthFirst `
                                         -rampDownMinimumHostsPct 20 `
                                         -rampDownCapacityThresholdPct 20 `
-                                        -rampDownForceLogoffUser = $true `
+                                        -rampDownForceLogoffUser:$true `
                                         -rampDownWaitTimeMinute 30 `
                                         -rampDownNotificationMessage "Log out now, please." `
                                         -rampDownStopHostsWhen ZeroSessions `
