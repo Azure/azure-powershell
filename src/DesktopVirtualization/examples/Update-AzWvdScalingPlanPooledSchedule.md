@@ -2,7 +2,7 @@
 ```powershell
 Update-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
-                                        -ScalingPlanScheduleName -scheduleName `
+                                        -ScalingPlanScheduleName scheduleName `
                                         -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
                                         -rampUpStartTime 1900-01-01T06:00:00Z `
                                         -rampUpLoadBalancingAlgorithm BreadthFirst `
