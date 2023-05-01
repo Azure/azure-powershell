@@ -220,6 +220,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestSetLoadBalancerCRUDPublicStandardSkuAsDefault()
+        {
+            TestRunner.RunTestScript("Test-LoadBalancerCRUD-PublicStandardSkuDefault");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
         public void TestSetLoadBalancerCRUDPublicStandardSkuIpPrefix()
         {
             TestRunner.RunTestScript("Test-LoadBalancerCRUD-PublicStandardSkuIpPrefix");
