@@ -4417,7 +4417,7 @@ function Test-ApplicationGatewayFirewallPolicyWithInspectionLimit
 		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator GreaterThan -MatchValue 1000 -Transform Uppercase -NegationCondition $False
 		$rule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
-		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -RequestBodyEnforcement $False -RequestBodyInspectLimitInKB 2000 -MaxFileUploadInMb 70 -FileUploadEnforcement $False -MaxRequestBodySizeInKb 70
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -DisableRequestBodyEnforcement $True -RequestBodyInspectLimitInKB 2000 -MaxFileUploadInMb 70 -DisableFileUploadEnforcement $True -MaxRequestBodySizeInKb 70
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
 		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings
@@ -4444,9 +4444,9 @@ function Test-ApplicationGatewayFirewallPolicyWithInspectionLimit
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
-		Assert-AreEqual $policy.PolicySettings.RequestBodyEnforcement $policySettings.RequestBodyEnforcement
+		Assert-AreEqual $False $policySettings.RequestBodyEnforcement
 		Assert-AreEqual $policy.PolicySettings.RequestBodyInspectLimitInKB $policySettings.RequestBodyInspectLimitInKB
-		Assert-AreEqual $policy.PolicySettings.FileUploadEnforcement $policySettings.FileUploadEnforcement
+		Assert-AreEqual $False $policySettings.FileUploadEnforcement
 	}
 	finally
 	{

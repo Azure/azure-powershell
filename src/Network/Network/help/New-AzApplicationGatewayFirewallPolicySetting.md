@@ -41,18 +41,18 @@ The new policySettings is stored to $condition.
 
 ### Example 3
 ```powershell
-$condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -RequestBodyEnforcement true -RequestBodyInspectLimitInKB 2000 -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -FileUploadEnforcement true -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
+$condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyEnforcement true -RequestBodyInspectLimitInKB 2000 -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -DisableFileUploadEnforcement true -MaxRequestBodySizeInKb $maxRequestBodySizeInKb
 ```
 
-The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyEnforcement as true, RequestBodyInspectLimitInKB as 2000, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb, FileUploadEnforcement as true and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyEnforcement as false, RequestBodyInspectLimitInKB as 2000, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb, FileUploadEnforcement as false and MaxRequestBodySizeInKb as $$maxRequestBodySizeInKb.
 
 ## PARAMETERS
 
-### -RequestBodyEnforcement 
-Enable/Disable request body enforcement limits for WAF.
+### -DisableRequestBodyEnforcement 
+Disable request body enforcement limits for WAF.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -78,11 +78,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -FileUploadEnforcement  
-Enable/Disable file upload enforcement limits for WAF.
+### -DisableFileUploadEnforcement  
+Disable file upload enforcement limits for WAF.
 
 ```yaml
-Type: System.Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 

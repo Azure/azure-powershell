@@ -45,7 +45,7 @@
     - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingRule',
     - Also updated cmdlet to add the property of LogScrubbing 
     - `New-AzApplicationGatewayFirewallPolicySetting`
-* Updated cmdlet to add the property of RequestBodyEnforcement, RequestBodyInspectLimitInKB and FileUploadEnforcement 
+* Updated cmdlet to add the property of DisableRequestBodyEnforcement, RequestBodyInspectLimitInKB and DisableFileUploadEnforcement 
     - `New-AzApplicationGatewayFirewallPolicySetting`
 
 

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Mode { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public bool RequestBodyEnforcement { get; set; }
+        public bool? RequestBodyEnforcement { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int RequestBodyInspectLimitInKB { get; set; }
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int MaxRequestBodySizeInKb { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public bool FileUploadEnforcement { get; set; }
+        public bool? FileUploadEnforcement { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public int FileUploadLimitInMb { get; set; }

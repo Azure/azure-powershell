@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string State { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Enable/Disable request body enforcement limits for WAF.")]
+        [Parameter(Mandatory = false, HelpMessage = "Disable request body enforcement limits for WAF.")]
         [ValidateNotNullOrEmpty]
-        public bool RequestBodyEnforcement { get; set; }
+        public bool? DisableRequestBodyEnforcement { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Max inspection limit in KB for request body inspection.")]
         [ValidateNotNullOrEmpty]
@@ -51,9 +51,9 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public int MaxRequestBodySizeInKb { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Enable/Disable file upload enforcement limits for WAF.")]
+        [Parameter(Mandatory = false, HelpMessage = "Disable file upload enforcement limits for WAF.")]
         [ValidateNotNullOrEmpty]
-        public bool FileUploadEnforcement { get; set; }
+        public bool? DisableFileUploadEnforcement { get; set; }
 
         [Parameter(
            HelpMessage = "Maximum fileUpload size in MB.")]
@@ -101,6 +101,16 @@ namespace Microsoft.Azure.Commands.Network
                 this.CustomBlockResponseStatusCode = (int?)null;
             }
 
+            if (!this.MyInvocation.BoundParameters.ContainsKey("DisableFileUploadEnforcement"))
+            {
+                this.DisableFileUploadEnforcement = (bool?)null;
+            }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("DisableRequestBodyEnforcement"))
+            {
+                this.DisableRequestBodyEnforcement = (bool?)null;
+            }
+
             if (this.MyInvocation.BoundParameters.ContainsKey("CustomBlockResponseBody"))
             {
                 this.CustomBlockResponseBody = System.Convert.ToBase64String(Encoding.UTF8.GetBytes(CustomBlockResponseBody));
@@ -118,11 +128,11 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Mode = this.Mode,
                 State = this.State,
-                RequestBodyEnforcement = this.RequestBodyEnforcement,
+                RequestBodyEnforcement = this.DisableRequestBodyEnforcement == true ? false : true,
                 RequestBodyInspectLimitInKB = this.RequestBodyInspectLimitInKB,
                 RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
                 MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
-                FileUploadEnforcement = this.FileUploadEnforcement,
+                FileUploadEnforcement = this.DisableFileUploadEnforcement == true ? false : true,
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
