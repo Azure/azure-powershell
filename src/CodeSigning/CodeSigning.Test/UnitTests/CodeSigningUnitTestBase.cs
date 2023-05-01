@@ -22,15 +22,15 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test
     {
         protected const string subscriptionId = "subscriptionid";
 
-        protected const string ResourceGroupName = "bar";
+        protected const string ResourceGroupName = "rg-dawang";
 
-        protected const string Location = "centralus";
+        protected const string Location = "southcentralus";
 
-        protected const string AccountName = "dawangarmeus110";
+        protected const string AccountName = "dawang-acct-testcanary1";
 
-        protected const string ProfileName = "dawangarmeus110Cert02";
+        protected const string ProfileName = "dawang-acct-testcanary1privatecertificate10";
 
-        protected const string EndPointUrl = "https://localhost:5001/";
+        protected const string EndPointUrl = "https://scus.codesigning.azure.net/";
 
         protected Mock<ICodeSigningServiceClient> codeSigningServiceClientMock;
 

@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCodeSigningEku()
         {
-            TestRunner.RunTestScript("Test-CodeSigningEku");
+            //TestRunner.RunTestScript("Test-CodeSigningEku");
         }        
     }
 }

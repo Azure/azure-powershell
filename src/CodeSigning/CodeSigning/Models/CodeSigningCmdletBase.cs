@@ -52,7 +52,13 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         {
             // See http://stackoverflow.com/a/8506768/59641 for a good primer
             // on how to resolve paths in Powershell cmdlets.
-            string basePath = SessionState.Path.CurrentFileSystemLocation.ProviderPath;
+            string basePath = "";
+            try
+            {
+                basePath = SessionState.Path.CurrentFileSystemLocation.ProviderPath;
+            }
+            catch{ }
+
             string fullPath = Path.Combine(basePath, path);
             return Path.GetFullPath(fullPath); // normalize
         }

@@ -29,12 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Azure.CodeSigning">
       <HintPath>Libraries\Azure.CodeSigning.dll</HintPath>
     </Reference>
@@ -47,6 +41,12 @@
     <Reference Include="Azure.CodeSigning.Client.CryptoProvider.Utilities">
       <HintPath>Libraries\Azure.CodeSigning.Client.CryptoProvider.Utilities.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
   </ItemGroup>
   
   <ItemGroup>

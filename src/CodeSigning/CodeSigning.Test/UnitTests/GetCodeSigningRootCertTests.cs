@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.CodeSigning;
+using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -21,16 +21,16 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
 {
-    public class GetCodeSigningEkuTests : CodeSigningUnitTestBase
+    public class GetCodeSigningRootCertTests : CodeSigningUnitTestBase
     {
-        private GetAzureCodeSigningCustomerEku cmdlet;
+        private GetAzureCodeSigningRootCert cmdlet;
 
 
-        public GetCodeSigningEkuTests()
+        public GetCodeSigningRootCertTests()
         {
             base.SetupTest();
 
-            cmdlet = new GetAzureCodeSigningCustomerEku()
+            cmdlet = new GetAzureCodeSigningRootCert()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 CodeSigningServiceClient = codeSigningServiceClientMock.Object,
@@ -40,14 +40,15 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanGetCodeSigningEkuTest()
+        public void CanGetCodeSigningRootCertTest()
         {
-            string expected = "testEku";
+            string expected = "testRootCert";
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(AccountName,It.IsAny<string>())).Returns(true);
             cmdlet.AccountName = AccountName;
             cmdlet.ProfileName = ProfileName;
             cmdlet.EndpointUrl = EndPointUrl;
+            cmdlet.Destination = Util.GetDownloadsPath() + "testRootCert.cer";
 
             try { cmdlet.ExecuteCmdlet(); } catch { }
 

@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Commands.CodeSigning.Models
         Stream GetCodeSigningRootCert(string metadataPath);
 
         void SubmitCIPolicySigning(string accountName, string profileName, string endpoint,
-                string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
+                string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl, List<byte[]> fileHashList, List<byte[]> authenticodeHashList);
         void SubmitCIPolicySigning(string metadataPath, 
-                string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl);
+                string unsignedCIFilePath, string signedCIFilePath, string timeStamperUrl, List<byte[]> fileHashList, List<byte[]> authenticodeHashList);
 
     }
 }

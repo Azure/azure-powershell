@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.CodeSigning;
+using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
@@ -21,16 +22,16 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
 {
-    public class GetCodeSigningEkuTests : CodeSigningUnitTestBase
+    public class InvokeCIPolicySigningTest : CodeSigningUnitTestBase
     {
-        private GetAzureCodeSigningCustomerEku cmdlet;
+        private InvokeCIPolicySigning cmdlet;
 
 
-        public GetCodeSigningEkuTests()
+        public InvokeCIPolicySigningTest()
         {
             base.SetupTest();
 
-            cmdlet = new GetAzureCodeSigningCustomerEku()
+            cmdlet = new InvokeCIPolicySigning()
             {
                 CommandRuntime = commandRuntimeMock.Object,
                 CodeSigningServiceClient = codeSigningServiceClientMock.Object,
@@ -40,16 +41,20 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanGetCodeSigningEkuTest()
+        public void CanInvokeCIPolicySigningTest()
         {
-            string expected = "testEku";
+            string expected = "testInvokeCIPolicySigning";
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(AccountName,It.IsAny<string>())).Returns(true);
             cmdlet.AccountName = AccountName;
             cmdlet.ProfileName = ProfileName;
             cmdlet.EndpointUrl = EndPointUrl;
+            cmdlet.Path = ".\\UnitTests\\defaultpolicy.bin";
+            cmdlet.Destination = Util.GetDownloadsPath() + "signedCI.bin";
+            cmdlet.TimeStamperUrl = "http://timestamp.acs.microsoft.com";
 
-            try { cmdlet.ExecuteCmdlet(); } catch { }
+
+            cmdlet.ExecuteCmdlet();
 
             // Without PassThru never call WriteObject
             commandRuntimeMock.Verify(f => f.WriteObject(expected), Times.Never());

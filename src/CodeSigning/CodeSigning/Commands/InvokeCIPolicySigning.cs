@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.Azure.Commands.CodeSigning.Models;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Xml.Linq;
@@ -118,16 +119,23 @@ namespace Microsoft.Azure.Commands.CodeSigning
         {           
             ValidateFileType(ResolvePath(Path));
 
+            //get two file hashes            
+            FileStream fm = File.OpenRead(Path);
+
+            List<byte[]> fileHashList = new List<byte[]>();
+            List<byte[]> authenticodeHashList = new List<byte[]>();
+            fileHashList = DefenderHelper.GetSigningFileHashList(fm.SafeFileHandle);
+            authenticodeHashList = DefenderHelper.GetSigningFileAuthenticodehashList(fm.SafeFileHandle);
             
             WriteMessage("CI Policy signing in progress....");
             
             if (!string.IsNullOrEmpty(AccountName))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl, fileHashList, authenticodeHashList);                
             }
             else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl, fileHashList, authenticodeHashList);                
             }
 
             WriteMessage("CI Policy is successfully signed. " + ResolvePath(Destination));
