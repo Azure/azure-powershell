@@ -4,21 +4,25 @@ New-AzWvdScalingPlanPooledSchedule -ResourceGroupName rgName `
                                         -ScalingPlanName spName `
                                         -ScalingPlanScheduleName scheduleName `
                                         -daysOfWeek @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday') `
-                                        -rampUpStartTime 1900-01-01T06:00:00Z `
+                                        -rampUpStartTimeHour 6 `
+                                        -rampUpStartTimeMinute 30 `
                                         -rampUpLoadBalancingAlgorithm BreadthFirst `
                                         -rampUpMinimumHostsPct 20 `
                                         -rampUpCapacityThresholdPct 20 `
-                                        -peakStartTime 1900-01-01T08:00:00Z `
+                                        -peakStartTimeHour 8 `
+                                        -peakStartTimeMinute 30 `
                                         -peakLoadBalancingAlgorithm DepthFirst `
-                                        -RampDownStartTime 1900-01-01T18:00:00Z `
+                                        -RampDownStartTimeHour 16 `
+                                        -RampDownStartTimeMinute 0 `
                                         -rampDownLoadBalancingAlgorithm BreadthFirst `
-                                        -rampDownMinimumHostsPct = 20 `
-                                        -rampDownCapacityThresholdPct = 20 `
-                                        -rampDownForceLogoffUser $true `
+                                        -rampDownMinimumHostsPct 20 `
+                                        -rampDownCapacityThresholdPct 20 `
+                                        -rampDownForceLogoffUser = $true `
                                         -rampDownWaitTimeMinute 30 `
                                         -rampDownNotificationMessage "Log out now, please." `
                                         -rampDownStopHostsWhen ZeroSessions `
-                                        -offPeakStartTime 1900-01-01T20:00:00Z `
+                                        -offPeakStartTimeHour 22 `
+                                        -offPeakStartTimeMinute 45 `
                                         -offPeakLoadBalancingAlgorithm DepthFirst
 ```
 
