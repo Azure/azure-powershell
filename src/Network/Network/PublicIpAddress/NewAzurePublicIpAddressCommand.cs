@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
@@ -210,6 +211,9 @@ namespace Microsoft.Azure.Commands.Network
             publicIp.Zones = this.Zone?.ToList();
             publicIp.PublicIpPrefix = this.PublicIpPrefix;
             publicIp.IpAddress = this.IpAddress;
+
+            publicIp.Sku = new PSPublicIpAddressSku();
+            publicIp.Sku.Name = MNM.PublicIPAddressSkuName.Standard;
 
             if (!string.IsNullOrEmpty(this.EdgeZone))
             {

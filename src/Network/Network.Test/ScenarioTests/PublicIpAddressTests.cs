@@ -115,6 +115,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.wanrpdev)]
+        public void TestPublicIpStandardSkuAsDefault()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-StandardSkuDefault");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.ddos)]
         public void TestPublicIpDdosProtection()
         {

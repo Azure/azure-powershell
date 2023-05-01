@@ -189,28 +189,21 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
 
             // Sku
-            PSLoadBalancerSku vSku = null;
+            PSLoadBalancerSku vSku = new PSLoadBalancerSku();
+            vSku.Name = "Standard";
 
             if (this.Sku != null)
             {
-                if (vSku == null)
-                {
-                    vSku = new PSLoadBalancerSku();
-                }
                 vSku.Name = this.Sku;
             }
 
             // Tier
             if (this.Tier != null)
             {
-                if (vSku == null)
-                {
-                    vSku = new PSLoadBalancerSku();
-                }
                 vSku.Tier = this.Tier;
             }
 
-            if ((vSku?.Tier ?? string.Empty) == "Global")
+            if ((vSku.Tier ?? string.Empty) == "Global")
             {
                 if ((this.InboundNatRule?.Count() ?? 0) > 0 || (this.OutboundRule?.Count() ?? 0) > 0)
                 {
