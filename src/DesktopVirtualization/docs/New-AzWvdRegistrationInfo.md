@@ -24,7 +24,7 @@ Create Windows virtual desktop registration info.
 
 ### Example 1: Create a Registration Info for a HostPool
 ```powershell
-PS C:\> New-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName -ExpirationTime "2050-02-14 12:00"
+New-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName -ExpirationTime "2050-02-14 12:00"
 ```
 
 ```output

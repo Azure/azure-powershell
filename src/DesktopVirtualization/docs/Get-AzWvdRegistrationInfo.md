@@ -24,7 +24,7 @@ Get the Windows virtual desktop registration info.
 
 ### Example 1: Get Existing Registration Info from Hostpool
 ```powershell
-PS C:\> Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
+Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolName hpName
 ```
 
 ```output
@@ -38,7 +38,7 @@ Retrieves Registration Info for the chosen hostpool.
 
 ### Example 2: Get Empty Registration Info from HostPool 
 ```powershell
-PS C:\> Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
+Get-AzWvdRegistrationInfo -ResourceGroupName rgName -HostPoolname hpName
 ```
 
 ```output
