@@ -6,9 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>
-    /// OsType to be used to specify os type. Choose from Linux and Windows. Default to Linux.
-    /// </summary>
+    /// <summary>The operating system type. The default is Linux.</summary>
     public partial class OSTypeTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

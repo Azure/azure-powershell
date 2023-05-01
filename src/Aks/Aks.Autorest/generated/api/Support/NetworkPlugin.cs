@@ -6,13 +6,26 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Network plugin used for building Kubernetes network.</summary>
+    /// <summary>Network plugin used for building the Kubernetes network.</summary>
     public partial struct NetworkPlugin :
         System.IEquatable<NetworkPlugin>
     {
+        /// <summary>
+        /// Use the Azure CNI network plugin. See [Azure CNI (advanced) networking](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPlugin Azure = @"azure";
 
+        /// <summary>
+        /// Use the Kubenet network plugin. See [Kubenet (basic) networking](https://docs.microsoft.com/azure/aks/concepts-network#kubenet-basic-networking)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPlugin Kubenet = @"kubenet";
+
+        /// <summary>
+        /// No CNI plugin is pre-installed. See [BYO CNI](https://docs.microsoft.com/en-us/azure/aks/use-byo-cni) for more information.
+        /// </summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.NetworkPlugin None = @"none";
 
         /// <summary>the value for an instance of the <see cref="NetworkPlugin" /> Enum.</summary>
         private string _value { get; set; }

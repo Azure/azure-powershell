@@ -28,6 +28,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psNetAppFilesVolumeQuotaRule = new PSNetAppFilesVolumeQuotaRule()
             {
+                Id = volumeQuotaRule.Id,
+                Location = volumeQuotaRule.Location,
+                Name = volumeQuotaRule.Name,
+                Tags = volumeQuotaRule.Tags,
+                Type = volumeQuotaRule.Type,
                 ResourceGroupName = new ResourceIdentifier(volumeQuotaRule.Id).ResourceGroupName,                
                 ProvisioningState = volumeQuotaRule.ProvisioningState.ToString(),
                 QuotaSize = volumeQuotaRule.QuotaSizeInKiBs,

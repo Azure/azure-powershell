@@ -17,7 +17,8 @@ Creates an Azure VirtualHub resource.
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
- [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>] [-AsJob]
+ [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +27,8 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtu
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
- [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>] [-AsJob]
+ [-HubRoutingPreference <String>] [-VirtualRouterAsn <UInt32>]
+ [-VirtualRouterAutoScaleConfiguration <PSVirtualRouterAutoScaleConfiguration>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -128,7 +130,8 @@ This example is similar to Example 2, but also attaches a route table to the vir
 ```powershell
 New-AzResourceGroup -Location "West US" -Name "testRG"
 $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -HubRoutingPreference "VpnGateway"
+$autoscale = New-AzVirtualRouterAutoScaleConfiguration -MinCapacity 3
+New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -HubRoutingPreference "VpnGateway" -VirtualRouterAutoScaleConfiguration $autoscale
 ```
 
 ```output
@@ -147,7 +150,7 @@ Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
 
-The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have preferred routing gateway as VPNGateway.
+The above will create a resource group "testRG", a Virtual WAN and a Virtual Hub in West US in that resource group in Azure. The virtual hub will have preferred routing gateway as VPNGateway and minimum capacity 3.
 
 ## PARAMETERS
 
@@ -338,6 +341,21 @@ The ASN of this virtual hub
 
 ```yaml
 Type: System.UInt32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualRouterAutoScaleConfiguration
+Autoscale configuration for the hub router
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualRouterAutoScaleConfiguration
 Parameter Sets: (All)
 Aliases:
 

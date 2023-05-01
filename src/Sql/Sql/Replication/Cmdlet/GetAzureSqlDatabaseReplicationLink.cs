@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     [CmdletOutputBreakingChange(
         deprecatedCmdletOutputTypeName: typeof(AzureReplicationLinkModel),
-        deprecateByVersion: "3.0.0",
         DeprecatedOutputProperties = new String[] { "BackupStorageRedundancy" },
         NewOutputProperties = new String[] { "CurrentBackupStorageRedundancy", "RequestedBackupStorageRedundancy" })]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseReplicationLink", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]

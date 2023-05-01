@@ -12,3 +12,4 @@ Get-AzAksCluster -ResourceGroupName group -Name myCluster | Stop-AzAksCluster
 
 Stop Aks cluster with pipeline.
 
+

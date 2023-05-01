@@ -43,6 +43,7 @@ Get-AzRouteServer -ResourceGroupName routeServerRG -RouteServerName routeServer
 $routeServerId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/routeServerRG/providers/Microsoft.Network/virtualHubs/routeServer'
 Get-AzRouteServer -ResourceId $routeServerId
 ```
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -72,7 +73,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
@@ -102,7 +103,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

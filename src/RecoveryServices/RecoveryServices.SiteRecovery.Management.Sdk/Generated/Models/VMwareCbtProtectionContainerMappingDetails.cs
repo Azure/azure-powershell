@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="targetLocation">The target location.</param>
         /// <param name="roleSizeToNicCountMap">The role size to NIC count
         /// map.</param>
-        public VMwareCbtProtectionContainerMappingDetails(string keyVaultId = default(string), string keyVaultUri = default(string), string storageAccountId = default(string), string storageAccountSasSecretName = default(string), string serviceBusConnectionStringSecretName = default(string), string targetLocation = default(string), IDictionary<string, int?> roleSizeToNicCountMap = default(IDictionary<string, int?>))
+        /// <param name="excludedSkus">The SKUs to be excluded.</param>
+        public VMwareCbtProtectionContainerMappingDetails(string keyVaultId = default(string), string keyVaultUri = default(string), string storageAccountId = default(string), string storageAccountSasSecretName = default(string), string serviceBusConnectionStringSecretName = default(string), string targetLocation = default(string), IDictionary<string, int?> roleSizeToNicCountMap = default(IDictionary<string, int?>), IList<string> excludedSkus = default(IList<string>))
         {
             KeyVaultId = keyVaultId;
             KeyVaultUri = keyVaultUri;
@@ -53,6 +54,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             ServiceBusConnectionStringSecretName = serviceBusConnectionStringSecretName;
             TargetLocation = targetLocation;
             RoleSizeToNicCountMap = roleSizeToNicCountMap;
+            ExcludedSkus = excludedSkus;
             CustomInit();
         }
 
@@ -102,6 +104,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "roleSizeToNicCountMap")]
         public IDictionary<string, int?> RoleSizeToNicCountMap { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the SKUs to be excluded.
+        /// </summary>
+        [JsonProperty(PropertyName = "excludedSkus")]
+        public IList<string> ExcludedSkus { get; set; }
 
     }
 }

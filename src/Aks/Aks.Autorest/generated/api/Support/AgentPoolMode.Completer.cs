@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>AgentPoolMode represents mode of an agent pool.</summary>
+    /// <summary>
+    /// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions
+    /// and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolModeTypeConverter))]
     public partial struct AgentPoolMode :
         System.Management.Automation.IArgumentCompleter

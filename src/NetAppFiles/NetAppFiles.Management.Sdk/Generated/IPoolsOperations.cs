@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// List all capacity pools in the NetApp Account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get details of the specified capacity pool
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Capacity pool object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Capacity pool object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete the specified capacity pool
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Capacity pool object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Capacity pool object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete the specified capacity pool
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account

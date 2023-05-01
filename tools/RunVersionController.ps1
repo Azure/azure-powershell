@@ -296,6 +296,9 @@ function Bump-AzVersion
 
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
     Update-ChangeLog -Content $changeLog -RootPath $rootPath
+
+    New-CommandMappingFile
+
     return $versionBump
 }
 
@@ -336,6 +339,7 @@ function Update-AzPreview
 
 function New-CommandMappingFile
 {
+    # Regenerate the cmdlet-to-module mappings for the recommendation feature of uninstalled modules
     $MappingsFilePath = "$PSScriptRoot\..\src\Accounts\Accounts\Utilities\CommandMappings.json"
     Write-Host "Generating command mapping file at $MappingsFilePath"
     $content = Get-Content $MappingsFilePath | ConvertFrom-Json -Depth 10
@@ -447,8 +451,6 @@ switch ($PSCmdlet.ParameterSetName)
 # Each release needs to update AzPreview.psd1 and dotnet csv
 # Refresh AzPreview.psd1
 Update-AzPreview
-
-New-CommandMappingFile
 
 # Generate dotnet csv
 &$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1"
