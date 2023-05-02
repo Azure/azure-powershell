@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureBlobContainerName
-Blob container name where backups are stored.
+Blob container name where backups are stored. Optionally, a folder within the blob container can also be specified with the format 'containerName/folderName'. When uploading database backups to your blob container, ensure that backup files from different databases are stored in separate folders. Only the root of the container and folders at most one level deep are supported.
 
 ```yaml
 Type: System.String
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureBlobStorageAccountResourceId
-Resource Id of the storage account where backups are stored.
+Resource ID of the storage account where backups are stored. If public access is not enabled on the storage account, ensure that the subnet of the target instance is whitelisted on the storage account, and if applicable, that the private endpoint is in the same virtual network as the target server.
 
 ```yaml
 Type: System.String
