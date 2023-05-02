@@ -136,6 +136,11 @@ namespace Microsoft.Azure.Management.Compute
         IAvailabilitySetsOperations AvailabilitySets { get; }
 
         /// <summary>
+        /// Gets the IProximityPlacementGroupsOperations.
+        /// </summary>
+        IProximityPlacementGroupsOperations ProximityPlacementGroups { get; }
+
+        /// <summary>
         /// Gets the IDedicatedHostGroupsOperations.
         /// </summary>
         IDedicatedHostGroupsOperations DedicatedHostGroups { get; }
@@ -149,21 +154,6 @@ namespace Microsoft.Azure.Management.Compute
         /// Gets the ISshPublicKeysOperations.
         /// </summary>
         ISshPublicKeysOperations SshPublicKeys { get; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineRunCommandsOperations.
-        /// </summary>
-        IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; }
-
-        /// <summary>
-        /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations.
-        /// </summary>
-        IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; }
-
-        /// <summary>
-        /// Gets the IProximityPlacementGroupsOperations.
-        /// </summary>
-        IProximityPlacementGroupsOperations ProximityPlacementGroups { get; }
 
         /// <summary>
         /// Gets the IImagesOperations.
@@ -196,6 +186,16 @@ namespace Microsoft.Azure.Management.Compute
         ILogAnalyticsOperations LogAnalytics { get; }
 
         /// <summary>
+        /// Gets the IVirtualMachineRunCommandsOperations.
+        /// </summary>
+        IVirtualMachineRunCommandsOperations VirtualMachineRunCommands { get; }
+
+        /// <summary>
+        /// Gets the IVirtualMachineScaleSetVMRunCommandsOperations.
+        /// </summary>
+        IVirtualMachineScaleSetVMRunCommandsOperations VirtualMachineScaleSetVMRunCommands { get; }
+
+        /// <summary>
         /// Gets the IDisksOperations.
         /// </summary>
         IDisksOperations Disks { get; }
@@ -206,19 +206,24 @@ namespace Microsoft.Azure.Management.Compute
         IDiskAccessesOperations DiskAccesses { get; }
 
         /// <summary>
-        /// Gets the IDiskRestorePointOperations.
-        /// </summary>
-        IDiskRestorePointOperations DiskRestorePoint { get; }
-
-        /// <summary>
         /// Gets the IDiskEncryptionSetsOperations.
         /// </summary>
         IDiskEncryptionSetsOperations DiskEncryptionSets { get; }
 
         /// <summary>
+        /// Gets the IDiskRestorePointOperations.
+        /// </summary>
+        IDiskRestorePointOperations DiskRestorePoint { get; }
+
+        /// <summary>
         /// Gets the ISnapshotsOperations.
         /// </summary>
         ISnapshotsOperations Snapshots { get; }
+
+        /// <summary>
+        /// Gets the IResourceSkusOperations.
+        /// </summary>
+        IResourceSkusOperations ResourceSkus { get; }
 
         /// <summary>
         /// Gets the IGalleriesOperations.
@@ -281,9 +286,29 @@ namespace Microsoft.Azure.Management.Compute
         ICommunityGalleryImageVersionsOperations CommunityGalleryImageVersions { get; }
 
         /// <summary>
-        /// Gets the IResourceSkusOperations.
+        /// Gets the ICloudServiceRoleInstancesOperations.
         /// </summary>
-        IResourceSkusOperations ResourceSkus { get; }
+        ICloudServiceRoleInstancesOperations CloudServiceRoleInstances { get; }
+
+        /// <summary>
+        /// Gets the ICloudServiceRolesOperations.
+        /// </summary>
+        ICloudServiceRolesOperations CloudServiceRoles { get; }
+
+        /// <summary>
+        /// Gets the ICloudServicesOperations.
+        /// </summary>
+        ICloudServicesOperations CloudServices { get; }
+
+        /// <summary>
+        /// Gets the ICloudServicesUpdateDomainOperations.
+        /// </summary>
+        ICloudServicesUpdateDomainOperations CloudServicesUpdateDomain { get; }
+
+        /// <summary>
+        /// Gets the ICloudServiceOperatingSystemsOperations.
+        /// </summary>
+        ICloudServiceOperatingSystemsOperations CloudServiceOperatingSystems { get; }
 
     }
 }
