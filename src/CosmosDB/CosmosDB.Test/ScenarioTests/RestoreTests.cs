@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
             TestRunner.RunTestScript("Test-TableBackupInformationCmdLets");
         }
 
-        [Fact(Skip= "Flaky test: Need diagnose that the test is not creating the valid account for backup")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets()
         {

@@ -656,7 +656,7 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets {
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location $location -FailoverPriority 0 -IsZoneRedundant 0
 
-  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  New-AzResourceGroup -ResourceGroupName $rgName -Location $location
 
   Try {
     New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
@@ -668,25 +668,7 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous30DaysCmdLets {
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous
   Start-Sleep -s (60)
 
-  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.TargetType
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.StartTime
-
-  Start-Sleep -s (60 * 5)
-
-  while (
-    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Completed" -and 
-    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Failed" -and
-    $updatedCosmosDBAccount.BackupPolicy.BackupType -ne "Continuous")
-  {
-    Start-Sleep -s 60
-
-    # keep polling the migration Status
-    $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-  }
-
+  # Verify account after migration
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
   Assert-AreEqual "Continuous30Days" $updatedCosmosDBAccount.BackupPolicy.Tier
 
@@ -707,7 +689,7 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets {
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location $location -FailoverPriority 0 -IsZoneRedundant 0
 
-  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  New-AzResourceGroup -ResourceGroupName $rgName -Location $location
 
   Try {
     New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $cosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel
@@ -717,27 +699,8 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets {
   }
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous7Days
-  Start-Sleep -s (60)
 
-  $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.TargetType
-  Assert-NotNull $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.StartTime
-
-  Start-Sleep -s (60 * 5)
-
-  while (
-    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Completed" -and 
-    $updatedCosmosDBAccount.BackupPolicy.BackupPolicyMigrationState.Status -ne "Failed" -and
-    $updatedCosmosDBAccount.BackupPolicy.BackupType -ne "Continuous")
-  {
-    Start-Sleep -s 60
-
-    # keep polling the migration Status
-    $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
-  }
-
+  # Verify account after migration
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
   Assert-AreEqual "Continuous7Days" $updatedCosmosDBAccount.BackupPolicy.Tier
 
@@ -750,7 +713,6 @@ function Test-UpdateCosmosDBAccountBackupPolicyToContinuous7DaysCmdLets {
 
   # Provide continuoustier explicitly, it should triggered the update to continuous30days
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupPolicyType Continuous -ContinuousTier Continuous30Days
-  Start-Sleep -s (60 * 2)
 
   $updatedCosmosDBAccount = Get-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName
   Assert-AreEqual "Continuous" $updatedCosmosDBAccount.BackupPolicy.BackupType
@@ -767,7 +729,7 @@ function Test-ProvisionCosmosDBAccountBackupPolicyWithContinuous7DaysCmdLets {
   $locations = @()
   $locations += New-AzCosmosDBLocationObject -Location "West Us" -FailoverPriority 0 -IsZoneRedundant 0
 
-  $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName -Location $location
+  New-AzResourceGroup -ResourceGroupName $rgName -Location $location
   New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $sourceCosmosDBAccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous -ContinuousTier Continuous7Days
 
   $sourceCosmosDBAccount = Get-AzCosmosDBAccount -Name $sourceCosmosDBAccountName -ResourceGroupName $rgName
