@@ -59,10 +59,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		[Parameter(Mandatory = false, HelpMessage = "Gets or sets network security rule description.")]
 		public string Description { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Gets or sets the destination address prefixes. CIDR or destination IP ranges.")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the destination address prefixes. CIDR or destination IP ranges.")]
 		public string[] DestinationAddressPrefixes { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Gets or sets the destination port ranges.")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the destination port ranges.")]
 		public string[] DestinationPortRanges { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network security rule direction. Possible values include: 'inbound', 'outbound'")]
@@ -72,16 +72,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		[Alias("NetworkSecurityRuleName")]
 		public string Name { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Gets or sets the priority of the rule. The value can be in the range 1000 to 3000. Values outside this range are reserved for Service Fabric ManagerCluster Resource Provider. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the priority of the rule. The value can be in the range 1000 to 3000. Values outside this range are reserved for Service Fabric ManagerCluster Resource Provider. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.")]
 		public int Priority { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network protocol this rule applies to. Possible values include: 'http', 'https', 'tcp', 'udp', 'icmp', 'ah', 'esp'")]
 		public string Protocol { get; set; }
 
-		[Parameter(Mandatory = false, HelpMessage = "Gets or sets the CIDR or source IP ranges.")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the CIDR or source IP ranges.")]
 		public string[] SourceAddressPrefixes { get; set;}
 
-		[Parameter(Mandatory = false, HelpMessage = "Gets or sets the source port ranges.")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the source port ranges.")]
 		public string[] SourcePortRanges { get;set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
