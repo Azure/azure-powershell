@@ -124,17 +124,35 @@ namespace Microsoft.Azure.Commands.Network
 
         protected PSApplicationGatewayFirewallPolicySettings NewObject()
         {
-            bool RequestBodyEnforcementVal = this.DisableRequestBodyEnforcement != null && (this.DisableRequestBodyEnforcement == true ? false : true);
-            bool FileUploadEnforcementVal = this.DisableFileUploadEnforcement != null && (this.DisableFileUploadEnforcement == true ? false : true);
+            bool? GetBooleanValForDisabledVariable(bool? InputVal)
+            {
+                bool? OutputVal;
+                if (InputVal == null)
+                {
+                    OutputVal = null;
+                } else 
+                {
+                    if(InputVal == true)
+                    {
+                        OutputVal = false;
+                    }
+                    else
+                    {
+                        OutputVal = true;
+                    }
+                }
+            return OutputVal;
+            } 
+
             return new PSApplicationGatewayFirewallPolicySettings()
             {
                 Mode = this.Mode,
                 State = this.State,
-                RequestBodyEnforcement = RequestBodyEnforcementVal,
+                RequestBodyEnforcement = GetBooleanValForDisabledVariable(this.DisableRequestBodyEnforcement),
                 RequestBodyInspectLimitInKB = this.RequestBodyInspectLimitInKB,
                 RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
                 MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
-                FileUploadEnforcement = FileUploadEnforcementVal,
+                FileUploadEnforcement = GetBooleanValForDisabledVariable(this.DisableFileUploadEnforcement),
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
