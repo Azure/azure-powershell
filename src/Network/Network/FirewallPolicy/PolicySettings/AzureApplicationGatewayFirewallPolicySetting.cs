@@ -124,35 +124,34 @@ namespace Microsoft.Azure.Commands.Network
 
         protected PSApplicationGatewayFirewallPolicySettings NewObject()
         {
-            bool? GetBooleanValForDisabledVariable(bool? InputVal)
+            bool? RequestBodyEnforcementVal = null;
+            if (this.DisableRequestBodyEnforcement != null)
             {
-                bool? OutputVal;
-                if (InputVal == null)
+                RequestBodyEnforcementVal = true;
+                if (this.DisableRequestBodyEnforcement == true)
                 {
-                    OutputVal = null;
-                } else 
-                {
-                    if(InputVal == true)
-                    {
-                        OutputVal = false;
-                    }
-                    else
-                    {
-                        OutputVal = true;
-                    }
+                    RequestBodyEnforcementVal = false;
                 }
-            return OutputVal;
-            } 
+            }
+            bool? FileUploadEnforcementVal = null;
+            if (this.DisableFileUploadEnforcement != null)
+            {
+                FileUploadEnforcementVal = true;
+                if (this.DisableFileUploadEnforcement == true)
+                {
+                    FileUploadEnforcementVal = false;
+                }
+            }
 
             return new PSApplicationGatewayFirewallPolicySettings()
             {
                 Mode = this.Mode,
                 State = this.State,
-                RequestBodyEnforcement = GetBooleanValForDisabledVariable(this.DisableRequestBodyEnforcement),
+                RequestBodyEnforcement = RequestBodyEnforcementVal,
                 RequestBodyInspectLimitInKB = this.RequestBodyInspectLimitInKB,
                 RequestBodyCheck = this.DisableRequestBodyCheck.IsPresent ? false : true,
                 MaxRequestBodySizeInKb = this.MaxRequestBodySizeInKb,
-                FileUploadEnforcement = GetBooleanValForDisabledVariable(this.DisableFileUploadEnforcement),
+                FileUploadEnforcement = FileUploadEnforcementVal,
                 FileUploadLimitInMb = this.MaxFileUploadInMb,
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
