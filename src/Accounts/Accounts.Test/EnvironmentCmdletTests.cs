@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(4, environments.Count);
+            Assert.Equal(3, environments.Count);
         }
 
         [Fact]
@@ -544,6 +544,39 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlet.InvokeEndProcessing();
 
             Assert.Single(environments);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetsAllAzureEnvironments()
+        {
+            List<PSAzureEnvironment> environments = null;
+            Mock<ICommandRuntime> commandRuntimeMock = new Mock<ICommandRuntime>();
+            commandRuntimeMock.Setup(c => c.WriteObject(It.IsAny<object>(), It.IsAny<bool>()))
+                .Callback<object, bool>((e, _) => environments = (List<PSAzureEnvironment>)e);
+
+            var cmdlet = new GetAzureRMEnvironmentCommand()
+            {
+                CommandRuntime = commandRuntimeMock.Object
+            };
+
+            cmdlet.InvokeBeginProcessing();
+            cmdlet.ExecuteCmdlet();
+            cmdlet.InvokeEndProcessing();
+
+            Assert.Equal(3, environments.Count);
+
+            var publicEnvironmentRef = EnvironmentCmdletTestsExtension.GetAzureCloudEndpoints();
+            var publicEnvironment = environments.Where(x => 0 == string.Compare(x.Name, "AzureCloud")).First();
+            Assert.True(publicEnvironment.IsAbsolutelyEqual(publicEnvironmentRef));
+
+            var chinaEnvironmentRef = EnvironmentCmdletTestsExtension.GetAzureChinaCloudEndpoints();
+            var chinaEnvironment = environments.Where(x => 0 == string.Compare(x.Name, "AzureChinaCloud")).First();
+            Assert.True(chinaEnvironment.IsAbsolutelyEqual(chinaEnvironmentRef));
+
+            var usEnvironmentRef = EnvironmentCmdletTestsExtension.GetAzureUSGovernmentEndpoints();
+            var usEnvironment = environments.Where(x => 0 == string.Compare(x.Name, "AzureUSGovernment")).First();
+            Assert.True(usEnvironment.IsAbsolutelyEqual(usEnvironmentRef));
         }
 
         [Fact]

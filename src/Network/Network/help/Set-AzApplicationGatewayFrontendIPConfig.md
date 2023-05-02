@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2C024C32-1B03-4BAA-AD31-4974D414C998
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azapplicationgatewayfrontendipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azapplicationgatewayfrontendipconfig
 schema: 2.0.0
 ---
 
@@ -81,7 +81,7 @@ The fourth command adds a front-end IP configuration named FrontendIP02 using $S
 Specifies an application gateway object in which to modify the front-end IP configuration.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP configuration that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Specifies the private IP address.
 If specified, this IP is statically allocated from the subnet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 PrivateLinkConfiguration
 
 ```yaml
-Type: PSApplicationGatewayPrivateLinkConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPrivateLinkConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 PrivateLinkConfigurationId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Specifies the public IP address.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResource
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 Specifies the ID of the public IP address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -205,7 +205,7 @@ If the *PrivateIPAddress* address is specified, it should belong to this subnet.
 If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
 Aliases:
 
@@ -223,7 +223,7 @@ If the *PrivateIPAddress* parameter is specified, it should belong to this subne
 If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 

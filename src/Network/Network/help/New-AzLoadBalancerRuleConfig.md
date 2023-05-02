@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: FD84D530-491B-4075-A6B4-2E1C46AD92D4
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
@@ -43,7 +43,7 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" `
 $frontend = New-AzLoadBalancerFrontendIpConfig -Name MyFrontEnd `
     -PublicIpAddress $publicip
 $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port `
-    80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath healthcheck.aspx
+    80 -IntervalInSeconds 15 -ProbeCount 2 -ProbeThreshold 2 -RequestPath healthcheck.aspx
 New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration `
     $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp `
     -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP `
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

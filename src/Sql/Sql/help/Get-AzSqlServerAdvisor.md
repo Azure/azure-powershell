@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: DAEF11C1-281B-4BED-9283-2296E0B57018
-online version: https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserveradvisor
+online version: https://learn.microsoft.com/powershell/module/az.sql/get-azsqlserveradvisor
 schema: 2.0.0
 ---
 
@@ -299,5 +299,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlServerAdvisorAutoExecuteStatus](./Set-AzSqlServerAdvisorAutoExecuteStatus.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 

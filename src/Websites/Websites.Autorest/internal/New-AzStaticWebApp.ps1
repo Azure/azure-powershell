@@ -36,7 +36,7 @@ SKUCAPABILITY <ICapability[]>: Capabilities of the SKU, e.g., is traffic manager
   [Reason <String>]: Reason of the SKU capability.
   [Value <String>]: Value of the SKU capability.
 .Link
-https://docs.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
+https://learn.microsoft.com/powershell/module/az.websites/new-azstaticwebapp
 #>
 function New-AzStaticWebApp {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Websites.Models.Api20201201.IStaticSiteArmResource])]
@@ -290,7 +290,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Websites.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -352,6 +353,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             CreateExpanded = 'Az.Websites.private\New-AzStaticWebApp_CreateExpanded';
         }
@@ -364,6 +366,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -372,15 +375,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

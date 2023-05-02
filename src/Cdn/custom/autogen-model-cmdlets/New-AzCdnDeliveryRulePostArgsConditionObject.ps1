@@ -23,7 +23,7 @@ Create an in-memory object for DeliveryRulePostArgsCondition.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition
 .Link
-https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRulePostArgsConditionObject
+https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRulePostArgsConditionObject
 #>
 function New-AzCdnDeliveryRulePostArgsConditionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRulePostArgsCondition')]

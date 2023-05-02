@@ -22,7 +22,7 @@ Create a in-memory object for IPConfiguration
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IPConfiguration
 .Link
-https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
+https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolveripconfigurationobject
 #>
 function New-AzDnsResolverIPConfigurationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IPConfiguration')]

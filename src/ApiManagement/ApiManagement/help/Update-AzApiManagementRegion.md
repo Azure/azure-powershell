@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.dll-Help.xml
 Module Name: Az.ApiManagement
 ms.assetid: 5B7B285A-6418-44D7-BD78-E14AFFAA7765
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementregion
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/update-azapimanagementregion
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Updates existing deployment region in PsApiManagement instance.
 ## SYNTAX
 
 ```
-Update-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> -Sku <PsApiManagementSku>
+Update-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> -Sku <string>
  -Capacity <Int32> [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-Zone <String[]>]
  [-DisableGateway <Boolean>] [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]

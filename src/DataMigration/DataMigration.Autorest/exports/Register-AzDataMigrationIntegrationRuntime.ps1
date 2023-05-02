@@ -20,16 +20,16 @@ Registers Sql Migration Service on Integration Runtime
 .Description
 Registers Sql Migration Service on Integration Runtime
 .Example
-$authKeys = Get-AzDataMigrationSqlMigrationServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
+$authKeys = Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1
 .Example
-$authKeys = Get-AzDataMigrationSqlMigrationServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
+$authKeys = Get-AzDataMigrationSqlServiceAuthKey -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 Register-AzDataMigrationIntegrationRuntime -AuthKey $authKeys.AuthKey1 -IntegrationRuntimePath "C:\Users\user\Downloads\IntegrationRuntime.msi"
 
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
+https://learn.microsoft.com/powershell/module/az.datamigration/register-azdatamigrationintegrationruntime
 #>
 function Register-AzDataMigrationIntegrationRuntime {
 [OutputType([System.Boolean])]
@@ -62,7 +62,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

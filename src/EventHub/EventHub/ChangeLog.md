@@ -19,6 +19,24 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.3
+* Added upcoming breaking change notifications for Az.EventHub module.
+
+## Version 3.2.2
+* Added breaking change description for parameter `MessageRetentionInDays`, which would be deprecated and would be replaced by `RetentionTimeInHours`
+
+## Version 3.2.1
+* Fixed 'New-AzEventHubAuthorizationRuleSASToken' cmdlet which was returning wrong skn value
+
+## Version 3.2.0
+* Added NamespaceV2 cmdlets for EventHub
+
+## Version 3.1.0
+* Added readonly Status property in EventHub Namespace 
+
+## Version 3.0.0
+* Most cmdlets in Az.EventHub module have been migrated to a new format and would witness breaking changes. Please refer our migration guide https://go.microsoft.com/fwlink/?linkid=2204690 to know breaking changes in detail.
+
 ## Version 2.2.1
 * In the upcoming major breaking change release in October 2022, Az.EventHub would be migrating most cmdlets to a new format
 for a better powershell experience and as a result would witness breaking changes. Please refer our migration guide to know more https://go.microsoft.com/fwlink/?linkid=2204690.

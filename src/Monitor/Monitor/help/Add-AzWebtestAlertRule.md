@@ -2,14 +2,15 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
 Module Name: Az.Monitor
 ms.assetid: FBAE5F75-1E28-4F1C-A9ED-20075FFD4AC7
-online version: https://docs.microsoft.com/powershell/module/az.monitor/add-azwebtestalertrule
+online version: https://learn.microsoft.com/powershell/module/az.monitor/add-azwebtestalertrule
 schema: 2.0.0
 ---
 
 # Add-AzWebtestAlertRule
 
 ## SYNOPSIS
-Adds or updates a webtest alert rule.
+Adds or updates a classic webtest alert rule (already retired on public cloud).
+To create a new webtest alert rule, use the [Add-AzMetricAlertRuleV2](./Add-AzMetricAlertRuleV2.md) cmdlet, passing a criteria object for webtest (created via the [New-AzMetricAlertRuleV2Criteria](./New-AzMetricAlertRuleV2Criteria.md) cmdlet with a "-WebTest" criteria type).
 
 ## SYNTAX
 
@@ -277,8 +278,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Set-AzActivityLogAlert](./Set-AzActivityLogAlert.md)
 
 [Add-AzMetricAlertRule](./Add-AzMetricAlertRule.md)
 

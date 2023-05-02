@@ -34,7 +34,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// list azure blobs in specified azure container
     /// </summary>
-    [GenericBreakingChange("The returned blob properties will be moved from ICloudBlob.Properties to BlobProperties in a future release.")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageBlob", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
     public class GetAzureStorageBlobCommand : StorageCloudBlobCmdletBase
     {
@@ -58,6 +57,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         /// </summary>
         private const string SingleBlobVersionIDParameterSet = "SingleBlobVersionID";
 
+        [CmdletParameterBreakingChange("Blob", ChangeDescription = "Leading and trailing slashes will not be trimmed in a future release.")]
         [Parameter(Position = 0, HelpMessage = "Blob name", ParameterSetName = NameParameterSet)]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Blob name", ParameterSetName = SingleBlobSnapshotTimeParameterSet)]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Blob name", ParameterSetName = SingleBlobVersionIDParameterSet)]
@@ -169,11 +169,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         protected override bool UseTrack2Sdk()
         {
-            if (this.IncludeVersion.IsPresent || this.IncludeTag.IsPresent || this.VersionId != null)
-            {
-                return true;
-            }
-            return base.UseTrack2Sdk();
+            return true;
         }
 
         /// <summary>
@@ -239,7 +235,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 BlobBaseClient blobClient = null;
                 if (UseTrack2Sdk()) // User Track2 SDK
                 {
-                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, false, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"), ClientOptions);
+                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, false, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions);
                     global::Azure.Storage.Blobs.Models.BlobProperties blobProperties;
                     try
                     {
@@ -249,7 +245,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     {
                         throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
                     }
-                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"), ClientOptions, blobProperties.BlobType);
+                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions, blobProperties.BlobType);
 
                     AzureStorageBlob outputBlob = new AzureStorageBlob(blobClient, localChannel.StorageContext, blobProperties, ClientOptions);
                     if (this.IncludeTag.IsPresent)
@@ -334,6 +330,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     {
                         if (blobFilter == null || blobFilter(item.Name))
                         {
+                            ClientOptions.TrimBlobNameSlashes = false;
                             OutputStream.WriteObject(taskId, GetAzureStorageBlob(item, track2container, localChannel.StorageContext, page.ContinuationToken, ClientOptions));
                         }
                         realListCount++;
@@ -392,7 +389,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         public static AzureStorageBlob GetAzureStorageBlob(BlobItem blobItem, BlobContainerClient track2container, AzureStorageContext context, string continuationToken = null, BlobClientOptions options = null)
         {
-            BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobItem.Name, context, blobItem.VersionId, blobItem.IsLatestVersion, blobItem.Snapshot, options, blobItem.Properties.BlobType);
+            BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobItem.Name, context, blobItem.VersionId, blobItem.IsLatestVersion, blobItem.Snapshot, options, blobItem.Properties.BlobType, shouldTrimSlash: false);
             AzureStorageBlob outputblob = new AzureStorageBlob(blobClient, context, options, blobItem);
             if (!string.IsNullOrEmpty(continuationToken))
             {

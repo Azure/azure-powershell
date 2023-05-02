@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: Az.ApiManagement
-online version: https://docs.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementauthorizationserverclientsecret
+online version: https://learn.microsoft.com/powershell/module/az.apimanagement/get-azapimanagementauthorizationserverclientsecret
 schema: 2.0.0
 ---
 
@@ -35,7 +35,7 @@ $ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-Wes
 Get-AzApiManagementAuthorizationServerClientSecret -Context $ApiMgmtContext -ServerId "0123456789"
 ```
 
-This command gets the specified authorization server cient secret.
+This command gets the specified authorization server client secret.
 
 ## PARAMETERS
 

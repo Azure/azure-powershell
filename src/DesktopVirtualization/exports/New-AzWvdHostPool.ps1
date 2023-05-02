@@ -61,7 +61,7 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool
 .Link
-https://docs.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
+https://learn.microsoft.com/powershell/module/az.desktopvirtualization/new-azwvdhostpool
 #>
 function New-AzWvdHostPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool])]

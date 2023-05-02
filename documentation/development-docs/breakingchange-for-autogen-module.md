@@ -108,7 +108,9 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
 
 To add breaking changes or preview messages for a customized cmdlets, you will need to add related attributes in code directly. And following are some common cases.
 
-**Note: For Case 1/2/3/5, the attributes are applied on the functions. For case 5, the attribute is applied in the parameter. And these examples are based on the databricks module, so you will need to replace it with your module name.**
+(For Case 1/2/3/5, the attributes are applied on the functions. For case 5, the attribute is applied in the parameter.)
+
+**Note: these examples are based on the Az.Databricks module. Please double check the namesapce. You will most likely need to replace "Databricks" with your module's name.**
 
 ## Case 1 — Breaking change for a cmdlet
 

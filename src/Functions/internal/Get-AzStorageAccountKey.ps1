@@ -27,7 +27,7 @@ Lists the access keys or Kerberos keys (if active directory enabled) for the spe
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
+https://learn.microsoft.com/powershell/module/az.functions/get-azstorageaccountkey
 #>
 function Get-AzStorageAccountKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190401.IStorageAccountKey])]

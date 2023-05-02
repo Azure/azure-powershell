@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayprivatelinkconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayprivatelinkconfiguration
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Creates a private link configuration for an application gateway
 ```
 New-AzApplicationGatewayPrivateLinkConfiguration -Name <String>
  -IpConfiguration <PSApplicationGatewayPrivateLinkIpConfiguration[]> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,6 +27,7 @@ One private link configuration can atmost be associated to only one frontend ip 
 
 ### Example 1: Create an Private Link Configuration with single Ip Configuration
 ```powershell
+$PrivateLinkIpConfiguration1 = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
 $PrivateLinkConfiguration = New-AzApplicationGatewayPrivateLinkConfiguration -Name "privateLinkConfig01" -IpConfiguration $privateLinkIpConfiguration1
 ```
 
@@ -34,6 +35,8 @@ This command creates an PrivateLink configuration named 'privateLinkConfig01' an
 
 ### Example 2: Create an Private Link Configuration with multiple Ip Configurations
 ```powershell
+$PrivateLinkIpConfiguration1 = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig01" -Subnet $subnet -Primary
+$PrivateLinkIpConfiguration2 = New-AzApplicationGatewayPrivateLinkIpConfiguration -Name "ipConfig02" -Subnet $subnet
 $PrivateLinkConfiguration = New-AzApplicationGatewayPrivateLinkConfiguration -Name "privateLinkConfig01" -IpConfiguration $privateLinkIpConfiguration1, $privateLinkIpConfiguration2
 ```
 
@@ -45,7 +48,7 @@ This command creates an PrivateLink configuration named 'privateLinkConfig01' wi
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -60,7 +63,7 @@ Accept wildcard characters: False
 The list of ipConfiguration
 
 ```yaml
-Type: PSApplicationGatewayPrivateLinkIpConfiguration[]
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPrivateLinkIpConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -75,42 +78,11 @@ Accept wildcard characters: False
 The name of the privateLink configuration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

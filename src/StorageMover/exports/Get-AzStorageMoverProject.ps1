@@ -27,7 +27,7 @@ $projectList = Get-AzStorageMoverProject -ResourceGroupName myResourceGroup -Sto
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,10 +44,10 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverproject
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverproject
 #>
 function Get-AzStorageMoverProject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IProject])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IProject])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

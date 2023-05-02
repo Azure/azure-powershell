@@ -56,7 +56,7 @@ $subDINEAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionDINEAssi
 $subModifyAssignment = New-AzPolicyAssignment -Name $(Get-TestSubscriptionModifyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: never compliant modify policy" -PolicyDefinition $modifyPolicyDefinition -AssignIdentity -Location "westus2"
 
 # Give the assignments permissions to perform remediations
-Start-Sleep -Seconds 60
+Start-TestSleep -Seconds 60
 New-AzRoleAssignment -Scope "/providers/microsoft.management/managementgroups/$managementGroupId" -ObjectId $mgDINEAssignment.Identity.principalId -RoleDefinitionName "Key Vault Contributor"
 New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subDINEAssignment.Identity.principalId -RoleDefinitionName "Key Vault Contributor"
 New-AzRoleAssignment -Scope "/subscriptions/$subscriptionId" -ObjectId $subModifyAssignment.Identity.principalId -RoleDefinitionName "Tag Contributor"
@@ -85,9 +85,80 @@ $policySetDefinition = New-AzPolicySetDefinition -Name $(Get-TestPolicySetDefini
 # Assign the initiative to the subscription
 New-AzPolicyAssignment -Name $(Get-TestSubscriptionAuditInitiativeAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: initiative with audit policy (Sub)" -PolicySetDefinition $policySetDefinition
 
-Start-Sleep -Seconds 60
+Start-TestSleep -Seconds 60
 
 # In each RG, create 510 NSGs (will take a while)
 foreach ($resourceGroupName in @($resourceGroup1, $resourceGroup2)) {
    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "$PSScriptRoot/CreateNSGsTemplate.json" -resourceCount 510 -resourceNamePrefix $(Get-TestResourceNamePrefix)
 }
+
+#region Attestation Tests Setup
+$resourceGroup3 = $(Get-PSAttestationTestRGName)
+
+# Create the required RG(s) for attestations.
+foreach ($resourceGroupName in @($resourceGroup3)) {
+   Get-AzResourceGroup -Name $resourceGroupName -ErrorVariable rgNotPresent -ErrorAction SilentlyContinue
+   if ($rgNotPresent) {
+      New-AzResourceGroup -Name $resourceGroupName -Location "northcentralus"
+   }
+}
+
+# Create Subscription targetting manual policy
+$manualPolicySubcriptionDefinition = New-AzPolicyDefinition -Name $(Get-TestManualPolicyDefinitonNameSub) -Policy "$PSScriptRoot/ManualPolicySubDefinition.json" -DisplayName "PS cmdlet tests: Subscription Manual Policy" -Mode All
+
+# Create RG targetting manual policy
+$manualPolicyRGDefinition = New-AzPolicyDefinition -Name $(Get-TestManualPolicyDefinitonNameRG) -Policy "$PSScriptRoot/ManualPolicyRGDefinition.json" -DisplayName "PS cmdlet tests: RG Manual Policy" -Mode All
+
+# Create Resource targetting manual policy
+$manualPolicyResourceDefinition = New-AzPolicyDefinition -Name $(Get-TestManualPolicyDefinitonNameResource) -Policy "$PSScriptRoot/ManualPolicyResourceDefinition.json" -DisplayName "PS cmdlet tests: Resource Manual Policy" -Mode All
+
+# Create a network security group for testing resource level attestations.
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroup3 -TemplateFile "$PSScriptRoot/CreateNSGsTemplate.json" -resourceCount 1 -resourceNamePrefix $(Get-TestResourceNamePrefix)
+
+# Assign the manual policies targetting each of Subscription, Resource Groups and Resource Types to the subscription
+$manualPolicySubAssignment = New-AzPolicyAssignment -Name $(Get-TestAttestationSubscriptionPolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: Subscription Manual Policy" -PolicyDefinition $manualPolicySubcriptionDefinition
+
+$manualPolicyRGAssignment = New-AzPolicyAssignment -Name $(Get-TestAttestationRGPolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: RG Manual Policy" -PolicyDefinition $manualPolicyRGDefinition
+
+$manualPolicyResourceAssignment = New-AzPolicyAssignment -Name $(Get-TestAttestationResourcePolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: Resource Manual Policy" -PolicyDefinition $manualPolicyResourceDefinition
+
+# Define Policy Initiatives
+$manualpolicyDefinitionsSubscription = @"
+[
+   {
+      "policyDefinitionId":"$($manualPolicySubcriptionDefinition.ResourceId)",
+      "policyDefinitionReferenceId": "$(Get-TestManualPolicyDefinitonNameSub)_1"
+   }
+]
+"@
+
+$manualpolicyDefinitionsRG = @"
+[
+   {
+      "policyDefinitionId":"$($manualPolicyRGDefinition.ResourceId)",
+      "policyDefinitionReferenceId": "$(Get-TestManualPolicyDefinitonNameRG)_1"
+   }
+]
+"@
+
+$manualpolicyDefinitionsResource = @"
+[
+   {
+        "policyDefinitionId":"$($manualPolicyResourceDefinition.ResourceId)",
+      "policyDefinitionReferenceId": "$(Get-TestManualPolicyDefinitonNameResource)_1"
+   }
+]
+"@
+
+$policySetDefinitionSub = New-AzPolicySetDefinition -Name $(Get-TestManualPolicyInitiativeNameSub) -DisplayName "PS cmdlet tests: Attestation initiative SUB" -PolicyDefinition $manualpolicyDefinitionsSubscription -SubscriptionId $subscriptionId
+$policySetDefinitionRG = New-AzPolicySetDefinition -Name $(Get-TestManualPolicyInitiativeNameRG) -DisplayName "PS cmdlet tests: Attestation initiative RG" -PolicyDefinition $manualpolicyDefinitionsRG -SubscriptionId $subscriptionId
+$policySetDefinitionResource = New-AzPolicySetDefinition -Name $(Get-TestManualPolicyInitiativeNameResource) -DisplayName "PS cmdlet tests: Attestation initiative Resource" -PolicyDefinition $manualpolicyDefinitionsResource -SubscriptionId $subscriptionId
+
+# Assign the initiatives to the subscription
+New-AzPolicyAssignment -Name $(Get-TestInitiativeAttestationSubPolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: Attestation initiative SUB" -PolicySetDefinition $policySetDefinitionSub
+
+New-AzPolicyAssignment -Name $(Get-TestInitiativeAttestationRGPolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: Attestation initiative RG" -PolicySetDefinition $policySetDefinitionRG
+
+New-AzPolicyAssignment -Name $(Get-TestAttestationInitiativeResourcePolicyAssignmentName) -Scope "/subscriptions/$subscriptionId" -DisplayName "PS cmdlet tests: Attestation initiative Resource" -PolicySetDefinition $policySetDefinitionResource
+
+#endregion

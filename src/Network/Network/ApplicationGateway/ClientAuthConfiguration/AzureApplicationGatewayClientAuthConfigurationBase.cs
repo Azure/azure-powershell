@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Verify client certificate issuer name.")]
         public SwitchParameter VerifyClientCertIssuerDN { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Verify client certificate revocation status.")]
+        [ValidateSet("None", "OCSP", IgnoreCase = true)]
+        public string VerifyClientRevocation { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -36,6 +42,15 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VerifyClientCertIssuerDN.IsPresent)
             {
                 config.VerifyClientCertIssuerDN = true;
+            }
+
+            if (!string.IsNullOrEmpty(this.VerifyClientRevocation))
+            {
+                config.VerifyClientRevocation = this.VerifyClientRevocation;
+            }
+            else
+            {
+                config.VerifyClientRevocation = "None";
             }
 
             return config;

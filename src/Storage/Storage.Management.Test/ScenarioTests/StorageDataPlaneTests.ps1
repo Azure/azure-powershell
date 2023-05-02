@@ -110,12 +110,25 @@ function Test-File
             Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].FileProperties.SmbProperties.FileAttributes.ToString()
         }
 
-        Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+        $fileName1 = "new" + $objectName1
+        $file = Get-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+
+        $file2 = Rename-AzStorageFile -ShareName $shareName -SourcePath $objectName1 -DestinationPath $fileName1 -Context $storageContext
+        Assert-AreEqual $file2.Name $fileName1 
+        Assert-AreEqual $file.FileProperties.ContentType $file2.FileProperties.ContentType
+        Assert-AreEqual $file.FileProperties.ContentLength $file2.FileProperties.ContentLength
+
+        $file3 = $file2 | Rename-AzStorageFile -DestinationPath $fileName1 -Context $storageContext -Force
+        Assert-AreEqual $file3.Name $fileName1 
+        Assert-AreEqual $file2.FileProperties.ContentType $file3.FileProperties.ContentType
+        Assert-AreEqual $file2.FileProperties.ContentLength $file3.FileProperties.ContentLength
+        
+        Remove-AzStorageFile -ShareName $shareName -Path $fileName1 -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
 
-         $dirName = "filetestdir"
+        $dirName = "filetestdir"
         New-AzStorageDirectory -ShareName $shareName -Path $dirName -Context $storageContext    
         $file = Get-AzStorageShare -Name $shareName -Context $storageContext | Get-AzStorageFile -ExcludeExtendedInfo
         Assert-AreEqual $file.Count 2
@@ -125,11 +138,25 @@ function Test-File
         Assert-AreEqual $file[1].Name $objectName2
         Assert-AreEqual $file[1].GetType().Name "AzureStorageFile"
         Assert-Null $file[1].ListFileProperties.Properties.ETag
-        Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext | Remove-AzStorageDirectory
+
+        $newDir = "new" + $dirName
+        $dir = Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext
+        $dir2 = Rename-AzStorageDirectory -ShareName $shareName -SourcePath $dirName -DestinationPath $newDir -Context $storageContext
+        Assert-AreEqual $newDir $dir2.Name
+        Assert-AreEqual $dir.ListFileProperties.IsDirectory $dir2.ListFileProperties.IsDirectory
+        Assert-AreEqual $dir.ListFileProperties.FileAttributes $dir2.ListFileProperties.FileAttributes
+
+        $newDir2 = "new2" + $dirName
+        $dir3 = $dir2 | Rename-AzStorageDirectory -DestinationPath $newDir2 -Context $storageContext
+        Assert-AreEqual $newDir2 $dir3.Name
+        Assert-AreEqual $dir2.ListFileProperties.IsDirectory $dir3.ListFileProperties.IsDirectory
+        Assert-AreEqual $dir2.ListFileProperties.FileAttributes $dir3.ListFileProperties.FileAttributes
+
+        $dir3 | Remove-AzStorageDirectory
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
-        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"   
+        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"
 
         # Clean Storage Account
         Remove-AzStorageShare -Name $shareName -Force -Context $storageContext
@@ -159,7 +186,7 @@ function Test-Blob
     New-TestResourceGroupAndStorageAccount -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName
 
     try{
-
+        $location = Get-ProviderLocation ResourceManagement    
         $storageAccountKeyValue = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName)[0].Value
         $storageContext = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $storageAccountKeyValue
 
@@ -168,7 +195,15 @@ function Test-Blob
         $localDestFile = "localdestblobtestfile.txt"
         $localDestFile2 = "localdestblobtestfile2.txt"
 
-        $containerName = "blobtestcontainer"          
+        $containerName = "blobtestcontainer"    
+        $storageAccountName2 = $storageAccountName + "2"
+        New-AzStorageAccount -Name $storageAccountName2 -ResourceGroupName $ResourceGroupName -Location $location -Type 'Standard_LRS' 
+        $storageAccountKeyValue2 = $(Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName2)[0].Value
+        $storageContext2 = New-AzStorageContext -StorageAccountName $StorageAccountName2 -StorageAccountKey $storageAccountKeyValue2
+        $containerName3 = "blobtestcontainer2"
+        New-AzStorageContainer $containerName3 -Context $storageContext
+        New-AzStorageContainer $containerName3 -Context $storageContext2
+
         $objectName1 = "blobtest1.txt"
         $objectName2 = "blobtest2.txt"
         $ContentType = "image/jpeg"
@@ -200,10 +235,12 @@ function Test-Blob
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext | Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentType $ContentType
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentMD5 $ContentMD5
-        Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
-        $blob.ICloudBlob.SetStandardBlobTier($StandardBlobTier2, "High")
+        Assert-AreEqual $blob.BlobProperties.ContentType $ContentType
+        Assert-AreEqual $blob.BlobProperties.AccessTier $StandardBlobTier
+        $contentHash = [System.Convert]::ToBase64String($blob.BlobProperties.ContentHash)
+        Assert-AreEqual $contentHash $ContentMD5
+
+        $blob.BlobBaseClient.SetAccessTier($StandardBlobTier2)
         $blob.ICloudBlob.FetchAttributes()
         Assert-AreEqual $blob.ICloudBlob.Properties.StandardBlobTier $StandardBlobTier2
         Set-AzStorageBlobContent -File $localSrcFile -Container $containerName -Blob $objectName2 -Force -Properties @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} -Context $storageContext
@@ -238,7 +275,7 @@ function Test-Blob
         Assert-AreEqual $blob.Count 2
         Assert-AreEqual $blob[0].Name $objectName1
         Assert-AreEqual $blob[1].Name $objectName2
-        Assert-AreEqual $blob[1].ICloudBlob.Properties.StandardBlobTier $StandardBlobTier
+        Assert-AreEqual $blob[1].BlobProperties.AccessTier $StandardBlobTier
 
         # Download storage blob to compare with the local file.
         Get-AzStorageBlobContent -Container $containerName -Blob $objectName2 -Destination $localDestFile -Force -Context $storageContext
@@ -291,7 +328,7 @@ function Test-Blob
         Remove-AzRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroupName -StorageAccountName $StorageAccountName -ContainerName $containerName -Etag $immutabilityPolicy.Etag
         
         # Encryption Scope Test
-        $scopename = "testscope"
+        $scopename = "testscope" 
         $scopename2 = "testscope2"
         $containerName2 = "testscopecontainer"
         New-AzStorageEncryptionScope -ResourceGroupName $ResourceGroupName -StorageAccountName $storageAccountName -EncryptionScopeName $scopename -StorageEncryption
@@ -350,10 +387,29 @@ function Test-Blob
         $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
         Set-AzStorageBlobLegalHold -Container $containerNamevlw -Blob $objectName  -Context $storageContext  -DisableLegalHold
         $blob = Get-AzStorageBlob -Container $containerNamevlw -Blob $objectName  -Context $storageContext
+        
+        $blobTypes = @("Block","Page","Append")
+        # Upload blob for all 3 types of blobs 
+        foreach ($blobType in $blobTypes) {
+            $blobName = $blobType + "SrcBlob"
+            $t = Set-AzStorageBlobContent -File $localSrcFile -Container $containerName3 -Blob $blobName -Force -Properties @{"ContentType" = $ContentType} -Context $storageContext -BlobType $blobType
+        }
+        # Test all 9 directions of copy 
+        foreach ($srcType in $blobTypes) {
+            foreach ($destType in $blobTypes) {
+                $srcBlobName = $srcType + "SrcBlob"
+                $destBlobName = $srcType + "To" + $destType + "Blob"
+                $copiedBlob = Copy-AzStorageBlob -SrcContainer $containerName3 -SrcBlob $srcBlobName -Context $storageContext -DestContainer $containerName3 -DestBlob $destBlobName -DestContext $storageContext2 -DestBlobType $destType -Force
+                Assert-AreEqual $copiedBlob.BlobProperties.BlobType $destType
+                Assert-AreEqual $copiedBlob.Name $destBlobName
+                Assert-AreEqual $copiedBlob.BlobBaseClient.AccountName $storageAccountName2
+            }
+        }
 
         # Clean Storage Account
         Remove-AzStorageContainer -Name $containerName -Force -Context $storageContext
-
+        Remove-AzStorageContainer -Name $containerName3 -Force -Context $storageContext
+        Remove-AzStorageContainer -Name $containerName3 -Force -Context $storageContext2
     }
     finally
     {
@@ -523,8 +579,9 @@ function Test-BlobFileCopy
         $blob = Get-AzStorageContainer -Name $containerName -Context $storageContext |Get-AzStorageBlob
         Assert-AreEqual $blob.Count 1
         Assert-AreEqual $blob.Name $objectName1
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentType $ContentType
-        Assert-AreEqual $blob.ICloudBlob.Properties.ContentMD5 $ContentMD5           
+        Assert-AreEqual $blob.BlobProperties.ContentType $ContentType
+        $contentHash = [System.Convert]::ToBase64String($blob.BlobProperties.ContentHash)
+        Assert-AreEqual $contentHash $ContentMD5
 
         $shareName = "blobfilecopytestshare"
         #File Creation
@@ -824,7 +881,9 @@ function Test-DatalakeGen2
         $dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
         Assert-AreEqual $dir1.Path $directoryPath1
         Assert-AreEqual $dir1.Permissions.ToSymbolicPermissions() "rwx---rwx"
-        $dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory
+        $dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory -Permission r---wx-wT -Umask --x-wx--x
+        Assert-AreEqual $dir2.Path $directoryPath2
+        Assert-AreEqual $dir2.Permissions.ToSymbolicPermissions() "r------wT"
 
         # Create (upload) File
         $t = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Source $localSrcFile -Force -AsJob
@@ -844,20 +903,20 @@ function Test-DatalakeGen2
         ## create ACL with 3 ACEs
         $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
         $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-        $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
+        $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wt" -InputObject $acl
         ##Update File with pipeline		
         $file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 | Update-AzDataLakeGen2Item  `
                 -Acl $acl `
                 -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} `
                 -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
-                -Permission rw-rw--wx `
+                -Permission rw-rw--wt `
                 -Owner '$superuser' `
                 -Group '$superuser'
         $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $filePath1 -Permission rw -Context $storageContext
         $ctxsas = New-AzStorageContext -StorageAccountName $StorageAccountName -SasToken $sas
         $file1 = Get-AzDataLakeGen2Item -Context $ctxsas -FileSystem $filesystemName -Path $filePath1
         Assert-AreEqual $file1.Path $filePath1
-        Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
+        Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wt"
         Assert-AreEqual $file1.Properties.ContentType $ContentType
         Assert-AreEqual $file1.Properties.Metadata.Count 2
         Assert-AreEqual $file1.Owner '$superuser'

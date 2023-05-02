@@ -84,7 +84,6 @@ namespace Common.Authentication.Test
                 Assert.Collection(profile.Environments.OrderBy(e=>e.Name),
                     (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureChinaCloud]),
                     (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud]),
-                    (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureGermanCloud]),
                     (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureUSGovernment]),
                     (e) => Assert.Equal(e, testEnvironment));
             });
@@ -178,7 +177,6 @@ namespace Common.Authentication.Test
             Assert.Collection(profile.Environments.OrderBy(e => e.Name),
                 (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureChinaCloud]),
                 (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud]),
-                (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureGermanCloud]),
                 (e) => Assert.Equal(e, AzureEnvironment.PublicEnvironments[EnvironmentName.AzureUSGovernment]));
         }
 
@@ -225,7 +223,7 @@ namespace Common.Authentication.Test
 
         IAzureEnvironment GetDefaultEnvironment()
         {
-            var env = new AzureEnvironment(AzureEnvironment.PublicEnvironments[EnvironmentName.AzureGermanCloud]);
+            var env = new AzureEnvironment(AzureEnvironment.PublicEnvironments[EnvironmentName.AzureCloud]);
             env.Name = "CustomEnvironment1";
             env.SetProperty("FirstProperty", "FirstValue1", "FirstValue2");
             env.SetProperty("SecondProperty", "SecondValue");

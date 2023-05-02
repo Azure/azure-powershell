@@ -104,13 +104,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.MSGraph Client => Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Module.Instance.ClientAPI;
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>
+        /// Date and time when this object was deleted. Always null when the object hasn't been deleted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date and time when this object was deleted. Always null when the object hasn't been deleted.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"Date and time when this object was deleted. Always null when the object hasn't been deleted.",
         SerializedName = @"deletedDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime CreatedOnBehalfOfDeletedDateTime { get => _body.CreatedOnBehalfOfDeletedDateTime ?? default(global::System.DateTime); set => _body.CreatedOnBehalfOfDeletedDateTime = value; }
@@ -127,21 +129,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         public string CreatedOnBehalfOfDisplayName { get => _body.CreatedOnBehalfOfDisplayName ?? null; set => _body.CreatedOnBehalfOfDisplayName = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>
+        /// Date and time when this object was deleted. Always null when the object hasn't been deleted.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Date and time when this object was deleted. Always null when the object hasn't been deleted.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"Date and time when this object was deleted. Always null when the object hasn't been deleted.",
         SerializedName = @"deletedDateTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
         public global::System.DateTime DeletedDateTime { get => _body.DeletedDateTime ?? default(global::System.DateTime); set => _body.DeletedDateTime = value; }

@@ -20,10 +20,10 @@ Delete a addon in a private cloud
 .Description
 Delete a addon in a private cloud
 .Example
-PS C:\> Remove-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+Remove-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 
 .Example
-PS C:\> Get-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group | Remove-AzVMwareAddon
+Get-AzVMwareAddon -AddonType vr -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group | Remove-AzVMwareAddon
 
 
 .Inputs
@@ -62,7 +62,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
 .Link
-https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareaddon
+https://learn.microsoft.com/powershell/module/az.vmware/remove-azvmwareaddon
 #>
 function Remove-AzVMwareAddon {
 [OutputType([System.Boolean])]
@@ -175,6 +175,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.VMware.private\Remove-AzVMwareAddon_Delete';
             DeleteViaIdentity = 'Az.VMware.private\Remove-AzVMwareAddon_DeleteViaIdentity';
@@ -188,6 +189,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -196,15 +198,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

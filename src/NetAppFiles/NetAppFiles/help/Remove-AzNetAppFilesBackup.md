@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesbackup
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/remove-aznetappfilesbackup
 schema: 2.0.0
 ---
 
@@ -285,7 +285,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackup
 
 ## NOTES
 

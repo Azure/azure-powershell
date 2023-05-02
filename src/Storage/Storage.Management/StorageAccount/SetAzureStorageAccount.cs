@@ -12,16 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Management.Automation;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -196,6 +197,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Set ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.")]
+        [ValidateNotNull]
+        public string KeyVaultFederatedClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Set the new Storage Account Identity type, the idenetity is for use with key management services like Azure KeyVault.")]
         [ValidateSet(AccountIdentityType.systemAssigned,
             AccountIdentityType.userAssigned,
@@ -239,6 +246,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
+        [CmdletParameterBreakingChange("EnableLargeFileShare", ChangeDescription = "EnableLargeFileShare parameter will be deprecated in a future release.")]
         [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
         public SwitchParameter EnableLargeFileShare { get; set; }
 
@@ -642,17 +650,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         }
                     }
 
-                    if (StorageEncryption || ParameterSetName == KeyvaultEncryptionParameterSet || this.KeyVaultUserAssignedIdentityId != null)
+                    if (StorageEncryption || ParameterSetName == KeyvaultEncryptionParameterSet || this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
                     {
                         if (ParameterSetName == KeyvaultEncryptionParameterSet)
                         {
                             keyvaultEncryption = true;
                         }
                         updateParameters.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
-                        if (this.KeyVaultUserAssignedIdentityId != null)
+                        if (this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
                         {
                             updateParameters.Encryption.EncryptionIdentity = new EncryptionIdentity();
                             updateParameters.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId;
+                            updateParameters.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId = this.KeyVaultFederatedClientId;
                         }
                     }
                       

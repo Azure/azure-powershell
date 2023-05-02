@@ -37,7 +37,8 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [GenericBreakingChange("Starting on 10/12/2022 the \"New-AzVmss\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch")]
+    [GenericBreakingChange("Starting November 2023, the \"New-AzVmss\" cmdlet will default to Trusted Launch VMSS. For more info, visit https://aka.ms/trustedLaunchVMSS.", "6.0.0")]
+    [GenericBreakingChange("Starting November 2023, the \"New-AzVmss\" cmdlet will use new defaults: Flexible orchestration mode and enable NATv2 configuration for Load Balancer. To learn more about Flexible Orchestration modes, visit https://aka.ms/orchestrationModeVMSS.", "7.0.0")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
@@ -237,9 +238,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                                 }
                             }
-
-
-
 
                             var psObject = new PSVirtualMachineScaleSet();
                             ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);

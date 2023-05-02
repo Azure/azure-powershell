@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azgalleryimagedefinition
+online version: https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryimagedefinition
 schema: 2.0.0
 ---
 
@@ -33,6 +33,12 @@ Get-AzGalleryImageDefinition [[-Name] <String>] -GalleryPublicName <String> -Loc
 ### ResourceIdParameter
 ```
 Get-AzGalleryImageDefinition [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ListCommunityGalleryParameterSet
+```
+Get-AzGalleryImageDefinition [-Location <String>] [-Community] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -230,6 +236,21 @@ Get the gallery image definitions in gallery1.
 
 ## PARAMETERS
 
+### -Community
+List community galleries.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ListCommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -299,6 +320,18 @@ Parameter Sets: SharedGalleryParameterSet, CommunityGalleryParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ListCommunityGalleryParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

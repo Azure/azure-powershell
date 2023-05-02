@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 2AE5E9B8-7344-407B-9317-47709F10FCD8
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azloadbalancerruleconfig
 schema: 2.0.0
 ---
 
@@ -55,6 +55,7 @@ $MyBackendPool2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resou
 $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol All -FrontendPort 0 -BackendPort 0 -BackendAddressPool $MyBackendPool1, $MyBackendPool2
 $slb | Set-AzLoadBalancer
 ```
+
 This enables Gateway Load Balancer to have multiple backend pools
 The first command will get the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
 The second and thrid command will get the backend address pools to be added the rule
@@ -351,7 +352,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

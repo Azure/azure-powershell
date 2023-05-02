@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azvpnsitelinkconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azvpnsitelinkconnection
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Creates an Azure VpnSiteLinkConnection object.
 New-AzVpnSiteLinkConnection -Name <String> -VpnSiteLink <PSVpnSiteLink> [-SharedKey <SecureString>]
  [-ConnectionBandwidth <UInt32>] [-RoutingWeight <UInt32>] [-IpSecPolicy <PSIpsecPolicy>]
  [-VpnConnectionProtocolType <String>] [-EnableBgp] [-UseLocalAzureIpAddress] [-UsePolicyBasedTrafficSelectors]
- [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>] [-VpnLinkConnectionMode <String>]
+ [-IngressNatRule <PSResourceId[]>] [-EgressNatRule <PSResourceId[]>]
+ [-VpnGatewayCustomBgpAddress <PSGatewayCustomBgpIpConfiguration[]>] [-VpnLinkConnectionMode <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -49,6 +50,23 @@ New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentReso
 The above will create a resource group, Virtual WAN, Virtual Network, Virtual Hub and a VpnSite with 1 VpnSiteLinks in West US in "testRG" resource group in Azure.
 A VPN gateway will be created thereafter in the Virtual Hub.
 Once the gateway has been created, it is connected to the VpnSite using the New-AzVpnConnection command with 1 VpnSiteLinkConnections to the VpnSiteLink of the VpnSite.
+
+### Example 2 VpnGatewayCustomBgpAddress
+```powershell
+$vpnSite = Get-AzVpnSite -ResourceGroupName PS_testing -Name testsite
+$vpnGateway = Get-AzVpnGateway -ResourceGroupName PS_testing -Name 196ddf92afae40e4b20edc32dfb48a63-eastus-gw
+
+$address = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "Instance0" -CustomBgpIpAddress "169.254.22.1"
+$address2 = New-AzGatewayCustomBgpIpConfigurationObject -IpConfigurationId "Instance1" -CustomBgpIpAddress "169.254.22.3"
+
+$vpnSiteLinkConnection = New-AzVpnSiteLinkConnection -Name "testLinkConnection1" -VpnSiteLink $vpnSite.VpnSiteLinks[0] -ConnectionBandwidth 100 -VpnGatewayCustomBgpAddress $address,$address2 -EnableBgp
+
+New-AzVpnConnection -ResourceGroupName $vpnGateway.ResourceGroupName -ParentResourceName $vpnGateway.Name -Name "testConnection" -VpnSite $vpnSite -VpnSiteLinkConnection @($vpnSiteLinkConnection)
+```
+
+The above will create AzGatewayCustomBgpIpConfigurationObject 1 VpnSiteLinks with VpnConnection in "PS_testing" resource group in Azure.
+Once connection is created, it is connected to the VpnSite using the New-AzVpnConnection command with 1 VpnSiteLinkConnections to the VpnSiteLink of the VpnSite. 
+This connection will use provided GatewayCustomBgpIpAddress for Bgp connection at VpnGateway side.
 
 ## PARAMETERS
 
@@ -143,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name
+VpnSiteLinkConnection Name
 
 ```yaml
 Type: System.String
@@ -233,6 +251,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VpnGatewayCustomBgpAddress
+The GatewayCustomBgpIpAddress of Vpngateway used in this link connection.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VpnLinkConnectionMode
 The connection mode for this link connection.
 
@@ -240,9 +273,11 @@ The connection mode for this link connection.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
-Default value: Default
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -267,6 +302,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSVpnSiteLink
+
+### Microsoft.Azure.Commands.Network.Models.PSGatewayCustomBgpIpConfiguration[]
 
 ## OUTPUTS
 

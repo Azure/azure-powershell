@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: F7EF35E3-BC53-43D9-A71E-0B4316260A08
-online version: https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseAudit
+online version: https://learn.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseAudit
 schema: 2.0.0
 ---
 
@@ -19,8 +19,9 @@ Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
- [-WorkspaceResourceId <String>] [-PassThru] [-ResourceGroupName] <String> [-ServerName] <String>
- [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] [-ResourceGroupName] <String>
+ [-ServerName] <String> [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DatabaseObjectParameterSet
@@ -29,7 +30,7 @@ Set-AzSqlDatabaseAudit [-AuditActionGroup <AuditActionGroups[]>] [-AuditAction <
  [-PredicateExpression <String>] [-BlobStorageTargetState <String>] [-StorageAccountResourceId <String>]
  [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-EventHubTargetState <String>]
  [-EventHubName <String>] [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
- [-WorkspaceResourceId <String>] [-PassThru] -DatabaseObject <AzureSqlDatabaseModel>
+ [-WorkspaceResourceId <String>] [-PassThru] [-UseIdentity <String>] -DatabaseObject <AzureSqlDatabaseModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -114,7 +115,7 @@ For example:
 SELECT on dbo.myTable by public  
 SELECT on DATABASE::myDatabase by public  
 SELECT on SCHEMA::mySchema by public  
-For more information, see https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
+For more information, see https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
 
 ```yaml
 Type: System.String[]
@@ -135,7 +136,7 @@ The recommended set of action groups to use is the following combination - this 
 "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",  
 "FAILED_DATABASE_AUTHENTICATION_GROUP"  
 This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
-For more information, see https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
+For more information, see https://learn.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
@@ -371,6 +372,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Primary, Secondary
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseIdentity
+Indicates whether to use managed identity or not. It is required when you want to use managed identity while target storage is not behind firewall.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

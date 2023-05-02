@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionikesa
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azvirtualnetworkgatewayconnectionikesa
 schema: 2.0.0
 ---
 
@@ -12,9 +12,9 @@ Get IKE Security Associations of a Virtual Network Gateway Connection
 
 ## SYNTAX
 
-### ByName
+### ByName (Default)
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa [-Name <String>] -ResourceGroupName <String> [-AsJob]
+Get-AzVirtualNetworkGatewayConnectionIkeSa -Name <String> -ResourceGroupName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject <PSVirtualNetworkGateway
 
 ### ByResourceId
 ```
-Get-AzVirtualNetworkGatewayConnectionIkeSa [-ResourceId <String>] [-AsJob]
+Get-AzVirtualNetworkGatewayConnectionIkeSa -ResourceId <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -65,7 +65,7 @@ Returns the IKE Security Associations for the Virtual Network Gateway Connection
 Run cmdlet in the background.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -95,14 +95,14 @@ Accept wildcard characters: False
 The virtual network gateway connection object for which IKE SAs needs to be fetched.
 
 ```yaml
-Type: PSVirtualNetworkGatewayConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
 Parameter Sets: ByInputObject
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -110,11 +110,11 @@ Accept wildcard characters: False
 The virtual network gateway connection name for which IKE SAs needs to be fetched.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: ResourceName, ConnectionName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -125,14 +125,14 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -140,14 +140,14 @@ Accept wildcard characters: False
 The Azure resource ID of the Virtual Network Gateway Connection for which IKE SAs needs to be fetched.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

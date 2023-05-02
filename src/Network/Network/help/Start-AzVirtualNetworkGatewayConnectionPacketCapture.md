@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewayconnectionpacketcapture
+online version: https://learn.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewayconnectionpacketcapture
 schema: 2.0.0
 ---
 
@@ -57,6 +57,7 @@ Name              : PktCaptureTestSite2Site1Cn
 Etag              :
 Id                :
 ```
+
 ### Example 2
 ```powershell
 $a="{`"TracingFlags`":11,`"MaxPacketBufferSize`":120,`"MaxFileSize`":500,`"Filters`":[{`"SourceSubnets`":[`"10.19.0.4/32`",`"10.20.0.4/32`"],`"DestinationSubnets`":[`"10.20.0.4/32`",`"10.19.0.4/32`"],`"TcpFlags`":-1,`"Protocol`":[6],`"CaptureSingleDirectionTrafficOnly`":true}]}"
@@ -78,8 +79,11 @@ Name              : PktCaptureTestSite2Site1Cn
 Etag              :
 Id                :
 ```
+
 ### Example 3
 Packet Capture example for capture all inner and outer packets
+
+
 ```powershell
 $a = "{`"TracingFlags`": 11,`"MaxPacketBufferSize`": 120,`"MaxFileSize`": 500,`"Filters`" :[{`"CaptureSingleDirectionTrafficOnly`": false}]}"
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "PktCaptureTestSite2RG" -Name "PktCaptureTestSite2Site1Cn" -FilterData $a
@@ -107,24 +111,9 @@ Id                :
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -137,7 +126,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -152,7 +141,7 @@ Accept wildcard characters: False
 Filter options for start packet capture on virtual network gateway connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +156,7 @@ Accept wildcard characters: False
 The virtual network gateway connection object where packet capture to be started.
 
 ```yaml
-Type: PSVirtualNetworkGatewayConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayConnection
 Parameter Sets: ByInputObject
 Aliases: VirtualNetworkGatewayConnection
 
@@ -182,7 +171,7 @@ Accept wildcard characters: False
 The virtual network gateway connection name where packet capture to be started.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: ResourceName, VirtualNetworkGatewayConnectionName, ConnectionName
 
@@ -197,7 +186,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -212,7 +201,7 @@ Accept wildcard characters: False
 The Azure resource ID of the VirtualNetworkGatewayConnection where packet capture to be started.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -223,12 +212,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -255,4 +259,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Stop-AzVirtualNetworkGatewayConnectionPacketCapture](./Stop-AzVirtualNetworkGatewayConnectionPacketCapture.md)

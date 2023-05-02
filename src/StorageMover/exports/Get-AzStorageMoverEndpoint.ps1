@@ -27,7 +27,7 @@ Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroupName -StorageMoverN
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,10 +44,10 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoverendpoint
 #>
 function Get-AzStorageMoverEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

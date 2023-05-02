@@ -60,10 +60,6 @@
   </ItemGroup>
 
   <!-- Assets -->
-  <ItemGroup>
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.4.1" />
-  </ItemGroup>
 
   <ItemGroup>
         <ModuleCustomFiles Include="$(MSBuildThisFileDirectory)$(PsModuleName)\custom\**\*.*"/>

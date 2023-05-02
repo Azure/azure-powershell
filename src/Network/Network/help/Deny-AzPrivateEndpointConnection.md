@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/deny-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/deny-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -14,14 +14,15 @@ denies a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Deny-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Deny-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Deny-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Deny-AzPrivateEndpointConnection -Name <String> [-Description <String>] -ResourceGroupName <String>
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

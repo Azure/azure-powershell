@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallcustomrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayfirewallcustomrule
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates a new custom rule for the application gateway firewall policy.
 
 ```
 New-AzApplicationGatewayFirewallCustomRule -Name <String> -Priority <Int32> -RuleType <String>
- -MatchCondition <PSApplicationGatewayFirewallCondition[]> -Action <String>
+ -MatchCondition <PSApplicationGatewayFirewallCondition[]> -Action <String> [-State <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,10 +25,59 @@ The **New-AzApplicationGatewayFirewallCustomRule** creates a custom rule for fir
 
 ### Example 1
 ```powershell
-$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow
+New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 1 -RuleType MatchRule -MatchCondition $condtion -Action Allow
 ```
 
-The command creates a new custom rule with name of example-rule, priority 1 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow. The new match custom rule is saved in $customRule.
+```output
+Name                : example-rule
+Priority            : 1
+RuleType            : MatchRule
+MatchConditions     : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition}
+Action              : Allow
+State               : Enabled
+MatchConditionsText : [
+                        {
+                          "MatchVariables": [
+                            {
+                              "VariableName": "RequestHeaders",
+                              "Selector": "Malicious-Header"
+                            }
+                          ],
+                          "OperatorProperty": "Any",
+                          "NegationConditon": false
+                        }
+                      ]
+```
+
+The command creates a new custom rule with name of example-rule, priority 1 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow.
+
+### Example 2
+```powershell
+New-AzApplicationGatewayFirewallCustomRule -Name example-rule -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Allow -State Disabled
+```
+
+```output
+Name                : example-rule
+Priority            : 2
+RuleType            : MatchRule
+MatchConditions     : {Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayFirewallCondition}
+Action              : Allow
+State               : Disabled
+MatchConditionsText : [
+                        {
+                          "MatchVariables": [
+                            {
+                              "VariableName": "RequestHeaders",
+                              "Selector": "Malicious-Header"
+                            }
+                          ],
+                          "OperatorProperty": "Any",
+                          "NegationConditon": false
+                        }
+                      ]
+```
+
+The command creates a new custom rule with name of example-rule, state as Disabled, priority 2 and the rule type will be MatchRule with condition defined in the condition variable, the action will the allow.
 
 ## PARAMETERS
 
@@ -125,8 +174,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -State
+State variable of the custom rule.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Disabled, Enabled
+
+Required: False
+Position: Named
+Default value: Enabled
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Resources
-online version: https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignmentscheduleinstance
+online version: https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignmentscheduleinstance
 schema: 2.0.0
 ---
 
@@ -120,7 +120,8 @@ Use the `Id` property to get `scope` and `name`
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject

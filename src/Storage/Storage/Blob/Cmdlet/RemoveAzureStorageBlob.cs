@@ -229,11 +229,11 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
             Track2Models.DeleteSnapshotsOption deleteSnapshotsOption = Track2Models.DeleteSnapshotsOption.None;
             bool retryDeleteSnapshot = false;
 
-            if (Util.GetSnapshotTimeFromBlobUri(blob.Uri) != null)
+            if (Util.GetSnapshotTimeFromUri(blob.Uri) != null)
             {
                 if (deleteSnapshot)
                 {
-                    throw new ArgumentException(String.Format(Resources.CannotDeleteSnapshotForSnapshot, blob.Name, Util.GetSnapshotTimeFromBlobUri(blob.Uri)));
+                    throw new ArgumentException(String.Format(Resources.CannotDeleteSnapshotForSnapshot, blob.Name, Util.GetSnapshotTimeFromUri(blob.Uri)));
                 }
             }
             else if (!string.IsNullOrEmpty(Util.GetVersionIdFromBlobUri(blob.Uri)))
@@ -383,7 +383,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
 
                 BlobContainerClient track2container = AzureStorageContainer.GetTrack2BlobContainerClient(container, localChannel.StorageContext, ClientOptions);
                 BlobBaseClient blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, null,
-                    this.SnapshotTime is null? null : this.SnapshotTime.Value.ToString("o"), ClientOptions);
+                    this.SnapshotTime is null? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions);
                 // Skip check blob existance, as Server will report error is necessary
 
                 await RemoveAzureBlobTrack2(taskId, localChannel, blobClient, true).ConfigureAwait(false);

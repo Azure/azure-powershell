@@ -27,7 +27,7 @@ Lists all the supported operations for the Azure Storage Mover REST API.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
+https://learn.microsoft.com/powershell/module/az.storagemover/get-azstoragemoveroperation
 #>
 function Get-AzStorageMoverOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20.IOperation])]
@@ -134,7 +134,7 @@ Creates or updates an Endpoint resource, which represents a data transfer source
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -144,10 +144,10 @@ PROPERTY <IEndpointBaseProperties>: The resource specific properties for the Sto
   EndpointType <EndpointType>: The Endpoint resource type.
   [Description <String>]: A description for the Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverendpoint
 #>
 function New-AzStorageMoverEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -179,7 +179,7 @@ param(
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpointBaseProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpointBaseProperties]
     # The resource specific properties for the Storage Mover resource.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},
@@ -307,7 +307,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemoveragent
 #>
 function Remove-AzStorageMoverAgent {
 [OutputType([System.Boolean])]
@@ -487,7 +487,7 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
   [StorageMoverName <String>]: The name of the Storage Mover resource.
   [SubscriptionId <String>]: The ID of the target subscription.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
+https://learn.microsoft.com/powershell/module/az.storagemover/remove-azstoragemover
 #>
 function Remove-AzStorageMover {
 [OutputType([System.Boolean])]
@@ -648,7 +648,7 @@ Properties not specified in the request body will be unchanged.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -668,10 +668,10 @@ INPUTOBJECT <IStorageMoverIdentity>: Identity Parameter
 PROPERTY <IEndpointBaseUpdateProperties>: The Endpoint resource, which contains information about file sources and targets.
   [Description <String>]: A description for the Endpoint.
 .Link
-https://docs.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
+https://learn.microsoft.com/powershell/module/az.storagemover/update-azstoragemoverendpoint
 #>
 function Update-AzStorageMoverEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -710,7 +710,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpointBaseUpdateProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20230301.IEndpointBaseUpdateProperties]
     # The Endpoint resource, which contains information about file sources and targets.
     # To construct, see NOTES section for PROPERTY properties and create a hash table.
     ${Property},

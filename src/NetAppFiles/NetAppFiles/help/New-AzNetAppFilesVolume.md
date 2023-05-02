@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.dll-Help.xml
 Module Name: Az.NetAppFiles
-online version: https://docs.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesvolume
+online version: https://learn.microsoft.com/powershell/module/az.netappfiles/new-aznetappfilesvolume
 schema: 2.0.0
 ---
 
@@ -25,8 +25,10 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>]
  [-CapacityPoolResourceId <String>] [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
+ [-SmbNonBrowsable <String>] [-IsLargeVolume] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
@@ -41,7 +43,9 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
  [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
- [-EnableSubvolume] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
+ [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
+ [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
+ [-SmbNonBrowsable <String>] [-IsLargeVolume] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -238,11 +242,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DeleteBaseSnapshot
+If enabled (true) the snapshot the volume was created from will be automatically deleted after the volume create operation has finished.  Defaults to false
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableSubvolume
 Flag indicating whether subvolume operations are enabled on the volume (Enabled, Disabled)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EncryptionKeySource
+Source of key used to encrypt data in volume. Applicable if NetApp account has encryption.keySource = 'Microsoft.KeyVault'. Possible values are: 'Microsoft.NetApp, Microsoft.KeyVault'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -283,11 +317,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -IsLargeVolume
+Specifies whether volume is a Large Volume or Regular Volume. Defaults to false
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -KerberosEnabled
 Describe if a volume is Kerberos Enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeyVaultPrivateEndpointResourceId
+The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -493,6 +557,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SmbAccessBasedEnumeration
+Enables access based enumeration share property for SMB Shares. Only applicable for SMB/DualProtocol volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SmbContinuouslyAvailable
 Enables continuously available share property for SMB volume. Only applicable for SMB volume.
 
@@ -513,6 +592,21 @@ Enables encryption for in-flight smb3 data. Only applicable for SMB/DualProtocol
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SmbNonBrowsable
+Enables non browsable property for SMB Shares. Only applicable for SMB/DualProtocol volume
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -679,6 +773,21 @@ The type of the ANF volume
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Zone
+A list of Availability Zones
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

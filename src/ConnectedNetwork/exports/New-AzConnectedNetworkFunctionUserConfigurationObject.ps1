@@ -46,7 +46,7 @@ NETWORKINTERFACE <INetworkInterface[]>: The network interface configuration.
   [Name <String>]: The name of the network interface.
   [VMSwitchType <VMSwitchType?>]: The type of the VM switch.
 .Link
-https://docs.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
+https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionUserConfigurationObject
 #>
 function New-AzConnectedNetworkFunctionUserConfigurationObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.NetworkFunctionUserConfiguration])]
@@ -75,7 +75,7 @@ param(
     #  customData is passed to the VM to be saved as a file.
     # For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
     # 
-    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    #  For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
     ${OSProfileCustomData},
 
     [Parameter()]

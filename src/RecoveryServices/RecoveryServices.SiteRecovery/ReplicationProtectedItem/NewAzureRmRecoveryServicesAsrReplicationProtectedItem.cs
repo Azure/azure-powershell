@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 // 
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -179,8 +179,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
         [Parameter(ParameterSetName = VMwareToAzureWithDiskType)]
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
-        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzureWithoutDiskDetails)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzureWithDiskInput)]
         [ValidateNotNullOrEmpty]
@@ -494,6 +492,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string UseManagedDisk { get; set; }
 
         /// <summary>
+        ///     Gets or sets a value indicating whether managed disks should be used during replication.
+        /// </summary>
+        [Parameter]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            Constants.True,
+            Constants.False)]
+        [Parameter(ParameterSetName = ASRParameterSets.HyperVSiteToAzure)]
+        public string UseManagedDisksForReplication { get; set; }
+
+        /// <summary>
         /// Gets or sets BootDiagnosticStorageAccountId.
         /// </summary>
         [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure)]
@@ -553,6 +562,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(ParameterSetName = VMwareToAzureParameterSet)]
         [Parameter(ParameterSetName = ASRParameterSets.ReplicateVMwareToAzure)]
         public string DiskEncryptionSetId { get; set; }
+
+        /// <summary>
+        ///  Gets or sets the recovery extended location.
+        /// </summary>
+        [Parameter(ParameterSetName = ASRParameterSets.AzureToAzure, HelpMessage = "Specifies Recovery ExtendedLocation in case of EZ-to-EZ.", Mandatory = false)]
+        public string RecoveryExtendedLocation { get; set; }
 
         /// <summary>
         ///     ProcessRecord of the command.
@@ -809,6 +824,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             providerSettings.TargetProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId;
             providerSettings.TargetAvailabilityZone = this.RecoveryAvailabilityZone;
             providerSettings.UseManagedDisks = this.UseManagedDisk;
+            providerSettings.UseManagedDisksForReplication = this.UseManagedDisksForReplication;
             providerSettings.TargetAvailabilitySetId = this.RecoveryAvailabilitySetId;
             providerSettings.TargetVmSize = this.Size;
             providerSettings.SqlServerLicenseType = this.SqlServerLicenseType;
@@ -913,6 +929,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                     this.RecoveryResourceGroupId;
             }
 
+            if (this.IsParameterBound(c => c.IncludeDiskId))
+            {
+                List<string> disksToInclude = IncludeDiskId.ToList();
+                providerSettings.DisksToInclude = disksToInclude;
+            }
+
             input.Properties.ProviderSpecificDetails = providerSettings;
         }
 
@@ -937,7 +959,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                 RecoveryAvailabilityZone = this.RecoveryAvailabilityZone,
                 RecoveryProximityPlacementGroupId = this.RecoveryProximityPlacementGroupId,
                 RecoveryVirtualMachineScaleSetId = this.RecoveryVirtualMachineScaleSetId,
-                RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId
+                RecoveryCapacityReservationGroupId = this.RecoveryCapacityReservationGroupId,
+                RecoveryExtendedLocation = this.IsParameterBound(c => c.RecoveryExtendedLocation) ? new ExtendedLocation
+                {
+                    Name = this.RecoveryExtendedLocation
+                } : null
             };
 
             if (!string.IsNullOrEmpty(this.ReplicationGroupName))

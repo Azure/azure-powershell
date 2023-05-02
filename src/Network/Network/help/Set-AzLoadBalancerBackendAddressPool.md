@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azloadbalancerbackendaddresspool
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azloadbalancerbackendaddresspool
 schema: 2.0.0
 ---
 
@@ -15,28 +15,29 @@ Updates the backend pool on a loadbalancer
 ### SetByNameParameterSet (Default)
 ```
 Set-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> -Name <String>
- -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
 ```
 Set-AzLoadBalancerBackendAddressPool -Name <String> -LoadBalancer <PSLoadBalancer>
- -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
-Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzLoadBalancerBackendAddressPool -InputObject <PSBackendAddressPool>
+ [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]> [-TunnelInterface <PSTunnelInterface[]>]
- -ResourceId <String> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzLoadBalancerBackendAddressPool -LoadBalancerBackendAddress <PSLoadBalancerBackendAddress[]>
+ -ResourceId <String> [-TunnelInterface <PSTunnelInterface[]>] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -222,6 +223,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TunnelInterface
+Gateway Load Balancer provider configurations.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSTunnelInterface[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

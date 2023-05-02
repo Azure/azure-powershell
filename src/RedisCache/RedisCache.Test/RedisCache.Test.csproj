@@ -12,10 +12,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Insights" Version="0.16.0-preview" />
-    <PackageReference Include="Microsoft.Azure.Management.Redis" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="25.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RedisCache.Management.Sdk\RedisCache.Management.Sdk.csproj" />
     <ProjectReference Include="..\RedisCache\RedisCache.csproj" />
   </ItemGroup>
 	

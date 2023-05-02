@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleurlconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleurlconfiguration
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Creates a rewrite rule url configuration for an application gateway.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayRewriteRuleUrlConfiguration [-ModifiedPath <String>] [-ModifiedQueryString <String>] [-Reroute]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzApplicationGatewayRewriteRuleUrlConfiguration [-ModifiedPath <String>] [-ModifiedQueryString <String>]
+ [-Reroute] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +40,7 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
 Required: False
 Position: Named
 Default value: None
@@ -54,6 +55,7 @@ Url path value.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -68,6 +70,7 @@ Url query string value.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -82,6 +85,37 @@ Flag to re-evaluate the url path map provided in path based request routing rule
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
 Required: False
 Position: Named
 Default value: None

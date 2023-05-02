@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.KeyVault.dll-Help.xml
 Module Name: Az.KeyVault
-online version: https://docs.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultmanagedhsm
+online version: https://learn.microsoft.com/powershell/module/az.keyvault/update-azkeyvaultmanagedhsm
 schema: 2.0.0
 ---
 
@@ -292,3 +292,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzKeyVaultManagedHsm](./Remove-AzKeyVaultManagedHsm.md)
 
 [Get-AzKeyVaultManagedHsm](./Get-AzKeyVaultManagedHsm.md)
+
+[Undo-AzKeyVaultManagedHsmRemoval](./Undo-AzKeyVaultManagedHsmRemoval.md)

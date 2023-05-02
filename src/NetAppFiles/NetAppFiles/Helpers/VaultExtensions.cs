@@ -12,33 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.NetApp.Models;
-using Microsoft.Azure.Commands.NetAppFiles.Models;
-using System.Collections.Generic;
-using System.Linq;
+//using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+//using Microsoft.Azure.Management.NetApp.Models;
+//using Microsoft.Azure.Commands.NetAppFiles.Models;
+//using System.Collections.Generic;
+//using System.Linq;
 
-namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
-{
-    public static class VaultExtensions
-    {       
-        public static PSNetAppFilesVault ConvertToPs(this Management.NetApp.Models.Vault vault)
-        {
-            var psVault = new PSNetAppFilesVault
-            {
-                ResourceGroupName = new ResourceIdentifier(vault.Id).ResourceGroupName,
-                Location = vault.Location,
-                Id = vault.Id,
-                Name = vault.Name,                
-                Type = vault.Type,
-                VaultName = vault.VaultName
-            };
-            return psVault;
-        }
+//namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
+//{
+//    public static class VaultExtensions
+//    {       
+//        public static PSNetAppFilesVault ConvertToPs(this Management.NetApp.Models.Vault vault)
+//        {
+//            var psVault = new PSNetAppFilesVault
+//            {
+//                ResourceGroupName = new ResourceIdentifier(vault.Id).ResourceGroupName,                
+//                Id = vault.Id,
+//                Name = vault.Name,                
+//                Type = vault.Type,
+//                VaultName = vault.VaultName
+//            };
+//            return psVault;
+//        }
         
-        public static List<PSNetAppFilesVault> ConvertToPS(this IList<Management.NetApp.Models.Vault> vaults)
-        {
-            return vaults.Select(e => e.ConvertToPs()).ToList();
-        }
-    }
-}
+//        public static List<PSNetAppFilesVault> ConvertToPS(this IList<Management.NetApp.Models.Vault> vaults)
+//        {
+//            return vaults.Select(e => e.ConvertToPs()).ToList();
+//        }
+//    }
+//}

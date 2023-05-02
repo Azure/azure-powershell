@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/Az.storage/get-azstorageblobqueryresult
+online version: https://learn.microsoft.com/powershell/module/Az.storage/get-azstorageblobqueryresult
 schema: 2.0.0
 ---
 
@@ -50,18 +50,19 @@ The **Get-AzStorageBlobQueryResult** cmdlet applies a simple Structured Query La
 ## EXAMPLES
 
 ### Example 1: Query a blob
-<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
+$inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
 
-PS C:\> $outputconfig = New-AzStorageBlobQueryConfig -AsJson
+$outputconfig = New-AzStorageBlobQueryConfig -AsJson
 
-PS C:\> $queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
+$queryString = "SELECT * FROM BlobStorage WHERE Name = 'a'"
 
-PS C:\> $result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
+$result = Get-AzStorageBlobQueryResult -Container $containerName -Blob $blobName -QueryString $queryString -ResultFile "c:\resultfile.json" -InputTextConfiguration $inputconfig -OutputTextConfiguration $outputconfig -Context $ctx
 
-PS C:\> $result
+$result
+```
 
+```output
 BytesScanned FailureCount BlobQueryError
 ------------ ------------ --------------
          449            0
@@ -283,7 +284,7 @@ Accept wildcard characters: False
 ```
 
 ### -QueryString
-Query string, see more details in: https://docs.microsoft.com/azure/storage/blobs/query-acceleration-sql-reference
+Query string, see more details in: https://learn.microsoft.com/azure/storage/blobs/query-acceleration-sql-reference
 
 ```yaml
 Type: System.String

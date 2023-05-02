@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
 ms.assetid: 251A4546-AC23-4880-B197-773B1B814607
-online version: https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlserverfirewallrule
+online version: https://learn.microsoft.com/powershell/module/az.sql/remove-azsqlserverfirewallrule
 schema: 2.0.0
 ---
 
@@ -160,6 +160,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [Set-AzSqlServerFirewallRule](./Set-AzSqlServerFirewallRule.md)
 
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
+[SQL Database Documentation](https://learn.microsoft.com/azure/sql-database/)
 
 

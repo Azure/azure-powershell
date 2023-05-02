@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkvirtualappliance
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkvirtualappliance
 schema: 2.0.0
 ---
 
@@ -31,7 +31,7 @@ The Get-AzNetworkVirtualAppliance commands gets or lists Network Virtual Applian
 
 ### Example 1
 ```powershell
-Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva                                                                                                                      
+Get-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
 ```
 
 ```output

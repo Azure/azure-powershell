@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DnsResolver
-online version: https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule
+online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsforwardingrulesetforwardingrule
 schema: 2.0.0
 ---
 

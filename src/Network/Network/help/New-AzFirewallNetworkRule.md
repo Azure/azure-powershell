@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: C0E1D4DF-232F-49C6-BE4C-05C8E8038329
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azfirewallnetworkrule
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Creates a Firewall Network Rule.
 ## SYNTAX
 
 ```
-New-AzFirewallNetworkRule -Name <String> [-Description <String>] -SourceAddress <String[]>
+New-AzFirewallNetworkRule -Name <String> [-Description <String>] [-SourceAddress <String[]>]
  [-SourceIpGroup <String[]>] [-DestinationAddress <String[]>] [-DestinationIpGroup <String[]>]
  [-DestinationFqdn <String[]>] -DestinationPort <String[]> -Protocol <String[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -231,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

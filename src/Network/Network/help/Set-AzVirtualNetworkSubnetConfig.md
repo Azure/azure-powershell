@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: D1D51DEF-05DE-45C4-9013-A02A5B248EAC
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig
 schema: 2.0.0
 ---
 
@@ -19,8 +19,8 @@ Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwor
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-RouteTable <PSRouteTable>] [-InputObject <PSNatGateway>]
  [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -29,8 +29,8 @@ Set-AzVirtualNetworkSubnetConfig -Name <String> -VirtualNetwork <PSVirtualNetwor
  [-NetworkSecurityGroupId <String>] [-RouteTableId <String>] [-ResourceId <String>]
  [-ServiceEndpoint <String[]>] [-ServiceEndpointPolicy <PSServiceEndpointPolicy[]>]
  [-Delegation <PSDelegation[]>] [-PrivateEndpointNetworkPoliciesFlag <String>]
- [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PrivateLinkServiceNetworkPoliciesFlag <String>] [-IpAllocation <PSIpAllocation[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

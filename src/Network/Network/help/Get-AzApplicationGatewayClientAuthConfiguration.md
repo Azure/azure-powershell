@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewayclientauthconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azapplicationgatewayclientauthconfiguration
 schema: 2.0.0
 ---
 
@@ -37,7 +37,7 @@ The first command gets the application gateway named ApplicationGateway01 in the
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -52,7 +52,7 @@ Accept wildcard characters: False
 The ssl profile
 
 ```yaml
-Type: PSApplicationGatewaySslProfile
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslProfile
 Parameter Sets: (All)
 Aliases:
 

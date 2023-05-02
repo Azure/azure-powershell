@@ -27,7 +27,7 @@ The operation to delete an ASR migration item.
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
+https://learn.microsoft.com/powershell/module/az.migrate/remove-azmigratereplicationmigrationitem
 #>
 function Remove-AzMigrateReplicationMigrationItem {
 [OutputType([System.Boolean])]

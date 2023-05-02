@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-
+using Newtonsoft.Json.Bson;
 using Newtonsoft.Json.Linq;
 
 using System;
@@ -191,9 +191,19 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 throw new NotSupportedException($"'-TemplateUri {TemplateUri}' is not supported. Please download the bicep file and pass it using -TemplateFile.");
             }
 
+            if (BicepUtility.IsBicepparamFile(TemplateParameterFile) && !BicepUtility.IsBicepFile(TemplateFile))
+            {
+                throw new NotSupportedException($"Bicepparam file {TemplateParameterFile} is only supported with a Bicep template file");
+            }
+
             if (BicepUtility.IsBicepFile(TemplateFile))
+            {
                 BuildAndUseBicepTemplate();
 
+                if (BicepUtility.IsBicepparamFile(TemplateParameterFile))
+                    BuildAndUseBicepParameters();
+            }
+               
             if (!this.IsParameterBound(c => c.SkipTemplateParameterPrompt))
             {
                 // Resolve the static parameter names for this cmdlet:
@@ -459,6 +469,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected void BuildAndUseBicepTemplate()
         {
             TemplateFile = BicepUtility.BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
+        }
+
+        protected void BuildAndUseBicepParameters()
+        {
+            TemplateParameterFile = BicepUtility.BuildParamFile(this.ResolvePath(TemplateParameterFile), this.WriteVerbose, this.WriteWarning);
         }
     }
 }

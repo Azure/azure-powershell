@@ -20,13 +20,9 @@ Creates a new database or updates an existing database.
 .Description
 Creates a new database or updates an existing database.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
@@ -56,7 +52,7 @@ PARAMETER <IDatabase>: Represents a Database.
   [Charset <String>]: The charset of the database.
   [Collation <String>]: The collation of the database.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqldatabase
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqldatabase
 #>
 function New-AzMySqlDatabase {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase])]
@@ -190,6 +186,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.MySql.private\New-AzMySqlDatabase_Create';
             CreateExpanded = 'Az.MySql.private\New-AzMySqlDatabase_CreateExpanded';
@@ -205,6 +202,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -213,15 +211,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

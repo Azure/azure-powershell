@@ -54,15 +54,13 @@ function Test-AzureFSContainer
 		# VARIATION-1: Get All Containers with only mandatory parameters
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
-			-ContainerType AzureStorage `
-			-Status Registered;
+			-ContainerType AzureStorage;
 		Assert-True { $containers.FriendlyName -contains $saName }
 
 		# VARIATION-2: Get Containers with friendly name filter
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName;
 		Assert-True { $containers.FriendlyName -contains $saName }
 
@@ -70,7 +68,6 @@ function Test-AzureFSContainer
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-ResourceGroupName $resourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $saName }
 	
@@ -78,7 +75,6 @@ function Test-AzureFSContainer
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureStorage `
-			-Status Registered `
 			-FriendlyName $saName `
 			-ResourceGroupName $resourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $saName }
@@ -97,7 +93,6 @@ function Test-AzureFSUnregisterContainer
 	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
-		-Status Registered `
 		-FriendlyName $saName
 
 	# Disable Protection
@@ -114,7 +109,6 @@ function Test-AzureFSUnregisterContainer
 	$container = Get-AzRecoveryServicesBackupContainer `
 		-VaultId $vault.ID `
 		-ContainerType AzureStorage `
-		-Status Registered `
 		-FriendlyName $saName
 	Assert-Null $container	
 }

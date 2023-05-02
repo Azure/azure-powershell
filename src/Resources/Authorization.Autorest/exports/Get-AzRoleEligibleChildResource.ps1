@@ -48,7 +48,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
 #>
 function Get-AzRoleEligibleChildResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource])]
@@ -80,7 +80,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -132,7 +133,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -91,6 +91,131 @@ function Test-NewAzSearchServiceBasic
 
 <#
 .SYNOPSIS
+Test NewAzSearchServiceDisableLocalAuth
+#>
+function Test-NewAzSearchServiceDisableLocalAuth
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$disableLocalAuth = $true
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -DisableLocalAuth $disableLocalAuth
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-AreEqual $disableLocalAuth $newSearchService.DisableLocalAuth
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test NewAzSearchServiceApiKeyOnlyAuth
+#>
+function Test-NewAzSearchServiceApiKeyOnlyAuth
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$authOption = "ApiKeyOnly" 
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -AuthOption $authOption
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-NotNull $newSearchService.AuthOptions.ApiKeyOnly
+		Assert-Null $newSearchService.AuthOptions.AadOrApiKey
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test NewAzSearchServiceAadOrApiKeyAuth
+#>
+function Test-NewAzSearchServiceAadOrApiKeyAuth
+{
+	# Arrange
+	$rgname = getAssetName
+	$rgname = $rgname
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+	$authOption = "AadOrApiKey" 
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# Act
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $svcName -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -AuthOption $authOption
+		
+		# Assert
+		Assert-NotNull $newSearchService
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
+		Assert-NotNull $newSearchService.AuthOptions.AadOrApiKey
+		Assert-Null $newSearchService.AuthOptions.ApiKeyOnly
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test New-AzSearchServiceL1
 #>
 function Test-NewAzSearchServiceL1
@@ -98,7 +223,7 @@ function Test-NewAzSearchServiceL1
 	# Arrange
 	$rgname = getAssetName
 	$rgname = $rgname
-	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "Central US EUAP"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "East US 2"
 	$svcName = $rgname + "-service"
 	$sku = "Storage_Optimized_L1"
 	$partitionCount = 1
@@ -436,6 +561,65 @@ function Test-SetAzSearchService
 
 <#
 .SYNOPSIS
+Test Set-AzSearchServiceAuthOptions
+#>
+function Test-SetAzSearchServiceAuthOptions
+{
+    # Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$sku = "Basic"
+	$partitionCount = 1
+	$replicaCount = 1
+	$hostingMode = "Default"
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc
+		
+		# 1. Act - Create
+		$newSearchService = New-AzSearchService -ResourceGroupName $rgname -Name $($rgname + "-service1") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode
+
+		# Set by InputObject
+		$newSearchService | Set-AzSearchService -DisableLocalAuth $true
+
+		# Assert Get
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
+		Assert-True { $retrievedSvc.DisableLocalAuth }
+		Assert-Null $retrievedSvc.AuthOptions
+
+		Set-AzSearchService -ResourceId $newSearchService.Id -DisableLocalAuth $false -AuthOption "AadOrApiKey" -AadAuthFailureMode "Http403"
+
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
+		Assert-False { $retrievedSvc.DisableLocalAuth }
+		Assert-Null $retrievedSvc.AuthOptions.ApiKeyOnly
+		Assert-NotNull $retrievedSvc.AuthOptions.AadOrApiKey
+		Assert-AreEqual "Http403" $retrievedSvc.AuthOptions.AadOrApiKey.AadAuthFailureMode
+
+		Set-AzSearchService -ResourceId $newSearchService.Id -DisableLocalAuth $false -AuthOption "AadOrApiKey" -AadAuthFailureMode "Http401WithBearerChallenge"
+
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
+		Assert-False { $retrievedSvc.DisableLocalAuth }
+		Assert-Null $retrievedSvc.AuthOptions.ApiKeyOnly
+		Assert-NotNull $retrievedSvc.AuthOptions.AadOrApiKey
+		Assert-AreEqual "Http401WithBearerChallenge" $retrievedSvc.AuthOptions.AadOrApiKey.AadAuthFailureMode
+
+		Set-AzSearchService -ResourceId $newSearchService.Id -DisableLocalAuth $false -AuthOption "ApiKeyOnly"
+
+		$retrievedSvc = Get-AzSearchService -ResourceId $newSearchService.Id
+		Assert-False { $retrievedSvc.DisableLocalAuth }
+		Assert-NotNull $retrievedSvc.AuthOptions.ApiKeyOnly
+		Assert-Null $retrievedSvc.AuthOptions.AadOrApiKey
+	}
+	finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Test ManageAzSearchServiceAdminKey
 #>
 function Test-ManageAzSearchServiceAdminKey
@@ -477,24 +661,16 @@ function Test-ManageAzSearchServiceAdminKey
 		$newKeyPair2 = New-AzSearchAdminKey -ParentResourceId $newSearchService.Id -KeyKind Secondary -Force
 		$newKeyPair3 = New-AzSearchAdminKey -ResourceGroupName $rgname -ServiceName $svcName -KeyKind Primary -Force
 
+		# Do not compare keys themselves after rotation - they are stored in the JSON file as "Sanitized"
+		# so this test would only pass in Record mode
 		# 1
 		Assert-NotNull $newKeyPair1
-		Assert-AreNotEqual $newKeyPair1.Primary $adminKeyPair1.Primary
-		Assert-AreEqual $newKeyPair1.Secondary $adminKeyPair1.Secondary
 
 		# 2
 		Assert-NotNull $newKeyPair2
-		Assert-AreEqual $newKeyPair2.Primary $newKeyPair1.Primary
-		
-		Assert-AreNotEqual $newKeyPair2.Secondary $adminKeyPair1.Secondary
-		Assert-AreNotEqual $newKeyPair2.Primary $adminKeyPair1.Primary
 
 		# 3
 		Assert-NotNull $newKeyPair3
-		Assert-AreEqual $newKeyPair3.Secondary $newKeyPair2.Secondary
-
-		Assert-AreNotEqual $newKeyPair3.Secondary $adminKeyPair3.Secondary
-		Assert-AreNotEqual $newKeyPair3.Primary $adminKeyPair3.Primary
 	}
 	finally
     {
@@ -924,7 +1100,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 			if ($createState -ne "Completed")
 			{
 				Write-Verbose "Job still running waiting for 30 seconds before trying again"
-				Start-Sleep -Seconds 30
+				Start-TestSleep -Seconds 30
 			}
 			else
 			{
@@ -958,7 +1134,7 @@ function Test-ManageAzSearchSharedPrivateLinkResourceJob
 			if ($deleteState -ne "Completed")
 			{
 				Write-Verbose "Job still running waiting for 30 seconds before trying again"
-				Start-Sleep -Seconds 30
+				Start-TestSleep -Seconds 30
 			}
 			else
 			{

@@ -30,7 +30,7 @@ New-AzContainerAppManagedEnvCert -EnvName azps-env -Name azps-env-cert -Resource
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate
 .Link
-https://docs.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvcert
+https://learn.microsoft.com/powershell/module/az.app/new-azcontainerappmanagedenvcert
 #>
 function New-AzContainerAppManagedEnvCert {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.App.Models.Api20220301.ICertificate])]

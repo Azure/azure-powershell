@@ -120,6 +120,16 @@ namespace Microsoft.Azure.Commands.Network
         public string HubRoutingPreference { get; set; }
 
         [Parameter(
+        Mandatory = false,
+        HelpMessage = "The ASN of this virtual hub")]
+        public uint VirtualRouterAsn { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "Autoscale configuration for the hub router")]
+        public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
+
+        [Parameter(
             Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -169,7 +179,9 @@ namespace Microsoft.Azure.Commands.Network
                         Name = this.Name,
                         VirtualWan = new PSResourceId() { Id = resolvedVirtualWan.Id },
                         AddressPrefix = this.AddressPrefix,
-                        Location = this.Location
+                        Location = this.Location,
+                        VirtualRouterAsn = this.VirtualRouterAsn,
+                        VirtualRouterAutoScaleConfiguration = this.VirtualRouterAutoScaleConfiguration
                     };
 
                     virtualHub.RouteTable = this.RouteTable;

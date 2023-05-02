@@ -12,6 +12,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models.IServiceLinkerIdentityInternal
     {
 
+        /// <summary>Backing field for <see cref="ConnectorName" /> property.</summary>
+        private string _connectorName;
+
+        /// <summary>The name of resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
+        public string ConnectorName { get => this._connectorName; set => this._connectorName = value; }
+
+        /// <summary>Backing field for <see cref="DryrunName" /> property.</summary>
+        private string _dryrunName;
+
+        /// <summary>The name of dryrun.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
+        public string DryrunName { get => this._dryrunName; set => this._dryrunName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -26,6 +40,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
         public string LinkerName { get => this._linkerName; set => this._linkerName = value; }
 
+        /// <summary>Backing field for <see cref="Location" /> property.</summary>
+        private string _location;
+
+        /// <summary>The name of Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
+        public string Location { get => this._location; set => this._location = value; }
+
+        /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
+        private string _resourceGroupName;
+
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
+        public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
+
         /// <summary>Backing field for <see cref="ResourceUri" /> property.</summary>
         private string _resourceUri;
 
@@ -34,6 +62,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
         public string ResourceUri { get => this._resourceUri; set => this._resourceUri = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string _subscriptionId;
+
+        /// <summary>The ID of the target subscription.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Origin(Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.PropertyOrigin.Owned)]
+        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>Creates an new <see cref="ServiceLinkerIdentity" /> instance.</summary>
         public ServiceLinkerIdentity()
@@ -44,6 +79,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
     public partial interface IServiceLinkerIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.IJsonSerializable
     {
+        /// <summary>The name of resource.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of resource.",
+        SerializedName = @"connectorName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ConnectorName { get; set; }
+        /// <summary>The name of dryrun.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of dryrun.",
+        SerializedName = @"dryrunName",
+        PossibleTypes = new [] { typeof(string) })]
+        string DryrunName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
         Required = false,
@@ -60,6 +111,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         SerializedName = @"linkerName",
         PossibleTypes = new [] { typeof(string) })]
         string LinkerName { get; set; }
+        /// <summary>The name of Azure region.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of Azure region.",
+        SerializedName = @"location",
+        PossibleTypes = new [] { typeof(string) })]
+        string Location { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the resource group. The name is case insensitive.",
+        SerializedName = @"resourceGroupName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceGroupName { get; set; }
         /// <summary>
         /// The fully qualified Azure Resource manager identifier of the resource to be connected.
         /// </summary>
@@ -70,19 +137,37 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Models
         SerializedName = @"resourceUri",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceUri { get; set; }
+        /// <summary>The ID of the target subscription.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the target subscription.",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SubscriptionId { get; set; }
 
     }
     internal partial interface IServiceLinkerIdentityInternal
 
     {
+        /// <summary>The name of resource.</summary>
+        string ConnectorName { get; set; }
+        /// <summary>The name of dryrun.</summary>
+        string DryrunName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>The name Linker resource.</summary>
         string LinkerName { get; set; }
+        /// <summary>The name of Azure region.</summary>
+        string Location { get; set; }
+        /// <summary>The name of the resource group. The name is case insensitive.</summary>
+        string ResourceGroupName { get; set; }
         /// <summary>
         /// The fully qualified Azure Resource manager identifier of the resource to be connected.
         /// </summary>
         string ResourceUri { get; set; }
+        /// <summary>The ID of the target subscription.</summary>
+        string SubscriptionId { get; set; }
 
     }
 }

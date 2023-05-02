@@ -83,24 +83,30 @@ function Test-BackupCrud
         do
         {
             $sourceVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
-            if ($env:AZURE_TEST_MODE -eq "Record")
-            {
-               Start-Sleep -Seconds 10.0
-            }
+            Start-TestSleep -Seconds 10
             $i++
         }               
         until ($sourceVolume.ProvisioningState -eq "Succeeded" -or $i -eq 3);
     }
 
-
-
-    function SleepDuringRecord ($seconds = 30.0)
+    function WaitForBackupSucceeded #($sourceOnly)    
     {
-        if ($env:AZURE_TEST_MODE -eq "Record")
+        $i = 0 
+        do
         {
-            Write-Output "Sleep in record mode"
-            Start-Sleep -Seconds $seconds
-        }
+            $getRetrievedBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
+            Start-TestSleep -Seconds 10
+            $i++
+        }               
+        until ($getRetrievedBackup.ProvisioningState -eq "Succeeded" -or $i -eq 3);
+
+        do
+        {
+            $backupStatus = Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 
+            Start-TestSleep -Seconds 10
+            $i++
+        }               
+        until ($backupStatus.MirrorState -eq "Mirrored" -or $i -eq 3);
     }
 
     try
@@ -135,24 +141,24 @@ function Test-BackupCrud
         Assert-NotNull $retrievedVolume.ExportPolicy
         Assert-AreEqual '0.0.0.0/0' $retrievedVolume.ExportPolicy.Rules[0].AllowedClients 
         
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         WaitForSucceeded
         
         # get check Vaults 
-        $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
+        #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
         $backupObject = @{
-            VaultId = $retrievedVaultsList[0].Id
+            #VaultId = $retrievedVaultsList[0].Id
             BackupEnabled = $true
             PolicyEnforced = $true
             #BackupPolicyId = $retrievedBackupPolicy.Id
         }
 
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         WaitForSucceeded 
 
          # volume update with backup policy
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         # create and check Backup
         $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $retrievedBackup.Name
@@ -168,6 +174,7 @@ function Test-BackupCrud
         $getRetrievedAccountBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName1
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackup.Name
 
+        
         # service side issue does not return label enable when fixed (ANF-8057)
         # Assert-AreEqual $label $getRetrievedBackup.Label
         
@@ -175,6 +182,13 @@ function Test-BackupCrud
         $updateBackup = Update-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -Location $backupLocation -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $labelUpdate
         # service side issue does not return label enable when fixed (ANF-8057)
         #Assert-AreEqual $labelUpdate $updateBackup.Label
+        WaitForBackupSucceeded
+        
+        #Restore job not deployed on region enable when finished
+        #Test restore files from backup,  
+        #$fileList = New-Object string[] 1
+        #$fileList[0] = "/dir1/customer1.db"
+        #$getResultBackupRestore = Restore-AzNetAppFilesBackupFile -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -BackupName $backupName1 -FileList $fileList -DestinationVolumeId $retrievedVolume.Id
         
         #create second Backup       
         $secondBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName2 -Label $label2
@@ -198,20 +212,20 @@ function Test-BackupCrud
         # get and check the Backup again using the resource id just obtained
         $getRetrievedBackupById = Get-AzNetAppFilesBackup -ResourceId $getRetrievedBackup.Id
         Assert-AreEqual "$accName1/$poolName/$volName1/$backupName1" $getRetrievedBackupById.Name
-        SleepDuringRecord 200
+        Start-TestSleep -Seconds 200
         # delete one Backup by name and check removed
         # but test the WhatIf first, should not be removed
         Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -WhatIf
         $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual 2 $retrievedBackupsList.Length
                              
-        SleepDuringRecord 200
+        Start-TestSleep -Seconds 200
         #remove by name
         Remove-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName1
         $retrievedBackupsList = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1
         Assert-AreEqual 1 $retrievedBackupsList.Length
         
-        SleepDuringRecord 200
+        Start-TestSleep -Seconds 200
         # delete volume to cleanup last backup and check removed
         Remove-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 
         $retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName
@@ -268,15 +282,6 @@ function Test-BackupPipelines
     $vnetName = $resourceGroup + "-vnet"
     $subnetId = "/subscriptions/$subsId/resourceGroups/$resourceGroup/providers/Microsoft.Network/virtualNetworks/$vnetName/subnets/$subnetName"
 
-    function SleepDuringRecord ($seconds = 30.0)
-    {
-        if ($env:AZURE_TEST_MODE -eq "Record")
-        {
-            Write-Output "Sleep in record mode"
-            Start-Sleep -Seconds $seconds
-        }
-    }
-
     try
     {
         $newTagName = "tag1"
@@ -306,9 +311,9 @@ function Test-BackupPipelines
         Assert-AreEqual "Premium" $retrievedVolume.ServiceLevel      
 
         # get check Vaults 
-        $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
+        #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName1
         $backupObject = @{
-            VaultId = $retrievedVaultsList[0].Id
+            #VaultId = $retrievedVaultsList[0].Id
             BackupEnabled = $true
             PolicyEnforced = $false
         }
@@ -341,22 +346,22 @@ function Test-BackupPipelines
         Assert-AreEqual 2 $retrievedBackups.Length
         $numBackups = $retrievedBackups.Length
         
-        SleepDuringRecord 200
+        Start-TestSleep -Seconds 200
         
         # delete the first backup by piping from backup get
         Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -p $poolName -VolumeName $volName1 -name $backupName1 | Remove-AnfBackup
         # and check the backup list by piping from get
         $retrievedBackup = Get-AnfVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -Name $volName1 | Get-AnfBackup
         Assert-AreEqual ($numBackups-1) $retrievedBackup.Length 
-        SleepDuringRecord 200
+        Start-TestSleep -Seconds 200
         # delete volume so we can cleanup last remaining backup and check removed
         Remove-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 
         $retrievedVolumes = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName
         Assert-AreEqual 0 $retrievedVolumes.Length
-        SleepDuringRecord 400
+        Start-TestSleep -Seconds 400
         # delete the last backup by piping from AccountBackup get
         Get-AnfBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -AccountBackupName $backupName2 | Remove-AnfBackup
-        SleepDuringRecord 200
+        Start-TestSleep -Seconds 200
         # Check accountBackups         
         $retrievedDeletedBackup = $null
         try
@@ -442,16 +447,6 @@ function Test-VolumeBackupStatus
     $protocolTypes = New-Object string[] 1
     $protocolTypes[0] = "NFSv3"
 
-    function SleepDuringRecord ($seconds = 30.0)
-    {
-        if ($env:AZURE_TEST_MODE -eq "Record")
-        {
-            Write-Output "Sleep in record mode"
-            Start-Sleep -Seconds $seconds
-        }
-    }
-
-
     try
     {
         # create the resource group
@@ -491,27 +486,27 @@ function Test-VolumeBackupStatus
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         
         # get check Vaults 
-        $retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName
+        #$retrievedVaultsList = Get-AzNetAppFilesVault -ResourceGroupName $resourceGroup -AccountName $accName
         $backupObject = @{
-            VaultId = $retrievedVaultsList[0].Id
+            #VaultId = $retrievedVaultsList[0].Id
             BackupEnabled = $true
             PolicyEnforced = $true
             #BackupPolicyId = $retrievedBackupPolicy.Id
         }
-        SleepDuringRecord        
+        Start-TestSleep -Seconds 30        
         # volume update with backup policy
         $retrievedVolume = Update-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Backup $backupObject
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         # create and check Backup
         $retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $backupName1 -Label $label
         Assert-AreEqual "$accName/$poolName/$volName1/$backupName1" $retrievedBackup.Name
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         #$retrievedBackup = New-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -Location $backupLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $backupName2 -Label $label
-        SleepDuringRecord
+        Start-TestSleep -Seconds 30
         #$retrievedVolume = Get-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1
         # Get volume backup status
-        SleepDuringRecord
-        SleepDuringRecord 600
+        Start-TestSleep -Seconds 30
+        Start-TestSleep -Seconds 600
         $retrievedBackupStatus = Get-AzNetAppFilesVolumeBackupStatus -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -Name $volName1 
         Assert-NotNull $retrievedBackupStatus                
     }
@@ -527,10 +522,7 @@ function Test-VolumeBackupStatus
         do
         {
             $sourceBackup = Get-AzNetAppFilesBackup -ResourceGroupName $resourceGroup -AccountName $accName1 -PoolName $poolName -VolumeName $volName1 -Name $backupName
-            if ($env:AZURE_TEST_MODE -eq "Record")
-            {
-                Start-Sleep -Seconds 10.0
-            }
+            Start-TestSleep -Seconds 10
             $i++
         }               
         until ($sourceBackup.ProvisioningState -eq "Succeeded" -or $i -eq 10);

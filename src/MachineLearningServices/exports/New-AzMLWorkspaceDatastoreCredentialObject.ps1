@@ -25,7 +25,7 @@ New-AzMLWorkspaceDatastoreCredentialObject
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials
 .Link
-https://docs.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreCredentialObject
+https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreCredentialObject
 #>
 function New-AzMLWorkspaceDatastoreCredentialObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.CertificateDatastoreCredentials])]

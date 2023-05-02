@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
-online version: https://docs.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive
+online version: https://learn.microsoft.com/powershell/module/az.storage/set-azdatalakegen2aclrecursive
 schema: 2.0.0
 ---
 
@@ -26,13 +26,14 @@ The input ACL will replace original ACL completely.
 ## EXAMPLES
 
 ### Example 1: Set ACL recursively on a directory
-<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
+$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
+Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -Context $ctx
 ```
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "rw-" -InputObject $acl
-PS C:\> Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -Context $ctx
 
+```output
 FailedEntries                   : 
 TotalDirectoriesSuccessfulCount : 7
 TotalFilesSuccessfulCount       : 5
@@ -78,7 +79,7 @@ This command first sets ACL recursively to a root directory and failed, then res
 
 ### Example 3: Set ACL recursively chunk by chunk
 <!-- Skip: Output cannot be splitted from code -->
-```
+```powershell
 $token = $null
 $TotalDirectoriesSuccess = 0
 $TotalFilesSuccess = 0

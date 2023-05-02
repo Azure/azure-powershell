@@ -26,8 +26,6 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewallHubIpAddresses), DeprecatedOutputProperties = new[] { "publicIPAddresses" })]
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewall), DeprecatedOutputProperties = new[] { "IdentifyTopFatFlow" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewall))]
     public class NewAzureFirewallCommand : AzureFirewallBaseCmdlet
 
@@ -60,7 +58,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [CmdletParameterBreakingChange(
             "VirtualNetworkName",
-            deprecateByVersion: "2.0.0",
             ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.",
             OldWay = "New-AzFirewall -VirtualNetworkName \"vnet-name\"",
             NewWay = "New-AzFirewall -VirtualNetwork $vnet",
@@ -77,7 +74,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [CmdletParameterBreakingChange(
             "PublicIpName",
-            deprecateByVersion: "2.0.0",
             ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Public IP Address will be provided as a list of one or more objects instead of a string.",
             OldWay = "New-AzFirewall -PublicIpName \"public-ip-name\"",
             NewWay = "New-AzFirewall -PublicIpAddress @($publicip1, $publicip2)",
@@ -234,12 +230,22 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public SwitchParameter AllowActiveFTP { get; set; }
 
-        [CmdletParameterBreakingChange("IdentifyTopFatFlow", ReplaceMentCmdletParameterName = "EnableFatFlowLogging")]
         [Parameter(
            Mandatory = false,
-           HelpMessage = "Identify Top Fat Flows. By default it is false."
+           HelpMessage = "Enable Fat Flow Logging. By default it is false."
        )]
-        public SwitchParameter IdentifyTopFatFlow { get; set; }
+        public SwitchParameter EnableFatFlowLogging { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "Enable UDP Log Optimization. By default it is false."
+       )]
+        public SwitchParameter EnableUDPLogOptimization { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        HelpMessage = "The Route Server Id for the firewall")]
+        public string RouteServerId { get; set; }
 
         public override void Execute()
         {
@@ -281,6 +287,13 @@ namespace Microsoft.Azure.Commands.Network
             sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AZFWVNet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
+            if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
+            {
+                if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.Location))
+                {
+                    throw new ArgumentException("Basic Sku Firewall is not supported in this region yet - " + this.Location, nameof(this.Location));
+                }
+            }
             if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
             {
 
@@ -310,7 +323,8 @@ namespace Microsoft.Azure.Commands.Network
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
                     Zones = this.Zone == null ? null : this.Zone.ToList(),
-                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
             }
             else
@@ -331,7 +345,9 @@ namespace Microsoft.Azure.Commands.Network
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
-                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null),
+                    RouteServerId = this.RouteServerId
                 };
 
                 if (this.Zone != null)

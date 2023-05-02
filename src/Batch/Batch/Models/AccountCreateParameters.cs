@@ -91,5 +91,10 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// The identity of the Batch account.
         /// </summary>
         public BatchAccountIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets the encryption configuration for the Batch account.
+        /// </summary>
+        public EncryptionProperties Encryption { get; set; }
     }
 }

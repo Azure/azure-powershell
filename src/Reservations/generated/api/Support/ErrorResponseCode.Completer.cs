@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
 {
 
-    /// <summary>Argument completer implementation for ErrorResponseCode.</summary>
+    /// <summary>
+    /// Error code describing the reason that service is not able to process the incoming request
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ErrorResponseCodeTypeConverter))]
     public partial struct ErrorResponseCode :
         System.Management.Automation.IArgumentCompleter
@@ -249,6 +251,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AppliedScopesSameAsExisting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'AppliedScopesSameAsExisting'", "AppliedScopesSameAsExisting", global::System.Management.Automation.CompletionResultType.ParameterValue, "AppliedScopesSameAsExisting");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SelfServiceRefundNotSupported".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SelfServiceRefundNotSupported'", "SelfServiceRefundNotSupported", global::System.Management.Automation.CompletionResultType.ParameterValue, "SelfServiceRefundNotSupported");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "RefundLimitExceeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'RefundLimitExceeded'", "RefundLimitExceeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "RefundLimitExceeded");
             }
         }
     }

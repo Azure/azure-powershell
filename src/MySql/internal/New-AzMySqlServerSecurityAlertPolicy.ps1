@@ -20,13 +20,9 @@ Creates or updates a threat detection policy.
 .Description
 Creates or updates a threat detection policy.
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 .Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy
@@ -61,7 +57,7 @@ PARAMETER <IServerSecurityAlertPolicy>: A server security alert policy.
   [StorageAccountAccessKey <String>]: Specifies the identifier key of the Threat Detection audit storage account.
   [StorageEndpoint <String>]: Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs.
 .Link
-https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlserversecurityalertpolicy
+https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlserversecurityalertpolicy
 #>
 function New-AzMySqlServerSecurityAlertPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServerSecurityAlertPolicy])]
@@ -234,6 +230,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.MySql.private\New-AzMySqlServerSecurityAlertPolicy_Create';
             CreateExpanded = 'Az.MySql.private\New-AzMySqlServerSecurityAlertPolicy_CreateExpanded';
@@ -249,6 +246,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -257,15 +255,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

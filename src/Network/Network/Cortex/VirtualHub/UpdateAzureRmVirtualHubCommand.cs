@@ -126,6 +126,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The ASN of this virtual hub")]
+        public uint VirtualRouterAsn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Autoscale configuration for the hub router")]
+        public PSVirtualRouterAutoScaleConfiguration VirtualRouterAutoScaleConfiguration { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -209,6 +219,16 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrWhiteSpace(this.HubRoutingPreference))
             {
                 virtualHubToUpdate.HubRoutingPreference = this.HubRoutingPreference;
+            }
+
+            if (this.VirtualRouterAsn != 0)
+            {
+                virtualHubToUpdate.VirtualRouterAsn = this.VirtualRouterAsn;
+            }
+
+            if (this.VirtualRouterAutoScaleConfiguration != null)
+            {
+                virtualHubToUpdate.VirtualRouterAutoScaleConfiguration = this.VirtualRouterAutoScaleConfiguration;
             }
 
             //// Update the virtual hub

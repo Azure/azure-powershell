@@ -14,6 +14,7 @@
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
@@ -28,16 +29,17 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             compulsoryLocation: true);
 
         public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup,
-            ResourceConfig<AppServicePlan> plan, string siteName, SiteConfig siteConfig = null) =>
+            ResourceConfig<AppServicePlan> plan, string siteName, SiteConfig siteConfig = null, IDictionary<string, string> tags=null) =>
             Strategy.CreateResourceConfig(
                 resourceGroup,
                 siteName,
                 createModel: engine =>
-                    new Site(location: null, name: siteName)
+                    new Site(location: null, name: siteName, tags:tags)
                     {
                         //Name = siteName,
                         SiteConfig = siteConfig,
-                        ServerFarmId = engine.GetId(plan)
+                        ServerFarmId = engine.GetId(plan),
+                        Tags = tags
                     });
     }
 }

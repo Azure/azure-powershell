@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
+online version: https://learn.microsoft.com/powershell/module/az.cdn/enable-azcdncustomdomaincustomhttps
 schema: 2.0.0
 ---
 
@@ -33,7 +33,7 @@ Enable https delivery of the custom domain.
 
 ### Example 1: Enable an AzureCDN custom domain under the AzureCDN endpoint
 ```powershell
-$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType TLS12
+$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType ServerNameIndication
 Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
 ```
 

@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.DeliveryAttributeMappingHelp,
             ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string[] DeliveryAttributeMapping { get; set; }
+        public Hashtable[] DeliveryAttributeMapping { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                     WriteWarning(EventGridConstants.IncludedEventTypeDeprecationMessage);
                 }
 
-                EventSubscription eventSubscription = this.Client.createSystemTopicEventSubscriptiion(
+                EventSubscription eventSubscription = this.Client.createSystemTopicEventSubscription(
                     this.EventSubscriptionName,
                     this.ResourceGroupName,
                     this.SystemTopicName,

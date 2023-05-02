@@ -37,7 +37,7 @@ Scan                     :
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource
 .Link
-https://docs.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountDataSourceObject
+https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountDataSourceObject
 #>
 function New-AzPurviewAmazonAccountDataSourceObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource])]

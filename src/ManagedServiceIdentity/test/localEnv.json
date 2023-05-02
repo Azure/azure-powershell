@@ -1,0 +1,28 @@
+{
+  "Subject02": "system:serviceaccount:ns:svcaccount-g472j8",
+  "ficAudience": [
+    "api://AzureADTokenExchange"
+  ],
+  "Subject03": "system:serviceaccount:ns:svcaccount-dsu398",
+  "appServiceName": "appServiceux4rlb",
+  "SubscriptionId": "0336439f-0e9d-44ec-975e-62accb9b3901",
+  "resourceGroup": "identity-y2480de9",
+  "ficName03": "fic-hu0tbj",
+  "associatedResourceIdentityName": "ar-identity0rimng",
+  "appServiceId": "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-y2480de9/providers/Microsoft.Web/sites/appServiceux4rlb",
+  "ficUserIdentityName": "fic-identity-uas4ni",
+  "appServicePlanName": "appServicePlansa5zx8",
+  "associatedResourceResourceGroup": "ar-rg-5s0a4x9z",
+  "ficResourceGroup": "fic-rg-evwxr2fs",
+  "userIdentityName02": "identityb3zdjn",
+  "userIdentityName03": "identityfcpshg",
+  "location": "Central US",
+  "Issuer02": "https://kubernetes-oauth.azure.sved4n",
+  "Issuer01": "https://kubernetes-oauth.azure.e53am7",
+  "Subject01": "system:serviceaccount:ns:svcaccount-4dg1sv",
+  "Tenant": "a66b4d27-b1b3-4b60-8b06-7fb4fd05bc3c",
+  "Issuer03": "https://kubernetes-oauth.azure.a58pqf",
+  "userIdentityName01": "identityafzg75",
+  "ficName02": "fic-hbpz3g",
+  "ficName01": "fic-ave2zp"
+}

@@ -35,15 +35,13 @@ function Test-AzureVMGetContainers
 		# VARIATION-1: Get All Containers with only mandatory parameters
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
-			-ContainerType AzureVM `
-			-Status Registered;
+			-ContainerType AzureVM;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
 		# VARIATION-2: Get Containers with friendly name filter
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-FriendlyName $vm.Name;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 
@@ -51,7 +49,6 @@ function Test-AzureVMGetContainers
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-FriendlyName $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
@@ -60,7 +57,6 @@ function Test-AzureVMGetContainers
 		$containers = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-ResourceGroupName $vm.ResourceGroupName;
 		Assert-True { $containers.FriendlyName -contains $vm.Name }
 	}

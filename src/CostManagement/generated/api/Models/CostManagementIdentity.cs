@@ -19,6 +19,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
         public string AlertId { get => this._alertId; set => this._alertId = value; }
 
+        /// <summary>Backing field for <see cref="BillingAccountId" /> property.</summary>
+        private string _billingAccountId;
+
+        /// <summary>Enrollment ID (Legacy BillingAccount ID)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
+        public string BillingAccountId { get => this._billingAccountId; set => this._billingAccountId = value; }
+
+        /// <summary>Backing field for <see cref="BillingProfileId" /> property.</summary>
+        private string _billingProfileId;
+
+        /// <summary>BillingProfile ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
+        public string BillingProfileId { get => this._billingProfileId; set => this._billingProfileId = value; }
+
         /// <summary>Backing field for <see cref="ExportName" /> property.</summary>
         private string _exportName;
 
@@ -52,6 +66,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
         public string Id { get => this._id; set => this._id = value; }
+
+        /// <summary>Backing field for <see cref="OperationId" /> property.</summary>
+        private string _operationId;
+
+        /// <summary>The target operation Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Origin(Microsoft.Azure.PowerShell.Cmdlets.CostManagement.PropertyOrigin.Owned)]
+        public string OperationId { get => this._operationId; set => this._operationId = value; }
 
         /// <summary>Backing field for <see cref="Scope" /> property.</summary>
         private string _scope;
@@ -94,6 +115,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         SerializedName = @"alertId",
         PossibleTypes = new [] { typeof(string) })]
         string AlertId { get; set; }
+        /// <summary>Enrollment ID (Legacy BillingAccount ID)</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Enrollment ID (Legacy BillingAccount ID)",
+        SerializedName = @"billingAccountId",
+        PossibleTypes = new [] { typeof(string) })]
+        string BillingAccountId { get; set; }
+        /// <summary>BillingProfile ID</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"BillingProfile ID",
+        SerializedName = @"billingProfileId",
+        PossibleTypes = new [] { typeof(string) })]
+        string BillingProfileId { get; set; }
         /// <summary>Export Name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
         Required = false,
@@ -132,6 +169,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
+        /// <summary>The target operation Id.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The target operation Id.",
+        SerializedName = @"operationId",
+        PossibleTypes = new [] { typeof(string) })]
+        string OperationId { get; set; }
         /// <summary>
         /// The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
         /// for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'
@@ -165,6 +210,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
     {
         /// <summary>Alert ID</summary>
         string AlertId { get; set; }
+        /// <summary>Enrollment ID (Legacy BillingAccount ID)</summary>
+        string BillingAccountId { get; set; }
+        /// <summary>BillingProfile ID</summary>
+        string BillingProfileId { get; set; }
         /// <summary>Export Name.</summary>
         string ExportName { get; set; }
         /// <summary>
@@ -179,6 +228,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Models
         Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExternalCloudProviderType? ExternalCloudProviderType { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
+        /// <summary>The target operation Id.</summary>
+        string OperationId { get; set; }
         /// <summary>
         /// The scope associated with view operations. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}'
         /// for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}'

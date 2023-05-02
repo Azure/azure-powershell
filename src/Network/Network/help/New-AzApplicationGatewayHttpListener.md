@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: AF8CC409-2EA7-4EC1-86C9-E7A773DE9201
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayhttplistener
 schema: 2.0.0
 ---
 
@@ -63,7 +63,7 @@ This command creates an HTTP listener named Listener01, FirewallPolicy as $firew
 
 ### Example 4: Add a HTTPS listener with SSL and HostNames
 ```powershell
-$Listener = New-AzApplicationGatewayHttpListener -Name "Listener01" -Protocol "Https" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01 -SslCertificate $SSLCert01 -HostNames "*.contoso.com,www.microsoft.com"
+$Listener = New-AzApplicationGatewayHttpListener -Name "Listener01" -Protocol "Https" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01 -SslCertificate $SSLCert01 -HostNames "*.contoso.com","www.microsoft.com"
 ```
 
 This command creates an HTTP listener that uses SSL offload and provides the SSL certificate in the $SSLCert01 variable along with two HostNames.

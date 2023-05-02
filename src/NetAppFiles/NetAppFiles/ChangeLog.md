@@ -19,6 +19,37 @@
 -->
 ## Upcoming Release
 
+## Version 0.12.0
+* Updated Azure.Core to 1.31.0.
+* Added cmdLet `Restore-AzNetAppFilesBackupFile`                 
+* Added cmdLet `Unlock-AzNetAppFilesVolumeFileLock`
+* Added parameter `LdapSearchScope` and `PreferredServersForLdapClient` to `New-AzNetAppFilesActiveDirectory`
+* Added parameter `IsLargeVolume` to `NewAzNetAppFilesVolume`
+* Added property `PreferredServersForLdapClient` to `PSNetAppFilesActiveDirectory`
+* Added property `TennantId` and `Type` to `PSNetAppFilesActiveDirectory`
+* Added property `FileAccessLogs`, `DataStoreResourceId`, `ProvisionedAvailabilityZone`, `IsLargeVolume` to `PSNetAppFilesVolume`
+* Added property `TenantId`, `Type` to `PSEncryptionIdentity`
+* Added property `Name`, `Tags`, `location` to `PSNetAppFilesVolumeQuotaRule`
+Breaking change:
+* Removed `Get-AzNetAppFilesVault` this cmdLet is no longer needed
+* Removed `vaultId` from `PSNetAppFilesVolumeBackupProperties`
+* `YearlyBackupsToKeep` property is not supported by the service and has been removed from `New-AzNetAppFilesBackupPolicy`, `Set-AzNetAppFilesBackupPolicy` and `Update-AzNetAppFilesBackupPolicy` deprecation warning removed
+
+## Version 0.11.1
+* Updated Azure.Core to 1.28.0.
+
+## Version 0.11.0
+* Added cmdlet `Reset-AzNetAppFilesVolumeCifsPassword`
+* Added cmdlet `Get-AzNetAppFilesVolumeReplications` and `Restore-AzNetAppFilesVolume`
+* Added cmdLet `Get-AzNetAppFilesVolumeQuotaRule`, `Get-AzNetAppFilesVolumeQuotaRule`, `New-AzNetAppFilesVolumeQuotaRule`, `Update-AzNetAppFilesVolumeQuotaRule` and `Remove-AzNetAppFilesVolumeQuotaRule`
+* Added cmdLet `Update-NetAppFilesAccountCredential`
+* Added properties `Identity`, `Encryption` and `DisableShowmount` to `PSNetAppFilesAccount`
+* Added properties `Encrypted` and `Zones`, `DeleteBaseSnapshot`, `KeyVaultPrivateEndpointResourceId`,`SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource`, `VolumeSpecName` to `PSNetAppFilesVolume`
+* Added paramter `CoolAccess` to `Update-AzNetAppFilesPool`
+* Added paramter `DeleteBaseSnapshot`, `SmbAccessBasedEnumeration`, `SmbNonBrowsable`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `New-AzNetAppFilesVolume`
+* Added paramter `CoolAccess`, `CoolnessPeriod`, `EncryptionKeySource` and `KeyVaultPrivateEndpointResourceId` to `Update-AzNetAppFilesVolume`
+* Planning to deprecate the cmdLet `Get-AzNetAppFilesVault` as it will not be needed 
+
 ## Version 0.10.0
 * Added cmdlet `New/Remove/Get/Update-AzNetAppFilesSubvolume` and `Get-AzNetAppFilesSubvolumeMetadata`
 * Added cmdlet `New/Remove/Get-AzNetAppFilesVolumeGroup`

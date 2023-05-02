@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azsecuritypartnerprovider
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azsecuritypartnerprovider
 schema: 2.0.0
 ---
 
@@ -34,7 +34,6 @@ The **Get-AzSecurityPartnerProvider** cmdlet gets an Azure SecurityPartnerProvid
 Get-AzSecurityPartnerProvider -ResourceGroupName securityPartnerProviderRG -Name securityPartnerProvider
 ```
 
-
 ### Example 2
 ```powershell
 $securityPartnerProviderId = '/subscriptions/8c992d64-fce9-426d-b278-85642dfeab03/resourceGroups/securityPartnerProviderRG/providers/Microsoft.Network/securityPartnerProvider/securityPartnerProvider'
@@ -47,7 +46,7 @@ Get-AzSecurityPartnerProvider -ResourceId $securityPartnerProviderId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -62,7 +61,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases: ResourceName
 
@@ -70,14 +69,14 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityPartnerProviderNameParameterSet
 Aliases:
 
@@ -85,14 +84,14 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
 The resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SecurityPartnerProviderResourceIdParameterSet
 Aliases:
 
@@ -100,7 +99,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### CommonParameters

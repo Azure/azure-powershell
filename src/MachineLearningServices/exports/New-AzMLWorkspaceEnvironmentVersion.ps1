@@ -25,7 +25,7 @@ New-AzMLWorkspaceEnvironmentVersion -ResourceGroupName ml-rg-test -WorkspaceName
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion
 .Link
-https://docs.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
+https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceenvironmentversion
 #>
 function New-AzMLWorkspaceEnvironmentVersion {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEnvironmentVersion])]
@@ -92,7 +92,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Category('Body')]
     [System.String]
-    # Name of the image that will be used for the environment.<seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
+    # Name of the image that will be used for the environment.<seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image" />
     ${Image},
 
     [Parameter()]

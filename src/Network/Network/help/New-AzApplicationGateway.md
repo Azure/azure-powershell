@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 1F5066C6-9756-47B4-886C-C52755809926
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azapplicationgateway
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgateway
 schema: 2.0.0
 ---
 
@@ -25,11 +25,12 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
  -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
  -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
- -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
- [-SslProfiles <PSApplicationGatewaySslProfile[]>] -HttpListeners <PSApplicationGatewayHttpListener[]>
- [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
- -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
- [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>]
+ [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
+ [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
+ [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
+ [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
@@ -51,11 +52,12 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
  -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
  -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
- -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
- [-SslProfiles <PSApplicationGatewaySslProfile[]>] -HttpListeners <PSApplicationGatewayHttpListener[]>
- [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
- -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
- [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>]
+ [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
+ [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
+ [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
+ [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicyId <String>] [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>]
@@ -77,11 +79,12 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
  -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
  -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
- -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
- [-SslProfiles <PSApplicationGatewaySslProfile[]>] -HttpListeners <PSApplicationGatewayHttpListener[]>
- [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
- -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
- [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>]
+ [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
+ [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
+ [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
+ [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-FirewallPolicy <PSApplicationGatewayWebApplicationFirewallPolicy>]
@@ -104,11 +107,12 @@ New-AzApplicationGateway -Name <String> -ResourceGroupName <String> -Location <S
  [-FrontendIPConfigurations <PSApplicationGatewayFrontendIPConfiguration[]>]
  -FrontendPorts <PSApplicationGatewayFrontendPort[]> [-Probes <PSApplicationGatewayProbe[]>]
  -BackendAddressPools <PSApplicationGatewayBackendAddressPool[]>
- -BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>
- [-SslProfiles <PSApplicationGatewaySslProfile[]>] -HttpListeners <PSApplicationGatewayHttpListener[]>
- [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
- -RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>
- [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
+ [-BackendHttpSettingsCollection <PSApplicationGatewayBackendHttpSettings[]>]
+ [-BackendSettingsCollection <PSApplicationGatewayBackendSettings[]>]
+ [-SslProfiles <PSApplicationGatewaySslProfile[]>] [-HttpListeners <PSApplicationGatewayHttpListener[]>]
+ [-Listeners <PSApplicationGatewayListener[]>] [-UrlPathMaps <PSApplicationGatewayUrlPathMap[]>]
+ [-RequestRoutingRules <PSApplicationGatewayRequestRoutingRule[]>]
+ [-RoutingRules <PSApplicationGatewayRoutingRule[]>] [-RewriteRuleSet <PSApplicationGatewayRewriteRuleSet[]>]
  [-RedirectConfigurations <PSApplicationGatewayRedirectConfiguration[]>]
  [-WebApplicationFirewallConfiguration <PSApplicationGatewayWebApplicationFirewallConfiguration>]
  [-AutoscaleConfiguration <PSApplicationGatewayAutoscaleConfiguration>] [-EnableHttp2] [-EnableFIPS]
@@ -268,7 +272,22 @@ Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSet
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -BackendSettingsCollection
+The list of backend settings
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendSettings[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -448,7 +467,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -464,6 +483,21 @@ Parameter Sets: IdentityByIdentityObject
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Listeners
+The list of listener
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayListener[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -553,7 +587,7 @@ Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRequestRouting
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -580,6 +614,21 @@ The list of RewriteRuleSet
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRewriteRuleSet[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RoutingRules
+The list of routing rule
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRoutingRule[]
 Parameter Sets: (All)
 Aliases:
 

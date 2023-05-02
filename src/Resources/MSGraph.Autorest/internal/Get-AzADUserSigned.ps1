@@ -27,7 +27,7 @@ Represents current signed-in user object.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azadusersigned
+https://learn.microsoft.com/powershell/module/az.resources/get-azadusersigned
 #>
 function Get-AzADUserSigned {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser])]
@@ -52,7 +52,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

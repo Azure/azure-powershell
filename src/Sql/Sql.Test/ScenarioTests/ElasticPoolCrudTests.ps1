@@ -551,9 +551,9 @@ function Test-UpdateHyperscaleElasticPoolReplicaCount
 function Test-MoveDatabaseOutHyperscaleElasticPool
 {
 	# Setup
-	$location = "north europe"
-	$rg = "PowershellTestsNE"
-	$server = "hs-ep-powershelltests"
+	$location = "East US 2 EUAP"
+	$rg = "pstest"
+	$server = "canarysvr1"
 
 	try
 	{

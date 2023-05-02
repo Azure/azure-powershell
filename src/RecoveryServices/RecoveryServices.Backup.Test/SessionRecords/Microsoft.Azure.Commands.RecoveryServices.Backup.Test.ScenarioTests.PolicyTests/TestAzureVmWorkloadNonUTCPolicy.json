@@ -1,0 +1,545 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault?api-version=2023-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQ/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b68fe296-6198-4941-ab04-d8f707ffa773"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "b7f632d8-2016-4b39-9a6d-83971b1d2593"
+        ],
+        "x-ms-client-request-id": [
+          "b68fe296-6198-4941-ab04-d8f707ffa773"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "b7f632d8-2016-4b39-9a6d-83971b1d2593"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165549Z:b7f632d8-2016-4b39-9a6d-83971b1d2593"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:55:49 GMT"
+        ],
+        "Content-Length": [
+          "873"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"eastus\",\r\n  \"name\": \"hiaga-zrs-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-12-20T14%3A59%3A47.1354605Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"yes\",\r\n    \"Purpose\": \"testing\",\r\n    \"Owner\": \"hiaga\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\",\r\n    \"backupStorageVersion\": \"V1\",\r\n    \"securitySettings\": {\r\n      \"immutabilitySettings\": null,\r\n      \"softDeleteSettings\": {\r\n        \"softDeleteRetentionPeriodInDays\": 14,\r\n        \"softDeleteState\": \"Enabled\"\r\n      },\r\n      \"multiUserAuthorization\": \"Disabled\"\r\n    },\r\n    \"publicNetworkAccess\": \"Enabled\",\r\n    \"restoreSettings\": {\r\n      \"crossSubscriptionRestoreSettings\": {\r\n        \"crossSubscriptionRestoreState\": \"Enabled\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwUG9saWNpZXMvc3FsLXBzdGVzdC1sb2NhbC1wb2xpY3k/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a5323edd-c983-44fd-8436-2b32164acdbc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "d4364e9c-dccb-4fe7-a9e3-1ae9dcebb64c"
+        ],
+        "x-ms-client-request-id": [
+          "a5323edd-c983-44fd-8436-2b32164acdbc"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
+        "x-ms-correlation-request-id": [
+          "d4364e9c-dccb-4fe7-a9e3-1ae9dcebb64c"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165559Z:d4364e9c-dccb-4fe7-a9e3-1ae9dcebb64c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:55:58 GMT"
+        ],
+        "Content-Length": [
+          "2"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwUG9saWNpZXMvc3FsLXBzdGVzdC1sb2NhbC1wb2xpY3k/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a5323edd-c983-44fd-8436-2b32164acdbc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "117d49be-5be8-4ac8-8986-4e5c0647156d"
+        ],
+        "x-ms-client-request-id": [
+          "a5323edd-c983-44fd-8436-2b32164acdbc"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
+        "x-ms-correlation-request-id": [
+          "117d49be-5be8-4ac8-8986-4e5c0647156d"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165601Z:117d49be-5be8-4ac8-8986-4e5c0647156d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:56:00 GMT"
+        ],
+        "Content-Length": [
+          "1871"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy\",\r\n  \"name\": \"sql-pstest-local-policy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLDataBase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"Full\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T09:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 35,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 2,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Differential\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Wednesday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T10:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwUG9saWNpZXMvc3FsLXBzdGVzdC1sb2NhbC1wb2xpY3k/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ba59392f-a2ab-4f73-bf3d-e68c499979d0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "097e0336-54d1-4901-9f0d-8846bc7058c5"
+        ],
+        "x-ms-client-request-id": [
+          "ba59392f-a2ab-4f73-bf3d-e68c499979d0"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "297"
+        ],
+        "x-ms-correlation-request-id": [
+          "097e0336-54d1-4901-9f0d-8846bc7058c5"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165602Z:097e0336-54d1-4901-9f0d-8846bc7058c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:56:01 GMT"
+        ],
+        "Content-Length": [
+          "1871"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy\",\r\n  \"name\": \"sql-pstest-local-policy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLDataBase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"Full\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T09:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 35,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 2,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Differential\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Wednesday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T10:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwUG9saWNpZXMvc3FsLXBzdGVzdC1sb2NhbC1wb2xpY3k/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "021edeba-2db9-48a8-8e93-50bca07714c9"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "d57d9483-5bb4-4193-8833-7847cd75ab90"
+        ],
+        "x-ms-client-request-id": [
+          "021edeba-2db9-48a8-8e93-50bca07714c9"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "297"
+        ],
+        "x-ms-correlation-request-id": [
+          "d57d9483-5bb4-4193-8833-7847cd75ab90"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165605Z:d57d9483-5bb4-4193-8833-7847cd75ab90"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:56:05 GMT"
+        ],
+        "Content-Length": [
+          "1855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy\",\r\n  \"name\": \"sql-pstest-local-policy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLDataBase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"Full\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T09:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 35,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 2,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Differential\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Wednesday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T10:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwUG9saWNpZXMvc3FsLXBzdGVzdC1sb2NhbC1wb2xpY3k/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a5323edd-c983-44fd-8436-2b32164acdbc"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2712"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLDataBase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"Full\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T09:00:00Z\"\r\n          ]\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 35,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 2,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Differential\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Wednesday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T10:00:00Z\"\r\n          ]\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "95a7f4e9-37cc-4ced-b393-2d3b5415d280"
+        ],
+        "x-ms-client-request-id": [
+          "a5323edd-c983-44fd-8436-2b32164acdbc"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "95a7f4e9-37cc-4ced-b393-2d3b5415d280"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165600Z:95a7f4e9-37cc-4ced-b393-2d3b5415d280"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:56:00 GMT"
+        ],
+        "Content-Length": [
+          "1871"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy\",\r\n  \"name\": \"sql-pstest-local-policy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLDataBase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"Tokyo Standard Time\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"Full\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T09:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 35,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 2,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Differential\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Wednesday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T10:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwUG9saWNpZXMvc3FsLXBzdGVzdC1sb2NhbC1wb2xpY3k/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ba59392f-a2ab-4f73-bf3d-e68c499979d0"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "2764"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLDataBase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"Full\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T09:00:00Z\"\r\n          ]\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 35,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 2,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Differential\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Wednesday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T10:00:00Z\"\r\n          ]\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "61a2a2a1-0011-49b8-a37b-5113b5383c6d"
+        ],
+        "x-ms-client-request-id": [
+          "ba59392f-a2ab-4f73-bf3d-e68c499979d0"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "61a2a2a1-0011-49b8-a37b-5113b5383c6d"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165604Z:61a2a2a1-0011-49b8-a37b-5113b5383c6d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:56:03 GMT"
+        ],
+        "Content-Length": [
+          "1855"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy\",\r\n  \"name\": \"sql-pstest-local-policy\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults/backupPolicies\",\r\n  \"properties\": {\r\n    \"backupManagementType\": \"AzureWorkload\",\r\n    \"workLoadType\": \"SQLDataBase\",\r\n    \"settings\": {\r\n      \"timeZone\": \"UTC\",\r\n      \"issqlcompression\": false,\r\n      \"isCompression\": false\r\n    },\r\n    \"subProtectionPolicy\": [\r\n      {\r\n        \"policyType\": \"Full\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Sunday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T09:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"LongTermRetentionPolicy\",\r\n          \"weeklySchedule\": {\r\n            \"daysOfTheWeek\": [\r\n              \"Sunday\"\r\n            ],\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 35,\r\n              \"durationType\": \"Weeks\"\r\n            }\r\n          },\r\n          \"yearlySchedule\": {\r\n            \"retentionScheduleFormatType\": \"Weekly\",\r\n            \"monthsOfYear\": [\r\n              \"January\"\r\n            ],\r\n            \"retentionScheduleWeekly\": {\r\n              \"daysOfTheWeek\": [\r\n                \"Sunday\"\r\n              ],\r\n              \"weeksOfTheMonth\": [\r\n                \"First\"\r\n              ]\r\n            },\r\n            \"retentionTimes\": [\r\n              \"2022-12-26T09:00:00Z\"\r\n            ],\r\n            \"retentionDuration\": {\r\n              \"count\": 2,\r\n              \"durationType\": \"Years\"\r\n            }\r\n          }\r\n        },\r\n        \"tieringPolicy\": {\r\n          \"ArchivedRP\": {\r\n            \"tieringMode\": \"DoNotTier\",\r\n            \"duration\": 0,\r\n            \"durationType\": \"Invalid\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Differential\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"SimpleSchedulePolicy\",\r\n          \"scheduleRunFrequency\": \"Weekly\",\r\n          \"scheduleRunDays\": [\r\n            \"Wednesday\"\r\n          ],\r\n          \"scheduleRunTimes\": [\r\n            \"2022-12-26T10:00:00Z\"\r\n          ],\r\n          \"scheduleWeeklyFrequency\": 0\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyType\": \"Log\",\r\n        \"schedulePolicy\": {\r\n          \"schedulePolicyType\": \"LogSchedulePolicy\",\r\n          \"scheduleFrequencyInMins\": 120\r\n        },\r\n        \"retentionPolicy\": {\r\n          \"retentionPolicyType\": \"SimpleRetentionPolicy\",\r\n          \"retentionDuration\": {\r\n            \"count\": 15,\r\n            \"durationType\": \"Days\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"protectedItemsCount\": 0\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiaga-zrs-vault/backupPolicies/sql-pstest-local-policy?api-version=2023-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL2hpYWdhcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9oaWFnYS16cnMtdmF1bHQvYmFja3VwUG9saWNpZXMvc3FsLXBzdGVzdC1sb2NhbC1wb2xpY3k/YXBpLXZlcnNpb249MjAyMy0wMS0wMQ==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "30d444f3-88a9-47ef-a71e-14351a7f54f6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.55902",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22621",
+          "Microsoft.Azure.Management.RecoveryServices.Backup.RecoveryServicesBackupClient/6.3.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "15a4a93d-51b9-4fd7-82ea-dafced938d90"
+        ],
+        "x-ms-client-request-id": [
+          "30d444f3-88a9-47ef-a71e-14351a7f54f6"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "15a4a93d-51b9-4fd7-82ea-dafced938d90"
+        ],
+        "x-ms-routing-request-id": [
+          "JIOINDIAWEST:20230418T165610Z:15a4a93d-51b9-4fd7-82ea-dafced938d90"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 18 Apr 2023 16:56:09 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "38304e13-357e-405e-9e9a-220351dcce8c"
+  }
+}

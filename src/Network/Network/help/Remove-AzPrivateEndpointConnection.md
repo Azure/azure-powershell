@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -14,14 +14,15 @@ Removes a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Remove-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>] [-Force] [-AsJob] [-PassThru]
+Remove-AzPrivateEndpointConnection [-Description <String>] [-Force] [-AsJob] [-PassThru] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Remove-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
- [-Description <String>] [-Force] [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzPrivateEndpointConnection -Name <String> [-Description <String>] [-Force] [-AsJob] [-PassThru]
+ -ResourceGroupName <String> -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] -PrivateLinkResourceType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

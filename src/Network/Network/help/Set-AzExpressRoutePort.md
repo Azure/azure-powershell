@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azexpressrouteport
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azexpressrouteport
 schema: 2.0.0
 ---
 
@@ -43,6 +43,13 @@ Modifies the admin state of a link of an ExpressRoutePort
 $erport = Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
 $erport.Links[0].AdminState = 'Enabled'
 $erport.SciState = 'Disabled'
+Set-AzExpressRoutePort -ExpressRoutePort $erport
+```
+
+### Example 4
+```powershell
+$erport = Get-AzExpressRoutePort -Name $PortName -ResourceGroupName $rg
+$erport.BillingType = 'UnlimitedData'
 Set-AzExpressRoutePort -ExpressRoutePort $erport
 ```
 
@@ -125,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

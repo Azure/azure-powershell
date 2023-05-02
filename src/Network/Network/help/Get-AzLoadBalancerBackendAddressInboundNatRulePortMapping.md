@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:https://docs.microsoft.com/powershell/module/az.network/get-azloadbalancerbackendaddressinboundnatruleportmapping
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azloadbalancerbackendaddressinboundnatruleportmapping
 schema: 2.0.0
 ---
 
@@ -12,23 +12,24 @@ Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping retrieves inbound nat 
 
 ## SYNTAX
 
-### GetByNameParameterSet
+### GetByNameParameterSet (Default)
 ```
-Get-AzLoadBalancerBackendAddressPool -ResourceGroupName <String> -LoadBalancerName <String> [-Name <String>] [-IpAddress <String>]
+Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceGroupName <String>
+ -LoadBalancerName <String> [-Name <String>] [-IpAddress <String>]
  [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
-Get-AzLoadBalancerBackendAddressPool [-Name <String>] -LoadBalancer <PSLoadBalancer> [-IpAddress <String>]
- [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping [-Name <String>] -LoadBalancer <PSLoadBalancer>
+ [-IpAddress <String>] [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzLoadBalancerBackendAddressPool -ResourceId <String> [-IpAddress <String>]
- [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceId <String> [-IpAddress <String>]
+ [-NetworkInterfaceIpConfigurationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,9 +69,23 @@ Get-AzLoadBalancerBackendAddressInboundNatRulePortMapping -ResourceId $backendPo
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IpAddress
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -83,7 +98,7 @@ Accept wildcard characters: False
 Specifies the load balancer that has the backend address pool
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: GetByParentObjectParameterSet
 Aliases:
 
@@ -98,7 +113,7 @@ Accept wildcard characters: False
 The name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -113,8 +128,22 @@ Accept wildcard characters: False
 The name of the backend address pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet, GetByParentObjectParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkInterfaceIpConfigurationId
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -128,7 +157,7 @@ Accept wildcard characters: False
 The resource group name of the load balancer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByNameParameterSet
 Aliases:
 
@@ -142,39 +171,11 @@ Accept wildcard characters: False
 ### -ResourceId
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IpAddress
-
-```yaml
-Type: String
-Parameter Sets:
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NetworkInterfaceIpConfigurationId
-
-```yaml
-Type: String
-Parameter Sets:
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

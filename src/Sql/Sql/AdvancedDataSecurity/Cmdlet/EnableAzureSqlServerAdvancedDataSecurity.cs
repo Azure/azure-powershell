@@ -12,13 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Model;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Services;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
@@ -26,9 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// <summary>
     /// Enables the Advanced Threat Protection of a specific server.
     /// </summary>
-    [GenericBreakingChange("Enable-AzSqlServerAdvancedThreatProtection alias will be removed in an upcoming breaking change release", "9.0.0")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlServerAdvancedDataSecurity", SupportsShouldProcess = true), OutputType(typeof(ServerAdvancedDataSecurityPolicyModel))]
-    [Alias("Enable-AzSqlServerAdvancedThreatProtection")]
     public class EnableAzureSqlServerAdvancedDataSecurity : SqlServerAdvancedDataSecurityCmdletBase
     {
         /// <summary>
@@ -62,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         {
             // Enable ADS
             model.IsEnabled = true;
-            ModelAdapter.SetServerAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+            ModelAdapter.SetServerAdvancedDataSecurity(model);
 
             if (!DoNotConfigureVulnerabilityAssessment)
             {

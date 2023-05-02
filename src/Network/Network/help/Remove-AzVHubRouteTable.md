@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azvhubroutetable
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azvhubroutetable
 schema: 2.0.0
 ---
 
@@ -13,23 +13,27 @@ Delete a hub route table resource associated with a VirtualHub.
 ## SYNTAX
 
 ### ByVHubRouteTableName (Default)
-```powershell
-Remove-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+Remove-AzVHubRouteTable -ResourceGroupName <String> -ParentResourceName <String> -Name <String> [-AsJob]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualHubObject
-```powershell
-Remove-AzVHubRouteTable -Name <String> -VirtualHub <PSVirtualHub> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+Remove-AzVHubRouteTable -Name <String> -ParentObject <PSVirtualHub> [-AsJob] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableObject
-```powershell
-Remove-AzVHubRouteTable [-InputObject <PSVHubRouteTable>] [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+Remove-AzVHubRouteTable -InputObject <PSVHubRouteTable> [-AsJob] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVHubRouteTableResourceId
-```powershell
-Remove-AzVHubRouteTable -ResourceId <String> [-AsJob] [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+Remove-AzVHubRouteTable -ResourceId <String> [-AsJob] [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +55,7 @@ This command deletes the hub route table of the virtual hub.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +70,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -81,7 +85,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +100,7 @@ Accept wildcard characters: False
 The vhubroutetable resource to remove.
 
 ```yaml
-Type: PSVHubRouteTable
+Type: Microsoft.Azure.Commands.Network.Models.PSVHubRouteTable
 Parameter Sets: ByVHubRouteTableObject
 Aliases: VHubRouteTable, RouteTable
 
@@ -111,9 +115,9 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVHubRouteTableName, ByVirtualHubObject
-Aliases: ResourceName, VHubRouteTableName
+Aliases: ResourceName, VHubRouteTableName, RouteTableName
 
 Required: True
 Position: Named
@@ -126,14 +130,14 @@ Accept wildcard characters: False
 The parent virtual hub object of this resource.
 
 ```yaml
-Type: PSVirtualHub
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualHub
 Parameter Sets: ByVirtualHubObject
-Aliases: ParentVirtualHub, VirtualHub
+Aliases: VirtualHub, ParentVirtualHub
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -141,7 +145,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVHubRouteTableName
 Aliases: VirtualHubName, ParentVirtualHubName
 
@@ -156,7 +160,7 @@ Accept wildcard characters: False
 Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +175,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVHubRouteTableName
 Aliases:
 
@@ -186,9 +190,9 @@ Accept wildcard characters: False
 The resource id of the vhubroutetable resource to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVHubRouteTableResourceId
-Aliases: VHubRouteTableId
+Aliases: VHubRouteTableId, RouteTableId
 
 Required: True
 Position: Named
@@ -201,7 +205,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -217,7 +221,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

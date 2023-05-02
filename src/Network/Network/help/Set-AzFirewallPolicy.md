@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azfirewallpolicy
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azfirewallpolicy
 schema: 2.0.0
 ---
 
@@ -20,8 +20,8 @@ Set-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-AsJob] [-Threa
  -Location <String> [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
- [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -32,8 +32,8 @@ Set-AzFirewallPolicy [-Name <String>] -InputObject <PSAzureFirewallPolicy> [-AsJ
  [-Location <String>] [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
- [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -44,8 +44,8 @@ Set-AzFirewallPolicy [-AsJob] -ResourceId <String> [-ThreatIntelMode <String>]
  -Location <String> [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
- [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-Snat <PSAzureFirewallPolicySNAT>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,8 +80,9 @@ This example sets the firewall policy with the new threat intel whitelist
 $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
 Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ExplicitProxy $exProxy
 ```
+
 ```output
-		BasePolicy	                : null	
+BasePolicy	                : null	
 		DnsSettings  	            : null	
 		Etag	                    : null	
 		ExplicitProxy	
@@ -113,8 +114,9 @@ Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location w
 		ThreatIntelMode	            : "Alert"	
 		ThreatIntelWhitelist	    : null	
 		TransportSecurity	        : null	
-		Type	                    : null	
+		Type	                    : null
 ```
+
 This example sets the firewall policy with the explicit proxy settings
 
 ## PARAMETERS
@@ -366,6 +368,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Snat
+The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicySNAT
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SqlSetting
 The SQL related setting
 
@@ -521,4 +538,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)
+[New-AzFirewallPolicySnat](./New-AzFirewallPolicySnat.md)

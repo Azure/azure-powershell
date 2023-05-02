@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: EC798838-1850-4E88-B17F-D2F00F2D4EE9
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azpublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azpublicipaddress
 schema: 2.0.0
 ---
 
@@ -58,6 +58,7 @@ First command gets the public IP address resource with name $publicIPName in the
     Set-AzPublicIPAddress command updates the public IP address resource with the 
     updated object. DomainNameLabel & Fqdn are modified as expected.
     
+
 ### 3: Change DNS domain label of a public IP address
 ```powershell
 $publicIp = Get-AzPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
@@ -123,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

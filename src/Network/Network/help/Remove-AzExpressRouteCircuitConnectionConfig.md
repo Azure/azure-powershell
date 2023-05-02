@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: cc944e06-4fa0-4ce5-88e9-ea6454b41d55
-online version: https://docs.microsoft.com/powershell/module/az.network/remove-azexpressroutecircuitconnectionconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/remove-azexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Removes an ExpressRoute circuit connection configuration.
 
 ```
 Remove-AzExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AddressPrefixType <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,6 +50,22 @@ Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Re
 ```
 
 ## PARAMETERS
+
+### -AddressPrefixType
+Specifies the address family that needs to be removed from the config
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: IPv4, IPv6, All
+
+Required: False
+Position: Named
+Default value: IPv4
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -94,21 +111,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-### -AddressPrefixType
-Specifies the address family that needs to be removed from the config
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: IPv4, IPv6, All
-
-Required: False
-Position: Named
-Default value: IPv4
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
@@ -141,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

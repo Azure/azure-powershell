@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.CognitiveServices.dll-Help.xml
 Module Name: Az.CognitiveServices
-online version: https://docs.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountdeployment
+online version: https://learn.microsoft.com/powershell/module/az.cognitiveservices/get-azcognitiveservicesaccountdeployment
 schema: 2.0.0
 ---
 
@@ -32,6 +32,15 @@ Get Deployment of a Cognitive Services account
 ### Example 1
 ```powershell
 Get-AzCognitiveServicesAccountDeployment -ResourceGroupName cognitive-services-resource-group -AccountName resource-name
+```
+
+```output
+SystemData : Microsoft.Azure.Management.CognitiveServices.Models.SystemData
+Etag       : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Properties : Microsoft.Azure.Management.CognitiveServices.Models.DeploymentProperties
+Id         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.CognitiveServices/accounts/accountName/deployments/deploymentName
+Name       : deploymentName
+Type       : Microsoft.CognitiveServices/accounts/deployments
 ```
 
 Get Deployment of a Cognitive Services account

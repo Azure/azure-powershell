@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: B2F2082F-4BAA-4FBE-8846-2D436A433570
-online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface
+online version: https://learn.microsoft.com/powershell/module/az.network/new-aznetworkinterface
 schema: 2.0.0
 ---
 
@@ -17,8 +17,9 @@ Creates a network interface.
 ```
 New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-DnsServer <String[]>]
- [-InternalDnsNameLabel <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
+ [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByIpConfigurationResourceId
@@ -26,8 +27,9 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
 New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <String> [-EdgeZone <String>]
  -IpConfiguration <PSNetworkInterfaceIPConfiguration[]> [-NetworkSecurityGroupId <String>]
  [-NetworkSecurityGroup <PSNetworkSecurityGroup>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
- [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
+ [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceId
@@ -37,8 +39,9 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-LoadBalancerBackendAddressPoolId <String[]>] [-LoadBalancerInboundNatRuleId <String[]>]
  [-ApplicationGatewayBackendAddressPoolId <String[]>] [-ApplicationSecurityGroupId <String[]>]
  [-PrivateIpAddress <String>] [-IpConfigurationName <String>] [-DnsServer <String[]>]
- [-InternalDnsNameLabel <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking] [-Tag <Hashtable>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-InternalDnsNameLabel <String>] [-DisableTcpStateTracking <String>] [-EnableIPForwarding]
+ [-EnableAcceleratedNetworking] [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResource
@@ -48,8 +51,9 @@ New-AzNetworkInterface -Name <String> -ResourceGroupName <String> -Location <Str
  [-LoadBalancerBackendAddressPool <PSBackendAddressPool[]>] [-LoadBalancerInboundNatRule <PSInboundNatRule[]>]
  [-ApplicationGatewayBackendAddressPool <PSApplicationGatewayBackendAddressPool[]>]
  [-ApplicationSecurityGroup <PSApplicationSecurityGroup[]>] [-PrivateIpAddress <String>]
- [-IpConfigurationName <String>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>] [-EnableIPForwarding]
- [-EnableAcceleratedNetworking] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-IpConfigurationName <String>] [-DnsServer <String[]>] [-InternalDnsNameLabel <String>]
+ [-DisableTcpStateTracking <String>] [-EnableIPForwarding] [-EnableAcceleratedNetworking]
+ [-AuxiliaryMode <String>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -171,6 +175,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AuxiliaryMode
+The auxiliary mode of the Network Interface 
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -183,6 +202,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableTcpStateTracking
+Indicates whether to disable tcp state tracking.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

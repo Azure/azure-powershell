@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azprivatednszonegroup
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azprivatednszonegroup
 schema: 2.0.0
 ---
 
@@ -149,7 +149,7 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm

@@ -54,7 +54,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignmentscheduleinstance
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignmentscheduleinstance
 #>
 function Get-AzRoleAssignmentScheduleInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleInstance])]
@@ -96,7 +96,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -148,7 +149,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -254,7 +255,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignmentschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignmentschedulerequest
 #>
 function Get-AzRoleAssignmentScheduleRequest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest])]
@@ -297,7 +298,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -349,7 +351,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -456,7 +458,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleassignmentschedule
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleassignmentschedule
 #>
 function Get-AzRoleAssignmentSchedule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentSchedule])]
@@ -498,7 +500,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -550,7 +553,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -657,7 +660,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligibilityscheduleinstance
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligibilityscheduleinstance
 #>
 function Get-AzRoleEligibilityScheduleInstance {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleInstance])]
@@ -699,7 +702,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -751,7 +755,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -857,7 +861,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligibilityschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligibilityschedulerequest
 #>
 function Get-AzRoleEligibilityScheduleRequest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest])]
@@ -900,7 +904,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -952,7 +957,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1059,7 +1064,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligibilityschedule
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligibilityschedule
 #>
 function Get-AzRoleEligibilitySchedule {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilitySchedule])]
@@ -1101,7 +1106,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1153,7 +1159,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1254,7 +1260,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
+https://learn.microsoft.com/powershell/module/az.resources/get-azroleeligiblechildresource
 #>
 function Get-AzRoleEligibleChildResource {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IEligibleChildResource])]
@@ -1286,7 +1292,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1338,7 +1345,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1438,7 +1445,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicyassignment
+https://learn.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicyassignment
 #>
 function Get-AzRoleManagementPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment])]
@@ -1470,7 +1477,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1522,7 +1530,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1623,7 +1631,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicy
+https://learn.microsoft.com/powershell/module/az.resources/get-azrolemanagementpolicy
 #>
 function Get-AzRoleManagementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy])]
@@ -1655,7 +1663,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1707,7 +1716,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1803,7 +1812,7 @@ New-AzRoleAssignmentScheduleRequest -Name $guid -Scope $scope -ExpirationDuratio
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignmentschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/new-azroleassignmentschedulerequest
 #>
 function New-AzRoleAssignmentScheduleRequest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleAssignmentScheduleRequest])]
@@ -1926,7 +1935,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1978,7 +1988,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2062,7 +2072,7 @@ New-AzRoleEligibilityScheduleRequest -Name $guid -Scope $scope -ExpirationDurati
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azroleeligibilityschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/new-azroleeligibilityschedulerequest
 #>
 function New-AzRoleEligibilityScheduleRequest {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleEligibilityScheduleRequest])]
@@ -2179,7 +2189,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2231,7 +2242,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2308,7 +2319,7 @@ New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a95
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
+https://learn.microsoft.com/powershell/module/az.resources/new-azrolemanagementpolicyassignment
 #>
 function New-AzRoleManagementPolicyAssignment {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment])]
@@ -2344,7 +2355,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2396,7 +2408,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2491,7 +2503,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicyassignment
+https://learn.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicyassignment
 #>
 function Remove-AzRoleManagementPolicyAssignment {
 [OutputType([System.Boolean])]
@@ -2522,7 +2534,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2580,7 +2593,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2676,7 +2689,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicy
+https://learn.microsoft.com/powershell/module/az.resources/remove-azrolemanagementpolicy
 #>
 function Remove-AzRoleManagementPolicy {
 [OutputType([System.Boolean])]
@@ -2707,7 +2720,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2765,7 +2779,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2862,7 +2876,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/stop-azroleassignmentschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/stop-azroleassignmentschedulerequest
 #>
 function Stop-AzRoleAssignmentScheduleRequest {
 [OutputType([System.Boolean])]
@@ -2893,7 +2907,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2951,7 +2966,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -3048,7 +3063,7 @@ INPUTOBJECT <IAuthorizationIdentity>: Identity Parameter
   [RoleManagementPolicyName <String>]: The name (guid) of the role management policy to get.
   [Scope <String>]: The scope of the role management policy.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/stop-azroleeligibilityschedulerequest
+https://learn.microsoft.com/powershell/module/az.resources/stop-azroleeligibilityschedulerequest
 #>
 function Stop-AzRoleEligibilityScheduleRequest {
 [OutputType([System.Boolean])]
@@ -3079,7 +3094,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -3137,7 +3153,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -3287,7 +3303,7 @@ RULE <IRoleManagementPolicyRule[]>: The rule applied to the policy.
   [TargetObject <String[]>]: The list of target objects.
   [TargetOperation <String[]>]: The type of operation.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
+https://learn.microsoft.com/powershell/module/az.resources/update-azrolemanagementpolicy
 #>
 function Update-AzRoleManagementPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicy])]
@@ -3344,7 +3360,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -3396,7 +3413,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

@@ -311,7 +311,7 @@ function Wait-Seconds {
         [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($timeout * 1000);
     } catch {
         if ($PSItem.Exception.Message -like '*Unable to find type*') {
-            Start-Sleep -Seconds $timeout;
+            Start-TestSleep -Seconds $timeout
         } else {
             throw;
         }
@@ -634,4 +634,42 @@ function Normalize-Location
 {
     param([string]$location)
     return $location.ToLower() -replace '[^a-z0-9]'
+}
+
+<#
+.SYNOPSIS
+Sleeps but only during recording.
+#>
+function Start-TestSleep
+{
+    [CmdletBinding(DefaultParameterSetName = "SleepBySeconds")]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = "SleepBySeconds")]
+        [int]
+        [ValidateRange("Positive")]
+        $Seconds,
+
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = "SleepByMilliseconds")]
+        [int]
+        [ValidateRange("Positive")]
+        $Milliseconds
+    )
+
+    process
+    {
+        if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
+        {
+            switch ($PSCmdlet.ParameterSetName)
+            {
+                "SleepBySeconds"
+                {
+                    Start-Sleep -Seconds $Seconds
+                }
+                "SleepByMilliseconds"
+                {
+                    Start-Sleep -Milliseconds $Milliseconds
+                }
+            }
+        }
+    }
 }

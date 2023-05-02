@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Gets a private endpoint connection resource.
 
 ### ByResourceId (Default)
 ```
-Get-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Get-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,8 +26,9 @@ Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String> [-Description <S
 
 ### ByResource
 ```
-Get-AzPrivateEndpointConnection -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
- [-Name <String>] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzPrivateEndpointConnection [-Description <String>] [-Name <String>] -ResourceGroupName <String>
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

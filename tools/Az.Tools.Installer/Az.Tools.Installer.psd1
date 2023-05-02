@@ -12,7 +12,7 @@
     RootModule = 'Az.Tools.Installer.psm1'
     
     # Version number of this module.
-    ModuleVersion = '0.2.0'
+    ModuleVersion = '0.2.1'
     
     # Supported PSEditions
     CompatiblePSEditions = 'Core', 'Desktop'
@@ -55,7 +55,7 @@
     
     # Assemblies that must be loaded prior to importing this module
     RequiredAssemblies = @(
-        '.\assembly\Microsoft.ApplicationInsights.2.12.0\Microsoft.ApplicationInsights.dll'
+        '.\assembly\Microsoft.ApplicationInsights.2.13.1\Microsoft.ApplicationInsights.dll'
     )
     
     # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -109,11 +109,9 @@
             # IconUri = ''
     
             # ReleaseNotes of this module
-            ReleaseNotes = '* Supported installing from a path of nuget package
-            * Supported installing Az sub modules using minimum required Az.Accounts version
-            * Supported uninstalling by module name filter and whether in preview
-            * Provided progress bar to show the cmdlet execution status
-            * Optimized the performance of Az.Tools.Installer'
+            ReleaseNotes = '* Fixed the issue of installation and updating when Repository is not provided (#20209)
+            * Updated telemetry assembly to 2.13.1
+            * Fixed typo in Az.Tools.Installer (#20055)'
     
             # Prerelease string of this module
             # Prerelease = ''

@@ -27,7 +27,7 @@ Get-AzADUser -UserPrincipalName $id | Remove-AzADUser
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azaduser
+https://learn.microsoft.com/powershell/module/az.resources/remove-azaduser
 #>
 function Remove-AzADUser {
 [OutputType([System.Boolean])]
@@ -51,7 +51,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

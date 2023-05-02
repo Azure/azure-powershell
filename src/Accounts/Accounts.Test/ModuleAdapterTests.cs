@@ -74,7 +74,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Theory]
         [InlineData(EnvironmentName.AzureChinaCloud)]
-        [InlineData(EnvironmentName.AzureGermanCloud)]
         [InlineData(EnvironmentName.AzureUSGovernment)]
         [InlineData(EnvironmentName.AzureCloud)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -165,7 +164,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Theory]
         [InlineData(EnvironmentName.AzureChinaCloud)]
-        [InlineData(EnvironmentName.AzureGermanCloud)]
         [InlineData(EnvironmentName.AzureUSGovernment)]
         [InlineData(EnvironmentName.AzureCloud)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -256,7 +254,6 @@ namespace Microsoft.Azure.Commands.Profile.Test
 
         [Theory]
         [InlineData(EnvironmentName.AzureChinaCloud)]
-        [InlineData(EnvironmentName.AzureGermanCloud)]
         [InlineData(EnvironmentName.AzureUSGovernment)]
         [InlineData(EnvironmentName.AzureCloud)]
         [Trait(Category.AcceptanceType, Category.CheckIn)]

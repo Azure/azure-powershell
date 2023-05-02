@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azrouteserverpeerlearnedroute
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azrouteserverpeerlearnedroute
 schema: 2.0.0
 ---
 
@@ -12,13 +12,13 @@ List routes learned by a specific route server peer
 
 ## SYNTAX
 
-### RouteServerPeerNameParameterSet (Default)
+### RouteServerNPeerNameParameterSet (Default)
 ```
 Get-AzRouteServerPeerLearnedRoute -ResourceGroupName <String> -RouteServerName <String> -PeerName <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### RouteServerPeerObjectParameterSet
+### RouteServerNPeerInputObjectParameterSet
 ```
 Get-AzRouteServerPeerLearnedRoute -InputObject <PSRouteServerPeer> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -49,6 +49,7 @@ Run cmdlet in the background
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -63,6 +64,7 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
 Required: False
 Position: Named
 Default value: None
@@ -75,8 +77,9 @@ The route server peer input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSRouteServerPeer
-Parameter Sets: RouteServerPeerObjectParameterSet
+Parameter Sets: RouteServerNPeerInputObjectParameterSet
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -89,8 +92,9 @@ Route server peer name
 
 ```yaml
 Type: System.String
-Parameter Sets: RouteServerPeerNameParameterSet
+Parameter Sets: RouteServerNPeerNameParameterSet
 Aliases: ResourceName
+
 Required: True
 Position: Named
 Default value: None
@@ -103,8 +107,9 @@ Route server peer resource group's name
 
 ```yaml
 Type: System.String
-Parameter Sets: RouteServerPeerNameParameterSet
+Parameter Sets: RouteServerNPeerNameParameterSet
 Aliases:
+
 Required: True
 Position: Named
 Default value: None
@@ -117,8 +122,9 @@ Route server name
 
 ```yaml
 Type: System.String
-Parameter Sets: RouteServerPeerNameParameterSet
+Parameter Sets: RouteServerNPeerNameParameterSet
 Aliases:
+
 Required: True
 Position: Named
 Default value: None

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/approve-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/approve-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -14,14 +14,15 @@ Approves a private endpoint connection.
 
 ### ByResourceId (Default)
 ```
-Approve-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
+Approve-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Approve-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Approve-AzPrivateEndpointConnection -Name <String> [-Description <String>] -ResourceGroupName <String>
+ -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

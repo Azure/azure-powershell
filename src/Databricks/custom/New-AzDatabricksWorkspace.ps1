@@ -29,7 +29,7 @@ PS C:\> {{ Add code here }}
 {{ Add output here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -39,10 +39,10 @@ AUTHORIZATION <IWorkspaceProviderAuthorization[]>: The workspace provider author
   PrincipalId <String>: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
   RoleDefinitionId <String>: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
 .Link
-https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
+https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 #>
 function New-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -87,7 +87,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # The value which should be used for this field.
+    # Should the Public IP be Disabled?
     ${EnableNoPublicIP},
 
     [Parameter()]
@@ -207,7 +207,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},

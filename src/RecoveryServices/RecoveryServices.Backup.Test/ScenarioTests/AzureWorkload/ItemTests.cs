@@ -145,5 +145,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 "Test-AzureVmWorkloadRestoreAsFiles"
             );
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVmWorkload)]
+        public void TestAzureVmWorkloadCrossSubscriptionRestore()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_AzureWorkloadcommonModule.AsAbsoluteLocation()}",
+                $"Import-Module {_AzureWorkloadtestModule.AsAbsoluteLocation()}",
+                "Test-AzureVmWorkloadCrossSubscriptionRestore"
+            );
+        }
     }
 }

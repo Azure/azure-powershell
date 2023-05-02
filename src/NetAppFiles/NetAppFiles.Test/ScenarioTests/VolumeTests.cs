@@ -47,9 +47,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUnlockVolumeFileLock()
+        {
+            TestRunner.RunTestScript("Test-UnlockVolumeFileLock");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVolumePipelines()
         {
             TestRunner.RunTestScript("Test-VolumePipelines");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVolumeResetCifsOnNfsVolume()
+        {
+            TestRunner.RunTestScript("Test-ResetCifsOnNfsVolume");
         }
     }
 }

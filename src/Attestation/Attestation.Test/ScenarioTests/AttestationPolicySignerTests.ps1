@@ -26,7 +26,7 @@ function Test-GetAttestationPolicySigners
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySignersCertificateFile .\SamplePolicySignerFiles\cert1.pem
+		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath .\SamplePolicySignerFiles\cert1.pem
 
 		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
@@ -73,7 +73,7 @@ function Test-AddAttestationPolicySigner
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySignersCertificateFile .\SamplePolicySignerFiles\cert1.pem
+		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath .\SamplePolicySignerFiles\cert1.pem
 
 		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name
@@ -109,7 +109,7 @@ function Test-RemoveAttestationPolicySigner
 	try
 	{
 	    $rgName = Create-ResourceGroup
-		$attestationCreated = New-AzAttestation -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySignersCertificateFile .\SamplePolicySignerFiles\cert1.pem
+		$attestationCreated = New-AzAttestationProvider -Name $attestationProviderName -ResourceGroupName $rgName.ResourceGroupName -Location $location -PolicySigningCertificateKeyPath .\SamplePolicySignerFiles\cert1.pem
 
 		Assert-NotNull $attestationCreated
 		Assert-AreEqual $attestationProviderName $attestationCreated.Name

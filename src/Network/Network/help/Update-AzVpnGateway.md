@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/update-azvpngateway
+online version: https://learn.microsoft.com/powershell/module/az.network/update-azvpngateway
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ Updates a scalable VPN gateway.
 Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <
 Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection
 Update-AzVpnGateway -ResourceId <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -116,7 +116,27 @@ $gw.BgpSettings.BgpPeeringAddresses[1].CustomBgpIpAddresses=$null
 $gw.BgpSettings.BgpPeeringAddresses
 Update-AzVpnGateway -InputObject $gw
 ```
-The above will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
+
+The above example will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
+
+### Example 4
+
+```powershell
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+$vpnGateway = New-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -VirtualHubId $virtualHub.Id -VpnGatewayScaleUnit 2
+$ipconfigurationId1 = 'Instance0'
+$addresslist1 = @()
+$gw1ipconfBgp1 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId1 -CustomAddress $addresslist1
+$ipconfigurationId2 = 'Instance1'
+$addresslist2 = @()
+$gw1ipconfBgp2 = New-AzIpConfigurationBgpPeeringAddressObject -IpConfigurationId $ipconfigurationId2 -CustomAddress $addresslist2
+$gw = Get-AzVpnGateway -ResourceGroupName testRg -Name testgw
+Update-AzVpnGateway -ResourceGroupName "testRG" -Name "testvpngw" -BgpPeeringAddress @($gw1ipconfBgp1,$gw1ipconfBgp2)
+```
+
+The above example will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
 
 It uses Update-AzVpnGateway to update BgpPeeringAddress
 
@@ -127,6 +147,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Asn
+The vpn gateway's ASN for BGP over VPN
+
+```yaml
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 

@@ -12,19 +12,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections;
-using System.Management.Automation;
+using Microsoft.Azure.Commands.Management.Storage.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
-using StorageModels = Microsoft.Azure.Management.Storage.Models;
-using Microsoft.Azure.Commands.Management.Storage.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Management.Automation;
+using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
+    [GenericBreakingChange("Default value of AllowBlobPublicAccess will be changed from True to False in a future release. " +
+        "When AllowBlobPublicAccess is False on a storage account, it is not permitted to configure container ACLs to allow anonymous access to blobs within the storage account.", 
+        OldWay = "AllowBlobPublicAccess is set to True by defult.", 
+        NewWay = "AllowBlobPublicAccess is set to False by default.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "StorageAccount", DefaultParameterSetName = AzureActiveDirectoryDomainServicesForFileParameterSet), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
@@ -182,6 +187,12 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Set ClientId of the multi-tenant application to be used in conjunction with the user-assigned identity for cross-tenant customer-managed-keys server-side encryption on the storage account.")]
+        [ValidateNotNull]
+        public string KeyVaultFederatedClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Storage Account encryption keySource KeyVault KeyName")]
         [ValidateNotNullOrEmpty]
         public string KeyName { get; set; }
@@ -275,6 +286,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
         private bool? enableAzureActiveDirectoryDomainServicesForFile = null;
 
+        [CmdletParameterBreakingChange("EnableLargeFileShare", ChangeDescription = "EnableLargeFileShare parameter will be deprecated in a future release.")]
         [Parameter(Mandatory = false, HelpMessage = "Indicates whether or not the storage account can support large file shares with more than 5 TiB capacity. Once the account is enabled, the feature cannot be disabled. Currently only supported for LRS and ZRS replication types, hence account conversions to geo-redundant accounts would not be possible. Learn more in https://go.microsoft.com/fwlink/?linkid=2086047")]
         public SwitchParameter EnableLargeFileShare { get; set; }
 
@@ -608,6 +620,14 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string AllowedCopyScope { get; set; }
 
+        [Parameter(
+            Mandatory = false, 
+            HelpMessage = "Specify the type of endpoint. Set this to AzureDNSZone to create a large number of accounts in a single subscription, " +
+            "which creates accounts in an Azure DNS Zone and the endpoint URL will have an alphanumeric DNS Zone identifier. Possible values include: 'Standard', 'AzureDnsZone'.")]
+        [PSArgumentCompleter("Standard", "AzureDnsZone")]
+        [ValidateNotNullOrEmpty]
+        public string DnsEndpointType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -770,7 +790,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     }
                 }
             }
-            if (this.KeyVaultUri !=null || this.KeyName != null || this.KeyVersion != null || this.KeyVaultUserAssignedIdentityId != null)
+            if (this.KeyVaultUri !=null || this.KeyName != null || this.KeyVersion != null || this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
             {
                 if ((this.KeyVaultUri != null && this.KeyName == null) || (this.KeyVaultUri == null && this.KeyName != null))
                 {
@@ -782,9 +802,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     throw new ArgumentException("KeyVersion can only be specified when specify KeyVaultUri and KeyName together.", "KeyVersion"); 
                 }
 
-                if (this.KeyVaultUserAssignedIdentityId != null && (this.KeyVaultUri == null || this.KeyName == null))
+                if ((this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null) && (this.KeyVaultUri == null || this.KeyName == null))
                 {
-                    throw new ArgumentException("KeyVaultUserAssignedIdentityId can only be specified when specify KeyVaultUri and KeyName together.", "KeyVaultUserAssignedIdentityId");
+                    throw new ArgumentException("KeyVaultUserAssignedIdentityId, KeyVaultFederatedClientId can only be specified when specify KeyVaultUri and KeyName together.", "KeyVaultUserAssignedIdentityId, KeyVaultFederatedClientId");
                 }
 
                 if (createParameters.Encryption == null)
@@ -805,10 +825,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.Encryption.KeyVaultProperties = new KeyVaultProperties(this.KeyName, this.KeyVersion, this.KeyVaultUri);
                 }
 
-                if (this.KeyVaultUserAssignedIdentityId != null)
+                if (this.KeyVaultUserAssignedIdentityId != null || this.KeyVaultFederatedClientId != null)
                 {
                     createParameters.Encryption.EncryptionIdentity = new EncryptionIdentity();
                     createParameters.Encryption.EncryptionIdentity.EncryptionUserAssignedIdentity = this.KeyVaultUserAssignedIdentityId;
+                    createParameters.Encryption.EncryptionIdentity.EncryptionFederatedIdentityClientId = this.KeyVaultFederatedClientId;
                 }
             }
             if (this.minimumTlsVersion != null)
@@ -878,9 +899,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
             {
                 createParameters.IsLocalUserEnabled = this.enableLocalUser;
             }
-            if(this.AllowedCopyScope != null)
+            if (this.AllowedCopyScope != null)
             {
                 createParameters.AllowedCopyScope = this.AllowedCopyScope;
+            }
+            if (this.DnsEndpointType != null)
+            {
+                createParameters.DnsEndpointType = this.DnsEndpointType;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

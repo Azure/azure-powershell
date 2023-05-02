@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/disconnect-azp2svpngatewayvpnconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/disconnect-azp2svpngatewayvpnconnection
 schema: 2.0.0
 ---
 
-# Disconnect-AzP2sVpnGatewayVpnConnection
+# Disconnect-AzP2SVpnGatewayVpnConnection
 
 ## SYNOPSIS
 Disconnect given connected vpn client connections with a given p2s vpn gateway
@@ -14,18 +14,20 @@ Disconnect given connected vpn client connections with a given p2s vpn gateway
 
 ### ByP2SVpnGatewayName (Default)
 ```
-Disconnect-AzP2sVpnGatewayVpnConnection -Name <String> -ResourceGroupName <String>
- -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
-```
-
-### ByP2SVpnGatewayObject
-```
-Disconnect-AzP2sVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
+Disconnect-AzP2SVpnGatewayVpnConnection -ResourceGroupName <String> -Name <String> -VpnConnectionId <String[]>
+ [-AsJob] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByP2SVpnGatewayResourceId
 ```
-Disconnect-AzP2sVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionId <VpnConnectionId> [<CommonParameters>]
+Disconnect-AzP2SVpnGatewayVpnConnection -ResourceId <String> -VpnConnectionId <String[]> [-AsJob] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByP2SVpnGatewayObject
+```
+Disconnect-AzP2SVpnGatewayVpnConnection -InputObject <PSP2SVpnGateway> -VpnConnectionId <String[]> [-AsJob]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +37,7 @@ The **Disconnect-AzP2sVpnGatewayVpnConnection** cmdlet enables you to disconnect
 
 ### Example 1
 ```powershell
-Disconnect-AzP2sVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionId @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+Disconnect-AzP2SVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionId @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
 ```
 
 ```output
@@ -69,6 +71,36 @@ P2SConnectionConfigurations    : [
 
 ## PARAMETERS
 
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 The p2s vpn gateway object to be modified
 
@@ -88,26 +120,26 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayName
-Aliases: ResourceName
+Aliases: ResourceName, P2SVpnGatewayName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VpnConnectionId
-Vpn Connection Ida
+### -PassThru
+Returns an object representing the item on which this operation is being performed.
 
 ```yaml
-Type: String[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: VpnConnectionId
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -118,7 +150,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByP2SVpnGatewayName
 Aliases:
 
@@ -135,7 +167,7 @@ P2s Virtual network gateway resource Id
 ```yaml
 Type: System.String
 Parameter Sets: ByP2SVpnGatewayResourceId
-Aliases: ResourceId
+Aliases:
 
 Required: True
 Position: Named
@@ -144,8 +176,53 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VpnConnectionId
+Vpn Connection Ida
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

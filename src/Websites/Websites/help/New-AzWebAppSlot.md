@@ -1,8 +1,8 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 ms.assetid: D23BBF34-80C0-48B1-8E1C-6F345DEC61AD
-online version: https://docs.microsoft.com/powershell/module/az.websites/new-azwebappslot
+online version: https://learn.microsoft.com/powershell/module/az.websites/new-azwebappslot
 schema: 2.0.0
 ---
 
@@ -18,8 +18,8 @@ New-AzWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String
  [[-SourceWebApp] <PSSite>] [-IgnoreSourceControl] [-IgnoreCustomHostNames]
  [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>] [[-AseResourceGroupName] <String>]
  [-ContainerImageName <String>] [-ContainerRegistryUrl <String>] [-ContainerRegistryUser <String>]
- [-ContainerRegistryPassword <SecureString>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ContainerRegistryPassword <SecureString>] [-EnableContainerContinuousDeployment] [-CopyIdentity] [-AsJob]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppSettingsOverrides
-App Settings Overrides Hashtable
+App Settings Overrides Hashtable. It works only with SourceWebApp parameter.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -165,6 +165,21 @@ Private Container Registry Username
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CopyIdentity
+Copies the managed identity from the parent or source WebApp.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -292,6 +307,21 @@ Required: False
 Position: 4
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags are name/value pairs that enable you to categorize resources
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Storage.dll-Help.xml
 Module Name: Az.Storage
 ms.assetid: 73BB521B-20F2-4F2B-AA88-2B128F36A9EF
-online version: https://docs.microsoft.com/powershell/module/az.storage/get-azstoragesharestoredaccesspolicy
+online version: https://learn.microsoft.com/powershell/module/az.storage/get-azstoragesharestoredaccesspolicy
 schema: 2.0.0
 ---
 
@@ -26,15 +26,15 @@ To get a particular policy, specify it by name.
 ## EXAMPLES
 
 ### Example 1: Get a stored access policy in a share
-```
-PS C:\>Get-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy"
+```powershell
+Get-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare" -Policy "GeneralPolicy"
 ```
 
 This command gets a stored access policy named GeneralPolicy in ContosoShare.
 
 ### Example 2: Get all the stored access policies in share
-```
-PS C:\>Get-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare"
+```powershell
+Get-AzStorageShareStoredAccessPolicy -ShareName "ContosoShare"
 ```
 
 This command gets all stored access policies in ContosoShare.
@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

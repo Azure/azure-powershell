@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azprivateendpointconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azprivateendpointconnection
 schema: 2.0.0
 ---
 
@@ -14,14 +14,15 @@ Updates a private endpoint connection state on private link service.
 
 ### ByResourceId (Default)
 ```
-Set-AzPrivateEndpointConnection -ResourceId <String> -PrivateLinkServiceConnectionState <String> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzPrivateEndpointConnection -PrivateLinkServiceConnectionState <String> [-Description <String>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Set-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String> -PrivateLinkServiceConnectionState <String>
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzPrivateEndpointConnection -Name <String> -PrivateLinkServiceConnectionState <String>
+ [-Description <String>] -ResourceGroupName <String> -ServiceName <String>
+ [-DefaultProfile <IAzureContextContainer>] -PrivateLinkResourceType <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

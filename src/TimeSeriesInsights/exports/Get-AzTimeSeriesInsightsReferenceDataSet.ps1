@@ -57,7 +57,7 @@ INPUTOBJECT <ITimeSeriesInsightsIdentity>: Identity Parameter
   [ResourceGroupName <String>]: Name of an Azure Resource group.
   [SubscriptionId <String>]: Azure Subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsreferencedataset
+https://learn.microsoft.com/en-us/powershell/module/az.timeseriesinsights/get-aztimeseriesinsightsreferencedataset
 #>
 function Get-AzTimeSeriesInsightsReferenceDataSet {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.IReferenceDataSetResource])]

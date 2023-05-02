@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Shared'", "Shared", global::System.Management.Automation.CompletionResultType.ParameterValue, "Shared");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "ManagementGroup".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'ManagementGroup'", "ManagementGroup", global::System.Management.Automation.CompletionResultType.ParameterValue, "ManagementGroup");
+            }
         }
     }
 }

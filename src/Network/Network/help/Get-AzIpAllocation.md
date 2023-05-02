@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azipallocation
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azipallocation
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Gets a Azure IpAllocation.
 
 ### GetByNameParameterSet
 ```
-Get-AzIpAllocation [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzIpAllocation -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Get-AzIpAllocation [-ResourceGroupName <String>] [-DefaultProfile <IAzureContext
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzIpAllocation [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIpAllocation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

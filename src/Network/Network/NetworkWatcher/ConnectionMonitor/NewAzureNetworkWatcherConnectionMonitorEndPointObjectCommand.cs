@@ -74,6 +74,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Azure ArcVM endpoint switch.",
+            ParameterSetName = "AzureArcVM")]
+        public SwitchParameter AzureArcVM { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Resource ID of the connection monitor endpoint.",
              ParameterSetName = "AzureVM")]
         [Parameter(
@@ -96,6 +102,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "Azure VMSS endpoint.",
             ParameterSetName = "AzureVMSS")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Azure ArcVM endpoint.",
+            ParameterSetName = "AzureArcVM")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -248,6 +258,10 @@ namespace Microsoft.Azure.Commands.Network
             else if (AzureVMSS.IsPresent)
             {
                 return "AzureVMSS";
+            }
+            else if (AzureArcVM.IsPresent)
+            {
+                return "AzureArcVM";
             }
 
             return string.Empty;

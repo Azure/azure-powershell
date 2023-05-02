@@ -29,13 +29,13 @@ function Test-PrivateEndpoint {
         Assert-AreEqual "Approved" $connectionApprove.PrivateLinkServiceConnectionState.Status
 
         # Wait for connection provisioning successed, 20000 is not enough
-        # Start-TestSleep 20000
+        # Start-TestSleep -Seconds 20
 
         # Comments as we need too much to wait
         # remove connection
         # $connectionRemove = Remove-AzPrivateEndpointConnection -ResourceId $privateEndpointConnection.Id -PassThru -Force
         # Assert-True { $connectionRemove }
-        # Start-TestSleep 15000
+        # Start-TestSleep -Seconds 15
         # Assert-Null (Get-AzPrivateEndpointConnection -PrivateLinkResourceId $vault.ResourceId)
 
 

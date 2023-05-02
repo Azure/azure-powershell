@@ -156,7 +156,7 @@ function Wait-Vm($vm)
     $minutes = 30;
     while((Get-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name).ProvisioningState -ne "Succeeded")
     {
-        Start-TestSleep 60;
+        Start-TestSleep -Milliseconds 60
         if(--$minutes -eq 0)
         {
             break;
@@ -541,7 +541,7 @@ function Test-PacketCapture
         $job = New-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
         $job | Wait-Job
         New-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetVirtualMachineId $vm.Id -LocalFilePath C:\tmp\Capture.cap -TimeLimitInSeconds 1
-        Start-Sleep -s 2
+        Start-TestSleep -Seconds 2
 
         #Get packet capture
         $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName1 -AsJob
@@ -650,7 +650,7 @@ function Test-PacketCaptureV2
         $job | Wait-Job
         $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetId $vmss.Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -AsJob
         $job2 | Wait-Job
-        Start-Sleep -s 2
+        Start-TestSleep -Seconds 2
 
         #Get packet capture
         $job = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $nw -PacketCaptureName $pcName -AsJob

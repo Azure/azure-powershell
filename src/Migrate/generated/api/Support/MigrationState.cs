@@ -22,15 +22,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState InitialSeedingInProgress = @"InitialSeedingInProgress";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationCompletedWithInformation = @"MigrationCompletedWithInformation";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationFailed = @"MigrationFailed";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationInProgress = @"MigrationInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationPartiallySucceeded = @"MigrationPartiallySucceeded";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState MigrationSucceeded = @"MigrationSucceeded";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState None = @"None";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState ProtectionSuspended = @"ProtectionSuspended";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState Replicating = @"Replicating";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState ResumeInProgress = @"ResumeInProgress";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState ResumeInitiated = @"ResumeInitiated";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState SuspendingProtection = @"SuspendingProtection";
 
         /// <summary>the value for an instance of the <see cref="MigrationState" /> Enum.</summary>
         private string _value { get; set; }

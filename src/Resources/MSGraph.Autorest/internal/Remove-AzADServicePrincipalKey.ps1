@@ -38,7 +38,7 @@ BODY <IPaths1UhuhlbServiceprincipalsServiceprincipalIdMicrosoftGraphRemovekeyPos
   [KeyId <String>]: 
   [Proof <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalkey
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadserviceprincipalkey
 #>
 function Remove-AzADServicePrincipalKey {
 [OutputType([System.Boolean])]
@@ -80,7 +80,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

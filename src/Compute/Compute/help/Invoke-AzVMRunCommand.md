@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand
+online version: https://learn.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand
 schema: 2.0.0
 ---
 
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptString
-{{ Fill ScriptString Description }}
+The script to be executed as a string.
 
 ```yaml
 Type: System.String

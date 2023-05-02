@@ -39,7 +39,7 @@ To create the parameters described below, construct a hash table containing the 
 DISKID <string[]>: List of Azure Managed Disks to attach to a Disk Pool.
   Id <String>: Unique Azure Resource ID of the Managed Disk.
 .Link
-https://docs.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
+https://learn.microsoft.com/powershell/module/az.diskpool/new-azdiskpool
 #>
 function New-AzDiskPool {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IDiskPool])]

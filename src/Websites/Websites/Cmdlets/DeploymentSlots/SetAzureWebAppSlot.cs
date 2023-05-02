@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         [ValidateNotNullOrEmpty]
         public Hashtable AppSettings { get; set; }
 
-        [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings")]
+        [Parameter(Position = 11, Mandatory = false, HelpMessage = "Web app connection strings, Example: $connStrings = @{ConnectionStringName = @{ Type = \"MySql\"; Value = \"TestValue\"}}")]
         [ValidateNotNullOrEmpty]
         public Hashtable ConnectionStrings { get; set; }
 
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
             switch (ParameterSetName)
             {
                 case ParameterSet1Name:
-                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot));
+                    WebApp = new PSSite(WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot, false));
                     location = WebApp.Location;
                     tags = WebApp.Tags;
                     var parameters = new HashSet<string>(MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);

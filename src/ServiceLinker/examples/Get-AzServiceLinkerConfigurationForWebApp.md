@@ -1,6 +1,6 @@
 ### Example 1: Get webapp's linker configuration list
 ```powershell
-Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker |fl
+Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -ResourceGroupName servicelinker-test-group -LinkerName postgresql_linker | Format-List
 ```
 
 ```output

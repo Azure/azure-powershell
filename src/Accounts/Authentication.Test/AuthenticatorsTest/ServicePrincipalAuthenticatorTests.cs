@@ -71,7 +71,7 @@ namespace Common.Authenticators.Test
             //Setup
             var mockAzureCredentialFactory = new Mock<AzureCredentialFactory>();
             mockAzureCredentialFactory.Setup(f => f.CreateClientSecretCredential(
-                 It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SecureString>(), It.IsAny<ClientCertificateCredentialOptions>())).Returns(() => new TokenCredentialMock());
+                 It.IsAny<string>(), It.IsAny<string>(), It.IsAny<SecureString>(), It.IsAny<ClientSecretCredentialOptions>())).Returns(() => new TokenCredentialMock());
 
             AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => mockAzureCredentialFactory.Object, true);
             InMemoryTokenCacheProvider cacheProvider = new InMemoryTokenCacheProvider();
@@ -101,7 +101,7 @@ namespace Common.Authenticators.Test
             var token = await authenticator.Authenticate(parameter);
 
             //Verify
-            mockAzureCredentialFactory.Verify(f => f.CreateClientSecretCredential(TestTenantId, accountId, securePassword, It.IsAny<ClientCertificateCredentialOptions>()), Times.Once());
+            mockAzureCredentialFactory.Verify(f => f.CreateClientSecretCredential(TestTenantId, accountId, securePassword, It.IsAny<ClientSecretCredentialOptions>()), Times.Once());
             Assert.Equal(fakeToken, token.AccessToken);
             Assert.Equal(TestTenantId, token.TenantId);
         }

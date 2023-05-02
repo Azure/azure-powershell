@@ -249,6 +249,33 @@ namespace Microsoft.Azure.Commands.Synapse.Models
                     Cores = 16,
                     Memory = 112
                 }
+            },
+            {
+                NodeSize.XLarge,
+                new ComputeNodeSize
+                {
+                    Name = NodeSize.XLarge,
+                    Cores = 32,
+                    Memory = 224
+                }
+            },
+            {
+                NodeSize.XXLarge,
+                new ComputeNodeSize
+                {
+                    Name = NodeSize.XXLarge,
+                    Cores = 64,
+                    Memory = 368
+                }
+            },
+            {
+                NodeSize.XXXLarge,
+                new ComputeNodeSize
+                {
+                    Name = NodeSize.XXXLarge,
+                    Cores = 80,
+                    Memory = 424
+                }
             }
         };
 
@@ -305,7 +332,20 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         public enum PackageActionType
         {
             Add,
-            Remove
+            Remove,
+            Set
+        }
+        public enum UserAssignedManagedIdentityActionType
+        {
+            Add,
+            Remove,
+            Set
+        }
+
+        public class PublicNetworkAccess
+        {
+            public const string Enabled = "Enabled";
+            public const string Disabled = "Disabled";
         }
 
         public const string SparkConfiguration = nameof(SparkConfiguration);

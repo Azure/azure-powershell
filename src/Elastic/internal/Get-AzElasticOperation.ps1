@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IOperationResult
 .Link
-https://docs.microsoft.com/powershell/module/az.elastic/get-azelasticoperation
+https://learn.microsoft.com/powershell/module/az.elastic/get-azelasticoperation
 #>
 function Get-AzElasticOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IOperationResult])]

@@ -186,13 +186,13 @@ function Test-PrivateEndpointConnectionCRUD
         Assert-NotNull $pecApprove;
         Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
 
-        Start-TestSleep 20000
+        Start-TestSleep -Seconds 20
 
         # Remove Private Endpoint Connection
         $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
         Assert-AreEqual true $pecRemove
 
-        Start-TestSleep 15000
+        Start-TestSleep -Seconds 15
 
         # Get Private Endpoint Connection again
         $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $sqlResourceId
@@ -241,13 +241,13 @@ function Test-StoragePrivateEndpoint
         Assert-NotNull $pecApprove;
         Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
 
-        Start-TestSleep 20000
+        Start-TestSleep -Seconds 20
 
         # Remove Private Endpoint Connection
         $pecRemove = Remove-AzPrivateEndpointConnection -ResourceId $pecGet.Id -PassThru -Force
         Assert-AreEqual true $pecRemove
 
-        Start-TestSleep 15000
+        Start-TestSleep -Seconds 15
 
         # Get Private Endpoint Connection again
         $pecGet2 = Get-AzPrivateEndpointConnection -PrivateLinkResourceId $resourceId
@@ -364,7 +364,7 @@ function Test-ResourceManagerPrivateEndpoint
         # Approve Private Endpoint Connection
         $pecApprove = Approve-AzPrivateEndpointConnection -ResourceId $pecGet.Id
         Assert-NotNull $pecApprove;
-        Start-TestSleep 15000
+        Start-TestSleep -Seconds 15
         $pecApprove = Get-AzPrivateEndpointConnection -ResourceId $pecGet.Id
         Assert-AreEqual "Approved" $pecApprove.PrivateLinkServiceConnectionState.Status
 

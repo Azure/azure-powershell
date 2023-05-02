@@ -27,5 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string State { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Action { get; set; }
     }
 }

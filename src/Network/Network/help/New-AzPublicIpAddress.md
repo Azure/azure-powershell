@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 8D84F81A-F6B5-413D-B349-50947FCD5CFC
-online version: https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azpublicipaddress
 schema: 2.0.0
 ---
 
@@ -15,10 +15,11 @@ Creates a public IP address.
 
 ```
 New-AzPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-EdgeZone <String>]
- [-Sku <String>] [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>] [-IpAddress <String>]
+ [-Sku <String>] [-Tier <String>] -AllocationMethod <String> [-IpAddressVersion <String>]
  [-DomainNameLabel <String>] [-IpTag <PSPublicIpTag[]>] [-PublicIpPrefix <PSPublicIpPrefix>]
- [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-Tag <Hashtable>] [-Force]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DdosProtectionMode <String>] [-DdosProtectionPlanId <String>] [-ReverseFqdn <String>]
+ [-IdleTimeoutInMinutes <Int32>] [-Zone <String[]>] [-IpAddress <String>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -127,6 +128,37 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DdosProtectionMode
+The DdosProtectionMode to use for Public IP address
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: VirtualNetworkInherited, Enabled, Disabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DdosProtectionPlanId
+The DdosProtectionPlan id to attach to the Public IP address
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -192,6 +224,21 @@ Specifies the idle time-out, in minutes.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpAddress
+Specifies the IP address when creating a BYOIP publicIpAddress.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -268,21 +315,6 @@ Specifies the PSPublicIpPrefix from which to allocate the public IP address.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -IpAddress
-Specifies the IP address when creating a BYOIP publicIpAddress.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

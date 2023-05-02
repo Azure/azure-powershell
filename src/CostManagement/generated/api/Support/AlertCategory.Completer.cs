@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Cost".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Cost", "Cost", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cost");
+                yield return new global::System.Management.Automation.CompletionResult("'Cost'", "Cost", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cost");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Usage".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Usage", "Usage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Usage");
+                yield return new global::System.Management.Automation.CompletionResult("'Usage'", "Usage", global::System.Management.Automation.CompletionResultType.ParameterValue, "Usage");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Billing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Billing", "Billing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Billing");
+                yield return new global::System.Management.Automation.CompletionResult("'Billing'", "Billing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Billing");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "System".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("System", "System", global::System.Management.Automation.CompletionResultType.ParameterValue, "System");
+                yield return new global::System.Management.Automation.CompletionResult("'System'", "System", global::System.Management.Automation.CompletionResultType.ParameterValue, "System");
             }
         }
     }

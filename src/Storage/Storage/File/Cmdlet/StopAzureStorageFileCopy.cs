@@ -5,6 +5,10 @@ using System;
 using System.Management.Automation;
 using System.Security.Permissions;
 using System.Threading.Tasks;
+using Azure.Storage.Files.Shares;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -58,16 +62,22 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         {
             IStorageFileManagement localChannel = Channel;
 
-            CloudFile file = null;
+            ShareFileClient file = null;
+
+            //Set no retry to resolve the 409 conflict exception
+            ShareClientOptions optionNoRetry = ClientOptions;
+            optionNoRetry.Retry.MaxRetries = 0;
 
             if (null != this.File)
             {
-                file = this.File;
+                file = AzureStorageFile.GetTrack2FileClient(this.File);
             }
             else
             {
-                string[] path = NamingUtil.ValidatePath(this.FilePath);
-                file = this.BuildFileShareObjectFromName(this.ShareName).GetRootDirectoryReference().GetFileReferenceByPath(path);
+                file = Util.GetTrack2ShareReference(this.ShareName,
+                    (AzureStorageContext)this.Context,
+                    snapshotTime: null,
+                    ClientOptions).GetRootDirectoryClient().GetFileClient(this.FilePath);
             }
 
             if (ShouldProcess(file.Name, "Stop file copy task"))
@@ -85,38 +95,31 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// <param name="localChannel">IStorageFileManagement channel object</param>
         /// <param name="file">CloudFile object</param>
         /// <param name="copyId">Copy id</param>
-        private async Task StopCopyFile(long taskId, IStorageFileManagement localChannel, CloudFile file, string copyId)
+        private async Task StopCopyFile(long taskId, IStorageFileManagement localChannel, ShareFileClient file, string copyId)
         {
-            FileRequestOptions requestOptions = RequestOptions;
-
-            //Set no retry to resolve the 409 conflict exception
-            requestOptions.RetryPolicy = new NoRetry();
-
             string abortCopyId = string.Empty;
 
             if (string.IsNullOrEmpty(copyId) || Force)
             {
                 //Make sure we use the correct copy id to abort
                 //Use default retry policy for FetchBlobAttributes
-                FileRequestOptions options = RequestOptions;
-                await localChannel.FetchFileAttributesAsync(file, null, options, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-
-                if (file.CopyState == null || string.IsNullOrEmpty(file.CopyState.CopyId))
+                ShareFileProperties fileProperties = file.GetProperties(this.CmdletCancellationToken).Value;
+                if (string.IsNullOrEmpty(fileProperties.CopyId))
                 {
-                    ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, file.SnapshotQualifiedUri.ToString()));
+                    ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, Util.GetSnapshotQualifiedUri(file.Uri)));
                     OutputStream.WriteError(taskId, e);
                 }
                 else
                 {
-                    abortCopyId = file.CopyState.CopyId;
+                    abortCopyId = fileProperties.CopyId;
                 }
 
                 if (!Force)
                 {
-                    string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, file.SnapshotQualifiedUri.ToString(), abortCopyId);
+                    string confirmation = String.Format(Resources.ConfirmAbortFileCopyOperation, Util.GetSnapshotQualifiedUri(file.Uri), abortCopyId);
                     if (!await OutputStream.ConfirmAsync(confirmation).ConfigureAwait(false))
                     {
-                        string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, file.SnapshotQualifiedUri.ToString());
+                        string cancelMessage = String.Format(Resources.StopCopyOperationCancelled, Util.GetSnapshotQualifiedUri(file.Uri));
                         OutputStream.WriteVerbose(taskId, cancelMessage);
                     }
                 }
@@ -126,8 +129,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 abortCopyId = copyId;
             }
 
-            await localChannel.AbortCopyAsync(file, abortCopyId, null, requestOptions, OperationContext, CmdletCancellationToken).ConfigureAwait(false);
-            string message = String.Format(Resources.StopCopyFileSuccessfully, file.SnapshotQualifiedUri.ToString());
+            file.AbortCopy(abortCopyId, this.CmdletCancellationToken);
+            string message = String.Format(Resources.StopCopyFileSuccessfully, Util.GetSnapshotQualifiedUri(file.Uri));
             OutputStream.WriteObject(taskId, message);
         }
     }

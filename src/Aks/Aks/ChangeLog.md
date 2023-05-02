@@ -19,6 +19,53 @@
 -->
 ## Upcoming Release
 
+## Version 5.4.0
+* Added cmdlet `New-AzAksMaintenanceConfiguration`, `Get-AzAksMaintenanceConfiguration`, `Remove-AzAksMaintenanceConfiguration`, `New-AzAksSnapshot`, `Get-AzAksSnapshot`, `Remove-AzAksSnapshot`, `Get-AzAksManagedClusterCommandResult`, `Get-AzAksManagedClusterOSOption`, `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`, `Invoke-AzAksAbortAgentPoolLatestOperation`, `Invoke-AzAksAbortManagedClusterLatestOperation`, `Invoke-AzAksRotateManagedClusterServiceAccountSigningKey`, `Start-AzAksManagedClusterCommand`, `New-AzAksTimeInWeekObject`, `New-AzAksTimeSpanObject`.
+* Added parameter `-OutboundType` for `New-AzAksCluster`
+* Added parameter `-EnableOidcIssuer` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-NodePodSubnetID` for `New-AzAksCluster`, `-PodSubnetID` for `New-AzAksNodePool`
+
+## Version 5.3.2
+* Fixed the issue that system variable `$IsWindows` is undefined in `Windows PowerShell`.
+* Decoupled AutoMapper dependency, replaced with AdapterHelper.
+
+## Version 5.3.1
+* Fixed the issue that Invoke-AzAksRunCommand will fail when the directory for parameter CommandContextAttachment contains sub-directories. [#20734]
+
+## Version 5.3.0
+* Added parameter `-AadProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-NodeHostGroupID` for `New-AzAksCluster` and parameter `-HostGroupID` for `New-AzAksNodePool`
+
+## Version 5.2.0
+* Added parameter `-EnableEncryptionAtHost` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-EnableUltraSSD` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-NodeKubeletConfig` for `New-AzAksCluster`, `-KubeletConfig` for `New-AzAksNodePool`
+* Added parameter `-NodeLinuxOSConfig` for `New-AzAksCluster`, `-LinuxOSConfig` and `New-AzAksNodePool`
+* Added parameter `-NodeMaxSurge` for `New-AzAksCluster`, `-MaxSurge` for `New-AzAksNodePool` and `Update-AzAksNodePool`
+* Added parameter `-PPG` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-SpotMaxPrice` for `New-AzAksNodePool`
+* Added parameter `-EnableFIPS` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-AutoScalerProfile` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-GpuInstanceProfile` for `New-AzAksCluster` and `New-AzAksNodePool`
+* Added parameter `-EnableUptimeSLA` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-EdgeZone` for `New-AzAksCluster`
+
+## Version 5.1.0
+* Bumped API version to 2022-09-01
+* Added parameter `-NodeOsSKU` for `New-AzAksCluster` and parameter `-OsSKU` for `New-AzAksNodePool`
+* Added parameter `-Mode` for `New-AzAksNodePool` and `Update-AzAksNodePool`
+* Added property `-NodeImageVersion` for the output of `Get-AzAksNodePool`[#19893]
+* Added parameter `-NodePoolLabel` for `Set-AzAksCluster`, `-NodeLabel` for `New-AzAksNodePool` and `Update-AzAksNodePool`
+* Added parameter `-NodePoolTag` for `New-AzAksCluster` and `Set-AzAksCluster`, `-Tag` for `New-AzAksNodePool` and `Update-AzAksNodePool`
+* Added parameter `-NodeTaint` for `New-AzAksNodePool` and `Update-AzAksNodePool`
+* Added parameter `-AksCustomHeader` for `Set-AzAksCluster`, `New-AzAksNodePool` and `Update-AzAksNodePool`
+
+## Version 5.0.1
+* Upgraded AutoMapper to Microsoft.Azure.PowerShell.AutoMapper 6.2.2 with fix [#18721]
+
+## Version 5.0.0
+* [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.
+
 ## Version 4.3.0
 * Added support of `FQDN` in `Import-AzAksCredential` [#17711]
 * Added hint when `Import-AzAksCredential` meets bad formatted kubernetes configuration file [#16741]

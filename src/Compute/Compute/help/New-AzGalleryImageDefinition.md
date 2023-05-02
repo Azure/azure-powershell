@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimagedefinition
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azgalleryimagedefinition
 schema: 2.0.0
 ---
 
@@ -93,7 +93,7 @@ $IsHibernateSupported = @{Name='IsHibernateSupported';Value='True'}
 $IsAcceleratedNetworkSupported = @{Name='IsAcceleratedNetworkSupported';Value='False'}
 $ConfidentialVMSupported = @{Name='SecurityType';Value='ConfidentialVMSupported'}
 $features = @($IsHibernateSupported,$IsAcceleratedNetworkSupported, $ConfidentialVMSupported)
-New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
+New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features -HyperVGeneration "V2"
 ```
 
 Creates a gallery image definition to contain image versions for generalized windows images.

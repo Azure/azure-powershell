@@ -1,0 +1,85 @@
+{
+  "Get-AzAttestationDefaultProvider+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Attestation/defaultProviders?api-version=2020-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Attestation/defaultProviders?api-version=2020-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "d55b2a46-38cf-4330-859b-4d779c527132" ],
+        "CommandName": [ "Get-AzAttestationDefaultProvider" ],
+        "FullCommandName": [ "Get-AzAttestationDefaultProvider_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "00-0844259cb48a352b44a16c6d47b3fcba-153693dced3804f9-01", "00-0844259cb48a352b44a16c6d47b3fcba-2bf178ec4aa93213-01", "00-0844259cb48a352b44a16c6d47b3fcba-d30369c006d14cf1-01", "00-0844259cb48a352b44a16c6d47b3fcba-8533fc73d0d225c6-01", "00-0844259cb48a352b44a16c6d47b3fcba-9424129ae1a4fbe1-01", "00-0844259cb48a352b44a16c6d47b3fcba-16640584db175801-01", "00-0844259cb48a352b44a16c6d47b3fcba-8f0529c8246b5f4c-01", "00-0844259cb48a352b44a16c6d47b3fcba-8a999207501bd010-01", "00-0844259cb48a352b44a16c6d47b3fcba-ce22f23001ad1fab-01", "00-0844259cb48a352b44a16c6d47b3fcba-e86b5b3b9e218bcb-01", "00-0844259cb48a352b44a16c6d47b3fcba-0cc51c3429e5f6a6-01", "00-0844259cb48a352b44a16c6d47b3fcba-9d05395abc5a96da-01", "00-0844259cb48a352b44a16c6d47b3fcba-cb7d007ad754edae-01", "00-0844259cb48a352b44a16c6d47b3fcba-37dbf585ad50f2b4-01", "00-0844259cb48a352b44a16c6d47b3fcba-44bb3533ce87adb8-01", "00-0844259cb48a352b44a16c6d47b3fcba-89744ce494367ef0-01", "00-0844259cb48a352b44a16c6d47b3fcba-25a5b601b4ca84a3-01", "00-0844259cb48a352b44a16c6d47b3fcba-dcf4b498c1421092-01", "00-0844259cb48a352b44a16c6d47b3fcba-7eb51d321c4d9b8e-01" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "a88185b9-9bb0-4962-a6ba-fe4fccc7dd06" ],
+        "x-ms-correlation-request-id": [ "a88185b9-9bb0-4962-a6ba-fe4fccc7dd06" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020908Z:a88185b9-9bb0-4962-a6ba-fe4fccc7dd06" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Sep 2022 02:09:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "5261" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedeus2\",\"name\":\"sharedeus2\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"East US 2\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedeus2.eus2.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedcus\",\"name\":\"sharedcus\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Central US\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedcus.cus.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/shareduks\",\"name\":\"shareduks\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"UK South\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://shareduks.uks.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\"name\":\"sharedeus\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"east us\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedeus.eus.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedcac\",\"name\":\"sharedcac\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Canada Central\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedcac.cac.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedcae\",\"name\":\"sharedcae\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Canada East\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedcae.cae.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedukw\",\"name\":\"sharedukw\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"UK West\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedukw.ukw.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedwus\",\"name\":\"sharedwus\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"West US\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedwus.wus.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedneu\",\"name\":\"sharedneu\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"North Europe\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedneu.neu.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedweu\",\"name\":\"sharedweu\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"West Europe\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedweu.weu.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedsasia\",\"name\":\"sharedsasia\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"southeastasia\",\"tags\":{},\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedsasia.sasia.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedscus\",\"name\":\"sharedscus\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"south central us\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedscus.scus.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedncus\",\"name\":\"sharedncus\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"north central us\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedncus.ncus.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedeau\",\"name\":\"sharedeau\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Australia East\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedeau.eau.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedsau\",\"name\":\"sharedsau\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Australia Southeast\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedsau.sau.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedjpe\",\"name\":\"sharedjpe\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Japan East\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedjpe.jpe.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedswn\",\"name\":\"sharedswn\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Switzerland North\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedswn.swn.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedcuse\",\"name\":\"sharedcuse\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"Central US EUAP\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedcuse.cuse.attest.azure.net\"}},{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedeus2e\",\"name\":\"sharedeus2e\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"east us 2 euap\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedeus2e.eus2e.attest.azure.net\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAttestationDefaultProvider+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Attestation/locations/East US/defaultProvider?api-version=2020-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Attestation/locations/East%20US/defaultProvider?api-version=2020-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "33ec52b4-deba-4e62-9028-0f3f8e97539d" ],
+        "CommandName": [ "Get-AzAttestationDefaultProvider" ],
+        "FullCommandName": [ "Get-AzAttestationDefaultProvider_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Attestation/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "00-b7761c4adbdf1c6769f217acfdc19e13-f1914947d8741920-01" ],
+        "x-ms-maa-service-version": [ "1.11.02043.302" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-correlation-request-id": [ "19bb28eb-55e8-4a2c-a49c-e3d0ca59d48e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220920T020908Z:19bb28eb-55e8-4a2c-a49c-e3d0ca59d48e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 20 Sep 2022 02:09:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "268" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Attestation/attestationProviders/sharedeus\",\"name\":\"sharedeus\",\"type\":\"Microsoft.Attestation/attestationProviders\",\"location\":\"east us\",\"properties\":{\"trustModel\":\"AAD\",\"status\":\"Ready\",\"attestUri\":\"https://sharedeus.eus.attest.azure.net\"}}",
+      "isContentBase64": false
+    }
+  }
+}

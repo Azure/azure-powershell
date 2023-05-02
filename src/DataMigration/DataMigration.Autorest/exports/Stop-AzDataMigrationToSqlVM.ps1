@@ -27,7 +27,7 @@ Get-AzDataMigrationToSqlVM -InputObject $vmMigration
 .Outputs
 System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlvm
+https://learn.microsoft.com/powershell/module/az.datamigration/stop-azdatamigrationtosqlvm
 #>
 function Stop-AzDataMigrationToSqlVM {
 [OutputType([System.Boolean])]
@@ -140,7 +140,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

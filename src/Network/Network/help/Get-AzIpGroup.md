@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-azipgroup
+online version: https://learn.microsoft.com/powershell/module/az.network/get-azipgroup
 schema: 2.0.0
 ---
 
@@ -12,9 +12,9 @@ Get an Azure IpGroup
 
 ## SYNTAX
 
-### IpGroupNameParameterSet
+### IpGroupNameParameterSet (Default)
 ```
-Get-AzIpGroup -ResourceGroupName <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzIpGroup [-ResourceGroupName <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Get-AzIpGroup -ResourceId $ipGroupId
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The name of the ipgroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpGroupNameParameterSet
 Aliases: ResourceName
 
@@ -68,29 +68,29 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName
 The resource group name of the ipgroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpGroupNameParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
 ResourceId of the ipgroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IpGroupResourceIdParameterSet
 Aliases:
 

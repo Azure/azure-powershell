@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataShare.dll-Help.xml
 Module Name: Az.DataShare
-online version: https://docs.microsoft.com/powershell/module/az.datashare/remove-azdatasharedatasetmapping
+online version: https://learn.microsoft.com/powershell/module/az.datashare/remove-azdatasharedatasetmapping
 schema: 2.0.0
 ---
 
@@ -51,7 +51,7 @@ This commands removes the dataset named DSM from sharesubscription WikiAds.
 ## PARAMETERS
 
 ### -AccountName
-Azure data share account name
+The name of the Azure storage account that is the source of the data being shared.
 
 ```yaml
 Type: System.String

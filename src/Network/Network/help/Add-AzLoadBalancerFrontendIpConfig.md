@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
 ms.assetid: 07FF274A-F365-44E5-A66B-6740CD165664
-online version: https://docs.microsoft.com/powershell/module/az.network/add-azloadbalancerfrontendipconfig
+online version: https://learn.microsoft.com/powershell/module/az.network/add-azloadbalancerfrontendipconfig
 schema: 2.0.0
 ---
 
@@ -16,43 +16,43 @@ Adds a front-end IP configuration to a load balancer.
 ### SetByResourceSubnet (Default)
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
- [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -Subnet <PSSubnet>
+ [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -Subnet <PSSubnet> [-GatewayLoadBalancerId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdSubnet
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-PrivateIpAddress <String>]
- [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -SubnetId <String>
+ [-PrivateIpAddressVersion <String>] [-Zone <String[]>] -SubnetId <String> [-GatewayLoadBalancerId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddress
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddressId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PublicIpAddressId <String> [-GatewayLoadBalancerId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddress
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddress <PSPublicIpAddress> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PublicIpAddress <PSPublicIpAddress> [-GatewayLoadBalancerId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdPublicIpAddressPrefix
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddressPrefixId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PublicIpAddressPrefixId <String> [-GatewayLoadBalancerId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourcePublicIpAddressPrefix
 ```
 Add-AzLoadBalancerFrontendIpConfig -LoadBalancer <PSLoadBalancer> -Name <String> [-Zone <String[]>]
- -PublicIpAddressPrefix <PSPublicIpPrefix> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PublicIpAddressPrefix <PSPublicIpPrefix> [-GatewayLoadBalancerId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,6 +112,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GatewayLoadBalancerId
+The reference of Gateway LoadBalancer Provider resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -218,7 +233,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

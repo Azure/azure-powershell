@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
 ms.assetid: 32CF9BF7-519F-4B5D-9F2B-3CC556A77A48
-online version: https://docs.microsoft.com/powershell/module/az.automation/start-azautomationdsccompilationjob
+online version: https://learn.microsoft.com/powershell/module/az.automation/start-azautomationdsccompilationjob
 schema: 2.0.0
 ---
 
@@ -44,7 +44,7 @@ Start-AzAutomationDscCompilationJob -ConfigurationName "Config01" -Parameters $P
 Similar to the first example, the first command creates a dictionary of parameters, and stores them in the $Params variable.
 The second command compiles the DSC configuration named Config01.
 The command includes the values in $Params for DSC configuration parameters.
-It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name Config01[<2>].<NodeName>. 
+It does not override the earlier existing Node Configuration by creating a new Node Configuration with the name `Config01[<2>].<NodeName>`. 
 The version number is incremented based on the existing version number already present.
 
 ## PARAMETERS

@@ -37,7 +37,7 @@ BODY <IPathsHv033BApplicationsApplicationIdMicrosoftGraphRemovepasswordPostReque
   [(Any) <Object>]: This indicates any property can be added to this object.
   [KeyId <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/remove-azadapplicationpassword
+https://learn.microsoft.com/powershell/module/az.resources/remove-azadapplicationpassword
 #>
 function Remove-AzADApplicationPassword {
 [OutputType([System.Boolean])]
@@ -73,7 +73,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

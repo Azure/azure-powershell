@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.RedisCache.dll-Help.xml
 Module Name: Az.RedisCache
-online version: https://docs.microsoft.com/powershell/module/az.rediscache/new-azrediscachelink
+online version: https://learn.microsoft.com/powershell/module/az.rediscache/new-azrediscachelink
 schema: 2.0.0
 ---
 
@@ -28,9 +28,13 @@ New-AzRedisCacheLink -PrimaryServerName "mycache1" -SecondaryServerName "mycache
 ```
 
 ```output
-        PrimaryServerName   : mycache1
-        SecondaryServerName : mycache2
-        ProvisioningState   : Creating
+        PrimaryServerName            : mycache1
+        SecondaryServerName          : mycache2
+        ProvisioningState            : Creating
+        LinkedRedisCacheLocation     : East US
+        ServerRole                   : Secondary
+        PrimaryHostName              : mycache1.redis.cache.windows.net
+        GeoReplicatedPrimaryHostName : mycache2.geo.redis.cache.windows.net
 ```
 
 This command creates geo-replication link between Redis Cache mycache1 and mycache2.

@@ -21,6 +21,7 @@ using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -71,6 +72,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
+        [ValidateSet("SecurityAdmin", "Connectivity", IgnoreCase = true)]
         public virtual string CommitType { get; set; }
 
         public override void Execute()

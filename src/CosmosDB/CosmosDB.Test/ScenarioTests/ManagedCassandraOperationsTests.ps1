@@ -50,10 +50,10 @@ function Test-ManagedCassandraCreateUpdateGetCmdlets
       # $SubnetId = $vnet.Subnets[0].Id
       #
       # then set this variable to the $SubnetId value produced by the script.
-      $SubnetId = "/subscriptions/dd31ecae-4522-468e-8b27-5befd051dd53/resourceGroups/nova-powershell-tests-rg/providers/Microsoft.Network/virtualNetworks/cassandra-mi-vnet/subnets/default"
-
+      $SubnetId = "/subscriptions/80be3961-0521-4a0a-8570-5cd5a4e2f98c/resourceGroups/nova-powershell-tests-rg/providers/Microsoft.Network/virtualNetworks/cassandra-mi-vnet/subnets/default"
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $RgName -Location $Location
       $initialClusterCount = (Get-AzManagedCassandraCluster -ResourceGroupName $RgName).Count
-      
+
       $response = New-AzManagedCassandraCluster `
         -ResourceGroupName $RgName `
         -ClusterName $ClusterName `

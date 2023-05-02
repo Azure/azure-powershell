@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.BotService/botServices/{resourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzBotService_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Description(@"Updates a Bot Service")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Generated]
     public partial class UpdateAzBotService_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -34,7 +34,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Bot resource definition</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.Bot();
+        private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.Bot();
+
+        /// <summary>Contains resource all settings defined as key/value pairs.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Contains resource all settings defined as key/value pairs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Contains resource all settings defined as key/value pairs.",
+        SerializedName = @"allSettings",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesAllSettings AllSetting { get => _parametersBody.AllSetting ?? null /* object */; set => _parametersBody.AllSetting = value; }
+
+        /// <summary>The hint (e.g. keyVault secret resourceId) on how to fetch the app secret</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hint (e.g. keyVault secret resourceId) on how to fetch the app secret")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The hint (e.g. keyVault secret resourceId) on how to fetch the app secret",
+        SerializedName = @"appPasswordHint",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AppPasswordHint { get => _parametersBody.AppPasswordHint ?? null; set => _parametersBody.AppPasswordHint = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -43,6 +66,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.BotService.BotService Client => Microsoft.Azure.PowerShell.Cmdlets.BotService.Module.Instance.ClientAPI;
+
+        /// <summary>The CMK Url</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The CMK Url")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The CMK Url",
+        SerializedName = @"cmekKeyVaultUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        public string CmekKeyVaultUrl { get => _parametersBody.CmekKeyVaultUrl ?? null; set => _parametersBody.CmekKeyVaultUrl = value; }
 
         /// <summary>
         /// The credentials, account, tenant, and subscription used for communication with Azure
@@ -96,6 +130,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         SerializedName = @"developerAppInsightsApplicationId",
         PossibleTypes = new [] { typeof(string) })]
         public string DeveloperAppInsightsApplicationId { get => _parametersBody.DeveloperAppInsightsApplicationId ?? null; set => _parametersBody.DeveloperAppInsightsApplicationId = value; }
+
+        /// <summary>
+        /// Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Opt-out of local authentication and ensure only MSI and AAD can be used exclusively for authentication.",
+        SerializedName = @"disableLocalAuth",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter DisableLocalAuth { get => _parametersBody.DisableLocalAuth ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.DisableLocalAuth = value; }
 
         /// <summary>The Name of the bot</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Name of the bot")]
@@ -164,6 +211,28 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
+        /// <summary>Whether Cmek is enabled</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether Cmek is enabled")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether Cmek is enabled",
+        SerializedName = @"isCmekEnabled",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter IsCmekEnabled { get => _parametersBody.IsCmekEnabled ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.IsCmekEnabled = value; }
+
+        /// <summary>Whether the bot is streaming supported</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether the bot is streaming supported")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether the bot is streaming supported",
+        SerializedName = @"isStreamingSupported",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter IsStreamingSupported { get => _parametersBody.IsStreamingSupported ?? default(global::System.Management.Automation.SwitchParameter); set => _parametersBody.IsStreamingSupported = value; }
+
         /// <summary>Required. Gets or sets the Kind of the resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Required. Gets or sets the Kind of the resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
@@ -210,6 +279,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string LuisKey { get => _parametersBody.LuisKey ?? null; set => _parametersBody.LuisKey = value; }
 
+        /// <summary>The bot's manifest url</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The bot's manifest url")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The bot's manifest url",
+        SerializedName = @"manifestUrl",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManifestUrl { get => _parametersBody.ManifestUrl ?? null; set => _parametersBody.ManifestUrl = value; }
+
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
@@ -228,6 +308,65 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         SerializedName = @"msaAppId",
         PossibleTypes = new [] { typeof(string) })]
         public string MsaAppId { get => _parametersBody.MsaAppId ?? null; set => _parametersBody.MsaAppId = value; }
+
+        /// <summary>Microsoft App Managed Identity Resource Id for the bot</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Microsoft App Managed Identity Resource Id for the bot")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Microsoft App Managed Identity Resource Id for the bot",
+        SerializedName = @"msaAppMSIResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MsaAppMsiResourceId { get => _parametersBody.MsaAppMsiResourceId ?? null; set => _parametersBody.MsaAppMsiResourceId = value; }
+
+        /// <summary>Microsoft App Tenant Id for the bot</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Microsoft App Tenant Id for the bot")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Microsoft App Tenant Id for the bot",
+        SerializedName = @"msaAppTenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string MsaAppTenantId { get => _parametersBody.MsaAppTenantId ?? null; set => _parametersBody.MsaAppTenantId = value; }
+
+        /// <summary>Microsoft App Type for the bot</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Microsoft App Type for the bot")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Microsoft App Type for the bot",
+        SerializedName = @"msaAppType",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType))]
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType MsaAppType { get => _parametersBody.MsaAppType ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.MsaAppType)""); set => _parametersBody.MsaAppType = value; }
+
+        /// <summary>
+        /// The hint to browser (e.g. protocol handler) on how to open the bot for authoring
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The hint to browser (e.g. protocol handler) on how to open the bot for authoring")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The hint to browser (e.g. protocol handler) on how to open the bot for authoring",
+        SerializedName = @"openWithHint",
+        PossibleTypes = new [] { typeof(string) })]
+        public string OpenWithHint { get => _parametersBody.OpenWithHint ?? null; set => _parametersBody.OpenWithHint = value; }
+
+        /// <summary>Contains resource parameters defined as key/value pairs.</summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ExportAs(typeof(global::System.Collections.Hashtable))]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Contains resource parameters defined as key/value pairs.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Contains resource parameters defined as key/value pairs.",
+        SerializedName = @"parameters",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBotPropertiesParameters Parameter { get => _parametersBody.Parameter ?? null /* object */; set => _parametersBody.Parameter = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.HttpPipeline" /> that the remote call will use.
@@ -250,6 +389,40 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
+        /// <summary>Whether the bot is in an isolated network</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Whether the bot is in an isolated network")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Whether the bot is in an isolated network",
+        SerializedName = @"publicNetworkAccess",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess))]
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess PublicNetworkAccess { get => _parametersBody.PublicNetworkAccess ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.PublicNetworkAccess)""); set => _parametersBody.PublicNetworkAccess = value; }
+
+        /// <summary>Publishing credentials of the resource</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Publishing credentials of the resource")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Publishing credentials of the resource",
+        SerializedName = @"publishingCredentials",
+        PossibleTypes = new [] { typeof(string) })]
+        public string PublishingCredentials { get => _parametersBody.PublishingCredentials ?? null; set => _parametersBody.PublishingCredentials = value; }
+
+        /// <summary>The channel schema transformation version for the bot</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The channel schema transformation version for the bot")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The channel schema transformation version for the bot",
+        SerializedName = @"schemaTransformationVersion",
+        PossibleTypes = new [] { typeof(string) })]
+        public string SchemaTransformationVersion { get => _parametersBody.SchemaTransformationVersion ?? null; set => _parametersBody.SchemaTransformationVersion = value; }
+
         /// <summary>The sku name</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The sku name")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
@@ -262,6 +435,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName))]
         public Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName SkuName { get => _parametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Support.SkuName)""); set => _parametersBody.SkuName = value; }
 
+        /// <summary>The storage resourceId for the bot</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The storage resourceId for the bot")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The storage resourceId for the bot",
+        SerializedName = @"storageResourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string StorageResourceId { get => _parametersBody.StorageResourceId ?? null; set => _parametersBody.StorageResourceId = value; }
+
         /// <summary>Contains resource tags defined as key/value pairs.</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ExportAs(typeof(global::System.Collections.Hashtable))]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Contains resource tags defined as key/value pairs.")]
@@ -271,44 +455,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         ReadOnly = false,
         Description = @"Contains resource tags defined as key/value pairs.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IResourceTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
+
+        /// <summary>The Tenant Id for the bot</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Tenant Id for the bot")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.BotService.Category(global::Microsoft.Azure.PowerShell.Cmdlets.BotService.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The Tenant Id for the bot",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string TenantId { get => _parametersBody.TenantId ?? null; set => _parametersBody.TenantId = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IError">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -502,12 +697,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot> response)
+        private async global::System.Threading.Tasks.Task onCreated(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot> response)
         {
             using( NoSynchronizationContext )
             {
@@ -519,7 +714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
                     return ;
                 }
                 // onCreated - response for 201 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
                 WriteObject((await response));
             }
         }
@@ -528,12 +723,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IError">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -550,7 +745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -568,12 +763,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot> response)
         {
             using( NoSynchronizationContext )
             {
@@ -585,7 +780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IBot
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20220615Preview.IBot
                 WriteObject((await response));
             }
         }

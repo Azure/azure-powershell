@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Kusto/Clusters/{clusterName}/managedPrivateEndpoints/{managedPrivateEndpointName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzKustoManagedPrivateEndpoint_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Description(@"Updates a managed private endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Generated]
     public partial class UpdateAzKustoManagedPrivateEndpoint_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>Class representing a managed private endpoint.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ManagedPrivateEndpoint();
+
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Runtime)]
@@ -47,9 +50,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Kusto.Kusto Client => Microsoft.Azure.PowerShell.Cmdlets.Kusto.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Azure)]
@@ -64,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The groupId in which the managed private endpoint is created.",
         SerializedName = @"groupId",
         PossibleTypes = new [] { typeof(string) })]
-        public string GroupId { get => ParametersBody.GroupId ?? null; set => ParametersBody.GroupId = value; }
+        public string GroupId { get => _parametersBody.GroupId ?? null; set => _parametersBody.GroupId = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -90,11 +94,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -104,12 +108,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command asynchronously")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Kusto.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ManagedPrivateEndpoint();
-
-        /// <summary>Class representing a managed private endpoint.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.HttpPipeline" /> that the remote call will use.
@@ -127,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The ARM resource ID of the resource for which the managed private endpoint is created.",
         SerializedName = @"privateLinkResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string PrivateLinkResourceId { get => ParametersBody.PrivateLinkResourceId ?? null; set => ParametersBody.PrivateLinkResourceId = value; }
+        public string PrivateLinkResourceId { get => _parametersBody.PrivateLinkResourceId ?? null; set => _parametersBody.PrivateLinkResourceId = value; }
 
         /// <summary>The region of the resource to which the managed private endpoint is created.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The region of the resource to which the managed private endpoint is created.")]
@@ -138,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The region of the resource to which the managed private endpoint is created.",
         SerializedName = @"privateLinkResourceRegion",
         PossibleTypes = new [] { typeof(string) })]
-        public string PrivateLinkResourceRegion { get => ParametersBody.PrivateLinkResourceRegion ?? null; set => ParametersBody.PrivateLinkResourceRegion = value; }
+        public string PrivateLinkResourceRegion { get => _parametersBody.PrivateLinkResourceRegion ?? null; set => _parametersBody.PrivateLinkResourceRegion = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -165,31 +163,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         Description = @"The user request message.",
         SerializedName = @"requestMessage",
         PossibleTypes = new [] { typeof(string) })]
-        public string RequestMessage { get => ParametersBody.RequestMessage ?? null; set => ParametersBody.RequestMessage = value; }
+        public string RequestMessage { get => _parametersBody.RequestMessage ?? null; set => _parametersBody.RequestMessage = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -228,7 +226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.ParametersBody = this.ParametersBody;
+            clone._parametersBody = this._parametersBody;
             return clone;
         }
 
@@ -384,7 +382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ManagedPrivateEndpointsUpdateViaIdentity(InputObject.Id, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ManagedPrivateEndpointsUpdateViaIdentity(InputObject.Id, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     else
                     {
@@ -405,13 +403,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ManagedPrivateEndpointName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ManagedPrivateEndpointsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, InputObject.ManagedPrivateEndpointName ?? null, ParametersBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ManagedPrivateEndpointsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ClusterName ?? null, InputObject.ManagedPrivateEndpointName ?? null, _parametersBody, onOk, onDefault, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -442,12 +440,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -464,15 +462,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICloudError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Kusto.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.ICloudError>(responseMessage, await response);
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -482,12 +480,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint">Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint> response)
         {
             using( NoSynchronizationContext )
             {
@@ -499,7 +497,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IManagedPrivateEndpoint
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IManagedPrivateEndpoint
                 WriteObject((await response));
             }
         }

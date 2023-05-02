@@ -42,6 +42,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.EventGrid/topics", "2020-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventGrid/domains", "2020-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);
+            RegisterConfiguration("Microsoft.HardwareSecurityModules/cloudHsmClusters", "2022-08-31-preview", true, true);
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false, true);
             RegisterConfiguration("Microsoft.HDInsight/clusters", "2018-06-01-preview", true, true);
             RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20", true, true);
@@ -49,10 +50,12 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);
             RegisterConfiguration("Microsoft.Keyvault/managedHSMs", "2021-06-01-preview", true, false);
             RegisterConfiguration("Microsoft.MachineLearningServices/workspaces", "2021-07-01", true, false);
+            RegisterConfiguration("Microsoft.MachineLearningServices/registries", "2022-10-01-preview", true, false);
             RegisterConfiguration("Microsoft.Media/mediaservices", "2021-06-01", true, true);
             RegisterConfiguration("Microsoft.Media/videoanalyzers", "2021-11-01-preview", true, true);
             RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false, false);
             RegisterConfiguration("Microsoft.Migrate/migrateProjects", "2020-06-01-preview", false, false);
+            RegisterConfiguration("Microsoft.Monitor/accounts", "2021-06-03-preview", true, false);
             RegisterConfiguration("Microsoft.Network/applicationgateways", "2020-05-01", true, false);
             RegisterConfiguration("Microsoft.Network/privateLinkServices", "2020-05-01", true, false, false);
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false, false);
@@ -74,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
             RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
             RegisterConfiguration("Microsoft.OpenEnergyPlatform/energyServices", "2022-07-21-preview", true, true);
+            RegisterConfiguration("Microsoft.DBforMySQL/flexibleServers", "2022-09-30-privatepreview", true, true);
         }
         /// <summary>
         /// Register priavte endopoint connection and private link resource configuration

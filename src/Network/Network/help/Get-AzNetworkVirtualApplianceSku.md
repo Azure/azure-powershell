@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/get-aznetworkvirtualappliancesku
+online version: https://learn.microsoft.com/powershell/module/az.network/get-aznetworkvirtualappliancesku
 schema: 2.0.0
 ---
 
@@ -24,7 +24,7 @@ The Get-AzNetworkVirtualApplianceSku gets or lists available Network Virtual App
 
 ### Example 1
 ```powershell
-Get-AzNetworkVirtualApplianceSku -SkuName barracudasdwanrelease                                                                                                                        
+Get-AzNetworkVirtualApplianceSku -SkuName barracudasdwanrelease
 ```
 
 ```output
@@ -40,7 +40,7 @@ Get a sku by name.
 
 ### Example 2
 ```powershell
-Get-AzNetworkVirtualApplianceSku                                                                                                                                                       
+Get-AzNetworkVirtualApplianceSku
 ```
 
 ```output

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Search.dll-Help.xml
 Module Name: Az.Search
-online version: https://docs.microsoft.com/powershell/module/az.search/remove-azsearchservice
+online version: https://learn.microsoft.com/powershell/module/az.search/remove-azsearchservice
 schema: 2.0.0
 ---
 
@@ -39,11 +39,11 @@ The **Remove-AzSearchService** cmdlet removes an Azure Cognitive Search service 
 ```powershell
 Remove-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01"
 ```
+
 ```output
 Confirm
 Are you sure you want to remove Search Service 'pstestazuresearch01'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
-
 ```
 
 The example removes an Azure Cognitive Search service.

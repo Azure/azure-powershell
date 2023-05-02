@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
+online version: https://learn.microsoft.com/powershell/module/az.databricks/new-azdatabricksworkspace
 schema: 2.0.0
 ---
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableNoPublicIP
-The value which should be used for this field.
+Should the Public IP be Disabled?
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -586,7 +586,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20230201.IWorkspace
 
 ## NOTES
 

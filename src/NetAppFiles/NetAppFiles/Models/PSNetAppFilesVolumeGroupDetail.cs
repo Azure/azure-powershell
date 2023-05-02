@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// <remarks>
         /// Gets or sets list of volumes from group
         /// </remarks>
-        public IList<PSNetAppFilesVolumeGroupVolumeProperties> Volumes { get; set; }
+        public IList<PSNetAppFilesVolume> Volumes { get; set; }
 
         /// <summary>
         /// Gets azure lifecycle management

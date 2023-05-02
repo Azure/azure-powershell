@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 8300B143-E322-419E-BC98-DBA56DD90A59
-online version: https://docs.microsoft.com/powershell/module/az.resources/new-azroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/new-azroledefinition
 schema: 2.0.0
 ---
 
@@ -87,6 +87,7 @@ $role = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
 $role.Id = $null
 $role.Name = "Virtual Machine Operator"
 $role.Description = "Can monitor, start, and restart virtual machines."
+$role.IsCustom = $True
 $role.Actions.RemoveRange(0,$role.Actions.Count)
 $role.Actions.Add("Microsoft.Compute/*/read")
 $role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")

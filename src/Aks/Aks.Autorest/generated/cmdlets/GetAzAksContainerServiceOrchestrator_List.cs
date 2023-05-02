@@ -46,9 +46,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Aks.Aks Client => Microsoft.Azure.PowerShell.Cmdlets.Aks.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Aks.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Aks.ParameterCategory.Azure)]
@@ -129,15 +130,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Cmdlets
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string[] _subscriptionId;
 
-        /// <summary>
-        /// Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI
-        /// for every service call.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.")]
+        /// <summary>The ID of the target subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = true,
         ReadOnly = false,
-        Description = @"Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+        Description = @"The ID of the target subscription.",
         SerializedName = @"subscriptionId",
         PossibleTypes = new [] { typeof(string) })]
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.DefaultInfo(

@@ -30,7 +30,7 @@ PS C:\> {{ Add code here }}
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IResourceProviderOperation
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.customproviders/get-azoperation
+https://learn.microsoft.com/en-us/powershell/module/az.customproviders/get-azoperation
 #>
 function Get-AzOperation {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IResourceProviderOperation])]

@@ -73,7 +73,7 @@ PASSWORDCREDENTIAL <IMicrosoftGraphPasswordCredential>: passwordCredential
   [KeyId <String>]: The unique identifier for the password.
   [StartDateTime <DateTime?>]: The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
 .Link
-https://docs.microsoft.com/powershell/module/az.resources/add-azadapplicationkey
+https://learn.microsoft.com/powershell/module/az.resources/add-azadapplicationkey
 #>
 function Add-AzADApplicationKey {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential])]
@@ -123,7 +123,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]

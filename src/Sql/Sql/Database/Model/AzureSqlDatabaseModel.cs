@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Sql.Models;
 
@@ -211,6 +212,42 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public bool? EnableLedger { get; set; }
 
         /// <summary>
+        /// Gets or sets type of enclave requested on the database i.e. Default
+        /// or VBS enclaves. Possible values include: 'Default', 'VBS'
+        /// </summary>
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the PausedDate
+        /// </summary>
+        public DateTime? PausedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ResumeDate
+        /// </summary>
+        public DateTime? ResumedDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the identity of the database.
+        /// </summary>
+        public DatabaseIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption protector
+        /// </summary>
+        public string EncryptionProtector { get; set; }
+
+        /// <summary>
+        /// Gets or sets the list of AKV keys
+        /// </summary>
+        public IDictionary<string, DatabaseKey> Keys { get; set; }
+
+        /// <summary>
+        /// Gets or sets a federated client id to use in xtcmk scenario
+        /// </summary>
+        public Guid? FederatedClientId { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
@@ -269,6 +306,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             SecondaryType = null;
             MaintenanceConfigurationId = null;
             EnableLedger = false;
+            PausedDate = null;
+            ResumedDate = null;
+            PreferredEnclaveType = null;
         }
 
         /// <summary>
@@ -325,6 +365,13 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             SecondaryType = database.SecondaryType;
             MaintenanceConfigurationId = database.MaintenanceConfigurationId;
             EnableLedger = database.IsLedgerOn;
+            PausedDate = database.PausedDate;
+            ResumedDate = database.ResumedDate;
+            PreferredEnclaveType = database.PreferredEnclaveType;
+            Keys = database.Keys;
+            EncryptionProtector = database.EncryptionProtector;
+            Identity = database.Identity;
+            FederatedClientId = database.FederatedClientId;
         }
 
         /// <summary>

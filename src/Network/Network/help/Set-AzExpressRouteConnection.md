@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://docs.microsoft.com/powershell/module/az.network/set-azexpressrouteconnection
+online version: https://learn.microsoft.com/powershell/module/az.network/set-azexpressrouteconnection
 schema: 2.0.0
 ---
 
@@ -15,21 +15,23 @@ Updates an express route connection created between an express route gateway and
 ### ByExpressRouteConnectionName (Default)
 ```
 Set-AzExpressRouteConnection -ResourceGroupName <String> -ExpressRouteGatewayName <String> -Name <String>
- [-AuthorizationKey <String>] [-RoutingWeight <UInt32>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AuthorizationKey <String>] [-RoutingWeight <UInt32>] [-EnableInternetSecurity <Boolean>]
+ [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteConnectionResourceId
 ```
 Set-AzExpressRouteConnection -ResourceId <String> [-AuthorizationKey <String>] [-RoutingWeight <UInt32>]
- [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByExpressRouteConnectionObject
 ```
 Set-AzExpressRouteConnection -InputObject <PSExpressRouteConnection> [-AuthorizationKey <String>]
- [-RoutingWeight <UInt32>] [-EnableInternetSecurity] [-RoutingConfiguration <PSRoutingConfiguration>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RoutingWeight <UInt32>] [-EnableInternetSecurity <Boolean>] [-RoutingConfiguration <PSRoutingConfiguration>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +94,7 @@ The connection is then updated to have a different RoutingWeight by using the Se
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +109,7 @@ Accept wildcard characters: False
 The authorization key to be used to create the ExpressRoute gateway connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +124,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -137,9 +139,10 @@ Accept wildcard characters: False
 Enable internet security for this ExpressRoute Gateway connection
 
 ```yaml
-Type: SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
@@ -151,7 +154,7 @@ Accept wildcard characters: False
 The parent resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByExpressRouteConnectionName
 Aliases:
 
@@ -166,7 +169,7 @@ Accept wildcard characters: False
 The ExpressRouteConnection object to update.
 
 ```yaml
-Type: PSExpressRouteConnection
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteConnection
 Parameter Sets: ByExpressRouteConnectionObject
 Aliases: ExpressRouteConnection
 
@@ -181,7 +184,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByExpressRouteConnectionName
 Aliases: ResourceName, ExpressRouteConnectionName
 
@@ -196,7 +199,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByExpressRouteConnectionName
 Aliases:
 
@@ -211,7 +214,7 @@ Accept wildcard characters: False
 The resource id of the ExpressRouteConnection object to delete.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByExpressRouteConnectionResourceId
 Aliases: ExpressRouteConnectionId
 
@@ -226,7 +229,7 @@ Accept wildcard characters: False
 Routing configuration for this connection
 
 ```yaml
-Type: PSRoutingConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSRoutingConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -241,7 +244,7 @@ Accept wildcard characters: False
 The weight that needs to be assigned to this connection for packet routing.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +259,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -272,7 +275,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -2,7 +2,7 @@
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Resources.dll-Help.xml
 Module Name: Az.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
-online version: https://docs.microsoft.com/powershell/module/az.resources/set-azroledefinition
+online version: https://learn.microsoft.com/powershell/module/az.resources/set-azroledefinition
 schema: 2.0.0
 ---
 
@@ -28,35 +28,7 @@ Set-AzRoleDefinition -Role <PSRoleDefinition> [-DefaultProfile <IAzureContextCon
 ```
 
 ## DESCRIPTION
-The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control.
-Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object.
-The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes.
-NotActions, DataActions, NotDataActions are optional.
-Following is a sample updated role definition json for Set-AzRoleDefinition
-{
-        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
-        "Name": "Updated Role",
-        "Description": "Can monitor all resources and start and restart virtual machines",
-        "Actions":
-        \[
-            "*/read",
-            "Microsoft.ClassicCompute/virtualmachines/restart/action",
-            "Microsoft.ClassicCompute/virtualmachines/start/action"
-        \],
-        "NotActions":
-        \[
-            "*/write"
-        \],
-        "DataActions":
-        \[
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
-        \],
-        "NotDataActions":
-        \[
-            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
-        \],
-        "AssignableScopes": \["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"\]
-}
+The Set-AzRoleDefinition cmdlet updates an existing custom role in Azure Role-Based Access Control. Provide the updated role definition as an input to the command as a JSON file or a PSRoleDefinition object. The role definition for the updated custom role MUST contain the Id and all other required properties of the role even if they are not updated: DisplayName, Description, Actions, AssignableScopes. NotActions, DataActions, NotDataActions are optional.
 
 ## EXAMPLES
 
@@ -72,6 +44,33 @@ Set-AzRoleDefinition -Role $roleDef
 ### Example 2: Create using JSON file
 ```powershell
 Set-AzRoleDefinition -InputFile C:\Temp\roleDefinition.json
+<#
+Following is a sample updated role definition json for Set-AzRoleDefinition:
+{
+        "Id": "52a6cc13-ff92-47a8-a39b-2a8205c3087e",
+        "Name": "Updated Role",
+        "Description": "Can monitor all resources and start and restart virtual machines",
+        "Actions":
+        [
+            "*/read",
+            "Microsoft.ClassicCompute/virtualmachines/restart/action",
+            "Microsoft.ClassicCompute/virtualmachines/start/action"
+        ],
+        "NotActions":
+        [
+            "*/write"
+        ],
+        "DataActions":
+        [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read"
+        ],
+        "NotDataActions":
+        [
+            "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+        ],
+        "AssignableScopes": ["/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]
+}
+#>
 ```
 
 ## PARAMETERS
