@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
     /// </summary>
     public static class CustomAssemblyResolver
     {
+        /*
         private static IDictionary<string, Version> NetFxPreloadAssemblies =
             new Dictionary<string, Version>(StringComparer.InvariantCultureIgnoreCase)
             {
@@ -54,7 +55,9 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 {"System.Xml.ReaderWriter", new Version("4.1.0.0")}
             };
 
-        private static string PreloadAssemblyFolder { get; set; }
+        private static string PreloadAssemblyFolder { get; set; } */
+
+        private static IDictionary<string, (string Path, Version Version)> NetFxPreloadAssemblies = ConditionalAssemblyProvider.GetAssemblies();
 
         public static void Initialize()
         {

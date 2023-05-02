@@ -27,6 +27,9 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
 
         static AzAssemblyLoadContextInitializer()
         {
+            var azSharedAssemblies = ConditionalAssemblyProvider.GetAssemblies();
+            AzSharedAssemblyMap = new ConcurrentDictionary<string, (string, Version)>(azSharedAssemblies, StringComparer.OrdinalIgnoreCase);
+            /*
             //TODO: Generate assembly version info into AzSharedAssemblies.json during build
             var azSharedAssemblies = new Dictionary<string, Version>()
             {
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext
             };
 
             AzSharedAssemblyMap = new ConcurrentDictionary<string, Version>(azSharedAssemblies, StringComparer.OrdinalIgnoreCase);
-
+            */
             ModuleAlcEntryAssemblyMap = new ConcurrentDictionary<string, string>();
         }
 
