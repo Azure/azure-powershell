@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Max inspection limit in KB for request body inspection.")]
         [ValidateNotNullOrEmpty]
-        public int RequestBodyInspectLimitInKB { get; set; }
+        public int? RequestBodyInspectLimitInKB { get; set; }
 
         [Parameter(
             HelpMessage = "Disable Request Body check.")]
@@ -99,6 +99,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!this.MyInvocation.BoundParameters.ContainsKey("CustomBlockResponseStatusCode"))
             {
                 this.CustomBlockResponseStatusCode = (int?)null;
+            }
+
+            if (!this.MyInvocation.BoundParameters.ContainsKey("RequestBodyInspectLimitInKB"))
+            {
+                this.RequestBodyInspectLimitInKB = (int?)null;
             }
 
             if (!this.MyInvocation.BoundParameters.ContainsKey("DisableFileUploadEnforcement"))

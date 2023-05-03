@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Max inspection limit in KB for request body inspection.
 
 ```yaml
-Type: System.Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 

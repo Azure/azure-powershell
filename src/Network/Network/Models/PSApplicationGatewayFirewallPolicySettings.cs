@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool? RequestBodyEnforcement { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public int RequestBodyInspectLimitInKB { get; set; }
+        public int? RequestBodyInspectLimitInKB { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool RequestBodyCheck { get; set; }
