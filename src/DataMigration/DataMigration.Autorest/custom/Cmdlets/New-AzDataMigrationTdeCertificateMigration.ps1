@@ -74,7 +74,7 @@ function New-AzDataMigrationTdeCertificateMigration
     {
         try {
             $OSPlatform = Get-OSName
-            
+
             if(-Not $OSPlatform.Contains("Windows"))
             {
                 throw "This command cannot be run in non-windows environment"
@@ -84,11 +84,21 @@ function New-AzDataMigrationTdeCertificateMigration
             #Defining Default Output Path
             $DefaultOutputFolder = Get-DefaultTdeMigrationsOutputFolder
 
-            $AvailablePackagesOnNugetOrg = Find-Package -Source "https://api.nuget.org/v3/index.json" -Name "Microsoft.SqlServer.Migration.TdeConsoleApp" -AllowPrereleaseVersions -AllVersions
-            $AvailablePackagesOnNugetOrg = $AvailablePackagesOnNugetOrg | Sort-Object -Property Version -Descending
+            #Determine latest version of TDE console app
+            $PackageId = "Microsoft.SqlServer.Migration.TdeConsoleApp"
+
+            $AvailablePackagesOnNugetOrg = ""
+
+            try {
+                $AvailablePackagesOnNugetOrg = Find-Package -Source "https://api.nuget.org/v3/index.json" -Name $PackageId -AllowPrereleaseVersions -AllVersions
+                $AvailablePackagesOnNugetOrg = $AvailablePackagesOnNugetOrg | Sort-Object -Property Version -Descending
+            } catch {
+                Write-Host "Unable to connect to NuGet.org to check for updates."
+            }
+
             $LatestNugetOrgName  = $AvailablePackagesOnNugetOrg[0].Name
             $LatestNugetOrgVersion = $AvailablePackagesOnNugetOrg[0].Version
-            $NugetNameAndLatestVersion = "$LatestNugetOrgName.$LatestNugetOrgVersion";
+            $LatestNugetOrgNameAndVersion = "$LatestNugetOrgName.$LatestNugetOrgVersion";
 
             $DownloadsFolder = Join-Path -Path $DefaultOutputFolder -ChildPath "Downloads"
             if(-Not (Test-Path $DownloadsFolder))
@@ -96,55 +106,70 @@ function New-AzDataMigrationTdeCertificateMigration
                 $null = New-Item -Path $DownloadsFolder -ItemType "directory";
             }
 
-            $ConsoleAppFolders = Get-ChildItem -Path $DownloadsFolder -Filter "Microsoft.SqlServer.Migration.TdeConsoleApp.*";
-            $LatestLocalVersion = "";
+            $ConsoleAppFolders = Get-ChildItem -Path $DownloadsFolder -Filter "$PackageId.*"
+            $LatestLocalNameAndVersion = ""
             if ($ConsoleAppFolders.Length -gt 0)
             {
-                $ConsoleAppFolders = $ConsoleAppFolders | Sort-Object -Property Name -Descending;
-                $LatestLocalVersion = $ConsoleAppFolders[0].Name
+                $ConsoleAppFolders = $ConsoleAppFolders | Sort-Object -Property Name -Descending
+                $LatestLocalNameAndVersion = $ConsoleAppFolders[0].Name
+
+                if ($AvailablePackagesOnNugetOrg -eq "")
+                {
+                    $LatestNugetOrgNameAndVersion = $LatestLocalNameAndVersion
+                }
+            }
+            else
+            {
+                #No local console app
+                if ($AvailablePackagesOnNugetOrg -eq "")
+                {
+                    #No version available to download
+                    Write-Host "Connection to NuGet.org required. Please check connection and try again."
+                    return;
+                }
             }
 
-            #Defining Base and Exe paths
-            $BaseFolder = Join-Path -Path $DownloadsFolder -ChildPath $NugetNameAndLatestVersion;
+            $LatestNugetFolder = Join-Path -Path $DownloadsFolder -ChildPath $LatestNugetOrgNameAndVersion;
+            $ExePath = "tools\Microsoft.SqlServer.Migration.Tde.ConsoleApp.exe";
 
-            if ($NugetNameAndLatestVersion -gt $LatestLocalVersion)
+            if ($LatestNugetOrgNameAndVersion -gt $LatestLocalNameAndVersion)
             {
                 #Update is available
-                $DownloadUrl = "https://www.nuget.org/api/v2/package/Microsoft.SqlServer.Migration.TdeConsoleApp/$LatestNugetOrgVersion"
+                $DownloadUrl = "https://www.nuget.org/api/v2/package/$PackageId/$LatestNugetOrgVersion"
 
                 #Checking if BaseFolder Path is valid or not
-                if(-Not (Test-Path $BaseFolder))
+                if(-Not (Test-Path $LatestNugetFolder))
                 {
-                    $null = New-Item -Path $BaseFolder -ItemType "directory";
+                    $null = New-Item -Path $LatestNugetFolder -ItemType "directory";
                 }
 
-                Invoke-WebRequest $DownloadUrl -OutFile "$BaseFolder\\$LatestNugetOrgName.$LatestNugetOrgVersion.nupkg"
+                Invoke-WebRequest $DownloadUrl -OutFile "$LatestNugetFolder\\$LatestNugetOrgName.$LatestNugetOrgVersion.nupkg"
 
-                $ToolsPathExists = Test-Path -Path (Join-Path -Path $BaseFolder -ChildPath "tools");
+                $ToolsPathExists = Test-Path -Path (Join-Path -Path $LatestNugetFolder -ChildPath "tools");
 
                 if ($ToolsPathExists -eq $False)
                 {
-                    $Nugets = Get-ChildItem -Path $BaseFolder -Filter "Microsoft.SqlServer.Migration.TdeConsoleApp.*.nupkg";
+                    $Nugets = Get-ChildItem -Path $LatestNugetFolder -Filter "$PackageId.*.nupkg";
 
                     if ($Nugets.Length -gt 0)
                     {
                         $Nugets = $Nugets | Sort-Object -Property Name -Descending;
                         $LatestNugetPath = $Nugets[0].FullName;
-                        Expand-Archive -Path $LatestNugetPath -DestinationPath $BaseFolder;
+                        Expand-Archive -Path $LatestNugetPath -DestinationPath $LatestNugetFolder;
                     }
                 }
 
                 #Check if update was successful
-                $TestPathResult = Test-Path -Path "$BaseFolder\tools\Microsoft.SqlServer.Migration.Tde.ConsoleApp.exe"
+                $TestPathResult = Test-Path -Path "$LatestNugetFolder\$ExePath"
 
                 if($TestPathResult)
                 {
                     #Remove all other NuGet versions except for the version just downloaded
-                    $NugetVersions = Get-ChildItem -Path $DownloadsFolder -Filter "Microsoft.SqlServer.Migration.TdeConsoleApp.*";
+                    $NugetVersions = Get-ChildItem -Path $DownloadsFolder -Filter "$PackageId.*";
 
                     for ($NugetIndex = 0; $NugetIndex -lt $NugetVersions.Length; $NugetIndex = $NugetIndex + 1)
                     {
-                        if($NugetVersions[$NugetIndex].Name -ne $NugetNameAndLatestVersion)
+                        if($NugetVersions[$NugetIndex].Name -ne $LatestNugetOrgNameAndVersion)
                         {
                             Remove-Item -Path $NugetVersions[$NugetIndex].FullName -Recurse -Force
                         }
@@ -152,7 +177,11 @@ function New-AzDataMigrationTdeCertificateMigration
                 }
             }
 
-            $ExePath = Join-Path -Path $BaseFolder -ChildPath "tools\Microsoft.SqlServer.Migration.Tde.ConsoleApp.exe";
+            if(-Not (Test-Path -Path "$LatestNugetFolder\$ExePath"))
+            {
+                Write-Host "Failed to locate executable."
+                return
+            }
 
             [System.Collections.ArrayList] $parameterArray = @(
                 "--sourceSqlConnectionString", $SourceSqlConnectionString,
@@ -166,8 +195,9 @@ function New-AzDataMigrationTdeCertificateMigration
                 "--databaseName"
             )
 
-            foreach($name in $DatabaseName) {
-                $parameterArray.Add($name) | Out-Null;
+            $ExePath = Join-Path -Path $LatestNugetFolder -ChildPath $ExePath;
+            foreach($Name in $DatabaseName) {
+                $parameterArray.Add($Name) | Out-Null;
             }
 
             & $ExePath $parameterArray
