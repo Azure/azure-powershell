@@ -14,7 +14,8 @@ Create a new CosmosDB Account.
 
 ```
 New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork]
- [-FromPointInTimeBackup] [-SourceRestorableDatabaseAccountId <String>] [-SourceDatabaseAccountName <String>]
+ [-FromPointInTimeBackup] [-RestoreTimestampInUtc <DateTime>] 
+ [-SourceRestorableDatabaseAccountId <String>] [-SourceDatabaseAccountName <String>] 
  [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
  [-Location <String[]>] [-LocationObject <PSLocation[]>] [-Capabilities <String[]>] -ResourceGroupName <String>
  -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
@@ -65,7 +66,7 @@ A new CosmosDB Account with name databaseAccountName is created in the ResourceG
 
 ### Example 2
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name "restored-account-name" -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId "/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/instance-id" -RestoreTimestampInUtc "2020-07-20T17:19:25+0000"
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name "restored-account-name" -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId "/subscriptions/subscriptionId/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/instance-id" -RestoreTimestampInUtc 2020-07-20T17:19:25+0000
 ```
 
 ```output
@@ -107,7 +108,7 @@ A new account with the name restoredDatabaseAccountName is created by restoring 
 
 ### Example 3
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name "restored-account-name" -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName "source-database-account-name" -RestoreTimestampInUtc "2020-07-20T17:19:25+0000"
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name "restored-account-name" -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName "source-database-account-name" -RestoreTimestampInUtc 2020-07-20T17:19:25+0000
 ```
 
 ```output
@@ -415,6 +416,51 @@ Indicates that the new Cosmos DB account request is a restore request.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreTimestampInUtc
+The timestamp to which the source account has to be restored to.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceRestorableDatabaseAccountId
+The account id of the source database account of the restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceDatabaseAccountName
+The name of the source database account of the restore.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
