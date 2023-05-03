@@ -8,8 +8,9 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ResourceManager
+namespace Microsoft.Azure.Management.Resources
 {
+    using Microsoft.Azure.Management.Resources.Utility;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Azure.OData;

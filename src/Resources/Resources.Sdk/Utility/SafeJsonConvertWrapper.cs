@@ -7,9 +7,9 @@
 // and parameters respectively. 
 //
 
-namespace Microsoft.Azure.Management.ResourceManager
+namespace Microsoft.Azure.Management.Resources.Utility
 {
-    using Microsoft.Azure.Management.ResourceManager.Models;
+    using Microsoft.Azure.Management.Resources.Models;
     using Microsoft.Rest;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -20,28 +20,28 @@ namespace Microsoft.Azure.Management.ResourceManager
         {
             CheckSerializationForDeploymentProperties(deployment.Properties);
 
-            return Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(deployment, settings);
+            return Rest.Serialization.SafeJsonConvert.SerializeObject(deployment, settings);
         }
 
         public static string SerializeScopeDeployment(ScopedDeployment deployment, JsonSerializerSettings settings)
         {
             CheckSerializationForDeploymentProperties(deployment.Properties);
 
-            return Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(deployment, settings);
+            return Rest.Serialization.SafeJsonConvert.SerializeObject(deployment, settings);
         }
 
         public static string SerializeDeploymentWhatIf(DeploymentWhatIf deploymentWhatIf, JsonSerializerSettings settings)
         {
             CheckSerializationForDeploymentProperties(deploymentWhatIf.Properties);
 
-            return Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(deploymentWhatIf, settings);
+            return Rest.Serialization.SafeJsonConvert.SerializeObject(deploymentWhatIf, settings);
         }
 
         public static string SerializeScopedDeploymentWhatIf(ScopedDeploymentWhatIf deploymentWhatIf, JsonSerializerSettings settings)
         {
             CheckSerializationForDeploymentProperties(deploymentWhatIf.Properties);
 
-            return Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(deploymentWhatIf, settings);
+            return Rest.Serialization.SafeJsonConvert.SerializeObject(deploymentWhatIf, settings);
         }
 
         public static void CheckSerializationForDeploymentProperties(DeploymentProperties properties)

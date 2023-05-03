@@ -8,7 +8,7 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<AssemblyName>Microsoft.Azure.PowerShell.Resources.Management.Sdk</AssemblyName>
-		<RootNamespace>Microsoft.Azure.Management.ResourceManager</RootNamespace>
+		<RootNamespace>Microsoft.Azure.Management.Resources</RootNamespace>
 		<NoWarn>$(NoWarn);CS0108;CS1573;CS1570</NoWarn>
 	</PropertyGroup>
 

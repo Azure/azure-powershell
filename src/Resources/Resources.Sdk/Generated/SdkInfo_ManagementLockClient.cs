@@ -5,7 +5,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ResourceManager
+namespace Microsoft.Azure.Management.Resources
 {
   using System;
   using System.Collections.Generic;

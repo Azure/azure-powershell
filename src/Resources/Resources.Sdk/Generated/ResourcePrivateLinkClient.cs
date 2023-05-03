@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ResourceManager
+namespace Microsoft.Azure.Management.Resources
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;

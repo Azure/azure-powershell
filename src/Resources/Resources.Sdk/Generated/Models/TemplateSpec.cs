@@ -8,7 +8,7 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.Management.ResourceManager.Models
+namespace Microsoft.Azure.Management.Resources.Models
 {
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
