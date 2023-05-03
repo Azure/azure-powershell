@@ -19,8 +19,6 @@
 -->
 
 ## Upcoming Release
-
-## Version
 * Added support for Continuous 7 Days backup mode.
 
 ## Version 1.10.1
