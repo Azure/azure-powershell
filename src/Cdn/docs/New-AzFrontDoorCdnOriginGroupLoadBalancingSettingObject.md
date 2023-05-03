@@ -33,7 +33,7 @@ AdditionalLatencyInMillisecond SampleSize SuccessfulSamplesRequired
 200                            5          4
 ```
 
-
+Create an in-memory object for AzureFrontDoor origin group `LoadBalancingSetting` object
 
 ## PARAMETERS
 
@@ -89,7 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.LoadBalancingSettingsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.LoadBalancingSettingsParameters
 
 ## NOTES
 

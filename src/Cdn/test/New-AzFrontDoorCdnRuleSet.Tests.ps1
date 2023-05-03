@@ -14,25 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleSet'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnRuleSet' -Tag 'LiveOnly' {
+Describe 'New-AzFrontDoorCdnRuleSet'  {
     It 'Create' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-            $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
-            New-AzFrontDoorCdnRuleSet -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $rulesetName
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $rulesetName = 'rs' + (RandomString -allChars $false -len 6);
+        New-AzFrontDoorCdnRuleSet -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $rulesetName
     }
 }

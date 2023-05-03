@@ -11,5 +11,3 @@ Name not available False         Name is already in use
 
 Check AzureCDN endpint name availability
 
-
-

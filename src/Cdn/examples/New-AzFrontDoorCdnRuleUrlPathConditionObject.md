@@ -9,3 +9,4 @@ Name
 UrlPath
 ```
 
+Create an in-memory object for DeliveryRuleUrlPathCondition

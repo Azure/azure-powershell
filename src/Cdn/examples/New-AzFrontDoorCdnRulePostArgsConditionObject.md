@@ -9,3 +9,4 @@ Name
 PostArgs
 ```
 
+Create an in-memory object for DeliveryRulePostArgsCondition

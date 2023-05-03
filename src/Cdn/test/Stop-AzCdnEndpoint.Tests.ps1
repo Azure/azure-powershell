@@ -14,72 +14,31 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzCdnEndpoint'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Stop-AzCdnEndpoint' -Tag 'LiveOnly' {
+Describe 'Stop-AzCdnEndpoint'  {
+    BeforeAll {
+        $endpointName = 'e-' + (RandomString -allChars $false -len 6);
+        $origin = @{
+            Name = "origin1"
+            HostName = "host1.hello.com"
+        };
+        $location = "westus"
+        Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+
+        New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location -Origin $origin
+    }
     It 'Stop' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
-                Stop-AzCdnEndpoint -Name $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
-                $endpoint = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName 
-                
-                $endpoint.ResourceState | Should -Be "Stopped"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        Stop-AzCdnEndpoint -Name $endpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
+        
+        $res.ResourceState | Should -Be "Stopped"
     }
 
     It 'StopViaIdentity' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $PSDefaultParameterValues['Disabled'] = $true
+        $endpoint1 =  Start-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName 
+        Write-Host -ForegroundColor Green "Endpoint status: $($endpoint1.ResourceState)" 
+        $res = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName | Stop-AzCdnEndpoint
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-               
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
-                $endpoint = Get-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName | Stop-AzCdnEndpoint
-
-                $endpoint.ResourceState | Should -Be "Stopped"
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $res.ResourceState | Should -Be "Stopped"
     }
 }

@@ -14,121 +14,45 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnCustomDomain'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnCustomDomain' -Tag 'LiveOnly' {
+Describe 'Get-AzCdnCustomDomain'  {
+    # BeforeAll {
+    #     $subId = $env.SubscriptionId
+    #     # Hard-coding host and endpoint names due to requirement for DNS CNAME
+    #     $classicCdnEndpointName = 'aa-powershell-20230425-oigr9w'
+    #     $customDomainHostName = 'aa-powershell-20230425-oigr9w.cdne2e.azfdtest.xyz'
+    #     $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
+    #     $location = "westus"
+    #     $origin = @{
+    #         Name = "origin1"
+    #         HostName = "host1.hello.com"
+    #     };
+        
+    #     Write-Host -ForegroundColor Green "Create endpointName : $($classicCdnEndpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
+    #     New-AzCdnEndpoint -Name $classicCdnEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.ClassicCdnProfileName -Location $location `
+    #         -Origin $origin  | Out-Null
+
+    #     Write-Host -ForegroundColor Green "Create customDomain : $($customDomainName), customDomain HostName : $($customDomainHostName)"
+    #     $customDomain = New-AzCdnCustomDomain -EndpointName $classicCdnEndpointName -Name $customDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName -HostName $customDomainHostName
+    # }
+    
     It 'List' {
-        { 
-            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
-
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-                
-                # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-20220407-cyzd8j'
-                $customDomainHostName = 'e-20220407-cyzd8j.ps.cdne2e.azfdtest.xyz'
-                $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin -SubscriptionId $subId
-                New-AzCdnCustomDomain -EndpointName $endpointName -Name $customDomainName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -HostName $customDomainHostName -SubscriptionId $subId
-                $customDomains = Get-AzCdnCustomDomain -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -SubscriptionId $subId
-
-                $customDomains.Count | Should -Be 1
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -SubscriptionId $subId -NoWait
-            }
-        } | Should -Not -Throw
+        $customDomains = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        Write-Host -ForegroundColor Green "customDomains.Count : $($customDomains.Count)"
+        $customDomains.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        { 
-            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+        $customDomain = Get-AzCdnCustomDomain -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-                
-                # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-20220407-k0eyx9'
-                $customDomainHostName = 'e-20220407-k0eyx9.ps.cdne2e.azfdtest.xyz'
-                $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin -SubscriptionId $subId
-                New-AzCdnCustomDomain -EndpointName $endpointName -Name $customDomainName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -HostName $customDomainHostName -SubscriptionId $subId
-                $customDomain = Get-AzCdnCustomDomain -EndpointName $endpointName -Name $customDomainName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -SubscriptionId $subId
-
-                $customDomain.Name | Should -Be $customDomainName
-                $customDomain.HostName | Should -Be $customDomainHostName
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -SubscriptionId $subId -NoWait
-            }
-        } | Should -Not -Throw
+        $customDomain.Name | Should -Be $env.ClassicCustomDomainName
+        $customDomain.HostName | Should -Be $env.ClassicCustomDomainHostName
     }
 
     It 'GetViaIdentity' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $subId = "27cafca8-b9a4-4264-b399-45d0c9cca1ab"
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location -SubscriptionId $subId
+        $PSDefaultParameterValues['Disabled'] = $true
+        $customDomain = Get-AzCdnCustomDomain -SubscriptionId $env.SubscriptionId -EndpointName $env.ClassicEndpointName -Name $env.ClassicCustomDomainName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnCustomDomain
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global -SubscriptionId $subId
-                
-                # Hard-coding host and endpoint names due to requirement for DNS CNAME
-                $endpointName = 'e-20220407-315rgw'
-                $customDomainHostName = 'e-20220407-315rgw.ps.cdne2e.azfdtest.xyz'
-                $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin -SubscriptionId $subId
-                New-AzCdnCustomDomain -EndpointName $endpointName -Name $customDomainName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -HostName $customDomainHostName -SubscriptionId $subId
-                $customDomain = Get-AzCdnCustomDomain -EndpointName $endpointName -Name $customDomainName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName -SubscriptionId $subId | Get-AzCdnCustomDomain
-
-                $customDomain.Name | Should -Be $customDomainName
-                $customDomain.HostName | Should -Be $customDomainHostName
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -SubscriptionId $subId -NoWait
-            }
-        } | Should -Not -Throw
+        $customDomain.Name | Should -Be $env.ClassicCustomDomainName
+        $customDomain.HostName | Should -Be $env.ClassicCustomDomainHostName
     }
 }

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnOriginGroup
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject' -Tag 'LiveOnly' {
+Describe 'New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject'  {
     It '__AllParameterSets' -skip {
         It '__AllParameterSets' {
             { 

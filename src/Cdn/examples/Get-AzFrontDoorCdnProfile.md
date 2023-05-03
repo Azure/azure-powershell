@@ -41,3 +41,15 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 Get an AzureFrontDoor profile under the resource group
 
+
+### Example 4: Get an AzureFrontDoor profile under the resource group via identity
+```powershell
+New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q7 -SkuName Standard_AzureFrontDoor -Location Global | Get-AzFrontDoorCdnProfile
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q7 frontdoor testps-rg-da16jm
+```
+Get an AzureFrontDoor profile under the resource group via identity

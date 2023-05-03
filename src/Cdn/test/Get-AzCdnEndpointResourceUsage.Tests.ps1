@@ -14,59 +14,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEndpointResourceUsag
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnEndpointResourceUsage' -Tag 'LiveOnly' {
+Describe 'Get-AzCdnEndpointResourceUsage'  {
     It 'List' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
+        
+        $endpointResourceUsages.Count | Should -Be 3
+        $geofilterUsage.Limit | Should -Be 25
+        $geofilterUsage.CurrentValue | Should -Be 0
 
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
+        $geofilters = @(
+            @{
+                RelativePath = "/mycar" 
+                Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
+                CountryCode = "AU"
+            },
+            @{
+                RelativePath = "/mycars" 
+                Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
+                CountryCode = "AU"
+            })
+        Update-AzCdnEndpoint -Name $env.VerizonEndpointName -ResourceGroupName $env.ResourceGroupName -ProfileName $env.VerizonCdnProfileName -GeoFilter $geofilters
+        $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $env.VerizonEndpointName -ProfileName $env.VerizonCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
 
-                $profileSku = "Standard_Akamai";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
-                $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
-                $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
-                
-                $endpointResourceUsages.Count | Should -Be 3
-                $geofilterUsage.Limit | Should -Be 25
-                $geofilterUsage.CurrentValue | Should -Be 0
-
-                $geofilters = @(
-                    @{
-                        RelativePath = "/mycar" 
-                        Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
-                        CountryCode = "AU"
-                    },
-                    @{
-                        RelativePath = "/mycars" 
-                        Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
-                        CountryCode = "AU"
-                    })
-                Update-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -GeoFilter $geofilters
-                $endpointResourceUsages = Get-AzCdnEndpointResourceUsage -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
-                $geofilterUsage = $endpointResourceUsages | Where-Object -Property ResourceType -eq 'geofilter'
-
-                $endpointResourceUsages.Count | Should -Be 3
-                $geofilterUsage.Limit | Should -Be 25
-                $geofilterUsage.CurrentValue | Should -Be 2
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $endpointResourceUsages.Count | Should -Be 3
+        $geofilterUsage.Limit | Should -Be 25
+        $geofilterUsage.CurrentValue | Should -Be 2
     }
 }

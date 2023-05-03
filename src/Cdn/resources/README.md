@@ -1,5 +1,5 @@
 # Resources
-This directory can contain any additional resources for module that are not required at runtime. This directory **does not** get packaged with the module. If you have assets for custom implementation, place them into the `../custom` folder.
+This directory can contain any additional resources for module that are not required at runtime. This directory **does not** get packaged with the module. If you have assets for custom implementation, place them into the `..\custom` folder.
 
 ## Info
 - Modifiable: yes

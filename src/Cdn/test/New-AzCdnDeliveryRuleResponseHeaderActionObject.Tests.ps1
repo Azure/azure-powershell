@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleResponse
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnDeliveryRuleResponseHeaderActionObject' -Tag 'LiveOnly' {
+Describe 'New-AzCdnDeliveryRuleResponseHeaderActionObject'  {
     It '__AllParameterSets' {
         { 
             # ignore 

@@ -14,118 +14,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnOrigin'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnOrigin' -Tag 'LiveOnly' {
+Describe 'Get-AzCdnOrigin'  {
+    BeforeAll {
+        $originName = "origin1"
+        $originHostName = "host1.hello.com"
+    }
+    
     It 'List' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $origin = @{
-                    Name = "origin1"
-                    HostName = "host1.hello.com"
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
-                $origins = Get-AzCdnOrigin -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
-                
-                $origins.Count | Should -Be 1
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $origins = Get-AzCdnOrigin -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $origins.Count | Should -Be 1
     }
 
     It 'Get' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $originName = "origin1"
-                $originHostName = "host1.hello.com"
-                $originHttpPort = 80
-                $origin = @{
-                    Name = $originName
-                    HostName = $originHostName
-                    HttpPort = $originHttpPort
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
-                $origin = Get-AzCdnOrigin -Name $originName -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName
-                
-                $origin.Name | Should -Be $originName
-                $origin.HostName | Should -Be $originHostName
-                $origin.HttpPort | Should -Be $originHttpPort
-                $origin.HttpsPort | Should -Be $null
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $origin = Get-AzCdnOrigin -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName
+        
+        $origin.Name | Should -Be $originName
+        $origin.HostName | Should -Be $originHostName
+        $origin.HttpsPort | Should -Be $null
     }
 
     It 'GetViaIdentity' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-
-                $cdnProfileName = 'p-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use cdnProfileName : $($cdnProfileName)"
-
-                $profileSku = "Standard_Microsoft";
-                New-AzCdnProfile -SkuName $profileSku -Name $cdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                
-                $endpointName = 'e-' + (RandomString -allChars $false -len 6);
-                $originName = "origin1"
-                $originHostName = "host1.hello.com"
-                $originHttpPort = 80
-                $origin = @{
-                    Name = $originName
-                    HostName = $originHostName
-                    HttpPort = $originHttpPort
-                };
-                $location = "westus"
-                Write-Host -ForegroundColor Green "Create endpointName : $($endpointName), origin.Name : $($origin.Name), origin.HostName : $($origin.HostName)"
-
-                New-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -Location $location -Origin $origin
-                $origin = Get-AzCdnOrigin -Name $originName -EndpointName $endpointName -ProfileName $cdnProfileName -ResourceGroupName $ResourceGroupName | Get-AzCdnOrigin
-                
-                $origin.Name | Should -Be $originName
-                $origin.HostName | Should -Be $originHostName
-                $origin.HttpPort | Should -Be $originHttpPort
-                $origin.HttpsPort | Should -Be $null
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $PSDefaultParameterValues['Disabled'] = $true
+        $origin = Get-AzCdnOrigin -SubscriptionId $env.SubscriptionId -Name $originName -EndpointName $env.ClassicEndpointName -ProfileName $env.ClassicCdnProfileName -ResourceGroupName $env.ResourceGroupName | Get-AzCdnOrigin
+        
+        $origin.Name | Should -Be $originName
+        $origin.HostName | Should -Be $originHostName
+        $origin.HttpsPort | Should -Be $null
     }
 }

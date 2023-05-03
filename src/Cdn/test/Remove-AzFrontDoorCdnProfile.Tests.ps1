@@ -14,47 +14,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnProfile'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnProfile' -Tag 'LiveOnly' {
+Describe 'Remove-AzFrontDoorCdnProfile'  {
     It 'Delete' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $profileSku = "Standard_AzureFrontDoor"
+        New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        Remove-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName
     }
 
     It 'DeleteViaIdentity' {
-        { 
-            $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $PSDefaultParameterValues['Disabled'] = $true
+        $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
 
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-                Get-AzFrontDoorCdnProfile -ResourceGroupName $ResourceGroupName -Name $frontDoorCdnProfileName | Remove-AzFrontDoorCdnProfile
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $profileSku = "Standard_AzureFrontDoor"
+        New-AzFrontDoorCdnProfile -SubscriptionId $env.SubscriptionId -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
+        Get-AzFrontDoorCdnProfile -ResourceGroupName $env.ResourceGroupName -Name $frontDoorCdnProfileName | Remove-AzFrontDoorCdnProfile
     }
 }

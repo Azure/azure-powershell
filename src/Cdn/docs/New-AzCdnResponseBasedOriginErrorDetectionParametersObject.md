@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 schema: 2.0.0
 ---
 
@@ -23,27 +23,18 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
 ```powershell
-{{ Add code here }}
+New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
 ```
 
 ```output
-{{ Add output here }}
+ResponseBasedDetectedErrorType ResponseBasedFailoverThresholdPercentage
+------------------------------ ----------------------------------------
+testDetctedError               6
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
 
 ## PARAMETERS
 
@@ -52,7 +43,7 @@ The list of Http status code ranges that are considered as server errors for ori
 To construct, see NOTES section for HTTPERRORRANGE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IHttpErrorRangeParameters[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IHttpErrorRangeParameters[]
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ResponseBasedOriginErrorDetectionParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ResponseBasedOriginErrorDetectionParameters
 
 ## NOTES
 

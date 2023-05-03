@@ -35,7 +35,7 @@ CertificateAuthority ExpirationDate SecretVersion Subject SubjectAlternativeName
                                                           {}                                True
 ```
 
-
+Create an in-memory object for AzureFrontDoor CustomerCertificateParameters
 
 ## PARAMETERS
 
@@ -121,7 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CustomerCertificateParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CustomerCertificateParameters
 
 ## NOTES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFrontDoorCdnProfile
 
 ## SYNOPSIS
-
+Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Get-AzFrontDoorCdnProfile -ResourceGroupName <String> [-SubscriptionId <String[]
 ```
 
 ## DESCRIPTION
-
+Gets an Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified profile name under the specified subscription and resource group.
 
 ## EXAMPLES
 
@@ -81,10 +81,23 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 
 Get an AzureFrontDoor profile under the resource group
 
+### Example 4: Get an AzureFrontDoor profile under the resource group via identity
+```powershell
+New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q7 -SkuName Standard_AzureFrontDoor -Location Global | Get-AzFrontDoorCdnProfile
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q7 frontdoor testps-rg-da16jm
+```
+
+Get an AzureFrontDoor profile under the resource group via identity
+
 ## PARAMETERS
 
 ### -DefaultProfile
-
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -99,6 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
+Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -114,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-
+Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -129,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-
+Name of the Resource group within the Azure subscription.
 
 ```yaml
 Type: System.String
@@ -144,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
+Azure Subscription ID.
 
 ```yaml
 Type: System.String[]
@@ -167,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IProfile
 
 ## NOTES
 
@@ -178,13 +192,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <ICdnIdentity>`: 
+`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
