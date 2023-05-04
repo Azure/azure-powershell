@@ -14,9 +14,7 @@ Create a new CosmosDB Account.
 
 ```
 New-AzCosmosDBAccount [-EnableAutomaticFailover] [-EnableMultipleWriteLocations] [-EnableVirtualNetwork]
- [-FromPointInTimeBackup] [-RestoreTimestampInUtc <DateTime>] 
- [-SourceRestorableDatabaseAccountId <String>] [-SourceDatabaseAccountName <String>] 
- [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
+ [-FromPointInTimeBackup] [-ApiKind <String>] [-DisableKeyBasedMetadataWriteAccess] [-EnableFreeTier <Boolean>]
  [-Location <String[]>] [-LocationObject <PSLocation[]>] [-Capabilities <String[]>] -ResourceGroupName <String>
  -Name <String> [-DefaultConsistencyLevel <String>] [-IpRule <String[]>]
  [-MaxStalenessIntervalInSeconds <Int32>] [-MaxStalenessPrefix <Int32>] [-Tag <Hashtable>]
@@ -332,51 +330,6 @@ Indicates that the new Cosmos DB account request is a restore request.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RestoreTimestampInUtc
-The timestamp to which the source account has to be restored to.
-
-```yaml
-Type: System.DateTime
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceRestorableDatabaseAccountId
-The account id of the source database account of the restore.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceDatabaseAccountName
-The name of the source database account of the restore.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
