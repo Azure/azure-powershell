@@ -1,4 +1,4 @@
-Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process of create an application." -NoResourceGroup -Platform Windows -PowerShellVersion Latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process of create an application." -NoResourceGroup -PowerShellVersion Latest -ScenarioScript `
 {
     try {
         $today = (Get-Date).tostring('yyyy-MM-dd')
@@ -60,7 +60,7 @@ Invoke-LiveTestScenario -Name "Test Application" -Description "Test the process 
     }
 }
 
-Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process of create groups and members." -NoResourceGroup -Platform Windows -PowerShellVersion Latest -ScenarioScript `
+Invoke-LiveTestScenario -Name "Test Group Member" -Description "Test the process of create groups and members." -NoResourceGroup -PowerShellVersion Latest -ScenarioScript `
 {
     try {
         $today = (Get-Date).tostring('yyyy-MM-dd')
