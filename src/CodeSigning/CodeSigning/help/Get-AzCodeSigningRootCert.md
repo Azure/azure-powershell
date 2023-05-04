@@ -13,7 +13,7 @@ Retrieve Azure.CodeSigning Root Cert
 
 ## SYNTAX
 
-### InteractiveSubmit (Default)
+### ByAccountProfileNameParameterSet (Default)
 ```
 Get-AzCodeSigningRootCert [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
 -MetadataFilePath <String> 
@@ -30,14 +30,11 @@ Destination is the downloaded root cert file path, which incldues the file name 
 
 ### Example: Sign a CI Policy .bin file
 ```powershell
-Get-AzCodeSigningRootCert -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
--Destination 'c:\acs\rootcert.cer'
--MetadataFilePath <String> 
+Get-AzCodeSigningRootCert -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Destination 'c:\acs\rootcert.cer'
 ```
 
 ```output
 c:\acs\rootcert.cer
-
 ```
 
 This command creates a software-protected key named ITSoftware in the key vault named Contoso.
@@ -52,7 +49,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
 
 Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -66,7 +62,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
 
 Required: True
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -80,7 +75,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
 
 Required: True
-Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -88,22 +82,21 @@ Accept wildcard characters: False
 
 ### -MetadataFilePath
 Specifies Azure CodeSigning Metadata file path used to sign CI policy. It's a file path, and the metadata content is below.
+Example:
+{
+    "Endpoint": "https://xxx.codesigning.azure.net/",
+    "CodeSigningAccountName": "acstest",
+    "CertificateProfileName": "acstestCert1"
+}
 
 ```yaml
 Type: System.String
 Parameter Sets: ByMetadataFileParameterSet
 
 Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-File Content: Json
-{
-  "Endpoint": "https://xxx.codesigning.azure.net/",
-  "CodeSigningAccountName": "acstest",
-  "CertificateProfileName": "acstestCert1"
-}
 ```
 
 ### -Destination
@@ -114,7 +107,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
 
 Required: True
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

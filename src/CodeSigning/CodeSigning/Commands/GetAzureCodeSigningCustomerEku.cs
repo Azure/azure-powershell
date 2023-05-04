@@ -42,22 +42,19 @@ namespace Microsoft.Azure.Commands.CodeSigning
         /// Account Profile name
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The account name of Azure CodeSigning.")]       
+            HelpMessage = "The account name of Azure CodeSigning.")]
         [ValidateNotNullOrEmpty]
         public string AccountName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 1,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The certificate profile name of Azure CodeSigning account.")]        
+            HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
         [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
         [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The endpoint url used to submit request to Azure CodeSigning.")]
@@ -68,13 +65,11 @@ namespace Microsoft.Azure.Commands.CodeSigning
         /// Metadata File Path
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ParameterSetName = ByMetadataFileParameterSet,
-             ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Metadata File path. Cmdlet constructs the FQDN of an account profile based on the Metadata File and currently selected environment.")]        
         [ValidateNotNullOrEmpty]
         public string MetadataFilePath { get; set; }
-               
         #endregion
 
         public override void ExecuteCmdlet()
@@ -85,17 +80,17 @@ namespace Microsoft.Azure.Commands.CodeSigning
             {
                 eku = CodeSigningServiceClient.GetCodeSigningEku(AccountName, ProfileName, EndpointUrl);
                 WriteEku(eku);
-            }          
+            }
             else if (!string.IsNullOrEmpty(MetadataFilePath))
             { 
                 eku = CodeSigningServiceClient.GetCodeSigningEku(MetadataFilePath);
-                WriteEku(eku);            
+                WriteEku(eku);
             }
         }
 
         private void WriteEku(string eku)
-        {  
-            WriteObject(eku.Split(','));         
-        }      
+        {
+            WriteObject(eku.Split(','));
+        }
     }
 }

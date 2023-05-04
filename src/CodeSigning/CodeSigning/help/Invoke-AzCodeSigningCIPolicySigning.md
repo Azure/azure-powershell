@@ -13,7 +13,7 @@ Invoke CI Policy signing to Azure.CodeSigning
 
 ## SYNTAX
 
-### InteractiveSubmit (Default)
+### ByAccountProfileNameParameterSet (Default)
 ```
 Invoke-AzCodeSigningCIPolicySigning [-AccountName] <String> [-ProfileName] <String> -EndpointUrl <String> 
 -MetadataFilePath <String> 
@@ -34,9 +34,7 @@ TimeStamperUrl is optional, but it's strongly recommended to do TimeStamping alo
 
 ### Example: Sign a CI Policy .bin file
 ```powershell
-Invoke-AzCodeSigningCIPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' 
--Path 'c:\cisigning\contosocipolicy.bin'-Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
--MetadataFilePath <String> 
+Invoke-AzCodeSigningCIPolicySigning -AccountName 'contoso' -ProfileName 'contososigning' -EndpointUrl 'https://wus.codesigning.azure.net' -Path 'c:\cisigning\contosocipolicy.bin' -Destination 'c:\cisigning\signed_contosocipolicy.bin' -TimeStamperUrl 'http://timestamp.acs.microsoft.com'
 ```
 
 ```output
@@ -55,7 +53,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
 
 Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -69,7 +66,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet
 
 Required: True
-Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -83,7 +79,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
 
 Required: True
-Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -91,22 +86,21 @@ Accept wildcard characters: False
 
 ### -MetadataFilePath
 Specifies Azure CodeSigning Metadata file path used to sign CI policy. It's a file path, and the metadata content is below.
+Example:
+{
+    "Endpoint": "https://xxx.codesigning.azure.net/",
+    "CodeSigningAccountName": "acstest",
+    "CertificateProfileName": "acstestCert1"
+}
 
 ```yaml
 Type: System.String
 Parameter Sets: ByMetadataFileParameterSet
 
 Required: True
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-File Content: Json
-{
-  "Endpoint": "https://xxx.codesigning.azure.net/",
-  "CodeSigningAccountName": "acstest",
-  "CertificateProfileName": "acstestCert1"
-}
 ```
 
 ### -Path
@@ -117,7 +111,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
 
 Required: True
-Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -131,7 +124,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
 
 Required: True
-Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -145,7 +137,6 @@ Type: System.String
 Parameter Sets: ByAccountProfileNameParameterSet, ByMetadataFileParameterSet
 
 Required: False
-Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

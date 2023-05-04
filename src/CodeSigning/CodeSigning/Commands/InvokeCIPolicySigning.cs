@@ -22,7 +22,7 @@ using System.Xml.Linq;
 
 namespace Microsoft.Azure.Commands.CodeSigning
 {
-    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet)]
+    [Cmdlet(VerbsLifecycle.Invoke, ResourceManager.Common.AzureRMConstants.AzurePrefix + "CodeSigningCIPolicySigning", DefaultParameterSetName = ByAccountProfileNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class InvokeCIPolicySigning : CodeSigningCmdletBase
     {
@@ -43,7 +43,6 @@ namespace Microsoft.Azure.Commands.CodeSigning
         /// Account Profile name
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The account name of Azure CodeSigning.")]
@@ -51,14 +50,12 @@ namespace Microsoft.Azure.Commands.CodeSigning
         public string AccountName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 1,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
         [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
         [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The endpoint url used to submit request to Azure CodeSigning.")]
@@ -69,57 +66,50 @@ namespace Microsoft.Azure.Commands.CodeSigning
         /// Metadata File Path
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ParameterSetName = ByMetadataFileParameterSet,
-             ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Metadata File path.")]
         [ValidateNotNullOrEmpty]
         public string MetadataFilePath { get; set; }
 
         //common parameters
         [Parameter(Mandatory = true,
-           Position = 3,
-           ParameterSetName = ByAccountProfileNameParameterSet,
+            ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Original unsigned CI policy file path.")]
+            HelpMessage = "Original unsigned CI policy file path.")]
         [Parameter(Mandatory = true,
-           Position = 3,
-           ParameterSetName = ByMetadataFileParameterSet,
+            ParameterSetName = ByMetadataFileParameterSet,
             ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Original unsigned CI policy file path.")]
+            HelpMessage = "Original unsigned CI policy file path.")]
         [ValidateNotNullOrEmpty]
         public string Path { get; set; }
         [Parameter(Mandatory = true,
-           Position = 4,
-           ParameterSetName = ByAccountProfileNameParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Signed CI policy file path")]
+            ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Signed CI policy file path")]
         [Parameter(Mandatory = true,
-           Position = 4,
-           ParameterSetName = ByMetadataFileParameterSet,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Signed CI policy file path")]
+            ParameterSetName = ByMetadataFileParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Signed CI policy file path")]
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
         [Parameter(Mandatory = false,
-                   Position = 5,
-                   ParameterSetName = ByAccountProfileNameParameterSet,
-                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Time Stamper Url.")]
+            ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Time Stamper Url.")]
         [Parameter(Mandatory = false,
-                   Position = 5,
-                   ParameterSetName = ByMetadataFileParameterSet,
-                    ValueFromPipelineByPropertyName = true,
-                   HelpMessage = "Time Stamper Url.")]        
+            ParameterSetName = ByMetadataFileParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Time Stamper Url.")]
         public string TimeStamperUrl { get; set; }
 
         #endregion
 
         public override void ExecuteCmdlet()
-        {           
+        {
             ValidateFileType(ResolvePath(Path));
 
-            //get two file hashes            
+            //get two file hashes
             FileStream fm = File.OpenRead(Path);
 
             List<byte[]> fileHashList = new List<byte[]>();
@@ -131,11 +121,11 @@ namespace Microsoft.Azure.Commands.CodeSigning
             
             if (!string.IsNullOrEmpty(AccountName))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl, fileHashList, authenticodeHashList);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(AccountName, ProfileName, EndpointUrl, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl, fileHashList, authenticodeHashList);
             }
             else if (!string.IsNullOrEmpty(MetadataFilePath))
             {
-                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl, fileHashList, authenticodeHashList);                
+                CodeSigningServiceClient.SubmitCIPolicySigning(MetadataFilePath, ResolvePath(Path), ResolvePath(Destination), TimeStamperUrl, fileHashList, authenticodeHashList);
             }
 
             WriteMessage("CI Policy is successfully signed. " + ResolvePath(Destination));

@@ -41,7 +41,6 @@ namespace Microsoft.Azure.Commands.CodeSigning
         /// Account Profile name
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The account name of Azure CodeSigning.")]
@@ -49,14 +48,12 @@ namespace Microsoft.Azure.Commands.CodeSigning
         public string AccountName { get; set; }
 
         [Parameter(Mandatory = true,
-            Position = 1,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The certificate profile name of Azure CodeSigning account.")]
         [ValidateNotNullOrEmpty()]
         public string ProfileName { get; set; }
         [Parameter(Mandatory = true,
-            Position = 2,
             ParameterSetName = ByAccountProfileNameParameterSet,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The endpoint url used to submit request to Azure CodeSigning.")]
@@ -67,23 +64,20 @@ namespace Microsoft.Azure.Commands.CodeSigning
         /// Metadata File Path
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 0,
             ParameterSetName = ByMetadataFileParameterSet,
-             ValueFromPipelineByPropertyName = true,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Metadata File path. Cmdlet constructs the FQDN of an account profile based on the Metadata File and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string MetadataFilePath { get; set; }
 
         [Parameter(Mandatory = true,
-          Position = 3,
-          ParameterSetName = ByAccountProfileNameParameterSet,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Downloaded Root Cert file full path, including file name")]
+            ParameterSetName = ByAccountProfileNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Downloaded Root Cert file full path, including file name")]
         [Parameter(Mandatory = true,
-          Position = 3,
-          ParameterSetName = ByMetadataFileParameterSet,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Downloaded Root Cert file full path, including file name")]
+            ParameterSetName = ByMetadataFileParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Downloaded Root Cert file full path, including file name")]
         [ValidateNotNullOrEmpty]
         public string Destination { get; set; }
         #endregion
@@ -104,18 +98,18 @@ namespace Microsoft.Azure.Commands.CodeSigning
             }
         }
         private void WriteRootCert(Stream rootcert)
-        {   
+        {
             var downloadPath = ResolvePath(Destination);
 
             var fileStream = new FileStream(downloadPath, FileMode.Create, FileAccess.Write);
             rootcert.CopyTo(fileStream);
             fileStream.Dispose();
 
-            //read thumbprint and subject namme                      
+            //read thumbprint and subject namme
             byte[] rawData = File.ReadAllBytes(downloadPath);
             X509Certificate2 x509 = new X509Certificate2(rawData);
-         
-            WriteObject(downloadPath.Replace("\\", @"\"));           
+
+            WriteObject(downloadPath.Replace("\\", @"\"));
 
             PSSigningCertificate pscert = new PSSigningCertificate();
             pscert.Subject = x509.Subject;

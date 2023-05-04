@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System.Runtime.InteropServices;
 using Moq;
 using System;
 using Xunit;
@@ -42,6 +43,10 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanGetCodeSigningRootCertTest()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
             string expected = "testRootCert";
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(AccountName,It.IsAny<string>())).Returns(true);

@@ -15,9 +15,11 @@
 using Microsoft.Azure.Commands.CodeSigning;
 using Microsoft.Azure.Commands.CodeSigning.Helpers;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System.Runtime.InteropServices;
 using Moq;
 using System;
 using Xunit;
+using System.IO;
 
 
 namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
@@ -43,13 +45,17 @@ namespace Microsoft.Azure.Commands.CodeSigning.Test.UnitTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CanInvokeCIPolicySigningTest()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                return;
+            }
             string expected = "testInvokeCIPolicySigning";
             // Mock the should process to return true
             commandRuntimeMock.Setup(cr => cr.ShouldProcess(AccountName,It.IsAny<string>())).Returns(true);
             cmdlet.AccountName = AccountName;
             cmdlet.ProfileName = ProfileName;
             cmdlet.EndpointUrl = EndPointUrl;
-            cmdlet.Path = ".\\UnitTests\\defaultpolicy.bin";
+            cmdlet.Path = $".{Path.DirectorySeparatorChar}UnitTests{Path.DirectorySeparatorChar}defaultpolicy.bin";
             cmdlet.Destination = Util.GetDownloadsPath() + "signedCI.bin";
             cmdlet.TimeStamperUrl = "http://timestamp.acs.microsoft.com";
 

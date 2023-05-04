@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.CodeSigning.Helpers
 {
-    internal class Util
+    public class Util
     {
         //Declare DownloadsFolder KNOWNFOLDERID
         private static Guid FolderDownloads = new Guid("374DE290-123F-4565-9164-39C4925E467B");
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.CodeSigning.Helpers
         /// Returns the absolute downloads directory specified on the system.
         /// </summary>
         /// <returns></returns>
-        internal static string GetDownloadsPath()
+        public static string GetDownloadsPath()
         {
             if (Environment.OSVersion.Version.Major < 6) throw new NotSupportedException();
 
