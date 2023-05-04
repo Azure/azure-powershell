@@ -128,7 +128,6 @@ function Invoke-AzSubscriptionAcceptOwnership {
 
     process {
         try {
-            $PSBoundParameters.Add('Name', $Property.AddonType.ToString())
             Az.Subscription.internal\Invoke-AzSubscriptionAcceptOwnership @PSBoundParameters
         }
         catch {
