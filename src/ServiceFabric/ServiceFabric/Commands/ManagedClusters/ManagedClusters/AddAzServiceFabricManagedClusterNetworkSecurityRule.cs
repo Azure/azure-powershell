@@ -21,13 +21,13 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
-
+using Access = Microsoft.Azure.Commands.ServiceFabric.Models.Access;
+using Direction = Microsoft.Azure.Commands.ServiceFabric.Models.Direction;
+using Protocol = Microsoft.Azure.Commands.ServiceFabric.Models.Protocol;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    public enum Access { Allow, Deny }
-    public enum Direction { Inbound, Outbound }
-    public enum Protocol { https, http, udp, tcp, esp, icmp, ah, any }
+  
 
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterNetworkSecurityRule", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
 	public class AddAzServiceFabricManagedClusterNetworkSecurityRule : ServiceFabricManagedCmdletBase
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
 		#endregion
 
-		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the network traffic is allowed or denied. Possible values include: 'allow', 'deny'")]
-		public  Access Access { get; set; }
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny ")]
+        public Access Access { get; set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Gets or sets network security rule description.")]
 		public string Description { get; set; }
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the destination port ranges.")]
 		public string[] DestinationPortRange { get; set; }
 
-		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network security rule direction. Possible values include: 'inbound', 'outbound'")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network security rule direction. Possible values include: Inbound, Outbound ")]
 		public Direction Direction { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "network security rule name.")]
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the priority of the rule. The value can be in the range 1000 to 3000. Values outside this range are reserved for Service Fabric ManagerCluster Resource Provider. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.")]
 		public int Priority { get; set; }
 
-		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network protocol this rule applies to. Possible values include: 'http', 'https', 'tcp', 'udp', 'icmp', 'ah', 'esp'")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp ")]
 		public Protocol Protocol { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the CIDR or source IP ranges.")]

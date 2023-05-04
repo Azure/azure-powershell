@@ -55,16 +55,13 @@ Add network security rule to cluster resource. This will add network security ru
 ### Example 1
 ```powershell
 $NSRName = "testSecRule1"
-$access = "allow"
-$direction = "inbound"
-$protocol = "tcp"
 $sourcePortRanges = "1-1000"
 $destinationPortRanges = "1-65535"
 $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
 $cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-        -Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1200 -SourcePortRanges $sourcePortRange -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
+        -Name $NSRName -Access Allow -Direction Outbound -Protocol tcp -Priority 1200 -SourcePortRanges $sourcePortRange -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 ```
 
 This command will add network security rule with properties above.
@@ -72,16 +69,13 @@ This command will add network security rule with properties above.
 ### Example 2
 ```powershell
 $NSRName = "testSecRule2"
-$access = "deny"
-$direction = "outbound"
-$protocol = "udp"
 $sourcePortRanges = "1-1000"
 $destinationPortRanges = "1-65535"
 $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
 $cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-        -Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1300 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
+        -Name $NSRName -Access Deny -Direction Outbound -Protocol udp -Priority 1300 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 ```
 
 Similar to Example1 with different properties.
@@ -89,17 +83,14 @@ Similar to Example1 with different properties.
 ### Example 3
 ```powershell
 $NSRName = "testSecRule3"
-$access = "allow"
-$direction = "outbound"
 $description = "test network security rule"
-$protocol = "tcp"
 $sourcePortRanges = "1-1000"
 $destinationPortRanges = "1-65535"
 $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
 $cluster = $clusterFromGet | Add-AzServiceFabricManagedClusterNetworkSecurityRule `
-        -Name $NSRName -Access $access -Description $description -Direction $direction -Protocol $protocol -Priority 1400 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefix -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+        -Name $NSRName -Access Allow -Description $description -Direction Outbound -Protocol tcp -Priority 1400 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefix -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
 ```
 
 This command will add a network security rule using cluster object with piping.
@@ -152,10 +143,10 @@ Accept wildcard characters: False
 ```
 
 ### -Access
-Gets or sets the network traffic is allowed or denied. Possible values include: 'allow', 'deny'
+Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny
 
 ```yaml
-Type: System.String
+Type: [Microsoft.Azure.Commands.ServiceFabric.Models.Access]
 Parameter Sets: ByName
 Aliases:
 
@@ -211,10 +202,10 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-Gets or sets network security rule direction. Possible values include: 'inbound', 'outbound'
+Gets or sets network security rule direction. Possible values include: Inbound, Outbound
 
 ```yaml
-Type: System.String
+Type: [Microsoft.Azure.Commands.ServiceFabric.Models.Direction]
 Parameter Sets: ByName
 Aliases:
 
@@ -242,10 +233,10 @@ Accept wildcard characters: False
 
 
 ### -Protocol
-Gets or sets network protocol this rule applies to. Possible values include: 'http', 'https', 'tcp', 'udp', 'icmp', 'ah', 'esp'
+Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp
 
 ```yaml
-Type: System.String
+Type: [Microsoft.Azure.Commands.ServiceFabric.Models.Protocol]
 Parameter Sets: ByName
 Aliases:
 

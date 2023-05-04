@@ -110,7 +110,6 @@
     - `Add-AzServiceFabricManagedNodeTypeVMSecret`
     - `Remove-AzServiceFabricManagedNodeTypeVMExtension`
     - `Restart-AzServiceFabricManagedNodeType`
-    - `Add-AzServiceFabricManagedClusterNetworkSecurityRule`
 * Upgraded Service Fabric SDK to version 1.2.0 which uses service fabric resource provider api-version 2020-03-01 for the current model and 2020-01-01-preview for managed clusters.
 
 ## Version 2.1.0
