@@ -107,14 +107,14 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Patch NetworkManager.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to specify which network manager is.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NetworkManager>> PatchWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkManager>> PatchWithHttpMessagesAsync(PatchObject parameters, string resourceGroupName, string networkManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all network managers in a subscription.
         /// </summary>

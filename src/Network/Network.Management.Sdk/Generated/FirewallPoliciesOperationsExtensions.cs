@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -164,12 +162,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='firewallPolicyName'>
             /// The name of the Firewall Policy.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update Azure Firewall Policy tags.
             /// </param>
-            public static FirewallPolicy UpdateTags(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static FirewallPolicy UpdateTags(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, firewallPolicyName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, firewallPolicyName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -184,15 +182,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='firewallPolicyName'>
             /// The name of the Firewall Policy.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update Azure Firewall Policy tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<FirewallPolicy> UpdateTagsAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<FirewallPolicy> UpdateTagsAsync(this IFirewallPoliciesOperations operations, string resourceGroupName, string firewallPolicyName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

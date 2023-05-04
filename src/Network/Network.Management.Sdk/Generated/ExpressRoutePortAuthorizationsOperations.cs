@@ -290,12 +290,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='authorizationName'>
         /// The name of the authorization.
         /// </param>
-        /// <param name='id'>
-        /// Resource ID.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name='authorizationParameters'>
+        /// Parameters supplied to the create or update express route port
+        /// authorization operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -303,10 +300,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ExpressRoutePortAuthorization>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRoutePortAuthorization>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<ExpressRoutePortAuthorization> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, id, name, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<ExpressRoutePortAuthorization> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, authorizationParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -698,12 +695,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='authorizationName'>
         /// The name of the authorization.
         /// </param>
-        /// <param name='id'>
-        /// Resource ID.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the resource that is unique within a resource group. This name
-        /// can be used to access the resource.
+        /// <param name='authorizationParameters'>
+        /// Parameters supplied to the create or update express route port
+        /// authorization operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -726,7 +720,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ExpressRoutePortAuthorization>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRoutePortAuthorization>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -740,17 +734,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "authorizationName");
             }
+            if (authorizationParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "authorizationParameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            ExpressRoutePortAuthorization authorizationParameters = new ExpressRoutePortAuthorization();
-            if (id != null || name != null)
-            {
-                authorizationParameters.Id = id;
-                authorizationParameters.Name = name;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -761,8 +753,8 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("expressRoutePortName", expressRoutePortName);
                 tracingParameters.Add("authorizationName", authorizationName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("authorizationParameters", authorizationParameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }

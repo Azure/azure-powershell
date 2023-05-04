@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -183,12 +181,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='crossConnectionName'>
             /// The name of the cross connection.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='crossConnectionParameters'>
+            /// Parameters supplied to update express route cross connection tags.
             /// </param>
-            public static ExpressRouteCrossConnection UpdateTags(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static ExpressRouteCrossConnection UpdateTags(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, TagsObject crossConnectionParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, crossConnectionName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, crossConnectionName, crossConnectionParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -203,15 +201,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='crossConnectionName'>
             /// The name of the cross connection.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='crossConnectionParameters'>
+            /// Parameters supplied to update express route cross connection tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRouteCrossConnection> UpdateTagsAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRouteCrossConnection> UpdateTagsAsync(this IExpressRouteCrossConnectionsOperations operations, string resourceGroupName, string crossConnectionName, TagsObject crossConnectionParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, crossConnectionName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, crossConnectionName, crossConnectionParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

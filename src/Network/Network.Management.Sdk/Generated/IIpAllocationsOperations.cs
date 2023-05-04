@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipAllocationName'>
         /// The name of the IpAllocation.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update IpAllocation tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IpAllocation>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string ipAllocationName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IpAllocation>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string ipAllocationName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all IpAllocations in a subscription.
         /// </summary>

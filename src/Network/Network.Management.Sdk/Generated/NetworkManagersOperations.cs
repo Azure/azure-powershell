@@ -504,14 +504,14 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Patch NetworkManager.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to specify which network manager is.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='networkManagerName'>
         /// The name of the network manager.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -534,8 +534,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<NetworkManager>> PatchWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NetworkManager>> PatchWithHttpMessagesAsync(PatchObject parameters, string resourceGroupName, string networkManagerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -549,11 +553,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkManagerName");
             }
             string apiVersion = "2022-11-01";
-            PatchObject parameters = new PatchObject();
-            if (tags != null)
-            {
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -561,10 +560,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "Patch", tracingParameters);
             }

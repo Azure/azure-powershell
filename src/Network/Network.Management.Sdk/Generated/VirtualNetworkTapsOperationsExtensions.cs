@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -158,12 +156,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='tapName'>
             /// The name of the tap.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='tapParameters'>
+            /// Parameters supplied to update VirtualNetworkTap tags.
             /// </param>
-            public static VirtualNetworkTap UpdateTags(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static VirtualNetworkTap UpdateTags(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, TagsObject tapParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, tapName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, tapName, tapParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -178,15 +176,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='tapName'>
             /// The name of the tap.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='tapParameters'>
+            /// Parameters supplied to update VirtualNetworkTap tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetworkTap> UpdateTagsAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetworkTap> UpdateTagsAsync(this IVirtualNetworkTapsOperations operations, string resourceGroupName, string tapName, TagsObject tapParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, tapName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, tapName, tapParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

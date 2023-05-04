@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -160,12 +158,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='circuitName'>
             /// The name of the circuit.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update express route circuit tags.
             /// </param>
-            public static ExpressRouteCircuit UpdateTags(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static ExpressRouteCircuit UpdateTags(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, circuitName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, circuitName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -180,15 +178,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='circuitName'>
             /// The name of the circuit.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update express route circuit tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRouteCircuit> UpdateTagsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRouteCircuit> UpdateTagsAsync(this IExpressRouteCircuitsOperations operations, string resourceGroupName, string circuitName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, circuitName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, circuitName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

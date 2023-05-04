@@ -109,8 +109,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update virtual network gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualNetworkGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualNetworkGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all virtual network gateways by resource group.
         /// </summary>
@@ -525,8 +525,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to start
+        /// packet capture on gateway.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -543,7 +544,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string filterData = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Stops packet capture on virtual network gateway in the specified
         /// resource group.
@@ -554,8 +555,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on virtual network gateway.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to stop
+        /// packet capture on gateway.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -572,7 +574,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get VPN client connection health detail per P2S client connection
         /// of the virtual network gateway in the specified resource group.
@@ -609,8 +611,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='vpnConnectionIds'>
-        /// List of p2s vpn connection Ids.
+        /// <param name='request'>
+        /// The parameters are supplied to disconnect vpn connections.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -624,7 +626,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, IList<string> vpnConnectionIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates a virtual network gateway in the specified
         /// resource group.
@@ -686,8 +688,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update virtual network gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -704,7 +706,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualNetworkGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualNetworkGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Resets the primary of the virtual network gateway in the specified
         /// resource group.
@@ -1000,8 +1002,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to start
+        /// packet capture on gateway.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1018,7 +1021,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string filterData = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Stops packet capture on virtual network gateway in the specified
         /// resource group.
@@ -1029,8 +1032,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on virtual network gateway.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to stop
+        /// packet capture on gateway.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1047,7 +1051,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Get VPN client connection health detail per P2S client connection
         /// of the virtual network gateway in the specified resource group.
@@ -1084,8 +1088,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayName'>
         /// The name of the virtual network gateway.
         /// </param>
-        /// <param name='vpnConnectionIds'>
-        /// List of p2s vpn connection Ids.
+        /// <param name='request'>
+        /// The parameters are supplied to disconnect vpn connections.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1099,7 +1103,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, IList<string> vpnConnectionIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all virtual network gateways by resource group.
         /// </summary>

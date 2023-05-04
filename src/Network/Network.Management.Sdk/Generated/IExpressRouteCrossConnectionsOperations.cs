@@ -128,8 +128,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='crossConnectionName'>
         /// The name of the cross connection.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='crossConnectionParameters'>
+        /// Parameters supplied to update express route cross connection tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -146,7 +146,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ExpressRouteCrossConnection>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExpressRouteCrossConnection>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, TagsObject crossConnectionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the currently advertised ARP table associated with the express
         /// route cross connection in a resource group.

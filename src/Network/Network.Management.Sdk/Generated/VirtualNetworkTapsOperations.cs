@@ -300,8 +300,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='tapName'>
         /// The name of the tap.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='tapParameters'>
+        /// Parameters supplied to update VirtualNetworkTap tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualNetworkTap>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string tapName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualNetworkTap>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string tapName, TagsObject tapParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -334,16 +334,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "tapName");
             }
+            if (tapParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "tapParameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            TagsObject tapParameters = new TagsObject();
-            if (tags != null)
-            {
-                tapParameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -353,8 +352,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("tapName", tapName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("tapParameters", tapParameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "UpdateTags", tracingParameters);
             }

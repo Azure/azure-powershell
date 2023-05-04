@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -115,15 +113,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosProtectionPlanName'>
             /// The name of the DDoS protection plan.
             /// </param>
-            /// <param name='location'>
-            /// Resource location.
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update operation.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            public static DdosProtectionPlan CreateOrUpdate(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static DdosProtectionPlan CreateOrUpdate(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, ddosProtectionPlanName, location, tags).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, ddosProtectionPlanName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -138,18 +133,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosProtectionPlanName'>
             /// The name of the DDoS protection plan.
             /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DdosProtectionPlan> CreateOrUpdateAsync(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DdosProtectionPlan> CreateOrUpdateAsync(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, location, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -167,12 +159,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosProtectionPlanName'>
             /// The name of the DDoS protection plan.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to the update DDoS protection plan resource tags.
             /// </param>
-            public static DdosProtectionPlan UpdateTags(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static DdosProtectionPlan UpdateTags(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, ddosProtectionPlanName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, ddosProtectionPlanName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -187,15 +179,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosProtectionPlanName'>
             /// The name of the DDoS protection plan.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to the update DDoS protection plan resource tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DdosProtectionPlan> UpdateTagsAsync(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DdosProtectionPlan> UpdateTagsAsync(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -315,15 +307,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosProtectionPlanName'>
             /// The name of the DDoS protection plan.
             /// </param>
-            /// <param name='location'>
-            /// Resource location.
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update operation.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            public static DdosProtectionPlan BeginCreateOrUpdate(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static DdosProtectionPlan BeginCreateOrUpdate(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, ddosProtectionPlanName, location, tags).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, ddosProtectionPlanName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -338,18 +327,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosProtectionPlanName'>
             /// The name of the DDoS protection plan.
             /// </param>
-            /// <param name='location'>
-            /// Resource location.
-            /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to the create or update operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DdosProtectionPlan> BeginCreateOrUpdateAsync(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DdosProtectionPlan> BeginCreateOrUpdateAsync(this IDdosProtectionPlansOperations operations, string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, location, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -279,8 +279,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnSiteName'>
         /// The name of the VpnSite being updated.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='vpnSiteParameters'>
+        /// Parameters supplied to update VpnSite tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VpnSite>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VpnSite>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string vpnSiteName, TagsObject vpnSiteParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -317,12 +317,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vpnSiteName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject vpnSiteParameters = new TagsObject();
-            if (tags != null)
+            if (vpnSiteParameters == null)
             {
-                vpnSiteParameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "vpnSiteParameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

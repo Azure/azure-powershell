@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -165,18 +163,18 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to specify which network manager is.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
             /// <param name='networkManagerName'>
             /// The name of the network manager.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
-            public static NetworkManager Patch(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static NetworkManager Patch(this INetworkManagersOperations operations, PatchObject parameters, string resourceGroupName, string networkManagerName)
             {
-                return operations.PatchAsync(resourceGroupName, networkManagerName, tags).GetAwaiter().GetResult();
+                return operations.PatchAsync(parameters, resourceGroupName, networkManagerName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -185,21 +183,21 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to specify which network manager is.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
             /// <param name='networkManagerName'>
             /// The name of the network manager.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkManager> PatchAsync(this INetworkManagersOperations operations, string resourceGroupName, string networkManagerName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkManager> PatchAsync(this INetworkManagersOperations operations, PatchObject parameters, string resourceGroupName, string networkManagerName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.PatchWithHttpMessagesAsync(resourceGroupName, networkManagerName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.PatchWithHttpMessagesAsync(parameters, resourceGroupName, networkManagerName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

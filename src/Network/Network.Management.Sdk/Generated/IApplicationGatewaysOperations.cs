@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationGatewayName'>
         /// The name of the application gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update application gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ApplicationGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string applicationGatewayName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all application gateways in a resource group.
         /// </summary>

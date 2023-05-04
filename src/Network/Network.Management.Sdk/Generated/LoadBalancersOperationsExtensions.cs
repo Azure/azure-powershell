@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -164,12 +162,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='loadBalancerName'>
             /// The name of the load balancer.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update load balancer tags.
             /// </param>
-            public static LoadBalancer UpdateTags(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static LoadBalancer UpdateTags(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, loadBalancerName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, loadBalancerName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -184,15 +182,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='loadBalancerName'>
             /// The name of the load balancer.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update load balancer tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LoadBalancer> UpdateTagsAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LoadBalancer> UpdateTagsAsync(this ILoadBalancersOperations operations, string resourceGroupName, string loadBalancerName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, loadBalancerName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, loadBalancerName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -269,12 +267,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The region where load balancers are located at.
             /// </param>
-            /// <param name='frontendIPConfigurations'>
-            /// A list of frontend IP configuration resources that should swap VIPs.
+            /// <param name='parameters'>
+            /// Parameters that define which VIPs should be swapped.
             /// </param>
-            public static void SwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>))
+            public static void SwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters)
             {
-                operations.SwapPublicIpAddressesAsync(location, frontendIPConfigurations).GetAwaiter().GetResult();
+                operations.SwapPublicIpAddressesAsync(location, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -286,15 +284,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The region where load balancers are located at.
             /// </param>
-            /// <param name='frontendIPConfigurations'>
-            /// A list of frontend IP configuration resources that should swap VIPs.
+            /// <param name='parameters'>
+            /// Parameters that define which VIPs should be swapped.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task SwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task SwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.SwapPublicIpAddressesWithHttpMessagesAsync(location, frontendIPConfigurations, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.SwapPublicIpAddressesWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -312,15 +310,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='backendPoolName'>
             /// The name of the load balancer backend address pool.
             /// </param>
-            /// <param name='ipConfiguration'>
-            /// NetworkInterfaceIPConfiguration set in load balancer backend address.
+            /// <param name='parameters'>
+            /// Query inbound NAT rule port mapping request.
             /// </param>
-            /// <param name='ipAddress'>
-            /// IP address set in load balancer backend address.
-            /// </param>
-            public static BackendAddressInboundNatRulePortMappings ListInboundNatRulePortMappings(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string))
+            public static BackendAddressInboundNatRulePortMappings ListInboundNatRulePortMappings(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters)
             {
-                return operations.ListInboundNatRulePortMappingsAsync(groupName, loadBalancerName, backendPoolName, ipConfiguration, ipAddress).GetAwaiter().GetResult();
+                return operations.ListInboundNatRulePortMappingsAsync(groupName, loadBalancerName, backendPoolName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -338,18 +333,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='backendPoolName'>
             /// The name of the load balancer backend address pool.
             /// </param>
-            /// <param name='ipConfiguration'>
-            /// NetworkInterfaceIPConfiguration set in load balancer backend address.
-            /// </param>
-            /// <param name='ipAddress'>
-            /// IP address set in load balancer backend address.
+            /// <param name='parameters'>
+            /// Query inbound NAT rule port mapping request.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BackendAddressInboundNatRulePortMappings> ListInboundNatRulePortMappingsAsync(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BackendAddressInboundNatRulePortMappings> ListInboundNatRulePortMappingsAsync(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListInboundNatRulePortMappingsWithHttpMessagesAsync(groupName, loadBalancerName, backendPoolName, ipConfiguration, ipAddress, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListInboundNatRulePortMappingsWithHttpMessagesAsync(groupName, loadBalancerName, backendPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -447,12 +439,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The region where load balancers are located at.
             /// </param>
-            /// <param name='frontendIPConfigurations'>
-            /// A list of frontend IP configuration resources that should swap VIPs.
+            /// <param name='parameters'>
+            /// Parameters that define which VIPs should be swapped.
             /// </param>
-            public static void BeginSwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>))
+            public static void BeginSwapPublicIpAddresses(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters)
             {
-                operations.BeginSwapPublicIpAddressesAsync(location, frontendIPConfigurations).GetAwaiter().GetResult();
+                operations.BeginSwapPublicIpAddressesAsync(location, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -464,15 +456,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The region where load balancers are located at.
             /// </param>
-            /// <param name='frontendIPConfigurations'>
-            /// A list of frontend IP configuration resources that should swap VIPs.
+            /// <param name='parameters'>
+            /// Parameters that define which VIPs should be swapped.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginSwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginSwapPublicIpAddressesAsync(this ILoadBalancersOperations operations, string location, LoadBalancerVipSwapRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginSwapPublicIpAddressesWithHttpMessagesAsync(location, frontendIPConfigurations, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginSwapPublicIpAddressesWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -490,15 +482,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='backendPoolName'>
             /// The name of the load balancer backend address pool.
             /// </param>
-            /// <param name='ipConfiguration'>
-            /// NetworkInterfaceIPConfiguration set in load balancer backend address.
+            /// <param name='parameters'>
+            /// Query inbound NAT rule port mapping request.
             /// </param>
-            /// <param name='ipAddress'>
-            /// IP address set in load balancer backend address.
-            /// </param>
-            public static BackendAddressInboundNatRulePortMappings BeginListInboundNatRulePortMappings(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string))
+            public static BackendAddressInboundNatRulePortMappings BeginListInboundNatRulePortMappings(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters)
             {
-                return operations.BeginListInboundNatRulePortMappingsAsync(groupName, loadBalancerName, backendPoolName, ipConfiguration, ipAddress).GetAwaiter().GetResult();
+                return operations.BeginListInboundNatRulePortMappingsAsync(groupName, loadBalancerName, backendPoolName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -516,18 +505,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='backendPoolName'>
             /// The name of the load balancer backend address pool.
             /// </param>
-            /// <param name='ipConfiguration'>
-            /// NetworkInterfaceIPConfiguration set in load balancer backend address.
-            /// </param>
-            /// <param name='ipAddress'>
-            /// IP address set in load balancer backend address.
+            /// <param name='parameters'>
+            /// Query inbound NAT rule port mapping request.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<BackendAddressInboundNatRulePortMappings> BeginListInboundNatRulePortMappingsAsync(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<BackendAddressInboundNatRulePortMappings> BeginListInboundNatRulePortMappingsAsync(this ILoadBalancersOperations operations, string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(groupName, loadBalancerName, backendPoolName, ipConfiguration, ipAddress, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(groupName, loadBalancerName, backendPoolName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

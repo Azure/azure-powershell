@@ -27,18 +27,17 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
             /// <param name='firewallPolicyName'>
             /// The name of the Firewall Policy.
             /// </param>
-            /// <param name='filterName'>
-            /// Describes the name of the column which values will be returned
-            /// </param>
-            public static SignatureOverridesFilterValuesResponse List(this IFirewallPolicyIdpsSignaturesFilterValuesOperations operations, string resourceGroupName, string firewallPolicyName, string filterName = default(string))
+            public static SignatureOverridesFilterValuesResponse List(this IFirewallPolicyIdpsSignaturesFilterValuesOperations operations, SignatureOverridesFilterValuesQuery parameters, string resourceGroupName, string firewallPolicyName)
             {
-                return operations.ListAsync(resourceGroupName, firewallPolicyName, filterName).GetAwaiter().GetResult();
+                return operations.ListAsync(parameters, resourceGroupName, firewallPolicyName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -47,21 +46,20 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
             /// <param name='firewallPolicyName'>
             /// The name of the Firewall Policy.
             /// </param>
-            /// <param name='filterName'>
-            /// Describes the name of the column which values will be returned
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SignatureOverridesFilterValuesResponse> ListAsync(this IFirewallPolicyIdpsSignaturesFilterValuesOperations operations, string resourceGroupName, string firewallPolicyName, string filterName = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SignatureOverridesFilterValuesResponse> ListAsync(this IFirewallPolicyIdpsSignaturesFilterValuesOperations operations, SignatureOverridesFilterValuesQuery parameters, string resourceGroupName, string firewallPolicyName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(resourceGroupName, firewallPolicyName, filterName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(parameters, resourceGroupName, firewallPolicyName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

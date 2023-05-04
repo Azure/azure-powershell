@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -37,15 +35,12 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN for which configuration of all vpn-sites is
             /// needed.
             /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the configurations for vpn-sites.
+            /// <param name='request'>
+            /// Parameters supplied to download vpn-sites configuration.
             /// </param>
-            /// <param name='vpnSites'>
-            /// List of resource-ids of the vpn-sites for which config is to be downloaded.
-            /// </param>
-            public static void Download(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>))
+            public static void Download(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
             {
-                operations.DownloadAsync(resourceGroupName, virtualWANName, outputBlobSasUrl, vpnSites).GetAwaiter().GetResult();
+                operations.DownloadAsync(resourceGroupName, virtualWANName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -62,18 +57,15 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN for which configuration of all vpn-sites is
             /// needed.
             /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the configurations for vpn-sites.
-            /// </param>
-            /// <param name='vpnSites'>
-            /// List of resource-ids of the vpn-sites for which config is to be downloaded.
+            /// <param name='request'>
+            /// Parameters supplied to download vpn-sites configuration.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, outputBlobSasUrl, vpnSites, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -90,15 +82,12 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN for which configuration of all vpn-sites is
             /// needed.
             /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the configurations for vpn-sites.
+            /// <param name='request'>
+            /// Parameters supplied to download vpn-sites configuration.
             /// </param>
-            /// <param name='vpnSites'>
-            /// List of resource-ids of the vpn-sites for which config is to be downloaded.
-            /// </param>
-            public static void BeginDownload(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>))
+            public static void BeginDownload(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request)
             {
-                operations.BeginDownloadAsync(resourceGroupName, virtualWANName, outputBlobSasUrl, vpnSites).GetAwaiter().GetResult();
+                operations.BeginDownloadAsync(resourceGroupName, virtualWANName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -115,18 +104,15 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN for which configuration of all vpn-sites is
             /// needed.
             /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the configurations for vpn-sites.
-            /// </param>
-            /// <param name='vpnSites'>
-            /// List of resource-ids of the vpn-sites for which config is to be downloaded.
+            /// <param name='request'>
+            /// Parameters supplied to download vpn-sites configuration.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDownloadAsync(this IVpnSitesConfigurationOperations operations, string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, outputBlobSasUrl, vpnSites, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

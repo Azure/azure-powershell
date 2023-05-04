@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -185,15 +183,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being prepared for.
+            /// <param name='prepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to prepare subnet by applying network intent policies.
             /// </param>
-            /// <param name='networkIntentPolicyConfigurations'>
-            /// A list of NetworkIntentPolicyConfiguration.
-            /// </param>
-            public static void PrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>))
+            public static void PrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
             {
-                operations.PrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, networkIntentPolicyConfigurations).GetAwaiter().GetResult();
+                operations.PrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -211,18 +206,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being prepared for.
-            /// </param>
-            /// <param name='networkIntentPolicyConfigurations'>
-            /// A list of NetworkIntentPolicyConfiguration.
+            /// <param name='prepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to prepare subnet by applying network intent policies.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task PrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task PrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.PrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, networkIntentPolicyConfigurations, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.PrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -240,12 +232,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being unprepared for.
+            /// <param name='unprepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to unprepare subnet to remove network intent policies.
             /// </param>
-            public static void UnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string))
+            public static void UnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
             {
-                operations.UnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName).GetAwaiter().GetResult();
+                operations.UnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -263,15 +255,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being unprepared for.
+            /// <param name='unprepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to unprepare subnet to remove network intent policies.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task UnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.UnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.UnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -424,15 +416,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being prepared for.
+            /// <param name='prepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to prepare subnet by applying network intent policies.
             /// </param>
-            /// <param name='networkIntentPolicyConfigurations'>
-            /// A list of NetworkIntentPolicyConfiguration.
-            /// </param>
-            public static void BeginPrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>))
+            public static void BeginPrepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters)
             {
-                operations.BeginPrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, networkIntentPolicyConfigurations).GetAwaiter().GetResult();
+                operations.BeginPrepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -450,18 +439,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being prepared for.
-            /// </param>
-            /// <param name='networkIntentPolicyConfigurations'>
-            /// A list of NetworkIntentPolicyConfiguration.
+            /// <param name='prepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to prepare subnet by applying network intent policies.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginPrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginPrepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginPrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, networkIntentPolicyConfigurations, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginPrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -479,12 +465,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being unprepared for.
+            /// <param name='unprepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to unprepare subnet to remove network intent policies.
             /// </param>
-            public static void BeginUnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string))
+            public static void BeginUnprepareNetworkPolicies(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters)
             {
-                operations.BeginUnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName).GetAwaiter().GetResult();
+                operations.BeginUnprepareNetworkPoliciesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -502,15 +488,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='subnetName'>
             /// The name of the subnet.
             /// </param>
-            /// <param name='serviceName'>
-            /// The name of the service for which subnet is being unprepared for.
+            /// <param name='unprepareNetworkPoliciesRequestParameters'>
+            /// Parameters supplied to unprepare subnet to remove network intent policies.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginUnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginUnprepareNetworkPoliciesAsync(this ISubnetsOperations operations, string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

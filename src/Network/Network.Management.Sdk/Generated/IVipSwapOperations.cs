@@ -59,7 +59,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceName'>
         /// The name of the cloud service.
         /// </param>
-        /// <param name='properties'>
+        /// <param name='parameters'>
+        /// SwapResource object where slot type should be the target slot after
+        /// vip swap for the specified cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> CreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> CreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the list of SwapResource which identifies the slot type for
         /// the specified cloud service. The slot type on a cloud service can
@@ -110,7 +112,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceName'>
         /// The name of the cloud service.
         /// </param>
-        /// <param name='properties'>
+        /// <param name='parameters'>
+        /// SwapResource object where slot type should be the target slot after
+        /// vip swap for the specified cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -124,6 +128,6 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginCreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginCreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

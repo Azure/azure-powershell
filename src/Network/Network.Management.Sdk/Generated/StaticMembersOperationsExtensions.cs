@@ -79,6 +79,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the specify the static member to create
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -91,12 +94,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='staticMemberName'>
             /// The name of the static member.
             /// </param>
-            /// <param name='resourceId'>
-            /// Resource Id.
-            /// </param>
-            public static StaticMember CreateOrUpdate(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, string resourceId = default(string))
+            public static StaticMember CreateOrUpdate(this IStaticMembersOperations operations, StaticMember parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, resourceId).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(parameters, resourceGroupName, networkManagerName, networkGroupName, staticMemberName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -105,6 +105,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the specify the static member to create
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -117,15 +120,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='staticMemberName'>
             /// The name of the static member.
             /// </param>
-            /// <param name='resourceId'>
-            /// Resource Id.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<StaticMember> CreateOrUpdateAsync(this IStaticMembersOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, string resourceId = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<StaticMember> CreateOrUpdateAsync(this IStaticMembersOperations operations, StaticMember parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, staticMemberName, resourceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(parameters, resourceGroupName, networkManagerName, networkGroupName, staticMemberName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

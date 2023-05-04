@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -160,12 +158,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='securityPartnerProviderName'>
             /// The name of the Security Partner Provider.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update Security Partner Provider tags.
             /// </param>
-            public static SecurityPartnerProvider UpdateTags(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static SecurityPartnerProvider UpdateTags(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, securityPartnerProviderName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, securityPartnerProviderName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -180,15 +178,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='securityPartnerProviderName'>
             /// The name of the Security Partner Provider.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update Security Partner Provider tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SecurityPartnerProvider> UpdateTagsAsync(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SecurityPartnerProvider> UpdateTagsAsync(this ISecurityPartnerProvidersOperations operations, string resourceGroupName, string securityPartnerProviderName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, securityPartnerProviderName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, securityPartnerProviderName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

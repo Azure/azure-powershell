@@ -91,12 +91,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='authorizationName'>
         /// The name of the authorization.
         /// </param>
-        /// <param name='id'>
-        /// Resource ID.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the resource that is unique within a resource group.
-        /// This name can be used to access the resource.
+        /// <param name='authorizationParameters'>
+        /// Parameters supplied to the create or update express route port
+        /// authorization operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -113,7 +110,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ExpressRoutePortAuthorization>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExpressRoutePortAuthorization>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all authorizations in an express route port.
         /// </summary>
@@ -178,12 +175,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='authorizationName'>
         /// The name of the authorization.
         /// </param>
-        /// <param name='id'>
-        /// Resource ID.
-        /// </param>
-        /// <param name='name'>
-        /// The name of the resource that is unique within a resource group.
-        /// This name can be used to access the resource.
+        /// <param name='authorizationParameters'>
+        /// Parameters supplied to the create or update express route port
+        /// authorization operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -200,7 +194,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ExpressRoutePortAuthorization>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExpressRoutePortAuthorization>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all authorizations in an express route port.
         /// </summary>

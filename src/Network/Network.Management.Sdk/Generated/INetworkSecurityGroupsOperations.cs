@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkSecurityGroupName'>
         /// The name of the network security group.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update network security group tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NetworkSecurityGroup>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkSecurityGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkSecurityGroup>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkSecurityGroupName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all network security groups in a subscription.
         /// </summary>

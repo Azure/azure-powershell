@@ -1286,8 +1286,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The location of the domain name.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1295,10 +1295,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<PrivateLinkServiceVisibility> _response = await BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(location, privateLinkServiceAlias, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<PrivateLinkServiceVisibility> _response = await BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(location, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1312,8 +1312,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1321,10 +1321,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<PrivateLinkServiceVisibility> _response = await BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(location, resourceGroupName, privateLinkServiceAlias, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<PrivateLinkServiceVisibility> _response = await BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(location, resourceGroupName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -2282,8 +2282,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The location of the domain name.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2306,22 +2306,21 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            CheckPrivateLinkServiceVisibilityRequest parameters = new CheckPrivateLinkServiceVisibilityRequest();
-            if (privateLinkServiceAlias != null)
-            {
-                parameters.PrivateLinkServiceAlias = privateLinkServiceAlias;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2330,8 +2329,8 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCheckPrivateLinkServiceVisibility", tracingParameters);
             }
@@ -2486,8 +2485,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2510,7 +2509,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (location == null)
             {
@@ -2520,16 +2519,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            CheckPrivateLinkServiceVisibilityRequest parameters = new CheckPrivateLinkServiceVisibilityRequest();
-            if (privateLinkServiceAlias != null)
-            {
-                parameters.PrivateLinkServiceAlias = privateLinkServiceAlias;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2539,8 +2537,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCheckPrivateLinkServiceVisibilityByResourceGroup", tracingParameters);
             }

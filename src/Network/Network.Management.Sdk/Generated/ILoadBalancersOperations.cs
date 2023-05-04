@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update load balancer tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<LoadBalancer>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string loadBalancerName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<LoadBalancer>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string loadBalancerName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the load balancers in a subscription.
         /// </summary>
@@ -177,9 +177,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The region where load balancers are located at.
         /// </param>
-        /// <param name='frontendIPConfigurations'>
-        /// A list of frontend IP configuration resources that should swap
-        /// VIPs.
+        /// <param name='parameters'>
+        /// Parameters that define which VIPs should be swapped.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -193,7 +192,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> SwapPublicIpAddressesWithHttpMessagesAsync(string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> SwapPublicIpAddressesWithHttpMessagesAsync(string location, LoadBalancerVipSwapRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List of inbound NAT rule port mappings.
         /// </summary>
@@ -206,12 +205,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendPoolName'>
         /// The name of the load balancer backend address pool.
         /// </param>
-        /// <param name='ipConfiguration'>
-        /// NetworkInterfaceIPConfiguration set in load balancer backend
-        /// address.
-        /// </param>
-        /// <param name='ipAddress'>
-        /// IP address set in load balancer backend address.
+        /// <param name='parameters'>
+        /// Query inbound NAT rule port mapping request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -228,7 +223,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> ListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> ListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified load balancer.
         /// </summary>
@@ -286,9 +281,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The region where load balancers are located at.
         /// </param>
-        /// <param name='frontendIPConfigurations'>
-        /// A list of frontend IP configuration resources that should swap
-        /// VIPs.
+        /// <param name='parameters'>
+        /// Parameters that define which VIPs should be swapped.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -302,7 +296,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginSwapPublicIpAddressesWithHttpMessagesAsync(string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginSwapPublicIpAddressesWithHttpMessagesAsync(string location, LoadBalancerVipSwapRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List of inbound NAT rule port mappings.
         /// </summary>
@@ -315,12 +309,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendPoolName'>
         /// The name of the load balancer backend address pool.
         /// </param>
-        /// <param name='ipConfiguration'>
-        /// NetworkInterfaceIPConfiguration set in load balancer backend
-        /// address.
-        /// </param>
-        /// <param name='ipAddress'>
-        /// IP address set in load balancer backend address.
+        /// <param name='parameters'>
+        /// Query inbound NAT rule port mapping request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -337,7 +327,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the load balancers in a subscription.
         /// </summary>

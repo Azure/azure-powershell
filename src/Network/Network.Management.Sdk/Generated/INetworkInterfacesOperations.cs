@@ -199,8 +199,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkInterfaceName'>
         /// The name of the network interface.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update network interface tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NetworkInterface>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkInterface>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkInterfaceName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all network interfaces in a subscription.
         /// </summary>

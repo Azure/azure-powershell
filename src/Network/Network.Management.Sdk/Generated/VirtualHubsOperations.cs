@@ -279,8 +279,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='virtualHubParameters'>
+        /// Parameters supplied to update VirtualHub tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualHub>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualHub>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, TagsObject virtualHubParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -317,12 +317,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualHubName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject virtualHubParameters = new TagsObject();
-            if (tags != null)
+            if (virtualHubParameters == null)
             {
-                virtualHubParameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "virtualHubParameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -872,12 +871,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceId'>
-        /// The resource whose effective routes are being requested.
-        /// </param>
-        /// <param name='virtualWanResourceType'>
-        /// The type of the specified resource like RouteTable, ExpressRouteConnection,
-        /// HubVirtualNetworkConnection, VpnConnection and P2SConnection.
+        /// <param name='effectiveRoutesParameters'>
+        /// Parameters supplied to get the effective routes for a specific resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -885,10 +880,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> GetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceId = default(string), string virtualWanResourceType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> GetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, EffectiveRoutesParameters effectiveRoutesParameters = default(EffectiveRoutesParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<VirtualHubEffectiveRouteList> _response = await BeginGetEffectiveVirtualHubRoutesWithHttpMessagesAsync(resourceGroupName, virtualHubName, resourceId, virtualWanResourceType, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<VirtualHubEffectiveRouteList> _response = await BeginGetEffectiveVirtualHubRoutesWithHttpMessagesAsync(resourceGroupName, virtualHubName, effectiveRoutesParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -902,12 +897,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose inbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like ExpressRouteConnection,
-        /// HubVirtualNetworkConnection, VpnConnection and P2SConnection.
+        /// <param name='getInboundRoutesParameters'>
+        /// Parameters supplied to get the inbound routes for a connection resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -915,10 +906,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetInboundRoutesParameters getInboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<EffectiveRouteMapRouteList> _response = await BeginGetInboundRoutesWithHttpMessagesAsync(resourceGroupName, virtualHubName, resourceUri, connectionType, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<EffectiveRouteMapRouteList> _response = await BeginGetInboundRoutesWithHttpMessagesAsync(resourceGroupName, virtualHubName, getInboundRoutesParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -932,12 +923,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose outbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like ExpressRouteConnection,
-        /// HubVirtualNetworkConnection, VpnConnection and P2SConnection.
+        /// <param name='getOutboundRoutesParameters'>
+        /// Parameters supplied to get the outbound routes for a connection resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -945,10 +932,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetOutboundRoutesParameters getOutboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<EffectiveRouteMapRouteList> _response = await BeginGetOutboundRoutesWithHttpMessagesAsync(resourceGroupName, virtualHubName, resourceUri, connectionType, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<EffectiveRouteMapRouteList> _response = await BeginGetOutboundRoutesWithHttpMessagesAsync(resourceGroupName, virtualHubName, getOutboundRoutesParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1366,12 +1353,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceId'>
-        /// The resource whose effective routes are being requested.
-        /// </param>
-        /// <param name='virtualWanResourceType'>
-        /// The type of the specified resource like RouteTable, ExpressRouteConnection,
-        /// HubVirtualNetworkConnection, VpnConnection and P2SConnection.
+        /// <param name='effectiveRoutesParameters'>
+        /// Parameters supplied to get the effective routes for a specific resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1394,7 +1377,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> BeginGetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceId = default(string), string virtualWanResourceType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> BeginGetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, EffectiveRoutesParameters effectiveRoutesParameters = default(EffectiveRoutesParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1409,13 +1392,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualHubName");
             }
             string apiVersion = "2022-11-01";
-            EffectiveRoutesParameters effectiveRoutesParameters = default(EffectiveRoutesParameters);
-            if (resourceId != null || virtualWanResourceType != null)
-            {
-                effectiveRoutesParameters = new EffectiveRoutesParameters();
-                effectiveRoutesParameters.ResourceId = resourceId;
-                effectiveRoutesParameters.VirtualWanResourceType = virtualWanResourceType;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1582,12 +1558,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose inbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like ExpressRouteConnection,
-        /// HubVirtualNetworkConnection, VpnConnection and P2SConnection.
+        /// <param name='getInboundRoutesParameters'>
+        /// Parameters supplied to get the inbound routes for a connection resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1610,7 +1582,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetInboundRoutesParameters getInboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1624,13 +1596,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualHubName");
             }
-            string apiVersion = "2022-11-01";
-            GetInboundRoutesParameters getInboundRoutesParameters = new GetInboundRoutesParameters();
-            if (resourceUri != null || connectionType != null)
+            if (getInboundRoutesParameters == null)
             {
-                getInboundRoutesParameters.ResourceUri = resourceUri;
-                getInboundRoutesParameters.ConnectionType = connectionType;
+                throw new ValidationException(ValidationRules.CannotBeNull, "getInboundRoutesParameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1797,12 +1767,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose outbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like ExpressRouteConnection,
-        /// HubVirtualNetworkConnection, VpnConnection and P2SConnection.
+        /// <param name='getOutboundRoutesParameters'>
+        /// Parameters supplied to get the outbound routes for a connection resource.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1825,7 +1791,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetOutboundRoutesParameters getOutboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1839,13 +1805,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualHubName");
             }
-            string apiVersion = "2022-11-01";
-            GetOutboundRoutesParameters getOutboundRoutesParameters = new GetOutboundRoutesParameters();
-            if (resourceUri != null || connectionType != null)
+            if (getOutboundRoutesParameters == null)
             {
-                getOutboundRoutesParameters.ResourceUri = resourceUri;
-                getOutboundRoutesParameters.ConnectionType = connectionType;
+                throw new ValidationException(ValidationRules.CannotBeNull, "getOutboundRoutesParameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

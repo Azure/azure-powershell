@@ -107,8 +107,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRoutePortName'>
         /// The name of the ExpressRoutePort resource.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update ExpressRoutePort resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ExpressRoutePort>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExpressRoutePort>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// List all the ExpressRoutePort resources in the specified resource
         /// group.
@@ -179,8 +179,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRoutePortName'>
         /// The name of ExpressRoutePort.
         /// </param>
-        /// <param name='customerName'>
-        /// The customer name.
+        /// <param name='request'>
+        /// Request parameters supplied to generate a letter of authorization.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -197,7 +197,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<GenerateExpressRoutePortsLOAResult>> GenerateLOAWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string customerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<GenerateExpressRoutePortsLOAResult>> GenerateLOAWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, GenerateExpressRoutePortsLOARequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified ExpressRoutePort resource.
         /// </summary>

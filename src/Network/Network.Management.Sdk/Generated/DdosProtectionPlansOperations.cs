@@ -275,11 +275,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosProtectionPlanName'>
         /// The name of the DDoS protection plan.
         /// </param>
-        /// <param name='location'>
-        /// Resource location.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to the create or update operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -287,10 +284,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<DdosProtectionPlan>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DdosProtectionPlan>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<DdosProtectionPlan> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, location, tags, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<DdosProtectionPlan> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, ddosProtectionPlanName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -303,8 +300,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosProtectionPlanName'>
         /// The name of the DDoS protection plan.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to the update DDoS protection plan resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -327,7 +324,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DdosProtectionPlan>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DdosProtectionPlan>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -337,16 +334,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ddosProtectionPlanName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            TagsObject parameters = new TagsObject();
-            if (tags != null)
-            {
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -356,8 +352,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("ddosProtectionPlanName", ddosProtectionPlanName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "UpdateTags", tracingParameters);
             }
@@ -1059,11 +1055,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosProtectionPlanName'>
         /// The name of the DDoS protection plan.
         /// </param>
-        /// <param name='location'>
-        /// Resource location.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to the create or update operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1086,7 +1079,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<DdosProtectionPlan>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<DdosProtectionPlan>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1096,17 +1089,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ddosProtectionPlanName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            DdosProtectionPlan parameters = new DdosProtectionPlan();
-            if (location != null || tags != null)
-            {
-                parameters.Location = location;
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1116,8 +1107,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("ddosProtectionPlanName", ddosProtectionPlanName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreateOrUpdate", tracingParameters);
             }

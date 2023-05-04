@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='securityPartnerProviderName'>
         /// The name of the Security Partner Provider.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update Security Partner Provider tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SecurityPartnerProvider>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string securityPartnerProviderName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SecurityPartnerProvider>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string securityPartnerProviderName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all Security Partner Providers in a resource group.
         /// </summary>

@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -129,12 +127,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ipGroupsName'>
             /// The name of the ipGroups.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to the update ipGroups operation.
             /// </param>
-            public static IpGroup UpdateGroups(this IIpGroupsOperations operations, string resourceGroupName, string ipGroupsName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static IpGroup UpdateGroups(this IIpGroupsOperations operations, string resourceGroupName, string ipGroupsName, TagsObject parameters)
             {
-                return operations.UpdateGroupsAsync(resourceGroupName, ipGroupsName, tags).GetAwaiter().GetResult();
+                return operations.UpdateGroupsAsync(resourceGroupName, ipGroupsName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -149,15 +147,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ipGroupsName'>
             /// The name of the ipGroups.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to the update ipGroups operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IpGroup> UpdateGroupsAsync(this IIpGroupsOperations operations, string resourceGroupName, string ipGroupsName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IpGroup> UpdateGroupsAsync(this IIpGroupsOperations operations, string resourceGroupName, string ipGroupsName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateGroupsWithHttpMessagesAsync(resourceGroupName, ipGroupsName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateGroupsWithHttpMessagesAsync(resourceGroupName, ipGroupsName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

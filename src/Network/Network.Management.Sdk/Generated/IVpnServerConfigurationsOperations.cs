@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnServerConfigurationName'>
         /// The name of the VpnServerConfiguration being updated.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='vpnServerConfigurationParameters'>
+        /// Parameters supplied to update VpnServerConfiguration tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VpnServerConfiguration>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VpnServerConfiguration>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, TagsObject vpnServerConfigurationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a VpnServerConfiguration.
         /// </summary>

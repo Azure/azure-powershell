@@ -283,8 +283,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance being updated.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to Update Network Virtual Appliance Tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -307,7 +307,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<NetworkVirtualAppliance>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NetworkVirtualAppliance>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -321,12 +321,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkVirtualApplianceName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject parameters = new TagsObject();
-            if (tags != null)
+            if (parameters == null)
             {
-                parameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

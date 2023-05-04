@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -164,12 +162,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkProfileName'>
             /// The name of the network profile.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update network profile tags.
             /// </param>
-            public static NetworkProfile UpdateTags(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static NetworkProfile UpdateTags(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, networkProfileName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, networkProfileName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -184,15 +182,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkProfileName'>
             /// The name of the network profile.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update network profile tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkProfile> UpdateTagsAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkProfile> UpdateTagsAsync(this INetworkProfilesOperations operations, string resourceGroupName, string networkProfileName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkProfileName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkProfileName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

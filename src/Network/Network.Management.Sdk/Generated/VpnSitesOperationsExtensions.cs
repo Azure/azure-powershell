@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -123,12 +121,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnSiteName'>
             /// The name of the VpnSite being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='vpnSiteParameters'>
+            /// Parameters supplied to update VpnSite tags.
             /// </param>
-            public static VpnSite UpdateTags(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static VpnSite UpdateTags(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, TagsObject vpnSiteParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, vpnSiteName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, vpnSiteName, vpnSiteParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -143,15 +141,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnSiteName'>
             /// The name of the VpnSite being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='vpnSiteParameters'>
+            /// Parameters supplied to update VpnSite tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VpnSite> UpdateTagsAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VpnSite> UpdateTagsAsync(this IVpnSitesOperations operations, string resourceGroupName, string vpnSiteName, TagsObject vpnSiteParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, vpnSiteName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, vpnSiteName, vpnSiteParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

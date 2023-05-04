@@ -267,8 +267,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The location of the domain name.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -285,7 +285,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Checks whether the subscription is visible to private link service
         /// in the specified resource group.
@@ -296,8 +296,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -314,7 +314,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> CheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Returns all of the private link service ids that can be linked to a
         /// Private Endpoint with auto approved in this subscription in this
@@ -450,8 +450,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The location of the domain name.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(string location, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Checks whether the subscription is visible to private link service
         /// in the specified resource group.
@@ -479,8 +479,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
-        /// <param name='privateLinkServiceAlias'>
-        /// The alias of the private link service.
+        /// <param name='parameters'>
+        /// The request body of CheckPrivateLinkService API call.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -497,7 +497,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, string privateLinkServiceAlias = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<PrivateLinkServiceVisibility>> BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all private link services in a resource group.
         /// </summary>

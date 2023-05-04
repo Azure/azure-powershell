@@ -53,14 +53,13 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Retrieves the current filter values for the signatures overrides
         /// </summary>
+        /// <param name='parameters'>
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='filterName'>
-        /// Describes the name of the column which values will be returned
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -83,8 +82,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SignatureOverridesFilterValuesResponse>> ListWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string filterName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SignatureOverridesFilterValuesResponse>> ListWithHttpMessagesAsync(SignatureOverridesFilterValuesQuery parameters, string resourceGroupName, string firewallPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (resourceGroupName == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceGroupName");
@@ -98,11 +101,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            SignatureOverridesFilterValuesQuery parameters = new SignatureOverridesFilterValuesQuery();
-            if (filterName != null)
-            {
-                parameters.FilterName = filterName;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -110,10 +108,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("firewallPolicyName", firewallPolicyName);
                 tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
             }

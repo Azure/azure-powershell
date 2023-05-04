@@ -90,6 +90,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates a network manager security admin configuration.
         /// </summary>
+        /// <param name='securityAdminConfiguration'>
+        /// The security admin configuration to create or update
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -98,12 +101,6 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='configurationName'>
         /// The name of the network manager Security Configuration.
-        /// </param>
-        /// <param name='description'>
-        /// A description of the security configuration.
-        /// </param>
-        /// <param name='applyOnNetworkIntentPolicyBasedServices'>
-        /// Enum list of network intent policy based services.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -120,7 +117,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SecurityAdminConfiguration>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string configurationName, string description = default(string), IList<string> applyOnNetworkIntentPolicyBasedServices = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SecurityAdminConfiguration>> CreateOrUpdateWithHttpMessagesAsync(SecurityAdminConfiguration securityAdminConfiguration, string resourceGroupName, string networkManagerName, string configurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a network manager security admin configuration.
         /// </summary>

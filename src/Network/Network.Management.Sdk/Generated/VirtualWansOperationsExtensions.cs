@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -123,12 +121,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualWANName'>
             /// The name of the VirtualWAN being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='wANParameters'>
+            /// Parameters supplied to Update VirtualWAN tags.
             /// </param>
-            public static VirtualWAN UpdateTags(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static VirtualWAN UpdateTags(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, TagsObject wANParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, virtualWANName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, virtualWANName, wANParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -143,15 +141,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualWANName'>
             /// The name of the VirtualWAN being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='wANParameters'>
+            /// Parameters supplied to Update VirtualWAN tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualWAN> UpdateTagsAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualWAN> UpdateTagsAsync(this IVirtualWansOperations operations, string resourceGroupName, string virtualWANName, TagsObject wANParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualWANName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualWANName, wANParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

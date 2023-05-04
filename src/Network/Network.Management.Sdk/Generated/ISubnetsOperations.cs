@@ -122,11 +122,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being prepared for.
-        /// </param>
-        /// <param name='networkIntentPolicyConfigurations'>
-        /// A list of NetworkIntentPolicyConfiguration.
+        /// <param name='prepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to prepare subnet by applying network intent
+        /// policies.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -140,7 +138,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> PrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> PrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Unprepares a subnet by removing network intent policies.
         /// </summary>
@@ -153,8 +151,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being unprepared for.
+        /// <param name='unprepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to unprepare subnet to remove network intent
+        /// policies.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -168,7 +167,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> UnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> UnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all subnets in a virtual network.
         /// </summary>
@@ -262,11 +261,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being prepared for.
-        /// </param>
-        /// <param name='networkIntentPolicyConfigurations'>
-        /// A list of NetworkIntentPolicyConfiguration.
+        /// <param name='prepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to prepare subnet by applying network intent
+        /// policies.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -280,7 +277,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginPrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginPrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Unprepares a subnet by removing network intent policies.
         /// </summary>
@@ -293,8 +290,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being unprepared for.
+        /// <param name='unprepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to unprepare subnet to remove network intent
+        /// policies.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -308,7 +306,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all subnets in a virtual network.
         /// </summary>

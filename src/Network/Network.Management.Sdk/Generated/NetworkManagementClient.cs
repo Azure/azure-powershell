@@ -1161,8 +1161,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1170,10 +1170,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<IPage<BastionShareableLink>>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<BastionShareableLink>>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<IPage<BastionShareableLink>> _response = await BeginPutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, vms, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<IPage<BastionShareableLink>> _response = await BeginPutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, customHeaders, cancellationToken).ConfigureAwait(false);
             return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1187,8 +1187,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1196,10 +1196,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, vms, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, customHeaders, cancellationToken).ConfigureAwait(false);
             return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1213,8 +1213,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1237,7 +1237,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<BastionShareableLink>>> GetBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<BastionShareableLink>>> GetBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1251,22 +1251,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            if (vms != null)
+            if (bslRequest == null)
             {
-                foreach (var element in vms)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
+                throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
             string apiVersion = "2022-11-01";
-            BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
-            if (vms != null)
-            {
-                bslRequest.Vms = vms;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1454,8 +1443,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='sessionIdsProperty'>
-        /// List of session IDs.
+        /// <param name='sessionIds'>
+        /// The list of sessionids to disconnect.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1478,7 +1467,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<BastionSessionState>>> DisconnectActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<string> sessionIdsProperty = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<BastionSessionState>>> DisconnectActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, SessionIds sessionIds, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1492,12 +1481,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            string apiVersion = "2022-11-01";
-            SessionIds sessionIds = new SessionIds();
-            if (sessionIdsProperty != null)
+            if (sessionIds == null)
             {
-                sessionIds.SessionIdsProperty = sessionIdsProperty;
+                throw new ValidationException(ValidationRules.CannotBeNull, "sessionIds");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2041,6 +2029,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Lists active connectivity configurations in a network manager.
         /// </summary>
+        /// <param name='parameters'>
+        /// Active Configuration Parameter.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -2050,14 +2041,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
         /// to be returned by the server.
-        /// </param>
-        /// <param name='regions'>
-        /// List of regions.
-        /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call (together
-        /// with the same query and scopes used in the current request) to retrieve the
-        /// next page of data.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2080,8 +2063,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActiveConnectivityConfigurationsListResult>> ListActiveConnectivityConfigurationsWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActiveConnectivityConfigurationsListResult>> ListActiveConnectivityConfigurationsWithHttpMessagesAsync(ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -2106,12 +2093,6 @@ namespace Microsoft.Azure.Management.Network
                 }
             }
             string apiVersion = "2022-11-01";
-            ActiveConfigurationParameter parameters = new ActiveConfigurationParameter();
-            if (regions != null || skipToken != null)
-            {
-                parameters.Regions = regions;
-                parameters.SkipToken = skipToken;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2119,11 +2100,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("top", top);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListActiveConnectivityConfigurations", tracingParameters);
             }
@@ -2276,6 +2257,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Lists active security admin rules in a network manager.
         /// </summary>
+        /// <param name='parameters'>
+        /// Active Configuration Parameter.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -2285,14 +2269,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
         /// to be returned by the server.
-        /// </param>
-        /// <param name='regions'>
-        /// List of regions.
-        /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call (together
-        /// with the same query and scopes used in the current request) to retrieve the
-        /// next page of data.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2315,8 +2291,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ActiveSecurityAdminRulesListResult>> ListActiveSecurityAdminRulesWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ActiveSecurityAdminRulesListResult>> ListActiveSecurityAdminRulesWithHttpMessagesAsync(ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -2341,12 +2321,6 @@ namespace Microsoft.Azure.Management.Network
                 }
             }
             string apiVersion = "2022-11-01";
-            ActiveConfigurationParameter parameters = new ActiveConfigurationParameter();
-            if (regions != null || skipToken != null)
-            {
-                parameters.Regions = regions;
-                parameters.SkipToken = skipToken;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2354,11 +2328,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("top", top);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListActiveSecurityAdminRules", tracingParameters);
             }
@@ -2512,6 +2486,9 @@ namespace Microsoft.Azure.Management.Network
         /// List all effective connectivity configurations applied on a virtual
         /// network.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to list correct page.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -2521,11 +2498,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
         /// to be returned by the server.
-        /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call (together
-        /// with the same query and scopes used in the current request) to retrieve the
-        /// next page of data.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2548,8 +2520,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<NetworkManagerEffectiveConnectivityConfigurationListResult>> ListNetworkManagerEffectiveConnectivityConfigurationsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NetworkManagerEffectiveConnectivityConfigurationListResult>> ListNetworkManagerEffectiveConnectivityConfigurationsWithHttpMessagesAsync(QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -2574,11 +2550,6 @@ namespace Microsoft.Azure.Management.Network
                 }
             }
             string apiVersion = "2022-11-01";
-            QueryRequestOptions parameters = new QueryRequestOptions();
-            if (skipToken != null)
-            {
-                parameters.SkipToken = skipToken;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2586,11 +2557,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkName", virtualNetworkName);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("top", top);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListNetworkManagerEffectiveConnectivityConfigurations", tracingParameters);
             }
@@ -2743,6 +2714,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// List all effective security admin rules applied on a virtual network.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to list correct page.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -2752,11 +2726,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='top'>
         /// An optional query parameter which specifies the maximum number of records
         /// to be returned by the server.
-        /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call (together
-        /// with the same query and scopes used in the current request) to retrieve the
-        /// next page of data.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2779,8 +2748,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<NetworkManagerEffectiveSecurityAdminRulesListResult>> ListNetworkManagerEffectiveSecurityAdminRulesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NetworkManagerEffectiveSecurityAdminRulesListResult>> ListNetworkManagerEffectiveSecurityAdminRulesWithHttpMessagesAsync(QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
@@ -2805,11 +2778,6 @@ namespace Microsoft.Azure.Management.Network
                 }
             }
             string apiVersion = "2022-11-01";
-            QueryRequestOptions parameters = new QueryRequestOptions();
-            if (skipToken != null)
-            {
-                parameters.SkipToken = skipToken;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2817,11 +2785,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkName", virtualNetworkName);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("top", top);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "ListNetworkManagerEffectiveSecurityAdminRules", tracingParameters);
             }
@@ -3178,13 +3146,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN whose associated VpnServerConfigurations is
         /// needed.
         /// </param>
-        /// <param name='vpnServerConfigurationResourceId'>
-        /// VpnServerConfiguration partial resource uri with which VirtualWan is
-        /// associated to.
-        /// </param>
-        /// <param name='authenticationMethod'>
-        /// VPN client authentication method. Possible values include: 'EAPTLS',
-        /// 'EAPMSCHAPv2'
+        /// <param name='vpnClientParams'>
+        /// Parameters supplied to the generate VirtualWan VPN profile generation
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -3192,10 +3156,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<VpnProfileResponse>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VpnProfileResponse>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<VpnProfileResponse> _response = await BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnServerConfigurationResourceId, authenticationMethod, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<VpnProfileResponse> _response = await BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnClientParams, customHeaders, cancellationToken).ConfigureAwait(false);
             return await this.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -3208,8 +3172,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3232,7 +3196,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<IPage<BastionShareableLink>>> BeginPutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<IPage<BastionShareableLink>>> BeginPutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -3246,22 +3210,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            if (vms != null)
+            if (bslRequest == null)
             {
-                foreach (var element in vms)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
+                throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
             string apiVersion = "2022-11-01";
-            BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
-            if (vms != null)
-            {
-                bslRequest.Vms = vms;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3428,8 +3381,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3449,7 +3402,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginDeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -3463,22 +3416,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.SubscriptionId");
             }
-            if (vms != null)
+            if (bslRequest == null)
             {
-                foreach (var element in vms)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
+                throw new ValidationException(ValidationRules.CannotBeNull, "bslRequest");
             }
             string apiVersion = "2022-11-01";
-            BastionShareableLinkListRequest bslRequest = new BastionShareableLinkListRequest();
-            if (vms != null)
-            {
-                bslRequest.Vms = vms;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3823,13 +3765,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN whose associated VpnServerConfigurations is
         /// needed.
         /// </param>
-        /// <param name='vpnServerConfigurationResourceId'>
-        /// VpnServerConfiguration partial resource uri with which VirtualWan is
-        /// associated to.
-        /// </param>
-        /// <param name='authenticationMethod'>
-        /// VPN client authentication method. Possible values include: 'EAPTLS',
-        /// 'EAPMSCHAPv2'
+        /// <param name='vpnClientParams'>
+        /// Parameters supplied to the generate VirtualWan VPN profile generation
+        /// operation.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -3852,7 +3790,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VpnProfileResponse>> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VpnProfileResponse>> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (SubscriptionId == null)
             {
@@ -3866,13 +3804,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualWANName");
             }
-            string apiVersion = "2022-11-01";
-            VirtualWanVpnProfileParameters vpnClientParams = new VirtualWanVpnProfileParameters();
-            if (vpnServerConfigurationResourceId != null || authenticationMethod != null)
+            if (vpnClientParams == null)
             {
-                vpnClientParams.VpnServerConfigurationResourceId = vpnServerConfigurationResourceId;
-                vpnClientParams.AuthenticationMethod = authenticationMethod;
+                throw new ValidationException(ValidationRules.CannotBeNull, "vpnClientParams");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3882,8 +3818,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualWANName", virtualWANName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("vpnClientParams", vpnClientParams);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginGeneratevirtualwanvpnserverconfigurationvpnprofile", tracingParameters);
             }

@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='tapName'>
         /// The name of the tap.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='tapParameters'>
+        /// Parameters supplied to update VirtualNetworkTap tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualNetworkTap>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string tapName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualNetworkTap>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string tapName, TagsObject tapParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the VirtualNetworkTaps in a subscription.
         /// </summary>

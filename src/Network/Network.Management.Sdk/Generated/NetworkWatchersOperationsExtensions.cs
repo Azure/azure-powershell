@@ -158,12 +158,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update network watcher tags.
             /// </param>
-            public static NetworkWatcher UpdateTags(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static NetworkWatcher UpdateTags(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, networkWatcherName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -178,15 +178,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update network watcher tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkWatcher> UpdateTagsAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkWatcher> UpdateTagsAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkWatcherName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -406,12 +406,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
+            /// <param name='parameters'>
+            /// Parameters that define the VM to check security groups for.
             /// </param>
-            public static SecurityGroupViewResult GetVMSecurityRules(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
+            public static SecurityGroupViewResult GetVMSecurityRules(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters)
             {
-                return operations.GetVMSecurityRulesAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
+                return operations.GetVMSecurityRulesAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -426,15 +426,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
+            /// <param name='parameters'>
+            /// Parameters that define the VM to check security groups for.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SecurityGroupViewResult> GetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SecurityGroupViewResult> GetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -498,12 +498,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
+            /// <param name='parameters'>
+            /// Parameters that define the resource to query the troubleshooting result.
             /// </param>
-            public static TroubleshootingResult GetTroubleshootingResult(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
+            public static TroubleshootingResult GetTroubleshootingResult(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters)
             {
-                return operations.GetTroubleshootingResultAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
+                return operations.GetTroubleshootingResultAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -518,15 +518,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
+            /// <param name='parameters'>
+            /// Parameters that define the resource to query the troubleshooting result.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TroubleshootingResult> GetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TroubleshootingResult> GetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -593,13 +593,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow log and traffic analytics
+            /// <param name='parameters'>
+            /// Parameters that define a resource to query flow log and traffic analytics
             /// (optional) status.
             /// </param>
-            public static FlowLogInformation GetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
+            public static FlowLogInformation GetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters)
             {
-                return operations.GetFlowLogStatusAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
+                return operations.GetFlowLogStatusAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -615,16 +615,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow log and traffic analytics
+            /// <param name='parameters'>
+            /// Parameters that define a resource to query flow log and traffic analytics
             /// (optional) status.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<FlowLogInformation> GetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<FlowLogInformation> GetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -981,12 +981,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
+            /// <param name='parameters'>
+            /// Parameters that define the VM to check security groups for.
             /// </param>
-            public static SecurityGroupViewResult BeginGetVMSecurityRules(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
+            public static SecurityGroupViewResult BeginGetVMSecurityRules(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters)
             {
-                return operations.BeginGetVMSecurityRulesAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
+                return operations.BeginGetVMSecurityRulesAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1001,15 +1001,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// ID of the target VM.
+            /// <param name='parameters'>
+            /// Parameters that define the VM to check security groups for.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SecurityGroupViewResult> BeginGetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SecurityGroupViewResult> BeginGetVMSecurityRulesAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginGetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginGetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1073,12 +1073,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
+            /// <param name='parameters'>
+            /// Parameters that define the resource to query the troubleshooting result.
             /// </param>
-            public static TroubleshootingResult BeginGetTroubleshootingResult(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
+            public static TroubleshootingResult BeginGetTroubleshootingResult(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters)
             {
-                return operations.BeginGetTroubleshootingResultAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
+                return operations.BeginGetTroubleshootingResultAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1093,15 +1093,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource ID to query the troubleshooting result.
+            /// <param name='parameters'>
+            /// Parameters that define the resource to query the troubleshooting result.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<TroubleshootingResult> BeginGetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TroubleshootingResult> BeginGetTroubleshootingResultAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginGetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginGetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1168,13 +1168,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow log and traffic analytics
+            /// <param name='parameters'>
+            /// Parameters that define a resource to query flow log and traffic analytics
             /// (optional) status.
             /// </param>
-            public static FlowLogInformation BeginGetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId)
+            public static FlowLogInformation BeginGetFlowLogStatus(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters)
             {
-                return operations.BeginGetFlowLogStatusAsync(resourceGroupName, networkWatcherName, targetResourceId).GetAwaiter().GetResult();
+                return operations.BeginGetFlowLogStatusAsync(resourceGroupName, networkWatcherName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1190,16 +1190,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkWatcherName'>
             /// The name of the network watcher resource.
             /// </param>
-            /// <param name='targetResourceId'>
-            /// The target resource where getting the flow log and traffic analytics
+            /// <param name='parameters'>
+            /// Parameters that define a resource to query flow log and traffic analytics
             /// (optional) status.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<FlowLogInformation> BeginGetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, string targetResourceId, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<FlowLogInformation> BeginGetFlowLogStatusAsync(this INetworkWatchersOperations operations, string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginGetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginGetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

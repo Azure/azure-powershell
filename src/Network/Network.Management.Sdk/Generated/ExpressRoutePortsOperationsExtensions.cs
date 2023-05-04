@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -158,12 +156,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRoutePortName'>
             /// The name of the ExpressRoutePort resource.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update ExpressRoutePort resource tags.
             /// </param>
-            public static ExpressRoutePort UpdateTags(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static ExpressRoutePort UpdateTags(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, expressRoutePortName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, expressRoutePortName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -178,15 +176,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRoutePortName'>
             /// The name of the ExpressRoutePort resource.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update ExpressRoutePort resource tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRoutePort> UpdateTagsAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRoutePort> UpdateTagsAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -267,12 +265,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRoutePortName'>
             /// The name of ExpressRoutePort.
             /// </param>
-            /// <param name='customerName'>
-            /// The customer name.
+            /// <param name='request'>
+            /// Request parameters supplied to generate a letter of authorization.
             /// </param>
-            public static GenerateExpressRoutePortsLOAResult GenerateLOA(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, string customerName)
+            public static GenerateExpressRoutePortsLOAResult GenerateLOA(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, GenerateExpressRoutePortsLOARequest request)
             {
-                return operations.GenerateLOAAsync(resourceGroupName, expressRoutePortName, customerName).GetAwaiter().GetResult();
+                return operations.GenerateLOAAsync(resourceGroupName, expressRoutePortName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -288,15 +286,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRoutePortName'>
             /// The name of ExpressRoutePort.
             /// </param>
-            /// <param name='customerName'>
-            /// The customer name.
+            /// <param name='request'>
+            /// Request parameters supplied to generate a letter of authorization.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<GenerateExpressRoutePortsLOAResult> GenerateLOAAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, string customerName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<GenerateExpressRoutePortsLOAResult> GenerateLOAAsync(this IExpressRoutePortsOperations operations, string resourceGroupName, string expressRoutePortName, GenerateExpressRoutePortsLOARequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GenerateLOAWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, customerName, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GenerateLOAWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, request, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

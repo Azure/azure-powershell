@@ -482,6 +482,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates a network manager security admin configuration.
         /// </summary>
+        /// <param name='securityAdminConfiguration'>
+        /// The security admin configuration to create or update
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -490,12 +493,6 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='configurationName'>
         /// The name of the network manager Security Configuration.
-        /// </param>
-        /// <param name='description'>
-        /// A description of the security configuration.
-        /// </param>
-        /// <param name='applyOnNetworkIntentPolicyBasedServices'>
-        /// Enum list of network intent policy based services.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -518,8 +515,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SecurityAdminConfiguration>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string configurationName, string description = default(string), IList<string> applyOnNetworkIntentPolicyBasedServices = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SecurityAdminConfiguration>> CreateOrUpdateWithHttpMessagesAsync(SecurityAdminConfiguration securityAdminConfiguration, string resourceGroupName, string networkManagerName, string configurationName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (securityAdminConfiguration == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "securityAdminConfiguration");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -537,12 +538,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "configurationName");
             }
             string apiVersion = "2022-11-01";
-            SecurityAdminConfiguration securityAdminConfiguration = new SecurityAdminConfiguration();
-            if (description != null || applyOnNetworkIntentPolicyBasedServices != null)
-            {
-                securityAdminConfiguration.Description = description;
-                securityAdminConfiguration.ApplyOnNetworkIntentPolicyBasedServices = applyOnNetworkIntentPolicyBasedServices;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -550,11 +545,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("securityAdminConfiguration", securityAdminConfiguration);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("configurationName", configurationName);
-                tracingParameters.Add("securityAdminConfiguration", securityAdminConfiguration);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }

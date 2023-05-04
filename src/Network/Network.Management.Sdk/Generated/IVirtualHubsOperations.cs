@@ -86,8 +86,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='virtualHubParameters'>
+        /// Parameters supplied to update VirtualHub tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualHub>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualHub>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, TagsObject virtualHubParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a VirtualHub.
         /// </summary>
@@ -178,13 +178,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceId'>
-        /// The resource whose effective routes are being requested.
-        /// </param>
-        /// <param name='virtualWanResourceType'>
-        /// The type of the specified resource like RouteTable,
-        /// ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection
-        /// and P2SConnection.
+        /// <param name='effectiveRoutesParameters'>
+        /// Parameters supplied to get the effective routes for a specific
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -201,7 +197,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> GetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceId = default(string), string virtualWanResourceType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> GetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, EffectiveRoutesParameters effectiveRoutesParameters = default(EffectiveRoutesParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the inbound routes configured for the Virtual Hub on a
         /// particular connection.
@@ -212,13 +208,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose inbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like
-        /// ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection
-        /// and P2SConnection.
+        /// <param name='getInboundRoutesParameters'>
+        /// Parameters supplied to get the inbound routes for a connection
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -235,7 +227,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetInboundRoutesParameters getInboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the outbound routes configured for the Virtual Hub on a
         /// particular connection.
@@ -246,13 +238,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose outbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like
-        /// ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection
-        /// and P2SConnection.
+        /// <param name='getOutboundRoutesParameters'>
+        /// Parameters supplied to get the outbound routes for a connection
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -269,7 +257,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> GetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetOutboundRoutesParameters getOutboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a VirtualHub resource if it doesn't exist else updates the
         /// existing VirtualHub.
@@ -331,13 +319,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceId'>
-        /// The resource whose effective routes are being requested.
-        /// </param>
-        /// <param name='virtualWanResourceType'>
-        /// The type of the specified resource like RouteTable,
-        /// ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection
-        /// and P2SConnection.
+        /// <param name='effectiveRoutesParameters'>
+        /// Parameters supplied to get the effective routes for a specific
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -354,7 +338,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> BeginGetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceId = default(string), string virtualWanResourceType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualHubEffectiveRouteList>> BeginGetEffectiveVirtualHubRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, EffectiveRoutesParameters effectiveRoutesParameters = default(EffectiveRoutesParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the inbound routes configured for the Virtual Hub on a
         /// particular connection.
@@ -365,13 +349,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose inbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like
-        /// ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection
-        /// and P2SConnection.
+        /// <param name='getInboundRoutesParameters'>
+        /// Parameters supplied to get the inbound routes for a connection
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -388,7 +368,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetInboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetInboundRoutesParameters getInboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the outbound routes configured for the Virtual Hub on a
         /// particular connection.
@@ -399,13 +379,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualHubName'>
         /// The name of the VirtualHub.
         /// </param>
-        /// <param name='resourceUri'>
-        /// The connection resource whose outbound routes are being requested.
-        /// </param>
-        /// <param name='connectionType'>
-        /// The type of the specified connection resource like
-        /// ExpressRouteConnection, HubVirtualNetworkConnection, VpnConnection
-        /// and P2SConnection.
+        /// <param name='getOutboundRoutesParameters'>
+        /// Parameters supplied to get the outbound routes for a connection
+        /// resource.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -422,7 +398,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, string resourceUri = default(string), string connectionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<EffectiveRouteMapRouteList>> BeginGetOutboundRoutesWithHttpMessagesAsync(string resourceGroupName, string virtualHubName, GetOutboundRoutesParameters getOutboundRoutesParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all the VirtualHubs in a resource group.
         /// </summary>

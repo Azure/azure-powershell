@@ -279,8 +279,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualWANName'>
         /// The name of the VirtualWAN being updated.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='wANParameters'>
+        /// Parameters supplied to Update VirtualWAN tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualWAN>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualWAN>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, TagsObject wANParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -317,12 +317,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualWANName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject wANParameters = new TagsObject();
-            if (tags != null)
+            if (wANParameters == null)
             {
-                wANParameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "wANParameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

@@ -98,6 +98,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates an admin rule collection.
         /// </summary>
+        /// <param name='ruleCollection'>
+        /// The Rule Collection to create or update
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -110,12 +113,6 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ruleCollectionName'>
         /// The name of the network manager security Configuration rule
         /// collection.
-        /// </param>
-        /// <param name='appliesToGroups'>
-        /// Groups for configuration
-        /// </param>
-        /// <param name='description'>
-        /// A description of the admin rule collection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -132,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AdminRuleCollection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, IList<NetworkManagerSecurityGroupItem> appliesToGroups, string description = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AdminRuleCollection>> CreateOrUpdateWithHttpMessagesAsync(AdminRuleCollection ruleCollection, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes an admin rule collection.
         /// </summary>

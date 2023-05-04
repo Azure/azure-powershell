@@ -73,6 +73,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the specify which network group need to create
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -87,12 +90,9 @@ namespace Microsoft.Azure.Management.Network
             /// current resource. Specify the last-seen ETag value to prevent accidentally
             /// overwriting concurrent changes.
             /// </param>
-            /// <param name='description'>
-            /// A description of the network group.
-            /// </param>
-            public static NetworkGroup CreateOrUpdate(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string), string description = default(string))
+            public static NetworkGroup CreateOrUpdate(this INetworkGroupsOperations operations, NetworkGroup parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string))
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, networkManagerName, networkGroupName, ifMatch, description).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(parameters, resourceGroupName, networkManagerName, networkGroupName, ifMatch).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -101,6 +101,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to the specify which network group need to create
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -115,15 +118,12 @@ namespace Microsoft.Azure.Management.Network
             /// current resource. Specify the last-seen ETag value to prevent accidentally
             /// overwriting concurrent changes.
             /// </param>
-            /// <param name='description'>
-            /// A description of the network group.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkGroup> CreateOrUpdateAsync(this INetworkGroupsOperations operations, string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string), string description = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkGroup> CreateOrUpdateAsync(this INetworkGroupsOperations operations, NetworkGroup parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, networkGroupName, ifMatch, description, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(parameters, resourceGroupName, networkManagerName, networkGroupName, ifMatch, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

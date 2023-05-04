@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -164,12 +162,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='natGatewayName'>
             /// The name of the nat gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update nat gateway tags.
             /// </param>
-            public static NatGateway UpdateTags(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static NatGateway UpdateTags(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, natGatewayName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, natGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -184,15 +182,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='natGatewayName'>
             /// The name of the nat gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update nat gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NatGateway> UpdateTagsAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NatGateway> UpdateTagsAsync(this INatGatewaysOperations operations, string resourceGroupName, string natGatewayName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, natGatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, natGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

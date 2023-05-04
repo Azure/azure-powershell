@@ -61,11 +61,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN for which configuration of all vpn-sites is
         /// needed.
         /// </param>
-        /// <param name='outputBlobSasUrl'>
-        /// The sas-url to download the configurations for vpn-sites.
-        /// </param>
-        /// <param name='vpnSites'>
-        /// List of resource-ids of the vpn-sites for which config is to be downloaded.
+        /// <param name='request'>
+        /// Parameters supplied to download vpn-sites configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -73,10 +70,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> DownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> DownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginDownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, outputBlobSasUrl, vpnSites, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginDownloadWithHttpMessagesAsync(resourceGroupName, virtualWANName, request, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -91,11 +88,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN for which configuration of all vpn-sites is
         /// needed.
         /// </param>
-        /// <param name='outputBlobSasUrl'>
-        /// The sas-url to download the configurations for vpn-sites.
-        /// </param>
-        /// <param name='vpnSites'>
-        /// List of resource-ids of the vpn-sites for which config is to be downloaded.
+        /// <param name='request'>
+        /// Parameters supplied to download vpn-sites configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -115,7 +109,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginDownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginDownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -129,17 +123,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualWANName");
             }
-            if (outputBlobSasUrl == null)
+            if (request == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "outputBlobSasUrl");
+                throw new ValidationException(ValidationRules.CannotBeNull, "request");
+            }
+            if (request != null)
+            {
+                request.Validate();
             }
             string apiVersion = "2022-11-01";
-            GetVpnSitesConfigurationRequest request = new GetVpnSitesConfigurationRequest();
-            if (vpnSites != null || outputBlobSasUrl != null)
-            {
-                request.VpnSites = vpnSites;
-                request.OutputBlobSasUrl = outputBlobSasUrl;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -149,8 +141,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualWANName", virtualWANName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("request", request);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginDownload", tracingParameters);
             }

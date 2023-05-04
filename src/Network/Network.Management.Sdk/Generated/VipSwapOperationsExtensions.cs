@@ -77,11 +77,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceName'>
             /// The name of the cloud service.
             /// </param>
-            /// <param name='properties'>
+            /// <param name='parameters'>
+            /// SwapResource object where slot type should be the target slot after vip
+            /// swap for the specified cloud service.
             /// </param>
-            public static void Create(this IVipSwapOperations operations, string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties))
+            public static void Create(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters)
             {
-                operations.CreateAsync(groupName, resourceName, properties).GetAwaiter().GetResult();
+                operations.CreateAsync(groupName, resourceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -96,14 +98,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceName'>
             /// The name of the cloud service.
             /// </param>
-            /// <param name='properties'>
+            /// <param name='parameters'>
+            /// SwapResource object where slot type should be the target slot after vip
+            /// swap for the specified cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task CreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task CreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.CreateWithHttpMessagesAsync(groupName, resourceName, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.CreateWithHttpMessagesAsync(groupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -162,11 +166,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceName'>
             /// The name of the cloud service.
             /// </param>
-            /// <param name='properties'>
+            /// <param name='parameters'>
+            /// SwapResource object where slot type should be the target slot after vip
+            /// swap for the specified cloud service.
             /// </param>
-            public static void BeginCreate(this IVipSwapOperations operations, string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties))
+            public static void BeginCreate(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters)
             {
-                operations.BeginCreateAsync(groupName, resourceName, properties).GetAwaiter().GetResult();
+                operations.BeginCreateAsync(groupName, resourceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -181,14 +187,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceName'>
             /// The name of the cloud service.
             /// </param>
-            /// <param name='properties'>
+            /// <param name='parameters'>
+            /// SwapResource object where slot type should be the target slot after vip
+            /// swap for the specified cloud service.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginCreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginCreateAsync(this IVipSwapOperations operations, string groupName, string resourceName, SwapResource parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginCreateWithHttpMessagesAsync(groupName, resourceName, properties, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginCreateWithHttpMessagesAsync(groupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
     }

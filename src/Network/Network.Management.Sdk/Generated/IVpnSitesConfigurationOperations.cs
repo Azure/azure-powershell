@@ -34,12 +34,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN for which configuration of all vpn-sites
         /// is needed.
         /// </param>
-        /// <param name='outputBlobSasUrl'>
-        /// The sas-url to download the configurations for vpn-sites.
-        /// </param>
-        /// <param name='vpnSites'>
-        /// List of resource-ids of the vpn-sites for which config is to be
-        /// downloaded.
+        /// <param name='request'>
+        /// Parameters supplied to download vpn-sites configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -53,7 +49,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gives the sas-url to download the configurations for vpn-sites in a
         /// resource group.
@@ -65,12 +61,8 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN for which configuration of all vpn-sites
         /// is needed.
         /// </param>
-        /// <param name='outputBlobSasUrl'>
-        /// The sas-url to download the configurations for vpn-sites.
-        /// </param>
-        /// <param name='vpnSites'>
-        /// List of resource-ids of the vpn-sites for which config is to be
-        /// downloaded.
+        /// <param name='request'>
+        /// Parameters supplied to download vpn-sites configuration.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -84,6 +76,6 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string outputBlobSasUrl, IList<string> vpnSites = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDownloadWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, GetVpnSitesConfigurationRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

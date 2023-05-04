@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -158,12 +156,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosCustomPolicyName'>
             /// The name of the DDoS custom policy.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update DDoS custom policy resource tags.
             /// </param>
-            public static DdosCustomPolicy UpdateTags(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static DdosCustomPolicy UpdateTags(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, ddosCustomPolicyName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, ddosCustomPolicyName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -178,15 +176,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ddosCustomPolicyName'>
             /// The name of the DDoS custom policy.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update DDoS custom policy resource tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<DdosCustomPolicy> UpdateTagsAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<DdosCustomPolicy> UpdateTagsAsync(this IDdosCustomPoliciesOperations operations, string resourceGroupName, string ddosCustomPolicyName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, ddosCustomPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

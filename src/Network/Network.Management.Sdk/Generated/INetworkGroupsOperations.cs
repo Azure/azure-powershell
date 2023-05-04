@@ -54,6 +54,10 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates a network group.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to the specify which network group need to
+        /// create
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -67,9 +71,6 @@ namespace Microsoft.Azure.Management.Network
         /// The ETag of the transformation. Omit this value to always overwrite
         /// the current resource. Specify the last-seen ETag value to prevent
         /// accidentally overwriting concurrent changes.
-        /// </param>
-        /// <param name='description'>
-        /// A description of the network group.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -86,7 +87,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NetworkGroup,NetworkGroupsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string), string description = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkGroup,NetworkGroupsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(NetworkGroup parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a network group.
         /// </summary>

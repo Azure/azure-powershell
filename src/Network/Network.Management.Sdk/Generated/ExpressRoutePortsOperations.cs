@@ -300,8 +300,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRoutePortName'>
         /// The name of the ExpressRoutePort resource.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update ExpressRoutePort resource tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ExpressRoutePort>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRoutePort>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -338,12 +338,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "expressRoutePortName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject parameters = new TagsObject();
-            if (tags != null)
+            if (parameters == null)
             {
-                parameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -871,8 +870,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRoutePortName'>
         /// The name of ExpressRoutePort.
         /// </param>
-        /// <param name='customerName'>
-        /// The customer name.
+        /// <param name='request'>
+        /// Request parameters supplied to generate a letter of authorization.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -895,7 +894,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<GenerateExpressRoutePortsLOAResult>> GenerateLOAWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, string customerName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<GenerateExpressRoutePortsLOAResult>> GenerateLOAWithHttpMessagesAsync(string resourceGroupName, string expressRoutePortName, GenerateExpressRoutePortsLOARequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -909,16 +908,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "expressRoutePortName");
             }
-            if (customerName == null)
+            if (request == null)
             {
-                throw new ValidationException(ValidationRules.CannotBeNull, "customerName");
+                throw new ValidationException(ValidationRules.CannotBeNull, "request");
+            }
+            if (request != null)
+            {
+                request.Validate();
             }
             string apiVersion = "2022-11-01";
-            GenerateExpressRoutePortsLOARequest request = new GenerateExpressRoutePortsLOARequest();
-            if (customerName != null)
-            {
-                request.CustomerName = customerName;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

@@ -124,8 +124,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='connectionMonitorName'>
         /// The name of the connection monitor.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update connection monitor tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ConnectionMonitorResult>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ConnectionMonitorResult>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string connectionMonitorName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Stops the specified connection monitor.
         /// </summary>

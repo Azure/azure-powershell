@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='natGatewayName'>
         /// The name of the nat gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update nat gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NatGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string natGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NatGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string natGatewayName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the Nat Gateways in a subscription.
         /// </summary>

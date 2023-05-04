@@ -279,8 +279,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnServerConfigurationName'>
         /// The name of the VpnServerConfiguration being updated.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='vpnServerConfigurationParameters'>
+        /// Parameters supplied to update VpnServerConfiguration tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VpnServerConfiguration>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VpnServerConfiguration>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string vpnServerConfigurationName, TagsObject vpnServerConfigurationParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -317,12 +317,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "vpnServerConfigurationName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject vpnServerConfigurationParameters = new TagsObject();
-            if (tags != null)
+            if (vpnServerConfigurationParameters == null)
             {
-                vpnServerConfigurationParameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "vpnServerConfigurationParameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

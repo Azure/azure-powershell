@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -181,15 +179,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters on vpn connection.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to start packet capture
+            /// on gateway connection.
             /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
-            /// </param>
-            public static string StartPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>))
+            public static string StartPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters))
             {
-                return operations.StartPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, filterData, linkConnectionNames).GetAwaiter().GetResult();
+                return operations.StartPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -207,18 +203,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters on vpn connection.
-            /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to start packet capture
+            /// on gateway connection.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> StartPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> StartPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.StartPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, filterData, linkConnectionNames, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.StartPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -239,15 +233,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on vpn connection.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to stop packet capture on
+            /// gateway connection.
             /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
-            /// </param>
-            public static string StopPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>))
+            public static string StopPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters))
             {
-                return operations.StopPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, sasUrl, linkConnectionNames).GetAwaiter().GetResult();
+                return operations.StopPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -265,18 +257,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on vpn connection.
-            /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to stop packet capture on
+            /// gateway connection.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> StopPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> StopPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.StopPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, sasUrl, linkConnectionNames, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.StopPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -434,15 +424,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters on vpn connection.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to start packet capture
+            /// on gateway connection.
             /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
-            /// </param>
-            public static string BeginStartPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>))
+            public static string BeginStartPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters))
             {
-                return operations.BeginStartPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, filterData, linkConnectionNames).GetAwaiter().GetResult();
+                return operations.BeginStartPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -460,18 +448,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters on vpn connection.
-            /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to start packet capture
+            /// on gateway connection.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> BeginStartPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> BeginStartPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, filterData, linkConnectionNames, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -492,15 +478,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on vpn connection.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to stop packet capture on
+            /// gateway connection.
             /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
-            /// </param>
-            public static string BeginStopPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>))
+            public static string BeginStopPacketCapture(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters))
             {
-                return operations.BeginStopPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, sasUrl, linkConnectionNames).GetAwaiter().GetResult();
+                return operations.BeginStopPacketCaptureAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -518,18 +502,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnConnectionName'>
             /// The name of the vpn connection.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on vpn connection.
-            /// </param>
-            /// <param name='linkConnectionNames'>
-            /// List of site link connection names.
+            /// <param name='parameters'>
+            /// Vpn Connection packet capture parameters supplied to stop packet capture on
+            /// gateway connection.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> BeginStopPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> BeginStopPacketCaptureAsync(this IVpnConnectionsOperations operations, string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, sasUrl, linkConnectionNames, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

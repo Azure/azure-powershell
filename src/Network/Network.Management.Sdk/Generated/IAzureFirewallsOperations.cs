@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update azure firewall tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AzureFirewall>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AzureFirewall>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all Azure Firewalls in a resource group.
         /// </summary>
@@ -279,8 +279,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='azureFirewallName'>
         /// The name of the Azure Firewall.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update azure firewall tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<AzureFirewall>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<AzureFirewall>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string azureFirewallName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves a list of all IP prefixes that azure firewall has learned
         /// to not SNAT.

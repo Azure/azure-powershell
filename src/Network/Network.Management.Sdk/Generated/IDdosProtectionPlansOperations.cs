@@ -79,11 +79,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosProtectionPlanName'>
         /// The name of the DDoS protection plan.
         /// </param>
-        /// <param name='location'>
-        /// Resource location.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to the create or update operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -100,7 +97,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DdosProtectionPlan>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DdosProtectionPlan>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Update a DDoS protection plan tags.
         /// </summary>
@@ -110,8 +107,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosProtectionPlanName'>
         /// The name of the DDoS protection plan.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to the update DDoS protection plan resource
+        /// tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -128,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DdosProtectionPlan>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DdosProtectionPlan>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all DDoS protection plans in a subscription.
         /// </summary>
@@ -201,11 +199,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ddosProtectionPlanName'>
         /// The name of the DDoS protection plan.
         /// </param>
-        /// <param name='location'>
-        /// Resource location.
-        /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to the create or update operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -222,7 +217,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<DdosProtectionPlan>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, string location = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<DdosProtectionPlan>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string ddosProtectionPlanName, DdosProtectionPlan parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all DDoS protection plans in a subscription.
         /// </summary>

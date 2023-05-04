@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='applicationSecurityGroupName'>
         /// The name of the application security group.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update application security group tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ApplicationSecurityGroup>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string applicationSecurityGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ApplicationSecurityGroup>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string applicationSecurityGroupName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all application security groups in a subscription.
         /// </summary>

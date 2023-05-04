@@ -414,12 +414,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The location of the domain name.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
-            public static PrivateLinkServiceVisibility CheckPrivateLinkServiceVisibility(this IPrivateLinkServicesOperations operations, string location, string privateLinkServiceAlias = default(string))
+            public static PrivateLinkServiceVisibility CheckPrivateLinkServiceVisibility(this IPrivateLinkServicesOperations operations, string location, CheckPrivateLinkServiceVisibilityRequest parameters)
             {
-                return operations.CheckPrivateLinkServiceVisibilityAsync(location, privateLinkServiceAlias).GetAwaiter().GetResult();
+                return operations.CheckPrivateLinkServiceVisibilityAsync(location, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -431,15 +431,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The location of the domain name.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateLinkServiceVisibility> CheckPrivateLinkServiceVisibilityAsync(this IPrivateLinkServicesOperations operations, string location, string privateLinkServiceAlias = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PrivateLinkServiceVisibility> CheckPrivateLinkServiceVisibilityAsync(this IPrivateLinkServicesOperations operations, string location, CheckPrivateLinkServiceVisibilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(location, privateLinkServiceAlias, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -458,12 +458,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
-            public static PrivateLinkServiceVisibility CheckPrivateLinkServiceVisibilityByResourceGroup(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, string privateLinkServiceAlias = default(string))
+            public static PrivateLinkServiceVisibility CheckPrivateLinkServiceVisibilityByResourceGroup(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters)
             {
-                return operations.CheckPrivateLinkServiceVisibilityByResourceGroupAsync(location, resourceGroupName, privateLinkServiceAlias).GetAwaiter().GetResult();
+                return operations.CheckPrivateLinkServiceVisibilityByResourceGroupAsync(location, resourceGroupName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -479,15 +479,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateLinkServiceVisibility> CheckPrivateLinkServiceVisibilityByResourceGroupAsync(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, string privateLinkServiceAlias = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PrivateLinkServiceVisibility> CheckPrivateLinkServiceVisibilityByResourceGroupAsync(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(location, resourceGroupName, privateLinkServiceAlias, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(location, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -708,12 +708,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The location of the domain name.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
-            public static PrivateLinkServiceVisibility BeginCheckPrivateLinkServiceVisibility(this IPrivateLinkServicesOperations operations, string location, string privateLinkServiceAlias = default(string))
+            public static PrivateLinkServiceVisibility BeginCheckPrivateLinkServiceVisibility(this IPrivateLinkServicesOperations operations, string location, CheckPrivateLinkServiceVisibilityRequest parameters)
             {
-                return operations.BeginCheckPrivateLinkServiceVisibilityAsync(location, privateLinkServiceAlias).GetAwaiter().GetResult();
+                return operations.BeginCheckPrivateLinkServiceVisibilityAsync(location, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -725,15 +725,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='location'>
             /// The location of the domain name.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateLinkServiceVisibility> BeginCheckPrivateLinkServiceVisibilityAsync(this IPrivateLinkServicesOperations operations, string location, string privateLinkServiceAlias = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PrivateLinkServiceVisibility> BeginCheckPrivateLinkServiceVisibilityAsync(this IPrivateLinkServicesOperations operations, string location, CheckPrivateLinkServiceVisibilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(location, privateLinkServiceAlias, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCheckPrivateLinkServiceVisibilityWithHttpMessagesAsync(location, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -752,12 +752,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
-            public static PrivateLinkServiceVisibility BeginCheckPrivateLinkServiceVisibilityByResourceGroup(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, string privateLinkServiceAlias = default(string))
+            public static PrivateLinkServiceVisibility BeginCheckPrivateLinkServiceVisibilityByResourceGroup(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters)
             {
-                return operations.BeginCheckPrivateLinkServiceVisibilityByResourceGroupAsync(location, resourceGroupName, privateLinkServiceAlias).GetAwaiter().GetResult();
+                return operations.BeginCheckPrivateLinkServiceVisibilityByResourceGroupAsync(location, resourceGroupName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -773,15 +773,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
-            /// <param name='privateLinkServiceAlias'>
-            /// The alias of the private link service.
+            /// <param name='parameters'>
+            /// The request body of CheckPrivateLinkService API call.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PrivateLinkServiceVisibility> BeginCheckPrivateLinkServiceVisibilityByResourceGroupAsync(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, string privateLinkServiceAlias = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PrivateLinkServiceVisibility> BeginCheckPrivateLinkServiceVisibilityByResourceGroupAsync(this IPrivateLinkServicesOperations operations, string location, string resourceGroupName, CheckPrivateLinkServiceVisibilityRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(location, resourceGroupName, privateLinkServiceAlias, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCheckPrivateLinkServiceVisibilityByResourceGroupWithHttpMessagesAsync(location, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

@@ -87,8 +87,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='p2SVpnGatewayParameters'>
+        /// Parameters supplied to update a virtual wan p2s vpn gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<P2SVpnGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string gatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<P2SVpnGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a virtual wan p2s vpn gateway.
         /// </summary>
@@ -205,9 +205,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the P2SVpnGateway.
         /// </param>
-        /// <param name='authenticationMethod'>
-        /// VPN client authentication method. Possible values include:
-        /// 'EAPTLS', 'EAPMSCHAPv2'
+        /// <param name='parameters'>
+        /// Parameters supplied to the generate P2SVpnGateway VPN client
+        /// package operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VpnProfileResponse>> GenerateVpnProfileWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string authenticationMethod = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VpnProfileResponse>> GenerateVpnProfileWithHttpMessagesAsync(string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the connection health of P2S clients of the virtual wan
         /// P2SVpnGateway in the specified resource group.
@@ -261,12 +261,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the P2SVpnGateway.
         /// </param>
-        /// <param name='vpnUserNamesFilter'>
-        /// The list of p2s vpn user names whose p2s vpn connection detailed
-        /// health to retrieve for.
-        /// </param>
-        /// <param name='outputBlobSasUrl'>
-        /// The sas-url to download the P2S Vpn connection health detail.
+        /// <param name='request'>
+        /// Request parameters supplied to get p2s vpn connections detailed
+        /// health.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -283,7 +280,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<P2SVpnConnectionHealth>> GetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(string resourceGroupName, string gatewayName, IList<string> vpnUserNamesFilter = default(IList<string>), string outputBlobSasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<P2SVpnConnectionHealth>> GetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in
         /// the specified resource group.
@@ -294,8 +291,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='p2sVpnGatewayName'>
         /// The name of the P2S Vpn Gateway.
         /// </param>
-        /// <param name='vpnConnectionIds'>
-        /// List of p2s vpn connection Ids.
+        /// <param name='request'>
+        /// The parameters are supplied to disconnect p2s vpn connections.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -309,7 +306,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DisconnectP2sVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string p2sVpnGatewayName, IList<string> vpnConnectionIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DisconnectP2sVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates a virtual wan p2s vpn gateway if it doesn't exist else
         /// updates the existing gateway.
@@ -349,8 +346,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='p2SVpnGatewayParameters'>
+        /// Parameters supplied to update a virtual wan p2s vpn gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -367,7 +364,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<P2SVpnGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string gatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<P2SVpnGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a virtual wan p2s vpn gateway.
         /// </summary>
@@ -426,9 +423,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the P2SVpnGateway.
         /// </param>
-        /// <param name='authenticationMethod'>
-        /// VPN client authentication method. Possible values include:
-        /// 'EAPTLS', 'EAPMSCHAPv2'
+        /// <param name='parameters'>
+        /// Parameters supplied to the generate P2SVpnGateway VPN client
+        /// package operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -445,7 +442,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VpnProfileResponse>> BeginGenerateVpnProfileWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string authenticationMethod = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VpnProfileResponse>> BeginGenerateVpnProfileWithHttpMessagesAsync(string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the connection health of P2S clients of the virtual wan
         /// P2SVpnGateway in the specified resource group.
@@ -482,12 +479,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='gatewayName'>
         /// The name of the P2SVpnGateway.
         /// </param>
-        /// <param name='vpnUserNamesFilter'>
-        /// The list of p2s vpn user names whose p2s vpn connection detailed
-        /// health to retrieve for.
-        /// </param>
-        /// <param name='outputBlobSasUrl'>
-        /// The sas-url to download the P2S Vpn connection health detail.
+        /// <param name='request'>
+        /// Request parameters supplied to get p2s vpn connections detailed
+        /// health.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -504,7 +498,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<P2SVpnConnectionHealth>> BeginGetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(string resourceGroupName, string gatewayName, IList<string> vpnUserNamesFilter = default(IList<string>), string outputBlobSasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<P2SVpnConnectionHealth>> BeginGetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in
         /// the specified resource group.
@@ -515,8 +509,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='p2sVpnGatewayName'>
         /// The name of the P2S Vpn Gateway.
         /// </param>
-        /// <param name='vpnConnectionIds'>
-        /// List of p2s vpn connection Ids.
+        /// <param name='request'>
+        /// The parameters are supplied to disconnect p2s vpn connections.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -530,7 +524,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> BeginDisconnectP2sVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string p2sVpnGatewayName, IList<string> vpnConnectionIds = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDisconnectP2sVpnConnectionsWithHttpMessagesAsync(string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionRequest request, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all the P2SVpnGateways in a resource group.
         /// </summary>

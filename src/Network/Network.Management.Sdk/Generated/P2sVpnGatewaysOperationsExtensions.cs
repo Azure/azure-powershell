@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -123,12 +121,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='p2SVpnGatewayParameters'>
+            /// Parameters supplied to update a virtual wan p2s vpn gateway tags.
             /// </param>
-            public static P2SVpnGateway UpdateTags(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static P2SVpnGateway UpdateTags(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, gatewayName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -143,15 +141,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='p2SVpnGatewayParameters'>
+            /// Parameters supplied to update a virtual wan p2s vpn gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<P2SVpnGateway> UpdateTagsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<P2SVpnGateway> UpdateTagsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, gatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -309,13 +307,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
+            /// <param name='parameters'>
+            /// Parameters supplied to the generate P2SVpnGateway VPN client package
+            /// operation.
             /// </param>
-            public static VpnProfileResponse GenerateVpnProfile(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, string authenticationMethod = default(string))
+            public static VpnProfileResponse GenerateVpnProfile(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters)
             {
-                return operations.GenerateVpnProfileAsync(resourceGroupName, gatewayName, authenticationMethod).GetAwaiter().GetResult();
+                return operations.GenerateVpnProfileAsync(resourceGroupName, gatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -331,16 +329,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
+            /// <param name='parameters'>
+            /// Parameters supplied to the generate P2SVpnGateway VPN client package
+            /// operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VpnProfileResponse> GenerateVpnProfileAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, string authenticationMethod = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VpnProfileResponse> GenerateVpnProfileAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GenerateVpnProfileWithHttpMessagesAsync(resourceGroupName, gatewayName, authenticationMethod, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GenerateVpnProfileWithHttpMessagesAsync(resourceGroupName, gatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -401,16 +399,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='vpnUserNamesFilter'>
-            /// The list of p2s vpn user names whose p2s vpn connection detailed health to
-            /// retrieve for.
+            /// <param name='request'>
+            /// Request parameters supplied to get p2s vpn connections detailed health.
             /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the P2S Vpn connection health detail.
-            /// </param>
-            public static P2SVpnConnectionHealth GetP2sVpnConnectionHealthDetailed(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IList<string> vpnUserNamesFilter = default(IList<string>), string outputBlobSasUrl = default(string))
+            public static P2SVpnConnectionHealth GetP2sVpnConnectionHealthDetailed(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request)
             {
-                return operations.GetP2sVpnConnectionHealthDetailedAsync(resourceGroupName, gatewayName, vpnUserNamesFilter, outputBlobSasUrl).GetAwaiter().GetResult();
+                return operations.GetP2sVpnConnectionHealthDetailedAsync(resourceGroupName, gatewayName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -426,19 +420,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='vpnUserNamesFilter'>
-            /// The list of p2s vpn user names whose p2s vpn connection detailed health to
-            /// retrieve for.
-            /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the P2S Vpn connection health detail.
+            /// <param name='request'>
+            /// Request parameters supplied to get p2s vpn connections detailed health.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<P2SVpnConnectionHealth> GetP2sVpnConnectionHealthDetailedAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IList<string> vpnUserNamesFilter = default(IList<string>), string outputBlobSasUrl = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<P2SVpnConnectionHealth> GetP2sVpnConnectionHealthDetailedAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnUserNamesFilter, outputBlobSasUrl, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(resourceGroupName, gatewayName, request, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -457,12 +447,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='p2sVpnGatewayName'>
             /// The name of the P2S Vpn Gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect p2s vpn connections.
             /// </param>
-            public static void DisconnectP2sVpnConnections(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, IList<string> vpnConnectionIds = default(IList<string>))
+            public static void DisconnectP2sVpnConnections(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionRequest request)
             {
-                operations.DisconnectP2sVpnConnectionsAsync(resourceGroupName, p2sVpnGatewayName, vpnConnectionIds).GetAwaiter().GetResult();
+                operations.DisconnectP2sVpnConnectionsAsync(resourceGroupName, p2sVpnGatewayName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -478,15 +468,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='p2sVpnGatewayName'>
             /// The name of the P2S Vpn Gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect p2s vpn connections.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DisconnectP2sVpnConnectionsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, IList<string> vpnConnectionIds = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DisconnectP2sVpnConnectionsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DisconnectP2sVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, vpnConnectionIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DisconnectP2sVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -549,12 +539,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='p2SVpnGatewayParameters'>
+            /// Parameters supplied to update a virtual wan p2s vpn gateway tags.
             /// </param>
-            public static P2SVpnGateway BeginUpdateTags(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static P2SVpnGateway BeginUpdateTags(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters)
             {
-                return operations.BeginUpdateTagsAsync(resourceGroupName, gatewayName, tags).GetAwaiter().GetResult();
+                return operations.BeginUpdateTagsAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -569,15 +559,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='p2SVpnGatewayParameters'>
+            /// Parameters supplied to update a virtual wan p2s vpn gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<P2SVpnGateway> BeginUpdateTagsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<P2SVpnGateway> BeginUpdateTagsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, TagsObject p2SVpnGatewayParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, gatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, gatewayName, p2SVpnGatewayParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -673,13 +663,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
+            /// <param name='parameters'>
+            /// Parameters supplied to the generate P2SVpnGateway VPN client package
+            /// operation.
             /// </param>
-            public static VpnProfileResponse BeginGenerateVpnProfile(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, string authenticationMethod = default(string))
+            public static VpnProfileResponse BeginGenerateVpnProfile(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters)
             {
-                return operations.BeginGenerateVpnProfileAsync(resourceGroupName, gatewayName, authenticationMethod).GetAwaiter().GetResult();
+                return operations.BeginGenerateVpnProfileAsync(resourceGroupName, gatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -695,16 +685,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
+            /// <param name='parameters'>
+            /// Parameters supplied to the generate P2SVpnGateway VPN client package
+            /// operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VpnProfileResponse> BeginGenerateVpnProfileAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, string authenticationMethod = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VpnProfileResponse> BeginGenerateVpnProfileAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnProfileParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginGenerateVpnProfileWithHttpMessagesAsync(resourceGroupName, gatewayName, authenticationMethod, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginGenerateVpnProfileWithHttpMessagesAsync(resourceGroupName, gatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -765,16 +755,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='vpnUserNamesFilter'>
-            /// The list of p2s vpn user names whose p2s vpn connection detailed health to
-            /// retrieve for.
+            /// <param name='request'>
+            /// Request parameters supplied to get p2s vpn connections detailed health.
             /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the P2S Vpn connection health detail.
-            /// </param>
-            public static P2SVpnConnectionHealth BeginGetP2sVpnConnectionHealthDetailed(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IList<string> vpnUserNamesFilter = default(IList<string>), string outputBlobSasUrl = default(string))
+            public static P2SVpnConnectionHealth BeginGetP2sVpnConnectionHealthDetailed(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request)
             {
-                return operations.BeginGetP2sVpnConnectionHealthDetailedAsync(resourceGroupName, gatewayName, vpnUserNamesFilter, outputBlobSasUrl).GetAwaiter().GetResult();
+                return operations.BeginGetP2sVpnConnectionHealthDetailedAsync(resourceGroupName, gatewayName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -790,19 +776,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='gatewayName'>
             /// The name of the P2SVpnGateway.
             /// </param>
-            /// <param name='vpnUserNamesFilter'>
-            /// The list of p2s vpn user names whose p2s vpn connection detailed health to
-            /// retrieve for.
-            /// </param>
-            /// <param name='outputBlobSasUrl'>
-            /// The sas-url to download the P2S Vpn connection health detail.
+            /// <param name='request'>
+            /// Request parameters supplied to get p2s vpn connections detailed health.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<P2SVpnConnectionHealth> BeginGetP2sVpnConnectionHealthDetailedAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, IList<string> vpnUserNamesFilter = default(IList<string>), string outputBlobSasUrl = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<P2SVpnConnectionHealth> BeginGetP2sVpnConnectionHealthDetailedAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string gatewayName, P2SVpnConnectionHealthRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginGetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnUserNamesFilter, outputBlobSasUrl, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginGetP2sVpnConnectionHealthDetailedWithHttpMessagesAsync(resourceGroupName, gatewayName, request, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -821,12 +803,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='p2sVpnGatewayName'>
             /// The name of the P2S Vpn Gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect p2s vpn connections.
             /// </param>
-            public static void BeginDisconnectP2sVpnConnections(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, IList<string> vpnConnectionIds = default(IList<string>))
+            public static void BeginDisconnectP2sVpnConnections(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionRequest request)
             {
-                operations.BeginDisconnectP2sVpnConnectionsAsync(resourceGroupName, p2sVpnGatewayName, vpnConnectionIds).GetAwaiter().GetResult();
+                operations.BeginDisconnectP2sVpnConnectionsAsync(resourceGroupName, p2sVpnGatewayName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -842,15 +824,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='p2sVpnGatewayName'>
             /// The name of the P2S Vpn Gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect p2s vpn connections.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDisconnectP2sVpnConnectionsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, IList<string> vpnConnectionIds = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDisconnectP2sVpnConnectionsAsync(this IP2sVpnGatewaysOperations operations, string resourceGroupName, string p2sVpnGatewayName, P2SVpnConnectionRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDisconnectP2sVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, vpnConnectionIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDisconnectP2sVpnConnectionsWithHttpMessagesAsync(resourceGroupName, p2sVpnGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

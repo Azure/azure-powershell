@@ -500,6 +500,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates an admin rule collection.
         /// </summary>
+        /// <param name='ruleCollection'>
+        /// The Rule Collection to create or update
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -511,12 +514,6 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='ruleCollectionName'>
         /// The name of the network manager security Configuration rule collection.
-        /// </param>
-        /// <param name='appliesToGroups'>
-        /// Groups for configuration
-        /// </param>
-        /// <param name='description'>
-        /// A description of the admin rule collection.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -539,8 +536,16 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<AdminRuleCollection>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, IList<NetworkManagerSecurityGroupItem> appliesToGroups, string description = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<AdminRuleCollection>> CreateOrUpdateWithHttpMessagesAsync(AdminRuleCollection ruleCollection, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (ruleCollection == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "ruleCollection");
+            }
+            if (ruleCollection != null)
+            {
+                ruleCollection.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -561,27 +566,7 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "ruleCollectionName");
             }
-            if (appliesToGroups == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "appliesToGroups");
-            }
-            if (appliesToGroups != null)
-            {
-                foreach (var element in appliesToGroups)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
-                }
-            }
             string apiVersion = "2022-11-01";
-            AdminRuleCollection ruleCollection = new AdminRuleCollection();
-            if (description != null || appliesToGroups != null)
-            {
-                ruleCollection.Description = description;
-                ruleCollection.AppliesToGroups = appliesToGroups;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -589,12 +574,12 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("ruleCollection", ruleCollection);
                 tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("configurationName", configurationName);
                 tracingParameters.Add("ruleCollectionName", ruleCollectionName);
-                tracingParameters.Add("ruleCollection", ruleCollection);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }

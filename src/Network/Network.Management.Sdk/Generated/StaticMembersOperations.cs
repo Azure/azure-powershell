@@ -265,6 +265,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates a static member.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to the specify the static member to create
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -276,9 +279,6 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='staticMemberName'>
         /// The name of the static member.
-        /// </param>
-        /// <param name='resourceId'>
-        /// Resource Id.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -301,8 +301,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<StaticMember>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, string resourceId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<StaticMember>> CreateOrUpdateWithHttpMessagesAsync(StaticMember parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -324,11 +328,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "staticMemberName");
             }
             string apiVersion = "2022-11-01";
-            StaticMember parameters = new StaticMember();
-            if (resourceId != null)
-            {
-                parameters.ResourceId = resourceId;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -336,12 +335,12 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("networkGroupName", networkGroupName);
                 tracingParameters.Add("staticMemberName", staticMemberName);
                 tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }

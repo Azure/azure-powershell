@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='ipGroupsName'>
         /// The name of the ipGroups.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to the update ipGroups operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IpGroup>> UpdateGroupsWithHttpMessagesAsync(string resourceGroupName, string ipGroupsName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IpGroup>> UpdateGroupsWithHttpMessagesAsync(string resourceGroupName, string ipGroupsName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified ipGroups.
         /// </summary>

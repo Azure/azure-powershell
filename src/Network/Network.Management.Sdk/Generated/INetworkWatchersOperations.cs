@@ -108,8 +108,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update network watcher tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NetworkWatcher>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkWatcher>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all network watchers by resource group.
         /// </summary>
@@ -263,8 +263,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// ID of the target VM.
+        /// <param name='parameters'>
+        /// Parameters that define the VM to check security groups for.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SecurityGroupViewResult>> GetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SecurityGroupViewResult>> GetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Initiate troubleshooting on a specified resource.
         /// </summary>
@@ -320,8 +320,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource ID to query the troubleshooting result.
+        /// <param name='parameters'>
+        /// Parameters that define the resource to query the troubleshooting
+        /// result.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -338,7 +339,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TroubleshootingResult>> GetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<TroubleshootingResult>> GetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Configures flow log and traffic analytics (optional) on a specified
         /// resource.
@@ -378,8 +379,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource where getting the flow log and traffic
+        /// <param name='parameters'>
+        /// Parameters that define a resource to query flow log and traffic
         /// analytics (optional) status.
         /// </param>
         /// <param name='customHeaders'>
@@ -397,7 +398,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<FlowLogInformation>> GetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<FlowLogInformation>> GetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Verifies the possibility of establishing a direct TCP connection
         /// from a virtual machine to a given endpoint including another VM or
@@ -612,8 +613,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// ID of the target VM.
+        /// <param name='parameters'>
+        /// Parameters that define the VM to check security groups for.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -630,7 +631,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SecurityGroupViewResult>> BeginGetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SecurityGroupViewResult>> BeginGetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Initiate troubleshooting on a specified resource.
         /// </summary>
@@ -669,8 +670,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource ID to query the troubleshooting result.
+        /// <param name='parameters'>
+        /// Parameters that define the resource to query the troubleshooting
+        /// result.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -687,7 +689,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TroubleshootingResult>> BeginGetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<TroubleshootingResult>> BeginGetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Configures flow log and traffic analytics (optional) on a specified
         /// resource.
@@ -727,8 +729,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource where getting the flow log and traffic
+        /// <param name='parameters'>
+        /// Parameters that define a resource to query flow log and traffic
         /// analytics (optional) status.
         /// </param>
         /// <param name='customHeaders'>
@@ -746,7 +748,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<FlowLogInformation>> BeginGetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<FlowLogInformation>> BeginGetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Verifies the possibility of establishing a direct TCP connection
         /// from a virtual machine to a given endpoint including another VM or

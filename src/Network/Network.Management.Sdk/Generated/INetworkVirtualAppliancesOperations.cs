@@ -82,8 +82,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkVirtualApplianceName'>
         /// The name of Network Virtual Appliance being updated.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to Update Network Virtual Appliance Tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NetworkVirtualAppliance>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkVirtualAppliance>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkVirtualApplianceName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Creates or updates the specified Network Virtual Appliance.
         /// </summary>

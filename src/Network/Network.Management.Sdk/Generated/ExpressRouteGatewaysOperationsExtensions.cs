@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -143,12 +141,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRouteGatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='expressRouteGatewayParameters'>
+            /// Parameters supplied to update a virtual wan express route gateway tags.
             /// </param>
-            public static ExpressRouteGateway UpdateTags(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static ExpressRouteGateway UpdateTags(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, expressRouteGatewayName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, expressRouteGatewayName, expressRouteGatewayParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -163,15 +161,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRouteGatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='expressRouteGatewayParameters'>
+            /// Parameters supplied to update a virtual wan express route gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRouteGateway> UpdateTagsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRouteGateway> UpdateTagsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, expressRouteGatewayParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -316,12 +314,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRouteGatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='expressRouteGatewayParameters'>
+            /// Parameters supplied to update a virtual wan express route gateway tags.
             /// </param>
-            public static ExpressRouteGateway BeginUpdateTags(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static ExpressRouteGateway BeginUpdateTags(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters)
             {
-                return operations.BeginUpdateTagsAsync(resourceGroupName, expressRouteGatewayName, tags).GetAwaiter().GetResult();
+                return operations.BeginUpdateTagsAsync(resourceGroupName, expressRouteGatewayName, expressRouteGatewayParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -336,15 +334,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='expressRouteGatewayName'>
             /// The name of the gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='expressRouteGatewayParameters'>
+            /// Parameters supplied to update a virtual wan express route gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRouteGateway> BeginUpdateTagsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRouteGateway> BeginUpdateTagsAsync(this IExpressRouteGatewaysOperations operations, string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, expressRouteGatewayParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

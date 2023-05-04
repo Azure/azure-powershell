@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -123,12 +121,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnServerConfigurationName'>
             /// The name of the VpnServerConfiguration being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='vpnServerConfigurationParameters'>
+            /// Parameters supplied to update VpnServerConfiguration tags.
             /// </param>
-            public static VpnServerConfiguration UpdateTags(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static VpnServerConfiguration UpdateTags(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, TagsObject vpnServerConfigurationParameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, vpnServerConfigurationName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, vpnServerConfigurationName, vpnServerConfigurationParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -143,15 +141,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='vpnServerConfigurationName'>
             /// The name of the VpnServerConfiguration being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='vpnServerConfigurationParameters'>
+            /// Parameters supplied to update VpnServerConfiguration tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VpnServerConfiguration> UpdateTagsAsync(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VpnServerConfiguration> UpdateTagsAsync(this IVpnServerConfigurationsOperations operations, string resourceGroupName, string vpnServerConfigurationName, TagsObject vpnServerConfigurationParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, vpnServerConfigurationName, vpnServerConfigurationParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

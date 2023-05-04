@@ -102,8 +102,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRouteGatewayName'>
         /// The name of the gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='expressRouteGatewayParameters'>
+        /// Parameters supplied to update a virtual wan express route gateway
+        /// tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -120,7 +121,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ExpressRouteGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExpressRouteGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Fetches the details of a ExpressRoute gateway in a resource group.
         /// </summary>
@@ -208,8 +209,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRouteGatewayName'>
         /// The name of the gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='expressRouteGatewayParameters'>
+        /// Parameters supplied to update a virtual wan express route gateway
+        /// tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -226,7 +228,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<ExpressRouteGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ExpressRouteGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes the specified ExpressRoute gateway in a resource group. An
         /// ExpressRoute gateway resource can only be deleted when there are no

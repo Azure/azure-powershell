@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='customIpPrefixName'>
         /// The name of the custom IP prefix.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update custom IP prefix tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<CustomIpPrefix>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string customIpPrefixName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<CustomIpPrefix>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string customIpPrefixName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the custom IP prefixes in a subscription.
         /// </summary>

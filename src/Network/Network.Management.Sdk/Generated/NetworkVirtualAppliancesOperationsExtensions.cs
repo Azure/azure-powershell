@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -121,12 +119,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkVirtualApplianceName'>
             /// The name of Network Virtual Appliance being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to Update Network Virtual Appliance Tags.
             /// </param>
-            public static NetworkVirtualAppliance UpdateTags(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static NetworkVirtualAppliance UpdateTags(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, networkVirtualApplianceName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, networkVirtualApplianceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -141,15 +139,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkVirtualApplianceName'>
             /// The name of Network Virtual Appliance being updated.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to Update Network Virtual Appliance Tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkVirtualAppliance> UpdateTagsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkVirtualAppliance> UpdateTagsAsync(this INetworkVirtualAppliancesOperations operations, string resourceGroupName, string networkVirtualApplianceName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkVirtualApplianceName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

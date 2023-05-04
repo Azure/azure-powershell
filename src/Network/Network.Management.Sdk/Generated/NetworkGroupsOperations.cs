@@ -256,6 +256,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates a network group.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to the specify which network group need to create
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -269,9 +272,6 @@ namespace Microsoft.Azure.Management.Network
         /// The ETag of the transformation. Omit this value to always overwrite the
         /// current resource. Specify the last-seen ETag value to prevent accidentally
         /// overwriting concurrent changes.
-        /// </param>
-        /// <param name='description'>
-        /// A description of the network group.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -294,8 +294,12 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<NetworkGroup,NetworkGroupsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string), string description = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NetworkGroup,NetworkGroupsCreateOrUpdateHeaders>> CreateOrUpdateWithHttpMessagesAsync(NetworkGroup parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string ifMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
@@ -313,11 +317,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkGroupName");
             }
             string apiVersion = "2022-11-01";
-            NetworkGroup parameters = new NetworkGroup();
-            if (description != null)
-            {
-                parameters.Description = description;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -325,12 +324,12 @@ namespace Microsoft.Azure.Management.Network
             {
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
+                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("ifMatch", ifMatch);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkManagerName", networkManagerName);
                 tracingParameters.Add("networkGroupName", networkGroupName);
                 tracingParameters.Add("apiVersion", apiVersion);
-                tracingParameters.Add("parameters", parameters);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "CreateOrUpdate", tracingParameters);
             }

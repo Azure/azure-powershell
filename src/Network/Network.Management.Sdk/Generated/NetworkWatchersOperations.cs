@@ -491,8 +491,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update network watcher tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -515,7 +515,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<NetworkWatcher>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<NetworkWatcher>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -525,16 +525,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkWatcherName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            TagsObject parameters = new TagsObject();
-            if (tags != null)
-            {
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -544,8 +543,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkWatcherName", networkWatcherName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "UpdateTags", tracingParameters);
             }
@@ -1300,8 +1299,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// ID of the target VM.
+        /// <param name='parameters'>
+        /// Parameters that define the VM to check security groups for.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1309,10 +1308,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<SecurityGroupViewResult>> GetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SecurityGroupViewResult>> GetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<SecurityGroupViewResult> _response = await BeginGetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<SecurityGroupViewResult> _response = await BeginGetVMSecurityRulesWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1350,8 +1349,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource ID to query the troubleshooting result.
+        /// <param name='parameters'>
+        /// Parameters that define the resource to query the troubleshooting result.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1359,10 +1358,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<TroubleshootingResult>> GetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<TroubleshootingResult>> GetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<TroubleshootingResult> _response = await BeginGetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<TroubleshootingResult> _response = await BeginGetTroubleshootingResultWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1402,8 +1401,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource where getting the flow log and traffic analytics
+        /// <param name='parameters'>
+        /// Parameters that define a resource to query flow log and traffic analytics
         /// (optional) status.
         /// </param>
         /// <param name='customHeaders'>
@@ -1412,10 +1411,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<FlowLogInformation>> GetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<FlowLogInformation>> GetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<FlowLogInformation> _response = await BeginGetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, targetResourceId, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<FlowLogInformation> _response = await BeginGetFlowLogStatusWithHttpMessagesAsync(resourceGroupName, networkWatcherName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -2159,8 +2158,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// ID of the target VM.
+        /// <param name='parameters'>
+        /// Parameters that define the VM to check security groups for.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2183,7 +2182,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<SecurityGroupViewResult>> BeginGetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<SecurityGroupViewResult>> BeginGetVMSecurityRulesWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, SecurityGroupViewParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2193,20 +2192,19 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkWatcherName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (targetResourceId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "targetResourceId");
-            }
             string apiVersion = "2022-11-01";
-            SecurityGroupViewParameters parameters = new SecurityGroupViewParameters();
-            if (targetResourceId != null)
-            {
-                parameters.TargetResourceId = targetResourceId;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2216,8 +2214,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkWatcherName", networkWatcherName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginGetVMSecurityRules", tracingParameters);
             }
@@ -2610,8 +2608,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource ID to query the troubleshooting result.
+        /// <param name='parameters'>
+        /// Parameters that define the resource to query the troubleshooting result.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2634,7 +2632,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<TroubleshootingResult>> BeginGetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<TroubleshootingResult>> BeginGetTroubleshootingResultWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, QueryTroubleshootingParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2644,20 +2642,19 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkWatcherName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (targetResourceId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "targetResourceId");
-            }
             string apiVersion = "2022-11-01";
-            QueryTroubleshootingParameters parameters = new QueryTroubleshootingParameters();
-            if (targetResourceId != null)
-            {
-                parameters.TargetResourceId = targetResourceId;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2667,8 +2664,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkWatcherName", networkWatcherName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginGetTroubleshootingResult", tracingParameters);
             }
@@ -3063,8 +3060,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkWatcherName'>
         /// The name of the network watcher resource.
         /// </param>
-        /// <param name='targetResourceId'>
-        /// The target resource where getting the flow log and traffic analytics
+        /// <param name='parameters'>
+        /// Parameters that define a resource to query flow log and traffic analytics
         /// (optional) status.
         /// </param>
         /// <param name='customHeaders'>
@@ -3088,7 +3085,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<FlowLogInformation>> BeginGetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, string targetResourceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<FlowLogInformation>> BeginGetFlowLogStatusWithHttpMessagesAsync(string resourceGroupName, string networkWatcherName, FlowLogStatusParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -3098,20 +3095,19 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "networkWatcherName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (targetResourceId == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "targetResourceId");
-            }
             string apiVersion = "2022-11-01";
-            FlowLogStatusParameters parameters = new FlowLogStatusParameters();
-            if (targetResourceId != null)
-            {
-                parameters.TargetResourceId = targetResourceId;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -3121,8 +3117,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("networkWatcherName", networkWatcherName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginGetFlowLogStatus", tracingParameters);
             }

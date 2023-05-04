@@ -744,8 +744,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -753,7 +753,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<IPage<BastionShareableLink>>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<BastionShareableLink>>> PutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the VMs specified in
@@ -765,8 +765,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -774,7 +774,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> DeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Return the Bastion Shareable Links for all the VMs specified in the
@@ -786,8 +786,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<IPage<BastionShareableLink>>> GetBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<BastionShareableLink>>> GetBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -823,8 +823,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='sessionIdsProperty'>
-        /// List of session IDs.
+        /// <param name='sessionIds'>
+        /// The list of sessionids to disconnect.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<IPage<BastionSessionState>>> DisconnectActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<string> sessionIdsProperty = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<BastionSessionState>>> DisconnectActiveSessionsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, SessionIds sessionIds, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Checks whether a domain name in the cloudapp.azure.com zone is
@@ -870,6 +870,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Lists active connectivity configurations in a network manager.
         /// </summary>
+        /// <param name='parameters'>
+        /// Active Configuration Parameter.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -880,25 +883,20 @@ namespace Microsoft.Azure.Management.Network
         /// An optional query parameter which specifies the maximum number of
         /// records to be returned by the server.
         /// </param>
-        /// <param name='regions'>
-        /// List of regions.
-        /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call
-        /// (together with the same query and scopes used in the current
-        /// request) to retrieve the next page of data.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<ActiveConnectivityConfigurationsListResult>> ListActiveConnectivityConfigurationsWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActiveConnectivityConfigurationsListResult>> ListActiveConnectivityConfigurationsWithHttpMessagesAsync(ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Lists active security admin rules in a network manager.
         /// </summary>
+        /// <param name='parameters'>
+        /// Active Configuration Parameter.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -909,26 +907,21 @@ namespace Microsoft.Azure.Management.Network
         /// An optional query parameter which specifies the maximum number of
         /// records to be returned by the server.
         /// </param>
-        /// <param name='regions'>
-        /// List of regions.
-        /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call
-        /// (together with the same query and scopes used in the current
-        /// request) to retrieve the next page of data.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<ActiveSecurityAdminRulesListResult>> ListActiveSecurityAdminRulesWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<ActiveSecurityAdminRulesListResult>> ListActiveSecurityAdminRulesWithHttpMessagesAsync(ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// List all effective connectivity configurations applied on a virtual
         /// network.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to list correct page.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -939,23 +932,21 @@ namespace Microsoft.Azure.Management.Network
         /// An optional query parameter which specifies the maximum number of
         /// records to be returned by the server.
         /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call
-        /// (together with the same query and scopes used in the current
-        /// request) to retrieve the next page of data.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<NetworkManagerEffectiveConnectivityConfigurationListResult>> ListNetworkManagerEffectiveConnectivityConfigurationsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkManagerEffectiveConnectivityConfigurationListResult>> ListNetworkManagerEffectiveConnectivityConfigurationsWithHttpMessagesAsync(QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// List all effective security admin rules applied on a virtual
         /// network.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to list correct page.
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -966,18 +957,13 @@ namespace Microsoft.Azure.Management.Network
         /// An optional query parameter which specifies the maximum number of
         /// records to be returned by the server.
         /// </param>
-        /// <param name='skipToken'>
-        /// When present, the value can be passed to a subsequent query call
-        /// (together with the same query and scopes used in the current
-        /// request) to retrieve the next page of data.
-        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<NetworkManagerEffectiveSecurityAdminRulesListResult>> ListNetworkManagerEffectiveSecurityAdminRulesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkManagerEffectiveSecurityAdminRulesListResult>> ListNetworkManagerEffectiveSecurityAdminRulesWithHttpMessagesAsync(QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Gives the supported security providers for the virtual wan.
@@ -1009,13 +995,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN whose associated VpnServerConfigurations
         /// is needed.
         /// </param>
-        /// <param name='vpnServerConfigurationResourceId'>
-        /// VpnServerConfiguration partial resource uri with which VirtualWan
-        /// is associated to.
-        /// </param>
-        /// <param name='authenticationMethod'>
-        /// VPN client authentication method. Possible values include:
-        /// 'EAPTLS', 'EAPMSCHAPv2'
+        /// <param name='vpnClientParams'>
+        /// Parameters supplied to the generate VirtualWan VPN profile
+        /// generation operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1023,7 +1005,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<VpnProfileResponse>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VpnProfileResponse>> GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the
@@ -1035,8 +1017,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1044,7 +1026,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<IPage<BastionShareableLink>>> BeginPutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<BastionShareableLink>>> BeginPutBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Deletes the Bastion Shareable Links for all the VMs specified in
@@ -1056,8 +1038,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='vms'>
-        /// List of VM references.
+        /// <param name='bslRequest'>
+        /// Post request for all the Bastion Shareable Link endpoints.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1065,7 +1047,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse> BeginDeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> BeginDeleteBastionShareableLinkWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Returns the list of currently active sessions on the Bastion.
@@ -1096,13 +1078,9 @@ namespace Microsoft.Azure.Management.Network
         /// The name of the VirtualWAN whose associated VpnServerConfigurations
         /// is needed.
         /// </param>
-        /// <param name='vpnServerConfigurationResourceId'>
-        /// VpnServerConfiguration partial resource uri with which VirtualWan
-        /// is associated to.
-        /// </param>
-        /// <param name='authenticationMethod'>
-        /// VPN client authentication method. Possible values include:
-        /// 'EAPTLS', 'EAPMSCHAPv2'
+        /// <param name='vpnClientParams'>
+        /// Parameters supplied to the generate VirtualWan VPN profile
+        /// generation operation.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -1110,7 +1088,7 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        Task<AzureOperationResponse<VpnProfileResponse>> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VpnProfileResponse>> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
 
         /// <summary>
         /// Creates a Bastion Shareable Links for all the VMs specified in the

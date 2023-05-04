@@ -26,14 +26,13 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Retrieves the current filter values for the signatures overrides
         /// </summary>
+        /// <param name='parameters'>
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
         /// <param name='firewallPolicyName'>
         /// The name of the Firewall Policy.
-        /// </param>
-        /// <param name='filterName'>
-        /// Describes the name of the column which values will be returned
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -50,6 +49,6 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SignatureOverridesFilterValuesResponse>> ListWithHttpMessagesAsync(string resourceGroupName, string firewallPolicyName, string filterName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SignatureOverridesFilterValuesResponse>> ListWithHttpMessagesAsync(SignatureOverridesFilterValuesQuery parameters, string resourceGroupName, string firewallPolicyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -445,8 +445,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRouteGatewayName'>
         /// The name of the gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='expressRouteGatewayParameters'>
+        /// Parameters supplied to update a virtual wan express route gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -454,10 +454,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ExpressRouteGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRouteGateway>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<ExpressRouteGateway> _response = await BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, tags, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<ExpressRouteGateway> _response = await BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, expressRouteGatewayName, expressRouteGatewayParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -918,8 +918,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='expressRouteGatewayName'>
         /// The name of the gateway.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='expressRouteGatewayParameters'>
+        /// Parameters supplied to update a virtual wan express route gateway tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -942,7 +942,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ExpressRouteGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRouteGateway>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string expressRouteGatewayName, TagsObject expressRouteGatewayParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -956,12 +956,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "expressRouteGatewayName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject expressRouteGatewayParameters = new TagsObject();
-            if (tags != null)
+            if (expressRouteGatewayParameters == null)
             {
-                expressRouteGatewayParameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "expressRouteGatewayParameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

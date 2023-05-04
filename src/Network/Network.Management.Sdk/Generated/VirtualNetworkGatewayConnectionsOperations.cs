@@ -302,8 +302,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update virtual network gateway connection tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -311,10 +311,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<VirtualNetworkGatewayConnection>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualNetworkGatewayConnection>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<VirtualNetworkGatewayConnection> _response = await BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, tags, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<VirtualNetworkGatewayConnection> _response = await BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -330,11 +330,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The virtual network gateway connection name.
         /// </param>
-        /// <param name='value'>
-        /// The virtual network connection shared key value.
-        /// </param>
-        /// <param name='id'>
-        /// Resource ID.
+        /// <param name='parameters'>
+        /// Parameters supplied to the Begin Set Virtual Network Gateway connection
+        /// Shared key operation throughNetwork resource provider.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -342,10 +340,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ConnectionSharedKey>> SetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, string value, string id = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ConnectionSharedKey>> SetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKey parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<ConnectionSharedKey> _response = await BeginSetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, value, id, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<ConnectionSharedKey> _response = await BeginSetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -743,9 +741,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The virtual network gateway connection reset shared key Name.
         /// </param>
-        /// <param name='keyLength'>
-        /// The virtual network connection reset shared key length, should between 1
-        /// and 128.
+        /// <param name='parameters'>
+        /// Parameters supplied to the begin reset virtual network gateway connection
+        /// shared key operation through network resource provider.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -753,10 +751,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<ConnectionResetSharedKey>> ResetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, int keyLength, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ConnectionResetSharedKey>> ResetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionResetSharedKey parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<ConnectionResetSharedKey> _response = await BeginResetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, keyLength, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<ConnectionResetSharedKey> _response = await BeginResetSharedKeyWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -770,8 +768,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to start packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -779,10 +778,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, string filterData = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<string> _response = await BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, filterData, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<string> _response = await BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -796,8 +795,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway Connection.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on virtual network gateway.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to stop packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -805,10 +805,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStopParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<string> _response = await BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, sasUrl, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<string> _response = await BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1271,8 +1271,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update virtual network gateway connection tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1295,7 +1295,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<VirtualNetworkGatewayConnection>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<VirtualNetworkGatewayConnection>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1305,16 +1305,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayConnectionName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            TagsObject parameters = new TagsObject();
-            if (tags != null)
-            {
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1324,8 +1323,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkGatewayConnectionName", virtualNetworkGatewayConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateTags", tracingParameters);
             }
@@ -1483,11 +1482,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The virtual network gateway connection name.
         /// </param>
-        /// <param name='value'>
-        /// The virtual network connection shared key value.
-        /// </param>
-        /// <param name='id'>
-        /// Resource ID.
+        /// <param name='parameters'>
+        /// Parameters supplied to the Begin Set Virtual Network Gateway connection
+        /// Shared key operation throughNetwork resource provider.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1510,7 +1507,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ConnectionSharedKey>> BeginSetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, string value, string id = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ConnectionSharedKey>> BeginSetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionSharedKey parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1520,21 +1517,19 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayConnectionName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (value == null)
-            {
-                throw new ValidationException(ValidationRules.CannotBeNull, "value");
-            }
             string apiVersion = "2022-11-01";
-            ConnectionSharedKey parameters = new ConnectionSharedKey();
-            if (id != null || value != null)
-            {
-                parameters.Id = id;
-                parameters.Value = value;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1544,8 +1539,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkGatewayConnectionName", virtualNetworkGatewayConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginSetSharedKey", tracingParameters);
             }
@@ -1721,9 +1716,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The virtual network gateway connection reset shared key Name.
         /// </param>
-        /// <param name='keyLength'>
-        /// The virtual network connection reset shared key length, should between 1
-        /// and 128.
+        /// <param name='parameters'>
+        /// Parameters supplied to the begin reset virtual network gateway connection
+        /// shared key operation through network resource provider.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1746,7 +1741,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ConnectionResetSharedKey>> BeginResetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, int keyLength, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ConnectionResetSharedKey>> BeginResetSharedKeyWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, ConnectionResetSharedKey parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1756,21 +1751,19 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayConnectionName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
+            if (parameters != null)
+            {
+                parameters.Validate();
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
-            if (keyLength > 128)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "keyLength", 128);
-            }
-            if (keyLength < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "keyLength", 1);
-            }
             string apiVersion = "2022-11-01";
-            ConnectionResetSharedKey parameters = new ConnectionResetSharedKey();
-            parameters.KeyLength = keyLength;
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1780,8 +1773,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkGatewayConnectionName", virtualNetworkGatewayConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginResetSharedKey", tracingParameters);
             }
@@ -1937,8 +1930,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway connection.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to start packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1961,7 +1955,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, string filterData = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1976,12 +1970,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters);
-            if (filterData != null)
-            {
-                parameters = new VpnPacketCaptureStartParameters();
-                parameters.FilterData = filterData;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1991,8 +1979,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkGatewayConnectionName", virtualNetworkGatewayConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginStartPacketCapture", tracingParameters);
             }
@@ -2143,8 +2131,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='virtualNetworkGatewayConnectionName'>
         /// The name of the virtual network gateway Connection.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on virtual network gateway.
+        /// <param name='parameters'>
+        /// Virtual network gateway packet capture parameters supplied to stop packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -2167,7 +2156,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, string sasUrl = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkGatewayConnectionName, VpnPacketCaptureStopParameters parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -2177,16 +2166,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "virtualNetworkGatewayConnectionName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            VpnPacketCaptureStopParameters parameters = new VpnPacketCaptureStopParameters();
-            if (sasUrl != null)
-            {
-                parameters.SasUrl = sasUrl;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -2196,8 +2184,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkGatewayConnectionName", virtualNetworkGatewayConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginStopPacketCapture", tracingParameters);
             }

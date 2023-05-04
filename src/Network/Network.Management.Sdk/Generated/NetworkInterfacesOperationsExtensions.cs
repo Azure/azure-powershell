@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -310,12 +308,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update network interface tags.
             /// </param>
-            public static NetworkInterface UpdateTags(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static NetworkInterface UpdateTags(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, networkInterfaceName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, networkInterfaceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -330,15 +328,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='networkInterfaceName'>
             /// The name of the network interface.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update network interface tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkInterface> UpdateTagsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkInterface> UpdateTagsAsync(this INetworkInterfacesOperations operations, string resourceGroupName, string networkInterfaceName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, networkInterfaceName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

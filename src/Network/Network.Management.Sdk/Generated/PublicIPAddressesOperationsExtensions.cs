@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -337,12 +335,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='publicIpAddressName'>
             /// The name of the public IP address.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update public IP address tags.
             /// </param>
-            public static PublicIPAddress UpdateTags(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static PublicIPAddress UpdateTags(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, publicIpAddressName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, publicIpAddressName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -357,15 +355,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='publicIpAddressName'>
             /// The name of the public IP address.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update public IP address tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<PublicIPAddress> UpdateTagsAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<PublicIPAddress> UpdateTagsAsync(this IPublicIPAddressesOperations operations, string resourceGroupName, string publicIpAddressName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, publicIpAddressName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

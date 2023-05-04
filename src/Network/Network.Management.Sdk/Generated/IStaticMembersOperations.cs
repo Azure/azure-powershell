@@ -57,6 +57,9 @@ namespace Microsoft.Azure.Management.Network
         /// <summary>
         /// Creates or updates a static member.
         /// </summary>
+        /// <param name='parameters'>
+        /// Parameters supplied to the specify the static member to create
+        /// </param>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
         /// </param>
@@ -68,9 +71,6 @@ namespace Microsoft.Azure.Management.Network
         /// </param>
         /// <param name='staticMemberName'>
         /// The name of the static member.
-        /// </param>
-        /// <param name='resourceId'>
-        /// Resource Id.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<StaticMember>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, string resourceId = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<StaticMember>> CreateOrUpdateWithHttpMessagesAsync(StaticMember parameters, string resourceGroupName, string networkManagerName, string networkGroupName, string staticMemberName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a static member.
         /// </summary>

@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -137,6 +135,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='securityAdminConfiguration'>
+            /// The security admin configuration to create or update
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -146,15 +147,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='configurationName'>
             /// The name of the network manager Security Configuration.
             /// </param>
-            /// <param name='description'>
-            /// A description of the security configuration.
-            /// </param>
-            /// <param name='applyOnNetworkIntentPolicyBasedServices'>
-            /// Enum list of network intent policy based services.
-            /// </param>
-            public static SecurityAdminConfiguration CreateOrUpdate(this ISecurityAdminConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string description = default(string), IList<string> applyOnNetworkIntentPolicyBasedServices = default(IList<string>))
+            public static SecurityAdminConfiguration CreateOrUpdate(this ISecurityAdminConfigurationsOperations operations, SecurityAdminConfiguration securityAdminConfiguration, string resourceGroupName, string networkManagerName, string configurationName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, networkManagerName, configurationName, description, applyOnNetworkIntentPolicyBasedServices).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(securityAdminConfiguration, resourceGroupName, networkManagerName, configurationName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -163,6 +158,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='securityAdminConfiguration'>
+            /// The security admin configuration to create or update
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -172,18 +170,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='configurationName'>
             /// The name of the network manager Security Configuration.
             /// </param>
-            /// <param name='description'>
-            /// A description of the security configuration.
-            /// </param>
-            /// <param name='applyOnNetworkIntentPolicyBasedServices'>
-            /// Enum list of network intent policy based services.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<SecurityAdminConfiguration> CreateOrUpdateAsync(this ISecurityAdminConfigurationsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string description = default(string), IList<string> applyOnNetworkIntentPolicyBasedServices = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<SecurityAdminConfiguration> CreateOrUpdateAsync(this ISecurityAdminConfigurationsOperations operations, SecurityAdminConfiguration securityAdminConfiguration, string resourceGroupName, string networkManagerName, string configurationName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, description, applyOnNetworkIntentPolicyBasedServices, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(securityAdminConfiguration, resourceGroupName, networkManagerName, configurationName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

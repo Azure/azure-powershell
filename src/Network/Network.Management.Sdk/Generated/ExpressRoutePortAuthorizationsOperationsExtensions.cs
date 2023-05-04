@@ -125,16 +125,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='authorizationName'>
             /// The name of the authorization.
             /// </param>
-            /// <param name='id'>
-            /// Resource ID.
+            /// <param name='authorizationParameters'>
+            /// Parameters supplied to the create or update express route port
+            /// authorization operation.
             /// </param>
-            /// <param name='name'>
-            /// The name of the resource that is unique within a resource group. This name
-            /// can be used to access the resource.
-            /// </param>
-            public static ExpressRoutePortAuthorization CreateOrUpdate(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string))
+            public static ExpressRoutePortAuthorization CreateOrUpdate(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, expressRoutePortName, authorizationName, id, name).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(resourceGroupName, expressRoutePortName, authorizationName, authorizationParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -152,19 +149,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='authorizationName'>
             /// The name of the authorization.
             /// </param>
-            /// <param name='id'>
-            /// Resource ID.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the resource that is unique within a resource group. This name
-            /// can be used to access the resource.
+            /// <param name='authorizationParameters'>
+            /// Parameters supplied to the create or update express route port
+            /// authorization operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRoutePortAuthorization> CreateOrUpdateAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRoutePortAuthorization> CreateOrUpdateAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, id, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, authorizationParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -268,16 +262,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='authorizationName'>
             /// The name of the authorization.
             /// </param>
-            /// <param name='id'>
-            /// Resource ID.
+            /// <param name='authorizationParameters'>
+            /// Parameters supplied to the create or update express route port
+            /// authorization operation.
             /// </param>
-            /// <param name='name'>
-            /// The name of the resource that is unique within a resource group. This name
-            /// can be used to access the resource.
-            /// </param>
-            public static ExpressRoutePortAuthorization BeginCreateOrUpdate(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string))
+            public static ExpressRoutePortAuthorization BeginCreateOrUpdate(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters)
             {
-                return operations.BeginCreateOrUpdateAsync(resourceGroupName, expressRoutePortName, authorizationName, id, name).GetAwaiter().GetResult();
+                return operations.BeginCreateOrUpdateAsync(resourceGroupName, expressRoutePortName, authorizationName, authorizationParameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -295,19 +286,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='authorizationName'>
             /// The name of the authorization.
             /// </param>
-            /// <param name='id'>
-            /// Resource ID.
-            /// </param>
-            /// <param name='name'>
-            /// The name of the resource that is unique within a resource group. This name
-            /// can be used to access the resource.
+            /// <param name='authorizationParameters'>
+            /// Parameters supplied to the create or update express route port
+            /// authorization operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ExpressRoutePortAuthorization> BeginCreateOrUpdateAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, string id = default(string), string name = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ExpressRoutePortAuthorization> BeginCreateOrUpdateAsync(this IExpressRoutePortAuthorizationsOperations operations, string resourceGroupName, string expressRoutePortName, string authorizationName, ExpressRoutePortAuthorization authorizationParameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, id, name, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, expressRoutePortName, authorizationName, authorizationParameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

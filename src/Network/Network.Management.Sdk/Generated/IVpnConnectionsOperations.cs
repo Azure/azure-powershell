@@ -121,11 +121,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to start packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -142,7 +140,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Stops packet capture on Vpn connection in the specified resource
         /// group.
@@ -156,11 +154,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to stop packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -177,7 +173,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves all vpn connections for a particular virtual wan vpn
         /// gateway.
@@ -274,11 +270,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to start packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -295,7 +289,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Stops packet capture on Vpn connection in the specified resource
         /// group.
@@ -309,11 +303,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to stop packet
+        /// capture on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -330,7 +322,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieves all vpn connections for a particular virtual wan vpn
         /// gateway.

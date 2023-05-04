@@ -300,8 +300,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update BastionHost tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -309,10 +309,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<BastionHost>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BastionHost>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<BastionHost> _response = await BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, tags, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<BastionHost> _response = await BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, bastionHostName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1089,8 +1089,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='bastionHostName'>
         /// The name of the Bastion Host.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update BastionHost tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1113,7 +1113,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BastionHost>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BastionHost>> BeginUpdateTagsWithHttpMessagesAsync(string resourceGroupName, string bastionHostName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -1127,12 +1127,11 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "bastionHostName");
             }
-            string apiVersion = "2022-11-01";
-            TagsObject parameters = new TagsObject();
-            if (tags != null)
+            if (parameters == null)
             {
-                parameters.Tags = tags;
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
+            string apiVersion = "2022-11-01";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1142,8 +1141,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("bastionHostName", bastionHostName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginUpdateTags", tracingParameters);
             }

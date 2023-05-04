@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -160,12 +158,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update virtual network gateway tags.
             /// </param>
-            public static VirtualNetworkGateway UpdateTags(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static VirtualNetworkGateway UpdateTags(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, virtualNetworkGatewayName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, virtualNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -180,15 +178,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update virtual network gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetworkGateway> UpdateTagsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetworkGateway> UpdateTagsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -834,12 +832,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to start packet
+            /// capture on gateway.
             /// </param>
-            public static string StartPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string filterData = default(string))
+            public static string StartPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters))
             {
-                return operations.StartPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, filterData).GetAwaiter().GetResult();
+                return operations.StartPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -855,15 +854,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to start packet
+            /// capture on gateway.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> StartPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string filterData = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> StartPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.StartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, filterData, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.StartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -882,12 +882,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on virtual network gateway.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to stop packet
+            /// capture on gateway.
             /// </param>
-            public static string StopPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string sasUrl = default(string))
+            public static string StopPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters)
             {
-                return operations.StopPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, sasUrl).GetAwaiter().GetResult();
+                return operations.StopPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -903,15 +904,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on virtual network gateway.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to stop packet
+            /// capture on gateway.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> StopPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string sasUrl = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> StopPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.StopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, sasUrl, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.StopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -972,12 +974,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect vpn connections.
             /// </param>
-            public static void DisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IList<string> vpnConnectionIds = default(IList<string>))
+            public static void DisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request)
             {
-                operations.DisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, vpnConnectionIds).GetAwaiter().GetResult();
+                operations.DisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -993,15 +995,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect vpn connections.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IList<string> vpnConnectionIds = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, vpnConnectionIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -1101,12 +1103,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update virtual network gateway tags.
             /// </param>
-            public static VirtualNetworkGateway BeginUpdateTags(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static VirtualNetworkGateway BeginUpdateTags(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, TagsObject parameters)
             {
-                return operations.BeginUpdateTagsAsync(resourceGroupName, virtualNetworkGatewayName, tags).GetAwaiter().GetResult();
+                return operations.BeginUpdateTagsAsync(resourceGroupName, virtualNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1121,15 +1123,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update virtual network gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VirtualNetworkGateway> BeginUpdateTagsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VirtualNetworkGateway> BeginUpdateTagsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginUpdateTagsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1613,12 +1615,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to start packet
+            /// capture on gateway.
             /// </param>
-            public static string BeginStartPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string filterData = default(string))
+            public static string BeginStartPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters))
             {
-                return operations.BeginStartPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, filterData).GetAwaiter().GetResult();
+                return operations.BeginStartPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1634,15 +1637,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='filterData'>
-            /// Start Packet capture parameters.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to start packet
+            /// capture on gateway.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> BeginStartPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string filterData = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> BeginStartPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStartParameters parameters = default(VpnPacketCaptureStartParameters), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, filterData, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1661,12 +1665,13 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on virtual network gateway.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to stop packet
+            /// capture on gateway.
             /// </param>
-            public static string BeginStopPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string sasUrl = default(string))
+            public static string BeginStopPacketCapture(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters)
             {
-                return operations.BeginStopPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, sasUrl).GetAwaiter().GetResult();
+                return operations.BeginStopPacketCaptureAsync(resourceGroupName, virtualNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1682,15 +1687,16 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='sasUrl'>
-            /// SAS url for packet capture on virtual network gateway.
+            /// <param name='parameters'>
+            /// Virtual network gateway packet capture parameters supplied to stop packet
+            /// capture on gateway.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<string> BeginStopPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, string sasUrl = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<string> BeginStopPacketCaptureAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, VpnPacketCaptureStopParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, sasUrl, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -1751,12 +1757,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect vpn connections.
             /// </param>
-            public static void BeginDisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IList<string> vpnConnectionIds = default(IList<string>))
+            public static void BeginDisconnectVirtualNetworkGatewayVpnConnections(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request)
             {
-                operations.BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, vpnConnectionIds).GetAwaiter().GetResult();
+                operations.BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(resourceGroupName, virtualNetworkGatewayName, request).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1772,15 +1778,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='virtualNetworkGatewayName'>
             /// The name of the virtual network gateway.
             /// </param>
-            /// <param name='vpnConnectionIds'>
-            /// List of p2s vpn connection Ids.
+            /// <param name='request'>
+            /// The parameters are supplied to disconnect vpn connections.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, IList<string> vpnConnectionIds = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDisconnectVirtualNetworkGatewayVpnConnectionsAsync(this IVirtualNetworkGatewaysOperations operations, string resourceGroupName, string virtualNetworkGatewayName, P2SVpnConnectionRequest request, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, vpnConnectionIds, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDisconnectVirtualNetworkGatewayVpnConnectionsWithHttpMessagesAsync(resourceGroupName, virtualNetworkGatewayName, request, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>

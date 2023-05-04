@@ -639,8 +639,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='crossConnectionName'>
         /// The name of the cross connection.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='crossConnectionParameters'>
+        /// Parameters supplied to update express route cross connection tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -663,7 +663,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<ExpressRouteCrossConnection>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<ExpressRouteCrossConnection>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string crossConnectionName, TagsObject crossConnectionParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -673,16 +673,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "crossConnectionName");
             }
+            if (crossConnectionParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "crossConnectionParameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            TagsObject crossConnectionParameters = new TagsObject();
-            if (tags != null)
-            {
-                crossConnectionParameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -692,8 +691,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("crossConnectionName", crossConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("crossConnectionParameters", crossConnectionParameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "UpdateTags", tracingParameters);
             }

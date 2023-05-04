@@ -308,8 +308,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='loadBalancerName'>
         /// The name of the load balancer.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update load balancer tags.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<LoadBalancer>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string loadBalancerName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<LoadBalancer>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string loadBalancerName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -342,16 +342,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "loadBalancerName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            TagsObject parameters = new TagsObject();
-            if (tags != null)
-            {
-                parameters.Tags = tags;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -361,8 +360,8 @@ namespace Microsoft.Azure.Management.Network
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("loadBalancerName", loadBalancerName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "UpdateTags", tracingParameters);
             }
@@ -875,8 +874,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The region where load balancers are located at.
         /// </param>
-        /// <param name='frontendIPConfigurations'>
-        /// A list of frontend IP configuration resources that should swap VIPs.
+        /// <param name='parameters'>
+        /// Parameters that define which VIPs should be swapped.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -884,10 +883,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> SwapPublicIpAddressesWithHttpMessagesAsync(string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> SwapPublicIpAddressesWithHttpMessagesAsync(string location, LoadBalancerVipSwapRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginSwapPublicIpAddressesWithHttpMessagesAsync(location, frontendIPConfigurations, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginSwapPublicIpAddressesWithHttpMessagesAsync(location, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -903,11 +902,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendPoolName'>
         /// The name of the load balancer backend address pool.
         /// </param>
-        /// <param name='ipConfiguration'>
-        /// NetworkInterfaceIPConfiguration set in load balancer backend address.
-        /// </param>
-        /// <param name='ipAddress'>
-        /// IP address set in load balancer backend address.
+        /// <param name='parameters'>
+        /// Query inbound NAT rule port mapping request.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -915,10 +911,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> ListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> ListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<BackendAddressInboundNatRulePortMappings> _response = await BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(groupName, loadBalancerName, backendPoolName, ipConfiguration, ipAddress, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<BackendAddressInboundNatRulePortMappings> _response = await BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(groupName, loadBalancerName, backendPoolName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -1327,8 +1323,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='location'>
         /// The region where load balancers are located at.
         /// </param>
-        /// <param name='frontendIPConfigurations'>
-        /// A list of frontend IP configuration resources that should swap VIPs.
+        /// <param name='parameters'>
+        /// Parameters that define which VIPs should be swapped.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1348,22 +1344,21 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginSwapPublicIpAddressesWithHttpMessagesAsync(string location, IList<LoadBalancerVipSwapRequestFrontendIPConfiguration> frontendIPConfigurations = default(IList<LoadBalancerVipSwapRequestFrontendIPConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginSwapPublicIpAddressesWithHttpMessagesAsync(string location, LoadBalancerVipSwapRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (location == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "location");
+            }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            LoadBalancerVipSwapRequest parameters = new LoadBalancerVipSwapRequest();
-            if (frontendIPConfigurations != null)
-            {
-                parameters.FrontendIPConfigurations = frontendIPConfigurations;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1372,8 +1367,8 @@ namespace Microsoft.Azure.Management.Network
                 _invocationId = ServiceClientTracing.NextInvocationId.ToString();
                 Dictionary<string, object> tracingParameters = new Dictionary<string, object>();
                 tracingParameters.Add("location", location);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginSwapPublicIpAddresses", tracingParameters);
             }
@@ -1512,11 +1507,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='backendPoolName'>
         /// The name of the load balancer backend address pool.
         /// </param>
-        /// <param name='ipConfiguration'>
-        /// NetworkInterfaceIPConfiguration set in load balancer backend address.
-        /// </param>
-        /// <param name='ipAddress'>
-        /// IP address set in load balancer backend address.
+        /// <param name='parameters'>
+        /// Query inbound NAT rule port mapping request.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1539,7 +1531,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, SubResource ipConfiguration = default(SubResource), string ipAddress = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<BackendAddressInboundNatRulePortMappings>> BeginListInboundNatRulePortMappingsWithHttpMessagesAsync(string groupName, string loadBalancerName, string backendPoolName, QueryInboundNatRulePortMappingRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (groupName == null)
             {
@@ -1553,17 +1545,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "backendPoolName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            QueryInboundNatRulePortMappingRequest parameters = new QueryInboundNatRulePortMappingRequest();
-            if (ipConfiguration != null || ipAddress != null)
-            {
-                parameters.IpConfiguration = ipConfiguration;
-                parameters.IpAddress = ipAddress;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1574,8 +1564,8 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("groupName", groupName);
                 tracingParameters.Add("loadBalancerName", loadBalancerName);
                 tracingParameters.Add("backendPoolName", backendPoolName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginListInboundNatRulePortMappings", tracingParameters);
             }

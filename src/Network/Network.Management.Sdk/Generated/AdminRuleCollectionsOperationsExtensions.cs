@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -149,6 +147,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='ruleCollection'>
+            /// The Rule Collection to create or update
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -161,15 +162,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ruleCollectionName'>
             /// The name of the network manager security Configuration rule collection.
             /// </param>
-            /// <param name='appliesToGroups'>
-            /// Groups for configuration
-            /// </param>
-            /// <param name='description'>
-            /// A description of the admin rule collection.
-            /// </param>
-            public static AdminRuleCollection CreateOrUpdate(this IAdminRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, IList<NetworkManagerSecurityGroupItem> appliesToGroups, string description = default(string))
+            public static AdminRuleCollection CreateOrUpdate(this IAdminRuleCollectionsOperations operations, AdminRuleCollection ruleCollection, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName)
             {
-                return operations.CreateOrUpdateAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, appliesToGroups, description).GetAwaiter().GetResult();
+                return operations.CreateOrUpdateAsync(ruleCollection, resourceGroupName, networkManagerName, configurationName, ruleCollectionName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -178,6 +173,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='ruleCollection'>
+            /// The Rule Collection to create or update
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -190,18 +188,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='ruleCollectionName'>
             /// The name of the network manager security Configuration rule collection.
             /// </param>
-            /// <param name='appliesToGroups'>
-            /// Groups for configuration
-            /// </param>
-            /// <param name='description'>
-            /// A description of the admin rule collection.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<AdminRuleCollection> CreateOrUpdateAsync(this IAdminRuleCollectionsOperations operations, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, IList<NetworkManagerSecurityGroupItem> appliesToGroups, string description = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<AdminRuleCollection> CreateOrUpdateAsync(this IAdminRuleCollectionsOperations operations, AdminRuleCollection ruleCollection, string resourceGroupName, string networkManagerName, string configurationName, string ruleCollectionName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(resourceGroupName, networkManagerName, configurationName, ruleCollectionName, appliesToGroups, description, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(ruleCollection, resourceGroupName, networkManagerName, configurationName, ruleCollectionName, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

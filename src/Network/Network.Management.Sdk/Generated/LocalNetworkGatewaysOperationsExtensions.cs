@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -160,12 +158,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='localNetworkGatewayName'>
             /// The name of the local network gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update local network gateway tags.
             /// </param>
-            public static LocalNetworkGateway UpdateTags(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static LocalNetworkGateway UpdateTags(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, localNetworkGatewayName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, localNetworkGatewayName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -180,15 +178,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='localNetworkGatewayName'>
             /// The name of the local network gateway.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update local network gateway tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<LocalNetworkGateway> UpdateTagsAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<LocalNetworkGateway> UpdateTagsAsync(this ILocalNetworkGatewaysOperations operations, string resourceGroupName, string localNetworkGatewayName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, localNetworkGatewayName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

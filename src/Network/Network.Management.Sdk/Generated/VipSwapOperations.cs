@@ -258,7 +258,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceName'>
         /// The name of the cloud service.
         /// </param>
-        /// <param name='properties'>
+        /// <param name='parameters'>
+        /// SwapResource object where slot type should be the target slot after vip
+        /// swap for the specified cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -266,10 +268,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> CreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> CreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse _response = await BeginCreateWithHttpMessagesAsync(groupName, resourceName, properties, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginCreateWithHttpMessagesAsync(groupName, resourceName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -478,7 +480,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='resourceName'>
         /// The name of the cloud service.
         /// </param>
-        /// <param name='properties'>
+        /// <param name='parameters'>
+        /// SwapResource object where slot type should be the target slot after vip
+        /// swap for the specified cloud service.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -498,7 +502,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginCreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResourceProperties properties = default(SwapResourceProperties), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginCreateWithHttpMessagesAsync(string groupName, string resourceName, SwapResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (groupName == null)
             {
@@ -508,17 +512,16 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "resourceName");
             }
+            if (parameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string singletonResource = "swap";
             string apiVersion = "2022-11-01";
-            SwapResource parameters = new SwapResource();
-            if (properties != null)
-            {
-                parameters.Properties = properties;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -529,8 +532,8 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("groupName", groupName);
                 tracingParameters.Add("resourceName", resourceName);
                 tracingParameters.Add("singletonResource", singletonResource);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginCreate", tracingParameters);
             }

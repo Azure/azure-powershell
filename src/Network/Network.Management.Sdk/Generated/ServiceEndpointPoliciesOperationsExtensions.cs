@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -166,12 +164,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='serviceEndpointPolicyName'>
             /// The name of the service endpoint policy.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update service endpoint policy tags.
             /// </param>
-            public static ServiceEndpointPolicy UpdateTags(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static ServiceEndpointPolicy UpdateTags(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, TagsObject parameters)
             {
-                return operations.UpdateTagsAsync(resourceGroupName, serviceEndpointPolicyName, tags).GetAwaiter().GetResult();
+                return operations.UpdateTagsAsync(resourceGroupName, serviceEndpointPolicyName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -186,15 +184,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='serviceEndpointPolicyName'>
             /// The name of the service endpoint policy.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags.
+            /// <param name='parameters'>
+            /// Parameters supplied to update service endpoint policy tags.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ServiceEndpointPolicy> UpdateTagsAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ServiceEndpointPolicy> UpdateTagsAsync(this IServiceEndpointPoliciesOperations operations, string resourceGroupName, string serviceEndpointPolicyName, TagsObject parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateTagsWithHttpMessagesAsync(resourceGroupName, serviceEndpointPolicyName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

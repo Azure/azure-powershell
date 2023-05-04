@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Network
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -35,12 +33,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
-            public static IPage<BastionShareableLink> PutBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+            public static IPage<BastionShareableLink> PutBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
             {
-                return operations.PutBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).GetAwaiter().GetResult();
+                return operations.PutBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -55,15 +53,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BastionShareableLink>> PutBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BastionShareableLink>> PutBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.PutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, vms, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.PutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -82,12 +80,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
-            public static void DeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+            public static void DeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
             {
-                operations.DeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).GetAwaiter().GetResult();
+                operations.DeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -103,15 +101,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task DeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, vms, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.DeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -127,12 +125,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
-            public static IPage<BastionShareableLink> GetBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+            public static IPage<BastionShareableLink> GetBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
             {
-                return operations.GetBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).GetAwaiter().GetResult();
+                return operations.GetBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -148,15 +146,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BastionShareableLink>> GetBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BastionShareableLink>> GetBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GetBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, vms, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GetBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -214,12 +212,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='sessionIdsProperty'>
-            /// List of session IDs.
+            /// <param name='sessionIds'>
+            /// The list of sessionids to disconnect.
             /// </param>
-            public static IPage<BastionSessionState> DisconnectActiveSessions(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<string> sessionIdsProperty = default(IList<string>))
+            public static IPage<BastionSessionState> DisconnectActiveSessions(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, SessionIds sessionIds)
             {
-                return operations.DisconnectActiveSessionsAsync(resourceGroupName, bastionHostName, sessionIdsProperty).GetAwaiter().GetResult();
+                return operations.DisconnectActiveSessionsAsync(resourceGroupName, bastionHostName, sessionIds).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -234,15 +232,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='sessionIdsProperty'>
-            /// List of session IDs.
+            /// <param name='sessionIds'>
+            /// The list of sessionids to disconnect.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BastionSessionState>> DisconnectActiveSessionsAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<string> sessionIdsProperty = default(IList<string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BastionSessionState>> DisconnectActiveSessionsAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, SessionIds sessionIds, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.DisconnectActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, sessionIdsProperty, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.DisconnectActiveSessionsWithHttpMessagesAsync(resourceGroupName, bastionHostName, sessionIds, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -332,6 +330,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Active Configuration Parameter.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -342,17 +343,9 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='regions'>
-            /// List of regions.
-            /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
-            public static ActiveConnectivityConfigurationsListResult ListActiveConnectivityConfigurations(this INetworkManagementClient operations, string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string))
+            public static ActiveConnectivityConfigurationsListResult ListActiveConnectivityConfigurations(this INetworkManagementClient operations, ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?))
             {
-                return operations.ListActiveConnectivityConfigurationsAsync(resourceGroupName, networkManagerName, top, regions, skipToken).GetAwaiter().GetResult();
+                return operations.ListActiveConnectivityConfigurationsAsync(parameters, resourceGroupName, networkManagerName, top).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -361,6 +354,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Active Configuration Parameter.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -371,20 +367,12 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='regions'>
-            /// List of regions.
-            /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ActiveConnectivityConfigurationsListResult> ListActiveConnectivityConfigurationsAsync(this INetworkManagementClient operations, string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ActiveConnectivityConfigurationsListResult> ListActiveConnectivityConfigurationsAsync(this INetworkManagementClient operations, ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListActiveConnectivityConfigurationsWithHttpMessagesAsync(resourceGroupName, networkManagerName, top, regions, skipToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListActiveConnectivityConfigurationsWithHttpMessagesAsync(parameters, resourceGroupName, networkManagerName, top, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -396,6 +384,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Active Configuration Parameter.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -406,17 +397,9 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='regions'>
-            /// List of regions.
-            /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
-            public static ActiveSecurityAdminRulesListResult ListActiveSecurityAdminRules(this INetworkManagementClient operations, string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string))
+            public static ActiveSecurityAdminRulesListResult ListActiveSecurityAdminRules(this INetworkManagementClient operations, ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?))
             {
-                return operations.ListActiveSecurityAdminRulesAsync(resourceGroupName, networkManagerName, top, regions, skipToken).GetAwaiter().GetResult();
+                return operations.ListActiveSecurityAdminRulesAsync(parameters, resourceGroupName, networkManagerName, top).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -425,6 +408,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Active Configuration Parameter.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -435,20 +421,12 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='regions'>
-            /// List of regions.
-            /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<ActiveSecurityAdminRulesListResult> ListActiveSecurityAdminRulesAsync(this INetworkManagementClient operations, string resourceGroupName, string networkManagerName, int? top = default(int?), IList<string> regions = default(IList<string>), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ActiveSecurityAdminRulesListResult> ListActiveSecurityAdminRulesAsync(this INetworkManagementClient operations, ActiveConfigurationParameter parameters, string resourceGroupName, string networkManagerName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListActiveSecurityAdminRulesWithHttpMessagesAsync(resourceGroupName, networkManagerName, top, regions, skipToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListActiveSecurityAdminRulesWithHttpMessagesAsync(parameters, resourceGroupName, networkManagerName, top, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -461,6 +439,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to list correct page.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -471,14 +452,9 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
-            public static NetworkManagerEffectiveConnectivityConfigurationListResult ListNetworkManagerEffectiveConnectivityConfigurations(this INetworkManagementClient operations, string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string))
+            public static NetworkManagerEffectiveConnectivityConfigurationListResult ListNetworkManagerEffectiveConnectivityConfigurations(this INetworkManagementClient operations, QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?))
             {
-                return operations.ListNetworkManagerEffectiveConnectivityConfigurationsAsync(resourceGroupName, virtualNetworkName, top, skipToken).GetAwaiter().GetResult();
+                return operations.ListNetworkManagerEffectiveConnectivityConfigurationsAsync(parameters, resourceGroupName, virtualNetworkName, top).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -488,6 +464,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to list correct page.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -498,17 +477,12 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkManagerEffectiveConnectivityConfigurationListResult> ListNetworkManagerEffectiveConnectivityConfigurationsAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkManagerEffectiveConnectivityConfigurationListResult> ListNetworkManagerEffectiveConnectivityConfigurationsAsync(this INetworkManagementClient operations, QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNetworkManagerEffectiveConnectivityConfigurationsWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, top, skipToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListNetworkManagerEffectiveConnectivityConfigurationsWithHttpMessagesAsync(parameters, resourceGroupName, virtualNetworkName, top, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -520,6 +494,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to list correct page.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -530,14 +507,9 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
-            public static NetworkManagerEffectiveSecurityAdminRulesListResult ListNetworkManagerEffectiveSecurityAdminRules(this INetworkManagementClient operations, string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string))
+            public static NetworkManagerEffectiveSecurityAdminRulesListResult ListNetworkManagerEffectiveSecurityAdminRules(this INetworkManagementClient operations, QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?))
             {
-                return operations.ListNetworkManagerEffectiveSecurityAdminRulesAsync(resourceGroupName, virtualNetworkName, top, skipToken).GetAwaiter().GetResult();
+                return operations.ListNetworkManagerEffectiveSecurityAdminRulesAsync(parameters, resourceGroupName, virtualNetworkName, top).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -546,6 +518,9 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
+            /// <param name='parameters'>
+            /// Parameters supplied to list correct page.
+            /// </param>
             /// <param name='resourceGroupName'>
             /// The name of the resource group.
             /// </param>
@@ -556,17 +531,12 @@ namespace Microsoft.Azure.Management.Network
             /// An optional query parameter which specifies the maximum number of records
             /// to be returned by the server.
             /// </param>
-            /// <param name='skipToken'>
-            /// When present, the value can be passed to a subsequent query call (together
-            /// with the same query and scopes used in the current request) to retrieve the
-            /// next page of data.
-            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<NetworkManagerEffectiveSecurityAdminRulesListResult> ListNetworkManagerEffectiveSecurityAdminRulesAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualNetworkName, int? top = default(int?), string skipToken = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<NetworkManagerEffectiveSecurityAdminRulesListResult> ListNetworkManagerEffectiveSecurityAdminRulesAsync(this INetworkManagementClient operations, QueryRequestOptions parameters, string resourceGroupName, string virtualNetworkName, int? top = default(int?), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListNetworkManagerEffectiveSecurityAdminRulesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, top, skipToken, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListNetworkManagerEffectiveSecurityAdminRulesWithHttpMessagesAsync(parameters, resourceGroupName, virtualNetworkName, top, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -629,17 +599,13 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN whose associated VpnServerConfigurations is
             /// needed.
             /// </param>
-            /// <param name='vpnServerConfigurationResourceId'>
-            /// VpnServerConfiguration partial resource uri with which VirtualWan is
-            /// associated to.
+            /// <param name='vpnClientParams'>
+            /// Parameters supplied to the generate VirtualWan VPN profile generation
+            /// operation.
             /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
-            /// </param>
-            public static VpnProfileResponse Generatevirtualwanvpnserverconfigurationvpnprofile(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string))
+            public static VpnProfileResponse Generatevirtualwanvpnserverconfigurationvpnprofile(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams)
             {
-                return operations.GeneratevirtualwanvpnserverconfigurationvpnprofileAsync(resourceGroupName, virtualWANName, vpnServerConfigurationResourceId, authenticationMethod).GetAwaiter().GetResult();
+                return operations.GeneratevirtualwanvpnserverconfigurationvpnprofileAsync(resourceGroupName, virtualWANName, vpnClientParams).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -657,20 +623,16 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN whose associated VpnServerConfigurations is
             /// needed.
             /// </param>
-            /// <param name='vpnServerConfigurationResourceId'>
-            /// VpnServerConfiguration partial resource uri with which VirtualWan is
-            /// associated to.
-            /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
+            /// <param name='vpnClientParams'>
+            /// Parameters supplied to the generate VirtualWan VPN profile generation
+            /// operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VpnProfileResponse> GeneratevirtualwanvpnserverconfigurationvpnprofileAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VpnProfileResponse> GeneratevirtualwanvpnserverconfigurationvpnprofileAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnServerConfigurationResourceId, authenticationMethod, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.GeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnClientParams, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -688,12 +650,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
-            public static IPage<BastionShareableLink> BeginPutBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+            public static IPage<BastionShareableLink> BeginPutBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
             {
-                return operations.BeginPutBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).GetAwaiter().GetResult();
+                return operations.BeginPutBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -708,15 +670,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<BastionShareableLink>> BeginPutBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<BastionShareableLink>> BeginPutBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginPutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, vms, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginPutBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -735,12 +697,12 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
-            public static void BeginDeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>))
+            public static void BeginDeleteBastionShareableLink(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest)
             {
-                operations.BeginDeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, vms).GetAwaiter().GetResult();
+                operations.BeginDeleteBastionShareableLinkAsync(resourceGroupName, bastionHostName, bslRequest).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -756,15 +718,15 @@ namespace Microsoft.Azure.Management.Network
             /// <param name='bastionHostName'>
             /// The name of the Bastion Host.
             /// </param>
-            /// <param name='vms'>
-            /// List of VM references.
+            /// <param name='bslRequest'>
+            /// Post request for all the Bastion Shareable Link endpoints.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, IList<BastionShareableLink> vms = default(IList<BastionShareableLink>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task BeginDeleteBastionShareableLinkAsync(this INetworkManagementClient operations, string resourceGroupName, string bastionHostName, BastionShareableLinkListRequest bslRequest, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, vms, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                (await operations.BeginDeleteBastionShareableLinkWithHttpMessagesAsync(resourceGroupName, bastionHostName, bslRequest, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -822,17 +784,13 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN whose associated VpnServerConfigurations is
             /// needed.
             /// </param>
-            /// <param name='vpnServerConfigurationResourceId'>
-            /// VpnServerConfiguration partial resource uri with which VirtualWan is
-            /// associated to.
+            /// <param name='vpnClientParams'>
+            /// Parameters supplied to the generate VirtualWan VPN profile generation
+            /// operation.
             /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
-            /// </param>
-            public static VpnProfileResponse BeginGeneratevirtualwanvpnserverconfigurationvpnprofile(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string))
+            public static VpnProfileResponse BeginGeneratevirtualwanvpnserverconfigurationvpnprofile(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams)
             {
-                return operations.BeginGeneratevirtualwanvpnserverconfigurationvpnprofileAsync(resourceGroupName, virtualWANName, vpnServerConfigurationResourceId, authenticationMethod).GetAwaiter().GetResult();
+                return operations.BeginGeneratevirtualwanvpnserverconfigurationvpnprofileAsync(resourceGroupName, virtualWANName, vpnClientParams).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -850,20 +808,16 @@ namespace Microsoft.Azure.Management.Network
             /// The name of the VirtualWAN whose associated VpnServerConfigurations is
             /// needed.
             /// </param>
-            /// <param name='vpnServerConfigurationResourceId'>
-            /// VpnServerConfiguration partial resource uri with which VirtualWan is
-            /// associated to.
-            /// </param>
-            /// <param name='authenticationMethod'>
-            /// VPN client authentication method. Possible values include: 'EAPTLS',
-            /// 'EAPMSCHAPv2'
+            /// <param name='vpnClientParams'>
+            /// Parameters supplied to the generate VirtualWan VPN profile generation
+            /// operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<VpnProfileResponse> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, string vpnServerConfigurationResourceId = default(string), string authenticationMethod = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<VpnProfileResponse> BeginGeneratevirtualwanvpnserverconfigurationvpnprofileAsync(this INetworkManagementClient operations, string resourceGroupName, string virtualWANName, VirtualWanVpnProfileParameters vpnClientParams, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnServerConfigurationResourceId, authenticationMethod, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.BeginGeneratevirtualwanvpnserverconfigurationvpnprofileWithHttpMessagesAsync(resourceGroupName, virtualWANName, vpnClientParams, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

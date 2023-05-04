@@ -111,8 +111,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='networkProfileName'>
         /// The name of the network profile.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update network profile tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<NetworkProfile>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkProfileName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<NetworkProfile>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string networkProfileName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all the network profiles in a subscription.
         /// </summary>

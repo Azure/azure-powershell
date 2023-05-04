@@ -326,11 +326,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being prepared for.
-        /// </param>
-        /// <param name='networkIntentPolicyConfigurations'>
-        /// A list of NetworkIntentPolicyConfiguration.
+        /// <param name='prepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to prepare subnet by applying network intent policies.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -338,10 +335,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> PrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> PrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginPrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, networkIntentPolicyConfigurations, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginPrepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, prepareNetworkPoliciesRequestParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -357,8 +354,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being unprepared for.
+        /// <param name='unprepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to unprepare subnet to remove network intent policies.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -366,10 +363,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse> UnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> UnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse _response = await BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, serviceName, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse _response = await BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(resourceGroupName, virtualNetworkName, subnetName, unprepareNetworkPoliciesRequestParameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -996,11 +993,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being prepared for.
-        /// </param>
-        /// <param name='networkIntentPolicyConfigurations'>
-        /// A list of NetworkIntentPolicyConfiguration.
+        /// <param name='prepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to prepare subnet by applying network intent policies.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1020,7 +1014,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginPrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), IList<NetworkIntentPolicyConfiguration> networkIntentPolicyConfigurations = default(IList<NetworkIntentPolicyConfiguration>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginPrepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1034,17 +1028,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "subnetName");
             }
+            if (prepareNetworkPoliciesRequestParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "prepareNetworkPoliciesRequestParameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            PrepareNetworkPoliciesRequest prepareNetworkPoliciesRequestParameters = new PrepareNetworkPoliciesRequest();
-            if (serviceName != null || networkIntentPolicyConfigurations != null)
-            {
-                prepareNetworkPoliciesRequestParameters.ServiceName = serviceName;
-                prepareNetworkPoliciesRequestParameters.NetworkIntentPolicyConfigurations = networkIntentPolicyConfigurations;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1055,8 +1047,8 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkName", virtualNetworkName);
                 tracingParameters.Add("subnetName", subnetName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("prepareNetworkPoliciesRequestParameters", prepareNetworkPoliciesRequestParameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginPrepareNetworkPolicies", tracingParameters);
             }
@@ -1197,8 +1189,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='subnetName'>
         /// The name of the subnet.
         /// </param>
-        /// <param name='serviceName'>
-        /// The name of the service for which subnet is being unprepared for.
+        /// <param name='unprepareNetworkPoliciesRequestParameters'>
+        /// Parameters supplied to unprepare subnet to remove network intent policies.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1218,7 +1210,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse> BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, string serviceName = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> BeginUnprepareNetworkPoliciesWithHttpMessagesAsync(string resourceGroupName, string virtualNetworkName, string subnetName, UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1232,16 +1224,15 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "subnetName");
             }
+            if (unprepareNetworkPoliciesRequestParameters == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "unprepareNetworkPoliciesRequestParameters");
+            }
             if (Client.SubscriptionId == null)
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            UnprepareNetworkPoliciesRequest unprepareNetworkPoliciesRequestParameters = new UnprepareNetworkPoliciesRequest();
-            if (serviceName != null)
-            {
-                unprepareNetworkPoliciesRequestParameters.ServiceName = serviceName;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1252,8 +1243,8 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("virtualNetworkName", virtualNetworkName);
                 tracingParameters.Add("subnetName", subnetName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("unprepareNetworkPoliciesRequestParameters", unprepareNetworkPoliciesRequestParameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginUnprepareNetworkPolicies", tracingParameters);
             }

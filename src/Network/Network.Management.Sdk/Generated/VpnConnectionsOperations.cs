@@ -319,11 +319,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to start packet capture
+        /// on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -331,10 +329,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> StartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<string> _response = await BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, filterData, linkConnectionNames, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<string> _response = await BeginStartPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -350,11 +348,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to stop packet capture on
+        /// gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -362,10 +358,10 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> StopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send request
-            AzureOperationResponse<string> _response = await BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, sasUrl, linkConnectionNames, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationResponse<string> _response = await BeginStopPacketCaptureWithHttpMessagesAsync(resourceGroupName, gatewayName, vpnConnectionName, parameters, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPostOrDeleteOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -993,11 +989,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='filterData'>
-        /// Start Packet capture parameters on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to start packet capture
+        /// on gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1020,7 +1014,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string filterData = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> BeginStartPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1039,13 +1033,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            VpnConnectionPacketCaptureStartParameters parameters = default(VpnConnectionPacketCaptureStartParameters);
-            if (filterData != null || linkConnectionNames != null)
-            {
-                parameters = new VpnConnectionPacketCaptureStartParameters();
-                parameters.FilterData = filterData;
-                parameters.LinkConnectionNames = linkConnectionNames;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1056,8 +1043,8 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("gatewayName", gatewayName);
                 tracingParameters.Add("vpnConnectionName", vpnConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginStartPacketCapture", tracingParameters);
             }
@@ -1216,11 +1203,9 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='vpnConnectionName'>
         /// The name of the vpn connection.
         /// </param>
-        /// <param name='sasUrl'>
-        /// SAS url for packet capture on vpn connection.
-        /// </param>
-        /// <param name='linkConnectionNames'>
-        /// List of site link connection names.
+        /// <param name='parameters'>
+        /// Vpn Connection packet capture parameters supplied to stop packet capture on
+        /// gateway connection.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -1243,7 +1228,7 @@ namespace Microsoft.Azure.Management.Network
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, string sasUrl = default(string), IList<string> linkConnectionNames = default(IList<string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse<string>> BeginStopPacketCaptureWithHttpMessagesAsync(string resourceGroupName, string gatewayName, string vpnConnectionName, VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (resourceGroupName == null)
             {
@@ -1262,13 +1247,6 @@ namespace Microsoft.Azure.Management.Network
                 throw new ValidationException(ValidationRules.CannotBeNull, "this.Client.SubscriptionId");
             }
             string apiVersion = "2022-11-01";
-            VpnConnectionPacketCaptureStopParameters parameters = default(VpnConnectionPacketCaptureStopParameters);
-            if (sasUrl != null || linkConnectionNames != null)
-            {
-                parameters = new VpnConnectionPacketCaptureStopParameters();
-                parameters.SasUrl = sasUrl;
-                parameters.LinkConnectionNames = linkConnectionNames;
-            }
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1279,8 +1257,8 @@ namespace Microsoft.Azure.Management.Network
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("gatewayName", gatewayName);
                 tracingParameters.Add("vpnConnectionName", vpnConnectionName);
-                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("parameters", parameters);
+                tracingParameters.Add("apiVersion", apiVersion);
                 tracingParameters.Add("cancellationToken", cancellationToken);
                 ServiceClientTracing.Enter(_invocationId, this, "BeginStopPacketCapture", tracingParameters);
             }

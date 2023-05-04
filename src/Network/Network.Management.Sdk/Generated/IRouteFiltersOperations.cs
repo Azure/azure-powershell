@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Management.Network
         /// <param name='routeFilterName'>
         /// The name of the route filter.
         /// </param>
-        /// <param name='tags'>
-        /// Resource tags.
+        /// <param name='parameters'>
+        /// Parameters supplied to update route filter tags.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Management.Network
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RouteFilter>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, IDictionary<string, string> tags = default(IDictionary<string, string>), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<RouteFilter>> UpdateTagsWithHttpMessagesAsync(string resourceGroupName, string routeFilterName, TagsObject parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all route filters in a resource group.
         /// </summary>
