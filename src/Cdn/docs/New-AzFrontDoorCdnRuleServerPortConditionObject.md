@@ -34,7 +34,7 @@ Name
 ServerPort
 ```
 
-
+Create an in-memory object for DeliveryRuleServerPortCondition
 
 ## PARAMETERS
 
@@ -120,7 +120,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleServerPortCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.DeliveryRuleServerPortCondition
 
 ## NOTES
 

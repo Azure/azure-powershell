@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRuleUrlSign
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnRuleUrlSigningActionObject' -Tag 'LiveOnly' {
+Describe 'New-AzFrontDoorCdnRuleUrlSigningActionObject'  {
     It '__AllParameterSets' {
         { 
             # ignore 

@@ -25,3 +25,17 @@ origin1 testps-rg-da16jm
 
 Get an AzureCDN origin under the AzureCDN endpoint
 
+
+### Example 3: Get an AzureCDN origin under the AzureCDN endpoint via identity
+```powershell
+New-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest010 -Name origin1 -HostName "host1.hello.com" | Get-AzCdnOrigin
+```
+
+```output
+Name    Location ResourceGroupName
+----    -------- -----------------
+origin1          testps-rg-da16jm
+```
+
+Get an AzureCDN origin under the AzureCDN endpoint via identity
+

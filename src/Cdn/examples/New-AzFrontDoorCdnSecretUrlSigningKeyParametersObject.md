@@ -1,10 +1,12 @@
-### Example 1: Add title here
+### Example 1: Create an in-memory object for UrlSigningKeyParameters
 ```powershell
-Add code here
+New-AzFrontDoorCdnSecretUrlSigningKeyParametersObject -KeyId keyId01 -Type Byoc -SecretVersion v1.0
 ```
 
 ```output
-Add output here
+KeyId   SecretVersion
+-----   -------------
+keyId01 v1.0
 ```
 
-
+Create an in-memory object for UrlSigningKeyParameters.

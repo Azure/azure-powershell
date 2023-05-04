@@ -31,19 +31,19 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 
 ## EXAMPLES
 
-### Example 1: Delete an AzureFrontDoor profile under the resource group}}
+### Example 1: Delete an AzureFrontDoor profile under the resource group
 ```powershell
 Remove-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6
 ```
 
+Delete an AzureFrontDoor profile under the resource group
 
-
-### Example 1: Delete an AzureFrontDoor profile under the resource group via identity}}
+### Example 2: Delete an AzureFrontDoor profile under the resource group via identity
 ```powershell
 Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Remove-AzFrontDoorCdnProfile
 ```
 
-
+Delete an AzureFrontDoor profile under the resource group via identity
 
 ## PARAMETERS
 
@@ -225,7 +225,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

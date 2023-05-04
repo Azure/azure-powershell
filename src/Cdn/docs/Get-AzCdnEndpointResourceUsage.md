@@ -45,7 +45,8 @@ List resource useages of an AzureCDN Endpoint under the AzureCDN profile
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -157,7 +158,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IResourceUsage
 
 ## NOTES
 

@@ -9,3 +9,4 @@ Name
 RemoteAddress
 ```
 
+Create an in-memory object for DeliveryRuleRemoteAddressCondition

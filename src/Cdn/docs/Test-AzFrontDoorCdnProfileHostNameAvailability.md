@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzFrontDoorCdnProfileHostNameAvailability
 
 ## SYNOPSIS
-Check the name availability of a host name.
+Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Test-AzFrontDoorCdnProfileHostNameAvailability -InputObject <ICdnIdentity> -Host
 ```
 
 ## DESCRIPTION
-Check the name availability of a host name.
+Validates the custom domain mapping to ensure it maps to the correct Azure Front Door endpoint in DNS.
 
 ## EXAMPLES
 
@@ -41,12 +41,26 @@ Message NameAvailable Reason
         True
 ```
 
+Test the availability of a host name under the AzureFrontDoor profile
 
+### Example 2: Test the availability of a host name under the AzureFrontDoor profile via identity
+```powershell
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Test-AzFrontDoorCdnProfileHostNameAvailability -HostName hello1.dev.cdn.azure.cn
+```
+
+```output
+Message NameAvailable Reason
+------- ------------- ------
+        True
+```
+
+Test the availability of a host name under the AzureFrontDoor profile via identity
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -92,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -176,7 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.ICheckNameAvailabilityOutput
 
 ## NOTES
 
@@ -193,7 +207,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

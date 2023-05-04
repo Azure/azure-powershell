@@ -14,35 +14,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnSecurityPol
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzFrontDoorCdnSecurityPolicy' -Tag 'LiveOnly' {
+Describe 'New-AzFrontDoorCdnSecurityPolicy'  {
     It 'CreateExpanded'  {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $subId = $env.SubscriptionId
+        Write-Host -ForegroundColor Green "Use subscriptionId : $($subId)"
 
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-            $profileSku = "Standard_AzureFrontDoor";
-            $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+        $policyName = "pol-" + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
 
-            $endpointName = 'end-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-            $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
+        $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
+        $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
+        -WafPolicyId "/subscriptions/$subId/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
 
-            $policyName = "pol-" + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use policyName : $($policyName)"
-
-            $association = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallAssociationObject -PatternsToMatch @("/*") -Domain @(@{"Id"=$($endpoint.Id)})
-            $parameter = New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Association  $association `
-            -WafPolicyId "/subscriptions/4d894474-aa7f-4611-b830-344860c3eb9c/resourcegroups/powershelltest/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/powershelltestwaf"
-
-            New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Parameter $parameter
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        New-AzFrontDoorCdnSecurityPolicy -Name $policyName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
+        
+        # Remove security policy for other tests
+        Remove-AzFrontDoorCdnSecurityPolicy -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Name $policyName
     }
 }

@@ -12,7 +12,7 @@ For `Az.RedisEnterpriseCache` to use custom cmdlets, it does this two different 
 
 For C# cmdlets, they are compiled with the rest of the generated low-level cmdlets into the `./bin/Az.RedisEnterpriseCache.private.dll`. The names of the cmdlets (methods) and files must follow the `[cmdletName]_[variantName]` syntax used for generated cmdlets. The `variantName` is used as the `ParameterSetName`, so use something appropriate that doesn't clash with already created variant or parameter set names. You cannot use the `ParameterSetName` property in the `Parameter` attribute on C# cmdlets. Each cmdlet must be separated into variants using the same pattern as seen in the `generated/cmdlets` folder.
 
-For script cmdlets, these are loaded via the `Az.RedisEnterpriseCache.custom.psm1`. Then, during the build process, this module is loaded and processed in the same manner as the C# cmdlets. The fundamental difference is the script cmdlets use the `ParameterSetName` attribute and C# cmdlets do not. To create a script cmdlet variant of a generated cmdlet, simply decorate all parameters in the script with the new `ParameterSetName` in the `Parameter` attribute. This will appropriately treat each parameter set as a separate variant when processed to be exported during the build.
+For script cmdlets, these are loaded via the `Az.RedisEnterpriseCache.custom.psm1`. Then, during the build process, this module is loaded and processed in the same manner as the C# cmdlets. The fundemental difference is the script cmdlets use the `ParameterSetName` attribute and C# cmdlets do not. To create a script cmdlet variant of a generated cmdlet, simply decorate all parameters in the script with the new `ParameterSetName` in the `Parameter` attribute. This will appropriately treat each parameter set as a separate variant when processed to be exported during the build.
 
 ## Purpose
 This allows the modules to have cmdlets that were not defined in the REST specification. It also allows combining logic using generated cmdlets. This is a level of customization beyond what can be done using the [readme configuration options](https://github.com/Azure/autorest/blob/master/docs/powershell/options.md) that are currently available. These custom cmdlets are then referenced by the cmdlets created at build-time in the `..\exports` folder.
@@ -32,10 +32,10 @@ These provide functionality to our HTTP pipeline and other useful features. In s
 ### Attributes
 For processing the cmdlets, we've created some additional attributes:
 - `Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.DescriptionAttribute`
-  - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propagated to reference documentation via [help comments](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
+  - Used in C# cmdlets to provide a high-level description of the cmdlet. This is propegated to reference documentation via [help comments](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comment_based_help) in the exported scripts.
 - `Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.DoNotExportAttribute`
   - Used in C# and script cmdlets to suppress creating an exported cmdlet at build-time. These cmdlets will *not be exposed* by `Az.RedisEnterpriseCache`.
 - `Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.InternalExportAttribute`
-  - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.RedisEnterpriseCache`. For more information, see [README.md](..\internal/README.md) in the `..\internal` folder.
+  - Used in C# cmdlets to route exported cmdlets to the `..\internal`, which are *not exposed* by `Az.RedisEnterpriseCache`. For more information, see [readme.md](..\internal/readme.md) in the `..\internal` folder.
 - `Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.ProfileAttribute`
   - Used in C# and script cmdlets to define which Azure profiles the cmdlet supports. This is only supported for Azure (`--azure`) modules.

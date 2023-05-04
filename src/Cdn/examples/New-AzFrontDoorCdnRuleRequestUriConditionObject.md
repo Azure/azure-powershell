@@ -9,3 +9,4 @@ Name
 RequestUri
 ```
 
+Create an in-memory object for DeliveryRuleRequestUriCondition

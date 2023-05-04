@@ -14,53 +14,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnEndpoint
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzFrontDoorCdnEndpoint' -Tag 'LiveOnly' {
+Describe 'Remove-AzFrontDoorCdnEndpoint'  {
     It 'Delete' {
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
+        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-            
-            $endpointName = 'end-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-            New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-            Remove-AzFrontdoorCdnEndpoint -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $endpoint.Name | Should -Be $endpointName
+        $endpoint.Location | Should -Be "Global"
+        
+        Remove-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName
     }
 
     It 'DeleteViaIdentity' {
         $PSDefaultParameterValues['Disabled'] = $true
-        $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-        try
-        {
-            Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-            New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
 
-            $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
+        $endpointName = 'end-' + (RandomString -allChars $false -len 6);
+        Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
+        $endpoint = New-AzFrontDoorCdnEndpoint -SubscriptionId $env.SubscriptionId -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 
-            $profileSku = "Standard_AzureFrontDoor";
-            New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-            
-            $endpointName = 'end-' + (RandomString -allChars $false -len 6);
-            Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
-            New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-
-            Get-AzFrontdoorCdnEndpoint -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -EndpointName $endpointName | Remove-AzFrontdoorCdnEndpoint
-        } Finally
-        {
-            Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-        }
+        $endpoint.Name | Should -Be $endpointName
+        $endpoint.Location | Should -Be "Global"
+        Get-AzFrontdoorCdnEndpoint -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName | Remove-AzFrontdoorCdnEndpoint
     }
 }

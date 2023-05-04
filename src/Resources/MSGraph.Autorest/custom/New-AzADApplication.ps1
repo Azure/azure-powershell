@@ -644,10 +644,19 @@ function New-AzADApplication {
         $PSBoundParameters['Web'].RedirectUri = $PSBoundParameters['ReplyUrls']
         $null = $PSBoundParameters.Remove('ReplyUrls')
       }
+      if ($PSBoundParameters['SPARedirectUri']) {
+        $null = $PSBoundParameters.Remove('SPARedirectUri')
+      }
+      if ($PSBoundParameters['PublicClientRedirectUri']) {
+        $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
+      }
     }
     elseif ($PSBoundParameters['SPARedirectUri']) {
       $PSBoundParameters['SPA'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphSPAApplication" -Property @{'RedirectUri' = $PSBoundParameters['SPARedirectUri'] }
       $null = $PSBoundParameters.Remove('SPARedirectUri')
+      if ($PSBoundParameters['PublicClientRedirectUri']) {
+        $null = $PSBoundParameters.Remove('PublicClientRedirectUri')
+      }
     }
     elseif ($PSBoundParameters['PublicClientRedirectUri']) {
       $PSBoundParameters['PublicClient'] = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPublicClientApplication" -Property @{'RedirectUri' = $PSBoundParameters['PublicClientRedirectUri'] }

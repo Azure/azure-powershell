@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCdnProfile
 
 ## SYNOPSIS
-Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
 ## SYNTAX
@@ -26,7 +26,7 @@ Remove-AzCdnProfile -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-A
 ```
 
 ## DESCRIPTION
-Deletes an existing  Azure Front Door Standard or Azure Front Door Premium or CDN profile with the specified parameters.
+Deletes an existing CDN profile with the specified profile name under the specified subscription.
 Deleting a profile will result in the deletion of all of the sub-resources including endpoints, origins and custom domains.
 
 ## EXAMPLES
@@ -36,14 +36,14 @@ Deleting a profile will result in the deletion of all of the sub-resources inclu
 Remove-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name cdn-001
 ```
 
+Delete an AzureCDN profile under the resource group
 
-
-### Example 2: Delete an AzureCDN profile under the resource group via identity}}
+### Example 2: Delete an AzureCDN profile under the resource group via identity
 ```powershell
 Get-AzCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-cdn001 | Remove-AzCdnProfile
 ```
 
-
+Delete an AzureCDN profile under the resource group
 
 ## PARAMETERS
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+Name of the CDN profile which is unique within the resource group.
 
 ```yaml
 Type: System.String
@@ -225,7 +225,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.

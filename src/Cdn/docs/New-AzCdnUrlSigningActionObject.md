@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlSigningActionObject
 schema: 2.0.0
 ---
 
@@ -22,27 +22,18 @@ Create an in-memory object for UrlSigningAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for UrlSigningAction
 ```powershell
-{{ Add code here }}
+New-AzCdnUrlSigningActionObject -Name action01
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+action01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for UrlSigningAction
 
 ## PARAMETERS
 
@@ -82,7 +73,7 @@ Defines which query string parameters in the url to be considered for expires, k
 To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningParamIdentifier[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IUrlSigningParamIdentifier[]
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +91,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlSigningAction
 
 ## NOTES
 

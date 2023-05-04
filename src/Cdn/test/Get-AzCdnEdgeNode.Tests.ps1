@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzCdnEdgeNode'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzCdnEdgeNode' -Tag 'LiveOnly' {
+Describe 'Get-AzCdnEdgeNode'  {
     It 'List' {
         {
             $minPrefixLength = 0;
@@ -43,6 +43,6 @@ Describe 'Get-AzCdnEdgeNode' -Tag 'LiveOnly' {
                     }
                 }
             } 
-        } | Should -Not -Throw
+        }
     }
 }

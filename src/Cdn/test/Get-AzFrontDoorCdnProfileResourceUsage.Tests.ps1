@@ -14,27 +14,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzFrontDoorCdnProfileReso
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzFrontDoorCdnProfileResourceUsage' -Tag 'LiveOnly' {
+Describe 'Get-AzFrontDoorCdnProfileResourceUsage'  {
     It 'List' {
-        { 
-            $ResourceGroupName = 'testps-rg-' + (RandomString -allChars $false -len 6)
-            try
-            {
-                Write-Host -ForegroundColor Green "Create test group $($ResourceGroupName)"
-                New-AzResourceGroup -Name $ResourceGroupName -Location $env.location
-    
-                $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
-                Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-    
-                $profileSku = "Standard_AzureFrontDoor";
-                New-AzFrontDoorCdnProfile -SkuName $profileSku -Name $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Location Global
-    
-                $frontDoorCdnProfileUsage = Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName
-                $frontDoorCdnProfileUsage | Should -not -BeNullOrEmpty 
-            } Finally
-            {
-                Remove-AzResourceGroup -Name $ResourceGroupName -NoWait
-            }
-        } | Should -Not -Throw
+        $frontDoorCdnProfileUsage = Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName
+        $frontDoorCdnProfileUsage | Should -not -BeNullOrEmpty 
     }
 }

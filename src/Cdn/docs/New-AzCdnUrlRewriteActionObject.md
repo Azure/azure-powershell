@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRewriteActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRewriteActionObject
 schema: 2.0.0
 ---
 
@@ -22,27 +22,18 @@ Create an in-memory object for UrlRewriteAction.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for UrlRewriteAction
 ```powershell
-{{ Add code here }}
+New-AzCdnUrlRewriteActionObject -Name rewrite01 -ParameterDestination dest01 -ParameterSourcePattern pattern01
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+rewrite01
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for UrlRewriteAction
 
 ## PARAMETERS
 
@@ -115,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlRewriteAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.UrlRewriteAction
 
 ## NOTES
 

@@ -21,12 +21,12 @@ Create an in-memory object for CustomerCertificateParameters.
 Create an in-memory object for CustomerCertificateParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CustomerCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CustomerCertificateParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretCustomerCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CustomerCertificateParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CustomerCertificateParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -49,7 +49,7 @@ function New-AzFrontDoorCdnSecretCustomerCertificateParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.CustomerCertificateParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.CustomerCertificateParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('SecretSourceId')) {
             $Object.SecretSourceId = $SecretSourceId

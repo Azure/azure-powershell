@@ -14,47 +14,60 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzFrontDoorCdnCustomDo
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzFrontDoorCdnCustomDomain' -Tag 'LiveOnly' {
+Describe 'Update-AzFrontDoorCdnCustomDomain'  {
+    BeforeAll {
+        $subId = $env.SubscriptionId
+        Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
+    }
     It 'UpdateExpanded' {
-        { 
-            $ResourceGroupName = 'powershelltest'
-            Write-Host -ForegroundColor Green "Use test group $($ResourceGroupName)"
-            $frontDoorCdnProfileName = 'fdp-powershelltest'
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-            $secretName = "se-powershelltest"
+        {
+            $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
+            $hostName = "pstestrefresh3.dev.cdn.azure.cn"
+            $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
+            -HostName $hostName
+            Write-Host -ForegroundColor Green "Use customDomain token : $($customDomain.ValidationPropertyValidationTokenex)"
+            
+            $secretName = "se-" + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
-            $customDomainName = "domain-powershelltest"
-            Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
+            $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+            -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
 
-            $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
+            $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
             $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+
             $updateSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 
-            Update-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName `
+            Update-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
             -TlsSetting $updateSetting
-        } | Should -Not -Throw
+        }
     }
 
     It 'UpdateViaIdentityExpanded' {
         { 
             $PSDefaultParameterValues['Disabled'] = $true
-            $ResourceGroupName = 'powershelltest'
-            Write-Host -ForegroundColor Green "Use test group $($ResourceGroupName)"
-            $frontDoorCdnProfileName = 'fdp-powershelltest'
-            Write-Host -ForegroundColor Green "Use frontDoorCdnProfileName : $($frontDoorCdnProfileName)"
-            $secretName = "se-powershelltest"
+
+            $customDomainName = "domain-" + (RandomString -allChars $false -len 6);
+            Write-Host -ForegroundColor Green "Use customDomainName : $($customDomainName)"
+            $hostName = "pstestrefresh2.dev.cdn.azure.cn"
+            $customDomain = New-AzFrontDoorCdnCustomDomain -CustomDomainName $customDomainName -ProfileName $env.FrontDoorEndpointName -ResourceGroupName $env.ResourceGroupName `
+            -HostName $hostName
+            Write-Host -ForegroundColor Green "Use customDomain token : $($customDomain.ValidationPropertyValidationTokenex)"
+
+            $secretName = "se-" + (RandomString -allChars $false -len 6);
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
-
-            $customDomainName = "domain-powershelltest"
-            Write-Host -ForegroundColor Green "Use custom domain name : $($customDomainName)"
-
-            $secret = Get-AzFrontDoorCdnSecret -ProfileName $frontDoorCdnProfileName -ResourceGroupName $ResourceGroupName -Name $secretName
+    
+            $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
+            -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
+    
+            $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
             $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+    
             $updateSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
 
-            Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $ResourceGroupName -ProfileName $frontDoorCdnProfileName -CustomDomainName $customDomainName `
+            Get-AzFrontDoorCdnCustomDomain -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorEndpointName -CustomDomainName $customDomain `
             | Update-AzFrontDoorCdnCustomDomain -TlsSetting $updateSetting
-        } | Should -Not -Throw
+        } 
     }
 }

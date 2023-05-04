@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnHealthProbeParameter
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzCdnHealthProbeParametersObject' -Tag 'LiveOnly' {
+Describe 'New-AzCdnHealthProbeParametersObject'  {
     It '__AllParameterSets' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

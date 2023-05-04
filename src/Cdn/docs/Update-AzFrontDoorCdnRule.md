@@ -43,7 +43,20 @@ Name  ResourceGroupName
 rule1 testps-rg-da16jm
 ```
 
+Update an AzureFrontDoor delivery rule within the specified rule set
 
+### Example 2: Update an AzureFrontDoor delivery rule within the specified rule set via identity
+```powershell
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 | Update-AzFrontDoorCdnRule -Order 99
+```
+
+```output
+Name  ResourceGroupName
+----  -----------------
+rule1 testps-rg-da16jm
+```
+
+Update an AzureFrontDoor delivery rule within the specified rule set via identity
 
 ## PARAMETERS
 
@@ -52,7 +65,7 @@ A list of actions that are executed when all the conditions of a rule are satisf
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRuleAction1[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleAction1[]
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +96,7 @@ A list of conditions that must be matched for the actions to be executed
 To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IDeliveryRuleCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -290,7 +304,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRule
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20221101Preview.IRule
 
 ## NOTES
 
@@ -313,7 +327,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
   - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
+  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium profile which is unique within the resource group.
   - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
   - `[RouteName <String>]`: Name of the routing rule.
   - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
