@@ -102,7 +102,7 @@ CmdletsToExport = 'Add-AzServiceFabricClientCertificate', 'Add-AzServiceFabricNo
                'Set-AzServiceFabricManagedCluster', 
                'Remove-AzServiceFabricManagedCluster', 
                'Add-AzServiceFabricManagedClusterClientCertificate',
-               'Add-AzServiceFabricManagedNetworkSecurityRule',
+               'Add-AzServiceFabricManagedClusterNetworkSecurityRule',
                'Remove-AzServiceFabricManagedClusterClientCertificate', 
                'New-AzServiceFabricManagedNodeType', 
                'Get-AzServiceFabricManagedNodeType', 

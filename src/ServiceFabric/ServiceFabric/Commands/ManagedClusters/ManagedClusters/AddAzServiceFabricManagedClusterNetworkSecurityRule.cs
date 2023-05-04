@@ -22,12 +22,17 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
+
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-	[Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedNetworkSecurityRule", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
+    public enum Access { Allow, Deny }
+    public enum Direction { Inbound, Outbound }
+    public enum Protocol { https, http, udp, tcp, esp, icmp, ah, any }
+
+    [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterNetworkSecurityRule", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
 	public class AddAzServiceFabricManagedClusterNetworkSecurityRule : ServiceFabricManagedCmdletBase
-	{
-		protected const string ByName = "ByName";
+	{   
+        protected const string ByName = "ByName";
 		protected const string ByObj = "ByObj";
 
 		#region Params
@@ -54,19 +59,19 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		#endregion
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the network traffic is allowed or denied. Possible values include: 'allow', 'deny'")]
-		public string Access { get; set; }
+		public  Access Access { get; set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Gets or sets network security rule description.")]
 		public string Description { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the destination address prefixes. CIDR or destination IP ranges.")]
-		public string[] DestinationAddressPrefixes { get; set; }
+		public string[] DestinationAddressPrefix { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the destination port ranges.")]
-		public string[] DestinationPortRanges { get; set; }
+		public string[] DestinationPortRange { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network security rule direction. Possible values include: 'inbound', 'outbound'")]
-		public string Direction { get; set; }
+		public Direction Direction { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "network security rule name.")]
 		[Alias("NetworkSecurityRuleName")]
@@ -76,13 +81,13 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		public int Priority { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network protocol this rule applies to. Possible values include: 'http', 'https', 'tcp', 'udp', 'icmp', 'ah', 'esp'")]
-		public string Protocol { get; set; }
+		public Protocol Protocol { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the CIDR or source IP ranges.")]
-		public string[] SourceAddressPrefixes { get; set;}
+		public string[] SourceAddressPrefix { get; set;}
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the source port ranges.")]
-		public string[] SourcePortRanges { get;set; }
+		public string[] SourcePortRange { get;set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background and return a Job to track progress.")]
 		public SwitchParameter AsJob { get; set; }
@@ -123,16 +128,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
 			currentCluster.NetworkSecurityRules.Add(new NetworkSecurityRule()
 			{
-				Access = this.Access,
+				Access = this.Access.ToString(),
 				Description = this.Description,
-				DestinationAddressPrefixes = this.DestinationAddressPrefixes,
-				DestinationPortRanges = this.DestinationPortRanges,
-				Direction = this.Direction,
+				DestinationAddressPrefixes = this.DestinationAddressPrefix,
+				DestinationPortRanges = this.DestinationPortRange,
+				Direction = this.Direction.ToString(),
 				Name = this.Name,
 				Priority = this.Priority,
-				Protocol = this.Protocol,
-				SourceAddressPrefixes = this.SourceAddressPrefixes,
-				SourcePortRanges = this.SourcePortRanges
+				Protocol = this.Protocol.ToString(),
+				SourceAddressPrefixes = this.SourceAddressPrefix,
+				SourcePortRanges = this.SourcePortRange
 			});
 
 			return currentCluster;

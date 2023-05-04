@@ -19,11 +19,11 @@
 -->
 ## Upcoming Release
 
+* Added new cmdlet `Add-AzServiceFabricManagedClusterNetworkSecurityRule` to update network security rules in managed cluster resource
+
 ## Version 3.1.1
 * Added support for Windows 2022 server vm image. 
     - This enables cluster operations with Windows 2022 server vm image
-
-*Added new cmdlet `Add-AzServiceFabricManagedNetworkSecurityRule` to update network security rules in cluster resource
 
 ## Version 3.1.0
 * Fixed typo in verbose log message.
@@ -110,7 +110,7 @@
     - `Add-AzServiceFabricManagedNodeTypeVMSecret`
     - `Remove-AzServiceFabricManagedNodeTypeVMExtension`
     - `Restart-AzServiceFabricManagedNodeType`
-    - `Add-AzServiceFabricManagedNetworkSecurityRule`
+    - `Add-AzServiceFabricManagedClusterNetworkSecurityRule`
 * Upgraded Service Fabric SDK to version 1.2.0 which uses service fabric resource provider api-version 2020-03-01 for the current model and 2020-01-01-preview for managed clusters.
 
 ## Version 2.1.0
