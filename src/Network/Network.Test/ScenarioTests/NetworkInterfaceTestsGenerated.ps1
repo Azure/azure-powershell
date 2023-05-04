@@ -409,8 +409,8 @@ function Test-NetworkInterfaceGatewayLoadBalancerConsumer
         # Create Consumer publicip
         $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpConsumerName -Sku "Standard" -location $location -AllocationMethod Static;
 
-		# Create the ipconfiguration
-		$ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id;
+	# Create the ipconfiguration
+	$ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id;
 
         # Create NetworkInterface
         $nicConsumer = New-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1 -Tag @{ testtag = "testval" };
