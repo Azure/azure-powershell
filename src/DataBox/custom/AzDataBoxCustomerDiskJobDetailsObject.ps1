@@ -16,23 +16,29 @@
 
 <#
 .Synopsis
-Create an in-memory object for DataBoxJobDetails.
+Create an in-memory object for DataBoxCustomerDiskJobDetails.
 .Description
-Create an in-memory object for DataBoxJobDetails.
+Create an in-memory object for DataBoxCustomerDiskJobDetails.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails
+Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails
 .Link
-https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxJobDetailsObject
+https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxCustomerDiskJobDetailsObject
 #>
-function New-AzDataBoxJobDetailsObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails')]
+function New-AzDataBoxCustomerDiskJobDetailsObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
-        [Parameter(HelpMessage="Set Device password for unlocking Databox. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+.")]
+        [Parameter(HelpMessage="Contains the map of disk serial number to the disk details for import jobs.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsImportDiskDetailsCollection]
+        $ImportDiskDetailsCollection,
+        [Parameter(HelpMessage="Contains the map of disk serial number to the disk details for export jobs.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IDataBoxCustomerDiskJobDetailsExportDiskDetailsCollection]
+        $ExportDiskDetailsCollection,
+        [Parameter(HelpMessage="Carrier Account Number of customer for customer disk.")]
         [string]
-        $DevicePassword,
+        $ReturnToCustomerPackageDetailCarrierAccountNumber,
         [Parameter(Mandatory, HelpMessage="Contact details for notification and shipping.")]
         [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.IContactDetails]
         $ContactDetail,
@@ -64,10 +70,16 @@ function New-AzDataBoxJobDetailsObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxJobDetails]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.DataBoxCustomerDiskJobDetails]::New()
 
-        if ($PSBoundParameters.ContainsKey('DevicePassword')) {
-            $Object.DevicePassword = $DevicePassword
+        if ($PSBoundParameters.ContainsKey('ImportDiskDetailsCollection')) {
+            $Object.ImportDiskDetailsCollection = $ImportDiskDetailsCollection
+        }
+        if ($PSBoundParameters.ContainsKey('ExportDiskDetailsCollection')) {
+            $Object.ExportDiskDetailsCollection = $ExportDiskDetailsCollection
+        }
+        if ($PSBoundParameters.ContainsKey('ReturnToCustomerPackageDetailCarrierAccountNumber')) {
+            $Object.ReturnToCustomerPackageDetailCarrierAccountNumber = $ReturnToCustomerPackageDetailCarrierAccountNumber
         }
         if ($PSBoundParameters.ContainsKey('ContactDetail')) {
             $Object.ContactDetail = $ContactDetail

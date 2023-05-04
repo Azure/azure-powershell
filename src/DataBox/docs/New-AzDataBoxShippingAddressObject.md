@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxShippingAddressObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxShippingAddressObject
 schema: 2.0.0
 ---
 
@@ -14,8 +14,9 @@ Create an in-memory object for ShippingAddress.
 
 ```
 New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <AddressType>]
- [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-StateOrProvince <String>]
- [-StreetAddress2 <String>] [-StreetAddress3 <String>] [-ZipExtendedCode <String>] [<CommonParameters>]
+ [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-SkipAddressValidation <Boolean>]
+ [-StateOrProvince <String>] [-StreetAddress2 <String>] [-StreetAddress3 <String>]
+ [-TaxIdentificationNumber <String>] [-ZipExtendedCode <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +114,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SkipAddressValidation
+Flag to indicate if customer has chosen to skip default address validation.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StateOrProvince
 Name of the State or Province.
 
@@ -173,6 +189,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TaxIdentificationNumber
+Tax Identification Number.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ZipExtendedCode
 Extended Zip Code.
 
@@ -195,7 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ShippingAddress
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ShippingAddress
 
 ## NOTES
 

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxStorageAccountDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxStorageAccountDetailsObject
 schema: 2.0.0
 ---
 
@@ -95,7 +95,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.StorageAccountDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.StorageAccountDetails
 
 ## NOTES
 

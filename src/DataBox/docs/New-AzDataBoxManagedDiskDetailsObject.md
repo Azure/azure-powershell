@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.DataBox
-online version: https://learn.microsoft.com/powershell/module/az.DataBox/new-AzDataBoxManagedDiskDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxManagedDiskDetailsObject
 schema: 2.0.0
 ---
 
@@ -32,6 +32,7 @@ DataAccountType SharePassword ResourceGroupId                                   
 --------------- ------------- ---------------                                                -----------------------                                                                                                      
 ManagedDisk                   /subscriptions/SubscriptionId/resourceGroups/resourceGroupName /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/stagingAccountName
 ```
+
 Creates a in-memory managed disk object
 
 ## PARAMETERS
@@ -109,7 +110,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20210301.ManagedDiskDetails
+### Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.Api20221201.ManagedDiskDetails
 
 ## NOTES
 
