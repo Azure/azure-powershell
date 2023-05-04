@@ -6608,9 +6608,7 @@ function Test-VirtualMachineSecurityType
         $SKU = "2016-datacenter-gensecond";
         $disable = $false;
         $enable = $true;
-        $extDefaultName = "GuestAttestation";
-        $vmGADefaultIDentity = "SystemAssigned";
-
+        
         # Creating a VM using Simple parameterset
         $password = Get-PasswordForVM;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
