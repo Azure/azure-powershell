@@ -46,6 +46,8 @@
     - Also updated cmdlet to add the property of LogScrubbing 
     - `New-AzApplicationGatewayFirewallPolicySetting`
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+* Updated cmdlet to add the property of DisableRequestBodyEnforcement, RequestBodyInspectLimitInKB and DisableFileUploadEnforcement 
+    - `New-AzApplicationGatewayFirewallPolicySetting`
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets

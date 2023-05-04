@@ -264,6 +264,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
+        public void TestApplicationGatewayFirewallPolicyWithInspectionLimit()
+        {
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithInspectionLimit");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestApplicationGatewayFirewallPolicyWithCustomBlockResponse()
         {
             TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse");
