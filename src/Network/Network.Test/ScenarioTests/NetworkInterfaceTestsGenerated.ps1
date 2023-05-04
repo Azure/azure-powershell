@@ -369,7 +369,7 @@ function Test-NetworkInterfaceIpConfigurationCRUDMinimalParameters
 .SYNOPSIS
 Tests creating new simple public networkinterface with Gateway Loadbalancer.
 #>
-function Test-NetworkInterface-GatewayLoadBalancerConsumer
+function Test-NetworkInterfaceGatewayLoadBalancerConsumer
 {
     # Setup
     $rgname = Get-ResourceGroupName;
@@ -407,7 +407,7 @@ function Test-NetworkInterface-GatewayLoadBalancerConsumer
         $vnet = New-AzVirtualNetwork -Name $vnetConsumerName -ResourceGroupName $rgname -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
 
         # Create Consumer publicip
-        $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpConsumerName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel;
+        $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpConsumerName -Sku "Standard" -location $location -AllocationMethod Static;
 
 		# Create the ipconfiguration
 		$ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id;
@@ -416,10 +416,10 @@ function Test-NetworkInterface-GatewayLoadBalancerConsumer
         $nicConsumer = New-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1 -Tag @{ testtag = "testval" };
 
         # Get NetworkInterface
-        $expectedNicConsumer = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname;
+        $expectedNicConsumer = Get-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname;
 
         # Verification
-        Assert-AreEqual $frontendProvider.Id $expectedNicConsumer.ipconfigurations[0].GatewayLoadBalancer;   
+        Assert-AreEqual $frontendProvider.Id $expectedNicConsumer.ipconfigurations[0].GatewayLoadBalancer.Id;   
     }
     finally
     {

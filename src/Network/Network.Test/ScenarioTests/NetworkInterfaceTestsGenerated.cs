@@ -80,9 +80,9 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.slbdev)]
-        public void TestTest-NetworkInterface-GatewayLoadBalancerConsumer()
+        public void TestNetworkInterfaceGatewayLoadBalancerConsumer()
         {
-            TestRunner.RunTestScript(string.Format("Test-NetworkInterface-GatewayLoadBalancerConsumer"));
+            TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceGatewayLoadBalancerConsumer"));
         }
     }
 }
