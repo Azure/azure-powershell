@@ -41,7 +41,7 @@ require:
 input-file: 
   - $(repo)/specification/subscription/resource-manager/Microsoft.Subscription/stable/2021-10-01/subscriptions.json
 
-module-version: 0.2.0
+module-version: 0.3.0
 title: Subscription
 subject-prefix: $(service-name)
 
@@ -49,6 +49,18 @@ identity-correction-for-post: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.paths["/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/providers/Microsoft.Subscription/policies/default"].get.responses
+    transform: >-
+      return {
+          "200": {
+            "description": "Normal response for a successful query.",
+            "schema": {
+              "$ref": "#/definitions/BillingAccountPoliciesResponse"
+            }
+          }
+      }
+
   - where:
       subject: AcceptSubscriptionOwnershipStatus
       variant: Accept
@@ -72,10 +84,6 @@ directive:
       verb: Add
     set:
       verb: Update
-  - where:
-      verb: Invoke
-    set:
-      verb: Get
 
   - where:
       subject: SubscriptionPolicyUpdatePolicy
@@ -85,10 +93,13 @@ directive:
       subject: AcceptSubscriptionOwnership
     set:
       subject: AcceptOwnership
+    hide: true
   - where:
+      verb: Invoke
       subject: AcceptSubscriptionOwnershipStatus
     set:
       subject: AcceptOwnershipStatus
+      verb: Get
 
   - where:
       verb: New
@@ -114,6 +125,7 @@ directive:
       parameter-name: AdditionalPropertyTag
     set:
       parameter-name: Tag
+
   - where:
       model-name: SubscriptionAliasResponse
     set:

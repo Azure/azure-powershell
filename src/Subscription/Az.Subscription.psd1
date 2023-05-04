@@ -1,7 +1,7 @@
 @{
   GUID = 'd687e965-0990-42dd-a1cd-a2e30af042c9'
   RootModule = './Az.Subscription.psm1'
-  ModuleVersion = '0.2.0'
+  ModuleVersion = '0.3.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Subscription.private.dll'
   FormatsToProcess = './Az.Subscription.format.ps1xml'
-  FunctionsToExport = 'Disable-AzSubscription', 'Enable-AzSubscription', 'Get-AzSubscriptionAcceptOwnership', 'Get-AzSubscriptionAcceptOwnershipStatus', 'Get-AzSubscriptionAlias', 'Get-AzSubscriptionBillingAccountPolicy', 'Get-AzSubscriptionPolicy', 'New-AzSubscriptionAlias', 'Remove-AzSubscriptionAlias', 'Rename-AzSubscription', 'Update-AzSubscriptionPolicy', '*'
+  FunctionsToExport = 'Disable-AzSubscription', 'Enable-AzSubscription', 'Get-AzSubscriptionAcceptOwnershipStatus', 'Get-AzSubscriptionAlias', 'Get-AzSubscriptionBillingAccountPolicy', 'Get-AzSubscriptionPolicy', 'Invoke-AzSubscriptionAcceptOwnership', 'New-AzSubscriptionAlias', 'Remove-AzSubscriptionAlias', 'Rename-AzSubscription', 'Update-AzSubscriptionPolicy', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

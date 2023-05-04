@@ -17,9 +17,6 @@ The operation to cancel a subscription
 ### [Enable-AzSubscription](Enable-AzSubscription.md)
 The operation to enable a subscription
 
-### [Get-AzSubscriptionAcceptOwnership](Get-AzSubscriptionAcceptOwnership.md)
-Accept subscription ownership.
-
 ### [Get-AzSubscriptionAcceptOwnershipStatus](Get-AzSubscriptionAcceptOwnershipStatus.md)
 Accept subscription ownership status.
 
@@ -31,6 +28,9 @@ Get Billing Account Policy.
 
 ### [Get-AzSubscriptionPolicy](Get-AzSubscriptionPolicy.md)
 Get the subscription tenant policy for the user's tenant.
+
+### [Invoke-AzSubscriptionAcceptOwnership](Invoke-AzSubscriptionAcceptOwnership.md)
+Accept subscription ownership.
 
 ### [New-AzSubscriptionAlias](New-AzSubscriptionAlias.md)
 Create Alias Subscription.

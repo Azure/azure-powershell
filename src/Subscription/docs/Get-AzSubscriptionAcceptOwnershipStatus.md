@@ -29,18 +29,27 @@ Accept subscription ownership status.
 
 ## EXAMPLES
 
-### Example 1: Accept subscription ownership status.
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSubscriptionAcceptOwnershipStatus
+{{ Add code here }}
 ```
 
 ```output
-AcceptOwnershipState BillingOwner DisplayName       ProvisioningState SubscriptionId
--------------------- ------------ -----------       ----------------- --------------
-Completed                         test-subscription Pending           XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+{{ Add output here }}
 ```
 
-Accept subscription ownership status.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 

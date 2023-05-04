@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownership
+online version: https://learn.microsoft.com/powershell/module/az.subscription/invoke-azsubscriptionacceptownership
 schema: 2.0.0
 ---
 
-# Get-AzSubscriptionAcceptOwnership
+# Invoke-AzSubscriptionAcceptOwnership
 
 ## SYNOPSIS
 Accept subscription ownership.
@@ -14,16 +14,14 @@ Accept subscription ownership.
 
 ### AcceptExpanded (Default)
 ```
-Get-AzSubscriptionAcceptOwnership [-SubscriptionId <String[]>] [-DisplayName <String>]
- [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzSubscriptionAcceptOwnership -SubscriptionId <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AcceptViaIdentityExpanded
 ```
-Get-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-DisplayName <String>]
- [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,21 +84,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayName
-The friendly name of the subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -114,21 +97,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ManagementGroupId
-Management group Id for the subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,13 +119,13 @@ Accept wildcard characters: False
 Subscription Id.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: AcceptExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
