@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='name'>
             /// Resource name to verify.
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='name'>
             /// Resource name to verify.
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='name'>
             /// File path to verify.
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='name'>
             /// File path to verify.
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='name'>
             /// Name of the resource to verify.
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='name'>
             /// Name of the resource to verify.
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             public static RegionInfo QueryRegionInfo(this INetAppResourceOperations operations, string location)
             {
@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Management.NetApp
             /// The operations group for this extension method.
             /// </param>
             /// <param name='location'>
-            /// The location
+            /// The name of Azure region.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.

@@ -30,5 +30,10 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// for more information.
         /// </summary>
         public const string Azure = "azure";
+        /// <summary>
+        /// Use Cilium to enforce network policies. This requires
+        /// networkDataplane to be 'cilium'.
+        /// </summary>
+        public const string Cilium = "cilium";
     }
 }

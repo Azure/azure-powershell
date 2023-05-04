@@ -287,7 +287,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Possible values are any decimal value greater than zero or -1 which
         /// indicates the willingness to pay any on-demand price. For more
         /// details on spot pricing, see [spot VMs
-        /// pricing](https://docs.microsoft.com/azure/virtual-machines/spot-vms#pricing)
+        /// pricing](https://learn.microsoft.com/azure/virtual-machines/spot-vms#pricing)
         /// </remarks>
         public double? SpotMaxPrice { get; set; }
 
@@ -332,7 +332,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// <remarks>
         /// This is only supported on certain VM sizes and in certain Azure
         /// regions. For more information, see:
-        /// https://docs.microsoft.com/azure/aks/enable-host-encryption
+        /// https://learn.microsoft.com/azure/aks/enable-host-encryption
         /// </remarks>
         public bool? EnableEncryptionAtHost { get; set; }
 
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// </summary>
         /// <remarks>
         /// See [Add a FIPS-enabled node
-        /// pool](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview)
+        /// pool](https://learn.microsoft.com/azure/aks/use-multiple-node-pools#add-a-fips-enabled-node-pool-preview)
         /// for more details.
         /// </remarks>
         public bool? EnableFIPS { get; set; }
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// This is of the form:
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}.
         /// For more information see [Azure dedicated
-        /// hosts](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts).
+        /// hosts](https://learn.microsoft.com/azure/virtual-machines/dedicated-hosts).
         /// </remarks>
         public string HostGroupID { get; set; }
 

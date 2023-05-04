@@ -5,7 +5,6 @@ This directory contains management plane service clients of Az.Aks module.
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@microsoft.azure/autorest.csharp@2.3.90
 autorest.cmd README.md --version=v2
 ```
 
@@ -23,7 +22,7 @@ payload-flattening-threshold: 1
 ###
 ``` yaml
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/195cd610db0accd0422c3e00a72df739ab4de677/specification/containerservice/resource-manager/Microsoft.ContainerService/stable/2022-09-01/managedClusters.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/9d8a951af5d78e24d9d83592107f8d3c2cc417f5/specification/containerservice/resource-manager/Microsoft.ContainerService/aks/stable/2023-02-01/managedClusters.json
 
 ### There are 2 same "type" property with same x-ms-enum.name="ResourceIdentityType" defined in both managedClusters.json and its referenced types.json. 
 ### Rename the one in types.json to avoid autorest converting error.

@@ -1,5 +1,5 @@
 # Introduction
-Output is the most important part of any interactive console application including Powershell. PowerShell has a set of  [format cmdlets](https://docs.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-format-commands-to-change-output-view?view=powershell-6) that allow you to control the cmdlet output format:
+Output is the most important part of any interactive console application including Powershell. PowerShell has a set of  [format cmdlets](https://learn.microsoft.com/en-us/powershell/scripting/getting-started/cookbooks/using-format-commands-to-change-output-view?view=powershell-6) that allow you to control the cmdlet output format:
 1. Format-Wide
 2. Format-List
 3. Format-Table
@@ -106,7 +106,7 @@ The default table output reveals some issues:
 
 # File format.ps1xml.
 
-Powershell allows to configure cmdlets output view with the [format.ps1xml](https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml) files.
+Powershell allows to configure cmdlets output view with the [format.ps1xml](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_format.ps1xml) files.
 
 To provide a better PowerShell Azure cmdlets output experience we worked out a mechanism to quickly generate a format.ps1xml file:
 

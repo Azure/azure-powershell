@@ -1,0 +1,287 @@
+{
+  "New-AzWorkloadsProviderInstance+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"providerSettings\": {\r\n      \"providerType\": \"PrometheusOS\",\r\n      \"prometheusUrl\": \"http://10.1.0.4:9100/metrics\",\r\n      \"sslPreference\": \"Disabled\",\r\n      \"sapSid\": \"X00\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "216" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00008902-0000-3400-0000-641448820000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01" ],
+        "x-ms-request-id": [ "f56872ae-6b8d-4548-8758-72c90f348213" ],
+        "x-ms-correlation-request-id": [ "3198ca9b-b2af-4d88-8297-849e77db9c32" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T110122Z:3198ca9b-b2af-4d88-8297-849e77db9c32" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 11:01:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "678" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1\",\"name\":\"suha-os-1\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-17T11:01:18.7628958Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-17T11:01:18.7628958Z\"},\"properties\":{\"providerSettings\":{\"providerType\":\"PrometheusOS\",\"prometheusUrl\":\"http://10.1.0.4:9100/metrics\",\"sslPreference\":\"Disabled\",\"sapSid\":\"X00\"},\"provisioningState\":\"Accepted\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWorkloadsProviderInstance+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "43d53560-778e-4b68-b7da-327615dd3e88" ],
+        "CommandName": [ "New-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "New-AzWorkloadsProviderInstance_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e841-0000-3400-0000-641448820000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "x-ms-request-id": [ "bc00fda4-45d6-49b3-acb0-51824006a04a" ],
+        "x-ms-correlation-request-id": [ "3ea7023c-3cfc-4fe2-9c75-7a5ba3fae0f5" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T110152Z:3ea7023c-3cfc-4fe2-9c75-7a5ba3fae0f5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 11:01:52 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"name\":\"f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"resourceId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1\",\"status\":\"Accepted\",\"startTime\":\"2023-03-17T11:01:22.0711515Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWorkloadsProviderInstance+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "43d53560-778e-4b68-b7da-327615dd3e88" ],
+        "CommandName": [ "New-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "New-AzWorkloadsProviderInstance_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e841-0000-3400-0000-641448820000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "42a46974-151e-4664-a07a-a4ed55e0ae4f" ],
+        "x-ms-correlation-request-id": [ "f0ffacc2-d9f9-4edd-ae8c-9ba57bb36b98" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T110223Z:f0ffacc2-d9f9-4edd-ae8c-9ba57bb36b98" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 11:02:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"name\":\"f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"resourceId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1\",\"status\":\"Accepted\",\"startTime\":\"2023-03-17T11:01:22.0711515Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWorkloadsProviderInstance+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "43d53560-778e-4b68-b7da-327615dd3e88" ],
+        "CommandName": [ "New-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "New-AzWorkloadsProviderInstance_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e841-0000-3400-0000-641448820000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11991" ],
+        "x-ms-request-id": [ "f21e9f3f-1ddf-4056-a908-2044c7a0a8c3" ],
+        "x-ms-correlation-request-id": [ "8021668a-f29b-4efc-ad4f-560b47ae6a38" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T110253Z:8021668a-f29b-4efc-ad4f-560b47ae6a38" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 11:02:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"name\":\"f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"resourceId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1\",\"status\":\"Accepted\",\"startTime\":\"2023-03-17T11:01:22.0711515Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWorkloadsProviderInstance+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01+5": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "43d53560-778e-4b68-b7da-327615dd3e88" ],
+        "CommandName": [ "New-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "New-AzWorkloadsProviderInstance_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"0000e841-0000-3400-0000-641448820000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11990" ],
+        "x-ms-request-id": [ "c784a177-97c3-4fb0-a982-a5eb62b32838" ],
+        "x-ms-correlation-request-id": [ "45f93e41-185a-450f-8693-adaa8e9233f3" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T110324Z:45f93e41-185a-450f-8693-adaa8e9233f3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 11:03:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "586" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"name\":\"f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"resourceId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1\",\"status\":\"Accepted\",\"startTime\":\"2023-03-17T11:01:22.0711515Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWorkloadsProviderInstance+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "43d53560-778e-4b68-b7da-327615dd3e88" ],
+        "CommandName": [ "New-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "New-AzWorkloadsProviderInstance_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00000b42-0000-3400-0000-641448ff0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "x-ms-request-id": [ "e1ecf5ed-261e-4a35-89d5-b70a4d98cdfe" ],
+        "x-ms-correlation-request-id": [ "5e9cb2ec-03e5-4522-83d0-078f7198b128" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T110354Z:5e9cb2ec-03e5-4522-83d0-078f7198b128" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 11:03:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "605" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/providers/Microsoft.Workloads/locations/EASTUS2EUAP/operationStatuses/f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"name\":\"f56872ae-6b8d-4548-8758-72c90f348213*6E77053B6B98265D96E60B59AE83132A76A7B1EA2C160941AD1C81EFE679D721\",\"resourceId\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1\",\"status\":\"Succeeded\",\"startTime\":\"2023-03-17T11:01:22.0711515Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzWorkloadsProviderInstance+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1?api-version=2023-04-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1?api-version=2023-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "43d53560-778e-4b68-b7da-327615dd3e88" ],
+        "CommandName": [ "New-AzWorkloadsProviderInstance" ],
+        "FullCommandName": [ "New-AzWorkloadsProviderInstance_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.9", "Az.Workloads/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"00008e02-0000-3400-0000-641448cc0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11988" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "1c40f2c3-4fb5-43cb-90f1-03efe45939d4" ],
+        "x-ms-correlation-request-id": [ "2b02d22d-f616-44ac-a7f9-52e99ea53cd7" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230317T110355Z:2b02d22d-f616-44ac-a7f9-52e99ea53cd7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 17 Mar 2023 11:03:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "679" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourceGroups/suha-0802-rg1/providers/Microsoft.Workloads/monitors/suha-160323-ams7/providerInstances/suha-os-1\",\"name\":\"suha-os-1\",\"type\":\"microsoft.workloads/monitors/providerinstances\",\"systemData\":{\"createdBy\":\"sshrivastava@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-17T11:01:18.7628958Z\",\"lastModifiedBy\":\"sshrivastava@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-17T11:01:18.7628958Z\"},\"properties\":{\"providerSettings\":{\"prometheusUrl\":\"http://10.1.0.4:9100/metrics\",\"sslPreference\":\"Disabled\",\"sapSid\":\"X00\",\"providerType\":\"PrometheusOS\"},\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
+    }
+  }
+}

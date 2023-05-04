@@ -22,6 +22,28 @@ $resourceIdForFileDB = $resourceId
 $policyName = "HourlyLogBackup"
 $instanceName = "sqlinstance;mssqlserver"
 
+function Test-AzureVmWorkloadCrossSubscriptionRestore
+{
+	$resourceGroupName = "sqlcontainer-pstest-rg"
+	$vaultName = "sqlcontainer-pstest-vault"
+	$location = "centraluseuap"
+
+	try
+	{
+		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		Assert-True { $vault.Properties.RestoreSettings.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState -eq "Enabled" }
+
+		# Disable/Enable CSR state
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -CrossSubscriptionRestoreState Disabled
+		Assert-True { $vault.Properties.RestoreSettings.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState -eq "Disabled" }
+	}
+	finally	
+	{						
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName -CrossSubscriptionRestoreState Enabled
+		Assert-True { $vault.Properties.RestoreSettings.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState -eq "Enabled" }
+	}
+}
+
 function Test-AzureVmWorkloadProtectableItem
 {
 	try

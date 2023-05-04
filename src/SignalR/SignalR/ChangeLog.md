@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Breaking change:
+    - Removed `HostNamePrefix` property of output type `PSSignalRResource` of following cmdlets:
+        - `Get-AzSignalR`
+        - `New-AzSignalR`
+        - `Update-AzSignalR`
 
 ## Version 1.5.0
 * Updated to API version 2022-08-01-preview

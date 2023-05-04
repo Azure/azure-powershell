@@ -41,6 +41,12 @@
         "Details": [
         ]
     },
+    "ux": {
+        "PhaseName": "UX Metadata Check",
+        "Order": 8,
+        "Details": [
+        ]
+    },
     "test": {
         "PhaseName": "Test",
         "Order": 100,

@@ -32,7 +32,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 # Description of the functionality provided by this module
 Description = 'Microsoft Azure PowerShell - Data Lake Analytics in Windows PowerShell and PowerShell Core.
 
-For more information on Data Lake Analytics, please visit the following: https://docs.microsoft.com/azure/data-lake-analytics/'
+For more information on Data Lake Analytics, please visit the following: https://learn.microsoft.com/azure/data-lake-analytics/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'

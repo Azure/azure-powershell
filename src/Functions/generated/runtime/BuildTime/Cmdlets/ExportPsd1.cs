@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.PowerShell
                 sb.AppendLine($@"{Indent}Author = '{"Microsoft Corporation"}'");
                 sb.AppendLine($@"{Indent}CompanyName = '{"Microsoft Corporation"}'");
                 sb.AppendLine($@"{Indent}Copyright = '{"Microsoft Corporation. All rights reserved."}'");
-                sb.AppendLine($@"{Indent}Description = '{"Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://docs.microsoft.com/azure/azure-functions/"}'");
+                sb.AppendLine($@"{Indent}Description = '{"Microsoft Azure PowerShell - Azure Functions service cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.\n\nFor information on Azure Functions, please visit the following: https://learn.microsoft.com/azure/azure-functions/"}'");
                 sb.AppendLine($@"{Indent}PowerShellVersion = '5.1'");
                 sb.AppendLine($@"{Indent}DotNetFrameworkVersion = '4.7.2'");
 

@@ -18,7 +18,7 @@ Adds an Access Restiction rule to an Azure Web App.
 Add a routing Rule to the Slot.
 
 ### [Edit-AzWebAppBackupConfiguration](Edit-AzWebAppBackupConfiguration.md)
-
+Edits the current configuration backup for an Azure Web App
 
 ### [Enter-AzWebAppContainerPSSession](Enter-AzWebAppContainerPSSession.md)
 Opens a remote PowerShell session into the windows container specified in a given site or slot and given resource group
@@ -75,7 +75,7 @@ Description for Gets the details of the user provided function app registered wi
 Gets Azure Web Apps in the specified resource group.
 
 ### [Get-AzWebAppAccessRestrictionConfig](Get-AzWebAppAccessRestrictionConfig.md)
-Gets Access Restiction configuration for an Azure Web App.
+Gets Access Restriction configuration for an Azure Web App.
 
 ### [Get-AzWebAppBackup](Get-AzWebAppBackup.md)
 
@@ -267,7 +267,7 @@ Description for Resets the api key for an existing static site.
 Restarts an Azure Web App.
 
 ### [Restart-AzWebAppSlot](Restart-AzWebAppSlot.md)
-
+Restarts an Azure Web App Slot.
 
 ### [Restore-AzDeletedWebApp](Restore-AzDeletedWebApp.md)
 Restores a deleted web app to a new or existing web app.

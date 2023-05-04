@@ -24,7 +24,7 @@ function Set-AzEventHub{
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
-		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub Entity.")]
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub Entity.")]
         [Alias('EventHubName')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
@@ -71,16 +71,16 @@ function Set-AzEventHub{
         ${Encoding},
 
         [Parameter(HelpMessage = "The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds")]
-		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-		[System.Int32]
-		# The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
-		${IntervalInSeconds},
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int32]
+        # The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
+        ${IntervalInSeconds},
 
         [Parameter(HelpMessage = "The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes")]
-		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-		[System.Int32]
-		# The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
-		${SizeLimitInBytes},
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int32]
+        # The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
+        ${SizeLimitInBytes},
 
         [Parameter(HelpMessage = "A value that indicates whether to Skip Empty Archives")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -89,10 +89,11 @@ function Set-AzEventHub{
         ${SkipEmptyArchive},
 
         [Parameter(HelpMessage = "Number of days to retain the events for this Event Hub, value should be 1 to 7 days")]
-		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-		[System.Int64]
-		# Number of days to retain the events for this Event Hub, value should be 1 to 7 days
-		${MessageRetentionInDays},
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("MessageRetentionInDays", "4.0.0", "", ChangeDescription = "-MessageRetentionInDays would be deprecated and would be replaced by -RetentionTimeInHours")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.Int64]
+        # Number of days to retain the events for this Event Hub, value should be 1 to 7 days
+        ${MessageRetentionInDays},
 
         [Parameter(HelpMessage = "Enumerates the possible values for the status of the Event Hub.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -101,16 +102,16 @@ function Set-AzEventHub{
         ${Status},
 
         [Parameter(HelpMessage = "Name for capture destination")]
-		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-		[System.String]
-		# Name for capture destination
-		${DestinationName},
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        # Name for capture destination
+        ${DestinationName},
 
         [Parameter(HelpMessage = "Resource id of the storage account to be used to create the blobs")]
-		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-		[System.String]
-		# Resource id of the storage account to be used to create the blobs
-		${StorageAccountResourceId},
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        # Resource id of the storage account to be used to create the blobs
+        ${StorageAccountResourceId},
         
         [Parameter(HelpMessage = "Blob naming convention for archive, e.g. {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}. Here all the parameters (Namespace,EventHub .. etc) are mandatory irrespective of order")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -119,10 +120,10 @@ function Set-AzEventHub{
         ${ArchiveNameFormat},
 
         [Parameter(HelpMessage = "Blob container Name")]
-	    [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-	    [System.String]
-	    # Blob container Name
-	    ${BlobContainer},
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
+        [System.String]
+        # Blob container Name
+        ${BlobContainer},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]

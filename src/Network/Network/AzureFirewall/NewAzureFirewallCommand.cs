@@ -58,7 +58,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [CmdletParameterBreakingChange(
             "VirtualNetworkName",
-            deprecateByVersion: "2.0.0",
             ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Virtual Network will be provided as an object instead of a string.",
             OldWay = "New-AzFirewall -VirtualNetworkName \"vnet-name\"",
             NewWay = "New-AzFirewall -VirtualNetwork $vnet",
@@ -75,7 +74,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [CmdletParameterBreakingChange(
             "PublicIpName",
-            deprecateByVersion: "2.0.0",
             ChangeDescription = "This parameter will be removed in an upcoming breaking change release. After this point the Public IP Address will be provided as a list of one or more objects instead of a string.",
             OldWay = "New-AzFirewall -PublicIpName \"public-ip-name\"",
             NewWay = "New-AzFirewall -PublicIpAddress @($publicip1, $publicip2)",
@@ -289,6 +287,13 @@ namespace Microsoft.Azure.Commands.Network
             sku.Name = !string.IsNullOrEmpty(this.SkuName) ? this.SkuName : MNM.AzureFirewallSkuName.AZFWVNet;
             sku.Tier = !string.IsNullOrEmpty(this.SkuTier) ? this.SkuTier : MNM.AzureFirewallSkuTier.Standard;
 
+            if (sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic) && !string.IsNullOrEmpty(this.Location))
+            {
+                if (FirewallConstants.IsRegionRestrictedForBasicFirewall(this.Location))
+                {
+                    throw new ArgumentException("Basic Sku Firewall is not supported in this region yet - " + this.Location, nameof(this.Location));
+                }
+            }
             if (this.SkuName == MNM.AzureFirewallSkuName.AZFWHub)
             {
 

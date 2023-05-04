@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.1
+* Updated Azure.Core to 1.31.0.
+
+## Version 1.6.0
 * Added support for policy attestations.
 
 ## Version 1.5.1

@@ -13,7 +13,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
     /// [OpenAPI] Calculate=>POST:"/providers/Microsoft.Capacity/calculatePrice"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzReservationQuote_CalculateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponseProperties))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Description(@"Calculate price for placing a `ReservationOrder`.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Generated]
     public partial class GetAzReservationQuote_CalculateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -28,7 +28,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
-        private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest _body = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.PurchaseRequest();
+        /// <summary>The request for reservation purchase</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest _body = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.PurchaseRequest();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -36,18 +37,76 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>
-        /// List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+        /// List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property
+        /// will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
         /// </summary>
         [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.",
+        Description = @"List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.",
         SerializedName = @"appliedScopes",
         PossibleTypes = new [] { typeof(string) })]
         public string[] AppliedScope { get => _body.AppliedScopes ?? null /* arrayOf */; set => _body.AppliedScopes = value; }
+
+        /// <summary>Display name</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Display name")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Display name",
+        SerializedName = @"displayName",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AppliedScopePropertyDisplayName { get => _body.AppliedScopePropertyDisplayName ?? null; set => _body.AppliedScopePropertyDisplayName = value; }
+
+        /// <summary>
+        /// Fully-qualified identifier of the management group where the benefit must be applied.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the management group where the benefit must be applied.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Fully-qualified identifier of the management group where the benefit must be applied.",
+        SerializedName = @"managementGroupId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AppliedScopePropertyManagementGroupId { get => _body.AppliedScopePropertyManagementGroupId ?? null; set => _body.AppliedScopePropertyManagementGroupId = value; }
+
+        /// <summary>Fully-qualified identifier of the resource group.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the resource group.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Fully-qualified identifier of the resource group.",
+        SerializedName = @"resourceGroupId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AppliedScopePropertyResourceGroupId { get => _body.AppliedScopePropertyResourceGroupId ?? null; set => _body.AppliedScopePropertyResourceGroupId = value; }
+
+        /// <summary>Fully-qualified identifier of the subscription.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Fully-qualified identifier of the subscription.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Fully-qualified identifier of the subscription.",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AppliedScopePropertySubscriptionId { get => _body.AppliedScopePropertySubscriptionId ?? null; set => _body.AppliedScopePropertySubscriptionId = value; }
+
+        /// <summary>Tenant ID where the savings plan should apply benefit.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Tenant ID where the savings plan should apply benefit.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Tenant ID where the savings plan should apply benefit.",
+        SerializedName = @"tenantId",
+        PossibleTypes = new [] { typeof(string) })]
+        public string AppliedScopePropertyTenantId { get => _body.AppliedScopePropertyTenantId ?? null; set => _body.AppliedScopePropertyTenantId = value; }
 
         /// <summary>Type of the Applied Scope.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of the Applied Scope.")]
@@ -73,13 +132,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan))]
         public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan BillingPlan { get => _body.BillingPlan ?? ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationBillingPlan)""); set => _body.BillingPlan = value; }
 
-        /// <summary>Subscription that will be charged for purchasing Reservation</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Subscription that will be charged for purchasing Reservation")]
+        /// <summary>Subscription that will be charged for purchasing reservation or savings plan</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Subscription that will be charged for purchasing reservation or savings plan")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Subscription that will be charged for purchasing Reservation",
+        Description = @"Subscription that will be charged for purchasing reservation or savings plan",
         SerializedName = @"billingScopeId",
         PossibleTypes = new [] { typeof(string) })]
         public string BillingScopeId { get => _body.BillingScopeId ?? null; set => _body.BillingScopeId = value; }
@@ -93,21 +152,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Reservations Client => Microsoft.Azure.PowerShell.Cmdlets.Reservations.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
-        /// <summary>Friendly name of the Reservation</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Friendly name of the Reservation")]
+        /// <summary>Friendly name of the reservation</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Friendly name of the reservation")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Friendly name of the Reservation",
+        Description = @"Friendly name of the reservation",
         SerializedName = @"displayName",
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _body.DisplayName ?? null; set => _body.DisplayName = value; }
@@ -142,13 +202,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
-        /// <summary>The Azure Region where the reserved resource lives.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure Region where the reserved resource lives.")]
+        /// <summary>The Azure region where the reserved resource lives.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Azure region where the reserved resource lives.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"The Azure Region where the reserved resource lives.",
+        Description = @"The Azure region where the reserved resource lives.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         public string Location { get => _body.Location ?? null; set => _body.Location = value; }
@@ -182,13 +242,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Quantity of the SKUs that are part of the Reservation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Quantity of the SKUs that are part of the Reservation.")]
+        /// <summary>Quantity of the skus that are part of the reservation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Quantity of the skus that are part of the reservation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Quantity of the SKUs that are part of the Reservation.",
+        Description = @"Quantity of the skus that are part of the reservation.",
         SerializedName = @"quantity",
         PossibleTypes = new [] { typeof(int) })]
         public int Quantity { get => _body.Quantity ?? default(int); set => _body.Quantity = value; }
@@ -218,6 +278,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservedResourceType))]
         public Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservedResourceType ReservedResourceType { get => _body.ReservedResourceType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservedResourceType)""); set => _body.ReservedResourceType = value; }
 
+        /// <summary>This is the date-time when the Azure hybrid benefit needs to be reviewed.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This is the date-time when the Azure hybrid benefit needs to be reviewed.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"This is the date-time when the Azure hybrid benefit needs to be reviewed.",
+        SerializedName = @"reviewDateTime",
+        PossibleTypes = new [] { typeof(global::System.DateTime) })]
+        public global::System.DateTime ReviewDateTime { get => _body.ReviewDateTime ?? default(global::System.DateTime); set => _body.ReviewDateTime = value; }
+
         /// <summary>.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
@@ -229,13 +300,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Sku { get => _body.Sku ?? null; set => _body.Sku = value; }
 
-        /// <summary>Represent the term of Reservation.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Represent the term of Reservation.")]
+        /// <summary>Represent the term of reservation.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Represent the term of reservation.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Reservations.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"Represent the term of Reservation.",
+        Description = @"Represent the term of reservation.",
         SerializedName = @"term",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm))]
@@ -246,24 +317,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -439,12 +510,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -461,7 +532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -479,12 +550,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponse">Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponse> response)
         {
             using( NoSynchronizationContext )
             {
@@ -496,7 +567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponse
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponse
                 WriteObject((await response));
             }
         }

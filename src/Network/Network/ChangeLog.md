@@ -2,7 +2,7 @@
     Please leave this section at the top of the change log.
 
     Changes for the upcoming release should go under the section titled "Upcoming Release", and should adhere to the following format:
-
+    
     ## Upcoming Release
     * Overview of change #1
         - Additional information about change #1
@@ -12,19 +12,41 @@
     * Overview of change #3
     * Overview of change #4
         - Additional information about change #4
-
+    
     ## YYYY.MM.DD - Version X.Y.Z (Previous Release)
     * Overview of change #1
         - Additional information about change #1
 --->
 
 ## Upcoming Release
+* Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+
+## Version 5.7.0
+* Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+* Fixed the issue for `Update-AzCustomIpPrefix` that `NoInternetAdvertise` will should be set to false if not provided
+
+## Version 5.6.0
+* Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers
+* Added property 'AuthorizationStatus' to ExpressRouteCircuit
+* Added property 'BillingType' to ExpressRoutePort
+* Added support for connection flushing in network security group which when enabled, re-evaluates flows when rules are updated
+    - `New-AzNetworkSecurityGroup`
+* Added support for state in WAF Custom Rule
+* Added `New-AzGatewayCustomBgpIpConfigurationObject` command
+* Updated `New-AzVirtualNetworkGatewayConnection`, `Set-AzVirtualNetworkGatewayConnection` and `New-AzVpnSiteLinkConnection` to support GatewayCustomBgpIpConfiguration.
+* Updated `Reset-AzVpnGateway` to support IpConfigurationId.
+* Blocked some regions when creating/updating Basic Sku firewall
+* Fixed bugs related to auto learn IP prefixes and Snat
+* Updated multi-auth to be supported when both OpenVPN and IkeV2 protocols are used for VNG and VWAN VPN
+
+## Version 5.5.0
 * Updated cmdlets to add new property of `Snat` in Azure Firewall Policy.
     - `New-AzFirewallPolicySnat`
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
 * Fixed a bug that reverts classic fw private ranges to default when doing get & set
 * Onboarded `Microsoft.Monitor/accounts` to private link cmdlets
+* Onboarded `Microsoft.DBforMySQL/flexibleServers` to private link cmdlets
 
 ## Version 5.4.0
 * Fixed a bug that does not enable to set Perform SNAT to Always
@@ -856,7 +878,7 @@
         - Get-AzIpGroup
         - Set-AzIpGroup
 * Virtual Wan Point to site feature release.
-  - Introduce new command lets for managing point to site VpnServerConfiguraiton resource
+  - Introduce new command lets for managing point to site VpnServerConfiguration resource
     - Get-AzVpnServerConfiguration
     - New-AzVpnServerConfiguration
     - Remove-AzVpnServerConfiguration

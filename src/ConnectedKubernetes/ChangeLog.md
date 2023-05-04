@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 0.9.0
+* Used Env:HELM_CLIENT_PATH if user defined in cmdlet New-AzConnectedKubernetes and Remove-AzConnectedKubernetes.
+* Added support for downloading signed helm v3.6.3 for Windows in cmdlet New-AzConnectedKubernetes and Remove-AzConnectedKubernetes.
+* Moved helm release namespace to "azure-arc-release" in cmdlet New-AzConnectedKubernetes and Remove-AzConnectedKubernetes.
+* Cleaned "azure-arc-release" namespace after disconnecting in cmdlet Remove-AzConnectedKubernetes.
+
 ## Version 0.8.0
 * Added optional configs (-HttpProxy, -HttpsProxy, -NoProxy, -ProxyCert) for connection behind outbound proxy server.
 * Added optional configs (-ContainerLogPath, -DisableAutoUpgrade, -NoWait, -OnboardingTimeout).

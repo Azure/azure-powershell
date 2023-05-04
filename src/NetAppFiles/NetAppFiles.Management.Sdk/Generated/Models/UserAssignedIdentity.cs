@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
     using System.Linq;
 
     /// <summary>
-    /// UserAssignedIdentity for the resource.
+    /// User assigned identity properties
     /// </summary>
     public partial class UserAssignedIdentity
     {
@@ -29,9 +29,11 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Initializes a new instance of the UserAssignedIdentity class.
         /// </summary>
-        /// <param name="principalId">The principal ID of the identity.</param>
-        /// <param name="clientId">The client ID of the identity.</param>
-        public UserAssignedIdentity(string principalId = default(string), string clientId = default(string))
+        /// <param name="principalId">The principal ID of the assigned
+        /// identity.</param>
+        /// <param name="clientId">The client ID of the assigned
+        /// identity.</param>
+        public UserAssignedIdentity(System.Guid? principalId = default(System.Guid?), System.Guid? clientId = default(System.Guid?))
         {
             PrincipalId = principalId;
             ClientId = clientId;
@@ -44,16 +46,16 @@ namespace Microsoft.Azure.Management.NetApp.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets the principal ID of the identity.
+        /// Gets the principal ID of the assigned identity.
         /// </summary>
         [JsonProperty(PropertyName = "principalId")]
-        public string PrincipalId { get; private set; }
+        public System.Guid? PrincipalId { get; private set; }
 
         /// <summary>
-        /// Gets the client ID of the identity.
+        /// Gets the client ID of the assigned identity.
         /// </summary>
         [JsonProperty(PropertyName = "clientId")]
-        public string ClientId { get; private set; }
+        public System.Guid? ClientId { get; private set; }
 
     }
 }

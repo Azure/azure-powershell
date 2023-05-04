@@ -123,7 +123,8 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
                 ReadWriteEndpoint = readWriteEndpoint,
                 ReadOnlyEndpoint = readOnlyEndpoint,
                 PartnerRegions = partnerRegions,
-                ManagedInstancePairs = pairs
+                ManagedInstancePairs = pairs,
+                SecondaryType = model.SecondaryType,
             });
 
             return CreateInstanceFailoverGroupModelFromResponse(resp);
@@ -189,6 +190,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceFailoverGroup.Services
 
             model.PrimaryManagedInstanceName = GetUriSegment(failoverGroup.ManagedInstancePairs.First().PrimaryManagedInstanceId, 8);
             model.PartnerManagedInstanceName = GetUriSegment(failoverGroup.ManagedInstancePairs.First().PartnerManagedInstanceId, 8);
+            model.SecondaryType = failoverGroup.SecondaryType;
 
             return model;
         }

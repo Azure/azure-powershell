@@ -270,6 +270,181 @@ function EventSubscriptionTests_CustomTopic_InputMapping {
     }
 }
 
+
+<#
+.SYNOPSIS
+Tests EventGrid EventSubscription Delivery attributes
+#>
+function EventSubscriptionTests_CustomTopic_Delivery_Attributes {
+    # Setup
+    $location = Get-LocationForEventGrid
+    $topicName = Get-TopicName
+    $eventSubscriptionName = Get-EventSubscriptionName
+    $eventSubscriptionName2 = Get-EventSubscriptionName
+    $resourceGroupName = Get-ResourceGroupName
+    $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
+    $eventSubscriptionBaseEndpoint = Get-EventSubscriptionWebhookBaseEndpoint
+
+    #too few attributes
+    $InvalidDeliveryAttributeMapping1=@{Type="Static"; Name="Test1"}
+    #too many attributes
+    $InvalidDeliveryAttributeMapping2=@{Type="Static"; Name="Test1"; Value = "3ewdwdf"; IsSecret = "true"; SourceField = "data.prop1"}
+    #Missing type
+    $InvalidDeliveryAttributeMapping3=@{Name="Test1"; Value = "3ewdwdf"; IsSecret = "false"}
+    #Missing Name
+    $InvalidDeliveryAttributeMapping4=@{Type="Static"; Value = "3ewdwdf"; IsSecret = "false"}
+    #Missing 'Value' for static delivery attribute
+    $InvalidDeliveryAttributeMapping5=@{Name="Test1"; Type="Static"; IsSecret = "false"}
+    #Missing 'IsSecret' for static delivery attribute
+    $InvalidDeliveryAttributeMapping6=@{Name="Test1"; Type="Static"; Value = "3ewdwdf"}
+    #Incorrect value for 'IsSecret' for static delivery attribute
+    $InvalidDeliveryAttributeMapping7=@{Name="Test1"; Type="Static"; Value = "3ewdwdf"; IsSecret = "unknown"}
+    #Missing 'SourceField' for dynamic delivery attribute
+    $InvalidDeliveryAttributeMapping8=@{Name="Test1"; Type="Dynamic"}
+
+    #Valid dynamic delivery attribute
+    $ValidDeliveryAttributeMapping1=@{Name="Test1"; Type="Dynamic"; SourceField = "data.prop1"}
+    #Valid static delivery attribute
+    $ValidDeliveryAttributeMapping2=@{Name="Test2"; Type="Static"; Value = "3ewdwdf"; IsSecret = "false";}
+
+    New-ResourceGroup $resourceGroupName $location
+
+    try
+    {
+        Write-Host "Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+        $result = New-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName -Location $location
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with less than 3 params"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping1)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with more than 4 params"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping2)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with 'Type' attribute missing"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping3)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with 'Name' attribute missing"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping4)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with 'Value' attribute missing"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping5)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with 'IsSecret' attribute missing"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping6)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with incorrect value of 'IsSecret' attribute"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping7)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        try
+        {
+            Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with 'SourceField' attribute missing"
+            $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($InvalidDeliveryAttributeMapping8)
+            Assert-True {$false} "New-AzEventGridSubscription succeeded while it is expected to fail as DeliveryAttributeMapping has incorrect number of key-values entities"
+        }
+        catch
+        {
+            Assert-True {$true}
+        }
+
+        Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with Dynamic attribute mapping"
+        $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($ValidDeliveryAttributeMapping1)
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Deleting event subscription $eventSubscriptionName"
+        Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | Remove-AzEventGridSubscription -EventSubscriptionName $eventSubscriptionName
+
+
+        Write-Debug "Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName without delivery attribute mapping"
+        $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Updating EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName with Dynamic attribute mapping"
+        $updateResult = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName |  Update-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -ResourceGroup $resourceGroupName -EventSubscriptionName $eventSubscriptionName -DeliveryAttributeMapping @($ValidDeliveryAttributeMapping1)
+        Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
+
+        $createdEventSubscription = Get-AzEventGridSubscription -ResourceGroupName $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
+        $webHookDestination = $createdEventSubscription.Destination -as [Microsoft.Azure.Management.EventGrid.Models.WebHookEventSubscriptionDestination]
+        Assert-True {$createdEventSubscription.ProvisioningState -eq "Succeeded"} "#1. Event Subscriptions created earlier are not found in the list"
+        Assert-True {$webHookDestination.DeliveryAttributeMappings.Count -eq 1} "#1. Event Subscriptions created earlier are not found in the list"
+
+        Write-Debug "Deleting event subscription $eventSubscriptionName"
+        Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | Remove-AzEventGridSubscription -EventSubscriptionName $eventSubscriptionName
+
+        Write-Debug "Creating a new EventSubscription $eventSubscriptionName2 to topic $topicName in resource group $resourceGroupName with Static attribute mapping"
+        $result = Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName2 -DeliveryAttributeMapping @($ValidDeliveryAttributeMapping2)
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Deleting event subscription $eventSubscriptionName2"
+        Get-AzEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | Remove-AzEventGridSubscription -EventSubscriptionName $eventSubscriptionName2
+
+
+        Write-Debug "Deleting topic $topicName"
+        Remove-AzEventGridTopic -Name $topicName -ResourceGroupName $resourceGroupName
+    }
+    finally
+    {
+        Remove-ResourceGroup $resourceGroupName
+    }
+}
+
 <#
 .SYNOPSIS
 Tests EventGrid EventSubscription CRUD operations for Resource Group.

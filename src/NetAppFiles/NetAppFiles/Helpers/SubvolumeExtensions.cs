@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             var psSubvolumeInfo = new PSNetAppFilesSubvolumeInfo()
             {
-                ResourceGroupName = new ResourceIdentifier(subvolumeInfo.Id).ResourceGroupName,                
+                ResourceGroupName = new ResourceIdentifier(subvolumeInfo.Id).ResourceGroupName,
                 Id = subvolumeInfo.Id,
                 Name = subvolumeInfo.Name,
                 Type = subvolumeInfo.Type,
