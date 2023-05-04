@@ -67,6 +67,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Diagnostics.Contracts",
             "System.Diagnostics.Debug",
             "System.Diagnostics.DiagnosticSource",
+            "System.Diagnostics.EventLog",
             "System.Diagnostics.FileVersionInfo",
             "System.Diagnostics.Process",
             "System.Diagnostics.StackTrace",
