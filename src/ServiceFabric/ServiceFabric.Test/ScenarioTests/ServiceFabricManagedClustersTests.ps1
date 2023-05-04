@@ -171,33 +171,32 @@ function Test-AddNetworkSecurityRule
 	Assert-AreEqual "Ready" $clusterFromGet.ClusterState
 
 	$NSRName = "testSecRule1"
-	$access = "allow"
-	$direction = "inbound"
-	$protocol = "tcp"
 	$sourcePortRanges = "1-1000"
 	$destinationPortRanges = "1-65535"
 	$destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 	$sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
-	$cluster = Add-AzServiceFabricManagedNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-			-Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1200 -SourcePortRanges $sourcePortRanges -DestinationPortRanges $destinationPortRanges -DestinationAddressPrefixes $destinationAddressPrefixes -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+	$cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
+			-Name $NSRName -Access Allow -Direction Inbound -Protocol tcp -Priority 1200 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 
 	$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 
 	Assert-NotNull $clusterFromGet.NetworkSecurityRules
 	Assert-AreEqual "allow" $clusterFromGet.NetworkSecurityRules[0].Access
+	Assert-AreEqual "inbound" $clusterFromGet.NetworkSecurityRules[0].Direction
+	Assert-AreEqual "tcp" $clusterFromGet.NetworkSecurityRules[0].Protocol
+	Assert-AreEqual "testSecRule1" $clusterFromGet.NetworkSecurityRules[0].Name
+	Assert-AreEqual "194.69.104.0/25" $clusterFromGet.NetworkSecurityRules[0].DestinationAddressPrefixes[0]
+	Assert-AreEqual $SourceAddressPrefixes.Count $clusterFromGet.NetworkSecurityRules[0].SourceAddressPrefixes.Count
 
 	$NSRName = "testSecRule2"
-	$access = "deny"
-	$direction = "outbound"
-	$protocol = "udp"
 	$sourcePortRanges = "1-1000"
 	$destinationPortRanges = "1-65535"
 	$destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 	$sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
-	$cluster = Add-AzServiceFabricManagedNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-			-Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1300 -SourcePortRanges $sourcePortRanges -DestinationPortRanges $destinationPortRanges -DestinationAddressPrefixes $destinationAddressPrefixes -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+	$cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
+			-Name $NSRName -Access Deny -Direction Outbound -Protocol udp -Priority 1300 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 
 	$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 
@@ -205,20 +204,18 @@ function Test-AddNetworkSecurityRule
 	Assert-AreEqual "testSecRule2" $clusterFromGet.NetworkSecurityRules[1].Name
 	Assert-AreEqual "outbound" $clusterFromGet.NetworkSecurityRules[1].Direction
 	Assert-AreEqual "udp" $clusterFromGet.NetworkSecurityRules[1].Protocol
-
+	Assert-AreEqual "194.69.119.64/26" $clusterFromGet.NetworkSecurityRules[1].DestinationAddressPrefixes[1]
+	Assert-AreEqual "167.220.81.128/26" $clusterFromGet.NetworkSecurityRules[1].SourceAddressPrefixes[3]
 
 	$NSRName = "testSecRule3"
-	$access = "allow"
-	$direction = "outbound"
 	$description = "test network security rule"
-	$protocol = "tcp"
 	$sourcePortRanges = "1-1000"
 	$destinationPortRanges = "1-65535"
 	$destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 	$sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
-	$cluster = $clusterFromGet | Add-AzServiceFabricManagedNetworkSecurityRule `
-			-Name $NSRName -Access $access -Description $description -Direction $direction -Protocol $protocol -Priority 1400 -SourcePortRanges $sourcePortRanges -DestinationPortRanges $destinationPortRanges -DestinationAddressPrefixes $destinationAddressPrefixes -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+	$cluster = $clusterFromGet | Add-AzServiceFabricManagedClusterNetworkSecurityRule `
+			-Name $NSRName -Access Allow -Description $description -Direction Outbound -Protocol tcp -Priority 1400 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 
 	$clusterFromGet = Get-AzServiceFabricManagedCluster -ResourceGroupName $resourceGroupName -Name $clusterName
 
@@ -226,7 +223,9 @@ function Test-AddNetworkSecurityRule
 	Assert-AreEqual "testSecRule3" $clusterFromGet.NetworkSecurityRules[2].Name
 	Assert-AreEqual "allow" $clusterFromGet.NetworkSecurityRules[2].Access
 	Assert-AreEqual "tcp" $clusterFromGet.NetworkSecurityRules[2].Protocol
+	Assert-AreEqual "1-1000" $clusterFromGet.NetworkSecurityRules[2].SourcePortRanges[0]
+	Assert-AreEqual 4 $clusterFromGet.NetworkSecurityRules[2].DestinationAddressPrefixes.Count
+	Assert-AreEqual 4 $clusterFromGet.NetworkSecurityRules[2].SourceAddressPrefixes.Count
 
 	Assert-AreEqual 3 $clusterFromGet.NetworkSecurityRules.Count
-
 }

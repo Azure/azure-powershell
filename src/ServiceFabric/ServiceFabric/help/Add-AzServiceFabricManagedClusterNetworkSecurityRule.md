@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceFabric.dll-Help.xml
 Module Name: Az.ServiceFabric
-online version: https://learn.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagednetworksecurityrule
+online version: https://learn.microsoft.com/powershell/module/az.servicefabric/add-azservicefabricmanagedclusternetworksecurityrule
 schema: 2.0.0
 ---
 
-# Add-AzServiceFabricManagedNetworkSecurityRule
+# Add-AzServiceFabricManagedClusterNetworkSecurityRule
 
 ## SYNOPSIS
 Add network security rule to cluster resource.
@@ -14,36 +14,36 @@ Add network security rule to cluster resource.
 
 ### ByObj (Default)
 ```
-Add-AzServiceFabricManagedNetworkSecurityRule 
+Add-AzServiceFabricManagedClusterNetworkSecurityRule 
 [-InputObject] <PSManagedCluster>
 [-Name] <String>
 [-Access] <String>
 [-Description] <String>
-[-DestinationAddressPrefixes] <String[]>
-[-DestinationPortRanges] <String[]>
+[-DestinationAddressPrefix] <String[]>
+[-DestinationPortRange] <String[]>
 [-Direction] <String>
 [-Priority] <Int32>
 [-Protocol] <String>
-[-SourceAddressPrefixes] <String[]>
-[-SourcePortRanges] <String[]>
+[-SourceAddressPrefix] <String[]>
+[-SourcePortRange] <String[]>
 [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Add-AzServiceFabricManagedNetworkSecurityRule 
+Add-AzServiceFabricManagedClusterNetworkSecurityRule
 [-ResourceGroupName] <String> 
 [-ClusterName] <String> 
 [-Name] <String>
 [-Access] <String>
 [-Description] <String>
-[-DestinationAddressPrefixes] <String[]>
-[-DestinationPortRanges] <String[]>
+[-DestinationAddressPrefix] <String[]>
+[-DestinationPortRange] <String[]>
 [-Direction] <String>
 [-Priority] <Int32>
 [-Protocol] <String>
-[-SourceAddressPrefixes] <String[]>
-[-SourcePortRanges] <String[]>
+[-SourceAddressPrefix] <String[]>
+[-SourcePortRange] <String[]>
 [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,8 +63,8 @@ $destinationPortRanges = "1-65535"
 $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
-$cluster = Add-AzServiceFabricManagedNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-        -Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1200 -SourcePortRanges $sourcePortRanges -DestinationPortRanges $destinationPortRanges -DestinationAddressPrefixes $destinationAddressPrefixes -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+$cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
+        -Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1200 -SourcePortRanges $sourcePortRange -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 ```
 
 This command will add network security rule with properties above.
@@ -80,8 +80,8 @@ $destinationPortRanges = "1-65535"
 $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
-$cluster = Add-AzServiceFabricManagedNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-        -Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1300 -SourcePortRanges $sourcePortRanges -DestinationPortRanges $destinationPortRanges -DestinationAddressPrefixes $destinationAddressPrefixes -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+$cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
+        -Name $NSRName -Access $access -Direction $direction -Protocol $protocol -Priority 1300 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 ```
 
 Similar to Example1 with different properties.
@@ -98,8 +98,8 @@ $destinationPortRanges = "1-65535"
 $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.249.128/26", "255.255.255.255/32"
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
-$cluster = $clusterFromGet | Add-AzServiceFabricManagedNetworkSecurityRule `
-        -Name $NSRName -Access $access -Description $description -Direction $direction -Protocol $protocol -Priority 1400 -SourcePortRanges $sourcePortRanges -DestinationPortRanges $destinationPortRanges -DestinationAddressPrefixes $destinationAddressPrefixes -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+$cluster = $clusterFromGet | Add-AzServiceFabricManagedClusterNetworkSecurityRule `
+        -Name $NSRName -Access $access -Description $description -Direction $direction -Protocol $protocol -Priority 1400 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefix -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
 ```
 
 This command will add a network security rule using cluster object with piping.
@@ -181,7 +181,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DestinationAddressPrefixes
+### -DestinationAddressPrefix
 Gets or sets the destination address prefixes. CIDR or destination IP ranges
 
 ```yaml
@@ -195,7 +195,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-### -DestinationPortRanges
+### -DestinationPortRange
 Gets or sets the destination port ranges
 
 ```yaml
@@ -256,7 +256,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourceAddressPrefixes
+### -SourceAddressPrefix
 Gets or sets the CIDR or source IP ranges
 
 ```yaml
@@ -271,7 +271,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SourcePortRanges
+### -SourcePortRange
 Run cmdlet in the background and return a Job to track progress
 
 ```yaml
