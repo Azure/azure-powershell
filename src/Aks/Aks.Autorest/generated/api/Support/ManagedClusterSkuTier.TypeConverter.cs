@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Tier of a managed cluster SKU.</summary>
+    /// <summary>
+    /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+    /// for more details.
+    /// </summary>
     public partial class ManagedClusterSkuTierTypeConverter :
         global::System.Management.Automation.PSTypeConverter
     {

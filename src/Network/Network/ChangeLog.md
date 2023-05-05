@@ -45,10 +45,13 @@
     - 'New-AzApplicationGatewayFirewallPolicyLogScrubbingRule',
     - Also updated cmdlet to add the property of LogScrubbing 
     - `New-AzApplicationGatewayFirewallPolicySetting`
+* Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
 * Updated cmdlet to add the property of DisableRequestBodyEnforcement, RequestBodyInspectLimitInKB and DisableFileUploadEnforcement 
     - `New-AzApplicationGatewayFirewallPolicySetting`
 
-
+## Version 5.7.0
+* Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
+* Fixed the issue for `Update-AzCustomIpPrefix` that `NoInternetAdvertise` will should be set to false if not provided
 
 ## Version 5.6.0
 * Updated `New-AzLoadBalancer` and `Set-AzLoadBalancer` to validate surface level parameters for global tier load balancers

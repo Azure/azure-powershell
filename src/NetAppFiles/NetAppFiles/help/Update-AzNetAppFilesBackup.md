@@ -133,7 +133,7 @@ The name of the ANF backup policy
 ```yaml
 Type: System.String
 Parameter Sets: ByFieldsParameterSet, ByParentObjectParameterSet
-Aliases: BackupPolicyName
+Aliases: BackupName
 
 Required: True
 Position: Named
@@ -276,7 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackupPolicy
+### Microsoft.Azure.Commands.NetAppFiles.Models.PSNetAppFilesBackup
 
 ## NOTES
 

@@ -24,17 +24,17 @@ The **Get-AzHpcCache** cmdlet gets a single cache, cache(s) in a specific resour
 
 ### Example 1
 ```powershell
-Get-AzHPCCache -ResourceGroupName rgtest -CacheName cachetest
+Get-AzHpcCache -ResourceGroupName rgtest -CacheName cachetest
 ```
 
 ### Example 2
 ```powershell
-Get-AzHPCCache -ResourceGroupName rgtest
+Get-AzHpcCache -ResourceGroupName rgtest
 ```
 
 ### Example 3
 ```powershell
-Get-AzHPCCache
+Get-AzHpcCache
 ```
 
 ## PARAMETERS

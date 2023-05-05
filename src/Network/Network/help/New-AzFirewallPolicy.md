@@ -144,21 +144,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -329,7 +314,7 @@ Accept wildcard characters: False
 The private IP addresses/IP ranges to which traffic will not be SNAT in Firewall Policy.
 
 ```yaml
-Type: PSAzureFirewallPolicySNAT
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicySNAT
 Parameter Sets: (All)
 Aliases:
 
@@ -438,6 +423,21 @@ ResourceId of the user assigned identity to be assigned to Firewall Policy.
 Type: System.String
 Parameter Sets: (All)
 Aliases: UserAssignedIdentity
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named

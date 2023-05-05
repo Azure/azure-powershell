@@ -53,7 +53,6 @@ Invoke-LiveTestScenario -Name "Update web app" -Description "Test updating servi
     Assert-Null $webApp.Identity
     Assert-NotNull $webApp.SiteConfig.phpVersion
     Assert-AreEqual $false $webApp.HttpsOnly
-    Assert-AreEqual "AllAllowed" $webApp.SiteConfig.FtpsState
 
     # Update service plan & set site properties
     $job = Set-AzWebApp -ResourceGroupName $rgname -Name $webAppName -AppServicePlan $appServicePlanName2 -HttpsOnly $true -AlwaysOn $false -AsJob

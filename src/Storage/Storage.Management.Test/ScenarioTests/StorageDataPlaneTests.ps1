@@ -110,12 +110,25 @@ function Test-File
             Assert-AreEqual $localFileProperties.Attributes.ToString() $file[0].FileProperties.SmbProperties.FileAttributes.ToString()
         }
 
-        Remove-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+        $fileName1 = "new" + $objectName1
+        $file = Get-AzStorageFile -ShareName $shareName -Path $objectName1 -Context $storageContext
+
+        $file2 = Rename-AzStorageFile -ShareName $shareName -SourcePath $objectName1 -DestinationPath $fileName1 -Context $storageContext
+        Assert-AreEqual $file2.Name $fileName1 
+        Assert-AreEqual $file.FileProperties.ContentType $file2.FileProperties.ContentType
+        Assert-AreEqual $file.FileProperties.ContentLength $file2.FileProperties.ContentLength
+
+        $file3 = $file2 | Rename-AzStorageFile -DestinationPath $fileName1 -Context $storageContext -Force
+        Assert-AreEqual $file3.Name $fileName1 
+        Assert-AreEqual $file2.FileProperties.ContentType $file3.FileProperties.ContentType
+        Assert-AreEqual $file2.FileProperties.ContentLength $file3.FileProperties.ContentLength
+        
+        Remove-AzStorageFile -ShareName $shareName -Path $fileName1 -Context $storageContext
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
 
-         $dirName = "filetestdir"
+        $dirName = "filetestdir"
         New-AzStorageDirectory -ShareName $shareName -Path $dirName -Context $storageContext    
         $file = Get-AzStorageShare -Name $shareName -Context $storageContext | Get-AzStorageFile -ExcludeExtendedInfo
         Assert-AreEqual $file.Count 2
@@ -125,11 +138,25 @@ function Test-File
         Assert-AreEqual $file[1].Name $objectName2
         Assert-AreEqual $file[1].GetType().Name "AzureStorageFile"
         Assert-Null $file[1].ListFileProperties.Properties.ETag
-        Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext | Remove-AzStorageDirectory
+
+        $newDir = "new" + $dirName
+        $dir = Get-AzStorageFile -ShareName $shareName -Path $dirName -Context $storageContext
+        $dir2 = Rename-AzStorageDirectory -ShareName $shareName -SourcePath $dirName -DestinationPath $newDir -Context $storageContext
+        Assert-AreEqual $newDir $dir2.Name
+        Assert-AreEqual $dir.ListFileProperties.IsDirectory $dir2.ListFileProperties.IsDirectory
+        Assert-AreEqual $dir.ListFileProperties.FileAttributes $dir2.ListFileProperties.FileAttributes
+
+        $newDir2 = "new2" + $dirName
+        $dir3 = $dir2 | Rename-AzStorageDirectory -DestinationPath $newDir2 -Context $storageContext
+        Assert-AreEqual $newDir2 $dir3.Name
+        Assert-AreEqual $dir2.ListFileProperties.IsDirectory $dir3.ListFileProperties.IsDirectory
+        Assert-AreEqual $dir2.ListFileProperties.FileAttributes $dir3.ListFileProperties.FileAttributes
+
+        $dir3 | Remove-AzStorageDirectory
         $file = Get-AzStorageFile -ShareName $shareName -Context $storageContext
         Assert-AreEqual $file.Count 1
         Assert-AreEqual $file[0].Name $objectName2
-        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"   
+        Assert-AreEqual $file[0].GetType().Name "AzureStorageFile"
 
         # Clean Storage Account
         Remove-AzStorageShare -Name $shareName -Force -Context $storageContext
@@ -854,7 +881,9 @@ function Test-DatalakeGen2
         $dir1 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath1 -Directory -Permission rwxrwxrwx -Umask ---rwx---  -Property @{"ContentEncoding" = "UDF8"; "CacheControl" = "READ"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
         Assert-AreEqual $dir1.Path $directoryPath1
         Assert-AreEqual $dir1.Permissions.ToSymbolicPermissions() "rwx---rwx"
-        $dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory
+        $dir2 = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $directoryPath2 -Directory -Permission r---wx-wT -Umask --x-wx--x
+        Assert-AreEqual $dir2.Path $directoryPath2
+        Assert-AreEqual $dir2.Permissions.ToSymbolicPermissions() "r------wT"
 
         # Create (upload) File
         $t = New-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 -Source $localSrcFile -Force -AsJob
@@ -874,20 +903,20 @@ function Test-DatalakeGen2
         ## create ACL with 3 ACEs
         $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
         $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
-        $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wx" -InputObject $acl
+        $acl = New-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission "-wt" -InputObject $acl
         ##Update File with pipeline		
         $file1 = Get-AzDataLakeGen2Item -Context $storageContext -FileSystem $filesystemName -Path $filePath1 | Update-AzDataLakeGen2Item  `
                 -Acl $acl `
                 -Property @{"ContentType" = $ContentType; "ContentMD5" = $ContentMD5} `
                 -Metadata  @{"tag1" = "value1"; "tag2" = "value2" } `
-                -Permission rw-rw--wx `
+                -Permission rw-rw--wt `
                 -Owner '$superuser' `
                 -Group '$superuser'
         $sas = New-AzDataLakeGen2SasToken -FileSystem $filesystemName -Path $filePath1 -Permission rw -Context $storageContext
         $ctxsas = New-AzStorageContext -StorageAccountName $StorageAccountName -SasToken $sas
         $file1 = Get-AzDataLakeGen2Item -Context $ctxsas -FileSystem $filesystemName -Path $filePath1
         Assert-AreEqual $file1.Path $filePath1
-        Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wx"
+        Assert-AreEqual $file1.Permissions.ToSymbolicPermissions() "rw-rw--wt"
         Assert-AreEqual $file1.Properties.ContentType $ContentType
         Assert-AreEqual $file1.Properties.Metadata.Count 2
         Assert-AreEqual $file1.Owner '$superuser'

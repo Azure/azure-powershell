@@ -1162,3 +1162,54 @@ function Test-PodSubnetID {
         Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
+
+function Test-EnableOidcIssuer {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName1 = Get-RandomClusterName
+    $kubeClusterName2 = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName1 -NodeVmSize $nodeVmSize -NodeCount 1 -EnableOidcIssuer
+        $cluster1 = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName1
+        Assert-True {$cluster1.OidcIssuerProfile.Enabled}
+        Assert-True {$cluster1.OidcIssuerProfile.IssuerURL.StartsWith("https://eastus.oic.prod-aks.azure.com")}
+        
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -NodeCount 1
+        $cluster2 = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2
+        Assert-False {$cluster2.OidcIssuerProfile.Enabled}
+        Assert-Null $cluster2.OidcIssuerProfile.IssuerURL
+        
+        Set-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2 -EnableOidcIssuer
+        $cluster2 = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName2
+        Assert-True {$cluster2.OidcIssuerProfile.Enabled}
+        Assert-True {$cluster2.OidcIssuerProfile.IssuerURL.StartsWith("https://eastus.oic.prod-aks.azure.com")}
+
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}
+
+function Test-OutboundType {
+    # Setup
+    $resourceGroupName = Get-RandomResourceGroupName
+    $kubeClusterName = Get-RandomClusterName
+    $location = 'eastus'
+    $nodeVmSize = "Standard_D2_v2"
+
+    try {
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+        
+        New-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName -NodeVmSize $nodeVmSize -NodeCount 1 -OutboundType managedNATGateway
+        $cluster = Get-AzAksCluster -ResourceGroupName $resourceGroupName -Name $kubeClusterName
+        Assert-AreEqual 'managedNATGateway' $cluster.NetworkProfile.OutboundType
+    }
+    finally {
+        Remove-AzResourceGroup -Name $resourceGroupName -Force
+    }
+}

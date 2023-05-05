@@ -1,0 +1,2 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"Az.Network","Add-AzVirtualNetworkPeering","2","5","Invalid_Cmdlet","5000","1","New-AzResourceGroup is not a valid command name.","New-AzResourceGroup -Name $rgName  -Location westcentralus","Check the spell of New-AzResourceGroup."

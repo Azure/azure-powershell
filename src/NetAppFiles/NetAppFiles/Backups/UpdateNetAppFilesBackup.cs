@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
         "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackup",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackup))]
     [Alias("Update-AnfBackup")]
     public class UpdateAzureRmNetAppFilesBackup : AzureNetAppFilesCmdletBase
     {
@@ -69,9 +69,9 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             HelpMessage = "The name of the ANF backup",
             ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
-        [Alias("BackupPolicyName")]
+        [Alias("BackupName")]
         [ResourceNameCompleter(
-            "Microsoft.NetApp/netAppAccounts/backupPolicies",
+            "Microsoft.NetApp/netAppAccounts/capacityPools/volumes/backups",
             nameof(ResourceGroupName),
             nameof(AccountName))]
         public string Name { get; set; }

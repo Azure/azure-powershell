@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 2.15.1
+* Used AAD Auth instead of Basic Auth for PublishAzureWebApps
+
+## Version 2.15.0
+* Fixed Tag parameter issues with ASE for `New-AzWebApp`
+
 ## Version 2.14.0
 * Fixed `Edit-AzWebAppBackupConfiguration` to pass backup configuration enabled or not
 * Added a new parameter `-SoftRestart` for `Restart-AzWebApp` and `Restart-AzWebApp` to perform a soft restart
