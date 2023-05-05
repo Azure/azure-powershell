@@ -11,7 +11,6 @@
     <OutputType>Library</OutputType>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-    <SignAssembly>False</SignAssembly>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -53,11 +52,6 @@
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
     </Compile>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Update="Azure.Core" Version="1.28.0" />
-    <PackageReference Update="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
