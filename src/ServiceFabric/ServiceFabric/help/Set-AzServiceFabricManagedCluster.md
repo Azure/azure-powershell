@@ -18,7 +18,7 @@ Set-AzServiceFabricManagedCluster [-InputObject] <PSManagedCluster> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithParamsByName
+### WithPramsByName
 ```
 Set-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-HttpGatewayConnectionPort <Int32>]

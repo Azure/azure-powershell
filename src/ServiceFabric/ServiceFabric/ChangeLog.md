@@ -84,6 +84,7 @@
     - `New-AzServiceFabricManagedClusterService`
     - `Get-AzServiceFabricManagedClusterService`
     - `Set-AzServiceFabricManagedClusterService`
+    - `Remove-AzServiceFabricManagedClusterService`
 * Upgraded Managed Cluster commands to use Service Fabric Managed Cluster SDK version 1.0.0-beta.1 which uses service fabric resource provider api-version 2021-01-01-preview.
 
 ## Version 2.2.2

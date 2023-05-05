@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public enum Protocol
+    public enum NetworkSecurityProtocol
     {
         https,
         http,

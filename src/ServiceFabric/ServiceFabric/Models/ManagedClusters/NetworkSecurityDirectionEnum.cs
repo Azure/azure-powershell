@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public enum Direction
+    public enum NetworkSecurityDirectionEnum
     {
         Inbound,
         Outbound

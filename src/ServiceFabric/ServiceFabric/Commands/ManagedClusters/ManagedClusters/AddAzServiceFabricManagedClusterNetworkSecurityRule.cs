@@ -21,9 +21,6 @@ using Microsoft.Azure.Commands.ServiceFabric.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters;
 using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
-using Access = Microsoft.Azure.Commands.ServiceFabric.Models.Access;
-using Direction = Microsoft.Azure.Commands.ServiceFabric.Models.Direction;
-using Protocol = Microsoft.Azure.Commands.ServiceFabric.Models.Protocol;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -59,7 +56,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		#endregion
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny ")]
-        public Access Access { get; set; }
+        public NetworkSecurityAccessEnum Access { get; set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Gets or sets network security rule description.")]
 		public string Description { get; set; }
@@ -71,7 +68,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		public string[] DestinationPortRange { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network security rule direction. Possible values include: Inbound, Outbound ")]
-		public Direction Direction { get; set; }
+		public NetworkSecurityDirectionEnum Direction { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "network security rule name.")]
 		[Alias("NetworkSecurityRuleName")]
@@ -81,7 +78,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		public int Priority { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp ")]
-		public Protocol Protocol { get; set; }
+		public NetworkSecurityProtocol Protocol { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the CIDR or source IP ranges.")]
 		public string[] SourceAddressPrefix { get; set;}

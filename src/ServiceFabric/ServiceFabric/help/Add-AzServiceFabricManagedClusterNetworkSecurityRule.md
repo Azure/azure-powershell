@@ -15,36 +15,36 @@ Add network security rule to cluster resource.
 ### ByObj (Default)
 ```
 Add-AzServiceFabricManagedClusterNetworkSecurityRule 
-[-InputObject] <PSManagedCluster>
-[-Name] <String>
-[-Access] <String>
-[-Description] <String>
-[-DestinationAddressPrefix] <String[]>
-[-DestinationPortRange] <String[]>
-[-Direction] <String>
-[-Priority] <Int32>
-[-Protocol] <String>
-[-SourceAddressPrefix] <String[]>
-[-SourcePortRange] <String[]>
+[-InputObject <PSManagedCluster>]
+[-Name <String> ]
+[-Access <NetworkSecurityAccessEnum>]
+[-Description <String>]
+[-DestinationAddressPrefix <String[]>]
+[-DestinationPortRange <String[]>]
+[-Direction <NetworkSecurityDirectionEnum>]
+[-Priority <Int32>]
+[-Protocol <NetworkSecurityProtocolEnum>]
+[-SourceAddressPrefix <String[]>]
+[-SourcePortRange <String[]>]
 [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Add-AzServiceFabricManagedClusterNetworkSecurityRule
-[-ResourceGroupName] <String> 
-[-ClusterName] <String> 
-[-Name] <String>
-[-Access] <String>
-[-Description] <String>
-[-DestinationAddressPrefix] <String[]>
-[-DestinationPortRange] <String[]>
-[-Direction] <String>
-[-Priority] <Int32>
-[-Protocol] <String>
-[-SourceAddressPrefix] <String[]>
-[-SourcePortRange] <String[]>
-[-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+[-ResourceGroupName <String> ]
+[-ClusterName <String> ]
+[-Name <String> ]
+[-Access <NetworkSecurityAccessEnum>]
+[-Description <String>]
+[-DestinationAddressPrefix <String[]>]
+[-DestinationPortRange <String[]>]
+[-Direction <NetworkSecurityDirectionEnum>]
+[-Priority <Int32>]
+[-Protocol <NetworkSecurityProtocolEnum>]
+[-SourceAddressPrefix <String[]>]
+[-SourcePortRange <String[]>]
+[-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,7 +146,7 @@ Accept wildcard characters: False
 Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny
 
 ```yaml
-Type: [Microsoft.Azure.Commands.ServiceFabric.Models.Access]
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.Access
 Parameter Sets: ByName
 Aliases:
 
@@ -205,7 +205,7 @@ Accept wildcard characters: False
 Gets or sets network security rule direction. Possible values include: Inbound, Outbound
 
 ```yaml
-Type: [Microsoft.Azure.Commands.ServiceFabric.Models.Direction]
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.Direction
 Parameter Sets: ByName
 Aliases:
 
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp
 
 ```yaml
-Type: [Microsoft.Azure.Commands.ServiceFabric.Models.Protocol]
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.Protocol
 Parameter Sets: ByName
 Aliases:
 

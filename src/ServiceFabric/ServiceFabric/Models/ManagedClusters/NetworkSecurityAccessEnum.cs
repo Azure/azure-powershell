@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public enum Access
+    public enum NetworkSecurityAccessEnum
     {
         Allow,
         Deny
