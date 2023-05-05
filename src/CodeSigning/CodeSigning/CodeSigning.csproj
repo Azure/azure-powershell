@@ -53,6 +53,11 @@
       <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.28.0" />
+    <PackageReference Update="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
