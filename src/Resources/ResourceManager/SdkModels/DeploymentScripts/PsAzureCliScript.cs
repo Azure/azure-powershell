@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Management.Resources.Models;
 using System.Xml;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
