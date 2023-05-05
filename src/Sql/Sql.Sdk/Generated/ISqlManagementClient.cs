@@ -503,5 +503,10 @@ namespace Microsoft.Azure.Management.Sql
         /// </summary>
         IServersOperations Servers { get; }
 
+        /// <summary>
+        /// Gets the IServerConfigurationOptionsOperations.
+        /// </summary>
+        IServerConfigurationOptionsOperations ServerConfigurationOptions { get; }
+
     }
 }

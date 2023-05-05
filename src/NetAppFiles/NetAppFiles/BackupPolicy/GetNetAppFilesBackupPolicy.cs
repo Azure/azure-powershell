@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.BackupPolicy
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetAppFilesBackupPolicy",
-        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]
-    [CmdletOutputBreakingChange(typeof(PSNetAppFilesBackupPolicy), DeprecatedOutputProperties = new string[] { "YearlyBackupsToKeep" })]
+        DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSNetAppFilesBackupPolicy))]    
     [Alias("Get-AnfBackupPolicy")]
     public class GetAzureRmNetAppFilesBackupPolicy : AzureNetAppFilesCmdletBase
     {

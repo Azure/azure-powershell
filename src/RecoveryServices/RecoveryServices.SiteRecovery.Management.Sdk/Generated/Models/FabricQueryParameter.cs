@@ -31,6 +31,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         /// <param name="zoneToZoneMappings">A value indicating whether the
         /// zone to zone mappings are to be returned.</param>
+        /// <param name="extendedLocationMappings">A value indicating whether
+        /// the Extended Location mappings are to be returned.</param>
+        /// <param name="locationDetails">A value indicating whether the
+        /// location details are to be returned.</param>
         /// <param name="fetchAgentDetails">A value indicating whether the
         /// agent details are to be fetched.</param>
         /// <param name="biosId">The BIOS Id to be used for fetching agent
@@ -41,9 +45,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// be used for fetching agent details.</param>
         /// <param name="osType">The OS type to be used for fetching agent
         /// details.</param>
-        public FabricQueryParameter(string zoneToZoneMappings = default(string), string fetchAgentDetails = default(string), string biosId = default(string), string fqdn = default(string), string discoveryType = default(string), string osType = default(string))
+        public FabricQueryParameter(string zoneToZoneMappings = default(string), string extendedLocationMappings = default(string), string locationDetails = default(string), string fetchAgentDetails = default(string), string biosId = default(string), string fqdn = default(string), string discoveryType = default(string), string osType = default(string))
         {
             ZoneToZoneMappings = zoneToZoneMappings;
+            ExtendedLocationMappings = extendedLocationMappings;
+            LocationDetails = locationDetails;
             FetchAgentDetails = fetchAgentDetails;
             BiosId = biosId;
             Fqdn = fqdn;
@@ -63,6 +69,20 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "zoneToZoneMappings")]
         public string ZoneToZoneMappings { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the Extended Location
+        /// mappings are to be returned.
+        /// </summary>
+        [JsonProperty(PropertyName = "extendedLocationMappings")]
+        public string ExtendedLocationMappings { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the location details are to
+        /// be returned.
+        /// </summary>
+        [JsonProperty(PropertyName = "locationDetails")]
+        public string LocationDetails { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the agent details are to be

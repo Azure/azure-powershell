@@ -1,3 +1,92 @@
+## 9.7.1 - May 2023
+#### Az.Websites 2.15.1
+* Used AAD Auth instead of Basic Auth for PublishAzureWebApps
+
+## 9.7.0 - May 2023
+#### Az.Accounts 2.12.2
+* Fixed 'AzureSynapseAnalyticsEndpointResourceId' of 'USGovernment' environment.
+* Updated Azure.Core to 1.31.0.
+* Updated the reference of Azure PowerShell Common to 1.3.75-preview.
+
+#### Az.Aks 5.4.0
+* Added cmdlet 'New-AzAksMaintenanceConfiguration', 'Get-AzAksMaintenanceConfiguration', 'Remove-AzAksMaintenanceConfiguration', 'New-AzAksSnapshot', 'Get-AzAksSnapshot', 'Remove-AzAksSnapshot', 'Get-AzAksManagedClusterCommandResult', 'Get-AzAksManagedClusterOSOption', 'Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint', 'Invoke-AzAksAbortAgentPoolLatestOperation', 'Invoke-AzAksAbortManagedClusterLatestOperation', 'Invoke-AzAksRotateManagedClusterServiceAccountSigningKey', 'Start-AzAksManagedClusterCommand', 'New-AzAksTimeInWeekObject', 'New-AzAksTimeSpanObject'.
+* Added parameter '-OutboundType' for 'New-AzAksCluster'
+* Added parameter '-EnableOidcIssuer' for 'New-AzAksCluster' and 'Set-AzAksCluster'
+* Added parameter '-NodePodSubnetID' for 'New-AzAksCluster', '-PodSubnetID' for 'New-AzAksNodePool'
+
+#### Az.Compute 5.7.1
+* Added a breaking change warning to the 'Get-AzVM' cmdlet to show that the 'NextLink' parameter and parameter set will be removed in June 2023. The parameter has been non-functional for a long time. 
+* Updated the breaking change warning in 'New-AzVM' and 'New-AzVmss' regarding using the new versioned image aliases to indicate that certain aliases will be removed next breaking change release.
+* Updated the 'Get-AzVMRunCommand' to include the 'ProvisioningState' value. Fix [#21473]
+* Updated Azure.Core to 1.31.0.
+
+#### Az.ContainerRegistry 3.0.4
+* Updated Azure.Core to 1.31.0.
+
+#### Az.CosmosDB 1.10.1
+* Updated Azure.Core to 1.31.0.
+
+#### Az.KeyVault 4.9.3
+* Added breaking changes for 'Invoke-AzKeyVaultKeyOperation'. The encoded/decoded way between string and bytes in 'Invoke-AzKeyVaultKeyOperation' will change to UTF8. 
+    - This change will take effect on 5/23/2023
+    - The change is expected to take effect from the version 5.0.0
+* Updated Azure.Core to 1.31.0.
+
+#### Az.LoadTesting 1.0.0
+* General availability of 'Az.LoadTesting' module
+
+#### Az.Network 5.7.0
+* Onboarded 'Microsoft.HardwareSecurityModules/cloudHsmClusters' to private link cmdlets
+* Fixed the issue for 'Update-AzCustomIpPrefix' that 'NoInternetAdvertise' will should be set to false if not provided
+
+#### Az.PolicyInsights 1.6.1
+* Updated Azure.Core to 1.31.0.
+
+#### Az.PowerBIEmbedded 1.2.1
+* Added deprecate warning message for workspace collection cmdlets
+
+#### Az.RecoveryServices 6.4.0
+* Added support for updating CrossSubscriptionRestoreState of the vault
+* Added Cross subscription restore support for workload type MSSQL
+
+#### Az.Resources 6.6.1
+* Added support for Azure resources deployment with parameters file using Bicep parameters syntax
+
+#### Az.Sql 4.6.0
+* Added new cmdlets for managing server configuration options
+    - 'Set-AzSqlServerConfigurationOption'
+    - 'Get-AzSqlServerConfigurationOption'
+
+#### Az.Storage 5.6.0
+* Supported rename file and directory
+    - 'Rename-AzStorageFile'
+    - 'Rename-AzStorageDirectory'
+* Added a warning message for an upcoming breaking change when getting a single blob 
+    - 'Get-AzStorageBlob'
+* Fixed the issue of listing blobs with leading slashes 
+    - 'Get-AzStorageBlob'
+* Added support for sticky bit 
+    - 'New-AzDataLakeGen2Item'
+    - 'New-AzDataLakeGen2ACLObject'
+    - 'Update-AzDataLakeGen2Item'
+* Added warning messages for an upcoming cmdlet breaking change 
+    - 'New-AzStorageAccount'
+    - 'Set-AzStorageAccount'
+* Allowed to clear blob tags on a blob 
+    - 'Set-AzStorageBlobTag'
+* Updated Azure.Core to 1.31.0
+
+#### Az.Synapse 2.3.1
+* Updated Azure.Core to 1.31.0.
+
+#### Az.Websites 2.15.0
+* Fixed Tag parameter issues with ASE for 'New-AzWebApp'
+
+### Thanks to our community contributors
+* @geologyrocks
+  * Update IsCustom property on example role defintion (#21514)
+  * Fix Assignment/Definition typo in Output (#21442)
+
 ## 9.6.0 - April 2023
 #### Az.Aks 5.3.2
 * Fixed the issue that system variable 'True' is undefined in 'Windows PowerShell'.

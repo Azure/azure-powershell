@@ -109,7 +109,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.Owner, NrpTeamAlias.exrdev)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
         public void TestCortexVirtualHubCRUD()
         {
             TestRunner.RunTestScript("Test-CortexVirtualHubCRUD");
