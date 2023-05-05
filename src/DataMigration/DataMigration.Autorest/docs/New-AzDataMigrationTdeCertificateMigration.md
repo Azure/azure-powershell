@@ -15,7 +15,7 @@ Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
 ```
 New-AzDataMigrationTdeCertificateMigration -DatabaseName <String[]> -NetworkShareDomain <String>
  -NetworkSharePath <String> -SourceSqlConnectionString <String> -TargetManagedInstanceName <String>
- -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-NetworkSharePassword <SecureString>]
+ -TargetResourceGroupName <String> -TargetSubscriptionId <String> [-NetworkSharePassword <String>]
  [-NetworkShareUserName <String>] [-PassThru] [<CommonParameters>]
 ```
 
@@ -24,16 +24,20 @@ Migrate TDE certificate from source SQL Server to the target Azure SQL Server.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Run TDE certificate migration from a source SQL Server to a target Azure SQL Server.
 ```powershell
-{{ Add code here }}
+New-AzDataMigrationTdeCertificateMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSubscriptionId "00000000-0000-0000-0000-000000000000" -TargetResourceGroupName "ResourceGroupName" -TargetManagedInstanceName "TargetManagedInstanceName" -NetworkSharePath "\\NetworkShare\Folder" -NetworkShareDomain "NetworkShare" -NetworkShareUserName "NetworkShareUserName" -NetworkSharePassword "NetworkSharePassword" -DatabaseName "TdeDb_0", "TdeDb_1", "TdeDb_2"
 ```
 
 ```output
-{{ Add output here }}
+Beginning TDE certificate migration
+TdeDb_0: TDE certificate migrated successfully.
+TdeDb_1: TDE certificate migrated successfully.
+TdeDb_2: TDE certificate migrated successfully.
+Certificate migration completed
 ```
 
-{{ Add description here }}
+This command runs TDE certificate migration from a source SQL Server to a target Azure SQL Server.
 
 ## PARAMETERS
 
@@ -71,7 +75,7 @@ Accept wildcard characters: False
 Network share password.
 
 ```yaml
-Type: System.Security.SecureString
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
