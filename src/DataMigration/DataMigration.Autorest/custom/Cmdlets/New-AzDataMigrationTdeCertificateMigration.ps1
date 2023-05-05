@@ -56,7 +56,7 @@ function New-AzDataMigrationTdeCertificateMigration
         ${NetworkShareUserName},
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Network share password.')]
-        [securestring]
+        [System.String]
         ${NetworkSharePassword},
 
         [Parameter(ParameterSetName='CommandLine', Mandatory, HelpMessage='Source database name.')]
