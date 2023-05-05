@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateDatabaseWithMaintenanceConfigurationId");
         }
 
-        [Fact]
+        [Fact(Skip = "Cannot re-record.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseUpdateWithPreferredEnclaveType()
         {
