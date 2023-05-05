@@ -18,7 +18,8 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
  [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-RetentionTimeInHour <Int64>]
  [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TombstoneRetentionTimeInHour <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -26,8 +27,8 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-CaptureEnabled] [-DestinationName <String>] [-Encoding <EncodingCaptureDescription>]
  [-IntervalInSeconds <Int32>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
- [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -325,7 +326,9 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionTimeInHour
-Number of days to retain the events for this Event Hub, value should be 1 to 7 days
+Number of hours to retain the events for this Event Hub.
+This value is only used when cleanupPolicy is Delete.
+If cleanupPolicy is Compaction the returned value of this property is Long.MaxValue
 
 ```yaml
 Type: System.Int64
@@ -410,6 +413,23 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TombstoneRetentionTimeInHour
+Number of hours to retain the tombstone markers of a compacted Event Hub.
+This value is only used when cleanupPolicy is Compaction.
+Consumer must complete reading the tombstone marker within this specified amount of time if consumer begins from starting offset to ensure they get a valid snapshot for the specific key described by the tombstone marker within the compacted Event Hub
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
