@@ -23,7 +23,7 @@ Register a Windows virtual desktop application group.
 
 ## EXAMPLES
 
-### Example 1: Register a Windows Virtual Desktop Application Group
+### Example 1: Register an Application Group
 ```powershell
 Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `
@@ -36,7 +36,7 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command registers a Windows Virtual Desktop Application Group to a Workspace.
+This command registers an Application Group to a workspace
 
 ## PARAMETERS
 
@@ -153,7 +153,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20191210Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IWorkspace
 
 ## NOTES
 
