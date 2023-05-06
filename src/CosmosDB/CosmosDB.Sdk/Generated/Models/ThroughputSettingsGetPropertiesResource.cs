@@ -38,18 +38,25 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// resource</param>
         /// <param name="offerReplacePending">The throughput replace is
         /// pending</param>
+        /// <param name="instantMaximumThroughput">The offer throughput value
+        /// to instantly scale up without triggering splits</param>
+        /// <param name="softAllowedMaximumThroughput">The maximum throughput
+        /// value or the maximum maxThroughput value (for autoscale) that can
+        /// be specified</param>
         /// <param name="_rid">A system generated property. A unique
         /// identifier.</param>
         /// <param name="_ts">A system generated property that denotes the last
         /// updated timestamp of the resource.</param>
         /// <param name="_etag">A system generated property representing the
         /// resource etag required for optimistic concurrency control.</param>
-        public ThroughputSettingsGetPropertiesResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string _rid = default(string), double? _ts = default(double?), string _etag = default(string))
+        public ThroughputSettingsGetPropertiesResource(int? throughput = default(int?), AutoscaleSettingsResource autoscaleSettings = default(AutoscaleSettingsResource), string minimumThroughput = default(string), string offerReplacePending = default(string), string instantMaximumThroughput = default(string), string softAllowedMaximumThroughput = default(string), string _rid = default(string), double? _ts = default(double?), string _etag = default(string))
         {
             Throughput = throughput;
             AutoscaleSettings = autoscaleSettings;
             MinimumThroughput = minimumThroughput;
             OfferReplacePending = offerReplacePending;
+            InstantMaximumThroughput = instantMaximumThroughput;
+            SoftAllowedMaximumThroughput = softAllowedMaximumThroughput;
             this._rid = _rid;
             this._ts = _ts;
             this._etag = _etag;
@@ -88,6 +95,20 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "offerReplacePending")]
         public string OfferReplacePending { get; private set; }
+
+        /// <summary>
+        /// Gets the offer throughput value to instantly scale up without
+        /// triggering splits
+        /// </summary>
+        [JsonProperty(PropertyName = "instantMaximumThroughput")]
+        public string InstantMaximumThroughput { get; private set; }
+
+        /// <summary>
+        /// Gets the maximum throughput value or the maximum maxThroughput
+        /// value (for autoscale) that can be specified
+        /// </summary>
+        [JsonProperty(PropertyName = "softAllowedMaximumThroughput")]
+        public string SoftAllowedMaximumThroughput { get; private set; }
 
         /// <summary>
         /// Gets a system generated property. A unique identifier.

@@ -40,14 +40,14 @@ namespace Microsoft.Azure.Management.CosmosDB
         ServiceClientCredentials Credentials { get; }
 
         /// <summary>
-        /// The API version to use for this operation.
-        /// </summary>
-        string ApiVersion { get; }
-
-        /// <summary>
         /// The ID of the target subscription.
         /// </summary>
         string SubscriptionId { get; set; }
+
+        /// <summary>
+        /// The API version to use for this operation.
+        /// </summary>
+        string ApiVersion { get; }
 
         /// <summary>
         /// The preferred language for the response.
@@ -134,11 +134,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         IPartitionKeyRangeIdRegionOperations PartitionKeyRangeIdRegion { get; }
 
         /// <summary>
-        /// Gets the IGraphResourcesOperations.
-        /// </summary>
-        IGraphResourcesOperations GraphResources { get; }
-
-        /// <summary>
         /// Gets the ISqlResourcesOperations.
         /// </summary>
         ISqlResourcesOperations SqlResources { get; }
@@ -169,11 +164,6 @@ namespace Microsoft.Azure.Management.CosmosDB
         ILocationsOperations Locations { get; }
 
         /// <summary>
-        /// Gets the IDataTransferJobsOperations.
-        /// </summary>
-        IDataTransferJobsOperations DataTransferJobs { get; }
-
-        /// <summary>
         /// Gets the ICassandraClustersOperations.
         /// </summary>
         ICassandraClustersOperations CassandraClusters { get; }
@@ -187,6 +177,16 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Gets the INotebookWorkspacesOperations.
         /// </summary>
         INotebookWorkspacesOperations NotebookWorkspaces { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
 
         /// <summary>
         /// Gets the IRestorableDatabaseAccountsOperations.
