@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     };
                 }
             }
-
+            
             // Update analytical storage schema type.
             databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
 
