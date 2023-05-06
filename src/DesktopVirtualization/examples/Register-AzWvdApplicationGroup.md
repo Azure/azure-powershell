@@ -1,4 +1,4 @@
-### Example 1: Register a Windows Virtual Desktop Application Group
+### Example 1: Register an Application Group
 ```powershell
 Register-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName `
                                     -WorkspaceName WorkspaceName `
@@ -11,5 +11,4 @@ Location   Name                 Type
 eastus     WorkspaceName Microsoft.DesktopVirtualization/workspaces
 ```
 
-This command registers a Windows Virtual Desktop Application Group to a Workspace.
-
+This command registers an Application Group to a workspace

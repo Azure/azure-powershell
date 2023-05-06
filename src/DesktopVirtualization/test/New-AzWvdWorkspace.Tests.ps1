@@ -13,30 +13,33 @@ while(-not $mockingPath) {
 
 Describe 'New-AzWvdWorkspace' {
     It 'Create' {
-        $workspace = New-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
-                                        -ResourceGroupName $env.ResourceGroup `
-                                        -Location $env.Location `
-                                        -Name 'WorkspacePowershell1' `
-                                        -FriendlyName 'fri' `
-                                        -ApplicationGroupReference $null `
-                                        -Description 'des'
-            $workspace.Name | Should -Be 'WorkspacePowershell1'
-            $workspace.Location | Should -Be $env.Location
-            $workspace.FriendlyName | Should -Be 'fri'
-            $workspace.ApplicationGroupReference | Should -Be $null
-            $workspace.Description | Should -Be 'des'
+        try{
+            $workspace = New-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
+                                            -ResourceGroupName $env.ResourceGroup `
+                                            -Location $env.Location `
+                                            -Name 'WorkspacePowershell1' `
+                                            -FriendlyName 'fri' `
+                                            -ApplicationGroupReference $null `
+                                            -Description 'des'
+                $workspace.Name | Should -Be 'WorkspacePowershell1'
+                $workspace.Location | Should -Be $env.Location
+                $workspace.FriendlyName | Should -Be 'fri'
+                $workspace.ApplicationGroupReference | Should -Be $null
+                $workspace.Description | Should -Be 'des'
 
-        $workspace = Get-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
-                                        -ResourceGroupName $env.ResourceGroup `
-                                        -Name 'WorkspacePowershell1'
-            $workspace.Name | Should -Be 'WorkspacePowershell1'
-            $workspace.Location | Should -Be $env.Location
-            $workspace.FriendlyName | Should -Be 'fri'
-            $workspace.ApplicationGroupReference | Should -Be $null
-            $workspace.Description | Should -Be 'des'
-
-        $workspace = Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
+            $workspace = Get-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
                                             -ResourceGroupName $env.ResourceGroup `
                                             -Name 'WorkspacePowershell1'
+                $workspace.Name | Should -Be 'WorkspacePowershell1'
+                $workspace.Location | Should -Be $env.Location
+                $workspace.FriendlyName | Should -Be 'fri'
+                $workspace.ApplicationGroupReference | Should -Be $null
+                $workspace.Description | Should -Be 'des'
+        }
+        finally{
+            $workspace = Remove-AzWvdWorkspace -SubscriptionId $env.SubscriptionId `
+                                                -ResourceGroupName $env.ResourceGroup `
+                                                -Name 'WorkspacePowershell1'
+        }
     }
 }

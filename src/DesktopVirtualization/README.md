@@ -47,13 +47,13 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 14f98895acdb489aa42126c1226bcc40aadd4cf9
+branch: 45765fbbfd14084eb7a12ebd099aaeddb2a13173
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2021-07-12/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2022-09-09/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -99,5 +99,29 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
-   
+  #breaking change warning
+  - where:
+      verb: New
+      subject: ^ApplicationGroup$|^HostPool$ 
+      parameter-name: MigrationRequestMigrationPath|MigrationRequestOperation
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        change-description: This is parameter will be deleted.
+  - where:
+      verb: New
+      subject: ^ScalingPlan$
+      parameter-name: HostPoolType
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        change-description: The allowed value of this parameter changed from 'BYODesktop, Personal, Pooled' to 'Pooled'
+  - where:
+      verb: Update
+      subject: ^ScalingPlan$
+      parameter-name: HostPoolType
+    set:
+      breaking-change:
+        deprecated-by-version: 4.0.0
+        change-description: This parameter will be deleted.
 ```

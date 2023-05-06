@@ -16,7 +16,7 @@ Describe 'Remove-AzWvdRegistrationInfo' {
         $date = get-date
         $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                             -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1' `
+                            -Name $env.HostPool `
                             -Location $env.Location `
                             -HostPoolType 'Shared' `
                             -LoadBalancerType 'DepthFirst' `
@@ -33,15 +33,19 @@ Describe 'Remove-AzWvdRegistrationInfo' {
 
         $regInfo = Remove-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroup `
-                                    -HostPoolName 'HostPoolPowershellContained1'
+                                    -HostPoolName $env.HostPool
 
         try {
             $regInfo = Get-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
                                     -ResourceGroupName $env.ResourceGroup `
-                                    -HostPoolName 'HostPoolPowershellContained1'
+                                    -HostPoolName $env.HostPool
             throw "Get should have failed."
         } catch {
 
         }
+
+        $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                            -ResourceGroupName $env.ResourceGroup `
+                            -Name $env.HostPool
     }
 }
