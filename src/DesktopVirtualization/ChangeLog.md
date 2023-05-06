@@ -20,10 +20,10 @@
 ## Upcoming Release
 * Upgraded API version to 2022-09-09
 * Added cmdlet:
- - `Get-AzWvdScalingPlanPooledSchedule`
- - `New-AzWvdScalingPlanPooledSchedule`
- - `Remove-AzWvdScalingPlanPooledSchedule`
- - `Update-AzWvdScalingPlanPooledSchedule`
+    - `Get-AzWvdScalingPlanPooledSchedule`
+    - `New-AzWvdScalingPlanPooledSchedule`
+    - `Remove-AzWvdScalingPlanPooledSchedule`
+    - `Update-AzWvdScalingPlanPooledSchedule`
 
 ## Version 3.1.1
 * Corrected parameter description of `-Force` in `Remove-AzWvdUserSession`.
