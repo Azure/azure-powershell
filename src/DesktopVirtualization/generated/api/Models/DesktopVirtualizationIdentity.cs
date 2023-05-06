@@ -70,6 +70,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
         public string ScalingPlanName { get => this._scalingPlanName; set => this._scalingPlanName = value; }
 
+        /// <summary>Backing field for <see cref="ScalingPlanScheduleName" /> property.</summary>
+        private string _scalingPlanScheduleName;
+
+        /// <summary>The name of the ScalingPlanSchedule</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Origin(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.PropertyOrigin.Owned)]
+        public string ScalingPlanScheduleName { get => this._scalingPlanScheduleName; set => this._scalingPlanScheduleName = value; }
+
         /// <summary>Backing field for <see cref="SessionHostName" /> property.</summary>
         private string _sessionHostName;
 
@@ -173,6 +180,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         SerializedName = @"scalingPlanName",
         PossibleTypes = new [] { typeof(string) })]
         string ScalingPlanName { get; set; }
+        /// <summary>The name of the ScalingPlanSchedule</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the ScalingPlanSchedule",
+        SerializedName = @"scalingPlanScheduleName",
+        PossibleTypes = new [] { typeof(string) })]
+        string ScalingPlanScheduleName { get; set; }
         /// <summary>The name of the session host within the specified host pool</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Info(
         Required = false,
@@ -228,6 +243,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models
         string ResourceGroupName { get; set; }
         /// <summary>The name of the scaling plan.</summary>
         string ScalingPlanName { get; set; }
+        /// <summary>The name of the ScalingPlanSchedule</summary>
+        string ScalingPlanScheduleName { get; set; }
         /// <summary>The name of the session host within the specified host pool</summary>
         string SessionHostName { get; set; }
         /// <summary>The ID of the target subscription.</summary>

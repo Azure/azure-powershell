@@ -14,16 +14,16 @@ while(-not $mockingPath) {
 Describe 'Remove-AzWvdUserSession' {
     It 'Delete' {
         Remove-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                    -ResourceGroupName $env.ResourceGroup `
-                                    -HostPoolName 'HostPoolPowershell1' `
-                                    -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                    -ResourceGroupName $env.ResourceGroupPersistent `
+                                    -HostPoolName $env.HostPoolPersistent `
+                                    -SessionHostName $env.SessionHostName `
                                     -Id 4
 
         try {
             $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
+                                -HostPoolName $env.HostPoolPersistent `
+                                -SessionHostName $env.SessionHostName `
                                 -Id 4
             throw "Get should have failed."
         } catch {
