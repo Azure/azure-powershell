@@ -112,7 +112,7 @@ This command gets the certificate named `TestCert01` from the key vault named `C
 ```powershell
 $CertBase64 = Get-AzKeyVaultSecret -VaultName $vaultName -Name $certName -AsPlainText
 $CertBytes = [Convert]::FromBase64String($CertBase64)
-Set-Content -Path cert.pfx -Value $CertBytes -AsByteStream
+Set-Content -Path cert.pfx -Value $CertBytes -Encoding Byte
 ```
 
 This command gets the certificate named `$certName` from the key vault named `$vaultName`. These commands access secret `$certName` and then save the content as a pfx file.
