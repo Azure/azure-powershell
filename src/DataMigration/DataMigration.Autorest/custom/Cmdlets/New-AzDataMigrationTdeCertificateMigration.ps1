@@ -137,7 +137,7 @@ function New-AzDataMigrationTdeCertificateMigration
                 #Update is available
                 $DownloadUrl = "https://www.nuget.org/api/v2/package/$PackageId/$LatestNugetOrgVersion"
 
-                #Checking if BaseFolder Path is valid or not
+                #Checking if LatestNugetFolder Path is valid or not
                 if(-Not (Test-Path $LatestNugetFolder))
                 {
                     $null = New-Item -Path $LatestNugetFolder -ItemType "directory";
@@ -162,17 +162,25 @@ function New-AzDataMigrationTdeCertificateMigration
                 #Check if update was successful
                 $TestPathResult = Test-Path -Path "$LatestNugetFolder\$ExePath"
 
+                $NugetVersions = Get-ChildItem -Path $DownloadsFolder -Filter "$PackageId.*";
+                $NugetVersions = $NugetVersions | Sort-Object -Property Name -Descending
+
                 if($TestPathResult)
                 {
                     #Remove all other NuGet versions except for the version just downloaded
-                    $NugetVersions = Get-ChildItem -Path $DownloadsFolder -Filter "$PackageId.*";
-
                     for ($NugetIndex = 0; $NugetIndex -lt $NugetVersions.Length; $NugetIndex = $NugetIndex + 1)
                     {
                         if($NugetVersions[$NugetIndex].Name -ne $LatestNugetOrgNameAndVersion)
                         {
                             Remove-Item -Path $NugetVersions[$NugetIndex].FullName -Recurse -Force
                         }
+                    }
+                }
+                else
+                {
+                    if($NugetVersions.Length -gt 0)
+                    {
+                        $LatestNugetFolder = $NugetVersions[0].Name;
                     }
                 }
             }
