@@ -15,10 +15,9 @@ The registered information available on the cluster is used to unregister the cl
 
 ```
 Unregister-AzStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
- [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-GraphAccessToken] <String>]
- [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-Region] <String>] [[-ComputerName] <String>]
- [[-Credential] <PSCredential>] [-DisableOnlyAzureArcServer] [-Force] [-UseDeviceAuthentication] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-AccountId] <String>]
+ [[-EnvironmentName] <String>] [[-Region] <String>] [[-ComputerName] <String>] [[-Credential] <PSCredential>]
+ [-DisableOnlyAzureArcServer] [-Force] [-UseDeviceAuthentication] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -83,7 +82,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -114,7 +113,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: 8
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -130,7 +129,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -162,7 +161,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -183,21 +182,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GraphAccessToken
-GraphAccessToken is deprecated.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Region
 Specifies the Region the resource is created in Azure.
 
@@ -207,7 +191,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

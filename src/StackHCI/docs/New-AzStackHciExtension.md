@@ -15,8 +15,8 @@ Create Extension for HCI cluster.
 ```
 New-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ExtensionParameterAutoUpgradeMinorVersion]
- [-ExtensionParameterForceUpdateTag <String>] [-ExtensionParameterProtectedSetting <IAny>]
- [-ExtensionParameterPublisher <String>] [-ExtensionParameterSetting <IAny>]
+ [-ExtensionParameterForceUpdateTag <String>] [-ExtensionParameterProtectedSetting <Hashtable>]
+ [-ExtensionParameterPublisher <String>] [-ExtensionParameterSetting <Hashtable>]
  [-ExtensionParameterType <String>] [-ExtensionParameterTypeHandlerVersion <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Protected settings (may contain secrets).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Json formatted public settings for the extension.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCI.Models.IAny
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
