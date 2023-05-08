@@ -248,20 +248,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 return returnValue;
             }
         }
-
-        public string CheckAllowedMethod()
-        {
-            string warningMsg = null;
-            foreach (PSCorsRule rule in this.CorsRulesProperty)
-            {
-                string subWarning = rule.CheckAllowedMethods();
-                if (subWarning != null)
-                {
-                    warningMsg += ("The following input methods are not in the valid method list: " + subWarning + ". The request might fail. \n");
-                }
-            }
-            return warningMsg;
-        }
     }
 
     /// <summary>
@@ -274,8 +260,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public int MaxAgeInSeconds { get; set; }
         public string[] ExposedHeaders { get; set; }
         public string[] AllowedHeaders { get; set; }
-
-        private string[] AllowedMethodList = new string[] {"GET", "HEAD", "POST", "PUT", "DELETE", "TRACE", "OPTIONS", "CONNECT", "MERGE", "PATCH" };
 
         public PSCorsRule()
         {
@@ -332,27 +316,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         private List<string> ArrayToList(string[] stringArray)
         {
             return stringArray == null ? new List<string>() : new List<string>(stringArray);
-        }
-
-        public string CheckAllowedMethods()
-        {
-            string mismatchedMethods = null;
-            if (this.AllowedMethods != null)
-            {
-                List<string> mismatchedMethodList = new List<string>();
-                foreach (string method in this.AllowedMethods)
-                {
-                    if (!AllowedMethodList.Contains(method.ToUpper()))
-                    {
-                        mismatchedMethodList.Add(method.ToUpper());
-                    }
-                }
-                if (mismatchedMethodList.Count > 0)
-                {
-                    mismatchedMethods = String.Join(",", mismatchedMethodList.ToArray());
-                }
-            }
-            return mismatchedMethods;
         }
     }
 

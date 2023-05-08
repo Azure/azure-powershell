@@ -193,13 +193,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     {
                         CorsRulesProperty = this.CorsRule
                     };
-
-                    string warningMsg = corsRules.CheckAllowedMethod();
-                    if (warningMsg != null)
-                    {
-                        WriteWarning(warningMsg);
-                    }
-
                     serviceProperties.Cors = corsRules.ParseCorsRules();
                 }
 
