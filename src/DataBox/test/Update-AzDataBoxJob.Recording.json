@@ -1,8 +1,8 @@
 {
-  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$PATCH+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01+1": {
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$PATCH+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01",
       "Content": "{\n  \"properties\": {\n    \"details\": {\n      \"contactDetails\": {\n        \"contactName\": \"random\",\n        \"phone\": \"1234567891\",\n        \"phoneExtension\": \"\",\n        \"mobile\": \"\",\n        \"emailList\": [ \"dhja@microsoft.com\" ]\n      },\n      \"shippingAddress\": {\n        \"streetAddress1\": \"101 TOWNSEND ST\",\n        \"streetAddress2\": \"\",\n        \"streetAddress3\": \"\",\n        \"city\": \"San Francisco\",\n        \"stateOrProvince\": \"CA\",\n        \"country\": \"US\",\n        \"postalCode\": \"94107\",\n        \"zipExtendedCode\": \"\",\n        \"companyName\": \"\",\n        \"addressType\": \"Commercial\"\n      }\n    }\n  },\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,7 +17,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/c52ff027-700f-4e53-a77f-fc8633fdeb63?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/c52ff027-700f-4e53-a77f-fc8633fdeb63?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -37,10 +37,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/c52ff027-700f-4e53-a77f-fc8633fdeb63?api-version=2021-03-01+2": {
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/c52ff027-700f-4e53-a77f-fc8633fdeb63?api-version=2022-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/c52ff027-700f-4e53-a77f-fc8633fdeb63?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/c52ff027-700f-4e53-a77f-fc8633fdeb63?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -60,7 +60,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -80,10 +80,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01+3": {
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -122,10 +122,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$PATCH+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01+4": {
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$PATCH+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01+4": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01",
       "Content": "{\n  \"properties\": {\n    \"details\": {\n      \"contactDetails\": {\n        \"contactName\": \"random\",\n        \"phone\": \"1234567891\",\n        \"phoneExtension\": \"\",\n        \"mobile\": \"\",\n        \"emailList\": [ \"dhja@microsoft.com\" ]\n      },\n      \"shippingAddress\": {\n        \"streetAddress1\": \"101 TOWNSEND ST\",\n        \"streetAddress2\": \"\",\n        \"streetAddress3\": \"\",\n        \"city\": \"San Francisco\",\n        \"stateOrProvince\": \"CA\",\n        \"country\": \"US\",\n        \"postalCode\": \"94107\",\n        \"zipExtendedCode\": \"\",\n        \"companyName\": \"\",\n        \"addressType\": \"Commercial\"\n      },\n      \"keyEncryptionKey\": {\n        \"kekType\": \"CustomerManaged\",\n        \"identityProperties\": {\n          \"type\": \"SystemAssigned\"\n        },\n        \"kekUrl\": \"https://sdkkeyvault.vault.azure.net/keys/SSDKEY/\",\n        \"kekVaultResourceID\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/akvenkat/providers/Microsoft.KeyVault/vaults/SDKKeyVault\"\n      }\n    }\n  },\n  \"identity\": {\n    \"type\": \"SystemAssigned\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -140,7 +140,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/7d76f607-c443-4f67-b738-36bbb290042d?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/7d76f607-c443-4f67-b738-36bbb290042d?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -160,10 +160,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/7d76f607-c443-4f67-b738-36bbb290042d?api-version=2021-03-01+5": {
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/7d76f607-c443-4f67-b738-36bbb290042d?api-version=2022-12-01+5": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/7d76f607-c443-4f67-b738-36bbb290042d?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/7d76f607-c443-4f67-b738-36bbb290042d?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -183,7 +183,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -203,10 +203,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01+6": {
+  "Update-AzDataBoxJob+[NoContext]+Microsoft managed to customer managed system assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -245,10 +245,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+System assigned to user assigned+$PATCH+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01+1": {
+  "Update-AzDataBoxJob+[NoContext]+System assigned to user assigned+$PATCH+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01",
       "Content": "{\n  \"properties\": {\n    \"details\": {\n      \"keyEncryptionKey\": {\n        \"kekType\": \"CustomerManaged\",\n        \"identityProperties\": {\n          \"userAssigned\": {\n            \"resourceId\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/akvenkat/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdkIdentity\"\n          },\n          \"type\": \"UserAssigned\"\n        },\n        \"kekUrl\": \"https://sdkkeyvault.vault.azure.net/keys/SSDKEY/\",\n        \"kekVaultResourceID\": \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/akvenkat/providers/Microsoft.KeyVault/vaults/SDKKeyVault\"\n      }\n    }\n  },\n  \"identity\": {\n    \"type\": \"SystemAssigned,UserAssigned\",\n    \"userAssignedIdentities\": {\n      \"/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/akvenkat/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sdkIdentity\": {\n      }\n    }\n  }\n}",
       "isContentBase64": false,
       "Headers": {
@@ -263,7 +263,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/fc203b49-8a87-417a-967b-f65e434046fc?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/fc203b49-8a87-417a-967b-f65e434046fc?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -283,10 +283,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+System assigned to user assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/fc203b49-8a87-417a-967b-f65e434046fc?api-version=2021-03-01+2": {
+  "Update-AzDataBoxJob+[NoContext]+System assigned to user assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/fc203b49-8a87-417a-967b-f65e434046fc?api-version=2022-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/fc203b49-8a87-417a-967b-f65e434046fc?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/providers/Microsoft.DataBox/locations/WestUS/operationResults/fc203b49-8a87-417a-967b-f65e434046fc?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -306,7 +306,7 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01" ],
+        "Location": [ "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01" ],
         "Retry-After": [ "10" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
@@ -326,10 +326,10 @@
       "isContentBase64": false
     }
   },
-  "Update-AzDataBoxJob+[NoContext]+System assigned to user assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01+3": {
+  "Update-AzDataBoxJob+[NoContext]+System assigned to user assigned+$GET+https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2021-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/fa68082f-8ff7-4a25-95c7-ce9da541242f/resourceGroups/databox-pwsh-rg-7h/providers/Microsoft.DataBox/jobs/powershellRandomm32r?api-version=2022-12-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
