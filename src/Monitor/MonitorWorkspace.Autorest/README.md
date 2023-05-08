@@ -37,9 +37,11 @@ input-file:
   - $(repo)/specification/monitor/resource-manager/Microsoft.Monitor/stable/2023-04-03/monitoringAccounts_API.json
   - $(repo)/specification/monitor/resource-manager/Microsoft.Monitor/stable/2023-04-03/operations_API.json
 
-module-version: 0.1.0
+root-module-name: $(prefix).Monitor
 title: MonitorWorkspace
+module-version: 0.1.0
 subject-prefix: $(service-name)
+namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace
 
 resourcegroup-append: true
 identity-correction-for-post: true

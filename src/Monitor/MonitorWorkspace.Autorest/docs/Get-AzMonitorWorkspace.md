@@ -1,7 +1,7 @@
 ---
 external help file:
-Module Name: Az.MonitorWorkspace
-online version: https://learn.microsoft.com/powershell/module/az.monitorworkspace/get-azmonitorworkspace
+Module Name: Az.Monitor
+online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspace
 schema: 2.0.0
 ---
 
@@ -102,7 +102,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MonitorWorkspace.Models.IMonitorWorkspaceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -165,11 +165,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MonitorWorkspace.Models.IMonitorWorkspaceIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.IMonitorWorkspaceIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.MonitorWorkspace.Models.Api20230403.IAzureMonitorWorkspaceResource
 
 ## NOTES
 
