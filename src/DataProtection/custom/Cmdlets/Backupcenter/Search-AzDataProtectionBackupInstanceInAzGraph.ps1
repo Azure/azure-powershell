@@ -18,11 +18,11 @@
         ${Vault},
 
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+        [System.String]
         ${DatasourceType},
 
         [Parameter(Mandatory=$false, HelpMessage='Protection Status of the item')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.ProtectionStatus[]]
+        [System.String[]]
         ${ProtectionStatus}
     )
 

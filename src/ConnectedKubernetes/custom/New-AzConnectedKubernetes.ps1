@@ -116,9 +116,9 @@ function New-AzConnectedKubernetes {
         ${Location},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.AzureHybridBenefit]
+        [System.String]
         # Indicates whether Azure Hybrid Benefit is opted in
         ${AzureHybridBenefit},
 
@@ -147,16 +147,16 @@ function New-AzConnectedKubernetes {
         ${PrivateLinkScopeResourceId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.PrivateLinkState]
+        [System.String]
         # Property which describes the state of private link on a connected cluster resource.
         ${PrivateLinkState},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ProvisioningState]
+        [System.String]
         # Provisioning state of the connected cluster resource.
         ${ProvisioningState},
 
@@ -281,7 +281,7 @@ function New-AzConnectedKubernetes {
         if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
             $CommonPSBoundParameters['SubscriptionId'] = $SubscriptionId
         }
-        $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Support.ResourceIdentityType]::SystemAssigned
+        $IdentityType = [System.String]::SystemAssigned
         $PSBoundParameters.Add('IdentityType', $IdentityType)
 
         #Region check helm install

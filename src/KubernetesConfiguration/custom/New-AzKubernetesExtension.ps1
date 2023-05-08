@@ -72,9 +72,9 @@ function New-AzKubernetesExtension {
         ${SubscriptionId},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.AksIdentityType]
+        [System.String]
         # The identity type.
         ${AkAssignedIdentityType},
 
@@ -113,9 +113,9 @@ function New-AzKubernetesExtension {
         ${ExtensionType},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.ResourceIdentityType]
+        [System.String]
         # The identity type.
         ${IdentityType},
 

@@ -14,13 +14,12 @@ Creates a new origin within the specified origin group.
 
 ```
 New-AzFrontDoorCdnOrigin -OriginGroupName <String> -OriginName <String> -ProfileName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>]
- [-EnabledState <EnabledState>] [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>]
- [-HttpsPort <Int32>] [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AzureOriginId <String>] [-EnabledState <String>]
+ [-EnforceCertificateNameCheck] [-HostName <String>] [-HttpPort <Int32>] [-HttpsPort <Int32>]
+ [-OriginHostHeader <String>] [-Priority <Int32>] [-PrivateLinkId <String>]
  [-SharedPrivateLinkResourceGroupId <String>] [-SharedPrivateLinkResourcePrivateLinkLocation <String>]
- [-SharedPrivateLinkResourceRequestMessage <String>]
- [-SharedPrivateLinkResourceStatus <SharedPrivateLinkResourceStatus>] [-Weight <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SharedPrivateLinkResourceRequestMessage <String>] [-SharedPrivateLinkResourceStatus <String>]
+ [-Weight <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +92,7 @@ Whether to enable health probes to be made against backends defined under backen
 Health probes can only be disabled if there is a single enabled backend in single enabled backend pool.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -341,7 +340,7 @@ Status of the shared private link resource.
 Can be Pending, Approved, Rejected, Disconnected, or Timeout.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SharedPrivateLinkResourceStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

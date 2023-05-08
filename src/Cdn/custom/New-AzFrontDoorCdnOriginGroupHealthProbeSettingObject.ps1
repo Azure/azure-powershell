@@ -37,12 +37,12 @@ function New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject {
         [string]
         $ProbePath,
         [Parameter(HelpMessage="Protocol to use for health probe.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProbeProtocol]
+        
+        [System.String]
         $ProbeProtocol,
         [Parameter(HelpMessage="The type of health probe request that is made.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HealthProbeRequestType]
+        
+        [System.String]
         $ProbeRequestType
     )
 

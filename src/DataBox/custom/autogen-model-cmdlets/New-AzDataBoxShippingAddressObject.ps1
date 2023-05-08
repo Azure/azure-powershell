@@ -30,7 +30,7 @@
         Param(
     
             [Parameter(HelpMessage="Type of address.")]
-            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.AddressType]
+            [System.String]
             $AddressType,
             [Parameter(HelpMessage="Name of the City.")]
             [string]

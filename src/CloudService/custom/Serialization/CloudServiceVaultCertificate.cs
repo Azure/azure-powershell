@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
 {
     public partial class CloudServiceVaultCertificate
     {
-        public override string ToString()
+        partial void OverrideToString(ref string stringResult, ref bool returnNow)
         {
-            return this.CertificateUrl;
+            stringResult =  this.CertificateUrl;
         }
     }
 }

@@ -36,7 +36,7 @@
             [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.ITransferConfigurationTransferFilterDetails]
             $TransferFilterDetail,
             [Parameter(Mandatory, HelpMessage="Type of the configuration for transfer.")]
-            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.TransferConfigurationType]
+            [System.String]
             $Type
         )
 

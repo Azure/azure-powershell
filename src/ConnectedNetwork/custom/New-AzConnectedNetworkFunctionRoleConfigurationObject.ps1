@@ -55,7 +55,7 @@ function New-AzConnectedNetworkFunctionRoleConfigurationObject {
         [string]
         $OSDiskName,
         [Parameter(HelpMessage="The OS type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.OperatingSystemTypes]
+        [System.String]
         $OSDiskOstype,
         [Parameter(HelpMessage="Specifies the size of os disk in gigabytes. This is the fully expanded disk size needed of the VHD image on the ASE. This disk size should be greater than the size of the VHD provided in vhdUri.")]
         [int]
@@ -73,7 +73,7 @@ function New-AzConnectedNetworkFunctionRoleConfigurationObject {
         [string]
         $RoleName,
         [Parameter(HelpMessage="Role type.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.NetworkFunctionRoleConfigurationType]
+        [System.String]
         $RoleType,
         [Parameter(HelpMessage="The list of SSH public keys used to authenticate with linux based VMs.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.ISshPublicKey[]]
@@ -91,7 +91,7 @@ function New-AzConnectedNetworkFunctionRoleConfigurationObject {
         [string]
         $VhdUri,
         [Parameter(HelpMessage="The size of the virtual machine.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VirtualMachineSizeTypes]
+        [System.String]
         $VirtualMachineSize
     )
 

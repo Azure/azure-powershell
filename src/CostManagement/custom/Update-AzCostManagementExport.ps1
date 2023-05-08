@@ -86,25 +86,25 @@ param(
     ${ConfigurationColumn},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.GranularityType]
+    [System.String]
     # The granularity of rows in the export.
     # Currently only 'Daily' is supported.
     ${DataSetGranularity},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.TimeframeType]
+    [System.String]
     # The time frame for pulling data for the export.
     # If custom, then a specific time period must be provided.
     ${DefinitionTimeframe},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.ExportType]
+    [System.String]
     # The type of the export.
     # Note that 'Usage' is equivalent to 'ActualCost' and is applicable to exports that do not yet provide data for charges or amortization for service reservations.
     ${DefinitionType},
@@ -135,9 +135,9 @@ param(
     ${ETag},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.FormatType]
+    [System.String]
     # The format of the export being delivered.
     # Currently only 'Csv' is supported.
     ${Format},
@@ -155,16 +155,16 @@ param(
     ${RecurrencePeriodTo},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.RecurrenceType]
+    [System.String]
     # The schedule recurrence.
     ${ScheduleRecurrence},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.StatusType]
+    [System.String]
     # The status of the export's schedule.
     # If 'Inactive', the export's schedule is paused.
     ${ScheduleStatus},

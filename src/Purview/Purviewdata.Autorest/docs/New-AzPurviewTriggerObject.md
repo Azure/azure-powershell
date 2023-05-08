@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewTriggerObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewtriggerobject
 schema: 2.0.0
 ---
 
@@ -14,12 +14,13 @@ Create an in-memory object for Trigger.
 
 ```
 New-AzPurviewTriggerObject [-IncrementalScanStartTime <DateTime>] [-Interval <Int32>]
- [-RecurrenceEndTime <DateTime>] [-RecurrenceFrequency <TriggerFrequency>] [-RecurrenceInterval <String>]
- [-RecurrenceStartTime <DateTime>] [-RecurrenceTimeZone <String>] [-ScanLevel <ScanLevelType>]
- [-ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>] [-ScheduleHour <Int32[]>]
- [-ScheduleMinute <Int32[]>] [-ScheduleMonthDay <Int32[]>]
- [-ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>] [-ScheduleWeekDay <DaysOfWeek[]>]
- [<CommonParameters>]
+ [-RecurrenceEndTime <DateTime>] [-RecurrenceFrequency <String>] [-RecurrenceInterval <String>]
+ [-RecurrenceScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]
+ [-RecurrenceScheduleHour <Int32[]>] [-RecurrenceScheduleMinute <Int32[]>]
+ [-RecurrenceScheduleMonthDay <Int32[]>]
+ [-RecurrenceScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>]
+ [-RecurrenceScheduleWeekDay <String[]>] [-RecurrenceStartTime <DateTime>] [-RecurrenceTimeZone <String>]
+ [-ScanLevel <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -109,7 +110,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.TriggerFrequency
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,6 +126,97 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecurrenceScheduleAdditionalProperty
+Dictionary of \<any\>.
+To construct, see NOTES section for RECURRENCESCHEDULEADDITIONALPROPERTY properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleAdditionalProperties
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecurrenceScheduleHour
+
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecurrenceScheduleMinute
+
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecurrenceScheduleMonthDay
+
+
+```yaml
+Type: System.Int32[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecurrenceScheduleMonthlyOccurrence
+To construct, see NOTES section for RECURRENCESCHEDULEMONTHLYOCCURRENCE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleOccurrence[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecurrenceScheduleWeekDay
+
+
+```yaml
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -169,98 +261,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanLevelType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleAdditionalProperty
-Dictionary of \<any\>.
-To construct, see NOTES section for SCHEDULEADDITIONALPROPERTY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleAdditionalProperties
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleHour
-
-
-```yaml
-Type: System.Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleMinute
-
-
-```yaml
-Type: System.Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleMonthDay
-
-
-```yaml
-Type: System.Int32[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleMonthlyOccurrence
-To construct, see NOTES section for SCHEDULEMONTHLYOCCURRENCE properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IRecurrenceScheduleOccurrence[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ScheduleWeekDay
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DaysOfWeek[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -289,13 +290,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
+RECURRENCESCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
 
-SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 
+RECURRENCESCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 
   - `[AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]`: Dictionary of <any>
     - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Day <DayOfWeek?>]`: 
+  - `[Day <String>]`: 
   - `[Occurrence <Int32?>]`: 
 
 ## RELATED LINKS

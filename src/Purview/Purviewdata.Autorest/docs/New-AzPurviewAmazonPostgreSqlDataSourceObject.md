@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonpostgresqldatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for AmazonPostgreSqlDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAmazonPostgreSqlDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Port <Int32>] [-ServerEndpoint <String>] [-VpcEndpointServiceName <String>]
- [<CommonParameters>]
+New-AzPurviewAmazonPostgreSqlDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Port <Int32>] [-ServerEndpoint <String>] [-VpcEndpointServiceName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,21 +70,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

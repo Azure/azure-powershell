@@ -111,7 +111,7 @@ function New-AzMySqlReplica {
         try {
           $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.ServerForCreate]::new()
           $Parameter.Property = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.ServerPropertiesForReplica]::new()
-          $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Replica
+          $Parameter.CreateMode = [System.String]::Replica
 
           $server = $PSBoundParameters['Master']
           $Parameter.Property.SourceServerId = $server.Id

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleQueryStringConditionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdndeliveryrulequerystringconditionobject
 schema: 2.0.0
 ---
 
@@ -13,9 +13,8 @@ Create an in-memory object for DeliveryRuleQueryStringCondition.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleQueryStringConditionObject -Name <MatchVariable> -ParameterOperator <QueryStringOperator>
- [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
- [<CommonParameters>]
+New-AzCdnDeliveryRuleQueryStringConditionObject -ParameterOperator <String> [-ParameterMatchValue <String[]>]
+ [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,21 +36,6 @@ QueryString
 Create an in-memory object for AzureCDN DeliveryRuleQueryStringCondition
 
 ## PARAMETERS
-
-### -Name
-The name of the condition for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterMatchValue
 The match value for the condition of the delivery rule.
@@ -87,7 +71,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +86,7 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

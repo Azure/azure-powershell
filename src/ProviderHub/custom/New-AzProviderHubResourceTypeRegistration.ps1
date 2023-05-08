@@ -193,9 +193,9 @@ param(
     ${IdentityManagementApplicationId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.IdentityManagementTypes]
+    [System.String]
     # .
     ${IdentityManagementType},
 
@@ -226,23 +226,23 @@ param(
     ${MarketplaceType},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.Regionality]
+    [System.String]
     # .
     ${Regionality},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.OptInHeaderType]
+    [System.String]
     # .
     ${RequestHeaderOptionOptInHeader},
 
@@ -253,23 +253,23 @@ param(
     ${RequiredFeature},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]]
+    [System.String[]]
     # .
     ${ResourceCreationBeginRequest},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ExtensionOptionType[]]
+    [System.String[]]
     # .
     ${ResourceCreationBeginResponse},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceDeletionPolicy]
+    [System.String]
     # .
     ${ResourceDeletionPolicy},
 
@@ -292,9 +292,9 @@ param(
     ${ResourceMovePolicyValidationRequired},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.RoutingType]
+    [System.String]
     # .
     ${RoutingType},
 
@@ -333,9 +333,9 @@ param(
     ${SwaggerSpecification},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.PreflightOption[]]
+    [System.String[]]
     # .
     ${TemplateDeploymentOptionPreflightOption},
 

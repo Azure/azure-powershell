@@ -13,7 +13,7 @@ Get the latest version of a system scan ruleset
 ## SYNTAX
 
 ```
-Get-AzPurviewSystemScanRulesetLatest -Endpoint <String> [-DataSourceType <DataSourceType>]
+Get-AzPurviewSystemScanRulesetLatest -Endpoint <String> [-DataSourceType <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Get latest system scan ruleset available for a data source
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

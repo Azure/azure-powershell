@@ -4,7 +4,7 @@ function GetRestoreType {
 	param(
 		[Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreRequestType]
+        [System.String]
         $RestoreType
 	)
 

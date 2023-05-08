@@ -70,6 +70,6 @@ directive:
       Subject: Ledger
     hide: true
   - model-cmdlet: # Generate objects for common models.
-    - AADBasedSecurityPrincipal
-    - CertBasedSecurityPrincipal
+    - model-name: AADBasedSecurityPrincipal
+    - model-name: CertBasedSecurityPrincipal
 ```

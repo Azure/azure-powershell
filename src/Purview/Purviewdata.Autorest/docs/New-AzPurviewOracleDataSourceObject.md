@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurvieworacledatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for OracleDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewOracleDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Host <String>] [-Port <String>] [-Service <String>] [<CommonParameters>]
+New-AzPurviewOracleDataSourceObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-Host <String>] [-Port <String>] [-Service <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,21 +85,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

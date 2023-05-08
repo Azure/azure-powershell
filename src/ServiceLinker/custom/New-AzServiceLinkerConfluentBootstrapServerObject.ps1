@@ -35,8 +35,8 @@ function New-AzServiceLinkerConfluentBootstrapServerObject {
         $Endpoint,
         [Parameter(DontShow, HelpMessage="The target service type.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Runtime.DefaultInfo(Script='"ConfluentBootstrapServer"')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceLinker.Support.TargetServiceType]
+        
+        [System.String]
         $Type
     )
 

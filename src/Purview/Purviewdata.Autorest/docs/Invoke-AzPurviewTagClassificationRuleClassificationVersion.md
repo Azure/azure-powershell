@@ -12,18 +12,10 @@ Sets Classification Action on a specific classification rule version.
 
 ## SYNTAX
 
-### Tag (Default)
 ```
 Invoke-AzPurviewTagClassificationRuleClassificationVersion -Endpoint <String> -ClassificationRuleName <String>
- -ClassificationRuleVersion <Int32> -Action <ClassificationAction> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### TagViaIdentity
-```
-Invoke-AzPurviewTagClassificationRuleClassificationVersion -Endpoint <String>
- -InputObject <IPurviewdataIdentity> -Action <ClassificationAction> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -ClassificationRuleVersion <Int32> -Action <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -50,7 +42,7 @@ Set Classification Action on specific rule version
 .
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ClassificationAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +58,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: Tag
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -81,7 +73,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Tag
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -122,22 +114,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
-Parameter Sets: TagViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -174,8 +150,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IPurviewdataIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.IOperationResponse
@@ -183,23 +157,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IPurviewdataIdentity>: Identity Parameter
-  - `[ClassificationRuleName <String>]`: 
-  - `[ClassificationRuleVersion <Int32?>]`: 
-  - `[DataSourceName <String>]`: 
-  - `[DataSourceType <DataSourceType?>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[KeyVaultName <String>]`: 
-  - `[RunId <String>]`: 
-  - `[ScanName <String>]`: 
-  - `[ScanRulesetName <String>]`: 
-  - `[Version <Int32?>]`: 
 
 ## RELATED LINKS
 

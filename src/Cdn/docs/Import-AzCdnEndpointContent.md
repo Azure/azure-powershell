@@ -258,9 +258,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ILoadParameters
 
 ## OUTPUTS
 
@@ -275,10 +275,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`CONTENTFILEPATH <ILoadParameters>`: Parameters required for content load.
-  - `ContentPath <String[]>`: The path to the content to be loaded. Path should be a relative file URL of the origin.
+CONTENTFILEPATH <ILoadParameters>: Parameters required for content load.
+  - `ContentPath <List<String>>`: The path to the content to be loaded. Path should be a relative file URL of the origin.
 
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
+INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

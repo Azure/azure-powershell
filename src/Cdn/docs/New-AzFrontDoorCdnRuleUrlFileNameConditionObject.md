@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name <MatchVariable>
- -ParameterOperator <UrlFileNameOperator> [-ParameterMatchValue <String[]>]
- [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleUrlFileNameConditionObject -Name <String> -ParameterOperator <String>
+ [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,7 @@ UrlFileName
 The name of the condition for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Describes operator to be matched.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.UrlFileNameOperator
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

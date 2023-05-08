@@ -18,10 +18,10 @@ Learn more about permissions needed at https://go.microsoft.com/fwlink/?linkid=2
 New-AzBillingBenefitsSavingsPlanOrderAlias -Name <String> [-AppliedScopePropertyDisplayName <String>]
  [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
  [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
- [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>] [-BillingScopeId <String>]
- [-CommitmentAmount <Double>] [-CommitmentCurrencyCode <String>] [-CommitmentGrain <CommitmentGrain>]
- [-DisplayName <String>] [-Kind <String>] [-SkuName <String>] [-Term <Term>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AppliedScopeType <String>] [-BillingPlan <String>] [-BillingScopeId <String>] [-CommitmentAmount <Double>]
+ [-CommitmentCurrencyCode <String>] [-CommitmentGrain <String>] [-DisplayName <String>] [-Kind <String>]
+ [-SkuName <String>] [-Term <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
@@ -42,10 +42,10 @@ New-AzBillingBenefitsSavingsPlanOrderAlias -InputObject <IBillingBenefitsIdentit
 New-AzBillingBenefitsSavingsPlanOrderAlias -InputObject <IBillingBenefitsIdentity>
  [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
  [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
- [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>]
+ [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <String>] [-BillingPlan <String>]
  [-BillingScopeId <String>] [-CommitmentAmount <Double>] [-CommitmentCurrencyCode <String>]
- [-CommitmentGrain <CommitmentGrain>] [-DisplayName <String>] [-Kind <String>] [-SkuName <String>]
- [-Term <Term>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-CommitmentGrain <String>] [-DisplayName <String>] [-Kind <String>] [-SkuName <String>] [-Term <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Type of the Applied Scope.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.AppliedScopeType
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -180,7 +180,7 @@ Represents the billing plan in ISO 8601 format.
 Required only for monthly billing plans.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.BillingPlan
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 Commitment grain.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.CommitmentGrain
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -377,7 +377,7 @@ Accept wildcard characters: False
 Represent benefit term in ISO 8601 format.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Support.Term
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -424,9 +424,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanOrderAliasModel
-
 ### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.ISavingsPlanOrderAliasModel
 
 ## OUTPUTS
 
@@ -441,32 +441,26 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <ISavingsPlanOrderAliasModel>`: Savings plan order alias
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
+BODY <ISavingsPlanOrderAliasModel>: Savings plan order alias
   - `[AppliedScopePropertyDisplayName <String>]`: Display name
   - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
   - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
   - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
   - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-  - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
+  - `[AppliedScopeType <String>]`: Type of the Applied Scope.
   - `[AzureAsyncOperation <String>]`: 
-  - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+  - `[BillingPlan <String>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
   - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
   - `[CommitmentAmount <Double?>]`: 
   - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
+  - `[CommitmentGrain <String>]`: Commitment grain.
   - `[DisplayName <String>]`: Display name
   - `[Kind <String>]`: Resource provider kind
   - `[RetryAfter <Int32?>]`: 
   - `[SkuName <String>]`: Name of the SKU to be applied
-  - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
+  - `[Term <String>]`: Represent benefit term in ISO 8601 format.
 
-`INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
+INPUTOBJECT <IBillingBenefitsIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ReservationOrderAliasName <String>]`: Name of the reservation order alias
   - `[SavingsPlanId <String>]`: ID of the savings plan
@@ -474,4 +468,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SavingsPlanOrderId <String>]`: Order ID of the savings plan
 
 ## RELATED LINKS
+
+https://go.microsoft.com/fwlink/?linkid=2215851/
 

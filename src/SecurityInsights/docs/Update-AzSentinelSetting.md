@@ -21,7 +21,7 @@ Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -En
 
 ### UpdateExpandedUeba
 ```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -DataSource <UebaDataSources[]>
+Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -DataSource <String[]>
  -SettingsName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -34,7 +34,7 @@ Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -Enabled <Bool
 
 ### UpdateViaIdentityExpandedUeba
 ```
-Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -DataSource <UebaDataSources[]>
+Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -DataSource <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources[]
+Type: System.String[]
 Parameter Sets: UpdateExpandedUeba, UpdateViaIdentityExpandedUeba
 Aliases:
 

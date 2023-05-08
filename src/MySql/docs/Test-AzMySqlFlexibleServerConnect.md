@@ -245,7 +245,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMySqlIdentity>`: The server to connect.
+INPUTOBJECT <IMySqlIdentity>: The server to connect.
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
@@ -253,7 +253,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
+  - `[SecurityAlertPolicyName <String>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.

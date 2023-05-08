@@ -123,9 +123,9 @@ function New-AzApplicationInsightsWebTest {
         # To construct, see NOTES section for GEOLOCATION properties and create a hash table.
         ${GeoLocation},
     
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.WebTestKindEnum]
+        [System.String]
         # The kind of web test this is, valid choices are ping, multistep, and standard.
         ${Kind},
     

@@ -63,7 +63,7 @@ function New-AzFunctionApp {
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='The OS to host the function app.')]
         [Parameter(ParameterSetName="Consumption")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.WorkerType])]
+        
         [ValidateSet("Linux", "Windows")]
         [ValidateNotNullOrEmpty()]
         [System.String]
@@ -72,7 +72,7 @@ function New-AzFunctionApp {
         
         [Parameter(Mandatory=$true, ParameterSetName="ByAppServicePlan", HelpMessage='The function runtime.')]
         [Parameter(Mandatory=$true, ParameterSetName="Consumption")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RuntimeType])]
+        
         [ValidateNotNullOrEmpty()]
         [System.String]
         # Runtime type (DotNet, Node, Java, PowerShell or Python)
@@ -86,7 +86,7 @@ function New-AzFunctionApp {
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage='The Functions version.')]
         [Parameter(ParameterSetName="Consumption")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionsVersionType])]
+        
         [ValidateNotNullOrEmpty()]
         [System.String]
         # FunctionsVersion type (3 or 4). Default Functions version is defined in HelperFunctions.ps1
@@ -150,9 +150,9 @@ function New-AzFunctionApp {
             ")]
         [Parameter(ParameterSetName="Consumption")]
         [Parameter(ParameterSetName="CustomDockerImage")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityCreateType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
+        [System.String]
         ${IdentityType},
 
         [Parameter(ParameterSetName="ByAppServicePlan", HelpMessage="Specifies the list of user identities associated with the function app.

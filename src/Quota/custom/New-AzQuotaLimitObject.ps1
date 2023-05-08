@@ -31,8 +31,8 @@ function New-AzQuotaLimitObject {
     Param(
 
         [Parameter(HelpMessage="The quota or usages limit types.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Quota.Support.QuotaLimitTypes])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Quota.Support.QuotaLimitTypes]
+        
+        [System.String]
         $LimitType,
         [Parameter(Mandatory, HelpMessage="The quota/limit value.")]
         [int]

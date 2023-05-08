@@ -13,7 +13,7 @@ Create an in-memory object for UrlRewriteAction.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name <DeliveryRuleAction> -ParameterDestination <String>
+New-AzFrontDoorCdnRuleUrlRewriteActionObject -Name <String> -ParameterDestination <String>
  -ParameterSourcePattern <String> [-ParameterPreserveUnmatchedPath <Boolean>] [<CommonParameters>]
 ```
 
@@ -41,7 +41,7 @@ UrlRewrite
 The name of the action for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

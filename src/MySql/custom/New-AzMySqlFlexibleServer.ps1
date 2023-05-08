@@ -91,10 +91,10 @@ param(
     ${StorageInMb},
 
     [Parameter(HelpMessage='Enable or disable Storage Auto Grow. The default value is Disabled')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow])]
+    
     [Validateset('Enabled', 'Disabled')]
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]
+    [System.String]
     ${StorageAutogrow},
 
     [Parameter(HelpMessage = "Number of IOPS to be allocated for this server. You will get certain amount of free IOPS based on compute and storage provisioned. The default value for IOPS is free IOPS.")]
@@ -109,9 +109,9 @@ param(
     ${Tag},
 
     [Parameter(HelpMessage = 'Server version.')]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.ServerVersion]
+    [System.String]
     ${Version},
 
     [Parameter(HelpMessage = 'The subnet IP address prefix to use when creating a new vnet in CIDR format. Default value is 10.0.0.0/24.')]
@@ -275,10 +275,10 @@ process {
         }
 
         if ($PSBoundParameters.ContainsKey('StorageAutogrow') -And $PSBoundParameters['StorageAutogrow'] -eq 'Enabled') {
-            $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Enabled
+            $PSBoundParameters.StorageAutoGrow = [System.String]::Enabled
         }
         else {
-            $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Disabled
+            $PSBoundParameters.StorageAutoGrow = [System.String]::Disabled
         }
 
         if ($PSBoundParameters.ContainsKey('Iops')) {
@@ -287,18 +287,18 @@ process {
 
         if ($PSBoundParameters.ContainsKey('HighAvailability')){
             if($PSBoundParameters['HighAvailability'].ToLower() -eq 'disabled'){
-                $PSBoundParameters["HighAvailabilityMode"] = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::Disabled
+                $PSBoundParameters["HighAvailabilityMode"] = [System.String]::Disabled
             }
             elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'zoneredundant') {
                 if ($PSBoundParameters.SkuTier -eq 'Burstable') {
                     throw "Zone redundant high availability cannot be enabled for Burstable tier."
                 }
-                $PSBoundParameters["HighAvailabilityMode"] = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::ZoneRedundant
-                $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Enabled
+                $PSBoundParameters["HighAvailabilityMode"] = [System.String]::ZoneRedundant
+                $PSBoundParameters.StorageAutoGrow = [System.String]::Enabled
             }
             elseif($PSBoundParameters['HighAvailability'].ToLower() -eq 'samezone') {
-                $PSBoundParameters.HighAvailabilityMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.HighAvailabilityMode]::SameZone
-                $PSBoundParameters.StorageAutoGrow = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow]::Enabled
+                $PSBoundParameters.HighAvailabilityMode = [System.String]::SameZone
+                $PSBoundParameters.StorageAutoGrow = [System.String]::Enabled
             }
             $null = $PSBoundParameters.Remove('HighAvailability')
         }
@@ -315,7 +315,7 @@ process {
             $PSBoundParameters.AdministratorLogin = Get-RandomName
         }
 
-        $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::Default
+        $PSBoundParameters.CreateMode = [System.String]::Default
 
         # Handling Vnet & Subnet
         $NetworkKeys = 'PublicAccess', 'Subnet', 'Vnet', 'SubnetPrefix', 'VnetPrefix', 'PrivateDnsZone'

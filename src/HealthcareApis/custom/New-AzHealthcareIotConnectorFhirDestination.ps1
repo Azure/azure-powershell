@@ -74,9 +74,9 @@ function New-AzHealthcareIotConnectorFhirDestination {
         ${FhirServiceResourceId},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.IotIdentityResolutionType]
+        [System.String]
         # Determines how resource identity is resolved on the destination.
         ${ResourceIdentityResolutionType},
 

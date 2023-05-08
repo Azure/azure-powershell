@@ -118,7 +118,7 @@ function Restore-AzMySqlFlexibleServer_PointInTimeRestore {
 
     process {
         try {
-            $PSBoundParameters.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.CreateMode]::PointInTimeRestore
+            $PSBoundParameters.CreateMode = [System.String]::PointInTimeRestore
 
             $server = $PSBoundParameters['InputObject']
             $PSBoundParameters.SourceServerResourceId = $server.Id

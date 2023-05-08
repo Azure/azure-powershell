@@ -15,9 +15,9 @@ Create an in-memory object for ContainerAppProbe.
 ```
 New-AzContainerAppProbeObject [-FailureThreshold <Int32>] [-HttpGetHost <String>]
  [-HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>] [-HttpGetPath <String>]
- [-HttpGetPort <Int32>] [-HttpGetScheme <Scheme>] [-InitialDelaySecond <Int32>] [-PeriodSecond <Int32>]
+ [-HttpGetPort <Int32>] [-HttpGetScheme <String>] [-InitialDelaySecond <Int32>] [-PeriodSecond <Int32>]
  [-SuccessThreshold <Int32>] [-TcpSocketHost <String>] [-TcpSocketPort <Int32>]
- [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <Type>] [<CommonParameters>]
+ [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,7 +128,7 @@ Scheme to use for connecting to the host.
 Defaults to HTTP.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.Scheme
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +270,7 @@ Accept wildcard characters: False
 The type of probe.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.App.Support.Type
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +299,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>`: Custom headers to set in the request. HTTP allows repeated headers.
+HTTPGETHTTPHEADER <IContainerAppProbeHttpGetHttpHeadersItem[]>: Custom headers to set in the request. HTTP allows repeated headers.
   - `Name <String>`: The header field name
   - `Value <String>`: The header field value
 

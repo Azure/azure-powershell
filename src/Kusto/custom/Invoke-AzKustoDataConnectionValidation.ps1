@@ -80,7 +80,7 @@ function Invoke-AzKustoDataConnectionValidation {
         [Parameter(Mandatory)]
         [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IoTHub') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
+        [System.String]
         # Kind of the endpoint for the data connection
         ${Kind},
 
@@ -108,7 +108,7 @@ function Invoke-AzKustoDataConnectionValidation {
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType]
+        [System.String]
         # The name of blob storage event type to process.
         ${BlobStorageEventType},
 
@@ -121,7 +121,7 @@ function Invoke-AzKustoDataConnectionValidation {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
+        [System.String]
         # The data format of the message. Optionally the data format can be added to each message.
         ${DataFormat},
 
@@ -149,7 +149,7 @@ function Invoke-AzKustoDataConnectionValidation {
         [Parameter(ParameterSetName = 'DataExpandedEventHub')]
         [Parameter(ParameterSetName = 'DataViaIdentityExpandedEventHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression]
+        [System.String]
         # The event hub messages compression type.
         ${Compression},
 

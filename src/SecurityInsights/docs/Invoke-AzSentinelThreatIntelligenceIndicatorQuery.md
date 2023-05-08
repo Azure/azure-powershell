@@ -349,7 +349,7 @@ To create the parameters described below, construct a hash table containing the 
 
 SORTBY <IThreatIntelligenceSortingCriteria[]>: Columns to sort by and sorting order
   - `[ItemKey <String>]`: Column name
-  - `[SortOrder <ThreatIntelligenceSortingCriteriaEnum?>]`: Sorting order (ascending/descending/unsorted).
+  - `[SortOrder <String>]`: Sorting order (ascending/descending/unsorted).
 
 ## RELATED LINKS
 

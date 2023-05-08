@@ -37,15 +37,15 @@ function New-AzOrbitalSpacecraftLinkObject {
         [float]
         $CenterFrequencyMHz,
         [Parameter(Mandatory, HelpMessage="Direction (uplink or downlink).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Direction]
+        
+        [System.String]
         $Direction,
         [Parameter(Mandatory, HelpMessage="Link name.")]
         [string]
         $Name,
         [Parameter(Mandatory, HelpMessage="polarization. eg (RHCP, LHCP).")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Support.Polarization]
+        
+        [System.String]
         $Polarization
     )
 

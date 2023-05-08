@@ -40,8 +40,8 @@ function New-AzFrontDoorCdnRuleUrlRewriteActionObject {
         [string]
         $ParameterSourcePattern,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        
+        [System.String]
         $Name
     )
 

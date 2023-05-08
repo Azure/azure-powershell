@@ -86,9 +86,9 @@ function Update-AzSentinelEntityQuery {
 
         [Parameter(ParameterSetName = 'UpdateActivity')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityActivity')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityType]
+        [System.String]
         ${InputEntityType},
         
         [Parameter(ParameterSetName = 'UpdateActivity')]

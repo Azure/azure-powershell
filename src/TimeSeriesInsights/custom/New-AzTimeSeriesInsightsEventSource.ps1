@@ -55,7 +55,7 @@ function New-AzTimeSeriesInsightsEventSource {
         [Parameter(Mandatory)]
         [ArgumentCompleter({param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Microsoft.EventHub', 'Microsoft.IoTHub')})]
         [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.Kind]
+        [System.String]
         # The kind of the event source.
         ${Kind},
     

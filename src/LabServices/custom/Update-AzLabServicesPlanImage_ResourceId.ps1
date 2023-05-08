@@ -21,9 +21,9 @@ param(
     ${ResourceId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     # Is the image enabled
     ${EnabledState},
 

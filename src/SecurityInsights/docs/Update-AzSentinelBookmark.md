@@ -16,7 +16,7 @@ Creates or updates the bookmark.
 ```
 Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
- [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>]
+ [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <String>] [-IncidentInfoTitle <String>]
  [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
  [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Update-AzSentinelBookmark -Id <String> -ResourceGroupName <String> -WorkspaceNam
 ```
 Update-AzSentinelBookmark -InputObject <ISecurityInsightsIdentity> [-DisplayName <String>]
  [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>] [-IncidentInfoRelationName <String>]
- [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
+ [-IncidentInfoSeverity <String>] [-IncidentInfoTitle <String>] [-Label <String[]>] [-Note <String>]
  [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>] [-QueryStartTime <DateTime>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 The severity of the incident
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.IncidentSeverity
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

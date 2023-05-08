@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlRedirectActionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-azcdnurlredirectactionobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,9 @@ Create an in-memory object for UrlRedirectAction.
 ## SYNTAX
 
 ```
-New-AzCdnUrlRedirectActionObject -Name <DeliveryRuleAction> -ParameterRedirectType <RedirectType>
- [-ParameterCustomFragment <String>] [-ParameterCustomHostname <String>] [-ParameterCustomPath <String>]
- [-ParameterCustomQueryString <String>] [-ParameterDestinationProtocol <DestinationProtocol>]
- [<CommonParameters>]
+New-AzCdnUrlRedirectActionObject -ParameterRedirectType <String> [-ParameterCustomFragment <String>]
+ [-ParameterCustomHostname <String>] [-ParameterCustomPath <String>] [-ParameterCustomQueryString <String>]
+ [-ParameterDestinationProtocol <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +29,7 @@ Create an in-memory object for UrlRedirectAction.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
@@ -41,27 +40,12 @@ Create an in-memory object for UrlRedirectAction.
 ```
 
 ```output
-{{ Add output here }}
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -Name
-The name of the action for the delivery rule.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ParameterCustomFragment
 Fragment to add to the redirect URL.
@@ -136,7 +120,7 @@ Protocol to use for the redirect.
 The default value is MatchRequest.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DestinationProtocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +135,7 @@ Accept wildcard characters: False
 The redirect type the rule will use when redirecting traffic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RedirectType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

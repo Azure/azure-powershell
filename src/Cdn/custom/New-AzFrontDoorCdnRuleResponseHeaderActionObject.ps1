@@ -31,8 +31,8 @@ function New-AzFrontDoorCdnRuleResponseHeaderActionObject {
     Param(
 
         [Parameter(Mandatory, HelpMessage="Action to perform.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction]
+        
+        [System.String]
         $ParameterHeaderAction,
         [Parameter(Mandatory, HelpMessage="Name of the header to modify.")]
         [string]
@@ -41,8 +41,8 @@ function New-AzFrontDoorCdnRuleResponseHeaderActionObject {
         [string]
         $ParameterValue,
         [Parameter(Mandatory, HelpMessage="The name of the action for the delivery rule.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction]
+        
+        [System.String]
         $Name
     )
 

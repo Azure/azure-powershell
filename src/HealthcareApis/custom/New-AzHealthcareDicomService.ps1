@@ -68,9 +68,9 @@ function New-AzHealthcareDicomService {
         ${Etag},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.ServiceManagedIdentityType]
+        [System.String]
         # Type of identity being specified, currently SystemAssigned and None are allowed.
         ${IdentityType},
 
@@ -90,9 +90,9 @@ function New-AzHealthcareDicomService {
         ${Location},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Support.PublicNetworkAccess]
+        [System.String]
         # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
         ${PublicNetworkAccess},
 

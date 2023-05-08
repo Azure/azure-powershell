@@ -31,8 +31,8 @@ function New-AzFrontDoorCdnSecretFirstPartyManagedCertificateParametersObject {
     Param(
 
         [Parameter(Mandatory, HelpMessage="The type of the secret resource.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType]
+        
+        [System.String]
         $Type
     )
 

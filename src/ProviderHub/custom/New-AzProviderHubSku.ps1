@@ -102,9 +102,9 @@ param(
     ${SkuSetting},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ProvisioningState]
+    [System.String]
     # .
     ${ProvisioningState},
 

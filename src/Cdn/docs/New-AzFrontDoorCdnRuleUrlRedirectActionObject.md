@@ -13,10 +13,9 @@ Create an in-memory object for UrlRedirectAction.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name <DeliveryRuleAction> -ParameterRedirectType <RedirectType>
+New-AzFrontDoorCdnRuleUrlRedirectActionObject -Name <String> -ParameterRedirectType <String>
  [-ParameterCustomFragment <String>] [-ParameterCustomHostname <String>] [-ParameterCustomPath <String>]
- [-ParameterCustomQueryString <String>] [-ParameterDestinationProtocol <DestinationProtocol>]
- [<CommonParameters>]
+ [-ParameterCustomQueryString <String>] [-ParameterDestinationProtocol <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +42,7 @@ UrlRedirect
 The name of the action for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +126,7 @@ Protocol to use for the redirect.
 The default value is MatchRequest.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DestinationProtocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +141,7 @@ Accept wildcard characters: False
 The redirect type the rule will use when redirecting traffic.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.RedirectType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

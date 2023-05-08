@@ -57,7 +57,7 @@
             [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Models.IShippingAddress]
             $ShippingAddress,
             [Parameter(Mandatory, HelpMessage="Indicates the type of job details.")]
-            [Microsoft.Azure.PowerShell.Cmdlets.DataBox.Support.ClassDiscriminator]
+            [System.String]
             $Type
         )
 

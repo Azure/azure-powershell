@@ -59,7 +59,7 @@ function New-AzMariaDbServer {
 
         [Parameter(HelpMessage='Enable ssl enforcement or not when connect to server.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum]
+        [System.String]
         # Enable ssl enforcement or not when connect to server.
         ${SslEnforcement},
 
@@ -71,15 +71,15 @@ function New-AzMariaDbServer {
 
         [Parameter(HelpMessage='Enable Geo-redundant or not for server backup.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.GeoRedundantBackup]
+        [System.String]
         # Enable Geo-redundant or not for server backup.
         ${GeoRedundantBackup},
 
         [Parameter(HelpMessage='Enable Storage Auto Grow.')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow])]
+        
         [Validateset('Enabled', 'Disabled')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.StorageAutogrow]
+        [System.String]
         # Enable Storage Auto Grow.
         ${StorageAutogrow},
 
@@ -98,7 +98,7 @@ function New-AzMariaDbServer {
 
         [Parameter(HelpMessage='Server version.')]
         [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.ServerVersion]
+        [System.String]
         # Server version
         ${Version},
         #endregion ServerForCreate
@@ -201,7 +201,7 @@ function New-AzMariaDbServer {
             }
             else
             {
-                $Parameter.SslEnforcement = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SslEnforcementEnum]::Enable
+                $Parameter.SslEnforcement = [System.String]::Enable
             }
 
             if ($PSBoundParameters.ContainsKey('BackupRetentionDay')) {
@@ -235,7 +235,7 @@ function New-AzMariaDbServer {
             }
             #endregion ServerForCreate
 
-            $Parameter.CreateMode = [Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.CreateMode]::Default
+            $Parameter.CreateMode = [System.String]::Default
             $Parameter.Property.AdministratorLogin = $PSBoundParameters['AdministratorUsername']
             $null = $PSBoundParameters.Remove('AdministratorUsername')
 

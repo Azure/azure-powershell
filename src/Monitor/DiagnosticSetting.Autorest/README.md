@@ -77,7 +77,7 @@ directive:
       subject-prefix: ""
 
   - model-cmdlet:
-    - MetricSettings
-    - LogSettings
-    - SubscriptionLogSettings
+    - model-name: MetricSettings
+    - model-name: LogSettings
+    - model-name: SubscriptionLogSettings
 ```

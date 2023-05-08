@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewamazonaccountdatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for AmazonAccountDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewAmazonAccountDataSourceObject -Kind <DataSourceType> [-AwsAccountId <String>]
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-RoleArn <String>] [<CommonParameters>]
+New-AzPurviewAmazonAccountDataSourceObject [-AwsAccountId <String>] [-CollectionReferenceName <String>]
+ [-CollectionType <String>] [-RoleArn <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,21 +84,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

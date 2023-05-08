@@ -68,38 +68,38 @@ directive:
     - HealthProbeParameters
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    - ResourceReference
+    - model-name: ResourceReference
     # origin group parameters
-    - HealthProbeParameters
-    - ResponseBasedOriginErrorDetectionParameters
+    - model-name: HealthProbeParameters
+    - model-name: ResponseBasedOriginErrorDetectionParameters
     # https
-    - UserManagedHttpsParameters
-    - CdnManagedHttpsParameters
-    - DeliveryRule
+    - model-name: UserManagedHttpsParameters
+    - model-name: CdnManagedHttpsParameters
+    - model-name: DeliveryRule
     # CDN condition
-    - DeliveryRuleRemoteAddressCondition
-    - DeliveryRuleRequestMethodCondition
-    - DeliveryRuleQueryStringCondition
-    - DeliveryRulePostArgsCondition
-    - DeliveryRuleRequestUriCondition
-    - DeliveryRuleRequestHeaderCondition
-    - DeliveryRuleRequestBodyCondition
-    - DeliveryRuleRequestSchemeCondition
-    - DeliveryRuleUrlPathCondition
-    - DeliveryRuleUrlFileExtensionCondition
-    - DeliveryRuleUrlFileNameCondition
-    - DeliveryRuleHttpVersionCondition
-    - DeliveryRuleCookiesCondition
-    - DeliveryRuleIsDeviceCondition
+    - model-name: DeliveryRuleRemoteAddressCondition
+    - model-name: DeliveryRuleRequestMethodCondition
+    - model-name: DeliveryRuleQueryStringCondition
+    - model-name: DeliveryRulePostArgsCondition
+    - model-name: DeliveryRuleRequestUriCondition
+    - model-name: DeliveryRuleRequestHeaderCondition
+    - model-name: DeliveryRuleRequestBodyCondition
+    - model-name: DeliveryRuleRequestSchemeCondition
+    - model-name: DeliveryRuleUrlPathCondition
+    - model-name: DeliveryRuleUrlFileExtensionCondition
+    - model-name: DeliveryRuleUrlFileNameCondition
+    - model-name: DeliveryRuleHttpVersionCondition
+    - model-name: DeliveryRuleCookiesCondition
+    - model-name: DeliveryRuleIsDeviceCondition
     # CDN action
-    - DeliveryRuleCacheExpirationAction
-    - DeliveryRuleCacheKeyQueryStringAction
-    - OriginGroupOverrideAction
-    - UrlRedirectAction
-    - UrlSigningAction
-    - UrlRewriteAction
-    - DeliveryRuleRequestHeaderAction
-    - DeliveryRuleResponseHeaderAction
+    - model-name: DeliveryRuleCacheExpirationAction
+    - model-name: DeliveryRuleCacheKeyQueryStringAction
+    - model-name: OriginGroupOverrideAction
+    - model-name: UrlRedirectAction
+    - model-name: UrlSigningAction
+    - model-name: UrlRewriteAction
+    - model-name: DeliveryRuleRequestHeaderAction
+    - model-name: DeliveryRuleResponseHeaderAction
 
   - where:
       model-name: .*

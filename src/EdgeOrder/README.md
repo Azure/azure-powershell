@@ -103,12 +103,12 @@ directive:
       subject: OrderItemCancellation
     
   - model-cmdlet:
-    - OrderItemDetails
-    - ShippingAddress
-    - ContactDetails
-    - Preferences
-    - HierarchyInformation
-    - FilterableProperty
+    - model-name: OrderItemDetails
+    - model-name: ShippingAddress
+    - model-name: ContactDetails
+    - model-name: Preferences
+    - model-name: HierarchyInformation
+    - model-name: FilterableProperty
 ```
 ``` yaml
 directive:

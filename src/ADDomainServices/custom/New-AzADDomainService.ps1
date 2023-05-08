@@ -85,37 +85,37 @@ param(
     ${DomainName},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1]
+    [System.String]
     # A flag to determine whether or not NtlmV1 is enabled or disabled.
     ${DomainSecuritySettingNtlmV1},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords]
+    [System.String]
     # A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncKerberosPassword},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords]
+    [System.String]
     # A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncNtlmPassword},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords]
+    [System.String]
     # A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
     ${DomainSecuritySettingSyncOnPremPassword},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1]
+    [System.String]
     # A flag to determine whether or not TlsV1 is enabled or disabled.
     ${DomainSecuritySettingTlsV1},
 
@@ -126,9 +126,9 @@ param(
     ${Etag},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync]
+    [System.String]
     # Enabled or Disabled flag to turn on Group-based filtered sync
     ${FilteredSync},
 
@@ -141,16 +141,16 @@ param(
     ${ForestTrust},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess]
+    [System.String]
     # A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
     ${LdapSettingExternalAccess},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps]
+    [System.String]
     # A flag to determine whether or not Secure LDAP is enabled or disabled.
     ${LdapSettingLdaps},
 
@@ -182,16 +182,16 @@ param(
     ${NotificationSettingAdditionalRecipient},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins]
+    [System.String]
     # Should domain controller admins be notified
     ${NotificationSettingNotifyDcAdmin},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins]
+    [System.String]
     # Should global admins be notified
     ${NotificationSettingNotifyGlobalAdmin},
 

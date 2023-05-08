@@ -15,7 +15,7 @@ Creates a new origin group within the specified profile.
 ```
 New-AzFrontDoorCdnOriginGroup -OriginGroupName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-HealthProbeSetting <IHealthProbeParameters>]
- [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <EnabledState>]
+ [-LoadBalancingSetting <ILoadBalancingSettingsParameters>] [-SessionAffinityState <String>]
  [-TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -169,7 +169,7 @@ Whether to allow session affinity on this host.
 Valid options are 'Enabled' or 'Disabled'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -261,13 +261,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`HEALTHPROBESETTING <IHealthProbeParameters>`: Health probe settings to the origin that is used to determine the health of the origin.
+HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
   - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
   - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
-  - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
-  - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
+  - `[ProbeProtocol <String>]`: Protocol to use for health probe.
+  - `[ProbeRequestType <String>]`: The type of health probe request that is made.
 
-`LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>`: Load balancing settings for a backend pool
+LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
   - `[AdditionalLatencyInMillisecond <Int32?>]`: The additional latency in milliseconds for probes to fall into the lowest latency bucket
   - `[SampleSize <Int32?>]`: The number of samples to consider for load balancing decisions
   - `[SuccessfulSamplesRequired <Int32?>]`: The number of samples within the sample period that must succeed

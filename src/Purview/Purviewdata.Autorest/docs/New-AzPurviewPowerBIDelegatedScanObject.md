@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDelegatedScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewpowerbidelegatedscanobject
 schema: 2.0.0
 ---
 
@@ -13,11 +13,10 @@ Create an in-memory object for PowerBIDelegatedScan.
 ## SYNTAX
 
 ```
-New-AzPurviewPowerBIDelegatedScanObject -Kind <ScanAuthorizationType> [-AuthenticationType <String>]
- [-ClientId <String>] [-CollectionReferenceName <String>] [-CollectionType <String>]
- [-ConnectedViaReferenceName <String>] [-IncludePersonalWorkspace <Boolean>] [-Password <String>]
- [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-Tenant <String>] [-UserName <String>]
- [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewPowerBIDelegatedScanObject [-AuthenticationType <String>] [-ClientId <String>]
+ [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
+ [-IncludePersonalWorkspace <Boolean>] [-Password <String>] [-ScanRulesetName <String>]
+ [-ScanRulesetType <String>] [-Tenant <String>] [-UserName <String>] [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,21 +145,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Password
 
 
@@ -195,7 +179,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

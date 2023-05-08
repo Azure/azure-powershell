@@ -190,7 +190,7 @@ directive:
     hide: true
 
   - model-cmdlet:
-      - VMResources
+      - model-name: VMResources
       # Comment this modle after generated cmdlet then add support ArgumentCompleter functioan for Action parameter.
       # - FilteringTag
 ```

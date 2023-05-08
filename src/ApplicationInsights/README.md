@@ -407,8 +407,8 @@ directive:
     hide: true
 
   - model-cmdlet:
-    - WebTestGeolocation
-    - WorkbookTemplateGallery
+    - model-name: WebTestGeolocation
+    - model-name: WorkbookTemplateGallery
     # Hide for custom modle cmdlet.
     # - HeaderField
 

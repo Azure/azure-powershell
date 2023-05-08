@@ -14,8 +14,8 @@ Creates or updates the automation rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
+New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
  [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
  [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
 ### Create
 ```
 New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
- -AutomationRule <IAutomationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -AutomationRule <IAutomationRule> [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,6 +116,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Automation rule ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AutomationRuleId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -278,31 +293,17 @@ To create the parameters described below, construct a hash table containing the 
 
 
 ACTION <IAutomationRuleAction[]>: The actions to execute when the automation rule is triggered
-  - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
+  - `ActionType <String>`: The type of the automation rule action
   - `Order <Int32>`: The order of execution of the automation rule action
 
 AUTOMATIONRULE <IAutomationRule>: Represents an automation rule.
   - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Action <IAutomationRuleAction[]>]`: The actions to execute when the automation rule is triggered
-    - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
+  - `[Action <List<IAutomationRuleAction>>]`: The actions to execute when the automation rule is triggered
+    - `ActionType <String>`: The type of the automation rule action
     - `Order <Int32>`: The order of execution of the automation rule action
-  - `[CreatedByEmail <String>]`: The email of the client.
-  - `[CreatedByName <String>]`: The name of the client.
-  - `[CreatedByObjectId <String>]`: The object id of the client.
-  - `[CreatedByUserPrincipalName <String>]`: The user principal name of the client.
   - `[DisplayName <String>]`: The display name of the automation  rule
-  - `[LastModifiedByEmail <String>]`: The email of the client.
-  - `[LastModifiedByName <String>]`: The name of the client.
-  - `[LastModifiedByObjectId <String>]`: The object id of the client.
-  - `[LastModifiedByUserPrincipalName <String>]`: The user principal name of the client.
   - `[Order <Int32?>]`: The order of execution of the automation rule
-  - `[TriggeringLogicCondition <IAutomationRuleCondition[]>]`: The conditions to evaluate to determine if the automation rule should be triggered on a given object
+  - `[TriggeringLogicCondition <List<IAutomationRuleCondition>>]`: The conditions to evaluate to determine if the automation rule should be triggered on a given object
   - `[TriggeringLogicExpirationTimeUtc <DateTime?>]`: Determines when the automation rule should automatically expire and be disabled.
   - `[TriggeringLogicIsEnabled <Boolean?>]`: Determines whether the automation rule is enabled or disabled.
 

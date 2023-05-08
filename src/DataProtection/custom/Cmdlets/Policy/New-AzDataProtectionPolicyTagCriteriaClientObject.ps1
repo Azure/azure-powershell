@@ -5,20 +5,20 @@
 
     param(
         [Parameter(ParameterSetName='AbsoluteCriteria', Mandatory, HelpMessage='Absolute criteria')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AbsoluteTagCriteria]
+        [System.String]
         ${AbsoluteCriteria},
 
         [Parameter(ParameterSetName='ScheduleCriteria', HelpMessage='Days of the week')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DaysOfWeek[]]
+        [System.String[]]
         ${DaysOfWeek},
 
         [Parameter(ParameterSetName='ScheduleCriteria', HelpMessage='Weeks of the month.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.WeeksOfMonth[]]
+        [System.String[]]
         ${WeeksOfMonth},
 
         [Parameter(ParameterSetName='ScheduleCriteria', HelpMessage='Months of the year.')]
         [Parameter(ParameterSetName='MonthlyCriteria', HelpMessage='Months of the year.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.MonthsOfYear[]]
+        [System.String[]]
         ${MonthsOfYear},
 
         [Parameter(ParameterSetName='ScheduleCriteria', HelpMessage='Schedule times.')]

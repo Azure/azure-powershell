@@ -106,10 +106,10 @@ directive:
   # $directConnection = New-AzPeeringDirectConnectionObject ......
   # New-AzPeering -DirectConnection $directConnection ......
   - model-cmdlet:
-      - ExchangeConnection
-      - DirectConnection
-      - ContactDetail
-      - CheckServiceProviderAvailabilityInput
+      - model-name: ExchangeConnection
+      - model-name: DirectConnection
+      - model-name: ContactDetail
+      - model-name: CheckServiceProviderAvailabilityInput
 
   # Change all parameters named SkuName(SkuName -> Sku) and add the alias SkuName to Sku
   - where:

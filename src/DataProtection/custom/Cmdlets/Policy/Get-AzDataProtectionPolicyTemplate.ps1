@@ -7,7 +7,7 @@ function Get-AzDataProtectionPolicyTemplate {
 
     param(
         [Parameter(Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+        [System.String]
         ${DatasourceType}
     )
 

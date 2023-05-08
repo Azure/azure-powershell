@@ -14,7 +14,7 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 
 ```
 New-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-OriginResponseTimeoutSecond <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-OriginResponseTimeoutSecond <Int32>] [-SkuName <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Name of the pricing tier.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SkuName
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

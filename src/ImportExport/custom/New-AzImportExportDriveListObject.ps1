@@ -69,7 +69,7 @@ function New-AzImportExportDriveListObject {
         ${PercentComplete},
         [Parameter(HelpMessage="The drive's current state.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Support.DriveState]
+        [System.String]
         ${State},
         [Parameter(HelpMessage="A URI that points to the blob containing the verbose log for the data transfer operation.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ImportExport.Category('Body')]

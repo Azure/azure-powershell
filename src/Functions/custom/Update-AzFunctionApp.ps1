@@ -60,9 +60,9 @@ function Update-AzFunctionApp {
             - UserAssigned
             - None
             ")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FunctionAppManagedServiceIdentityUpdateType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ManagedServiceIdentityType]
+        [System.String]
         ${IdentityType},
 
         [Parameter(HelpMessage="Specifies the list of user identities associated with the function app.

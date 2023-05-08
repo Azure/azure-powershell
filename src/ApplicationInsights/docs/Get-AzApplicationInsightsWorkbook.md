@@ -14,8 +14,8 @@ Get a single workbook by its resourceName.
 
 ### List (Default)
 ```
-Get-AzApplicationInsightsWorkbook -Category <CategoryType> [-SubscriptionId <String[]>] [-CanFetchContent]
- [-Tag <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsWorkbook -Category <String> [-SubscriptionId <String[]>] [-CanFetchContent]
+ [-Tag <List<String>>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -32,9 +32,9 @@ Get-AzApplicationInsightsWorkbook -InputObject <IApplicationInsightsIdentity> [-
 
 ### List1
 ```
-Get-AzApplicationInsightsWorkbook -ResourceGroupName <String> -Category <CategoryType>
- [-SubscriptionId <String[]>] [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzApplicationInsightsWorkbook -ResourceGroupName <String> -Category <String> [-SubscriptionId <String[]>]
+ [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <List<String>>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Category of workbook to return.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.CategoryType
+Type: System.String
 Parameter Sets: List, List1
 Aliases:
 
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 Tags presents on each workbook returned.
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: List, List1
 Aliases:
 
@@ -271,7 +271,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
+INPUTOBJECT <IApplicationInsightsIdentity>: Identity Parameter
   - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
   - `[ComponentName <String>]`: The name of the Application Insights component resource.
   - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
@@ -281,7 +281,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[ResourceName <String>]`: The name of the Application Insights component resource.
   - `[RevisionId <String>]`: The id of the workbook's revision.
-  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
+  - `[StorageType <String>]`: The type of the Application Insights component data source for the linked storage account.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 

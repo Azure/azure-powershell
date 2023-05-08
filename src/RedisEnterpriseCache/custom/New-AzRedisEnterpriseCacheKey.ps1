@@ -64,9 +64,9 @@ function New-AzRedisEnterpriseCacheKey {
         ${SubscriptionId},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.AccessKeyType]
+        [System.String]
         # Which access key to regenerate.
         ${KeyType},
 

@@ -13,9 +13,8 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name <DeliveryRuleAction>
- -ParameterHeaderAction <HeaderAction> -ParameterHeaderName <String> [-ParameterValue <String>]
- [<CommonParameters>]
+New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name <String> -ParameterHeaderAction <String>
+ -ParameterHeaderName <String> [-ParameterValue <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +41,7 @@ ModifyResponseHeader
 The name of the action for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.DeliveryRuleAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +56,7 @@ Accept wildcard characters: False
 Action to perform.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HeaderAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

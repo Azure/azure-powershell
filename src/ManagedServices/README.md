@@ -91,8 +91,8 @@ directive:
 
   # Generate memory object as parameter of the cmelet.
   - model-cmdlet:
-    - Authorization
-    - EligibleApprover
+    - model-name: Authorization
+    - model-name: EligibleApprover
     # Need custom that add ArgumentCompleterAttribute for JustInTimeAccessPolicyMultiFactorAuthProvider parameter.
     # - EligibleAuthorization
   

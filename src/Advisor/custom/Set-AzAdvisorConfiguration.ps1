@@ -57,9 +57,9 @@ function Set-AzAdvisorConfiguration {
     
         [Parameter(ParameterSetName='CreateByLCT')]
         [Parameter(ParameterSetName='CreateByInputObject')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold]
+        [System.String]
         # Minimum percentage threshold for Advisor low CPU utilization evaluation.
         # Valid only for subscriptions.
         # Valid values: 5 (default), 10, 15 or 20.

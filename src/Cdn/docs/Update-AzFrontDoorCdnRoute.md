@@ -16,24 +16,22 @@ Updates an existing route with the specified route name under the specified subs
 ```
 Update-AzFrontDoorCdnRoute -EndpointName <String> -Name <String> -ProfileName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-CacheConfigurationQueryParameter <String>]
- [-CacheConfigurationQueryStringCachingBehavior <AfdQueryStringCachingBehavior>]
+ [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
- [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <EnabledState>]
- [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
- [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <AfdEndpointProtocols[]>]
+ [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
+ [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
+ [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnRoute -InputObject <ICdnIdentity> [-CacheConfigurationQueryParameter <String>]
- [-CacheConfigurationQueryStringCachingBehavior <AfdQueryStringCachingBehavior>]
+ [-CacheConfigurationQueryStringCachingBehavior <String>]
  [-CompressionSettingContentTypesToCompress <String[]>] [-CompressionSettingIsCompressionEnabled]
- [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <EnabledState>]
- [-ForwardingProtocol <ForwardingProtocol>] [-HttpsRedirect <HttpsRedirect>]
- [-LinkToDefaultDomain <LinkToDefaultDomain>] [-OriginGroupId <String>] [-OriginPath <String>]
- [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <AfdEndpointProtocols[]>]
+ [-CustomDomain <IActivatedResourceReference[]>] [-EnabledState <String>] [-ForwardingProtocol <String>]
+ [-HttpsRedirect <String>] [-LinkToDefaultDomain <String>] [-OriginGroupId <String>] [-OriginPath <String>]
+ [-PatternsToMatch <String[]>] [-RuleSet <IResourceReference[]>] [-SupportedProtocol <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -92,7 +90,7 @@ Defines how Frontdoor caches requests that include query strings.
 You can ignore any query strings when caching, ignore specific query strings, cache every request with a unique URL, or cache specific query strings.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdQueryStringCachingBehavior
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +171,7 @@ Whether to enable use of this rule.
 Permitted values are 'Enabled' or 'Disabled'
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.EnabledState
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +201,7 @@ Accept wildcard characters: False
 Protocol this rule will use when forwarding traffic to backends.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ForwardingProtocol
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +217,7 @@ Whether to automatically redirect HTTP traffic to HTTPS traffic.
 Note that this is a easy way to set up this rule and it will be the first rule that gets executed.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.HttpsRedirect
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -250,7 +248,7 @@ Accept wildcard characters: False
 whether this route will be linked to the default endpoint domain.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LinkToDefaultDomain
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -402,7 +400,7 @@ Accept wildcard characters: False
 List of supported protocols for this route.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.AfdEndpointProtocols[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -464,10 +462,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`CUSTOMDOMAIN <IActivatedResourceReference[]>`: Domains referenced by this endpoint.
+CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
+INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
@@ -482,7 +480,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
-`RULESET <IResourceReference[]>`: rule sets referenced by this endpoint.
+RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS

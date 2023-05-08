@@ -33,7 +33,7 @@ function New-AzCostManagementQueryComparisonExpressionObject {
         [string]
         $Name,
         [Parameter(Mandatory, HelpMessage="The operator to use for comparison.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.CostManagement.Support.OperatorType]
+        [System.String]
         $Operator,
         [Parameter(Mandatory, HelpMessage="Array of values to use for comparison.")]
         [string[]]

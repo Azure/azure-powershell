@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewsaps4hanadatasourceobject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for SapS4HanaDataSource.
 ## SYNTAX
 
 ```
-New-AzPurviewSapS4HanaDataSourceObject -Kind <DataSourceType> [-ApplicationServer <String>]
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-SystemNumber <String>] [<CommonParameters>]
+New-AzPurviewSapS4HanaDataSourceObject [-ApplicationServer <String>] [-CollectionReferenceName <String>]
+ [-CollectionType <String>] [-SystemNumber <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,21 +84,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -49,7 +49,7 @@ subject-prefix: $(service-name)
 
 directive:
   - model-cmdlet:
-      - VirtualNetworkRule
+      - model-name: VirtualNetworkRule
   - where:
       model-name: ElasticSan|Volume|VolumeGroup
     set:

@@ -13,7 +13,7 @@ Create an in-memory object for CustomerCertificateParameters.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -Type <SecretType> [-SecretSourceId <String>]
+New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -Type <String> [-SecretSourceId <String>]
  [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-UseLatestVersion <Boolean>]
  [<CommonParameters>]
 ```
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The type of the secret resource.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.SecretType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

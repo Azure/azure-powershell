@@ -40,7 +40,7 @@ function New-AzConnectedNetworkInterfaceObject {
         [string]
         $Name,
         [Parameter(HelpMessage="The type of the VM switch.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Support.VMSwitchType]
+        [System.String]
         $VMSwitchType
     )
 

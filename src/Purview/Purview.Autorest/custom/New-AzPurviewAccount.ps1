@@ -57,9 +57,9 @@ function New-AzPurviewAccount {
         ${SubscriptionId},
     
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Type])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Type]
+        [System.String]
         # Identity Type
         ${IdentityType},
     
@@ -76,9 +76,9 @@ function New-AzPurviewAccount {
         ${ManagedResourceGroupName},
     
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.PublicNetworkAccess]
+        [System.String]
         # Gets or sets the public network access.
         ${PublicNetworkAccess},
     
@@ -90,9 +90,9 @@ function New-AzPurviewAccount {
         ${SkuCapacity},
     
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Name])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.Purview.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purview.Support.Name]
+        [System.String]
         # Gets or sets the sku name.
         ${SkuName},
     

@@ -122,9 +122,9 @@ param(
     ${CertBasedSecurityPrincipal},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Support.LedgerType]
+    [System.String]
     # Type of Confidential Ledger
     ${LedgerType},
 

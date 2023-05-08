@@ -225,9 +225,9 @@ function Update-AzKubernetesConfigurationFlux {
         ${RepositoryRefTag},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.KubernetesConfiguration.Support.SourceKindType]
+        [System.String]
         # Source Kind to pull the configuration data from.
         ${SourceKind},
 

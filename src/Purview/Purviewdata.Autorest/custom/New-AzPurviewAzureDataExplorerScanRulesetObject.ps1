@@ -40,12 +40,12 @@ function New-AzPurviewAzureDataExplorerScanRulesetObject {
         [string[]]
         $IncludedCustomClassificationRuleName,
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.DataSourceType]
+        
+        [System.String]
         $Kind,
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType]
+        
+        [System.String]
         $Type
     )
 

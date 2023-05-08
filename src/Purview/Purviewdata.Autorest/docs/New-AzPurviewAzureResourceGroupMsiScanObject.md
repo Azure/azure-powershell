@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureResourceGroupMsiScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-azpurviewazureresourcegroupmsiscanobject
 schema: 2.0.0
 ---
 
@@ -13,10 +13,10 @@ Create an in-memory object for AzureResourceGroupMsiScan.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureResourceGroupMsiScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
- [-CredentialType <CredentialType>] [-ResourceType <IExpandingResourceScanPropertiesResourceTypes>]
- [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-Worker <Int32>] [<CommonParameters>]
+New-AzPurviewAzureResourceGroupMsiScanObject [-CollectionReferenceName <String>] [-CollectionType <String>]
+ [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>] [-CredentialType <String>]
+ [-ResourceType <IExpandingResourceScanPropertiesResourceTypes>] [-ScanRulesetName <String>]
+ [-ScanRulesetType <String>] [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,26 +117,11 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.CredentialType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Kind
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanAuthorizationType
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -177,7 +162,7 @@ Accept wildcard characters: False
 
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Support.ScanRulesetType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -223,187 +208,187 @@ To create the parameters described below, construct a hash table containing the 
 
 RESOURCETYPE <IExpandingResourceScanPropertiesResourceTypes>: 
   - `[AdlGen1ScanRulesetName <String>]`: 
-  - `[AdlGen1ScanRulesetType <ScanRulesetType?>]`: 
+  - `[AdlGen1ScanRulesetType <String>]`: 
   - `[AdlGen2ScanRulesetName <String>]`: 
-  - `[AdlGen2ScanRulesetType <ScanRulesetType?>]`: 
+  - `[AdlGen2ScanRulesetType <String>]`: 
   - `[AdlsGen1CredentialReferenceName <String>]`: 
-  - `[AdlsGen1CredentialType <CredentialType?>]`: 
-  - `[AdlsGen1ResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AdlsGen1ResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AdlsGen1ResourceNameFilterResource <String[]>]`: 
+  - `[AdlsGen1CredentialType <String>]`: 
+  - `[AdlsGen1ResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AdlsGen1ResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AdlsGen1ResourceNameFilterResource <List<String>>]`: 
   - `[AdlsGen2CredentialReferenceName <String>]`: 
-  - `[AdlsGen2CredentialType <CredentialType?>]`: 
-  - `[AdlsGen2ResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AdlsGen2ResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AdlsGen2ResourceNameFilterResource <String[]>]`: 
+  - `[AdlsGen2CredentialType <String>]`: 
+  - `[AdlsGen2ResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AdlsGen2ResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AdlsGen2ResourceNameFilterResource <List<String>>]`: 
   - `[AmazonAccountCredentialReferenceName <String>]`: 
-  - `[AmazonAccountCredentialType <CredentialType?>]`: 
-  - `[AmazonAccountResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AmazonAccountResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AmazonAccountResourceNameFilterResource <String[]>]`: 
+  - `[AmazonAccountCredentialType <String>]`: 
+  - `[AmazonAccountResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AmazonAccountResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AmazonAccountResourceNameFilterResource <List<String>>]`: 
   - `[AmazonAccountScanRulesetName <String>]`: 
-  - `[AmazonAccountScanRulesetType <ScanRulesetType?>]`: 
+  - `[AmazonAccountScanRulesetType <String>]`: 
   - `[AmazonPostgreSqlCredentialReferenceName <String>]`: 
-  - `[AmazonPostgreSqlCredentialType <CredentialType?>]`: 
-  - `[AmazonPostgreSqlResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AmazonPostgreSqlResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AmazonPostgreSqlResourceNameFilterResource <String[]>]`: 
+  - `[AmazonPostgreSqlCredentialType <String>]`: 
+  - `[AmazonPostgreSqlResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AmazonPostgreSqlResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AmazonPostgreSqlResourceNameFilterResource <List<String>>]`: 
   - `[AmazonPostgreSqlScanRulesetName <String>]`: 
-  - `[AmazonPostgreSqlScanRulesetType <ScanRulesetType?>]`: 
+  - `[AmazonPostgreSqlScanRulesetType <String>]`: 
   - `[AmazonS3CredentialReferenceName <String>]`: 
-  - `[AmazonS3CredentialType <CredentialType?>]`: 
-  - `[AmazonS3ResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AmazonS3ResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AmazonS3ResourceNameFilterResource <String[]>]`: 
+  - `[AmazonS3CredentialType <String>]`: 
+  - `[AmazonS3ResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AmazonS3ResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AmazonS3ResourceNameFilterResource <List<String>>]`: 
   - `[AmazonS3ScanRulesetName <String>]`: 
-  - `[AmazonS3ScanRulesetType <ScanRulesetType?>]`: 
+  - `[AmazonS3ScanRulesetType <String>]`: 
   - `[AmazonSqlCredentialReferenceName <String>]`: 
-  - `[AmazonSqlCredentialType <CredentialType?>]`: 
-  - `[AmazonSqlResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AmazonSqlResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AmazonSqlResourceNameFilterResource <String[]>]`: 
+  - `[AmazonSqlCredentialType <String>]`: 
+  - `[AmazonSqlResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AmazonSqlResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AmazonSqlResourceNameFilterResource <List<String>>]`: 
   - `[AmazonSqlScanRulesetName <String>]`: 
-  - `[AmazonSqlScanRulesetType <ScanRulesetType?>]`: 
+  - `[AmazonSqlScanRulesetType <String>]`: 
   - `[AzureCosmoDbScanRulesetName <String>]`: 
-  - `[AzureCosmoDbScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureCosmoDbScanRulesetType <String>]`: 
   - `[AzureCosmosDbCredentialReferenceName <String>]`: 
-  - `[AzureCosmosDbCredentialType <CredentialType?>]`: 
-  - `[AzureCosmosDbResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureCosmosDbResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureCosmosDbResourceNameFilterResource <String[]>]`: 
+  - `[AzureCosmosDbCredentialType <String>]`: 
+  - `[AzureCosmosDbResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureCosmosDbResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureCosmosDbResourceNameFilterResource <List<String>>]`: 
   - `[AzureDataExplorerCredentialReferenceName <String>]`: 
-  - `[AzureDataExplorerCredentialType <CredentialType?>]`: 
-  - `[AzureDataExplorerResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureDataExplorerResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureDataExplorerResourceNameFilterResource <String[]>]`: 
+  - `[AzureDataExplorerCredentialType <String>]`: 
+  - `[AzureDataExplorerResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureDataExplorerResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureDataExplorerResourceNameFilterResource <List<String>>]`: 
   - `[AzureDataExplorerScanRulesetName <String>]`: 
-  - `[AzureDataExplorerScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureDataExplorerScanRulesetType <String>]`: 
   - `[AzureFileServiceCredentialReferenceName <String>]`: 
-  - `[AzureFileServiceCredentialType <CredentialType?>]`: 
-  - `[AzureFileServiceResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureFileServiceResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureFileServiceResourceNameFilterResource <String[]>]`: 
+  - `[AzureFileServiceCredentialType <String>]`: 
+  - `[AzureFileServiceResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureFileServiceResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureFileServiceResourceNameFilterResource <List<String>>]`: 
   - `[AzureFileServiceScanRulesetName <String>]`: 
-  - `[AzureFileServiceScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureFileServiceScanRulesetType <String>]`: 
   - `[AzureMySqlCredentialReferenceName <String>]`: 
-  - `[AzureMySqlCredentialType <CredentialType?>]`: 
-  - `[AzureMySqlResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureMySqlResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureMySqlResourceNameFilterResource <String[]>]`: 
+  - `[AzureMySqlCredentialType <String>]`: 
+  - `[AzureMySqlResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureMySqlResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureMySqlResourceNameFilterResource <List<String>>]`: 
   - `[AzureMySqlScanRulesetName <String>]`: 
-  - `[AzureMySqlScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureMySqlScanRulesetType <String>]`: 
   - `[AzurePostgreSqlCredentialReferenceName <String>]`: 
-  - `[AzurePostgreSqlCredentialType <CredentialType?>]`: 
-  - `[AzurePostgreSqlResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzurePostgreSqlResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzurePostgreSqlResourceNameFilterResource <String[]>]`: 
+  - `[AzurePostgreSqlCredentialType <String>]`: 
+  - `[AzurePostgreSqlResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzurePostgreSqlResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzurePostgreSqlResourceNameFilterResource <List<String>>]`: 
   - `[AzurePostgreSqlScanRulesetName <String>]`: 
-  - `[AzurePostgreSqlScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzurePostgreSqlScanRulesetType <String>]`: 
   - `[AzureResourceGroupCredentialReferenceName <String>]`: 
-  - `[AzureResourceGroupCredentialType <CredentialType?>]`: 
-  - `[AzureResourceGroupResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureResourceGroupResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureResourceGroupResourceNameFilterResource <String[]>]`: 
+  - `[AzureResourceGroupCredentialType <String>]`: 
+  - `[AzureResourceGroupResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureResourceGroupResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureResourceGroupResourceNameFilterResource <List<String>>]`: 
   - `[AzureResourceGroupScanRulesetName <String>]`: 
-  - `[AzureResourceGroupScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureResourceGroupScanRulesetType <String>]`: 
   - `[AzureSqlDataWarehouseCredentialReferenceName <String>]`: 
-  - `[AzureSqlDataWarehouseCredentialType <CredentialType?>]`: 
-  - `[AzureSqlDataWarehouseResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureSqlDataWarehouseResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureSqlDataWarehouseResourceNameFilterResource <String[]>]`: 
+  - `[AzureSqlDataWarehouseCredentialType <String>]`: 
+  - `[AzureSqlDataWarehouseResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureSqlDataWarehouseResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureSqlDataWarehouseResourceNameFilterResource <List<String>>]`: 
   - `[AzureSqlDataWarehouseScanRulesetName <String>]`: 
-  - `[AzureSqlDataWarehouseScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureSqlDataWarehouseScanRulesetType <String>]`: 
   - `[AzureSqlDatabaseCredentialReferenceName <String>]`: 
-  - `[AzureSqlDatabaseCredentialType <CredentialType?>]`: 
+  - `[AzureSqlDatabaseCredentialType <String>]`: 
   - `[AzureSqlDatabaseManagedInstanceCredentialReferenceName <String>]`: 
-  - `[AzureSqlDatabaseManagedInstanceCredentialType <CredentialType?>]`: 
-  - `[AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureSqlDatabaseManagedInstanceResourceNameFilterResource <String[]>]`: 
+  - `[AzureSqlDatabaseManagedInstanceCredentialType <String>]`: 
+  - `[AzureSqlDatabaseManagedInstanceResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureSqlDatabaseManagedInstanceResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureSqlDatabaseManagedInstanceResourceNameFilterResource <List<String>>]`: 
   - `[AzureSqlDatabaseManagedInstanceScanRulesetName <String>]`: 
-  - `[AzureSqlDatabaseManagedInstanceScanRulesetType <ScanRulesetType?>]`: 
-  - `[AzureSqlDatabaseResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureSqlDatabaseResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureSqlDatabaseResourceNameFilterResource <String[]>]`: 
+  - `[AzureSqlDatabaseManagedInstanceScanRulesetType <String>]`: 
+  - `[AzureSqlDatabaseResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureSqlDatabaseResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureSqlDatabaseResourceNameFilterResource <List<String>>]`: 
   - `[AzureSqlDatabaseScanRulesetName <String>]`: 
-  - `[AzureSqlDatabaseScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureSqlDatabaseScanRulesetType <String>]`: 
   - `[AzureStorageCredentialReferenceName <String>]`: 
-  - `[AzureStorageCredentialType <CredentialType?>]`: 
-  - `[AzureStorageResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureStorageResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureStorageResourceNameFilterResource <String[]>]`: 
+  - `[AzureStorageCredentialType <String>]`: 
+  - `[AzureStorageResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureStorageResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureStorageResourceNameFilterResource <List<String>>]`: 
   - `[AzureStorageScanRulesetName <String>]`: 
-  - `[AzureStorageScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureStorageScanRulesetType <String>]`: 
   - `[AzureSubscriptionCredentialReferenceName <String>]`: 
-  - `[AzureSubscriptionCredentialType <CredentialType?>]`: 
-  - `[AzureSubscriptionResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureSubscriptionResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureSubscriptionResourceNameFilterResource <String[]>]`: 
+  - `[AzureSubscriptionCredentialType <String>]`: 
+  - `[AzureSubscriptionResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureSubscriptionResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureSubscriptionResourceNameFilterResource <List<String>>]`: 
   - `[AzureSubscriptionScanRulesetName <String>]`: 
-  - `[AzureSubscriptionScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureSubscriptionScanRulesetType <String>]`: 
   - `[AzureSynapseCredentialReferenceName <String>]`: 
-  - `[AzureSynapseCredentialType <CredentialType?>]`: 
-  - `[AzureSynapseResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureSynapseResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureSynapseResourceNameFilterResource <String[]>]`: 
+  - `[AzureSynapseCredentialType <String>]`: 
+  - `[AzureSynapseResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureSynapseResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureSynapseResourceNameFilterResource <List<String>>]`: 
   - `[AzureSynapseScanRulesetName <String>]`: 
-  - `[AzureSynapseScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureSynapseScanRulesetType <String>]`: 
   - `[AzureSynapseWorkspaceCredentialReferenceName <String>]`: 
-  - `[AzureSynapseWorkspaceCredentialType <CredentialType?>]`: 
-  - `[AzureSynapseWorkspaceResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[AzureSynapseWorkspaceResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[AzureSynapseWorkspaceResourceNameFilterResource <String[]>]`: 
+  - `[AzureSynapseWorkspaceCredentialType <String>]`: 
+  - `[AzureSynapseWorkspaceResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[AzureSynapseWorkspaceResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[AzureSynapseWorkspaceResourceNameFilterResource <List<String>>]`: 
   - `[AzureSynapseWorkspaceScanRulesetName <String>]`: 
-  - `[AzureSynapseWorkspaceScanRulesetType <ScanRulesetType?>]`: 
+  - `[AzureSynapseWorkspaceScanRulesetType <String>]`: 
   - `[NoneCredentialReferenceName <String>]`: 
-  - `[NoneCredentialType <CredentialType?>]`: 
-  - `[NoneResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[NoneResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[NoneResourceNameFilterResource <String[]>]`: 
+  - `[NoneCredentialType <String>]`: 
+  - `[NoneResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[NoneResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[NoneResourceNameFilterResource <List<String>>]`: 
   - `[NoneScanRulesetName <String>]`: 
-  - `[NoneScanRulesetType <ScanRulesetType?>]`: 
+  - `[NoneScanRulesetType <String>]`: 
   - `[OracleCredentialReferenceName <String>]`: 
-  - `[OracleCredentialType <CredentialType?>]`: 
-  - `[OracleResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[OracleResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[OracleResourceNameFilterResource <String[]>]`: 
+  - `[OracleCredentialType <String>]`: 
+  - `[OracleResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[OracleResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[OracleResourceNameFilterResource <List<String>>]`: 
   - `[OracleScanRulesetName <String>]`: 
-  - `[OracleScanRulesetType <ScanRulesetType?>]`: 
+  - `[OracleScanRulesetType <String>]`: 
   - `[PowerBiCredentialReferenceName <String>]`: 
-  - `[PowerBiCredentialType <CredentialType?>]`: 
-  - `[PowerBiResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[PowerBiResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[PowerBiResourceNameFilterResource <String[]>]`: 
+  - `[PowerBiCredentialType <String>]`: 
+  - `[PowerBiResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[PowerBiResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[PowerBiResourceNameFilterResource <List<String>>]`: 
   - `[PowerBiScanRulesetName <String>]`: 
-  - `[PowerBiScanRulesetType <ScanRulesetType?>]`: 
+  - `[PowerBiScanRulesetType <String>]`: 
   - `[SapEccCredentialReferenceName <String>]`: 
-  - `[SapEccCredentialType <CredentialType?>]`: 
-  - `[SapEccResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[SapEccResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[SapEccResourceNameFilterResource <String[]>]`: 
+  - `[SapEccCredentialType <String>]`: 
+  - `[SapEccResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[SapEccResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[SapEccResourceNameFilterResource <List<String>>]`: 
   - `[SapEccScanRulesetName <String>]`: 
-  - `[SapEccScanRulesetType <ScanRulesetType?>]`: 
+  - `[SapEccScanRulesetType <String>]`: 
   - `[SapS4HanaCredentialReferenceName <String>]`: 
-  - `[SapS4HanaCredentialType <CredentialType?>]`: 
-  - `[SapS4HanaResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[SapS4HanaResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[SapS4HanaResourceNameFilterResource <String[]>]`: 
+  - `[SapS4HanaCredentialType <String>]`: 
+  - `[SapS4HanaResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[SapS4HanaResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[SapS4HanaResourceNameFilterResource <List<String>>]`: 
   - `[SapS4HanaScanRulesetName <String>]`: 
-  - `[SapS4HanaScanRulesetType <ScanRulesetType?>]`: 
+  - `[SapS4HanaScanRulesetType <String>]`: 
   - `[SqlServerDatabaseCredentialReferenceName <String>]`: 
-  - `[SqlServerDatabaseCredentialType <CredentialType?>]`: 
-  - `[SqlServerDatabaseResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[SqlServerDatabaseResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[SqlServerDatabaseResourceNameFilterResource <String[]>]`: 
+  - `[SqlServerDatabaseCredentialType <String>]`: 
+  - `[SqlServerDatabaseResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[SqlServerDatabaseResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[SqlServerDatabaseResourceNameFilterResource <List<String>>]`: 
   - `[SqlServerDatabaseScanRulesetName <String>]`: 
-  - `[SqlServerDatabaseScanRulesetType <ScanRulesetType?>]`: 
+  - `[SqlServerDatabaseScanRulesetType <String>]`: 
   - `[TeradataCredentialReferenceName <String>]`: 
-  - `[TeradataCredentialType <CredentialType?>]`: 
-  - `[TeradataResourceNameFilterExcludePrefix <String[]>]`: 
-  - `[TeradataResourceNameFilterIncludePrefix <String[]>]`: 
-  - `[TeradataResourceNameFilterResource <String[]>]`: 
+  - `[TeradataCredentialType <String>]`: 
+  - `[TeradataResourceNameFilterExcludePrefix <List<String>>]`: 
+  - `[TeradataResourceNameFilterIncludePrefix <List<String>>]`: 
+  - `[TeradataResourceNameFilterResource <List<String>>]`: 
   - `[TeradataScanRulesetName <String>]`: 
-  - `[TeradataScanRulesetType <ScanRulesetType?>]`: 
+  - `[TeradataScanRulesetType <String>]`: 
 
 ## RELATED LINKS
 

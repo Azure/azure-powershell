@@ -86,9 +86,9 @@ function New-AzVMwarePrivateCloud {
         ${Sku},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum])]
+        
         [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.InternetEnum]
+        [System.String]
         # Connectivity to internet is enabled or disabled
         ${Internet},
 

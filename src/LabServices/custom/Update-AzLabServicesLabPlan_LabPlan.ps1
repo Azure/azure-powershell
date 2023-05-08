@@ -42,33 +42,33 @@ param(
     ${DefaultAutoShutdownProfileNoConnectDelay},
     
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     ${DefaultAutoShutdownProfileShutdownOnDisconnect},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ShutdownOnIdleMode]
+    [System.String]
     ${DefaultAutoShutdownProfileShutdownOnIdle},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.EnableState]
+    [System.String]
     ${DefaultAutoShutdownProfileShutdownWhenNotConnected},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     ${DefaultConnectionProfileClientRdpAccessEnabled},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType])]
+    
     [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.ConnectionType]
+    [System.String]
     ${DefaultConnectionProfileClientSshAccessEnabled},
 
     [Parameter()]

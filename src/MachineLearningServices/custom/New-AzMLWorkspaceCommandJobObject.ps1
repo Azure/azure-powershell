@@ -37,8 +37,8 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $Command,
         [Parameter(HelpMessage="[Required] Specifies the type of distribution framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.DistributionType]
+        
+        [System.String]
         $DistributionType,
         [Parameter(Mandatory, HelpMessage="[Required] The ARM resource ID of the Environment specification for the job.")]
         [string]
@@ -75,8 +75,8 @@ function New-AzMLWorkspaceCommandJobObject {
         [string]
         $ExperimentName,
         [Parameter(HelpMessage="[Required] Specifies the type of identity framework.")]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.IdentityConfigurationType]
+        
+        [System.String]
         $IdentityType,
         [Parameter(HelpMessage="Is the asset archived?.")]
         [bool]

@@ -15,10 +15,9 @@ Create a new workbook.
 ```
 New-AzApplicationInsightsWorkbook -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-LinkedSourceId <String>] [-Category <String>] [-Description <String>]
- [-DisplayName <String>] [-Etag <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-SerializedData <String>] [-SourceId <String>]
- [-SourceTag <String[]>] [-StorageUri <String>] [-Tag <Hashtable>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-Etag <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-SerializedData <String>] [-SourceId <String>] [-SourceTag <String[]>] [-StorageUri <String>]
+ [-Tag <Hashtable>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +120,7 @@ Accept wildcard characters: False
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Support.ManagedServiceIdentityType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

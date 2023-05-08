@@ -10,7 +10,7 @@
         [Parameter(ParameterSetName="OriginalLocationILR", Mandatory, HelpMessage='Datasource Type')]
         [Parameter(ParameterSetName="RestoreAsFiles", Mandatory, HelpMessage='Datasource Type')]
         # [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='Datasource Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+        [System.String]
         ${DatasourceType},
 
         [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory, HelpMessage='DataStore Type of the Recovery point')]
@@ -18,7 +18,7 @@
         [Parameter(ParameterSetName="OriginalLocationILR", Mandatory, HelpMessage='DataStore Type of the Recovery point')]
         [Parameter(ParameterSetName="RestoreAsFiles", Mandatory, HelpMessage='DataStore Type of the Recovery point')]
         # [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='DataStore Type of the Recovery point')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType]
+        [System.String]
         ${SourceDataStore},
 
         [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory=$false, HelpMessage='Id of the recovery point to be restored.')]
@@ -66,7 +66,7 @@
         [Parameter(ParameterSetName="OriginalLocationILR", Mandatory, HelpMessage='Restore Target Type')]
         [Parameter(ParameterSetName="RestoreAsFiles", Mandatory, HelpMessage='Restore Target Type')]
         # [Parameter(ParameterSetName="AlternateLocationILR", Mandatory, HelpMessage='Restore Target Type')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.RestoreTargetType]
+        [System.String]
         ${RestoreType},     
 
         [Parameter(ParameterSetName="OriginalLocationFullRecovery", Mandatory, HelpMessage='Backup Instance object to trigger original localtion restore.')]
@@ -113,7 +113,7 @@
 
         [Parameter(Mandatory=$false, HelpMessage='Secret store type for secret store authentication of data source. This parameter is only supported for AzureDatabaseForPostgreSQL currently.')]
         [ValidateSet("AzureKeyVault")]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
+        [System.String]
         ${SecretStoreType}    
     )
 

@@ -14,13 +14,13 @@ Updates or creates the Azure Advisor Configuration.
 
 ### CreateByLCT (Default)
 ```
-Set-AzAdvisorConfiguration [-SubscriptionId <String>] [-Exclude] [-LowCpuThreshold <CpuThreshold>]
+Set-AzAdvisorConfiguration [-SubscriptionId <String>] [-Exclude] [-LowCpuThreshold <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateByInputObject
 ```
-Set-AzAdvisorConfiguration -InputObject <IAdvisorIdentity> [-Exclude] [-LowCpuThreshold <CpuThreshold>]
+Set-AzAdvisorConfiguration -InputObject <IAdvisorIdentity> [-Exclude] [-LowCpuThreshold <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -116,7 +116,7 @@ Valid only for subscriptions.
 Valid values: 5 (default), 10, 15 or 20.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Advisor.Support.CpuThreshold
+Type: System.String
 Parameter Sets: CreateByInputObject, CreateByLCT
 Aliases:
 
@@ -208,8 +208,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IAdvisorIdentity>`: Identity Parameter
-  - `[ConfigurationName <ConfigurationName?>]`: Advisor configuration name. Value must be 'default'
+INPUTOBJECT <IAdvisorIdentity>: Identity Parameter
+  - `[ConfigurationName <String>]`: Advisor configuration name. Value must be 'default'
   - `[Id <String>]`: Resource identity path
   - `[Name <String>]`: Name of metadata entity.
   - `[OperationId <String>]`: The operation ID, which can be found from the Location field in the generate recommendation response header.

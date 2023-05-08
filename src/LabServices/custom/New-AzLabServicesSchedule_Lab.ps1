@@ -38,7 +38,7 @@ function New-AzLabServicesSchedule_Lab {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency]
+        [System.String]
         ${RecurrencePatternFrequency},
     
         [Parameter()]
@@ -48,7 +48,7 @@ function New-AzLabServicesSchedule_Lab {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[]]
+        [System.String[]]
         ${RecurrencePatternWeekDay},
     
         [Parameter()]

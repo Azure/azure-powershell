@@ -13,8 +13,8 @@ Create an in-memory object for DeliveryRuleRequestMethodCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name <MatchVariable> [-ParameterMatchValue <String[]>]
- [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleRequestMethodConditionObject -Name <String> [-ParameterMatchValue <String[]>]
+ [-ParameterNegateCondition <Boolean>] [-ParameterTransform <String[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,7 @@ RequestMethod
 The name of the condition for the delivery rule.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.MatchVariable
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 List of transforms.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Transform[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
