@@ -295,12 +295,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         /// <returns>String Array</returns>
         private static string[] ListToArray(IList<string> stringList)
         {
-            string[] stringArray = new string[stringList.Count];
             if (null == stringList)
             {
-                return stringArray;
+                return null;
             }
 
+            string[] stringArray = new string[stringList.Count];
             stringList.CopyTo(stringArray, 0);
             return stringArray;
         }
