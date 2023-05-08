@@ -64,7 +64,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/ComputeRP/stable/2023-03-01/runCommand.json 
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/diskRPCommon.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/disk.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/crp-test-powershell/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/diskAccess.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/diskAccess.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/diskEncryptionSet.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/diskRestorePoint.json
   - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/compute/resource-manager/Microsoft.Compute/DiskRP/stable/2022-07-02/snapshot.json
