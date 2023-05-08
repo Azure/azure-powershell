@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies CORS rules for the File service.")]
         [ValidateNotNull]
-        public PSCorsRule[] CorsRules { get; set; }
+        public PSCorsRule[] CorsRule { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -253,11 +253,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                 }
                 fileServiceProperties.ProtocolSettings = protocolSettings;
 
-                if (this.CorsRules != null)
+                if (this.CorsRule != null)
                 {
                     PSCorsRules corsRules = new PSCorsRules
                     {
-                        CorsRulesProperty = this.CorsRules
+                        CorsRulesProperty = this.CorsRule
                     };
                     fileServiceProperties.Cors = corsRules.ParseCorsRules();
                 }

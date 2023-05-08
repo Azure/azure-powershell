@@ -17,7 +17,7 @@ Modifies the service properties for the Azure Storage File service.
 Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-CorsRules <PSCorsRule[]>]
+ [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccou
 Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-CorsRules <PSCorsRule[]>]
+ [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
 Update-AzStorageFileServiceProperty [-ResourceId] <String> [-EnableShareDeleteRetentionPolicy <Boolean>]
  [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>] [-SmbProtocolVersion <String[]>]
  [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
- [-SmbKerberosTicketEncryption <String[]>] [-CorsRules <PSCorsRule[]>]
+ [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -142,7 +142,7 @@ $CorsRules = (@{
     MaxAgeInSeconds=30;
     AllowedMethods=@("PUT")})
 
-$property = Update-AzStorageFileServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRules $CorsRules
+$property = Update-AzStorageFileServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule $CorsRules
 $property.Cors.CorsRulesProperty
 ```
 
@@ -159,12 +159,13 @@ MaxAgeInSeconds : 30
 ExposedHeaders  : {x-ms-meta-customheader, x-ms-meta-data*}
 AllowedHeaders  : {x-ms-meta-customheader, x-ms-meta-target*}
 ```
+
 The first command assigns an array of rules to the $CorsRules variable. This command uses standard extends over several lines in this code block.
 The second command sets the rules in $CorsRules to the File service of a Storage account.
 
 ## PARAMETERS
 
-### -CorsRules
+### -CorsRule
 Specifies CORS rules for the File service.
 
 ```yaml

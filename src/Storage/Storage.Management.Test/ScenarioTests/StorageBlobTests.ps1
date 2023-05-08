@@ -605,7 +605,7 @@ function Test-StorageBlobServiceProperties
 		Assert-AreEqual $false $property.DeleteRetentionPolicy.Enabled
 		Assert-AreEqual $null $property.DeleteRetentionPolicy.Days
 
-		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRules $CorsRules
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule $CorsRules
 		Assert-AreEqual "*" $property.Cors.CorsRulesProperty[0].AllowedOrigins
 		Assert-AreEqual "GET" $property.Cors.CorsRulesProperty[0].AllowedMethods[0]
 		Assert-AreEqual "CONNECT" $property.Cors.CorsRulesProperty[0].AllowedMethods[1]
@@ -627,7 +627,7 @@ function Test-StorageBlobServiceProperties
 		Assert-AreEqual "PUT" $property.Cors.CorsRulesProperty[1].AllowedMethods[0]
 		Assert-AreEqual 30 $property.Cors.CorsRulesProperty[1].MaxAgeInSeconds
 		
-		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRules @()
+		$property = Update-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule @()
 		Assert-AreEqual 0 $property.Cors.CorsRulesProperty.Count
 
 		$property = Get-AzStorageBlobServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname

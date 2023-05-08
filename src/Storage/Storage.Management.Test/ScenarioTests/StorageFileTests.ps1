@@ -433,7 +433,7 @@ function Test-FileServiceProperties
 		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.KerberosTicketEncryption
 		Assert-AreEqual $null $servicePropertie.ProtocolSettings.Smb.ChannelEncryption
 
-		$property = Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRules $CorsRules
+		$property = Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule $CorsRules
 		Assert-AreEqual "*" $property.Cors.CorsRulesProperty[0].AllowedOrigins
 		Assert-AreEqual "GET" $property.Cors.CorsRulesProperty[0].AllowedMethods[0]
 		Assert-AreEqual "CONNECT" $property.Cors.CorsRulesProperty[0].AllowedMethods[1]
@@ -455,7 +455,7 @@ function Test-FileServiceProperties
 		Assert-AreEqual "PUT" $property.Cors.CorsRulesProperty[1].AllowedMethods[0]
 		Assert-AreEqual 30 $property.Cors.CorsRulesProperty[1].MaxAgeInSeconds
 
-		$property = Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRules @()
+		$property = Update-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname -CorsRule @()
 		Assert-AreEqual 0 $property.Cors.CorsRulesProperty.Count
 
 		$property = Get-AzStorageFileServiceProperty -ResourceGroupName $rgname -StorageAccountName $stoname 

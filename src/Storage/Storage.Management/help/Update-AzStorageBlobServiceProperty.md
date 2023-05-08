@@ -16,7 +16,7 @@ Modifies the service properties for the Azure Storage Blob service.
 ```
 Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccountName] <String>
  [-DefaultServiceVersion <String>] [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>]
- [-IsVersioningEnabled <Boolean>] [-CorsRules <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-IsVersioningEnabled <Boolean>] [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzStorageBlobServiceProperty [-ResourceGroupName] <String> [-StorageAccou
 ```
 Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-CorsRules <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Update-AzStorageBlobServiceProperty -StorageAccount <PSStorageAccount> [-Default
 ```
 Update-AzStorageBlobServiceProperty [-ResourceId] <String> [-DefaultServiceVersion <String>]
  [-EnableChangeFeed <Boolean>] [-ChangeFeedRetentionInDays <Int32>] [-IsVersioningEnabled <Boolean>]
- [-CorsRules <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-CorsRule <PSCorsRule[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -119,7 +119,7 @@ $CorsRules = (@{
     MaxAgeInSeconds=30;
     AllowedMethods=@("PUT")})
 
-$property = Update-AzStorageBlobServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRules $CorsRules
+$property = Update-AzStorageBlobServiceProperty -ResourceGroupName myresourcegroup -StorageAccountName mystorageaccount -CorsRule $CorsRules
 $property.Cors.CorsRulesProperty
 ```
 
@@ -136,6 +136,7 @@ MaxAgeInSeconds : 30
 ExposedHeaders  : {x-ms-meta-customheader, x-ms-meta-data*}
 AllowedHeaders  : {x-ms-meta-customheader, x-ms-meta-target*}
 ```
+
 The first command assigns an array of rules to the $CorsRules variable. This command uses standard extends over several lines in this code block.
 The second command sets the rules in $CorsRules to the Blob service of a Storage account.
 
@@ -157,7 +158,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CorsRules
+### -CorsRule
 Specifies CORS rules for the Blob service.
 
 ```yaml
