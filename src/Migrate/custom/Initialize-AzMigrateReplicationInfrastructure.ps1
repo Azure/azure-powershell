@@ -452,17 +452,17 @@ public static int hashForArtifact(String artifact)
                 $kvspnid = Get-AzADServicePrincipal -DisplayName "Azure Key Vault"
                 $Id = ""
                 if($kvspnid -ne $null){
-                    $type = $kvspnid.GetType().BaseType
+                    $type = $kvspnid.GetType().BaseType
                     Write-Host $type.Name
                     if ($type.Name -eq "Array"){
-                        $Id = $kvspnid[0].Id
+                        $Id = $kvspnid[0].Id
                     }
                     else{
-                        $Id = $kvspnid.Id
+                         $Id = $kvspnid.Id
                     }
                 }
                 else{
-                    Write-Host "Unable to retrieve KV SPN Id"
+                    Write-Host "Unable to retrieve KV SPN Id"
                 }
                 Write-Host $Id
 
