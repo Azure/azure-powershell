@@ -471,35 +471,6 @@ $registerArcScript = {
 
         $DebugPreference = 'Continue'
 
-        $getManagementUrlScript = {
-            param (
-                [parameter(Mandatory=$true)]
-                [string] $EnvironmentName
-            )
-            if ($EnvironmentName -eq 'AzurePublicCloud')
-            {
-                $managementUrl = 'https://management.azure.com'
-            }
-            elseif ($EnvironmentName -eq 'AzureGermanCloud')
-            {
-                $managementUrl = 'https://management.microsoftazure.de'
-            }
-            elseif ($EnvironmentName -eq 'AzureChinaCloud')
-            {
-                $managementUrl = 'https://management.chinacloudapi.cn'
-            }
-            elseif ($EnvironmentName -eq 'AzureUSGovernmentCloud')
-            {
-                $managementUrl = 'https://management.usgovcloudapi.net'
-            }
-            else 
-            {
-                throw 'Invalid Azure Environment name'    
-            }
-            
-            return $managementUrl
-        }
-
         # Setup Directory.
         $LogFileDir = $env:windir + '\Tasks\ArcForServers'
         if (-Not $(Test-Path $LogFileDir))
