@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>Tier of a managed cluster SKU.</summary>
+    /// <summary>
+    /// If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+    /// for more details.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ManagedClusterSkuTierTypeConverter))]
     public partial struct ManagedClusterSkuTier :
         System.Management.Automation.IArgumentCompleter
@@ -26,9 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Paid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'Paid'", "Paid", global::System.Management.Automation.CompletionResultType.ParameterValue, "Paid");
+                yield return new global::System.Management.Automation.CompletionResult("'Standard'", "Standard", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Free".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {

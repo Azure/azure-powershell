@@ -14,7 +14,7 @@ Gets a Azure IpAllocation.
 
 ### GetByNameParameterSet
 ```
-Get-AzIpAllocation [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzIpAllocation -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Get-AzIpAllocation [-ResourceGroupName <String>] [-DefaultProfile <IAzureContext
 
 ### GetByResourceIdParameterSet
 ```
-Get-AzIpAllocation [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzIpAllocation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

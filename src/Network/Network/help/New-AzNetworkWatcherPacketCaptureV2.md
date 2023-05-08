@@ -14,28 +14,27 @@ V2 Version of Packet Capture Cmdlet which creates a new packet capture resource 
 
 ### SetByResource (Default)
 ```
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <String>
- -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
- [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>] [-TimeLimitInSecond <Int32>]
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <String> -TargetId <String>
+ [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
+ [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByName
 ```
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupName <String>
- -Name <String> -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>]
- [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>]
- [-TimeLimitInSecond <Int32>] [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>]
- [-Filter <PSPacketCaptureFilter[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupName <String> -Name <String>
+ -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
+ [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
+ [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
 New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId <String>
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
- [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>] [-TimeLimitInSecond <Int32>]
+ [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <UInt32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -205,7 +204,6 @@ Scope                   : {
                           }
 ```
 
-
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine scale set and on the respective instances in include scope adhering to the latest vmss model, to create packet captures.
 
@@ -301,6 +299,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The packet capture name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PacketCaptureName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -NetworkWatcher
 The network watcher resource.
 
@@ -322,27 +335,12 @@ The name of network watcher.
 ```yaml
 Type: System.String
 Parameter Sets: SetByName
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The packet capture name.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -455,7 +453,7 @@ Accept wildcard characters: False
 Total bytes per session.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
 Aliases:
 
@@ -515,7 +513,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
 
 [New-AzNetworkWatcher](./New-AzNetworkWatcher.md)
 

@@ -13,9 +13,8 @@ Creates a network manager scope.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerScope [-ManagementGroup <String[]>]
- [-Subscription <String[]>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzNetworkManagerScope [-ManagementGroup <String[]>] [-Subscription <String[]>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,11 +28,13 @@ $subgroup  = @("/subscriptions/00000000-0000-0000-0000-000000000000")
 $mggroup  = @("/providers/Microsoft.Management/managementGroups/PowerShellTest")
 New-AzNetworkManagerScope -Subscription $subgroup -ManagementGroup $mggroup
 ```
+
 ```output
 ManagementGroups                                                  Subscriptions                                         
 ----------------                                                  -------------                                         
 {/providers/Microsoft.Management/managementGroups/PowerShellTest} {/subscriptions/00000000-0000-0000-0000-000000000000}
 ```
+
 Creates a network manager scope with management group and subscription.
 
 ## PARAMETERS
@@ -42,7 +43,7 @@ Creates a network manager scope with management group and subscription.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -97,6 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzNetworkManager](./New-AzNetworkManager.md)
 
 [Get-AzNetworkManager](./Get-AzNetworkManager.md)

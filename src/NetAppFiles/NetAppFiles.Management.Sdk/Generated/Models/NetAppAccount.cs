@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="encryption">Encryption settings</param>
         /// <param name="disableShowmount">Shows the status of disableShowmount
         /// for all volumes under the subscription, null equals false</param>
-        /// <param name="identity">The identity of the resource.</param>
-        public NetAppAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), IList<ActiveDirectory> activeDirectories = default(IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), Identity identity = default(Identity))
+        /// <param name="identity">The identity used for the resource.</param>
+        public NetAppAccount(string location, string id = default(string), string name = default(string), string type = default(string), SystemData systemData = default(SystemData), IDictionary<string, string> tags = default(IDictionary<string, string>), string etag = default(string), string provisioningState = default(string), IList<ActiveDirectory> activeDirectories = default(IList<ActiveDirectory>), AccountEncryption encryption = default(AccountEncryption), bool? disableShowmount = default(bool?), ManagedServiceIdentity identity = default(ManagedServiceIdentity))
             : base(location, id, name, type, systemData, tags)
         {
             Etag = etag;
@@ -103,10 +103,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public bool? DisableShowmount { get; private set; }
 
         /// <summary>
-        /// Gets or sets the identity of the resource.
+        /// Gets or sets the identity used for the resource.
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
-        public Identity Identity { get; set; }
+        public ManagedServiceIdentity Identity { get; set; }
 
         /// <summary>
         /// Validate the object.

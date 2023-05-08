@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a resource name is available.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='name'>
         /// Resource name to verify.
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a file path is available.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='name'>
         /// File path to verify.
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Check if a quota is available.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='name'>
         /// Name of the resource to verify.
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// information.
         /// </remarks>
         /// <param name='location'>
-        /// The location
+        /// The name of Azure region.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

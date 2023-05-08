@@ -6,14 +6,17 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>
-    /// ScaleSetPriority to be used to specify virtual machine scale set priority. Default to regular.
-    /// </summary>
+    /// <summary>The Virtual Machine Scale Set priority.</summary>
     public partial struct ScaleSetPriority :
         System.IEquatable<ScaleSetPriority>
     {
+        /// <summary>Regular VMs will be used.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetPriority Regular = @"Regular";
 
+        /// <summary>
+        /// Spot priority VMs will be used. There is no SLA for spot nodes. See [spot on AKS](https://docs.microsoft.com/azure/aks/spot-node-pool)
+        /// for more information.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.ScaleSetPriority Spot = @"Spot";
 
         /// <summary>the value for an instance of the <see cref="ScaleSetPriority" /> Enum.</summary>

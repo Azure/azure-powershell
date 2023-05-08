@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.PowerShell.AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="26.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,6 +41,9 @@
     <Folder Include="RouteServerPeer\" />
   </ItemGroup>
   
+  <ItemGroup>
+    <ProjectReference Include="..\Network.Management.Sdk\Network.Management.Sdk.csproj" />
+  </ItemGroup>
 
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 

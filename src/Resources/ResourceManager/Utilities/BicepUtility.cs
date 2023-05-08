@@ -32,10 +32,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
         private const string MinimalVersionRequirementForBicepPublishWithOptionalDocumentationUriParameter = "0.14.46";
 
+        private const string MinimalVersionRequirementForBicepparamFileBuild = "0.16.1";
+
         public delegate void OutputCallback(string msg);
 
         public static bool IsBicepFile(string templateFilePath) =>
             ".bicep".Equals(Path.GetExtension(templateFilePath), StringComparison.OrdinalIgnoreCase);
+
+        public static bool IsBicepparamFile(string parametersFilePath) =>
+            ".bicepparam".Equals(Path.GetExtension(parametersFilePath), StringComparison.OrdinalIgnoreCase);
 
         public static string BuildFile(string bicepTemplateFilePath, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
         {
@@ -53,6 +58,27 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             if (!FileUtilities.DataStore.FileExists(buildResultPath))
             {
                 throw new AzPSApplicationException(string.Format(Properties.Resources.BuildBicepFileToJsonFailed, bicepTemplateFilePath));
+            }
+
+            return buildResultPath;
+        }
+
+        public static string BuildParamFile(string bicepParamFilePath, OutputCallback writeVerbose = null, OutputCallback writeWarning = null)
+        {
+            if (!FileUtilities.DataStore.FileExists(bicepParamFilePath))
+            {
+                throw new AzPSArgumentException(Properties.Resources.InvalidBicepparamFilePath, "TemplateParameterFile");
+            }
+
+            string tempDirectory = Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString());
+            Directory.CreateDirectory(tempDirectory);
+
+            string buildResultPath = Path.Combine(tempDirectory, Path.GetFileName(bicepParamFilePath)).Replace(".bicepparam", ".json");
+            RunBicepCommand($"bicep build-params '{bicepParamFilePath}' --outfile '{buildResultPath}'", MinimalVersionRequirementForBicepparamFileBuild, writeVerbose, writeWarning);
+
+            if (!FileUtilities.DataStore.FileExists(buildResultPath))
+            {
+                throw new AzPSApplicationException(string.Format(Properties.Resources.BuildBicepparamFileToJsonFailed, bicepParamFilePath));
             }
 
             return buildResultPath;

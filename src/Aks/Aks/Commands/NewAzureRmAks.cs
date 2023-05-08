@@ -31,6 +31,7 @@ using Microsoft.Azure.Management.ContainerService.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Aks
 {
@@ -111,6 +112,10 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Docker bridge cidr used for building Kubernetes network.")]
         public string DockerBridgeCidr { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The outbound (egress) routing method.")]
+        [PSArgumentCompleter("loadBalancer", "userDefinedRouting", "managedNATGateway", "userAssignedNATGateway")]
+        public string OutboundType { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The load balancer sku for the managed cluster.")]
         [PSArgumentCompleter("basic", "standard")]
         public string LoadBalancerSku { get; set; }
@@ -178,6 +183,9 @@ namespace Microsoft.Azure.Commands.Aks
 
         [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
         public string NodePodSubnetID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
 
         private AcsServicePrincipal acsServicePrincipal;
 
@@ -429,6 +437,11 @@ namespace Microsoft.Azure.Commands.Aks
                 managedCluster.ExtendedLocation = new ExtendedLocation(name: EdgeZone, type: "EdgeZone");
             }
 
+            if (EnableOidcIssuer.IsPresent)
+            {
+                managedCluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
+            }
+
             return managedCluster;
         }
 
@@ -458,6 +471,10 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.DockerBridgeCidr))
             {
                 networkProfile.DockerBridgeCidr = DockerBridgeCidr;
+            }
+            if (this.IsParameterBound(c => c.OutboundType))
+            {
+                networkProfile.OutboundType = OutboundType;
             }
             networkProfile.LoadBalancerProfile = CreateOrUpdateLoadBalancerProfile(null);
 

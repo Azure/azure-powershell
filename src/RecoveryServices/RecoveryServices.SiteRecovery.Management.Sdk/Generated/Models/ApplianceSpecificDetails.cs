@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Appliance specific details.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("ApplianceSpecificDetails")]
     public partial class ApplianceSpecificDetails
     {
         /// <summary>

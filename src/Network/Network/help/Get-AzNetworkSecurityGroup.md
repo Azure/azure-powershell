@@ -397,7 +397,7 @@ This command returns contents of Azure network security groups that start with "
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
@@ -412,6 +412,8 @@ Accept wildcard characters: False
 ```
 
 ### -ExpandResource
+The resource reference to be expanded.
+
 ```yaml
 Type: System.String
 Parameter Sets: Expand
@@ -498,5 +500,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzNetworkSecurityGroup](./Remove-AzNetworkSecurityGroup.md)
 
 [Set-AzNetworkSecurityGroup](./Set-AzNetworkSecurityGroup.md)
-
-

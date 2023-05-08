@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.4.0
+* Added cmdlet `New-AzAksMaintenanceConfiguration`, `Get-AzAksMaintenanceConfiguration`, `Remove-AzAksMaintenanceConfiguration`, `New-AzAksSnapshot`, `Get-AzAksSnapshot`, `Remove-AzAksSnapshot`, `Get-AzAksManagedClusterCommandResult`, `Get-AzAksManagedClusterOSOption`, `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`, `Invoke-AzAksAbortAgentPoolLatestOperation`, `Invoke-AzAksAbortManagedClusterLatestOperation`, `Invoke-AzAksRotateManagedClusterServiceAccountSigningKey`, `Start-AzAksManagedClusterCommand`, `New-AzAksTimeInWeekObject`, `New-AzAksTimeSpanObject`.
+* Added parameter `-OutboundType` for `New-AzAksCluster`
+* Added parameter `-EnableOidcIssuer` for `New-AzAksCluster` and `Set-AzAksCluster`
 * Added parameter `-NodePodSubnetID` for `New-AzAksCluster`, `-PodSubnetID` for `New-AzAksNodePool`
 
 ## Version 5.3.2
