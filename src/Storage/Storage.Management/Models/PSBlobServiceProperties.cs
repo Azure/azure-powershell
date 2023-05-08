@@ -17,6 +17,7 @@ using Microsoft.Azure.Management.Storage.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -260,6 +261,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string[] ExposedHeaders { get; set; }
         public string[] AllowedHeaders { get; set; }
 
+        private string[] AllowedMethodList = new string[] { "NONE", "GET", "HEAD", "POST", "PUT", "DELETE", "TRACE", "OPTIONS", "CONNECT", "MERGE", "PATCH" };
+
         public PSCorsRule()
         {
         }
@@ -277,11 +280,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             return new CorsRule
             {
-                AllowedOrigins = this.AllowedOrigins,
-                AllowedMethods = this.AllowedMethods,
+                AllowedOrigins = ArrayToList(this.AllowedOrigins),
+                AllowedMethods = ParseAllowedMethods(this.AllowedMethods),
                 MaxAgeInSeconds = this.MaxAgeInSeconds,
-                ExposedHeaders = this.ExposedHeaders,
-                AllowedHeaders = this.AllowedHeaders
+                ExposedHeaders = ArrayToList(this.ExposedHeaders),
+                AllowedHeaders = ArrayToList(this.AllowedHeaders)
             };
         }
 
@@ -292,14 +295,36 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         /// <returns>String Array</returns>
         private static string[] ListToArray(IList<string> stringList)
         {
+            string[] stringArray = new string[stringList.Count];
             if (null == stringList)
             {
-                return null;
+                return stringArray;
             }
 
-            string[] stringArray = new string[stringList.Count];
             stringList.CopyTo(stringArray, 0);
             return stringArray;
+        }
+
+        private List<string> ArrayToList(string[] stringArray)
+        {
+            return stringArray == null ? new List<string>() : new List<string>(stringArray);
+        }
+
+        private List<string> ParseAllowedMethods(string[] allowedMethods)
+        {
+            List<string> methods = new List<string>();
+            foreach(string method in allowedMethods)
+            {
+                if (AllowedMethodList.Contains(method.ToUpper())) {
+                    methods.Add(method.ToUpper());
+                } 
+                else
+                {
+                    throw new InvalidOperationException(string.Format("{0} is an invalid HTTP method.", method));
+                }
+            }
+            return methods;
+
         }
     }
 

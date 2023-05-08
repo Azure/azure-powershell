@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported setting CORS rules in management plane cmdlets 
+    - `Update-AzStorageBlobServiceProperty`
+    - `Update-AzStorageFileServiceProperty`
 
 ## Version 5.6.0
 * Supported rename file and directory
