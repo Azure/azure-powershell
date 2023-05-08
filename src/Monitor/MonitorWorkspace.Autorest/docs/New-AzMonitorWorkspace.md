@@ -30,9 +30,9 @@ Create or update a workspace
 
 ## EXAMPLES
 
-### Example 1: Create or update a workspace
+### Example 1: Create or update a workspace.
 ```powershell
-New-AzMonitorWorkspace -Name azps_monitor_workspace -ResourceGroupName azps_test_group -Location eastus
+New-AzMonitorWorkspace -Name azps-monitor-workspace -ResourceGroupName azps_test_group -Location eastus
 ```
 
 ```output
@@ -41,7 +41,7 @@ Name                   Location ProvisioningState PublicNetworkAccess ResourceGr
 azps-monitor-workspace eastus   Succeeded         Enabled             azps_test_group
 ```
 
-Create or update a workspace
+Create or update a workspace.
 
 ## PARAMETERS
 
