@@ -27,7 +27,7 @@ ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/
 #>
 function New-AzKustoDatabase {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.IDatabase])]
-    [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Path')]
@@ -56,26 +56,26 @@ function New-AzKustoDatabase {
         # The subscription ID forms part of the URI for every service call.
         ${SubscriptionId},
 
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('ReadWrite') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # Kind of the database
         ${Kind},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.TimeSpan]
         # The time the data should be kept in cache for fast queries in TimeSpan.
         ${HotCachePeriod},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.TimeSpan]
         # The time the data should be kept before it stops being accessible to queries in TimeSpan.
         ${SoftDeletePeriod},
 
-        [Parameter()]
+        [Parameter(ParameterSetName='CreateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
         [System.String]
         # Resource location.
