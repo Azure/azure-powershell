@@ -13,29 +13,24 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzWvdStartMenuItem' {
     It 'List' {
-        $applicationGroup = New-AzWvdApplicationGroup -SubscriptionId $env.SubscriptionId `
-                                    -ResourceGroupName $env.ResourceGroup `
-                                    -Name 'ApplicationGroupPowershell1' `
-                                    -Location $env.Location `
-                                    -FriendlyName 'fri' `
-                                    -Description 'des' `
-                                    -HostPoolArmPath '/subscriptions/292d7caa-a878-4de8-b774-689097666272/resourcegroups/datr-canadaeast/providers/Microsoft.DesktopVirtualization/hostPools/HostPoolPowershell1' `
-                                    -ApplicationGroupType 'RemoteApp'
-        
-        $startMenuItems = Get-AzWvdStartMenuItem -SubscriptionId $env.SubscriptionId `
-                                    -ResourceGroupName $env.ResourceGroup `
-                                    -ApplicationGroupName 'ApplicationGroupPowershell1'
+        try{
+            $startMenuItems = Get-AzWvdStartMenuItem -SubscriptionId $env.SubscriptionId `
+                                        -ResourceGroupName $env.ResourceGroupPersistent `
+                                        -ApplicationGroupName $env.PersistentDesktopAppGroup
 
-        $paint = $startMenuItems | Where-Object -Property Name -Match 'Paint'
-            $paint[0].Name | Should -Be 'ApplicationGroupPowershell1/Paint'
-            $paint[0].FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
-            $paint[0].IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
-            $paint[0].IconIndex | Should -Be 0
-        
-        $paint = $startMenuItems | Where-Object -Property Name -Match 'Snip'
-            $paint[0].Name | Should -Be 'ApplicationGroupPowershell1/Snipping Tool'
-            $paint[0].FilePath | Should -Be 'C:\windows\system32\SnippingTool.exe'
-            $paint[0].IconPath | Should -Be 'C:\windows\system32\SnippingTool.exe'
-            $paint[0].IconIndex | Should -Be 0
+            $paint = $startMenuItems | Where-Object -Property Name -Match 'Paint'
+                $paint[0].Name | Should -Be 'alecbUserSessionHP-DAG/Paint'
+                $paint[0].FilePath | Should -Be 'C:\windows\system32\mspaint.exe'
+                $paint[0].IconPath | Should -Be 'C:\windows\system32\mspaint.exe'
+                $paint[0].IconIndex | Should -Be 0
+
+            $paint = $startMenuItems | Where-Object -Property Name -Match 'Snip'
+                $paint[0].Name | Should -Be 'alecbUserSessionHP-DAG/Snipping Tool'
+                $paint[0].FilePath | Should -Be 'C:\windows\system32\SnippingTool.exe'
+                $paint[0].IconPath | Should -Be 'C:\windows\system32\SnippingTool.exe'
+                $paint[0].IconIndex | Should -Be 0
+        }
+        finally{
+        }
     }
 }

@@ -40,10 +40,10 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// account</param>
         /// <param name="creationTime">The creation time of the restorable
         /// database account (ISO-8601 format).</param>
-        /// <param name="oldestRestorableTime">The least recent time at which
-        /// the database account can be restored to (ISO-8601 format).</param>
         /// <param name="deletionTime">The time at which the restorable
         /// database account has been deleted (ISO-8601 format).</param>
+        /// <param name="oldestRestorableTime">The least recent time at which
+        /// the database account can be restored to (ISO-8601 format).</param>
         /// <param name="apiType">The API type of the restorable database
         /// account. Possible values include: 'MongoDB', 'Gremlin',
         /// 'Cassandra', 'Table', 'Sql', 'GremlinV2'</param>
@@ -55,12 +55,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="type">The type of Azure resource.</param>
         /// <param name="location">The location of the resource group to which
         /// the resource belongs.</param>
-        public RestorableDatabaseAccountGetResult(string accountName = default(string), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? oldestRestorableTime = default(System.DateTime?), System.DateTime? deletionTime = default(System.DateTime?), string apiType = default(string), IList<RestorableLocationResource> restorableLocations = default(IList<RestorableLocationResource>), string id = default(string), string name = default(string), string type = default(string), string location = default(string))
+        public RestorableDatabaseAccountGetResult(string accountName = default(string), System.DateTime? creationTime = default(System.DateTime?), System.DateTime? deletionTime = default(System.DateTime?), System.DateTime? oldestRestorableTime = default(System.DateTime?), string apiType = default(string), IList<RestorableLocationResource> restorableLocations = default(IList<RestorableLocationResource>), string id = default(string), string name = default(string), string type = default(string), string location = default(string))
         {
             AccountName = accountName;
             CreationTime = creationTime;
-            OldestRestorableTime = oldestRestorableTime;
             DeletionTime = deletionTime;
+            OldestRestorableTime = oldestRestorableTime;
             ApiType = apiType;
             RestorableLocations = restorableLocations;
             Id = id;
@@ -89,18 +89,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public System.DateTime? CreationTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the least recent time at which the database account
-        /// can be restored to (ISO-8601 format).
-        /// </summary>
-        [JsonProperty(PropertyName = "properties.oldestRestorableTime")]
-        public System.DateTime? OldestRestorableTime { get; set; }
-
-        /// <summary>
         /// Gets or sets the time at which the restorable database account has
         /// been deleted (ISO-8601 format).
         /// </summary>
         [JsonProperty(PropertyName = "properties.deletionTime")]
         public System.DateTime? DeletionTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the least recent time at which the database account
+        /// can be restored to (ISO-8601 format).
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.oldestRestorableTime")]
+        public System.DateTime? OldestRestorableTime { get; set; }
 
         /// <summary>
         /// Gets the API type of the restorable database account. Possible

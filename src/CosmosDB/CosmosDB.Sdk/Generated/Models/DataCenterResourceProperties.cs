@@ -72,12 +72,16 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// Default value is Standard_DS14_v2</param>
         /// <param name="diskSku">Disk SKU used for data centers. Default value
         /// is P30.</param>
-        /// <param name="diskCapacity">Number of disk used for data centers.
-        /// Default value is 4.</param>
+        /// <param name="diskCapacity">Number of disks attached to each node.
+        /// Default is 4.</param>
         /// <param name="availabilityZone">If the data center has Availability
-        /// Zone feature, apply it to the Virtual Machine ScaleSet that host
+        /// Zone support, apply it to the Virtual Machine ScaleSet that host
         /// the cassandra data center virtual machines.</param>
-        public DataCenterResourceProperties(string provisioningState = default(string), string dataCenterLocation = default(string), string delegatedSubnetId = default(string), int? nodeCount = default(int?), IList<SeedNode> seedNodes = default(IList<SeedNode>), string base64EncodedCassandraYamlFragment = default(string), string managedDiskCustomerKeyUri = default(string), string backupStorageCustomerKeyUri = default(string), string sku = default(string), string diskSku = default(string), int? diskCapacity = default(int?), bool? availabilityZone = default(bool?), AuthenticationMethodLdapProperties authenticationMethodLdapProperties = default(AuthenticationMethodLdapProperties))
+        /// <param name="deallocated">Whether the data center has been
+        /// deallocated.</param>
+        /// <param name="provisionError">Error related to resource
+        /// provisioning.</param>
+        public DataCenterResourceProperties(string provisioningState = default(string), string dataCenterLocation = default(string), string delegatedSubnetId = default(string), int? nodeCount = default(int?), IList<SeedNode> seedNodes = default(IList<SeedNode>), string base64EncodedCassandraYamlFragment = default(string), string managedDiskCustomerKeyUri = default(string), string backupStorageCustomerKeyUri = default(string), string sku = default(string), string diskSku = default(string), int? diskCapacity = default(int?), bool? availabilityZone = default(bool?), AuthenticationMethodLdapProperties authenticationMethodLdapProperties = default(AuthenticationMethodLdapProperties), bool? deallocated = default(bool?), CassandraError provisionError = default(CassandraError))
         {
             ProvisioningState = provisioningState;
             DataCenterLocation = dataCenterLocation;
@@ -92,6 +96,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
             DiskCapacity = diskCapacity;
             AvailabilityZone = availabilityZone;
             AuthenticationMethodLdapProperties = authenticationMethodLdapProperties;
+            Deallocated = deallocated;
+            ProvisionError = provisionError;
             CustomInit();
         }
 
@@ -185,14 +191,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string DiskSku { get; set; }
 
         /// <summary>
-        /// Gets or sets number of disk used for data centers. Default value is
-        /// 4.
+        /// Gets or sets number of disks attached to each node. Default is 4.
         /// </summary>
         [JsonProperty(PropertyName = "diskCapacity")]
         public int? DiskCapacity { get; set; }
 
         /// <summary>
-        /// Gets or sets if the data center has Availability Zone feature,
+        /// Gets or sets if the data center has Availability Zone support,
         /// apply it to the Virtual Machine ScaleSet that host the cassandra
         /// data center virtual machines.
         /// </summary>
@@ -203,6 +208,18 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "authenticationMethodLdapProperties")]
         public AuthenticationMethodLdapProperties AuthenticationMethodLdapProperties { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether the data center has been deallocated.
+        /// </summary>
+        [JsonProperty(PropertyName = "deallocated")]
+        public bool? Deallocated { get; set; }
+
+        /// <summary>
+        /// Gets or sets error related to resource provisioning.
+        /// </summary>
+        [JsonProperty(PropertyName = "provisionError")]
+        public CassandraError ProvisionError { get; set; }
 
     }
 }

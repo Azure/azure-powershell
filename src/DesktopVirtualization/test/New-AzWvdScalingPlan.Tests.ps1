@@ -11,39 +11,65 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-# TODO: Use this because we have limited Arm rollout for this feature, change to use $env.Location and $env.ResourceGroup
-#$resourceGroup = $env.ResourceGroup
-#$resourceLocation = $env.Location
-$resourceGroup = 'jehurren-westcentralus'
-$resourceLocation = 'westcentralus'
-
 Describe 'New-AzWvdScalingPlan' {
     It 'CreateExpanded' {
         try {
             [System.Threading.Thread]::CurrentThread.CurrentCulture = 'en-US'
+            $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                            -ResourceGroupName $env.ResourceGroup `
+                            -Name $env.HostPool `
+                            -Location $env.Location `
+                            -HostPoolType 'Shared' `
+                            -LoadBalancerType 'DepthFirst' `
+                            -RegistrationTokenOperation 'Update' `
+                            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+                            -Description 'des' `
+                            -FriendlyName 'fri' `
+                            -MaxSessionLimit 5 `
+                            -VMTemplate $null `
+                            -CustomRdpProperty $null `
+                            -Ring $null `
+                            -ValidationEnvironment:$false `
+                            -PreferredAppGroupType 'Desktop'
+
+<#             $Role = New-AzRoleAssignment -ResourceGroupName $env.ResourceGroup `
+                                 -ResourceType 'Microsoft.DesktopVirtualization/HostPools' `
+                                 -RoleDefinitionName "Contributor" `
+                                 -ServicePrincipalName '9cdead84-a844-4324-93f2-b2e6bb768d07' `
+                                 -ResourceName $env.HostPool #>
+
             $scalingPlan = New-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
-                -Name 'ScalingPlanPowershellContained1' `
-                -Location $resourceLocation `
+                -ResourceGroupName $env.ResourceGroup `
+                -Name $env.HostPool `
+                -Location $env.Location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
                 -HostPoolType 'Pooled' `
-                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -TimeZone 'Pacific Standard Time' `
                 -Schedule @(
                     @{
                         'name'                           = 'Work Week';
                         'daysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
 
-                        'rampUpStartTime'                = '1900-01-01T06:00:00Z';
+                        'rampUpStartTime'                = @{
+                                                                'hour' = 6
+                                                                'minute' = 0
+                                                            };
                         'rampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
                         'rampUpMinimumHostsPct'          = 20;
                         'rampUpCapacityThresholdPct'     = 20;
 
-                        'peakStartTime'                  = '1900-01-01T08:00:00Z';
+                        'peakStartTime'                  = @{
+                                                                'hour' = 8
+                                                                'minute' = 30
+                                                            };
                         'peakLoadBalancingAlgorithm'     = 'DepthFirst';
 
-                        'RampDownStartTime'              = '1900-01-01T18:00:00Z';
+                        'RampDownStartTime'              = @{
+                                                                'hour' = 16
+                                                                'minute' = 15
+                                                            };
                         'rampDownLoadBalancingAlgorithm' = 'BreadthFirst';
                         'rampDownMinimumHostsPct'        = 20;
                         'rampDownCapacityThresholdPct'   = 20;
@@ -52,33 +78,39 @@ Describe 'New-AzWvdScalingPlan' {
                         'rampDownNotificationMessage'    = 'Log out now, please.';
                         'rampDownStopHostsWhen'          = 'ZeroSessions';
 
-                        'offPeakStartTime'               = '1900-01-01T20:00:00Z';
+                        'offPeakStartTime'               = @{
+                                                                'hour' = 18
+                                                                'minute' = 0
+                                                            };
                         'offPeakLoadBalancingAlgorithm'  = 'DepthFirst';
                     }
                 ) `
                 -HostPoolReference @(
                     @{
-                        'hostPoolArmPath' = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$resourceGroup/providers/Microsoft.DesktopVirtualization/hostPools/hp-test";
+                        'hostPoolArmPath' = $env.HostPoolArmPath;
                         'scalingPlanEnabled' = $false;
                     }
                 )
 
-            $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Name | Should -Be $env.HostPool
+            $scalingPlan.Location | Should -Be $env.Location
             $scalingPlan.Description | Should -Be 'desc'
             $scalingPlan.FriendlyName | Should -Be 'fri'
             $scalingPlan.HostPoolType | Should -Be 'Pooled'
-            $scalingPlan.TimeZone | Should -Be '(UTC-08:00) Pacific Time (US & Canada)'
+            $scalingPlan.TimeZone | Should -Be 'Pacific Standard Time'
             $scalingPlan.Schedule.Count | Should -Be 1
             $scalingPlan.Schedule[0].Name | Should -Be 'Work Week'
             $scalingPlan.Schedule[0].daysOfWeek | Should -Be @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday')
             $scalingPlan.Schedule[0].rampUpLoadBalancingAlgorithm | Should -Be 'BreadthFirst'
-            $scalingPlan.Schedule[0].rampUpStartTime.ToLongTimeString() | Should -Be '6:00:00 AM'
+            $scalingPlan.Schedule[0].RampUpStartTimeHour | Should -Be '6'
+            $scalingPlan.Schedule[0].RampUpStartTimeMinute | Should -Be '0'
             $scalingPlan.Schedule[0].rampUpMinimumHostsPct | Should -Be 20
             $scalingPlan.Schedule[0].rampUpCapacityThresholdPct | Should -Be 20
-            $scalingPlan.Schedule[0].peakStartTime.ToLongTimeString() | Should -Be '8:00:00 AM'
+            $scalingPlan.Schedule[0].peakStartTimeHour | Should -Be '8'
+            $scalingPlan.Schedule[0].peakStartTimeMinute | Should -Be '30'
             $scalingPlan.Schedule[0].peakLoadBalancingAlgorithm | Should -Be 'DepthFirst'
-            $scalingPlan.Schedule[0].RampDownStartTime.ToLongTimeString() | Should -Be '6:00:00 PM'
+            $scalingPlan.Schedule[0].RampDownStartTimeHour | Should -Be '16'
+            $scalingPlan.Schedule[0].RampDownStartTimeMinute | Should -Be '15'
             $scalingPlan.Schedule[0].rampDownLoadBalancingAlgorithm | Should -Be 'BreadthFirst'
             $scalingPlan.Schedule[0].rampDownMinimumHostsPct | Should -Be 20
             $scalingPlan.Schedule[0].rampDownCapacityThresholdPct | Should -Be 20
@@ -86,24 +118,29 @@ Describe 'New-AzWvdScalingPlan' {
             $scalingPlan.Schedule[0].rampDownWaitTimeMinute | Should -Be 30
             $scalingPlan.Schedule[0].rampDownNotificationMessage | Should -Be 'Log out now, please.'
             $scalingPlan.Schedule[0].rampDownStopHostsWhen | Should -Be 'ZeroSessions'
-            $scalingPlan.Schedule[0].offPeakStartTime.ToLongTimeString() | Should -Be '8:00:00 PM'
+            $scalingPlan.Schedule[0].OffPeakStartTimeHour | Should -Be '18'
+            $scalingPlan.Schedule[0].OffPeakStartTimeMinute | Should -Be '0'
             $scalingPlan.Schedule[0].offPeakLoadBalancingAlgorithm | Should -Be 'DepthFirst'
             $scalingPlan.HostPoolReference.Count | Should -Be 1
-            $scalingPlan.HostPoolReference[0].HostPoolArmPath | Should -Be "/subscriptions/$($env.SubscriptionId)/resourceGroups/$resourceGroup/providers/Microsoft.DesktopVirtualization/hostPools/hp-test"
+            $scalingPlan.HostPoolReference[0].HostPoolArmPath | Should -Be $env.HostPoolArmPath
             $scalingPlan.HostPoolReference[0].ScalingPlanEnabled | Should -Be $false
 
             $scalingPlan = Get-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
-                -Name 'ScalingPlanPowershellContained1'
+                -ResourceGroupName $env.ResourceGroup `
+                -Name $env.HostPool
 
-            $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
+            $scalingPlan.Name | Should -Be $env.HostPool
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `
                 -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
-                -Name 'ScalingPlanPowershellContained1'
+                -ResourceGroupName $env.ResourceGroup `
+                -Name $env.HostPool
+
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                            -ResourceGroupName $env.ResourceGroup `
+                            -Name $env.HostPool
         }
     }
 }

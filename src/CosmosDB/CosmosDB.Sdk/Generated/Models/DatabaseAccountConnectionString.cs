@@ -35,10 +35,19 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// string</param>
         /// <param name="description">Description of the connection
         /// string</param>
-        public DatabaseAccountConnectionString(string connectionString = default(string), string description = default(string))
+        /// <param name="keyKind">Kind of the connection string key. Possible
+        /// values include: 'Primary', 'Secondary', 'PrimaryReadonly',
+        /// 'SecondaryReadonly'</param>
+        /// <param name="type">Type of the connection string. Possible values
+        /// include: 'Sql', 'Table', 'MongoDB', 'Cassandra',
+        /// 'CassandraConnectorMetadata', 'Gremlin', 'SqlDedicatedGateway',
+        /// 'GremlinV2', 'Undefined'</param>
+        public DatabaseAccountConnectionString(string connectionString = default(string), string description = default(string), string keyKind = default(string), string type = default(string))
         {
             ConnectionString = connectionString;
             Description = description;
+            KeyKind = keyKind;
+            Type = type;
             CustomInit();
         }
 
@@ -58,6 +67,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "description")]
         public string Description { get; private set; }
+
+        /// <summary>
+        /// Gets kind of the connection string key. Possible values include:
+        /// 'Primary', 'Secondary', 'PrimaryReadonly', 'SecondaryReadonly'
+        /// </summary>
+        [JsonProperty(PropertyName = "keyKind")]
+        public string KeyKind { get; private set; }
+
+        /// <summary>
+        /// Gets type of the connection string. Possible values include: 'Sql',
+        /// 'Table', 'MongoDB', 'Cassandra', 'CassandraConnectorMetadata',
+        /// 'Gremlin', 'SqlDedicatedGateway', 'GremlinV2', 'Undefined'
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

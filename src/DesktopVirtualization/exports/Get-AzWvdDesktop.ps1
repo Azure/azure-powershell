@@ -27,9 +27,7 @@ Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName Appl
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.IDesktopVirtualizationIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IDesktop
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IDesktopList
+Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IDesktop
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,6 +42,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   [MsixPackageFullName <String>]: The version specific package full name of the MSIX package within specified hostpool
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScalingPlanName <String>]: The name of the scaling plan.
+  [ScalingPlanScheduleName <String>]: The name of the ScalingPlanSchedule
   [SessionHostName <String>]: The name of the session host within the specified host pool
   [SubscriptionId <String>]: The ID of the target subscription.
   [UserSessionId <String>]: The name of the user session within the specified session host
@@ -52,7 +51,7 @@ INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvddesktop
 #>
 function Get-AzWvdDesktop {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IDesktop], [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IDesktopList])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202209.IDesktop])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -92,12 +91,31 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
+    [System.Int32]
+    # Initial number of items to skip.
+    ${InitialSkip},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Indicates whether the collection is descending.
+    ${IsDescending},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Query')]
+    [System.Int32]
+    # Number of items per page.
+    ${PageSize},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -149,7 +167,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

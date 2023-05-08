@@ -1,7 +1,6 @@
-### Example 1: Delete a Windows Virtual Desktop Registration Token
+### Example 1: Remove Registration Info
 ```powershell
-Remove-AzWvdRegistrationInfo -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+Remove-AzWvdRegistrationInfo -resourceGroupName rgName -hostpoolName hpName
 ```
 
-This command deletes a Windows Virtual Desktop Registration Token in a Host Pool.
-
+Removes Registration Info from a HostPool

@@ -1,0 +1,23 @@
+{
+  "RemoteApplicationGroup": "ApplicationGroupPowershell2",
+  "ResourceGroupPersistent": "alecbTestingPersistent",
+  "RemoteApplicationGroupPath": "/subscriptions/151b29b3-6b72-4b77-ad86-d785ada500b6/resourcegroups/alecbTesting-wus2/providers/Microsoft.DesktopVirtualization/applicationgroups/ApplicationGroupPowershell2",
+  "PersistentRemoteAppGroup": "HostPoolPowershellPersistent2-RAG",
+  "DesktopApplicationGroupPath": "/subscriptions/151b29b3-6b72-4b77-ad86-d785ada500b6/resourcegroups/alecbTesting-wus2/providers/Microsoft.DesktopVirtualization/applicationgroups/ApplicationGroupPowershell1",
+  "ResourceGroup": "alecbTesting-wus2",
+  "HostPoolArmPath": "/subscriptions/151b29b3-6b72-4b77-ad86-d785ada500b6/resourcegroups/alecbTesting-wus2/providers/Microsoft.DesktopVirtualization/hostpools/HostPoolPowershellContained1",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "SessionHostNameRemove": "PwshVM-1",
+  "SubscriptionId": "151b29b3-6b72-4b77-ad86-d785ada500b6",
+  "HostPoolPersistent": "HostPoolPowershellPersistent1",
+  "HostPool2": "HostPoolPowershellContained2",
+  "PersistentDesktopAppGroup": "HostPoolPowershellPersistent1-DAG",
+  "HostPoolPersistent2": "HostPoolPowershellPersistent2",
+  "Location": "westus2",
+  "DesktopApplicationGroup": "ApplicationGroupPowershell1",
+  "HostPoolPersistentArmPath": "/subscriptions/151b29b3-6b72-4b77-ad86-d785ada500b6/resourcegroups/alecbTestingPersistent/providers/Microsoft.DesktopVirtualization/hostpools/HostPoolPowershellPersistent1",
+  "MSIXImagePath": "C:\\msix\\putty.vhdx",
+  "SessionHostName": "PwshVM-0",
+  "HostPoolArmPath2": "/subscriptions/151b29b3-6b72-4b77-ad86-d785ada500b6/resourcegroups/alecbTesting-wus2/providers/Microsoft.DesktopVirtualization/hostpools/HostPoolPowershellContained2",
+  "HostPool": "HostPoolPowershellContained1"
+}

@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed `New-AzADApplication` when multiple redirect url types are provided. [#21108]
 * Fixed `Update-AzADServicePrincipal` when empty array passed for `IdentifierUri` [#21345]
 * Fixed an issue where location header was missing in the response from the service for New-AzManagedApplication.
 

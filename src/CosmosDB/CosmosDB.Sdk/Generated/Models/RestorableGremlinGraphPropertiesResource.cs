@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="_rid">A system generated property. A unique
         /// identifier.</param>
         /// <param name="operationType">The operation type of this graph event.
-        /// Possible values include: 'Create', 'Replace', 'Delete', 'Recreate',
+        /// Possible values include: 'Create', 'Replace', 'Delete',
         /// 'SystemOperation'</param>
         /// <param name="eventTimestamp">The time when this graph event
         /// happened.</param>
@@ -64,8 +64,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
 
         /// <summary>
         /// Gets the operation type of this graph event. Possible values
-        /// include: 'Create', 'Replace', 'Delete', 'Recreate',
-        /// 'SystemOperation'
+        /// include: 'Create', 'Replace', 'Delete', 'SystemOperation'
         /// </summary>
         [JsonProperty(PropertyName = "operationType")]
         public string OperationType { get; private set; }
