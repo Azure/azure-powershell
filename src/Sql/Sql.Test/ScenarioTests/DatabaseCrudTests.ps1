@@ -732,6 +732,43 @@ function Test-UpdateDatabaseWithMaintenanceConfigurationId
 
 <#
 	.SYNOPSIS
+	Tests updating a database with preferred enclave type
+#>
+function Test-UpdateDatabaseWithPreferredEnclaveType()
+{
+	# Setup
+	$location = "eastus2euap"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	# Create vcore database
+	$databaseName = Get-DatabaseName
+	$db = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen5_2 -Edition GeneralPurpose -PreferredEnclaveType Default -Force
+	Assert-AreEqual $databaseName $db.DatabaseName
+	Assert-AreEqual Default $db.PreferredEnclaveType
+
+	try
+	{
+		# Alter with preferred enclave type - VBS
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -PreferredEnclaveType VBS
+		Assert-AreEqual VBS $db1.PreferredEnclaveType
+
+		# Test piping - Default PreferredEnclaveType
+		$db1 = $db1 | Set-AzSqlDatabase -PreferredEnclaveType Default
+		Assert-AreEqual Default $db1.PreferredEnclaveType
+
+		# Test piping - VBS PreferredEnclaveType
+		$db1 = $db1 | Set-AzSqlDatabase -PreferredEnclaveType VBS
+		Assert-AreEqual VBS $db1.PreferredEnclaveType
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests updating a vcore database
 #>
 function Test-UpdateServerlessDatabase()
