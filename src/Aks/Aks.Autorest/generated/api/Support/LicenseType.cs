@@ -7,13 +7,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
     /// <summary>
-    /// The licenseType to use for Windows VMs. Windows_Server is used to enable Azure Hybrid User Benefits for Windows VMs.
+    /// The license type to use for Windows VMs. See [Azure Hybrid User Benefits](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)
+    /// for more details.
     /// </summary>
     public partial struct LicenseType :
         System.IEquatable<LicenseType>
     {
+        /// <summary>No additional licensing is applied.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.LicenseType None = @"None";
 
+        /// <summary>Enables Azure Hybrid User Benefits for Windows VMs.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.LicenseType WindowsServer = @"Windows_Server";
 
         /// <summary>the value for an instance of the <see cref="LicenseType" /> Enum.</summary>

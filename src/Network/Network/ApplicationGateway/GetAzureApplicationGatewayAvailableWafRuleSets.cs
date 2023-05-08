@@ -25,7 +25,7 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("Get-AzApplicationGatewayAvailableWafRuleSets alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Get-AzApplicationGatewayAvailableWafRuleSets alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSet"), OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
     [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableWafRuleSets", "Get-AzApplicationGatewayAvailableWafRuleSets")]
     public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet

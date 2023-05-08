@@ -8,31 +8,24 @@ schema: 2.0.0
 # Update-AzMobileNetworkSlice
 
 ## SYNOPSIS
-Updates slice tags.
+Updates slice.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzMobileNetworkSlice -MobileNetworkName <String> -ResourceGroupName <String> -SliceName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzMobileNetworkSlice -InputObject <IMobileNetworkIdentity> [-Tag <Hashtable>]
+ -SnssaiSst <Int32> [-SubscriptionId <String>] [-Description <String>] [-SnssaiSd <String>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates slice tags.
+Updates slice.
 
 ## EXAMPLES
 
-### Example 1: Updates slice tags.
+### Example 1: Updates slice.
 ```powershell
-Update-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Tag @{"abc"="123"}
+Update-AzMobileNetworkSlice -MobileNetworkName azps-mn -ResourceGroupName azps_test_group -SliceName azps-mn-slice -Tag @{"abc"="123"} -SnssaiSst 1
 ```
 
 ```output
@@ -41,12 +34,13 @@ Location Name          ResourceGroupName ProvisioningState SnssaiSst SnssaiSd
 eastus   azps-mn-slice azps_test_group   Succeeded         1         1abcde
 ```
 
-Updates slice tags.
+Updates slice.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -60,19 +54,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Description
+An optional description for this network slice.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -81,7 +74,7 @@ The name of the mobile network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -97,7 +90,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -112,7 +105,37 @@ The name of the network slice.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnssaiSd
+Slice differentiator (SD).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnssaiSst
+Slice/service type (SST).
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -127,7 +150,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -197,28 +220,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
-  - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
-  - `[DataNetworkName <String>]`: The name of the data network.
-  - `[Id <String>]`: Resource identity path
-  - `[MobileNetworkName <String>]`: The name of the mobile network.
-  - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
-  - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  - `[SimGroupName <String>]`: The name of the SIM Group.
-  - `[SimName <String>]`: The name of the SIM.
-  - `[SimPolicyName <String>]`: The name of the SIM policy.
-  - `[SiteName <String>]`: The name of the mobile network site.
-  - `[SliceName <String>]`: The name of the network slice.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VersionName <String>]`: The name of the packet core control plane version.
 
 ## RELATED LINKS
 

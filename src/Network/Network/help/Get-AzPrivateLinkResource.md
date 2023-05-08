@@ -90,7 +90,6 @@ The private link resource type.
 Type: System.String
 Parameter Sets: ByResource
 Aliases:
-Accepted values:
 
 Required: False
 Position: Named

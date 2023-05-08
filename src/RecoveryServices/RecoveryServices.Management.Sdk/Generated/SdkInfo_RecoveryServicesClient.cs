@@ -19,17 +19,17 @@ namespace Microsoft.Azure.Management.RecoveryServices
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("RecoveryServices", "GetOperationResult", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "GetOperationStatus", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "Operations", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "PrivateLinkResources", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "RecoveryServices", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "RegisteredIdentities", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "ReplicationUsages", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "Usages", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "VaultCertificates", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "VaultExtendedInfo", "2022-10-01"),
-                new Tuple<string, string, string>("RecoveryServices", "Vaults", "2022-10-01"),
+                new Tuple<string, string, string>("RecoveryServices", "GetOperationResult", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "GetOperationStatus", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "Operations", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "PrivateLinkResources", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "RecoveryServices", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "RegisteredIdentities", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "ReplicationUsages", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "Usages", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "VaultCertificates", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "VaultExtendedInfo", "2023-02-01"),
+                new Tuple<string, string, string>("RecoveryServices", "Vaults", "2023-02-01"),
               }.AsEnumerable();
           }
       }

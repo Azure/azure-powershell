@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "Whether to use use Uptime SLA.")]
         public SwitchParameter EnableUptimeSLA { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Whether to enalbe OIDC issuer feature.")]
+        public SwitchParameter EnableOidcIssuer { get; set; }
+
         private ManagedCluster BuildNewCluster()
         {
             BeforeBuildNewCluster();
@@ -419,6 +422,10 @@ namespace Microsoft.Azure.Commands.Aks
                     if (this.IsParameterBound(c => c.AadProfile))
                     {
                         cluster.AadProfile = AadProfile;
+                    }
+                    if (EnableOidcIssuer.IsPresent)
+                    {
+                        cluster.OidcIssuerProfile = new ManagedClusterOIDCIssuerProfile(enabled: true);
                     }
                     SetIdentity(cluster);
 

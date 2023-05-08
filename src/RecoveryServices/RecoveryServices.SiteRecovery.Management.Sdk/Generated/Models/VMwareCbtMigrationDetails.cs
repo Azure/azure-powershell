@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="vmwareMachineId">The ARM Id of the VM discovered in
         /// VMware.</param>
         /// <param name="osType">The type of the OS on the VM.</param>
+        /// <param name="osName">The name of the OS on the VM.</param>
         /// <param name="firmwareType">The firmware type.</param>
         /// <param name="targetGeneration">The target generation.</param>
         /// <param name="licenseType">License Type of the VM to be
@@ -59,6 +60,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// zone.</param>
         /// <param name="targetProximityPlacementGroupId">The target proximity
         /// placement group Id.</param>
+        /// <param name="confidentialVmKeyVaultId">The confidential VM key
+        /// vault Id for ADE installation.</param>
+        /// <param name="targetVmSecurityProfile">The target VM security
+        /// profile.</param>
         /// <param name="targetBootDiagnosticsStorageAccountId">The target boot
         /// diagnostics storage account ARM Id.</param>
         /// <param name="targetVmTags">The target VM tags.</param>
@@ -94,10 +99,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// resync is to be done.</param>
         /// <param name="seedDiskTags">The tags for the seed disks.</param>
         /// <param name="targetDiskTags">The tags for the target disks.</param>
-        public VMwareCbtMigrationDetails(string vmwareMachineId = default(string), string osType = default(string), string firmwareType = default(string), string targetGeneration = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), string dataMoverRunAsAccountId = default(string), string snapshotRunAsAccountId = default(string), string storageAccountId = default(string), string targetVmName = default(string), string targetVmSize = default(string), string targetLocation = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string targetBootDiagnosticsStorageAccountId = default(string), IDictionary<string, string> targetVmTags = default(IDictionary<string, string>), IList<VMwareCbtProtectedDiskDetails> protectedDisks = default(IList<VMwareCbtProtectedDiskDetails>), string targetNetworkId = default(string), string testNetworkId = default(string), IList<VMwareCbtNicDetails> vmNics = default(IList<VMwareCbtNicDetails>), IDictionary<string, string> targetNicTags = default(IDictionary<string, string>), string migrationRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialSeedingProgressPercentage = default(int?), int? migrationProgressPercentage = default(int?), int? resyncProgressPercentage = default(int?), int? resumeProgressPercentage = default(int?), long? initialSeedingRetryCount = default(long?), long? resyncRetryCount = default(long?), long? resumeRetryCount = default(long?), string resyncRequired = default(string), string resyncState = default(string), string performAutoResync = default(string), IDictionary<string, string> seedDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetDiskTags = default(IDictionary<string, string>))
+        /// <param name="supportedOSVersions">List of supported inplace OS
+        /// Upgrade versions.</param>
+        public VMwareCbtMigrationDetails(string vmwareMachineId = default(string), string osType = default(string), string osName = default(string), string firmwareType = default(string), string targetGeneration = default(string), string licenseType = default(string), string sqlServerLicenseType = default(string), string dataMoverRunAsAccountId = default(string), string snapshotRunAsAccountId = default(string), string storageAccountId = default(string), string targetVmName = default(string), string targetVmSize = default(string), string targetLocation = default(string), string targetResourceGroupId = default(string), string targetAvailabilitySetId = default(string), string targetAvailabilityZone = default(string), string targetProximityPlacementGroupId = default(string), string confidentialVmKeyVaultId = default(string), VMwareCbtSecurityProfileProperties targetVmSecurityProfile = default(VMwareCbtSecurityProfileProperties), string targetBootDiagnosticsStorageAccountId = default(string), IDictionary<string, string> targetVmTags = default(IDictionary<string, string>), IList<VMwareCbtProtectedDiskDetails> protectedDisks = default(IList<VMwareCbtProtectedDiskDetails>), string targetNetworkId = default(string), string testNetworkId = default(string), IList<VMwareCbtNicDetails> vmNics = default(IList<VMwareCbtNicDetails>), IDictionary<string, string> targetNicTags = default(IDictionary<string, string>), string migrationRecoveryPointId = default(string), System.DateTime? lastRecoveryPointReceived = default(System.DateTime?), string lastRecoveryPointId = default(string), int? initialSeedingProgressPercentage = default(int?), int? migrationProgressPercentage = default(int?), int? resyncProgressPercentage = default(int?), int? resumeProgressPercentage = default(int?), long? initialSeedingRetryCount = default(long?), long? resyncRetryCount = default(long?), long? resumeRetryCount = default(long?), string resyncRequired = default(string), string resyncState = default(string), string performAutoResync = default(string), IDictionary<string, string> seedDiskTags = default(IDictionary<string, string>), IDictionary<string, string> targetDiskTags = default(IDictionary<string, string>), IList<string> supportedOSVersions = default(IList<string>))
         {
             VmwareMachineId = vmwareMachineId;
             OsType = osType;
+            OsName = osName;
             FirmwareType = firmwareType;
             TargetGeneration = targetGeneration;
             LicenseType = licenseType;
@@ -112,6 +120,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             TargetAvailabilitySetId = targetAvailabilitySetId;
             TargetAvailabilityZone = targetAvailabilityZone;
             TargetProximityPlacementGroupId = targetProximityPlacementGroupId;
+            ConfidentialVmKeyVaultId = confidentialVmKeyVaultId;
+            TargetVmSecurityProfile = targetVmSecurityProfile;
             TargetBootDiagnosticsStorageAccountId = targetBootDiagnosticsStorageAccountId;
             TargetVmTags = targetVmTags;
             ProtectedDisks = protectedDisks;
@@ -134,6 +144,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
             PerformAutoResync = performAutoResync;
             SeedDiskTags = seedDiskTags;
             TargetDiskTags = targetDiskTags;
+            SupportedOSVersions = supportedOSVersions;
             CustomInit();
         }
 
@@ -153,6 +164,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "osType")]
         public string OsType { get; private set; }
+
+        /// <summary>
+        /// Gets the name of the OS on the VM.
+        /// </summary>
+        [JsonProperty(PropertyName = "osName")]
+        public string OsName { get; private set; }
 
         /// <summary>
         /// Gets the firmware type.
@@ -238,6 +255,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "targetProximityPlacementGroupId")]
         public string TargetProximityPlacementGroupId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the confidential VM key vault Id for ADE installation.
+        /// </summary>
+        [JsonProperty(PropertyName = "confidentialVmKeyVaultId")]
+        public string ConfidentialVmKeyVaultId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target VM security profile.
+        /// </summary>
+        [JsonProperty(PropertyName = "targetVmSecurityProfile")]
+        public VMwareCbtSecurityProfileProperties TargetVmSecurityProfile { get; set; }
 
         /// <summary>
         /// Gets or sets the target boot diagnostics storage account ARM Id.
@@ -371,6 +400,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "targetDiskTags")]
         public IDictionary<string, string> TargetDiskTags { get; set; }
+
+        /// <summary>
+        /// Gets or sets list of supported inplace OS Upgrade versions.
+        /// </summary>
+        [JsonProperty(PropertyName = "supportedOSVersions")]
+        public IList<string> SupportedOSVersions { get; set; }
 
     }
 }

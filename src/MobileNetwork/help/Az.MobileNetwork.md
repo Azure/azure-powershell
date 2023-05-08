@@ -146,29 +146,29 @@ Deletes the specified network slice.
 Updates mobile network tags.
 
 ### [Update-AzMobileNetworkAttachedDataNetwork](Update-AzMobileNetworkAttachedDataNetwork.md)
-Updates an attached data network tags.
+Updates an attached data network.
 
 ### [Update-AzMobileNetworkDataNetwork](Update-AzMobileNetworkDataNetwork.md)
-Updates data network tags.
+Updates data network.
 
 ### [Update-AzMobileNetworkPacketCoreControlPlane](Update-AzMobileNetworkPacketCoreControlPlane.md)
-Updates packet core control planes tags.
+Updates packet core control planes.
 
 ### [Update-AzMobileNetworkPacketCoreDataPlane](Update-AzMobileNetworkPacketCoreDataPlane.md)
-Updates packet core data planes tags.
+Updates packet core data planes.
 
 ### [Update-AzMobileNetworkService](Update-AzMobileNetworkService.md)
-Updates service tags.
+Updates service.
 
 ### [Update-AzMobileNetworkSimGroup](Update-AzMobileNetworkSimGroup.md)
-Updates SIM group tags.
+Updates SIM group.
 
 ### [Update-AzMobileNetworkSimPolicy](Update-AzMobileNetworkSimPolicy.md)
-Updates SIM policy tags.
+Updates SIM policy.
 
 ### [Update-AzMobileNetworkSite](Update-AzMobileNetworkSite.md)
 Updates site tags.
 
 ### [Update-AzMobileNetworkSlice](Update-AzMobileNetworkSlice.md)
-Updates slice tags.
+Updates slice.
 

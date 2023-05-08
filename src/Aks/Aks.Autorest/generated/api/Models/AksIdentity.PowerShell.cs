@@ -71,6 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -83,6 +87,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName, global::System.Convert.ToString);
             }
+            if (content.Contains("CommandId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName, global::System.Convert.ToString);
+            }
             if (content.Contains("AgentPoolName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
@@ -90,10 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
@@ -120,6 +128,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
             if (content.Contains("ResourceGroupName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
@@ -132,6 +144,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName = (string) content.GetValueForProperty("RoleName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).RoleName, global::System.Convert.ToString);
             }
+            if (content.Contains("CommandId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId = (string) content.GetValueForProperty("CommandId",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).CommandId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName = (string) content.GetValueForProperty("ConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).ConfigName, global::System.Convert.ToString);
+            }
             if (content.Contains("AgentPoolName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
@@ -139,10 +159,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             if (content.Contains("PrivateEndpointConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName = (string) content.GetValueForProperty("PrivateEndpointConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).PrivateEndpointConnectionName, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IAksIdentityInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {

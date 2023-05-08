@@ -4,6 +4,14 @@ param (
     [string] $RunPlatform,
 
     [Parameter(Mandatory)]
+    [ValidateNotNullOrEmpty()]
+    [string] $RunPowerShell,
+
+    [Parameter(Mandatory)]
+    [ValidateNotNullOrEmpty()]
+    [string] $PowerShellLatest,
+
+    [Parameter(Mandatory)]
     [ValidateScript({ Test-Path -LiteralPath $_ -PathType Container })]
     [string] $RepoLocation,
 
@@ -12,12 +20,23 @@ param (
     [string] $DataLocation
 )
 
+if ($RunPowerShell -eq "latest") {
+    $curPSVer = (Get-Variable -Name PSVersionTable -ValueOnly).PSVersion
+    $curMajorVer = $curPSVer.Major
+    $curMinorVer = $curPSVer.Minor
+    $curSimpleVer = "$curMajorVer.$curMinorVer"
+    if ($curSimpleVer -eq $PowerShellLatest) {
+        Write-Host "##[section]Skipping live tests for PowerShell $curSimpleVer as it has already been explicitly specified in the pipeline." -ForegroundColor Green
+        return
+    }
+}
+
 $srcDir = Join-Path -Path $RepoLocation -ChildPath "src"
 $liveScenarios = Get-ChildItem -Path $srcDir -Directory -Exclude "Accounts" | Get-ChildItem -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
 $liveScenarios | ForEach-Object {
     $moduleName = [regex]::match($_, "[\\|\/]src[\\|\/](?<ModuleName>[a-zA-Z]+)[\\|\/]").Groups["ModuleName"].Value
     Import-Module "./tools/TestFx/Assert.ps1" -Force
-    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $DataLocation -Force
+    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList $moduleName, $RunPlatform, $PowerShellLatest, $DataLocation -Force
     . $_
 }
 
@@ -25,7 +44,7 @@ $accountsDir = Join-Path -Path $srcDir -ChildPath "Accounts"
 $accountsLiveScenario = Get-ChildItem -Path $accountsDir -Directory -Filter "LiveTests" -Recurse | Get-ChildItem -File -Filter "TestLiveScenarios.ps1" | Select-Object -ExpandProperty FullName
 if ($null -ne $accountsLiveScenario) {
     Import-Module "./tools/TestFx/Assert.ps1" -Force
-    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, $DataLocation -Force
+    Import-Module "./tools/TestFx/Live/LiveTestUtility.psd1" -ArgumentList "Accounts", $RunPlatform, $PowerShellLatest, $DataLocation -Force
     . $accountsLiveScenario
 }
 

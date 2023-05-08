@@ -6,12 +6,20 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>AgentPoolMode represents mode of an agent pool.</summary>
+    /// <summary>
+    /// A cluster must have at least one 'System' Agent Pool at all times. For additional information on agent pool restrictions
+    /// and best practices, see: https://docs.microsoft.com/azure/aks/use-system-pools
+    /// </summary>
     public partial struct AgentPoolMode :
         System.IEquatable<AgentPoolMode>
     {
+        /// <summary>
+        /// System agent pools are primarily for hosting critical system pods such as CoreDNS and metrics-server. System agent pools
+        /// osType must be Linux. System agent pools VM SKU must have at least 2vCPUs and 4GB of memory.
+        /// </summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode System = @"System";
 
+        /// <summary>User agent pools are primarily for hosting your application pods.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.AgentPoolMode User = @"User";
 
         /// <summary>the value for an instance of the <see cref="AgentPoolMode" /> Enum.</summary>

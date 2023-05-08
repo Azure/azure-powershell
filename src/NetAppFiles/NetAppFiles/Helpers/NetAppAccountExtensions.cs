@@ -44,14 +44,32 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             };
         }
 
-        public static PSIdentity ConvertToPs(this Identity identity)
-        {            
-            return new PSIdentity
+
+        public static PSManagedServiceIdentity ConvertToPs(this ManagedServiceIdentity identity)
+        {
+            return new PSManagedServiceIdentity
             {
-                PrincipalId = identity.PrincipalId,
+                PrincipalId = identity.PrincipalId.ToString(),
                 TenantId = identity.TenantId,
                 Type = identity.Type,
                 UserAssignedIdentities = identity.UserAssignedIdentities?.ConvertToPs()
+            };
+        }
+
+        public static PSEncryptionIdentity ConvertToPs(this EncryptionIdentity identity)
+        {            
+            return new PSEncryptionIdentity
+            {
+                PrincipalId = identity.PrincipalId,
+                UserAssignedIdentity = identity.UserAssignedIdentity
+            };
+        }
+
+        public static EncryptionIdentity ConvertFromPs(this PSEncryptionIdentity encryptionIdentity)
+        {
+            return new EncryptionIdentity(principalId: encryptionIdentity.PrincipalId)
+            {
+                UserAssignedIdentity = encryptionIdentity.UserAssignedIdentity
             };
         }
 
@@ -69,10 +87,47 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         {
             return new PSUserAssignedIdentity
             {
-                ClientId = identity.ClientId,
-                PrincipalId = identity.PrincipalId                
+                ClientId = identity.ClientId.ToString(),
+                PrincipalId = identity.PrincipalId.ToString()
             };
         }
+
+        public static IDictionary<string, UserAssignedIdentity> ConvertFromPs(this IDictionary<string, PSUserAssignedIdentity> uaIdentities)
+        {
+            var userAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+            foreach (var uaIdentity in uaIdentities)
+            {
+                userAssignedIdentities.Add(uaIdentity.Key, uaIdentity.Value.ConvertFromPs());
+            }
+            return userAssignedIdentities;
+        }
+
+        public static UserAssignedIdentity ConvertFromPs(this PSUserAssignedIdentity userAssignedIdentity)
+        {
+            if (!Guid.TryParse(userAssignedIdentity.ClientId, out Guid clientIdGuid))
+            {
+                throw new ArgumentException($"ClientId {userAssignedIdentity.ClientId} is not a valid Guid");
+            }
+            if (!Guid.TryParse(userAssignedIdentity.PrincipalId, out Guid principalIdGuid))
+            {
+                throw new ArgumentException($"PrincipalId {userAssignedIdentity.PrincipalId} is not a valid Guid");
+            }
+            return new UserAssignedIdentity(principalId: principalIdGuid, clientId: clientIdGuid);
+        }
+
+        public static ManagedServiceIdentity ConvertFromPs(this PSManagedServiceIdentity identity)
+        {
+            if (!Guid.TryParse(identity.PrincipalId, out Guid principalIdGuid))
+            {
+                throw new ArgumentException($"PrincipalId {identity.PrincipalId} is not a valid Guid");
+            }
+            return new ManagedServiceIdentity(type: identity.Type, principalId: principalIdGuid, tenantId: identity.TenantId)
+            {
+                UserAssignedIdentities = identity.UserAssignedIdentities.ConvertFromPs()
+            };
+        }
+
+
 
         public static PSNetAppFilesAccountEncryption ConvertToPs(this AccountEncryption encryption)
         {
@@ -99,23 +154,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
         public static KeyVaultProperties ConvertFromPs(this PSNetAppFilesKeyVaultProperties encryption)
         {
             return new KeyVaultProperties(keyName: encryption.KeyName, keyVaultResourceId: encryption.KeyVaultResourceId, keyVaultId: encryption.KeyVaultId, keyVaultUri: encryption.KeyVaultUri, status: encryption.Status);
-        }
-
-        public static PSEncryptionIdentity ConvertToPs(this EncryptionIdentity encryptionIdentity)
-        {
-            return new PSEncryptionIdentity
-            {
-                PrincipalId = encryptionIdentity.PrincipalId,
-                UserAssignedIdentity = encryptionIdentity.UserAssignedIdentity
-            };
-        }
-
-        public static EncryptionIdentity ConvertFromPs(this PSEncryptionIdentity encryptionIdentity)
-        {
-            return new EncryptionIdentity(principalId: encryptionIdentity.PrincipalId)
-            {                
-                UserAssignedIdentity = encryptionIdentity.UserAssignedIdentity
-            };
         }
 
         public static AccountEncryption ConvertFromPs(this PSNetAppFilesAccountEncryption encryption)

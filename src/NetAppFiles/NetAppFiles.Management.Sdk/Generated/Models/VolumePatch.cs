@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <param name="serviceLevel">serviceLevel</param>
         /// <param name="usageThreshold">usageThreshold</param>
         /// <param name="exportPolicy">exportPolicy</param>
-        /// <param name="throughputMibps">Maximum throughput in Mibps that can
+        /// <param name="throughputMibps">Maximum throughput in MiB/s that can
         /// be achieved by this volume and this will be accepted as input only
         /// for manual qosType volume</param>
         /// <param name="dataProtection">DataProtection</param>
@@ -154,7 +154,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         public VolumePatchPropertiesExportPolicy ExportPolicy { get; set; }
 
         /// <summary>
-        /// Gets or sets maximum throughput in Mibps that can be achieved by
+        /// Gets or sets maximum throughput in MiB/s that can be achieved by
         /// this volume and this will be accepted as input only for manual
         /// qosType volume
         /// </summary>

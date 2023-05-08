@@ -198,5 +198,19 @@ namespace Commands.Aks.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-PodSubnetID");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestEnableOidcIssuer()
+        {
+            TestRunner.RunTestScript("Test-EnableOidcIssuer");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestOutboundType()
+        {
+            TestRunner.RunTestScript("Test-OutboundType");
+        }
     }
 }

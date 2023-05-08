@@ -27,6 +27,17 @@ Get CommitmentTier of Cognitive Services
 Get-AzCognitiveServicesCommitmentTier -Location 'WestUS'
 ```
 
+```output
+Kind         : kind
+SkuName      : sku
+HostingModel : hosting model
+PlanType     : plan type
+Tier         : tier
+MaxCount     : 
+Quota        : Microsoft.Azure.Management.CognitiveServices.Models.CommitmentQuota
+Cost         : Microsoft.Azure.Management.CognitiveServices.Models.CommitmentCost
+```
+
 Get CommitmentTier of Cognitive Services
 
 ## PARAMETERS

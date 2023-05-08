@@ -8,30 +8,29 @@ schema: 2.0.0
 # Update-AzMobileNetworkAttachedDataNetwork
 
 ## SYNOPSIS
-Updates an attached data network tags.
+Updates an attached data network.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
 Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName <String>
  -PacketCoreControlPlaneName <String> -PacketCoreDataPlaneName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzMobileNetworkAttachedDataNetwork -InputObject <IMobileNetworkIdentity> [-Tag <Hashtable>]
+ [-SubscriptionId <String>] [-DnsAddress <String[]>] [-NaptConfigurationEnabled <NaptEnabled>]
+ [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>]
+ [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>]
+ [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Updates an attached data network tags.
+Updates an attached data network.
 
 ## EXAMPLES
 
-### Example 1: Updates an attached data network tags.
+### Example 1: Updates an attached data network.
 ```powershell
 Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName azps-mn-adn -PacketCoreControlPlaneName azps-mn-pccp -PacketCoreDataPlaneName azps_test_group -ResourceGroupName -Tag @{"abc"="123"}
 ```
@@ -42,7 +41,7 @@ Location Name        ResourceGroupName ProvisioningState
 eastus   azps-mn-adn azps_test_group   Succeeded
 ```
 
-Updates an attached data network tags.
+Updates an attached data network.
 
 ## PARAMETERS
 
@@ -51,7 +50,7 @@ The name of the attached data network.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -62,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -76,19 +76,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -DnsAddress
+The DNS servers to signal to UEs to use for this attached data network.
+This configuration is mandatory - if you don't want DNS servers, you must provide an empty array.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.IMobileNetworkIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NaptConfigurationEnabled
+Whether NAPT is enabled for connections to this attached data network.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.NaptEnabled
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NaptConfigurationPinholeLimit
+Maximum number of UDP and TCP pinholes that can be open simultaneously on the core interface.
+For 5G networks, this is the N6 interface.
+For 4G networks, this is the SGi interface.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -97,7 +129,7 @@ The name of the packet core control plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -112,10 +144,120 @@ The name of the packet core data plane.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PinholeTimeoutIcmp
+Pinhole timeout for ICMP pinholes in seconds.
+Default for ICMP Echo is 30 seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PinholeTimeoutTcp
+Pinhole timeout for TCP pinholes in seconds.
+Default for TCP is 3 minutes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PinholeTimeoutUdp
+Pinhole timeout for UDP pinholes in seconds.
+Default for UDP is 30 seconds.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PortRangeMaxPort
+The maximum port number
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PortRangeMinPort
+The minimum port number
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PortReuseHoldTimeTcp
+Minimum time in seconds that will pass before a TCP port that was used by a closed pinhole can be reused.
+Default for TCP is 2 minutes.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PortReuseHoldTimeUdp
+Minimum time in seconds that will pass before a UDP port that was used by a closed pinhole can be reused.
+Default for UDP is 1 minute.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -128,7 +270,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -143,7 +285,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -158,6 +300,101 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserEquipmentAddressPoolPrefix
+The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will dynamically assign IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
+You must define at least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix.
+If you define both, they must be of the same size.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserEquipmentStaticAddressPoolPrefix
+The user equipment (UE) address pool prefixes for the attached data network from which the packet core instance will assign static IP addresses to UEs.The packet core instance assigns an IP address to a UE when the UE sets up a PDU session.
+The static IP address for a specific UE is set in StaticIPConfiguration on the corresponding SIM resource.At least one of userEquipmentAddressPoolPrefix and userEquipmentStaticAddressPoolPrefix must be defined.
+If both are defined, they must be of the same size.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserPlaneDataInterfaceIpv4Address
+The IPv4 address.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserPlaneDataInterfaceIpv4Gateway
+The default IPv4 gateway (router).
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserPlaneDataInterfaceIpv4Subnet
+The IPv4 subnet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserPlaneDataInterfaceName
+The logical name for this interface.
+This should match one of the interfaces configured on your Azure Stack Edge device.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -213,28 +450,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
-  - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
-  - `[DataNetworkName <String>]`: The name of the data network.
-  - `[Id <String>]`: Resource identity path
-  - `[MobileNetworkName <String>]`: The name of the mobile network.
-  - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
-  - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  - `[SimGroupName <String>]`: The name of the SIM Group.
-  - `[SimName <String>]`: The name of the SIM.
-  - `[SimPolicyName <String>]`: The name of the SIM policy.
-  - `[SiteName <String>]`: The name of the mobile network site.
-  - `[SliceName <String>]`: The name of the network slice.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VersionName <String>]`: The name of the packet core control plane version.
 
 ## RELATED LINKS
 

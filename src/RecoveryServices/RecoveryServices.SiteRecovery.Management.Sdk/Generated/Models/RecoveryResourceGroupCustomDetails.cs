@@ -10,11 +10,13 @@
 
 namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
     /// Recovery Resource Group custom input.
     /// </summary>
+    [Newtonsoft.Json.JsonObject("RecoveryResourceGroupCustomDetails")]
     public partial class RecoveryResourceGroupCustomDetails
     {
         /// <summary>

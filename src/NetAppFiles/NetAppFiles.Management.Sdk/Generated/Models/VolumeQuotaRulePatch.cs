@@ -13,6 +13,8 @@ namespace Microsoft.Azure.Management.NetApp.Models
     using Microsoft.Rest;
     using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -32,6 +34,7 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// <summary>
         /// Initializes a new instance of the VolumeQuotaRulePatch class.
         /// </summary>
+        /// <param name="tags">Resource tags</param>
         /// <param name="provisioningState">Possible values include:
         /// 'Accepted', 'Creating', 'Patching', 'Deleting', 'Moving', 'Failed',
         /// 'Succeeded'</param>
@@ -42,8 +45,9 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// ‘getent’ command for the user or group and SID can be found by
         /// running &lt;wmic useraccount where name='user-name' get
         /// sid&gt;</param>
-        public VolumeQuotaRulePatch(ProvisioningState? provisioningState = default(ProvisioningState?), long? quotaSizeInKiBs = default(long?), string quotaType = default(string), string quotaTarget = default(string))
+        public VolumeQuotaRulePatch(IDictionary<string, string> tags = default(IDictionary<string, string>), ProvisioningState? provisioningState = default(ProvisioningState?), long? quotaSizeInKiBs = default(long?), string quotaType = default(string), string quotaTarget = default(string))
         {
+            Tags = tags;
             ProvisioningState = provisioningState;
             QuotaSizeInKiBs = quotaSizeInKiBs;
             QuotaType = quotaType;
@@ -55,6 +59,12 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets or sets resource tags
+        /// </summary>
+        [JsonProperty(PropertyName = "tags")]
+        public IDictionary<string, string> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets possible values include: 'Accepted', 'Creating',

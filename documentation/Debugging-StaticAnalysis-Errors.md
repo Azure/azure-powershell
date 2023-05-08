@@ -33,7 +33,7 @@ msbuild build.proj
 The three most common Static Analysis errors are breaking changes, signature issues, and help issues.  To figure out which type of error is causing the build failure, open each of the relevant .csv files (if the .csv file does not exist, there is no violation detected).  Any issue marked with severity 0 or 1 must be resolved in order for the build to pass.
 
 ### Assembly Version Conflict
-(To be Updated)
+We utilize some shared assemblies, such as Azure.Core, accross all the modules to avoid duplicating. To maintain consistency, only one version is allowed to be loaded within a single PowerShell session. If any errors occur, they will be recorded in the `AssemblyVersionConflict.csv` file. We recommend reviewing each error listed in this file and updating your package dependencies accordingly. Generally, suppressing these issues is not advised.
 
 ### Breaking Changes
 If you make a change that could cause a breaking change, it will be listed in `BreakingChangeIssues.csv`.  Please look at each of these errors in this file, and if they do indeed introduce a breaking change in a non-breaking change release, please revert the change that caused this violation. 
@@ -57,13 +57,13 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 - Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the CI pipeline artifacts.
 - 
 ### Extra Assemblies
-(To be Updated)
+We will examine each assembly within the module's artifacts folder to identify any assembly that is actually not needed to pack into the package, for example a a system assembly. The names of these assemblies will be documented in the `ExtraAssemblies.csv` file. As these assemblies serve no purpose for this module, they should be removed to decrease the module package size. It is important to verify whether these files were copied due to an incorrect copy step, such as a `Copy` action in a `props` or `csproj` file. Generally, suppressing these issues is not advised.
 
 ### Help Issues
 Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md). If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.
 
 ### Missing Assemblies
-(To be Updated)
+We will ensure that all required assemblies are located within the module's artifacts folder for packaging purposes. If a necessary assembly is not included, the module cannot be imported. Any missing assemblies will be documented in the `MissingAssemblies.csv` file. It is important to investigate the reason behind a missing assembly, such as the assembly being loaded as a shared assembly but not added to the allowed list defined in `DependencyAnalyzer.cs`.
 
 ### Signature Issues
 Signature issues occur when your cmdlets do not follow PowerShell standards.  Please check the [_Cmdlet Best Practices_](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/cmdlet-best-practices.md) and the [_Parameter Best Practices_](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/design-guidelines/parameter-best-practices.md) documents to ensure you are following PowerShell guidelines.  Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory.  If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:

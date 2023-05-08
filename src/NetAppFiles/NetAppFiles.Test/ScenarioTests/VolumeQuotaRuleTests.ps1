@@ -64,7 +64,7 @@ function Test-VolumeQuotaRuleCrud
         # create first volume and check
         $newTagName = "tag1"
         $newTagValue = "tagValue1"
-        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ProtocolType $protocolTypes -EnableSubvolume
+        $retrievedVolume = New-AzNetAppFilesVolume -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -CreationToken $volName1 -UsageThreshold $usageThreshold -ServiceLevel $serviceLevel -SubnetId $subnetId -Tag @{$newTagName = $newTagValue} -ProtocolType $protocolTypes
         Assert-AreEqual "$accName/$poolName/$volName1" $retrievedVolume.Name
         Assert-AreEqual $serviceLevel $retrievedVolume.ServiceLevel
         Assert-AreEqual True $retrievedVolume.Tags.ContainsKey($newTagName)
@@ -81,8 +81,8 @@ function Test-VolumeQuotaRuleCrud
         Assert-AreEqual $quotaRuleType $getQuotaRule.QuotaType
 
         # Update quotaRule and check
-        $updatedSubvolume = Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1 -QuotaSize $quotaRuleSize2
-        Assert-AreEqual $quotaRuleSize2 $updatedSubvolume.QuotaSize
+        $updatedQuotaRule = Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1 -QuotaSize $quotaRuleSize2
+        Assert-AreEqual $quotaRuleSize2 $updatedQuotaRule.QuotaSize
         
         # create second quotaRule and check
         $retrievedQuotaRule = New-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -Location $resourceLocation -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName2  -QuotaType $quotaRuleType2 -QuotaSize $quotaRuleSize
@@ -93,7 +93,7 @@ function Test-VolumeQuotaRuleCrud
         Assert-AreEqual 2 $getQuotaRules.Length
 
         #Delete quotaRule 1
-        $updatedSubvolume = Remove-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1
+        $updatedQuotaRule = Remove-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1 -Name $volQuotaRuleName1
 
         # get list and check again
         $getQuotaRules = Get-AzNetAppFilesVolumeQuotaRule -ResourceGroupName $resourceGroup -AccountName $accName -PoolName $poolName -VolumeName $volName1

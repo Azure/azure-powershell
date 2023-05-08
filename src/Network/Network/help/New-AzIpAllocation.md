@@ -13,10 +13,10 @@ Creates an Azure IpAllocation.
 ## SYNTAX
 
 ```
-New-AzIpAllocation -Name <String> -ResourceGroupName <String> -Location <String>
- -IpAllocationType <String> [-Prefix <String>] [-PrefixLength <Int32>] [-PrefixType <String>]
- [-IpamAllocationId <String>] [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzIpAllocation -Name <String> -ResourceGroupName <String> -Location <String> -IpAllocationType <String>
+ [-Prefix <String>] [-PrefixLength <Int32>] [-PrefixType <String>] [-IpamAllocationId <String>]
+ [-IpAllocationTag <Hashtable>] [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

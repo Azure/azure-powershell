@@ -6,7 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>The outbound (egress) routing method.</summary>
+    /// <summary>
+    /// This can only be set at cluster creation time and cannot be changed later. For more information see [egress outbound type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.OutboundTypeTypeConverter))]
     public partial struct OutboundType :
         System.Management.Automation.IArgumentCompleter
@@ -33,6 +35,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "userDefinedRouting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'userDefinedRouting'", "userDefinedRouting", global::System.Management.Automation.CompletionResultType.ParameterValue, "userDefinedRouting");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "managedNATGateway".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'managedNATGateway'", "managedNATGateway", global::System.Management.Automation.CompletionResultType.ParameterValue, "managedNATGateway");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "userAssignedNATGateway".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'userAssignedNATGateway'", "userAssignedNATGateway", global::System.Management.Automation.CompletionResultType.ParameterValue, "userAssignedNATGateway");
             }
         }
     }
