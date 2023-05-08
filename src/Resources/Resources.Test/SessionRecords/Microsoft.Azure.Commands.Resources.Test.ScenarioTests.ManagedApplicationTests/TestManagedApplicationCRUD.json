@@ -232,9 +232,6 @@
         "Pragma": [
           "no-cache"
         ],
-        "Location": [
-          "https://management.azure.com/subscriptions/e0f276d3-ee09-4a8b-a527-e2a6ac2ee309/resourceGroups/ps4844/providers/Microsoft.Solutions/locations/EastUS2EUAP/operationStatuses/eyJmdWxseVF1YWxpZmllZEFwcGxpYW5jZUlkIjoiL3N1YnNjcmlwdGlvbnMvZTBmMjc2ZDMtZWUwOS00YThiLWE1MjctZTJhNmFjMmVlMzA5L3Jlc291cmNlR3JvdXBzL3BzNDg0NC9wcm92aWRlcnMvTWljcm9zb2Z0LlNvbHV0aW9ucy9hcHBsaWNhdGlvbnMvcHM4NzA0Iiwiam9iSWQiOiJBcHBsaWFuY2VQcm92aXNpb25pbmdKb2I6MkRSR0E6MkRQUzQ4NDQ6MkRQUzg3MDQifQ?api-version=2017-09-01"
-        ],
         "Retry-After": [
           "0"
         ],

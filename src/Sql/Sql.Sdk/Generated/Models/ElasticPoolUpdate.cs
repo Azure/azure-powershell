@@ -36,6 +36,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         /// <param name="maxSizeBytes">The storage limit for the database
         /// elastic pool in bytes.</param>
+        /// <param name="minCapacity">Minimal capacity that serverless pool
+        /// will not shrink below, if not paused</param>
         /// <param name="perDatabaseSettings">The per database settings for the
         /// elastic pool.</param>
         /// <param name="zoneRedundant">Whether or not this elastic pool is
@@ -51,16 +53,24 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// replicas associated with the elastic pool that are used to provide
         /// high availability. Applicable only to Hyperscale elastic
         /// pools.</param>
+        /// <param name="preferredEnclaveType">Type of enclave requested on the
+        /// elastic pool. Possible values include: 'Default', 'VBS'</param>
+        /// <param name="availabilityZone">Specifies the availability zone the
+        /// pool's primary replica is pinned to. Possible values include:
+        /// 'NoPreference', '1', '2', '3'</param>
         /// <param name="tags">Resource tags.</param>
-        public ElasticPoolUpdate(Sku sku = default(Sku), long? maxSizeBytes = default(long?), ElasticPoolPerDatabaseSettings perDatabaseSettings = default(ElasticPoolPerDatabaseSettings), bool? zoneRedundant = default(bool?), string licenseType = default(string), string maintenanceConfigurationId = default(string), int? highAvailabilityReplicaCount = default(int?), IDictionary<string, string> tags = default(IDictionary<string, string>))
+        public ElasticPoolUpdate(Sku sku = default(Sku), long? maxSizeBytes = default(long?), double? minCapacity = default(double?), ElasticPoolPerDatabaseSettings perDatabaseSettings = default(ElasticPoolPerDatabaseSettings), bool? zoneRedundant = default(bool?), string licenseType = default(string), string maintenanceConfigurationId = default(string), int? highAvailabilityReplicaCount = default(int?), string preferredEnclaveType = default(string), string availabilityZone = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>))
         {
             Sku = sku;
             MaxSizeBytes = maxSizeBytes;
+            MinCapacity = minCapacity;
             PerDatabaseSettings = perDatabaseSettings;
             ZoneRedundant = zoneRedundant;
             LicenseType = licenseType;
             MaintenanceConfigurationId = maintenanceConfigurationId;
             HighAvailabilityReplicaCount = highAvailabilityReplicaCount;
+            PreferredEnclaveType = preferredEnclaveType;
+            AvailabilityZone = availabilityZone;
             Tags = tags;
             CustomInit();
         }
@@ -81,6 +91,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.maxSizeBytes")]
         public long? MaxSizeBytes { get; set; }
+
+        /// <summary>
+        /// Gets or sets minimal capacity that serverless pool will not shrink
+        /// below, if not paused
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.minCapacity")]
+        public double? MinCapacity { get; set; }
 
         /// <summary>
         /// Gets or sets the per database settings for the elastic pool.
@@ -118,6 +135,21 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.highAvailabilityReplicaCount")]
         public int? HighAvailabilityReplicaCount { get; set; }
+
+        /// <summary>
+        /// Gets or sets type of enclave requested on the elastic pool.
+        /// Possible values include: 'Default', 'VBS'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.preferredEnclaveType")]
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the availability zone the pool's primary
+        /// replica is pinned to. Possible values include: 'NoPreference', '1',
+        /// '2', '3'
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.availabilityZone")]
+        public string AvailabilityZone { get; set; }
 
         /// <summary>
         /// Gets or sets resource tags.

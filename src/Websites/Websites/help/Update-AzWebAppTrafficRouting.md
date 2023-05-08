@@ -24,7 +24,7 @@ The **Update-AzWebAppTrafficRouting** cmdlet updates the routing rule configurat
 ### Example 1: Update a routing rule to transfer 15% of production traffice to  Stg slot
 ```powershell
 Update-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" `
--RoutingRule @{AtionHostName='XXXX.azurewebsites.net';ReroutePercentage=15;Name='Stg'}
+-RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=15;Name='Stg'}
 ```
 
 This command updates a routing rule to transfer 15% of production traffic to Stg slot.

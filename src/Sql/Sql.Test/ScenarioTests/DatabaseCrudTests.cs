@@ -116,6 +116,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             TestRunner.RunTestScript("Test-UpdateDatabaseWithMaintenanceConfigurationId");
         }
 
+        [Fact(Skip = "Cannot re-record.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDatabaseUpdateWithPreferredEnclaveType()
+        {
+            TestRunner.RunTestScript("Test-UpdateDatabaseWithPreferredEnclaveType");
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -189,7 +195,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDatabaseCreateWithPreferredEnclaveType ()
+        public void TestDatabaseCreateWithPreferredEnclaveType()
         {
             TestRunner.RunTestScript("Test-CreateDatabaseWithPreferredEnclaveType");
         }

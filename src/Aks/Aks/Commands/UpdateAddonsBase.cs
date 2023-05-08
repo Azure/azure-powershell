@@ -86,6 +86,10 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                 {
                     cluster = GetManagedClusterWithResourceGroupNameAndName();
                 }
+                if (cluster.AddonProfiles == null)
+                {
+                    cluster.AddonProfiles = new Dictionary<string, ManagedClusterAddonProfile>();
+                }
                 cluster.AddonProfiles = UpdateAddonsProfile(cluster.AddonProfiles);
                 cluster.ServicePrincipalProfile = null;
                 cluster.AadProfile = null;

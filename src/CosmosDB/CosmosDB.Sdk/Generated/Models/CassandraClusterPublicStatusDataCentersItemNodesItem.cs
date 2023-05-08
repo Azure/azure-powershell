@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="address">The node's IP address.</param>
         /// <param name="state">Possible values include: 'Normal', 'Leaving',
         /// 'Joining', 'Moving', 'Stopped'</param>
+        /// <param name="cassandraProcessStatus">Cassandra service status on
+        /// this node</param>
         /// <param name="load">The amount of file system data in the data
         /// directory (e.g., 47.66 kB), excluding all content in the snapshots
         /// subdirectories. Because all SSTable data files are included, any
@@ -41,8 +43,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="tokens">List of tokens this node covers.</param>
         /// <param name="hostID">The network ID of the node.</param>
         /// <param name="rack">The rack this node is part of.</param>
-        /// <param name="timestamp">The timestamp at which that snapshot of
-        /// these usage statistics were taken.</param>
+        /// <param name="timestamp">The timestamp when these statistics were
+        /// captured.</param>
         /// <param name="diskUsedKB">The amount of disk used, in kB, of the
         /// directory /var/lib/cassandra.</param>
         /// <param name="diskFreeKB">The amount of disk free, in kB, of the
@@ -58,11 +60,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// SwapTotal in /proc/meminfo), in kB.</param>
         /// <param name="cpuUsage">A float representing the current system-wide
         /// CPU utilization as a percentage.</param>
-        public CassandraClusterPublicStatusDataCentersItemNodesItem(string address = default(string), string state = default(string), string status = default(string), string load = default(string), IList<string> tokens = default(IList<string>), int? size = default(int?), string hostID = default(string), string rack = default(string), string timestamp = default(string), long? diskUsedKB = default(long?), long? diskFreeKB = default(long?), long? memoryUsedKB = default(long?), long? memoryBuffersAndCachedKB = default(long?), long? memoryFreeKB = default(long?), long? memoryTotalKB = default(long?), double? cpuUsage = default(double?))
+        public CassandraClusterPublicStatusDataCentersItemNodesItem(string address = default(string), string state = default(string), string status = default(string), string cassandraProcessStatus = default(string), string load = default(string), IList<string> tokens = default(IList<string>), int? size = default(int?), string hostID = default(string), string rack = default(string), string timestamp = default(string), long? diskUsedKB = default(long?), long? diskFreeKB = default(long?), long? memoryUsedKB = default(long?), long? memoryBuffersAndCachedKB = default(long?), long? memoryFreeKB = default(long?), long? memoryTotalKB = default(long?), double? cpuUsage = default(double?))
         {
             Address = address;
             State = state;
             Status = status;
+            CassandraProcessStatus = cassandraProcessStatus;
             Load = load;
             Tokens = tokens;
             Size = size;
@@ -103,6 +106,12 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Status { get; set; }
 
         /// <summary>
+        /// Gets or sets cassandra service status on this node
+        /// </summary>
+        [JsonProperty(PropertyName = "cassandraProcessStatus")]
+        public string CassandraProcessStatus { get; set; }
+
+        /// <summary>
         /// Gets or sets the amount of file system data in the data directory
         /// (e.g., 47.66 kB), excluding all content in the snapshots
         /// subdirectories. Because all SSTable data files are included, any
@@ -136,8 +145,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public string Rack { get; set; }
 
         /// <summary>
-        /// Gets or sets the timestamp at which that snapshot of these usage
-        /// statistics were taken.
+        /// Gets or sets the timestamp when these statistics were captured.
         /// </summary>
         [JsonProperty(PropertyName = "timestamp")]
         public string Timestamp { get; set; }
