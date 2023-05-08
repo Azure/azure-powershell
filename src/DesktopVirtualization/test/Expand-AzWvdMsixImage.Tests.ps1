@@ -14,18 +14,23 @@ while (-not $mockingPath) {
 Describe 'Expand-AzWvdMsixImage' {
     
     It 'Expand' {
-        $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPool `
-            -ResourceGroupName $env.ResourceGroup `
-            -SubscriptionId $env.SubscriptionId `
-            -Uri $env.MSIXImagePath
-         
-        $package.PackageFamilyName | Should -Be  'MsixPackage_zf7zaz2wb1ayy'
-        $package.ImagePath | Should -Be 'C:\msix\singlemsix.vhd'
-        $package.PackageName | Should -Be 'MsixPackage'
-        $package.PackageAlias | Should -Be 'msixpackage'
-        $package.IsActive | Should -Be $False
-        $package.IsRegularRegistration | Should -Be $False
-        $package.PackageRelativePath | Should -Be '\apps\MsixPackage_1.0.0.0_neutral__zf7zaz2wb1ayy'
+        try{
+            
+            $package = Expand-AzWvdMsixImage -HostPoolName $env.HostPoolPersistent2 `
+                -ResourceGroupName $env.ResourceGroupPersistent `
+                -SubscriptionId $env.SubscriptionId `
+                -Uri $env.MSIXImagePath
+             
+            $package.PackageFamilyName | Should -Be  'Mozilla.MozillaFirefox_gmpnhwe7bv608'
+            $package.ImagePath | Should -Be 'C:\AppAttach\Firefox20110.0.1.vhdx'
+            $package.PackageName | Should -Be 'Mozilla.MozillaFirefox'
+            $package.PackageAlias | Should -Be 'mozillamozillafirefox'
+            $package.IsActive | Should -Be $False
+            $package.IsRegularRegistration | Should -Be $False
+            $package.PackageRelativePath | Should -Be '\apps\Mozilla.MozillaFirefox_110.0.1.0_x64__gmpnhwe7bv608'
+        }
+        finally{
+        }
 
     }
 }

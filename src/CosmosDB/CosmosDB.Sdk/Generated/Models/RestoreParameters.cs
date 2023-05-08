@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
     /// <summary>
     /// Parameters to indicate the information about the restore.
     /// </summary>
-    public partial class RestoreParameters : RestoreParametersBase
+    public partial class RestoreParameters
     {
         /// <summary>
         /// Initializes a new instance of the RestoreParameters class.
@@ -31,23 +31,24 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <summary>
         /// Initializes a new instance of the RestoreParameters class.
         /// </summary>
+        /// <param name="restoreMode">Describes the mode of the restore.
+        /// Possible values include: 'PointInTime'</param>
         /// <param name="restoreSource">The id of the restorable database
         /// account from which the restore has to be initiated. For example:
         /// /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}</param>
         /// <param name="restoreTimestampInUtc">Time to which the account has
         /// to be restored (ISO-8601 format).</param>
-        /// <param name="restoreMode">Describes the mode of the restore.
-        /// Possible values include: 'PointInTime'</param>
         /// <param name="databasesToRestore">List of specific databases
         /// available for restore.</param>
         /// <param name="gremlinDatabasesToRestore">List of specific gremlin
         /// databases available for restore.</param>
         /// <param name="tablesToRestore">List of specific tables available for
         /// restore.</param>
-        public RestoreParameters(string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?), string restoreMode = default(string), IList<DatabaseRestoreResource> databasesToRestore = default(IList<DatabaseRestoreResource>), IList<GremlinDatabaseRestoreResource> gremlinDatabasesToRestore = default(IList<GremlinDatabaseRestoreResource>), IList<string> tablesToRestore = default(IList<string>))
-            : base(restoreSource, restoreTimestampInUtc)
+        public RestoreParameters(string restoreMode = default(string), string restoreSource = default(string), System.DateTime? restoreTimestampInUtc = default(System.DateTime?), IList<DatabaseRestoreResource> databasesToRestore = default(IList<DatabaseRestoreResource>), IList<GremlinDatabaseRestoreResource> gremlinDatabasesToRestore = default(IList<GremlinDatabaseRestoreResource>), IList<string> tablesToRestore = default(IList<string>))
         {
             RestoreMode = restoreMode;
+            RestoreSource = restoreSource;
+            RestoreTimestampInUtc = restoreTimestampInUtc;
             DatabasesToRestore = databasesToRestore;
             GremlinDatabasesToRestore = gremlinDatabasesToRestore;
             TablesToRestore = tablesToRestore;
@@ -65,6 +66,21 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
         [JsonProperty(PropertyName = "restoreMode")]
         public string RestoreMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the id of the restorable database account from which
+        /// the restore has to be initiated. For example:
+        /// /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorableDatabaseAccounts/{restorableDatabaseAccountName}
+        /// </summary>
+        [JsonProperty(PropertyName = "restoreSource")]
+        public string RestoreSource { get; set; }
+
+        /// <summary>
+        /// Gets or sets time to which the account has to be restored (ISO-8601
+        /// format).
+        /// </summary>
+        [JsonProperty(PropertyName = "restoreTimestampInUtc")]
+        public System.DateTime? RestoreTimestampInUtc { get; set; }
 
         /// <summary>
         /// Gets or sets list of specific databases available for restore.

@@ -13,28 +13,35 @@ while(-not $mockingPath) {
 
 Describe 'New-AzWvdRegistrationInfo' {
     It 'Create new RegistrationInfo' {
-        $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
-                            -ResourceGroupName $env.ResourceGroup `
-                            -Name 'HostPoolPowershellContained1' `
-                            -Location $env.Location `
-                            -HostPoolType 'Shared' `
-                            -LoadBalancerType 'DepthFirst' `
-                            -RegistrationTokenOperation 'Update' `
-                            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
-                            -Description 'des' `
-                            -FriendlyName 'fri' `
-                            -MaxSessionLimit 5 `
-                            -VMTemplate $null `
-                            -CustomRdpProperty $null `
-                            -Ring $null `
-                            -ValidationEnvironment:$false `
-                            -PreferredAppGroupType 'Desktop'
-        $date = get-date
-        $newDate = $(($date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
-        $regInfo = New-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
-                                    -ResourceGroupName $env.ResourceGroup `
-                                    -HostPoolName 'HostPoolPowershellContained1' `
-                                    -ExpirationTime $newDate
-            $regInfo.Token | Should -Not -BeNullOrEmpty
+        try{
+            $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool `
+                                -Location $env.Location `
+                                -HostPoolType 'Shared' `
+                                -LoadBalancerType 'DepthFirst' `
+                                -RegistrationTokenOperation 'Update' `
+                                -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+                                -Description 'des' `
+                                -FriendlyName 'fri' `
+                                -MaxSessionLimit 5 `
+                                -VMTemplate $null `
+                                -CustomRdpProperty $null `
+                                -Ring $null `
+                                -ValidationEnvironment:$false `
+                                -PreferredAppGroupType 'Desktop'
+            $date = get-date
+            $newDate = $(($date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ'))
+            $regInfo = New-AzWvdRegistrationInfo -SubscriptionId $env.SubscriptionId `
+                                        -ResourceGroupName $env.ResourceGroup `
+                                        -HostPoolName $env.HostPool `
+                                        -ExpirationTime $newDate
+                $regInfo.Token | Should -Not -BeNullOrEmpty
+        }
+        finally{
+            $hostPool = Remove-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
+                                -ResourceGroupName $env.ResourceGroup `
+                                -Name $env.HostPool
+        }
     }
 }
