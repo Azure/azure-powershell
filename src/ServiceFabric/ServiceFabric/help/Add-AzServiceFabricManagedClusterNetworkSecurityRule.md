@@ -17,13 +17,13 @@ Add network security rule to cluster resource.
 Add-AzServiceFabricManagedClusterNetworkSecurityRule 
 [-InputObject <PSManagedCluster>]
 [-Name <String> ]
-[-Access <NetworkSecurityAccessEnum>]
+[-Access <NetworkSecurityAccess>]
 [-Description <String>]
 [-DestinationAddressPrefix <String[]>]
 [-DestinationPortRange <String[]>]
-[-Direction <NetworkSecurityDirectionEnum>]
+[-Direction <NetworkSecurityDirection>]
 [-Priority <Int32>]
-[-Protocol <NetworkSecurityProtocolEnum>]
+[-Protocol <NetworkSecurityProtocol>]
 [-SourceAddressPrefix <String[]>]
 [-SourcePortRange <String[]>]
 [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -35,13 +35,13 @@ Add-AzServiceFabricManagedClusterNetworkSecurityRule
 [-ResourceGroupName <String> ]
 [-ClusterName <String> ]
 [-Name <String> ]
-[-Access <NetworkSecurityAccessEnum>]
+[-Access <NetworkSecurityAccess>]
 [-Description <String>]
 [-DestinationAddressPrefix <String[]>]
 [-DestinationPortRange <String[]>]
-[-Direction <NetworkSecurityDirectionEnum>]
+[-Direction <NetworkSecurityDirection>]
 [-Priority <Int32>]
-[-Protocol <NetworkSecurityProtocolEnum>]
+[-Protocol <NetworkSecurityProtocol>]
 [-SourceAddressPrefix <String[]>]
 [-SourcePortRange <String[]>]
 [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 
 
 ### -Protocol
-Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp
+Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp, any
 
 ```yaml
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.Protocol

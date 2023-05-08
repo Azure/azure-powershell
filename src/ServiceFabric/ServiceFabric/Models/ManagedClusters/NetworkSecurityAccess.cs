@@ -14,9 +14,9 @@
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Models
 {
-    public enum NetworkSecurityDirectionEnum
+    public enum NetworkSecurityAccess
     {
-        Inbound,
-        Outbound
+        Allow,
+        Deny
     }
 }

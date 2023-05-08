@@ -24,13 +24,12 @@ using Microsoft.Azure.Management.ServiceFabricManagedClusters.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-  
-
     [Cmdlet(VerbsCommon.Add, ResourceManager.Common.AzureRMConstants.AzurePrefix + Constants.ServiceFabricPrefix + "ManagedClusterNetworkSecurityRule", DefaultParameterSetName = ByObj, SupportsShouldProcess = true), OutputType(typeof(PSManagedCluster))]
 	public class AddAzServiceFabricManagedClusterNetworkSecurityRule : ServiceFabricManagedCmdletBase
 	{   
         protected const string ByName = "ByName";
 		protected const string ByObj = "ByObj";
+		protected const string AnyTrueValue = "*";
 
 		#region Params
 
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		#endregion
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny ")]
-        public NetworkSecurityAccessEnum Access { get; set; }
+        public NetworkSecurityAccess Access { get; set; }
 
 		[Parameter(Mandatory = false, HelpMessage = "Gets or sets network security rule description.")]
 		public string Description { get; set; }
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		public string[] DestinationPortRange { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network security rule direction. Possible values include: Inbound, Outbound ")]
-		public NetworkSecurityDirectionEnum Direction { get; set; }
+		public NetworkSecurityDirection Direction { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "network security rule name.")]
 		[Alias("NetworkSecurityRuleName")]
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the priority of the rule. The value can be in the range 1000 to 3000. Values outside this range are reserved for Service Fabric ManagerCluster Resource Provider. The priority number must be unique for each rule in the collection. The lower the priority number, the higher the priority of the rule.")]
 		public int Priority { get; set; }
 
-		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp ")]
+		[Parameter(Mandatory = true, HelpMessage = "Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp, any ")]
 		public NetworkSecurityProtocol Protocol { get; set; }
 
 		[Parameter(Mandatory = true, HelpMessage = "Gets or sets the CIDR or source IP ranges.")]
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 				Direction = this.Direction.ToString(),
 				Name = this.Name,
 				Priority = this.Priority,
-				Protocol = this.Protocol.ToString(),
+				Protocol = this.Protocol == NetworkSecurityProtocol.any? AnyTrueValue : this.Protocol.ToString(),
 				SourceAddressPrefixes = this.SourceAddressPrefix,
 				SourcePortRanges = this.SourcePortRange
 			});
