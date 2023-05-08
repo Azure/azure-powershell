@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     /// <summary>
     /// Wrapper of SDK type BlobServiceProperties
     /// </summary>
-    public class PSBlobServiceProperties
+    public class PSBlobServiceProperties 
     {
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 0)]
         public string ResourceGroupName { get; set; }
@@ -248,6 +248,20 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
                 return returnValue;
             }
         }
+
+        public string CheckAllowedMethod()
+        {
+            string warningMsg = null;
+            foreach (PSCorsRule rule in this.CorsRulesProperty)
+            {
+                string subWarning = rule.CheckAllowedMethods();
+                if (subWarning != null)
+                {
+                    warningMsg += ("The following input methods are not in the valid method list: " + subWarning + ". The request might fail. \n");
+                }
+            }
+            return warningMsg;
+        }
     }
 
     /// <summary>
@@ -261,7 +275,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string[] ExposedHeaders { get; set; }
         public string[] AllowedHeaders { get; set; }
 
-        private string[] AllowedMethodList = new string[] { "NONE", "GET", "HEAD", "POST", "PUT", "DELETE", "TRACE", "OPTIONS", "CONNECT", "MERGE", "PATCH" };
+        private string[] AllowedMethodList = new string[] {"GET", "HEAD", "POST", "PUT", "DELETE", "TRACE", "OPTIONS", "CONNECT", "MERGE", "PATCH" };
 
         public PSCorsRule()
         {
@@ -278,14 +292,24 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public CorsRule ParseCorsRule()
         {
-            return new CorsRule
+            CorsRule corsRule = new CorsRule
             {
                 AllowedOrigins = ArrayToList(this.AllowedOrigins),
-                AllowedMethods = ParseAllowedMethods(this.AllowedMethods),
                 MaxAgeInSeconds = this.MaxAgeInSeconds,
                 ExposedHeaders = ArrayToList(this.ExposedHeaders),
-                AllowedHeaders = ArrayToList(this.AllowedHeaders)
+                AllowedHeaders = ArrayToList(this.AllowedHeaders),
+                AllowedMethods = new List<string>(),
             };
+            
+            if (this.AllowedMethods != null)
+            {
+                foreach(string method in this.AllowedMethods)
+                {
+                    corsRule.AllowedMethods.Add(method.ToUpper());
+                }
+            }
+
+            return corsRule;
         }
 
         /// <summary>
@@ -310,21 +334,25 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             return stringArray == null ? new List<string>() : new List<string>(stringArray);
         }
 
-        private List<string> ParseAllowedMethods(string[] allowedMethods)
+        public string CheckAllowedMethods()
         {
-            List<string> methods = new List<string>();
-            foreach(string method in allowedMethods)
+            string mismatchedMethods = null;
+            if (this.AllowedMethods != null)
             {
-                if (AllowedMethodList.Contains(method.ToUpper())) {
-                    methods.Add(method.ToUpper());
-                } 
-                else
+                List<string> mismatchedMethodList = new List<string>();
+                foreach (string method in this.AllowedMethods)
                 {
-                    throw new InvalidOperationException(string.Format("{0} is an invalid HTTP method.", method));
+                    if (!AllowedMethodList.Contains(method.ToUpper()))
+                    {
+                        mismatchedMethodList.Add(method.ToUpper());
+                    }
+                }
+                if (mismatchedMethodList.Count > 0)
+                {
+                    mismatchedMethods = String.Join(",", mismatchedMethodList.ToArray());
                 }
             }
-            return methods;
-
+            return mismatchedMethods;
         }
     }
 
