@@ -36,7 +36,6 @@ $CouldNotGetLatestModuleInformationWarning = "Can't connect to the PowerShell Ga
 $ResourceExistsInDifferentRegionError = "There is already an Azure Stack HCI resource with the same resource ID in region {0}, which is different from the input region {1}. Either specify the same region or delete the existing resource and try again."
 $ArcCmdletsNotAvailableError = "Azure Arc integration isn't available for the version of Azure Stack HCI installed on node(s) {0} yet. Check the documentation for details. You may need to install an update or join the Preview channel."
 $ArcRegistrationDisableInProgressError = "Unregister of Azure Arc integration is in progress. Try Unregister-AzStackHCI to finish unregistration and then try Register-AzStackHCI again."
-$ArcNeedsToBeEnabledError = "Azure Arc for servers integration can't be disabled. Skip the parameter '-EnableAzureArcServer' or Specify '-EnableAzureArcServer:`$true' in Register-AzStackHCI Cmdlet to register."
 $ArcAADAppCreationMessage= "Creating AAD application for onboarding ARC"
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
 $DisablingDefaultExtensions = "Disabling Azure Arc for servers Mandatory extensions"
@@ -54,8 +53,6 @@ $CreatingCloudResourceMessage = "Creating Azure Resource {0} representing Azure 
 $RepairingCloudResourceMessage = "Repairing Azure Resource {0} representing Azure Stack HCI by calling Microsoft.AzureStackHCI provider"
 $GettingCertificateMessage = "Getting new certificate from on-premises cluster to use as application credential"
 $AddAppCredentialMessage = "Adding certificate as application credential for the Azure AD application {0}"
-$DefaultRegionPromptMessage = "Using default region : {0}. The 'default' region might not meet Schrems II requirements."
-$ResourceGroupRegionPromptMessage = "Defaulting to ResourceGroup's region : {0}. The 'default' region might not meet Schrems II requirements."
 $DefaultExtensionPromptMessage = "Registering your system will automatically setup Azure Arc-enabled servers and install Mandatory Azure Arc extensions that help improve product quality and make it easier to get remote support. Learn more at aka.ms/azurestackhcimandatoryextensions."
 $RegisterAndSyncMetadataMessage = "Registering Azure Stack HCI cluster and syncing cluster census information from the on-premises cluster to the cloud"
 $UnregisterHCIUsageMessage = "Unregistering Azure Stack HCI cluster and cleaning up registration state on the on-premises cluster"
@@ -84,7 +81,7 @@ $MissingDependentModulesError = "Can't find PowerShell module(s): {0}. Please in
 $ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
 
 $ArcAgentRolesInsufficientPreviligeMessage = "Failed to assign required roles for Azure Arc integration. Your Azure AD account must be an Owner or User Access Administrator in the subscription to enable Azure Arc integration."
-$RegisterArcFailedWarningMessage = "Some clustered nodes couldn't be Arc-enabled right now. This can happen if some of the nodes are down. We'll automatically try again in an hour. In the meantime, you can use Get-AzureStackHCIArcIntegration to check status on each node."
+$RegisterArcFailedErrorMessage = "Some clustered nodes couldn't be Arc-enabled right now. Check the Arc Scheduled Task logs to investigate further."
 $RegisterArcFailedExceptionMessage = "Failed to enable Arc on some clustered nodes."
 $ArcSettingsPatchFailedWarningMessage = "Arc for Servers registration failed. Visit https://learn.microsoft.com/en-us/azure-stack/hci/deploy/troubleshoot-hci-registration#registration-completes-successfully-but-azure-arc-connection-in-portal-says-not-installed and follow the troubleshooting steps. If Azure-Arc registration continues failing for more than 12 hours, contact support."
 $ArcSettingsPatchFailedLogMessage = "Arc for Servers registration failed. Unable to find the cluster nodes in Arc Settings resource."
@@ -540,7 +537,7 @@ $registerArcScript = {
                     Write-Information 'Registering Arc for servers.'
                     Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9002 -EntryType 'Information' -Message 'Initiating Arc For Servers registration'
 
-                    $enableAzureStackHCIArcIntegrationRetryCount = 3
+                    $enableAzureStackHCIArcIntegrationRetryCount = 10
                     $currentCount = 1
                     $isEnableArcIntegrationSuccessful = $false
 
@@ -550,11 +547,14 @@ $registerArcScript = {
                         Enable-AzureStackHCIArcIntegration -AgentInstallerWebLink $AgentInstaller_WebLink -AgentInstallerName $AgentInstaller_Name -AgentInstallerLogFile $AgentInstaller_LogFile -AgentExecutablePath $AgentExecutable_Path  *>&1 | Tee-Object -Variable enableArcIntegrationOutput
 
                         $isEnableArcIntegrationSuccessful = $true
-                        $enableArcIntegrationOutput | foreach {
-                            Write-Information $_.ToString()
-                            if($_.ToString().Contains('401') -or $_.ToString().Contains('403'))
-                            {
-                                $isEnableArcIntegrationSuccessful = $false
+                        if($enableArcIntegrationOutput -ne $null)
+                        {
+                            $enableArcIntegrationOutput | foreach {
+                                Write-Information $_.ToString()
+                                if($_.ToString().Contains('401') -or $_.ToString().Contains('403'))
+                                {
+                                    $isEnableArcIntegrationSuccessful = $false
+                                }
                             }
                         }
 
@@ -603,7 +603,7 @@ $registerArcScript = {
         # Get script line number, offset and Command that resulted in exception. Write-ErrorLog with the exception above does not write this info.
         $positionMessage = $_.InvocationInfo.PositionMessage
         Write-EventLog -LogName Application -Source 'HCI Registration' -EventId 9116 -EntryType 'Warning' -Message ('Failed Arc For Servers registration: '+ $positionMessage)
-        Write-Error ('Exception occurred in RegisterArcScript : ' + $positionMessage) -Exception $_.Exception -Category OperationStopped
+        Write-Error -Message ('Exception occurred in RegisterArcScript : {0}' -f $positionMessage.ToString()) -Exception $_.Exception -Category OperationStopped
     }
     finally
     {
@@ -647,10 +647,17 @@ param(
 
 function Show-LatestModuleVersion{
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
+    param()
+    try 
+    {
+        $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
+    }
+    catch 
+    {
+        Write-VerboseLog $_.Exception.Message
+        $latestModule = $Null
+    }
     
-    $latestModule = Find-Module -Name Az.StackHCI -ErrorAction Ignore
-    $installedModule = Get-Module -Name Az.StackHCI | Sort-Object  -Property Version -Descending | Select-Object -First 1
-
     if($Null -eq $latestModule)
     {
         $CouldNotGetLatestModuleInformationWarningMsg = $CouldNotGetLatestModuleInformationWarning -f $installedModule.Version.Major
@@ -658,6 +665,7 @@ function Show-LatestModuleVersion{
     }
     else
     {
+        $installedModule = Get-Module -Name Az.StackHCI | Sort-Object  -Property Version -Descending | Select-Object -First 1
         if($latestModule.Version.GetType() -eq [string])
         {
             $latestModuleVersion = [System.Version]::Parse($latestModule.Version)
@@ -1835,9 +1843,9 @@ param(
     }
     catch
     {
-        Write-WarnLog ($RegisterArcFailedWarningMessage)
+        Write-ErrorLog ($RegisterArcFailedErrorMessage)
         $retStatus = [ErrorDetail]::ArcIntegrationFailedOnNodes
-        Write-VerboseLog ("Exception occurred in registering nodes to Arc For Servers. ErrorMessage : {0}" -f ($_.Exception.Message))
+        throw $RegisterArcFailedErrorMessage
     }
 
     # Cleanup sessions.
@@ -2399,10 +2407,10 @@ enum ErrorDetail
     Register-AzStackHCI creates a Microsoft.AzureStackHCI cloud resource representing the on-premises cluster and registers the on-premises cluster with Azure.
  
     .PARAMETER SubscriptionId
-    Specifies the Azure Subscription to create the resource. This is the only Mandatory parameter.
+    Specifies the Azure Subscription to create the resource. SubscriptionId is a Mandatory parameter.
 
     .PARAMETER Region
-    Specifies the Region to create the resource. Default is EastUS.
+    Specifies the Region to create the resource. Region is a Mandatory parameter.
 
     .PARAMETER ResourceName
     Specifies the resource name of the resource created in Azure. If not specified, on-premises cluster name is used.
@@ -2440,9 +2448,6 @@ enum ErrorDetail
     .PARAMETER UseDeviceAuthentication
     Use device code authentication instead of an interactive browser prompt.
     
-    .PARAMETER EnableAzureArcServer
-    EnableAzureArcServer needs to be specified $true. Specifying this parameter to $false will terminate the registration cmdlet.
-
     .PARAMETER Credential
     Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
 
@@ -2495,7 +2500,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string] $SubscriptionId,
 
-    [Parameter(Mandatory = $false)]
+    [Parameter(Mandatory = $true)]
     [string] $Region,
 
     [Parameter(Mandatory = $false)]
@@ -2512,10 +2517,6 @@ param(
 
     [Parameter(Mandatory = $false)]
     [string] $ArmAccessToken,
-
-    [Parameter(Mandatory = $false)]
-    [Obsolete("Graph Access token is no more required for Az.StackHCI module")]
-    [string] $GraphAccessToken,
 
     [Parameter(Mandatory = $false)]
     [string] $AccountId,
@@ -2536,9 +2537,6 @@ param(
     [Switch]$UseDeviceAuthentication,
     
     [Parameter(Mandatory = $false)]
-    [Switch]$EnableAzureArcServer = $true,
-    
-    [Parameter(Mandatory = $false)]
     [System.Management.Automation.PSCredential] $Credential, 
 
     [Parameter(Mandatory = $false)]
@@ -2551,6 +2549,16 @@ param(
     [System.Management.Automation.PSCredential] $ArcSpnCredential
     )
     
+    if([string]::IsNullOrEmpty($ComputerName))
+    {
+        $ComputerName = [Environment]::MachineName
+        $IsManagementNode = $False
+    }
+    else
+    {
+        $IsManagementNode = $True
+    }
+
     try
     {
         Setup-Logging -LogFilePrefix "RegisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
@@ -2559,16 +2567,6 @@ param(
         $operationStatus = [OperationStatus]::Unused
         
         Show-LatestModuleVersion
-
-        if([string]::IsNullOrEmpty($ComputerName))
-        {
-            $ComputerName = [Environment]::MachineName
-            $IsManagementNode = $False
-        }
-        else
-        {
-            $IsManagementNode = $True
-        }
 
         Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
         Check-DependentModules
@@ -2697,20 +2695,8 @@ param(
             Write-VerboseLog ("using cluster Name as resourcegroup name: $ResourceGroupName")
         }
 
-        if($EnableAzureArcServer -eq $false)
-        {
-            Write-ErrorLog -Category OperationStopped -Message $ArcNeedsToBeEnabledError
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-            Write-Output $registrationOutput | Format-List
-            Write-NodeEventLog -Message $ArcNeedsToBeEnabledError -EventID 9122 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-            throw
-        }
-
-        if(-Not ([string]::IsNullOrEmpty($Region)))
-        {
-            $Region = Normalize-RegionName -Region $Region
-            Write-VerboseLog ("Normailzed region string: $Region")
-        }
+        $Region = Normalize-RegionName -Region $Region
+        Write-VerboseLog ("Normailzed region string: $Region")
 
         $TenantId = Azure-Login -SubscriptionId $SubscriptionId -TenantId $TenantId -ArmAccessToken $ArmAccessToken -GraphAccessToken $GraphAccessToken -AccountId $AccountId -EnvironmentName $EnvironmentName -ProgressActivityName $RegisterProgressActivityName -UseDeviceAuthentication $UseDeviceAuthentication -Region $Region
 
@@ -2760,11 +2746,7 @@ param(
             
             $resourceLocation = Normalize-RegionName -Region $resource.Location
             Write-VerboseLog ("Location resolved from  cloud resource: $resourceLocation")
-            if([string]::IsNullOrEmpty($Region))
-            {
-                $Region = $resourceLocation
-            }
-            elseif($Region -ne $resourceLocation)
+            if($Region -ne $resourceLocation)
             {
                 $ResourceExistsInDifferentRegionErrorMessage = $ResourceExistsInDifferentRegionError -f $resourceLocation, $Region
                 Write-ErrorLog -Message $ResourceExistsInDifferentRegionErrorMessage -Category OperationStopped -ErrorAction Continue
@@ -2772,45 +2754,6 @@ param(
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $ResourceExistsInDifferentRegionErrorMessage -EventID 9104 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
-            }
-        }
-        else
-        {
-            if($resGroup -eq $Null)
-            {
-                Write-VerboseLog ("ResourceGroup is not created yet")
-                if([string]::IsNullOrEmpty($Region))
-                {
-                    $Region = Get-DefaultRegion -EnvironmentName $EnvironmentName
-
-                    if($PSCmdlet.ShouldProcess("Using default region : $Region.", $DefaultRegionPromptMessage -f $Region, "Are you sure you want to perform this action?"))
-                    {
-                        Write-WarnLog("Using default region : $Region. The 'default' region might not meet Schrems II requirements.")
-                        Write-VerboseLog ("Using default region : $Region , since region is not specified")                        
-                    }
-                    else
-                    {
-                        return
-                    }
-                }
-            }
-            else
-            {
-                Write-VerboseLog ("ResourceGroup is already present")
-                if([string]::IsNullOrEmpty($Region))
-                {
-                    $Region = $resGroup.Location
-
-                    if($PSCmdlet.ShouldProcess("Defaulting to ResourceGroup's region : $Region.", $ResourceGroupRegionPromptMessage -f $Region, "Are you sure you want to perform this action?"))
-                    {
-                        Write-WarnLog("Defaulting to ResourceGroup's region : $Region. The 'default' region might not meet Schrems II requirements.")
-                        Write-VerboseLog ("Defaulting to ResourceGroup's region : $Region , since region is not specified")                        
-                    }
-                    else
-                    {
-                        return
-                    }
-                }
             }
         }
         
@@ -2865,13 +2808,13 @@ param(
         $registrationBeginMsg="Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
         SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
         AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
-        RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC `
+        RepairRegistration: $RepairRegistration IsWAC: $IsWAC `
         ArcServerResourceGroupName: $ArcServerResourceGroupName"
     
         $registrationBeginMsgPIIScrubbed="Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
         SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
         EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
-        RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC `
+        RepairRegistration: $RepairRegistration IsWAC: $IsWAC `
         ArcServerResourceGroupName: $ArcServerResourceGroupName"
     
         Write-VerboseLog ($registrationBeginMsg)
@@ -3361,16 +3304,12 @@ param(
 
         if($ArcCmdletsAbsentOnNodes.Count -ge 1)
         {
-            # Show Arc error on 20h2 only if -EnableAzureArcServer:$true is explicity passed by user
-            if($PSBoundParameters.ContainsKey('EnableAzureArcServer'))
-            {
-                $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
-                Write-ErrorLog -Message $ArcCmdletsNotAvailableErrorMsg -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
-                Write-Output $registrationOutput | Format-List
-                Write-NodeEventLog -Message $ArcCmdletsNotAvailableErrorMsg -EventID 9112 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
-                throw
-            }
+            $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
+            Write-ErrorLog -Message $ArcCmdletsNotAvailableErrorMsg -Category OperationStopped -ErrorAction Continue
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+            Write-Output $registrationOutput | Format-List
+            Write-NodeEventLog -Message $ArcCmdletsNotAvailableErrorMsg -EventID 9112 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+            throw
         }
         else
         {
@@ -3399,13 +3338,22 @@ param(
 
             Write-VerboseLog ("Register-AzStackHCI: Arc registration triggered. ArcResourceGroupName: $ArcServerResourceGroupName")
 
-                        if($isDefaultExtensionSupported)
-                        {
-                            Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
-                            Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
-                        }
+            if($isDefaultExtensionSupported)
+            {
+                Write-VerboseLog "Mandatory extensions are supported. Triggering installation for mandatory extensions."
+                Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action consentAndInstallDefaultExtensions -Force } | Out-Null
+            }
 
-            $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
+            try {
+                $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres -HCIResource $resource
+            }
+            catch {
+                $operationStatus = [OperationStatus]::ArcFailed
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $operationStatus
+                Write-Output $registrationOutput | Format-List
+                throw $_.Exception.Message
+            }
+
 
             if($arcResult -ne [ErrorDetail]::Success)
             {
@@ -3619,10 +3567,6 @@ param(
     [string] $ArmAccessToken,
 
     [Parameter(Mandatory = $false)]
-    [Obsolete("Graph Access is no more required for Az.StackHCI module")]
-    [string] $GraphAccessToken,
-
-    [Parameter(Mandatory = $false)]
     [string] $AccountId,
 
     [Parameter(Mandatory = $false)]
@@ -3647,22 +3591,22 @@ param(
     [Switch] $Force
     )
 
+    if([string]::IsNullOrEmpty($ComputerName))
+    {
+        $ComputerName = [Environment]::MachineName
+        $IsManagementNode = $False
+    }
+    else
+    {
+        $IsManagementNode = $True
+    }
+
     try
     {
         Setup-Logging -LogFilePrefix "UnregisterHCI" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
 
         $unregistrationOutput = New-Object -TypeName PSObject
         $operationStatus = [OperationStatus]::Unused
-
-        if([string]::IsNullOrEmpty($ComputerName))
-        {
-            $ComputerName = [Environment]::MachineName
-            $IsManagementNode = $False
-        }
-        else
-        {
-            $IsManagementNode = $True
-        }
 
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
         Check-DependentModules
@@ -3973,7 +3917,7 @@ function Remove-ResourceGroup {
             }
             catch 
             {
-                Write-VerboseLog ("Deleting Resource Group $ResourceGroupName failed. ErrorMessage : {0}", ($_.Exception.Message))
+                Write-VerboseLog ("Deleting Resource Group $ResourceGroupName failed. ErrorMessage : {0}" -f ($_.Exception.Message))
             }
         }
         else 
@@ -3984,183 +3928,6 @@ function Remove-ResourceGroup {
     else 
     {
         Write-VerboseLog ("Resource group not created by Az.StackHCI. Not deleting")
-    }
-}
-
-<#
-    .Description
-    Test-AzStackHCIConnection verifies connectivity from on-premises clustered nodes to the Azure services required by Azure Stack HCI. 
-    Note: Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/manage/use-environment-checker.
-
-    .PARAMETER EnvironmentName
-    Specifies the Azure Environment. Default is AzureCloud. Valid values are AzureCloud, AzureChinaCloud, AzurePPE, AzureCanary, AzureUSGovernment
-
-    .PARAMETER Region
-    Specifies the Region to connect to. Not used unless it is Canary region.
-
-    .PARAMETER ComputerName
-    Specifies one of the cluster node in on-premise cluster that is being registered to Azure.
-
-    .PARAMETER Credential
-    Specifies the credential for the ComputerName. Default is the current user executing the Cmdlet.
-
-    .OUTPUTS
-    PSCustomObject. Returns following Properties in PSCustomObject
-    Test: Name of the test performed.
-    EndpointTested: Endpoint used in the test.
-    IsRequired: True or False
-    Result: Succeeded or Failed
-    FailedNodes: List of nodes on which the test failed.
-
-    .EXAMPLE
-    Invoking on one of the cluster node. Success case.
-    C:\PS>Test-AzStackHCIConnection
-    Test: Connect to Azure Stack HCI Service
-    EndpointTested: https://azurestackhci-df.azurefd.net/health
-    IsRequired: True
-    Result: Succeeded
-
-    .EXAMPLE
-    Invoking on one of the cluster node. Failed case.
-    C:\PS>Test-AzStackHCIConnection
-    Test: Connect to Azure Stack HCI Service
-    EndpointTested: https://azurestackhci-df.azurefd.net/health
-    IsRequired: True
-    Result: Failed
-    FailedNodes: Node1inClus2, Node2inClus3
-#>
-function Test-AzStackHCIConnection{
-    [Obsolete("Test-AzStackhHCIConnection is deprecated. Please use 'Invoke-AzStackHciConnectivityValidation' from 'AzStackHCI.EnvironmentChecker' module for enhanced connectivity verification tests. For more information, see https://learn.microsoft.com/en-us/azure-stack/hci/manage/use-environment-checker.")]
-param(
-    [Parameter(Mandatory = $false)]
-    [string] $EnvironmentName = $AzureCloud,
-
-    [Parameter(Mandatory = $false)]
-    [string] $Region,
-
-    [Parameter(Mandatory = $false)]
-    [string] $ComputerName,
-
-    [Parameter(Mandatory = $false)]
-    [System.Management.Automation.PSCredential] $Credential
-    )
-
-    try
-    {
-        Setup-Logging -LogFilePrefix "TestAzStackHCIConnection" -DebugEnabled ($DebugPreference -ne "SilentlyContinue")
-
-        $testConnectionnOutput = New-Object -TypeName PSObject
-        $connectionTestResult = [ConnectionTestResult]::Unused
-
-        if([string]::IsNullOrEmpty($ComputerName))
-        {
-            $ComputerName = [Environment]::MachineName
-            $IsManagementNode = $False
-        }
-        else
-        {
-            $IsManagementNode = $True
-        }
-
-        if($IsManagementNode)
-        {
-            if($Credential -eq $Null)
-            {
-                $clusterNodeSession = New-PSSession -ComputerName $ComputerName
-            }
-            else
-            {
-                $clusterNodeSession = New-PSSession -ComputerName $ComputerName -Credential $Credential
-            }
-        }
-        else
-        {
-            $clusterNodeSession = New-PSSession -ComputerName localhost
-        }
-
-        if(-not([string]::IsNullOrEmpty($Region)))
-        {
-            $Region = Normalize-RegionName -Region $Region
-
-            if(($Region -eq $Region_EASTUSEUAP) -or ($Region -eq $Region_CENTRALUSEUAP))
-            {
-                $ServiceEndpointAzureCloud = $ServiceEndpointsAzureCloud[$Region]
-            }
-            else
-            {
-                $ServiceEndpointAzureCloud = $ServiceEndpointAzureCloudFrontDoor
-            }
-        }
-
-        $clusScript = {
-                $clusterPowershell = Get-WindowsFeature -Name RSAT-Clustering-PowerShell;
-                if ( $clusterPowershell.Installed -eq $false)
-                {
-                    Install-WindowsFeature RSAT-Clustering-PowerShell | Out-Null;
-                }
-            }
-
-        Invoke-Command -Session $clusterNodeSession -ScriptBlock $clusScript
-        $getCluster = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Cluster }
-        $clusterDNSSuffix = Get-ClusterDNSSuffix -Session $clusterNodeSession
-        $clusterDNSName = Get-ClusterDNSName -Session $clusterNodeSession
-
-        if($getCluster -eq $Null)
-        {
-            $NoClusterErrorMessage = $NoClusterError -f $ComputerName
-            Write-ErrorLog -Message $NoClusterErrorMessage -Category OperationStopped -ErrorAction Continue
-            throw
-        }
-        else
-        {
-            $ServiceEndpoint = ""
-            $Authority = ""
-            $BillingServiceApiScope = ""
-            $GraphServiceApiScope = ""
-
-            Get-EnvironmentEndpoints -EnvironmentName $EnvironmentName -ServiceEndpoint ([ref]$ServiceEndpoint) -Authority ([ref]$Authority) -BillingServiceApiScope ([ref]$BillingServiceApiScope) -GraphServiceApiScope ([ref]$GraphServiceApiScope)
-             # For now, we will use the default route and connect to any Datapath service.
-            # Next stage, we can add a tiny URL support and pull the Endpoint directly from this open endpoint.
-            $EndPointToInvoke = $ServiceEndpoint + $HealthEndpointPath
-
-            $clusterNodes = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterNode }
-            $HealthEndPointCheckFailedNodes = [System.Collections.ArrayList]::new()
-
-            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyTest -Value $ConnectionTestToAzureHCIServiceName
-            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyEndpointTested -Value $EndPointToInvoke
-            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyIsRequired -Value $True
-
-            Check-ConnectionToCloudBillingService -ClusterNodes $clusterNodes -Credential $Credential -HealthEndpoint $EndPointToInvoke -HealthEndPointCheckFailedNodes $HealthEndPointCheckFailedNodes -ClusterDNSSuffix $clusterDNSSuffix
-
-            if($HealthEndPointCheckFailedNodes.Count -ge 1)
-            {
-                # Failed on atleast 1 node
-                $connectionTestResult = [ConnectionTestResult]::Failed
-                $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyFailedNodes -Value $HealthEndPointCheckFailedNodes
-            }
-            else
-            {
-                $connectionTestResult = [ConnectionTestResult]::Succeeded
-            }
-
-            $testConnectionnOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $connectionTestResult
-            Write-Output $testConnectionnOutput | Format-List
-            return
-        }
-    }
-    catch
-    {
-        if(-Not $Error.Contains($AlreadyLoggedFlag))
-        {
-            Write-ErrorLog "Exception occurred in Test-AzStackHCIConnection" -Exception $_ -Category OperationStopped
-        }
-    }
-    finally
-    {
-        if($DebugPreference -ne "SilentlyContinue")
-        {
-            try{ Stop-Transcript | Out-Null }catch{}
-        }
     }
 }
 
@@ -4242,10 +4009,6 @@ param(
 
     [Parameter(Mandatory = $false)]
     [string] $ArmAccessToken,
-
-    [Parameter(Mandatory = $false)]
-    [Obsolete("Graph Access is no more required for Az.StackHCI module")]
-    [string] $GraphAccessToken,
 
     [Parameter(Mandatory = $false)]
     [string] $AccountId,
@@ -4402,7 +4165,9 @@ param(
 
         $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
 
-        $properties  = $armResource.Properties
+        $properties = [PSCustomObject]@{
+            desiredProperties = $armResource.Properties.desiredProperties
+        }
 
         if ($properties.desiredProperties -eq $null)
         {
@@ -6122,7 +5887,6 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
 
 # Export-ModuleMember -Function Register-AzStackHCI
 # Export-ModuleMember -Function Unregister-AzStackHCI
-# Export-ModuleMember -Function Test-AzStackHCIConnection
 # Export-ModuleMember -Function Set-AzStackHCI
 # Export-ModuleMember -Function Enable-AzStackHCIAttestation
 # Export-ModuleMember -Function Disable-AzStackHCIAttestation
