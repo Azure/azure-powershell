@@ -156,7 +156,11 @@ function Remove-AzFrontDoorCdnProfile {
     
     process {
         if ($PSCmdlet.ParameterSetName -eq 'Delete') {
-            $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
+            if(${SubscriptionId}) {
+                $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name} -SubscriptionId ${SubscriptionId}
+            } else {
+                $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${Name}
+            }
         } elseif ($PSCmdlet.ParameterSetName -eq 'DeleteViaIdentity') {
             $frontDoorCdnProfile = Get-AzFrontDoorCdnProfile -InputObject $InputObject
         }else {

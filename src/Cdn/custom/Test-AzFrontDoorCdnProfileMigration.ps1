@@ -102,6 +102,7 @@ function Test-AzFrontDoorCdnProfileMigration {
     )
 
     process {
+        Write-Host("This could take a few seconds to a few mins depending on the complexity of your resource.")
         Az.Cdn.internal\Invoke-AzCdnCanProfileMigrate @PSBoundParameters
     }
 }
