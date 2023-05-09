@@ -14,14 +14,14 @@ function GetEndpointFromResourceGraph {
 
     process {
         $module = Get-Module -ListAvailable | Where-Object { $_.Name -eq "Az.ResourceGraph" }
-        if ($module -eq $null) {
+        if ($null -eq $module) {
             $message = "Az.ResourceGraph Module must be installed to run this command. " `
                 + "Please run 'Install-Module -Name Az.ResourceGraph' to install and continue."
             throw $message
         }
 
         $query = "Resources |where type =~'Microsoft.devcenter/projects' "
-        if ($Project -ne $null) {
+        if ($null -ne $Project) {
             $query += "| where name =~ '$Project' "
         }
         $query += "| extend devCenterArr = split(properties.devCenterId, '/') " `

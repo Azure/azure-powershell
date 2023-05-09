@@ -70,6 +70,16 @@ directive:
     set: 
       verb: Deploy
   - where:
+      verb: Get
+      subject: ^(.*)
+      parameter-name: Top
+    hide: true
+  - where:
+      verb: Get
+      subject: ^(.*)
+      parameter-name: Filter
+    hide: true
+  - where:
       subject: ^(.*)
     set:
       subject-prefix: DevCenterDev

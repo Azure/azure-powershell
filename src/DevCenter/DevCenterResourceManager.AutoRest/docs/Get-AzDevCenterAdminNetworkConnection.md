@@ -14,7 +14,7 @@ Gets a network connection resource
 
 ### List (Default)
 ```
-Get-AzDevCenterAdminNetworkConnection [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+Get-AzDevCenterAdminNetworkConnection [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Get-AzDevCenterAdminNetworkConnection -InputObject <IDevCenterIdentity> [-Defaul
 
 ### List1
 ```
-Get-AzDevCenterAdminNetworkConnection -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
+Get-AzDevCenterAdminNetworkConnection -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -139,22 +139,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: '$top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

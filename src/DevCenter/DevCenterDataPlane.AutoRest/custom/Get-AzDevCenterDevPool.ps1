@@ -77,19 +77,6 @@ function Get-AzDevCenterDevPool {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
     
-        [Parameter(ParameterSetName='ListByDevCenter')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Query')]
-        [System.String]
-        # An OData filter clause to apply to the operation.
-        ${Filter},
-    
-        [Parameter(ParameterSetName='ListByDevCenter')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Query')]
-        [System.Int32]
-        # The maximum number of resources to return from the operation.
-        # Example: 'top=10'.
-        ${Top},
-    
         [Parameter(ParameterSetName='GetByDevCenter')]
         [Parameter(ParameterSetName='GetViaIdentityByDevCenter')]
         [Parameter(ParameterSetName='ListByDevCenter')]
