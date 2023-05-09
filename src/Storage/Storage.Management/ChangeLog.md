@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the API version limitation on File cmdlets
 
 ## Version 5.6.1
 * Support OAuth authentication on File service cmdlets
