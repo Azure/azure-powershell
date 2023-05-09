@@ -94,6 +94,7 @@ namespace Microsoft.Azure.Management.Sql
                 new Tuple<string, string, string>("Sql", "ServerAzureADAdministrators", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ServerAzureADOnlyAuthentications", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ServerBlobAuditingPolicies", "2021-11-01-preview"),
+                new Tuple<string, string, string>("Sql", "ServerConfigurationOptions", "2022-08-01-preview"),
                 new Tuple<string, string, string>("Sql", "ServerDevOpsAuditSettings", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ServerDnsAliases", "2020-11-01-preview"),
                 new Tuple<string, string, string>("Sql", "ServerKeys", "2020-11-01-preview"),

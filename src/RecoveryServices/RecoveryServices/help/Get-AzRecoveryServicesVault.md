@@ -48,13 +48,14 @@ Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup"
 
 Get the list of vault in resource group in selected subscription.
 
-### Example 3: Get vault MSI, PublicNetworkAccess, ImmutabilityState
+### Example 3: Get vault MSI, PublicNetworkAccess, ImmutabilityState, CrossSubscriptionRestoreState
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
 $vault.Identity | Format-List
 $vault.Properties.PublicNetworkAccess
 $vault.Properties.ImmutabilitySettings.ImmutabilityState
+$vault.Properties.RestoreSettings.CrossSubscriptionRestoreSettings.CrossSubscriptionRestoreState
 ```
 
 ```output
@@ -64,9 +65,10 @@ Type        : SystemAssigned
 
 Enabled
 Disabled
+Enabled
 ```
 
-The first cmdlet gets the vault in resource group with given name. Then we access the MSI information from the vault. Third and fourth commands are used to fetch the public network access and immutability state of the vault.
+The first cmdlet gets the vault in resource group with given name. Then we access the MSI information from the vault. Third and fourth commands are used to fetch the public network access, immutability state, cross subscription restore state of the vault.
 
 ## PARAMETERS
 

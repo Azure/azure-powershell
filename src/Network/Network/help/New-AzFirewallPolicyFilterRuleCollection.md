@@ -13,8 +13,9 @@ Create a new Azure Firewall Policy Filter Rule Collection
 ## SYNTAX
 
 ```
-New-AzFirewallPolicyFilterRuleCollection -Name <String> -Priority <UInt32> -Rule <PSAzureFirewallPolicyRule[]>
- -ActionType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzFirewallPolicyFilterRuleCollection -Name <String> -Priority <UInt32>
+ [-Rule <PSAzureFirewallPolicyRule[]>] -ActionType <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,7 @@ This example creates a Filter rule with 2 rule conditions
 The action of the rule collection
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Allow, Deny
@@ -51,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +67,7 @@ Accept wildcard characters: False
 The name of the Application Rule Collection
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +82,7 @@ Accept wildcard characters: False
 The priority of the rule collection
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 
@@ -96,40 +97,9 @@ Accept wildcard characters: False
 The list of application rules
 
 ```yaml
-Type: PSAzureFirewallPolicyRule[]
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyRule[]
 Parameter Sets: (All)
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named

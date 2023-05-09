@@ -6,7 +6,10 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Support
 {
 
-    /// <summary>The load balancer sku for the managed cluster.</summary>
+    /// <summary>
+    /// The default is 'standard'. See [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
+    /// information about the differences between load balancer SKUs.
+    /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Aks.Support.LoadBalancerSkuTypeConverter))]
     public partial struct LoadBalancerSku :
         System.Management.Automation.IArgumentCompleter

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
 
             return psVirtualHub;
         }
-
+         
         public PSVirtualHub GetVirtualHub(string resourceGroupName, string name)
         {
             try

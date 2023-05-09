@@ -36,11 +36,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// <param name="recoveryPointId">The recovery point Id.</param>
         /// <param name="networkId">The test network Id.</param>
         /// <param name="vmNics">The list of NIC details.</param>
-        public VMwareCbtTestMigrateInput(string recoveryPointId, string networkId, IList<VMwareCbtNicInput> vmNics = default(IList<VMwareCbtNicInput>))
+        /// <param name="osUpgradeVersion">A value indicating the inplace OS
+        /// Upgrade version.</param>
+        public VMwareCbtTestMigrateInput(string recoveryPointId, string networkId, IList<VMwareCbtNicInput> vmNics = default(IList<VMwareCbtNicInput>), string osUpgradeVersion = default(string))
         {
             RecoveryPointId = recoveryPointId;
             NetworkId = networkId;
             VmNics = vmNics;
+            OsUpgradeVersion = osUpgradeVersion;
             CustomInit();
         }
 
@@ -66,6 +69,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "vmNics")]
         public IList<VMwareCbtNicInput> VmNics { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the inplace OS Upgrade version.
+        /// </summary>
+        [JsonProperty(PropertyName = "osUpgradeVersion")]
+        public string OsUpgradeVersion { get; set; }
 
         /// <summary>
         /// Validate the object.

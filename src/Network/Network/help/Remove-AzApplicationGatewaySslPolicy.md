@@ -29,6 +29,7 @@ $AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupNam
 $AppGW = Remove-AzApplicationGatewaySslPolicy -ApplicationGateway $AppGW
 Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
+
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGW variable. 
 The second command removes the SSL policy from the application gateway.
 The last command updates the application gateway.
@@ -112,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

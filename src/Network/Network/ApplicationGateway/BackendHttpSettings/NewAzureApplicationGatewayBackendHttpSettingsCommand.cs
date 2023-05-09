@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("New-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("New-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayBackendHttpSetting"), OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     [Alias("New-AzApplicationGatewayBackendHttpSettings")]
     public class NewAzureApplicationGatewayBackendHttpSettingsCommand : AzureApplicationGatewayBackendHttpSettingsBase

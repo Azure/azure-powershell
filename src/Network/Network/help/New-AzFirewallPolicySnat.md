@@ -26,20 +26,22 @@ The New-AzFirewallPolicySnat is used to configure Private Ranges and auto learn 
 ```powershell
 New-AzFirewallPolicySnat -PrivateRange @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20") -AutoLearnPrivateRange
 ```
+
 ```output
-		PrivateRange	            : ["3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20"]	
-		AutoLearnPrivateRanges	    : Enabled	
+PrivateRange	            : ["3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20"]	
+		AutoLearnPrivateRanges	    : Enabled
 ```
 
 This example configures private IP addresses/IP ranges to which traffic will not be SNATed and enables auto learn of private ip ranges in Firewall Policy.
 
 ### Example 2
 ```powershell
-New-AzFirewallPolicySnat -PrivateRange @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20") 
+New-AzFirewallPolicySnat -PrivateRange @("3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20")
 ```
+
 ```output
-	 PrivateRange	            : ["3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20"]	
-	 AutoLearnPrivateRanges	    : Disabled	
+PrivateRange	            : ["3.3.0.0/24", "98.0.0.0/8","10.227.16.0/20"]	
+	 AutoLearnPrivateRanges	    : Disabled
 ```
 
 This example configures private IP addresses/IP ranges to which traffic will not be SNATed and disables auto learn of private ip ranges in Firewall Policy.
@@ -51,7 +53,7 @@ Enable/disable auto learn private ranges.
 By default it is disabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -62,12 +64,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -82,7 +83,7 @@ Accept wildcard characters: False
 The Private IP Range
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +93,6 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
-
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -108,6 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzFireWallPolicy](./New-AzFireWallPolicy.md)
 
 [Set-AzFireWallPolicy](./Set-AzFireWallPolicy.md)

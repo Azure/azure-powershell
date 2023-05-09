@@ -24,7 +24,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Telemetry
         /// <summary>
         /// The telemetry property name for "Command".
         /// </summary>
-        public const string PropertyNameCommand = "Command";
+        public const string PropertyNameCommand = "Command2";
 
         /// <summary>
         /// The telemetry property name for "Success".

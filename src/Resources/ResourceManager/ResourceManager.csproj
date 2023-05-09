@@ -14,7 +14,6 @@
   <ItemGroup>
     
     <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
   </ItemGroup>
 

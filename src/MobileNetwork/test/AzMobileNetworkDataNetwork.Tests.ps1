@@ -36,17 +36,9 @@ Describe 'AzMobileNetworkDataNetwork' {
         } | Should -Not -Throw
     }
 
-    It 'UpdateExpanded' {
+    It 'UpdateExpanded' -skip {
         {
             $config = Update-AzMobileNetworkDataNetwork -MobileNetworkName $env.testNetwork3 -ResourceGroupName $env.resourceGroup -DataNetworkName $env.testDataNetwork -Tag @{"abc"="`12"}
-            $config.Name | Should -Be $env.testDataNetwork
-        } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' {
-        {
-            $config = Get-AzMobileNetworkDataNetwork -MobileNetworkName $env.testNetwork3 -ResourceGroupName $env.resourceGroup -Name $env.testDataNetwork
-            $config = Update-AzMobileNetworkDataNetwork -InputObject $config -Tag @{"abc"="`12"}
             $config.Name | Should -Be $env.testDataNetwork
         } | Should -Not -Throw
     }

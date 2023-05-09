@@ -45,22 +45,35 @@ If you do not specify the *ResourceGroupName* parameter, this cmdlet gets all Co
 
 ### Example 1
 ```powershell
-New-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Location 'WestUS'
+Get-AzCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
 ```
 
 ```output
-ResourceGroupName : cognitive-services-resource-group
-AccountName       : myluis
-Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
-                    nitiveServices/accounts/myluis
-Endpoint          : https://westus.api.cognitive.microsoft.com/luis/v2.0
-Location          : WESTUS
-Sku               : Microsoft.Azure.Management.CognitiveServices.Models.Sku
-AccountType       : LUIS
-ResourceType      : Microsoft.CognitiveServices/accounts
-Etag              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-ProvisioningState : Succeeded
-Tags              :
+ResourceGroupName             : cognitive-services-resource-group
+AccountName                   : myluis
+Id                            : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
+                                nitiveServices/accounts/myluis
+Endpoint                      : https://westus.api.cognitive.microsoft.com/luis/v2.0
+Location                      : WESTUS
+Sku                           : Microsoft.Azure.Management.CognitiveServices.Models.Sku
+AccountType                   : LUIS
+ResourceType                  : Microsoft.CognitiveServices/accounts
+Etag                          : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ProvisioningState             : Succeeded
+CustomSubDomainName           : 
+PublicNetworkAccess           : Enabled
+Identity                      : 
+Encryption                    : 
+UserOwnedStorage              : 
+PrivateEndpointConnections    : {}
+ApiProperties                 : 
+Properties                    : Microsoft.Azure.Management.CognitiveServices.Models.AccountProperties
+RestrictOutboundNetworkAccess : 
+AllowedFqdnList               : 
+DisableLocalAuth              : 
+NetworkRuleSet                : 
+Capabilities                  : {DynamicThrottling, VirtualNetworks, Container}
+Tags                          :
 ```
 
 ## PARAMETERS

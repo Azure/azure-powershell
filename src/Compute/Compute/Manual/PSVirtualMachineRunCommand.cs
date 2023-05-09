@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         public int? TimeoutInSeconds { get; set; }
         public string OutputBlobUri { get; set; }
         public string ErrorBlobUri { get; set; }
-        public string ProvisioningState { get; }
+        public string ProvisioningState { get; set; }
         public VirtualMachineRunCommandInstanceView InstanceView { get; set; }
     }
 }

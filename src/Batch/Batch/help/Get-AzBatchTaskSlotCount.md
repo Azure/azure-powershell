@@ -33,7 +33,7 @@ Task slot counts provide a count of slots by active, running or completed task s
 
 ### Example 1: Get task counts by ID
 ```powershell
-Get-AzBatchTaskSlotCounts -JobId "Job01" -BatchContext $Context
+Get-AzBatchTaskSlotCount -JobId "Job01" -BatchContext $Context
 ```
 
 ```output

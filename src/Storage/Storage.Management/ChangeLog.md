@@ -18,9 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.6.0
+* Supported rename file and directory
+    - `Rename-AzStorageFile`
+    - `Rename-AzStorageDirectory`
+* Added a warning message for an upcoming breaking change when getting a single blob 
+    - `Get-AzStorageBlob`
+* Fixed the issue of listing blobs with leading slashes 
+    - `Get-AzStorageBlob`
+* Added support for sticky bit 
+    - `New-AzDataLakeGen2Item`
+    - `New-AzDataLakeGen2ACLObject`
+    - `Update-AzDataLakeGen2Item`
 * Added warning messages for an upcoming cmdlet breaking change 
     - `New-AzStorageAccount`
     - `Set-AzStorageAccount`
+* Allowed to clear blob tags on a blob 
+    - `Set-AzStorageBlobTag`
+* Updated Azure.Core to 1.31.0
 
 ## Version 5.5.0
 * Supported create storage account with DnsEndpointType

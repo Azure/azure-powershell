@@ -33,9 +33,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         /// <param name="performShutdown">A value indicating whether VM is to
         /// be shutdown.</param>
-        public VMwareCbtMigrateInput(string performShutdown)
+        /// <param name="osUpgradeVersion">A value indicating the inplace OS
+        /// Upgrade version.</param>
+        public VMwareCbtMigrateInput(string performShutdown, string osUpgradeVersion = default(string))
         {
             PerformShutdown = performShutdown;
+            OsUpgradeVersion = osUpgradeVersion;
             CustomInit();
         }
 
@@ -49,6 +52,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models
         /// </summary>
         [JsonProperty(PropertyName = "performShutdown")]
         public string PerformShutdown { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating the inplace OS Upgrade version.
+        /// </summary>
+        [JsonProperty(PropertyName = "osUpgradeVersion")]
+        public string OsUpgradeVersion { get; set; }
 
         /// <summary>
         /// Validate the object.

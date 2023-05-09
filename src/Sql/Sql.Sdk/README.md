@@ -111,6 +111,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/62bb0d101c8aee92e4d77ad14b20e4cf14bb181c/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RestorableDroppedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/549bc277952e66577d69ce137eea810c9815ef22/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/InstanceFailoverGroups.json
   - https://github.com/Azure/azure-rest-api-specs/blob/62bb0d101c8aee92e4d77ad14b20e4cf14bb181c/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/Servers.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/8e7fbe5d8c0e33f99ad365951485107a0ad8a181/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ServerConfigurationOptions.json
 
 output-folder: Generated
 

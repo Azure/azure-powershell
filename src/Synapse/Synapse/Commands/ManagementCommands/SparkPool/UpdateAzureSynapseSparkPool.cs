@@ -267,9 +267,9 @@ namespace Microsoft.Azure.Commands.Synapse
 
             if (this.IsParameterBound(c => c.PackageAction) && this.IsParameterBound(c => c.Package))
             {
-                if (this.PackageAction == SynapseConstants.PackageActionType.Add)
+                if (this.PackageAction == SynapseConstants.PackageActionType.Add || this.PackageAction == SynapseConstants.PackageActionType.Set)
                 {
-                    if (existingSparkPool.CustomLibraries == null)
+                    if (existingSparkPool.CustomLibraries == null || this.PackageAction == SynapseConstants.PackageActionType.Set)
                     {
                         existingSparkPool.CustomLibraries = new List<LibraryInfo>();
                     }
