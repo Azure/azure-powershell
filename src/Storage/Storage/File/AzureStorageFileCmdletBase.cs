@@ -176,7 +176,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             {
                 if (clientOptions == null)
                 {
-                    clientOptions = new ShareClientOptions(ShareClientOptions.ServiceVersion.V2021_12_02);
+                    clientOptions = new ShareClientOptions();
                     clientOptions.AddPolicy(new UserAgentPolicy(ApiConstants.UserAgentHeaderValue), HttpPipelinePosition.PerCall);
                     return clientOptions;
                 }
