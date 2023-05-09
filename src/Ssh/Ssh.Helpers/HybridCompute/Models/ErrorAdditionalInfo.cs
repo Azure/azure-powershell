@@ -14,24 +14,27 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
     using System.Linq;
 
     /// <summary>
-    /// Describes the ARM updatable properties of a hybrid machine.
+    /// The resource management error additional info.
     /// </summary>
-    public partial class MachineUpdateProperties
+    public partial class ErrorAdditionalInfo
     {
         /// <summary>
-        /// Initializes a new instance of the MachineUpdateProperties class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public MachineUpdateProperties()
+        public ErrorAdditionalInfo()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MachineUpdateProperties class.
+        /// Initializes a new instance of the ErrorAdditionalInfo class.
         /// </summary>
-        public MachineUpdateProperties(LocationData locationData = default(LocationData))
+        /// <param name="type">The additional info type.</param>
+        /// <param name="info">The additional info.</param>
+        public ErrorAdditionalInfo(string type = default(string), object info = default(object))
         {
-            LocationData = locationData;
+            Type = type;
+            Info = info;
             CustomInit();
         }
 
@@ -41,22 +44,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         partial void CustomInit();
 
         /// <summary>
+        /// Gets the additional info type.
         /// </summary>
-        [JsonProperty(PropertyName = "locationData")]
-        public LocationData LocationData { get; set; }
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
         /// <summary>
-        /// Validate the object.
+        /// Gets the additional info.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
-        /// Thrown if validation fails
-        /// </exception>
-        public virtual void Validate()
-        {
-            if (LocationData != null)
-            {
-                LocationData.Validate();
-            }
-        }
+        [JsonProperty(PropertyName = "info")]
+        public object Info { get; private set; }
+
     }
 }

@@ -11,30 +11,30 @@
 namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
 {
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
-    /// The Update Resource model definition.
+    /// Describes properties that can identify extensions.
     /// </summary>
-    public partial class UpdateResource
+    public partial class ConfigurationExtension
     {
         /// <summary>
-        /// Initializes a new instance of the UpdateResource class.
+        /// Initializes a new instance of the ConfigurationExtension class.
         /// </summary>
-        public UpdateResource()
+        public ConfigurationExtension()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the UpdateResource class.
+        /// Initializes a new instance of the ConfigurationExtension class.
         /// </summary>
-        /// <param name="tags">Resource tags</param>
-        public UpdateResource(IDictionary<string, string> tags = default(IDictionary<string, string>))
+        /// <param name="publisher">Publisher of the extension.</param>
+        /// <param name="type">Type of the extension.</param>
+        public ConfigurationExtension(string publisher = default(string), string type = default(string))
         {
-            Tags = tags;
+            Publisher = publisher;
+            Type = type;
             CustomInit();
         }
 
@@ -44,10 +44,16 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets resource tags
+        /// Gets publisher of the extension.
         /// </summary>
-        [JsonProperty(PropertyName = "tags")]
-        public IDictionary<string, string> Tags { get; set; }
+        [JsonProperty(PropertyName = "publisher")]
+        public string Publisher { get; private set; }
+
+        /// <summary>
+        /// Gets type of the extension.
+        /// </summary>
+        [JsonProperty(PropertyName = "type")]
+        public string Type { get; private set; }
 
     }
 }

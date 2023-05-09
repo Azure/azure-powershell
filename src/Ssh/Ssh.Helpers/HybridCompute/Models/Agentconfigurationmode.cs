@@ -8,15 +8,15 @@
 // regenerated.
 // </auto-generated>
 
-namespace Microsoft.Azure.PowerShell.Ssh.Helpers.Network.Models
+namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
 {
 
     /// <summary>
-    /// Defines values for DdosSettingsProtectionCoverage.
+    /// Defines values for Agentconfigurationmode.
     /// </summary>
-    public static class DdosSettingsProtectionCoverage
+    public static class Agentconfigurationmode
     {
-        public const string Basic = "Basic";
-        public const string Standard = "Standard";
+        public const string Full = "full";
+        public const string Monitor = "monitor";
     }
 }

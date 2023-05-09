@@ -10,27 +10,30 @@
 
 namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
 {
+    using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class MachineIdentity : Identity
+    /// <summary>
+    /// The metadata of the cloud environment (Azure/GCP/AWS/OCI...).
+    /// </summary>
+    public partial class CloudMetadata
     {
         /// <summary>
-        /// Initializes a new instance of the MachineIdentity class.
+        /// Initializes a new instance of the CloudMetadata class.
         /// </summary>
-        public MachineIdentity()
+        public CloudMetadata()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MachineIdentity class.
+        /// Initializes a new instance of the CloudMetadata class.
         /// </summary>
-        /// <param name="type">The identity type.</param>
-        /// <param name="principalId">The identity's principal id.</param>
-        /// <param name="tenantId">The identity's tenant id.</param>
-        public MachineIdentity(string type = default(string), string principalId = default(string), string tenantId = default(string))
-            : base(type, principalId, tenantId)
+        /// <param name="provider">Specifies the cloud provider
+        /// (Azure/AWS/GCP...).</param>
+        public CloudMetadata(string provider = default(string))
         {
+            Provider = provider;
             CustomInit();
         }
 
@@ -38,6 +41,12 @@ namespace Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
+        /// <summary>
+        /// Gets specifies the cloud provider (Azure/AWS/GCP...).
+        /// </summary>
+        [JsonProperty(PropertyName = "provider")]
+        public string Provider { get; private set; }
 
     }
 }

@@ -39,6 +39,12 @@ using Microsoft.Rest.Azure.OData;
 using Microsoft.Azure.Management.Internal.ResourceManager.Version2018_05_01.Models;
 using Microsoft.Rest.Azure;
 
+using Microsoft.Azure.PowerShell.Cmdlets.Ssh.AzureClients;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity;
+using System.Management.Automation.Host;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
+
 
 namespace Microsoft.Azure.Commands.Ssh
 {
@@ -68,8 +74,6 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal bool deleteKeys;
         protected internal bool deleteCert;
         protected internal string proxyPath;
-        protected internal string relayInfo;
-        protected internal EndpointAccessResource relayInformationResource;
 
         protected internal readonly string[] supportedResourceTypes = {
             "Microsoft.HybridCompute/machines",
@@ -94,19 +98,26 @@ namespace Microsoft.Azure.Commands.Ssh
         }
         private IpUtils _ipUtils;
 
-        internal RelayInformationUtils RelayInformationUtils
+        private HybridConnectivityClient HybridConnectivityClient
         {
             get
             {
-                if (_relayUtils == null)
+                if (_hyridConnectivityClient == null)
                 {
-                    _relayUtils = new RelayInformationUtils(DefaultProfile.DefaultContext);
+                    _hyridConnectivityClient = new HybridConnectivityClient(DefaultProfile.DefaultContext);
                 }
-
-                return _relayUtils;
+                return _hyridConnectivityClient;
             }
         }
-        private RelayInformationUtils _relayUtils;
+        private HybridConnectivityClient _hyridConnectivityClient;
+
+        private IEndpointsOperations EndpointsClient
+        {
+            get
+            {
+                return HybridConnectivityClient.HybridConectivityManagementClient.Endpoints;
+            }
+        }
 
         private ResourceManagementClient ResourceManagementClient
         {
@@ -432,24 +443,49 @@ namespace Microsoft.Azure.Commands.Ssh
             WriteProgress(record);
         }
 
-        protected internal void GetRelayInformation()
+        protected internal EndpointAccessResource GetRelayInformation()
         {
-            string _exception = "";
-            if (ResourceId != null)
+            SetResourceId();
+            EndpointAccessResource cred = null;
+                
+            try
             {
-                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceId, out _exception);
+                cred = EndpointsClient.ListCredentials(ResourceId, "default", 3600);
             }
-            else
+            catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException exception)
             {
-                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceGroupName, Name, ResourceType, out _exception);
-            }
+                if (exception.Response.StatusCode == HttpStatusCode.NotFound)
+                {
+                    try
+                    {
+                        EndpointResource endpoint = new EndpointResource("default", ResourceId);
+                        EndpointsClient.CreateOrUpdate(ResourceId, "default", endpoint);
+                    }
+                    catch (PowerShell.Ssh.Helpers.HybridConnectivity.Models.ErrorResponseException createEndpointException)
+                    {
+                        if (createEndpointException.Response.StatusCode == HttpStatusCode.Forbidden)
+                        {
+                            throw new AzPSCloudException("Unable to create default endpoint. Unauthorized.");
+                        }
+                        throw;
+                    }
 
-            relayInfo = RelayInformationUtils.ConvertEndpointAccessToBase64String(relayInformationResource);
+                    try
+                    {
+                        cred = EndpointsClient.ListCredentials(ResourceId, "default", 3600);
+                    }
+                    catch (Exception e)
+                    {
+                        throw new AzPSCloudException($"Failed to get credentials with error: {e.ToString()}");
+                    }
 
-            if (string.IsNullOrEmpty(relayInfo))
-            {
-                throw new AzPSCloudException($"Unable to retrieve Relay Information: {_exception}");
+                }
+                else
+                {
+                    throw new AzPSCloudException($"Failed to get credentials with error: {exception.ToString()}");
+                }
             }
+            return cred;
         }
 
         protected internal void GetVmIpAddress()
@@ -625,6 +661,39 @@ namespace Microsoft.Azure.Commands.Ssh
         #endregion
 
         #region Private Methods
+
+        private void SetResourceId()
+        {
+            if (ResourceId == null)
+            {
+                ResourceIdentifier id = new ResourceIdentifier();
+                id.ResourceGroupName = ResourceGroupName;
+                id.Subscription = DefaultProfile.DefaultContext.Subscription.Id;
+                id.ResourceName = Name;
+                id.ResourceType = ResourceType;
+
+                ResourceId = id.ToString();
+            }
+        }
+
+
+        private string ConvertEndpointAccessToBase64String(EndpointAccessResource cred)
+        {
+            if (cred == null) { return null; }
+
+            string relayString = "{\"relay\": {" +
+                $"\"namespaceName\": \"{cred.NamespaceName}\", " +
+                $"\"namespaceNameSuffix\": \"{cred.NamespaceNameSuffix}\", " +
+                $"\"hybridConnectionName\": \"{cred.HybridConnectionName}\", " +
+                $"\"accessKey\": \"{cred.AccessKey}\", " +
+                $"\"expiresOn\": {cred.ExpiresOn}" +
+                "}}";
+
+            var bytes = Encoding.UTF8.GetBytes(relayString);
+            var encodedString = Convert.ToBase64String(bytes);
+
+            return encodedString;
+        }
 
         /* This method gets the full path of items that already exist. It checks if the file exist and fails if it doesn't*/
         private string GetResolvedPath(string path, string paramName)
