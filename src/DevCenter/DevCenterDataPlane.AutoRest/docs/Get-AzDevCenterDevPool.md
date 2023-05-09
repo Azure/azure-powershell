@@ -24,10 +24,27 @@ Get-AzDevCenterDevPool -Endpoint <String> -PoolName <String> -ProjectName <Strin
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDevCenter
+```
+Get-AzDevCenterDevPool -DevCenter <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDevCenterDevPool -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityByDevCenter
+```
+Get-AzDevCenterDevPool -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByDevCenter
+```
+Get-AzDevCenterDevPool -DevCenter <String> -ProjectName <String> [-Filter <String>] [-Top <Int32>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,12 +92,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByDevCenter, ListByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity, List
 Aliases:
 
 Required: True
@@ -95,7 +127,7 @@ An OData filter clause to apply to the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: List, ListByDevCenter
 Aliases:
 
 Required: False
@@ -111,7 +143,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -126,7 +158,7 @@ The name of a pool of Dev Boxes.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetByDevCenter
 Aliases:
 
 Required: True
@@ -141,7 +173,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -157,7 +189,7 @@ Example: 'top=10'.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List
+Parameter Sets: List, ListByDevCenter
 Aliases:
 
 Required: False
