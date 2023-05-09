@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePartitionMergeHelpMessage)]
+        public bool? EnableParitionMerge { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
@@ -97,6 +100,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (EnableAnalyticalStorage != null)
             {
                 databaseAccountUpdateParameters.EnableAnalyticalStorage = EnableAnalyticalStorage;
+            }
+            if (EnableParitionMerge != null)
+            {
+                databaseAccountUpdateParameters.EnablePartitionMerge = EnableParitionMerge;
             }
             if (NetworkAclBypass != null)
             {
