@@ -22,6 +22,8 @@
 * Introduced Restore-AzCosmosDBTable to restore deleted table in the same account.
 * New-AzCosmosDBAccount cmdlet was updated with new paramter: EnableBurstCapacity.
 * Update-AzCosmosDBAccount cmdlet was updated with: EnableBurstCapacity.
+* New-AzCosmosDBAccount cmdlet was updated with new paramter: EnablePartitionMerge.
+* Update-AzCosmosDBAccount cmdlet was updated with: EnablePartitionMerge.
 
 ## Upcoming Release
 * Added PublicNetworkAccess parameter to `Restore-AzCosmosDBAccount`.
