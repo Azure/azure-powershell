@@ -135,7 +135,7 @@ function Test-NetworkInterfaceCRUD
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -AuxiliaryMode MaxConnections -AuxiliarySku A2 -Tag @{ fastpathenabled = "true"}
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -Tag @{ fastpathenabled = "true"}
         $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
@@ -148,8 +148,6 @@ function Test-NetworkInterfaceCRUD
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
         Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
-        Assert-AreEqual "MaxConnections" $expectedNic.AuxiliaryMode
-        Assert-AreEqual "A2" $expectedNic.AuxiliarySku
 
         $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
 
@@ -1240,5 +1238,103 @@ function Test-NetworkInterfaceInEdgeZone
     {
         # Cleanup
         Clean-ResourceGroup $resourceGroup
+    }
+}
+
+<#
+.SYNOPSIS
+Test that network interface can be put with AuxiliarySku. Subscriptions need to be explicitly whitelisted for access to AuxiliaryMode and AuxiliarySku properties.
+#>
+function Test-NetworkInterfaceWithAuxiliarySku
+{
+ # Setup
+    $rgname = Get-ResourceGroupName
+    $vnetName = Get-ResourceName
+    $subnetName = Get-ResourceName
+    $publicIpName = Get-ResourceName
+    $nicName = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "East US 2 EUAP"
+    $resourceTypeParent = "Microsoft.Network/networkInterfaces"
+    $location = Get-ProviderLocation $resourceTypeParent "East US 2 EUAP"
+    $vmName = Get-ResourceName
+
+    try 
+    {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        
+        # Create the publicip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
+
+        # Create NetworkInterface
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -AuxiliaryMode MaxConnections -AuxiliarySku A2 -Tag @{ fastpathenabled = "true"}
+                
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname 
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $expectedNic.Name $actualNic.Name	
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "MaxConnections" $actualNic.Properties.AuxiliaryMode
+        Assert-AreEqual "A2" $actualNic.Properties.AuxiliarySku
+
+
+        $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
+
+        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName
+        Assert-AreEqual $expectedNic.Name $actualNic.Name
+        Assert-AreEqual $expectedNic.Location $actualNic.Location
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
+        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
+        Assert-AreEqual "MaxConnections" $actualNic.Properties.AuxiliaryMode
+        Assert-AreEqual "A2" $actualNic.Properties.AuxiliarySku
+
+
+        # Check publicIp address reference
+        $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
+        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
+
+        # Check Subnet address reference
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
+        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+
+        # list
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 1 @($list).Count
+        Assert-AreEqual $list[0].ResourceGroupName $actualNic.ResourceGroupName	
+        Assert-AreEqual $list[0].Name $actualNic.Name	
+        Assert-AreEqual $list[0].Location $actualNic.Location
+        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+        Assert-AreEqual $actualNic.Etag $list[0].Etag
+
+        # Delete NetworkInterface
+        $job = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force -AsJob
+		$job | Wait-Job
+		$delete = $job | Receive-Job
+        Assert-AreEqual true $delete
+        
+        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
+        Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
     }
 }
