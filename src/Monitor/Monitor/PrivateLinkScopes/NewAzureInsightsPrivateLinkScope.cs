@@ -16,7 +16,6 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
-using Microsoft.Azure.Commands.Insights.Utils;
 using System.Linq;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.Insights.PrivateLinkScopes
                                    .PrivateLinkScopes
                                    .CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, payLoad)
                                    .Result;
-                WriteObject(PSMapper.Instance.Map<PSMonitorPrivateLinkScope>(response.Body));
+                WriteObject(PSMonitorPrivateLinkScope.ToPSMonitorPrivateLinkScope(response.Body));
             }
         }
     }

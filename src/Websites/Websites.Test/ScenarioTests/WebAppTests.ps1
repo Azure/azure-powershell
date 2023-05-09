@@ -472,10 +472,10 @@ function Test-CreateNewWebAppHyperV
 	$tier = "PremiumV3"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
-    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
-    $containerRegistryUser ="DotNetSDKTesting"
-    $pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
+    $containerImageName = "psunittesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://psunittesting.azurecr.io"
+    $containerRegistryUser ="psunittesting"
+    $pass = "L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 
@@ -541,10 +541,10 @@ function Test-SetWebAppHyperVCredentials
 		$tier = "PremiumV3"
 		$apiversion = "2015-08-01"
 		$resourceType = "Microsoft.Web/sites"
-		$containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
-		$containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
-		$containerRegistryUser = "DotNetSDKTesting"
-		$pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
+		$containerImageName = "psunittesting.azurecr.io/webapplication3:latest"
+		$containerRegistryUrl = "https://psunittesting.azurecr.io"
+		$containerRegistryUser = "psunittesting"
+		$pass = "L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9"
 		$containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
 		$dockerPrefix = "DOCKER|" 
 	
@@ -666,10 +666,10 @@ function Test-EnableContainerContinuousDeploymentAndGetUrl
 	$tier = "PremiumV3"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
-    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
-    $containerRegistryUser = "DotNetSDKTesting"
-    $pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
+    $containerImageName = "psunittesting.azurecr.io/webapplication3:latest"
+    $containerRegistryUrl = "https://psunittesting.azurecr.io"
+    $containerRegistryUser = "psunittesting"
+    $pass = "L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|"
  	try
@@ -1030,10 +1030,10 @@ function Test-SetAzureStorageWebAppHyperV
 	$tier = "PremiumV3"
 	$apiversion = "2015-08-01"
 	$resourceType = "Microsoft.Web/sites"
-    $containerImageName = "dotnetsdktesting.azurecr.io/webapplication3:latest"
-    $containerRegistryUrl = "https://dotnetsdktesting.azurecr.io"
-    $containerRegistryUser ="DotNetSDKTesting"
-    $pass = "q=VAWnvGlmJc35yxD4c+1=os7p4tq5Nd"
+    $containerImageName = "psunittesting.azurecr.io/webapplication3:latest"
+	$containerRegistryUrl = "https://psunittesting.azurecr.io"
+	$containerRegistryUser = "psunittesting"
+	$pass = "L/kYXsr5m2WtSMWSRxKOcwI0xPJrMmETWpY475GA2i+ACRA2WfC9"
     $containerRegistryPassword = ConvertTo-SecureString -String $pass -AsPlainText -Force
     $dockerPrefix = "DOCKER|" 
 	$azureStorageAccountCustomId1 = "mystorageaccount"
@@ -1147,25 +1147,28 @@ function Test-CreateNewWebAppOnAse
 	# Setup
 	# Creating and provisioning an ASE currently takes 30 mins to an hour, hence this test requires that the ASE & ASP are already created 
 	# before creating the app on the ASE
-	$rgname = ".NETSDKRG"
+	$rgname = "RG-PS-UnitTesting"
 	$wname = Get-WebsiteName
-	$location = "East US"
-	$whpName = "DotNet-SDK-ASP"
-	$aseName = "dotnetsdkase"
+	$location = "Central US"
+	$whpName = "ASP-PS-UnitTesting"
+	$aseName = "ASE-PS-Unittesting"
 	$resourceType = "Microsoft.Web/sites"
+	$tag= @{"TagKey" = "TagValue"}
 	try
 	{
 		#Setup
 		$serverFarm = Get-AzAppServicePlan -ResourceGroupName $rgname -Name  $whpName
 
 		# Create new web app
-		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName -AsJob
+		$job = New-AzWebApp -ResourceGroupName $rgname -Name $wname -Location $location -AppServicePlan $whpName -AseName $aseName -Tag $tag -AsJob
 		$job | Wait-Job
 		$actual = $job | Receive-Job
 		
 		# Assert
 		Assert-AreEqual $wname $actual.Name
 		Assert-AreEqual $serverFarm.Id $actual.ServerFarmId
+		Assert-AreEqual $tag.Keys $actual.Tags.Keys
+        Assert-AreEqual $tag.Values $actual.Tags.Values
 
 		# Get new web app
 		$result = Get-AzWebApp -ResourceGroupName $rgname -Name $wname
@@ -1555,11 +1558,11 @@ Tests Tags are not overridden when calling Set-AzWebApp commandlet
 #>
 function Test-TagsNotRemovedBySetWebApp
 {
-	$rgname = "lketmtestantps10"
-	$appname = "tagstestantps10" # this is an existing app with existing tags
+	$rgname = "RG-PS-UnitTesting"
+	$appname = "AppService-PS-UnitTesting" # this is an existing app with existing tags
 	$slot = "testslot"
-	$aspName = "tagstestAspantps10"
-	$aspToMove = "tagstestAsp2antps10"
+	$aspName = "ASP-PS-UnitTesting"
+	$aspToMove = "ASP-PS-UnitTesting1"
 
 	$getApp =  Get-AzWebApp -ResourceGroupName $rgname -Name $appname
 	$getSlot = Get-AzWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slot

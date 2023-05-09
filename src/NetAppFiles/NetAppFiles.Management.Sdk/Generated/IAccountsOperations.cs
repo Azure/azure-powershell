@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// List and describe all NetApp accounts in the resource group.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Get the NetApp account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// NetApp Account object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete the specified NetApp account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// NetApp Account object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// identity.principalId, running this operation will fix it.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -225,7 +225,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// NetApp Account object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -253,7 +253,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// Delete the specified NetApp account
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// NetApp Account object supplied in the body of the operation.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account
@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// identity.principalId, running this operation will fix it.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='accountName'>
         /// The name of the NetApp account

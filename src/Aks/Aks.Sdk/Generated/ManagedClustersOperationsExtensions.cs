@@ -170,9 +170,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// **WARNING**: This API will be deprecated. Instead use
-            /// [ListClusterUserCredentials](https://learn.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
+            /// [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
             /// or
-            /// [ListClusterAdminCredentials](https://learn.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
+            /// [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
             /// .
             /// </remarks>
             /// <param name='operations'>
@@ -198,9 +198,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// **WARNING**: This API will be deprecated. Instead use
-            /// [ListClusterUserCredentials](https://learn.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
+            /// [ListClusterUserCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusterusercredentials)
             /// or
-            /// [ListClusterAdminCredentials](https://learn.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
+            /// [ListClusterAdminCredentials](https://docs.microsoft.com/rest/api/aks/managedclusters/listclusteradmincredentials)
             /// .
             /// </remarks>
             /// <param name='operations'>
@@ -521,9 +521,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void Delete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersDeleteHeaders Delete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.DeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.DeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -541,9 +541,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersDeleteHeaders> DeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -565,9 +568,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='parameters'>
             /// The service principal profile to set on the managed cluster.
             /// </param>
-            public static void ResetServicePrincipalProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters)
+            public static ManagedClustersResetServicePrincipalProfileHeaders ResetServicePrincipalProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters)
             {
-                operations.ResetServicePrincipalProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+                return operations.ResetServicePrincipalProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -592,14 +595,22 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ResetServicePrincipalProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersResetServicePrincipalProfileHeaders> ResetServicePrincipalProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.ResetServicePrincipalProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.ResetServicePrincipalProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
             /// Reset the AAD Profile of a managed cluster.
             /// </summary>
+            /// <remarks>
+            /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+            /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+            /// your cluster with AKS-managed Azure AD.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -612,14 +623,20 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='parameters'>
             /// The AAD profile to set on the Managed Cluster
             /// </param>
-            public static void ResetAADProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters)
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
+            public static ManagedClustersResetAADProfileHeaders ResetAADProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters)
             {
-                operations.ResetAADProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+                return operations.ResetAADProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
             /// Reset the AAD Profile of a managed cluster.
             /// </summary>
+            /// <remarks>
+            /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+            /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+            /// your cluster with AKS-managed Azure AD.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -635,9 +652,13 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task ResetAADProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
+            public static async Task<ManagedClustersResetAADProfileHeaders> ResetAADProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.ResetAADProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.ResetAADProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -645,7 +666,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [Certificate
-            /// rotation](https://learn.microsoft.com/azure/aks/certificate-rotation) for
+            /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
             /// more details about rotating managed cluster certificates.
             /// </remarks>
             /// <param name='operations'>
@@ -657,9 +678,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void RotateClusterCertificates(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersRotateClusterCertificatesHeaders RotateClusterCertificates(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.RotateClusterCertificatesAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.RotateClusterCertificatesAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -667,7 +688,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [Certificate
-            /// rotation](https://learn.microsoft.com/azure/aks/certificate-rotation) for
+            /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
             /// more details about rotating managed cluster certificates.
             /// </remarks>
             /// <param name='operations'>
@@ -682,9 +703,64 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task RotateClusterCertificatesAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersRotateClusterCertificatesHeaders> RotateClusterCertificatesAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.RotateClusterCertificatesWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.RotateClusterCertificatesWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Aborts last operation running on managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the managed cluster. The Managed
+            /// Cluster will be moved to a Canceling state and eventually to a Canceled
+            /// state when cancellation finishes. If the operation completes before
+            /// cancellation can take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            public static ManagedClustersAbortLatestOperationHeaders AbortLatestOperation(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            {
+                return operations.AbortLatestOperationAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Aborts last operation running on managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the managed cluster. The Managed
+            /// Cluster will be moved to a Canceling state and eventually to a Canceled
+            /// state when cancellation finishes. If the operation completes before
+            /// cancellation can take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ManagedClustersAbortLatestOperationHeaders> AbortLatestOperationAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.AbortLatestOperationWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -735,7 +811,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// clusters. Stopping a cluster stops the control plane and agent nodes
             /// entirely, while maintaining all object and cluster state. A cluster does
             /// not accrue charges while it is stopped. See [stopping a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about stopping a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -747,9 +823,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void Stop(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersStopHeaders Stop(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.StopAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.StopAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -760,7 +836,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// clusters. Stopping a cluster stops the control plane and agent nodes
             /// entirely, while maintaining all object and cluster state. A cluster does
             /// not accrue charges while it is stopped. See [stopping a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about stopping a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -775,9 +851,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task StopAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersStopHeaders> StopAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.StopWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.StopWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -785,7 +864,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [starting a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about starting a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -797,9 +876,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void Start(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersStartHeaders Start(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.StartAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.StartAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -807,7 +886,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [starting a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about starting a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -822,9 +901,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task StartAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersStartHeaders> StartAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.StartWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.StartWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -833,7 +915,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <remarks>
             /// AKS will create a pod to run the command. This is primarily useful for
             /// private clusters. For more information see [AKS Run
-            /// Command](https://learn.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+            /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -858,7 +940,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <remarks>
             /// AKS will create a pod to run the command. This is primarily useful for
             /// private clusters. For more information see [AKS Run
-            /// Command](https://learn.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+            /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1085,9 +1167,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void BeginDelete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersDeleteHeaders BeginDelete(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.BeginDeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.BeginDeleteAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1105,9 +1187,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginDeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersDeleteHeaders> BeginDeleteAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -1129,9 +1214,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='parameters'>
             /// The service principal profile to set on the managed cluster.
             /// </param>
-            public static void BeginResetServicePrincipalProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters)
+            public static ManagedClustersResetServicePrincipalProfileHeaders BeginResetServicePrincipalProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters)
             {
-                operations.BeginResetServicePrincipalProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+                return operations.BeginResetServicePrincipalProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1156,14 +1241,22 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginResetServicePrincipalProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersResetServicePrincipalProfileHeaders> BeginResetServicePrincipalProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterServicePrincipalProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginResetServicePrincipalProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginResetServicePrincipalProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
             /// Reset the AAD Profile of a managed cluster.
             /// </summary>
+            /// <remarks>
+            /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+            /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+            /// your cluster with AKS-managed Azure AD.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -1176,14 +1269,20 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='parameters'>
             /// The AAD profile to set on the Managed Cluster
             /// </param>
-            public static void BeginResetAADProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters)
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
+            public static ManagedClustersResetAADProfileHeaders BeginResetAADProfile(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters)
             {
-                operations.BeginResetAADProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
+                return operations.BeginResetAADProfileAsync(resourceGroupName, resourceName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
             /// Reset the AAD Profile of a managed cluster.
             /// </summary>
+            /// <remarks>
+            /// **WARNING**: This API will be deprecated. Please see [AKS-managed Azure
+            /// Active Directory integration](https://aka.ms/aks-managed-aad) to update
+            /// your cluster with AKS-managed Azure AD.
+            /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
@@ -1199,9 +1298,13 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginResetAADProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
+            [System.Obsolete("This operation is deprecated. Please do not use it any longer.")]
+            public static async Task<ManagedClustersResetAADProfileHeaders> BeginResetAADProfileAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, ManagedClusterAADProfile parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginResetAADProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginResetAADProfileWithHttpMessagesAsync(resourceGroupName, resourceName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -1209,7 +1312,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [Certificate
-            /// rotation](https://learn.microsoft.com/azure/aks/certificate-rotation) for
+            /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
             /// more details about rotating managed cluster certificates.
             /// </remarks>
             /// <param name='operations'>
@@ -1221,9 +1324,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void BeginRotateClusterCertificates(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersRotateClusterCertificatesHeaders BeginRotateClusterCertificates(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.BeginRotateClusterCertificatesAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.BeginRotateClusterCertificatesAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1231,7 +1334,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [Certificate
-            /// rotation](https://learn.microsoft.com/azure/aks/certificate-rotation) for
+            /// rotation](https://docs.microsoft.com/azure/aks/certificate-rotation) for
             /// more details about rotating managed cluster certificates.
             /// </remarks>
             /// <param name='operations'>
@@ -1246,9 +1349,64 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginRotateClusterCertificatesAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersRotateClusterCertificatesHeaders> BeginRotateClusterCertificatesAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginRotateClusterCertificatesWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginRotateClusterCertificatesWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Aborts last operation running on managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the managed cluster. The Managed
+            /// Cluster will be moved to a Canceling state and eventually to a Canceled
+            /// state when cancellation finishes. If the operation completes before
+            /// cancellation can take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            public static ManagedClustersAbortLatestOperationHeaders BeginAbortLatestOperation(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            {
+                return operations.BeginAbortLatestOperationAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Aborts last operation running on managed cluster.
+            /// </summary>
+            /// <remarks>
+            /// Aborts the currently running operation on the managed cluster. The Managed
+            /// Cluster will be moved to a Canceling state and eventually to a Canceled
+            /// state when cancellation finishes. If the operation completes before
+            /// cancellation can take place, a 409 error code is returned.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group. The name is case insensitive.
+            /// </param>
+            /// <param name='resourceName'>
+            /// The name of the managed cluster resource.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ManagedClustersAbortLatestOperationHeaders> BeginAbortLatestOperationAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginAbortLatestOperationWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -1299,7 +1457,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// clusters. Stopping a cluster stops the control plane and agent nodes
             /// entirely, while maintaining all object and cluster state. A cluster does
             /// not accrue charges while it is stopped. See [stopping a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about stopping a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -1311,9 +1469,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void BeginStop(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersStopHeaders BeginStop(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.BeginStopAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.BeginStopAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1324,7 +1482,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// clusters. Stopping a cluster stops the control plane and agent nodes
             /// entirely, while maintaining all object and cluster state. A cluster does
             /// not accrue charges while it is stopped. See [stopping a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about stopping a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -1339,9 +1497,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginStopAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersStopHeaders> BeginStopAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginStopWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -1349,7 +1510,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [starting a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about starting a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -1361,9 +1522,9 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='resourceName'>
             /// The name of the managed cluster resource.
             /// </param>
-            public static void BeginStart(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
+            public static ManagedClustersStartHeaders BeginStart(this IManagedClustersOperations operations, string resourceGroupName, string resourceName)
             {
-                operations.BeginStartAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
+                return operations.BeginStartAsync(resourceGroupName, resourceName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -1371,7 +1532,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// </summary>
             /// <remarks>
             /// See [starting a
-            /// cluster](https://learn.microsoft.com/azure/aks/start-stop-cluster) for more
+            /// cluster](https://docs.microsoft.com/azure/aks/start-stop-cluster) for more
             /// details about starting a cluster.
             /// </remarks>
             /// <param name='operations'>
@@ -1386,9 +1547,12 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task BeginStartAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<ManagedClustersStartHeaders> BeginStartAsync(this IManagedClustersOperations operations, string resourceGroupName, string resourceName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.BeginStartWithHttpMessagesAsync(resourceGroupName, resourceName, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -1397,7 +1561,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <remarks>
             /// AKS will create a pod to run the command. This is primarily useful for
             /// private clusters. For more information see [AKS Run
-            /// Command](https://learn.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+            /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -1422,7 +1586,7 @@ namespace Microsoft.Azure.Management.ContainerService
             /// <remarks>
             /// AKS will create a pod to run the command. This is primarily useful for
             /// private clusters. For more information see [AKS Run
-            /// Command](https://learn.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
+            /// Command](https://docs.microsoft.com/azure/aks/private-clusters#aks-run-command-preview).
             /// </remarks>
             /// <param name='operations'>
             /// The operations group for this extension method.

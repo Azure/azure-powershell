@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'Set-AzServiceBusNamespace' Cmdlet updates the specified ServiceBus Namespace
     /// </summary>
-    [CmdletOutputBreakingChange(typeof(PSNamespaceAttributes), DeprecatedOutputProperties = new string[] { "ResourceGroup" }, NewOutputProperties = new string[] { "ResourceGroupName" })]
+    [GenericBreakingChange("Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace`. This cmdlet would henceforth be alias cmdlet with Set-AzServiceBusNamespaceV2.", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class SetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
@@ -89,9 +89,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
         public string IdentityType { get; set; }
 
+        [CmdletParameterBreakingChange("IdentityId", ReplaceMentCmdletParameterName = "UserAssignedIdentityId")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
         public string[] IdentityId { get; set; }
 
+        [CmdletParameterBreakingChange("EncryptionConfig", OldParamaterType = typeof(PSEncryptionConfigAttributes[]), ReplaceMentCmdletParameterName = "KeyVaultProperty", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202210Preview.IKeyVaultProperties[]")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 

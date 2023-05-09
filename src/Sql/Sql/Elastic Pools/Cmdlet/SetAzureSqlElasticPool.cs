@@ -169,6 +169,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         public int HighAvailabilityReplicaCount { get; set; }
 
         /// <summary>
+        /// Gets or sets the preferred enclave type requested on the elastic pool.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The preferred enclave type for the Azure SQL Elastic Pool. Possible values are Default and VBS.")]
+        [PSArgumentCompleter(
+            "Default",
+            "VBS")]
+        public string PreferredEnclaveType { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -213,6 +223,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null,
                 LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType,
                 MaintenanceConfigurationId = MaintenanceConfigurationId,
+                PreferredEnclaveType = this.PreferredEnclaveType,
             };
 
             var elasticPool = ModelAdapter.GetElasticPool(ResourceGroupName, ServerName, ElasticPoolName);

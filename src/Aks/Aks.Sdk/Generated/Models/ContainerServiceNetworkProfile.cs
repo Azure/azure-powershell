@@ -37,11 +37,16 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <param name="networkPlugin">Network plugin used for building the
         /// Kubernetes network. Possible values include: 'azure', 'kubenet',
         /// 'none'</param>
+        /// <param name="networkPluginMode">The mode the network plugin should
+        /// use. Possible values include: 'overlay'</param>
         /// <param name="networkPolicy">Network policy used for building the
-        /// Kubernetes network. Possible values include: 'calico',
-        /// 'azure'</param>
+        /// Kubernetes network. Possible values include: 'calico', 'azure',
+        /// 'cilium'</param>
         /// <param name="networkMode">The network mode Azure CNI is configured
         /// with.</param>
+        /// <param name="networkDataplane">Network dataplane used in the
+        /// Kubernetes cluster. Possible values include: 'azure',
+        /// 'cilium'</param>
         /// <param name="podCidr">A CIDR notation IP range from which to assign
         /// pod IPs when kubenet is used.</param>
         /// <param name="serviceCidr">A CIDR notation IP range from which to
@@ -67,11 +72,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// to assign service cluster IPs.</param>
         /// <param name="ipFamilies">The IP families used to specify IP
         /// versions available to the cluster.</param>
-        public ContainerServiceNetworkProfile(string networkPlugin = default(string), string networkPolicy = default(string), string networkMode = default(string), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), string outboundType = default(string), string loadBalancerSku = default(string), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile), ManagedClusterNATGatewayProfile natGatewayProfile = default(ManagedClusterNATGatewayProfile), IList<string> podCidrs = default(IList<string>), IList<string> serviceCidrs = default(IList<string>), IList<string> ipFamilies = default(IList<string>))
+        public ContainerServiceNetworkProfile(string networkPlugin = default(string), string networkPluginMode = default(string), string networkPolicy = default(string), string networkMode = default(string), string networkDataplane = default(string), string podCidr = default(string), string serviceCidr = default(string), string dnsServiceIP = default(string), string dockerBridgeCidr = default(string), string outboundType = default(string), string loadBalancerSku = default(string), ManagedClusterLoadBalancerProfile loadBalancerProfile = default(ManagedClusterLoadBalancerProfile), ManagedClusterNATGatewayProfile natGatewayProfile = default(ManagedClusterNATGatewayProfile), IList<string> podCidrs = default(IList<string>), IList<string> serviceCidrs = default(IList<string>), IList<string> ipFamilies = default(IList<string>))
         {
             NetworkPlugin = networkPlugin;
+            NetworkPluginMode = networkPluginMode;
             NetworkPolicy = networkPolicy;
             NetworkMode = networkMode;
+            NetworkDataplane = networkDataplane;
             PodCidr = podCidr;
             ServiceCidr = serviceCidr;
             DnsServiceIP = dnsServiceIP;
@@ -99,8 +106,15 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         public string NetworkPlugin { get; set; }
 
         /// <summary>
+        /// Gets or sets the mode the network plugin should use. Possible
+        /// values include: 'overlay'
+        /// </summary>
+        [JsonProperty(PropertyName = "networkPluginMode")]
+        public string NetworkPluginMode { get; set; }
+
+        /// <summary>
         /// Gets or sets network policy used for building the Kubernetes
-        /// network. Possible values include: 'calico', 'azure'
+        /// network. Possible values include: 'calico', 'azure', 'cilium'
         /// </summary>
         [JsonProperty(PropertyName = "networkPolicy")]
         public string NetworkPolicy { get; set; }
@@ -114,6 +128,13 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </remarks>
         [JsonProperty(PropertyName = "networkMode")]
         public string NetworkMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets network dataplane used in the Kubernetes cluster.
+        /// Possible values include: 'azure', 'cilium'
+        /// </summary>
+        [JsonProperty(PropertyName = "networkDataplane")]
+        public string NetworkDataplane { get; set; }
 
         /// <summary>
         /// Gets or sets a CIDR notation IP range from which to assign pod IPs
@@ -151,7 +172,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// <remarks>
         /// This can only be set at cluster creation time and cannot be changed
         /// later. For more information see [egress outbound
-        /// type](https://learn.microsoft.com/azure/aks/egress-outboundtype).
+        /// type](https://docs.microsoft.com/azure/aks/egress-outboundtype).
         /// Possible values include: 'loadBalancer', 'userDefinedRouting',
         /// 'managedNATGateway', 'userAssignedNATGateway'
         /// </remarks>
@@ -163,7 +184,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         /// <remarks>
         /// The default is 'standard'. See [Azure Load Balancer
-        /// SKUs](https://learn.microsoft.com/azure/load-balancer/skus) for more
+        /// SKUs](https://docs.microsoft.com/azure/load-balancer/skus) for more
         /// information about the differences between load balancer SKUs.
         /// Possible values include: 'standard', 'basic'
         /// </remarks>

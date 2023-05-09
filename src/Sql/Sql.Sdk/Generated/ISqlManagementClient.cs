@@ -84,11 +84,6 @@ namespace Microsoft.Azure.Management.Sql
         IElasticPoolDatabaseActivitiesOperations ElasticPoolDatabaseActivities { get; }
 
         /// <summary>
-        /// Gets the IServersOperations.
-        /// </summary>
-        IServersOperations Servers { get; }
-
-        /// <summary>
         /// Gets the IServerDevOpsAuditSettingsOperations.
         /// </summary>
         IServerDevOpsAuditSettingsOperations ServerDevOpsAuditSettings { get; }
@@ -502,6 +497,16 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets the IInstanceFailoverGroupsOperations.
         /// </summary>
         IInstanceFailoverGroupsOperations InstanceFailoverGroups { get; }
+
+        /// <summary>
+        /// Gets the IServersOperations.
+        /// </summary>
+        IServersOperations Servers { get; }
+
+        /// <summary>
+        /// Gets the IServerConfigurationOptionsOperations.
+        /// </summary>
+        IServerConfigurationOptionsOperations ServerConfigurationOptions { get; }
 
     }
 }

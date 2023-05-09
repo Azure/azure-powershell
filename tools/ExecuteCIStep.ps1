@@ -24,6 +24,9 @@ Param(
     $BuildAction='build',
 
     [String]
+    $PullRequestNumber,
+
+    [String]
     $GenerateDocumentationFile,
 
     [String]
@@ -289,6 +292,9 @@ If ($Build)
                 Modules = $ModuleInfoList;
             }
             $Template.$DependencyStep.Details += $Detail
+        }
+        If ($PSBoundParameters.ContainsKey("PullRequestNumber")) {
+            $Template | Add-Member -NotePropertyName pull_request_number -NotePropertyValue $PullRequestNumber
         }
 
         ConvertTo-Json -Depth 10 -InputObject $Template | Out-File -FilePath "$RepoArtifacts/PipelineResult/PipelineResult.json"

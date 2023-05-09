@@ -5,7 +5,6 @@ Update-AzWvdScalingPlan `
             -Name 'scalingPlan1' `
             -Description 'Description' `
             -FriendlyName 'Friendly Name' `
-            -HostPoolType 'Pooled' `
             -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
             -Schedule @(
                 @{

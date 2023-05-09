@@ -5,6 +5,11 @@ if (-Not (Test-Path -Path $loadEnvPath)) {
 . ($loadEnvPath)
 $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzWvdUserSession.Recording.json'
 $currentPath = $PSScriptRoot
+$userName2 = $env.HostPoolPersistent + '/' + $env.SessionHostName + '/2'
+$userName3 = $env.HostPoolPersistent + '/' + $env.SessionHostName + '/3'
+$userName4 = $env.HostPoolPersistent + '/' + $env.SessionHostName + '/4'
+$userName5 = $env.HostPoolPersistent + '/' + $env.SessionHostName + '/5'
+$userName6 = $env.HostPoolPersistent + '/' + $env.SessionHostName + '/6'
 while(-not $mockingPath) {
     $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
     $currentPath = Split-Path -Path $currentPath -Parent
@@ -14,30 +19,30 @@ while(-not $mockingPath) {
 Describe 'Get-AzWvdUserSession' {
     It 'Get' {
         $userSession = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
-                                -Id 2
-            $userSession.Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/2'
+                                -ResourceGroupName $env.ResourceGroupPersistent `
+                                -HostPoolName $env.HostPoolPersistent `
+                                -SessionHostName $env.SessionHostName `
+                                -Id 3
+            $userSession.Name | Should -Be $userName3
     }
 
     It 'List' {
         $userSessions = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -HostPoolName 'HostPoolPowershell1' `
-                                -SessionHostName 'PowershellVM-1.wvdarmtest1.net' `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
+                                -HostPoolName $env.HostPoolPersistent `
+                                -SessionHostName $env.SessionHostName `
                                 | Sort-Object -Property Name
-            $userSessions[0].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/2'
-            $userSessions[1].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/3'
+            $userSessions[0].Name | Should -Be $userName3
+            $userSessions[1].Name | Should -Be $userName5
     }
 
     It 'List host pool Level' {
         $userSessions = Get-AzWvdUserSession -SubscriptionId $env.SubscriptionId `
-                                -ResourceGroupName $env.ResourceGroup `
-                                -HostPoolName 'HostPoolPowershell1' `
+                                -ResourceGroupName $env.ResourceGroupPersistent `
+                                -HostPoolName $env.HostPoolPersistent `
                                 | Sort-Object -Property Name
-            $userSessions[0].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/2'
-            $userSessions[1].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/3'
-            $userSessions[2].Name | Should -Be 'HostPoolPowershell1/PowershellVM-1.wvdarmtest1.net/4'
+            $userSessions[0].Name | Should -Be $userName3
+            $userSessions[1].Name | Should -Be $userName5
+            $userSessions[2].Name | Should -Be $userName6
     }
 }

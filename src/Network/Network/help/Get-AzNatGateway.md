@@ -35,6 +35,8 @@ Gets a Nat Gateway resource in a resource group by name OR NatGateway Id OR all 
 
 ### Example 1
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Get-AzNatGateway -ResourceGroupName "natgateway_test"
 

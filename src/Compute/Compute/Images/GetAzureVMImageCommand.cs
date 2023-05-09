@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = GetVMImageDetailParamSetName,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage ="Specifies the version of the image. Use 'latest' to get the latest image")]
+            HelpMessage = "Specifies the version of the image. Use 'latest' to get the latest image")]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
         public string Version { get; set; }
@@ -159,7 +159,8 @@ namespace Microsoft.Azure.Commands.Compute
                             DataDiskImages = response.Body.DataDiskImages,
                             PurchasePlan = response.Body.Plan,
                             AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
-                            HyperVGeneration = response.Body.HyperVGeneration
+                            HyperVGeneration = response.Body.HyperVGeneration,
+                            ImageDeprecationStatus = response.Body.ImageDeprecationStatus
                         };
 
                         WriteObject(image);
@@ -238,10 +239,11 @@ namespace Microsoft.Azure.Commands.Compute
                         Offer = this.Offer,
                         Skus = this.Skus,
                         OSDiskImage = response.Body.OsDiskImage,
+                        ImageDeprecationStatus = response.Body.ImageDeprecationStatus,
                         DataDiskImages = response.Body.DataDiskImages,
                         PurchasePlan = response.Body.Plan,
                         AutomaticOSUpgradeProperties = response.Body.AutomaticOSUpgradeProperties,
-                        HyperVGeneration = response.Body.HyperVGeneration
+                        HyperVGeneration = response.Body.HyperVGeneration                        
                     };
 
                     WriteObject(image);

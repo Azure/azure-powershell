@@ -187,6 +187,13 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The list of egress  NAT rules that are associated with this Connection.")]
         public PSResourceId[] EgressNatRule { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "The GatewayCustomBgpIpAddress of Virtual network gateway used in this connection.")]
+        [ValidateNotNullOrEmpty]
+        public PSGatewayCustomBgpIpConfiguration[] GatewayCustomBgpIpAddress { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -297,6 +304,16 @@ namespace Microsoft.Azure.Commands.Network
                         {
                             Id = resource.Id
                         });
+                }
+            }
+
+            if (this.GatewayCustomBgpIpAddress != null)
+            {
+                vnetGatewayConnection.GatewayCustomBgpIpAddresses = new List<PSGatewayCustomBgpIpConfiguration>();
+
+                foreach (var reqaddress in this.GatewayCustomBgpIpAddress)
+                {
+                    vnetGatewayConnection.GatewayCustomBgpIpAddresses.Add(reqaddress);
                 }
             }
 

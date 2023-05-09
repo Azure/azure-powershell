@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
     /// </summary>
     /// <remarks>
     /// See [use AAD pod
-    /// identity](https://learn.microsoft.com/azure/aks/use-azure-ad-pod-identity)
+    /// identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity)
     /// for more details on pod identity integration.
     /// </remarks>
     public partial class ManagedClusterPodIdentityProfile
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Running in Kubenet is disabled by default due to the security
         /// related nature of AAD Pod Identity and the risks of IP spoofing.
         /// See [using Kubenet network plugin with AAD Pod
-        /// Identity](https://learn.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
+        /// Identity](https://docs.microsoft.com/azure/aks/use-azure-ad-pod-identity#using-kubenet-network-plugin-with-azure-active-directory-pod-managed-identities)
         /// for more information.
         /// </remarks>
         [JsonProperty(PropertyName = "allowNetworkPluginKubenet")]

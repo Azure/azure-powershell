@@ -318,10 +318,16 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
                 }
                 finally
                 {
+                    // The user input may be partial command line. So we mark it as supported when
+                    // 1. We find some suggestions (e.g. if the input is "get" and we find "Get-AzVM")
+                    // 2. or command name from the input contains "-Az", which indicates that the command is Az command and we don't have it in our suggestion list.
+                    var isSupported = (suggestions is not null)
+                        && (suggestions.PredictiveSuggestions.Any()
+                            || _service.IsSupportedCommand(suggestions.CommandAst?.GetCommandName()));
                     _telemetryClient.OnGetSuggestion(new GetSuggestionTelemetryData(client,
                             localSuggestionSessionId,
                             suggestions?.CommandAst,
-                            _service.IsSupportedCommand(suggestions?.CommandAst?.GetCommandName()),
+                            isSupported,
                             suggestions,
                             cancellationToken.IsCancellationRequested,
                             exception));

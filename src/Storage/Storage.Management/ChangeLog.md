@@ -19,6 +19,45 @@
 -->
 ## Upcoming Release
 
+## Version 5.6.0
+* Supported rename file and directory
+    - `Rename-AzStorageFile`
+    - `Rename-AzStorageDirectory`
+* Added a warning message for an upcoming breaking change when getting a single blob 
+    - `Get-AzStorageBlob`
+* Fixed the issue of listing blobs with leading slashes 
+    - `Get-AzStorageBlob`
+* Added support for sticky bit 
+    - `New-AzDataLakeGen2Item`
+    - `New-AzDataLakeGen2ACLObject`
+    - `Update-AzDataLakeGen2Item`
+* Added warning messages for an upcoming cmdlet breaking change 
+    - `New-AzStorageAccount`
+    - `Set-AzStorageAccount`
+* Allowed to clear blob tags on a blob 
+    - `Set-AzStorageBlobTag`
+* Updated Azure.Core to 1.31.0
+
+## Version 5.5.0
+* Supported create storage account with DnsEndpointType
+    - `New-AzStorageAccount`
+* Fixed file cmdlets potential context issue when the current context doesn't match with the credential of input Azure File object
+    - `Close-AzStorageFileHandle`
+    - `Get-AzStorageFile`
+    - `Get-AzStorageFileContent`
+    - `Get-AzStorageFileHandle`
+    - `New-AzStorageDirectory`
+    - `New-AzStorageFileSASToken`
+    - `Remove-AzStorageDirectory`
+    - `Remove-AzStorageFile`
+    - `Remove-AzStorageShare`
+    - `Set-AzStorageFileContent`
+    - `Set-AzStorageShareQuota`
+    - `Start-AzStorageFileCopy`
+
+## Version 5.4.1
+* Updated Azure.Core to 1.28.0.
+
 ## Version 5.4.0
 * Added a warning message for the upcoming breaking change when creating a Storage account
     - `New-AzStorageAccount`

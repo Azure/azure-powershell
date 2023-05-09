@@ -8,42 +8,8 @@ Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToR
 ```
 
 ```output
-BillingInformationBillingCurrencyProratedAmount            : {
-                                                               "currencyCode": "USD",
-                                                               "amount": 12.9        
-                                                             }
-BillingInformationBillingCurrencyRemainingCommitmentAmount : {
-                                                               "currencyCode": "USD",
-                                                               "amount": 18.06       
-                                                             }
-BillingInformationBillingCurrencyTotalPaidAmount           : {
-                                                               "currencyCode": "USD",
-                                                               "amount": 15.48       
-                                                             }
-BillingInformationBillingPlan                              : Monthly
-BillingInformationCompletedTransaction                     : 5
-BillingInformationTotalTransaction                         : 12
-BillingRefundAmount                                        : {
-                                                               "currencyCode": "USD",
-                                                               "amount": 2.58
-                                                             }
-ConsumedRefundsTotal                                       : {
-                                                               "currencyCode": "USD",
-                                                               "amount": 368.23
-                                                             }
-Id                                                         : /providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003
-Location                                                   :
-MaxRefundLimit                                             : {
-                                                               "currencyCode": "USD",
-                                                               "amount": 50000
-                                                             }
-PolicyError                                                : {}
-PricingRefundAmount                                        : {
-                                                               "currencyCode": "USD",
-                                                               "amount": 2.58
-                                                             }
-Quantity                                                   : 1
-ResourceGroupName                                          :
-SessionId                                                  : 93fe5df2-d888-47c5-b00c-cd0ccb1f29b9
+ReservationOrderId                   DisplayName            Term State     Quantity Reservations
+------------------                   -----------            ---- -----     -------- ------------
+179ef21b-90ec-4fe4-9423-f794b856dfee VM_RI_08-20-2021_15-47 P3Y  Succeeded 1        {{…
 ```
 Proceed reservations return with session ID obtained from Invoke-AzReservationCalculateRefund.

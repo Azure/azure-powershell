@@ -49,6 +49,9 @@
         [Ps1Xml(Label = "EgressNatRules", Target = ViewControl.Table)]
         public List<PSResourceId> EgressNatRules { get; set; }
 
+        [Ps1Xml(Label = "VpnGatewayCustomBgpAddresses", Target = ViewControl.Table)]
+        public List<PSGatewayCustomBgpIpConfiguration> VpnGatewayCustomBgpAddresses { get; set; }
+
         [Ps1Xml(Label = "VpnLinkConnectionMode", Target = ViewControl.Table)]
         public string VpnLinkConnectionMode { get; set; }
 
@@ -62,6 +65,12 @@
         public string EgressNatRulesText
         {
             get { return JsonConvert.SerializeObject(EgressNatRules, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+        }
+
+        [JsonIgnore]
+        public string VpnGatewayCustomBgpAddressesText
+        {
+            get { return JsonConvert.SerializeObject(VpnGatewayCustomBgpAddresses, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }

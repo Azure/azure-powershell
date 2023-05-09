@@ -131,6 +131,9 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "The fully qualified resource ID of the Dedicated Host Group to provision virtual machines from, used only in creation scenario and not allowed to changed once set.")]
         public string HostGroupID { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The ID of the subnet which pods will join when launched.")]
+        public string PodSubnetID { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -147,7 +150,7 @@ namespace Microsoft.Azure.Commands.Aks
                 }
                 var agentPool = GetAgentPool();
                 var pool = this.CreateOrUpdate(ResourceGroupName, ClusterName, Name, agentPool);
-                var psPool = PSMapper.Instance.Map<PSNodePool>(pool);
+                var psPool = AdapterHelper<AgentPool, PSNodePool>.Adapt(pool);
                 WriteObject(psPool);
             };
 
@@ -287,6 +290,9 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.HostGroupID))
             {
                 agentPool.HostGroupID = HostGroupID;
+            }
+            if (this.IsParameterBound(c => c.PodSubnetID)) {
+                agentPool.PodSubnetID = PodSubnetID;
             }
 
             return agentPool;

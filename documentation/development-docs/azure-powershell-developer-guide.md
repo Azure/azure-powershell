@@ -47,6 +47,7 @@ The following prerequisites should be completed before contributing to the Azure
 - Install [Visual Studio 2019 or above](https://www.visualstudio.com/downloads/)
 - Install the latest version of [Git](https://git-scm.com/downloads)
 - Install the [`platyPS` module](help-generation.md#Installing-platyPS)
+- Install [PSScriptAnalyzer](https://github.com/PowerShell/PSScriptAnalyzer#installation)
 - Install [**.NET Core 3.1, the Latest .NET, and .NET Framework Dev Pack 4.7.2**](https://dotnet.microsoft.com/en-us/download/dotnet) or greater
 - Install [PowerShell 7](https://github.com/PowerShell/PowerShell/releases/latest)
 - Set the PowerShell [execution policy](https://technet.microsoft.com/en-us/library/ee176961.aspx) to **Unrestricted** for the following versions of PowerShell:

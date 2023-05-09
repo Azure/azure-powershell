@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.4.0
+* Added new property `Encryption` of type `EncryptionProperties` to `AccountCreateParameters`.
+  - Configures how customer data is encrypted inside the Batch account.
+
 ## Version 3.3.0
 * Added new properties `CurrentNodeCommunicationMode` (read only) and `TargetCommunicationMode` of type `NodeCommunicationMode` to `PSCloudPool`.
   - Valid values for `NodeCommunicationMode`: Default, Classic, Simplified

@@ -24,7 +24,7 @@ using System.Reflection;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [GenericBreakingChange("Get-AzApplicationGatewayAvailableSslOptions alias will be removed in an upcoming breaking change release", "2.0.0")]
+    [GenericBreakingChange("Get-AzApplicationGatewayAvailableSslOptions alias will be removed in an upcoming breaking change release")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableSslOption"), OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
     [Alias("List-" + ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApplicationGatewayAvailableSslOptions", "Get-AzApplicationGatewayAvailableSslOptions")]
     public class GetAzureApplicationGatewayAvailableSslOptions : ApplicationGatewayBaseCmdlet

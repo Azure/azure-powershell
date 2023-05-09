@@ -4222,6 +4222,7 @@ function Test-ApplicationGatewayFirewallPolicyWithCustomRules
 		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
 		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
 		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+		Assert-AreEqual $policy.CustomRules[0].State "Enabled"
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $customRule.MatchConditions[0].OperatorProperty
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
 		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
@@ -4231,6 +4232,11 @@ function Test-ApplicationGatewayFirewallPolicyWithCustomRules
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
+
+		$policy.CustomRules[0].State = "Disabled"
+		Set-AzApplicationGatewayFirewallPolicy -InputObject $policy
+		$policy1 = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+		Assert-AreEqual $policy1.CustomRules[0].State "Disabled"
 	}
 	finally
 	{

@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                     {
                         {"Microsoft.Resources", null},
                         {"Microsoft.Features", null},
+                        {"Microsoft.Storage", null},
                         {"Microsoft.Authorization", null}
                     }
                 )

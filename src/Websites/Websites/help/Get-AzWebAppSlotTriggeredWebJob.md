@@ -1,6 +1,6 @@
 ---
 external help file: Az.Websites-help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 online version: https://learn.microsoft.com/powershell/module/az.websites/get-azwebappslottriggeredwebjob
 schema: 2.0.0
 ---
@@ -39,6 +39,7 @@ Get or list triggered web for a deployment slot.
 ```powershell
 Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01
 ```
+
 ```output
 Name                                         Kind WebJobType ResourceGroupName
 ----                                         ---- ---------- -----------------
@@ -52,6 +53,7 @@ This command lists triggered webs for a deployment slot.
 ```powershell
 Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 ```
+
 ```output
 Name                                         Kind WebJobType ResourceGroupName
 ----                                         ---- ---------- -----------------
@@ -66,6 +68,7 @@ $webjob = Get-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -App
 Start-AzWebAppSlotTriggeredWebJob -ResourceGroupName webjob-rg-test -AppName appService-test01 -SlotName slot01 -Name slottriggeredjob-03
 $webjob.Id | Get-AzWebAppSlotTriggeredWebJob
 ```
+
 ```output
 Name                                         Kind WebJobType ResourceGroupName
 ----                                         ---- ---------- -----------------
@@ -92,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -220,7 +224,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IWebsitesIdentity>`: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

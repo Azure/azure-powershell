@@ -54,6 +54,13 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData(@"C:\Users\MyName\exe param")]
         [InlineData(@"C:\Users\MyName\exe")]
         [InlineData(@"az storage")]
+        [InlineData(@"get")]
+        [InlineData(@"-StorageAccountKey""xxx""NewAzStorageContainer -context xxx")]
+        [InlineData(@"-StorageAccountKey\""xxx\""NewAzStorageContainer -context xxx")]
+        [InlineData(@"-StorageAccountKey""xxx""New-AzStorageContainer -context xxx")]
+        [InlineData(@"New-AzureStorageContext-StorageAccountName ""xxx"" -StorageAccountKey ""xxx""")]
+        [InlineData(@"sig=xxxxxxxxxxx/Sensor-Azure")]
+        [InlineData(@"sig=Signature/Test-Sensor-Azu")]
         public async Task VerifyOnCommandLineAcceptedForOneUnsupportedCommandHistory(string inputData)
         {
             var expectedTelemetryCount = 2;
@@ -150,6 +157,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzRoleAssignment -ObjectId ***", "Remove-AzRoleAssignment -RoleDefinitionId (Get-AzRoleAssignment -ObjectId xxxx)")]
         [InlineData("Get-AzResourceGroup -Location:***", "Get-AzResourceGroup rg1 -Location:WestUS3")]
         [InlineData("Get-AzResourceGroup", "Get-AzResourceGroup rg1 WestUS3")]
+        [InlineData("New-AzureStorageContext -StorageAccountKey *** -StorageAccountName ***", @"New-AzureStorageContext -StorageAccountName ""accountName"" -StorageAccountKey ""accountKey""")]
         public async Task VerifyOnCommandLineAcceptedForOneSupportedCommandWithParameter(string expectedValue, string inputData)
         {
             var expectedTelemetryCount = 2;
@@ -551,7 +559,19 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
         [InlineData("Get-AzContext", "Get-AzContext")]
         [InlineData("Get-AzResourceGroup -Location *** -Name ***", "Get-AzResourceGroup -Location westus2 -Name rg1")]
         [InlineData("Get-AzResourceGroup -Location ***", "Get-AzResourceGroup rg1 -Location westus2")]
-        [InlineData("Get-AzResourceGroup", "Get-AzResourceGroup rg1 westus2")]
+        [InlineData("get-azresourcegroup", "get-azresourcegroup rg1 westus2")]
+        [InlineData("Set-Az", "Set-Az")]
+        [InlineData("Get-azR", "Get-azR")]
+        [InlineData("start_of_snippet", "NonVerb-AzResource")]
+        [InlineData("Get", "Get")]
+        [InlineData("Set-", "Set-")]
+        [InlineData("New-AzureStorageContext -StorageAccountKey *** -StorageAccountName ***", @"New-AzureStorageContext -StorageAccountName ""accountName"" -StorageAccountKey ""accountKey""")]
+        [InlineData("start_of_snippet", @"-StorageAccountKey""xxx""NewAzStorageContainer -context xxx")]
+        [InlineData("start_of_snippet", @"-StorageAccountKey\""xxx\""NewAzStorageContainer -context xxx")]
+        [InlineData("start_of_snippet", @"-StorageAccountKey""xxx""New-AzStorageContainer -context xxx")]
+        [InlineData("start_of_snippet", @"New-AzureStorageContext-StorageAccountName ""xxx"" -StorageAccountKey ""xxx""")]
+        [InlineData("start_of_snippet", @"sig=xxxxxxxxxxx/Sensor-Azure")]
+        [InlineData("start_of_snippet", @"sig=Signature/Test-Sensor-Azu")]
         public void VerifyUserInputInGetSuggestionEvent(string expectedUserInput, string input)
         {
             var expectedTelemetryCount = 1;
@@ -564,7 +584,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedUserInput, ((JsonElement)(suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameUserInput])).GetString());
         }
 
@@ -589,7 +609,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal("Clear-Content -Filter *** -Path ***", ((JsonElement)(suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameUserInput])).GetString());
             Assert.Equal(1, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameFound]).GetArrayLength());
 
@@ -604,7 +624,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
+            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal((int)SuggestionDisplayMode.ListView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
             Assert.Equal(Math.Abs(displayCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
             Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
@@ -622,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
+            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(suggestionPackage.Session.Value, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
             Assert.Equal(acceptedSuggestion, ((JsonElement)suggestionSessions[0][SuggestionAcceptedTelemetryData.PropertyNameAccepted]).GetString());
             AzPredictorTelemetryTests.EnsureSameRequestId(telemetryClient.GetSuggestionData, telemetryClient.SuggestionDisplayedData);
@@ -676,7 +696,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal((int)SuggestionDisplayMode.ListView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
             Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
             Assert.Equal(suggestionSessionId, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
@@ -705,7 +725,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
 
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal((int)SuggestionDisplayMode.InlineView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
             Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
             Assert.Equal(suggestionSessionId, ((JsonElement)suggestionSessions[0][GetSuggestionTelemetryData.PropertyNameSuggestionSessionId]).GetUInt32());
@@ -733,7 +753,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
 
             Assert.EndsWith("Aggregation", telemetryClient.RecordedTelemetry[0].EventName);
             Assert.Equal(MockObjects.PredictionClient.Name, telemetryClient.RecordedTelemetry[0].Properties["ClientId"]);
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(telemetryClient.RecordedTelemetry[0].Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal((int)SuggestionDisplayMode.InlineView, ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[0].GetInt32());
             Assert.Equal(Math.Abs(suggestionCountOrIndex), ((JsonElement)suggestionSessions[0][SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
         }
@@ -928,11 +948,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             telemetryClient.FlushTelemetry();
 
             var recordedTelemetry = telemetryClient.RecordedTelemetry[0];
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedSuggestionSessionInFirstBatch, suggestionSessions.Count());
 
             recordedTelemetry = telemetryClient.RecordedTelemetry[1];
-            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
+            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedSuggestionSessionInSecondBatch, suggestionSessions.Count());
             Assert.True(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameFound));
         }
@@ -980,7 +1000,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             telemetryClient.FlushTelemetry();
 
             var recordedTelemetry = telemetryClient.RecordedTelemetry[0];
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedSuggestionSessionInFirstBatch, suggestionSessions.Count());
             Assert.True(suggestionSessions.All((s) => s.ContainsKey(GetSuggestionTelemetryData.PropertyNameFound) && s.ContainsKey(GetSuggestionTelemetryData.PropertyNameUserInput)));
             Assert.True(suggestionSessions.All((s) => !s.ContainsKey(SuggestionAcceptedTelemetryData.PropertyNameAccepted)));
@@ -990,7 +1010,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(1, ((JsonElement)suggestionSessions.Last()[SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
 
             recordedTelemetry = telemetryClient.RecordedTelemetry[1];
-            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
+            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedSuggestionSessionInSecondBatch, suggestionSessions.Count());
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameFound));
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameUserInput));
@@ -1042,7 +1062,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             VerifyTelemetryDispatchCount(expectedTelemetryCount, telemetryClient);
 
             var recordedTelemetry = telemetryClient.RecordedTelemetry[0];
-            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
+            var suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedSuggestionSessionInFirstBatch, suggestionSessions.Count());
             Assert.True(suggestionSessions.All((s) => s.ContainsKey(GetSuggestionTelemetryData.PropertyNameFound) && s.ContainsKey(GetSuggestionTelemetryData.PropertyNameUserInput)));
             Assert.True(suggestionSessions.All((s) => !s.ContainsKey(SuggestionAcceptedTelemetryData.PropertyNameAccepted)));
@@ -1052,7 +1072,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test
             Assert.Equal(1, ((JsonElement)suggestionSessions.Last()[SuggestionDisplayedTelemetryData.PropertyNameDisplayed])[1].GetInt32());
 
             recordedTelemetry = telemetryClient.RecordedTelemetry[1];
-            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties["Suggestion"]);
+            suggestionSessions = JsonSerializer.Deserialize<IList<IDictionary<string, object>>>(recordedTelemetry.Properties[GetSuggestionTelemetryData.PropertyNamePrediction]);
             Assert.Equal(expectedSuggestionSessionInSecondBatch, suggestionSessions.Count());
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameFound));
             Assert.False(suggestionSessions[0].ContainsKey(GetSuggestionTelemetryData.PropertyNameUserInput));

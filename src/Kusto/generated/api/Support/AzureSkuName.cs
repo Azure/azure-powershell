@@ -48,6 +48,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16AsV54TbPs = @"Standard_E16as_v5+4TB_PS";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16DV4 = @"Standard_E16d_v4";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16DV5 = @"Standard_E16d_v5";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16SV43TbPs = @"Standard_E16s_v4+3TB_PS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE16SV44TbPs = @"Standard_E16s_v4+4TB_PS";
@@ -60,9 +64,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE2AdsV5 = @"Standard_E2ads_v5";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE2DV4 = @"Standard_E2d_v4";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE2DV5 = @"Standard_E2d_v5";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE4AV4 = @"Standard_E4a_v4";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE4AdsV5 = @"Standard_E4ads_v5";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE4DV4 = @"Standard_E4d_v4";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE4DV5 = @"Standard_E4d_v5";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE64IV3 = @"Standard_E64i_v3";
 
@@ -80,6 +92,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8AsV52TbPs = @"Standard_E8as_v5+2TB_PS";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8DV4 = @"Standard_E8d_v4";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8DV5 = @"Standard_E8d_v5";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8SV41TbPs = @"Standard_E8s_v4+1TB_PS";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8SV42TbPs = @"Standard_E8s_v4+2TB_PS";
@@ -88,20 +104,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardE8SV52TbPs = @"Standard_E8s_v5+2TB_PS";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardEc16AdsV5 = @"Standard_EC16ads_v5";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardEc16AsV53TbPs = @"Standard_EC16as_v5+3TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardEc16AsV54TbPs = @"Standard_EC16as_v5+4TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardEc8AdsV5 = @"Standard_EC8ads_v5";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardEc8AsV51TbPs = @"Standard_EC8as_v5+1TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardEc8AsV52TbPs = @"Standard_EC8as_v5+2TB_PS";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL16AsV3 = @"Standard_L16as_v3";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL16S = @"Standard_L16s";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL16SV2 = @"Standard_L16s_v2";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL16SV3 = @"Standard_L16s_v3";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL32AsV3 = @"Standard_L32as_v3";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL32SV3 = @"Standard_L32s_v3";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL4S = @"Standard_L4s";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL8AsV3 = @"Standard_L8as_v3";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL8S = @"Standard_L8s";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL8SV2 = @"Standard_L8s_v2";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName StandardL8SV3 = @"Standard_L8s_v3";
+
         /// <summary>the value for an instance of the <see cref="AzureSkuName" /> Enum.</summary>
         private string _value { get; set; }
 
-        /// <summary>Creates an instance of the <see cref="AzureSkuName" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="AzureSkuName"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private AzureSkuName(string underlyingValue)
         {
@@ -162,8 +202,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         }
 
         /// <summary>Overriding != operator for enum AzureSkuName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName e1, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName e2)
         {
@@ -171,8 +211,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         }
 
         /// <summary>Overriding == operator for enum AzureSkuName</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName e1, Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.AzureSkuName e2)
         {

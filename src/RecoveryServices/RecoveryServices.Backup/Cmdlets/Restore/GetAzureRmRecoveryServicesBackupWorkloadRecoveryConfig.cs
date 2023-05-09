@@ -116,6 +116,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 string resourceGroupName = resourceIdentifier.ResourceGroupName;
                 string targetVaultName = "";
                 string targetResourceGroupName = "";
+                string targetSubscriptionId = "";
 
                 if (!OriginalWorkloadRestore.IsPresent && !AlternateWorkloadRestore.IsPresent && !RestoreAsFiles.IsPresent)
                 {
@@ -141,10 +142,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 if (TargetItem != null)
                 {
-                    // getting Target vault/RG for TargetPhysicalPath in CRR 
+                    // getting Target vault/RG for TargetPhysicalPath in CRR
                     Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(TargetItem.Id);
                     targetResourceGroupName = HelperUtils.GetResourceGroupNameFromId(keyValueDict, TargetItem.Id);
                     targetVaultName = HelperUtils.GetVaultNameFromId(keyValueDict, TargetItem.Id);
+                    targetSubscriptionId = HelperUtils.GetSubscriptionIdFromId(keyValueDict, TargetItem.Id);
 
                     // check if the TragetItem provided is of workload type
                     if (!string.Equals(((AzureWorkloadProtectableItem)TargetItem).ProtectableItemType,
@@ -188,11 +190,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     List<WorkloadItemResource> itemResponses;
                     if (targetVaultName != "" && targetResourceGroupName != "")
                     {
+                        string subscriptionContext = ServiceClientAdapter.BmsAdapter.Client.SubscriptionId;
+                        ServiceClientAdapter.BmsAdapter.Client.SubscriptionId = targetSubscriptionId;
+
                         itemResponses = ServiceClientAdapter.ListWorkloadItem(
                         TargetItem.ContainerName,
                         queryParams,
                         vaultName: targetVaultName,
                         resourceGroupName: targetResourceGroupName);
+
+                        ServiceClientAdapter.BmsAdapter.Client.SubscriptionId = subscriptionContext;
                     }
                     else
                     {
@@ -247,12 +254,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     List<WorkloadItemResource> itemResponses;
                     if (targetVaultName != "" && targetResourceGroupName != "")
-                    {
+                    {                        
+                        string subscriptionContext = ServiceClientAdapter.BmsAdapter.Client.SubscriptionId;
+                        ServiceClientAdapter.BmsAdapter.Client.SubscriptionId = targetSubscriptionId;
+
                         itemResponses = ServiceClientAdapter.ListWorkloadItem(
                         TargetItem.ContainerName,
                         queryParams,
                         vaultName: targetVaultName,
                         resourceGroupName: targetResourceGroupName);
+
+                        ServiceClientAdapter.BmsAdapter.Client.SubscriptionId = subscriptionContext;
                     }
                     else
                     {

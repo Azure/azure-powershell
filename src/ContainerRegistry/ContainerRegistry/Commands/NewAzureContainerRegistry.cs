@@ -20,9 +20,11 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
+    [GenericBreakingChange("The Az.ContainerRegistry module is upgrading. The output properties may have some changes", "4.0.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistry", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistry))]
     public class NewAzureContainerRegistry : ContainerRegistryCmdletBase

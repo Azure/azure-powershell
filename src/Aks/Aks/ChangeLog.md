@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the issue of `Enable-AzAksAddon` when there are no addons. [#21665]
+
+## Version 5.4.0
+* Added cmdlet `New-AzAksMaintenanceConfiguration`, `Get-AzAksMaintenanceConfiguration`, `Remove-AzAksMaintenanceConfiguration`, `New-AzAksSnapshot`, `Get-AzAksSnapshot`, `Remove-AzAksSnapshot`, `Get-AzAksManagedClusterCommandResult`, `Get-AzAksManagedClusterOSOption`, `Get-AzAksManagedClusterOutboundNetworkDependencyEndpoint`, `Invoke-AzAksAbortAgentPoolLatestOperation`, `Invoke-AzAksAbortManagedClusterLatestOperation`, `Invoke-AzAksRotateManagedClusterServiceAccountSigningKey`, `Start-AzAksManagedClusterCommand`, `New-AzAksTimeInWeekObject`, `New-AzAksTimeSpanObject`.
+* Added parameter `-OutboundType` for `New-AzAksCluster`
+* Added parameter `-EnableOidcIssuer` for `New-AzAksCluster` and `Set-AzAksCluster`
+* Added parameter `-NodePodSubnetID` for `New-AzAksCluster`, `-PodSubnetID` for `New-AzAksNodePool`
+
+## Version 5.3.2
+* Fixed the issue that system variable `$IsWindows` is undefined in `Windows PowerShell`.
+* Decoupled AutoMapper dependency, replaced with AdapterHelper.
+
+## Version 5.3.1
 * Fixed the issue that Invoke-AzAksRunCommand will fail when the directory for parameter CommandContextAttachment contains sub-directories. [#20734]
 
 ## Version 5.3.0

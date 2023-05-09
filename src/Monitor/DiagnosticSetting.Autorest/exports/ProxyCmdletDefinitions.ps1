@@ -1513,7 +1513,7 @@ New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerEvent
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings
 .Link
-https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingLogSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingLogSettingsObject
 #>
 function New-AzDiagnosticSettingLogSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings])]
@@ -1638,7 +1638,7 @@ New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category AllMetrics 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings
 .Link
-https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingMetricSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingMetricSettingsObject
 #>
 function New-AzDiagnosticSettingMetricSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings])]
@@ -1762,7 +1762,7 @@ New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -E
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
 .Link
-https://learn.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingSubscriptionLogSettingsObject
+https://learn.microsoft.com/powershell/module/Az.Monitor/new-AzDiagnosticSettingSubscriptionLogSettingsObject
 #>
 function New-AzDiagnosticSettingSubscriptionLogSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings])]

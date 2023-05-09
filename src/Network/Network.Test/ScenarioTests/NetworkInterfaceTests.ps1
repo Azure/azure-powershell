@@ -320,12 +320,12 @@ function Test-NetworkInterface-GatewayLoadBalancerConsumer
         $publicipConsumer = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpConsumerName -location $location -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel
 
 		# Create the ipconfiguration
-		$ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id
+        $ipconfig1 = New-AzNetworkInterfaceIpConfig -Name $ipconfigConsumerName -Subnet $vnet.Subnets[0] -PublicIpAddress $publicipConsumer -GatewayLoadBalancerId $frontendProvider.Id
 
         # Create NetworkInterface
         $nicConsumer = New-AzNetworkInterface -Name $nicConsumerName -ResourceGroupName $rgname -Location $location -IpConfiguration $ipconfig1 -Tag @{ testtag = "testval" }
 
-        # Create NetworkInterface
+        # Get NetworkInterface
         $expectedNicConsumer = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         # Verification

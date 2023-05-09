@@ -18,7 +18,8 @@ New-AzSnapshotUpdateConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemType
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-EdgeZone <String>]
  [-KeyEncryptionKey <KeyVaultAndKeyReference>] [-DiskEncryptionSetId <String>] [-EncryptionType <String>]
  [-PublicNetworkAccess <String>] [-DataAccessAuthMode <String>] [-Architecture <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NetworkAccessPolicy <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -194,6 +195,21 @@ Specifies the Key encryption key on a snapshot.
 
 ```yaml
 Type: Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkAccessPolicy
+Policy for accessing the disk via network. Available values are: AllowAll, AllowPrivate, DeyAll
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

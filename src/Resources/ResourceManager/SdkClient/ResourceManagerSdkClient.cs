@@ -909,7 +909,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             {
                 try
                 {
-                    result.Add(ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup());
+                    PSResourceGroup resourceGroup = ResourceManagementClient.ResourceGroups.Get(name).ToPSResourceGroup();
+                    if (string.IsNullOrEmpty(location) || resourceGroup.Location.EqualsAsLocation(location))
+                    {
+                        result.Add(resourceGroup);
+                    }
                 }
                 catch (CloudException)
                 {

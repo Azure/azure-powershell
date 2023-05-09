@@ -129,7 +129,6 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true)]
         public PSProbe Probe { get; set; }
 
-
         public override void Execute()
         {
             if (ShouldProcess(this.Name, "Creating the rule configuration"))
@@ -161,7 +160,7 @@ namespace Microsoft.Azure.Commands.Network
                 vLoadBalancingRules.LoadDistribution = this.LoadDistribution;
                 vLoadBalancingRules.FrontendPort = this.FrontendPort;
                 vLoadBalancingRules.BackendPort = this.BackendPort;
-                vLoadBalancingRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : 4;
+                vLoadBalancingRules.IdleTimeoutInMinutes = this.MyInvocation.BoundParameters.ContainsKey("IdleTimeoutInMinutes") ? this.IdleTimeoutInMinutes : Constants.LoadBalancingIdleTimeoutDefault;
                 vLoadBalancingRules.EnableFloatingIP = this.EnableFloatingIP;
                 vLoadBalancingRules.EnableTcpReset = this.EnableTcpReset;
                 vLoadBalancingRules.DisableOutboundSNAT = this.DisableOutboundSNAT;

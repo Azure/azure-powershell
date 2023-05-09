@@ -8,18 +8,26 @@ schema: 2.0.0
 # Set-AzDataProtectionMSIPermission
 
 ## SYNOPSIS
-Grants required permissions to the backup vault to configure backup
+Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 
 ## SYNTAX
 
+### SetPermissionsForBackup (Default)
 ```
 Set-AzDataProtectionMSIPermission -BackupInstance <IBackupInstanceResource> -PermissionsScope <String>
  -VaultName <String> -VaultResourceGroup <String> [-KeyVaultId <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
+### SetPermissionsForRestore
+```
+Set-AzDataProtectionMSIPermission -PermissionsScope <String> -RestoreRequest <IAzureBackupRestoreRequest>
+ -SnapshotResourceGroupId <String> -VaultName <String> -VaultResourceGroup <String> [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Grants required permissions to the backup vault to configure backup
+Grants required permissions to the backup vault and other resources for configure backup and restore scenarios
 
 ## EXAMPLES
 
@@ -67,11 +75,30 @@ Performing the operation "
 [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): A
 Assigning Reader permission to the backup vault
 Assigned Reader permission to the backup vault
-Waiting for 60 seconds for roles to propogate
+Waiting for 60 seconds for roles to propagate
 ```
 
 The above command is used to assign permissions to the backup vault "Vaultname" under resource group "VaultRG" at the "Resource" scope of the Azure Database For PostgreSQL.
 It takes an additional KeyVaultId parameter to assign the necessary permissions to the backup vault on the keyvault.
+
+### Example 4: Grant missing permissions to configure backup for AzureKubernetesService
+```powershell
+Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup"
+```
+
+```output
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "Allow Contributor permission over snapshot resource group" on target
+"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster".
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): Y
+Assigned Contributor permission to DataSource with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster over snapshot resource group with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/snapshotResourceGroup
+Assigned Reader permission to the backup vault over snapshot resource group with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/snapshotResourceGroup
+Required permission Reader is already assigned to backup vault over DataSource with Id /subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourceGroupName/providers/Microsoft.ContainerService/managedClusters/aks-cluster
+Waiting for 60 seconds for roles to propagate
+```
+
+The above command is used to assign permissions to the backup vault "VaultName" under resource group "resourceGroupName" at the "ResourceGroup" scope.
 
 ## PARAMETERS
 
@@ -80,8 +107,8 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IBackupInstanceResource
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IBackupInstanceResource
+Parameter Sets: SetPermissionsForBackup
 Aliases:
 
 Required: True
@@ -96,7 +123,7 @@ ID of the keyvault
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetPermissionsForBackup
 Aliases:
 
 Required: False
@@ -112,6 +139,37 @@ Scope at which the permissions need to be granted
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RestoreRequest
+Restore request object which will be used for restore
+To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
+Parameter Sets: SetPermissionsForRestore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SnapshotResourceGroupId
+Sanpshot Resource Group
+
+```yaml
+Type: System.String
+Parameter Sets: SetPermissionsForRestore
 Aliases:
 
 Required: True
@@ -216,6 +274,8 @@ To create the parameters described below, construct a hash table containing the 
     - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
       - `PolicyId <String>`: 
       - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
+        - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
+          - `ObjectType <String>`: Type of the specific object - used for deserializing
         - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
           - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
           - `ObjectType <String>`: Type of the specific object - used for deserializing
@@ -231,6 +291,14 @@ To create the parameters described below, construct a hash table containing the 
       - `ObjectType <String>`: Type of the specific object - used for deserializing
     - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
     - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
+
+`RESTOREREQUEST <IAzureBackupRestoreRequest>`: Restore request object which will be used for restore
+  - `ObjectType <String>`: 
+  - `RestoreTargetInfo <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
+    - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
+    - `[RestoreLocation <String>]`: Target Restore region
+  - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
+  - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 ## RELATED LINKS
 

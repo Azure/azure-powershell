@@ -70,7 +70,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string userData,
             string imageReferenceId,
             Dictionary<string, List<string>> auxAuthHeader,
-            string diskControllerType
+            string diskControllerType,
+            string sharedImageGalleryId
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -108,10 +109,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             {
                                 ImageReference = (imageReferenceId == null) ? imageAndOsType?.Image : (imageReferenceId.ToLower().StartsWith("/communitygalleries/") ? new ImageReference
                                 {
-                                    CommunityGalleryImageId = imageReferenceId
+                                    CommunityGalleryImageId = imageReferenceId,
+                                    SharedGalleryImageId = sharedImageGalleryId
                                 } : new ImageReference
                                 {
-                                    Id = imageReferenceId
+                                    Id = imageReferenceId,
+                                    SharedGalleryImageId = sharedImageGalleryId
                                 }),
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
                                     imageAndOsType?.DataDiskLuns, dataDisks),

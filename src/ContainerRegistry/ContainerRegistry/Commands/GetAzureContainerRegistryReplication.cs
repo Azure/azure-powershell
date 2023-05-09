@@ -15,9 +15,12 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
+    [GenericBreakingChange("The Az.ContainerRegistry module is upgrading. The output properties may have some changes", "4.0.0.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContainerRegistryReplication", DefaultParameterSetName = ListReplicationByNameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryReplication))]
     public class GetAzureContainerRegistryReplication : ContainerRegistryCmdletBase
@@ -45,6 +48,8 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [ValidateNotNull]
         public PSContainerRegistry Registry { get; set; }
 
+        public const string ChangeDesc = "Parameter is being deprecated without being replaced";
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = ChangeDesc)]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The container registry replication resource id")]
         [ValidateNotNullOrEmpty]
         [Alias(ResourceIdAlias)]

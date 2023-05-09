@@ -43,7 +43,7 @@ $pointInTimeRange = Find-AzDataProtectionRestorableTimeRange -BackupInstanceName
 Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore OperationalStore -RestoreLocation $vault.Location -RestoreType OriginalLocation -BackupInstance $instances[0] -PointInTime (Get-Date).AddDays(-1) -ItemLevelRecovery -FromPrefixPattern "container1/aaa","container1/ccc", "container2/aab", "container3" -ToPrefixPattern "container1/bbb","container1/ddd", "container2/abc", "container3-0"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRestoreRequest
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -63,6 +63,8 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     PolicyInfo <IPolicyInfo>: Gets or sets the policy information.
       PolicyId <String>: 
       [PolicyParameter <IPolicyParameters>]: Policy parameters for the backup instance
+        [BackupDatasourceParametersList <IBackupDatasourceParameters[]>]: Gets or sets the Backup Data Source Parameters
+          ObjectType <String>: Type of the specific object - used for deserializing
         [DataStoreParametersList <IDataStoreParameters[]>]: Gets or sets the DataStore Parameters
           DataStoreType <DataStoreTypes>: type of datastore; Operational/Vault/Archive
           ObjectType <String>: Type of the specific object - used for deserializing
@@ -80,11 +82,24 @@ BACKUPINSTANCE <BackupInstanceResource>: Backup Instance object to trigger origi
     [ValidationType <ValidationType?>]: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
   [Tag <IDppProxyResourceTags>]: Proxy Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+
+RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>: Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.
+  IncludeClusterScopeResource <Boolean>: Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
+  ObjectType <String>: Type of the specific object - used for deserializing
+  [ConflictPolicy <ExistingResourcePolicy?>]: Gets or sets the Conflict Policy property. This property sets policy during conflict of resources during restore.
+  [ExcludedNamespace <String[]>]: Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
+  [ExcludedResourceType <String[]>]: Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
+  [IncludedNamespace <String[]>]: Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
+  [IncludedResourceType <String[]>]: Gets or sets the include resource types property. This property sets the resource types to be included during restore.
+  [LabelSelector <String[]>]: Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
+  [NamespaceMapping <IKubernetesClusterRestoreCriteriaNamespaceMappings>]: Gets or sets the Namespace Mappings property. This property sets if namespace needs to be change during restore.
+    [(Any) <String>]: This indicates any property can be added to this object.
+  [PersistentVolumeRestoreMode <PersistentVolumeRestoreMode?>]: Gets or sets the PV (Persistent Volume) Restore Mode property. This property sets whether volumes needs to be restored.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionrestorerequest
 #>
 function Initialize-AzDataProtectionRestoreRequest {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.IAzureBackupRestoreRequest])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.IAzureBackupRestoreRequest])]
 [CmdletBinding(DefaultParameterSetName='AlternateLocationFullRecovery', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -111,6 +126,37 @@ param(
     # Restore Target Type
     ${RestoreType},
 
+    [Parameter(ParameterSetName='AlternateLocationILR', Mandatory)]
+    [Parameter(ParameterSetName='AlternateLocationFullRecovery', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Target resource Id to which backup data will be restored.
+    ${TargetResourceId},
+
+    [Parameter(ParameterSetName='AlternateLocationILR', Mandatory)]
+    [Parameter(ParameterSetName='OriginalLocationILR', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Switch parameter to enable item level recovery.
+    ${ItemLevelRecovery},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Id of the recovery point to be restored.
+    ${RecoveryPoint},
+
+    [Parameter(ParameterSetName='AlternateLocationILR')]
+    [Parameter(ParameterSetName='OriginalLocationILR')]
+    [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
+    [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.KubernetesClusterRestoreCriteria]
+    # Restore configuration for restore.
+    # Use this parameter to restore with AzureKubernetesService.
+    # To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
+    ${RestoreConfiguration},
+
     [Parameter(ParameterSetName='RestoreAsFiles', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
@@ -123,33 +169,39 @@ param(
     # File name to be prefixed to the restored backup data.
     ${FileNamePrefix},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # Id of the recovery point to be restored.
-    ${RecoveryPoint},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='RestoreAsFiles')]
+    [Parameter(ParameterSetName='OriginalLocationILR')]
+    [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
+    [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Rehydration duration for the archived recovery point to stay rehydrated, default value for rehydration duration is 15.
     ${RehydrationDuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RestoreAsFiles')]
+    [Parameter(ParameterSetName='OriginalLocationILR')]
+    [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
+    [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Rehydration priority for archived recovery point.
     # This parameter is mandatory for rehydrate restore of archived points.
     ${RehydrationPriority},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RestoreAsFiles')]
+    [Parameter(ParameterSetName='OriginalLocationILR')]
+    [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
+    [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Secret uri for secret store authentication of data source.
     # This parameter is only supported for AzureDatabaseForPostgreSQL currently.
     ${SecretStoreURI},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='RestoreAsFiles')]
+    [Parameter(ParameterSetName='OriginalLocationILR')]
+    [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
+    [Parameter(ParameterSetName='OriginalLocationFullRecovery')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
     # Secret store type for secret store authentication of data source.
@@ -159,16 +211,10 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR', Mandatory)]
     [Parameter(ParameterSetName='OriginalLocationFullRecovery', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20221201.BackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api202301.BackupInstanceResource]
     # Backup Instance object to trigger original localtion restore.
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
-
-    [Parameter(ParameterSetName='OriginalLocationILR', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # Switch Parameter to enable item level recovery.
-    ${ItemLevelRecovery},
 
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Parameter(ParameterSetName='AlternateLocationFullRecovery')]
@@ -194,13 +240,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
     # Maximum matching value for Item Level Recovery.
-    ${ToPrefixPattern},
-
-    [Parameter(ParameterSetName='AlternateLocationFullRecovery', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [System.String]
-    # Target resource Id to which backup data will be restored.
-    ${TargetResourceId}
+    ${ToPrefixPattern}
 )
 
 begin {
@@ -212,7 +252,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -229,6 +269,7 @@ begin {
         }
 
         $mapping = @{
+            AlternateLocationILR = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
             RestoreAsFiles = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
             OriginalLocationILR = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';
             AlternateLocationFullRecovery = 'Az.DataProtection.custom\Initialize-AzDataProtectionRestoreRequest';

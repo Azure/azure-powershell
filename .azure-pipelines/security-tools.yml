@@ -45,7 +45,7 @@ jobs:
       script: dotnet msbuild build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
       OCTOKITPAT: $(OCTOKITPAT)
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: Run CredScan
     condition: in(variables['system.pullRequest.targetBranch'], 'generation', 'main')
     inputs:
@@ -76,7 +76,7 @@ jobs:
       script: ./tools/CleanupBuild.ps1
       pwsh: true
 
-  - task: PoliCheck@1
+  - task: PoliCheck@2
     displayName: Run PoliCheck
     inputs:
       targetArgument: $(Build.SourcesDirectory)/artifacts/Debug

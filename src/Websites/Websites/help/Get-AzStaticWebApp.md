@@ -1,6 +1,6 @@
 ---
 external help file: Az.Websites-help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 online version: https://learn.microsoft.com/powershell/module/az.websites/get-azstaticwebapp
 schema: 2.0.0
 ---
@@ -67,7 +67,7 @@ Kind Location   Name               Type
 
 This commands list all static web applications under a resource group.
 
-### Example 3: Get a static web application by name
+### Example 3: Get a satic web application by name
 ```powershell
 Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal04
 ```
@@ -78,10 +78,9 @@ Kind Location   Name               Type
      Central US staticweb-portal04 Microsoft.Web/staticSites
 ```
 
-This commands gets a static web application by name.
+This commands gets a satic web application by name.
 
-### Example 4: Get a static web application by pipeline
-
+### Example 4: Get a satic web application by pipline
 ```powershell
 New-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' | Get-AzStaticWebApp
 ```
@@ -92,12 +91,13 @@ Kind Location   Name               Type
      Central US staticweb-portal04 Microsoft.Web/staticSites
 ```
 
-This commands gets a static web application by pipeline.
+This commands gets a satic web application by pipline.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -194,7 +194,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IWebsitesIdentity>`: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

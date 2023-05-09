@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.3
+* Removed manual installation for Az.Accounts from Az.StackHCI.
 * Removed verbose while importing modules.
 
 ## Version 1.4.2

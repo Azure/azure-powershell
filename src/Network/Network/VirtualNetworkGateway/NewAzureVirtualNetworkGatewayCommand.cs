@@ -323,10 +323,26 @@ namespace Microsoft.Azure.Commands.Network
             string warningMsg = string.Empty;
             string continueMsg = Properties.Resources.CreatingResourceMessage;
             bool force = true;
+            var useShouldContinue = present;
+            var isCertConfigured = (this.VpnClientRootCertificates != null && this.VpnClientRootCertificates.Count() > 0) || (this.VpnClientRevokedCertificates != null && this.VpnClientRevokedCertificates.Count() > 0);
+            var isRadiusConfigured = !string.IsNullOrEmpty(this.RadiusServerAddress) && this.RadiusServerSecret != null && !string.IsNullOrEmpty(SecureStringExtensions.ConvertToString(this.RadiusServerSecret));
+            var isAadConfigured = this.AadTenantUri != null && this.AadAudienceId != null && this.AadIssuerUri != null;
+            
             if (!string.IsNullOrEmpty(GatewaySku)
                 && GatewaySku.Equals(MNM.VirtualNetworkGatewaySkuTier.UltraPerformance, StringComparison.InvariantCultureIgnoreCase))
             {
                 warningMsg = string.Format(Properties.Resources.UltraPerformaceGatewayWarning, this.Name);
+                force = false;
+            }
+            else if (this.VpnClientProtocol != null &&
+                this.VpnClientProtocol.Count() > 0 &&
+                this.VpnClientProtocol.Contains(MNM.VpnClientProtocol.OpenVPN) &&
+                this.VpnClientProtocol.Contains(MNM.VpnClientProtocol.IkeV2) &&
+                isAadConfigured &&
+                (isRadiusConfigured || isCertConfigured))
+            {
+                warningMsg = Properties.Resources.VpnMultiAuthIkev2OpenvpnAadWarning;
+                useShouldContinue = true;
                 force = false;
             }
             else
@@ -348,7 +364,7 @@ namespace Microsoft.Azure.Commands.Network
                     var virtualNetworkGateway = CreateVirtualNetworkGateway();
                     WriteObject(virtualNetworkGateway);
                 },
-                () => present);
+                () => useShouldContinue);
 
         }
 
@@ -489,8 +505,21 @@ namespace Microsoft.Azure.Commands.Network
                         throw new ArgumentException("AadTenantUri, AadIssuerUri and AadAudienceId must be specified if AAD authentication is being configured for P2S.");
                     }
 
-                    if (vnetGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 1 && 
-                        vnetGateway.VpnClientConfiguration.VpnClientProtocols.First().Equals(MNM.VpnClientProtocol.OpenVPN))
+                    // In the case of multi-auth with OpenVPN and IkeV2, block user from configuring with just AAD since AAD is not supported for IkeV2
+                    var isCertConfigured = (this.VpnClientRootCertificates != null && this.VpnClientRootCertificates.Count() > 0) || (this.VpnClientRevokedCertificates != null && this.VpnClientRevokedCertificates.Count() > 0);
+                    var isRadiusConfigured = !string.IsNullOrEmpty(this.RadiusServerAddress) && this.RadiusServerSecret != null && !string.IsNullOrEmpty(SecureStringExtensions.ConvertToString(this.RadiusServerSecret));
+
+                    if (!isCertConfigured &&
+                        !isRadiusConfigured &&
+                        vnetGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.IkeV2) &&
+                        vnetGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.OpenVPN) &&
+                        vnetGateway.VpnClientConfiguration.VpnClientProtocols.Count() == 2)
+                    {
+                        throw new ArgumentException(Properties.Resources.VpnMultiAuthIkev2OpenvpnOnlyAad);
+                    }
+
+                    if (vnetGateway.VpnClientConfiguration.VpnClientProtocols.Count() >= 1 &&
+                        vnetGateway.VpnClientConfiguration.VpnClientProtocols.Contains(MNM.VpnClientProtocol.OpenVPN))
                     {
                         vnetGateway.VpnClientConfiguration.AadTenant = this.AadTenantUri;
                         vnetGateway.VpnClientConfiguration.AadIssuer = this.AadIssuerUri;
@@ -498,7 +527,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     else
                     {
-                        throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
+                        throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should contain :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
                     }
                 }
 

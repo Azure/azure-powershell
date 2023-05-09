@@ -2523,3 +2523,42 @@ function Test-AzureStorageLocalUserSftp
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test StorageAccountDNSEndpointType
+.DESCRIPTION
+SmokeTest
+#>
+function Test-StorageAccountDNSEndpointType
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname
+        $stoname2 = 'sto2' + $rgname
+        $stotype = 'Standard_LRS'
+        $loc = Get-ProviderLocation ResourceManagement;
+        $kind = 'StorageV2' 
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -SkuName $stotype -DnsEndpointType AzureDnsZone
+        $account = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname
+        Assert-AreEqual $account.StorageAccountName $stoname 
+        Assert-AreEqual $account.DnsEndpointType AzureDnsZone
+
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2 -Location $loc -SkuName $stotype -DnsEndpointType Standard
+        $account2 = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname2
+        Assert-AreEqual $account2.StorageAccountName $stoname2
+        Assert-AreEqual $account2.DnsEndpointType Standard
+
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -67,7 +67,6 @@ Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resource
 
 List Virtual Appliance site resources in a Network Virtual Appliance.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -122,30 +122,28 @@ Creates key credentials or password credentials for an application.
 
 ## EXAMPLES
 
-### Example 1: Create key credentials for an application
-
+### Example 1: Create key credentials for application
 ```powershell
-# $ObjectId should be the the 'Object ID' GUID associated with the Azure app registration.
-# $CertificateThumbprint should be the thumbprint of the certificate.
-# $Cert is the base64 encoded content of the certificate.
-$ObjectId = "00000000-0000-0000-0000-000000000000"
-$Credential = New-Object -TypeName `
-  "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
-  -Property @{'Key' = $Cert;
-  'Usage'       = 'Verify';
-  'Type'        = 'AsymmetricX509Cert'
-}
-New-AzADAppCredential -ObjectId $ObjectId -KeyCredentials $Credential -CustomKeyIdentifier $CertificateThumbprint
+# ObjectId is the string representation of a GUID for directory object, application, in Azure AD.
+$Id = "00000000-0000-0000-0000-000000000000"
+# $cert is Base64 encoded content of certificate
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+                                 -Property @{'Key' = $cert;
+                                 'Usage'       = 'Verify';
+                                 'Type'        = 'AsymmetricX509Cert'
+                                 }
+New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
 ```
 
-### Example 2: Create password credentials for an application
+Create key credentials for application with object Id $Id
 
+### Example 2: Create password credentials for application
 ```powershell
-# $ApplicationId` should be the the 'Application ID' GUID associated with the Azure app registration.
-$ApplicationId = "00000000-0000-0000-0000-000000000000"
-Get-AzADApplication -ApplicationId $ApplicationId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
+# ApplicationId is AppId of Application object which is different from directory id in Azure AD.
+Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
 ```
 
+Create password credentials for application
 
 ## PARAMETERS
 

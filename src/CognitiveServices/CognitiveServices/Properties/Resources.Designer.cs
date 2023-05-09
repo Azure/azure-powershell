@@ -61,24 +61,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I certify that use of this service is not by or for a police department in the United States..
-        /// </summary>
-        internal static string NewAccount_LegalTerm_NotPolice {
-            get {
-                return ResourceManager.GetString("NewAccount_LegalTerm_NotPolice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Microsoft will use data you send to Bing Search Services to improve Microsoft products and services. Where you send personal data to these Cognitive Services, you are responsible for obtaining sufficient consent from the data subjects. The General Privacy and Security Terms in the Online Services Terms do not apply to these Cognitive Services. Please refer to the Microsoft Cognitive Services section in the Online Services Terms (https://www.microsoft.com/en-us/Licensing/product-licensing/products.aspx) for  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string NewAccount_Notice {
-            get {
-                return ResourceManager.GetString("NewAccount_Notice", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Creating new Cognitive Services account {0} of type {1}, Sku {2} at location {3}..
         /// </summary>
         internal static string NewAccount_ProcessMessage {

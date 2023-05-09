@@ -30,9 +30,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// </summary>
         /// <param name="assignIdentityIsPresent">Flag to check if AssignIdentity flag is used in the cmdlet.</param>
         /// <param name="userAssignedIdentities">User assigned identities</param>
-        /// <param name="existingIdentity">Existing identity on database</param>
         /// <returns>Database Identity</returns>
-        public static DatabaseIdentity GetDatabaseIdentity(bool assignIdentityIsPresent, string[] userAssignedIdentities, Management.Sql.Models.DatabaseIdentity existingIdentity)
+        public static DatabaseIdentity GetDatabaseIdentity(bool assignIdentityIsPresent, string[] userAssignedIdentities)
         {
             DatabaseIdentity identityResult = null;
             if (!assignIdentityIsPresent)
@@ -47,33 +46,21 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
             Dictionary<string, DatabaseUserIdentity> identityDict = new Dictionary<string, DatabaseUserIdentity>();
 
-            // Update an existing database identity
+            // Create identity on database
             //
-            if (existingIdentity != null && userAssignedIdentities.Any() &&
-                existingIdentity.UserAssignedIdentities != null)
+            foreach (string identity in userAssignedIdentities)
             {
-                foreach (string identity in userAssignedIdentities)
-                {
-                    existingIdentity.UserAssignedIdentities.Add(identity, new DatabaseUserIdentity());
-                }
-
-                identityResult = existingIdentity;
-            }
-            else
-            {
-                // Create identity on database
-                //
-                foreach (string identity in userAssignedIdentities)
+                if (!identityDict.ContainsKey(identity))
                 {
                     identityDict.Add(identity, new DatabaseUserIdentity());
                 }
-
-                identityResult = new DatabaseIdentity()
-                {
-                    Type = DatabaseIdentityType.UserAssigned,
-                    UserAssignedIdentities = identityDict
-                };
             }
+
+            identityResult = new DatabaseIdentity()
+            {
+                Type = DatabaseIdentityType.UserAssigned,
+                UserAssignedIdentities = identityDict
+            };
 
             return identityResult;
         }

@@ -21,4 +21,3 @@ Kind Name        Type
 ```
 
 This command creates or updates the app settings of a static site build by pipeline.
-

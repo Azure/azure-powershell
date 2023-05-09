@@ -1,6 +1,6 @@
 ---
 external help file: Az.Websites-help.xml
-Module Name: Az.Websites
+Module Name: Az.WebSites
 online version: https://learn.microsoft.com/powershell/module/az.websites/update-azstaticwebapp
 schema: 2.0.0
 ---
@@ -174,7 +174,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -328,7 +329,7 @@ Accept wildcard characters: False
 
 ### -RepositoryToken
 A user's github repository token.
-This is used to setup the GitHub Actions workflow file and API secrets.
+This is used to setup the Github Actions workflow file and API secrets.
 
 ```yaml
 Type: System.String
@@ -486,7 +487,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT `<IWebsitesIdentity>`: Identity Parameter
+`INPUTOBJECT <IWebsitesIdentity>`: Identity Parameter
   - `[Authprovider <String>]`: The auth provider for the users.
   - `[DomainName <String>]`: The custom domain name.
   - `[EnvironmentName <String>]`: The stage site identifier.

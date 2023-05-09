@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// </summary>
         /// <remarks>
         /// For more information see [use managed identities in
-        /// AKS](https://learn.microsoft.com/azure/aks/use-managed-identity).
+        /// AKS](https://docs.microsoft.com/azure/aks/use-managed-identity).
         /// Possible values include: 'SystemAssigned', 'UserAssigned', 'None'
         /// </remarks>
         [JsonProperty(PropertyName = "type")]

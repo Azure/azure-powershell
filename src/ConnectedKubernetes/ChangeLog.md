@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.9.0
 * Used Env:HELM_CLIENT_PATH if user defined in cmdlet New-AzConnectedKubernetes and Remove-AzConnectedKubernetes.
 * Added support for downloading signed helm v3.6.3 for Windows in cmdlet New-AzConnectedKubernetes and Remove-AzConnectedKubernetes.
 * Moved helm release namespace to "azure-arc-release" in cmdlet New-AzConnectedKubernetes and Remove-AzConnectedKubernetes.

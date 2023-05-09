@@ -311,38 +311,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
                 if (ShouldProcess(
                     Name, string.Format(CultureInfo.CurrentCulture, Resources.NewAccount_ProcessMessage, Name, Type, SkuName, Location)))
                 {
-                    if (Type.StartsWith("Bing.", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        if (Force.IsPresent)
-                        {
-                            WriteWarning(Resources.NewAccount_Notice);
-                        }
-                        else
-                        {
-                            bool yesToAll = false, noToAll = false;
-                            if (!ShouldContinue(Resources.NewAccount_Notice, "Notice", true, ref yesToAll, ref noToAll))
-                            {
-                                return;
-                            }
-                        }
-                    }
-
-                    if (Type.Equals("Face", StringComparison.InvariantCultureIgnoreCase) || Type.Equals("CognitiveServices", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        if (Force.IsPresent)
-                        {
-                            WriteWarning(Resources.NewAccount_LegalTerm_NotPolice);
-                        }
-                        else
-                        {
-                            bool yesToAll = false, noToAll = false;
-                            if (!ShouldContinue(Resources.NewAccount_LegalTerm_NotPolice, "Notice", true, ref yesToAll, ref noToAll))
-                            {
-                                return;
-                            }
-                        }
-                    }
-
                     var createAccountResponse = CognitiveServicesClient.Accounts.Create(
                                     ResourceGroupName,
                                     Name,

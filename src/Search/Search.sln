@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Search", "Search\Search.csproj", "{F5758273-CD1F-446F-9E9D-3340ECB7DDA0}"
 EndProject
@@ -23,6 +23,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management", "..\Storage\Storage.Management\Storage.Management.csproj", "{A8E7FA0B-3F13-442C-AB0C-CD32C05E6806}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "..\Storage\Storage\Storage.csproj", "{14E9344C-55A4-408A-B6AF-40278B9580D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Azure.Management.Search", "Search.Management.Sdk\Microsoft.Azure.Management.Search.csproj", "{429BBFB0-35F3-4EE4-8644-81949AEC5E62}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -70,6 +72,10 @@ Global
 		{14E9344C-55A4-408A-B6AF-40278B9580D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14E9344C-55A4-408A-B6AF-40278B9580D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14E9344C-55A4-408A-B6AF-40278B9580D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{429BBFB0-35F3-4EE4-8644-81949AEC5E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{429BBFB0-35F3-4EE4-8644-81949AEC5E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{429BBFB0-35F3-4EE4-8644-81949AEC5E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{429BBFB0-35F3-4EE4-8644-81949AEC5E62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

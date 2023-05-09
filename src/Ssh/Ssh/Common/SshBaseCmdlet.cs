@@ -369,6 +369,19 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void SetResourceType()
         {
+            if (ParameterSetName.Equals(IpAddressParameterSet))
+            {
+                ResourceType = "Microsoft.Compute/virtualMachines";
+                return;
+            }
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                ResourceIdentifier idParser = new ResourceIdentifier(ResourceId);
+                ResourceGroupName = idParser.ResourceGroupName;
+                Name = idParser.ResourceName;
+                ResourceType = idParser.ResourceType;
+            }
+
             var resourcetypefilter = supportedResourceTypes.Select(type => $"resourceType eq '{type}'").ToArray();
             String filter = $"$filter=name eq '{Name}' and ({String.Join(" or ", resourcetypefilter)})";
             ODataQuery<GenericResourceFilter> query = new ODataQuery<GenericResourceFilter>(filter);
@@ -390,7 +403,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
             if (ResourceType != null)
             {
-                if (!types.Contains(ResourceType))
+                if (!types.Contains(ResourceType, StringComparer.CurrentCultureIgnoreCase))
                 {
                     throw new AzPSResourceNotFoundCloudException(String.Format(Resources.ResourceNotFoundTypeProvided,Name, ResourceType, ResourceGroupName));
                 }

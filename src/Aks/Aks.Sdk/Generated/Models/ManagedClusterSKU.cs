@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Initializes a new instance of the ManagedClusterSKU class.
         /// </summary>
         /// <param name="name">The name of a managed cluster SKU. Possible
-        /// values include: 'Basic'</param>
+        /// values include: 'Base'</param>
         /// <param name="tier">The tier of a managed cluster SKU.</param>
         public ManagedClusterSKU(string name = default(string), string tier = default(string))
         {
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.ContainerService.Models
 
         /// <summary>
         /// Gets or sets the name of a managed cluster SKU. Possible values
-        /// include: 'Basic'
+        /// include: 'Base'
         /// </summary>
         [JsonProperty(PropertyName = "name")]
         public string Name { get; set; }
@@ -55,9 +55,9 @@ namespace Microsoft.Azure.Management.ContainerService.Models
         /// Gets or sets the tier of a managed cluster SKU.
         /// </summary>
         /// <remarks>
-        /// If not specified, the default is 'Free'. See [uptime
-        /// SLA](https://learn.microsoft.com/azure/aks/uptime-sla) for more
-        /// details. Possible values include: 'Paid', 'Free'
+        /// If not specified, the default is 'Free'. See [AKS Pricing
+        /// Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers)
+        /// for more details. Possible values include: 'Standard', 'Free'
         /// </remarks>
         [JsonProperty(PropertyName = "tier")]
         public string Tier { get; set; }

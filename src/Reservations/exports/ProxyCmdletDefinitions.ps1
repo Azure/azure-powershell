@@ -16,18 +16,18 @@
 
 <#
 .Synopsis
-Get Available Scopes for `Reservation`.\n
+Check whether the scopes from request is valid for `Reservation`.\n
 .Description
-Get Available Scopes for `Reservation`.\n
+Check whether the scopes from request is valid for `Reservation`.\n
 .Example
 Get-AzReservationAvailableScope -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISubscriptionScopeProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,21 +38,21 @@ BODY <IAvailableScopeRequest>: Available scope
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
 #>
 function Get-AzReservationAvailableScope {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISubscriptionScopeProperties])]
 [CmdletBinding(DefaultParameterSetName='AvailableExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Available', Mandatory)]
     [Parameter(ParameterSetName='AvailableExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
-    # Id of the Reservation Item
+    # Id of the reservation item
     ${ReservationId},
 
     [Parameter(ParameterSetName='Available', Mandatory)]
@@ -73,7 +73,7 @@ param(
     [Parameter(ParameterSetName='Available', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='AvailableViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAvailableScopeRequest]
     # Available scope
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -91,7 +91,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -155,7 +156,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -238,7 +239,7 @@ Get-AzReservationCatalog -SubscriptionId "10000000-aaaa-bbbb-cccc-100000000001" 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalog
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -246,14 +247,14 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationcatalog
 #>
 function Get-AzReservationCatalog {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICatalog])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICatalog])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get')]
@@ -273,8 +274,15 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
     [System.String]
+    # May be used to filter by Catalog properties.
+    # The filter supports 'eq', 'or', and 'and'.
+    ${Filter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
+    [System.String]
     # Filters the skus based on the location specified in this parameter.
-    # This can be an azure region or global
+    # This can be an Azure region or global
     ${Location},
 
     [Parameter()]
@@ -302,11 +310,24 @@ param(
     ${ReservedResourceType},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
+    [System.Single]
+    # The number of reservations to skip from the list before returning results
+    ${Skip},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
+    [System.Single]
+    # To number of reservations to return
+    ${Take},
+
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -358,7 +379,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -436,18 +457,18 @@ List of all the revisions for the `Reservation`.
 Get-AzReservationHistory -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
 #>
 function Get-AzReservationHistory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
-    # Id of the Reservation Item
+    # Id of the reservation item
     ${ReservationId},
 
     [Parameter(Mandatory)]
@@ -461,7 +482,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -513,7 +535,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -589,7 +611,7 @@ Get-AzReservationOrderId -SubscriptionId '10000000-aaaa-bbbb-cccc-100000000005'
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAppliedReservations
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAppliedReservations
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -597,14 +619,14 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorderid
 #>
 function Get-AzReservationOrderId {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAppliedReservations])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IAppliedReservations])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get')]
@@ -626,7 +648,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -678,7 +701,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -760,7 +783,7 @@ Get-AzReservationOrder -ReservationOrderId 179de21b-90ec-4fe4-9423-f804b856dfee
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -768,14 +791,14 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorder
 #>
 function Get-AzReservationOrder {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -804,7 +827,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -856,7 +880,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -934,38 +958,44 @@ Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billin
 Get-AzReservationQuote -AppliedScopeType 'Shared' -BillingPlan 'Monthly' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'yourRIName' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponseProperties
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IPurchaseRequest>: .
+BODY <IPurchaseRequest>: The request for reservation purchase
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
   [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-  [DisplayName <String>]: Friendly name of the Reservation
+  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+  [DisplayName <String>]: Friendly name of the reservation
   [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Location <String>]: The Azure Region where the reserved resource lives.
-  [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+  [Location <String>]: The Azure region where the reserved resource lives.
+  [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
   [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
   [Sku <String>]: 
-  [Term <ReservationTerm?>]: Represent the term of Reservation.
+  [Term <ReservationTerm?>]: Represent the term of reservation.
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationquote
 #>
 function Get-AzReservationQuote {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculatePriceResponseProperties])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculatePriceResponseProperties])]
 [CmdletBinding(DefaultParameterSetName='CalculateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Calculate', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest]
+    # The request for reservation purchase
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -975,7 +1005,38 @@ param(
     [System.String[]]
     # List of the subscriptions that the benefit will be applied.
     # Do not specify if AppliedScopeType is Shared.
+    # This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     ${AppliedScope},
+
+    [Parameter(ParameterSetName='CalculateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Display name
+    ${AppliedScopePropertyDisplayName},
+
+    [Parameter(ParameterSetName='CalculateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the management group where the benefit must be applied.
+    ${AppliedScopePropertyManagementGroupId},
+
+    [Parameter(ParameterSetName='CalculateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the resource group.
+    ${AppliedScopePropertyResourceGroupId},
+
+    [Parameter(ParameterSetName='CalculateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the subscription.
+    ${AppliedScopePropertySubscriptionId},
+
+    [Parameter(ParameterSetName='CalculateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Tenant ID where the savings plan should apply benefit.
+    ${AppliedScopePropertyTenantId},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.AppliedScopeType])]
@@ -994,13 +1055,13 @@ param(
     [Parameter(ParameterSetName='CalculateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Subscription that will be charged for purchasing Reservation
+    # Subscription that will be charged for purchasing reservation or savings plan
     ${BillingScopeId},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Friendly name of the Reservation
+    # Friendly name of the reservation
     ${DisplayName},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
@@ -1014,13 +1075,13 @@ param(
     [Parameter(ParameterSetName='CalculateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # The Azure Region where the reserved resource lives.
+    # The Azure region where the reserved resource lives.
     ${Location},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.Int32]
-    # Quantity of the SKUs that are part of the Reservation.
+    # Quantity of the skus that are part of the reservation.
     ${Quantity},
 
     [Parameter(ParameterSetName='CalculateExpanded')]
@@ -1038,6 +1099,12 @@ param(
 
     [Parameter(ParameterSetName='CalculateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.DateTime]
+    # This is the date-time when the Azure hybrid benefit needs to be reviewed.
+    ${ReviewDateTime},
+
+    [Parameter(ParameterSetName='CalculateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # .
     ${Sku},
@@ -1046,7 +1113,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm])]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm]
-    # Represent the term of Reservation.
+    # Represent the term of reservation.
     ${Term},
 
     [Parameter()]
@@ -1054,7 +1121,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1106,7 +1174,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1185,7 +1253,7 @@ Get-AzReservation -ReservationOrderId a87c1742-0080-5b4d-b953-8531ad46fdc8 -Rese
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1193,21 +1261,21 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/get-azreservation
 #>
 function Get-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Alias('ReservationId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
-    # Id of the Reservation Item
+    # Id of the reservation item
     ${Id},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -1238,7 +1306,7 @@ param(
     # May be used to filter by reservation properties.
     # The filter supports 'eq', 'or', and 'and'.
     # It does not currently support 'ne', 'gt', 'le', 'ge', or 'not'.
-    # Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
+    # Reservation properties include sku/name, properties/{appliedScopeType, archived, displayName, displayProvisioningState, effectiveDateTime, expiryDate, expiryDateTime, provisioningState, quantity, renew, reservedResourceType, term, userFriendlyAppliedScopeType, userFriendlyRenewState}
     ${Filter},
 
     [Parameter(ParameterSetName='List1')]
@@ -1250,33 +1318,28 @@ param(
     [Parameter(ParameterSetName='List1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
     [System.String]
-    # To indicate whether to refresh the roll up counts of the reservations group by provisioning states
-    ${RefreshSummary},
-
-    [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
-    [System.String]
     # The selected provisioning state
     ${SelectedState},
 
     [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
-    [System.Single]
-    # The number of reservations to skip from the list before returning results
-    ${Skiptoken},
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.UInt64]
+    # Gets only the first 'n' objects.
+    ${First},
 
     [Parameter(ParameterSetName='List1')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Query')]
-    [System.Single]
-    # To number of reservations to return
-    ${Take},
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.UInt64]
+    # Ignores the first 'n' objects and then gets the remaining objects.
+    ${Skip},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1328,7 +1391,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1415,7 +1478,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
@@ -1428,7 +1491,7 @@ param(
     [Parameter(ParameterSetName='Archive', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
-    # Id of the Reservation Item
+    # Id of the reservation item
     ${ReservationId},
 
     [Parameter(ParameterSetName='Archive', Mandatory)]
@@ -1449,7 +1512,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1507,7 +1571,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1621,9 +1685,9 @@ $reservationsToPurchase = @($reservationToPurchase1, $reservationToPurchase2)
 Invoke-AzReservationCalculateExchange -ReservationsToExchange $reservationsToReturn -ReservationsToPurchase $reservationsToPurchase
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeOperationResultResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -1632,48 +1696,91 @@ To create the parameters described below, construct a hash table containing the 
 BODY <ICalculateExchangeRequest>: Calculate exchange request
   [ReservationsToExchange <IReservationToReturn[]>]: List of reservations that are being returned in this exchange.
     [Quantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-    [ReservationId <String>]: Fully qualified identifier of the Reservation being returned
+    [ReservationId <String>]: Fully qualified identifier of the reservation being returned
   [ReservationsToPurchase <IPurchaseRequest[]>]: List of reservations that are being purchased in this exchange.
+    [AppliedScopePropertyDisplayName <String>]: Display name
+    [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+    [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+    [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+    [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
     [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-    [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+    [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-    [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-    [DisplayName <String>]: Friendly name of the Reservation
+    [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+    [DisplayName <String>]: Friendly name of the reservation
     [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-    [Location <String>]: The Azure Region where the reserved resource lives.
-    [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+    [Location <String>]: The Azure region where the reserved resource lives.
+    [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
     [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
     [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+    [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
     [Sku <String>]: 
-    [Term <ReservationTerm?>]: Represent the term of Reservation.
+    [Term <ReservationTerm?>]: Represent the term of reservation.
+  [SavingsPlansToPurchase <ISavingsPlanPurchaseRequest[]>]: List of savings plans that are being purchased in this exchange.
+    [AppliedScopePropertyDisplayName <String>]: Display name
+    [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+    [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+    [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+    [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
+    [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+    [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+    [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+    [CommitmentAmount <Double?>]: 
+    [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+    [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+    [DisplayName <String>]: Friendly name of the savings plan
+    [SkuName <String>]: 
+    [Term <SavingsPlanTerm?>]: Represent savings plan term in ISO 8601 format.
 
 RESERVATIONSTOEXCHANGE <IReservationToReturn[]>: List of reservations that are being returned in this exchange.
   [Quantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-  [ReservationId <String>]: Fully qualified identifier of the Reservation being returned
+  [ReservationId <String>]: Fully qualified identifier of the reservation being returned
 
 RESERVATIONSTOPURCHASE <IPurchaseRequest[]>: List of reservations that are being purchased in this exchange.
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
   [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-  [DisplayName <String>]: Friendly name of the Reservation
+  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+  [DisplayName <String>]: Friendly name of the reservation
   [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Location <String>]: The Azure Region where the reserved resource lives.
-  [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+  [Location <String>]: The Azure region where the reserved resource lives.
+  [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
   [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
   [Sku <String>]: 
-  [Term <ReservationTerm?>]: Represent the term of Reservation.
+  [Term <ReservationTerm?>]: Represent the term of reservation.
+
+SAVINGSPLANSTOPURCHASE <ISavingsPlanPurchaseRequest[]>: List of savings plans that are being purchased in this exchange.
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
+  [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
+  [BillingPlan <BillingPlan?>]: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
+  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+  [CommitmentAmount <Double?>]: 
+  [CommitmentCurrencyCode <String>]: The ISO 4217 3-letter currency code for the currency used by this purchase record.
+  [CommitmentGrain <CommitmentGrain?>]: Commitment grain.
+  [DisplayName <String>]: Friendly name of the savings plan
+  [SkuName <String>]: 
+  [Term <SavingsPlanTerm?>]: Represent savings plan term in ISO 8601 format.
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculateexchange
 #>
 function Invoke-AzReservationCalculateExchange {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeOperationResultResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeOperationResultResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateExchangeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateExchangeRequest]
     # Calculate exchange request
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -1681,7 +1788,7 @@ param(
     [Parameter(ParameterSetName='PostExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationToReturn[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationToReturn[]]
     # List of reservations that are being returned in this exchange.
     # To construct, see NOTES section for RESERVATIONSTOEXCHANGE properties and create a hash table.
     ${ReservationsToExchange},
@@ -1689,17 +1796,26 @@ param(
     [Parameter(ParameterSetName='PostExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest[]]
     # List of reservations that are being purchased in this exchange.
     # To construct, see NOTES section for RESERVATIONSTOPURCHASE properties and create a hash table.
     ${ReservationsToPurchase},
+
+    [Parameter(ParameterSetName='PostExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ISavingsPlanPurchaseRequest[]]
+    # List of savings plans that are being purchased in this exchange.
+    # To construct, see NOTES section for SAVINGSPLANSTOPURCHASE properties and create a hash table.
+    ${SavingsPlansToPurchase},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -1763,7 +1879,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -1842,32 +1958,32 @@ $fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/500000
 Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <ICalculateRefundRequest>: .
+BODY <ICalculateRefundRequest>: Request containing information needed for calculating refund.
   [Id <String>]: Fully qualified identifier of the reservation order being returned
   [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the Reservation being returned
+  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the reservation being returned
   [Scope <String>]: The scope of the refund, e.g. Reservation
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund
 #>
 function Invoke-AzReservationCalculateRefund {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory)]
@@ -1888,8 +2004,8 @@ param(
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.ICalculateRefundRequest]
+    # Request containing information needed for calculating refund.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -1913,7 +2029,7 @@ param(
     [Parameter(ParameterSetName='PostViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Fully qualified identifier of the Reservation being returned
+    # Fully qualified identifier of the reservation being returned
     ${ReservationToReturnReservationId},
 
     [Parameter(ParameterSetName='PostExpanded')]
@@ -1929,7 +2045,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -1981,7 +2098,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2058,9 +2175,9 @@ Returns one or more `Reservations` in exchange for one or more `Reservation` pur
 Invoke-AzReservationExchange -SessionId 8982593c-679e-4d4e-b971-c48b6d824cba
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -2072,12 +2189,12 @@ BODY <IExchangeRequest>: Exchange request
 https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 #>
 function Invoke-AzReservationExchange {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeOperationResultResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeOperationResultResponse])]
 [CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IExchangeRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IExchangeRequest]
     # Exchange request
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
@@ -2093,7 +2210,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -2157,7 +2275,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2225,236 +2343,9 @@ end {
 
 <#
 .Synopsis
-Return a reservation.
+Restores a `Reservation` to the state it was before archiving.\n
 .Description
-Return a reservation.
-.Example
-$orderId = "50000000-aaaa-bbbb-cccc-100000000003"
-$fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
-$fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
-
-Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-BODY <IRefundRequest>: .
-  [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
-  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the Reservation being returned
-  [ReturnReason <String>]: The reason of returning the reservation
-  [Scope <String>]: The scope of the refund, e.g. Reservation
-  [SessionId <String>]: SessionId that was returned by CalculateRefund API.
-
-INPUTOBJECT <IReservationsIdentity>: Identity Parameter
-  [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
-  [ReservationOrderId <String>]: Order Id of the reservation
-  [SubscriptionId <String>]: Id of the subscription
-.Link
-https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
-#>
-function Invoke-AzReservationReturn {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundResponse])]
-[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='Post', Mandatory)]
-    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
-    [System.String]
-    # Order Id of the reservation
-    ${ReservationOrderId},
-
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter(ParameterSetName='Post', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IRefundRequest]
-    # .
-    # To construct, see NOTES section for BODY properties and create a hash table.
-    ${Body},
-
-    [Parameter(ParameterSetName='PostExpanded')]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [System.Int32]
-    # Quantity to be returned.
-    # Must be greater than zero.
-    ${ReservationToReturnQuantity},
-
-    [Parameter(ParameterSetName='PostExpanded')]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [System.String]
-    # Fully qualified identifier of the Reservation being returned
-    ${ReservationToReturnReservationId},
-
-    [Parameter(ParameterSetName='PostExpanded')]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [System.String]
-    # The reason of returning the reservation
-    ${ReturnReason},
-
-    [Parameter(ParameterSetName='PostExpanded')]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [System.String]
-    # The scope of the refund, e.g.
-    # Reservation
-    ${Scope},
-
-    [Parameter(ParameterSetName='PostExpanded')]
-    [Parameter(ParameterSetName='PostViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [System.String]
-    # SessionId that was returned by CalculateRefund API.
-    ${SessionId},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Post = 'Az.Reservations.private\Invoke-AzReservationReturn_Post';
-            PostExpanded = 'Az.Reservations.private\Invoke-AzReservationReturn_PostExpanded';
-            PostViaIdentity = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaIdentity';
-            PostViaIdentityExpanded = 'Az.Reservations.private\Invoke-AzReservationReturn_PostViaIdentityExpanded';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
-}
-
-<#
-.Synopsis
-Unarchiving a `Reservation` moves it to the state it was before archiving.\n
-.Description
-Unarchiving a `Reservation` moves it to the state it was before archiving.\n
+Restores a `Reservation` to the state it was before archiving.\n
 .Example
 Invoke-AzReservationUnarchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc-100000000003" -ReservationOrderId "30000000-aaaa-bbbb-cccc-100000000003"
 
@@ -2469,7 +2360,7 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
@@ -2482,7 +2373,7 @@ param(
     [Parameter(ParameterSetName='Unarchive', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
-    # Id of the Reservation Item
+    # Id of the reservation item
     ${ReservationId},
 
     [Parameter(ParameterSetName='Unarchive', Mandatory)]
@@ -2503,7 +2394,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2561,7 +2453,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2636,29 +2528,29 @@ Change directory (tenant) of `ReservationOrder` and all `Reservation` under it t
 Move-AzReservationDirectory -ReservationOrderId "7c31a9e8-8490-4002-88cd-3a16b71362a9" -DestinationTenantId "f65fbe9a-14b0-44c6-8c0d-2ef2c4543040"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IChangeDirectoryRequest>: .
+BODY <IChangeDirectoryRequest>: Request body for change directory of a reservation.
   [DestinationTenantId <String>]: Tenant id GUID that reservation order is to be transferred to
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/move-azreservationdirectory
 #>
 function Move-AzReservationDirectory {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryResponse])]
 [CmdletBinding(DefaultParameterSetName='ChangeExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Change', Mandatory)]
@@ -2679,8 +2571,8 @@ param(
     [Parameter(ParameterSetName='Change', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ChangeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IChangeDirectoryRequest]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IChangeDirectoryRequest]
+    # Request body for change directory of a reservation.
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -2696,7 +2588,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -2748,7 +2641,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -2825,40 +2718,46 @@ Purchase `ReservationOrder` and create resource under the specified URI.
 New-AzReservation -AppliedScopeType 'Shared' -BillingPlan 'Upfront' -billingScopeId '/subscriptions/b0f278e1-1f18-4378-84d7-b44dfa708665' -DisplayName 'TestVm2222' -Location 'westus' -Quantity 1 -ReservedResourceType 'VirtualMachines' -Sku 'Standard_b1ls' -Term 'P1Y' -ReservationOrderId '846655fa-d9e7-4fb8-9512-3ab7367352f1'
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-BODY <IPurchaseRequest>: .
+BODY <IPurchaseRequest>: The request for reservation purchase
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+  [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
   [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-  [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-  [DisplayName <String>]: Friendly name of the Reservation
+  [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+  [DisplayName <String>]: Friendly name of the reservation
   [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Location <String>]: The Azure Region where the reserved resource lives.
-  [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+  [Location <String>]: The Azure region where the reserved resource lives.
+  [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
   [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
   [Sku <String>]: 
-  [Term <ReservationTerm?>]: Represent the term of Reservation.
+  [Term <ReservationTerm?>]: Represent the term of reservation.
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/new-azreservation
 #>
 function New-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationOrderResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse])]
 [CmdletBinding(DefaultParameterSetName='PurchaseExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Purchase', Mandatory)]
@@ -2879,8 +2778,8 @@ param(
     [Parameter(ParameterSetName='Purchase', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurchaseViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPurchaseRequest]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPurchaseRequest]
+    # The request for reservation purchase
     # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
@@ -2891,7 +2790,43 @@ param(
     [System.String[]]
     # List of the subscriptions that the benefit will be applied.
     # Do not specify if AppliedScopeType is Shared.
+    # This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     ${AppliedScope},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Display name
+    ${AppliedScopePropertyDisplayName},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the management group where the benefit must be applied.
+    ${AppliedScopePropertyManagementGroupId},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the resource group.
+    ${AppliedScopePropertyResourceGroupId},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the subscription.
+    ${AppliedScopePropertySubscriptionId},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Tenant ID where the savings plan should apply benefit.
+    ${AppliedScopePropertyTenantId},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
@@ -2913,14 +2848,14 @@ param(
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Subscription that will be charged for purchasing Reservation
+    # Subscription that will be charged for purchasing reservation or savings plan
     ${BillingScopeId},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Friendly name of the Reservation
+    # Friendly name of the reservation
     ${DisplayName},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
@@ -2936,14 +2871,14 @@ param(
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # The Azure Region where the reserved resource lives.
+    # The Azure region where the reserved resource lives.
     ${Location},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.Int32]
-    # Quantity of the SKUs that are part of the Reservation.
+    # Quantity of the skus that are part of the reservation.
     ${Quantity},
 
     [Parameter(ParameterSetName='PurchaseExpanded')]
@@ -2964,6 +2899,13 @@ param(
     [Parameter(ParameterSetName='PurchaseExpanded')]
     [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.DateTime]
+    # This is the date-time when the Azure hybrid benefit needs to be reviewed.
+    ${ReviewDateTime},
+
+    [Parameter(ParameterSetName='PurchaseExpanded')]
+    [Parameter(ParameterSetName='PurchaseViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
     # .
     ${Sku},
@@ -2973,7 +2915,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm])]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Support.ReservationTerm]
-    # Represent the term of Reservation.
+    # Represent the term of reservation.
     ${Term},
 
     [Parameter()]
@@ -2981,7 +2923,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3045,7 +2988,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -3131,11 +3074,11 @@ Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" 
 Update-AzReservation -ReservationOrderId "30000000-aaaa-bbbb-cccc-200000000013" -ReservationId "10000000-aaaa-bbbb-cccc-200000000007" -AppliedScopeType "Single" -AppliedScope "/subscriptions/30000000-aaaa-bbbb-cccc-200000000018/resourcegroups/{your resource group name}"
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatch
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatch
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -3143,50 +3086,68 @@ To create the parameters described below, construct a hash table containing the 
 
 INPUTOBJECT <IReservationsIdentity>: Identity Parameter
   [Id <String>]: Resource identity path
-  [ReservationId <String>]: Id of the Reservation Item
+  [ReservationId <String>]: Id of the reservation item
   [ReservationOrderId <String>]: Order Id of the reservation
   [SubscriptionId <String>]: Id of the subscription
 
 RENEWPROPERTY <IPatchPropertiesRenewProperties>: .
-  [PurchaseProperty <IPurchaseRequest>]: 
+  [PurchaseProperty <IPurchaseRequest>]: The request for reservation purchase
+    [AppliedScopePropertyDisplayName <String>]: Display name
+    [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+    [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+    [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+    [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
     [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-    [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+    [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-    [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-    [DisplayName <String>]: Friendly name of the Reservation
+    [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+    [DisplayName <String>]: Friendly name of the reservation
     [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-    [Location <String>]: The Azure Region where the reserved resource lives.
-    [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+    [Location <String>]: The Azure region where the reserved resource lives.
+    [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
     [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
     [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+    [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
     [Sku <String>]: 
-    [Term <ReservationTerm?>]: Represent the term of Reservation.
+    [Term <ReservationTerm?>]: Represent the term of reservation.
 
-RESERVATION <IPatch>: .
-  [AppliedScope <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+RESERVATION <IPatch>: The request for reservation patch
+  [AppliedScope <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
+  [AppliedScopePropertyDisplayName <String>]: Display name
+  [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+  [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+  [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+  [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
   [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
   [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-  [Name <String>]: Name of the Reservation
+  [Name <String>]: Display name of the reservation
   [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
   [RenewProperty <IPatchPropertiesRenewProperties>]: 
-    [PurchaseProperty <IPurchaseRequest>]: 
+    [PurchaseProperty <IPurchaseRequest>]: The request for reservation purchase
+      [AppliedScopePropertyDisplayName <String>]: Display name
+      [AppliedScopePropertyManagementGroupId <String>]: Fully-qualified identifier of the management group where the benefit must be applied.
+      [AppliedScopePropertyResourceGroupId <String>]: Fully-qualified identifier of the resource group.
+      [AppliedScopePropertySubscriptionId <String>]: Fully-qualified identifier of the subscription.
+      [AppliedScopePropertyTenantId <String>]: Tenant ID where the savings plan should apply benefit.
       [AppliedScopeType <AppliedScopeType?>]: Type of the Applied Scope.
-      [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
+      [AppliedScopes <String[]>]: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared. This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
       [BillingPlan <ReservationBillingPlan?>]: Represent the billing plans.
-      [BillingScopeId <String>]: Subscription that will be charged for purchasing Reservation
-      [DisplayName <String>]: Friendly name of the Reservation
+      [BillingScopeId <String>]: Subscription that will be charged for purchasing reservation or savings plan
+      [DisplayName <String>]: Friendly name of the reservation
       [InstanceFlexibility <InstanceFlexibility?>]: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
-      [Location <String>]: The Azure Region where the reserved resource lives.
-      [Quantity <Int32?>]: Quantity of the SKUs that are part of the Reservation.
+      [Location <String>]: The Azure region where the reserved resource lives.
+      [Quantity <Int32?>]: Quantity of the skus that are part of the reservation.
       [Renew <Boolean?>]: Setting this to true will automatically purchase a new reservation on the expiration date time.
       [ReservedResourceType <ReservedResourceType?>]: The type of the resource that is being reserved.
+      [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
       [Sku <String>]: 
-      [Term <ReservationTerm?>]: Represent the term of Reservation.
+      [Term <ReservationTerm?>]: Represent the term of reservation.
+  [ReviewDateTime <DateTime?>]: This is the date-time when the Azure hybrid benefit needs to be reviewed.
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/update-azreservation
 #>
 function Update-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -3194,7 +3155,7 @@ param(
     [Alias('ReservationId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
     [System.String]
-    # Id of the Reservation Item
+    # Id of the reservation item
     ${Id},
 
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -3216,8 +3177,8 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatch]
-    # .
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatch]
+    # The request for reservation patch
     # To construct, see NOTES section for RESERVATION properties and create a hash table.
     ${Reservation},
 
@@ -3228,7 +3189,43 @@ param(
     [System.String[]]
     # List of the subscriptions that the benefit will be applied.
     # Do not specify if AppliedScopeType is Shared.
+    # This property will be deprecated and replaced by appliedScopeProperties instead for Single AppliedScopeType.
     ${AppliedScope},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Display name
+    ${AppliedScopePropertyDisplayName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the management group where the benefit must be applied.
+    ${AppliedScopePropertyManagementGroupId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the resource group.
+    ${AppliedScopePropertyResourceGroupId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Fully-qualified identifier of the subscription.
+    ${AppliedScopePropertySubscriptionId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Tenant ID where the savings plan should apply benefit.
+    ${AppliedScopePropertyTenantId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
@@ -3251,7 +3248,7 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
     [System.String]
-    # Name of the Reservation
+    # Display name of the reservation
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -3264,17 +3261,25 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IPatchPropertiesRenewProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IPatchPropertiesRenewProperties]
     # .
     # To construct, see NOTES section for RENEWPROPERTY properties and create a hash table.
     ${RenewProperty},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.DateTime]
+    # This is the date-time when the Azure hybrid benefit needs to be reviewed.
+    ${ReviewDateTime},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -3338,7 +3343,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -3408,6 +3413,237 @@ end {
 
 <#
 .Synopsis
+Return a Reservation.
+.Description
+Return a Reservation.
+.Example
+$orderId = "50000000-aaaa-bbbb-cccc-100000000003"
+$fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
+$fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
+
+Invoke-AzReservationCalculateRefund -ReservationOrderId $orderId -ReservationToReturnQuantity 1 -ReservationToReturnReservationId $fullyQualifiedId  -Id $fullyQualifiedOrderId -Scope "Reservation"
+
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IRefundRequest>: The return request body.
+  [ReservationToReturnQuantity <Int32?>]: Quantity to be returned. Must be greater than zero.
+  [ReservationToReturnReservationId <String>]: Fully qualified identifier of the reservation being returned
+  [ReturnReason <String>]: The reason of returning the reservation
+  [Scope <String>]: The scope of the refund, e.g. Reservation
+  [SessionId <String>]: SessionId that was returned by CalculateRefund API.
+
+INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+  [Id <String>]: Resource identity path
+  [ReservationId <String>]: Id of the reservation item
+  [ReservationOrderId <String>]: Order Id of the reservation
+  [SubscriptionId <String>]: Id of the subscription
+.Link
+https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
+#>
+function Invoke-AzReservationReturn {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationOrderResponse])]
+[CmdletBinding(DefaultParameterSetName='PostExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    ${InputObject},
+
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Reservation Order Id.
+    ${ReservationOrderId},
+
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # Reservation Id to return.
+    ${ReservationToReturnReservationId},
+
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.Int32]
+    # Quantity to return.
+    ${ReservationToReturnQuantity},
+
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # The session id obtained from Invoke-AzReservationCalculateRefund..
+    ${SessionId},
+
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # The scope of this return, e.g.
+    # Reservation.
+    ${Scope},
+
+    [Parameter(ParameterSetName='PostExpanded', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentityExpanded', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [System.String]
+    # The reason for this reservation return.
+    ${ReturnReason},
+
+    [Parameter(ParameterSetName='Post', Mandatory)]
+    [Parameter(ParameterSetName='PostViaIdentity', Mandatory)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest]
+    # The return request body.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(DontShow)]
+    [Alias('AzureRMContext', 'AzureCredential')]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Azure')]
+    [System.Management.Automation.PSObject]
+    # The credentials, account, tenant, and subscription used for communication with Azure.
+    ${DefaultProfile},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Wait for .NET debugger to attach
+    ${Break},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be appended to the front of the pipeline
+    ${HttpPipelineAppend},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.SendAsyncStep[]]
+    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+    ${HttpPipelinePrepend},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Uri]
+    # The URI for the proxy server to use
+    ${Proxy},
+
+    [Parameter(DontShow)]
+    [ValidateNotNull()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.PSCredential]
+    # Credentials for a proxy server to use for the remote call
+    ${ProxyCredential},
+
+    [Parameter(DontShow)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Use the default credentials for the proxy
+    ${ProxyUseDefaultCredentials}
+)
+
+begin {
+    try {
+        $outBuffer = $null
+        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
+            $PSBoundParameters['OutBuffer'] = 1
+        }
+        $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
+        $mapping = @{
+            PostExpanded = 'Az.Reservations.custom\Invoke-AzReservationReturn';
+            Post = 'Az.Reservations.custom\Invoke-AzReservationReturn';
+            PostViaIdentityExpanded = 'Az.Reservations.custom\Invoke-AzReservationReturn';
+            PostViaIdentity = 'Az.Reservations.custom\Invoke-AzReservationReturn';
+        }
+        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
+        [Microsoft.Azure.PowerShell.Cmdlets.Reservations.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
+        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
+        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
+        $steppablePipeline.Begin($PSCmdlet)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+}
+
+process {
+    try {
+        $steppablePipeline.Process($_)
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
+end {
+    try {
+        $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Reservations.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
+    } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
+    }
+} 
+}
+
+<#
+.Synopsis
 Merge two reservations into one reservation within the same reservation order.
 .Description
 Merge two reservations into one reservation within the same reservation order.
@@ -3416,12 +3652,12 @@ $arr=@("72bc398d-b201-4a2e-a1fa-60fb48a85b23", "34f2474f-b4d7-41ec-a96d-d4bb7c2f
 Merge-AzReservation -ReservationOrderId "79ebddac-4030-4296-ab93-1ad90f032058" -ReservationId $arr
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/merge-azreservation
 #>
 function Merge-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3496,7 +3732,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -3571,12 +3807,12 @@ Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -
 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse
+Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse
 .Link
 https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 #>
 function Split-AzReservation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IReservationResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IReservationResponse])]
 [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -3658,7 +3894,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

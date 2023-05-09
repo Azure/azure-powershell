@@ -22,17 +22,17 @@ Creates or updates a data connection.
 .Example
 New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventhubdc" -Location "East US" -Kind "EventHub" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -DataFormat "JSON" -ConsumerGroup '$Default' -Compression "None" -TableName "Events" -MappingRuleName "EventsMapping"
 .Example
-New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId $storageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping" -IgnoreFirstRecord "false" -BlobStorageEventType "Microsoft.Storage.BlobRenamed"
+New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myeventgriddc" -Location "East US" -Kind "EventGrid" -EventHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.EventHub/namespaces/myeventhubns/eventhubs/myeventhub" -StorageAccountResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Storage/storageAccounts/mystorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 .Example
 New-AzKustoDataConnection -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -DataConnectionName "myiothubdc" -Location "East US" -Kind "IotHub" -IotHubResourceId "/subscriptions/$subscriptionId/resourcegroups/testrg/providers/Microsoft.Devices/IotHubs/myiothub" -SharedAccessPolicyName "myiothubpolicy" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection
+Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection
 .Link
 https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodataconnection
 #>
 function New-AzKustoDataConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IDataConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20221229.IDataConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpandedEventHub', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -69,7 +69,7 @@ param(
     ${SubscriptionId},
 
     [Parameter(Mandatory)]
-    [ArgumentCompleter({ param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IoTHub') })]
+    [ArgumentCompleter({ param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IotHub', 'CosmosDb') })]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Kind]
     # Kind of the endpoint for the data connection
@@ -78,14 +78,15 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.String]
-    # The event/iot hub consumer group.
-    ${ConsumerGroup},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [System.String]
     # Resource location.
     ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The table where the data should be ingested.
+    # Optionally the table information can be added to each message.
+    ${TableName},
 
     [Parameter(ParameterSetName='CreateExpandedEventHub', Mandatory)]
     [Parameter(ParameterSetName='CreateExpandedEventGrid', Mandatory)]
@@ -94,9 +95,19 @@ param(
     # The resource ID of the event hub to be used to create a data connection / event grid is configured to send events.
     ${EventHubResourceId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpandedEventHub', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedEventGrid', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedIotHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.EventGridDataFormat]
+    [System.String]
+    # The event/iot hub consumer group.
+    ${ConsumerGroup},
+
+    [Parameter(ParameterSetName='CreateExpandedEventHub')]
+    [Parameter(ParameterSetName='CreateExpandedEventGrid')]
+    [Parameter(ParameterSetName='CreateExpandedIotHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
     # The data format of the message.
     # Optionally the data format can be added to each message.
     ${DataFormat},
@@ -115,18 +126,36 @@ param(
     # Optionally the mapping information can be added to each message.
     ${MappingRuleName},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
-    [System.String]
-    # The table where the data should be ingested.
-    # Optionally the table information can be added to each message.
-    ${TableName},
-
     [Parameter(ParameterSetName='CreateExpandedEventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.Compression]
     # The event hub messages compression type.
     ${Compression},
+
+    [Parameter(ParameterSetName='CreateExpandedEventHub')]
+    [Parameter(ParameterSetName='CreateExpandedEventGrid')]
+    [Parameter(ParameterSetName='CreateExpandedCosmosDb', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The resource ID of a managed identity (system or user assigned) to be used to authenticate with external resources.
+    ${ManagedIdentityResourceId},
+
+    [Parameter(ParameterSetName='CreateExpandedEventHub')]
+    [Parameter(ParameterSetName='CreateExpandedEventGrid')]
+    [Parameter(ParameterSetName='CreateExpandedIotHub')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.DatabaseRouting]
+    # Indication for database routing information from the data connection, by default only database routing information is allowed.
+    ${DatabaseRouting},
+
+    [Parameter(ParameterSetName='CreateExpandedEventHub')]
+    [Parameter(ParameterSetName='CreateExpandedIotHub')]
+    [Parameter(ParameterSetName='CreateExpandedCosmosDb')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.DateTime]
+    # When defined, the data connection retrieves existing Event hub events created since the Retrieval start date.
+    # It can only retrieve events retained by the Event hub, based on its retention period.
+    ${RetrievalStartDate},
 
     [Parameter(ParameterSetName='CreateExpandedEventGrid', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -134,19 +163,23 @@ param(
     # The resource ID of the storage account where the data resides.
     ${StorageAccountResourceId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedEventGrid')]
-    [Parameter(ParameterSetName='UpdateExpandedEventGrid')]
+    [Parameter(ParameterSetName='CreateExpandedEventGrid')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.BlobStorageEventType]
     # The name of blob storage event type to process.
     ${BlobStorageEventType},
 
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedEventGrid')]
-    [Parameter(ParameterSetName='UpdateExpandedEventGrid')]
+    [Parameter(ParameterSetName='CreateExpandedEventGrid')]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If set to true, indicates that ingestion should ignore the first record of every file.
     ${IgnoreFirstRecord},
+
+    [Parameter(ParameterSetName='CreateExpandedEventGrid')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The resource ID of the event grid that is subscribed to the storage account events.
+    ${EventGridResourceId},
 
     [Parameter(ParameterSetName='CreateExpandedIotHub', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
@@ -159,6 +192,24 @@ param(
     [System.String]
     # The name of the share access policy.
     ${SharedAccessPolicyName},
+
+    [Parameter(ParameterSetName='CreateExpandedCosmosDb', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The resource ID of the Cosmos DB account used to create the data connection.
+    ${CosmosDbAccountResourceId},
+
+    [Parameter(ParameterSetName='CreateExpandedCosmosDb', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The name of an existing database in the Cosmos DB account.
+    ${CosmosDbDatabase},
+
+    [Parameter(ParameterSetName='CreateExpandedCosmosDb', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Kusto.Category('Body')]
+    [System.String]
+    # The name of an existing container in the Cosmos DB database.
+    ${CosmosDbContainer},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -229,7 +280,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
@@ -248,11 +299,10 @@ begin {
         $mapping = @{
             CreateExpandedEventHub = 'Az.Kusto.custom\New-AzKustoDataConnection';
             CreateExpandedEventGrid = 'Az.Kusto.custom\New-AzKustoDataConnection';
-            UpdateViaIdentityExpandedEventGrid = 'Az.Kusto.custom\New-AzKustoDataConnection';
-            UpdateExpandedEventGrid = 'Az.Kusto.custom\New-AzKustoDataConnection';
             CreateExpandedIotHub = 'Az.Kusto.custom\New-AzKustoDataConnection';
+            CreateExpandedCosmosDb = 'Az.Kusto.custom\New-AzKustoDataConnection';
         }
-        if (('CreateExpandedEventHub', 'CreateExpandedEventGrid', 'UpdateViaIdentityExpandedEventGrid', 'UpdateExpandedEventGrid', 'CreateExpandedIotHub') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpandedEventHub', 'CreateExpandedEventGrid', 'CreateExpandedIotHub', 'CreateExpandedCosmosDb') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

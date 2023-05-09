@@ -41,6 +41,7 @@ $ArcIntegrationNotAvailableForCloudError = "Azure Arc for Server integration is 
 $ArcNeedsToBeEnabledError = "Azure Arc for servers integration can't be disabled. Skip the parameter '-EnableAzureArcServer' or Specify '-EnableAzureArcServer:`$true' in Register-AzStackHCI Cmdlet to register."
 $ArcAADAppCreationMessage= "Creating AAD application for onboarding ARC"
 $FetchingRegistrationState = "Checking whether the cluster is already registered"
+$CheckingDependentModules = "Checking whether the required modules are installed"
 $ValidatingParametersFetchClusterName = "Validating cmdlet parameters"
 $ValidatingParametersRegisteredInfo = "Validating the parameters and checking registration information"
 $RegisterProgressActivityName = "Registering Azure Stack HCI with Azure..."
@@ -77,6 +78,7 @@ $VerifyingArcMessage = "Verifying Azure Arc for Servers registration"
 $WaitingUnregisterMessage = "Disabling Azure Arc integration on every clustered node"
 $CleanArcMessage = "Cleaning up Azure Arc integration"
 
+$MissingDependentModulesError = "Can't find PowerShell module(s): {0}. Please install the missing module(s) using 'Install-Module -Name <Module_Name>' and try again."
 $ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
 
 $ArcAgentRolesInsufficientPreviligeMessage = "Failed to assign required roles for Azure Arc integration. Your Azure AD account must be an Owner or User Access Administrator in the subscription to enable Azure Arc integration."
@@ -242,8 +244,8 @@ $ArcSettingsDisableInProgressState = "DisableInProgress"
 $ClusterAgentServiceName = "HciClusterAgentSvc"
 $ClusterAgentGroupName = "Cloud Management"
 
-$AzAccountsModuleVersion="2.10.2"
-$AzResourcesModuleVersion="6.2.0"
+$AzAccountsModuleMinVersion="2.11.2"
+$AzResourcesModuleMinVersion="6.2.0"
 
 Function Write-Log {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
@@ -932,33 +934,65 @@ param(
     return "/Subscriptions/" + $SubscriptionId + "/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.AzureStackHCI/clusters/" + $ResourceName
 }
 
-function Install-Dependent-Module{
-    param(
-    [string] $ModuleName,
-    [string] $ModuleVersion
+function Import-DependentModule
+{
+    param (
+        [string] $ModuleName,
+        [string] $MinVersion
     )
-    try
+    $module = Get-Module -Name $ModuleName
+    if ((-not $module) -or ($module.Version -lt [System.Version]$MinVersion)) 
     {
-        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion -ErrorAction Stop
-        Write-VerboseLog ("Found required Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
-    }
-    catch
-    {
-        try
+        Write-VerboseLog "Required module $ModuleName (minimum version: $MinVersion) is not imported"
+        try 
         {
-            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
+            # Adding this statement to clear all the versions that exist in the current PS session
+            Remove-Module -Name $ModuleName -ErrorAction Ignore
+            
+            Import-Module -Name $ModuleName -MinimumVersion $MinVersion
         }
         catch
         {
-            Install-PackageProvider NuGet -Force | Out-Null
+            Write-WarnLog "$_.Exception"
+            Write-VerboseLog "Required module $ModuleName (minimum version: $MinVersion) is missing"
+            throw ("$ModuleName (minimum version: $MinVersion)")
         }
+    }
+}
 
-        Write-VerboseLog ("Installing Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+function Check-DependentModules 
+{
+    param()
 
-        Install-Module -Name $ModuleName  -RequiredVersion $ModuleVersion  -Force -AllowClobber -Repository 'PSGallery'
-        Import-Module -Name $ModuleName -RequiredVersion $ModuleVersion
-        
-        Write-VerboseLog ("Successfully imported Module: {0} version: {1}" -f $ModuleName,$ModuleVersion)
+    $missingDependentModules = [System.Collections.ArrayList]::new()
+
+    # Checking if Az.Accounts is imported
+    try 
+    {
+        Write-VerboseLog "Importing dependent module Az.Accounts"
+        Import-DependentModule -ModuleName "Az.Accounts" -MinVersion $AzAccountsModuleMinVersion
+    }
+    catch 
+    {
+        $missingDependentModules.Add($_.Exception.Message) | Out-Null
+    }
+
+    # Checking if Az.Resources is imported
+    try 
+    {
+        Write-VerboseLog "Importing dependent module Az.Resources"
+        Import-DependentModule -ModuleName "Az.Resources" -MinVersion $AzResourcesModuleMinVersion
+    }
+    catch 
+    {
+        $missingDependentModules.Add($_.Exception.Message) | Out-Null
+    }
+    
+    if($missingDependentModules.Length -gt 0)
+    {
+        $missingDependentModules = $missingDependentModules -join ", "
+        $MissingDependentModulesExceptionMessage = $MissingDependentModulesError -f $missingDependentModules
+        throw $MissingDependentModulesExceptionMessage
     }
 }
 
@@ -977,9 +1011,7 @@ param(
     )
 
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $InstallAzResourcesMessage -percentcomplete 10
-
-    Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
-    Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
+    
     Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -status $LoggingInToAzureMessage -percentcomplete 30
 
     if($EnvironmentName -eq $AzurePPE)
@@ -2438,15 +2470,6 @@ param(
         $registrationOutput = New-Object -TypeName PSObject
         $operationStatus = [OperationStatus]::Unused
         
-        try
-        {
-            Import-PackageProvider -Name Nuget -MinimumVersion "2.8.5.201" -ErrorAction Stop
-        }
-        catch
-        {
-            Install-PackageProvider NuGet -Force | Out-Null
-        }
-        
         Show-LatestModuleVersion
 
         if([string]::IsNullOrEmpty($ComputerName))
@@ -2459,7 +2482,10 @@ param(
             $IsManagementNode = $True
         }
 
-        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 1
+        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
+        Check-DependentModules
+
+        Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 2
         if($IsManagementNode)
         {
             Write-VerboseLog ("Connecting via Management Node")
@@ -3546,8 +3572,10 @@ param(
             Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
             $RPAPIVersion = "2022-09-01"
         }
-
-        Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 1
+        Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $CheckingDependentModules -percentcomplete 1
+        Check-DependentModules
+        
+        Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $FetchingRegistrationState -percentcomplete 2
         Write-VerboseLog ($UnregisterProgressActivityName)
         $msg = Print-FunctionParameters -Message "Unregister-AzStackHCI" -Parameters $PSBoundParameters
         Write-NodeEventLog -Message $msg  -EventID 9009 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
@@ -4167,14 +4195,18 @@ param(
         {
             $isManagementNode = $true
         }
-
+        
         # To be removed after ARM rollout to MC cloud is complete
         if ( $EnvironmentName -eq $AzureChinaCloud)
         {
             Write-VerboseLog ("Overriding RP API version for MC cloud to 2022-09-01")
             $RPAPIVersion = "2022-09-01"
         }
-
+        
+        Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $CheckingDependentModules -PercentComplete 2
+        Check-DependentModules
+        
+        
         Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusGathering -PercentComplete 5
 
         if($PSBoundParameters.ContainsKey('ResourceId') -eq $false)
@@ -4282,11 +4314,6 @@ param(
                                      }
 
             $TenantId = Azure-Login @azureLoginParameters
-        }
-        else 
-        {
-            Install-Dependent-Module -ModuleName "Az.Accounts" -ModuleVersion $AzAccountsModuleVersion
-            Install-Dependent-Module -ModuleName "Az.Resources" -ModuleVersion $AzResourcesModuleVersion
         }
 
         $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop

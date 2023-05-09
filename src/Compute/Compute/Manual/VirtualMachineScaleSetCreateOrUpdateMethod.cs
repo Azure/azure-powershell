@@ -29,9 +29,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Commands.Compute.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [GenericBreakingChange("Consider using the image alias including the version of the distribution you want to use in the \"-ImageName\" parameter of the \"New-AzVmss\" cmdlet. On April 30, 2023, the image deployed using `UbuntuLTS` will reach its end of life. In November 2023, the aliases `UbuntuLTS`, `CentOS`, `Debian`, and `RHEL` will be removed.")]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
@@ -42,16 +44,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "The name of the image for VMs in this Scale Set. If no value is provided, the 'Windows Server 2016 DataCenter' image will be used.")]
         [PSArgumentCompleter(
             "CentOS",
-            "CoreOS",
+            "CentOS85Gen2",
             "Debian",
-            "openSUSE-Leap",
+            "Debian11",
+            "OpenSuseLeap154Gen2",
             "RHEL",
-            "SLES",
+            "RHELRaw8LVMGen2",
+            "SuseSles15SP3",
             "UbuntuLTS",
+            "Ubuntu2204",
+            "FlatcarLinuxFreeGen2",
+            "Win2022AzureEditionCore",
+            "Win2019Datacenter",
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
             "Win10")]
+        [Alias("Image")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
@@ -220,6 +229,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Specifies the disk controller type configured for the VM and VirtualMachineScaleSet. This property is only supported for virtual machines whose operating system disk and VM sku supports Generation 2 (https://learn.microsoft.com/en-us/azure/virtual-machines/generation-2), please check the HyperVGenerations capability returned as part of VM sku capabilities in the response of Microsoft.Compute SKUs api for the region contains V2 (https://learn.microsoft.com/rest/api/compute/resourceskus/list) . <br> For more information about Disk Controller Types supported please refer to https://aka.ms/azure-diskcontrollertypes.")]
         [PSArgumentCompleter("SCSI", "NVMe")]
         public string DiskControllerType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
+        public string SharedGalleryImageId { get; set; }
 
         const int FirstPortRangeStart = 50000;
 
@@ -414,7 +429,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     userData: _cmdlet.IsParameterBound(c => c.UserData) ? _cmdlet.UserData : null,
                     imageReferenceId: _cmdlet.IsParameterBound(c => c.ImageReferenceId) ? _cmdlet.ImageReferenceId : null,
                     auxAuthHeader: auxAuthHeader,
-                    diskControllerType: _cmdlet.DiskControllerType
+                    diskControllerType: _cmdlet.DiskControllerType,
+                    sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null
                     );
             }
 
