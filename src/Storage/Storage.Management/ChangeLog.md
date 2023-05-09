@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.6.2
 * Removed the API version limitation on File cmdlets
 
 ## Version 5.6.1
