@@ -74,9 +74,16 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
   Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 0
+  Assert-AreEqual $updatedCosmosDBAccount.EnableParitionMerge 0
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableBurstCapacity 1
   Assert-AreEqual $updatedCosmosDBAccount.EnableBurstCapacity 1
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableParitionMerge 1
+  Assert-AreEqual $updatedCosmosDBAccount.EnableParitionMerge 1
+
+  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableParitionMerge 0
+  Assert-AreEqual $updatedCosmosDBAccount.EnableParitionMerge 0
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -BackupStorageRedundancy "Geo"
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480

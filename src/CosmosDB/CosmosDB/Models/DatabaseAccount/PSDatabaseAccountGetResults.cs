@@ -66,6 +66,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
             RestoreParameters = new PSRestoreParameters(databaseAccountGetResults.RestoreParameters);
             CreateMode = databaseAccountGetResults.CreateMode;
             AnalyticalStorageConfiguration = new PSAnalyticalStorageConfiguration(databaseAccountGetResults.AnalyticalStorageConfiguration);
+            EnablePartitionMerge = databaseAccountGetResults.EnablePartitionMerge;
         }
 
         //
@@ -192,6 +193,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Models
         // Summary:
         //     Gets or sets flag to indicate whether burst capacity is enabled.
         public bool? EnableBurstCapacity { get; set; }
+        //
+        // Summary:
+        //     Gets or sets flag to indicate whether Partition Merge is enabled.
+        public bool? EnablePartitionMerge { get; set; }
         //
         // Summary:
         //     Gets or sets flag to indicate to allow Network Acl Bypass.

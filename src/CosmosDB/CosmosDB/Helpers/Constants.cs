@@ -59,6 +59,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string NetworkAclBypassResourceIdHelpMessage = "List of Resource Ids to allow Network Acl Bypass for Synapse Link.";
         public const string DatabaseResourceIdHelpMessage = "ResourceId of the database.";
         public const string AnalyticalStorageSchemaTypeHelpMessage = "The schema type for analytical storage. Valid values include: 'WellDefined' and 'FullFidelity'.";
+        public const string EnablePartitionMergeHelpMessage = "Enables partition merge feature on the Cosmos DB database account. Accepted values: false, true";
 
         //Restore specific help messages
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";

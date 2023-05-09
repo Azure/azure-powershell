@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [Parameter(Mandatory = false, HelpMessage = Constants.DisableKeyBasedMetadataWriteAccessHelpMessage)]
         public bool? DisableKeyBasedMetadataWriteAccess { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.EnablePartitionMergeHelpMessage)]
+        public bool? EnableParitionMerge { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!ParameterSetName.Equals(NameParameterSet, StringComparison.Ordinal))
@@ -101,6 +104,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (EnableBurstCapacity != null)
             {
                 databaseAccountUpdateParameters.EnableBurstCapacity = EnableBurstCapacity;
+            }
+            if (EnableParitionMerge != null)
+            {
+                databaseAccountUpdateParameters.EnablePartitionMerge = EnableParitionMerge;
             }
             if (NetworkAclBypass != null)
             {
@@ -227,6 +234,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
             // Update analytical storage schema type.
             databaseAccountUpdateParameters.AnalyticalStorageConfiguration = CreateAnalyticalStorageConfiguration(AnalyticalStorageSchemaType);
+
 
             if (ShouldProcess(Name, "Updating Database Account"))
             {
