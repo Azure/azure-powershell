@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManage
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestFx", "..\..\tools\TestFx\TestFx.csproj", "{BC80A1D0-FFA4-43D9-AA74-799F5CB54B58}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relay", "..\Relay\Relay\Relay.csproj", "{10C8273F-7C1B-455C-B358-420DD2EA8FF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Relay", "..\Relay\Az.Relay.csproj", "{10C8273F-7C1B-455C-B358-420DD2EA8FF8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBus", "..\ServiceBus\ServiceBus\ServiceBus.csproj", "{70B4325F-044A-44CE-AAC3-78CD5A8347DF}"
 EndProject
