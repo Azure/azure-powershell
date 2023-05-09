@@ -555,7 +555,7 @@ function Test-PublicIpAddressCRUD-BasicSku
 .SYNOPSIS
 Tests creating new simple publicIpAddress with Standard Sku.
 #>
-function Test-PublicIpAddressCRUD-StaticSku
+function Test-PublicIpAddressCRUD-StandardSku
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -571,7 +571,7 @@ function Test-PublicIpAddressCRUD-StaticSku
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Static -DomainNameLabel $domainNameLabel
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
@@ -682,7 +682,7 @@ function Test-PublicIpAddressCRUD-DdosProtection
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddress
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Static -DdosProtectionMode "Enabled"
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DdosProtectionMode "Enabled"
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
@@ -734,7 +734,7 @@ function Test-PublicIpAddressCRUD-DdosProtection
 .SYNOPSIS
 Tests creating new simple publicIpAddress with Static allocation and global tier.
 #>
-function Test-PublicIpAddressCRUD-StaticSkuGlobalTier
+function Test-PublicIpAddressCRUD-StandardSkuGlobalTier
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -750,7 +750,7 @@ function Test-PublicIpAddressCRUD-StaticSkuGlobalTier
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
       
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Static -Tier Global -DomainNameLabel $domainNameLabel
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -Tier Global -DomainNameLabel $domainNameLabel
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
@@ -797,7 +797,7 @@ function Test-PublicIpAddressZones
     $zones = "1";
     $rglocation = Get-ProviderLocation ResourceManagement
     $location = Get-ProviderLocation "Microsoft.Network/publicIpAddresses" "Central US"
-    $staticSku = "Static"
+    $standardSku = "Standard"
 
     try
      {
@@ -805,7 +805,7 @@ function Test-PublicIpAddressZones
       $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" }
 
       # Create publicIpAddres
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Zone $zones -Sku $staticSku;
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Zone $zones -Sku $standardSku;
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname 
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
       Assert-AreEqual $expected.Name $actual.Name
@@ -843,7 +843,7 @@ function Test-PublicIpAddressCRUD-PublicIPPrefix
       
       # Create a PublicIPPrefix
       $prefixname = $rname + "prfx"
-      $PublicIpPrefix = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $prefixname -location $location -Sku Static -prefixLength 30
+      $PublicIpPrefix = New-AzPublicIpPrefix -ResourceGroupName $rgname -name $prefixname -location $location -Sku Standard -prefixLength 30
       $expectedPublicIpPrefix = Get-AzPublicIpPrefix -ResourceGroupName $rgname -name $prefixname
       Assert-AreEqual $expectedPublicIpPrefix.ResourceGroupName $PublicIpPrefix.ResourceGroupName
       Assert-AreEqual $expectedPublicIpPrefix.Name $PublicIpPrefix.Name
