@@ -71,9 +71,8 @@ param(
     ${Sku},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.CreateMode])]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.CreateMode]
+    [System.String]
     # Indicates whether the configuration store need to be recovered.
     ${CreateMode},
 
@@ -98,7 +97,7 @@ param(
     [Parameter()]
     [ArgumentCompleter({'None', 'SystemAssigned', 'UserAssigned', 'SystemAssignedAndUserAssigned'})]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.IdentityType]
+    [System.String]
     # The type of managed identity used.
     # The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities.
     # The type 'None' will remove any identities.
@@ -111,9 +110,8 @@ param(
     ${KeyVaultIdentityClientId},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess])]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support.PublicNetworkAccess]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
+    [System.String]
     # Control permission for data plane traffic coming from public networks while private endpoint is enabled.
     ${PublicNetworkAccess},
 

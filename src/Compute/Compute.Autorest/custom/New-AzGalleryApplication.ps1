@@ -53,9 +53,8 @@ function New-AzGalleryApplication {
         ${Location},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes])]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.OperatingSystemTypes]
+        [System.String]
         # This property allows you to specify the supported type of the OS that application is built for.
         #
         #

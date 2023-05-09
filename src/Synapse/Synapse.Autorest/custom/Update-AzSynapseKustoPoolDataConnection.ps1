@@ -139,7 +139,7 @@ function Update-AzSynapseKustoPoolDataConnection {
         [Parameter(Mandatory)]
         [ArgumentCompleter( { param ( $CommandName, $ParameterName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('EventHub', 'EventGrid', 'IotHub') })]
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DataConnectionKind]
+        [System.String]
         # Kind of the endpoint for the data connection
         ${Kind},
 
@@ -161,7 +161,7 @@ function Update-AzSynapseKustoPoolDataConnection {
         [Parameter(ParameterSetName = 'UpdateExpandedEventGrid')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventGrid')]
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType]
+        [System.String]
         # The name of blob storage event type to process.
         ${BlobStorageEventType},
 
@@ -174,7 +174,7 @@ function Update-AzSynapseKustoPoolDataConnection {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat]
+        [System.String]
         # The data format of the message. Optionally the data format can be added to each message.
         ${DataFormat},
 
@@ -202,7 +202,7 @@ function Update-AzSynapseKustoPoolDataConnection {
         [Parameter(ParameterSetName = 'UpdateExpandedEventHub')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedEventHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.Compression]
+        [System.String]
         # The event hub messages compression type.
         ${Compression},
 

@@ -28,7 +28,7 @@ function New-AzServiceBusIPRuleConfig{
         ${IPMask},
 
 		[Parameter(HelpMessage = "The IP Filter Action")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.NetworkRuleIPAction]
+        [System.String]
 		# The IP Filter Action
         ${Action}
 	)

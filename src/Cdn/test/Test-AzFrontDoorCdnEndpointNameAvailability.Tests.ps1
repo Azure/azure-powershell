@@ -32,7 +32,7 @@ Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' -Tag 'LiveOnly' {
                 $endpointName = 'end-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
 
-                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesAfdEndpoints
+                $resourceType = "MicrosoftCdnProfilesAfdEndpoints"
                 
                 $nameAvailability = Test-AzFrontDoorCdnEndpointNameAvailability -ResourceGroupName $ResourceGroupName -Name $endpointName -Type $resourceType
                 $nameAvailability.NameAvailable | Should -BeTrue
@@ -64,7 +64,7 @@ Describe 'Test-AzFrontDoorCdnEndpointNameAvailability' -Tag 'LiveOnly' {
                 $endpointName = 'end-' + (RandomString -allChars $false -len 6);
                 Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
 
-                $resourceType = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ResourceType]::MicrosoftCdnProfilesAfdEndpoints
+                $resourceType = "MicrosoftCdnProfilesAfdEndpoints"
                 $checkNameAvailabilityInput = @{
                     Name = $endpointName
                     Type = $resourceType

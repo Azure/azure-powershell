@@ -22,7 +22,7 @@ Describe 'Update-AzRoleManagementPolicy' {
                 isExpirationRequired = "false";
                 maximumDuration = "P180D";
                 id = "Expiration_Admin_Eligibility";
-                ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyExpirationRule");
+                ruleType = [System.String]("RoleManagementPolicyExpirationRule");
                 targetCaller = "Admin";
                 targetOperation = @('All');
                 targetLevel = "Eligibility";
@@ -37,7 +37,7 @@ Describe 'Update-AzRoleManagementPolicy' {
                 notificationLevel = "Critical";
                 notificationRecipient = $null;                
                 id = "Notification_Approver_Admin_Eligibility";
-                ruleType = [Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Support.RoleManagementPolicyRuleType]("RoleManagementPolicyNotificationRule");
+                ruleType = [System.String]("RoleManagementPolicyNotificationRule");
                 targetCaller = "Admin";
                 targetOperation = @('All');
                 targetLevel = "Eligibility";

@@ -63,7 +63,7 @@ function New-AzEventHubKey{
         [Parameter(HelpMessage = "The access key to regenerate.")]
         [Alias('RegenerateKey')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.KeyType]
+        [System.String]
         # The access key to regenerate.
         ${KeyType},
 

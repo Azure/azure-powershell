@@ -143,7 +143,7 @@ function Set-AzServiceBusRule{
 
         [Parameter(HelpMessage = "Filter type that is evaluated against a BrokeredMessage.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType]
+        [System.String]
         # Filter type that is evaluated against a BrokeredMessage.
         ${FilterType},
 

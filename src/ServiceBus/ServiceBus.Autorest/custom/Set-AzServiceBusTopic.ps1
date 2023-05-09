@@ -107,7 +107,7 @@ function Set-AzServiceBusTopic{
 
         [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
+        [System.String]
         # Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.
         ${Status},
         

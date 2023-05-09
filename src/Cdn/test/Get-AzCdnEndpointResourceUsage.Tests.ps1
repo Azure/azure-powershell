@@ -48,12 +48,12 @@ Describe 'Get-AzCdnEndpointResourceUsage' -Tag 'LiveOnly' {
                 $geofilters = @(
                     @{
                         RelativePath = "/mycar" 
-                        Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
+                        Action =  "Allow"
                         CountryCode = "AU"
                     },
                     @{
                         RelativePath = "/mycars" 
-                        Action =  [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.GeoFilterActions]::Allow
+                        Action =  "Allow"
                         CountryCode = "AU"
                     })
                 Update-AzCdnEndpoint -Name $endpointName -ResourceGroupName $ResourceGroupName -ProfileName $cdnProfileName -GeoFilter $geofilters
