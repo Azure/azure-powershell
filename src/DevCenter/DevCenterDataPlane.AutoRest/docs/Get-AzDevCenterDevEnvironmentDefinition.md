@@ -14,8 +14,8 @@ Get an environment definition from a catalog.
 
 ### List (Default)
 ```
-Get-AzDevCenterDevEnvironmentDefinition -Endpoint <String> -ProjectName <String> [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevEnvironmentDefinition -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -33,7 +33,7 @@ Get-AzDevCenterDevEnvironmentDefinition -Endpoint <String> -InputObject <IDevCen
 ### List1
 ```
 Get-AzDevCenterDevEnvironmentDefinition -Endpoint <String> -CatalogName <String> -ProjectName <String>
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,22 +151,6 @@ Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

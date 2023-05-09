@@ -14,7 +14,7 @@ Gets the specified catalog within the project
 
 ### List (Default)
 ```
-Get-AzDevCenterDevCatalog -Endpoint <String> -ProjectName <String> [-Top <Int32>] [-DefaultProfile <PSObject>]
+Get-AzDevCenterDevCatalog -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -130,22 +130,6 @@ Parameter Sets: Get, List
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

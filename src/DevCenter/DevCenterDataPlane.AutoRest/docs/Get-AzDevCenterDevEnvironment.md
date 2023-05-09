@@ -14,8 +14,8 @@ Gets an environment
 
 ### List (Default)
 ```
-Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -32,7 +32,7 @@ Get-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentit
 
 ### List1
 ```
-Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> -UserId <String> [-Top <Int32>]
+Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> -UserId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -136,22 +136,6 @@ Parameter Sets: Get, List, List1
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -14,8 +14,8 @@ Gets a pool
 
 ### List (Default)
 ```
-Get-AzDevCenterDevPool -Endpoint <String> -ProjectName <String> [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevPool -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -43,8 +43,8 @@ Get-AzDevCenterDevPool -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObj
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterDevPool -DevCenter <String> -ProjectName <String> [-Filter <String>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevPool -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,21 +122,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-An OData filter clause to apply to the operation.
-
-```yaml
-Type: System.String
-Parameter Sets: List, ListByDevCenter
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -177,22 +162,6 @@ Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List, ListByDevCenter
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
