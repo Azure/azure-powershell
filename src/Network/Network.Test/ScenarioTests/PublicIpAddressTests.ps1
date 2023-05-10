@@ -396,7 +396,7 @@ function Test-PublicIpAddressIpVersion
       Assert-AreEqual $list[0].PublicIpAddressVersion IPv4
 
       # Create publicIpAddres with IPv4 ipversion
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname1 -location $location -AllocationMethod Dynamic -IpAddressVersion IPv4
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname1 -location $location -AllocationMethod Static -IpAddressVersion IPv4
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname1
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $expected.Name $actual.Name   
@@ -407,7 +407,7 @@ function Test-PublicIpAddressIpVersion
       Assert-AreEqual $expected.PublicIpAddressVersion IPv4
       
       # Create publicIpAddres with IPv6 ipversion
-      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname2 -location $location -AllocationMethod Dynamic -IpAddressVersion IPv6
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname2 -location $location -AllocationMethod Static -IpAddressVersion IPv6
       $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname2
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName 
       Assert-AreEqual $expected.Name $actual.Name   
