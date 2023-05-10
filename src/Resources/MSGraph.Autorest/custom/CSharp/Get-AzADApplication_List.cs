@@ -25,7 +25,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
 
         partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.ICollectionOfApplication> response, ref global::System.Threading.Tasks.Task<bool> returnNow) 
         {
-            if (_isPolling || !this.Count || global::System.String.IsNullOrEmpty(this.CountVariable)) {
+            if (_isPolling || global::System.String.IsNullOrEmpty(this.ConsistencyLevel) || !global::System.String.Equals(this.ConsistencyLevel, "eventual", System.StringComparison.InvariantCultureIgnoreCase) || !this.Count || global::System.String.IsNullOrEmpty(this.CountVariable)) 
+            {
                 return;
             }
             SessionState.PSVariable.Set(new PSVariable(CountVariable.Contains(":") ? CountVariable : $"global:{CountVariable}", response.Result.OdataCount));
