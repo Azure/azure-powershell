@@ -461,7 +461,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            switch (ParameterSetName)
+            switch (ParameterSetName) //Add guest attestation logic here now that it works for both parameter sets? 
             {
                 case SimpleParameterSet:
                     this.StartAndWait(StrategyExecuteCmdletAsync);
@@ -660,7 +660,8 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 if (_cmdlet.DiskFile == null)
-                {
+                { //Adam: GuestAttestation will need to be added here, cmdlet seems to end after this return.
+                    //var vmReturn =  
                     return resourceGroup.CreateVirtualMachineConfig(
                         name: _cmdlet.Name,
                         networkInterface: networkInterface,
@@ -700,6 +701,10 @@ namespace Microsoft.Azure.Commands.Compute
                         enableVtpm: _cmdlet.EnableVtpm,
                         enableSecureBoot: _cmdlet.EnableSecureBoot
                         );
+
+                    // add GuestAttestation extension to the vm taht was just made? 
+
+
                 }
                 else
                 {
@@ -754,11 +759,65 @@ namespace Microsoft.Azure.Commands.Compute
             PublicIpAddressName = PublicIpAddressName;
             SecurityGroupName = SecurityGroupName ?? Name;
 
+            // Check Guest Attestation
+            if (this.IsParameterBound(c => c.SecurityType) && (this.SecurityType == "TrustedLaunch" || this.SecurityType == "ConfidentialVM"))
+            {
+                this.SecurityType = this.SecurityType;
+                this.EnableVtpm = this.EnableVtpm == null ? true : this.EnableVtpm;
+                this.EnableSecureBoot = this.EnableSecureBoot == null ? true : this.EnableSecureBoot;
+            }
+            if (shouldGuestAttestationExtBeInstalled()
+                //this.VM != null &&
+                //this.VM.Identity == null
+                && !this.IsParameterBound(c => c.SystemAssignedIdentity)
+                && !this.IsParameterBound(c => c.UserAssignedIdentity)
+                    )
+            {
+                //this.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+                this.SystemAssignedIdentity = true;//new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+                //this.UserAssignedIdentity = "";
+            }
+
             var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                     DefaultProfile.DefaultContext,
                     AzureEnvironment.Endpoint.ResourceManager);
 
             var parameters = new Parameters(this, client, resourceClient);
+
+            
+            /* Create the GuestAttestation extension. NEeds to occur after the vm object exists.
+            if (shouldGuestAttestationExtBeInstalled())
+            {
+                var extensionParams = new VirtualMachineExtension { };
+                if (IsLinuxOs()) //linux
+                {
+                    extensionParams = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                        VirtualMachineExtensionType = "GuestAttestation",
+                        TypeHandlerVersion = "1.0",
+                    };
+                }
+                else //windows
+                {
+                    extensionParams = new VirtualMachineExtension
+                    {
+                        Location = this.Location,
+                        Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                        VirtualMachineExtensionType = "GuestAttestation",
+                        TypeHandlerVersion = "1.0",
+                    };
+                }
+                var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
+                var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync
+                    (
+                        this.ResourceGroupName,
+                        this.Name,
+                        "GuestAttestation",
+                        extensionParams
+                    ).GetAwaiter().GetResult();
+            }*/
 
             // Information message if the default Size value is used. 
             if (!this.IsParameterBound(c => c.Size))
@@ -849,7 +908,7 @@ namespace Microsoft.Azure.Commands.Compute
                 throw ex;
             }
 
-
+            
             if (result != null)
             {
                 var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
@@ -862,7 +921,46 @@ namespace Microsoft.Azure.Commands.Compute
                     Resources.VirtualMachineUseConnectionString,
                     connectionString);
                 asyncCmdlet.WriteObject(psResult);
+
+
+                // Guest Attestation extension defaulting behavior
+                /*if (shouldGuestAttestationExtBeInstalled())
+                {
+                    var extensionParams = new VirtualMachineExtension { };
+
+                    if (IsLinuxOs()) //linux
+                    {
+                        extensionParams = new VirtualMachineExtension
+                        {
+                            Location = this.Location,
+                            Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                            VirtualMachineExtensionType = "GuestAttestation",
+                            TypeHandlerVersion = "1.0",
+                        };
+                    }
+                    else //windows
+                    {
+                        extensionParams = new VirtualMachineExtension
+                        {
+                            Location = this.Location,
+                            Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                            VirtualMachineExtensionType = "GuestAttestation",
+                            TypeHandlerVersion = "1.0",
+                        };
+                    }
+
+                    var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
+                    var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync
+                        (
+                            this.ResourceGroupName,
+                            this.Name,
+                            "GuestAttestation",
+                            extensionParams
+                        ).GetAwaiter().GetResult();
+                }*/
             }
+
+            
         }
 
         public void DefaultExecuteCmdlet()
@@ -1075,12 +1173,21 @@ namespace Microsoft.Azure.Commands.Compute
         private bool shouldGuestAttestationExtBeInstalled()
         {
             if (this.DisableIntegrityMonitoring != true &&
+                    this.ParameterSetName == DefaultParameterSet &&
                     this.VM != null &&
                     this.VM.SecurityProfile != null &&
                     this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
                     this.VM.SecurityProfile.UefiSettings != null &&
                     this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
                     this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+            {
+                return true;
+            }
+            else if (this.DisableIntegrityMonitoring != true &&
+                     this.ParameterSetName == SimpleParameterSet &&
+                     this.SecurityType == "TrustedLaunch" &&
+                     this.EnableSecureBoot == true &&
+                     this.EnableVtpm == true)
             {
                 return true;
             }

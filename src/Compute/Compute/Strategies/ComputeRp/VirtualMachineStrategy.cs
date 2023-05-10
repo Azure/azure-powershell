@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             AdminUsername = adminUsername,
                             AdminPassword = adminPassword,
                         },
-                        Identity = identity,
+                        Identity = identity,//Is systemAssigned type only at this point. 
                         NetworkProfile = new Azure.Management.Compute.Models.NetworkProfile
                         {
                             NetworkInterfaces = new[]

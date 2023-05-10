@@ -4478,23 +4478,24 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         $domainNameLabel2 = "d2" + $rgname;
         $disable = $false;
         $enable = $true;
-        $adminUsername = 'usertest';
-        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $securityType = "TrustedLaunch";
+        $adminUsername = 'usertest';#Get-ComputeTestResourceName;
+        $adminPassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force;
         $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
 
         # Requirements for the TrustedLaunch default behavior.
         #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
         # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
-        $res = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType "TrustedLaunch" ;
+        $res = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -DomainNameLabel $domainNameLabel1 -SecurityType $securityType ;
 
-        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType "TrustedLaunch";
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
         Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
         Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
-        $result = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName2 -ImageName $imageName -DomainNameLabel $domainNameLabel2 -SecurityType "TrustedLaunch" -EnableVtpm $disable;
+        $result = New-AzVmss -ResourceGroupName $rgname -Credential $vmCred -VMScaleSetName $vmssName2 -ImageName $imageName -DomainNameLabel $domainNameLabel2 -SecurityType $securityType -EnableVtpm $disable;
                 
-        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.SecurityType "TrustedLaunch";
+        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
         Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
         Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
@@ -4502,6 +4503,18 @@ function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
         $vmssUp = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -EnableVtpm $true;
         $vmssGet2 = Get-AzVmss -ResourcegroupName $rgname -VMScaleSetName $vmssName2;
         Assert-AreEqual $vmssGet2.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+
+        # Guest Attestation test
+        # Validate
+        # no GA for non config here
+        $vmGADefaultIDentity = "SystemAssigned";
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+        Assert-AreEqual $vmGADefaultIDentity $vmssGet.Identity.Type;
+
+        $vmssvms = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        Assert-NotNull $vmssvms;
+        $vmssvm = Get-AzVmssvm -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId $vmssvms[0].InstanceId;
+        Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
     }
     finally
     {

@@ -6705,6 +6705,15 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
         $updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
 
         Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
+
+        # validate GA estension
+        $extDefaultName = "GuestAttestation";
+        $vmGADefaultIDentity = "SystemAssigned";
+        $vmname = $vmname1;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+        $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
+        Assert-AreEqual $vmExt.Name $extDefaultName;
+        Assert-AreEqual $vm.Identity.Type $vmGADefaultIDentity;
     }
     finally
     {
