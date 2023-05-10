@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/remove-azeventhubnamespace
 schema: 2.0.0
 ---
 
-# Remove-AzEventHubNamespaceV2
+# Remove-AzEventHubNamespace
 
 ## SYNOPSIS
 Deletes an existing namespace.
@@ -15,13 +15,13 @@ This operation also removes all associated resources under the namespace.
 
 ### Delete (Default)
 ```
-Remove-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzEventHubNamespace -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,15 +33,15 @@ This operation also removes all associated resources under the namespace.
 
 ### Example 1: Delete an EventHub namespace
 ```powershell
-Remove-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup`.
 
 ### Example 2: Delete an EventHub namespace using InputObject parameter set
 ```powershell
-$namespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
-Remove-AzEventHubNamespaceV2 -InputObject $namespace
+$namespace = Get-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzEventHubNamespace -InputObject $namespace
 ```
 
 Deletes an EventHub namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
@@ -216,6 +216,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+NamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

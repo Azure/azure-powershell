@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.servicebus/remove-azservicebusnamespace
 schema: 2.0.0
 ---
 
-# Remove-AzServiceBusNamespaceV2
+# Remove-AzServiceBusNamespace
 
 ## SYNOPSIS
 Deletes an existing namespace.
@@ -15,13 +15,13 @@ This operation also removes all associated resources under the namespace.
 
 ### Delete (Default)
 ```
-Remove-AzServiceBusNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzServiceBusNamespaceV2 -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzServiceBusNamespace -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -33,15 +33,15 @@ This operation also removes all associated resources under the namespace.
 
 ### Example 1: Deletes an existing namespace.
 ```powershell
-Remove-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 ```
 
 Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup`.
 
 ### Example 2: Delete an ServiceBus namespace using InputObject parameter set
 ```powershell
-$namespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
-Remove-AzServiceBusNamespaceV2 -InputObject $namespace
+$namespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace
+Remove-AzServiceBusNamespace -InputObject $namespace
 ```
 
 Deletes an ServiceBus namespace `myNamespace` under resource group `myResourceGroup` using InputObject parameter set.
@@ -64,7 +64,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -215,6 +216,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+NamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

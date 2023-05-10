@@ -172,14 +172,14 @@ directive:
       property-name: UserAssignedIdentity
 
   - where:
+      verb: New
       subject: Namespace
-    set:
-      subject: NamespaceV2
+    hide: true
 
   - where:
-      verb: New
-      subject: NamespaceV2
-    hide: true
+      subject: Namespace
+    set:
+      alias: NamespaceV2
 
 # Rules
   - where:

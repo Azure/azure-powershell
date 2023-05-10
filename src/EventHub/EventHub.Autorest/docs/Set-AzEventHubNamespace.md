@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubnamespacev2
+online version: https://learn.microsoft.com/powershell/module/az.eventhub/set-azeventhubnamespace
 schema: 2.0.0
 ---
 
-# Set-AzEventHubNamespaceV2
+# Set-AzEventHubNamespace
 
 ## SYNOPSIS
 Updates an EventHub Namespace
@@ -14,7 +14,7 @@ Updates an EventHub Namespace
 
 ### SetExpanded (Default)
 ```
-Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AlternateName <String>] [-DisableLocalAuth] [-EnableAutoInflate]
  [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
@@ -25,7 +25,7 @@ Set-AzEventHubNamespaceV2 -Name <String> -ResourceGroupName <String> [-Subscript
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubNamespaceV2 -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
+Set-AzEventHubNamespace -InputObject <IEventHubIdentity> [-AlternateName <String>] [-DisableLocalAuth]
  [-EnableAutoInflate] [-IdentityType <ManagedServiceIdentityType>] [-KeyVaultProperty <IKeyVaultProperties[]>]
  [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-RequireInfrastructureEncryption] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
@@ -40,13 +40,13 @@ Updates an EventHub Namespace
 
 ### Example 1: Add a ManagedIdentity to an EventHub namespace
 ```powershell
-$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+$eventHubNamespace = Get-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 
 $identityId = $eventHubNamespace.UserAssignedIdentity.Keys
 
 $identityId += "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
 
-Set-AzEventHubNamespaceV2 -InputObject $eventHubNamespace -UserAssignedIdentityId $identityId
+Set-AzEventHubNamespace -InputObject $eventHubNamespace -UserAssignedIdentityId $identityId
 ```
 
 ```output
@@ -119,13 +119,13 @@ keys from the hashtable, which would result in an array of strings which can the
 
 ### Example 2: Add a KeyVaultProperty to an existing EventHub Namespace
 ```powershell
-$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+$eventHubNamespace = Get-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 
 $newKeyVaultProperty = New-AzEventHubKeyVaultPropertiesObject -KeyName key3 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 
 $eventHubNamespace.KeyVaultProperty += $newKeyVaultProperty
 
-Set-AzEventHubNamespaceV2 -InputObject $eventHubNamespace -KeyVaultProperty $eventHubNamespace.KeyVaultProperty
+Set-AzEventHubNamespace -InputObject $eventHubNamespace -KeyVaultProperty $eventHubNamespace.KeyVaultProperty
 ```
 
 ```output
@@ -194,12 +194,12 @@ Adds a new KeyVaultProperty to EventHub namespace `myNamespace`.
 
 ### Example 3: Remove a KeyVaultProperty from an existing EventHub Namespace
 ```powershell
-$eventHubNamespace = Get-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace
+$eventHubNamespace = Get-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace
 
 # Remove the last KeyVaultProperty from the list of KeyVaultProperties
 $eventHubNamespace.KeyVaultProperty = $eventHubNamespace.KeyVaultProperty | Where-Object { $_ -ne $eventHubNamespace.KeyVaultProperty[2] }
 
-Set-AzEventHubNamespaceV2 -InputObject $eventHubNamespace -KeyVaultProperty $eventHubNamespace.KeyVaultProperty
+Set-AzEventHubNamespace -InputObject $eventHubNamespace -KeyVaultProperty $eventHubNamespace.KeyVaultProperty
 ```
 
 ```output
@@ -261,7 +261,7 @@ Removes a new KeyVaultProperty to EventHub namespace `myNamespace`.
 
 ### Example 4: Set DisableLocalAuth to true on an existing EventHub namespace
 ```powershell
-Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -DisableLocalAuth
+Set-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -DisableLocalAuth
 ```
 
 ```output
@@ -323,8 +323,8 @@ Sets `DisableLocalAuth` to true on an EventHub namespace `myNamespace`.
 
 ### Example 5: # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None.
 ```powershell
-$eventHubNamespace = New-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
-$eventHubNamespace = Set-AzEventHubNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId @()
+$eventHubNamespace = New-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId "/subscriptions/000000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
+$eventHubNamespace = Set-AzEventHubNamespace -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId @()
 ```
 
 ```output
@@ -697,6 +697,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Set-AzEventHubNamespaceV2
 
 COMPLEX PARAMETER PROPERTIES
 

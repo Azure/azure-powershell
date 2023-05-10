@@ -218,16 +218,16 @@ directive:
       property-name: IdentityTenantId
     set:
       property-name: TenantId
-  
-  - where:
-      subject: Namespace
-    set:
-      subject: NamespaceV2
     
   - where:
       verb: New
-      subject: NamespaceV2
+      subject: Namespace
     hide: true
+
+  - where:
+      subject: Namespace
+    set:
+      alias: NamespaceV2
 
   - where:
       model-name: KeyVaultProperties

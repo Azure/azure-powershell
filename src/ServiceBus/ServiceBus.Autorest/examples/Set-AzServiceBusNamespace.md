@@ -1,9 +1,9 @@
 ### Example 1: Add a KeyVaultProperty to an existing ServiceBus Namespace
 ```powershell
-$serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 $newKeyVaultProperty = New-AzServiceBusKeyVaultPropertiesObject -KeyName key6 -KeyVaultUri https://testkeyvault.vault.azure.net -UserAssignedIdentity "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 $serviceBusNamespace.KeyVaultProperty += $newKeyVaultProperty
-Set-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
 ```
 
 ```output
@@ -74,9 +74,9 @@ Adds a new KeyVaultProperty to ServiceBus namespace `myNamespace`.
 
 ### Example 2: Remove a KeyVaultProperty from an existing ServiceBus Namespace
 ```powershell
-$serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 $serviceBusNamespace.KeyVaultProperty = $serviceBusNamespace.KeyVaultProperty[0,2]
-Set-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -KeyVaultProperty $serviceBusNamespace.KeyVaultProperty
 ```
 
 ```output
@@ -145,10 +145,10 @@ Remove the second KeyVaultProperty from the list of KeyVaultProperties.
 
 ### Example 3: Add UserAssigned Identity to Namespace with IdentityType SystemAssigned to test for SystemAssigned and UserAssigned
 ```powershell
-$serviceBusNamespace = Get-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+$serviceBusNamespace = Get-AzServiceBusNamespace -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 $id1 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity"
 $id2 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
-Set-AzServiceBusNamespaceV2 -InputObject $serviceBusNamespace -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $id1, $id2
+Set-AzServiceBusNamespace -InputObject $serviceBusNamespace -IdentityType "SystemAssigned, UserAssigned" -UserAssignedIdentityId $id1, $id2
 ```
 
 ```output
@@ -203,8 +203,8 @@ Added UserAssigned Identity to Namespace with IdentityType SystemAssigned to tes
 ```powershell
 $id1 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myFirstIdentity" 
 $id2 = "/subscriptions/000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mySecondIdentity"
-$serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $id1,$id2
-$serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId @()
+$serviceBusNamespace = New-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $id1,$id2
+$serviceBusNamespace = Set-AzServiceBusNamespace -ResourceGroupName myResourceGroup -Name myNamespace -IdentityType None -UserAssignedIdentityId @()
 ```
 
 ```output

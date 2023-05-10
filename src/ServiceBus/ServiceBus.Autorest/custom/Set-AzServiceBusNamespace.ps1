@@ -19,7 +19,8 @@ Updates a ServiceBus namespace
 Updates a ServiceBus namespace
 #>
 
-function Set-AzServiceBusNamespaceV2{
+function Set-AzServiceBusNamespace{
+    [Alias("Set-AzServiceBusNamespaceV2")]
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbNamespace])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
@@ -177,7 +178,7 @@ function Set-AzServiceBusNamespaceV2{
                 $hasAsJob = $PSBoundParameters.Remove('AsJob')
                 $null = $PSBoundParameters.Remove('WhatIf')
                 $null = $PSBoundParameters.Remove('Confirm')
-                $serviceBusNamespace = Get-AzServiceBusNamespaceV2 @PSBoundParameters
+                $serviceBusNamespace = Get-AzServiceBusNamespace @PSBoundParameters
 
                 # 2. PUT
                 $null = $PSBoundParameters.Remove('InputObject')
@@ -228,7 +229,7 @@ function Set-AzServiceBusNamespaceV2{
                }
 
                if ($PSCmdlet.ShouldProcess("ServiceBusNamespace $($serviceBusNamespace.Name)", "Create or update")) {
-                    Az.ServiceBus.private\New-AzServiceBusNamespaceV2_CreateViaIdentity -InputObject $serviceBusNamespace -Parameter $serviceBusNamespace @PSBoundParameters
+                    Az.ServiceBus.private\New-AzServiceBusNamespace_CreateViaIdentity -InputObject $serviceBusNamespace -Parameter $serviceBusNamespace @PSBoundParameters
                }
 	}
 	catch{
