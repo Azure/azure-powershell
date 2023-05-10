@@ -163,13 +163,28 @@ function Update-AzFrontDoorCdnProfileSku {
                 if ($changeToWafPolicyName -notmatch '(^[a-zA-Z]+)\w+$') {
                     throw "The WAF name must begin with a letter, and may only contain numbers and letters."
                 }
+
+                $changeToWafPolicySubId = $changeToWafPolicy.split("/")[2]
                 $changeToWafPolicyResourceGroup = $changeToWafPolicy.split("/")[4]
+
+                $context = Get-AzContext
+                if (${SubscriptionId} -ne $context.Subscription.Id)
+                {
+                    Write-Host("The subscription parameter provided is different from local subscription. Now set the value of subscription as: '${SubscriptionId}'")
+                    Set-AzContext -Subscription ${SubscriptionId}
+                }
+
+                # Validate the waf policy whether located in the same subscritpion as the profile.
+                $contextNew = Get-AzContext
+                if ($contextNew.Subscription.Id -ne $changeToWafPolicySubId)
+                {
+                    throw "The subscritpion of existing or created Premium WAF policy should be in the same subscription as the profile's."
+                }
 
                 # 2. Validate whether the policy already exists in the subsrciption
                 try {
                     Get-AzFrontDoorWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -ErrorAction Stop | Out-Null
-                }
-                catch {
+                } catch {
                     $policyName = $wafMapping.SecurityPolicyName
                     # Get the waf policy name of the security.
                     try{
@@ -182,7 +197,10 @@ function Update-AzFrontDoorCdnProfileSku {
                     $currentWafResourceGroup = $policyNameProperty.Parameter.WafPolicyId.split("/")[4]
                     $wafPolicyProperty = Get-AzFrontDoorWafPolicy -ResourceGroupName $currentWafResourceGroup -Name $currentWafName
 
-                    # Create a new waf policy. 
+                    # Create a new waf policy
+                    if ($changeToWafPolicyResourceGroup -ne ${ResourceGroupName}) {
+                        throw "The copied new premium WAF policy should to be created in the same resource group with the current profile's: '${ResourceGroupName}'."
+                    }
                     CreatePremiumWafPolicy -ResourceGroupName $changeToWafPolicyResourceGroup -Name $changeToWafPolicyName -WafProperty $wafPolicyProperty
                 }
             }

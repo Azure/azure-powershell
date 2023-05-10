@@ -117,7 +117,13 @@ function Stop-AzFrontDoorCdnProfileMigration {
         Write-Host("Start to abort the migration.")
         Write-Host("Your new Front Door Profile will be deleted and your existing profile will remain active. WAF policies will not be deleted.")
         Write-Host("Please wait until the process has finished completely. This may take several minutes.")
-        Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
-        Write-Host("Abort successfuly.")
+        if (${SubscriptionId}) {
+            Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName} -SubscriptionId ${SubscriptionId}
+        }
+        else {
+            Remove-AzFrontDoorCdnProfile -ResourceGroupName ${ResourceGroupName} -Name ${ProfileName}
+        }
+
+        Write-Host("Abort succeeded.")
     }
 }

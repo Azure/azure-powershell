@@ -183,7 +183,23 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         Write-Host("Starting the parameter validation process.")
         $classicResourceId = ${ClassicResourceReferenceId}.split("/")
         $frontDoorName = $classicResourceId[-1]
+        $subId = $classicResourceId[2]
         $sku = ${SkuName}.ToString().ToLower()
+
+        $context = Get-AzContext
+        $localSubId = $context.Subscription.Id
+
+        # If the ${SubscriptionId} is equal to localSubId, meaning user don't provide the SubscriptionId Parameter in the command.
+        if ((${SubscriptionId} -ne $localSubId) -and (${SubscriptionId} -ne $subId)) {
+            Write-Host("SubscriptionId provided is: '${SubscriptionId}")
+            throw "The value of subscriptionId: '$subId' of the classic cdn in ClassicResourceReferenceId is different from the Subscription parameter provided."
+        }
+        
+        if ($subId -ne $localSubId)
+        {
+            Write-Host("The subscription of classic cdn located is different from local subscription. Now set the value of subscription as: '$subId'")
+            Set-AzContext -Subscription $subId
+        }
 
         try {
             $frontDoorInfos = Get-AzFrontDoorFrontendEndpoint -ResourceGroupName ${ResourceGroupName} -FrontDoorName $frontDoorName
@@ -201,7 +217,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
         # 2. Validate whether the profile has BYOC
         #    If associated with BYOC, then MSIIdentity parameter should be typed.
         
-        # MigrationWebApplicationFirewallMapping parameter should onlyu requires waf Mapping per waf instance, not the waf-endpoint association count!
+        # MigrationWebApplicationFirewallMapping parameter should only requires waf Mapping per waf instance, not the waf-endpoint association count!
         $allPoliciesWithWAF = New-Object System.Collections.Generic.HashSet[string]
         $allPoliciesWithVault = New-Object System.Collections.Generic.HashSet[string]
         foreach ($info in $frontDoorInfos) {
@@ -213,7 +229,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             }
         }
         if (${MigrationWebApplicationFirewallMapping}.count -ne $allPoliciesWithWAF.count) {
-            throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of waf policy instance in the profile."
+            throw "MigrationWebApplicationFirewallMapping parameter instance should be equal to the number of WAF policy instance in the profile."
         }
 
         if (($PSBoundParameters.ContainsKey('IdentityType')) -ne ($allPoliciesWithVault.count -gt 0)) {
@@ -230,7 +246,7 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
             foreach ($policy in $wafPolicies) {
                 # ToDo: allPoliciesWithWAF use map
                 if ($allPoliciesWithWAF -NotContains $policy.MigratedFromId) {
-                    throw "Waf policy: '$migrateFromId' does not exist in the profile. Waf policy provided should exist in the profile."
+                    throw "WAF policy: '$migrateFromId' does not exist in the profile. WAF policy provided should exist in the profile."
                 }
                 # Validate the Sku argument, if a managed waf associated, then the profile only can migrated to Premium tier. 
                 $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $policy.MigratedFromId
@@ -250,6 +266,9 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
                     $existed = Get-AzFrontDoorWafPolicy -ResourceGroupName $migrateToWafArray[4] -Name $migrateToWafArray[8] -ErrorAction Stop
                 }
                 catch {
+                    if ($migrateToWafArray[4] -ne ${ResourceGroupName}) {
+                        throw "The copied new WAF policy should to be created in the same resource group with the classic front door's: '${ResourceGroupName}'."
+                    }
                     $migrateFromWafPreperty = GetMigrateWafProperty -MigrateWafResourceId $policy.MigratedFromId
                     CreateNewWafPolicy -ResourceGroupName $migrateToWafArray[4] -Name $migrateToWafArray[8] -WafProperty $migrateFromWafPreperty -ManagedRuleMigrateFromWaf $hasManagedRule
                 }
@@ -264,11 +283,14 @@ function Start-AzFrontDoorCdnProfilePrepareMigration {
 
         # Create AFDx Profile
         # If create AfdX profile firstly, then an error ("Invalid migrated to waf reference.") will be thrown if the migrated-To-WAF is supposed to created. (not exists in current subscription)
-        Write-Host("Starting to create your new Front Door profile and configure the new profile. Please wait until the process has finished completely. This may take several minutes.")
+        Write-Host("Your new Front Door profile is being created. Please wait until the process has finished completely. This may take several minutes.")
         $null = $PSBoundParameters.Remove('IdentityType')
         $null = $PSBoundParameters.Remove('IdentityUserAssignedIdentity')
         # Deal with difference between PS5 and PS7.
         $PSBoundParameters.Add('ErrorAction', 'Stop')
+
+        # Upgrade subcriptionId
+        $PSBoundParameters['SubscriptionId'] =  $subId
         Az.Cdn.internal\Move-AzCdnProfile @PSBoundParameters
 
         Write-Host("Your new Front Door profile with the configuration has been successfully created.")
@@ -391,8 +413,8 @@ function ValidateWafPolicies{
         $theSubId = $wafPolicies[0].MigratedFromId.split("/")[2] 
         
         $validateWafIdReg = '/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourceGroups/(?<resourceGroupName>[^/]+/providers/Microsoft.Network/frontdoorWebApplicationFirewallPolicies/*'
-        $migrationFromError = "The format of the waf MigrateFromId should be like '$validateWafIdReg'."
-        $migrationToError = "The format of the waf MigrateToId should be like '$validateWafIdReg'."
+        $migrationFromError = "The format of the WAF MigrateFromId should be like '$validateWafIdReg'."
+        $migrationToError = "The format of the WAF MigrateToId should be like '$validateWafIdReg'."
 
         # Validate the format of the waf policy and the migrateFrom.Id whether exists in the profile.
         $validateWafIdReg = "^/subscriptions/[A-Fa-f0-9]{8}(?:-[A-Fa-f0-9]{4}){3}-[A-Fa-f0-9]{12}/resourcegroups/(?<resourceGroupName>[^/]+)/providers/microsoft.network/frontdoorwebapplicationfirewallpolicies/(?<policyName>[^/]+)$"
@@ -412,7 +434,7 @@ function ValidateWafPolicies{
             $migrateToSub = $policy.MigratedToId.split("/")[2]
             $migrateToName = $policy.MigratedToId.split("/")[8]
             if ($migrateToSub -ne $theSubId) {
-                throw "The selected or created waf policy should be in the same subscription as the classic Afd waf policy."
+                throw "The subscription of existing or created WAF policy should be in the same subscription as the classic AFD WAF policy's."
             }
             if ($migrateToName -notmatch '(^[a-zA-Z]+)\w+$') {
                 throw "The WAF policy name must begin with a letter, and may only contain numbers and letters."
@@ -420,8 +442,7 @@ function ValidateWafPolicies{
 
             if ($migrateToName.Length -gt 260)
             {
-                throw "Maximum 
-                 WAF policy name property is: 260."
+                throw "Maximum WAF policy name property is: 260."
             }
         }
     }
@@ -493,7 +514,7 @@ function ValidateMigrationWafPolicyProperty {
     if ($WafProperty.RequestBodyCheck) {
         $wafHash.Add('RequestBodyCheck', $WafProperty.RequestBodyCheck)
     }
-
+    
     return $wafHash
 }
 
