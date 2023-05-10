@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 * Added support for Continuous 7 Days backup mode.
+* New-AzCosmosDBAccount cmdlet was updated with new parameter: EnablePartitionMerge.
+* Update-AzCosmosDBAccount cmdlet was updated with: EnablePartitionMerge.
 
 ## Version 1.10.1
 * Updated Azure.Core to 1.31.0.
