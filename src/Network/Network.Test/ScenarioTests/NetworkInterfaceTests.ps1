@@ -135,7 +135,7 @@ function Test-NetworkInterfaceCRUD
         $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -DomainNameLabel $domainNameLabel
 
         # Create NetworkInterface
-        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -AuxiliaryMode MaxConnections -AuxiliarySku A1 -Tag @{ fastpathenabled = "true"}
+        $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -EnableAcceleratedNetworking -AuxiliaryMode None -Tag @{ fastpathenabled = "true"}
         $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
         Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
