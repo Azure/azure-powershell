@@ -81,9 +81,7 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName='GetByDevCenter')]
-    [Parameter(ParameterSetName='ListByDevCenter')]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter')]
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
@@ -92,52 +90,40 @@ param(
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
-    [Parameter(ParameterSetName='GetByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ListByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(ParameterSetName='GetByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ListByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(ParameterSetName='GetByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ListByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(ParameterSetName='GetByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ListByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(ParameterSetName='GetByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ListByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(ParameterSetName='GetByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ListByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy

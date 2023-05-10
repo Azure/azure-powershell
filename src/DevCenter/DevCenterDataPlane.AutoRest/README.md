@@ -65,10 +65,9 @@ directive:
       verb: Delay
       subject: DevBoxAction
   - where:
-      verb: Set
-      subject: ^(.*)(Environment)(.*)$
-    set: 
-      verb: Deploy
+      subject: ^(.*)(DevCenterDevBox)(.*)$
+    set:
+      subject: DevBox
   - where:
       verb: Get
       subject: ^(.*)

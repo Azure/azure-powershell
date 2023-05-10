@@ -107,10 +107,7 @@ param(
     # The time to delay the Dev Box action or actions until.
     ${Until},
 
-    [Parameter(ParameterSetName='DelayByDevCenter')]
-    [Parameter(ParameterSetName='Delay1ByDevCenter')]
-    [Parameter(ParameterSetName='DelayViaIdentityByDevCenter')]
-    [Parameter(ParameterSetName='DelayViaIdentity1ByDevCenter')]
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
@@ -119,58 +116,40 @@ param(
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
-    [Parameter(ParameterSetName='DelayByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='Delay1ByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentity1ByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(ParameterSetName='DelayByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='Delay1ByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentity1ByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(ParameterSetName='DelayByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='Delay1ByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentity1ByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(ParameterSetName='DelayByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='Delay1ByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentity1ByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(ParameterSetName='DelayByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='Delay1ByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentity1ByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(ParameterSetName='DelayByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='Delay1ByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='DelayViaIdentity1ByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
@@ -183,6 +162,7 @@ process {
     $null = $PSBoundParameters.Remove("DevCenter")
 
     Az.DevCenter\Delay-AzDevCenterDevDevBoxAction @PSBoundParameters
+
 }
 
 }

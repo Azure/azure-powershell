@@ -144,10 +144,7 @@ param(
     # Parameters object for the environment.
     ${Parameter},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter')]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter')]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter')]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter')]
+    [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Azure')]
@@ -156,76 +153,52 @@ param(
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter')]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter')]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter')]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command as a job
     ${AsJob},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
     ${Break},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be appended to the front of the pipeline
     ${HttpPipelineAppend},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter', DontShow)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Run the command asynchronously
     ${NoWait},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Uri]
     # The URI for the proxy server to use
     ${Proxy},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.PSCredential]
     # Credentials for a proxy server to use for the remote call
     ${ProxyCredential},
 
-    [Parameter(ParameterSetName='ReplaceByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityByDevCenter', DontShow)]
-    [Parameter(ParameterSetName='ReplaceViaIdentityExpandedByDevCenter', DontShow)]
+    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
@@ -239,8 +212,7 @@ process {
     $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
     $null = $PSBoundParameters.Remove("DevCenter")
 
-    #Correct this to use Set
-    Az.DevCenter\Deploy-AzDevCenterDevEnvironment @PSBoundParameters
+    Az.DevCenter\Set-AzDevCenterDevEnvironment @PSBoundParameters
 
 }
 

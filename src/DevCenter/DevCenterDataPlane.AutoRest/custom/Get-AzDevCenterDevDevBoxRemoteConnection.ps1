@@ -49,34 +49,35 @@ https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevdev
 #>
 function Get-AzDevCenterDevDevBoxRemoteConnection {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IRemoteConnection])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+[CmdletBinding(PositionalBinding=$false)]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
-    # The DevCenter-specific URI to operate on.
-    ${Endpoint},
+    # The DevCenter upon which to execute operations.
+    ${DevCenter},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The name of a Dev Box.
     ${DevBoxName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
@@ -132,77 +133,11 @@ param(
     ${ProxyUseDefaultCredentials}
 )
 
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
-        }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
-        $mapping = @{
-            Get = 'Az.DevCenter.private\Get-AzDevCenterDevDevBoxRemoteConnection_Get';
-            GetViaIdentity = 'Az.DevCenter.private\Get-AzDevCenterDevDevBoxRemoteConnection_GetViaIdentity';
-        }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-}
-
 process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
+    $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+    $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
+    $null = $PSBoundParameters.Remove("DevCenter")
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-    }
-
+    Az.DevCenter\Get-AzDevCenterDevDevBoxRemoteConnection @PSBoundParameters
 }
-end {
-    try {
-        $steppablePipeline.End()
-
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
-    } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
-} 
 }
