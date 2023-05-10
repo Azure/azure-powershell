@@ -19,19 +19,19 @@ namespace Microsoft.Azure.Management.Resources
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Management", "DeploymentOperations", "2021-04-01"),
-                new Tuple<string, string, string>("Management", "Deployments", "2021-04-01"),
-                new Tuple<string, string, string>("Management", "Providers", "2021-04-01"),
-                new Tuple<string, string, string>("ResourceManagementClient", "DeploymentOperations", "2021-04-01"),
-                new Tuple<string, string, string>("ResourceManagementClient", "ProviderResourceTypes", "2021-04-01"),
-                new Tuple<string, string, string>("ResourceManagementClient", "Providers", "2021-04-01"),
-                new Tuple<string, string, string>("ResourceManagementClient", "ResourceGroups", "2021-04-01"),
-                new Tuple<string, string, string>("ResourceManagementClient", "Resources", "2021-04-01"),
-                new Tuple<string, string, string>("ResourceManagementClient", "Tags", "2021-04-01"),
-                new Tuple<string, string, string>("Resources", "DeploymentOperations", "2021-04-01"),
-                new Tuple<string, string, string>("Resources", "Deployments", "2021-04-01"),
-                new Tuple<string, string, string>("Resources", "Operations", "2021-04-01"),
-                new Tuple<string, string, string>("Resources", "Tags", "2021-04-01"),
+                new Tuple<string, string, string>("Management", "DeploymentOperations", "2022-09-01"),
+                new Tuple<string, string, string>("Management", "Deployments", "2022-09-01"),
+                new Tuple<string, string, string>("Management", "Providers", "2022-09-01"),
+                new Tuple<string, string, string>("ResourceManagementClient", "DeploymentOperations", "2022-09-01"),
+                new Tuple<string, string, string>("ResourceManagementClient", "ProviderResourceTypes", "2022-09-01"),
+                new Tuple<string, string, string>("ResourceManagementClient", "Providers", "2022-09-01"),
+                new Tuple<string, string, string>("ResourceManagementClient", "ResourceGroups", "2022-09-01"),
+                new Tuple<string, string, string>("ResourceManagementClient", "Resources", "2022-09-01"),
+                new Tuple<string, string, string>("ResourceManagementClient", "Tags", "2022-09-01"),
+                new Tuple<string, string, string>("Resources", "DeploymentOperations", "2022-09-01"),
+                new Tuple<string, string, string>("Resources", "Deployments", "2022-09-01"),
+                new Tuple<string, string, string>("Resources", "Operations", "2022-09-01"),
+                new Tuple<string, string, string>("Resources", "Tags", "2022-09-01"),
               }.AsEnumerable();
           }
       }

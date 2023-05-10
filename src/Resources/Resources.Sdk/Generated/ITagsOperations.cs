@@ -190,7 +190,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TagsResource>> CreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, TagsResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<TagsResource,TagsCreateOrUpdateAtScopeHeaders>> CreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, TagsResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Selectively updates the set of tags on a resource or subscription.
         /// </summary>
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<TagsResource>> UpdateAtScopeWithHttpMessagesAsync(string scope, TagsPatchResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<TagsResource,TagsUpdateAtScopeHeaders>> UpdateAtScopeWithHttpMessagesAsync(string scope, TagsPatchResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the entire set of tags on a resource or subscription.
         /// </summary>
@@ -265,7 +265,90 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse> DeleteAtScopeWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<TagsDeleteAtScopeHeaders>> DeleteAtScopeWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Creates or updates the entire set of tags on a resource or
+        /// subscription.
+        /// </summary>
+        /// <remarks>
+        /// This operation allows adding or replacing the entire set of tags on
+        /// the specified resource or subscription. The specified entity can
+        /// have a maximum of 50 tags.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The resource scope.
+        /// </param>
+        /// <param name='parameters'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<TagsResource,TagsCreateOrUpdateAtScopeHeaders>> BeginCreateOrUpdateAtScopeWithHttpMessagesAsync(string scope, TagsResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Selectively updates the set of tags on a resource or subscription.
+        /// </summary>
+        /// <remarks>
+        /// This operation allows replacing, merging or selectively deleting
+        /// tags on the specified resource or subscription. The specified
+        /// entity can have a maximum of 50 tags at the end of the operation.
+        /// The 'replace' option replaces the entire set of existing tags with
+        /// a new set. The 'merge' option allows adding tags with new names and
+        /// updating the values of tags with existing names. The 'delete'
+        /// option allows selectively deleting tags based on given names or
+        /// name/value pairs.
+        /// </remarks>
+        /// <param name='scope'>
+        /// The resource scope.
+        /// </param>
+        /// <param name='parameters'>
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<TagsResource,TagsUpdateAtScopeHeaders>> BeginUpdateAtScopeWithHttpMessagesAsync(string scope, TagsPatchResource parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Deletes the entire set of tags on a resource or subscription.
+        /// </summary>
+        /// <param name='scope'>
+        /// The resource scope.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<TagsDeleteAtScopeHeaders>> BeginDeleteAtScopeWithHttpMessagesAsync(string scope, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets a summary of tag usage under the subscription.
         /// </summary>

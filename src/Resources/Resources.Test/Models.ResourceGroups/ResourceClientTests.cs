@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             resourceOperationsMock = new Mock<IResourcesOperations>();
             deploymentOperationsMock = new Mock<IDeploymentOperations>();
             providersMock = new Mock<IProvidersOperations>();
-            providersMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, null, new CancellationToken()))
+            providersMock.Setup(f => f.ListWithHttpMessagesAsync(null, null, new CancellationToken()))
                 .Returns(Task.Factory.StartNew(() =>
                 new AzureOperationResponse<IPage<Provider>>()
                 {

@@ -56,7 +56,11 @@ namespace Microsoft.Azure.Management.Resources
             }
 
             /// <summary>
-            /// Registers a management group with a resource provider.
+            /// Registers a management group with a resource provider. Use this operation
+            /// to register a resource provider with resource types that can be deployed at
+            /// the management group scope. It does not recursively register subscriptions
+            /// within the management group. Instead, you must register subscriptions
+            /// individually.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -73,7 +77,11 @@ namespace Microsoft.Azure.Management.Resources
             }
 
             /// <summary>
-            /// Registers a management group with a resource provider.
+            /// Registers a management group with a resource provider. Use this operation
+            /// to register a resource provider with resource types that can be deployed at
+            /// the management group scope. It does not recursively register subscriptions
+            /// within the management group. Instead, you must register subscriptions
+            /// individually.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -172,18 +180,15 @@ namespace Microsoft.Azure.Management.Resources
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='top'>
-            /// The number of results to return. If null is passed returns all deployments.
-            /// </param>
             /// <param name='expand'>
             /// The properties to include in the results. For example, use
             /// &amp;$expand=metadata in the query string to retrieve resource provider
             /// metadata. To include property aliases in response, use
             /// $expand=resourceTypes/aliases.
             /// </param>
-            public static IPage<Provider> List(this IProvidersOperations operations, int? top = default(int?), string expand = default(string))
+            public static IPage<Provider> List(this IProvidersOperations operations, string expand = default(string))
             {
-                return operations.ListAsync(top, expand).GetAwaiter().GetResult();
+                return operations.ListAsync(expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -191,9 +196,6 @@ namespace Microsoft.Azure.Management.Resources
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='top'>
-            /// The number of results to return. If null is passed returns all deployments.
             /// </param>
             /// <param name='expand'>
             /// The properties to include in the results. For example, use
@@ -204,9 +206,9 @@ namespace Microsoft.Azure.Management.Resources
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Provider>> ListAsync(this IProvidersOperations operations, int? top = default(int?), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Provider>> ListAsync(this IProvidersOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListWithHttpMessagesAsync(top, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }
@@ -218,18 +220,15 @@ namespace Microsoft.Azure.Management.Resources
             /// <param name='operations'>
             /// The operations group for this extension method.
             /// </param>
-            /// <param name='top'>
-            /// The number of results to return. If null is passed returns all providers.
-            /// </param>
             /// <param name='expand'>
             /// The properties to include in the results. For example, use
             /// &amp;$expand=metadata in the query string to retrieve resource provider
             /// metadata. To include property aliases in response, use
             /// $expand=resourceTypes/aliases.
             /// </param>
-            public static IPage<Provider> ListAtTenantScope(this IProvidersOperations operations, int? top = default(int?), string expand = default(string))
+            public static IPage<Provider> ListAtTenantScope(this IProvidersOperations operations, string expand = default(string))
             {
-                return operations.ListAtTenantScopeAsync(top, expand).GetAwaiter().GetResult();
+                return operations.ListAtTenantScopeAsync(expand).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -237,9 +236,6 @@ namespace Microsoft.Azure.Management.Resources
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
-            /// </param>
-            /// <param name='top'>
-            /// The number of results to return. If null is passed returns all providers.
             /// </param>
             /// <param name='expand'>
             /// The properties to include in the results. For example, use
@@ -250,9 +246,9 @@ namespace Microsoft.Azure.Management.Resources
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<Provider>> ListAtTenantScopeAsync(this IProvidersOperations operations, int? top = default(int?), string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<Provider>> ListAtTenantScopeAsync(this IProvidersOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListAtTenantScopeWithHttpMessagesAsync(top, expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListAtTenantScopeWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

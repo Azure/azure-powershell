@@ -394,9 +394,9 @@ namespace Microsoft.Azure.Management.Resources
             /// <param name='scope'>
             /// The resource scope.
             /// </param>
-            public static void DeleteAtScope(this ITagsOperations operations, string scope)
+            public static TagsDeleteAtScopeHeaders DeleteAtScope(this ITagsOperations operations, string scope)
             {
-                operations.DeleteAtScopeAsync(scope).GetAwaiter().GetResult();
+                return operations.DeleteAtScopeAsync(scope).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -411,9 +411,150 @@ namespace Microsoft.Azure.Management.Resources
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task DeleteAtScopeAsync(this ITagsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<TagsDeleteAtScopeHeaders> DeleteAtScopeAsync(this ITagsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
             {
-                (await operations.DeleteAtScopeWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false)).Dispose();
+                using (var _result = await operations.DeleteAtScopeWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
+            }
+
+            /// <summary>
+            /// Creates or updates the entire set of tags on a resource or subscription.
+            /// </summary>
+            /// <remarks>
+            /// This operation allows adding or replacing the entire set of tags on the
+            /// specified resource or subscription. The specified entity can have a maximum
+            /// of 50 tags.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The resource scope.
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            public static TagsResource BeginCreateOrUpdateAtScope(this ITagsOperations operations, string scope, TagsResource parameters)
+            {
+                return operations.BeginCreateOrUpdateAtScopeAsync(scope, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Creates or updates the entire set of tags on a resource or subscription.
+            /// </summary>
+            /// <remarks>
+            /// This operation allows adding or replacing the entire set of tags on the
+            /// specified resource or subscription. The specified entity can have a maximum
+            /// of 50 tags.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The resource scope.
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TagsResource> BeginCreateOrUpdateAtScopeAsync(this ITagsOperations operations, string scope, TagsResource parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginCreateOrUpdateAtScopeWithHttpMessagesAsync(scope, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Selectively updates the set of tags on a resource or subscription.
+            /// </summary>
+            /// <remarks>
+            /// This operation allows replacing, merging or selectively deleting tags on
+            /// the specified resource or subscription. The specified entity can have a
+            /// maximum of 50 tags at the end of the operation. The 'replace' option
+            /// replaces the entire set of existing tags with a new set. The 'merge' option
+            /// allows adding tags with new names and updating the values of tags with
+            /// existing names. The 'delete' option allows selectively deleting tags based
+            /// on given names or name/value pairs.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The resource scope.
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            public static TagsResource BeginUpdateAtScope(this ITagsOperations operations, string scope, TagsPatchResource parameters)
+            {
+                return operations.BeginUpdateAtScopeAsync(scope, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Selectively updates the set of tags on a resource or subscription.
+            /// </summary>
+            /// <remarks>
+            /// This operation allows replacing, merging or selectively deleting tags on
+            /// the specified resource or subscription. The specified entity can have a
+            /// maximum of 50 tags at the end of the operation. The 'replace' option
+            /// replaces the entire set of existing tags with a new set. The 'merge' option
+            /// allows adding tags with new names and updating the values of tags with
+            /// existing names. The 'delete' option allows selectively deleting tags based
+            /// on given names or name/value pairs.
+            /// </remarks>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The resource scope.
+            /// </param>
+            /// <param name='parameters'>
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TagsResource> BeginUpdateAtScopeAsync(this ITagsOperations operations, string scope, TagsPatchResource parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginUpdateAtScopeWithHttpMessagesAsync(scope, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// Deletes the entire set of tags on a resource or subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The resource scope.
+            /// </param>
+            public static TagsDeleteAtScopeHeaders BeginDeleteAtScope(this ITagsOperations operations, string scope)
+            {
+                return operations.BeginDeleteAtScopeAsync(scope).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Deletes the entire set of tags on a resource or subscription.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='scope'>
+            /// The resource scope.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<TagsDeleteAtScopeHeaders> BeginDeleteAtScopeAsync(this ITagsOperations operations, string scope, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.BeginDeleteAtScopeWithHttpMessagesAsync(scope, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>

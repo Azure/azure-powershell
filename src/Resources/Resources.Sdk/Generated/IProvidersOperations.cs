@@ -46,7 +46,11 @@ namespace Microsoft.Azure.Management.Resources
         /// </exception>
         Task<AzureOperationResponse<Provider>> UnregisterWithHttpMessagesAsync(string resourceProviderNamespace, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
-        /// Registers a management group with a resource provider.
+        /// Registers a management group with a resource provider. Use this
+        /// operation to register a resource provider with resource types that
+        /// can be deployed at the management group scope. It does not
+        /// recursively register subscriptions within the management group.
+        /// Instead, you must register subscriptions individually.
         /// </summary>
         /// <param name='resourceProviderNamespace'>
         /// The namespace of the resource provider to register.
@@ -117,10 +121,6 @@ namespace Microsoft.Azure.Management.Resources
         /// <summary>
         /// Gets all resource providers for a subscription.
         /// </summary>
-        /// <param name='top'>
-        /// The number of results to return. If null is passed returns all
-        /// deployments.
-        /// </param>
         /// <param name='expand'>
         /// The properties to include in the results. For example, use
         /// &amp;$expand=metadata in the query string to retrieve resource
@@ -142,14 +142,10 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Provider>>> ListWithHttpMessagesAsync(int? top = default(int?), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Provider>>> ListWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets all resource providers for the tenant.
         /// </summary>
-        /// <param name='top'>
-        /// The number of results to return. If null is passed returns all
-        /// providers.
-        /// </param>
         /// <param name='expand'>
         /// The properties to include in the results. For example, use
         /// &amp;$expand=metadata in the query string to retrieve resource
@@ -171,7 +167,7 @@ namespace Microsoft.Azure.Management.Resources
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<IPage<Provider>>> ListAtTenantScopeWithHttpMessagesAsync(int? top = default(int?), string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<IPage<Provider>>> ListAtTenantScopeWithHttpMessagesAsync(string expand = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Gets the specified resource provider.
         /// </summary>
