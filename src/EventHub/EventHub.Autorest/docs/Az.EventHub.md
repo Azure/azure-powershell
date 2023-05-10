@@ -122,7 +122,8 @@ Deletes an existing namespace.
 This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubPrivateEndpointConnection](Remove-AzEventHubPrivateEndpointConnection.md)
-Deletes a Private Endpoint Connection.
+Deletes an existing namespace.
+This operation also removes all associated resources under the namespace.
 
 ### [Remove-AzEventHubSchemaGroup](Remove-AzEventHubSchemaGroup.md)
 Deletes an EventHub schema group.
