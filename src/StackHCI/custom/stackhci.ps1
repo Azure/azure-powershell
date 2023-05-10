@@ -654,36 +654,6 @@ function Show-LatestModuleVersion{
     }
 }
 
-function Get-ManagementUrl {
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
-    param (
-        [parameter(Mandatory=$true)]
-        [string] $EnvironmentName
-    )
-    if ($EnvironmentName -eq 'AzurePublicCloud')
-    {
-        $managementUrl = 'https://management.azure.com'
-    }
-    elseif ($EnvironmentName -eq 'AzureGermanCloud')
-    {
-        $managementUrl = 'https://management.microsoftazure.de'
-    }
-    elseif ($EnvironmentName -eq 'AzureChinaCloud')
-    {
-        $managementUrl = 'https://management.chinacloudapi.cn'
-    }
-    elseif ($EnvironmentName -eq 'AzureUSGovernmentCloud')
-    {
-        $managementUrl = 'https://management.usgovcloudapi.net'
-    }
-    else 
-    {
-        throw "Invalid Azure Environment name"    
-    }
-    
-    return $managementUrl
-}
-
 <#
 Executes a script while suppresing any progressbar coming from cmdlets in script
 Useful while running long running cmdlets (202 pattern) since progressbar from these cmdlets 
@@ -4138,6 +4108,10 @@ param(
 
         $properties = [PSCustomObject]@{
             desiredProperties = $armResource.Properties.desiredProperties
+            aadClientId = $armResource.Properties.aadClientId
+            aadTenantId = $armResource.Properties.aadTenantId
+            aadServicePrincipalObjectId = $armResource.Properties.aadServicePrincipalObjectId
+            aadApplicationObjectId = $armResource.Properties.aadApplicationObjectId
         }
 
         if ($properties.desiredProperties -eq $null)
