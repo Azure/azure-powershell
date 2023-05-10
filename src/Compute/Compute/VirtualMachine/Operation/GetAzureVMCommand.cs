@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Compute
     {
         protected const string DefaultParamSet = "DefaultParamSet";
         protected const string GetVirtualMachineInResourceGroupParamSet = "GetVirtualMachineInResourceGroupParamSet";
-        protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
+        //protected const string ListNextLinkVirtualMachinesParamSet = "ListNextLinkVirtualMachinesParamSet";
         protected const string ListLocationVirtualMachinesParamSet = "ListLocationVirtualMachinesParamSet";
         protected const string GetVirtualMachineById = "GetVirtualMachineById";
         private const string InfoNotAvailable = "Info Not Available";
@@ -88,14 +88,6 @@ namespace Microsoft.Azure.Commands.Compute
         public SwitchParameter Status { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = ListNextLinkVirtualMachinesParamSet,
-            ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
-        public Uri NextLink { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
             ValueFromPipelineByPropertyName = true)]
@@ -110,11 +102,6 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ParameterSetName = GetVirtualMachineInResourceGroupParamSet,
-            HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
-            ValueFromPipelineByPropertyName = true)]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = ListNextLinkVirtualMachinesParamSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         [Parameter(
@@ -152,12 +139,6 @@ namespace Microsoft.Azure.Commands.Compute
                     ReturnListVMObject(
                         this.VirtualMachineClient.ListByLocationWithHttpMessagesAsync(this.Location).GetAwaiter().GetResult(),
                         this.VirtualMachineClient.ListByLocationNextWithHttpMessagesAsync);
-                }
-                else if (this.NextLink != null)
-                {
-                    ReturnListVMObject(
-                        this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync(this.NextLink.ToString()).GetAwaiter().GetResult(),
-                        this.VirtualMachineClient.ListAllNextWithHttpMessagesAsync);
                 }
                 else if (ShouldListBySubscription(ResourceGroupName, Name))
                 {
