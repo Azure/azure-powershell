@@ -78,6 +78,11 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The admin state associated with the Backend Address config",
             ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter(
+            "Up",
+            "Down",
+            "None"
+        )]
         public string AdminState { get; set; }
 
         public override void Execute()
