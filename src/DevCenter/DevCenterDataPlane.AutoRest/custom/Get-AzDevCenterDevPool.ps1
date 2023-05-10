@@ -50,8 +50,9 @@ function Get-AzDevCenterDevPool {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool])]
     [CmdletBinding(PositionalBinding=$false)]
     param(
-        [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
         [Parameter(ParameterSetName='ListByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='GetByDevCenter', Mandatory)]
+        [Parameter(ParameterSetName='GetViaIdentityByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.

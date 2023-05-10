@@ -38,7 +38,8 @@ Get-AzDevCenterDevPool -Endpoint <String> -InputObject <IDevCenterIdentity> [-De
 
 ### GetViaIdentityByDevCenter
 ```
-Get-AzDevCenterDevPool -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevPool -DevCenter <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ListByDevCenter
@@ -97,7 +98,7 @@ The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetByDevCenter, ListByDevCenter
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True
