@@ -16,7 +16,7 @@ Lists entities from groups or get entity from groups by key
 ```
 Get-AzADGroup [-Count] [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>] [-Filter <String>]
  [-First <UInt64>] [-Orderby <String[]>] [-Search <String>] [-Select <String[]>] [-Skip <UInt64>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-CountVariable <String>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
@@ -71,6 +71,14 @@ Get-AzADGroup -Filter "startsWith(DisplayName,'some-name')"
 
 Get group with filter
 
+### Example 5: Assign OdataCount to a variable
+```powershell
+Get-AzADGroup -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
+```
+
+Assign OdataCount to a variable
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -109,6 +117,22 @@ Include count of items
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CountVariable
+Specifies a count of the total number of items in a collection.
+By default, this variable will be set in the global scope.
+
+```yaml
+Type: System.String
 Parameter Sets: EmptyParameterSet
 Aliases:
 
