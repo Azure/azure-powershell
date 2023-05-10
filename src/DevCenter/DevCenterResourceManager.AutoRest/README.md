@@ -41,6 +41,16 @@ input-file:
   - $(repo)/specification/devcenter/resource-manager/Microsoft.DevCenter/stable/2023-04-01/vdi.json
 directive:
   - where:
+      verb: Get
+      subject: ^(.*)
+      parameter-name: Top
+    hide: true
+  - where:
+      verb: Get
+      subject: ^(.*)
+      parameter-name: Filter
+    hide: true
+  - where:
       subject: ^(.*)
     set:
       subject-prefix: DevCenterAdmin

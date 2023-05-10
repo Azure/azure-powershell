@@ -14,13 +14,19 @@ Gets an environment
 
 ### List (Default)
 ```
-Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetByDevCenter
+```
+Get-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -30,10 +36,28 @@ Get-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentit
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityByDevCenter
+```
+Get-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### List1
 ```
-Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> -UserId <String> [-Top <Int32>]
+Get-AzDevCenterDevEnvironment -Endpoint <String> -ProjectName <String> -UserId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1ByDevCenter
+```
+Get-AzDevCenterDevEnvironment -DevCenter <String> -ProjectName <String> -UserId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### ListByDevCenter
+```
+Get-AzDevCenterDevEnvironment -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,12 +105,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, List1ByDevCenter, ListByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity, List, List1
 Aliases:
 
 Required: True
@@ -102,7 +141,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -117,7 +156,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetByDevCenter
 Aliases: EnvironmentName
 
 Required: True
@@ -132,26 +171,10 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, List1
+Parameter Sets: Get, GetByDevCenter, List, List1, List1ByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List, List1
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -164,7 +187,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get, GetByDevCenter, List1, List1ByDevCenter
 Aliases:
 
 Required: True

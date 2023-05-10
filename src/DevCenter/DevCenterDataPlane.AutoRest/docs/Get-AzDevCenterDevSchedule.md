@@ -14,8 +14,8 @@ Gets a schedule.
 
 ### List (Default)
 ```
-Get-AzDevCenterDevSchedule -Endpoint <String> -PoolName <String> -ProjectName <String> [-Filter <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevSchedule -Endpoint <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
@@ -24,10 +24,28 @@ Get-AzDevCenterDevSchedule -Endpoint <String> -PoolName <String> -ProjectName <S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDevCenter
+```
+Get-AzDevCenterDevSchedule -DevCenter <String> -PoolName <String> -ProjectName <String> -ScheduleName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDevCenterDevSchedule -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
+```
+
+### GetViaIdentityByDevCenter
+```
+Get-AzDevCenterDevSchedule -DevCenter <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByDevCenter
+```
+Get-AzDevCenterDevSchedule -DevCenter <String> -PoolName <String> -ProjectName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,12 +93,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Endpoint
-The DevCenter-specific URI to operate on.
+### -DevCenter
+The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, ListByDevCenter
 Aliases:
 
 Required: True
@@ -90,15 +108,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-An OData filter clause to apply to the operation.
+### -Endpoint
+The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: List
+Parameter Sets: Get, GetViaIdentity, List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -111,7 +129,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -126,7 +144,7 @@ The name of a pool of Dev Boxes.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -141,7 +159,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetByDevCenter, List, ListByDevCenter
 Aliases:
 
 Required: True
@@ -156,26 +174,10 @@ The name of a schedule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetByDevCenter
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: List
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

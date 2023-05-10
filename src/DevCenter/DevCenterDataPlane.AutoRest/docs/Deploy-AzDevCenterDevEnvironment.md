@@ -12,29 +12,29 @@ Creates or updates an environment.
 
 ## SYNTAX
 
-### ReplaceExpanded (Default)
+### ReplaceExpandedByDevCenter (Default)
 ```
-Deploy-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Deploy-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
  -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Replace
+### ReplaceByDevCenter
 ```
-Deploy-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <String> -UserId <String>
+Deploy-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
  -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### ReplaceViaIdentity
+### ReplaceViaIdentityByDevCenter
 ```
-Deploy-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -Body <IEnvironment>
+Deploy-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterIdentity> -Body <IEnvironment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### ReplaceViaIdentityExpanded
+### ReplaceViaIdentityExpandedByDevCenter
 ```
-Deploy-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -CatalogName <String>
+Deploy-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterIdentity> -CatalogName <String>
  -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -89,7 +89,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
-Parameter Sets: Replace, ReplaceViaIdentity
+Parameter Sets: ReplaceByDevCenter, ReplaceViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -104,7 +104,7 @@ Name of the catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpandedByDevCenter, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -130,8 +130,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Endpoint
-The DevCenter-specific URI to operate on.
+### -DevCenter
+The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
@@ -150,7 +150,7 @@ Name of the environment definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpandedByDevCenter, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -165,7 +165,7 @@ Environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpandedByDevCenter, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -181,7 +181,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: ReplaceViaIdentity, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceViaIdentityByDevCenter, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -196,7 +196,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Replace, ReplaceExpanded
+Parameter Sets: ReplaceByDevCenter, ReplaceExpandedByDevCenter
 Aliases: EnvironmentName
 
 Required: True
@@ -226,7 +226,7 @@ Parameters object for the environment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny
-Parameter Sets: ReplaceExpanded, ReplaceViaIdentityExpanded
+Parameter Sets: ReplaceExpandedByDevCenter, ReplaceViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: False
@@ -241,7 +241,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Replace, ReplaceExpanded
+Parameter Sets: ReplaceByDevCenter, ReplaceExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -257,7 +257,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Replace, ReplaceExpanded
+Parameter Sets: ReplaceByDevCenter, ReplaceExpandedByDevCenter
 Aliases:
 
 Required: True

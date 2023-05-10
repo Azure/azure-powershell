@@ -25,15 +25,41 @@ New-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String>
  -Body <IDevBox> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateByDevCenter
+```
+New-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ -Body <IDevBox> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpandedByDevCenter
+```
+New-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ -PoolName <String> [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentity
 ```
 New-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> -Body <IDevBox>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityByDevCenter
+```
+New-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> -Body <IDevBox>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> -PoolName <String>
+ [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentityExpandedByDevCenter
+```
+New-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> -PoolName <String>
  [-LocalAdministrator <LocalAdminStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -88,7 +114,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBox
-Parameter Sets: Create, CreateViaIdentity
+Parameter Sets: Create, CreateByDevCenter, CreateViaIdentity, CreateViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -114,12 +140,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByDevCenter, CreateExpandedByDevCenter, CreateViaIdentityByDevCenter, CreateViaIdentityExpandedByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -135,7 +176,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentity, CreateViaIdentityByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -150,7 +191,7 @@ Indicates whether the owner of the Dev Box is a local administrator.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.LocalAdminStatus
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: False
@@ -165,7 +206,7 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
 Aliases: DevBoxName
 
 Required: True
@@ -195,7 +236,7 @@ The name of the Dev Box pool this machine belongs to.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -210,7 +251,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -226,7 +267,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: True

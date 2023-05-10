@@ -12,9 +12,16 @@ Lists all environment types configured for a project.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzDevCenterDevEnvironmentType -Endpoint <String> -ProjectName <String> [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterDevEnvironmentType -Endpoint <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### ListByDevCenter
+```
+Get-AzDevCenterDevEnvironmentType -DevCenter <String> -ProjectName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,12 +69,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: ListByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: List
 Aliases:
 
 Required: True
@@ -86,22 +108,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-The maximum number of resources to return from the operation.
-Example: 'top=10'.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

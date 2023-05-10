@@ -18,9 +18,21 @@ Start-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <Strin
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StartByDevCenter
+```
+Start-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### StartViaIdentity
 ```
 Start-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StartViaIdentityByDevCenter
+```
+Start-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,12 +96,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: StartByDevCenter, StartViaIdentityByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Start, StartViaIdentity
 Aliases:
 
 Required: True
@@ -105,7 +132,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: StartViaIdentity, StartViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -120,7 +147,7 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, StartByDevCenter
 Aliases: DevBoxName
 
 Required: True
@@ -150,7 +177,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, StartByDevCenter
 Aliases:
 
 Required: True
@@ -166,7 +193,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Start, StartByDevCenter
 Aliases:
 
 Required: True
