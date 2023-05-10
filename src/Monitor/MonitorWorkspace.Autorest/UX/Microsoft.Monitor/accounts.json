@@ -1,0 +1,85 @@
+{
+  "resourceType": "accounts",
+  "apiVersion": "2023-04-03",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.monitor"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMonitorWorkspace",
+      "description": "Returns the specific Azure Monitor workspace",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/get-azmonitorworkspace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns the specific Azure Monitor workspace",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.azureMonitorWorkspaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMonitorWorkspace",
+      "description": "Delete a workspace",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Monitor/accounts/{azureMonitorWorkspaceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.monitor/remove-azmonitorworkspace"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a workspace",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.azureMonitorWorkspaceName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
