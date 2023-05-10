@@ -25,17 +25,16 @@ namespace Microsoft.Azure.Commands.Network
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualHubEffectiveRoutes",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VHubEffectiveRoutes",
         DefaultParameterSetName = CortexParameterSetNames.ByVirtualHubName),
-        OutputType(typeof(PSVirtualHub))]
-    public class GetAzureRmVirtualHubEffectiveRoutesCommand : VirtualHubBaseCmdlet
+        OutputType(typeof(PSVirtualHubEffectiveRouteList))]
+    public class GetAzureRmVHubEffectiveRoutesCommand : VirtualHubBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ParameterSetName = CortexParameterSetNames.ByVirtualHubName,
             HelpMessage = "The resource group name.")]
         [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Alias("VirtualHubName", "ParentVirtualHubName", "ParentResourceName")]
@@ -66,11 +65,13 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             HelpMessage = "Resource Id whose effective routes are being requested.")]
+        [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "VirtualWan Resource Type of the specified resource like RouteTable, ExpressRouteConnection.")]
+        [ValidateNotNullOrEmpty]
         public string VirtualWanResourceType { get; set; }
 
         public override void Execute()
@@ -95,7 +96,7 @@ namespace Microsoft.Azure.Commands.Network
                 VirtualWanResourceType = this.VirtualWanResourceType
             };
 
-            VirtualHubClient.GetEffectiveVirtualHubRoutes(ResourceGroupName, VirtualHubName, pSEffectiveRoutesParameters);
+            WriteObject(VirtualHubClient.GetEffectiveVirtualHubRoutes(ResourceGroupName, VirtualHubName, pSEffectiveRoutesParameters));
         }
     }
 }

@@ -48,6 +48,10 @@
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
 * Updated cmdlet to add the property of DisableRequestBodyEnforcement, RequestBodyInspectLimitInKB and DisableFileUploadEnforcement 
     - `New-AzApplicationGatewayFirewallPolicySetting`
+* Add new cmdlets to get virtual hub effective routes and in/outbound routes 
+    - `Get-AzVHubEffectiveRoutes`
+    - `Get-AzVHubInboundRoutes`
+    - `Get-AzVHubOutboundRoutes`
 
 ## Version 5.7.0
 * Onboarded `Microsoft.HardwareSecurityModules/cloudHsmClusters` to private link cmdlets
