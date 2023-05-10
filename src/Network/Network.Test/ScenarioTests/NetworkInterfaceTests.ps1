@@ -1254,9 +1254,9 @@ function Test-NetworkInterfaceWithAuxiliarySku
     $publicIpName = Get-ResourceName
     $nicName = Get-ResourceName
     $domainNameLabel = Get-ResourceName
-    $rglocation = Get-ProviderLocation ResourceManagement "East US 2 EUAP"
+    $rglocation = Get-ProviderLocation ResourceManagement "Central US EUAP"
     $resourceTypeParent = "Microsoft.Network/networkInterfaces"
-    $location = Get-ProviderLocation $resourceTypeParent "East US 2 EUAP"
+    $location = Get-ProviderLocation $resourceTypeParent "Central US EUAP"
     $vmName = Get-ResourceName
 
     try 
@@ -1285,8 +1285,8 @@ function Test-NetworkInterfaceWithAuxiliarySku
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "MaxConnections" $actualNic.Properties.AuxiliaryMode
-        Assert-AreEqual "A2" $actualNic.Properties.AuxiliarySku
+        Assert-AreEqual "MaxConnections" $actualNic.AuxiliaryMode
+        Assert-AreEqual "A2" $actualNic.AuxiliarySku
 
 
         $expectedNic = Get-AzNetworkInterface -ResourceId $actualNic.Id
@@ -1300,8 +1300,8 @@ function Test-NetworkInterfaceWithAuxiliarySku
         Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
         Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
         Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-        Assert-AreEqual "MaxConnections" $actualNic.Properties.AuxiliaryMode
-        Assert-AreEqual "A2" $actualNic.Properties.AuxiliarySku
+        Assert-AreEqual "MaxConnections" $actualNic.AuxiliaryMode
+        Assert-AreEqual "A2" $actualNic.AuxiliarySku
 
 
         # Check publicIp address reference
