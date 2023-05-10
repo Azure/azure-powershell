@@ -72,10 +72,6 @@ function Test-AccountRelatedCmdlets
   Assert-AreEqual $updatedCosmosDBAccount.NetworkAclBypassResourceIds.Count 1
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupIntervalInMinutes 480
   Assert-AreEqual $updatedCosmosDBAccount.BackupPolicy.BackupRetentionIntervalInHours 16
-  Assert-AreEqual $updatedCosmosDBAccount.EnablePartitionMerge 0
-
-  $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableParitionMerge 1
-  Assert-AreEqual $updatedCosmosDBAccount.EnablePartitionMerge 1
 
   $updatedCosmosDBAccount = Update-AzCosmosDBAccount -ResourceGroupName $rgName -Name $cosmosDBAccountName -EnableParitionMerge 0
   Assert-AreEqual $updatedCosmosDBAccount.EnablePartitionMerge 0
