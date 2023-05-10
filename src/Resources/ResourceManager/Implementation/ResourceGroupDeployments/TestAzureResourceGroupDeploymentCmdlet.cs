@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     : null
             };
 
-            WriteObject(ResourceManagerSdkClient.ValidateDeployment(parameters));
+            WriteObject(NewResourceManagerSdkClient.ValidateDeployment(parameters));
         }
     }
 }

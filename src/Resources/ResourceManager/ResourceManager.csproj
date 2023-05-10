@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
+	<PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="3.17.3-preview" />
   </ItemGroup>
 
   <ItemGroup>
