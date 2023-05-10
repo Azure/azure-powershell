@@ -37,6 +37,8 @@ Add network security rule to cluster resource. This will add network security ru
 
 ### Example 1
 ```powershell
+$resourceGroupName = "sfmcps-test-rg"
+$clusterName = "sfmcps-test-cluster"
 $NSRName = "testSecRule1"
 $sourcePortRanges = "1-1000"
 $destinationPortRanges = "1-65535"
@@ -44,13 +46,15 @@ $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.24
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
 $cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-        -Name $NSRName -Access Allow -Direction Outbound -Protocol tcp -Priority 1200 -SourcePortRanges $sourcePortRange -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
+        -Name $NSRName -Access Allow -Direction Outbound -Protocol tcp -Priority 1200 -SourcePortRange $sourcePortRange -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 ```
 
 This command will add network security rule with properties above.
 
 ### Example 2
 ```powershell
+$resourceGroupName = "sfmcps-test-rg"
+$clusterName = "sfmcps-test-cluster"
 $NSRName = "testSecRule2"
 $sourcePortRanges = "1-1000"
 $destinationPortRanges = "1-65535"
@@ -58,13 +62,15 @@ $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.24
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
 $cluster = Add-AzServiceFabricManagedClusterNetworkSecurityRule -ResourceGroupName $resourceGroupName -ClusterName $clusterName `
-        -Name $NSRName -Access Deny -Direction Outbound -Protocol udp -Priority 1300 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
+        -Name $NSRName -Access Deny -Direction Outbound -Protocol udp -Priority 1300 -SourcePortRange $sourcePortRange -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 ```
 
 Similar to Example1 with different properties.
 
 ### Example 3
 ```powershell
+$resourceGroupName = "sfmcps-test-rg"
+$clusterName = "sfmcps-test-cluster"
 $NSRName = "testSecRule3"
 $description = "test network security rule"
 $sourcePortRanges = "1-1000"
@@ -73,7 +79,7 @@ $destinationAddressPrefixes = "194.69.104.0/25", "194.69.119.64/26", "167.220.24
 $sourceAddressPrefixes = "167.220.242.0/27", "167.220.0.0/23", "131.107.132.16/28", "167.220.81.128/26"
 
 $cluster = $clusterFromGet | Add-AzServiceFabricManagedClusterNetworkSecurityRule `
-        -Name $NSRName -Access Allow -Description $description -Direction Outbound -Protocol tcp -Priority 1400 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefix -SourceAddressPrefixes $sourceAddressPrefixes -Verbose
+        -Name $NSRName -Access Allow -Description $description -Direction Outbound -Protocol tcp -Priority 1400 -SourcePortRange $sourcePortRanges -DestinationPortRange $destinationPortRanges -DestinationAddressPrefix $destinationAddressPrefixes -SourceAddressPrefix $sourceAddressPrefixes -Verbose
 ```
 
 This command will add a network security rule using cluster object with piping.
