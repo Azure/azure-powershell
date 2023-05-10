@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added "$blobchangefeed" to be a valid container name
 
 ## Version 5.6.0
 * Supported rename file and directory
