@@ -21,12 +21,12 @@ Create an in-memory object for ContactProfileLinkChannel.
 Create an in-memory object for ContactProfileLinkChannel.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel
+Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel
 .Link
 https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
 #>
 function New-AzOrbitalContactProfileLinkChannelObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -67,7 +67,7 @@ function New-AzOrbitalContactProfileLinkChannelObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20220301.ContactProfileLinkChannel]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Orbital.Models.Api20221101.ContactProfileLinkChannel]::New()
 
         if ($PSBoundParameters.ContainsKey('BandwidthMHz')) {
             $Object.BandwidthMHz = $BandwidthMHz
