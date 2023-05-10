@@ -14,37 +14,20 @@ Add network security rule to cluster resource.
 
 ### ByObj (Default)
 ```
-Add-AzServiceFabricManagedClusterNetworkSecurityRule 
-[-InputObject <PSManagedCluster>]
-[-Name <String> ]
-[-Access <NetworkSecurityAccess>]
-[-Description <String>]
-[-DestinationAddressPrefix <String[]>]
-[-DestinationPortRange <String[]>]
-[-Direction <NetworkSecurityDirection>]
-[-Priority <Int32>]
-[-Protocol <NetworkSecurityProtocol>]
-[-SourceAddressPrefix <String[]>]
-[-SourcePortRange <String[]>]
-[-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzServiceFabricManagedClusterNetworkSecurityRule [-InputObject] <PSManagedCluster>
+ -Access <NetworkSecurityAccess> [-Description <String>] -DestinationAddressPrefix <String[]>
+ -DestinationPortRange <String[]> -Direction <NetworkSecurityDirection> -Name <String> -Priority <Int32>
+ -Protocol <NetworkSecurityProtocol> -SourceAddressPrefix <String[]> -SourcePortRange <String[]> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Add-AzServiceFabricManagedClusterNetworkSecurityRule
-[-ResourceGroupName <String> ]
-[-ClusterName <String> ]
-[-Name <String> ]
-[-Access <NetworkSecurityAccess>]
-[-Description <String>]
-[-DestinationAddressPrefix <String[]>]
-[-DestinationPortRange <String[]>]
-[-Direction <NetworkSecurityDirection>]
-[-Priority <Int32>]
-[-Protocol <NetworkSecurityProtocol>]
-[-SourceAddressPrefix <String[]>]
-[-SourcePortRange <String[]>]
-[-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzServiceFabricManagedClusterNetworkSecurityRule [-ResourceGroupName] <String> [-ClusterName] <String>
+ -Access <NetworkSecurityAccess> [-Description <String>] -DestinationAddressPrefix <String[]>
+ -DestinationPortRange <String[]> -Direction <NetworkSecurityDirection> -Name <String> -Priority <Int32>
+ -Protocol <NetworkSecurityProtocol> -SourceAddressPrefix <String[]> -SourcePortRange <String[]> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +80,22 @@ This command will add a network security rule using cluster object with piping.
 
 ## PARAMETERS
 
+### -Access
+Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.NetworkSecurityAccess
+Parameter Sets: (All)
+Aliases:
+Accepted values: Allow, Deny
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -AsJob
 Run cmdlet in the background and return a Job to track progress
 
@@ -118,7 +117,7 @@ Specify the name of the cluster.
 ```yaml
 Type: System.String
 Parameter Sets: ByName
-Aliases: ClusterName
+Aliases:
 
 Required: True
 Position: 1
@@ -127,30 +126,15 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specify the name of the resource group.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases:
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Access
-Gets or sets the network traffic is allowed or denied. Possible values include: Allow, Deny
-
-```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.Access
-Parameter Sets: ByName
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,6 +170,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ### -DestinationPortRange
 Gets or sets the destination port ranges
 
@@ -205,9 +190,40 @@ Accept wildcard characters: False
 Gets or sets network security rule direction. Possible values include: Inbound, Outbound
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.Direction
-Parameter Sets: ByName
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.NetworkSecurityDirection
+Parameter Sets: (All)
 Aliases:
+Accepted values: Inbound, Outbound
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Managed cluster resource
+
+```yaml
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
+Parameter Sets: ByObj
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Network Security Rule name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: NetworkSecurityRuleName
 
 Required: True
 Position: Named
@@ -231,19 +247,34 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-
 ### -Protocol
 Gets or sets network protocol this rule applies to. Possible values include: http, https, tcp, udp, icmp, ah, esp, any
 
 ```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.Protocol
-Parameter Sets: ByName
+Type: Microsoft.Azure.Commands.ServiceFabric.Models.NetworkSecurityProtocol
+Parameter Sets: (All)
 Aliases:
+Accepted values: https, http, udp, tcp, esp, icmp, ah, any
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specify the name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -268,50 +299,6 @@ Run cmdlet in the background and return a Job to track progress
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Managed cluster resource
-
-```yaml
-Type: Microsoft.Azure.Commands.ServiceFabric.Models.PSManagedCluster
-Parameter Sets: ByObj
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-### -Name
-Network Security Rule name
-
-```yaml
-Type: System.String
-Parameter Sets: ClientCertByTpByObj, ClientCertByTpByName
 Aliases:
 
 Required: True
