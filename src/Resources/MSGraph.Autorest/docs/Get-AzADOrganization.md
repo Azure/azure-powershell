@@ -13,8 +13,9 @@ Retrieve a list of organization objects.
 ## SYNTAX
 
 ```
-Get-AzADOrganization [-Count] [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
- [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzADOrganization [-Count] [-Expand <List<String>>] [-Filter <String>] [-Orderby <List<String>>]
+ [-Search <String>] [-Select <List<String>>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +66,7 @@ Accept wildcard characters: False
 Expand related entities
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 Order items by property values
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -140,7 +141,7 @@ Accept wildcard characters: False
 Select properties to be returned
 
 ```yaml
-Type: System.String[]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -180,4 +181,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
+
+[Find more info here](https://learn.microsoft.com/graph/api/organization-list?view=graph-rest-1.0)
 
