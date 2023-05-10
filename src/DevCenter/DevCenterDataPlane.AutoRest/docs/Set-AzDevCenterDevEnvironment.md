@@ -26,6 +26,20 @@ Set-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <St
  [<CommonParameters>]
 ```
 
+### ReplaceByDevCenter
+```
+Set-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### ReplaceExpandedByDevCenter
+```
+Set-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Creates or updates an environment.
 
@@ -76,7 +90,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
-Parameter Sets: Replace
+Parameter Sets: Replace, ReplaceByDevCenter
 Aliases:
 
 Required: True
@@ -91,7 +105,7 @@ Name of the catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -117,12 +131,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: ReplaceByDevCenter, ReplaceExpandedByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Replace, ReplaceExpanded
 Aliases:
 
 Required: True
@@ -137,7 +166,7 @@ Name of the environment definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -152,7 +181,7 @@ Environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -197,7 +226,7 @@ Parameters object for the environment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny
-Parameter Sets: ReplaceExpanded
+Parameter Sets: ReplaceExpanded, ReplaceExpandedByDevCenter
 Aliases:
 
 Required: False

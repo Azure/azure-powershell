@@ -16,24 +16,39 @@
 
 <#
 .Synopsis
-Delays the occurrence of an action.
+Creates or updates an environment.
 .Description
-Delays the occurrence of an action.
+Creates or updates an environment.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
+.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxAction
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxActionDelayResult
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+BODY <IEnvironment>: Properties of an environment.
+  CatalogName <String>: Name of the catalog.
+  DefinitionName <String>: Name of the environment definition.
+  Type <String>: Environment type.
+  [Parameter <IAny>]: Parameters object for the environment.
+  [Code <String>]: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+  [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
+    Code <String>: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+    Message <String>: A message describing the error, intended to be suitable for display in a user interface.
+    [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
+    [Target <String>]: The target of the particular error. For example, the name of the property in error.
+  [Message <String>]: A message describing the error, intended to be suitable for display in a user interface.
+  [OperationLocation <String>]: 
+  [Target <String>]: The target of the particular error. For example, the name of the property in error.
 
 INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [ActionName <String>]: The name of an action that will take place on a Dev Box.
@@ -47,65 +62,87 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/delay-azdevcenterdevdevboxaction
+https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenterdevenvironment
 #>
-function Delay-AzDevCenterDevDevBoxAction {
-  [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevBoxActionDelayResult])]
-  [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
-  param(
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory)]
+function New-AzDevCenterDevEnvironment {
+[OutputType([System.Boolean])]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='CreateByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter', Mandatory)]
+    [Alias('EnvironmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
-    # The name of an action that will take place on a Dev Box.
-    ${ActionName},
+    # The name of the environment.
+    ${Name},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [System.String]
-    # The name of a Dev Box.
-    ${DevBoxName},
-
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The AAD object id of the user.
     # If value is 'me', the identity is taken from the authentication context.
     ${UserId},
 
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
-    [Parameter(ParameterSetName = 'DelayByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'Delay1ByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentityByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'DelayViaIdentity1ByDevCenter', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Query')]
-    [System.DateTime]
-    # The time to delay the Dev Box action or actions until.
-    ${Until},
+    [Parameter(ParameterSetName='CreateByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment]
+    # Properties of an environment.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Name of the catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Name of the environment definition.
+    ${EnvironmentDefinitionName},
+
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Environment type.
+    ${EnvironmentType},
+
+    [Parameter(ParameterSetName='CreateExpandedByDevCenter')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpandedByDevCenter')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny]
+    # Parameters object for the environment.
+    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -115,6 +152,12 @@ function Delay-AzDevCenterDevDevBoxAction {
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
@@ -136,6 +179,12 @@ function Delay-AzDevCenterDevDevBoxAction {
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Uri]
@@ -154,13 +203,13 @@ function Delay-AzDevCenterDevDevBoxAction {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
 
-  process {
+process {
     $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
     $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
     $null = $PSBoundParameters.Remove("DevCenter")
 
-    Az.DevCenter\Delay-AzDevCenterDevDevBoxAction @PSBoundParameters
-  }
+    Az.DevCenter\New-AzDevCenterDevEnvironment @PSBoundParameters
+}
 }

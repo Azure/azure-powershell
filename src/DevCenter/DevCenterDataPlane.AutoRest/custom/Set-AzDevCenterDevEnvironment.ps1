@@ -16,70 +16,101 @@
 
 <#
 .Synopsis
-Gets the specified catalog within the project
+Creates or updates an environment.
 .Description
-Gets the specified catalog within the project
+Creates or updates an environment.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ICatalog
-.Outputs
-System.String
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
-  [ActionName <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
-  [Id <String>]: Resource identity path
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
-  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+BODY <IEnvironment>: Properties of an environment.
+  CatalogName <String>: Name of the catalog.
+  DefinitionName <String>: Name of the environment definition.
+  Type <String>: Environment type.
+  [Parameter <IAny>]: Parameters object for the environment.
+  [Code <String>]: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+  [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
+    Code <String>: An identifier for the error. Codes are invariant and are intended to be consumed programmatically.
+    Message <String>: A message describing the error, intended to be suitable for display in a user interface.
+    [Detail <ICloudErrorBody[]>]: A list of additional details about the error.
+    [Target <String>]: The target of the particular error. For example, the name of the property in error.
+  [Message <String>]: A message describing the error, intended to be suitable for display in a user interface.
+  [OperationLocation <String>]: 
+  [Target <String>]: The target of the particular error. For example, the name of the property in error.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevcatalog
+https://learn.microsoft.com/powershell/module/az.devcenter/set-azdevcenterdevenvironment
 #>
-function Get-AzDevCenterDevCatalog {
-  [OutputType([System.String], [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ICatalog])]
-  [CmdletBinding(PositionalBinding = $false)]
-  param(
-    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
+function Set-AzDevCenterDevEnvironment {
+[OutputType([System.Boolean])]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='ReplaceByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
 
-    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+    [Parameter(Mandatory)]
+    [Alias('EnvironmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
-    # The name of the catalog
-    ${CatalogName},
+    # The name of the environment.
+    ${Name},
 
-    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='ReplaceByDevCenter', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment]
+    # Properties of an environment.
+    # To construct, see NOTES section for BODY properties and create a hash table.
+    ${Body},
+
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Name of the catalog.
+    ${CatalogName},
+
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Name of the environment definition.
+    ${EnvironmentDefinitionName},
+
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # Environment type.
+    ${EnvironmentType},
+
+    [Parameter(ParameterSetName='ReplaceExpandedByDevCenter')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny]
+    # Parameters object for the environment.
+    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -89,6 +120,12 @@ function Get-AzDevCenterDevCatalog {
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
@@ -110,6 +147,12 @@ function Get-AzDevCenterDevCatalog {
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Uri]
@@ -128,15 +171,13 @@ function Get-AzDevCenterDevCatalog {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
 
-
-
-  process {
+process {
     $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
     $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
     $null = $PSBoundParameters.Remove("DevCenter")
 
-    Az.DevCenter\Get-AzDevCenterDevCatalog @PSBoundParameters
-  }
+    Az.DevCenter\Set-AzDevCenterDevEnvironment @PSBoundParameters
+}
 }

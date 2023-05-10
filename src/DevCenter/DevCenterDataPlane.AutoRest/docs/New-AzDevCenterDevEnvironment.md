@@ -26,15 +26,42 @@ New-AzDevCenterDevEnvironment -Endpoint <String> -Name <String> -ProjectName <St
  [<CommonParameters>]
 ```
 
+### CreateByDevCenter
+```
+New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ -Body <IEnvironment> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateExpandedByDevCenter
+```
+New-AzDevCenterDevEnvironment -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ -CatalogName <String> -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentity
 ```
 New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -Body <IEnvironment>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### CreateViaIdentityByDevCenter
+```
+New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterIdentity> -Body <IEnvironment>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterDevEnvironment -Endpoint <String> -InputObject <IDevCenterIdentity> -CatalogName <String>
+ -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpandedByDevCenter
+```
+New-AzDevCenterDevEnvironment -DevCenter <String> -InputObject <IDevCenterIdentity> -CatalogName <String>
  -EnvironmentDefinitionName <String> -EnvironmentType <String> [-Parameter <IAny>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -89,7 +116,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironment
-Parameter Sets: Create, CreateViaIdentity
+Parameter Sets: Create, CreateByDevCenter, CreateViaIdentity, CreateViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -104,7 +131,7 @@ Name of the catalog.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -130,12 +157,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateByDevCenter, CreateExpandedByDevCenter, CreateViaIdentityByDevCenter, CreateViaIdentityExpandedByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Create, CreateExpanded, CreateViaIdentity, CreateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -150,7 +192,7 @@ Name of the environment definition.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -165,7 +207,7 @@ Environment type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -181,7 +223,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentity, CreateViaIdentityByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -196,7 +238,7 @@ The name of the environment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
 Aliases: EnvironmentName
 
 Required: True
@@ -226,7 +268,7 @@ Parameters object for the environment.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded, CreateExpandedByDevCenter, CreateViaIdentityExpanded, CreateViaIdentityExpandedByDevCenter
 Aliases:
 
 Required: False
@@ -241,7 +283,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: True
@@ -257,7 +299,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: Create, CreateByDevCenter, CreateExpanded, CreateExpandedByDevCenter
 Aliases:
 
 Required: True

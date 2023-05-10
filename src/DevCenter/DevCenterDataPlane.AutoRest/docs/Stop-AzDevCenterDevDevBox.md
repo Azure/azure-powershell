@@ -18,9 +18,21 @@ Stop-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String
  [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StopByDevCenter
+```
+Stop-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ### StopViaIdentity
 ```
 Stop-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> [-Hibernate]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### StopViaIdentityByDevCenter
+```
+Stop-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> [-Hibernate]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,12 +96,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: StopByDevCenter, StopViaIdentityByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Stop, StopViaIdentity
 Aliases:
 
 Required: True
@@ -120,7 +147,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: StopViaIdentity
+Parameter Sets: StopViaIdentity, StopViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -135,7 +162,7 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopByDevCenter
 Aliases: DevBoxName
 
 Required: True
@@ -165,7 +192,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopByDevCenter
 Aliases:
 
 Required: True
@@ -181,7 +208,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop
+Parameter Sets: Stop, StopByDevCenter
 Aliases:
 
 Required: True

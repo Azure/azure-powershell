@@ -23,9 +23,21 @@ Get-AzDevCenterDevDevBox -Endpoint <String> -Name <String> -ProjectName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetByDevCenter
+```
+Get-AzDevCenterDevDevBox -DevCenter <String> -Name <String> -ProjectName <String> -UserId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentityByDevCenter
+```
+Get-AzDevCenterDevDevBox -DevCenter <String> -InputObject <IDevCenterIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -34,9 +46,21 @@ Get-AzDevCenterDevDevBox -Endpoint <String> -InputObject <IDevCenterIdentity> [-
 Get-AzDevCenterDevDevBox -Endpoint <String> -UserId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1ByDevCenter
+```
+Get-AzDevCenterDevDevBox -DevCenter <String> -UserId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### List2
 ```
 Get-AzDevCenterDevDevBox -Endpoint <String> -ProjectName <String> -UserId <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List2ByDevCenter
+```
+Get-AzDevCenterDevDevBox -DevCenter <String> -ProjectName <String> -UserId <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -85,12 +109,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByDevCenter, GetViaIdentityByDevCenter, List1ByDevCenter, List2ByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Endpoint
 The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, GetViaIdentity, List, List1, List2
 Aliases:
 
 Required: True
@@ -106,7 +145,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -121,7 +160,7 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetByDevCenter
 Aliases: DevBoxName
 
 Required: True
@@ -136,7 +175,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List2
+Parameter Sets: Get, GetByDevCenter, List2, List2ByDevCenter
 Aliases:
 
 Required: True
@@ -152,7 +191,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1, List2
+Parameter Sets: Get, GetByDevCenter, List1, List1ByDevCenter, List2, List2ByDevCenter
 Aliases:
 
 Required: True

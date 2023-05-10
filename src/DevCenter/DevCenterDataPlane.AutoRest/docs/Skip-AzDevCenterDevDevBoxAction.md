@@ -19,9 +19,22 @@ Skip-AzDevCenterDevDevBoxAction -Endpoint <String> -ActionName <String> -DevBoxN
  [<CommonParameters>]
 ```
 
+### SkipByDevCenter
+```
+Skip-AzDevCenterDevDevBoxAction -DevCenter <String> -ActionName <String> -DevBoxName <String>
+ -ProjectName <String> -UserId <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ### SkipViaIdentity
 ```
 Skip-AzDevCenterDevDevBoxAction -Endpoint <String> -InputObject <IDevCenterIdentity>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### SkipViaIdentityByDevCenter
+```
+Skip-AzDevCenterDevDevBoxAction -DevCenter <String> -InputObject <IDevCenterIdentity>
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -59,7 +72,7 @@ The name of an action that will take place on a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Skip
+Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
 Required: True
@@ -90,7 +103,22 @@ The name of a Dev Box.
 
 ```yaml
 Type: System.String
-Parameter Sets: Skip
+Parameter Sets: Skip, SkipByDevCenter
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DevCenter
+The DevCenter upon which to execute operations.
+
+```yaml
+Type: System.String
+Parameter Sets: SkipByDevCenter, SkipViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -105,7 +133,7 @@ The DevCenter-specific URI to operate on.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Skip, SkipViaIdentity
 Aliases:
 
 Required: True
@@ -121,7 +149,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
-Parameter Sets: SkipViaIdentity
+Parameter Sets: SkipViaIdentity, SkipViaIdentityByDevCenter
 Aliases:
 
 Required: True
@@ -151,7 +179,7 @@ The DevCenter Project upon which to execute operations.
 
 ```yaml
 Type: System.String
-Parameter Sets: Skip
+Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
 Required: True
@@ -167,7 +195,7 @@ If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
 Type: System.String
-Parameter Sets: Skip
+Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
 Required: True

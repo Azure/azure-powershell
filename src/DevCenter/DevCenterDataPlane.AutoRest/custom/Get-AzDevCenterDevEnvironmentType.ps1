@@ -1,3 +1,4 @@
+
 # ----------------------------------------------------------------------------------
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,69 +16,35 @@
 
 <#
 .Synopsis
-Gets a pool
+Lists all environment types configured for a project.
 .Description
-Gets a pool
+Lists all environment types configured for a project.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool
-.Notes
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
-  [ActionName <String>]: The name of an action that will take place on a Dev Box.
-  [CatalogName <String>]: The name of the catalog
-  [DefinitionName <String>]: The name of the environment definition
-  [DevBoxName <String>]: The name of a Dev Box.
-  [EnvironmentName <String>]: The name of the environment.
-  [Id <String>]: Resource identity path
-  [PoolName <String>]: The name of a pool of Dev Boxes.
-  [ProjectName <String>]: The DevCenter Project upon which to execute operations.
-  [ScheduleName <String>]: The name of a schedule.
-  [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironmentType
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevpool
+https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevenvironmenttype
 #>
-function Get-AzDevCenterDevPool {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IPool])]
+function Get-AzDevCenterDevEnvironmentType {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IEnvironmentType])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
         [System.String]
         # The DevCenter upon which to execute operations.
         ${DevCenter},
-    
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [System.String]
-        # The name of a pool of Dev Boxes.
-        ${PoolName},
-    
-        [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-        [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
+
+        [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
         [System.String]
         # The DevCenter Project upon which to execute operations.
         ${ProjectName},
-    
-        [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-    
+
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -86,54 +53,53 @@ function Get-AzDevCenterDevPool {
         # The DefaultProfile parameter is not functional.
         # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
         ${DefaultProfile},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
-    
+
         [Parameter(DontShow)]
         [ValidateNotNull()]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}
     )
-    
-    
+
     process {
         $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
         $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
         $null = $PSBoundParameters.Remove("DevCenter")
 
-        Az.DevCenter\Get-AzDevCenterDevPool @PSBoundParameters
+        Az.DevCenter\Get-AzDevCenterDevEnvironmentType @PSBoundParameters
+
     }
 }
-    

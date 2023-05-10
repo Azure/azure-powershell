@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Gets the specified catalog within the project
+Deletes an environment and all its associated resources
 .Description
-Gets the specified catalog within the project
+Deletes an environment and all its associated resources
 .Example
 {{ Add code here }}
 .Example
@@ -27,9 +27,7 @@ Gets the specified catalog within the project
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ICatalog
-.Outputs
-System.String
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,34 +45,40 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [ScheduleName <String>]: The name of a schedule.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
-https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenterdevcatalog
+https://learn.microsoft.com/powershell/module/az.devcenter/remove-azdevcenterdevenvironment
 #>
-function Get-AzDevCenterDevCatalog {
-  [OutputType([System.String], [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.ICatalog])]
-  [CmdletBinding(PositionalBinding = $false)]
-  param(
-    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory)]
+function Remove-AzDevCenterDevEnvironment {
+[OutputType([System.Boolean])]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+param(
+    [Parameter(ParameterSetName='DeleteByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='DeleteViaIdentityByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Uri')]
     [System.String]
     # The DevCenter upon which to execute operations.
     ${DevCenter},
 
-    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='DeleteByDevCenter', Mandatory)]
+    [Alias('EnvironmentName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
-    # The name of the catalog
-    ${CatalogName},
+    # The name of the environment.
+    ${Name},
 
-    [Parameter(ParameterSetName = 'GetByDevCenter', Mandatory)]
-    [Parameter(ParameterSetName = 'ListByDevCenter', Mandatory)]
+    [Parameter(ParameterSetName='DeleteByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [System.String]
     # The DevCenter Project upon which to execute operations.
     ${ProjectName},
 
-    [Parameter(ParameterSetName = 'GetViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='DeleteByDevCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
+    [System.String]
+    # The AAD object id of the user.
+    # If value is 'me', the identity is taken from the authentication context.
+    ${UserId},
+
+    [Parameter(ParameterSetName='DeleteViaIdentityByDevCenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity]
     # Identity Parameter
@@ -89,6 +93,12 @@ function Get-AzDevCenterDevCatalog {
     # The DefaultProfile parameter is not functional.
     # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command as a job
+    ${AsJob},
 
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
@@ -110,6 +120,18 @@ function Get-AzDevCenterDevCatalog {
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Run the command asynchronously
+    ${NoWait},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Runtime')]
     [System.Uri]
@@ -128,15 +150,13 @@ function Get-AzDevCenterDevCatalog {
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials}
-  )
+)
 
-
-
-  process {
+process {
     $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
     $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
     $null = $PSBoundParameters.Remove("DevCenter")
 
-    Az.DevCenter\Get-AzDevCenterDevCatalog @PSBoundParameters
-  }
+    Az.DevCenter\Remove-AzDevCenterDevEnvironment @PSBoundParameters
+}
 }
