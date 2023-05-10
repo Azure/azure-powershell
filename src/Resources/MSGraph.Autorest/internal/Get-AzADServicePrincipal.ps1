@@ -33,6 +33,9 @@ Get-AzADServicePrincipal -ApplicationId $appId
 Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 .Example
 Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
+.Example
+Get-AzADServicePrincipal -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -53,14 +56,16 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.String[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # Expand related entities
     ${Expand},
 
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.String[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # Select properties to be returned
     ${Select},
 
@@ -79,7 +84,8 @@ param(
     [Parameter(ParameterSetName='List')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
-    [System.String[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(PossibleTypes=([System.String]))]
+    [System.Collections.Generic.List[System.String]]
     # Order items by property values
     ${Orderby},
 
@@ -113,8 +119,7 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The DefaultProfile parameter is not functional.
-    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+    # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -154,7 +159,14 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.String]
+    # Specifies a count of the total number of items in a collection.
+    # By default, this variable will be set in the global scope.
+    ${CountVariable}
 )
 
 begin {

@@ -48,6 +48,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         }
     }
 
+    [AttributeUsage(AttributeTargets.Class)]
+    public class HttpPathAttribute : Attribute
+    {
+        public string Path { get; set; }
+        public string ApiVersion { get; set; }
+    }
+
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
     public class CategoryAttribute : Attribute
     {
@@ -100,6 +107,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph
         Inherited = 0,
         Owned,
         Inlined
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class ConstantAttribute : Attribute
+    {
     }
 
     [AttributeUsage(AttributeTargets.Property)]

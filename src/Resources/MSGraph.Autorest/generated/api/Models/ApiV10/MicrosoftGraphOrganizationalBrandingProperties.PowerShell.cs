@@ -136,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             if (content.Contains("CdnList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList = (string[]) content.GetValueForProperty("CdnList",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList = (System.Collections.Generic.List<string>) content.GetValueForProperty("CdnList",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("SignInPageText"))
             {
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             if (content.Contains("CdnList"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList = (string[]) content.GetValueForProperty("CdnList",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList = (System.Collections.Generic.List<string>) content.GetValueForProperty("CdnList",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOrganizationalBrandingPropertiesInternal)this).CdnList, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("SignInPageText"))
             {

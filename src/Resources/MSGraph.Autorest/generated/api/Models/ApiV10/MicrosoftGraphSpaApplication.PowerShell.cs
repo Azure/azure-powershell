@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             // actually deserialize
             if (content.Contains("RedirectUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri = (string[]) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri = (System.Collections.Generic.List<string>) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             // actually deserialize
             if (content.Contains("RedirectUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri = (string[]) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri = (System.Collections.Generic.List<string>) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphSpaApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             // this type is a dictionary; copy elements from source to here.
             CopyFrom(content);

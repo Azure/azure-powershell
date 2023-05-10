@@ -121,7 +121,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             if (content.Contains("RedirectUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri = (string[]) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri = (System.Collections.Generic.List<string>) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ImplicitGrantSetting"))
             {
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             }
             if (content.Contains("RedirectUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri = (string[]) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri = (System.Collections.Generic.List<string>) content.GetValueForProperty("RedirectUri",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphWebApplicationInternal)this).RedirectUri, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("ImplicitGrantSetting"))
             {

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroupLifecyclePolicy FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphGroupLifecyclePolicy(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"alternateNotificationEmails",@"groupLifetimeInDays",@"managedGroupTypes" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphGroupLifecyclePolicy(json, new global::System.Collections.Generic.HashSet<string>(){ @"ResourceGroupName",@"alternateNotificationEmails",@"groupLifetimeInDays",@"managedGroupTypes" }) : null;
         }
 
         /// <summary>

@@ -14,14 +14,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
     {
 
         /// <summary>Backing field for <see cref="RedirectUri" /> property.</summary>
-        private string[] _redirectUri;
+        private System.Collections.Generic.List<string> _redirectUri;
 
         /// <summary>
         /// Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and
         /// access tokens are sent.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
-        public string[] RedirectUri { get => this._redirectUri; set => this._redirectUri = value; }
+        public System.Collections.Generic.List<string> RedirectUri { get => this._redirectUri; set => this._redirectUri = value; }
 
         /// <summary>Creates an new <see cref="MicrosoftGraphPublicClientApplication" /> instance.</summary>
         public MicrosoftGraphPublicClientApplication()
@@ -41,10 +41,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.",
         SerializedName = @"redirectUris",
         PossibleTypes = new [] { typeof(string) })]
-        string[] RedirectUri { get; set; }
+        System.Collections.Generic.List<string> RedirectUri { get; set; }
 
     }
     /// publicClientApplication
@@ -55,7 +58,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and
         /// access tokens are sent.
         /// </summary>
-        string[] RedirectUri { get; set; }
+        System.Collections.Generic.List<string> RedirectUri { get; set; }
 
     }
 }

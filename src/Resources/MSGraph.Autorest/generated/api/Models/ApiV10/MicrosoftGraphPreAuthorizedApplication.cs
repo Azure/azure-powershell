@@ -21,11 +21,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         public string AppId { get => this._appId; set => this._appId = value; }
 
         /// <summary>Backing field for <see cref="DelegatedPermissionId" /> property.</summary>
-        private string[] _delegatedPermissionId;
+        private System.Collections.Generic.List<string> _delegatedPermissionId;
 
         /// <summary>The unique identifier for the oauth2PermissionScopes the application requires.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
-        public string[] DelegatedPermissionId { get => this._delegatedPermissionId; set => this._delegatedPermissionId = value; }
+        public System.Collections.Generic.List<string> DelegatedPermissionId { get => this._delegatedPermissionId; set => this._delegatedPermissionId = value; }
 
         /// <summary>Creates an new <see cref="MicrosoftGraphPreAuthorizedApplication" /> instance.</summary>
         public MicrosoftGraphPreAuthorizedApplication()
@@ -42,6 +42,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The unique identifier for the application.",
         SerializedName = @"appId",
         PossibleTypes = new [] { typeof(string) })]
@@ -50,10 +53,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The unique identifier for the oauth2PermissionScopes the application requires.",
         SerializedName = @"delegatedPermissionIds",
         PossibleTypes = new [] { typeof(string) })]
-        string[] DelegatedPermissionId { get; set; }
+        System.Collections.Generic.List<string> DelegatedPermissionId { get; set; }
 
     }
     /// preAuthorizedApplication
@@ -63,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>The unique identifier for the application.</summary>
         string AppId { get; set; }
         /// <summary>The unique identifier for the oauth2PermissionScopes the application requires.</summary>
-        string[] DelegatedPermissionId { get; set; }
+        System.Collections.Generic.List<string> DelegatedPermissionId { get; set; }
 
     }
 }

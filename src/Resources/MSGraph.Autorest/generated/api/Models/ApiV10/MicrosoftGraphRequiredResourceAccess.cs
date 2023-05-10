@@ -14,13 +14,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
     {
 
         /// <summary>Backing field for <see cref="ResourceAccess" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess[] _resourceAccess;
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess> _resourceAccess;
 
         /// <summary>
         /// The list of OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess[] ResourceAccess { get => this._resourceAccess; set => this._resourceAccess = value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess> ResourceAccess { get => this._resourceAccess; set => this._resourceAccess = value; }
 
         /// <summary>Backing field for <see cref="ResourceAppId" /> property.</summary>
         private string _resourceAppId;
@@ -49,10 +49,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The list of OAuth2.0 permission scopes and app roles that the application requires from the specified resource.",
         SerializedName = @"resourceAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess) })]
-        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess[] ResourceAccess { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess> ResourceAccess { get; set; }
         /// <summary>
         /// The unique identifier for the resource that the application requires access to. This should be equal to the appId declared
         /// on the target resource application.
@@ -60,6 +63,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
         Required = false,
         ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
         Description = @"The unique identifier for the resource that the application requires access to.  This should be equal to the appId declared on the target resource application.",
         SerializedName = @"resourceAppId",
         PossibleTypes = new [] { typeof(string) })]
@@ -73,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <summary>
         /// The list of OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         /// </summary>
-        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess[] ResourceAccess { get; set; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphResourceAccess> ResourceAccess { get; set; }
         /// <summary>
         /// The unique identifier for the resource that the application requires access to. This should be equal to the appId declared
         /// on the target resource application.

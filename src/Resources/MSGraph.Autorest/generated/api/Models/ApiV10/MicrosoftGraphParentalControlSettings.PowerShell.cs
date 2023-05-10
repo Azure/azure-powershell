@@ -116,7 +116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             // actually deserialize
             if (content.Contains("CountriesBlockedForMinor"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (string[]) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (System.Collections.Generic.List<string>) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("LegalAgeGroupRule"))
             {
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             // actually deserialize
             if (content.Contains("CountriesBlockedForMinor"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (string[]) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor = (System.Collections.Generic.List<string>) content.GetValueForProperty("CountriesBlockedForMinor",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphParentalControlSettingsInternal)this).CountriesBlockedForMinor, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             if (content.Contains("LegalAgeGroupRule"))
             {

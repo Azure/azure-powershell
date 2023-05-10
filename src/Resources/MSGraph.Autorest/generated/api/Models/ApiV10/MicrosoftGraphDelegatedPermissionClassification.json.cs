@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDelegatedPermissionClassification FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphDelegatedPermissionClassification(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"classification",@"permissionId",@"permissionName" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphDelegatedPermissionClassification(json, new global::System.Collections.Generic.HashSet<string>(){ @"ResourceGroupName",@"classification",@"permissionId",@"permissionName" }) : null;
         }
 
         /// <summary>

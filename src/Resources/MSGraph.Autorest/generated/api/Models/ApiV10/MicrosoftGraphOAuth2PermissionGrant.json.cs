@@ -62,7 +62,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphOAuth2PermissionGrant FromJson(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphOAuth2PermissionGrant(json, new global::System.Collections.Generic.HashSet<string>(){ @"id",@"clientId",@"consentType",@"principalId",@"resourceId",@"scope" }) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Json.JsonObject json ? new MicrosoftGraphOAuth2PermissionGrant(json, new global::System.Collections.Generic.HashSet<string>(){ @"ResourceGroupName",@"clientId",@"consentType",@"principalId",@"resourceId",@"scope" }) : null;
         }
 
         /// <summary>

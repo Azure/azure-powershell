@@ -31,6 +31,9 @@ Get-AzADApplication -ObjectId $id -Select Tags -AppendSelected
 Get-AzADApplication -OwnedApplication
 .Example
 Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
+.Example
+Get-AzADApplication -First 10 -ConsistencyLevel eventual -Count -CountVariable 'result'
+$result
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -146,6 +149,13 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
+    [Parameter(ParameterSetName='EmptyParameterSet')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
+    [System.String]
+    # Specifies a count of the total number of items in a collection.
+    # By default, this variable will be set in the global scope.
+    ${CountVariable},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -195,7 +205,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {
