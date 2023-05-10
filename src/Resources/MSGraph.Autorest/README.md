@@ -47,6 +47,10 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+version: "3.9.5"
+use-extension:
+  "@autorest/powershell": "4.0.0-dev.9"
+
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 
